@@ -1520,21 +1520,21 @@ chip</description>
 <element name="R96" library="rcl" package="R0402" value="10k" x="4.854" y="19.2" rot="MR0"/>
 <element name="R97" library="rcl" package="R0402" value="10k" x="7.85" y="19.2" rot="MR0"/>
 <element name="R98" library="rcl" package="R0402" value="10k" x="10.846" y="20.318" rot="MR0"/>
-<element name="R99" library="rcl" package="R0402" value="4.7k" x="23.74" y="2.828" rot="MR0"/>
+<element name="R99" library="rcl" package="R0402" value="4.7k" x="23.74" y="4.45" rot="MR0"/>
 <element name="C133" library="rcl" package="C0402" value="0.1uF" x="27.1705" y="5.2705"/>
 <element name="C134" library="rcl" package="C0402" value="0.1uF" x="30.4705" y="5.2705"/>
 <element name="C135" library="rcl" package="C0402" value="0.1uF" x="33.7705" y="5.2705"/>
 <element name="C136" library="rcl" package="C0402" value="0.1uF" x="37.0705" y="5.2705"/>
 <element name="C137" library="rcl" package="C0402" value="0.1uF" x="29.1" y="17.933"/>
 <element name="C138" library="rcl" package="C0402" value="0.1uF" x="32.4" y="17.933"/>
-<element name="R26" library="rcl" package="R0402" value="200" x="3" y="-17.55"/>
-<element name="R27" library="rcl" package="R0402" value="200" x="9" y="-17.55"/>
-<element name="R28" library="rcl" package="R0402" value="200" x="15" y="-17.55"/>
-<element name="R29" library="rcl" package="R0402" value="200" x="21" y="-17.55"/>
-<element name="R30" library="rcl" package="R0402" value="200" x="27" y="-17.55"/>
-<element name="R31" library="rcl" package="R0402" value="200" x="33" y="-17.55"/>
-<element name="R32" library="rcl" package="R0402" value="200" x="39" y="-17.55"/>
-<element name="R33" library="rcl" package="R0402" value="200" x="45" y="-17.55"/>
+<element name="R26" library="rcl" package="R0402" value="200" x="59.79" y="9.198" rot="R90"/>
+<element name="R27" library="rcl" package="R0402" value="200" x="59.79" y="12.194" rot="R90"/>
+<element name="R28" library="rcl" package="R0402" value="200" x="59.79" y="15.19" rot="R90"/>
+<element name="R29" library="rcl" package="R0402" value="200" x="59.5098" y="9.198" rot="MR90"/>
+<element name="R30" library="rcl" package="R0402" value="200" x="59.5098" y="12.194" rot="MR90"/>
+<element name="R31" library="rcl" package="R0402" value="200" x="59.5098" y="15.19" rot="MR90"/>
+<element name="R32" library="rcl" package="R0402" value="200" x="33.998" y="24.284" rot="MR0"/>
+<element name="R33" library="rcl" package="R0402" value="200" x="3" y="-17.55"/>
 <element name="U$2" library="ctambe" package="CC_CC" value="" x="5.0585" y="-6.4415"/>
 <element name="U$3" library="ctambe" package="CC_BY" value="" x="10.895" y="-7.722"/>
 <element name="U$4" library="ctambe" package="CC_SA" value="" x="15.451" y="-7.722"/>
@@ -1543,27 +1543,27 @@ chip</description>
 <element name="U3" library="ctambe" package="TSOPII-54" value="AS4C32M16SB-6TIN" x="38.775" y="5.82" rot="MR90"/>
 <element name="U4" library="ctambe" package="SOIC-8_208MIL" value="W25Q128JVSIQ" x="9.1545" y="11.495" rot="MR0"/>
 <element name="X3" library="ctambe" package="DM3AT-SF-PEJM5" value="" x="15.95" y="12.92" rot="R270"/>
-<element name="R34" library="ctambe" package="742C083" value="4.7K" x="1.3" y="3.878"/>
+<element name="R34" library="ctambe" package="742C083" value="4.7K" x="2.9" y="21.45" rot="MR0"/>
 <element name="R35" library="rcl" package="R0402" value="4.7K" x="2.898" y="6.02" rot="MR0"/>
-<element name="R2" library="ctambe" package="742C083" value="4.7K" x="50.8" y="-16.5"/>
+<element name="R2" library="ctambe" package="742C083" value="4.7K" x="8.8" y="-16.5"/>
 <element name="U1" library="ctambe" package="XC7A35T-CPG236" value="XC7A35T-1CPG236C" x="42" y="16.74"/>
-<element name="R10" library="rcl" package="R0603" value="2.32K" x="21.154" y="21.102" rot="MR0"/>
-<element name="R11" library="rcl" package="R0603" value="1K" x="24.502" y="21.102" rot="MR0"/>
-<element name="R12" library="rcl" package="R0603" value="140" x="47.166" y="3.14"/>
-<element name="R13" library="rcl" package="R0603" value="845" x="50.514" y="3.14"/>
-<element name="R14" library="rcl" package="R0603" value="2.32K" x="27.85" y="21.102" rot="MR0"/>
-<element name="R15" library="rcl" package="R0603" value="1K" x="32.357" y="21.864" rot="MR90"/>
-<element name="R16" library="rcl" package="R0603" value="140" x="43.912" y="20.792"/>
-<element name="R17" library="rcl" package="R0603" value="845" x="47.26" y="20.792"/>
+<element name="R10" library="rcl" package="R0603" value="2.32K" x="8.154" y="21.132"/>
+<element name="R11" library="rcl" package="R0603" value="1K" x="15.349" y="21.102" rot="MR0"/>
+<element name="R12" library="rcl" package="R0603" value="140" x="37.174" y="3.14"/>
+<element name="R13" library="rcl" package="R0603" value="845" x="37.357" y="20.904" rot="MR90"/>
+<element name="R14" library="rcl" package="R0603" value="2.32K" x="9.949" y="21.83" rot="MR0"/>
+<element name="R15" library="rcl" package="R0603" value="1K" x="15.524" y="-17.238"/>
+<element name="R16" library="rcl" package="R0603" value="140" x="21.524" y="-17.238"/>
+<element name="R17" library="rcl" package="R0603" value="845" x="27.524" y="-17.238"/>
 <element name="C3" library="rcl" package="C0402" value="0.1uF" x="25.025" y="7.15"/>
 <element name="C4" library="rcl" package="C0402" value="0.1uF" x="22.525" y="4.65"/>
-<element name="C5" library="rcl" package="C0402" value="0.1uF" x="21.673" y="2.878"/>
-<element name="C6" library="rcl" package="C0402" value="0.1uF" x="19.025" y="19.47"/>
-<element name="C7" library="rcl" package="C0402" value="0.1uF" x="19.025" y="20.77"/>
-<element name="C8" library="rcl" package="C0402" value="0.1uF" x="13.025" y="21.368" rot="MR90"/>
-<element name="C9" library="rcl" package="C0402" value="0.1uF" x="14.025" y="20.87"/>
-<element name="C11" library="rcl" package="C0402" value="0.1uF" x="17.325" y="22.07"/>
-<element name="C12" library="rcl" package="C0402" value="0.1uF" x="14.025" y="22.17"/>
+<element name="C5" library="rcl" package="C0402" value="0.1uF" x="22.498" y="2.878"/>
+<element name="C6" library="rcl" package="C0402" value="0.1uF" x="13.025" y="21.368" rot="MR90"/>
+<element name="C7" library="rcl" package="C0402" value="0.1uF" x="14.025" y="20.87"/>
+<element name="C8" library="rcl" package="C0402" value="0.1uF" x="14.025" y="22.17"/>
+<element name="C9" library="rcl" package="C0402" value="0.1uF" x="5.025" y="21.45" rot="MR90"/>
+<element name="C11" library="rcl" package="C0402" value="0.1uF" x="6.325" y="21.45" rot="MR90"/>
+<element name="C12" library="rcl" package="C0402" value="0.1uF" x="7.625" y="21.45" rot="MR90"/>
 <element name="C13" library="rcl" package="C0603" value="10uF" x="26.885" y="10.174" rot="R90"/>
 <element name="C36" library="rcl" package="C0402" value="1nF" x="43.15" y="7.89" rot="MR0"/>
 <element name="C37" library="rcl" package="C0402" value="1nF" x="46.45" y="7.89" rot="MR0"/>
@@ -1571,54 +1571,54 @@ chip</description>
 <element name="U10" library="ctambe" package="SOIC8" value="93LC46BT-I/SN" x="5.36" y="15.9" rot="MR0"/>
 <element name="JP3" library="pinhead" package="1X03-NOSILK" value="JTAG TCK/TMS/GND" x="56.5" y="21.68"/>
 <element name="JP4" library="pinhead" package="1X03-NOSILK" value="JTAG TDI/TDO/3V3" x="56.5" y="3.72"/>
-<element name="R4" library="ctambe" package="741X163" value="100" x="40.088" y="21.33"/>
-<element name="R5" library="rcl" package="R0603" value="5.1K" x="50.608" y="20.792"/>
-<element name="R1" library="ctambe" package="742C083" value="4.7K" x="56.8" y="-16.5"/>
+<element name="R4" library="ctambe" package="741X163" value="100" x="34" y="-16.7"/>
+<element name="R5" library="rcl" package="R0603" value="5.1K" x="39.524" y="-17.238"/>
+<element name="R1" library="ctambe" package="742C083" value="4.7K" x="44.8" y="-16.5"/>
 <element name="U8" library="ctambe" package="LTC3569-QFN20" value="LTC3569EUDC#TRPBF" x="12.5" y="7.44" rot="MR0"/>
 <element name="D1" library="ctambe" package="SOD123" value="PMEG2020EJ,115" x="15.45" y="6.518" rot="MR90"/>
-<element name="D2" library="ctambe" package="SOD123" value="PMEG2020EJ,115" x="26.8205" y="4.128" rot="MR0"/>
-<element name="D3" library="ctambe" package="SOD123" value="SMF5.0A" x="30.8205" y="4.128" rot="MR0"/>
+<element name="D2" library="ctambe" package="SOD123" value="PMEG2020EJ,115" x="32.17" y="22.884" rot="MR0"/>
+<element name="D3" library="ctambe" package="SOD123" value="SMF5.0A" x="51.85" y="-17.45"/>
 <element name="C78" library="rcl" package="C0805" value="22uF 10V" x="12.401" y="18.679" rot="MR0"/>
-<element name="R67" library="rcl" package="R0402" value="3.48K 1%" x="15.821" y="4.34"/>
+<element name="R67" library="rcl" package="R0402" value="3.48K 1%" x="15.821" y="3.04"/>
 <element name="R70" library="rcl" package="R0402" value="10K 1%" x="9.173" y="4.61"/>
-<element name="R72" library="rcl" package="R0402" value="0 (No Load, DNP)" x="17.675" y="2.828" rot="MR0"/>
-<element name="R74" library="rcl" package="R0402" value="100K" x="17.748" y="4.028" rot="MR0"/>
+<element name="R72" library="rcl" package="R0402" value="0 (No Load, DNP)" x="17.748" y="4.45" rot="MR0"/>
+<element name="R74" library="rcl" package="R0402" value="100K" x="6.673" y="5.64" rot="MR0"/>
 <element name="L1" library="ctambe" package="IND2520" value="1.5uH" x="12.45" y="11.14" rot="MR0"/>
-<element name="R65" library="rcl" package="R0402" value="30K 1%" x="6.673" y="5.64" rot="MR0"/>
+<element name="R65" library="rcl" package="R0402" value="30K 1%" x="5.775" y="3.726" rot="R90"/>
 <element name="C79" library="rcl" package="C0402" value="20pF" x="12.673" y="3.09"/>
-<element name="R66" library="rcl" package="R0402" value="120K 1%" x="5.775" y="3.726" rot="R90"/>
+<element name="R66" library="rcl" package="R0402" value="120K 1%" x="6.975" y="3.726" rot="R90"/>
 <element name="C80" library="rcl" package="C0805" value="22uF" x="14.376" y="3.479" rot="MR0"/>
 <element name="L2" library="ctambe" package="IND2520" value="3.3uH" x="12.45" y="13.74" rot="MR0"/>
-<element name="R68" library="rcl" package="R0402" value="150K 1%" x="6.975" y="3.726" rot="R90"/>
-<element name="C81" library="rcl" package="C0402" value="20pF" x="15.973" y="3.09"/>
-<element name="R69" library="rcl" package="R0402" value="120K 1%" x="18.223" y="3.726" rot="R90"/>
+<element name="R68" library="rcl" package="R0402" value="150K 1%" x="18.223" y="5.348" rot="R90"/>
+<element name="C81" library="rcl" package="C0402" value="20pF" x="12.673" y="4.39"/>
+<element name="R69" library="rcl" package="R0402" value="120K 1%" x="3.173" y="2.828" rot="MR0"/>
 <element name="C82" library="rcl" package="C0603" value="10uF" x="15.535" y="10.192" rot="MR90"/>
 <element name="L3" library="ctambe" package="IND2520" value="2.2uH" x="12.45" y="16.34" rot="MR0"/>
-<element name="L4" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="32.63" y="2.828" rot="MR0"/>
-<element name="L5" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="23.4205" y="4.028" rot="MR0"/>
-<element name="L6" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="34.63" y="3.628" rot="MR90"/>
-<element name="L7" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="35.169" y="23.584" rot="MR90"/>
+<element name="L4" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="32.63" y="4.45" rot="MR0"/>
+<element name="L5" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="32.845" y="20.79" rot="MR0"/>
+<element name="L6" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="51.392" y="15.932" rot="MR90"/>
+<element name="L7" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="36.9" y="4.45" rot="MR0"/>
 <element name="C123" library="rcl" package="C0402" value="100nF" x="49.75" y="7.89" rot="MR0"/>
 <element name="C124" library="rcl" package="C0402" value="470nF" x="43.15" y="16.49" rot="MR0"/>
-<element name="R18" library="rcl" package="R0402" value="12K 1%" x="26.736" y="2.828" rot="MR0"/>
-<element name="R19" library="rcl" package="R0402" value="10K" x="29.732" y="2.828" rot="MR0"/>
-<element name="R20" library="rcl" package="R0402" value="1K" x="36.998" y="4.398" rot="MR0"/>
-<element name="R21" library="rcl" package="R0402" value="1K" x="51.335" y="20.48" rot="MR0"/>
-<element name="R22" library="rcl" package="R0402" value="1K" x="51.335" y="21.68" rot="MR0"/>
-<element name="R23" library="rcl" package="R0402" value="1K" x="28.228" y="23.512" rot="MR90"/>
+<element name="R18" library="rcl" package="R0402" value="12K 1%" x="26.736" y="4.45" rot="MR0"/>
+<element name="R19" library="rcl" package="R0402" value="10K" x="29.732" y="4.45" rot="MR0"/>
+<element name="R20" library="rcl" package="R0402" value="1K" x="46.298" y="16.44" rot="MR0"/>
+<element name="R21" library="rcl" package="R0402" value="1K" x="49.294" y="16.44" rot="MR0"/>
+<element name="R22" library="rcl" package="R0402" value="1K" x="42.1" y="10.038" rot="MR90"/>
+<element name="R23" library="rcl" package="R0402" value="1K" x="50.7" y="10.038" rot="MR90"/>
 <element name="C139" library="rcl" package="C0402" value="3.3uF" x="35.7" y="17.933"/>
 <element name="C39" library="rcl" package="C0402" value="3.3uF" x="36.234" y="18.58" rot="MR0"/>
 <element name="C40" library="rcl" package="C0402" value="100nF" x="28.821" y="2.878"/>
 <element name="C41" library="rcl" package="C0402" value="100nF" x="32.121" y="2.878"/>
-<element name="R71" library="rcl" package="R0402" value="180K 1%" x="19.423" y="3.726" rot="R90"/>
-<element name="C83" library="rcl" package="C0402" value="20pF" x="12.673" y="4.39"/>
-<element name="R73" library="rcl" package="R0402" value="57.6K 1%" x="3.173" y="2.828" rot="MR0"/>
+<element name="R71" library="rcl" package="R0402" value="180K 1%" x="6.169" y="2.828" rot="MR0"/>
+<element name="C83" library="rcl" package="C0402" value="20pF" x="15.973" y="4.5"/>
+<element name="R73" library="rcl" package="R0402" value="57.6K 1%" x="3.173" y="4.028" rot="MR0"/>
 <element name="C84" library="rcl" package="C0603" value="10uF" x="9.349" y="3.225"/>
 <element name="Q3" library="ctambe" package="SOT363" value="MBT3904DW1T1" x="11.425" y="3.54" rot="MR0"/>
-<element name="R75" library="rcl" package="R0402" value="100K" x="6.169" y="2.828" rot="MR0"/>
-<element name="R76" library="rcl" package="R0402" value="100K" x="20.744" y="2.828" rot="MR0"/>
-<element name="R79" library="rcl" package="R0402" value="1K" x="3.173" y="4.028" rot="MR0"/>
-<element name="R77" library="rcl" package="R0402" value="100K" x="6.169" y="4.028" rot="MR0"/>
+<element name="R75" library="rcl" package="R0402" value="100K" x="6.169" y="4.028" rot="MR0"/>
+<element name="R76" library="rcl" package="R0402" value="100K" x="20.744" y="4.45" rot="MR0"/>
+<element name="R79" library="rcl" package="R0402" value="1K" x="3.173" y="2.828"/>
+<element name="R77" library="rcl" package="R0402" value="100K" x="3.173" y="4.028"/>
 <element name="R78" library="rcl" package="R0402" value="680" x="24.198" y="16.185"/>
 <element name="LD5" library="ctambe" package="LED0603" value="" x="24.95" y="14.985"/>
 <element name="Q2" library="ctambe" package="SOT23-3" value="" x="8.975" y="3.74" rot="MR0"/>
@@ -1630,12 +1630,12 @@ chip</description>
 <element name="R84" library="rcl" package="R0402" value="330" x="18.948" y="18.22"/>
 <element name="R85" library="rcl" package="R0402" value="10K" x="15.65" y="13.364" rot="MR90"/>
 <element name="R86" library="rcl" package="R0402" value="10K" x="15.65" y="16.36" rot="MR90"/>
-<element name="R89" library="rcl" package="R0402" value="10K" x="59.79" y="18.258" rot="R90"/>
-<element name="R90" library="rcl" package="R0402" value="10K" x="59.79" y="6.513" rot="R90"/>
-<element name="R91" library="rcl" package="R0402" value="10K" x="59.5098" y="6.176" rot="MR90"/>
-<element name="R92" library="rcl" package="R0402" value="10K" x="59.5098" y="18.258" rot="MR90"/>
-<element name="R93" library="rcl" package="R0402" value="10K" x="63" y="-17.55"/>
-<element name="R94" library="rcl" package="R0402" value="10K" x="3" y="-23.55"/>
+<element name="R89" library="rcl" package="R0402" value="10K" x="59.79" y="18.186" rot="R90"/>
+<element name="R90" library="rcl" package="R0402" value="10K" x="59.5098" y="6.176" rot="MR90"/>
+<element name="R91" library="rcl" package="R0402" value="10K" x="57" y="-17.55"/>
+<element name="R92" library="rcl" package="R0402" value="10K" x="59.5098" y="18.186" rot="MR90"/>
+<element name="R93" library="rcl" package="R0402" value="10K" x="42.1" y="13.034" rot="MR90"/>
+<element name="R94" library="rcl" package="R0402" value="10K" x="50.7" y="13.034" rot="MR90"/>
 <element name="LD0" library="ctambe" package="VS-NRD8" value="VS NRD8" x="24.85" y="10.885"/>
 <element name="LD1" library="ctambe" package="LED0603" value="LED" x="24.95" y="12.585"/>
 <element name="LD2" library="ctambe" package="LED0603" value="LED" x="24.95" y="13.785"/>
@@ -1646,44 +1646,44 @@ chip</description>
 <element name="R24" library="rcl" package="R0402" value="33" x="26.85" y="18.028" rot="R90"/>
 <element name="R25" library="rcl" package="R0402" value="33" x="22.15" y="19.118" rot="R90"/>
 <element name="C85" library="rcl" package="C1206" value="47uF" x="17.098" y="19.14" rot="MR0"/>
-<element name="C140" library="rcl" package="C1206" value="47uF" x="37.998" y="3.278"/>
+<element name="C140" library="rcl" package="C1206" value="47uF" x="19.998" y="21.24" rot="MR0"/>
 <element name="C86" library="rcl" package="C1206" value="47uF" x="22.094" y="19.14" rot="MR0"/>
-<element name="C87" library="rcl" package="C0603" value="4.7uF" x="37.174" y="3.013" rot="MR0"/>
-<element name="C88" library="rcl" package="C0603" value="4.7uF" x="40.522" y="3.013" rot="MR0"/>
-<element name="C89" library="rcl" package="C0402" value="0.47uF" x="46.45" y="16.49" rot="MR0"/>
-<element name="C90" library="rcl" package="C0402" value="0.47uF" x="49.75" y="16.49" rot="MR0"/>
-<element name="C91" library="rcl" package="C0402" value="0.47uF" x="42.15" y="10.19" rot="MR90"/>
-<element name="C92" library="rcl" package="C0402" value="0.47uF" x="50.75" y="10.19" rot="MR90"/>
+<element name="C87" library="rcl" package="C0603" value="4.7uF" x="24.17" y="20.975" rot="MR0"/>
+<element name="C88" library="rcl" package="C0603" value="4.7uF" x="27.518" y="20.975" rot="MR0"/>
+<element name="C89" library="rcl" package="C0402" value="0.47uF" x="40.51" y="20.63" rot="MR0"/>
+<element name="C90" library="rcl" package="C0402" value="0.47uF" x="43.81" y="20.63" rot="MR0"/>
+<element name="C91" library="rcl" package="C0402" value="0.47uF" x="47.11" y="20.63" rot="MR0"/>
+<element name="C92" library="rcl" package="C0402" value="0.47uF" x="50.41" y="20.63" rot="MR0"/>
 <element name="C93" library="rcl" package="C1206" value="47uF" x="27.09" y="19.14" rot="MR0"/>
-<element name="C94" library="rcl" package="C0603" value="4.7uF" x="43.87" y="3.013" rot="MR0"/>
-<element name="C95" library="rcl" package="C0402" value="0.47uF" x="42.15" y="13.49" rot="MR90"/>
-<element name="C96" library="rcl" package="C0402" value="0.47uF" x="50.75" y="13.49" rot="MR90"/>
+<element name="C94" library="rcl" package="C0603" value="4.7uF" x="19.174" y="3.065" rot="MR0"/>
+<element name="C95" library="rcl" package="C0402" value="0.47uF" x="40.51" y="21.93" rot="MR0"/>
+<element name="C96" library="rcl" package="C0402" value="0.47uF" x="43.81" y="21.93" rot="MR0"/>
 <element name="C97" library="rcl" package="C1206" value="47uF" x="32.086" y="19.14" rot="MR0"/>
-<element name="C98" library="rcl" package="C1206" value="47uF" x="42.994" y="3.278"/>
-<element name="C99" library="rcl" package="C0603" value="4.7uF" x="47.218" y="3.013" rot="MR0"/>
-<element name="C100" library="rcl" package="C0603" value="4.7uF" x="50.566" y="3.013" rot="MR0"/>
-<element name="C101" library="rcl" package="C0603" value="4.7uF" x="38.119" y="20.665" rot="MR0"/>
-<element name="C102" library="rcl" package="C0603" value="4.7uF" x="41.467" y="20.665" rot="MR0"/>
-<element name="C103" library="rcl" package="C0603" value="4.7uF" x="44.815" y="20.665" rot="MR0"/>
-<element name="C104" library="rcl" package="C0603" value="4.7uF" x="48.163" y="20.665" rot="MR0"/>
-<element name="C105" library="rcl" package="C0603" value="4.7uF" x="38.119" y="22.235" rot="MR0"/>
-<element name="C106" library="rcl" package="C0603" value="4.7uF" x="41.467" y="22.235" rot="MR0"/>
-<element name="C107" library="rcl" package="C0402" value="0.47uF" x="43.888" y="22.354"/>
-<element name="C108" library="rcl" package="C0402" value="0.47uF" x="47.188" y="22.354"/>
-<element name="C109" library="rcl" package="C0402" value="0.47uF" x="50.488" y="22.354"/>
-<element name="C110" library="rcl" package="C0402" value="0.47uF" x="44.791" y="22.1" rot="MR0"/>
-<element name="C111" library="rcl" package="C0402" value="0.47uF" x="48.091" y="22.1" rot="MR0"/>
-<element name="C112" library="rcl" package="C0402" value="0.47uF" x="32.15" y="24.188" rot="MR0"/>
-<element name="C113" library="rcl" package="C0402" value="0.47uF" x="33.919" y="21.84" rot="MR90"/>
-<element name="C114" library="rcl" package="C0402" value="0.47uF" x="9.5" y="-23.5"/>
-<element name="C115" library="rcl" package="C0402" value="0.47uF" x="15.5" y="-23.5"/>
-<element name="C116" library="rcl" package="C0402" value="0.47uF" x="21.5" y="-23.5"/>
-<element name="C117" library="rcl" package="C0402" value="0.47uF" x="27.5" y="-23.5"/>
-<element name="C118" library="rcl" package="C0402" value="0.47uF" x="33.5" y="-23.5"/>
-<element name="C119" library="rcl" package="C0402" value="0.47uF" x="39.5" y="-23.5"/>
-<element name="C120" library="rcl" package="C0402" value="0.47uF" x="45.5" y="-23.5"/>
-<element name="C121" library="rcl" package="C0402" value="0.47uF" x="51.5" y="-23.5"/>
-<element name="C122" library="rcl" package="C0402" value="0.47uF" x="57.5" y="-23.5"/>
+<element name="C98" library="rcl" package="C1206" value="47uF" x="47.958" y="3.33"/>
+<element name="C99" library="rcl" package="C0603" value="4.7uF" x="22.522" y="3.065" rot="MR0"/>
+<element name="C100" library="rcl" package="C0603" value="4.7uF" x="25.87" y="3.065" rot="MR0"/>
+<element name="C101" library="rcl" package="C0603" value="4.7uF" x="29.218" y="3.065" rot="MR0"/>
+<element name="C102" library="rcl" package="C0603" value="4.7uF" x="32.566" y="3.065" rot="MR0"/>
+<element name="C103" library="rcl" package="C0603" value="4.7uF" x="35.914" y="3.065" rot="MR0"/>
+<element name="C104" library="rcl" package="C0603" value="4.7uF" x="19.174" y="20.765"/>
+<element name="C105" library="rcl" package="C0603" value="4.7uF" x="19.174" y="22.335"/>
+<element name="C106" library="rcl" package="C0603" value="4.7uF" x="19.174" y="3.065"/>
+<element name="C107" library="rcl" package="C0402" value="0.47uF" x="47.11" y="21.93" rot="MR0"/>
+<element name="C108" library="rcl" package="C0402" value="0.47uF" x="50.41" y="21.93" rot="MR0"/>
+<element name="C109" library="rcl" package="C0402" value="0.47uF" x="40.51" y="2.93" rot="MR0"/>
+<element name="C110" library="rcl" package="C0402" value="0.47uF" x="43.81" y="2.93" rot="MR0"/>
+<element name="C111" library="rcl" package="C0402" value="0.47uF" x="47.11" y="2.93" rot="MR0"/>
+<element name="C112" library="rcl" package="C0402" value="0.47uF" x="50.41" y="2.93" rot="MR0"/>
+<element name="C113" library="rcl" package="C0402" value="0.47uF" x="40.51" y="20.63"/>
+<element name="C114" library="rcl" package="C0402" value="0.47uF" x="43.81" y="20.63"/>
+<element name="C115" library="rcl" package="C0402" value="0.47uF" x="47.11" y="20.63"/>
+<element name="C116" library="rcl" package="C0402" value="0.47uF" x="50.41" y="20.63"/>
+<element name="C117" library="rcl" package="C0402" value="0.47uF" x="40.51" y="21.93"/>
+<element name="C118" library="rcl" package="C0402" value="0.47uF" x="43.81" y="21.93"/>
+<element name="C119" library="rcl" package="C0402" value="0.47uF" x="47.11" y="21.93"/>
+<element name="C120" library="rcl" package="C0402" value="0.47uF" x="50.41" y="21.93"/>
+<element name="C121" library="rcl" package="C0402" value="0.47uF" x="40.51" y="2.93"/>
+<element name="C122" library="rcl" package="C0402" value="0.47uF" x="43.81" y="2.93"/>
 </elements>
 <signals>
 <signal name="VU">

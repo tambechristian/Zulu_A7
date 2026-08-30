@@ -611,35 +611,61 @@ spill = tile(BULK, *yb(14.60, 15.55, 38.36, 18.29, "MR0"), avoid=hole_zones())
 # mixed list puts the big parts nearest the package and pushes the small ones
 # out. Twelve 0.47 uF ended up parked below the board that way. Give each size
 # its own call instead, smallest and most urgent first.
-# The right-hand column stands off at 52.98, not 51.99. 30 of the 35 escapes on
-# that side must leave L1 -- 17 of them to U3, which sits on the BACK at x 38.77,
-# to the LEFT of the FPGA, so the SDRAM bus comes out of the right-hand column
-# and crosses the whole package to reach it -- and 32 places at 0.39 pitch need a
-# half-width of 6.24, which is x 52.98 once the via land and its clearance are
-# taken off. See tools/needvia.py.
+# THE FIELDS COME OFF THE RING NOW, INSTEAD OF BEING WRITTEN DOWN BESIDE IT.
 #
-# ABOVE and BELOW step back from that corridor too. They are outside the
-# package's own y range but not outside the via row's, which runs y 3.46..15.94
-# at that half-width, so their end capacitors were setting the limit rather than
-# the right-hand column itself.
-ABOVE = yb(40.05, 15.95, 52.98, 18.29, "MR0")
-BELOW = yb(40.05, 2.12, 52.98, 3.45, "MR0")
-LEFT = yb(39.55, 5.20, 41.01, 14.20, "MR90")         # stood on end, 1.46 mm wide
-# The two right-hand fields are 5.81 mm wide and 16 tall. Laid flat that is
-# one column of 0402 by eleven rows; stood on end it is four by four. Tall
-# narrow fields want the parts turned.
-RIGHT = yb(52.98, 2.12, 58.79, 18.29, "MR90")        # the big one, out to JP3
-# Q1 sits in the middle of the right-hand front field and is an avoid, not a
-# boundary.
-Q1BOX = yb(53.79, 8.01, 57.39, 12.31)
-# JP3's SHROUD reaches x 58.28, half a millimetre further left than any of its
-# copper or silk, and bbox() only measures copper and layers 21/51 -- so tile()
-# walked three capacitors into it. Given explicitly, like Q1.
-JP3BOX = yb(58.03, 6.10, 63.61, 14.22)
-FIELDS = [ABOVE, BELOW, LEFT, RIGHT,
-          yb(40.05, 15.95, 58.79, 18.29, "R0"),      # front, above U1
-          yb(52.98, 3.45, 58.79, 15.95, "R90"),      # front, right of U1
-          yb(38.35, 2.12, 40.26, 18.29, "R90")]      # front, left of U1, on end
+# They used to be four fixed boxes hugging the package, sized when Q1 sat at
+# x 53.79 and capped the escape's fan-out ring at 6.94 half-width. Q1 is at x 23
+# now -- it lost the +x end to the split JTAG -- so nothing caps the ring and it
+# opened to its full 7.64. That is the right outcome for the escape: the measured
+# curve puts 6 stage-3 conflicts at 7.40 against 11 at 6.94. It was also silently
+# fatal here. The ring grew over all four fields, and tile() then placed ZERO of
+# the 35 capacitors -- every field was inside the reservation. Twenty-five were
+# caught by the anchored pass further down and ten parked, so the decoupling was
+# not ten short. It was unplanned, and it looked nearly fine.
+#
+# So the ring is the given and the fields go outside it. If it moves again these
+# follow, instead of going quietly stale the way the fixed ones did.
+RX0, RY0 = min(r[0] for r in RING), min(r[1] for r in RING)
+RX1, RY1 = max(r[2] for r in RING), max(r[3] for r in RING)
+CLR = 0.10                                           # clear of it, not on its line
+# X2's outer pad rows are plated and block y 0.31..2.23 and 23.17..25.09 on every
+# layer, so these two strips are what is left between the ring and the header.
+# Two widths of the same two strips, and the ORDER is the whole point. tile()
+# fills a field left to right from x0, so a single wide strip hands its first
+# and best-sorted parts the far end: widening these to the length of the board
+# put 0.47 uF capacitors 27 mm from the ball field, which is not decoupling, it
+# is just a capacitor that fits. So offer the ring's own width first -- nothing
+# in it is more than about 8 mm out -- and only then the long strips, which pick
+# up whatever did not fit near the package. A 4.7 uF twenty millimetres out
+# still beats a 4.7 uF parked; a 0.47 uF out there is worth nothing.
+ABOVE = (RX0, RY1 + CLR, RX1, 23.12, "MR0")
+BELOW = (RX0, 2.28, RX1, RY0 - CLR, "MR0")
+SX0, SX1 = 17.50, 58.79
+FAR_ABOVE = (SX0, RY1 + CLR, SX1, 23.12, "MR0")
+FAR_BELOW = (SX0, 2.28, SX1, RY0 - CLR, "MR0")
+# LEFT is gone. It was x 39.55..41.01, which is now inside the ring on one side
+# and under the SDRAM -- U3 reaches x 39.55 on the back -- on the other. There is
+# no lane there at 7.64 half-width.
+# EAST is 4.6 mm wide on paper and almost none of it is usable: the Pmod's twelve
+# barrels sit at x 55.23 and 57.77 and leave 0.62 mm lanes. Kept because trying
+# costs nothing and it is where the right-hand field used to be.
+RIGHT = (RX1 + CLR, 4.66, 58.79, 20.83, "MR90")
+# Q1BOX and JP3BOX used to sit here, and both have stopped being true.
+# Q1 was at x 53.79 in the right-hand front field; it is at x 23 now, above the
+# LEDs. JP3 was one 2x3 whose SHROUD reached x 58.28 -- further left than any of
+# its copper or silk, which bbox() measures and a shroud is not -- so it had to
+# be given explicitly. JP3 is two 1x3s of bare plated holes today: 1X03-NOSILK
+# draws no body at all, so there is no shroud to miss, and hole_zones() reads
+# both parts' drills straight off PLACE. Nothing static is needed for either.
+# Leaving them in cost nine 0.47 uF their place: they guarded 3.60 x 4.30 and
+# 5.58 x 8.12 mm of the right-hand fields against parts that are not there.
+FIELDS = [ABOVE, BELOW, RIGHT,                        # the ring's width, back
+          (RX0, RY1 + CLR, RX1, 23.12, "R0"),        # the ring's width, front
+          (RX0, 2.28, RX1, RY0 - CLR, "R0"),
+          (RX1 + CLR, 4.66, 58.79, 20.83, "R90"),
+          FAR_ABOVE, FAR_BELOW,                      # then out along the board
+          (SX0, RY1 + CLR, SX1, 23.12, "R0"),
+          (SX0, 2.28, SX1, RY0 - CLR, "R0")]
 
 # Two passes, smallest first. tile() sorts tallest-first WITHIN a field so a 1206
 # cannot set the height of a row of 0402s, which also means a mixed list puts the
@@ -653,7 +679,7 @@ for pas in (0, 1):
         if not left:
             break
         left = tile(left, x0, y0, x1, y1, rot, gap=0.35,
-                    avoid=hole_zones() + [Q1BOX, JP3BOX])
+                    avoid=hole_zones())
     if pas == 0:
         left = left + MID + spill
 # LEDs, on the front
@@ -774,7 +800,7 @@ def place_at(parts, anchor, reach, avoid):
 # the ten SDRAM bypass capacitors whose turn came ninth were left with nowhere
 # within 24 mm of U3 to sit. Nothing about a capacitor 24 mm from its own device
 # is worth the one it displaced 3 mm from another.
-AVOID = hole_zones() + [Q1BOX, JP3BOX]
+AVOID = hole_zones()          # Q1BOX and JP3BOX retired -- see the fields above
 rest = {a: list(group[a]) for a in group}
 order = sorted(group, key=lambda k: -len(group[k]))
 for reach in REACHES:
