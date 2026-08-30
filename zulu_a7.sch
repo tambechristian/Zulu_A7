@@ -5163,6 +5163,22 @@ chip</description>
 <rectangle x1="-0.8382" y1="-0.4318" x2="-0.4318" y2="0.4318" layer="51"/>
 <rectangle x1="-0.1999" y1="-0.4001" x2="0.1999" y2="0.4001" layer="35"/>
 </package>
+<package name="C0201">
+<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;chip, 0201 (0603 metric)&lt;p&gt;Same land as R0201 here, which is how C0402 and R0402 already relate. &lt;b&gt;PROVISIONAL - CHECK BEFORE FABRICATION&lt;/b&gt;, and see the NOTE on the parts using it: at this capacitance an 0201 is a 6.3 V part where the 0402 was 16 V.&lt;/p&gt;</description>
+<wire x1="-0.15" y1="0.147" x2="0.15" y2="0.147" width="0.1016" layer="51"/>
+<wire x1="0.15" y1="-0.147" x2="-0.15" y2="-0.147" width="0.1016" layer="51"/>
+<wire x1="-0.873" y1="0.183" x2="0.873" y2="0.183" width="0.0508" layer="39"/>
+<wire x1="0.873" y1="0.183" x2="0.873" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="0.873" y1="-0.183" x2="-0.873" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="-0.873" y1="-0.183" x2="-0.873" y2="0.183" width="0.0508" layer="39"/>
+<smd name="1" x="-0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
+<smd name="2" x="0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
+<text x="-0.635" y="0.45" size="1.27" layer="25">&gt;NAME</text>
+<text x="-0.635" y="-1.7" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.30" y1="-0.15" x2="-0.15" y2="0.15" layer="51"/>
+<rectangle x1="0.15" y1="-0.15" x2="0.30" y2="0.15" layer="51"/>
+<rectangle x1="-0.12" y1="-0.15" x2="0.12" y2="0.15" layer="35"/>
+</package>
 <package name="C0402">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
 chip</description>
@@ -7522,6 +7538,15 @@ Metric Code Size 5664</description>
 <gate name="G$1" symbol="C-US" x="0" y="0"/>
 </gates>
 <devices>
+<device name="C0201" package="C0201">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 <device name="C0402" package="C0402">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
@@ -8966,25 +8991,29 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="GRM188R61A475KE15D"/>
 <attribute name="SPEC" value="X5R 10V +-10%, 0.90 mm max"/>
 </part>
-<part name="C89" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C89" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C90" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C90" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C91" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C91" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C92" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C92" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
 <part name="C93" library="rcl" deviceset="C-US" device="C1206" value="47uF">
 <attribute name="MANF" value="Murata"/>
@@ -8996,15 +9025,17 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="GRM188R61A475KE15D"/>
 <attribute name="SPEC" value="X5R 10V +-10%, 0.90 mm max"/>
 </part>
-<part name="C95" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C95" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C96" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C96" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
 <part name="C97" library="rcl" deviceset="C-US" device="C1206" value="47uF">
 <attribute name="MANF" value="Murata"/>
@@ -9056,85 +9087,101 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="GRM188R61A475KE15D"/>
 <attribute name="SPEC" value="X5R 10V +-10%, 0.90 mm max"/>
 </part>
-<part name="C107" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C107" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C108" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C108" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C109" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C109" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C110" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C110" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C111" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C111" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C112" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C112" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C113" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C113" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C114" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C114" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C115" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C115" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C116" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C116" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C117" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C117" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C118" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C118" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C119" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C119" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C120" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C120" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C121" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C121" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C122" library="rcl" deviceset="C-US" device="C0402" value="0.47uF">
+<part name="C122" library="rcl" deviceset="C-US" device="C0201" value="0.47uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R61C474KA88D"/>
-<attribute name="SPEC" value="X5R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R60J474KE15D"/>
+<attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
 <part name="GND18" library="ctambe" deviceset="GND" device=""/>
 <part name="GND19" library="ctambe" deviceset="GND" device=""/>
