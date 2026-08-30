@@ -1,0 +1,472 @@
+{
+ "BTN.1": {
+  "from": "A18",
+  "net": "BTN",
+  "to": "N17"
+ },
+ "CHAN0.1": {
+  "from": "W3",
+  "net": "CHAN0",
+  "to": "B18"
+ },
+ "CHAN1.1": {
+  "from": "V3",
+  "net": "CHAN1",
+  "to": "A18"
+ },
+ "CHAN10.1": {
+  "from": "U3",
+  "net": "CHAN10",
+  "to": "J19"
+ },
+ "CHAN11.1": {
+  "from": "U7",
+  "net": "CHAN11",
+  "to": "K17"
+ },
+ "CHAN12.1": {
+  "from": "U8",
+  "net": "CHAN12",
+  "to": "W19"
+ },
+ "CHAN13.1": {
+  "from": "V8",
+  "net": "CHAN13",
+  "to": "W18"
+ },
+ "CHAN14.1": {
+  "from": "R3",
+  "net": "CHAN14",
+  "to": "W17"
+ },
+ "CHAN15.1": {
+  "from": "V7",
+  "net": "CHAN15",
+  "to": "V17"
+ },
+ "CHAN16.1": {
+  "from": "H1",
+  "net": "CHAN16",
+  "to": "W16"
+ },
+ "CHAN17.1": {
+  "from": "J1",
+  "net": "CHAN17",
+  "to": "U16"
+ },
+ "CHAN18.1": {
+  "from": "J3",
+  "net": "CHAN18",
+  "to": "V16"
+ },
+ "CHAN19.1": {
+  "from": "K2",
+  "net": "CHAN19",
+  "to": "W15"
+ },
+ "CHAN2.1": {
+  "from": "W5",
+  "net": "CHAN2",
+  "to": "B17"
+ },
+ "CHAN20.1": {
+  "from": "K3",
+  "net": "CHAN20",
+  "to": "V15"
+ },
+ "CHAN21.1": {
+  "from": "L1",
+  "net": "CHAN21",
+  "to": "U15"
+ },
+ "CHAN22.1": {
+  "from": "N3",
+  "net": "CHAN22",
+  "to": "W14"
+ },
+ "CHAN23.1": {
+  "from": "P3",
+  "net": "CHAN23",
+  "to": "V14"
+ },
+ "CHAN24.1": {
+  "from": "L2",
+  "net": "CHAN24",
+  "to": "U14"
+ },
+ "CHAN25.1": {
+  "from": "L3",
+  "net": "CHAN25",
+  "to": "W13"
+ },
+ "CHAN26.1": {
+  "from": "M1",
+  "net": "CHAN26",
+  "to": "V13"
+ },
+ "CHAN27.1": {
+  "from": "M2",
+  "net": "CHAN27",
+  "to": "T18"
+ },
+ "CHAN28.1": {
+  "from": "B18",
+  "net": "CHAN28",
+  "to": "R19"
+ },
+ "CHAN3.1": {
+  "from": "V4",
+  "net": "CHAN3",
+  "to": "A17"
+ },
+ "CHAN4.1": {
+  "from": "U4",
+  "net": "CHAN4",
+  "to": "C16"
+ },
+ "CHAN5.1": {
+  "from": "V5",
+  "net": "CHAN5",
+  "to": "D17"
+ },
+ "CHAN6.1": {
+  "from": "W4",
+  "net": "CHAN6",
+  "to": "H17"
+ },
+ "CHAN7.1": {
+  "from": "U5",
+  "net": "CHAN7",
+  "to": "H19"
+ },
+ "CHAN8.1": {
+  "from": "U2",
+  "net": "CHAN8",
+  "to": "J18"
+ },
+ "CHAN9.1": {
+  "from": "W6",
+  "net": "CHAN9",
+  "to": "J17"
+ },
+ "IO_A14.1": {
+  "from": "A14",
+  "net": "JA1",
+  "to": "U18"
+ },
+ "IO_A15.1": {
+  "from": "A15",
+  "net": "JA2",
+  "to": "U19"
+ },
+ "IO_A16.1": {
+  "from": "A16",
+  "net": "JA4",
+  "to": "C17"
+ },
+ "IO_B15.1": {
+  "from": "B15",
+  "net": "JA3",
+  "to": "G17"
+ },
+ "IO_C15.1": {
+  "from": "C15",
+  "net": "JA7",
+  "to": "T17"
+ },
+ "IO_N2.1": {
+  "from": "N2",
+  "net": "JA9",
+  "to": "V19"
+ },
+ "IO_W19.1": {
+  "from": "W19",
+  "net": "JA8",
+  "to": "E19"
+ },
+ "IO_W7.1": {
+  "from": "W7",
+  "net": "JA10",
+  "to": "U17"
+ },
+ "LED0_B.1": {
+  "from": "B17",
+  "net": "LED0_B",
+  "to": "N19"
+ },
+ "LED0_G.1": {
+  "from": "B16",
+  "net": "LED0_G",
+  "to": "R18"
+ },
+ "LED0_R.1": {
+  "from": "C17",
+  "net": "LED0_R",
+  "to": "P19"
+ },
+ "LED1.1": {
+  "from": "A17",
+  "net": "LED1",
+  "to": "N18"
+ },
+ "LED2.1": {
+  "from": "C16",
+  "net": "LED2",
+  "to": "M19"
+ },
+ "SDRAM_A0.1": {
+  "from": "E19",
+  "net": "A0",
+  "to": "U2"
+ },
+ "SDRAM_A1.1": {
+  "from": "U19",
+  "net": "A1",
+  "to": "T3"
+ },
+ "SDRAM_A10.1": {
+  "from": "L18",
+  "net": "A10",
+  "to": "U3"
+ },
+ "SDRAM_A11.1": {
+  "from": "H17",
+  "net": "A11",
+  "to": "N1"
+ },
+ "SDRAM_A12.1": {
+  "from": "H19",
+  "net": "A12",
+  "to": "M3"
+ },
+ "SDRAM_A2.1": {
+  "from": "V19",
+  "net": "A2",
+  "to": "T2"
+ },
+ "SDRAM_A3.1": {
+  "from": "K17",
+  "net": "A3",
+  "to": "T1"
+ },
+ "SDRAM_A4.1": {
+  "from": "D17",
+  "net": "A4",
+  "to": "R3"
+ },
+ "SDRAM_A5.1": {
+  "from": "M18",
+  "net": "A5",
+  "to": "R2"
+ },
+ "SDRAM_A6.1": {
+  "from": "M19",
+  "net": "A6",
+  "to": "P3"
+ },
+ "SDRAM_A7.1": {
+  "from": "G17",
+  "net": "A7",
+  "to": "P1"
+ },
+ "SDRAM_A8.1": {
+  "from": "G19",
+  "net": "A8",
+  "to": "N3"
+ },
+ "SDRAM_A9.1": {
+  "from": "N18",
+  "net": "A9",
+  "to": "N2"
+ },
+ "SDRAM_BA0.1": {
+  "from": "J19",
+  "net": "BS0",
+  "to": "V2"
+ },
+ "SDRAM_BA1.1": {
+  "from": "K18",
+  "net": "BS1",
+  "to": "U1"
+ },
+ "SDRAM_CAS#.1": {
+  "from": "T17",
+  "net": "CAS#",
+  "to": "W3"
+ },
+ "SDRAM_CKE.1": {
+  "from": "N17",
+  "net": "CKE",
+  "to": "M2"
+ },
+ "SDRAM_CLK.1": {
+  "from": "N19",
+  "net": "SDRAM-CLK",
+  "to": "M1"
+ },
+ "SDRAM_CS#.1": {
+  "from": "P17",
+  "net": "SDRAM-CS#",
+  "to": "W2"
+ },
+ "SDRAM_DQ0.1": {
+  "from": "T18",
+  "net": "D0",
+  "to": "V8"
+ },
+ "SDRAM_DQ1.1": {
+  "from": "U14",
+  "net": "D1",
+  "to": "V7"
+ },
+ "SDRAM_DQ10.1": {
+  "from": "V17",
+  "net": "D10",
+  "to": "K2"
+ },
+ "SDRAM_DQ11.1": {
+  "from": "W13",
+  "net": "D11",
+  "to": "J1"
+ },
+ "SDRAM_DQ12.1": {
+  "from": "W14",
+  "net": "D12",
+  "to": "J3"
+ },
+ "SDRAM_DQ13.1": {
+  "from": "W15",
+  "net": "D13",
+  "to": "H1"
+ },
+ "SDRAM_DQ14.1": {
+  "from": "W16",
+  "net": "D14",
+  "to": "A14"
+ },
+ "SDRAM_DQ15.1": {
+  "from": "W17",
+  "net": "D15",
+  "to": "A15"
+ },
+ "SDRAM_DQ2.1": {
+  "from": "U15",
+  "net": "D2",
+  "to": "W7"
+ },
+ "SDRAM_DQ3.1": {
+  "from": "U16",
+  "net": "D3",
+  "to": "W6"
+ },
+ "SDRAM_DQ4.1": {
+  "from": "U17",
+  "net": "D4",
+  "to": "U5"
+ },
+ "SDRAM_DQ5.1": {
+  "from": "U18",
+  "net": "D5",
+  "to": "W5"
+ },
+ "SDRAM_DQ6.1": {
+  "from": "V13",
+  "net": "D6",
+  "to": "V5"
+ },
+ "SDRAM_DQ7.1": {
+  "from": "V14",
+  "net": "D7",
+  "to": "U4"
+ },
+ "SDRAM_DQ8.1": {
+  "from": "V15",
+  "net": "D8",
+  "to": "L1"
+ },
+ "SDRAM_DQ9.1": {
+  "from": "V16",
+  "net": "D9",
+  "to": "K3"
+ },
+ "SDRAM_LDQM.1": {
+  "from": "P19",
+  "net": "LDQM",
+  "to": "W4"
+ },
+ "SDRAM_RAS#.1": {
+  "from": "W18",
+  "net": "RAS#",
+  "to": "V3"
+ },
+ "SDRAM_UDQM.1": {
+  "from": "R19",
+  "net": "UDQM",
+  "to": "L2"
+ },
+ "SDRAM_WE#.1": {
+  "from": "R18",
+  "net": "WE#",
+  "to": "V4"
+ },
+ "SD_CLK.1": {
+  "from": "R2",
+  "net": "SD-CLK",
+  "to": "U8"
+ },
+ "SD_CMD.1": {
+  "from": "T1",
+  "net": "SD-CMD",
+  "to": "U7"
+ },
+ "SD_DAT0.1": {
+  "from": "T2",
+  "net": "SD-DAT0",
+  "to": "C15"
+ },
+ "SD_DAT1.1": {
+  "from": "V2",
+  "net": "SD-DAT1",
+  "to": "B15"
+ },
+ "SD_DAT2.1": {
+  "from": "W2",
+  "net": "SD-DAT2",
+  "to": "L3"
+ },
+ "SD_DAT3.1": {
+  "from": "U1",
+  "net": "SD-DAT3",
+  "to": "A16"
+ },
+ "UART_CTS.1": {
+  "from": "M3",
+  "net": "UART_FT_CTS#",
+  "to": "B16"
+ },
+ "UART_DTR.1": {
+  "from": "P1",
+  "net": "UART_FT_DTR#",
+  "to": "M18"
+ },
+ "UART_RTS.1": {
+  "from": "N1",
+  "net": "UART_FT_RTS#",
+  "to": "L18"
+ },
+ "UART_RXD.1": {
+  "from": "J18",
+  "net": "UART_FT_TXD",
+  "to": "K18"
+ },
+ "UART_TXD.1": {
+  "from": "J17",
+  "net": "UART_FT_RXD",
+  "to": "G19"
+ },
+ "USB_PWREN.1": {
+  "from": "T3",
+  "net": "FT-PWREN#",
+  "to": "P17"
+ }
+}

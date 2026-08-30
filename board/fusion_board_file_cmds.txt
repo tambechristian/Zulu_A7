@@ -1,0 +1,10 @@
+
+command to ripup the pour/fill polygon
+ripup @;
+
+command to display the top layer
+display none 1 17 18 20;
+
+command to display the bottom layer
+display none 16 17 18 20;
+

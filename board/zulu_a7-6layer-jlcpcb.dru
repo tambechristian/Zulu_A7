@@ -1,0 +1,83 @@
+description[en] = <b>Zulu A7 &mdash; 6 layer, JLCPCB</b><p><b>This is the active fab.</b> The escape closes here, and the number that makes it close is not a fab capability at all &mdash; it is the <b>ball land, taken from 0.275 to 0.225&nbsp;mm</b>. UG475 gives 0.275 as a MAXIMUM, and the gap between two lands is 0.5&nbsp;&minus;&nbsp;land, so the land is the one term in w&nbsp;+&nbsp;2s that is ours to choose. At 0.225 the gap is 0.275&nbsp;mm, and a 3&nbsp;mil trace at 3.5&nbsp;mil clearance needs 0.2562. It clears by <b>0.0188&nbsp;mm</b>.<p>That is why msWidth is 0.0762&nbsp;mm (3&nbsp;mil) while every clearance is 0.09&nbsp;mm (JLCPCB's published 3.5&nbsp;mil). <b>CONFIRMED BY JLCPCB 2026-08-27.</b> They pointed at the capability table row <i>Min. track width and spacing (1 oz)</i>, which reads "Multilayer: 0.09 / 0.09&nbsp;mm (3.5 / 3.5&nbsp;mil). 3&nbsp;mil is acceptable in BGA fan-outs". Two things follow, and together they mean <b>this board needs nothing agreed</b>. First, the 0.09&nbsp;mm clearance used everywhere here IS the published multilayer minimum, so the spacing is not a concession at all &mdash; only the 0.0762&nbsp;mm WIDTH is below standard, and the same sentence grants it. Even on the narrowest possible reading of "3&nbsp;mil" &mdash; width only &mdash; the design is inside their table as printed. Second, that row is the <b>1&nbsp;oz</b> row, so the allowance holds at standard copper weight and needs no lighter foil (the 2&nbsp;oz row drops to 0.15/0.15 multilayer, so the weight does matter). PCBWay by contrast puts its 3.5/3.5 only on the 18&nbsp;um row.<p>Whether "3&nbsp;mil" ALSO covers spacing is still unstated, and it is now only an optional upgrade: at 3/3 the land could rise to 0.250 (0.91:1 rather than 0.82:1). It is not free &mdash; a 0.250 land leaves a 0.250&nbsp;mm gap, which the present 0.0762/0.0900 does NOT fit (0.2562), so it would force 3&nbsp;mil spacing through the whole fan-out and re-cut the escape geometry. Staying at 0.225 is the recommendation. Either way it costs <b>+20&nbsp;% of the order</b> &mdash; JLCPCB's surcharge for 3.0&ndash;3.5&nbsp;mil on a 4&ndash;8 layer board.<p>3&nbsp;mil is a DRC floor used in one place, the ring&nbsp;1 row crossing. Everything outside the ball field is drawn at 0.09&nbsp;mm or wider.<p>Vias are 0.2&nbsp;mm drill with a 0.05&nbsp;mm ring, so a 0.30&nbsp;mm land &mdash; JLCPCB's published minimum is 0.15/0.25&nbsp;mm, but 0.15 through 1.6&nbsp;mm is 10.7:1 and over the 10:1 ceiling, where 0.2&nbsp;mm is 8.0:1. No blind vias, no buried vias, no microvias: JLCPCB makes through holes only, which is also why msMicroVia is parked at 9.9&nbsp;mm.<p>Solder mask opening is NOT set in the footprint. It falls out of mlMinStopFrame = 0.05&nbsp;mm, so the 0.225 land gets a 0.325&nbsp;mm opening, leaving a 0.175&nbsp;mm (6.9&nbsp;mil) dam between adjacent openings with the escape trace running under it. Confirm JLCPCB will hold that.<p>Stackup is JLC06161H-3313, their only 6-layer 1.6&nbsp;mm build: 3313 prepreg 0.0994 under L1 and over L6, 2116 prepreg 0.1164 between L3 and L4, 0.55&nbsp;mm cores at L2/L3 and L4/L5. Outer copper 35&nbsp;um, inner 15.2&nbsp;um &mdash; inner is 0.5&nbsp;oz by default here, unlike PCBWay. Trace widths in board/STACKUP.md follow from these.<p>NOT a fab confirmation. Every figure above is from JLCPCB's published capability tables plus this package's geometry (tools/escape/options.py). Check it against their current sheet before ordering.
+
+layerSetup = (1*2*3*4*5*16)
+
+mtCopper = 0.035mm 0.0152mm 0.0152mm 0.0152mm 0.0152mm 0.035mm
+mtIsolate = 0.0994mm 0.55mm 0.1164mm 0.55mm 0.0994mm
+
+mdWireWire = 0.09mm
+mdWirePad = 0.09mm
+mdWireVia = 0.09mm
+mdPadPad = 0.09mm
+mdPadVia = 0.09mm
+mdViaVia = 0.09mm
+mdSmdPad = 0.09mm
+mdSmdVia = 0.09mm
+mdSmdSmd = 0.09mm
+mdViaViaSameLayer = 0.09mm
+mnLayersViaInSmd = 2
+mdCopperDimension = 0.3mm
+mdDrill = 0.2mm
+mdSmdStop = 0mm
+
+msWidth = 0.0762mm
+msDrill = 0.2mm
+msMicroVia = 9.9mm
+msBlindViaRatio = 0.500000
+
+rvPadTop = 0.25
+rvPadInner = 0.25
+rvPadBottom = 0.25
+rvViaOuter = 0.25
+rvViaInner = 0.25
+rvMicroViaOuter = 0.25
+rvMicroViaInner = 0.25
+
+rlMinPadTop = 0.1mm
+rlMaxPadTop = 0.5mm
+rlMinPadInner = 0.1mm
+rlMaxPadInner = 0.5mm
+rlMinPadBottom = 0.1mm
+rlMaxPadBottom = 0.5mm
+rlMinViaOuter = 0.05mm
+rlMaxViaOuter = 0.5mm
+rlMinViaInner = 0.05mm
+rlMaxViaInner = 0.5mm
+rlMinMicroViaOuter = 0.0508mm
+rlMaxMicroViaOuter = 0.5mm
+rlMinMicroViaInner = 0.0508mm
+rlMaxMicroViaInner = 0.5mm
+
+psTop = -1
+psBottom = -1
+psFirst = -1
+psElongationLong = 100
+psElongationOffset = 100
+
+mvStopFrame = 1.000000
+mlMinStopFrame = 0.05mm
+mlMaxStopFrame = 0.05mm
+mvCreamFrame = 0.000000
+mlMinCreamFrame = 0mm
+mlMaxCreamFrame = 0mm
+mlViaStopLimit = 0mm
+
+srRoundness = 0.000000
+srMinRoundness = 0mm
+srMaxRoundness = 0mm
+
+slThermalIsolate = 0.25mm
+slThermalsForVias = 0
+
+checkGrid = 0
+checkAngle = 0
+checkFont = 1
+checkRestrict = 1
+checkStop = 0
+checkValues = 0
+checkNames = 0
+checkWireStubs = 1
+checkPolygonWidth = 0
+
+useDiameter = 13
+maxErrors = 50
