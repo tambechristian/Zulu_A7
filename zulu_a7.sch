@@ -7503,6 +7503,15 @@ Metric Code Size 5664</description>
 <gate name="G$1" symbol="C-GENERIC-H" x="0" y="0"/>
 </gates>
 <devices>
+<device name="C0201" package="C0201">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 <device name="C0402" package="C0402">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
@@ -8338,61 +8347,68 @@ Metric Code Size 5664</description>
 <attribute name="MANF" value="Yageo"/>
 <attribute name="MANF#" value="RC0402FR-07330RL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="NOTE" value="Stays 0402 deliberately. At 330R holding DONE low through configuration it dissipates 3.3V^2/330 = 33 mW, which is 53 percent of an 0402's 1/16 W but 66 percent of an 0201's 1/20 W -- and it is sustained for the whole of config, indefinitely if config fails. 330R on DONE is standard Xilinx practice so the value should not change; the package is where the margin is."/>
 </part>
-<part name="R101" library="rcl" deviceset="R-US_SMALL" device="R0402" value="2.21k">
+<part name="R101" library="rcl" deviceset="R-US_SMALL" device="R0201" value="2.21k">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-072K21L"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-072K21L"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R96" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10k">
+<part name="R96" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10k">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R97" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10k">
+<part name="R97" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10k">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R98" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10k">
+<part name="R98" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10k">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R99" library="rcl" deviceset="R-US_SMALL" device="R0402" value="4.7k">
+<part name="R99" library="rcl" deviceset="R-US_SMALL" device="R0201" value="4.7k">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-074K7L"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-074K7L"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="C133" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.1uF">
+<part name="C133" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.1uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
-<part name="C134" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.1uF">
+<part name="C134" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.1uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
-<part name="C135" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.1uF">
+<part name="C135" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.1uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
-<part name="C136" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.1uF">
+<part name="C136" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.1uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
-<part name="C137" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.1uF">
+<part name="C137" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.1uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
-<part name="C138" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.1uF">
+<part name="C138" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.1uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
 <part name="FRAME1" library="ctambe" deviceset="DOCFIELD" device=""/>
 <part name="FRAME5" library="ctambe" deviceset="DOCFIELD" device=""/>
@@ -8577,10 +8593,11 @@ Metric Code Size 5664</description>
 <attribute name="NOTE" value="Bare plated holes -- NO HEADER FITTED, nothing to order. Three of the six JTAG holes; JP3 carries the other three, 17.96 mm away on the far side of the Pmod. Each row has 3.05 mm of board to the Pmod but only 0.09 mm to a 1x3 strip's body, so these are for flying leads or a pogo jig. The FT2232 does JTAG over USB on channel B; this is the fallback."/>
 </part>
 <part name="GND2" library="ctambe" deviceset="GND" device=""/>
-<part name="R5" library="rcl" deviceset="R-US_" device="R0603" value="5.1K">
-<attribute name="MANF" value="Xicon"/>
-<attribute name="MANF#" value="301-5.1K-RC"/>
+<part name="R5" library="rcl" deviceset="R-US_" device="R0201" value="5.1K">
+<attribute name="MANF" value="Yageo"/>
+<attribute name="MANF#" value="RC0201FR-075K1L"/>
 <attribute name="MOUSER#" value="301-5.1K-RC"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
 <part name="R1" library="rcl" deviceset="R-WIDE" device="R0201" value="4.7K">
 <attribute name="MANF" value="Yageo"/>
@@ -8756,11 +8773,12 @@ Metric Code Size 5664</description>
 <attribute name="MANF" value="Yageo"/>
 <attribute name="MANF#" value="RC0402FR-0712KL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="NOTE" value="Stays 0402 deliberately. Power is trivial (0.9 mW) and 1 percent is 1 percent at any size, but this is the FT2232's RREF -- it sets the USB transceiver bias current. There is no space pressure on this board any more, so there is nothing to gain against a part whose drift shows up as USB signal quality."/>
 </part>
-<part name="R19" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10K">
+<part name="R19" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
 <part name="R20" library="rcl" deviceset="R-US_SMALL" device="R0402" value="1K">
 <attribute name="MANF" value="Yageo"/>
@@ -8792,15 +8810,17 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="GRM155R60J335ME15D"/>
 <attribute name="SPEC" value="X5R 6.3V +-20%, 0.50 mm max -- FT2232H VCORE, DS_FT2232H asks for 3.3uF"/>
 </part>
-<part name="C40" library="rcl" deviceset="C-GENERIC" device="C0402" value="100nF">
+<part name="C40" library="rcl" deviceset="C-GENERIC" device="C0201" value="100nF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max -- same part as the 0.1uF line"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
-<part name="C41" library="rcl" deviceset="C-GENERIC" device="C0402" value="100nF">
+<part name="C41" library="rcl" deviceset="C-GENERIC" device="C0201" value="100nF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71C104KA88D"/>
-<attribute name="SPEC" value="X7R 16V +-10%, 0.50 mm max -- same part as the 0.1uF line"/>
+<attribute name="MANF#" value="GRM033R61A104KE15D"/>
+<attribute name="SPEC" value="X5R 10V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. The DIELECTRIC AND VOLTAGE BOTH CHANGE: X7R 16V becomes X5R 10V, because 0201 at this capacitance is an X5R part. X5R narrows the temperature range to -55..+85 C from X7R's +125, which suits this board but is not a like-for-like swap. At 0.1 uF the DC bias derating is mild, unlike the 0.47 uF on sheet 7. Confirm the MPN suffix against Murata's data before ordering."/>
 </part>
 <part name="GND14" library="ctambe" deviceset="GND" device=""/>
 <part name="GND15" library="ctambe" deviceset="GND" device=""/>
@@ -8897,45 +8917,46 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="RC0402FR-0710KL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
 </part>
-<part name="R89" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10K">
+<part name="R89" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R90" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10K">
+<part name="R90" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R91" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10K">
+<part name="R91" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R92" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10K">
+<part name="R92" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R93" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10K">
+<part name="R93" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R94" library="rcl" deviceset="R-US_SMALL" device="R0402" value="10K">
+<part name="R94" library="rcl" deviceset="R-US_SMALL" device="R0201" value="10K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0710KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0710KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
 <part name="LD0" library="ctambe" deviceset="LED_RGB" device="" value="VS NRD8"/>
 <part name="LD1" library="ctambe" deviceset="LED" device="" value="LED"/>
 <part name="LD2" library="ctambe" deviceset="LED" device="" value="LED"/>
 <part name="BTN" library="ctambe" deviceset="SWITCH_TACT" device="" value="PTA-142"/>
 <part name="Q1" library="ctambe" deviceset="OSC_CHIP" device="ASEM1-12MHZ" value="12MHz 25ppm (FPGA + FT2232HQ)"/>
-<part name="C38" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.01uF">
+<part name="C38" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.01uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM155R71H103KA88D"/>
-<attribute name="SPEC" value="X7R 50V +-10%, 0.50 mm max"/>
+<attribute name="MANF#" value="GRM033R71E103KE14D"/>
+<attribute name="SPEC" value="X7R 25V +-10%, 0.30 mm max"/>
+<attribute name="NOTE" value="0402 -&gt; 0201 on U2's support. 50V drops to 25V, which is still far over what a 3.3V rail needs -- the 50V part was over-specified. Confirm the MPN suffix before ordering."/>
 </part>
 <part name="GND10" library="ctambe" deviceset="GND" device=""/>
 <part name="GND11" library="ctambe" deviceset="GND" device=""/>
@@ -8955,15 +8976,15 @@ Metric Code Size 5664</description>
 <part name="SUPPLY12" library="ctambe" deviceset="VCC3V3" device=""/>
 <part name="SUPPLY13" library="ctambe" deviceset="VCC3V3" device=""/>
 <part name="J1" library="ctambe" deviceset="PINHD-2X6" device="" value="Pmod 2x6"/>
-<part name="R24" library="rcl" deviceset="R-US_SMALL" device="R0402" value="33">
+<part name="R24" library="rcl" deviceset="R-US_SMALL" device="R0201" value="33">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0733RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0733RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R25" library="rcl" deviceset="R-US_SMALL" device="R0402" value="33">
+<part name="R25" library="rcl" deviceset="R-US_SMALL" device="R0201" value="33">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-0733RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-0733RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
 <part name="SUPPLY1" library="ctambe" deviceset="VCC3V3" device=""/>
 <part name="C85" library="rcl" deviceset="C-US" device="C0805" value="22uF">
