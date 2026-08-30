@@ -1581,8 +1581,8 @@ chip</description>
 <element name="R79" library="rcl" package="R0402" value="1K" x="6.169" y="4.028" rot="MR0"/>
 <element name="R77" library="rcl" package="R0402" value="100K" x="20.744" y="4.028" rot="MR0"/>
 <element name="R78" library="rcl" package="R0402" value="680" x="26.95" y="13.483" rot="R90"/>
-<element name="LD5" library="ctambe" package="LED0603" value="" x="24.95" y="14.985"/>
-<element name="Q2" library="ctambe" package="SOT23-3" value="" x="8.975" y="3.74" rot="MR0"/>
+<element name="LD5" library="ctambe" package="LED0603" value="green" x="24.95" y="14.985"/>
+<element name="Q2" library="ctambe" package="SOT23-3" value="2N7002" x="8.975" y="3.74" rot="MR0"/>
 <element name="X1" library="ctambe" package="MOLEX-105017-0001" value="Molex 105017-0001 Micro-USB-B" x="33.02" y="21.259"/>
 <element name="R80" library="rcl" package="R0402" value="182" x="24.198" y="8.4975"/>
 <element name="R81" library="rcl" package="R0402" value="182" x="21.323" y="6.4975"/>
@@ -1598,8 +1598,8 @@ chip</description>
 <element name="R93" library="rcl" package="R0201" value="10K" x="47.494" y="17.34" rot="MR0"/>
 <element name="R94" library="rcl" package="R0201" value="10K" x="49.29" y="17.34" rot="MR0"/>
 <element name="LD0" library="ctambe" package="VS-NRD8" value="VS NRD8" x="24.85" y="10.885"/>
-<element name="LD1" library="ctambe" package="LED0603" value="LED" x="24.95" y="12.585"/>
-<element name="LD2" library="ctambe" package="LED0603" value="LED" x="24.95" y="13.785"/>
+<element name="LD1" library="ctambe" package="LED0603" value="red" x="24.95" y="12.585"/>
+<element name="LD2" library="ctambe" package="LED0603" value="red" x="24.95" y="13.785"/>
 <element name="BTN" library="ctambe" package="PTA-142" value="PTA-142" x="20.3" y="12.92" rot="R90"/>
 <element name="Q1" library="ctambe" package="32X25" value="12MHz 25ppm (FPGA + FT2232HQ)" x="23.7" y="20.63"/>
 <element name="C38" library="rcl" package="C0201" value="0.01uF" x="30.144" y="18.783"/>
