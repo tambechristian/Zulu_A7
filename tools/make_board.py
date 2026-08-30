@@ -392,26 +392,30 @@ SINGLE = [# X3 must be R270, not R90. The DM3AT's layer-39 keepout runs 8.70 mm 
           ("U2", 28.008, 4.568, "R0"), ("U1", 41.00, 4.20, "R0"),
           # X1 is NOT in this list -- see PLACE["X1"] below. It is placed by its
           # PCB EDGE line, not by its bounding box, because the shell overhangs.
-          # Q1 sits 0.45 mm further from the FPGA than the pocket's centre, and
-          # that 0.45 is the fan-out ring's. Its nearest copper was at chebyshev
-          # 7.19 from the ball-field centre and the ring's outer edge reaches
-          # h + VIA_L/2 + clr, so Q1 alone capped the ring at 6.94. At 54.04 its
-          # copper starts at 7.64 and the ring can go to 7.40, which the measured
-          # curve puts at 6 stage-3 conflicts against 11 at 6.94.
-          ("Q1", 54.04, 8.26, "R0"),
+          # Q1 has left the FPGA's side of the board. It used to sit 0.45 mm
+          # further out than the pocket's centre because that 0.45 was the
+          # fan-out ring's -- Q1 alone capped the ring at 6.94, and 54.04 bought
+          # 7.40. It is now at x 33, in the band between the FT2232 and the USB
+          # shell, because the split JTAG took the +x end. So Q1 no longer
+          # constrains the ring at all: whatever caps it now, it is not this.
+          ("Q1", 33.00, 15.09, "R0"),
           # JP3 is six PLATED HOLES: copper on all six layers, so whatever sits
-          # behind it on the back is displaced. At 53.50..60.10 it punched through
-          # C114, C115, C119 and C120. Turned R90 it is 4.06 wide instead of 6.60
-          # and fits the corridor between the decoupling field and the Pmod, which
-          # is the only span on this board with BOTH sides clear for the full
-          # channel height. It stays one standard 2x3 JTAG header.
-          ("JP3", 58.79, 6.86, "R90"),
-          # J1 moves 1.00 mm towards the +x edge. Its BODY is 5.08 wide and started at
-          # 62.87; JP3's body ends at 63.36, so at the old position the two plastic
-          # shrouds fouled each other by 0.11 mm even though the holes cleared by
-          # 0.91. This leaves 0.51 mm each side of JP3 and still 0.90 mm of board
-          # outboard of the Pmod.
-          ("J1", 63.865, 2.54, "R90"),
+          # behind it on the back is displaced. That corridor is gone with the
+          # 2.400 in board, so the rows are split instead -- package 2X03-SPLIT,
+          # 17.96 mm apart, straddling the Pmod in the two 3.05 mm bands the Pmod
+          # leaves above and below itself. It is back at x 53.20..59.80, which is
+          # where it punched through C114, C115, C119 and C120 before; that is
+          # hole_zones() work now, and the tiler moves them rather than the header.
+          # It is NO LONGER a pluggable 2x3: nothing spans 17.96 mm. Six bare
+          # holes for flying leads, and not even room for plastic 1x3 strips --
+          # their bodies would come within 0.09 mm of the Pmod's shroud.
+          ("JP3", 53.198, 0.418, "R0"),
+          # J1 came in off the strip that the 2.400 in cut removed. Centred at
+          # x 56.50 with JP3 on the same centre, so the JTAG rows sit square
+          # across it. Body 5.08 wide: 1.16 mm of board outboard, and 1.20 mm to
+          # the FPGA. The shroud-fouling that set the old position cannot recur --
+          # JP3 has no shroud here, only holes.
+          ("J1", 53.96, 2.54, "R90"),
           # FLASH and EEPROM as a pair: they spanned y 2.60..14.10, centre 8.35, so
           # both rise 1.81 mm to put the stack on the board axis at 10.16.
           ("U4", 0.80, 4.41, "MR0"), ("U10", 0.80, 10.81, "MR0"),

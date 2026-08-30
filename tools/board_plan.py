@@ -300,15 +300,32 @@ blk(33.02 - SZ["X1"][0] / 2, BY1 - 4.141 + 0.675, SZ["X1"][0], 4.141 - 0.675,
 # Q1 comes to the front: 3 parts, and it puts the 12 MHz square wave on the
 # same side as both things it drives -- the FPGA's clock ball and the
 # FT2232's OSCI -- so neither needs a via.
-blk(53.59, 8.26 + YOFF, *SZ["Q1"], FT, "Q1", fs=10)
-blk(58.79, 6.86 + YOFF, SZ["JP3"][1], SZ["JP3"][0], FT, "JTAG", fs=9)   # R90, in the only both-sides-clear corridor
+# Q1 is out of the +x end: the split JTAG rows are wider than the Pmod they
+# straddle and take the x that used to be Q1's. It goes in the band between
+# the FT2232 and the USB shell, which nothing else can use -- 4.80 mm tall.
+# It stays on the front, which is the point of it: same side as the FPGA's
+# clock ball and the FT2232's OSCI, so neither leg needs a via. It is also no
+# longer the part that caps the escape ring -- see make_board.py, where the
+# 0.45 mm it used to be pushed out by was the ring's.
+blk(33.00, 15.09 + YOFF, *SZ["Q1"], FT, "Q1", fs=10)
+# JP3 is one part but two rows of copper, so it is drawn and checked as two.
+# A single bounding box would swallow the Pmod it straddles and read as an
+# overlap that is not there. JTAG_SEP must match 2X03-SPLIT in the schematic.
+JTAG_SEP = 17.96
+JT_W = SZ["JP3"][0]                 # three columns plus a pad radius each side
+JT_H = SZ["JP3"][1] - JTAG_SEP      # one row deep
+PMOD_CX = 56.50                     # both parts share this x centre
+PMOD_Y0 = 2.54 + YOFF
+PMOD_CY = PMOD_Y0 + SZ["J1"][0] / 2
+blk(PMOD_CX - JT_W / 2, PMOD_CY + JTAG_SEP / 2 - JT_H / 2, JT_W, JT_H, FT, "JTAG hi", fs=8)
+blk(PMOD_CX - JT_W / 2, PMOD_CY - JTAG_SEP / 2 - JT_H / 2, JT_W, JT_H, FT, "JTAG lo", fs=8)
 blk(17.55, 5.83 + YOFF, SZ["BTN"][1], SZ["BTN"][0], FT, "BTN", fs=11)   # turned 90 deg, y-centred on X3
 blk(23.55, 7.27 + YOFF, 3.46, 6.22, FT, "LEDs", fs=9)
 # The regulator stayed on the BACK. Q1 was worth moving up; U8 was not,
 # because it does not travel alone -- see the back.
 # turned across the board so the whole connector sits inside the reserved
 # strip: 5.08 wide against 8.89 available, 15.24 tall against a 16.256 channel
-blk(63.865, 2.54 + YOFF, SZ["J1"][1], SZ["J1"][0], FT, "Pmod", fs=11)
+blk(PMOD_CX - SZ["J1"][1] / 2, PMOD_Y0, SZ["J1"][1], SZ["J1"][0], FT, "Pmod", fs=11)
 
 # --- BACK -------------------------------------------------------------------
 # Low-profile only. The one height verifiable from a local datasheet is U4's
@@ -321,7 +338,13 @@ blk(0.80, 10.81 + YOFF, *SZ["U10"], BK, "EEPROM", fs=10)
 # network (three feedback dividers, enable, mode, PGOOD, the input diodes)
 # want to be near but not tight, and spread into the space around it.
 blk(10.60, 2.50 + YOFF, 6.00, 15.60, BK, "PWR + L1-L3", fs=9)   # grew when L1-L3 went 0603 -> IND2520
-blk(40.00, 2.30 + YOFF, 18.00, 15.80, BK, "FPGA decoupling", ramp="c-amber", fs=11)
+# Shortened from 18.00 to 13.90 wide. The Pmod and JTAG are through-hole and
+# now stand at x 53.2 to 59.8, which is inside where this field used to reach;
+# their barrels come out on this side. The check below cannot see it -- it
+# skips pairs on opposite sides -- so the field is pulled back by hand. It
+# still covers the ball field, and 13.90 x 15.80 = 220 mm2 against the 156
+# mm2 the 39 capacitors actually need.
+blk(40.00, 2.30 + YOFF, 13.90, 15.80, BK, "FPGA decoupling", ramp="c-amber", fs=11)
 blk(17.20, 2.68 + YOFF, SZ["U3"][1], SZ["U3"][0], BK, "SDRAM", fs=13)   # dropped 1.20 to clear X1's shell nails
 # the ball field, drawn on the BACK so the decoupling can be seen to cover it
 o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="none" stroke="#C6392F" stroke-width="1.2" '

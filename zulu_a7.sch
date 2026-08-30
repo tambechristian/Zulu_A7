@@ -8562,6 +8562,31 @@ Metric Code Size 5664</description>
 <rectangle x1="2.286" y1="-1.524" x2="2.794" y2="-1.016" layer="51"/>
 <rectangle x1="2.286" y1="1.016" x2="2.794" y2="1.524" layer="51"/>
 </package>
+<package name="2X03-SPLIT">
+<description>&lt;b&gt;JTAG, 2x3 split across the Pmod&lt;/b&gt;&lt;p&gt;The same six pins as 2X03, but the two rows are 17.96 mm apart instead of 2.54 so they straddle the 2x6 Pmod header standing in the channel. Odd pads 1/3/5 in one row, even 2/4/6 in the other, column pitch unchanged at 2.54. This is NOT a pluggable header: no 0.1 in 2x3 connector spans 17.96 mm, so these are six individual holes for flying leads or pogo pins. It exists because the 2.400 in board has no other room -- a real 2x3 needs 4.42 mm of copper height and the bands above and below the Pmod are 3.05 mm. Keepout is per row, deliberately not one rectangle, or it would cover the Pmod it straddles.&lt;/p&gt;</description>
+<wire x1="-3.81" y1="-7.710000000000001" x2="3.81" y2="-7.710000000000001" width="0" layer="39"/>
+<wire x1="3.81" y1="-7.710000000000001" x2="3.81" y2="-10.25" width="0" layer="39"/>
+<wire x1="3.81" y1="-10.25" x2="-3.81" y2="-10.25" width="0" layer="39"/>
+<wire x1="-3.81" y1="-10.25" x2="-3.81" y2="-7.710000000000001" width="0" layer="39"/>
+<wire x1="-3.81" y1="10.25" x2="3.81" y2="10.25" width="0" layer="39"/>
+<wire x1="3.81" y1="10.25" x2="3.81" y2="7.710000000000001" width="0" layer="39"/>
+<wire x1="3.81" y1="7.710000000000001" x2="-3.81" y2="7.710000000000001" width="0" layer="39"/>
+<wire x1="-3.81" y1="7.710000000000001" x2="-3.81" y2="10.25" width="0" layer="39"/>
+<pad name="1" x="-2.54" y="-8.98" drill="1.016" shape="square"/>
+<pad name="2" x="-2.54" y="8.98" drill="1.016"/>
+<pad name="3" x="0" y="-8.98" drill="1.016"/>
+<pad name="4" x="0" y="8.98" drill="1.016"/>
+<pad name="5" x="2.54" y="-8.98" drill="1.016"/>
+<pad name="6" x="2.54" y="8.98" drill="1.016"/>
+<text x="-3.81" y="10.885" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.81" y="-12.155000000000001" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-2.794" y1="-9.234" x2="-2.286" y2="-8.726" layer="51"/>
+<rectangle x1="-2.794" y1="8.726" x2="-2.286" y2="9.234" layer="51"/>
+<rectangle x1="-0.254" y1="-9.234" x2="0.254" y2="-8.726" layer="51"/>
+<rectangle x1="-0.254" y1="8.726" x2="0.254" y2="9.234" layer="51"/>
+<rectangle x1="2.286" y1="-9.234" x2="2.794" y2="-8.726" layer="51"/>
+<rectangle x1="2.286" y1="8.726" x2="2.794" y2="9.234" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PINH2X3">
@@ -8600,6 +8625,19 @@ Metric Code Size 5664</description>
 </technologies>
 </device>
 <device name="NOSILK" package="2X03-NOSILK">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="2"/>
+<connect gate="A" pin="3" pad="3"/>
+<connect gate="A" pin="4" pad="4"/>
+<connect gate="A" pin="5" pad="5"/>
+<connect gate="A" pin="6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="SPLIT" package="2X03-SPLIT">
 <connects>
 <connect gate="A" pin="1" pad="1"/>
 <connect gate="A" pin="2" pad="2"/>
@@ -8875,7 +8913,7 @@ Metric Code Size 5664</description>
 <part name="U10" library="ctambe" deviceset="EEPROM-93LC46B" device="-I/SN" value="93LC46BT-I/SN">
 <attribute name="MANF" value="Microchip"/>
 </part>
-<part name="JP3" library="pinhead" deviceset="PINHD-2X3" device="NOSILK" value="JTAG 2x3"/>
+<part name="JP3" library="pinhead" deviceset="PINHD-2X3" device="SPLIT" value="JTAG 2x3"/>
 <part name="R4" library="ctambe" deviceset="RES8" device="741X" value="100">
 <attribute name="DIGIKEY#" value="741X163101JPCT-ND"/>
 <attribute name="MANF" value="CTS"/>
