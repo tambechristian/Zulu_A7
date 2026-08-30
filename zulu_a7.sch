@@ -7148,6 +7148,15 @@ Metric Code Size 5664</description>
 <gate name="G$1" symbol="R-US" x="0" y="0"/>
 </gates>
 <devices>
+<device name="R0201" package="R0201">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 <device name="R0402" package="R0402">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
@@ -8736,45 +8745,45 @@ Metric Code Size 5664</description>
 <part name="U1" library="ctambe" deviceset="XC7A35T-CPG236" device="-1CPG236C" value="XC7A35T-1CPG236C">
 <attribute name="MANF" value="AMD/Xilinx"/>
 </part>
-<part name="R10" library="rcl" deviceset="R-US_" device="R0603" value="2.32K">
+<part name="R10" library="rcl" deviceset="R-US_" device="R0201" value="2.32K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-072K32L"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-072K32L"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R11" library="rcl" deviceset="R-US_" device="R0603" value="1K">
+<part name="R11" library="rcl" deviceset="R-US_" device="R0201" value="1K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-071KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-071KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R12" library="rcl" deviceset="R-US_" device="R0603" value="140">
+<part name="R12" library="rcl" deviceset="R-US_" device="R0201" value="140">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-07140RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-07140RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R13" library="rcl" deviceset="R-US_" device="R0603" value="845">
+<part name="R13" library="rcl" deviceset="R-US_" device="R0201" value="845">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-07845RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-07845RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R14" library="rcl" deviceset="R-US_" device="R0603" value="2.32K">
+<part name="R14" library="rcl" deviceset="R-US_" device="R0201" value="2.32K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-072K32L"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-072K32L"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R15" library="rcl" deviceset="R-US_" device="R0603" value="1K">
+<part name="R15" library="rcl" deviceset="R-US_" device="R0201" value="1K">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-071KL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-071KL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R16" library="rcl" deviceset="R-US_" device="R0603" value="140">
+<part name="R16" library="rcl" deviceset="R-US_" device="R0201" value="140">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-07140RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-07140RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R17" library="rcl" deviceset="R-US_" device="R0603" value="845">
+<part name="R17" library="rcl" deviceset="R-US_" device="R0201" value="845">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0603FR-07845RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0603"/>
+<attribute name="MANF#" value="RC0201FR-07845RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
 <part name="C3" library="rcl" deviceset="C-GENERIC" device="C0402" value="0.1uF">
 <attribute name="MANF" value="Murata"/>

@@ -1563,14 +1563,14 @@ chip</description>
 <element name="R35" library="rcl" package="R0402" value="4.7K" x="2.898" y="6.02" rot="MR0"/>
 <element name="R2" library="ctambe" package="742C083" value="4.7K" x="2.8" y="-16.5"/>
 <element name="U1" library="ctambe" package="XC7A35T-CPG236" value="XC7A35T-1CPG236C" x="42" y="16.74"/>
-<element name="R10" library="rcl" package="R0603" value="2.32K" x="8.154" y="21.132"/>
-<element name="R11" library="rcl" package="R0603" value="1K" x="15.349" y="21.102" rot="MR0"/>
-<element name="R12" library="rcl" package="R0603" value="140" x="37.174" y="3.14"/>
-<element name="R13" library="rcl" package="R0603" value="845" x="37.357" y="20.904" rot="MR90"/>
-<element name="R14" library="rcl" package="R0603" value="2.32K" x="9.949" y="21.83" rot="MR0"/>
-<element name="R15" library="rcl" package="R0603" value="1K" x="9.524" y="-17.238"/>
-<element name="R16" library="rcl" package="R0603" value="140" x="15.524" y="-17.238"/>
-<element name="R17" library="rcl" package="R0603" value="845" x="21.524" y="-17.238"/>
+<element name="R10" library="rcl" package="R0201" value="2.32K" x="26.594" y="8.1"/>
+<element name="R11" library="rcl" package="R0201" value="1K" x="26.594" y="15.885"/>
+<element name="R12" library="rcl" package="R0201" value="140" x="51.092" y="15.43" rot="MR90"/>
+<element name="R13" library="rcl" package="R0201" value="845" x="41.698" y="6.84" rot="MR0"/>
+<element name="R14" library="rcl" package="R0201" value="2.32K" x="23.878" y="5.6"/>
+<element name="R15" library="rcl" package="R0201" value="1K" x="23.878" y="6.2"/>
+<element name="R16" library="rcl" package="R0201" value="140" x="43.494" y="6.84" rot="MR0"/>
+<element name="R17" library="rcl" package="R0201" value="845" x="45.29" y="6.84" rot="MR0"/>
 <element name="C3" library="rcl" package="C0402" value="0.1uF" x="25.025" y="7.15"/>
 <element name="C4" library="rcl" package="C0402" value="0.1uF" x="22.525" y="4.65"/>
 <element name="C5" library="rcl" package="C0402" value="0.1uF" x="22.498" y="2.878"/>
@@ -1587,13 +1587,13 @@ chip</description>
 <element name="U10" library="ctambe" package="SOIC8" value="93LC46BT-I/SN" x="5.36" y="15.9" rot="MR0"/>
 <element name="JP3" library="pinhead" package="1X03-NOSILK" value="JTAG TCK/TMS/GND" x="56.5" y="21.68"/>
 <element name="JP4" library="pinhead" package="1X03-NOSILK" value="JTAG TDI/TDO/3V3" x="56.5" y="3.72"/>
-<element name="R4" library="ctambe" package="741X163" value="100" x="28" y="-16.7"/>
-<element name="R5" library="rcl" package="R0603" value="5.1K" x="33.524" y="-17.238"/>
-<element name="R1" library="ctambe" package="742C083" value="4.7K" x="38.8" y="-16.5"/>
+<element name="R4" library="ctambe" package="741X163" value="100" x="10" y="-16.7"/>
+<element name="R5" library="rcl" package="R0603" value="5.1K" x="37.174" y="3.14"/>
+<element name="R1" library="ctambe" package="742C083" value="4.7K" x="14.8" y="-16.5"/>
 <element name="U8" library="ctambe" package="LTC3569-QFN20" value="LTC3569EUDC#TRPBF" x="12.5" y="7.44" rot="MR0"/>
 <element name="D1" library="ctambe" package="SOD123" value="PMEG2020EJ,115" x="15.45" y="6.518" rot="MR90"/>
 <element name="D2" library="ctambe" package="SOD123" value="PMEG2020EJ,115" x="32.17" y="22.884" rot="MR0"/>
-<element name="D3" library="ctambe" package="SOD123" value="SMF5.0A" x="45.85" y="-17.45"/>
+<element name="D3" library="ctambe" package="SOD123" value="SMF5.0A" x="8.48" y="20.92"/>
 <element name="C78" library="rcl" package="C0805" value="22uF 10V" x="12.401" y="18.679" rot="MR0"/>
 <element name="R67" library="rcl" package="R0402" value="3.48K 1%" x="15.821" y="3.04"/>
 <element name="R70" library="rcl" package="R0402" value="10K 1%" x="9.173" y="4.61"/>
@@ -1612,8 +1612,8 @@ chip</description>
 <element name="L3" library="ctambe" package="IND2520" value="2.2uH" x="12.45" y="16.34" rot="MR0"/>
 <element name="L4" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="32.845" y="20.79" rot="MR0"/>
 <element name="L5" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="23.896" y="22.36" rot="MR0"/>
-<element name="L6" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="51.392" y="15.932" rot="MR90"/>
-<element name="L7" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="36.9" y="4.45" rot="MR0"/>
+<element name="L6" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="36.9" y="4.45" rot="MR0"/>
+<element name="L7" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="37.045" y="20.63" rot="MR90"/>
 <element name="C123" library="rcl" package="C0402" value="100nF" x="49.75" y="7.89" rot="MR0"/>
 <element name="C124" library="rcl" package="C0402" value="470nF" x="43.15" y="16.49" rot="MR0"/>
 <element name="R18" library="rcl" package="R0402" value="12K 1%" x="29.732" y="4.45" rot="MR0"/>
