@@ -414,6 +414,37 @@ SINGLE = [# X3 must be R270, not R90. The DM3AT's layer-39 keepout runs 8.70 mm 
           # the drills off both parts now and the tiler moves the capacitors.
           ("JP3", 53.198, 18.378, "R0"),
           ("JP4", 53.198, 0.418, "R0"),
+          # Three the anchored pass could not seat. It refuses rather than exile
+          # a part, which is right, but these three are wanted on the board now
+          # and the board has no room left near where they belong. Placed by hand
+          # at the nearest free keepout-sized slot, and the distances are the
+          # point of the comment, not a detail:
+          #
+          #   R91  8.4 mm from U2's ADBUS2. A 10k pull-up on TDO does not care
+          #        where it sits, and this is beside the pin anyway. Fine.
+          #   R33  15 mm from U1 ball 1, 24 from J1 pin 10. It is the series
+          #        resistor between them, so it wants to be at one END; it is in
+          #        the middle instead, which is the worst of the two.
+          #
+          # D3 IS NOT HERE, AND THAT IS DELIBERATE. VEXT enters at X2 pad 1, in
+          # the +x top corner, and the nearest free keepout-sized slot to it is
+          # x 2.60, 55.1 mm away at the opposite end of the board. A TVS 55 mm
+          # downstream of the pin it protects clamps almost nothing: the trace
+          # inductance in between is the entire problem a TVS exists to solve.
+          # Placing it there would make the board look finished and the part do
+          # nothing, so it stays parked where it is visibly unplaced. The corner
+          # it wants is JP3's band plus X2's pad keepout; dropping JP3/JP4 frees
+          # exactly that corner. An earlier attempt at x 16.15 also failed the
+          # overlap check outright -- X3's layer-39 card-eject stroke reaches
+          # further than its body, and that is what the check is for.
+          ("R91", 29.573, 0.943, "R0"),
+          ("R33", 32.823, 0.943, "R0"),
+          # D2 is pinned where the anchored pass had already put it. Seating R33
+          # and R91 by hand changed what was free, the pass re-ran, and D2 -- on
+          # VEXT, and previously on the back at 32.17, 22.88 -- fell out. That is
+          # what a full board does: every part placed by hand pushes one out
+          # somewhere else. Pinning it stops the shuffle costing more than it buys.
+          ("D2", 30.320, 19.794, "MR0"),
           # J1 came in off the strip that the 2.400 in cut removed. Centred at
           # x 56.50 with JP3 on the same centre, so the JTAG rows sit square
           # across it. Body 5.08 wide: 1.16 mm of board outboard, and 1.20 mm to
