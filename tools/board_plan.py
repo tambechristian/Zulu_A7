@@ -50,9 +50,11 @@ Three constraints decided nearly every position:
      reason to put the FPGA on the back. The FPGA is on the FRONT: it is what
      gets hot, what anyone will want to inspect or rework on a 238-ball BGA,
      and the back faces a breadboard a couple of millimetres away with no
-     airflow. The capacitor field sits under it on the BACK, and nothing else
-     is allowed into that footprint on either side. On the old board the SDRAM
-     sat in that shadow, which is what made the decoupling unplaceable.
+     airflow. Nothing is allowed into that footprint on either side, and the
+     capacitor field no longer sits under it either: the escape's fan-out ring
+     grew to cover that shadow, so the decoupling went to the bands above and
+     below the ring instead, on both sides. On the old board the SDRAM sat in
+     the shadow, which is what made the decoupling unplaceable then.
 
   3. The microSD ejects along its own -y, 21.55 mm of travel on layer 39. The
      board is only 25.40 mm across, so the card cannot come out over a long
@@ -344,13 +346,33 @@ blk(0.80, 10.81 + YOFF, *SZ["U10"], BK, "EEPROM", fs=10)
 # network (three feedback dividers, enable, mode, PGOOD, the input diodes)
 # want to be near but not tight, and spread into the space around it.
 blk(10.60, 2.50 + YOFF, 6.00, 15.60, BK, "PWR + L1-L3", fs=9)   # grew when L1-L3 went 0603 -> IND2520
-# Shortened from 18.00 to 13.90 wide. The Pmod and JTAG are through-hole and
-# now stand at x 53.2 to 59.8, which is inside where this field used to reach;
-# their barrels come out on this side. The check below cannot see it -- it
-# skips pairs on opposite sides -- so the field is pulled back by hand. It
-# still covers the ball field, and 13.90 x 15.80 = 220 mm2 against the 156
-# mm2 the 39 capacitors actually need.
-blk(40.00, 2.30 + YOFF, 13.90, 15.80, BK, "FPGA decoupling", ramp="c-amber", fs=11)
+# THE DECOUPLING IS TWO STRIPS AND IT IS NOT UNDER THE BALL FIELD ANY MORE.
+#
+# It used to be one block on the back, hugging the package. Q1 stopped capping
+# the escape's fan-out ring when it left the +x end, the ring opened to its full
+# 7.64 half-width, and it now covers everything that block occupied. So the
+# capacitors moved to the bands above and below the ring, on BOTH sides -- 25 on
+# the back and 14 on the front, spread x 17.1 to 50.4. make_board.py derives its
+# fields from RING for exactly this reason; these bounds are that RING and have
+# to be kept in step with it.
+RX0, RY0, RX1, RY1 = 38.86, 4.60, 54.14, 19.88
+# the ring itself, drawn on both sides so the strips are explained rather than
+# just placed. Not a blk(): it is a reservation, not a part, and the placement
+# check below must not treat it as one.
+for _t in (FT, BK):
+    o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#BA7517" opacity="0.06" '
+             'stroke="#BA7517" stroke-width="0.8" stroke-dasharray="4 3" rx="3"/>'
+             % (X(RX0), Y(RY1, _t), Wd(RX1 - RX0), Wd(RY1 - RY0)))
+    o.append('<text class="ts" x="%s" y="%s" text-anchor="middle" font-size="10" fill="#BA7517">'
+             'escape ring</text>' % (round(X(RX0) + Wd(RX1 - RX0) / 2, 1),
+                                     round(Y(RY1, _t) + Wd(RY1 - RY0) / 2 + 4, 1)))
+# The strips. The back pair run the length the capacitors actually occupy; the
+# front pair stop short of JP3/JP4 at x 53.2 and the upper one starts past the
+# USB shell at 37.3, because those are real parts and this field is not.
+blk(17.50,  2.28, 41.29, 2.22, BK, "FPGA decoupling", ramp="c-amber", fs=10)
+blk(17.50, 19.98, 41.29, 3.14, BK, "FPGA decoupling", ramp="c-amber", fs=10)
+blk(17.50,  2.28, 34.50, 2.22, FT, "decoupling", ramp="c-amber", fs=10)
+blk(38.50, 19.98, 13.50, 3.14, FT, "decoupling", ramp="c-amber", fs=10)
 blk(17.20, 2.68 + YOFF, SZ["U3"][1], SZ["U3"][0], BK, "SDRAM", fs=13)   # dropped 1.20 to clear X1's shell nails
 # the ball field, drawn on the BACK so the decoupling can be seen to cover it
 o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="none" stroke="#C6392F" stroke-width="1.2" '
@@ -651,20 +673,24 @@ the input capacitor, 25.5&nbsp;mm&sup2; of footprint and about 34 placed. Those 
 because SW1&ndash;SW3 are the highest di/dt nodes on the board and must not reach their inductors through vias.
 The other twenty &mdash; three feedback dividers, the enable, mode and PGOOD networks, the input diodes,
 50&nbsp;mm&sup2; and about 86 placed &mdash; want to be near but not tight, and spread into the space around
-it. The back is now the regulator core, then the SDRAM, then the decoupling window, in that order from the
--x end; the window still covers the ball field.</li>
+it. The back is now the regulator core, then the SDRAM, in that order from the -x end, with the decoupling in
+two strips that run above and below the escape ring rather than under the ball field. Four 22&nbsp;uF bulk
+capacitors are pinned beside U8 itself, 12.5 to 14.4&nbsp;mm out, because bulk belongs at the regulator and
+gains nothing from sitting under the FPGA.</li>
 </ul>
 
 <h2>Still to resolve</h2>
 <ul>
 <li><strong>The remaining passives.</strong> 143 chip parts totalling 444&nbsp;mm&sup2;, of which the FPGA
-decoupling window absorbs about __C7A__&nbsp;mm&sup2;. The rest have to fit in the gaps left above and below the blocks
+decoupling absorbs about __C7A__&nbsp;mm&sup2; across its two strips. The rest have to fit in the gaps left above and below the blocks
 &mdash; roughly 2.3&nbsp;mm of channel above the back-side ICs and the front pockets at x&nbsp;10&ndash;16 and
 x&nbsp;35&ndash;45. That is the tightest part of the job and it is not drawn here.</li>
 <li><strong>The SDRAM is 22.35&nbsp;mm long in a 60.96&nbsp;mm board</strong>, and it now sits directly
 opposite the FPGA rather than beside it &mdash; U3 ends at x&nbsp;39.55 on the back and U1 starts at 41.00 on
 the front, 1.45&nbsp;mm apart. Moving the A35T right of the FT2232 put the ball field over where the SDRAM
-used to be, so the two swapped: U3 took the decoupling window's old place and the window followed the balls.
+used to be, so the two swapped: U3 took the decoupling window's old place. The window did not follow the balls
+in the end &mdash; the fan-out ring opened over that shadow and the capacitors went into the bands either side
+of it.
 The 39-signal bus is the shorter for it, but it now crosses sides at the FPGA edge rather than running along
 one; check the package trace delays in <code>vivado/zulu_a7_io.csv</code> before length matching.</li>
 <li><strong>BTN1 is gone.</strong> The button, its 10 k series resistor R87 and its 10 k pull-down R88 were
@@ -692,14 +718,15 @@ for top, lbl, x0, y0, x1, y1, ramp in placed:
             BAD.append("%s lands on the X2 pad at (%.2f, %.2f)" % (lbl, px, py))
     if x0 < BX0 - 1e-9 or x1 > BX1 + 1e-9 or y0 < BY0 - 1e-9 or y1 > BY1 + 1e-9:
         BAD.append("%s falls outside the board outline" % lbl)
-# the decoupling window must actually cover the ball field on the other side
-fw = [p for p in placed if p[1] == "FPGA decoupling"][0]
-bf = (FPGA_X + 1.0, FPGA_Y + 1.0, FPGA_X + 10.0, FPGA_Y + 10.0)
-if not (fw[2] <= bf[0] and fw[4] >= bf[2] and fw[3] <= bf[1] and fw[5] >= bf[3]):
-    BAD.append("the decoupling window does not cover the ball field")
+# The decoupling must CLEAR the escape ring, which is the opposite of what this
+# checked before. It used to assert the window covered the ball field; the ring
+# is that shadow now and nothing may sit inside it, so covering it is the fault.
+for _t, _lbl, _x0, _y0, _x1, _y1, _ramp in placed:
+    if _ramp == "c-amber" and _x0 < RX1 and RX0 < _x1 and _y0 < RY1 and RY0 < _y1:
+        BAD.append("%s overlaps the escape ring" % _lbl)
 assert not BAD, BAD
 print("placement check on a %.2f x %.2f board: %d blocks, no overlaps, none on an occupied X2 pad,"
-      "\n    nothing outside the outline, USB inside the vacant span, decoupling covers the ball field"
+      "\n    nothing outside the outline, USB inside the vacant span, decoupling clear of the escape ring"
       % (BW, BH, len(placed)))
 print("channel between the header rows: %.3f mm; usable %.0f mm2 a side" % (CHAN1 - CHAN0, USABLE))
 print("footprints %.0f mm2 (X2 excluded) -> %.0f %% of both sides' usable area" % (AREA, COVER))
