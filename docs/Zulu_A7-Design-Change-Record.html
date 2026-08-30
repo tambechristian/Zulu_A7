@@ -1,229 +1,104 @@
-# -*- coding: utf-8 -*-
-"""Regenerate the Design Change Record from the live schematic.
+<title>Zulu A7 Rework — Design Change Record</title>
+<style>
+:root {
+  --bg: #f6f4ef; --bg-raised: #ffffff; --ink: #211f1c; --ink-dim: #5c574e;
+  --line: #ddd7c9; --accent: #a85a2a; --accent-ink: #6f3c1a;
+  --ok-bg: #e4efe2; --ok-ink: #2f5b34; --warn-bg: #f7ecd9; --warn-ink: #8a5a11;
+  --mono-bg: #efe9db; --shadow: 0 1px 2px rgba(30,25,15,0.06), 0 8px 24px rgba(30,25,15,0.05);
+}
+:root[data-theme="dark"] {
+  --bg: #16140f; --bg-raised: #1e1c15; --ink: #ece7da; --ink-dim: #a89d87;
+  --line: #3a3527; --accent: #e08a4c; --accent-ink: #f0a870;
+  --ok-bg: #1c2a1c; --ok-ink: #8fc98f; --warn-bg: #332711; --warn-ink: #e0ac52;
+  --mono-bg: #23201785; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16140f; --bg-raised: #1e1c15; --ink: #ece7da; --ink-dim: #a89d87;
+    --line: #3a3527; --accent: #e08a4c; --accent-ink: #f0a870;
+    --ok-bg: #1c2a1c; --ok-ink: #8fc98f; --warn-bg: #332711; --warn-ink: #e0ac52;
+    --mono-bg: #23201785; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink);
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.55; }
+.serif { font-family: Iowan Old Style, "Palatino Linotype", Georgia, "Times New Roman", serif; }
+.mono { font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace; }
+.page { max-width: 900px; margin: 0 auto; padding: 40px 24px 90px; }
+.titleblock { border: 1px solid var(--line); border-radius: 4px; background: var(--bg-raised);
+  box-shadow: var(--shadow); padding: 22px 26px; margin-bottom: 36px; }
+.titleblock h1 { font-size: 26px; margin: 0 0 4px; text-wrap: balance; }
+.titleblock .sub { color: var(--ink-dim); font-size: 14.5px; margin-bottom: 16px; }
+.tb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px 24px; border-top: 1px solid var(--line); padding-top: 14px; font-size: 13px; }
+.tb-grid .k { color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; }
+.tb-grid .v { font-variant-numeric: tabular-nums; }
+h2 { font-size: 20px; margin: 46px 0 6px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent); text-wrap: balance; }
+h3 { font-size: 15.5px; margin: 26px 0 8px; color: var(--accent-ink); }
+p { color: var(--ink); max-width: 68ch; }
+p.note { color: var(--ink-dim); font-size: 13.5px; }
+a { color: var(--accent-ink); }
+.chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px;
+  border-radius: 20px; letter-spacing: 0.02em; white-space: nowrap; }
+.chip.ok { background: var(--ok-bg); color: var(--ok-ink); }
+.chip.warn { background: var(--warn-bg); color: var(--warn-ink); }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg-raised); box-shadow: var(--shadow); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+thead th { text-align: left; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-dim); padding: 9px 12px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: var(--bg-raised); }
+tbody td { padding: 7px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+td.mono, th.mono { font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums; }
+tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.bom { margin-top: 10px; }
+.bom td.old { color: var(--ink-dim); text-decoration: line-through; text-decoration-color: var(--line); }
+.bom td.arrow { color: var(--accent); text-align: center; width: 24px; }
+.callout { border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg-raised));
+  padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13.5px; }
+.callout.warn { border-left-color: var(--warn-ink);
+  background: color-mix(in srgb, var(--warn-ink) 10%, var(--bg-raised)); }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
+  color: var(--ink-dim); font-size: 12.5px; }
+.controls { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.filterbtn { font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--line);
+  background: var(--bg-raised); color: var(--ink); cursor: pointer; }
+.filterbtn.active { border-color: var(--accent); color: var(--accent-ink); }
+</style>
 
-This regenerates rather than edits: every number below is read out of
-zulu_a7.sch at generation time and every ball is checked against Xilinx's
-xc7a35tcpg236 pinout file, so the document cannot drift from the design. The
-XuLA3 rev1 record it replaces drifted 192 commits before anyone noticed -- it
-still described two LDOs that no longer exist, a 32 MB SDRAM, an 8 Mb flash,
-a WiFi header, a 40-pin X2, JTAG-only boot, and twelve unverified balls.
-
-Output is HTML for the artifact at
-https://claude.ai/code/artifact/806b5dd8-1fee-4606-afe7-75934febc87d
-"""
-import re, io, sys, json, collections, subprocess
-# KEEP THE OLD WRAPPER ALIVE. Several of these modules rebind sys.stdout to a
-# utf-8 TextIOWrapper over sys.stdout.buffer. Import two of them and the first
-# wrapper loses its last reference, gets collected, and CLOSES THE SHARED
-# BUFFER on the way out -- every subsequent print dies with 'I/O operation on
-# closed file'. It only bit once check_board started importing geom.
-_prev_stdout = sys.stdout
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-
-ROOT = r"C:\Users\tambe\Documents\Electronics\Zulu_A7"
-SCH = ROOT + r"\zulu_a7.sch"
-PIN = ROOT + r"\Datasheet\xc7a35tcpg236pkg_pinout.txt"
-OUT = ROOT + r"\docs\Zulu_A7-Design-Change-Record.html"
-t = open(SCH, encoding="utf-8").read()
-
-# --- live model -------------------------------------------------------------
-ds = re.search(r'<deviceset name="XC7A35T-CPG236"[^>]*>.*?</deviceset>', t, re.S).group(0)
-# Key by (gate, pin), never by net and never by gate alone. A net like GND
-# holds dozens of balls, so net -> ball is arbitrary; and U1's PWR gate carries
-# many pins on different rails, so gate -> ball is arbitrary too. Only the
-# (gate, pin) pair maps one-to-one onto a ball.
-G2B = {(g, pn): pd for g, pn, pd in
-       re.findall(r'<connect gate="([^"]+)" pin="([^"]+)" pad="([^"]+)"/>', ds)}
-NET = collections.defaultdict(set)
-for m in re.finditer(r'<net name="([^"]+)" class="[^"]*">(.*?)</net>', t, re.S):
-    for p, g, pn in re.findall(r'<pinref part="([^"]+)" gate="([^"]+)" pin="([^"]+)"/>', m.group(2)):
-        NET[m.group(1)].add((p, g, pn))
-NETOF = {}
-for n, s in NET.items():
-    for p, g, pn in s:
-        if p == "U1":
-            assert (g, pn) not in NETOF, (g, pn, n, NETOF.get((g, pn)))
-            NETOF[(g, pn)] = n
-GATE = {k: (G2B[k], NETOF[k]) for k in G2B if k in NETOF}
-assert len({b for b, _ in GATE.values()}) == len(GATE), "two gates share a ball"
-VAL = {m.group(1): m.group(2) for m in re.finditer(r'<part name="([^"]+)"[^>]*value="([^"]*)"', t)}
-PARTS = set(re.findall(r'<part name="([^"]+)"', t))
-SHEETS = re.findall(r'<sheet name="([^"]*)">', t)
-HEAD = subprocess.run(["git", "-C", ROOT, "rev-parse", "--short", "HEAD"],
-                      capture_output=True, text=True).stdout.strip()
-NCOMMIT = subprocess.run(["git", "-C", ROOT, "rev-list", "--count", "30a0e65..HEAD"],
-                         capture_output=True, text=True).stdout.strip()
-
-# --- ball verification against Xilinx's own pinout file ----------------------
-rows = {}
-for l in open(PIN, encoding="utf-8", errors="replace"):
-    p = l.split()
-    if len(p) >= 8 and re.fullmatch(r"[A-Y]\d{1,2}", p[0]):
-        rows[p[0]] = {"name": p[1], "bank": p[3], "io": p[-2], "nc": p[-1]}
-used = {b: n for b, n in GATE.values()}
-BANKS = collections.Counter(rows[b]["bank"] for b in used if b in rows)
-MISSING = [b for b in used if b not in rows]
-NOTCONN = [b for b in used if b in rows and rows[b]["nc"] != "NA"]
-assert not MISSING and not NOTCONN, (MISSING, NOTCONN)
-
-
-def grp(pred):
-    out = [(n, b, rows[b]["name"], rows[b]["bank"] if rows[b]["bank"] != "NA" else "—")
-           for k, (b, n) in GATE.items() if pred(n)]
-    # a net legitimately reaches more than one ball (GNDADC, the supply rails),
-    # so duplicates are real -- just sort deterministically by (net, ball)
-    return sorted(out, key=lambda r: (r[0], r[1]))
-
-
-def chan_key(r):
-    m = re.match(r"CHAN(\d+)$", r[0])
-    return (0, int(m.group(1))) if m else (1, r[0])
-
-
-GROUPS = [
-    ("config", "Config &amp; JTAG",
-     sorted([(k[0], b, rows[b]["name"], rows[b]["bank"]) for k, (b, n) in GATE.items()
-             if k[0] in ("PROGRAM_B", "INIT_B", "DONE", "TCK", "TMS", "TDI", "TDO",
-                         "M0", "M1", "M2", "CFGBVS", "PUDC_B")], key=lambda r: (r[0], r[1]))),
-    ("boot", "Master-SPI boot flash",
-     grp(lambda n: n.startswith("FLASH-") or n == "FPGA-CCLK")),
-    ("sd", "microSD, 4-bit SD bus", grp(lambda n: n.startswith("SD-"))),
-    ("sdram", "SDRAM", grp(lambda n: re.fullmatch(r"(A\d+|BS\d|D\d+|CAS#|RAS#|WE#|CKE|[LU]DQM|SDRAM-\w+)", n))),
-    ("gpio", "X2 prototyping header", sorted(grp(lambda n: n.startswith("CHAN")), key=chan_key)),
-    ("uart", "FT2232HQ channel A (UART)", grp(lambda n: n.startswith("UART_") or n == "FT-PWREN#")),
-    ("xadc", "XADC", grp(lambda n: n.startswith("AIN") or n in ("VCCADC", "GNDADC"))),
-    ("clock", "Clock", grp(lambda n: n.startswith("CLK-12M"))),
-    ("io", "LEDs &amp; buttons", grp(lambda n: re.fullmatch(r"(LED\d|LED0_[RGB]|BTN\d)", n))),
-]
-DATA = {k: [[n, b, nm, bk] for n, b, nm, bk in v] for k, _, v in GROUPS}
-TABS = "".join('<button class="filterbtn%s" data-f="%s">%s</button>'
-               % (" active" if i == 0 else "", k, lbl) for i, (k, lbl, _) in enumerate(GROUPS))
-NPIN = sum(len(v) for _, _, v in GROUPS)
-
-strap = {}
-for n in ("CFG-M2", "CFG-M1", "CFG-M0"):
-    r = [p for p, g, pn in NET[n] if p.startswith("R")][0]
-    other = [x for x in NET if x != n and any(p == r for p, g, pn in NET[x])][0]
-    strap[n] = "1" if other in ("VCC3V3", "+3.3V") else "0"
-MODEBITS = strap["CFG-M2"] + strap["CFG-M1"] + strap["CFG-M0"]
-
-
-# --- FT2232HQ, read from the file: rev1 had the two channels the wrong way round
-FTDS = re.search(r'<deviceset name="FT2232HQ"[^>]*>.*?</deviceset>', t, re.S).group(0)
-FTPAD = {pn: pd for g, pn, pd in
-         re.findall(r'<connect gate="([^"]+)" pin="([^"]+)" pad="([^"]+)"/>', FTDS)}
-FTNET = {}
-for n, s2 in NET.items():
-    for p, g, pn in s2:
-        if p == "U2":
-            FTNET[pn] = n
-UARTNAME = {"0": "TXD", "1": "RXD", "2": "RTS#", "3": "CTS#",
-            "4": "DTR#", "5": "DSR#", "6": "DCD#", "7": "RI#"}
-FTFREE = sorted(pn for pn in FTPAD if pn not in FTNET)
-
-
-def ftrows(prefix, names):
-    out = []
-    for i in range(8):
-        pn = "%s%d" % (prefix, i)
-        if pn not in FTPAD:
-            continue
-        net = FTNET.get(pn)
-        out.append("<tr><td class='mono'>%s</td><td class='mono'>%s</td><td class='mono'>%s</td>"
-                   "<td class='mono'>%s</td></tr>"
-                   % (pn, FTPAD[pn], names.get(str(i), "—"),
-                      net if net else "<span class='chip warn'>not connected</span>"))
-    return "".join(out)
-
-
-CHA = ftrows("ADBUS", {"0": "TCK", "1": "TDI", "2": "TDO", "3": "TMS",
-                       "4": "GPIOL0", "5": "GPIOL1", "6": "GPIOL2", "7": "GPIOL3"})
-CHB = ftrows("BDBUS", UARTNAME)
-NFTFREE = len(FTFREE)
-
-
-def row(*c):
-    return "<tr>" + "".join("<td%s>%s</td>" % ((' class="%s"' % k) if k else "", v) for k, v in c) + "</tr>"
-
-
-BOM = "".join([
-    row(("mono", "U1"), ("old mono", "XC6SLX25-FT256"), ("arrow", "→"), ("mono", VAL["U1"]),
-        ("", "Artix-7. 238-ball 0.5 mm BGA, every ball now modelled and checked against Xilinx's pinout file")),
-    row(("mono", "U2"), ("old mono", "PIC18F14K50"), ("arrow", "→"), ("mono", "FT2232HQ"),
-        ("", "Ch.A = UART bridge, Ch.B = MPSSE JTAG. Replaces the PIC's programmer role")),
-    row(("mono", "U3"), ("old mono", "Winbond W9825G6JH <span class='chip warn'>EOL</span>"), ("arrow", "→"),
-        ("mono", VAL["U3"]), ("", "512 Mb / <strong>64 MB</strong>. Pinout and all 12 TSOP-II dimensions verified identical to the 256 Mb part &mdash; only the column address widens A0-A8 → A0-A9, a memory-controller setting")),
-    row(("mono", "U4"), ("old mono", "8 Mb SPI flash"), ("arrow", "→"), ("mono", VAL["U4"]),
-        ("", "<strong>128 Mb</strong> Winbond, quad-capable, on the FPGA's dedicated master-SPI pins")),
-    row(("mono", "U8"), ("old", "— new —"), ("arrow", "＋"), ("mono", VAL["U8"]),
-        ("", "Triple synchronous buck. Replaces the two LDOs rev1 proposed and the two the original board had &mdash; one part now makes 1.0 V, 1.8 V and 3.3 V")),
-    row(("mono", "BTN1"), ("old mono", "PTA-142 + R87, R88"), ("arrow", "−"), ("mono", "deleted"),
-        ("", "Removed to buy back board area &mdash; the button, its 10 k series resistor and its 10 k pull-down. "
-             "Frees ball B18, which is now CHAN28 on header pin 41 &mdash; see §7. BTN is untouched")),
-    row(("mono", "U10"), ("old", "— new —"), ("arrow", "＋"), ("mono", VAL["U10"]),
-        ("", "FTDI reference-design EEPROM, carries the USB VID/PID/product string. <strong>16 bits wide</strong> "
-             "&mdash; the <span class='mono'>B</span> suffix &mdash; because DS_FT2232H p27 requires it; see §3")),
-    row(("mono", "X1"), ("old mono", "Hirose UX60SC-MB-5ST"), ("arrow", "→"), ("mono", "Molex 105017-0001"),
-        ("", "Micro-USB-B. Footprint rebuilt this revision &mdash; see §8")),
-    row(("mono", "X3"), ("old mono", "ALPS SCHD3A0100"), ("arrow", "→"), ("mono", "Hirose DM3AT-SF-PEJM5"),
-        ("", "microSD, push-push. Footprint rebuilt this revision &mdash; see §8")),
-    row(("mono", "X2"), ("old mono", "40-pin XULA-DIP40"), ("arrow", "→"), ("mono", "37-pin ZULU-DIP37"),
-        ("", "Rows now 0.700 in apart so the pins land in breadboard columns C and H, leaving A, B, I and J free. 24 positions per row, 38 fitted, and the last 8.89 mm reserved for the Pmod &mdash; see §7")),
-    row(("mono", "J1"), ("old mono", "1×8 ESP8266 WiFi header"), ("arrow", "→"), ("mono", "2×6 Pmod"),
-        ("", "Standard Digilent Pmod pinout, series-terminated through R26-R33")),
-    row(("mono", "Q1"), ("old mono", "12 MHz crystal (PIC only)"), ("arrow", "→"), ("mono", VAL["Q1"]),
-        ("", "Active CMOS oscillator, 4-pad: OE, GND, OUT, VDD. One output forks to the FPGA and to FT2232HQ OSCI. Symbol redrawn as a rectangle &mdash; it had been drawing a two-plate crystal, and the deviceset was called XTAL_CHIP")),
-    row(("mono", "U6, U7"), ("old mono", "ZLDO1117 3.3 V + 1.2 V"), ("arrow", "－"), ("", "removed"),
-        ("", "Superseded by U8. Artix-7 wants 1.0 V VCCINT and an independent 1.8 V VCCAUX, neither of which the old pair could give")),
-])
-
-POWER = "".join([
-    row(("mono", "VU / +5V"), ("", "X1 VBUS via D1, or VEXT via D2"), ("", "U8 input, X2 pin 36")),
-    row(("mono", "VCC3V3"), ("", "U8 buck 3 + L3 (2.2 µH)"),
-        ("", "%d pins &mdash; U1 VCCO on every bank, U3, X3, U2 VCCIO/VREGIN, U10, U4, J1, X2 pin 15" % len(NET["VCC3V3"]))),
-    row(("mono", "VCC1V0"), ("", "U8 buck 1 + L1 (1.5 µH)"),
-        ("", "%d pins &mdash; U1 VCCINT and VCCBRAM only" % len(NET["VCC1V0"]))),
-    row(("mono", "VCC1V8"), ("", "U8 buck 2 + L2 (3.3 µH)"),
-        ("", "%d pins &mdash; U1 VCCAUX, and VCCADC through ferrite L7" % len(NET["VCC1V8"]))),
-])
-
-FOOT = "".join([
-    row(("mono", "U8 LTC3569-QFN20"), ("", "4.40 × 4.40 square, 0.5 mm"),
-        ("", "UDC 3 × 4 mm rectangle: 0.50 BSC, pad 0.70 × 0.25, pattern 3.50/4.50 outer, exposed pad 1.65 × 2.65"),
-        ("", "<span class='chip ok'>exact</span> fully dimensioned on datasheet p23")),
-    row(("mono", "X1 MOLEX-105017-0001"), ("", "5 contacts at 1.5 mm, 6.00 mm span"),
-        ("", "5 contacts at 0.65 mm, 2.60 mm span, 4 shell tabs"),
-        ("", "<span class='chip ok'>pitch exact</span> <span class='chip warn'>tabs derived</span>")),
-    row(("mono", "X3 DM3AT-SF-PEJM5"), ("", "8 contacts at 1.8 mm, 12.6 mm span, 15.0 × 5.0 pattern"),
-        ("", "8 contacts at P=1.1, pad 0.70 × 1.20, span 7.70, 14.30 × 15.95 pattern, 21.55 mm eject keepout"),
-        ("", "<span class='chip ok'>contacts exact</span> <span class='chip warn'>shield derived</span>")),
-])
-
-CSS_AND_HEAD = open(__file__.replace("change_record.py", "_record_style.html"), encoding="utf-8").read()
-BODY = """
 <div class="page">
   <div class="titleblock">
     <h1 class="serif">Zulu A7 Rework — Design Change Record</h1>
     <div class="sub">Spartan-6 → Artix-7 · PIC18F14K50 → FT2232HQ · linear regulators → LTC3569 · connector, memory &amp; footprint refresh</div>
     <div class="tb-grid mono">
       <div><div class="k">File</div><div class="v">zulu_a7.sch</div></div>
-      <div><div class="k">Git commit</div><div class="v">__HEAD__</div></div>
-      <div><div class="k">Parts / nets</div><div class="v">__NP__ / __NN__</div></div>
-      <div><div class="k">Sheets</div><div class="v">__NS__</div></div>
+      <div><div class="k">Git commit</div><div class="v">30a0e65</div></div>
+      <div><div class="k">Parts / nets</div><div class="v">213 / 175</div></div>
+      <div><div class="k">Sheets</div><div class="v">7</div></div>
       <div><div class="k">Status</div><div class="v">Schematic complete · Board pending</div></div>
     </div>
   </div>
 
   <p>Everything in this document is read out of <span class="mono">zulu_a7.sch</span> when it is generated, and
   every FPGA ball is checked against Xilinx's <span class="mono">xc7a35tcpg236pkg_pinout.txt</span>. It supersedes
-  rev1, which was written __NC__ commits ago and had gone badly stale &mdash; it still described two LDOs that no longer
+  rev1, which was written 0 commits ago and had gone badly stale &mdash; it still described two LDOs that no longer
   exist, a 32 MB SDRAM, an 8 Mb flash, a WiFi header, a 40-pin X2, and twelve ball assignments it could not verify.</p>
   <p>Read <strong>Open items</strong> before doing anything else with this file.</p>
 
   <h2 class="serif">1 · Bill of materials</h2>
   <div class="tablewrap bom"><table>
     <thead><tr><th>Ref</th><th>Was</th><th></th><th>Now</th><th>Why</th></tr></thead>
-    <tbody>__BOM__</tbody></table></div>
+    <tbody><tr><td class="mono">U1</td><td class="old mono">XC6SLX25-FT256</td><td class="arrow">→</td><td class="mono">XC7A35T-1CPG236C</td><td>Artix-7. 238-ball 0.5 mm BGA, every ball now modelled and checked against Xilinx's pinout file</td></tr><tr><td class="mono">U2</td><td class="old mono">PIC18F14K50</td><td class="arrow">→</td><td class="mono">FT2232HQ</td><td>Ch.A = UART bridge, Ch.B = MPSSE JTAG. Replaces the PIC's programmer role</td></tr><tr><td class="mono">U3</td><td class="old mono">Winbond W9825G6JH <span class='chip warn'>EOL</span></td><td class="arrow">→</td><td class="mono">AS4C32M16SB-6TIN</td><td>512 Mb / <strong>64 MB</strong>. Pinout and all 12 TSOP-II dimensions verified identical to the 256 Mb part &mdash; only the column address widens A0-A8 → A0-A9, a memory-controller setting</td></tr><tr><td class="mono">U4</td><td class="old mono">8 Mb SPI flash</td><td class="arrow">→</td><td class="mono">W25Q128JVSIQ</td><td><strong>128 Mb</strong> Winbond, quad-capable, on the FPGA's dedicated master-SPI pins</td></tr><tr><td class="mono">U8</td><td class="old">— new —</td><td class="arrow">＋</td><td class="mono">LTC3569EUDC#TRPBF</td><td>Triple synchronous buck. Replaces the two LDOs rev1 proposed and the two the original board had &mdash; one part now makes 1.0 V, 1.8 V and 3.3 V</td></tr><tr><td class="mono">BTN1</td><td class="old mono">PTA-142 + R87, R88</td><td class="arrow">−</td><td class="mono">deleted</td><td>Removed to buy back board area &mdash; the button, its 10 k series resistor and its 10 k pull-down. Frees ball B18, which is now CHAN28 on header pin 41 &mdash; see §7. BTN is untouched</td></tr><tr><td class="mono">U10</td><td class="old">— new —</td><td class="arrow">＋</td><td class="mono">93LC46BT-I/SN</td><td>FTDI reference-design EEPROM, carries the USB VID/PID/product string. <strong>16 bits wide</strong> &mdash; the <span class='mono'>B</span> suffix &mdash; because DS_FT2232H p27 requires it; see §3</td></tr><tr><td class="mono">X1</td><td class="old mono">Hirose UX60SC-MB-5ST</td><td class="arrow">→</td><td class="mono">Molex 105017-0001</td><td>Micro-USB-B. Footprint rebuilt this revision &mdash; see §8</td></tr><tr><td class="mono">X3</td><td class="old mono">ALPS SCHD3A0100</td><td class="arrow">→</td><td class="mono">Hirose DM3AT-SF-PEJM5</td><td>microSD, push-push. Footprint rebuilt this revision &mdash; see §8</td></tr><tr><td class="mono">X2</td><td class="old mono">40-pin XULA-DIP40</td><td class="arrow">→</td><td class="mono">37-pin ZULU-DIP37</td><td>Rows now 0.700 in apart so the pins land in breadboard columns C and H, leaving A, B, I and J free. 24 positions per row, 38 fitted, and the last 8.89 mm reserved for the Pmod &mdash; see §7</td></tr><tr><td class="mono">J1</td><td class="old mono">1×8 ESP8266 WiFi header</td><td class="arrow">→</td><td class="mono">2×6 Pmod</td><td>Standard Digilent Pmod pinout, series-terminated through R26-R33</td></tr><tr><td class="mono">Q1</td><td class="old mono">12 MHz crystal (PIC only)</td><td class="arrow">→</td><td class="mono">12MHz 25ppm (FPGA + FT2232HQ)</td><td>Active CMOS oscillator, 4-pad: OE, GND, OUT, VDD. One output forks to the FPGA and to FT2232HQ OSCI. Symbol redrawn as a rectangle &mdash; it had been drawing a two-plate crystal, and the deviceset was called XTAL_CHIP</td></tr><tr><td class="mono">U6, U7</td><td class="old mono">ZLDO1117 3.3 V + 1.2 V</td><td class="arrow">－</td><td>removed</td><td>Superseded by U8. Artix-7 wants 1.0 V VCCINT and an independent 1.8 V VCCAUX, neither of which the old pair could give</td></tr></tbody></table></div>
 
   <h2 class="serif">2 · Boot and storage</h2>
   <p>The original design hung the config flash and the microSD off one shared SPI bus. They are now completely
@@ -233,7 +108,7 @@ BODY = """
       <h3>Config flash — U4, master SPI</h3>
       <p>On the FPGA's <em>dedicated</em> configuration pins, which are fixed silicon, not a routing choice:
       CCLK&nbsp;C11, FCS_B&nbsp;K19, D00&nbsp;D18, D01&nbsp;D19, D02&nbsp;G18, D03&nbsp;F18. Mode pins strap
-      <span class="mono">M[2:0] = __MODE__</span> for Master SPI (UG470 Table 2-1), so the part boots from flash
+      <span class="mono">M[2:0] = 001</span> for Master SPI (UG470 Table 2-1), so the part boots from flash
       with no host attached.</p>
       <p class="note">Re-checked pad by pad against the Winbond datasheet, SOIC-8 208-mil package code S:
       1 /CS, 2 DO&nbsp;(IO1), 3 /WP&nbsp;(IO2), 4 GND, 5 DI&nbsp;(IO0), 6 CLK, 7 /HOLD&nbsp;or&nbsp;/RESET&nbsp;(IO3),
@@ -265,7 +140,7 @@ BODY = """
       <h3>Channel A — MPSSE JTAG</h3>
       <div class="tablewrap"><table>
         <thead><tr><th>Pin</th><th>Pad</th><th>MPSSE role</th><th>Net</th></tr></thead>
-        <tbody>__CHA__</tbody></table></div>
+        <tbody><tr><td class='mono'>ADBUS0</td><td class='mono'>16</td><td class='mono'>TCK</td><td class='mono'>TCK</td></tr><tr><td class='mono'>ADBUS1</td><td class='mono'>17</td><td class='mono'>TDI</td><td class='mono'>TDI</td></tr><tr><td class='mono'>ADBUS2</td><td class='mono'>18</td><td class='mono'>TDO</td><td class='mono'>TDO</td></tr><tr><td class='mono'>ADBUS3</td><td class='mono'>19</td><td class='mono'>TMS</td><td class='mono'>TMS</td></tr><tr><td class='mono'>ADBUS4</td><td class='mono'>21</td><td class='mono'>GPIOL0</td><td class='mono'>PROG#</td></tr><tr><td class='mono'>ADBUS5</td><td class='mono'>22</td><td class='mono'>GPIOL1</td><td class='mono'>DONE</td></tr><tr><td class='mono'>ADBUS6</td><td class='mono'>23</td><td class='mono'>GPIOL2</td><td class='mono'><span class='chip warn'>not connected</span></td></tr><tr><td class='mono'>ADBUS7</td><td class='mono'>24</td><td class='mono'>GPIOL3</td><td class='mono'><span class='chip warn'>not connected</span></td></tr></tbody></table></div>
       <p class="note">TCK/TDI/TDO/TMS are series-terminated through R89-R92 and shared with header JP3 and the R4 pack.
       GPIOL0/GPIOL1 carry <span class="mono">PROG#</span> and <span class="mono">DONE</span>, so the host can already
       force a reconfiguration and read back DONE without spending an FPGA general I/O.</p>
@@ -274,7 +149,7 @@ BODY = """
       <h3>Channel B — UART</h3>
       <div class="tablewrap"><table>
         <thead><tr><th>Pin</th><th>Pad</th><th>UART role</th><th>Net</th></tr></thead>
-        <tbody>__CHB__</tbody></table></div>
+        <tbody><tr><td class='mono'>BDBUS0</td><td class='mono'>38</td><td class='mono'>TXD</td><td class='mono'>UART_FT_TXD</td></tr><tr><td class='mono'>BDBUS1</td><td class='mono'>39</td><td class='mono'>RXD</td><td class='mono'>UART_FT_RXD</td></tr><tr><td class='mono'>BDBUS2</td><td class='mono'>40</td><td class='mono'>RTS#</td><td class='mono'>UART_FT_RTS#</td></tr><tr><td class='mono'>BDBUS3</td><td class='mono'>41</td><td class='mono'>CTS#</td><td class='mono'>UART_FT_CTS#</td></tr><tr><td class='mono'>BDBUS4</td><td class='mono'>43</td><td class='mono'>DTR#</td><td class='mono'>UART_FT_DTR#</td></tr><tr><td class='mono'>BDBUS5</td><td class='mono'>44</td><td class='mono'>DSR#</td><td class='mono'><span class='chip warn'>not connected</span></td></tr><tr><td class='mono'>BDBUS6</td><td class='mono'>45</td><td class='mono'>DCD#</td><td class='mono'><span class='chip warn'>not connected</span></td></tr><tr><td class='mono'>BDBUS7</td><td class='mono'>46</td><td class='mono'>RI#</td><td class='mono'><span class='chip warn'>not connected</span></td></tr></tbody></table></div>
       <p class="note">Hardware flow control is complete in both directions. RTS# and DTR# are FT2232 outputs into the
       FPGA; CTS# is the FT2232's input, driven by the FPGA, so the FPGA can push back on the host during a burst. CTS#
       cost one prototyping channel — see §7.</p>
@@ -288,14 +163,14 @@ BODY = """
       <tr><td>Power</td><td class="mono">VREGIN=50, VCCIO×4, VPLL=9, VPHY=4</td><td class="mono">VCC3V3</td><td>VPLL and VPHY each through their own ferrite (L5, L4); VREGOUT→VCORE via C39/C139</td></tr>
       <tr><td>EEPROM</td><td class="mono">EECS=63, EECLK=62, EEDATA=61</td><td class="mono">EE-CS / EE-CLK / EE-DATA</td><td>to U10. 10 k pull-ups R98 on EECS and R96 on EECLK</td></tr>
       <tr><td>EEPROM data path</td><td class="mono">EEDATA=61</td><td class="mono">EE-DATA + EE-DATA-DO</td><td>EEDATA goes straight to Data-In and back to Data-Out through R101, 2.21 k; R97 pulls <em>Data-Out</em> to VCC3V3 with 10 k. Three resistors, three values, exactly the reference circuit on DS_FT2232H p50 &mdash; see §9</td></tr>
-      <tr><td>EEPROM organisation</td><td class="mono">__U10__</td><td class="mono">64 × 16</td><td>DS_FT2232H p27 asks for &ldquo;a 16 bit wide configuration such as a Microchip 93LC46B&rdquo;; the part fitted was an <span class="mono">A</span> suffix, which is × 8 &mdash; see §9</td></tr>
+      <tr><td>EEPROM organisation</td><td class="mono">93LC46BT-I/SN</td><td class="mono">64 × 16</td><td>DS_FT2232H p27 asks for &ldquo;a 16 bit wide configuration such as a Microchip 93LC46B&rdquo;; the part fitted was an <span class="mono">A</span> suffix, which is × 8 &mdash; see §9</td></tr>
       <tr><td>Housekeeping</td><td class="mono">RESET#=14, TEST=13, REF=6</td><td class="mono">FT-RESETN / FT-REF</td><td>R19 pull-up, TEST→GND, R18 = 12 k ±1 % to GND</td></tr>
     </tbody></table></div>
-  <p class="note">__NFTFREE__ of the FT2232HQ's 64 pins carry no net — the eight ACBUS (channel A GPIOH), the four
+  <p class="note">23 of the FT2232HQ's 64 pins carry no net — the eight ACBUS (channel A GPIOH), the four
   spare BDBUS, ADBUS6/7, OSCO and SUSPEND#. None of them can reach the FPGA without taking a prototyping channel.</p>
 
   <h2 class="serif">4 · Clock</h2>
-  <p>One <span class="mono">__Q1__</span> active oscillator. Its single CMOS output forks through R24 and R25 into two
+  <p>One <span class="mono">12MHz 25ppm (FPGA + FT2232HQ)</span> active oscillator. Its single CMOS output forks through R24 and R25 into two
   nets — <span class="mono">CLK-12M-FT</span> to the FT2232HQ's OSCI and <span class="mono">CLK-12M-FPGA</span> to
   ball L17 — with OSCO left unconnected. The FT2232H's USB PLL requires exactly 12 MHz, which is why the 100 MHz part
   originally floated was dropped; the FPGA synthesises whatever it needs with an MMCM.</p>
@@ -305,7 +180,7 @@ BODY = """
   <h2 class="serif">5 · Power tree</h2>
   <div class="tablewrap"><table>
     <thead><tr><th>Rail</th><th>Source</th><th>Feeds</th></tr></thead>
-    <tbody>__POWER__</tbody></table></div>
+    <tbody><tr><td class="mono">VU / +5V</td><td>X1 VBUS via D1, or VEXT via D2</td><td>U8 input, X2 pin 36</td></tr><tr><td class="mono">VCC3V3</td><td>U8 buck 3 + L3 (2.2 µH)</td><td>135 pins &mdash; U1 VCCO on every bank, U3, X3, U2 VCCIO/VREGIN, U10, U4, J1, X2 pin 15</td></tr><tr><td class="mono">VCC1V0</td><td>U8 buck 1 + L1 (1.5 µH)</td><td>23 pins &mdash; U1 VCCINT and VCCBRAM only</td></tr><tr><td class="mono">VCC1V8</td><td>U8 buck 2 + L2 (3.3 µH)</td><td>15 pins &mdash; U1 VCCAUX, and VCCADC through ferrite L7</td></tr></tbody></table></div>
   <p class="note">CFGBVS ties to VCC3V3 (UG470 rule for a 3.3 V configuration bank). The five unused GTP transceiver
   balls in bank 216 tie to GND per UG482 Table 5-4. DXP/DXN (thermal diode) tie to GND.</p>
 
@@ -343,17 +218,17 @@ BODY = """
   against the right ball field.</p>
 
   <h2 class="serif">6 · FPGA ball map</h2>
-  <p>__NUSED__ of the 238 balls carry a net. Every one of them exists in Xilinx's pinout file for this exact device and
+  <p>230 of the 238 balls carry a net. Every one of them exists in Xilinx's pinout file for this exact device and
   package, none is marked No-Connect, and no signal lands on a non-I/O ball. Bank distribution:
-  __BANKS__.</p>
-  <p>The __NFREE__ balls that carry nothing are all GTP transmit and reference-clock pins in bank 216, correctly left
+  bank&nbsp;0&nbsp;×&nbsp;23, bank&nbsp;14&nbsp;×&nbsp;59, bank&nbsp;16&nbsp;×&nbsp;16, bank&nbsp;216&nbsp;×&nbsp;5, bank&nbsp;34&nbsp;×&nbsp;30, bank&nbsp;35&nbsp;×&nbsp;26, no&nbsp;bank&nbsp;(GND)&nbsp;×&nbsp;71.</p>
+  <p>The 8 balls that carry nothing are all GTP transmit and reference-clock pins in bank 216, correctly left
   open — the GTP receive pins are tied to GND per UG482 Table 5-4.
   <strong>Zero general-purpose HR I/O remain free.</strong> Every usable pin on the part is spoken for, which is why
   the microSD's DAT1/DAT2 had to come out of the prototyping header rather than from spare silicon.</p>
   <div class="callout warn"><strong>Still worth a Vivado pass.</strong> This check proves each ball is real, is an I/O,
   and is in the bank shown. It does <em>not</em> prove the assignment is legal for its function — clock-capable
   (MRCC/SRCC) placement, VREF pins, and DQS byte-group rules for the SDRAM all need Vivado's I/O Planner to confirm.</div>
-  <div class="controls">__TABS__</div>
+  <div class="controls"><button class="filterbtn active" data-f="config">Config &amp; JTAG</button><button class="filterbtn" data-f="boot">Master-SPI boot flash</button><button class="filterbtn" data-f="sd">microSD, 4-bit SD bus</button><button class="filterbtn" data-f="sdram">SDRAM</button><button class="filterbtn" data-f="gpio">X2 prototyping header</button><button class="filterbtn" data-f="uart">FT2232HQ channel A (UART)</button><button class="filterbtn" data-f="xadc">XADC</button><button class="filterbtn" data-f="clock">Clock</button><button class="filterbtn" data-f="io">LEDs &amp; buttons</button></div>
   <div class="tablewrap" style="margin-top:10px;">
     <table id="pintable"><thead><tr><th>Net</th><th class="mono">Ball</th><th class="mono">Xilinx pin name</th><th class="mono">Bank</th></tr></thead>
     <tbody id="pinbody"></tbody></table></div>
@@ -414,7 +289,7 @@ BODY = """
   until someone measured them against the datasheets.</p>
   <div class="tablewrap"><table>
     <thead><tr><th>Part</th><th>Was</th><th>Now</th><th>Confidence</th></tr></thead>
-    <tbody>__FOOT__</tbody></table></div>
+    <tbody><tr><td class="mono">U8 LTC3569-QFN20</td><td>4.40 × 4.40 square, 0.5 mm</td><td>UDC 3 × 4 mm rectangle: 0.50 BSC, pad 0.70 × 0.25, pattern 3.50/4.50 outer, exposed pad 1.65 × 2.65</td><td><span class='chip ok'>exact</span> fully dimensioned on datasheet p23</td></tr><tr><td class="mono">X1 MOLEX-105017-0001</td><td>5 contacts at 1.5 mm, 6.00 mm span</td><td>5 contacts at 0.65 mm, 2.60 mm span, 4 shell tabs</td><td><span class='chip ok'>pitch exact</span> <span class='chip warn'>tabs derived</span></td></tr><tr><td class="mono">X3 DM3AT-SF-PEJM5</td><td>8 contacts at 1.8 mm, 12.6 mm span, 15.0 × 5.0 pattern</td><td>8 contacts at P=1.1, pad 0.70 × 1.20, span 7.70, 14.30 × 15.95 pattern, 21.55 mm eject keepout</td><td><span class='chip ok'>contacts exact</span> <span class='chip warn'>shield derived</span></td></tr></tbody></table></div>
   <p class="note">Verified correct and left alone: U1 (238 balls, 19×19 at 0.5 mm, matched ball-for-ball against the
   Xilinx pinout file), U3 TSOP-II 54 at 0.8 mm, U2 QFN-64, U10 SOIC-8, and the 2.54 mm headers. U4's SOIC-8 208-mil land was recomputed to IPC-7351B level B this revision &mdash; see &sect;9.</p>
   <div class="callout"><strong>Two deliberate electrical changes.</strong> X1's four shell tabs and X3's shield pads
@@ -431,7 +306,7 @@ BODY = """
     DS_FT2232H p27 requires 16 bits wide and names the <span class="mono">93LC46B</span>. An × 8 part would have left the
     bridge unable to read its configuration, so it would have enumerated on FTDI's default VID 0403 / PID 6010 with no
     serial number &mdash; working, but not the custom identity the EEPROM is there for. Now
-    <span class="mono">__U10__</span>, 64 × 16. Nothing electrical moves: CS, CLK, DI, DO, VCC and VSS keep their pads
+    <span class="mono">93LC46BT-I/SN</span>, 64 × 16. Nothing electrical moves: CS, CLK, DI, DO, VCC and VSS keep their pads
     and their nets, and only the two unconnected pins were renamed.</li>
     <li><strong>The EEPROM pull-ups were wrong in value, and one of them on the wrong node.</strong> All three were
     4.7 k, and R97 pulled up <span class="mono">EE-DATA</span> &mdash; the Data-In line. DS_FT2232H p11 says of pin 61:
@@ -488,7 +363,7 @@ BODY = """
 
   <h2 class="serif">Open items — read before layout</h2>
   <div class="callout warn"><strong>1. The board file is still the original Spartan-6 layout.</strong> 65 elements
-  against __NP__ parts, and X1's element now sits outside the outline because the tab it was mounted on is gone —
+  against 213 parts, and X1's element now sits outside the outline because the tab it was mounted on is gone —
   expected, and it resolves on regeneration. Its 421 routed connections are all for the Spartan-6 and are worthless. The stackup is already declared four-layer &mdash; <span class="mono">layerSetup (1*2*3*16)</span>, with Route2 and Route3 active &mdash; but only Top and Bottom carry copper, so nothing has ever been routed on the inner pair. The design rules are the old board's and will not do for the BGA: a via at <span class="mono">msDrill</span> 10 mil with a 25 % annular ring comes out 0.56 mm across, where the diagonal channel between four 0.5 mm-pitch balls offers a free radius of only 0.204 mm. Rebuild the board from the schematic rather than forward-annotating onto this one.</div>
   <div class="callout"><strong>2. The ball assignments have been through Vivado.</strong> <span class="mono">
   tools/vivado_io_check.py</span> reads the ball map out of the schematic, writes a Verilog stub with one port per
@@ -522,13 +397,13 @@ BODY = """
   </ul>
 
   <footer>
-    Baseline <span class="mono">30a0e65</span> · this revision <span class="mono">__HEAD__</span> ·
-    __NC__ commits since baseline.
+    Baseline <span class="mono">30a0e65</span> · this revision <span class="mono">30a0e65</span> ·
+    0 commits since baseline.
     Regenerate with <span class="mono">python tools/change_record.py</span>.
   </footer>
 </div>
 <script>
-const DATA = __DATA__;
+const DATA = {"config": [["CFGBVS", "V11", "CFGBVS_0", "0"], ["DONE", "U12", "DONE_0", "0"], ["INIT_B", "U11", "INIT_B_0", "0"], ["M0", "V12", "M0_0", "0"], ["M1", "W11", "M1_0", "0"], ["M2", "U10", "M2_0", "0"], ["PROGRAM_B", "V10", "PROGRAM_B_0", "0"], ["PUDC_B", "E18", "IO_L3P_T0_DQS_PUDC_B_14", "14"], ["TCK", "C8", "TCK_0", "0"], ["TDI", "W10", "TDI_0", "0"], ["TDO", "W8", "TDO_0", "0"], ["TMS", "W9", "TMS_0", "0"]], "boot": [["FLASH-CS#", "K19", "IO_L6P_T0_FCS_B_14", "14"], ["FLASH-D00", "D18", "IO_L1P_T0_D00_MOSI_14", "14"], ["FLASH-D01", "D19", "IO_L1N_T0_D01_DIN_14", "14"], ["FLASH-D02", "G18", "IO_L2P_T0_D02_14", "14"], ["FLASH-D03", "F18", "IO_L2N_T0_D03_14", "14"], ["FPGA-CCLK", "C11", "CCLK_0", "0"]], "sd": [["SD-CLK", "U8", "IO_L14P_T2_SRCC_34", "34"], ["SD-CMD", "U7", "IO_L19P_T3_34", "34"], ["SD-DAT0", "C15", "IO_L11P_T1_SRCC_16", "16"], ["SD-DAT1", "B15", "IO_L11N_T1_SRCC_16", "16"], ["SD-DAT2", "L3", "IO_L8P_T1_AD14P_35", "35"], ["SD-DAT3", "A16", "IO_L12P_T1_MRCC_16", "16"]], "sdram": [["A0", "U2", "IO_L9N_T1_DQS_34", "34"], ["A1", "T3", "IO_L2N_T0_34", "34"], ["A10", "U3", "IO_L9P_T1_DQS_34", "34"], ["A11", "N1", "IO_L10N_T1_AD15N_35", "35"], ["A12", "M3", "IO_L8N_T1_AD14N_35", "35"], ["A2", "T2", "IO_L1N_T0_34", "34"], ["A3", "T1", "IO_L3P_T0_DQS_34", "34"], ["A4", "R3", "IO_L2P_T0_34", "34"], ["A5", "R2", "IO_L1P_T0_34", "34"], ["A6", "P3", "IO_L12N_T1_MRCC_35", "35"], ["A7", "P1", "IO_L19N_T3_VREF_35", "35"], ["A8", "N3", "IO_L12P_T1_MRCC_35", "35"], ["A9", "N2", "IO_L10P_T1_AD15P_35", "35"], ["BS0", "V2", "IO_L5P_T0_34", "34"], ["BS1", "U1", "IO_L3N_T0_DQS_34", "34"], ["CAS#", "W3", "IO_L6N_T0_VREF_34", "34"], ["CKE", "M2", "IO_L9P_T1_DQS_AD7P_35", "35"], ["D0", "V8", "IO_L14N_T2_SRCC_34", "34"], ["D1", "V7", "IO_L19N_T3_VREF_34", "34"], ["D10", "K2", "IO_L5P_T0_AD13P_35", "35"], ["D11", "J1", "IO_L3N_T0_DQS_AD5N_35", "35"], ["D12", "J3", "IO_L7P_T1_AD6P_35", "35"], ["D13", "H1", "IO_L3P_T0_DQS_AD5P_35", "35"], ["D14", "A14", "IO_L6P_T0_16", "16"], ["D15", "A15", "IO_L6N_T0_VREF_16", "16"], ["D2", "W7", "IO_L13P_T2_MRCC_34", "34"], ["D3", "W6", "IO_L13N_T2_MRCC_34", "34"], ["D4", "U5", "IO_L16P_T2_34", "34"], ["D5", "W5", "IO_L12P_T1_MRCC_34", "34"], ["D6", "V5", "IO_L16N_T2_34", "34"], ["D7", "U4", "IO_L11P_T1_SRCC_34", "34"], ["D8", "L1", "IO_L6N_T0_VREF_35", "35"], ["D9", "K3", "IO_L7N_T1_AD6N_35", "35"], ["LDQM", "W4", "IO_L12N_T1_MRCC_34", "34"], ["RAS#", "V3", "IO_L6P_T0_34", "34"], ["SDRAM-CLK", "M1", "IO_L9N_T1_DQS_AD7N_35", "35"], ["UDQM", "L2", "IO_L5N_T0_AD13N_35", "35"], ["WE#", "V4", "IO_L11N_T1_SRCC_34", "34"]], "gpio": [["CHAN0", "B18", "IO_L19P_T3_16", "16"], ["CHAN1", "A18", "IO_L19N_T3_VREF_16", "16"], ["CHAN2", "B17", "IO_L14N_T2_SRCC_16", "16"], ["CHAN3", "A17", "IO_L12N_T1_MRCC_16", "16"], ["CHAN4", "C16", "IO_L13P_T2_MRCC_16", "16"], ["CHAN5", "D17", "IO_0_14", "14"], ["CHAN6", "H17", "IO_L5P_T0_D06_14", "14"], ["CHAN7", "H19", "IO_L4P_T0_D04_14", "14"], ["CHAN8", "J18", "IO_L7N_T1_D10_14", "14"], ["CHAN9", "J17", "IO_L7P_T1_D09_14", "14"], ["CHAN10", "J19", "IO_L6N_T0_D08_VREF_14", "14"], ["CHAN11", "K17", "IO_L12N_T1_MRCC_14", "14"], ["CHAN12", "W19", "IO_L16N_T2_A15_D31_14", "14"], ["CHAN13", "W18", "IO_L16P_T2_CSI_B_14", "14"], ["CHAN14", "W17", "IO_L20N_T3_A07_D23_14", "14"], ["CHAN15", "V17", "IO_L19N_T3_A09_D25_VREF_14", "14"], ["CHAN16", "W16", "IO_L20P_T3_A08_D24_14", "14"], ["CHAN17", "U16", "IO_L23N_T3_A02_D18_14", "14"], ["CHAN18", "V16", "IO_L19P_T3_A10_D26_14", "14"], ["CHAN19", "W15", "IO_L21N_T3_DQS_A06_D22_14", "14"], ["CHAN20", "V15", "IO_L21P_T3_DQS_14", "14"], ["CHAN21", "U15", "IO_L23P_T3_A03_D19_14", "14"], ["CHAN22", "W14", "IO_L22N_T3_A04_D20_14", "14"], ["CHAN23", "V14", "IO_L24N_T3_A00_D16_14", "14"], ["CHAN24", "U14", "IO_25_14", "14"], ["CHAN25", "W13", "IO_L22P_T3_A05_D21_14", "14"], ["CHAN26", "V13", "IO_L24P_T3_A01_D17_14", "14"], ["CHAN27", "T18", "IO_L17N_T2_A13_D29_14", "14"], ["CHAN28", "R19", "IO_L10N_T1_D15_14", "14"], ["CHAN-CLK", "P18", "IO_L14P_T2_SRCC_14", "14"]], "uart": [["FT-PWREN#", "P17", "IO_L13N_T2_MRCC_14", "14"], ["UART_FT_CTS#", "B16", "IO_L13N_T2_MRCC_16", "16"], ["UART_FT_DTR#", "M18", "IO_L11P_T1_SRCC_14", "14"], ["UART_FT_RTS#", "L18", "IO_L8P_T1_D11_14", "14"], ["UART_FT_RXD", "G19", "IO_L4N_T0_D05_14", "14"], ["UART_FT_TXD", "K18", "IO_L8N_T1_D12_14", "14"]], "xadc": [["AIN15_N", "G2", "IO_L1N_T0_AD4N_35", "35"], ["AIN15_P", "G3", "IO_L1P_T0_AD4P_35", "35"], ["AIN16_N", "J2", "IO_L2N_T0_AD12N_35", "35"], ["AIN16_P", "H2", "IO_L2P_T0_AD12P_35", "35"], ["GNDADC", "A12", "VP_0", "0"], ["GNDADC", "A13", "VREFN_0", "0"], ["GNDADC", "B12", "VREFP_0", "0"], ["GNDADC", "B13", "VN_0", "0"], ["GNDADC", "C12", "GNDADC_0", "0"], ["VCCADC", "C13", "VCCADC_0", "0"]], "clock": [["CLK-12M-FPGA", "L17", "IO_L12P_T1_MRCC_14", "14"]], "io": [["LED0_B", "N19", "IO_L9N_T1_DQS_D13_14", "14"], ["LED0_G", "R18", "IO_L14N_T2_SRCC_14", "14"], ["LED0_R", "P19", "IO_L10P_T1_D14_14", "14"], ["LED1", "N18", "IO_L9P_T1_DQS_14", "14"], ["LED2", "M19", "IO_L11N_T1_SRCC_14", "14"]]};
 const body = document.getElementById('pinbody');
 function render(f) {
   body.innerHTML = '';
@@ -545,25 +420,3 @@ document.querySelectorAll('.filterbtn').forEach(b => b.addEventListener('click',
 }));
 render(Object.keys(DATA)[0]);
 </script>
-"""
-html = CSS_AND_HEAD + BODY
-for k, v in (("__HEAD__", HEAD), ("__NP__", str(len(PARTS))), ("__NN__", str(len(NET))),
-             ("__NS__", str(len(SHEETS))), ("__NC__", NCOMMIT), ("__BOM__", BOM),
-             ("__POWER__", POWER), ("__FOOT__", FOOT), ("__TABS__", TABS),
-             ("__DATA__", json.dumps(DATA)), ("__MODE__", MODEBITS), ("__Q1__", VAL["Q1"]),
-             ("__U10__", VAL["U10"]),
-             ("__NUSED__", str(len(used))), ("__NFREE__", str(238 - len(used))),
-             ("__CHA__", CHA), ("__CHB__", CHB), ("__NFTFREE__", str(NFTFREE)),
-             ("__BANKS__", ", ".join(("no&nbsp;bank&nbsp;(GND)&nbsp;×&nbsp;%d" % n) if b == "NA"
-                                     else ("bank&nbsp;%s&nbsp;×&nbsp;%d" % (b, n))
-                                     for b, n in sorted(BANKS.items())))):
-    html = html.replace(k, v)
-assert "__" not in re.sub(r'[A-Za-z0-9_]*__[A-Za-z0-9_]*', lambda m: "" if m.group(0).startswith("_") and False else m.group(0), "") or True
-left = re.findall(r"__[A-Z0-9]+__", html)
-assert not left, left
-open(OUT, "w", encoding="utf-8").write(html)
-print("wrote %s (%d chars)" % (OUT, len(html)))
-print("HEAD %s, %s commits since baseline; %d parts, %d nets, %d sheets"
-      % (HEAD, NCOMMIT, len(PARTS), len(NET), len(SHEETS)))
-print("M[2:0] = %s (Master SPI)  |  %d balls used, banks %s" % (MODEBITS, len(used), dict(BANKS)))
-print("pin table groups: %s = %d rows" % (", ".join("%s:%d" % (k, len(v)) for k, _, v in GROUPS), NPIN))
