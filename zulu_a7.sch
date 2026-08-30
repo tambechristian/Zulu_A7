@@ -4162,6 +4162,22 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 </library>
 <library name="rcl">
 <packages>
+<package name="R0201">
+<description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;chip, 0201 (0603 metric), 0.60 x 0.30 mm body&lt;p&gt;&lt;b&gt;PROVISIONAL LAND PATTERN - CHECK BEFORE FABRICATION.&lt;/b&gt; Pads 0.30 x 0.30 on a 0.20 mm gap, 0.80 mm span: a conventional 0201 land, NOT scaled from R0402 in this library. R0402 here carries a 0.50 mm toe either side, which is generous for hand work and wrong at 0201 -- oversized lands pull 0201 parts into tombstones. Verify against the resistor maker&apos;s recommended land and the assembler&apos;s 0201 capability. 0201 is a step up in assembly difficulty and is not practically reworkable by hand.&lt;/p&gt;</description>
+<wire x1="-0.15" y1="0.147" x2="0.15" y2="0.147" width="0.1016" layer="51"/>
+<wire x1="0.15" y1="-0.147" x2="-0.15" y2="-0.147" width="0.1016" layer="51"/>
+<wire x1="-0.873" y1="0.183" x2="0.873" y2="0.183" width="0.0508" layer="39"/>
+<wire x1="0.873" y1="0.183" x2="0.873" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="0.873" y1="-0.183" x2="-0.873" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="-0.873" y1="-0.183" x2="-0.873" y2="0.183" width="0.0508" layer="39"/>
+<smd name="1" x="-0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
+<smd name="2" x="0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
+<text x="-0.635" y="0.45" size="1.27" layer="25">&gt;NAME</text>
+<text x="-0.635" y="-1.7" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.30" y1="-0.15" x2="-0.15" y2="0.15" layer="51"/>
+<rectangle x1="0.15" y1="-0.15" x2="0.30" y2="0.15" layer="51"/>
+<rectangle x1="-0.12" y1="-0.15" x2="0.12" y2="0.15" layer="35"/>
+</package>
 <package name="R0402">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
 chip</description>
@@ -7752,6 +7768,15 @@ Metric Code Size 5664</description>
 <gate name="G$1" symbol="R-US_SMALL" x="0" y="0"/>
 </gates>
 <devices>
+<device name="R0201" package="R0201">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 <device name="R0402" package="R0402">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
@@ -8638,45 +8663,45 @@ Metric Code Size 5664</description>
 <part name="FRAME5" library="ctambe" deviceset="DOCFIELD" device=""/>
 <part name="FRAME4" library="ctambe" deviceset="DOCFIELD" device=""/>
 <part name="FRAME3" library="ctambe" deviceset="DOCFIELD" device=""/>
-<part name="R26" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R26" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R27" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R27" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R28" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R28" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R29" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R29" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R30" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R30" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R31" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R31" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R32" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R32" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="R33" library="rcl" deviceset="R-US_SMALL" device="R0402" value="200">
+<part name="R33" library="rcl" deviceset="R-US_SMALL" device="R0201" value="200">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07200RL"/>
-<attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="MANF#" value="RC0201FR-07200RL"/>
+<attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
 <part name="U$2" library="ctambe" deviceset="CC_CC" device=""/>
 <part name="U$3" library="ctambe" deviceset="CC_BY" device=""/>

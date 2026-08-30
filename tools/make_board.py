@@ -422,9 +422,10 @@ SINGLE = [# X3 must be R270, not R90. The DM3AT's layer-39 keepout runs 8.70 mm 
           #
           #   R91  8.4 mm from U2's ADBUS2. A 10k pull-up on TDO does not care
           #        where it sits, and this is beside the pin anyway. Fine.
-          #   R33  15 mm from U1 ball 1, 24 from J1 pin 10. It is the series
-          #        resistor between them, so it wants to be at one END; it is in
-          #        the middle instead, which is the worst of the two.
+          # R33 is no longer here. It was pinned when it was an 0402 and would
+          # not seat anywhere near J1; at 0201 its seven siblings pack into two
+          # columns at x 59.5 and the anchored pass can reach it, so it goes back
+          # to being placed with them instead of stranded 24 mm away.
           #
           # D3 IS NOT HERE, AND THAT IS DELIBERATE. VEXT enters at X2 pad 1, in
           # the +x top corner, and the nearest free keepout-sized slot to it is
@@ -438,7 +439,6 @@ SINGLE = [# X3 must be R270, not R90. The DM3AT's layer-39 keepout runs 8.70 mm 
           # overlap check outright -- X3's layer-39 card-eject stroke reaches
           # further than its body, and that is what the check is for.
           ("R91", 29.573, 0.943, "R0"),
-          ("R33", 32.823, 0.943, "R0"),
           # D2 is pinned where the anchored pass had already put it. Seating R33
           # and R91 by hand changed what was free, the pass re-ran, and D2 -- on
           # VEXT, and previously on the back at 32.17, 22.88 -- fell out. That is
