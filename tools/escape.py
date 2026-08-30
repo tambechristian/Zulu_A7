@@ -23,7 +23,11 @@ via land. The board's via land is 0.300. It "fits" by 0.0021 mm, which is not a
 fit, it is a rounding error. So every via lands in the moat or outside the
 package, and inside the field there is only L1 copper.
 
-STAGE 1, WHICH IS ALL THIS FILE DOES SO FAR. Gang the power and ground balls.
+IT RUNS IN THREE STAGES, AND THE DOCSTRING USED TO CLAIM ONLY THE FIRST WAS
+BUILT. All three are, and they close: 1297 wires and 157 vias go in, every one
+clearing foreign copper by the full 0.090.
+
+STAGE 1. Gang the power and ground balls.
 113 of the 238 carry a plane net, and same-net neighbours do not each need their
 own escape -- joined on L1 they need one between them. Three kinds of edge, all
 at 0.225 mm, all verified against every other net's land before anything is
@@ -40,6 +44,21 @@ ball at ring 8 with two populated rows around it has no other way out -- there i
 no room for a via beside it and none inside its land. Jumping the empty K11 to
 J11, which is GND, is the only thing that connects it. J10/L10 and J9/L9 get the
 same treatment through K10 and K9.
+
+STAGE 2, THE MOAT. 54 escapes leave the inner rings and the core and drop
+through a via in the 2.00 mm moat, 0.3525 to 0.8125 mm in from the ball each
+serves. Nothing goes inside the field, for the reason above.
+
+STAGE 3, OUT OF THE PACKAGE. 103 escapes leave ring 0 and ring 1 outward and
+drop on a fan-out ring at 7.260 mm half-width -- 103 vias at 0.390 pitch, which
+needs 40.170 of the 58.080 mm available on that perimeter. That ring is why
+make_board reserves the annulus it does, and why the decoupling had to move to
+the bands above and below it.
+
+WHAT IS NOT DONE HERE. Seven ganged components are STRANDED -- P2, B14, H18 and
+V18 on GND, V6, V9 and V11 on VCC3V3. Ganging cannot reach a plane from them, so
+they need a lane of their own like any signal, and this file does not draw one.
+The 52 signals still carrying no copper are the rest of the routing job.
 """
 
 import re, io, os, sys, math, collections, itertools
