@@ -8520,23 +8520,26 @@ Metric Code Size 5664</description>
 </package>
 </packages>
 <symbols>
-<symbol name="PINH1X3">
-<wire x1="-2.54" y1="-5.08" x2="2.54" y2="-5.08" width="0.4064" layer="94"/>
-<wire x1="2.54" y1="-5.08" x2="2.54" y2="5.08" width="0.4064" layer="94"/>
-<wire x1="2.54" y1="5.08" x2="-2.54" y2="5.08" width="0.4064" layer="94"/>
-<wire x1="-2.54" y1="5.08" x2="-2.54" y2="-5.08" width="0.4064" layer="94"/>
+<symbol name="TP1X3">
+<wire x1="-2.54" y1="-5.08" x2="2.54" y2="-5.08" width="0.1524" layer="94" style="shortdash"/>
+<wire x1="2.54" y1="-5.08" x2="2.54" y2="5.08" width="0.1524" layer="94" style="shortdash"/>
+<wire x1="2.54" y1="5.08" x2="-2.54" y2="5.08" width="0.1524" layer="94" style="shortdash"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="-5.08" width="0.1524" layer="94" style="shortdash"/>
+<circle x="-1.905" y="2.54" radius="0.635" width="0.254" layer="94"/>
+<circle x="-1.905" y="0" radius="0.635" width="0.254" layer="94"/>
+<circle x="-1.905" y="-2.54" radius="0.635" width="0.254" layer="94"/>
 <text x="-2.54" y="5.715" size="1.778" layer="95">&gt;NAME</text>
 <text x="-2.54" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="1" x="-5.08" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="2" x="-5.08" y="0" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="3" x="-5.08" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="1" x="-5.08" y="2.54" visible="pad" length="short" direction="pas"/>
+<pin name="2" x="-5.08" y="0" visible="pad" length="short" direction="pas"/>
+<pin name="3" x="-5.08" y="-2.54" visible="pad" length="short" direction="pas"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="PINHD-1X3" prefix="JP" uservalue="yes">
-<description>&lt;b&gt;PIN HEADER 1x3&lt;/b&gt;&lt;p&gt;Three of the six JTAG holes. Two of these replace the old 2x3: nothing plugs across 17.96 mm, so the header stopped being one part.&lt;/p&gt;</description>
+<deviceset name="TESTPT-1X3" prefix="JP" uservalue="yes">
+<description>&lt;b&gt;Three plated holes, 1x3 on 2.54 mm&lt;/b&gt;&lt;p&gt;NOT a fitted header, which is why it is no longer called one. The footprint is an ordinary 1x3 header pattern and a strip could be soldered in for bring-up, but nothing is populated: a 1x3 body clears the Pmod shroud beside it by 0.09 mm, inside anyone's assembly tolerance. Drawn dashed with open holes so the sheet stops reading as a connector, the way the 2x3 it replaced did.&lt;/p&gt;</description>
 <gates>
-<gate name="A" symbol="PINH1X3" x="0" y="0"/>
+<gate name="A" symbol="TP1X3" x="0" y="0"/>
 </gates>
 <devices>
 <device name="NOSILK" package="1X03-NOSILK">
@@ -8812,8 +8815,12 @@ Metric Code Size 5664</description>
 <part name="U10" library="ctambe" deviceset="EEPROM-93LC46B" device="-I/SN" value="93LC46BT-I/SN">
 <attribute name="MANF" value="Microchip"/>
 </part>
-<part name="JP3" library="pinhead" deviceset="PINHD-1X3" device="NOSILK" value="JTAG TCK/TMS/GND"/>
-<part name="JP4" library="pinhead" deviceset="PINHD-1X3" device="NOSILK" value="JTAG TDI/TDO/3V3"/>
+<part name="JP3" library="pinhead" deviceset="TESTPT-1X3" device="NOSILK" value="JTAG TCK/TMS/GND">
+<attribute name="NOTE" value="Bare plated holes -- NO HEADER FITTED, nothing to order. Three of the six JTAG holes; JP4 carries the other three, 17.96 mm away on the far side of the Pmod. Each row has 3.05 mm of board to the Pmod but only 0.09 mm to a 1x3 strip's body, so these are for flying leads or a pogo jig. The FT2232 does JTAG over USB on channel B; this is the fallback."/>
+</part>
+<part name="JP4" library="pinhead" deviceset="TESTPT-1X3" device="NOSILK" value="JTAG TDI/TDO/3V3">
+<attribute name="NOTE" value="Bare plated holes -- NO HEADER FITTED, nothing to order. Three of the six JTAG holes; JP3 carries the other three, 17.96 mm away on the far side of the Pmod. Each row has 3.05 mm of board to the Pmod but only 0.09 mm to a 1x3 strip's body, so these are for flying leads or a pogo jig. The FT2232 does JTAG over USB on channel B; this is the fallback."/>
+</part>
 <part name="R4" library="ctambe" deviceset="RES8" device="741X" value="100">
 <attribute name="DIGIKEY#" value="741X163101JPCT-ND"/>
 <attribute name="MANF" value="CTS"/>
