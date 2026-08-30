@@ -8472,7 +8472,12 @@ Metric Code Size 5664</description>
 <attribute name="MANF" value="Hirose"/>
 <attribute name="MANF#" value="DM3AT-SF-PEJM5"/>
 </part>
-<part name="R34" library="ctambe" deviceset="RES4" device="742" value="4.7K"/>
+<part name="R34" library="ctambe" deviceset="RES4" device="742" value="4.7K">
+<attribute name="MANF" value="CTS"/>
+<attribute name="MANF#" value="742C083472JTR"/>
+<attribute name="SPEC" value="4-element isolated resistor array, 4.7k, 5 percent or better, 742C083 8-pin convex land"/>
+<attribute name="NOTE" value="The microSD DAT0-3 pull-ups, all four elements used -- which is what an array is actually for, unlike R1, R2 and R4, which used 2, 3 and 6 of theirs and were split into discretes. This one stays an array. 4.7k is the conventional value for SD data lines and it was already chosen; only the part number was missing. 5 percent is ample for a pull-up, so this is a J part where the discrete resistors on this board are F. CTS 742C is the family the footprint is named after. Confirm the suffix -- it encodes tolerance and packaging and is the easy thing to get wrong."/>
+</part>
 <part name="R35" library="rcl" deviceset="R-US_" device="R0402" value="4.7K">
 <attribute name="MANF" value="Yageo"/>
 <attribute name="MANF#" value="RC0402FR-074K7L"/>
@@ -8958,8 +8963,18 @@ Metric Code Size 5664</description>
 <attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
 <part name="LD0" library="ctambe" deviceset="LED_RGB" device="" value="VS NRD8"/>
-<part name="LD1" library="ctambe" deviceset="LED" device="" value="LED"/>
-<part name="LD2" library="ctambe" deviceset="LED" device="" value="LED"/>
+<part name="LD1" library="ctambe" deviceset="LED" device="" value="red">
+<attribute name="MANF" value="Lite-On"/>
+<attribute name="MANF#" value="LTST-C191KRKT"/>
+<attribute name="SPEC" value="red indicator, 0603, Vf 2.1V max at 4mA"/>
+<attribute name="NOTE" value="User status LED, driven straight off an FPGA pin through R83 at 330R: (3.3 - Vf)/330 is 3.9 mA green, 4.2 red, 3.6 yellow, and 1.2 mA blue or white. Any of the first three is comfortable and well inside an LVCMOS33 pin's 12 mA. RED IS A PREFERENCE, NOT A CONSTRAINT -- the circuit takes green just as happily. It is red so that the two user LEDs read differently from LD5, which is green and means power good; on a board being brought up that is worth being able to tell apart at a glance. Same LTST-C191 family and the same 0603 land as LD5, so it is one line in the catalogue, not two. Confirm the suffix before ordering."/>
+</part>
+<part name="LD2" library="ctambe" deviceset="LED" device="" value="red">
+<attribute name="MANF" value="Lite-On"/>
+<attribute name="MANF#" value="LTST-C191KRKT"/>
+<attribute name="SPEC" value="red indicator, 0603, Vf 2.1V max at 4mA"/>
+<attribute name="NOTE" value="User status LED, driven straight off an FPGA pin through R84 at 330R: (3.3 - Vf)/330 is 3.9 mA green, 4.2 red, 3.6 yellow, and 1.2 mA blue or white. Any of the first three is comfortable and well inside an LVCMOS33 pin's 12 mA. RED IS A PREFERENCE, NOT A CONSTRAINT -- the circuit takes green just as happily. It is red so that the two user LEDs read differently from LD5, which is green and means power good; on a board being brought up that is worth being able to tell apart at a glance. Same LTST-C191 family and the same 0603 land as LD5, so it is one line in the catalogue, not two. Confirm the suffix before ordering."/>
+</part>
 <part name="BTN" library="ctambe" deviceset="SWITCH_TACT" device="" value="PTA-142"/>
 <part name="Q1" library="ctambe" deviceset="OSC_CHIP" device="ASEM1-12MHZ" value="12MHz 25ppm (FPGA + FT2232HQ)"/>
 <part name="C38" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.01uF">
