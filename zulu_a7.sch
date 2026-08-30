@@ -12256,11 +12256,11 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 </instance>
 <instance part="JP3" gate="A" x="46.99" y="72.39" smashed="yes">
 <attribute name="NAME" x="44.45" y="78.105" size="1.778" layer="95"/>
-<attribute name="VALUE" x="44.45" y="64.77" size="1.778" layer="96"/>
+<attribute name="VALUE" x="50.8" y="71.5" size="1.778" layer="96"/>
 </instance>
-<instance part="JP4" gate="A" x="46.99" y="57.15" smashed="yes">
-<attribute name="NAME" x="44.45" y="62.865" size="1.778" layer="95"/>
-<attribute name="VALUE" x="44.45" y="49.53" size="1.778" layer="96"/>
+<instance part="JP4" gate="A" x="46.99" y="58.42" smashed="yes">
+<attribute name="NAME" x="44.45" y="64.135" size="1.778" layer="95"/>
+<attribute name="VALUE" x="50.8" y="57.53" size="1.778" layer="96"/>
 </instance>
 <instance part="R89" gate="G$1" x="154.94" y="241.3" smashed="yes" rot="MR90">
 <attribute name="NAME" x="156.97" y="242.57" size="1.778" layer="95" rot="MR0"/>
@@ -12483,8 +12483,8 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <junction x="77.47" y="33.02"/>
 </segment>
 <segment>
-<wire x1="41.91" y1="54.61" x2="34.29" y2="54.61" width="0.1524" layer="91"/>
-<label x="33.4" y="55.5" size="1.778" layer="95" rot="R180"/>
+<wire x1="41.91" y1="55.88" x2="34.29" y2="55.88" width="0.1524" layer="91"/>
+<label x="33.4" y="56.77" size="1.778" layer="95" rot="R180"/>
 <pinref part="JP4" gate="A" pin="3"/>
 </segment>
 <segment>
@@ -13000,8 +13000,8 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <pinref part="R90" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="41.91" y1="59.69" x2="34.29" y2="59.69" width="0.1524" layer="91"/>
-<label x="33.4" y="60.58" size="1.778" layer="95" rot="R180"/>
+<wire x1="41.91" y1="60.96" x2="34.29" y2="60.96" width="0.1524" layer="91"/>
+<label x="33.4" y="61.85" size="1.778" layer="95" rot="R180"/>
 <pinref part="JP4" gate="A" pin="1"/>
 </segment>
 </net>
@@ -13020,8 +13020,8 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <pinref part="R91" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="41.91" y1="57.15" x2="34.29" y2="57.15" width="0.1524" layer="91"/>
-<label x="33.4" y="58.04" size="1.778" layer="95" rot="R180"/>
+<wire x1="41.91" y1="58.42" x2="34.29" y2="58.42" width="0.1524" layer="91"/>
+<label x="33.4" y="59.31" size="1.778" layer="95" rot="R180"/>
 <pinref part="JP4" gate="A" pin="2"/>
 </segment>
 </net>
