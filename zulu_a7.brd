@@ -251,47 +251,6 @@
 <vertex x="1.1762" y="-1.5762"/>
 </polygon>
 </package>
-<package name="741X163">
-<wire x1="-2" y1="1.3" x2="-2" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="-2" y1="-1.3" x2="2" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="2" y1="-1.3" x2="2" y2="1.3" width="0.127" layer="21"/>
-<wire x1="2" y1="1.3" x2="-2" y2="1.3" width="0.127" layer="21"/>
-<smd name="1" x="-1.75" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="2" x="-1.25" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="3" x="-0.75" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="4" x="-0.25" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="5" x="0.25" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="6" x="0.75" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="7" x="1.25" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="8" x="1.75" y="-0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="9" x="1.75" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="10" x="1.25" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="11" x="0.75" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="12" x="0.25" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="13" x="-0.25" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="14" x="-0.75" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="15" x="-1.25" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<smd name="16" x="-1.75" y="0.8" dx="0.3" dy="0.8" layer="1"/>
-<text x="-2" y="1.5" size="1.27" layer="25">&gt;NAME</text>
-<rectangle x1="-1.95" y1="-0.8" x2="1.95" y2="0.8" layer="39"/>
-<rectangle x1="-1.9" y1="0.4" x2="-1.6" y2="1.2" layer="51"/>
-<rectangle x1="-1.4" y1="0.4" x2="-1.1" y2="1.2" layer="51"/>
-<rectangle x1="-0.9" y1="0.4" x2="-0.6" y2="1.2" layer="51"/>
-<rectangle x1="-0.4" y1="0.4" x2="-0.1" y2="1.2" layer="51"/>
-<rectangle x1="0.1" y1="0.4" x2="0.4" y2="1.2" layer="51"/>
-<rectangle x1="0.6" y1="0.4" x2="0.9" y2="1.2" layer="51"/>
-<rectangle x1="1.1" y1="0.4" x2="1.4" y2="1.2" layer="51"/>
-<rectangle x1="1.6" y1="0.4" x2="1.9" y2="1.2" layer="51"/>
-<rectangle x1="1.6" y1="-1.2" x2="1.9" y2="-0.4" layer="51"/>
-<rectangle x1="1.1" y1="-1.2" x2="1.4" y2="-0.4" layer="51"/>
-<rectangle x1="0.6" y1="-1.2" x2="0.9" y2="-0.4" layer="51"/>
-<rectangle x1="0.1" y1="-1.2" x2="0.4" y2="-0.4" layer="51"/>
-<rectangle x1="-0.4" y1="-1.2" x2="-0.1" y2="-0.4" layer="51"/>
-<rectangle x1="-0.9" y1="-1.2" x2="-0.6" y2="-0.4" layer="51"/>
-<rectangle x1="-1.4" y1="-1.2" x2="-1.1" y2="-0.4" layer="51"/>
-<rectangle x1="-1.9" y1="-1.2" x2="-1.6" y2="-0.4" layer="51"/>
-<rectangle x1="-0.508" y1="-0.254" x2="0.254" y2="0.254" layer="35"/>
-</package>
 <package name="742C083">
 <wire x1="-0.8" y1="1.5" x2="2.4" y2="1.5" width="0.127" layer="21"/>
 <wire x1="2.4" y1="1.5" x2="2.4" y2="-1.5" width="0.127" layer="21"/>
@@ -1561,7 +1520,6 @@ chip</description>
 <element name="X3" library="ctambe" package="DM3AT-SF-PEJM5" value="" x="15.95" y="12.92" rot="R270"/>
 <element name="R34" library="ctambe" package="742C083" value="4.7K" x="2.9" y="21.45" rot="MR0"/>
 <element name="R35" library="rcl" package="R0402" value="4.7K" x="2.898" y="6.02" rot="MR0"/>
-<element name="R2" library="ctambe" package="742C083" value="4.7K" x="2.8" y="-16.5"/>
 <element name="U1" library="ctambe" package="XC7A35T-CPG236" value="XC7A35T-1CPG236C" x="42" y="16.74"/>
 <element name="R10" library="rcl" package="R0201" value="2.32K" x="26.594" y="8.1"/>
 <element name="R11" library="rcl" package="R0201" value="1K" x="26.594" y="15.885"/>
@@ -1587,9 +1545,18 @@ chip</description>
 <element name="U10" library="ctambe" package="SOIC8" value="93LC46BT-I/SN" x="5.36" y="15.9" rot="MR0"/>
 <element name="JP3" library="pinhead" package="1X03-NOSILK" value="JTAG TCK/TMS/GND" x="56.5" y="21.68"/>
 <element name="JP4" library="pinhead" package="1X03-NOSILK" value="JTAG TDI/TDO/3V3" x="56.5" y="3.72"/>
-<element name="R4" library="ctambe" package="741X163" value="100" x="10" y="-16.7"/>
 <element name="R5" library="rcl" package="R0603" value="5.1K" x="37.174" y="3.14"/>
-<element name="R1" library="ctambe" package="742C083" value="4.7K" x="14.8" y="-16.5"/>
+<element name="R1" library="rcl" package="R0201" value="4.7K" x="47.086" y="6.84" rot="MR0"/>
+<element name="R3" library="rcl" package="R0201" value="4.7K" x="48.882" y="6.84" rot="MR0"/>
+<element name="R2" library="rcl" package="R0201" value="4.7K" x="50.678" y="6.84" rot="MR0"/>
+<element name="R6" library="rcl" package="R0201" value="4.7K" x="41.698" y="14.832" rot="MR0"/>
+<element name="R7" library="rcl" package="R0201" value="4.7K" x="41.698" y="15.432" rot="MR0"/>
+<element name="R4" library="rcl" package="R0402" value="100" x="59.79" y="18.178" rot="R90"/>
+<element name="R8" library="rcl" package="R0402" value="100" x="59.5098" y="6.176" rot="MR90"/>
+<element name="R9" library="rcl" package="R0402" value="100" x="46.298" y="16.44" rot="MR0"/>
+<element name="R36" library="rcl" package="R0402" value="100" x="59.5098" y="18.178" rot="MR90"/>
+<element name="R37" library="rcl" package="R0402" value="100" x="59.5098" y="9.172" rot="MR90"/>
+<element name="R38" library="rcl" package="R0402" value="100" x="49.294" y="16.44" rot="MR0"/>
 <element name="U8" library="ctambe" package="LTC3569-QFN20" value="LTC3569EUDC#TRPBF" x="12.5" y="7.44" rot="MR0"/>
 <element name="D1" library="ctambe" package="SOD123" value="PMEG2020EJ,115" x="15.45" y="6.518" rot="MR90"/>
 <element name="D2" library="ctambe" package="SOD123" value="PMEG2020EJ,115" x="32.17" y="22.884" rot="MR0"/>
@@ -1612,16 +1579,16 @@ chip</description>
 <element name="L3" library="ctambe" package="IND2520" value="2.2uH" x="12.45" y="16.34" rot="MR0"/>
 <element name="L4" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="32.845" y="20.79" rot="MR0"/>
 <element name="L5" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="23.896" y="22.36" rot="MR0"/>
-<element name="L6" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="36.9" y="4.45" rot="MR0"/>
-<element name="L7" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="37.045" y="20.63" rot="MR90"/>
+<element name="L6" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="38.245" y="20.63" rot="MR90"/>
+<element name="L7" library="ctambe" package="IND0603" value="FB 600R@100MHz" x="31.9" y="24.284" rot="MR0"/>
 <element name="C123" library="rcl" package="C0402" value="100nF" x="49.75" y="7.89" rot="MR0"/>
 <element name="C124" library="rcl" package="C0402" value="470nF" x="43.15" y="16.49" rot="MR0"/>
 <element name="R18" library="rcl" package="R0402" value="12K 1%" x="29.732" y="4.45" rot="MR0"/>
 <element name="R19" library="rcl" package="R0402" value="10K" x="32.728" y="4.45" rot="MR0"/>
-<element name="R20" library="rcl" package="R0402" value="1K" x="46.298" y="16.44" rot="MR0"/>
-<element name="R21" library="rcl" package="R0402" value="1K" x="49.294" y="16.44" rot="MR0"/>
-<element name="R22" library="rcl" package="R0402" value="1K" x="42.1" y="10.038" rot="MR90"/>
-<element name="R23" library="rcl" package="R0402" value="1K" x="50.7" y="10.038" rot="MR90"/>
+<element name="R20" library="rcl" package="R0402" value="1K" x="42.1" y="10.038" rot="MR90"/>
+<element name="R21" library="rcl" package="R0402" value="1K" x="50.7" y="10.038" rot="MR90"/>
+<element name="R22" library="rcl" package="R0402" value="1K" x="42.1" y="13.034" rot="MR90"/>
+<element name="R23" library="rcl" package="R0402" value="1K" x="50.7" y="13.034" rot="MR90"/>
 <element name="C139" library="rcl" package="C0402" value="3.3uF" x="35.7" y="17.933"/>
 <element name="C39" library="rcl" package="C0402" value="3.3uF" x="36.234" y="18.58" rot="MR0"/>
 <element name="C40" library="rcl" package="C0402" value="100nF" x="33.721" y="2.878"/>
@@ -1646,12 +1613,12 @@ chip</description>
 <element name="R84" library="rcl" package="R0402" value="330" x="18.948" y="18.22"/>
 <element name="R85" library="rcl" package="R0402" value="10K" x="15.65" y="13.364" rot="MR90"/>
 <element name="R86" library="rcl" package="R0402" value="10K" x="15.65" y="16.36" rot="MR90"/>
-<element name="R89" library="rcl" package="R0402" value="10K" x="59.79" y="18.178" rot="R90"/>
-<element name="R90" library="rcl" package="R0402" value="10K" x="59.5098" y="6.176" rot="MR90"/>
+<element name="R89" library="rcl" package="R0402" value="10K" x="59.5098" y="12.178" rot="MR90"/>
+<element name="R90" library="rcl" package="R0402" value="10K" x="3" y="-17.55"/>
 <element name="R91" library="rcl" package="R0402" value="10K" x="30.573" y="3.933"/>
-<element name="R92" library="rcl" package="R0402" value="10K" x="59.5098" y="18.178" rot="MR90"/>
-<element name="R93" library="rcl" package="R0402" value="10K" x="42.1" y="13.034" rot="MR90"/>
-<element name="R94" library="rcl" package="R0402" value="10K" x="50.7" y="13.034" rot="MR90"/>
+<element name="R92" library="rcl" package="R0402" value="10K" x="59.5098" y="15.174" rot="MR90"/>
+<element name="R93" library="rcl" package="R0402" value="10K" x="36.998" y="4.45" rot="MR0"/>
+<element name="R94" library="rcl" package="R0402" value="10K" x="37.045" y="20.728" rot="MR90"/>
 <element name="LD0" library="ctambe" package="VS-NRD8" value="VS NRD8" x="24.85" y="10.885"/>
 <element name="LD1" library="ctambe" package="LED0603" value="LED" x="24.95" y="12.585"/>
 <element name="LD2" library="ctambe" package="LED0603" value="LED" x="24.95" y="13.785"/>
@@ -1870,12 +1837,10 @@ chip</description>
 <contactref element="LD5" pad="A"/>
 <contactref element="Q1" pad="1"/>
 <contactref element="Q1" pad="4"/>
-<contactref element="R1" pad="8"/>
+<contactref element="R1" pad="2"/>
 <contactref element="R100" pad="2"/>
 <contactref element="R19" pad="2"/>
-<contactref element="R2" pad="8"/>
-<contactref element="R2" pad="7"/>
-<contactref element="R2" pad="5"/>
+<contactref element="R2" pad="2"/>
 <contactref element="R20" pad="2"/>
 <contactref element="R23" pad="1"/>
 <contactref element="R34" pad="8"/>
@@ -1883,6 +1848,8 @@ chip</description>
 <contactref element="R34" pad="6"/>
 <contactref element="R34" pad="5"/>
 <contactref element="R35" pad="2"/>
+<contactref element="R6" pad="2"/>
+<contactref element="R7" pad="2"/>
 <contactref element="R71" pad="2"/>
 <contactref element="R77" pad="2"/>
 <contactref element="R80" pad="1"/>
@@ -2033,7 +2000,6 @@ chip</description>
 <contactref element="Q2" pad="S"/>
 <contactref element="Q3" pad="2"/>
 <contactref element="Q3" pad="3"/>
-<contactref element="R1" pad="7"/>
 <contactref element="R11" pad="1"/>
 <contactref element="R13" pad="2"/>
 <contactref element="R15" pad="1"/>
@@ -2041,6 +2007,7 @@ chip</description>
 <contactref element="R18" pad="1"/>
 <contactref element="R21" pad="1"/>
 <contactref element="R22" pad="1"/>
+<contactref element="R3" pad="2"/>
 <contactref element="R5" pad="1"/>
 <contactref element="R66" pad="1"/>
 <contactref element="R69" pad="1"/>
@@ -2170,8 +2137,8 @@ chip</description>
 <contactref element="X1" pad="3"/>
 </signal>
 <signal name="RST#">
-<contactref element="R1" pad="2"/>
-<contactref element="R4" pad="14"/>
+<contactref element="R3" pad="1"/>
+<contactref element="R9" pad="2"/>
 <contactref element="U1" pad="V10"/>
 <contactref element="X2" pad="24"/>
 </signal>
@@ -2609,7 +2576,7 @@ chip</description>
 <contactref element="U3" pad="16"/>
 </signal>
 <signal name="FLASH-CS#">
-<contactref element="R2" pad="4"/>
+<contactref element="R7" pad="1"/>
 <contactref element="U1" pad="K19"/>
 <contactref element="U4" pad="1"/>
 </signal>
@@ -2650,7 +2617,7 @@ chip</description>
 <contactref element="U4" pad="3"/>
 </signal>
 <signal name="FLASH-D03">
-<contactref element="R2" pad="2"/>
+<contactref element="R6" pad="1"/>
 <contactref element="U1" pad="F18"/>
 <contactref element="U4" pad="7"/>
 </signal>
@@ -2733,29 +2700,29 @@ chip</description>
 <contactref element="U2" pad="39"/>
 </signal>
 <signal name="FPGA-TCK">
-<contactref element="R4" pad="11"/>
+<contactref element="R36" pad="2"/>
 <contactref element="R5" pad="2"/>
 <contactref element="U1" pad="C8"/>
 </signal>
 <signal name="FPGA-TMS">
-<contactref element="R4" pad="16"/>
+<contactref element="R4" pad="2"/>
 <contactref element="U1" pad="W9"/>
 </signal>
 <signal name="FPGA-TDI">
-<contactref element="R4" pad="15"/>
+<contactref element="R8" pad="2"/>
 <contactref element="U1" pad="W10"/>
 </signal>
 <signal name="FPGA-TDO">
-<contactref element="R4" pad="10"/>
+<contactref element="R37" pad="2"/>
 <contactref element="U1" pad="W8"/>
 </signal>
 <signal name="FPGA-DONE">
-<contactref element="R4" pad="9"/>
+<contactref element="R38" pad="2"/>
 <contactref element="U1" pad="U12"/>
 </signal>
 <signal name="TCK">
 <contactref element="JP3" pad="1"/>
-<contactref element="R4" pad="6"/>
+<contactref element="R36" pad="1"/>
 <contactref element="R89" pad="1"/>
 <contactref element="U2" pad="16"/>
 </signal>
@@ -2767,24 +2734,24 @@ chip</description>
 </signal>
 <signal name="TDI">
 <contactref element="JP4" pad="1"/>
-<contactref element="R4" pad="2"/>
+<contactref element="R8" pad="1"/>
 <contactref element="R90" pad="1"/>
 <contactref element="U2" pad="17"/>
 </signal>
 <signal name="TDO">
 <contactref element="JP4" pad="2"/>
-<contactref element="R4" pad="7"/>
+<contactref element="R37" pad="1"/>
 <contactref element="R91" pad="1"/>
 <contactref element="U2" pad="18"/>
 </signal>
 <signal name="PROG#">
-<contactref element="R4" pad="3"/>
+<contactref element="R9" pad="1"/>
 <contactref element="R99" pad="1"/>
 <contactref element="U2" pad="21"/>
 </signal>
 <signal name="DONE">
 <contactref element="R100" pad="1"/>
-<contactref element="R4" pad="8"/>
+<contactref element="R38" pad="1"/>
 <contactref element="U2" pad="22"/>
 </signal>
 <signal name="FPGA-INIT#">
