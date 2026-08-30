@@ -1,0 +1,77 @@
+<title>Zulu A7 Rework — Design Change Record</title>
+<style>
+:root {
+  --bg: #f6f4ef; --bg-raised: #ffffff; --ink: #211f1c; --ink-dim: #5c574e;
+  --line: #ddd7c9; --accent: #a85a2a; --accent-ink: #6f3c1a;
+  --ok-bg: #e4efe2; --ok-ink: #2f5b34; --warn-bg: #f7ecd9; --warn-ink: #8a5a11;
+  --mono-bg: #efe9db; --shadow: 0 1px 2px rgba(30,25,15,0.06), 0 8px 24px rgba(30,25,15,0.05);
+}
+:root[data-theme="dark"] {
+  --bg: #16140f; --bg-raised: #1e1c15; --ink: #ece7da; --ink-dim: #a89d87;
+  --line: #3a3527; --accent: #e08a4c; --accent-ink: #f0a870;
+  --ok-bg: #1c2a1c; --ok-ink: #8fc98f; --warn-bg: #332711; --warn-ink: #e0ac52;
+  --mono-bg: #23201785; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16140f; --bg-raised: #1e1c15; --ink: #ece7da; --ink-dim: #a89d87;
+    --line: #3a3527; --accent: #e08a4c; --accent-ink: #f0a870;
+    --ok-bg: #1c2a1c; --ok-ink: #8fc98f; --warn-bg: #332711; --warn-ink: #e0ac52;
+    --mono-bg: #23201785; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink);
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.55; }
+.serif { font-family: Iowan Old Style, "Palatino Linotype", Georgia, "Times New Roman", serif; }
+.mono { font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace; }
+.page { max-width: 900px; margin: 0 auto; padding: 40px 24px 90px; }
+.titleblock { border: 1px solid var(--line); border-radius: 4px; background: var(--bg-raised);
+  box-shadow: var(--shadow); padding: 22px 26px; margin-bottom: 36px; }
+.titleblock h1 { font-size: 26px; margin: 0 0 4px; text-wrap: balance; }
+.titleblock .sub { color: var(--ink-dim); font-size: 14.5px; margin-bottom: 16px; }
+.tb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px 24px; border-top: 1px solid var(--line); padding-top: 14px; font-size: 13px; }
+.tb-grid .k { color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; }
+.tb-grid .v { font-variant-numeric: tabular-nums; }
+h2 { font-size: 20px; margin: 46px 0 6px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent); text-wrap: balance; }
+h3 { font-size: 15.5px; margin: 26px 0 8px; color: var(--accent-ink); }
+p { color: var(--ink); max-width: 68ch; }
+p.note { color: var(--ink-dim); font-size: 13.5px; }
+a { color: var(--accent-ink); }
+.chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px;
+  border-radius: 20px; letter-spacing: 0.02em; white-space: nowrap; }
+.chip.ok { background: var(--ok-bg); color: var(--ok-ink); }
+.chip.warn { background: var(--warn-bg); color: var(--warn-ink); }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg-raised); box-shadow: var(--shadow); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+thead th { text-align: left; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-dim); padding: 9px 12px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: var(--bg-raised); }
+tbody td { padding: 7px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+td.mono, th.mono { font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums; }
+tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.bom { margin-top: 10px; }
+.bom td.old { color: var(--ink-dim); text-decoration: line-through; text-decoration-color: var(--line); }
+.bom td.arrow { color: var(--accent); text-align: center; width: 24px; }
+.callout { border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg-raised));
+  padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13.5px; }
+.callout.warn { border-left-color: var(--warn-ink);
+  background: color-mix(in srgb, var(--warn-ink) 10%, var(--bg-raised)); }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
+  color: var(--ink-dim); font-size: 12.5px; }
+.controls { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.filterbtn { font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--line);
+  background: var(--bg-raised); color: var(--ink); cursor: pointer; }
+.filterbtn.active { border-color: var(--accent); color: var(--accent-ink); }
+</style>

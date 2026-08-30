@@ -1,0 +1,39 @@
+# make_board.py writes this every run, so `git add -A` picks it up otherwise.
+*.brd.bak
+*.sch.bak
+
+# Eagle / Fusion scratch
+# *.pro is the autorouter's statistics report, written beside the board on every
+# run -- passes, rip-ups, vias, elapsed time. Useful to read once, meaningless to
+# keep: it describes a run, not the design. The numbers worth keeping are in
+# board/STACKUP.md.
+*.pro
+*.b#?
+*.s#?
+*.l#?
+eagle.epf
+
+# Vivado leaves these beside the reports we do keep in vivado/
+vivado/*.jou
+vivado/*.log
+vivado/.Xil/
+vivado/*.cache/
+vivado/*.runs/
+vivado/*.hw/
+
+__pycache__/
+*.pyc
+
+# Vendor datasheets and drawings are proprietary and stay out of version
+# control. In XuLA3 they sat outside the project entirely, in ../Datasheet/.
+# Zulu_A7 has no folder above it to use, so Datasheet/ lives inside the project
+# but is untracked: validate.py, vivado_io_check.py and escape/rings.py read
+# Datasheet/xc7a35tcpg236pkg_pinout.txt from there. A fresh clone must have that
+# file put back by hand, or those three tools lose their ball checks.
+Datasheet/
+*_sd.pdf
+board/*.pdf
+
+# Fusion/Eagle revision archives. Saved by the CAD tool, not by anything here,
+# and superseded the moment the board is regenerated.
+archives/
