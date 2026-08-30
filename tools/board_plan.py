@@ -301,13 +301,17 @@ blk(33.02 - SZ["X1"][0] / 2, BY1 - 4.141 + 0.675, SZ["X1"][0], 4.141 - 0.675,
 # same side as both things it drives -- the FPGA's clock ball and the
 # FT2232's OSCI -- so neither needs a via.
 # Q1 is out of the +x end: the split JTAG rows are wider than the Pmod they
-# straddle and take the x that used to be Q1's. It goes in the band between
-# the FT2232 and the USB shell, which nothing else can use -- 4.80 mm tall.
+# straddle and take the x that used to be Q1's. It sits above the LEDs and to
+# the left of the FT2232, in the 7.34 mm of channel between the LED block and
+# X2's top row -- NOT in the 4.80 mm slot between the FT2232 and the USB shell,
+# which is where it went first. Wedged between those two it had half a
+# millimetre either side and sat under the USB shell's shadow; here the tightest
+# neighbour is BTN at 0.45 mm and there is 1.9 mm of air above and below.
 # It stays on the front, which is the point of it: same side as the FPGA's
 # clock ball and the FT2232's OSCI, so neither leg needs a via. It is also no
 # longer the part that caps the escape ring -- see make_board.py, where the
 # 0.45 mm it used to be pushed out by was the ring's.
-blk(33.00, 15.09 + YOFF, *SZ["Q1"], FT, "Q1", fs=10)
+blk(23.00, 15.09 + YOFF, *SZ["Q1"], FT, "Q1", fs=10)
 # The JTAG is two 1x3 headers, not one 2x3 wearing a split footprint: JP3 is
 # TCK/TMS/GND and JP4 is TDI/TDO/VCC3V3. Nothing plugs across 17.96 mm, so a
 # single part was a fiction the schematic had to keep telling. Two parts also

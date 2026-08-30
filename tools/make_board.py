@@ -398,7 +398,9 @@ SINGLE = [# X3 must be R270, not R90. The DM3AT's layer-39 keepout runs 8.70 mm 
           # 7.40. It is now at x 33, in the band between the FT2232 and the USB
           # shell, because the split JTAG took the +x end. So Q1 no longer
           # constrains the ring at all: whatever caps it now, it is not this.
-          ("Q1", 33.00, 15.09, "R0"),
+          # x 23, not 33: above the LEDs and left of the FT2232 rather than
+          # squeezed into the slot between the FT2232 and the USB shell.
+          ("Q1", 23.00, 15.09, "R0"),
           # The JTAG is two 1x3 headers now, JP3 = TCK/TMS/GND and JP4 =
           # TDI/TDO/VCC3V3, 17.96 mm apart in the two 3.05 mm bands the Pmod
           # leaves above and below itself. The both-sides-clear corridor a 2x3
