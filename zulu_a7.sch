@@ -8966,20 +8966,59 @@ Metric Code Size 5664</description>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
 </part>
 <part name="SUPPLY1" library="ctambe" deviceset="VCC3V3" device=""/>
-<part name="C85" library="rcl" deviceset="C-US" device="C1206" value="47uF">
+<part name="C85" library="rcl" deviceset="C-US" device="C0805" value="22uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM31CR60J476ME19L"/>
-<attribute name="SPEC" value="X5R 6.3V +-20%, 1.60 mm MAX -- back side, see board/STACKUP.md"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
 </part>
-<part name="C140" library="rcl" deviceset="C-US" device="C1206" value="47uF">
+<part name="C140" library="rcl" deviceset="C-US" device="C0805" value="22uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM31CR60J476ME19L"/>
-<attribute name="SPEC" value="X5R 6.3V +-20%, 1.60 mm MAX -- back side, see board/STACKUP.md"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
 </part>
-<part name="C86" library="rcl" deviceset="C-US" device="C1206" value="47uF">
+<part name="C141" library="rcl" deviceset="C-US" device="C0805" value="22uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM31CR60J476ME19L"/>
-<attribute name="SPEC" value="X5R 6.3V +-20%, 1.60 mm MAX -- back side, see board/STACKUP.md"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
+<attribute name="NOTE" value="Second half of a bulk position: each 47uF 1206 became two 22uF 0805. Nominal drops 47 -&gt; 44 uF per position, but the 0805 is 10V where the 1206 was 6.3V, so it derates less under bias and the pair should deliver at least what the single part did. Height also drops 1.60 -&gt; 1.45 mm max, which the back-side budget against the 2.54 mm header standoff cares about."/>
+</part>
+<part name="C142" library="rcl" deviceset="C-US" device="C0805" value="22uF">
+<attribute name="MANF" value="Murata"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
+<attribute name="NOTE" value="Second half of a bulk position: each 47uF 1206 became two 22uF 0805. Nominal drops 47 -&gt; 44 uF per position, but the 0805 is 10V where the 1206 was 6.3V, so it derates less under bias and the pair should deliver at least what the single part did. Height also drops 1.60 -&gt; 1.45 mm max, which the back-side budget against the 2.54 mm header standoff cares about."/>
+</part>
+<part name="C143" library="rcl" deviceset="C-US" device="C0805" value="22uF">
+<attribute name="MANF" value="Murata"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
+<attribute name="NOTE" value="Second half of a bulk position: each 47uF 1206 became two 22uF 0805. Nominal drops 47 -&gt; 44 uF per position, but the 0805 is 10V where the 1206 was 6.3V, so it derates less under bias and the pair should deliver at least what the single part did. Height also drops 1.60 -&gt; 1.45 mm max, which the back-side budget against the 2.54 mm header standoff cares about."/>
+</part>
+<part name="C144" library="rcl" deviceset="C-US" device="C0805" value="22uF">
+<attribute name="MANF" value="Murata"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
+<attribute name="NOTE" value="Second half of a bulk position: each 47uF 1206 became two 22uF 0805. Nominal drops 47 -&gt; 44 uF per position, but the 0805 is 10V where the 1206 was 6.3V, so it derates less under bias and the pair should deliver at least what the single part did. Height also drops 1.60 -&gt; 1.45 mm max, which the back-side budget against the 2.54 mm header standoff cares about."/>
+</part>
+<part name="C145" library="rcl" deviceset="C-US" device="C0805" value="22uF">
+<attribute name="MANF" value="Murata"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
+<attribute name="NOTE" value="Second half of a bulk position: each 47uF 1206 became two 22uF 0805. Nominal drops 47 -&gt; 44 uF per position, but the 0805 is 10V where the 1206 was 6.3V, so it derates less under bias and the pair should deliver at least what the single part did. Height also drops 1.60 -&gt; 1.45 mm max, which the back-side budget against the 2.54 mm header standoff cares about."/>
+</part>
+<part name="C146" library="rcl" deviceset="C-US" device="C0805" value="22uF">
+<attribute name="MANF" value="Murata"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
+<attribute name="NOTE" value="Second half of a bulk position: each 47uF 1206 became two 22uF 0805. Nominal drops 47 -&gt; 44 uF per position, but the 0805 is 10V where the 1206 was 6.3V, so it derates less under bias and the pair should deliver at least what the single part did. Height also drops 1.60 -&gt; 1.45 mm max, which the back-side budget against the 2.54 mm header standoff cares about."/>
+</part>
+<part name="GND40" library="ctambe" deviceset="GND" device=""/>
+<part name="GND41" library="ctambe" deviceset="GND" device=""/>
+<part name="GND42" library="ctambe" deviceset="GND" device=""/>
+<part name="C86" library="rcl" deviceset="C-US" device="C0805" value="22uF">
+<attribute name="MANF" value="Murata"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
 </part>
 <part name="C87" library="rcl" deviceset="C-US" device="C0603" value="4.7uF">
 <attribute name="MANF" value="Murata"/>
@@ -9015,10 +9054,10 @@ Metric Code Size 5664</description>
 <attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
 <attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C93" library="rcl" deviceset="C-US" device="C1206" value="47uF">
+<part name="C93" library="rcl" deviceset="C-US" device="C0805" value="22uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM31CR60J476ME19L"/>
-<attribute name="SPEC" value="X5R 6.3V +-20%, 1.60 mm MAX -- back side, see board/STACKUP.md"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
 </part>
 <part name="C94" library="rcl" deviceset="C-US" device="C0603" value="4.7uF">
 <attribute name="MANF" value="Murata"/>
@@ -9037,15 +9076,15 @@ Metric Code Size 5664</description>
 <attribute name="SPEC" value="X5R 6.3V +-10%, 0.30 mm max"/>
 <attribute name="NOTE" value="0402 -&gt; 0201 to cut ESL, following Cmod A7. THE VOLTAGE RATING DROPS 16V to 6.3V and that costs real capacitance: on VCC3V3 a 6.3V 0201 sits at 52 percent of rating and DC bias typically removes 60-75 percent of it, against 15-25 percent for the 16V 0402 it replaces. The BOM value is unchanged, so validate.py's UG483 count still passes -- it counts nominal values and cannot see bias derating. Effective decoupling on 3V3 is roughly half what it was. Confirm the MPN suffix and the bias curve against Murata's data before ordering."/>
 </part>
-<part name="C97" library="rcl" deviceset="C-US" device="C1206" value="47uF">
+<part name="C97" library="rcl" deviceset="C-US" device="C0805" value="22uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM31CR60J476ME19L"/>
-<attribute name="SPEC" value="X5R 6.3V +-20%, 1.60 mm MAX -- back side, see board/STACKUP.md"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
 </part>
-<part name="C98" library="rcl" deviceset="C-US" device="C1206" value="47uF">
+<part name="C98" library="rcl" deviceset="C-US" device="C0805" value="22uF">
 <attribute name="MANF" value="Murata"/>
-<attribute name="MANF#" value="GRM31CR60J476ME19L"/>
-<attribute name="SPEC" value="X5R 6.3V +-20%, 1.60 mm MAX -- back side, see board/STACKUP.md"/>
+<attribute name="MANF#" value="GRM21BR61A226ME44L"/>
+<attribute name="SPEC" value="X5R 10V +-20%, 1.45 mm max"/>
 </part>
 <part name="C99" library="rcl" deviceset="C-US" device="C0603" value="4.7uF">
 <attribute name="MANF" value="Murata"/>
@@ -14472,7 +14511,40 @@ as the XADC supply filter, not on these rails.</text>
 <instance part="SUPPLY3" gate="1" x="66.04" y="172.72" smashed="yes">
 <attribute name="VALUE" x="61.957" y="173.99" size="1.524" layer="96"/>
 </instance>
-</instances>
+
+<instance part="C141" gate="G$1" x="7.62" y="145.0" smashed="yes">
+<attribute name="NAME" x="8.636" y="145.635" size="1.524" layer="95"/>
+<attribute name="VALUE" x="8.636" y="142.0" size="1.524" layer="96"/>
+</instance>
+<instance part="C142" gate="G$1" x="17.78" y="145.0" smashed="yes">
+<attribute name="NAME" x="18.796" y="145.635" size="1.524" layer="95"/>
+<attribute name="VALUE" x="18.796" y="142.0" size="1.524" layer="96"/>
+</instance>
+<instance part="C143" gate="G$1" x="27.94" y="145.0" smashed="yes">
+<attribute name="NAME" x="28.956000000000003" y="145.635" size="1.524" layer="95"/>
+<attribute name="VALUE" x="28.956000000000003" y="142.0" size="1.524" layer="96"/>
+</instance>
+<instance part="C144" gate="G$1" x="7.62" y="127.0" smashed="yes">
+<attribute name="NAME" x="8.636" y="127.635" size="1.524" layer="95"/>
+<attribute name="VALUE" x="8.636" y="124.0" size="1.524" layer="96"/>
+</instance>
+<instance part="C145" gate="G$1" x="7.62" y="109.0" smashed="yes">
+<attribute name="NAME" x="8.636" y="109.635" size="1.524" layer="95"/>
+<attribute name="VALUE" x="8.636" y="106.0" size="1.524" layer="96"/>
+</instance>
+<instance part="C146" gate="G$1" x="17.78" y="109.0" smashed="yes">
+<attribute name="NAME" x="18.796" y="109.635" size="1.524" layer="95"/>
+<attribute name="VALUE" x="18.796" y="106.0" size="1.524" layer="96"/>
+</instance>
+<instance part="GND40" gate="1" x="7.62" y="134.84" smashed="yes">
+<attribute name="VALUE" x="5.08" y="131.03" size="1.524" layer="96"/>
+</instance>
+<instance part="GND41" gate="1" x="7.62" y="116.84" smashed="yes">
+<attribute name="VALUE" x="5.08" y="113.03" size="1.524" layer="96"/>
+</instance>
+<instance part="GND42" gate="1" x="7.62" y="98.84" smashed="yes">
+<attribute name="VALUE" x="5.08" y="95.03" size="1.524" layer="96"/>
+</instance></instances>
 <busses>
 </busses>
 <nets>
@@ -14510,7 +14582,12 @@ as the XADC supply filter, not on these rails.</text>
 <junction x="76.2" y="170.18"/>
 <junction x="73.66" y="170.18"/>
 </segment>
-</net>
+
+<segment>
+<wire x1="7.62" y1="129.54" x2="7.62" y2="132.08" width="0.1524" layer="91"/>
+<label x="9.02" y="133.08" size="1.524" layer="95"/>
+<pinref part="C144" gate="G$1" pin="1"/>
+</segment></net>
 <net name="VCC1V0" class="0">
 <segment>
 <wire x1="68.58" y1="190.5" x2="68.58" y2="193.04" width="0.1524" layer="91"/>
@@ -14583,7 +14660,19 @@ as the XADC supply filter, not on these rails.</text>
 <junction x="17.78" y="185.42"/>
 <junction x="68.58" y="185.42"/>
 </segment>
-</net>
+
+<segment>
+<wire x1="7.62" y1="147.54" x2="7.62" y2="150.08" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="147.54" x2="17.78" y2="150.08" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="147.54" x2="27.94" y2="150.08" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="150.08" x2="17.78" y2="150.08" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="150.08" x2="27.94" y2="150.08" width="0.1524" layer="91"/>
+<label x="9.02" y="151.08" size="1.524" layer="95"/>
+<pinref part="C141" gate="G$1" pin="1"/>
+<pinref part="C142" gate="G$1" pin="1"/>
+<pinref part="C143" gate="G$1" pin="1"/>
+<junction x="17.78" y="150.08"/>
+</segment></net>
 <net name="VCC3V3" class="0">
 <segment>
 <wire x1="139.7" y1="210.82" x2="139.7" y2="213.36" width="0.1524" layer="91"/>
@@ -14796,7 +14885,15 @@ as the XADC supply filter, not on these rails.</text>
 <junction x="132.08" y="137.16"/>
 <junction x="139.7" y="133.35"/>
 </segment>
-</net>
+
+<segment>
+<wire x1="7.62" y1="111.54" x2="7.62" y2="114.08" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="111.54" x2="17.78" y2="114.08" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="114.08" x2="17.78" y2="114.08" width="0.1524" layer="91"/>
+<label x="9.02" y="115.08" size="1.524" layer="95"/>
+<pinref part="C145" gate="G$1" pin="1"/>
+<pinref part="C146" gate="G$1" pin="1"/>
+</segment></net>
 <net name="GND" class="0">
 <segment>
 <wire x1="190.5" y1="142.24" x2="190.5" y2="139.7" width="0.1524" layer="91"/>
@@ -15140,7 +15237,34 @@ as the XADC supply filter, not on these rails.</text>
 <wire x1="12.7" y1="171.45" x2="17.78" y2="171.45" width="0.1524" layer="91"/>
 <junction x="12.7" y="171.45"/>
 </segment>
-</net>
+
+<segment>
+<wire x1="7.62" y1="139.92" x2="7.62" y2="137.38" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="139.92" x2="17.78" y2="137.38" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="139.92" x2="27.94" y2="137.38" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="137.38" x2="17.78" y2="137.38" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="137.38" x2="27.94" y2="137.38" width="0.1524" layer="91"/>
+<pinref part="GND40" gate="1" pin="GND"/>
+<pinref part="C141" gate="G$1" pin="2"/>
+<pinref part="C142" gate="G$1" pin="2"/>
+<pinref part="C143" gate="G$1" pin="2"/>
+<junction x="17.78" y="137.38"/>
+<junction x="7.62" y="137.38"/>
+</segment>
+<segment>
+<wire x1="7.62" y1="121.92" x2="7.62" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="GND41" gate="1" pin="GND"/>
+<pinref part="C144" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<wire x1="7.62" y1="103.92" x2="7.62" y2="101.38" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="103.92" x2="17.78" y2="101.38" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="101.38" x2="17.78" y2="101.38" width="0.1524" layer="91"/>
+<pinref part="GND42" gate="1" pin="GND"/>
+<pinref part="C145" gate="G$1" pin="2"/>
+<pinref part="C146" gate="G$1" pin="2"/>
+<junction x="7.62" y="101.38"/>
+</segment></net>
 </nets>
 </sheet>
 </sheets>

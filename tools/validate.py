@@ -213,9 +213,14 @@ def main(path):
     # out: 2.50 mm against a 2.54 mm header standoff. Two 47uF 1206 at 1.60 mm
     # replace it, so the bulk reads 3 x 47uF (C85 + C140 on the VCCINT row, C86
     # on the VCCBRAM row) and drops from 147uF to 141uF. See board/STACKUP.md.
-    for net, want in (("VCC1V0", {"47uF": 3, "4.7uF": 2, "0.47uF": 4}),
-                      ("VCC1V8", {"47uF": 1, "4.7uF": 1, "0.47uF": 2}),
-                      ("VCC3V3", {"47uF": 2, "4.7uF": 8, "0.47uF": 16})):
+    # The bulk is 22uF 0805 now, two per position where there was one 47uF 1206:
+    # nominal per position falls 47 -> 44, but the 0805 is 10V against the 1206's
+    # 6.3V, so it derates less under bias and the pair should deliver at least
+    # what the single part did. It also drops 1.60 -> 1.45 mm, which the back-side
+    # height budget against the 2.54 mm header standoff cares about. Counts double.
+    for net, want in (("VCC1V0", {"22uF": 6, "4.7uF": 2, "0.47uF": 4}),
+                      ("VCC1V8", {"22uF": 2, "4.7uF": 1, "0.47uF": 2}),
+                      ("VCC3V3", {"22uF": 4, "4.7uF": 8, "0.47uF": 16})):
         m = re.search(r'<net name="%s" class="[^"]*">(.*?)</net>' % net, sh7, re.S)
         cs = re.findall(r'<pinref part="(C\d+)" gate="G\$1" pin="1"/>', m.group(1)) if m else []
         got = collections.Counter(VAL.get(c, "?") for c in cs)

@@ -445,6 +445,23 @@ SINGLE = [# X3 must be R270, not R90. The DM3AT's layer-39 keepout runs 8.70 mm 
           # what a full board does: every part placed by hand pushes one out
           # somewhere else. Pinning it stops the shuffle costing more than it buys.
           ("D2", 30.320, 19.794, "MR0"),
+          # The bulk went 6 x 47uF 1206 to 12 x 22uF 0805 and three of the twelve
+          # had no seat left: two 0805 need more board than one 1206 once each
+          # carries its own keepout and gap, so doubling the count costs area even
+          # though every part got smaller. These three are pinned at the REGULATOR,
+          # 12.7 to 14.3 mm from U8, which is where make_board's own note says bulk
+          # belongs -- "bulk belongs at the regulator and gains nothing from sitting
+          # under the FPGA". The anchored pass would not put them there because it
+          # anchors them to U1.
+          # C98 is on the BACK and not beside the other two, because X3 carries a
+          # 0.15 mm CIRCLE on layer 21 at local (4.6, 1.1) and the socket is
+          # rotated R270, which swings that circle out to x 17.20 -- past every
+          # wire in the package. A free-space map built from wires and rectangles
+          # alone put C98 at 16.65 and the generator rejected it.
+          ("C93", 14.294, 15.428, "MR90"),
+          ("C97", 10.618, 17.704, "R0"),
+          ("C98", 5.518, 17.304, "MR0"),
+          ("C86", 14.118, 17.704, "R0"),
           # J1 came in off the strip that the 2.400 in cut removed. Centred at
           # x 56.50 with JP3 on the same centre, so the JTAG rows sit square
           # across it. Body 5.08 wide: 1.16 mm of board outboard, and 1.20 mm to
