@@ -82,8 +82,8 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
     <div class="sub">Spartan-6 → Artix-7 · PIC18F14K50 → FT2232HQ · linear regulators → LTC3569 · connector, memory &amp; footprint refresh</div>
     <div class="tb-grid mono">
       <div><div class="k">File</div><div class="v">zulu_a7.sch</div></div>
-      <div><div class="k">Git commit</div><div class="v">c5a632b</div></div>
-      <div><div class="k">Parts / nets</div><div class="v">213 / 175</div></div>
+      <div><div class="k">Git commit</div><div class="v">3964c50</div></div>
+      <div><div class="k">Parts / nets</div><div class="v">214 / 175</div></div>
       <div><div class="k">Sheets</div><div class="v">7</div></div>
       <div><div class="k">Status</div><div class="v">Schematic complete · Board pending</div></div>
     </div>
@@ -91,7 +91,7 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
 
   <p>Everything in this document is read out of <span class="mono">zulu_a7.sch</span> when it is generated, and
   every FPGA ball is checked against Xilinx's <span class="mono">xc7a35tcpg236pkg_pinout.txt</span>. It supersedes
-  rev1, which was written 3 commits ago and had gone badly stale &mdash; it still described two LDOs that no longer
+  rev1, which was written 4 commits ago and had gone badly stale &mdash; it still described two LDOs that no longer
   exist, a 32 MB SDRAM, an 8 Mb flash, a WiFi header, a 40-pin X2, and twelve ball assignments it could not verify.</p>
   <p>Read <strong>Open items</strong> before doing anything else with this file.</p>
 
@@ -363,7 +363,7 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
 
   <h2 class="serif">Open items — read before layout</h2>
   <div class="callout warn"><strong>1. The board file is still the original Spartan-6 layout.</strong> 65 elements
-  against 213 parts, and X1's element now sits outside the outline because the tab it was mounted on is gone —
+  against 214 parts, and X1's element now sits outside the outline because the tab it was mounted on is gone —
   expected, and it resolves on regeneration. Its 421 routed connections are all for the Spartan-6 and are worthless. The stackup is already declared four-layer &mdash; <span class="mono">layerSetup (1*2*3*16)</span>, with Route2 and Route3 active &mdash; but only Top and Bottom carry copper, so nothing has ever been routed on the inner pair. The design rules are the old board's and will not do for the BGA: a via at <span class="mono">msDrill</span> 10 mil with a 25 % annular ring comes out 0.56 mm across, where the diagonal channel between four 0.5 mm-pitch balls offers a free radius of only 0.204 mm. Rebuild the board from the schematic rather than forward-annotating onto this one.</div>
   <div class="callout"><strong>2. The ball assignments have been through Vivado.</strong> <span class="mono">
   tools/vivado_io_check.py</span> reads the ball map out of the schematic, writes a Verilog stub with one port per
@@ -397,8 +397,8 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
   </ul>
 
   <footer>
-    Baseline <span class="mono">30a0e65</span> · this revision <span class="mono">c5a632b</span> ·
-    3 commits since baseline.
+    Baseline <span class="mono">30a0e65</span> · this revision <span class="mono">3964c50</span> ·
+    4 commits since baseline.
     Regenerate with <span class="mono">python tools/change_record.py</span>.
   </footer>
 </div>

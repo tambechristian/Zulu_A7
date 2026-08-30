@@ -8503,148 +8503,47 @@ Metric Code Size 5664</description>
 </library>
 <library name="pinhead">
 <packages>
-<package name="2X03">
-<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<wire x1="-3.81" y1="-1.905" x2="-3.175" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="-2.54" x2="-1.905" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="-2.54" x2="-1.27" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="-1.905" x2="-0.635" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="-2.54" x2="0.635" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="-2.54" x2="1.27" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="-1.905" x2="1.905" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="-2.54" x2="3.175" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="-2.54" x2="3.81" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-3.81" y1="1.905" x2="-3.175" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="2.54" x2="-1.905" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="2.54" x2="-1.27" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="1.905" x2="-0.635" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="2.54" x2="0.635" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="2.54" x2="1.27" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="1.905" x2="1.905" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="2.54" x2="3.175" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="2.54" x2="3.81" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-3.81" y1="-1.905" x2="-3.81" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="3.81" y1="1.905" x2="3.81" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="1.905" x2="-1.27" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="1.905" x2="1.27" y2="-1.905" width="0.1524" layer="21"/>
-<pad name="1" x="-2.54" y="-1.27" drill="1.016" shape="square"/>
-<pad name="2" x="-2.54" y="1.27" drill="1.016"/>
-<pad name="3" x="0" y="-1.27" drill="1.016"/>
-<pad name="4" x="0" y="1.27" drill="1.016"/>
-<pad name="5" x="2.54" y="-1.27" drill="1.016"/>
-<pad name="6" x="2.54" y="1.27" drill="1.016"/>
-<text x="-3.81" y="3.175" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-3.81" y="-4.445" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-2.794" y1="-1.524" x2="-2.286" y2="-1.016" layer="51"/>
-<rectangle x1="-2.794" y1="1.016" x2="-2.286" y2="1.524" layer="51"/>
-<rectangle x1="-0.254" y1="-1.524" x2="0.254" y2="-1.016" layer="51"/>
-<rectangle x1="-0.254" y1="1.016" x2="0.254" y2="1.524" layer="51"/>
-<rectangle x1="2.286" y1="-1.524" x2="2.794" y2="-1.016" layer="51"/>
-<rectangle x1="2.286" y1="1.016" x2="2.794" y2="1.524" layer="51"/>
-</package>
-<package name="2X03-NOSILK">
-<wire x1="-3.81" y1="2.54" x2="3.81" y2="2.54" width="0" layer="39"/>
-<wire x1="3.81" y1="2.54" x2="3.81" y2="-2.54" width="0" layer="39"/>
-<wire x1="3.81" y1="-2.54" x2="-3.81" y2="-2.54" width="0" layer="39"/>
-<wire x1="-3.81" y1="-2.54" x2="-3.81" y2="2.54" width="0" layer="39"/>
-<pad name="1" x="-2.54" y="-1.27" drill="1.016" shape="square"/>
-<pad name="2" x="-2.54" y="1.27" drill="1.016"/>
-<pad name="3" x="0" y="-1.27" drill="1.016"/>
-<pad name="4" x="0" y="1.27" drill="1.016"/>
-<pad name="5" x="2.54" y="-1.27" drill="1.016"/>
-<pad name="6" x="2.54" y="1.27" drill="1.016"/>
-<text x="-3.81" y="3.175" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-3.81" y="-4.445" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-2.794" y1="-1.524" x2="-2.286" y2="-1.016" layer="51"/>
-<rectangle x1="-2.794" y1="1.016" x2="-2.286" y2="1.524" layer="51"/>
-<rectangle x1="-0.254" y1="-1.524" x2="0.254" y2="-1.016" layer="51"/>
-<rectangle x1="-0.254" y1="1.016" x2="0.254" y2="1.524" layer="51"/>
-<rectangle x1="2.286" y1="-1.524" x2="2.794" y2="-1.016" layer="51"/>
-<rectangle x1="2.286" y1="1.016" x2="2.794" y2="1.524" layer="51"/>
-</package>
-<package name="2X03-SPLIT">
-<description>&lt;b&gt;JTAG, 2x3 split across the Pmod&lt;/b&gt;&lt;p&gt;The same six pins as 2X03, but the two rows are 17.96 mm apart instead of 2.54 so they straddle the 2x6 Pmod header standing in the channel. Odd pads 1/3/5 in one row, even 2/4/6 in the other, column pitch unchanged at 2.54. This is NOT a pluggable header: no 0.1 in 2x3 connector spans 17.96 mm, so these are six individual holes for flying leads or pogo pins. It exists because the 2.400 in board has no other room -- a real 2x3 needs 4.42 mm of copper height and the bands above and below the Pmod are 3.05 mm. Keepout is per row, deliberately not one rectangle, or it would cover the Pmod it straddles.&lt;/p&gt;</description>
-<wire x1="-3.81" y1="-7.710000000000001" x2="3.81" y2="-7.710000000000001" width="0" layer="39"/>
-<wire x1="3.81" y1="-7.710000000000001" x2="3.81" y2="-10.25" width="0" layer="39"/>
-<wire x1="3.81" y1="-10.25" x2="-3.81" y2="-10.25" width="0" layer="39"/>
-<wire x1="-3.81" y1="-10.25" x2="-3.81" y2="-7.710000000000001" width="0" layer="39"/>
-<wire x1="-3.81" y1="10.25" x2="3.81" y2="10.25" width="0" layer="39"/>
-<wire x1="3.81" y1="10.25" x2="3.81" y2="7.710000000000001" width="0" layer="39"/>
-<wire x1="3.81" y1="7.710000000000001" x2="-3.81" y2="7.710000000000001" width="0" layer="39"/>
-<wire x1="-3.81" y1="7.710000000000001" x2="-3.81" y2="10.25" width="0" layer="39"/>
-<pad name="1" x="-2.54" y="-8.98" drill="1.016" shape="square"/>
-<pad name="2" x="-2.54" y="8.98" drill="1.016"/>
-<pad name="3" x="0" y="-8.98" drill="1.016"/>
-<pad name="4" x="0" y="8.98" drill="1.016"/>
-<pad name="5" x="2.54" y="-8.98" drill="1.016"/>
-<pad name="6" x="2.54" y="8.98" drill="1.016"/>
-<text x="-3.81" y="10.885" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-3.81" y="-12.155000000000001" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-2.794" y1="-9.234" x2="-2.286" y2="-8.726" layer="51"/>
-<rectangle x1="-2.794" y1="8.726" x2="-2.286" y2="9.234" layer="51"/>
-<rectangle x1="-0.254" y1="-9.234" x2="0.254" y2="-8.726" layer="51"/>
-<rectangle x1="-0.254" y1="8.726" x2="0.254" y2="9.234" layer="51"/>
-<rectangle x1="2.286" y1="-9.234" x2="2.794" y2="-8.726" layer="51"/>
-<rectangle x1="2.286" y1="8.726" x2="2.794" y2="9.234" layer="51"/>
+<package name="1X03-NOSILK">
+<description>&lt;b&gt;1x3, 2.54 mm, no silk&lt;/b&gt;&lt;p&gt;Half of the JTAG. The six holes are two of these, one in each of the 3.05 mm bands the Pmod leaves above and below itself, so they cannot carry a body outline -- a 2.54 mm plastic strip would come within 0.09 mm of the Pmod shroud. Bare plated holes for flying leads or pogo pins. Keepout is the row only.&lt;/p&gt;</description>
+<wire x1="-3.81" y1="1.27" x2="3.81" y2="1.27" width="0" layer="39"/>
+<wire x1="3.81" y1="1.27" x2="3.81" y2="-1.27" width="0" layer="39"/>
+<wire x1="3.81" y1="-1.27" x2="-3.81" y2="-1.27" width="0" layer="39"/>
+<wire x1="-3.81" y1="-1.27" x2="-3.81" y2="1.27" width="0" layer="39"/>
+<pad name="1" x="-2.54" y="0" drill="1.016" shape="square"/>
+<pad name="2" x="0" y="0" drill="1.016"/>
+<pad name="3" x="2.54" y="0" drill="1.016"/>
+<text x="-3.81" y="1.905" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.81" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-2.794" y1="-0.254" x2="-2.286" y2="0.254" layer="51"/>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
 </package>
 </packages>
 <symbols>
-<symbol name="PINH2X3">
-<wire x1="-8.89" y1="-5.08" x2="6.35" y2="-5.08" width="0.4064" layer="94"/>
-<wire x1="6.35" y1="-5.08" x2="6.35" y2="5.08" width="0.4064" layer="94"/>
-<wire x1="6.35" y1="5.08" x2="-8.89" y2="5.08" width="0.4064" layer="94"/>
-<wire x1="-8.89" y1="5.08" x2="-8.89" y2="-5.08" width="0.4064" layer="94"/>
-<text x="-8.89" y="5.715" size="1.778" layer="95">&gt;NAME</text>
-<text x="-8.89" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
+<symbol name="PINH1X3">
+<wire x1="-2.54" y1="-5.08" x2="2.54" y2="-5.08" width="0.4064" layer="94"/>
+<wire x1="2.54" y1="-5.08" x2="2.54" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="2.54" y1="5.08" x2="-2.54" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="-5.08" width="0.4064" layer="94"/>
+<text x="-2.54" y="5.715" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.54" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="1" x="-5.08" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="2" x="2.54" y="2.54" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
-<pin name="3" x="-5.08" y="0" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="4" x="2.54" y="0" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
-<pin name="5" x="-5.08" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
-<pin name="6" x="2.54" y="-2.54" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
+<pin name="2" x="-5.08" y="0" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="3" x="-5.08" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="PINHD-2X3" prefix="JP" uservalue="yes">
-<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<deviceset name="PINHD-1X3" prefix="JP" uservalue="yes">
+<description>&lt;b&gt;PIN HEADER 1x3&lt;/b&gt;&lt;p&gt;Three of the six JTAG holes. Two of these replace the old 2x3: nothing plugs across 17.96 mm, so the header stopped being one part.&lt;/p&gt;</description>
 <gates>
-<gate name="A" symbol="PINH2X3" x="0" y="0"/>
+<gate name="A" symbol="PINH1X3" x="0" y="0"/>
 </gates>
 <devices>
-<device name="&quot;" package="2X03">
+<device name="NOSILK" package="1X03-NOSILK">
 <connects>
 <connect gate="A" pin="1" pad="1"/>
 <connect gate="A" pin="2" pad="2"/>
 <connect gate="A" pin="3" pad="3"/>
-<connect gate="A" pin="4" pad="4"/>
-<connect gate="A" pin="5" pad="5"/>
-<connect gate="A" pin="6" pad="6"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="NOSILK" package="2X03-NOSILK">
-<connects>
-<connect gate="A" pin="1" pad="1"/>
-<connect gate="A" pin="2" pad="2"/>
-<connect gate="A" pin="3" pad="3"/>
-<connect gate="A" pin="4" pad="4"/>
-<connect gate="A" pin="5" pad="5"/>
-<connect gate="A" pin="6" pad="6"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="SPLIT" package="2X03-SPLIT">
-<connects>
-<connect gate="A" pin="1" pad="1"/>
-<connect gate="A" pin="2" pad="2"/>
-<connect gate="A" pin="3" pad="3"/>
-<connect gate="A" pin="4" pad="4"/>
-<connect gate="A" pin="5" pad="5"/>
-<connect gate="A" pin="6" pad="6"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8913,7 +8812,8 @@ Metric Code Size 5664</description>
 <part name="U10" library="ctambe" deviceset="EEPROM-93LC46B" device="-I/SN" value="93LC46BT-I/SN">
 <attribute name="MANF" value="Microchip"/>
 </part>
-<part name="JP3" library="pinhead" deviceset="PINHD-2X3" device="SPLIT" value="JTAG 2x3"/>
+<part name="JP3" library="pinhead" deviceset="PINHD-1X3" device="NOSILK" value="JTAG TCK/TMS/GND"/>
+<part name="JP4" library="pinhead" deviceset="PINHD-1X3" device="NOSILK" value="JTAG TDI/TDO/3V3"/>
 <part name="R4" library="ctambe" deviceset="RES8" device="741X" value="100">
 <attribute name="DIGIKEY#" value="741X163101JPCT-ND"/>
 <attribute name="MANF" value="CTS"/>
@@ -12355,8 +12255,12 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <attribute name="VALUE" x="85.09" y="19.05" size="1.778" layer="96"/>
 </instance>
 <instance part="JP3" gate="A" x="46.99" y="72.39" smashed="yes">
-<attribute name="NAME" x="38.1" y="78.105" size="1.778" layer="95"/>
-<attribute name="VALUE" x="38.1" y="64.77" size="1.778" layer="96"/>
+<attribute name="NAME" x="44.45" y="78.105" size="1.778" layer="95"/>
+<attribute name="VALUE" x="44.45" y="64.77" size="1.778" layer="96"/>
+</instance>
+<instance part="JP4" gate="A" x="46.99" y="57.15" smashed="yes">
+<attribute name="NAME" x="44.45" y="62.865" size="1.778" layer="95"/>
+<attribute name="VALUE" x="44.45" y="49.53" size="1.778" layer="96"/>
 </instance>
 <instance part="R89" gate="G$1" x="154.94" y="241.3" smashed="yes" rot="MR90">
 <attribute name="NAME" x="156.97" y="242.57" size="1.778" layer="95" rot="MR0"/>
@@ -12579,9 +12483,9 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <junction x="77.47" y="33.02"/>
 </segment>
 <segment>
-<wire x1="41.91" y1="69.85" x2="34.29" y2="69.85" width="0.1524" layer="91"/>
-<label x="33.4" y="70.74" size="1.778" layer="95" rot="R180"/>
-<pinref part="JP3" gate="A" pin="5"/>
+<wire x1="41.91" y1="54.61" x2="34.29" y2="54.61" width="0.1524" layer="91"/>
+<label x="33.4" y="55.5" size="1.778" layer="95" rot="R180"/>
+<pinref part="JP4" gate="A" pin="3"/>
 </segment>
 <segment>
 <wire x1="175.26" y1="250.19" x2="175.26" y2="248.92" width="0.1524" layer="91"/>
@@ -12976,9 +12880,9 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <pinref part="GND11" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="49.53" y1="69.85" x2="57.15" y2="69.85" width="0.1524" layer="91"/>
-<label x="58.04" y="70.74" size="1.778" layer="95"/>
-<pinref part="JP3" gate="A" pin="6"/>
+<wire x1="41.91" y1="69.85" x2="34.29" y2="69.85" width="0.1524" layer="91"/>
+<label x="33.4" y="70.74" size="1.778" layer="95" rot="R180"/>
+<pinref part="JP3" gate="A" pin="3"/>
 </segment>
 <segment>
 <wire x1="57.15" y1="207.01" x2="57.15" y2="208.28" width="0.1524" layer="91"/>
@@ -13056,9 +12960,9 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <pinref part="R89" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="49.53" y1="74.93" x2="57.15" y2="74.93" width="0.1524" layer="91"/>
-<label x="58.04" y="75.82" size="1.778" layer="95"/>
-<pinref part="JP3" gate="A" pin="2"/>
+<wire x1="41.91" y1="74.93" x2="34.29" y2="74.93" width="0.1524" layer="91"/>
+<label x="33.4" y="75.82" size="1.778" layer="95" rot="R180"/>
+<pinref part="JP3" gate="A" pin="1"/>
 </segment>
 </net>
 <net name="TMS" class="0">
@@ -13078,7 +12982,7 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <segment>
 <wire x1="41.91" y1="72.39" x2="34.29" y2="72.39" width="0.1524" layer="91"/>
 <label x="33.4" y="73.28" size="1.778" layer="95" rot="R180"/>
-<pinref part="JP3" gate="A" pin="3"/>
+<pinref part="JP3" gate="A" pin="2"/>
 </segment>
 </net>
 <net name="TDI" class="0">
@@ -13096,9 +13000,9 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <pinref part="R90" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="41.91" y1="74.93" x2="34.29" y2="74.93" width="0.1524" layer="91"/>
-<label x="33.4" y="75.82" size="1.778" layer="95" rot="R180"/>
-<pinref part="JP3" gate="A" pin="1"/>
+<wire x1="41.91" y1="59.69" x2="34.29" y2="59.69" width="0.1524" layer="91"/>
+<label x="33.4" y="60.58" size="1.778" layer="95" rot="R180"/>
+<pinref part="JP4" gate="A" pin="1"/>
 </segment>
 </net>
 <net name="TDO" class="0">
@@ -13116,9 +13020,9 @@ IDD1 rises 60mA -&gt; 120mA, on the 600mA VCC3V3 buck
 <pinref part="R91" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<wire x1="49.53" y1="72.39" x2="57.15" y2="72.39" width="0.1524" layer="91"/>
-<label x="58.04" y="73.28" size="1.778" layer="95"/>
-<pinref part="JP3" gate="A" pin="4"/>
+<wire x1="41.91" y1="57.15" x2="34.29" y2="57.15" width="0.1524" layer="91"/>
+<label x="33.4" y="58.04" size="1.778" layer="95" rot="R180"/>
+<pinref part="JP4" gate="A" pin="2"/>
 </segment>
 </net>
 <net name="PROG#" class="0">

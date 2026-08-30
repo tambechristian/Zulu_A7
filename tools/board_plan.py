@@ -274,7 +274,7 @@ def blk(x, y, w, h, top, label, ramp="c-teal", fs=12):
     o.append("</g>")
 
 
-SZ = {p: size(pkg_of(p)) for p in ("U1", "U2", "U3", "U4", "U8", "U10", "X1", "X3", "Q1", "J1", "JP3", "BTN")}
+SZ = {p: size(pkg_of(p)) for p in ("U1", "U2", "U3", "U4", "U8", "U10", "X1", "X3", "Q1", "J1", "JP3", "JP4", "BTN")}
 sdw, sdh = SZ["X3"][1], SZ["X3"][0]           # R270: the card ejects over the -x end
 
 # --- FRONT ------------------------------------------------------------------
@@ -308,17 +308,19 @@ blk(33.02 - SZ["X1"][0] / 2, BY1 - 4.141 + 0.675, SZ["X1"][0], 4.141 - 0.675,
 # longer the part that caps the escape ring -- see make_board.py, where the
 # 0.45 mm it used to be pushed out by was the ring's.
 blk(33.00, 15.09 + YOFF, *SZ["Q1"], FT, "Q1", fs=10)
-# JP3 is one part but two rows of copper, so it is drawn and checked as two.
-# A single bounding box would swallow the Pmod it straddles and read as an
-# overlap that is not there. JTAG_SEP must match 2X03-SPLIT in the schematic.
-JTAG_SEP = 17.96
-JT_W = SZ["JP3"][0]                 # three columns plus a pad radius each side
-JT_H = SZ["JP3"][1] - JTAG_SEP      # one row deep
-PMOD_CX = 56.50                     # both parts share this x centre
+# The JTAG is two 1x3 headers, not one 2x3 wearing a split footprint: JP3 is
+# TCK/TMS/GND and JP4 is TDI/TDO/VCC3V3. Nothing plugs across 17.96 mm, so a
+# single part was a fiction the schematic had to keep telling. Two parts also
+# spare this file the special case -- each is an ordinary block with its own
+# bounding box, and the check below sees them the way it sees everything else.
+JTAG_SEP = 17.96                    # JP3 to JP4, centre to centre
+PMOD_CX = 56.50                     # JP3, JP4 and the Pmod share this x centre
 PMOD_Y0 = 2.54 + YOFF
 PMOD_CY = PMOD_Y0 + SZ["J1"][0] / 2
-blk(PMOD_CX - JT_W / 2, PMOD_CY + JTAG_SEP / 2 - JT_H / 2, JT_W, JT_H, FT, "JTAG hi", fs=8)
-blk(PMOD_CX - JT_W / 2, PMOD_CY - JTAG_SEP / 2 - JT_H / 2, JT_W, JT_H, FT, "JTAG lo", fs=8)
+blk(PMOD_CX - SZ["JP3"][0] / 2, PMOD_CY + JTAG_SEP / 2 - SZ["JP3"][1] / 2,
+    *SZ["JP3"], FT, "JP3", fs=8)
+blk(PMOD_CX - SZ["JP4"][0] / 2, PMOD_CY - JTAG_SEP / 2 - SZ["JP4"][1] / 2,
+    *SZ["JP4"], FT, "JP4", fs=8)
 blk(17.55, 5.83 + YOFF, SZ["BTN"][1], SZ["BTN"][0], FT, "BTN", fs=11)   # turned 90 deg, y-centred on X3
 blk(23.55, 7.27 + YOFF, 3.46, 6.22, FT, "LEDs", fs=9)
 # The regulator stayed on the BACK. Q1 was worth moving up; U8 was not,
@@ -510,7 +512,7 @@ C7A = sum(size(pkg_of(c))[0] * size(pkg_of(c))[1] for c in C7)
 
 rows = "".join("<tr><td>%s</td><td>%s</td><td class=n>%.2f x %.2f</td></tr>"
                % (p, pkg_of(p), *size(pkg_of(p)))
-               for p in ("U1", "U2", "U3", "U4", "U8", "U10", "X1", "X3", "Q1", "J1", "JP3", "BTN"))
+               for p in ("U1", "U2", "U3", "U4", "U8", "U10", "X1", "X3", "Q1", "J1", "JP3", "JP4", "BTN"))
 
 HTML = """<title>Zulu A7 Board Plan</title>
 <style>

@@ -399,17 +399,19 @@ SINGLE = [# X3 must be R270, not R90. The DM3AT's layer-39 keepout runs 8.70 mm 
           # shell, because the split JTAG took the +x end. So Q1 no longer
           # constrains the ring at all: whatever caps it now, it is not this.
           ("Q1", 33.00, 15.09, "R0"),
-          # JP3 is six PLATED HOLES: copper on all six layers, so whatever sits
-          # behind it on the back is displaced. That corridor is gone with the
-          # 2.400 in board, so the rows are split instead -- package 2X03-SPLIT,
-          # 17.96 mm apart, straddling the Pmod in the two 3.05 mm bands the Pmod
-          # leaves above and below itself. It is back at x 53.20..59.80, which is
-          # where it punched through C114, C115, C119 and C120 before; that is
-          # hole_zones() work now, and the tiler moves them rather than the header.
-          # It is NO LONGER a pluggable 2x3: nothing spans 17.96 mm. Six bare
-          # holes for flying leads, and not even room for plastic 1x3 strips --
-          # their bodies would come within 0.09 mm of the Pmod's shroud.
-          ("JP3", 53.198, 0.418, "R0"),
+          # The JTAG is two 1x3 headers now, JP3 = TCK/TMS/GND and JP4 =
+          # TDI/TDO/VCC3V3, 17.96 mm apart in the two 3.05 mm bands the Pmod
+          # leaves above and below itself. The both-sides-clear corridor a 2x3
+          # needed went with the 2.400 in board. Nothing plugs across 17.96 mm,
+          # so one part was a fiction; these are six bare plated holes for flying
+          # leads, and there is not even room for plastic 1x3 strips -- their
+          # bodies would come within 0.09 mm of the Pmod's shroud.
+          # Six PLATED HOLES: copper on all six layers, so whatever sits behind
+          # them on the back is displaced. At x 53.20..59.80 that is where the
+          # old JP3 punched through C114, C115, C119 and C120; hole_zones() reads
+          # the drills off both parts now and the tiler moves the capacitors.
+          ("JP3", 53.198, 18.378, "R0"),
+          ("JP4", 53.198, 0.418, "R0"),
           # J1 came in off the strip that the 2.400 in cut removed. Centred at
           # x 56.50 with JP3 on the same centre, so the JTAG rows sit square
           # across it. Body 5.08 wide: 1.16 mm of board outboard, and 1.20 mm to
