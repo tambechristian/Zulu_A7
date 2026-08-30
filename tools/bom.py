@@ -109,7 +109,15 @@ fitted = sorted([g for g in groups if not g[2]], key=lambda g: (g[1], str(g[0]))
 donot = sorted([g for g in groups if g[2]], key=lambda g: (g[1], str(g[0])))
 
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
-with open(OUT, "w", encoding="utf-8", newline="") as fh:
+try:
+    fh = open(OUT, "w", encoding="utf-8", newline="")
+except PermissionError:
+    # Excel takes an exclusive lock on an open .csv. Without this the traceback
+    # says "Permission denied" and looks like a filesystem problem, while the
+    # stale file sits there reading like a fresh one.
+    sys.exit("cannot write %s -- it is open in another program (Excel locks a csv "
+             "it has open). Close it and run again." % OUT)
+with fh:
     w = csv.writer(fh)
     w.writerow(["Item", "Qty", "Refdes", "Value", "Package", "Manufacturer",
                 "MANF#", "Spec", "Fitted", "Note"])

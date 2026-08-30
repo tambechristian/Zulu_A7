@@ -8872,8 +8872,18 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="RC0402FR-07680RL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
 </part>
-<part name="LD5" library="ctambe" deviceset="LED" device=""/>
-<part name="Q2" library="ctambe" deviceset="NMOS" device=""/>
+<part name="LD5" library="ctambe" deviceset="LED" device="" value="green">
+<attribute name="MANF" value="Lite-On"/>
+<attribute name="MANF#" value="LTST-C191KGKT"/>
+<attribute name="SPEC" value="green indicator, 0603, Vf 2.1V max at 2mA"/>
+<attribute name="NOTE" value="Power-good indicator: VCC3V3 to LD5 to R78 680R to Q2 drain to GND. SELECTED FROM THE CIRCUIT, not recovered -- the part carried no value and no number. THE RESISTOR ALREADY CHOSE THE COLOUR: 680R off 3.3 V passes (3.3 - Vf)/680, which is 1.9 mA for a green LED or 2.1 for a red, but only 0.6 mA for a blue or white one, too dim to read. So it is a green or red part, and green is the convention for power good. 1.9 mA is low but plain on a modern high-efficiency 0603; take R78 to 330R if you want it brighter."/>
+</part>
+<part name="Q2" library="ctambe" deviceset="NMOS" device="" value="2N7002">
+<attribute name="MANF" value="onsemi"/>
+<attribute name="MANF#" value="2N7002LT1G"/>
+<attribute name="SPEC" value="N-ch MOSFET, logic level: Vgs(th) 1.0 to 2.5V, Vds 20V min, Id 100mA min, SOT-23 G/S/D on pins 1/2/3"/>
+<attribute name="NOTE" value="Switches the PGOOD indicator LD5. SELECTED FROM THE CIRCUIT, not recovered -- the part carried no value and no number. What it has to do: its gate is on PGOOD, the LTC3569's open-drain output pulled to 3V3 through R77's 100k, so Vgs is a static 3.3 V and the weak pull-up costs nothing because a gate draws no DC. That needs a LOGIC-LEVEL threshold, comfortably under 3.3 V. The drain carries the LED at 1.9 mA against the 2N7002's 115 mA, and sees 3.3 V against 60. The SOT23-3 footprint here names its pads G, S and D at pins 1, 2 and 3, which is the 2N7002 pinout exactly, so nothing in the layout moves."/>
+</part>
 <part name="GND8" library="ctambe" deviceset="GND" device=""/>
 <part name="X1" library="ctambe" deviceset="MINI-USB-" device="105017-0001" value="Molex 105017-0001 Micro-USB-B"/>
 <part name="GND4" library="ctambe" deviceset="GND" device=""/>
