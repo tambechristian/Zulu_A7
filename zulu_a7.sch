@@ -3828,15 +3828,15 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <library name="rcl">
 <packages>
 <package name="R0201">
-<description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;chip, 0201 (0603 metric), 0.60 x 0.30 mm body&lt;p&gt;&lt;b&gt;PROVISIONAL LAND PATTERN - CHECK BEFORE FABRICATION.&lt;/b&gt; Pads 0.30 x 0.30 on a 0.20 mm gap, 0.80 mm span: a conventional 0201 land, NOT scaled from R0402 in this library. R0402 here carries a 0.50 mm toe either side, which is generous for hand work and wrong at 0201 -- oversized lands pull 0201 parts into tombstones. Verify against the resistor maker&apos;s recommended land and the assembler&apos;s 0201 capability. 0201 is a step up in assembly difficulty and is not practically reworkable by hand.&lt;/p&gt;</description>
+<description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;chip, 0201 (0603 metric). Land: pads 0.30 x 0.30 on a 0.30 mm gap, 0.90 span. Against the standardised 0201 body -- 0.60 x 0.30 with 0.15 terminals -- that is TOE +0.15, HEEL 0.00, SIDE 0.00, which is the IPC nominal shape for a chip this size. Heel is deliberately zero: any positive heel puts pad under the body, and solder wicking in under one end before the other wets is how 0201 parts tombstone. The margin goes on the toe instead, where the fillet is also the one an inspector can see. NOT scaled from R0402 in this library, which carries a 0.50 mm toe and a 0.20 side -- generous suits hand work at 0402 and causes exactly the tombstoning above at 0201. STILL CHECK before fabrication: 0201 land geometry belongs to the assembler's process as much as to the part, and no maker's recommended land was available here.&lt;/p&gt;</description>
 <wire x1="-0.15" y1="0.147" x2="0.15" y2="0.147" width="0.1016" layer="51"/>
 <wire x1="0.15" y1="-0.147" x2="-0.15" y2="-0.147" width="0.1016" layer="51"/>
-<wire x1="-0.873" y1="0.183" x2="0.873" y2="0.183" width="0.0508" layer="39"/>
-<wire x1="0.873" y1="0.183" x2="0.873" y2="-0.183" width="0.0508" layer="39"/>
-<wire x1="0.873" y1="-0.183" x2="-0.873" y2="-0.183" width="0.0508" layer="39"/>
-<wire x1="-0.873" y1="-0.183" x2="-0.873" y2="0.183" width="0.0508" layer="39"/>
-<smd name="1" x="-0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
-<smd name="2" x="0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
+<wire x1="-0.923" y1="0.183" x2="0.923" y2="0.183" width="0.0508" layer="39"/>
+<wire x1="0.923" y1="0.183" x2="0.923" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="0.923" y1="-0.183" x2="-0.923" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="-0.923" y1="-0.183" x2="-0.923" y2="0.183" width="0.0508" layer="39"/>
+<smd name="1" x="-0.3" y="0" dx="0.3" dy="0.3" layer="1"/>
+<smd name="2" x="0.3" y="0" dx="0.3" dy="0.3" layer="1"/>
 <text x="-0.635" y="0.45" size="1.27" layer="25">&gt;NAME</text>
 <text x="-0.635" y="-1.7" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="-0.30" y1="-0.15" x2="-0.15" y2="0.15" layer="51"/>
@@ -5164,15 +5164,15 @@ chip</description>
 <rectangle x1="-0.1999" y1="-0.4001" x2="0.1999" y2="0.4001" layer="35"/>
 </package>
 <package name="C0201">
-<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;chip, 0201 (0603 metric)&lt;p&gt;Same land as R0201 here, which is how C0402 and R0402 already relate. &lt;b&gt;PROVISIONAL - CHECK BEFORE FABRICATION&lt;/b&gt;, and see the NOTE on the parts using it: at this capacitance an 0201 is a 6.3 V part where the 0402 was 16 V.&lt;/p&gt;</description>
+<description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;chip, 0201 (0603 metric). Land: pads 0.30 x 0.30 on a 0.30 mm gap, 0.90 span. Against the standardised 0201 body -- 0.60 x 0.30 with 0.15 terminals -- that is TOE +0.15, HEEL 0.00, SIDE 0.00, which is the IPC nominal shape for a chip this size. Heel is deliberately zero: any positive heel puts pad under the body, and solder wicking in under one end before the other wets is how 0201 parts tombstone. The margin goes on the toe instead, where the fillet is also the one an inspector can see. NOT scaled from R0402 in this library, which carries a 0.50 mm toe and a 0.20 side -- generous suits hand work at 0402 and causes exactly the tombstoning above at 0201. STILL CHECK before fabrication: 0201 land geometry belongs to the assembler's process as much as to the part, and no maker's recommended land was available here.&lt;/p&gt;</description>
 <wire x1="-0.15" y1="0.147" x2="0.15" y2="0.147" width="0.1016" layer="51"/>
 <wire x1="0.15" y1="-0.147" x2="-0.15" y2="-0.147" width="0.1016" layer="51"/>
-<wire x1="-0.873" y1="0.183" x2="0.873" y2="0.183" width="0.0508" layer="39"/>
-<wire x1="0.873" y1="0.183" x2="0.873" y2="-0.183" width="0.0508" layer="39"/>
-<wire x1="0.873" y1="-0.183" x2="-0.873" y2="-0.183" width="0.0508" layer="39"/>
-<wire x1="-0.873" y1="-0.183" x2="-0.873" y2="0.183" width="0.0508" layer="39"/>
-<smd name="1" x="-0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
-<smd name="2" x="0.25" y="0" dx="0.3" dy="0.3" layer="1"/>
+<wire x1="-0.923" y1="0.183" x2="0.923" y2="0.183" width="0.0508" layer="39"/>
+<wire x1="0.923" y1="0.183" x2="0.923" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="0.923" y1="-0.183" x2="-0.923" y2="-0.183" width="0.0508" layer="39"/>
+<wire x1="-0.923" y1="-0.183" x2="-0.923" y2="0.183" width="0.0508" layer="39"/>
+<smd name="1" x="-0.3" y="0" dx="0.3" dy="0.3" layer="1"/>
+<smd name="2" x="0.3" y="0" dx="0.3" dy="0.3" layer="1"/>
 <text x="-0.635" y="0.45" size="1.27" layer="25">&gt;NAME</text>
 <text x="-0.635" y="-1.7" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="-0.30" y1="-0.15" x2="-0.15" y2="0.15" layer="51"/>
