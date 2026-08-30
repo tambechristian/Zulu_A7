@@ -375,6 +375,31 @@ RING = [yb(_C - _O, 9.70 - _O, _C - _I, 9.70 + _O),    # left
         yb(_C + _I, 9.70 - _O, _C + _O, 9.70 + _O),    # right
         yb(_C - _O, 9.70 - _O, _C + _O, 9.70 - _I),    # bottom
         yb(_C - _O, 9.70 + _I, _C + _O, 9.70 + _O)]    # top
+
+# THE FAN CORRIDOR, WHICH IS A HOLE IN THE RESERVATION ABOVE. RING guards the
+# band the escape's ring vias sit in and NOVIA guards the ball field, and
+# between the two there is a 2.10 mm annulus that neither covers. It is not
+# empty: it is where stage 3 fans 1170 traces from rings 0 and 1 out to the
+# ring vias, 119 of them within 1.70 mm of one point, at a pitch of about
+# 0.19 mm. A 0.30 mm via land with 0.09 mm either side needs 0.48 mm of clear
+# width and there is 0.10 mm, so NOTHING can be given a via in here.
+#
+# That is only fatal for a part that needs a NEW via. The escaped signals do
+# not: their series resistors sit on the back, reach their ring via along L16,
+# and the fan overhead on L1 never touches them -- 26 parts live here quite
+# happily on that basis. A decoupling capacitor on a rail that power.py routes
+# on L3 is the opposite case, and six of them landed in here because place_at
+# reaches 3 mm from U1 and tile() only knew about NOVIA and RING. Four worked
+# by luck, where the fan happened to leave a gap. C95 needed a 3.45 mm surface
+# stub to escape -- about 3 nH, which is more inductance than a 0.47 uF at the
+# ball field is there to remove -- and C96 could not be reached at all: fan to
+# the left of it on L1, and the ring via column at x 53.76 blocking the L16
+# stub to the right.
+_N = 3.60                                        # NOVIA's half-width
+FAN = [yb(_C - _I, 9.70 - _I, _C - _N, 9.70 + _I),     # left
+       yb(_C + _N, 9.70 - _I, _C + _I, 9.70 + _I),     # right
+       yb(_C - _I, 9.70 - _I, _C + _I, 9.70 - _N),     # bottom
+       yb(_C - _I, 9.70 + _N, _C + _I, 9.70 + _I)]     # top
 # Front, left to right: microSD, BTN turned on its side, FT2232, FPGA, then the
 # crystal and JTAG stacked at the far end. The FPGA moving right of the FT2232
 # drags the whole back side with it -- see the two tile() calls below.
@@ -851,10 +876,18 @@ def place_at(parts, anchor, reach, avoid):
 AVOID = hole_zones()          # Q1BOX and JP3BOX retired -- see the fields above
 rest = {a: list(group[a]) for a in group}
 order = sorted(group, key=lambda k: -len(group[k]))
+# A part with a pin on a rail power.py routes needs a via down to L3, so it is
+# the one kind of part the fan corridor cannot hold. Everything else may have it.
+PWR_VIA = {p for n in ("VCC1V0", "VCC1V8") for p, _g, _pin in NETS.get(n, ())}
 for reach in REACHES:
     for a in order:
-        if rest[a]:
-            rest[a] = place_at(rest[a], a, reach, AVOID)
+        if not rest[a]:
+            continue
+        hot = [p for p in rest[a] if p in PWR_VIA]
+        cold = [p for p in rest[a] if p not in PWR_VIA]
+        hot = place_at(hot, a, reach, list(AVOID) + FAN)
+        cold = place_at(cold, a, reach, AVOID)
+        rest[a] = hot + cold
 NOFIT = [p for a in order for p in rest[a]]
 
 PARK = [p for p in PLACEABLE if p not in PLACE]

@@ -1447,27 +1447,33 @@ runs up to the decoupling field's top edge at y = 18.10.
 
 ### Ground fill on L1 and L6, stitched — DONE, `tools/ground.py`
 
-> **Poured and stitched.** Two GND polygons, one on L1 and one on L16, and **108
-> stitching vias**. `python tools/ground.py --apply`, run last — after
-> `make_board.py` and after `escape.py --apply`, and it refuses to run twice on
-> the same board.
+> **Poured and stitched.** Two GND polygons, one on L1 and one on L16, and **66
+> stitching vias**. `python tools/ground.py --apply`, run **last of everything**
+> — after both escapes, after `power.py` and after every `signals.py` group, and
+> it refuses to run twice on the same board. It used to run straight after
+> `escape.py`; that cost VCC1V0 its route, because stitching is a grid of
+> through holes and a through hole blocks every layer. See the header of
+> `tools/ground.py`.
 >
 > | | |
 > |---|---|
 > | pour outline | inset **0.40 mm** from the board edge — `mdCopperDimension` 0.30 plus half the 0.1524 outline width |
 > | isolate | **0.25 mm**, deliberately wider than the 0.090 rule floor so the fill does not thread slivers between escape traces |
 > | thermals / orphans / rank | yes / no / 1 |
-> | stitching | **108 vias**, 0.2 mm drill on a 0.30 land, nearest neighbour **2.61–3.91 mm**, spread 35 left / 28 middle / 45 right |
+> | stitching | **66 vias**, 0.2 mm drill on a 0.30 land, nearest neighbour **2.61–4.81 mm**, spread 25 left / 14 middle / 18 right |
 > | worst clearance | **0.0920 mm** against a 0.090 rule, measured against every foreign pad |
 >
 > A pour in an Eagle file is **not copper** — a `<polygon>` in a `<signal>` is an
 > outline plus rules, and Eagle computes the fill at ratsnest time against
 > whatever else is on the board. So this does not have to be redone when the
-> remaining 52 signals are routed; the fill follows the routing.
+> remaining unrouted signals are finished; the fill follows the routing.
 >
-> **It crosses a price step.** 223 holes before, 331 after, against JLCPCB's
-> 150,000 holes/m² surcharge threshold, which on this 0.001774 m² board is 266.
-> The stitching is what crosses the line. Worth knowing, not worth avoiding.
+> **The board is over a price step, and the stitching is no longer what does
+> it.** JLCPCB surcharges above 150,000 holes/m², which on this 0.001548 m²
+> board is 232 holes. The escape rings, the QFN fan-out and the routing vias
+> come to 444 on their own; the 66 stitching vias take it to 510. Dropping the
+> stitching would not bring it back under, so this is a consequence of the
+> escape strategy rather than of the pour. Worth knowing, not worth avoiding.
 >
 > The via spacing is set by λ/20 in FR-4: 7.2 mm at 1 GHz, 3.6 at 2. At 2.60 mm
 > minimum it is already 1.4× tighter than the fastest edge needs, and going below

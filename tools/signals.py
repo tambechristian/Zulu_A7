@@ -4,10 +4,32 @@
     python tools/signals.py [group]           report only
     python tools/signals.py [group] --apply   write it into the board
 
-RUN ORDER. This is the last stage and it runs AFTER power.py:
+RUN ORDER. Every group here runs after both escapes and after power.py, and
+ground.py runs after all of them:
 
-    make_board.py --fab jlcpcb -> escape.py --apply -> ground.py --apply
-        -> power.py --apply -> signals.py --apply
+    make_board.py --fab jlcpcb        regenerates <signals> EMPTY
+        -> escape.py --apply          the BGA fan-out, U1
+        -> escape_qfn.py --apply      the QFN fan-out, U2
+        -> power.py --apply           the five rails
+        -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
+                                      order -- see the note below
+        -> ground.py --apply          the pour and the stitching, LAST
+
+GROUP ORDER MATTERS, and it is not the order you would guess. Each group's
+copper is an obstacle to the next, so this was measured rather than reasoned
+(nets routed, best of each run, on the same board):
+
+    order                              usb  jtag  microsd  sdram  x2   total
+    sdram, x2, usb, microsd, jtag        2     6        5     29  10      52
+    sdram, jtag, usb, microsd, x2        2     7        6     29   5      49
+    usb, jtag, microsd, sdram, x2        2     7        6     19  10      44
+
+Most-constrained-first is the usual rule and it LOSES here. sdram is 39 nets
+converging on U3 and wanting L3 between the planes, and starving it costs more
+than every other group gains -- it drops 10 nets to buy 3. x2 is the opposite
+of what it looks like: its far ends are X2's plated holes, copper on all six
+layers, so it looks like the flexible one that should go last, and it does
+better second (10) than last (5). Long hauls need room early.
 
 make_board regenerates <signals> empty, so everything above is wiped on every
 run. See the header of escape.py.
@@ -73,6 +95,27 @@ SPLITVIA = os.environ.get("SPLITVIA", "1") == "1"
 # "pathfinder" = negotiated congestion (tools/pathfinder.py); "greedy" = the
 # rip-up router, kept because it is what every measurement above was taken on.
 ROUTER = os.environ.get("ROUTER", "pathfinder")
+# WHICH ONE TO USE, MEASURED. PathFinder needs START[net] -- an escape terminal
+# on U1's ring -- and routes strictly two-terminal, so it SILENTLY DROPS every
+# net that has neither: "PathFinder over 27 nets" out of a 59-net group, with
+# the other 32 never attempted and reported as unrouted. The "rest" group is
+# mostly local nets between discrete parts (LED cathodes, SW*_NET, N$BTN, the
+# feedback dividers) and greedy is the only branch that will look at them:
+# 33 of 59 against PathFinder's 7 on the same board. Run "rest" with
+# ROUTER=greedy.
+#
+# GREEDY HAS AN ORDERING BUG, and it is why PMOD-4 is an airwire on the current
+# board rather than a route. attempt() and attempt_split() both build their
+# obstacle set from `rivals = [n for n in plan if n != net]`, which is whatever
+# is in the plan AT THAT MOMENT. The rip-up loop then re-routes members, so a
+# net can end up in the accepted plan having been checked against a set that no
+# longer describes the plan: PMOD-4's L3 trace came out straight through
+# PMOD-7's via at (58.954, 12.590), -0.16 mm, a short between two Pmod signals.
+# check_board caught it; nothing in here did. The fix is a final validation
+# pass that re-checks every accepted net against the FINAL plan and rips up
+# whatever violates -- the clearance model already exists in check_board.py.
+# Until that is written, run check_board.py after every greedy group and treat
+# a clearance violation as "that net did not route", because that is what it is.
 
 GROUPS = {
     "sdram": re.compile(r"^(D\d+|A\d+|BS\d|RAS#|CAS#|WE#|CKE|LDQM|UDQM|SDRAM-)"),
@@ -81,7 +124,11 @@ GROUPS = {
     # layers at a 2.54 mm pitch, so a route needs no fan-out via and can finish
     # on whichever layer it happens to be on. Vias were what the bus ran out of.
     "x2": re.compile(r"^(CHAN[-\d]|JA\d+|RST#$)"),
-    "usb": re.compile(r"^(USB_D|FT-|UART_FT_)"),
+    # FT-VCORE/FT-VPHY/FT-VPLL are excluded: they are U2's supply rails, not
+    # signals, and power.py routes them as trees. Left in, they matched here,
+    # arrived with no escape terminal -- escape_qfn declines power nets -- and
+    # reported "no route" on every run.
+    "usb": re.compile(r"^(USB_D|UART_FT_|FT-(?!VCORE|VPHY|VPLL))"),
     # Six nets, U1 ball to the X3 card socket, four of them through a pull-up on
     # R34/R35. Multi-pad nets, so they need the general terminal model.
     "microsd": re.compile(r"^SD-"),
@@ -93,6 +140,16 @@ GROUPS = {
     # START.get(net): continue"), which is why this group is routed greedy.
     "jtag": re.compile(r"^(FPGA-T(CK|DI|DO|MS)|FPGA-DONE|FPGA-INIT#"
                        r"|TCK|TDI|TDO|TMS|PROG#|DONE)$"),
+    # EVERYTHING ELSE, and it was most of what was left. The five groups above
+    # are the buses somebody sat down and thought about; the board is not only
+    # buses. The Pmod header's ten signals, the RGB LED and the two singles, the
+    # pushbutton, the three slide switches, the regulator's feedback dividers
+    # and PGOOD and MODE, the XADC analogue pair, the shared 12 MHz clock and
+    # the EEPROM data line -- 32 nets, none of them matching any regex here, so
+    # signals.py never attempted one of them and they read as "unrouted" every
+    # run without ever having been tried. None is difficult. They were just not
+    # on anybody's list.
+    "rest": None,
 }
 
 # Differential pairs are routed as ONE object -- see route_pair below.
@@ -616,10 +673,20 @@ def place_via(px, py, allm, surfm, clr, bx, extra, hint=None):
     return None
 
 
+# WHAT ground.py AND power.py OWN. Everything else that no named group above
+# claims belongs to "rest". Keep this in step with power.py's RAILS.
+OWNED = re.compile(r"^(GND|VCC3V3|VCC1V0|VCC1V8|FT-V(CORE|PHY|PLL)|VU|VEXT|USB5V0)$")
+
+
 def group_nets(b, rx):
+    """the nets in one group; rx None means everything nothing else claims"""
     sig = re.search(r"<signals>(.*)</signals>", b, re.S).group(1)
-    return sorted(m.group(1) for m in re.finditer(r'<signal name="([^"]+)"[^>]*>', sig)
-                  if rx.match(m.group(1)))
+    names = [m.group(1) for m in re.finditer(r'<signal name="([^"]+)"[^>]*>', sig)]
+    if rx is not None:
+        return sorted(n for n in names if rx.match(n))
+    named = [g for g in GROUPS.values() if g is not None]
+    return sorted(n for n in names
+                  if not OWNED.match(n) and not any(g.match(n) for g in named))
 
 
 def main(gname="sdram"):

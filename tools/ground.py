@@ -4,11 +4,31 @@
     python tools/ground.py            report only, writes nothing
     python tools/ground.py --apply    write the pour and the stitching vias
 
-RUN IT LAST: after make_board.py and after escape.py. make_board.py regenerates
-the board with empty <signals>, and escape.py refuses to run on a board that
-already carries copper, so the order is fixed:
+RUN IT LAST, after everything that routes:
 
-    make_board.py  ->  escape.py --apply  ->  ground.py --apply
+    make_board.py --fab jlcpcb        regenerates <signals> EMPTY
+        -> escape.py --apply          the BGA fan-out, U1
+        -> escape_qfn.py --apply      the QFN fan-out, U2
+        -> power.py --apply           the five rails
+        -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
+                                      order -- see the note below
+        -> ground.py --apply          the pour and the stitching, LAST
+
+WHY GROUND GOES LAST, which is a change. It used to run straight after
+escape.py, on the reasoning that the pour should be down before anything routed
+through it. That is backwards. The pour itself does not care -- a <polygon> is
+an outline plus rules and Eagle fills it at ratsnest time, so it follows the
+routing whenever it is written. The STITCHING is the problem: it is a grid of
+through holes, and a through hole blocks every layer. Run before power.py, 85
+stitching vias at 2.60 mm pitch sealed the corridors VCC1V0 needed across the
+regulator corner and the rail did not close -- two edges with no path on any of
+L16/L1/L3. Run afterwards it placed 78 and simply worked around the traces.
+Stitching is opportunistic and takes whatever grid positions are left; a rail
+has to go where it has to go. The one that yields goes last.
+
+Worth being exact about the size of this: it was decisive for power.py and it
+was NOT what held the signal groups back. Moving ground after signals.py too
+changed the SDRAM bus from 29 of 39 nets to 28, which is noise.
 
 WHAT A POUR IS IN AN EAGLE FILE. Not copper. A <polygon> inside a <signal> is an
 OUTLINE plus a set of rules -- isolate, rank, thermals, orphans -- and Eagle
