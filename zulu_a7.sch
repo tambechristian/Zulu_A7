@@ -3554,7 +3554,7 @@ Package of four resistors.</description>
 </devices>
 </deviceset>
 <deviceset name="LED_RGB" prefix="LD" uservalue="yes">
-<description>&lt;b&gt;RGB LED&lt;/b&gt;, common anode, 6-pin. NO PACKAGE ASSIGNED - the VS NRD8 land pattern must be added before layout.</description>
+<description>&lt;b&gt;RGB LED&lt;/b&gt;, common anode, 6-pin. Package VS-NRD8 is assigned and drawn from the datasheet's recommended pad; the note that said otherwise was left behind when it was.</description>
 <gates>
 <gate name="G$1" symbol="LED_RGB" x="0" y="0"/>
 </gates>
@@ -3575,7 +3575,7 @@ Package of four resistors.</description>
 </devices>
 </deviceset>
 <deviceset name="SWITCH_TACT" prefix="BTN" uservalue="yes">
-<description>&lt;b&gt;Tactile switch&lt;/b&gt;, momentary NO. NO PACKAGE ASSIGNED - the PTA-142 land pattern must be added before layout.</description>
+<description>&lt;b&gt;Tactile switch&lt;/b&gt;, momentary, normally open. Package PTA-142 is assigned and drawn from the datasheet land; the note that said otherwise was left behind when it was.</description>
 <gates>
 <gate name="G$1" symbol="SWITCH_TACT" x="0" y="0"/>
 </gates>
@@ -8461,6 +8461,8 @@ Metric Code Size 5664</description>
 <part name="X2" library="ctambe" deviceset="ZULU-CONN" device=""/>
 <part name="U3" library="ctambe" deviceset="SDRAM-X16" device="-ALLIANCE-512M" value="AS4C32M16SB-6TIN">
 <attribute name="NOTE" value="512Mbit (32M x 16) = 64MB. Pin-for-pin and dimensionally identical to the 256Mb AS4C16M16SA-6TIN it replaces: all 54 pins and every TSOP-II dimension were checked against both datasheets, and pin 40 is NC on both. ONE DIFFERENCE, AND IT IS NOT A PIN -- the column address is A0-A9 (1024 columns) instead of A0-A8 (512). The memory controller must be set to 10 column bits or it reaches only half the array. Row A0-A12, banks BA0/BA1 and refresh (8192 cycles/64ms) are unchanged. IDD1 rises 60mA to 120mA on the 600mA VCC3V3 buck (LTC3569 SW3)."/>
+<attribute name="MANF" value="Alliance Memory"/>
+<attribute name="MANF#" value="AS4C32M16SB-6TIN"/>
 </part>
 <part name="U4" library="ctambe" deviceset="SPI_FLASH" device="-SOIC_150_208" value="W25Q128JVSIQ">
 <attribute name="DIGIKEY#" value="W25Q128JVSIQ-ND"/>
@@ -8486,6 +8488,7 @@ Metric Code Size 5664</description>
 <part name="FRAME2" library="ctambe" deviceset="DOCFIELD" device=""/>
 <part name="U1" library="ctambe" deviceset="XC7A35T-CPG236" device="-1CPG236C" value="XC7A35T-1CPG236C">
 <attribute name="MANF" value="AMD/Xilinx"/>
+<attribute name="MANF#" value="XC7A35T-1CPG236C"/>
 </part>
 <part name="R10" library="rcl" deviceset="R-US_" device="R0201" value="2.32K">
 <attribute name="MANF" value="Yageo"/>
@@ -8587,9 +8590,13 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="GRM155R71H102KA01D"/>
 <attribute name="SPEC" value="X7R 50V +-10%, 0.50 mm max"/>
 </part>
-<part name="U2" library="ctambe" deviceset="FT2232HQ" device="-QFN64" value="FT2232HQ USB-UART/JTAG Bridge"/>
+<part name="U2" library="ctambe" deviceset="FT2232HQ" device="-QFN64" value="FT2232HQ USB-UART/JTAG Bridge">
+<attribute name="MANF" value="FTDI"/>
+<attribute name="MANF#" value="FT2232HQ-REEL"/>
+</part>
 <part name="U10" library="ctambe" deviceset="EEPROM-93LC46B" device="-I/SN" value="93LC46BT-I/SN">
 <attribute name="MANF" value="Microchip"/>
+<attribute name="MANF#" value="93LC46BT-I/SN"/>
 </part>
 <part name="JP3" library="pinhead" deviceset="TESTPT-1X3" device="NOSILK" value="JTAG TCK/TMS/GND">
 <attribute name="NOTE" value="Bare plated holes -- NO HEADER FITTED, nothing to order. Three of the six JTAG holes; JP4 carries the other three, 17.96 mm away on the far side of the Pmod. Each row has 3.05 mm of board to the Pmod but only 0.09 mm to a 1x3 strip's body, so these are for flying leads or a pogo jig. The FT2232 does JTAG over USB on channel B; this is the fallback."/>
@@ -8661,10 +8668,22 @@ Metric Code Size 5664</description>
 </part>
 
 <part name="GND1" library="ctambe" deviceset="GND" device=""/>
-<part name="U8" library="ctambe" deviceset="LTC3569" device="-UDC" value="LTC3569EUDC#TRPBF"/>
-<part name="D1" library="ctambe" deviceset="DIODE" device="" value="PMEG2020EJ,115"/>
-<part name="D2" library="ctambe" deviceset="DIODE" device="" value="PMEG2020EJ,115"/>
-<part name="D3" library="ctambe" deviceset="TVS" device="" value="SMF5.0A"/>
+<part name="U8" library="ctambe" deviceset="LTC3569" device="-UDC" value="LTC3569EUDC#TRPBF">
+<attribute name="MANF" value="Analog Devices"/>
+<attribute name="MANF#" value="LTC3569EUDC#TRPBF"/>
+</part>
+<part name="D1" library="ctambe" deviceset="DIODE" device="" value="PMEG2020EJ,115">
+<attribute name="MANF" value="Nexperia"/>
+<attribute name="MANF#" value="PMEG2020EJ,115"/>
+</part>
+<part name="D2" library="ctambe" deviceset="DIODE" device="" value="PMEG2020EJ,115">
+<attribute name="MANF" value="Nexperia"/>
+<attribute name="MANF#" value="PMEG2020EJ,115"/>
+</part>
+<part name="D3" library="ctambe" deviceset="TVS" device="" value="SMF5.0A">
+<attribute name="MANF" value="Littelfuse"/>
+<attribute name="MANF#" value="SMF5.0A"/>
+</part>
 <part name="GND24" library="ctambe" deviceset="GND" device=""/>
 <part name="C78" library="rcl" deviceset="C-GENERIC" device="C0805" value="22uF 10V">
 <attribute name="MANF" value="Murata"/>
@@ -8851,7 +8870,10 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="GRM188R60J106ME47D"/>
 <attribute name="SPEC" value="X5R 6.3V +-20%, 0.90 mm max"/>
 </part>
-<part name="Q3" library="ctambe" deviceset="NPN-DUAL" device="" value="MBT3904DW1T1"/>
+<part name="Q3" library="ctambe" deviceset="NPN-DUAL" device="" value="MBT3904DW1T1">
+<attribute name="MANF" value="onsemi"/>
+<attribute name="MANF#" value="MBT3904DW1T1G"/>
+</part>
 <part name="R75" library="rcl" deviceset="R-US_SMALL" device="R0402" value="100K">
 <attribute name="MANF" value="Yageo"/>
 <attribute name="MANF#" value="RC0402FR-07100KL"/>
@@ -8890,7 +8912,10 @@ Metric Code Size 5664</description>
 <attribute name="NOTE" value="Switches the PGOOD indicator LD5. SELECTED FROM THE CIRCUIT, not recovered -- the part carried no value and no number. What it has to do: its gate is on PGOOD, the LTC3569's open-drain output pulled to 3V3 through R77's 100k, so Vgs is a static 3.3 V and the weak pull-up costs nothing because a gate draws no DC. That needs a LOGIC-LEVEL threshold, comfortably under 3.3 V. The drain carries the LED at 1.9 mA against the 2N7002's 115 mA, and sees 3.3 V against 60. The SOT23-3 footprint here names its pads G, S and D at pins 1, 2 and 3, which is the 2N7002 pinout exactly, so nothing in the layout moves."/>
 </part>
 <part name="GND8" library="ctambe" deviceset="GND" device=""/>
-<part name="X1" library="ctambe" deviceset="MINI-USB-" device="105017-0001" value="Molex 105017-0001 Micro-USB-B"/>
+<part name="X1" library="ctambe" deviceset="MINI-USB-" device="105017-0001" value="Molex 105017-0001 Micro-USB-B">
+<attribute name="MANF" value="Molex"/>
+<attribute name="MANF#" value="105017-0001"/>
+</part>
 <part name="GND4" library="ctambe" deviceset="GND" device=""/>
 <part name="GND3" library="ctambe" deviceset="GND" device=""/>
 <part name="GND6" library="ctambe" deviceset="GND" device=""/>
