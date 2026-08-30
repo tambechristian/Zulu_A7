@@ -9001,7 +9001,12 @@ Metric Code Size 5664</description>
 <attribute name="NOTE" value="User status LED, driven straight off an FPGA pin through R84 at 330R: (3.3 - Vf)/330 is 3.9 mA green, 4.2 red, 3.6 yellow, and 1.2 mA blue or white. Any of the first three is comfortable and well inside an LVCMOS33 pin's 12 mA. RED IS A PREFERENCE, NOT A CONSTRAINT -- the circuit takes green just as happily. It is red so that the two user LEDs read differently from LD5, which is green and means power good; on a board being brought up that is worth being able to tell apart at a glance. Same LTST-C191 family and the same 0603 land as LD5, so it is one line in the catalogue, not two. Confirm the suffix before ordering."/>
 </part>
 <part name="BTN" library="ctambe" deviceset="SWITCH_TACT" device="" value="PTA-142"/>
-<part name="Q1" library="ctambe" deviceset="OSC_CHIP" device="ASEM1-12MHZ" value="12MHz 25ppm (FPGA + FT2232HQ)"/>
+<part name="Q1" library="ctambe" deviceset="OSC_CHIP" device="ASEM1-12MHZ" value="12MHz 25ppm (FPGA + FT2232HQ)">
+<attribute name="MANF" value="Abracon"/>
+<attribute name="MANF#" value="ASEM1-12.000MHZ-LC-T"/>
+<attribute name="SPEC" value="12.000 MHz CMOS oscillator, 3.3V, 25 ppm, 3.2 x 2.5 mm 4-pad, pin 1 enable or NC, pin 3 output"/>
+<attribute name="NOTE" value="ACTIVE OSCILLATOR, NOT A CRYSTAL -- the schematic settles it: pin 2 to GND, pin 4 to VCC3V3, pin 3 out into R24 and R25, and pin 1 tied to VCC3V3, which is a 4-pad XO with its enable held high. A crystal would have two pads and load capacitors. THE FREQUENCY IS NOT A CHOICE: the FT2232H wants 12 MHz for its USB PLL, so that was fixed before anything else. 25 ppm is the value already recorded and is comfortably inside what FTDI asks of the reference. Output drives two loads through 33R each, the FT2232's OSCI and the FPGA clock ball. Pin 1 to Vdd suits either an OE part or one with pin 1 not connected, so the choice is not narrowed by it. ASEM1 is the family the design note already named. Confirm the suffix -- it encodes stability and temperature range and is the easy thing to get wrong."/>
+</part>
 <part name="C38" library="rcl" deviceset="C-GENERIC" device="C0201" value="0.01uF">
 <attribute name="MANF" value="Murata"/>
 <attribute name="MANF#" value="GRM033R71E103KE14D"/>
@@ -9025,7 +9030,12 @@ Metric Code Size 5664</description>
 <part name="GND39" library="ctambe" deviceset="GND" device=""/>
 <part name="SUPPLY12" library="ctambe" deviceset="VCC3V3" device=""/>
 <part name="SUPPLY13" library="ctambe" deviceset="VCC3V3" device=""/>
-<part name="J1" library="ctambe" deviceset="PINHD-2X6" device="" value="Pmod 2x6"/>
+<part name="J1" library="ctambe" deviceset="PINHD-2X6" device="" value="Pmod 2x6">
+<attribute name="MANF" value="Sullins"/>
+<attribute name="MANF#" value="PPTC062LFBN-RC"/>
+<attribute name="SPEC" value="2x6 female header, 2.54 mm pitch, through-hole, 12 way -- Pmod host socket"/>
+<attribute name="NOTE" value="A SOCKET, NOT PINS, AND THE LIBRARY NAME DISAGREES WITH THAT. The package is called PIN HEADER 2x6 and the deviceset PINHD-2X6, which is inherited naming, but on a Digilent Pmod the HOST carries the female socket and the peripheral module carries the male pins that plug into it. Cmod A7 is the same. Order male pins off that library name and no Pmod will mate. The footprint is 12 plated holes on 2.54 either way, so a male header such as Sullins PRPC006DAAN-RC drops into the same land if you would rather have pins and a cable. Height 8.5 mm is not a problem: J1 is on the FRONT, and it is the back that faces a breadboard a couple of millimetres away."/>
+</part>
 <part name="R24" library="rcl" deviceset="R-US_SMALL" device="R0201" value="33">
 <attribute name="MANF" value="Yageo"/>
 <attribute name="MANF#" value="RC0201FR-0733RL"/>
