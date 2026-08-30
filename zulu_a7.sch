@@ -8987,7 +8987,12 @@ Metric Code Size 5664</description>
 <attribute name="MANF#" value="RC0201FR-0710KL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/20W, 0201"/>
 </part>
-<part name="LD0" library="ctambe" deviceset="LED_RGB" device="" value="VS NRD8"/>
+<part name="LD0" library="ctambe" deviceset="LED_RGB" device="" value="VS NRD8">
+<attribute name="MANF" value="Victory Electronics"/>
+<attribute name="MANF#" value="VS NRD8"/>
+<attribute name="SPEC" value="RGB LED, common anode, 1.6 x 1.6 x 0.35 mm, 25 mA max per colour"/>
+<attribute name="NOTE" value="Victory Electronics VS NRD8, common anode, 1.6 x 1.6 x 0.35 mm. The datasheet's own Part Number column says VS NRD8, so the value was the part number all along. Land pattern already drawn from its Recommended Soldering Pad. 25 mA absolute max per colour; red 60 mW, green and blue 110 mW. WORTH A LOOK BEFORE FABRICATION: Vf is 3.3 V typ and 3.8 max for GREEN and BLUE at 20 mA, against a 3.3 V rail. Red is properly set -- R81 at 182R gives about 6 mA. Green through R82 at 100R and blue through R80 at 182R have NO HEADROOM at the typical Vf, so their current is set by where the diode knee happens to sit rather than by the resistor. They will light, because Vf falls at low current, but dimly and with a wide part-to-part spread. Red will dominate the mix. Options are a lower-Vf RGB part, or accepting it."/>
+</part>
 <part name="LD1" library="ctambe" deviceset="LED" device="" value="red">
 <attribute name="MANF" value="Lite-On"/>
 <attribute name="MANF#" value="LTST-C191KRKT"/>
@@ -9000,7 +9005,11 @@ Metric Code Size 5664</description>
 <attribute name="SPEC" value="red indicator, 0603, Vf 2.1V max at 4mA"/>
 <attribute name="NOTE" value="User status LED, driven straight off an FPGA pin through R84 at 330R: (3.3 - Vf)/330 is 3.9 mA green, 4.2 red, 3.6 yellow, and 1.2 mA blue or white. Any of the first three is comfortable and well inside an LVCMOS33 pin's 12 mA. RED IS A PREFERENCE, NOT A CONSTRAINT -- the circuit takes green just as happily. It is red so that the two user LEDs read differently from LD5, which is green and means power good; on a board being brought up that is worth being able to tell apart at a glance. Same LTST-C191 family and the same 0603 land as LD5, so it is one line in the catalogue, not two. Confirm the suffix before ordering."/>
 </part>
-<part name="BTN" library="ctambe" deviceset="SWITCH_TACT" device="" value="PTA-142"/>
+<part name="BTN" library="ctambe" deviceset="SWITCH_TACT" device="" value="PTA-142">
+<attribute name="MANF#" value="PTA-142"/>
+<attribute name="SPEC" value="tactile switch, SMD gull-wing, 4.5 x 4.5 mm, 130 gf, DC12V 50 mA, 50000 cycles"/>
+<attribute name="NOTE" value="PTA-142, from the catalogue page in Datasheet/pta142-112.pdf. THE PART NUMBER IS COMPLETE AS IT STANDS: the sheet lists one operating force (130 gf +-30), one stem colour (black) and no ordering suffix table, so there is nothing to append. It is the SMD reflow member of the family -- PTA-112 and PTA-113 are through-hole, PTA-143 is the SMD with a ground terminal. Rated DC12V 50 mA, 100 mOhm contact, 50000 cycles, 0.25 mm travel, 2200 per reel. The P.C.B. Layout on that page is 9.1 mm overall, 5.9 inner, 4.4 high, 1.6 pads, which is exactly the land in this library. THE PAGE DOES NOT NAME THE MANUFACTURER -- it is one sheet lifted out of a catalogue and carries no logo, so MANF is left empty rather than guessed. Distributors index PTA-142 directly."/>
+</part>
 <part name="Q1" library="ctambe" deviceset="OSC_CHIP" device="ASEM1-12MHZ" value="12MHz 25ppm (FPGA + FT2232HQ)">
 <attribute name="MANF" value="Abracon"/>
 <attribute name="MANF#" value="ASEM1-12.000MHZ-LC-T"/>
