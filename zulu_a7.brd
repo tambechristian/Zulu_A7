@@ -2379,7 +2379,7 @@ chip</description>
 <contactref element="R29" pad="1"/>
 <contactref element="U1" pad="C17"/>
 </signal>
-<signal name="PMOD-4">
+<signal name="PMOD-4"><via x="60.44" y="11.4502" extent="1-16" drill="0.2" diameter="0.3"/><wire x1="60.44" y1="11.4502" x2="59.15" y2="12.5" width="0.1" layer="3"/><wire x1="59.15" y1="12.5" x2="59" y2="12.55" width="0.1" layer="3"/><wire x1="59" y1="12.55" x2="55.25" y2="12.55" width="0.1" layer="3"/><wire x1="55.25" y1="12.55" x2="55.23" y2="13.97" width="0.1" layer="3"/><wire x1="60.09" y1="10.844" x2="60.44" y2="11.4502" width="0.1" layer="1"/>
 <contactref element="J1" pad="4"/>
 <contactref element="R29" pad="2"/>
 </signal>
@@ -2387,7 +2387,7 @@ chip</description>
 <contactref element="R30" pad="2"/>
 <contactref element="U1" pad="T17"/>
 </signal>
-<signal name="PMOD-7"><via x="58.9538" y="12.59" extent="1-16" drill="0.2" diameter="0.3"/><wire x1="58.9538" y1="12.59" x2="60.1" y2="12.6" width="0.1" layer="4"/><wire x1="60.1" y1="12.6" x2="60.15" y2="11.25" width="0.1" layer="4"/><wire x1="60.15" y1="11.25" x2="60.25" y2="9.5" width="0.1" layer="4"/><wire x1="60.25" y1="9.5" x2="59.5" y2="8.05" width="0.1" layer="4"/><wire x1="59.5" y1="8.05" x2="57.77" y2="6.35" width="0.1" layer="4"/><wire x1="59.49" y1="12.14" x2="58.9538" y2="12.59" width="0.1" layer="1"/>
+<signal name="PMOD-7">
 <contactref element="J1" pad="7"/>
 <contactref element="R30" pad="1"/>
 </signal>
@@ -2637,7 +2637,7 @@ chip</description>
 <contactref element="U10" pad="1"/>
 <contactref element="U2" pad="63"/>
 </signal>
-<signal name="EE-CLK"><via x="3.5" y="12.7" extent="1-16" drill="0.2" diameter="0.3"/><wire x1="29.133" y1="9.458" x2="25.8" y2="8" width="0.1" layer="3"/><wire x1="25.8" y1="8" x2="21.95" y2="7.6" width="0.1" layer="3"/><wire x1="21.95" y1="7.6" x2="15" y2="10.3" width="0.1" layer="3"/><wire x1="15" y1="10.3" x2="12.15" y2="14.05" width="0.1" layer="3"/><wire x1="12.15" y1="14.05" x2="3.5" y2="14.05" width="0.1" layer="3"/><wire x1="3.5" y1="14.05" x2="3.5" y2="12.7" width="0.1" layer="3"/><wire x1="3.504" y1="12.68" x2="3.5" y2="12.7" width="0.1" layer="16"/><via x="29.133" y="9.458" extent="1-16" drill="0.2" diameter="0.3"/><wire x1="28.133" y1="9.458" x2="29.133" y2="9.458" width="0.2" layer="1"/>
+<signal name="EE-CLK"><via x="29.133" y="9.458" extent="1-16" drill="0.2" diameter="0.3"/><wire x1="28.133" y1="9.458" x2="29.133" y2="9.458" width="0.2" layer="1"/>
 <contactref element="R96" pad="1"/>
 <contactref element="U10" pad="2"/>
 <contactref element="U2" pad="62"/>

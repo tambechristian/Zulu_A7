@@ -111,11 +111,11 @@ ROUTER = os.environ.get("ROUTER", "pathfinder")
 # net can end up in the accepted plan having been checked against a set that no
 # longer describes the plan: PMOD-4's L3 trace came out straight through
 # PMOD-7's via at (58.954, 12.590), -0.16 mm, a short between two Pmod signals.
-# check_board caught it; nothing in here did. The fix is a final validation
-# pass that re-checks every accepted net against the FINAL plan and rips up
-# whatever violates -- the clearance model already exists in check_board.py.
-# Until that is written, run check_board.py after every greedy group and treat
-# a clearance violation as "that net did not route", because that is what it is.
+# check_board caught it; nothing in here did. FIXED: there is a final
+# validation pass at the end of the greedy branch that re-checks the finished
+# plan against itself and rips up what conflicts. The clearance test was never
+# the problem -- collides() is stricter than check_board -- so the pass reuses
+# it and only changes WHEN it is applied.
 
 GROUPS = {
     "sdram": re.compile(r"^(D\d+|A\d+|BS\d|RAS#|CAS#|WE#|CKE|LDQM|UDQM|SDRAM-)"),
@@ -1525,6 +1525,46 @@ def main(gname="sdram"):
         for net in nets:
             plan.setdefault(net, ([], []))
         plan.update(pairplan)
+
+        # ---- FINAL VALIDATION, and it is the only check here made against the
+        # plan as it FINISHES rather than as it stood at some moment during the
+        # run. Every attempt() and attempt_split() above takes `rivals` as the
+        # plan AT THAT INSTANT, which is right when it is made and stops being
+        # right immediately: rip-up removes members and adds others, the
+        # best-round snapshot can restore a net that was placed before the net
+        # it now sits on top of, and pairplan is merged in at the end having
+        # been routed against none of it. Nothing re-examined the finished set.
+        # PMOD-4 came out of that with its L3 trace driven through PMOD-7's via
+        # at -0.16 mm -- a short between two Pmod signals, which check_board.py
+        # found and signals.py had no way to notice.
+        #
+        # RIP UP, DO NOT RE-ROUTE. A net that has to come out is one this run
+        # could not place, and an airwire says so honestly; re-routing here
+        # would be checked against a plan this loop is still changing, which is
+        # the whole bug. The worst offender goes first so one selfish route
+        # cannot evict several good ones -- and sorted(), because the victim
+        # order decides the result and a board generator is reproducible or it
+        # is nothing.
+        # IT RIPS SLIGHTLY MORE THAN check_board WOULD. collides() measures a
+        # wire against a via at STUB_W/2 + VIA_L/2 + clr because route[1] holds
+        # traces AND fan-out stubs and carries no width per segment, so the
+        # wider of the two has to be assumed: 0.34 mm where a 0.10 trace really
+        # owes 0.29. EE-CLK is dropped by that margin and check_board passes it.
+        # That is the right way round for a guard -- it can cost a net, and it
+        # cannot let a short through -- but it is the thing to look at first if
+        # a net that should route keeps coming out as an airwire.
+        dropped = []
+        while True:
+            hits = dict((n, collides(v, n)) for n, v in plan.items() if v[1])
+            hits = dict((n, h) for n, h in hits.items() if h)
+            if not hits:
+                break
+            victim = max(sorted(hits), key=lambda n: len(hits[n]))
+            plan[victim] = ([], [])
+            dropped.append(victim)
+        if dropped:
+            print("   final validation: %d net(s) ripped up against the finished"
+                  " plan: %s" % (len(dropped), ", ".join(dropped)))
         done = sum(1 for v in plan.values() if v[1])
         ntot = len(nets) + len(pairplan)
         fail = ntot - done
