@@ -19,8 +19,8 @@ Item,Qty,Refdes,Value,Package,Manufacturer,MANF#,Spec,Fitted,Note
 18,1,L1,1.5uH,IND2520,Murata,DFE252010P-1R5M=P2,"1.5uH +-20%, Idc >=1.8A REQUIRED, 1.00 mm max -- SW1, 1.2A buck",yes,
 19,1,L3,2.2uH,IND2520,Murata,DFE252010P-2R2M=P2,"2.2uH +-20%, Idc >=0.9A REQUIRED, 1.00 mm max -- SW3, 600mA buck",yes,
 20,1,L2,3.3uH,IND2520,Murata,DFE252010P-3R3M=P2,"3.3uH +-20%, Idc >=0.9A REQUIRED, 1.00 mm max -- SW2, 600mA buck",yes,
-21,1,LD5,,LED0603,,,,yes,
-22,2,LD1 LD2,LED,LED0603,,,,yes,
+21,2,LD1 LD2,LED,LED0603,,,,yes,
+22,1,LD5,green,LED0603,Lite-On,LTST-C191KGKT,"green indicator, 0603, Vf 2.1V max at 2mA",yes,"Power-good indicator: VCC3V3 to LD5 to R78 680R to Q2 drain to GND. SELECTED FROM THE CIRCUIT, not recovered -- the part carried no value and no number. THE RESISTOR ALREADY CHOSE THE COLOUR: 680R off 3.3 V passes (3.3 - Vf)/680, which is 1.9 mA for a green LED or 2.1 for a red, but only 0.6 mA for a blue or white one, too dim to read. So it is a green or red part, and green is the convention for "
 23,1,U8,LTC3569EUDC#TRPBF,LTC3569-QFN20,,,,yes,
 24,1,X1,Molex 105017-0001 Micro-USB-B,MOLEX-105017-0001,,,,yes,
 25,1,BTN,PTA-142,PTA-142,,,,yes,
@@ -53,7 +53,7 @@ Item,Qty,Refdes,Value,Package,Manufacturer,MANF#,Spec,Fitted,Note
 52,1,D3,SMF5.0A,SOD123,,,,yes,
 53,1,U4,W25Q128JVSIQ,SOIC-8_208MIL,Winbond,W25Q128JVSIQ,,yes,"128Mbit quad SPI, SOIC-8 208mil. The XC7A35T bitstream is 17,536,096 bits, so the previous W25Q80BV (8Mbit) could not boot the part at all. 128Mbit leaves ~14MB for user data above the bitstream."
 54,1,U10,93LC46BT-I/SN,SOIC8,Microchip,,,yes,
-55,1,Q2,,SOT23-3,,,,yes,
+55,1,Q2,2N7002,SOT23-3,onsemi,2N7002LT1G,"N-ch MOSFET, logic level: Vgs(th) 1.0 to 2.5V, Vds 20V min, Id 100mA min, SOT-23 G/S/D on pins 1/2/3",yes,"Switches the PGOOD indicator LD5. SELECTED FROM THE CIRCUIT, not recovered -- the part carried no value and no number. What it has to do: its gate is on PGOOD, the LTC3569's open-drain output pulled to 3V3 through R77's 100k, so Vgs is a static 3.3 V and the weak pull-up costs nothing because a gate draws no DC. That needs a LOGIC-LEVEL threshold, comfortably under 3.3 V. The drain carries the LED"
 56,1,Q3,MBT3904DW1T1,SOT363,,,,yes,
 57,1,U3,AS4C32M16SB-6TIN,TSOPII-54,,,,yes,"512Mbit (32M x 16) = 64MB. Pin-for-pin and dimensionally identical to the 256Mb AS4C16M16SA-6TIN it replaces: all 54 pins and every TSOP-II dimension were checked against both datasheets, and pin 40 is NC on both. ONE DIFFERENCE, AND IT IS NOT A PIN -- the column address is A0-A9 (1024 columns) instead of A0-A8 (512). The memory controller must be set to 10 column bits or it reaches only half the "
 58,1,LD0,VS NRD8,VS-NRD8,,,,yes,
