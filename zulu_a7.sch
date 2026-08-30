@@ -8922,20 +8922,23 @@ Metric Code Size 5664</description>
 <part name="GND7" library="ctambe" deviceset="GND" device=""/>
 <part name="FRAME6" library="ctambe" deviceset="DOCFIELD" device=""/>
 <part name="FRAME7" library="ctambe" deviceset="DOCFIELD" device=""/>
-<part name="R80" library="rcl" deviceset="R-US_SMALL" device="R0402" value="182">
+<part name="R80" library="rcl" deviceset="R-US_SMALL" device="R0402" value="33">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07182RL"/>
+<attribute name="MANF#" value="RC0402FR-0733RL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="NOTE" value="RGB LED balance. The green and blue dice are 3.3 V-class parts on a 3.3 V rail, so the resistor never dominates their current -- that is structural and no resistor value fixes it. What the values CAN do is stop red swamping the other two. As built, and as Cmod A7 ships the same LED, 182/182/100 gave red 6.9 mA against green 1.9 and blue 1.5: red about four times either. At 330/33/33 it is red 3.8, green 2.9, blue 2.9. Worst case improves too, not just nominal -- green with a part 0.15 V high in Vf goes from 1.4 mA to 1.8. Lower resistors do make the current MORE sensitive in percentage terms, 77 percent of nominal retained at 100R against 61 at 33R, but the absolute floor is what you see and it rises. Currents read off the datasheet's own Vf/If curve at the working point, not off the 20 mA table."/>
 </part>
-<part name="R81" library="rcl" deviceset="R-US_SMALL" device="R0402" value="182">
+<part name="R81" library="rcl" deviceset="R-US_SMALL" device="R0402" value="330">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07182RL"/>
+<attribute name="MANF#" value="RC0402FR-07330RL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="NOTE" value="RGB LED balance. The green and blue dice are 3.3 V-class parts on a 3.3 V rail, so the resistor never dominates their current -- that is structural and no resistor value fixes it. What the values CAN do is stop red swamping the other two. As built, and as Cmod A7 ships the same LED, 182/182/100 gave red 6.9 mA against green 1.9 and blue 1.5: red about four times either. At 330/33/33 it is red 3.8, green 2.9, blue 2.9. Worst case improves too, not just nominal -- green with a part 0.15 V high in Vf goes from 1.4 mA to 1.8. Lower resistors do make the current MORE sensitive in percentage terms, 77 percent of nominal retained at 100R against 61 at 33R, but the absolute floor is what you see and it rises. Currents read off the datasheet's own Vf/If curve at the working point, not off the 20 mA table."/>
 </part>
-<part name="R82" library="rcl" deviceset="R-US_SMALL" device="R0402" value="100">
+<part name="R82" library="rcl" deviceset="R-US_SMALL" device="R0402" value="33">
 <attribute name="MANF" value="Yageo"/>
-<attribute name="MANF#" value="RC0402FR-07100RL"/>
+<attribute name="MANF#" value="RC0402FR-0733RL"/>
 <attribute name="SPEC" value="thick film +-1%, 1/16W, 0402"/>
+<attribute name="NOTE" value="RGB LED balance. The green and blue dice are 3.3 V-class parts on a 3.3 V rail, so the resistor never dominates their current -- that is structural and no resistor value fixes it. What the values CAN do is stop red swamping the other two. As built, and as Cmod A7 ships the same LED, 182/182/100 gave red 6.9 mA against green 1.9 and blue 1.5: red about four times either. At 330/33/33 it is red 3.8, green 2.9, blue 2.9. Worst case improves too, not just nominal -- green with a part 0.15 V high in Vf goes from 1.4 mA to 1.8. Lower resistors do make the current MORE sensitive in percentage terms, 77 percent of nominal retained at 100R against 61 at 33R, but the absolute floor is what you see and it rises. Currents read off the datasheet's own Vf/If curve at the working point, not off the 20 mA table."/>
 </part>
 <part name="R83" library="rcl" deviceset="R-US_SMALL" device="R0402" value="330">
 <attribute name="MANF" value="Yageo"/>
@@ -8991,7 +8994,7 @@ Metric Code Size 5664</description>
 <attribute name="MANF" value="Victory Electronics"/>
 <attribute name="MANF#" value="VS NRD8"/>
 <attribute name="SPEC" value="RGB LED, common anode, 1.6 x 1.6 x 0.35 mm, 25 mA max per colour"/>
-<attribute name="NOTE" value="Victory Electronics VS NRD8, common anode, 1.6 x 1.6 x 0.35 mm. The datasheet's own Part Number column says VS NRD8, so the value was the part number all along. Land pattern already drawn from its Recommended Soldering Pad. 25 mA absolute max per colour; red 60 mW, green and blue 110 mW. WORTH A LOOK BEFORE FABRICATION: Vf is 3.3 V typ and 3.8 max for GREEN and BLUE at 20 mA, against a 3.3 V rail. Red is properly set -- R81 at 182R gives about 6 mA. Green through R82 at 100R and blue through R80 at 182R have NO HEADROOM at the typical Vf, so their current is set by where the diode knee happens to sit rather than by the resistor. They will light, because Vf falls at low current, but dimly and with a wide part-to-part spread. Red will dominate the mix. Options are a lower-Vf RGB part, or accepting it."/>
+<attribute name="NOTE" value="Victory Electronics VS NRD8, common anode, 1.6 x 1.6 x 0.35 mm. The datasheet's own Part Number column reads VS NRD8, so the value was the part number all along. Land pattern already drawn from its Recommended Soldering Pad. 25 mA absolute max per colour. GREEN AND BLUE ARE 3.3 V-CLASS DICE ON A 3.3 V RAIL: their Vf is 3.3 V typical at 20 mA, but the working point here is 2 to 3 mA, where the datasheet curve puts Vf near 3.0, so they light perfectly well -- the 20 mA figure does not apply at 3 mA. What it does mean is that the series resistor never dominates their current, so brightness tracks the diode rather than the resistor and varies with part and temperature. Red, an AlGaInP die at about 1.9 V, has real headroom and is set by its resistor. R80, R81 and R82 are chosen to balance that as far as a 3.3 V rail allows; see the note on any of them."/>
 </part>
 <part name="LD1" library="ctambe" deviceset="LED" device="" value="red">
 <attribute name="MANF" value="Lite-On"/>

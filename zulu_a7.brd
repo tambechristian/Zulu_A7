@@ -1584,9 +1584,9 @@ chip</description>
 <element name="LD5" library="ctambe" package="LED0603" value="green" x="24.95" y="14.985"/>
 <element name="Q2" library="ctambe" package="SOT23-3" value="2N7002" x="8.975" y="3.74" rot="MR0"/>
 <element name="X1" library="ctambe" package="MOLEX-105017-0001" value="Molex 105017-0001 Micro-USB-B" x="33.02" y="21.259"/>
-<element name="R80" library="rcl" package="R0402" value="182" x="24.198" y="8.4975"/>
-<element name="R81" library="rcl" package="R0402" value="182" x="21.323" y="6.4975"/>
-<element name="R82" library="rcl" package="R0402" value="100" x="25.673" y="3.9975"/>
+<element name="R80" library="rcl" package="R0402" value="33" x="24.198" y="8.4975"/>
+<element name="R81" library="rcl" package="R0402" value="330" x="21.323" y="6.4975"/>
+<element name="R82" library="rcl" package="R0402" value="33" x="25.673" y="3.9975"/>
 <element name="R83" library="rcl" package="R0402" value="330" x="18.948" y="19.42"/>
 <element name="R84" library="rcl" package="R0402" value="330" x="27.748" y="17.883"/>
 <element name="R85" library="rcl" package="R0402" value="10K" x="15.65" y="13.618" rot="MR90"/>
