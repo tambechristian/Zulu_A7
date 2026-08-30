@@ -82,7 +82,7 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
     <div class="sub">Spartan-6 → Artix-7 · PIC18F14K50 → FT2232HQ · linear regulators → LTC3569 · connector, memory &amp; footprint refresh</div>
     <div class="tb-grid mono">
       <div><div class="k">File</div><div class="v">zulu_a7.sch</div></div>
-      <div><div class="k">Git commit</div><div class="v">30a0e65</div></div>
+      <div><div class="k">Git commit</div><div class="v">cf3e695</div></div>
       <div><div class="k">Parts / nets</div><div class="v">213 / 175</div></div>
       <div><div class="k">Sheets</div><div class="v">7</div></div>
       <div><div class="k">Status</div><div class="v">Schematic complete · Board pending</div></div>
@@ -91,7 +91,7 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
 
   <p>Everything in this document is read out of <span class="mono">zulu_a7.sch</span> when it is generated, and
   every FPGA ball is checked against Xilinx's <span class="mono">xc7a35tcpg236pkg_pinout.txt</span>. It supersedes
-  rev1, which was written 0 commits ago and had gone badly stale &mdash; it still described two LDOs that no longer
+  rev1, which was written 1 commits ago and had gone badly stale &mdash; it still described two LDOs that no longer
   exist, a 32 MB SDRAM, an 8 Mb flash, a WiFi header, a 40-pin X2, and twelve ball assignments it could not verify.</p>
   <p>Read <strong>Open items</strong> before doing anything else with this file.</p>
 
@@ -261,21 +261,21 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
     to move out or a third position has to go before it drops in.</li>
     <li>Channels are now <span class="mono">CHAN0..CHAN27</span> on pins 2-13 and 19-34, contiguous. The old numbering
     ran 0-13 then 15-31 — there was never a CHAN14. GND is pin 16, and it is the only ground pin.</li>
-    <li><strong>The board is now 0.800 &times; 2.750 in &mdash; 20.32 &times; 69.85&nbsp;mm &mdash; and sized to a
-    breadboard.</strong> X2's two rows were 0.900&nbsp;in apart, which is columns B and I and leaves one free column
-    each side. They are now <strong>0.700&nbsp;in</strong> apart: columns <strong>C and H</strong>, with A, B, I and J
-    free to patch into. The edges sit half a pitch outside the pins, so the long edges land exactly halfway between
-    columns B and C. 24 grid positions per row now instead of 21; 38 are fitted and 10 left bare, the three spare
-    columns falling together at one end so that 7.62&nbsp;mm of board carries no through-holes at all.
+    <li><strong>The board is now 1.000 &times; 2.400 in &mdash; 25.40 &times; 60.96&nbsp;mm &mdash; and sized to a
+    breadboard.</strong> X2's two rows were 0.700&nbsp;in apart on the old 0.800&nbsp;in board: columns C and H.
+    When the board widened to 1.000&nbsp;in the rows moved out with it, and they are now <strong>0.900&nbsp;in</strong>
+    apart: columns <strong>B and I</strong>, with A, C, D, E and F, G, H, J free to patch into. The edges sit half a pitch outside the pins, so the long edges land exactly halfway between
+    columns B and C. 24 grid positions per row now instead of 21; <strong>44 are fitted and 4 left bare</strong>, the bare
+    four being top-row columns 12 to 15 &mdash; the USB landing &mdash; not spare columns at an end.
     <br>Two of the numbers originally asked for do not survive contact with the geometry, and are worth recording.
     <strong>0.74&nbsp;in is too narrow to hold the pads</strong>: at 0.700&nbsp;in pin spacing it leaves 0.508&nbsp;mm
     from pin centre to edge, where the 1.016&nbsp;mm drill with its 25&nbsp;% ring needs 1.062, so copper would hang
     off the edge &mdash; even the smallest drill a 0.025&nbsp;in post tolerates still needs 0.763&nbsp;in. And
     <strong>2.75&nbsp;in is 27.5 row pitches</strong>, not a whole number of rows, and not the same board as
-    &ldquo;rows 1 to 24&rdquo;, which is 2.400&nbsp;in. 2.400 was built first and then lengthened to
-    <strong>2.750</strong>: the pin grid still stops at 24 columns, and the extra 8.89&nbsp;mm carries no grid
-    position at all, being reserved for the Pmod header and its signals. The Pmod stands across that strip,
-    5.08&nbsp;mm wide against 8.89 available. The earlier plain 53.34 &times; 25.40 rectangle &mdash; which
+    &ldquo;rows 1 to 24&rdquo;, which is 2.400&nbsp;in. 2.400 was built first, then lengthened to
+    <strong>2.750</strong> to buy an 8.89&nbsp;mm strip past the grid for the Pmod, and has now been cut back to
+    <strong>2.400</strong>. The outline is the 24-column grid again and nothing more, so the strip the Pmod stood
+    on is gone with the length: J1, 5.08&nbsp;mm wide, and JP3 both need a place inside the channel. The earlier plain 53.34 &times; 25.40 rectangle &mdash; which
     replaced a 25.40 &times; 50.80 board with a 5.94 &times; 1.22&nbsp;mm mini-USB tab &mdash; is superseded by
     this.</li>
     <li>Both the package outline in the schematic and the layer-20 dimension in <span class="mono">zulu_a7.brd</span>
@@ -397,8 +397,8 @@ footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line);
   </ul>
 
   <footer>
-    Baseline <span class="mono">30a0e65</span> · this revision <span class="mono">30a0e65</span> ·
-    0 commits since baseline.
+    Baseline <span class="mono">30a0e65</span> · this revision <span class="mono">cf3e695</span> ·
+    1 commits since baseline.
     Regenerate with <span class="mono">python tools/change_record.py</span>.
   </footer>
 </div>

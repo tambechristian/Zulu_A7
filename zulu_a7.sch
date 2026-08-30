@@ -565,26 +565,26 @@
 <rectangle x1="-0.9" y1="-0.75" x2="-0.6" y2="-0.25" layer="51"/>
 </package>
 <package name="ZULU-DIP37">
-<description>&lt;b&gt;Zulu A7 breadboard header, 0.800 x 2.750 in&lt;/b&gt;&lt;p&gt;Two rows 0.700 in apart, so the pins land in breadboard columns C and H and leave A, B, I and J free. 24 positions per row on 0.100 in; 38 fitted, 10 bare. Board 20.32 x 69.85 mm. The pins stop at x=59.69; the last 8.89 mm carries no grid position at all and is reserved for the Pmod header and its signals.&lt;/p&gt;</description>
-<wire x1="0" y1="25.4" x2="69.85" y2="25.4" width="0" layer="39"/>
-<wire x1="69.85" y1="25.4" x2="69.85" y2="22.86" width="0" layer="39"/>
-<wire x1="69.85" y1="22.86" x2="0" y2="22.86" width="0" layer="39"/>
+<description>&lt;b&gt;Zulu A7 breadboard header, 1.000 x 2.400 in&lt;/b&gt;&lt;p&gt;Two rows 0.900 in apart -- inserted centred the pins land in breadboard columns B and I, leaving A, C, D, E and F, G, H, J free. 24 positions per row on 0.100 in; 44 fitted, 4 bare -- the bare four are top-row columns 12 to 15 (x 29.21 to 36.83), the USB landing. Board 25.40 x 60.96 mm. The outline is now the pin field and nothing more: 24 columns plus 1.27 mm end margins is exactly 60.96 mm = 2.400 in, and the pins stop at x=59.69, so only 1.27 mm of board follows the last one. The 8.89 mm strip that used to sit past the grid and carry the Pmod is gone with the length, so J1 has to live inside the channel between the rows.&lt;/p&gt;</description>
+<wire x1="0" y1="25.4" x2="60.96" y2="25.4" width="0" layer="39"/>
+<wire x1="60.96" y1="25.4" x2="60.96" y2="22.86" width="0" layer="39"/>
+<wire x1="60.96" y1="22.86" x2="0" y2="22.86" width="0" layer="39"/>
 <wire x1="0" y1="22.86" x2="0" y2="25.4" width="0" layer="39"/>
-<wire x1="0" y1="2.54" x2="69.85" y2="2.54" width="0" layer="39"/>
-<wire x1="69.85" y1="2.54" x2="69.85" y2="0" width="0" layer="39"/>
-<wire x1="69.85" y1="0" x2="0" y2="0" width="0" layer="39"/>
+<wire x1="0" y1="2.54" x2="60.96" y2="2.54" width="0" layer="39"/>
+<wire x1="60.96" y1="2.54" x2="60.96" y2="0" width="0" layer="39"/>
+<wire x1="60.96" y1="0" x2="0" y2="0" width="0" layer="39"/>
 <wire x1="0" y1="0" x2="0" y2="2.54" width="0" layer="39"/>
-<wire x1="0" y1="22.86" x2="69.85" y2="22.86" width="0" layer="40"/>
-<wire x1="69.85" y1="22.86" x2="69.85" y2="25.4" width="0" layer="40"/>
-<wire x1="69.85" y1="25.4" x2="0" y2="25.4" width="0" layer="40"/>
+<wire x1="0" y1="22.86" x2="60.96" y2="22.86" width="0" layer="40"/>
+<wire x1="60.96" y1="22.86" x2="60.96" y2="25.4" width="0" layer="40"/>
+<wire x1="60.96" y1="25.4" x2="0" y2="25.4" width="0" layer="40"/>
 <wire x1="0" y1="25.4" x2="0" y2="22.86" width="0" layer="40"/>
-<wire x1="0" y1="2.54" x2="69.85" y2="2.54" width="0" layer="40"/>
-<wire x1="69.85" y1="2.54" x2="69.85" y2="0" width="0" layer="40"/>
-<wire x1="69.85" y1="0" x2="0" y2="0" width="0" layer="40"/>
+<wire x1="0" y1="2.54" x2="60.96" y2="2.54" width="0" layer="40"/>
+<wire x1="60.96" y1="2.54" x2="60.96" y2="0" width="0" layer="40"/>
+<wire x1="60.96" y1="0" x2="0" y2="0" width="0" layer="40"/>
 <wire x1="0" y1="0" x2="0" y2="2.54" width="0" layer="40"/>
-<wire x1="0" y1="0" x2="69.85" y2="0" width="0.1524" layer="21"/>
-<wire x1="69.85" y1="0" x2="69.85" y2="25.4" width="0.1524" layer="21"/>
-<wire x1="69.85" y1="25.4" x2="0" y2="25.4" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="60.96" y2="0" width="0.1524" layer="21"/>
+<wire x1="60.96" y1="0" x2="60.96" y2="25.4" width="0.1524" layer="21"/>
+<wire x1="60.96" y1="25.4" x2="0" y2="25.4" width="0.1524" layer="21"/>
 <wire x1="0" y1="25.4" x2="0" y2="0" width="0.1524" layer="21"/>
 <pad name="4" x="52.07" y="24.13" drill="1.016" rot="R270"/>
 <pad name="6" x="46.99" y="24.13" drill="1.016" rot="R270"/>

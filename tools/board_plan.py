@@ -183,17 +183,17 @@ PADS = {m.group(1): (float(m.group(2)), float(m.group(3)))
 ROWY = sorted({y for x, y in PADS.values()})
 PITCH, PADR = 2.54, 0.762
 # The board went 0.800 in -> 1.000 in wide and the pin rows moved out with it,
-# staying 0.700 in apart. Every block coordinate below is written against the old
+# and moved to 0.900 in apart. Every block coordinate below is written against the old
 # outline -- and so is make_board.py's SINGLE table, which these must match, or
 # this page stops being a picture of the board. Both apply the same offset rather
 # than restating forty numbers. X1 is exempt: it is anchored to BY1 already.
 YOFF = (BY1 - 20.32) / 2.0
 # the full grid, not just the columns that happen to carry a pad -- the three
 # spare columns at the far end are part of the plan and have to be drawn
-# The header grid stops short of the board now: the last 8.89 mm is reserved
-# for the Pmod and its signals and carries no grid position at all, so drawing
-# dots there would advertise slots that do not exist.
-PMOD_ZONE = 8.89
+# The 8.89 mm Pmod strip went with the length when the board was cut back to
+# 2.400 in, so the grid now runs the whole board and PMOD_ZONE is zero. The
+# constant stays rather than being deleted: it is what that strip cost.
+PMOD_ZONE = 0.0
 GRIDX = []
 x = min(x for x, y in PADS.values())
 while x <= BX1 - PMOD_ZONE - PADR:
@@ -278,9 +278,10 @@ SZ = {p: size(pkg_of(p)) for p in ("U1", "U2", "U3", "U4", "U8", "U10", "X1", "X
 sdw, sdh = SZ["X3"][1], SZ["X3"][0]           # R270: the card ejects over the -x end
 
 # --- FRONT ------------------------------------------------------------------
-# The board is 2.750 in now, and the last 8.89 mm of it -- everything past
-# x=60.96 -- is reserved for the Pmod and its signals. No grid position falls
-# there, so nothing else may either.
+# The board is 2.400 in now: the outline stops at x=60.96, exactly where the
+# grid stops, and the 8.89 mm strip that carried the Pmod past it is gone. J1
+# and JP3 both stood in that strip, so both are off the board until they are
+# re-placed -- which is what the placement check at the foot of this file says.
 #
 # That forces the microSD to the other end. Its layer-39 keepout is the card
 # plus 21.55 mm of eject stroke, so it has to throw the card off a board END;

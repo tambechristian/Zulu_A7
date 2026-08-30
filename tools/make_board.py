@@ -3,7 +3,7 @@
 
     python tools/make_board.py [--fab jlcpcb|pcbway]
 
-WHAT THIS PRODUCES. A complete, placed, UNROUTED board: the 2.750 x 1.000 in
+WHAT THIS PRODUCES. A complete, placed, UNROUTED board: the 2.400 x 1.000 in
 outline on layer 20, a six-layer stack, the chosen fab's design rules loaded, an
 element for every part that has a package, and a signal for every net with a
 contactref for every pad. Opening it in Eagle or Fusion should show a
@@ -292,8 +292,9 @@ def origin_for(part, bx, by, rot):
 
 
 # --- placement, from tools/board_plan.py ------------------------------------
-BX1, BY1 = 69.85, 25.40
-# The board went 0.800 in -> 1.000 in wide and kept its 2.750 in length. See
+BX1, BY1 = 60.96, 25.40
+# The board went 0.800 in -> 1.000 in wide, was lengthened to 2.750 in to buy a
+# strip for the Pmod, and has now been cut back to 2.400 in. See
 # board/STACKUP.md: at 0.800 the parts did not fit, 44 of them parked, and the
 # escape's fan-out ring was pinned at half-width 6.20 by the decoupling that had
 # nowhere else to go.
@@ -429,7 +430,7 @@ for p, bx, by, rot in SINGLE:
     PLACE[p] = origin_for(p, bx, by + YOFF, rot) + (rot,)
 
 # X2 IS the board. Its package carries the outline on layer 21 as the rectangle
-# (0, 0) to (69.85, 20.32) and all 44 pads in that same frame, so its element
+# (0, 0) to (60.96, 25.40) and all 44 pads in that same frame, so its element
 # origin has to sit exactly on the board origin, unrotated. It cannot go through
 # SINGLE: origin_for() slides a part until its bounding box corner reaches the
 # target, and X2's bbox starts at the first pad's outer edge, which would put
