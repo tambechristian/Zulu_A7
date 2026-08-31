@@ -12,9 +12,9 @@ RUN IT AFTER BOTH ESCAPES AND BEFORE ground.py:
         -> QFN_PART=U8 QFN_POWER=VU escape_qfn.py --apply       and U8
         -> signals.py pairs --apply   the differential pairs, BEFORE power
         -> power.py --apply           the eight rails
-        -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
-                                      order -- see the note below
-        -> ROUTER=greedy signals.py rest --apply
+        -> signals.py sdram --apply
+        -> ROUTER=greedy signals.py rest --apply     second, see below
+        -> signals.py GRP --apply     x2, usb, microsd, jtag
         -> ground.py --apply          the pour and the stitching, LAST
 
 PAIRS BEFORE POWER, which is one stage further up than it looks like it needs
@@ -451,7 +451,12 @@ def via_for(px, py, obst, mine, clr, bx, segs=(), surf=None, stub_w=STUB_W,
             if not all(E.seg_pt(a, c, (x, y)) >= r + clr + VIA_L / 2 - 1e-9
                        for a, c, r in segs):
                 continue
-            if any(math.hypot(x - ox, y - oy) < VIA_L + clr - 1e-9 for ox, oy, r in mine):
+            # BOTH RULES, and the drill one binds. See escape.via_sep: two
+            # 0.30 lands at 0.09 want 0.39, two 0.2 mm HOLES at mdDrill want
+            # 0.40, and a hole is a hole whoever owns it -- this test is against
+            # the net's OWN vias, where the copper rule does not apply at all
+            # and the drill rule still does.
+            if any(math.hypot(x - ox, y - oy) < E.via_sep(clr) - 1e-9 for ox, oy, r in mine):
                 continue
             # AND A TRACE HAS TO BE ABLE TO LEAVE IT. via_for and the router were
             # measuring against DIFFERENT obstacle sets -- via_obstacles() here,

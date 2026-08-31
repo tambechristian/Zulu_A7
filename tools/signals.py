@@ -13,9 +13,9 @@ ground.py runs after all of them:
         -> QFN_PART=U8 QFN_POWER=VU escape_qfn.py --apply       and U8
         -> signals.py pairs --apply   the differential pairs, BEFORE power
         -> power.py --apply           the eight rails
-        -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
-                                      order -- see the note below
-        -> ROUTER=greedy signals.py rest --apply
+        -> signals.py sdram --apply
+        -> ROUTER=greedy signals.py rest --apply     second, see below
+        -> signals.py GRP --apply     x2, usb, microsd, jtag
         -> ground.py --apply          the pour and the stitching, LAST
 
 PAIRS BEFORE POWER, which is one stage further up than it looks like it needs
@@ -33,10 +33,16 @@ GROUP ORDER MATTERS, and it is not the order you would guess. Each group's
 copper is an obstacle to the next, so this was measured rather than reasoned
 (nets routed, best of each run, on the same board):
 
-    order                              usb  jtag  microsd  sdram  x2   total
-    sdram, x2, usb, microsd, jtag        2     6        5     29  10      52
-    sdram, jtag, usb, microsd, x2        2     7        6     29   5      49
-    usb, jtag, microsd, sdram, x2        2     7        6     19  10      44
+    order                                 sdram  rest  x2  usb  microsd  jtag
+    sdram, rest, x2, usb, microsd, jtag      19    21  13    2        3     5
+    sdram, x2, usb, microsd, jtag, rest      18    14  17    1        3     5
+
+    That is 13 signals with no copper against 16 -- rest gains seven nets and x2
+    loses four. An earlier sweep, before the "rest" group existed, put sdram
+    first and x2 second and measured 52 nets against 49 for sdram-jtag-usb-
+    microsd-x2 and 44 for usb-jtag-microsd-sdram-x2. Most-constrained-first
+    LOSES here: sdram is 39 nets converging on U3 wanting L3 between the planes,
+    and starving it costs more than everything else gains.
 
 Most-constrained-first is the usual rule and it LOSES here. sdram is 39 nets
 converging on U3 and wanting L3 between the planes, and starving it costs more
@@ -588,7 +594,7 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
         viasA, viasB = list(xvias), []
     else:
         # two vias an end, one per conductor, where it meets the coupled run
-        need = P.VIA_L + clr
+        need = E.via_sep(clr)      # copper AND drill; see escape.via_sep
         # THE FAN-OUT NEEDS MORE ROOM THAN THE COUPLED SECTION DOES, and the gap
         # that suits the impedance does not give it. The two vias at an end sit
         # where their conductors end -- PAIR_W + PAIR_GAP apart, 0.275 mm at
@@ -613,7 +619,12 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
             d = math.hypot(u[0] - v[0], u[1] - v[1])
             if d < 1e-9 or d >= need - 1e-9:
                 return u, v
-            k = (need - d) / 2.0 / d
+            # A HAIR OVER, not exactly on. Splaying to precisely `need` lands
+            # the two vias at 0.400 centre to centre and 0.2000 edge to edge
+            # against a 0.2000 rule, which floating point then decides is under
+            # it -- check_board reported "0.2000, needs 0.2000". A tenth of a
+            # micron of margin costs nothing and settles it.
+            k = (need + 1e-4 - d) / 2.0 / d
             return ((u[0] + (u[0] - v[0]) * k, u[1] + (u[1] - v[1]) * k),
                     (v[0] + (v[0] - u[0]) * k, v[1] + (v[1] - u[1]) * k))
 
@@ -1491,7 +1502,7 @@ def main(gname="sdram"):
         # between two nets, not a margin that wants widening.
         mine_v = list(route[0])
         need_wv = STUB_W / 2.0 + VIA_L / 2.0 + clr   # a wire against a via
-        need_vv = VIA_L + clr                        # a via against a via
+        need_vv = E.via_sep(clr)                     # a via against a via
         for n2, v in plan.items():
             if n2 == net or not v[1]:
                 continue
@@ -1834,6 +1845,47 @@ def main(gname="sdram"):
 
     stubset = set((u, v2, sl) for _n, r in allvias.items() for u, v2, sl in r[1])
     pairseg = set(q for _n, (_v, ps) in pairplan.items() for q in ps)
+
+    # A SECOND HOLE BESIDE AN EXISTING ONE IS NOT A VIA, IT IS A BROKEN DRILL.
+    # Every obstacle model here excludes the net's OWN copper, deliberately: a
+    # route has to be able to reach its own escape via. The cost is that a NEW
+    # via can be sited right next to one the net already has, and three came out
+    # that way -- EN_BIAS 0.010 mm apart, SW2_NET overlapping by 0.048,
+    # CLK-12M-FT at 0.074, all of them a signals.py via landing on top of an
+    # escape_qfn one. Electrically they are the same net and harmless; mechanically
+    # you cannot drill them, and no copper rule in this toolchain looks at a
+    # same-net pair.
+    #
+    # When the new via is that close to an existing one, the answer is to USE the
+    # existing one. Drop the duplicate and move every segment endpoint that sat on
+    # it onto the via that is already there -- at most via_sep of travel, on the
+    # net's own copper, so nothing else can be disturbed by it.
+    _own = collections.defaultdict(list)
+    for _m in re.finditer(r'<signal name="([^"]+)"[^>]*>(.*?)</signal>', b, re.S):
+        for _x, _y in re.findall(r'<via x="([-\d.]+)" y="([-\d.]+)"', _m.group(2)):
+            _own[_m.group(1)].append((float(_x), float(_y)))
+    _snap, _dropped = {}, 0
+    for net in written:
+        vias, segs = plan[net]
+        keep = []
+        for vx, vy in vias:
+            near = [q for q in _own.get(net, ())
+                    if math.hypot(vx - q[0], vy - q[1]) < E.via_sep(clr) - 1e-9]
+            if near:
+                _snap[(round(vx, 4), round(vy, 4))] = min(
+                    near, key=lambda q: math.hypot(vx - q[0], vy - q[1]))
+                _dropped += 1
+            else:
+                keep.append((vx, vy))
+        if _snap:
+            segs = [(_snap.get((round(a2[0], 4), round(a2[1], 4)), a2),
+                     _snap.get((round(c2[0], 4), round(c2[1], 4)), c2), l2)
+                    for a2, c2, l2 in segs]
+        plan[net] = (keep, segs)
+    if _dropped:
+        print("   %d via(s) dropped: the net already had one within %.2f mm, so the"
+              " route was moved onto it" % (_dropped, E.via_sep(clr)))
+
     g, out, nv, nw = E.g, b, 0, 0
     for net in written:
         vias, segs = plan[net]

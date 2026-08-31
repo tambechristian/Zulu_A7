@@ -634,6 +634,7 @@ def main(brdpath, schpath):
         par = lambda k: float((re.search(r'<param name="%s" value="([\d.]+)mm"/>' % k, b)
                                or [None, "0"])[1])
         cw, cp = par("mdWireWire"), par("mdWirePad")
+        cd, cv = par("mdDrill"), par("mdPadVia")
         seg = []
         for nm, v in bsig.items():
             for w in re.finditer(r'<wire x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" '
@@ -726,10 +727,14 @@ def main(brdpath, schpath):
                 cop.append((pnet.get((p, mm.group(1))), ox + a[0], oy + a[1], di / 2.0, 0,
                             None, None, 0.0, _ri))
         # Vias are copper on every layer and a wire may legitimately end on one.
-        vlist = []
+        vlist, dlist = [], []
         for nm, v in bsig.items():
             for vx, vy, vd in G.vias(v):
                 vlist.append((nm, vx, vy, vd))
+        for nm, v in bsig.items():
+            for _x, _y, _dr in re.findall(
+                    r'<via x="([-\d.]+)" y="([-\d.]+)" extent="[^"]*" drill="([\d.]+)"', v):
+                dlist.append((nm, float(_x), float(_y), float(_dr)))
         for nm, vx, vy, dia in vlist:
             cop.append((nm, vx, vy, dia / 2.0, 0, None, None, 0.0, None))
 
@@ -741,6 +746,35 @@ def main(brdpath, schpath):
                 d = math.hypot(vlist[i][1] - vlist[j][1], vlist[i][2] - vlist[j][2])                     - vlist[i][3] / 2 - vlist[j][3] / 2
                 if d < cw - 1e-6:
                     viol.append("%s via vs %s via: %.4f" % (vlist[i][0], vlist[j][0], d))
+        # DRILL TO DRILL, AND IT DOES NOT CARE WHOSE NET IT IS. Everything above
+        # is a COPPER rule, so it skips same-net pairs -- correctly, two traces
+        # of one signal may touch. A drill is not copper, it is a mechanical
+        # operation, and two holes 0.01 mm apart cannot be made whatever they
+        # are connected to. Nothing here checked it at all, and Fusion's own DRC
+        # found 107 where this file reported a clean board: 93 of them the escape
+        # ring at 0.390 mm pitch on 0.2 mm drills, which is 0.190 edge to edge
+        # against mdDrill 0.200, and three of them SAME-NET vias sitting on top
+        # of each other -- EN_BIAS at 0.010 mm apart, SW2_NET overlapping by
+        # 0.048. A checker that reports 0 findings on that is worse than no
+        # checker.
+        for i in range(len(dlist)):
+            for j in range(i + 1, len(dlist)):
+                d = math.hypot(dlist[i][1] - dlist[j][1], dlist[i][2] - dlist[j][2])                     - dlist[i][3] / 2 - dlist[j][3] / 2
+                if d < cd - 1e-6:
+                    viol.append("%s drill vs %s drill: %.4f, needs %.4f"
+                                % (dlist[i][0], dlist[j][0], d, cd))
+        # A VIA AGAINST A FOREIGN PAD. Wires were checked against pads and vias
+        # against vias; the pair in between was never tested, so an escape via
+        # 0.0445 mm from a ball land passed in silence.
+        for nm, vx, vy, dia in vlist:
+            for onet, px, py, r, side, hx, hy, cr, ri in cop:
+                if onet == nm or onet is None or hx is None:
+                    continue
+                dx = max(0.0, abs(vx - px) - hx)
+                dy = max(0.0, abs(vy - py) - hy)
+                d = math.hypot(dx, dy) - cr - dia / 2.0
+                if d < cv - 1e-6:
+                    viol.append("%s via vs %s pad: %.4f, needs %.4f" % (nm, onet, d, cv))
         for nm, ly, a, c, wd in seg:
             for onet, px, py, r, side, hx, hy, cr, ri in cop:
                 if onet == nm or (side and side != ly):    # side 0 = plated, all layers

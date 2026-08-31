@@ -12,9 +12,9 @@ RUN IT LAST, after everything that routes:
         -> QFN_PART=U8 QFN_POWER=VU escape_qfn.py --apply       and U8
         -> signals.py pairs --apply   the differential pairs, BEFORE power
         -> power.py --apply           the eight rails
-        -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
-                                      order -- see the note below
-        -> ROUTER=greedy signals.py rest --apply
+        -> signals.py sdram --apply
+        -> ROUTER=greedy signals.py rest --apply     second, see below
+        -> signals.py GRP --apply     x2, usb, microsd, jtag
         -> ground.py --apply          the pour and the stitching, LAST
 
 PAIRS BEFORE POWER, which is one stage further up than it looks like it needs

@@ -371,7 +371,31 @@ def lanes(pos, net, cell, at, ring, n, edges, stranded):
 # which nothing has to cross.
 # ============================================================================
 S2_W = 0.0762                       # 3 mil, the fan-out width
-VIA_D, VIA_L, VIA_PITCH = 0.2, 0.30, 0.39
+# 0.40, NOT 0.39, AND THE DIFFERENCE IS A DRILL. 0.39 is VIA_L + clr, the
+# COPPER rule -- two 0.30 mm lands at 0.09 clearance. It is not the only rule a
+# via has to meet: mdDrill says two HOLES must be 0.20 mm apart edge to edge,
+# and on 0.2 mm drills that wants 0.40 mm centre to centre. At 0.39 the ring was
+# 0.190 mm edge to edge, 0.010 short, on all 93 adjacent pairs -- and nothing
+# here checked it, because every clearance test in this toolchain was written
+# about copper. Fusion's DRC found all 93. A drill is a mechanical operation and
+# the rule applies whoever owns the hole; see check_board.py, which now tests it.
+# Stage 3 reported 103 vias at 0.390 needing 40.170 mm of a 58.080 mm perimeter,
+# so the extra 1.03 mm is affordable.
+VIA_D, VIA_L, VIA_PITCH = 0.2, 0.30, 0.40
+MD_DRILL = 0.20                      # mdDrill: hole EDGE to hole EDGE
+
+
+def via_sep(clr):
+    """centre-to-centre two vias need, by BOTH rules that apply to them
+
+    VIA_L + clr is the copper rule -- two lands at the clearance -- and it is
+    the only one this file used to know about. VIA_D + MD_DRILL is the
+    mechanical one, and here it is the binding one: 0.30 + 0.09 = 0.39 against
+    0.20 + 0.20 = 0.40. Every clearance test in this toolchain was written about
+    copper, so nothing noticed that the fan-out ring sat 0.010 mm inside mdDrill
+    on all 93 of its adjacent pairs. Fusion's DRC noticed.
+    """
+    return max(VIA_L + clr, VIA_D + MD_DRILL)
 CLEAROUT = 0.25                     # radial run before a trace is allowed to angle
 
 
@@ -473,7 +497,7 @@ def stage2(pos, net, ring, land, clr, match, slots, comp):
     # where a ball on a straight side has a whole row it can shuffle along. Let
     # the sides claim their vias first and the corners are left with nothing.
     esc.sort(key=lambda e: (not corner(e), ang(e[0])))
-    SAME = VIA_L + clr
+    SAME = via_sep(clr)
     PASS = VIA_L / 2 + clr + S2_W / 2
     plan, over, placed = [], [], []
     for p, k, nm, kind, extra in esc:
@@ -742,7 +766,7 @@ def stage3(pos, net, ring, land, clr, match, slots, comp, cop, moat_vias):
         return cx - hh, cy + hh - (s - 6 * hh)
 
     esc.sort(key=lambda e: perim(e[0], h0))
-    P, SP = 8 * h, VIA_L + clr
+    P, SP = 8 * h, via_sep(clr)
     want = [perim(e[0], h0) * (h / h0) for e in esc]
     n = len(esc)
     if n * SP > P:
@@ -1197,7 +1221,7 @@ def main():
           % (len(plan3), dict(collections.Counter(e[2] for e in plan3))))
     print("   fan-out ring at half-width %.3f mm; %d vias at %.3f pitch need %.3f"
           " of the %.3f mm perimeter"
-          % (hf, len(v3), VIA_L + clr, len(v3) * (VIA_L + clr), 8 * hf))
+          % (hf, len(v3), via_sep(clr), len(v3) * via_sep(clr), 8 * hf))
     print("   %d traces" % len(w3))
     if over3:
         print("   ****  %d could not be placed: %s" % (len(over3), over3[:6]))
