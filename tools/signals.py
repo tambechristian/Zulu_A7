@@ -117,7 +117,23 @@ ROUTER = os.environ.get("ROUTER", "pathfinder")
 # the problem -- collides() is stricter than check_board -- so the pass reuses
 # it and only changes WHEN it is applied.
 
+# A differential pair is not a member of a group, it is the most constrained
+# object on the board, and it was being routed fourth. GROUPS["pairs"] is this
+# sentinel rather than a regex: the members are whatever find_pairs() pairs up,
+# which is where that question is already answered.
+PAIRS = object()
+
 GROUPS = {
+    # FIRST, AND ON ITS OWN. The pair used to route inside whichever group
+    # happened to contain it -- USB_D_P/N in "usb", which runs after sdram and
+    # x2 have put 478 segments on L3 and L4. A pair needs ONE corridor wide
+    # enough for both conductors and the gap (2*PAIR_W + PAIR_GAP = 0.425 mm)
+    # running the whole way, and it is the one thing on the board that cannot
+    # take what is left over: a single-ended net squeezes through a 0.28 mm
+    # gap that a pair simply cannot enter. Route it against an empty board and
+    # let everything else go round it. AIN15 and AIN16 come with it -- they were
+    # stranded in "rest" and failed there for the same reason.
+    "pairs": PAIRS,
     "sdram": re.compile(r"^(D\d+|A\d+|BS\d|RAS#|CAS#|WE#|CKE|LDQM|UDQM|SDRAM-)"),
     # The prototyping header. A completely different problem from the bus: the
     # far end of every one of these is a PLATED HOLE on X2, copper on all six
@@ -419,11 +435,42 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
                 return False
         return True
 
-    c0 = next((q for q in starts if via_ok(q)), starts[0])
-    c1 = next((q for q in finish if via_ok(q)), finish[0])
     obst = G.obstacles(b, frozenset((pa, pb)), int(lay), extra)
     mz = P.Maze(obst, bx, clr, weff, STEP)
-    p = mz.path(c0, c1)
+
+    # WHICH WAY TO BACK OFF IS A QUESTION FOR THE BOARD, and it was being
+    # answered by the order of a list. via_ok() asks "can a via go here" and
+    # short-circuits to True when the pads are already on the routing layer,
+    # because then no via is needed -- so on L1, where U2 and X1 both sit,
+    # `next((q for q in starts if via_ok(q)), starts[0])` always returned
+    # starts[0]: the step TOWARDS the other end. For this pair that is a step
+    # INTO THE PACKAGE. The FT2232's DP/DM are on U2's south edge and the
+    # receptacle is north, so starts[0] is (32.43, 8.61) -- 1.2 mm inside a
+    # QFN-64 whose pad field has no 0.425 mm corridor anywhere in it, and the
+    # pair failed on every layer with "no corridor" while a perfectly good
+    # start point sat unexamined 1.2 mm to the SOUTH. The comment on `starts`
+    # already said a pair fans out away from its part first; only the code
+    # disagreed.
+    #
+    # So ask whether each candidate is free on the layer about to be routed on,
+    # prefer the ones that are, and try the combinations rather than committing
+    # to one. Four path() calls at worst, against a maze that is already built.
+    def usable(q):
+        if not via_ok(q):
+            return False
+        i, j = mz.i(q[0]), mz.j(q[1])
+        k = j * mz.W + i
+        return 0 <= i < mz.W and 0 <= k < len(mz.free) and mz.free[k]
+
+    cands = [(q0, q1) for q0 in starts for q1 in finish]
+    cands.sort(key=lambda z: (not usable(z[0])) + (not usable(z[1])))
+    c0, c1 = cands[0]
+    p = None
+    for q0, q1 in cands:
+        p = mz.path(q0, q1)
+        if p is not None:
+            c0, c1 = q0, q1
+            break
     if p is None:
         # SAY SO. This was the one exit in route_pair that returned None in
         # silence, so "could not be routed as a pair" covered both "the corridor
@@ -679,14 +726,25 @@ OWNED = re.compile(r"^(GND|VCC3V3|VCC1V0|VCC1V8|FT-V(CORE|PHY|PLL)|VU|VEXT|USB5V
 
 
 def group_nets(b, rx):
-    """the nets in one group; rx None means everything nothing else claims"""
+    """the nets in one group
+
+    rx PAIRS is every differential pair; None is everything nothing else
+    claims. EVERY OTHER GROUP EXCLUDES THE PAIRS, because "pairs" routes them
+    before any group runs and routing a net twice writes its copper twice --
+    the apply guard only looks at the L3 routing layer and would not catch a
+    pair written to L1 or L4.
+    """
     sig = re.search(r"<signals>(.*)</signals>", b, re.S).group(1)
     names = [m.group(1) for m in re.finditer(r'<signal name="([^"]+)"[^>]*>', sig)]
+    paired = G.find_pairs(set(names))
+    if rx is PAIRS:
+        return sorted(paired)
     if rx is not None:
-        return sorted(n for n in names if rx.match(n))
-    named = [g for g in GROUPS.values() if g is not None]
+        return sorted(n for n in names if rx.match(n) and n not in paired)
+    named = [g for g in GROUPS.values() if g is not None and g is not PAIRS]
     return sorted(n for n in names
-                  if not OWNED.match(n) and not any(g.match(n) for g in named))
+                  if not OWNED.match(n) and n not in paired
+                  and not any(g.match(n) for g in named))
 
 
 def main(gname="sdram"):
@@ -773,12 +831,21 @@ def main(gname="sdram"):
             # skew first, then by length.
             cand = [str(next(iter(sides)))] if len(sides) == 1 else []
             tried = []
+            # KEEP THE REASONS. This passed log=lambda *a: None, which is right
+            # while iterating -- failing on L3 says nothing about L4 -- and
+            # threw the reasons away when EVERY layer failed, leaving one
+            # generic "could not be routed as a pair" for a function that has
+            # eight distinct ways to give up and logs which one at each of
+            # them. Collect per layer, print only if nothing worked.
+            why = collections.OrderedDict()
             for lay in cand + [L for L in LAYERS if L not in cand]:
+                why[lay] = []
                 r = route_pair(b, pa, pb, lay, clr, bx,
                                [q for v in pairplan.values()
                                 for u, c, _l in v[1]
                                 for q in G.sample(u, c, PAIR_W / 2)],
-                               log=lambda *a: None)
+                               log=lambda *a, **k: why[lay].append(
+                                   " ".join(str(q) for q in a)))
                 if r:
                     la = sum(math.hypot(c[0] - u[0], c[1] - u[1])
                              for u, c, _l in r[pa][1])
@@ -797,6 +864,9 @@ def main(gname="sdram"):
                 pairplan.update(got)
             else:
                 print("   **** %s / %s could not be routed as a pair" % (pa, pb))
+                for lay, msgs in why.items():
+                    for m in msgs:
+                        print("        L%-2s %s" % (lay, m.strip().lstrip("*").strip()))
         nets = [n for n in nets if n not in pairplan]
 
     hint = inward_map(b)
