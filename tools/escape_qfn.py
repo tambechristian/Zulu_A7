@@ -55,6 +55,17 @@ RINGS = (float(os.environ.get("QFN_R0", "1.00")),
 VIA_XY = re.compile(r'<via x="([-0-9.]+)" y="([-0-9.]+)"')
 QFN_NEAR = float(os.environ.get("QFN_NEAR", "2.5"))
 POWERNET = re.compile(r"^(GND|VCC|VDD|\+|USB5V0|VU|VEXT|FT-V|AGND|GNDADC)", re.I)
+# ...EXCEPT WHERE THE RAIL CANNOT BE REACHED ANY OTHER WAY. The rule above is
+# right for a rail that ends up on a pour or a plane: power.py places its own
+# vias and does not want a signal fan-out in the way. It is wrong for a rail
+# that arrives on several pins of a FINE-PITCH package, because there the thing
+# power.py needs -- room beside the pad for a via -- does not exist. VU arrives
+# on six of U8's pins; the LTC3569 is a QFN-20 on 0.5 mm pitch and there is room
+# for two vias, so four pins were stranded every run. Daisy-chaining them does
+# not work either: a stub from one VIN pin to the next runs straight through the
+# pins of other nets in between. The bus has to leave the pad ring first, which
+# is what this file does. QFN_POWER names the rails to fan out anyway.
+ALLOW = set(q for q in os.environ.get("QFN_POWER", "").split(",") if q)
 
 
 def signal_pads(b, part):
@@ -65,7 +76,7 @@ def signal_pads(b, part):
         net, x, y, hx, hy, side = rec[:6]
         if (round(x, 3), round(y, 3)) not in own:
             continue
-        if net is None or POWERNET.match(net):
+        if net is None or (POWERNET.match(net) and net not in ALLOW):
             continue
         out.append((x, y, net, hx, hy, side))
     return out

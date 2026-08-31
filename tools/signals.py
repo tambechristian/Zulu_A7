@@ -10,6 +10,7 @@ ground.py runs after all of them:
     make_board.py --fab jlcpcb        regenerates <signals> EMPTY
         -> escape.py --apply          the BGA fan-out, U1
         -> escape_qfn.py --apply      the QFN fan-out, U2
+        -> QFN_PART=U8 QFN_POWER=VU escape_qfn.py --apply       and U8
         -> signals.py pairs --apply   the differential pairs, BEFORE power
         -> power.py --apply           the eight rails
         -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that

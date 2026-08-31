@@ -9,6 +9,7 @@ RUN IT AFTER BOTH ESCAPES AND BEFORE ground.py:
     make_board.py --fab jlcpcb        regenerates <signals> EMPTY
         -> escape.py --apply          the BGA fan-out, U1
         -> escape_qfn.py --apply      the QFN fan-out, U2
+        -> QFN_PART=U8 QFN_POWER=VU escape_qfn.py --apply       and U8
         -> signals.py pairs --apply   the differential pairs, BEFORE power
         -> power.py --apply           the eight rails
         -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
@@ -372,6 +373,11 @@ def via_obstacles(b, net):
     return pads, segs
 
 
+def _rect(q):
+    """a surface() entry as rect_seg wants it: (x, y, hx, hy, corner radius)"""
+    return q if len(q) == 5 else (q[0], q[1], q[2], q[3], 0.0)
+
+
 def surface(b, net, side):
     """foreign copper on ONE side, for checking a pad-to-via stub.
 
@@ -379,11 +385,33 @@ def surface(b, net, side):
     one piece never checked. It runs on the pad's own surface layer, straight
     into its neighbours if nothing stops it -- which is how a VCC1V0 stub ended
     up 0.05 mm from a GND pad where it needed 0.09.
+
+    THE PADS ARE RECTANGLES. This returned hypot(hx, hy), the CIRCUMSCRIBED
+    circle, which is the safe direction to be wrong in and is wrong by the whole
+    corner-to-edge difference on anything long and thin. A USB receptacle pin is
+    0.40 x 1.36 and becomes a disc of radius 0.709: X1.1 could not be given a
+    via anywhere within 5.5 mm, not because the board is full -- a via sits
+    legally 0.90 mm away -- but because every stub reaching one was measured
+    against a circle that swallows 0.3 mm of empty board on each side of its
+    neighbour. signals.py fixed this same error against pad rectangles; this
+    copy of it survived.
     """
     pads, segs = [], []
     for onet, x, y, hx, hy, sd in E.board_copper(b, skip=()):
         if onet != net and sd in (0, side):
-            pads.append((x, y, math.hypot(hx, hy)))
+            pads.append((x, y, hx, hy))
+    # AND THE VIAS. This collected foreign PADS and foreign WIRES and stopped
+    # there, which was survivable while the only vias near a stub were ones this
+    # function had just placed itself. It stopped being survivable the moment a
+    # second package was fanned out: escape_qfn on U8 puts 15 vias around the
+    # regulator, and VCC1V0's stub came out 0.0123 mm from FB3_NODE's -- a short
+    # in everything but name, and invisible here because a via is not a pad and
+    # not a wire. A via is copper on EVERY layer, so it belongs in every side's
+    # obstacle set. Modelled as a rectangle of zero extent with a corner radius,
+    # which is what rect_seg wants for a circle.
+    for vx, vy, vd in re.findall(r'<via x="([-\d.]+)" y="([-\d.]+)"'
+                                r'[^>]*diameter="([\d.]+)"', b):
+        pads.append((float(vx), float(vy), 0.0, 0.0, float(vd) / 2.0))
     sig = re.search(r"<signals>(.*)</signals>", b, re.S).group(1)
     lay = str(side)
     for m in re.finditer(r'<signal name="([^"]+)"[^>]*>(.*?)</signal>', sig, re.S):
@@ -398,7 +426,8 @@ def surface(b, net, side):
     return pads, segs
 
 
-def via_for(px, py, obst, mine, clr, bx, segs=(), surf=None, stub_w=STUB_W):
+def via_for(px, py, obst, mine, clr, bx, segs=(), surf=None, stub_w=STUB_W,
+            escapes=()):
     """a spot for this pad's via: nearest clear point on a ring around it"""
     # THE LADDER ONLY MATTERS TO A PAD THAT WOULD OTHERWISE GET NOTHING, because
     # this returns the NEAREST clear spot and walks outward: a pad with room at
@@ -424,11 +453,26 @@ def via_for(px, py, obst, mine, clr, bx, segs=(), surf=None, stub_w=STUB_W):
                 continue
             if any(math.hypot(x - ox, y - oy) < VIA_L + clr - 1e-9 for ox, oy, r in mine):
                 continue
+            # AND A TRACE HAS TO BE ABLE TO LEAVE IT. via_for and the router were
+            # measuring against DIFFERENT obstacle sets -- via_obstacles() here,
+            # geom.obstacles() there -- and via_for's is the looser of the two, so
+            # it could and did place a via that the maze then could not reach.
+            # USB5V0's via beside X1 came out with zero violations by this
+            # function's reckoning and its cell BLOCKED on every layer by the
+            # router's: the flood from it reached 0 cells of 619760. The net was
+            # reported as an unroutable 35 mm edge when the truth was a via
+            # sited 0.116 mm from a shell pad in a model that could not see it.
+            # A via nothing can leave is not a via, so require the spot to admit
+            # a trace on at least one layer the edge is allowed to use.
+            if escapes and not any(
+                    all(math.hypot(x - ox, y - oy) >= r + clr + W / 2 - 1e-9
+                        for ox, oy, r in one) for one in escapes):
+                continue
             if surf is not None:               # the stub, on the pad's own layer
                 sp, ss = surf
                 stub = ((px, py), (x, y))
-                if not all(E.seg_pt(stub[0], stub[1], (ox, oy)) >= r + clr + stub_w / 2 - 1e-9
-                           for ox, oy, r in sp):
+                if not all(G.rect_seg(_rect(q), stub[0], stub[1])
+                           >= clr + stub_w / 2 - 1e-9 for q in sp):
                     continue
                 if not all(E.seg_seg(stub[0], stub[1], a, c) >= r + clr + stub_w / 2 - 1e-9
                            for a, c, r in ss):
@@ -473,6 +517,14 @@ def main():
     # the SECOND rail see the first: VCC1V0 went down before VCC1V8's vias
     # existed and ran straight over three of them, -0.44 mm at worst. Placing
     # all the vias up front means both mazes see all of them.
+    # L4 IS IN HERE NOW. It stopped being a ground plane on 2026-08-27 and
+    # became a signal layer; nothing told power.py. With 16,1,3 the VU tree
+    # would not close -- one 3.86 mm hop across the regulator corner had no path
+    # on any of them -- and VEXT could not make either of its two edges. Adding
+    # L4 closes both, VU 12 of 12 and VEXT 2 of 2. It stays LAST but one, ahead
+    # only of L3: L3 is the SDRAM bus's layer and the one worth hoarding.
+    PREF = [q for q in os.environ.get("PWR_PREF", "16,1,4,3").split(",") if q]
+
     allvias = {}
     for net in RAILS:
         vobst, vsegs = via_obstacles(b, net)
@@ -480,9 +532,53 @@ def main():
         obst0, mine0 = blockers(b, net)
         surf = {sd: surface(b, net, 1 if sd == 1 else 16) for sd in (1, 16)}
         vias, stubs, miss, narrow = [], [], [], []
+        esc = [G.obstacles(b, net, int(L)) for L in PREF]
+        # THE STUB MUST ALSO MISS THE VIAS THIS RUN IS STILL PLACING. surface()
+        # reads the board FILE, so it sees every via that was already on it and
+        # none of the ones power.py is putting down right now for the other
+        # rails. The via-to-via check has had `placed` for exactly this reason
+        # since "EVERY VIA FIRST" was written; the stub check never got it, and
+        # VCC1V0's stub came out 0.223 mm THROUGH VCC1V8's new via -- a short
+        # between the two main rails on a board that reported both as routed.
         placed = [(x, y, VIA_L / 2) for r in allvias.values() for x, y in r[0]]
+        # AND THE MIRROR OF IT, which is the half that actually bit. `placed`
+        # only ever looks BACKWARDS: VCC1V0 is the first rail in RAILS, so when
+        # its stubs were checked VCC1V8's vias did not exist yet, and when
+        # VCC1V8's via was sited it was checked against VCC1V0's VIAS but not
+        # against VCC1V0's STUBS. Neither side of that pair ever met the other,
+        # and VCC1V0's stub ended 0.223 mm inside VCC1V8's via -- a short
+        # between the two main rails, reported by both as routed. So a new via
+        # must clear the stubs this run has already laid, whatever rail laid
+        # them and whatever side they are on: a via is copper on every layer.
+        pstub = [(q, v2, w2 / 2.0) for n2, r in allvias.items() if n2 != net
+                 for q, v2, _sd2, w2 in r[1]]
+        sfx = dict((k, (surf[k][0] + [(qx, qy, 0.0, 0.0, VIA_L / 2)
+                                      for qx, qy, _qr in placed],
+                        surf[k][1] + [(q, v2, w2 / 2.0)
+                                      for n2, r in allvias.items() if n2 != net
+                                      for q, v2, sd2, w2 in r[1] if int(sd2) == k]))
+                   for k in surf)
+        # A PAD THAT IS ALREADY WIRED TO THIS NET NEEDS NOTHING. The test was
+        # "is one of this net's vias AT this pad", which is the only way a pad
+        # got connected before anything fanned out a package. escape_qfn.py
+        # connects one differently: a stub from the pad to a via 1.00 or 1.60 mm
+        # away, which leaves the pad wired to the net and 1.60 mm from the
+        # nearest via. power.py went on demanding a via of its own beside it and
+        # reported five of U8's six VU pins as unreachable while looking
+        # straight at the copper that already reached them. Ask whether any of
+        # this net's wires ENDS on the pad instead.
+        wend = set()
+        _m = re.search(r'<signal name="%s"[^>]*>(.*?)</signal>' % re.escape(net), b, re.S)
+        if _m:
+            for _x1, _y1, _x2, _y2 in re.findall(
+                    r'<wire x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)"',
+                    _m.group(1)):
+                wend.add((round(float(_x1), 3), round(float(_y1), 3)))
+                wend.add((round(float(_x2), 3), round(float(_y2), 3)))
         for px, py, side in pads:
             if min((math.hypot(px - vx, py - vy) for vx, vy, r in mine0), default=9e9) < 0.01:
+                continue
+            if (round(px, 3), round(py, 3)) in wend:
                 continue
             # A PAD ALREADY ON THE ROUTING LAYER NEEDS NO VIA. When the rails
             # ran on L3 that was every pad, because an inner layer has none of
@@ -507,7 +603,8 @@ def main():
             v, sw = None, STUB_W
             for sw in (STUB_W, 0.15):
                 v = via_for(px, py, vobst + placed + [(a, c, VIA_L / 2) for a, c in vias],
-                            mine0, clr, bx, vsegs, surf[sd], stub_w=sw)
+                            mine0, clr, bx, vsegs + pstub, sfx[sd], stub_w=sw,
+                            escapes=esc)
                 if v is not None:
                     break
             if v is None:
@@ -516,37 +613,57 @@ def main():
             stubs.append(((px, py), v, str(sd), sw))
             if sw != STUB_W:
                 narrow.append((px, py, sw))
-        # A BOXED-IN PAD CAN STILL REACH ITS NEIGHBOUR'S VIA. C89 is a 0201 on
-        # the back and C106 sits 0.53 mm away ON THE FRONT: two decoupling
-        # fields tiled per side interleave in plan, legally, and then the
-        # through hole one of them needs has nowhere to land -- nothing clear
-        # within 2.50 mm of it. But C90 is 0.60 mm along the same strip, same
-        # side, same rail, and already has a via. Daisy-chaining an adjacent
-        # pair onto one via is ordinary practice, and 0.60 mm of L16 is a
-        # fraction of the stub the ladder above would have had to reach for.
-        # Kept short on purpose: past 2 mm this stops being a daisy chain and
-        # becomes an unrouted pad wearing a trace.
-        daisy, keep = [], []
-        for px, py, sd in miss:
-            sp, ss = surf[sd]
-            hit = None
-            for d, v in sorted((math.hypot(px - vx, py - vy), (vx, vy))
-                               for vx, vy in vias):
-                if d > 2.0:
+        # A BOXED-IN PAD CAN STILL REACH WHATEVER IS ALREADY ON THE NET. C89 is
+        # a 0201 on the back with C106 0.53 mm away ON THE FRONT: two decoupling
+        # fields tiled per side interleave in plan, legally, and then the through
+        # hole one of them needs has nowhere to land. C90 is 0.60 mm along the
+        # same strip, same side, same rail, and already has a via. Chaining an
+        # adjacent pair onto one via is ordinary practice.
+        #
+        # IT HAS TO WALK, AND IT HAS TO CHAIN TO PADS AND NOT ONLY TO VIAS. This
+        # looked once at each stranded pad, only ever at this net's VIAS, and
+        # gave up past 2.00 mm -- which cannot express the case it is most needed
+        # for. U8 is a QFN-20 on 0.5 mm pitch and VU arrives on SIX of its pins;
+        # power.py wants a via beside each and the package has room for two. The
+        # other four are not isolated, they are a chain: 11.75,5.54 -> 13.90,6.19
+        # is 2.25 mm, -> 13.90,7.69 is 1.50, -> 12.25,9.34 is 2.33, and THAT one
+        # has a via. Every link is short; only the walk was missing. So iterate,
+        # and treat a pad that has just been chained as an anchor for the next --
+        # it is on the net now, the stub put it there.
+        #
+        # This is what a hand layout does with a multi-pin power input: tie the
+        # pins along the package edge and take one via out of the group. The
+        # pins are in parallel anyway. 2.50 mm of 0.30 mm trace on outer copper
+        # carries about 1 A against VU's 500 mA, and there are six of them.
+        DAISY = 2.50
+        keep, daisy = list(miss), []
+        anchors = list(vias)
+        moved = True
+        while moved and keep:
+            moved, still = False, []
+            for px, py, sd in keep:
+                sp, ss = sfx[sd]
+                hit = None
+                for d, v in sorted((math.hypot(px - ax, py - ay), (ax, ay))
+                                   for ax, ay in anchors):
+                    if d > DAISY:
+                        break
+                    if not all(G.rect_seg(_rect(q), (px, py), v)
+                               >= clr + STUB_W / 2 - 1e-9 for q in sp):
+                        continue
+                    if not all(E.seg_seg((px, py), v, q1, q2) >= r + clr + STUB_W / 2 - 1e-9
+                               for q1, q2, r in ss):
+                        continue
+                    hit = (d, v)
                     break
-                if not all(E.seg_pt((px, py), v, (ox, oy)) >= r + clr + STUB_W / 2 - 1e-9
-                           for ox, oy, r in sp):
-                    continue
-                if not all(E.seg_seg((px, py), v, q1, q2) >= r + clr + STUB_W / 2 - 1e-9
-                           for q1, q2, r in ss):
-                    continue
-                hit = (d, v)
-                break
-            if hit:
-                stubs.append(((px, py), hit[1], str(sd), STUB_W))
-                daisy.append((px, py, hit[0], sd))
-            else:
-                keep.append((px, py, sd))
+                if hit:
+                    stubs.append(((px, py), hit[1], str(sd), STUB_W))
+                    daisy.append((px, py, hit[0], sd))
+                    anchors.append((px, py))
+                    moved = True
+                else:
+                    still.append((px, py, sd))
+            keep = still
         miss = keep
         allvias[net] = (vias, stubs, miss, daisy, narrow)
 
@@ -562,7 +679,6 @@ def main():
     # PREF is the order each edge tries. L3 stays in it as a last resort rather
     # than being banned outright: a rail that does not close is worse for the
     # board than one that borrows a little L3, and the report says how much.
-    PREF = [q for q in os.environ.get("PWR_PREF", "16,1,3").split(",") if q]
     plan = {}
     laid = dict((L, []) for L in PREF)   # copper this run has put on each layer
     for net in RAILS:
@@ -593,6 +709,30 @@ def main():
         for px, py, d, sd in daisy:
             print("   daisy chain: pad (%.1f, %.1f) had no room for a via and joins"
                   " one %.2f mm away on L%d" % (px, py, d, sd))
+        # A PAD THAT CANNOT TAKE A VIA IS STILL A TERMINAL -- ON ITS OWN LAYER.
+        # X1.1 is USB VBUS on the receptacle and there is NO legal via within
+        # 5.5 mm of it: the shell's plated hole has a 0.72 mm half-extent and
+        # sits 1.20 mm away, so its edge is 0.18 mm from the pad centre, and D-
+        # is 0.65 mm off. The pad does not need a via. Its partner D1.A already
+        # has one, a via is copper on every layer, and L1 is in PREF -- so an L1
+        # trace from this pad to that via joins them and no new hole is needed
+        # anywhere. What lost it was the terminal model: every off-layer pad had
+        # to own a via, and one that could not was dropped, taking the whole net
+        # down with it. Take it as a terminal instead and remember that an edge
+        # reaching it must run on the pad's own layer.
+        tlay, kept = {}, []
+        for _x, _y, _sd in miss:
+            if str(_sd) in PREF:
+                tlay[len(term)] = str(_sd)
+                term.append((_x, _y))
+            else:
+                kept.append((_x, _y, _sd))
+        if tlay:
+            print("   %d pad(s) with no room for a via, taken as terminals on "
+                  "their own layer: %s"
+                  % (len(tlay), ", ".join("(%.1f, %.1f) on L%s" % (term[k][0], term[k][1], v)
+                                          for k, v in sorted(tlay.items()))))
+        miss = kept
         if miss:
             print("   **** %d pad(s) could not be given a via: %s"
                   % (len(miss), [(round(a, 1), round(c, 1)) for a, c, _ in miss[:4]]))
@@ -626,6 +766,9 @@ def main():
         for i, j in edges:
             p = lay = None
             for L in PREF:
+                # a surface terminal is only reachable on its own layer
+                if tlay.get(i, L) != L or tlay.get(j, L) != L:
+                    continue
                 p = mzs[L].path(term[i], term[j])
                 if p is not None:
                     lay = L
