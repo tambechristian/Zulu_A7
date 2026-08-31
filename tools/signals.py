@@ -10,10 +10,23 @@ ground.py runs after all of them:
     make_board.py --fab jlcpcb        regenerates <signals> EMPTY
         -> escape.py --apply          the BGA fan-out, U1
         -> escape_qfn.py --apply      the QFN fan-out, U2
-        -> power.py --apply           the five rails
+        -> signals.py pairs --apply   the differential pairs, BEFORE power
+        -> power.py --apply           the eight rails
         -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
                                       order -- see the note below
+        -> ROUTER=greedy signals.py rest --apply
         -> ground.py --apply          the pour and the stitching, LAST
+
+PAIRS BEFORE POWER, which is one stage further up than it looks like it needs
+to be. A pair wants one corridor of 2*PAIR_W + PAIR_GAP running its whole
+length and can only take it on a layer where such a corridor exists; a rail
+like FT-VPLL is a three-pad local tree beside U2 with a plane's worth of
+freedom. Run power first and it lays FT-VPLL straight across U2's south side,
+which is where the USB pair's fan-in legs have to be -- the pair then has
+exactly one route left, through that copper, and correctly refuses it. Run the
+pair first and it takes L16 at 21.6/21.6 mm, skew 0.921 against a 1.27 budget,
+and power routes around it without complaint. When two things want the same
+copper the one with alternatives yields.
 
 GROUP ORDER MATTERS, and it is not the order you would guess. Each group's
 copper is an obstacle to the next, so this was measured rather than reasoned
@@ -395,10 +408,16 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
     of skew against a 1.27 mm budget, where L1 wanders to 30 mm and spends the
     whole budget on one bend -- while the pads are on L1. One via per conductor
     at each end, at the point where that conductor joins the coupled section, so
-    the two are symmetric and the pair stays matched. The two vias at an end sit
-    w + gap apart, which at 0.20/0.20 is 0.400 against the 0.390 that two 0.30 mm
-    vias need; that is checked rather than assumed, and the fan-out is widened if
-    it does not hold.
+    the two are symmetric and the pair stays matched. The two vias at an end
+    would sit w + gap apart -- 0.275 mm at the 0.15/0.125 this board uses for
+    90 ohm -- against the 0.390 that two 0.30 mm vias at 0.09 need, so THE ENDS
+    ARE SPLAYED to that 0.390 and taper back over their own first segment,
+    0.0575 mm per conductor. The coupled section keeps its gap and its
+    impedance; only the ends open up, and an end is coupled to nothing, it is
+    about to become a via. This paragraph promised the widening for a long time
+    while the code only measured the gap and gave up, which is why no pair on
+    the board routed; the worked example it used to quote, 0.20/0.20 = 0.400,
+    predates PAIR_W and PAIR_GAP being set for impedance.
     """
     padsA = [(x, y) for x, y, sd in P.pads_of(b, pa, skip=())]
     padsB = [(x, y) for x, y, sd in P.pads_of(b, pb, skip=())]
@@ -517,7 +536,7 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
                 E.seg_seg(a0, A[0], b0, B[0]) >= need_ff - 1e-9,
                 E.seg_seg(a1, A[-1], b1, B[-1]) >= need_ff - 1e-9)
 
-    xvias, xsegs = [], []
+    xvias, xsegs, xjoin = [], [], None
     opts = {sgn: fits(sgn) for sgn in (+1.0, -1.0)}
     ok = [sgn for sgn, (_A, _B, s, e) in opts.items() if s and e]
     if ok:
@@ -563,10 +582,45 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
         if xsegs:
             aseg = [q for k, q in enumerate(aseg) if k != xjoin] + list(xsegs)
         segs = (aseg, [(u, v, lay) for u, v in zip(B, B[1:])])
-        vias = list(xvias)
+        # The crossover's vias belong to A -- it is the conductor that dives to
+        # the other layer and comes back. B stays put and owns none of them.
+        viasA, viasB = list(xvias), []
     else:
         # two vias an end, one per conductor, where it meets the coupled run
         need = P.VIA_L + clr
+        # THE FAN-OUT NEEDS MORE ROOM THAN THE COUPLED SECTION DOES, and the gap
+        # that suits the impedance does not give it. The two vias at an end sit
+        # where their conductors end -- PAIR_W + PAIR_GAP apart, 0.275 mm at
+        # 0.15/0.125 -- and two 0.30 mm vias at 0.09 clearance need 0.390. The
+        # docstring at the top has promised since it was written that "the
+        # fan-out is widened if it does not hold"; it never was. route_pair
+        # measured the gap, reported it and gave up, and the worked example in
+        # that docstring assumes the older 0.20/0.20 = 0.400 that happened to
+        # clear. PAIR_W and PAIR_GAP were later set to 0.15/0.125 for 90 ohm and
+        # nothing rechecked the fan-out against them, so EVERY pair on this board
+        # died here: USB_D_P/N after finding its corridor AND placing its side
+        # swap, both XADC pairs on the identical number.
+        #
+        # Splay the two ends apart to exactly `need` and let each taper back over
+        # its own first segment. At 0.15/0.125 that is 0.0575 mm per conductor.
+        # The coupled section keeps its gap and its impedance -- only the ends
+        # open up, and an end is not coupled to anything, it is about to become a
+        # via. The check below stays as a backstop rather than being deleted: if
+        # a future width and gap cannot be splayed apart for some other reason,
+        # it should still say so rather than write a short.
+        def splay(u, v):
+            d = math.hypot(u[0] - v[0], u[1] - v[1])
+            if d < 1e-9 or d >= need - 1e-9:
+                return u, v
+            k = (need - d) / 2.0 / d
+            return ((u[0] + (u[0] - v[0]) * k, u[1] + (u[1] - v[1]) * k),
+                    (v[0] + (v[0] - u[0]) * k, v[1] + (v[1] - u[1]) * k))
+
+        if len(A) >= 2 and len(B) >= 2:
+            _a0, _b0 = splay(A[0], B[0])
+            _a1, _b1 = splay(A[-1], B[-1])
+            A = [_a0] + A[1:-1] + [_a1]
+            B = [_b0] + B[1:-1] + [_b1]
         for (pa_, pb_) in ((A[0], B[0]), (A[-1], B[-1])):
             if math.hypot(pa_[0] - pb_[0], pa_[1] - pb_[1]) < need - 1e-9:
                 log("   **** %s/%s: via pair %.3f apart, needs %.3f -- widen the gap"
@@ -579,9 +633,29 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
                 log("   **** %s/%s: no room for a via at (%.2f, %.2f)"
                     % (pa, pb, q[0], q[1]))
                 return None
-        vias = [A[0], A[-1], B[0], B[-1]]
-        segs = ([(a0, A[0], padlay)] + [(u, v, lay) for u, v in zip(A, A[1:])]
-                + [(A[-1], a1, padlay)],
+        # THE SIDE SWAP APPLIES HERE TOO, and it was being thrown away. The
+        # crossover is run for either branch -- it is what answers a reversed
+        # pad order -- but only the padlay == lay branch above ever used its
+        # result: this one rebuilt A's segments straight from the polyline,
+        # keeping the very segment the layer change exists to replace, and
+        # dropped xvias and xsegs on the floor. So the swap was computed,
+        # reported ("side swap on L4, 1.40 mm ... vias clear by 0.385"), and
+        # then not applied, and the two conductors crossed at 0.0000 mm. That
+        # is the case for every pair whose pads are not on the coupled layer,
+        # which here is USB_D_P/N: pads on L1, coupled on L3.
+        #
+        # The index differs by one between the branches. There A is
+        # [a0] + Ah + At + [a1] and the head-to-tail join is segment len(Ah);
+        # here the fan-in leg is a separate entry and the polyline is Ah + At,
+        # so the same join is segment len(Ah) - 1. Getting this wrong removes a
+        # real segment and leaves the crossing one in place, which reads as the
+        # conductors touching at exactly 0.0000 mm -- the same symptom, so it
+        # would look like no progress at all.
+        amid = [(u, v, lay) for u, v in zip(A, A[1:])]
+        if xsegs and xjoin is not None:
+            amid = [q for k, q in enumerate(amid) if k != xjoin - 1] + list(xsegs)
+        viasA, viasB = [A[0], A[-1]] + list(xvias), [B[0], B[-1]]
+        segs = ([(a0, A[0], padlay)] + amid + [(A[-1], a1, padlay)],
                 [(b0, B[0], padlay)] + [(u, v, lay) for u, v in zip(B, B[1:])]
                 + [(B[-1], b1, padlay)])
         A = [a0] + A + [a1]
@@ -638,7 +712,37 @@ def route_pair(b, pa, pb, lay, clr, bx, extra, log=print):
                     log('   **** %s/%s: %s runs %.4f mm from a %s pad edge on'
                         ' L%s, needs %.4f' % (pa, pb, nm, d, other, sl, clr))
                     return None
-    return {pa: (vias[:2], segs[0]), pb: (vias[2:], segs[1])}
+    # AND AGAINST THE REST OF THE BOARD, which nothing here was doing. The maze
+    # routes the CENTRELINE and only the centreline: the fan-in legs from each
+    # pad to where its conductor joins the coupled section are drawn afterwards,
+    # and the crossover's segments come from crossover(). The only check either
+    # of them ever faced was the loop above, which compares against the PARTNER
+    # NET'S PADS -- one net, pads only. Every wire already on the board was
+    # invisible to them. power.py routes FT-VPLL across U2's south side before
+    # the pairs group runs, and both USB conductors came out 0.200 mm INSIDE it:
+    # check_board found it, route_pair called the pair a success and reported
+    # its skew. The coupled section passes this trivially -- the maze cleared it
+    # at weff/2, which is wider than PAIR_W/2 -- so what this really guards is
+    # every segment the maze did not produce.
+    _obs = {}
+    for u, v, sl in Aseg + Bseg:
+        if sl not in _obs:
+            _obs[sl] = G.obstacles(b, frozenset((pa, pb)), int(sl), extra)
+        for ox, oy, orr in _obs[sl]:
+            d = E.seg_pt(u, v, (ox, oy)) - orr - PAIR_W / 2.0
+            if d < clr - 1e-9:
+                log('   **** %s/%s: a conductor runs %.4f mm from foreign copper'
+                    ' on L%s at (%.2f, %.2f), needs %.4f'
+                    % (pa, pb, d, sl, ox, oy, clr))
+                return None
+    # SPLIT BY OWNERSHIP, NOT BY POSITION. This was vias[:2] and vias[2:], which
+    # is right only while each conductor has exactly two and they are in that
+    # order. Adding the crossover's vias to the list broke it silently: they went
+    # to whichever half the slice happened to reach, so USB_D_N came out with
+    # four vias and USB_D_P with two, and USB_D_P's own trace then ran through a
+    # via that had been filed under USB_D_N -- 0.0000 mm, reported against the
+    # wrong net. The two lists are built where the vias are, and named.
+    return {pa: (viasA, segs[0]), pb: (viasB, segs[1])}
 
 
 def escape_end(b, net, cx, cy):
@@ -1459,8 +1563,22 @@ def main(gname="sdram"):
             if not hits:
                 break
             victim = max(sorted(hits), key=lambda n: len(hits[n]))
-            plan[victim] = ([], [])
-            dropped.append(victim)
+            # A PAIR IS ONE OBJECT AND COMES OUT AS ONE. Ripping half of it
+            # leaves one conductor routed and the other an airwire, which is
+            # worse than neither: the survivor is a single-ended trace with a
+            # differential net's name on it, it carries no return, and nothing
+            # downstream would ever flag it. This nearly happened -- USB_D_N was
+            # ripped on its own while USB_D_P stayed, over an overlap that was
+            # really a via-ownership bug -- and the fix for that bug removed the
+            # symptom without removing the hazard.
+            drop = {victim}
+            partner = G.find_pairs(set(plan))
+            if victim in partner:
+                drop.add(partner[victim][0])
+            for n in sorted(drop):
+                if plan.get(n) and plan[n][1]:
+                    plan[n] = ([], [])
+                    dropped.append(n)
         if dropped:
             print("   final validation: %d net(s) ripped up against the finished"
                   " plan: %s" % (len(dropped), ", ".join(dropped)))

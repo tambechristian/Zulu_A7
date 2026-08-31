@@ -9,10 +9,23 @@ RUN IT AFTER BOTH ESCAPES AND BEFORE ground.py:
     make_board.py --fab jlcpcb        regenerates <signals> EMPTY
         -> escape.py --apply          the BGA fan-out, U1
         -> escape_qfn.py --apply      the QFN fan-out, U2
-        -> power.py --apply           the five rails
+        -> signals.py pairs --apply   the differential pairs, BEFORE power
+        -> power.py --apply           the eight rails
         -> signals.py GRP --apply     sdram, x2, usb, microsd, jtag, in that
                                       order -- see the note below
+        -> ROUTER=greedy signals.py rest --apply
         -> ground.py --apply          the pour and the stitching, LAST
+
+PAIRS BEFORE POWER, which is one stage further up than it looks like it needs
+to be. A pair wants one corridor of 2*PAIR_W + PAIR_GAP running its whole
+length and can only take it on a layer where such a corridor exists; a rail
+like FT-VPLL is a three-pad local tree beside U2 with a plane's worth of
+freedom. Run power first and it lays FT-VPLL straight across U2's south side,
+which is where the USB pair's fan-in legs have to be -- the pair then has
+exactly one route left, through that copper, and correctly refuses it. Run the
+pair first and it takes L16 at 21.6/21.6 mm, skew 0.921 against a 1.27 budget,
+and power routes around it without complaint. When two things want the same
+copper the one with alternatives yields.
 
 ground.py used to come before this and it cost VCC1V0 its route -- see the
 header of ground.py for the measurement.
