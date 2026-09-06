@@ -1,0 +1,26 @@
+Importer Log Report
+Project : zulu_a7.PrjPcb
+
+Section : Analyze Document - C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altrium\zulu_a7.sch
+    Analyzing data of C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altrium\zulu_a7.sch
+    Load settings
+    Load layers 112
+    Load schematic
+    Load Libraries 3
+    Load Library "ctambe"
+    Load Packages 34
+    Load Symbols 33
+    Load DeviceSets 28
+    Load Library "rcl"
+    Load Packages 146
+    Load Symbols 5
+    Load DeviceSets 5
+    Load Library "pinhead"
+    Load Packages 1
+    Load Symbols 1
+    Load DeviceSets 1
+    Load Attributes 2
+    Load Classes 3
+    Load Parts 231
+    Load Sheets 7
+EndSection
