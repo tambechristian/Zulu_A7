@@ -37,3 +37,6 @@ board/*.pdf
 # Fusion/Eagle revision archives. Saved by the CAD tool, not by anything here,
 # and superseded the moment the board is regenerated.
 archives/
+
+# per-copy Python environment (Claude_Fable/.venv)
+.venv/

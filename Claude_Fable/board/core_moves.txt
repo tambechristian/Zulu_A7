@@ -1,0 +1,47 @@
+# core re-placement, 2026-09-06: SDRAM under U1, flash beside it, small parts to the strips
+# NAME x y ROT      (bottom side = MR*)
+U3   55.9  6.32  MR90    # pads x 35.9..55.1, rows y 6.32 / 17.68, body under U1
+U4   29.5  11.5  MR0     # flash, bottom, west of U3's new end
+R2   29.0  15.6  MR0     # FLASH-D02 pull-up
+R6   30.2  15.6  MR0     # FLASH-D03 pull-up
+R7   31.4  15.6  MR0     # FLASH-CS# pull-up
+# south strip, bottom, y 4.9 (analog input filters nearest their balls)
+C36  40.4  4.9   MR0
+C37  42.9  4.9   MR0
+R13  44.8  4.9   MR0
+R17  46.0  4.9   MR0
+R16  47.2  4.9   MR0
+R12  48.4  4.9   MR0
+C123 50.2  4.9   MR0
+R20  51.9  4.9   MR0
+R22  53.1  4.9   MR0
+# south-east, bottom
+R21  53.8  3.0   MR0
+R3   55.8  3.0   MR0
+R5   57.0  3.0   MR0
+R1   58.2  3.0   MR0
+C110 59.4  3.0   MR0
+C112 60.6  3.0   MR0
+C111 54.3  4.6   MR0
+C114 55.5  4.6   MR0
+C109 56.7  4.6   MR0
+R23  57.9  4.6   MR0
+# north strip, bottom, y 19.2
+C124 44.6  19.2  MR0
+C108 46.5  19.2  MR0
+C107 47.7  19.2  MR0
+C113 48.9  19.2  MR0
+C115 50.1  19.2  MR0
+C116 51.3  19.2  MR0
+# north-east, bottom
+R9   53.3  19.3  MR0
+R38  54.5  19.3  MR0
+R94  55.7  19.3  MR0
+R93  56.9  19.3  MR0
+# U2's decouplers nudged off U3's westernmost pad vias (user, 2026-09-06)
+C133 35.05 6.8   R0
+C134 36.95 6.8   R0
+C137 35.79 18.36 R0
+C138 37.69 18.36 R0
+R19  35.3  18.96 R0
+C40  37.6  18.96 R0

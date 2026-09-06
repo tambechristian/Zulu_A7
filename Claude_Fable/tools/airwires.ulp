@@ -1,0 +1,13 @@
+#usage "write every airwire (layer 19 wire) of the current board to airwires.txt"
+string out = "C:/Users/tambe/AppData/Local/Temp/claude/C--Users-tambe-Documents-Electronics-Zulu-A7-Claude-Fable/cbf78e21-2ede-4405-83d9-38a4afb0c225/scratchpad/airwires.txt";
+board(B) {
+  output(out) {
+    int total = 0;
+    B.signals(S) {
+      int k = 0;
+      S.wires(W) { if (W.layer == 19) k++; }
+      if (k) { printf("%s %d\n", S.name, k); total += k; }
+    }
+    printf("TOTAL %d\n", total);
+  }
+}
