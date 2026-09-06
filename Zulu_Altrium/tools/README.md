@@ -15,6 +15,10 @@ the project in Altium before running the two fix scripts.
   0/90 with mirrored justification, so anchors and text boxes stay put.
 * `fix_labels.py <this folder> "Imported zulu_a7.PrjPcb"` - the label
   placements adjusted after reviewing the Smart PDF export (see docstring).
+* `fix_gate_labels.py <this folder> <SchDoc...>` - the one-pin-per-gate
+  parts (X2, U3, U4, U1) show their gate names through EAGLE's >GATE text;
+  the importer gives every such label OwnerPartId=1, so Altium hides all but
+  one per part.  Re-owns each label to its gate.
 * `eagle_netlist.py zulu_a7.sch eagle.json` then
   `compare_netlists.py "Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7/zulu_a7.NET" eagle.json`
   - connectivity of the Altium project (Design > Netlist For Project >
