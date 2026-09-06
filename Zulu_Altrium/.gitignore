@@ -5,3 +5,6 @@ __Previews/
 Project Logs for */
 *.PrjPcbStructure
 *.PrjPcbPreview
+# Altium output folder: the Protel netlist and status report are regenerated
+# by Design > Netlist For Project; tools/compare_netlists.py reads the .NET.
+Project Outputs for */

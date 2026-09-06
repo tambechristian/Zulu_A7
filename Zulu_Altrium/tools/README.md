@@ -1,0 +1,28 @@
+# Altium import checks
+
+Scripts used to convert `zulu_a7.sch` (EAGLE 9.7 XML, written by Fusion 360)
+into `Imported zulu_a7.PrjPcb` with Altium Designer's EAGLE Import Wizard,
+and to check the result.  They edit the SchDoc files directly (OLE compound
+documents, `FileHeader` stream of `|RECORD=n|Key=Value|` records), so close
+the project in Altium before running the two fix scripts.
+
+    pip install olefile pywin32
+
+* `verify_import.py zulu_a7.sch "Imported zulu_a7.PrjPcb"` - every EAGLE
+  part, gate, supply symbol and named net has its Altium counterpart.
+* `fix_text_orientation.py <SchDoc...>` - EAGLE draws R180/R270 text
+  readable; Altium draws Orientation 2/3 upside down.  Turns them into
+  0/90 with mirrored justification, so anchors and text boxes stay put.
+* `fix_labels.py <this folder> "Imported zulu_a7.PrjPcb"` - the label
+  placements adjusted after reviewing the Smart PDF export (see docstring).
+* `eagle_netlist.py zulu_a7.sch eagle.json` then
+  `compare_netlists.py "Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7/zulu_a7.NET" eagle.json`
+  - connectivity of the Altium project (Design > Netlist For Project >
+  Protel) against the EAGLE schematic, pad by pad.  Last result:
+  190 components, 175 nets, 799 pads, identical names, no differences.
+
+Import Wizard settings that matter: untick "Do not translate hidden net
+names" (else 16 nets named without a label lose their names).  Pins that
+own several pads in EAGLE (BTN 1/2 and 3/4, X1 5+shell, X3 G1/G3 and
+G2/G4) become single Altium pins named "1,2" etc.; split them before
+matching to the imported board.
