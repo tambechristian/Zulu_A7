@@ -53,6 +53,12 @@ def main():
         i = args.index("--nets")
         only = set(args[i + 1].split(","))
         del args[i:i + 2]
+    exclude = set()
+    if "--exclude" in args:
+        # balls that escape inward (tools/bga_inward.py) get no outward stub
+        i = args.index("--exclude")
+        exclude = set(args[i + 1].split(","))
+        del args[i:i + 2]
     force = set()
     if "--force" in args:
         # nets the router will strip to their escapes: only their KEPT copper
@@ -119,7 +125,7 @@ def main():
         return {"w": (-1, 0), "e": (1, 0), "s": (0, -1), "n": (0, 1)}[k]
 
     for n, x, y in sorted(balls, key=lambda t: (t[1], t[2])):
-        if n in BM.PLANE or n.startswith("VCC") or (only and n not in only):
+        if n in BM.PLANE or n.startswith("VCC") or (only and n not in only) or n in exclude:
             continue
         i, j = xs.index(round(x, 2)), ys.index(round(y, 2))
         ring = min(i, j, ng - 1 - i, ng - 1 - j) + 1

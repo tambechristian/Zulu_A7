@@ -131,7 +131,7 @@ EXTRA_ZONES = [tuple(float(v) for v in q.split(",")) for q in os.environ.get("CL
 ZONE_R = dict((k, float(v)) for k, v in (
     q.split(":") for q in env_list("CLOSE_ZONES", "U1:7.9,U2:6.6,U8:3.2")))
 MIN_DRILL_CC = 0.4          # two 0.20 drills at 0.20 hole to hole
-STUB_R = 2.0                # a planned escape stub (tools/bga_escape.py) stays within this of its ball
+STUB_R = 3.0                # a planned escape stub (bga_escape.py, bga_inward.py) stays within this of its ball
 SIG_RE = re.compile(r'(<signal name="([^"]+)"[^>]*>)(.*?)(</signal>)', re.S)
 VIA_RE = re.compile(r"<via\b[^>]*?(?:/>|>.*?</via>)", re.S)
 WIRE_RE = re.compile(r"<wire\b[^>]*/>")
@@ -1497,6 +1497,12 @@ def run_attempt(protect):
         thin = [n for n in thin if n.name not in set(m.name for m in nets.values() if m.forced)]
         if traded:
             log("== strip-all pass: %d net(s) traded open: %s" % (len(traded), ", ".join(traded)))
+        if APPLY:
+            # an hour of routing is not lost to a crash in the plane pass or
+            # the verification (run c4, 2026-09-06: GND had no pour on the
+            # layer it was told to use, and 104 routed nets went with it)
+            io.open(OUT, "w", encoding="utf-8", newline="").write(text)
+            log("== checkpoint written to %s (after the strip-all pass)" % OUT)
     elif SEQUENTIAL:
         # ONE NET AT A TIME, STRIPPING ONLY THAT NET. Every other net keeps
         # its original copper until its own turn, so a net that cannot be
