@@ -101,9 +101,8 @@ def main():
     w("Power comes in as USB VBUS through D1 (PMEG2020EJ) onto VU, or as +5V-INPUT on X2 pin 44 through D2 "
       "with D3 (SMF5.0A) clamping it; the two are diode-ORed. VU feeds the LTC3569 (U8), whose three bucks "
       "make the rails. Since 2026-09-06 VCC3V3 is on SW1, the 1.2 A buck, and VCC1V0 on SW3 (600 mA); the "
-      "enable of VCC1V0's buck (now EN3) is tied to VU so VCC1V0 rises first, and the other two enables sit "
-      "on EN_BIAS, gated by Q3 whose base is driven from VCC1V0 through R79. That is the order UG483 "
-      "recommends (VCCINT, VCCBRAM, VCCAUX, VCCO).\n")
+      "enable of VCC1V0's buck (now EN3) is tied to VU; the other two enables sit on EN_BIAS, a "
+      "Q3/R67/R70/R75/R76 network that finding 6 shows never reaches the LTC3569's 1.2 V enable level.\n")
     totals = {}
     for ch, (rail, V, limit, eff) in CHANNELS.items():
         rows = C[rail]
@@ -190,8 +189,14 @@ def main():
       "and the FPGA sinks them from a 3.3 V supply through 33 ohm, leaving no headroom; only the red "
       "(2.0-2.4 V) has margin. Expect dim or dark green/blue unless the parts fall at the low end of VF. "
       "Not a power problem, but it fell out of the LED current estimate.")
-    w("6. **Power-on order is kept**: the enable of VCC1V0's buck (EN3 since the swap) is on VU, so VCCINT/VCCBRAM "
-      "come up first; EN1 and EN2 sit on EN_BIAS and follow for VCCO and VCCAUX.")
+    w("6. **The enable network does not work as drawn.** The LTC3569 needs ENx below 0.4 V for off and above "
+      "1.2 V for on (datasheet, VIL/VIH). EN_BIAS is held at about 0.65-0.8 V: R75||R76 (50k) from VU against "
+      "R70 (10k) gives 0.78 V, and Q3B with base and collector tied clamps it near 0.65 V. That is the undefined "
+      "band, so the two gated bucks (EN1 and EN2 after the swap, EN2 and EN3 before it) are not guaranteed to "
+      "start; and once VCC1V0 rises, Q3A (base from VCC1V0 through R79 1k, collector on EN_BIAS) pulls EN_BIAS "
+      "to ~0.1 V and turns them off. Only the buck whose EN is tied to VU is certain to run. Fix: tie EN1, EN2 "
+      "and EN3 to VU and drop Q3, R67, R70, R75, R76 (UG483 requires no rail order; the LTC3569 soft-starts all "
+      "three), or drive the gated enables from VU through a proper level (above 1.2 V) if sequencing is wanted.")
     print("\n".join(out))
 
 
