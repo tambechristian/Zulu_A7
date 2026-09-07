@@ -60,32 +60,32 @@ The supplies must deliver the quiescent current plus an inrush allowance while t
 
 ## Input from USB
 
-VU = 5.0 - 0.3 = 4.70 V after D1. Input power per rail is Vout x Iout / efficiency, efficiency read from the LTC3569 curves at about 4.7 V in.
+VU = 5.0 - 0.3 = 4.70 V after D1. Input power per rail is Vout x Iout / efficiency, efficiency read from the SC189 datasheet's SOT23-5 curves at 5 V in (p6).
 
 | Rail | typ W in | max W in | efficiency |
 |---|---:|---:|---:|
 | VCC3V3 | 1.23 | 2.48 | 90% |
-| VCC1V8 | 0.10 | 0.16 | 87% |
-| VCC1V0 | 0.45 | 0.45 | 82% |
-| **USB current at 4.70 V** | **379 mA** | **658 mA** | limit 500 mA configured, 100 mA before enumeration |
+| VCC1V8 | 0.11 | 0.18 | 78% |
+| VCC1V0 | 0.45 | 0.45 | 81% |
+| **USB current at 4.70 V** | **383 mA** | **663 mA** | limit 500 mA configured, 100 mA before enumeration |
 
-- Typical use draws about 379 mA from the port: inside the 500 mA a configured USB 2.0 device may take.
-- The simultaneous worst case draws about 658 mA: over the port limit, so a design that pushes the FPGA, the SDRAM and a busy microSD at once needs the +5V-INPUT on X2 pin 44 or VU on pin 22.
+- Typical use draws about 383 mA from the port: inside the 500 mA a configured USB 2.0 device may take.
+- The simultaneous worst case draws about 663 mA: over the port limit, so a design that pushes the FPGA, the SDRAM and a busy microSD at once needs the +5V-INPUT on X2 pin 44 or VU on pin 22.
 - All three rails start as soon as VBUS appears and the FPGA configures from flash immediately, so the board is above the 100 mA unconfigured limit before the FT2232H enumerates. Hosts tolerate this in practice; FT-PWREN# reaches the FPGA (P17) if you ever want to hold heavy loads off until enumeration.
-- C78 (22 uF) hangs directly on VU, which is VBUS through D1: the USB 2.0 limit for bulk capacitance seen at attach is 10 uF. D1's forward drop softens the inrush, but a host with a strict VBUS current limiter may still object.
+- VU, which is VBUS through D1, now carries C78 (10 uF) plus the three SC189 input caps C147-C149 (10 uF each; the datasheet wants at least 4.7 uF effective at every VIN pin): 40 uF nominal, roughly 25 uF effective at 5 V. The USB 2.0 limit for bulk capacitance seen at attach is 10 uF (50 uC of inrush). Hosts tolerate this in practice; if one objects, drop C78, the regulators have their own caps.
 
 ## Thermal, still air, first order
 
 | Part | P typ W | P max W | thJA C/W | rise typ C | rise max C |
 |---|---:|---:|---:|---:|---:|
 | U1 XC7A35T CPG236 | 0.57 | 0.82 | 24.8 | 14 | 20 |
-| U5 SC189Z (1.5 A) for VCC3V3 (thJA assumed) | 0.12 | 0.25 | 200 | 25 | 50 |
-| U6 SC189L (1.5 A) for VCC1V8 (thJA assumed) | 0.01 | 0.02 | 200 | 3 | 4 |
-| U7 SC189A (1.5 A) for VCC1V0 (thJA assumed) | 0.08 | 0.08 | 200 | 16 | 16 |
+| U5 SC189Z (1.5 A) for VCC3V3 | 0.12 | 0.25 | 90 | 11 | 22 |
+| U6 SC189L (1.5 A) for VCC1V8 | 0.02 | 0.04 | 90 | 2 | 4 |
+| U7 SC189A (1.5 A) for VCC1V0 | 0.09 | 0.09 | 90 | 8 | 8 |
 | U2 FT2232HQ (thJA assumed) | 0.36 | 0.49 | 28 | 10 | 14 |
 | U3 SDRAM (thJA assumed) | 0.33 | 0.53 | 45 | 15 | 24 |
 
-The FPGA stays well under its 85 C commercial junction limit. The SOT23-5 regulators are the warm parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which on a 200 C/W package is a 25-50 C rise. Acceptable at room ambient; if the board must run hot, use the 2x2 mm MLPD-UT6 version (SC189xULTRT) or give the GND pin a copper pour.
+The FPGA stays well under its 85 C commercial junction limit. The SOT23-5 regulators are the warm parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which at the datasheet's 90 C/W (SOT23-5 on a 10x10 mm 2-layer 1 oz test board) is an 11-22 C rise. Figure 3 of the SC189 sheet rates the SOT23-5 for the full 1.5 A at 3.3 V out up to about 65 C ambient, so no derating applies here. Give the GND pin and the LX/VOUT copper a pour anyway; the 2x2 mm MLPD-UT6 version (SC189xULTRT, 60 C/W) is the fallback if the board must run hot.
 
 
 ## Findings
@@ -93,6 +93,7 @@ The FPGA stays well under its 85 C commercial junction limit. The SOT23-5 regula
 1. **No rail is near its regulator limit any more.** Each SC189 gives 1.5 A; VCC3V3 uses under a quarter of that in typical use and under half at the datasheet maxima, VCC1V0 a quarter, VCC1V8 a twentieth. The header and Pmod +3.3V pins can take several hundred milliamps when the board runs from the external 5 V.
 2. **The USB port is the only limit left.** On a USB-A port the budget is unchanged: typical use fits, the datasheet-maximum case does not, and that is what +5V-INPUT is for.
 3. **VCC1V8 is lightly loaded**, well under 100 mA even with the XADC running.
-4. **USB alone covers typical use** at about 379 mA from the port. The simultaneous worst case (658 mA) needs the external 5 V input.
+4. **USB alone covers typical use** at about 383 mA from the port. The simultaneous worst case (663 mA) needs the external 5 V input.
 5. **Green and blue of LD0 may not light.** Their forward voltage is 3.3-3.8 V per the VS NRD8 sheet, and the FPGA sinks them from a 3.3 V supply through 33 ohm, leaving no headroom; only the red (2.0-2.4 V) has margin. Expect dim or dark green/blue unless the parts fall at the low end of VF. Not a power problem, but it fell out of the LED current estimate.
 6. **Sequencing is gone by design.** Every SC189 EN is tied to VU, so the three rails soft-start together. UG483 recommends VCCINT, VCCBRAM, VCCAUX, VCCO but requires no order and allows simultaneous ramps. The old LTC3569 EN_BIAS network went with it; it was copied from the Cmod A7 rev B, which Digilent shipped, so it evidently works in practice, but it holds the gated enables at 0.65-0.8 V, below the LTC3569 guaranteed 1.2 V high level, and Q3 pulls them low once VCC1V0 is up.
+7. **The rails carry far more capacitance than the SC189 datasheet allows at start-up.** Page 19 says total output capacitance should not exceed 30 uF to avoid start-up problems: the fixed 100 us soft-start (current limit stepped 20/25/40/100 % of 2 A, 20 us each) delivers only 40-75 uC, after which the part runs at its 2 A limit and, after 32 cycles over the limit, folds back to 50-110 mA (Figure 5) until the load falls below that. UG483 Table 2-2 requires 100 uF on VCCINT, 47 uF on VCCBRAM, 47 uF on VCCAUX and 47 uF per VCCO group for this FPGA, so the sheet has 165 uF nominal on VCC1V0, 167 uF on VCC3V3 and 72 uF on VCC1V8 (about 150, 90 and 60 uF after DC bias), needing 150, 300 and 110 uC. Every rail therefore finishes its ramp in current limit or foldback, and a load that draws more than the foldback current before the rail is up (the FPGA's VCCINT power-on current is about 200 mA, the FT2232H on 3.3 V about 70 mA) could hold it down. The current Cmod A7 revision runs the same three SC189s into this same FPGA with its UG483 capacitors, so it works in practice, but it is the one datasheet limit this design does not meet: scope the three rails at power-on on the first board. If a rail hangs, the fixes are a regulator with a soft-start pin in the same role (TPS62130/TPS62823 class) or staggering the enables with RC delays so the rails do not all draw from VU at once.

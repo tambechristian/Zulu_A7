@@ -19,20 +19,19 @@ D1_DROP = 0.30      # V, PMEG2020EJ Schottky in the USB5V0 -> VU path at ~0.5 A
 VU = USB_VBUS - D1_DROP
 USB_LIMIT = 500     # mA, USB 2.0 configured high-power device
 USB_UNCONF = 100    # mA, allowed before enumeration
-SC189_THJA = 200    # C/W, ASSUMED for SOT23-5 on a multilayer board (JEDEC ~220); the 2x2 MLPD-UT6 version would be ~70
+SC189_THJA = 90     # C/W, SC189 datasheet p3: SOT23-5 on a 10x10 mm 2-layer 1 oz board, free convection; MLPD-UT6 is 60
 FPGA_THJA = 24.8    # C/W, XC7A35T CPG236 still air, UG475 thermal table
 FT2232_THJA = 28    # C/W, ASSUMED for a 64-QFN 9x9 with exposed pad (datasheet gives none)
 SDRAM_THJA = 45     # C/W, ASSUMED for TSOP-II 54 (datasheet gives none)
 
-# channel -> (rail, V, limit mA, efficiency at VIN~4.7 V read from datasheet p4/p5)
+# channel -> (rail, V, limit mA, efficiency at 5 V in, read from the SC189
+# datasheet's SOT23-5 curves (p6) at this rail's typical load)
 # 2026-09-06 (later the same day): the LTC3569 was replaced by three fixed
 # SC189 bucks, 1.5 A each at 2.5 MHz (tools/sc189_power_section.py).
-# Efficiencies are typical SC189 figures at ~4.7 V in; the datasheet was not
-# reachable when this was written, so they are marked assumed.
 CHANNELS = {
-    "U5 SC189Z (1.5 A)": ("VCC3V3", 3.3, 1500, 0.90),   # ASSUMED, SC189 up to 93 %
-    "U6 SC189L (1.5 A)": ("VCC1V8", 1.8, 1500, 0.87),   # ASSUMED
-    "U7 SC189A (1.5 A)": ("VCC1V0", 1.0, 1500, 0.82),   # ASSUMED
+    "U5 SC189Z (1.5 A)": ("VCC3V3", 3.3, 1500, 0.90),   # 3.3 V curve: 90-92 % from 0.3 to 0.7 A
+    "U6 SC189L (1.5 A)": ("VCC1V8", 1.8, 1500, 0.78),   # 1.5 V curve at 50-80 mA: 75-80 %, the 7.5 mA IQ dominates
+    "U7 SC189A (1.5 A)": ("VCC1V0", 1.0, 1500, 0.81),   # 1.0 V curve at 0.3-0.4 A: about 81 %
 }
 
 
@@ -131,7 +130,7 @@ def main():
         w(f"| {rail} | {txt} | {mA} mA | {'ok' if mA <= lim else 'NO'} (channel {lim} mA) |")
     w("\n## Input from USB\n")
     w(f"VU = {USB_VBUS} - {D1_DROP} = {VU:.2f} V after D1. Input power per rail is Vout x Iout / efficiency, "
-      "efficiency read from the LTC3569 curves at about 4.7 V in.\n")
+      "efficiency read from the SC189 datasheet's SOT23-5 curves at 5 V in (p6).\n")
     w("| Rail | typ W in | max W in | efficiency |")
     w("|---|---:|---:|---:|")
     pt = pm = 0.0
@@ -157,9 +156,10 @@ def main():
     w("- All three rails start as soon as VBUS appears and the FPGA configures from flash immediately, so the "
       "board is above the 100 mA unconfigured limit before the FT2232H enumerates. Hosts tolerate this in "
       "practice; FT-PWREN# reaches the FPGA (P17) if you ever want to hold heavy loads off until enumeration.")
-    w("- C78 (22 uF) hangs directly on VU, which is VBUS through D1: the USB 2.0 limit for bulk capacitance "
-      "seen at attach is 10 uF. D1's forward drop softens the inrush, but a host with a strict VBUS current "
-      "limiter may still object.")
+    w("- VU, which is VBUS through D1, now carries C78 (10 uF) plus the three SC189 input caps C147-C149 "
+      "(10 uF each; the datasheet wants at least 4.7 uF effective at every VIN pin): 40 uF nominal, roughly "
+      "25 uF effective at 5 V. The USB 2.0 limit for bulk capacitance seen at attach is 10 uF (50 uC of "
+      "inrush). Hosts tolerate this in practice; if one objects, drop C78, the regulators have their own caps.")
     w("\n## Thermal, still air, first order\n")
     w("| Part | P typ W | P max W | thJA C/W | rise typ C | rise max C |")
     w("|---|---:|---:|---:|---:|---:|")
@@ -170,16 +170,18 @@ def main():
     rows = [("U1 XC7A35T CPG236", fpga_t, fpga_m, FPGA_THJA, "")]
     for ch, (rail, V, limit, eff) in CHANNELS.items():
         t_, m_ = totals[rail][3], totals[rail][4]
-        rows.append((f"{ch} for {rail}", V * t_ / 1000 * (1 / eff - 1), V * m_ / 1000 * (1 / eff - 1), SC189_THJA, " (thJA assumed)"))
+        rows.append((f"{ch} for {rail}", V * t_ / 1000 * (1 / eff - 1), V * m_ / 1000 * (1 / eff - 1), SC189_THJA, ""))
     rows += [
             ("U2 FT2232HQ", 3.3 * 0.110, 3.3 * 0.150, FT2232_THJA, " (thJA assumed)"),
             ("U3 SDRAM", 3.3 * 0.100, 3.3 * 0.160, SDRAM_THJA, " (thJA assumed)")]
     for name, ptw, pmw, th, note in rows:
         w(f"| {name}{note} | {ptw:.2f} | {pmw:.2f} | {th} | {ptw * th:.0f} | {pmw * th:.0f} |")
     w("\nThe FPGA stays well under its 85 C commercial junction limit. The SOT23-5 regulators are the warm "
-      "parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which on "
-      "a 200 C/W package is a 25-50 C rise. Acceptable at room ambient; if the board must run hot, use the 2x2 mm "
-      "MLPD-UT6 version (SC189xULTRT) or give the GND pin a copper pour.\n")
+      "parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which at "
+      "the datasheet's 90 C/W (SOT23-5 on a 10x10 mm 2-layer 1 oz test board) is an 11-22 C rise. Figure 3 of the "
+      "SC189 sheet rates the SOT23-5 for the full 1.5 A at 3.3 V out up to about 65 C ambient, so no derating "
+      "applies here. Give the GND pin and the LX/VOUT copper a pour anyway; the 2x2 mm MLPD-UT6 version "
+      "(SC189xULTRT, 60 C/W) is the fallback if the board must run hot.\n")
     w("\n## Findings\n")
     w("1. **No rail is near its regulator limit any more.** Each SC189 gives 1.5 A; VCC3V3 uses under a "
       "quarter of that in typical use and under half at the datasheet maxima, VCC1V0 a quarter, VCC1V8 a "
@@ -199,6 +201,20 @@ def main():
       "ramps. The old LTC3569 EN_BIAS network went with it; it was copied from the Cmod A7 rev B, which "
       "Digilent shipped, so it evidently works in practice, but it holds the gated enables at 0.65-0.8 V, "
       "below the LTC3569 guaranteed 1.2 V high level, and Q3 pulls them low once VCC1V0 is up.")
+    w("7. **The rails carry far more capacitance than the SC189 datasheet allows at start-up.** Page 19 says "
+      "total output capacitance should not exceed 30 uF to avoid start-up problems: the fixed 100 us soft-start "
+      "(current limit stepped 20/25/40/100 % of 2 A, 20 us each) delivers only 40-75 uC, after which the part "
+      "runs at its 2 A limit and, after 32 cycles over the limit, folds back to 50-110 mA (Figure 5) until the "
+      "load falls below that. UG483 Table 2-2 requires 100 uF on VCCINT, 47 uF on VCCBRAM, 47 uF on VCCAUX and "
+      "47 uF per VCCO group for this FPGA, so the sheet has 165 uF nominal on VCC1V0, 167 uF on VCC3V3 and "
+      "72 uF on VCC1V8 (about 150, 90 and 60 uF after DC bias), needing 150, 300 and 110 uC. Every rail "
+      "therefore finishes its ramp in current limit or foldback, and a load that draws more than the foldback "
+      "current before the rail is up (the FPGA's VCCINT power-on current is about 200 mA, the FT2232H on 3.3 V "
+      "about 70 mA) could hold it down. The current Cmod A7 revision runs the same three SC189s into this same "
+      "FPGA with its UG483 capacitors, so it works in practice, but it is the one datasheet limit this design "
+      "does not meet: scope the three rails at power-on on the first board. If a rail hangs, the fixes are a "
+      "regulator with a soft-start pin in the same role (TPS62130/TPS62823 class) or staggering the enables "
+      "with RC delays so the rails do not all draw from VU at once.")
     print("\n".join(out))
 
 

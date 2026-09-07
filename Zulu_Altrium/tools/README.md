@@ -38,7 +38,15 @@ the project in Altium before running the two fix scripts.
   at 1.5 uH, C80/C82/C84 as 22 uF outputs, new C147-C149 10 uF inputs, C78
   at 10 uF. Rewrites the sheet record by record; run once, on the sheet as
   committed in bedd4a7 (its delete list is keyed to that file). SC189 pin
-  numbers follow the Cmod A7 symbol; confirm against the Semtech datasheet.
+  numbers (1 VIN, 2 GND, 3 EN, 4 VOUT, 5 LX) were checked against the Semtech
+  datasheet (Datasheet/SC189-datasheet 08 27 10.pdf, p2 and p14) on 2026-09-06.
+* `fix_sc189_bom.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_1.SchDoc"` -
+  follow-up to the above: the hidden MANF#/SPEC parameters that the value
+  edits had left stale (L2/L3 still named the 3.3/2.2 uH inductors, C82/C84
+  a 10 uF part under a 22 uF value, C78 the 22 uF part under 10 uF) and the
+  three input caps moved to a 10 V 0805 part (GRM21BR61A106KE19L) because a
+  6.3 V 0603 is under the datasheet's 4.7 uF at 5 V. Keyed by designator,
+  safe to re-run.
 * `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
   power budget from the schematic and the datasheets; writes markdown
   (docs/power_budget.md is its default output). The FPGA dynamic currents
