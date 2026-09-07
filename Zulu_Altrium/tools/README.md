@@ -32,6 +32,13 @@ the project in Altium before running the two fix scripts.
   the R65/R66 and R71/R73 divider values and the EN1/EN3 wiring. Applied
   once; the docstring is the change record. Not reflected in zulu_a7.sch
   (EAGLE), which is now history.
+* `sc189_power_section.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_1.SchDoc"` -
+  the 2026-09-06 regulator change: the LTC3569 section (U8, dividers, the
+  EN_BIAS network) replaced by three fixed SC189 bucks U5/U6/U7 with L1-L3
+  at 1.5 uH, C80/C82/C84 as 22 uF outputs, new C147-C149 10 uF inputs, C78
+  at 10 uF. Rewrites the sheet record by record; run once, on the sheet as
+  committed in bedd4a7 (its delete list is keyed to that file). SC189 pin
+  numbers follow the Cmod A7 symbol; confirm against the Semtech datasheet.
 * `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
   power budget from the schematic and the datasheets; writes markdown
   (docs/power_budget.md is its default output). The FPGA dynamic currents
