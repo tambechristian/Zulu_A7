@@ -47,6 +47,13 @@ the project in Altium before running the two fix scripts.
   three input caps moved to a 10 V 0805 part (GRM21BR61A106KE19L) because a
   6.3 V 0603 is under the datasheet's 4.7 uF at 5 V. Keyed by designator,
   safe to re-run.
+* `x3_dm3d_sf.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_3.SchDoc"` -
+  2026-09-06: X3 (microSD) from the Hirose DM3AT-SF-PEJM5 push-push socket to
+  the DM3D-SF push-pull one (HRS 609-0025-8, DM3 catalog p9 in
+  Datasheet/DM3AT-SF-PEJM5.pdf). Same eight contacts; the two 'G1,3'/'G2,4'
+  multi-pad shell pins become G1-G4 on the GND bus; new pins A/B for the
+  card-detect switch, left open with No-ERC markers; footprint model renamed
+  DM3D-SF (to be drawn at the PCB stage). Refuses to run twice.
 * `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
   power budget from the schematic and the datasheets; writes markdown
   (docs/power_budget.md is its default output). The FPGA dynamic currents
