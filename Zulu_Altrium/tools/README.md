@@ -26,6 +26,10 @@ the project in Altium before running the two fix scripts.
   library types the supply/ground pins of U2, U3, U4, U10 and all of X2's
   pins as "io"; makes them Power and Passive so the ERC pin-type rules mean
   something.
+* `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
+  power budget from the schematic and the datasheets; writes markdown
+  (docs/power_budget.md is its default output). The FPGA dynamic currents
+  are assumptions until Vivado's report_power replaces them.
 * `erc_summary.py erc.txt` - groups a Messages-panel export (right-click,
   Save...) by message kind.
 * `eagle_netlist.py zulu_a7.sch eagle.json` then
