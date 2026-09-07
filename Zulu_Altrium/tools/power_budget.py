@@ -25,10 +25,12 @@ FT2232_THJA = 28    # C/W, ASSUMED for a 64-QFN 9x9 with exposed pad (datasheet 
 SDRAM_THJA = 45     # C/W, ASSUMED for TSOP-II 54 (datasheet gives none)
 
 # channel -> (rail, V, limit mA, efficiency at VIN~4.7 V read from datasheet p4/p5)
+# 2026-09-06: VCC3V3 moved to the 1.2 A channel and VCC1V0 to a 600 mA one
+# (tools/swap_vcc3v3_to_sw1.py); the inductors stayed with their channels.
 CHANNELS = {
-    "SW1 (buck 1, 1.2 A)": ("VCC1V0", 1.0, 1200, 0.78),   # 1.2 V curve ~80 % at 5 V; 1.0 V a little lower
+    "SW1 (buck 1, 1.2 A)": ("VCC3V3", 3.3, 1200, 0.90),   # high duty cycle; 1.5 V curve ~83 %, 3.3 V better
     "SW2 (buck 2, 600 mA)": ("VCC1V8", 1.8, 600, 0.85),   # 1.8 V curve ~85-88 % at 5 V
-    "SW3 (buck 3, 600 mA)": ("VCC3V3", 3.3, 600, 0.90),   # high duty cycle; 1.5 V curve ~83 %, 3.3 V better
+    "SW3 (buck 3, 600 mA)": ("VCC1V0", 1.0, 600, 0.80),   # 1.2 V curve ~80 % at 5 V
 }
 
 
@@ -98,8 +100,9 @@ def main():
       f"--fpga-io {a.fpga_io} --header {a.header}.\n")
     w("Power comes in as USB VBUS through D1 (PMEG2020EJ) onto VU, or as +5V-INPUT on X2 pin 44 through D2 "
       "with D3 (SMF5.0A) clamping it; the two are diode-ORed. VU feeds the LTC3569 (U8), whose three bucks "
-      "make the rails. EN1 is tied to VU so VCC1V0 rises first; EN2 and EN3 sit on EN_BIAS, gated by Q3 "
-      "whose base is driven from VCC1V0 through R79, so VCC1V8 and VCC3V3 follow. That is the order UG483 "
+      "make the rails. Since 2026-09-06 VCC3V3 is on SW1, the 1.2 A buck, and VCC1V0 on SW3 (600 mA); the "
+      "enable of VCC1V0's buck (now EN3) is tied to VU so VCC1V0 rises first, and the other two enables sit "
+      "on EN_BIAS, gated by Q3 whose base is driven from VCC1V0 through R79. That is the order UG483 "
       "recommends (VCCINT, VCCBRAM, VCCAUX, VCCO).\n")
     totals = {}
     for ch, (rail, V, limit, eff) in CHANNELS.items():
@@ -173,13 +176,13 @@ def main():
     w("\nNone of these needs airflow or a heatsink at 25 C ambient. The FPGA stays well under its 85 C "
       "commercial junction limit even in the heavy case, and the LTC3569's 125 C limit is far away.\n")
     w("\n## Findings\n")
-    w("1. **VCC3V3 is the tight rail.** It carries the FT2232H, the SDRAM, the flash, the microSD card, all five "
-      "FPGA I/O banks, the oscillator, the LEDs and both header supplies on the LTC3569's 600 mA channel. "
-      "Typical use is fine; the datasheet-maximum sum is over the channel. Realistic simultaneous peaks "
-      "(SDRAM burst, USB active, card reading) sit around 450-500 mA, which leaves about 100 mA for the Pmod "
-      "and the header's +3.3V pins. Budget the header at 100 mA or less, or feed heavy add-ons from VU.")
-    w("2. **The 1.2 A channel on VCC1V0 has the most headroom.** A moderate design draws about a third of it. "
-      "Only a very full, fast design would need the rest; get the real number from Vivado's report_power.")
+    w("1. **VCC3V3 now sits on the 1.2 A channel.** It carries the FT2232H, the SDRAM, the flash, the microSD "
+      "card, all five FPGA I/O banks, the oscillator, the LEDs and both header supplies; even the "
+      "datasheet-maximum sum fits with room to spare, and realistic peaks (SDRAM burst, USB active, card "
+      "reading) leave several hundred milliamps for the Pmod and the header's +3.3V pins.")
+    w("2. **VCC1V0 is now the rail to watch**, on a 600 mA channel. A moderate design uses about 60 % of it and "
+      "the DS181 power-on requirement of 277 mA fits; a very full, fast design could exceed it, so get the "
+      "real VCCINT figure from Vivado's report_power before committing to a heavy bitstream.")
     w("3. **VCC1V8 is lightly loaded**, well under 100 mA even with the XADC running.")
     w(f"4. **USB alone covers typical use** at about {it:.0f} mA from the port. The simultaneous worst case "
       f"({im:.0f} mA) needs the external 5 V input.")
@@ -187,8 +190,8 @@ def main():
       "and the FPGA sinks them from a 3.3 V supply through 33 ohm, leaving no headroom; only the red "
       "(2.0-2.4 V) has margin. Expect dim or dark green/blue unless the parts fall at the low end of VF. "
       "Not a power problem, but it fell out of the LED current estimate.")
-    w("6. **Power-on order is right**: EN1 on VU brings VCCINT/VCCBRAM up first, then Q3 releases EN2/EN3 for "
-      "VCCAUX and VCCO.")
+    w("6. **Power-on order is kept**: the enable of VCC1V0's buck (EN3 since the swap) is on VU, so VCCINT/VCCBRAM "
+      "come up first; EN1 and EN2 sit on EN_BIAS and follow for VCCO and VCCAUX.")
     print("\n".join(out))
 
 

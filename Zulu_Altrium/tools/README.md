@@ -26,6 +26,12 @@ the project in Altium before running the two fix scripts.
   library types the supply/ground pins of U2, U3, U4, U10 and all of X2's
   pins as "io"; makes them Power and Passive so the ERC pin-type rules mean
   something.
+* `swap_vcc3v3_to_sw1.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_1.SchDoc"` -
+  the 2026-09-06 design change: VCC3V3 onto the LTC3569's 1.2 A channel
+  (SW1) and VCC1V0 onto SW3, by swapping the two rail labels after L1/L3,
+  the R65/R66 and R71/R73 divider values and the EN1/EN3 wiring. Applied
+  once; the docstring is the change record. Not reflected in zulu_a7.sch
+  (EAGLE), which is now history.
 * `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
   power budget from the schematic and the datasheets; writes markdown
   (docs/power_budget.md is its default output). The FPGA dynamic currents
