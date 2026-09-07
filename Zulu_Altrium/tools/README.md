@@ -54,6 +54,17 @@ the project in Altium before running the two fix scripts.
   multi-pad shell pins become G1-G4 on the GND bus; new pins A/B for the
   card-detect switch, left open with No-ERC markers; footprint model renamed
   DM3D-SF (to be drawn at the PCB stage). Refuses to run twice.
+* `bom_audit.py > docs/component_validation.md` - component and BOM validation
+  (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
+  CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED
+  and resistor-array pads against their datasheet tables; EAGLE package
+  geometry against the datasheet land patterns; capacitor voltage and
+  resistor power derating from the nets; a dated Digi-Key snapshot of
+  status/stock/price and a second-source table typed in from the lookups.
+* `apply_bom_substitutions.py <this folder> "Imported zulu_a7.PrjPcb"` - the
+  part-number replacements the audit recommends (obsolete, mistyped and dry
+  parts), NOT applied; edit the table, run with the project closed, re-run
+  the audit.
 * `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
   power budget from the schematic and the datasheets; writes markdown
   (docs/power_budget.md is its default output). The FPGA dynamic currents
