@@ -2651,3 +2651,46 @@ deliberate crossover, or X1 and U2 placed so the pair never has to reverse.
 5. The anchor tie-break still resolves alphabetically; R2, R4, R93 and R94 lose
    to U1 the way R34 and R35 did.
 6. The SPI flash path (`FLASH-*`, `FPGA-CCLK`) is not grouped or routed.
+
+## The core re-placement -- 2026-09-06/07
+
+Four routing branches on the old floorplan (t1 to t3 on a 2+4+2 stackup: ring-3
+staggered microvias, west rings on microvias, the corridor's through vias removed,
+planned escape stubs) landed at 38, 38 and 49 airwires against the deployed 26. Every
+one failed the same way: the SDRAM bus had to cross the core inside the 3 mm strip
+between U3's east end (x 38.8) and U1's west balls (x 42), and the router rebuilt a
+column of 21-23 through vias there each time, a wall on all six layers.
+
+The user approved moving the core, keeping X1, X2, X3, J1, JP3, JP4 and the power
+section where they are:
+
+- U3 (SDRAM) to the bottom under U1: origin (55.9, 6.32) MR90, pad rows at y 6.32 and
+  17.68 just outside U1's ball rows, pads x 35 to 56. Of four orientations and eleven
+  positions scored by bus length and by how many pads keep a clear top side for a
+  via in the pad, this one wins (321 mm, 48 of 54 pads).
+- U4 (flash) to the bottom at (29.5, 11.5), R2/R6/R7 beside it.
+- 31 small parts that sat under U1 or in the strip to rows on the bottom: south strip
+  y 4.9 (analog filters nearest their balls), 3.0 and 4.6, north strip y 19.2/19.3.
+- U2's four decouplers nudged 0.5 mm off U3's westernmost pad vias.
+
+`board/core_moves.txt` holds the moves; `tools/replace_core.py` applies them and cuts the
+copper the floorplan invalidates (everything east of x 27 except the USB pair and the
+supply nets); `tools/place_view.py` draws both sides for review. Nets crossing x = 39.5
+fell from 96 to 67, and the ones that remain reach the bus under U3 along L16.
+
+The base must be converted to 2+4+2 (`stackup_242.py`) BEFORE the cut: the deployed
+board is 1+6+1 with the GND pour on L3, and a pipeline told that L3 is a signal layer
+routed 104 nets through the GND plane's layer before the plane pass crashed (run c4).
+The router now writes a checkpoint right after its routing pass.
+
+Results: c4b (bus first) 98 of 146 signal nets, 35 of 39 SDRAM; the bus's L2 traces
+wrapped around U1's east edge and boxed the CHAN/JA/UART balls. c5 (bus last) 104
+routed, 26 of the 42 open are SDRAM. Pockets mode on c4 closed a net every 30-40 min
+(56 open down to 34 at round 12); on c5 it closed 5 and stalled at 47.
+
+What 0.5 mm pitch does not allow, measured: a 0.30 mm through-via land cannot sit
+beside escapes spaced 0.25 mm (needs 0.264), so rings 1 and 2 interleaved on one layer
+forbid through vias anywhere along their run; the annulus (rings 4-6) holds one via per
+gap row per side; U1's 112 plane balls have no via in the ball and hang off L1 links to
+shared dogbones, which is what blocks inward lanes (`bga_inward.py`, 7 of 39 placed).
+The textbook fix is GND on L3 with 1-2 + 2-3 microvias in every GND ball; not done.
