@@ -19,6 +19,15 @@ the project in Altium before running the two fix scripts.
   parts (X2, U3, U4, U1) show their gate names through EAGLE's >GATE text;
   the importer gives every such label OwnerPartId=1, so Altium hides all but
   one per part.  Re-owns each label to its gate.
+* `add_noerc.py <this folder> "Imported zulu_a7.PrjPcb"` - No-ERC markers on
+  the nine pins that are open on purpose (the eight GTP balls the sheet
+  marks "float per UG482", and the USB ID pin X1-4).
+* `fix_pin_types.py <this folder> "Imported zulu_a7.PrjPcb"` - the EAGLE
+  library types the supply/ground pins of U2, U3, U4, U10 and all of X2's
+  pins as "io"; makes them Power and Passive so the ERC pin-type rules mean
+  something.
+* `erc_summary.py erc.txt` - groups a Messages-panel export (right-click,
+  Save...) by message kind.
 * `eagle_netlist.py zulu_a7.sch eagle.json` then
   `compare_netlists.py "Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7/zulu_a7.NET" eagle.json`
   - connectivity of the Altium project (Design > Netlist For Project >
