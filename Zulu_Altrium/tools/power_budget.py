@@ -66,7 +66,7 @@ def consumers(a):
             ("X3 microSD card", a.sd_typ, a.sd_max,
              "SD spec: ~60 typ, 200 max at 3.3 V for a high-speed card"),
             ("U10 93LC46B EEPROM", 1, 2, "read 1 mA, write 2 mA max"),
-            ("Q1 ASEM1 12 MHz oscillator", 7, 15, "1-40 MHz row: 7 typ / 15 max, no load"),
+            ("Q1 ECS-3225SMV 12 MHz oscillator", 6, 10, "ECS-3225SMV sheet: 6 typ / 10 mA max at 15 pF (was ASEM1 7/15 until 2026-09-08)"),
             ("U1 VCCO banks 0/14/16/34/35 (28 balls) static", 5, 5, "DS181 ICCOQ, about 1 mA per bank"),
             ("U1 VCCO dynamic (SDRAM bus, header, LED sink path)", a.fpga_io, 3 * a.fpga_io,
              "ASSUMED; about 1.6 mA per toggling pin at 100 MHz, 10 pF"),

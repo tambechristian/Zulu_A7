@@ -34,11 +34,13 @@ SUBS = {
     #   ASEMB-12.000MHZ-LY-T    +-10 ppm + 5 ppm/yr aging, -40..85 C, 6,143 pcs, $4.40 (Abracon, same lineage)
     #   ECS-3225SMVQ-120-DS-TR  +-20 ppm incl. aging, -40..125 C, 862 pcs, $1.82
     #   SIT1602BI-22-33E-12.000000  +-25 ppm incl. 1st-year aging, 440 pcs, $1.54
-    # 'ASEM1-12.000MHZ-LC-T': ('ECS-3225SMV-120-FP-TR', 'ECS', '12.000 MHz HCMOS XO, 1.62-3.63 V, +-10 ppm incl. initial, temp -40..105 C, supply, load, reflow and aging (ECS-3225SMV sheet p1), 3.2x2.5x1.2 mm, pin 1 tri-state (H/NC = run); replaces the +-50 ppm ASEM1-12.000MHZ-LC-T'),
+    # applied 2026-09-08 at the user's choice (ECS over Abracon)
+    'ASEM1-12.000MHZ-LC-T': ('ECS-3225SMV-120-FP-TR', 'ECS', '12.000 MHz HCMOS XO, 1.62-3.63 V, +-10 ppm incl. initial, temp -40..105 C, supply, load, reflow and aging (ECS-3225SMV sheet p1), 3.2x2.5x1.2 mm, pin 1 tri-state (H/NC = run), 6 mA typ / 10 mA max; replaced the +-50 ppm ASEM1-12.000MHZ-LC-T on 2026-09-08', '12MHz 10ppm (FPGA + FT2232HQ)'),
     # C39/C139: no 3.3 uF 0402 >= 6.3 V exists that is not obsolete/NRND; FTDI asks for >= 3.3 uF minimum, so 4.7 uF:
     #   JMK105BBJ475MV-F (order as MSASJ105BB5475MFNA01)  4.7 uF 6.3 V X5R 0402, 0.65 mm max, ~3.7 uF at 1.8 V, 1.6 M pcs, $0.13 (recommended)
     #   GRM155R60J475ME47D  4.7 uF 6.3 V X5R 0402, 0.60 mm max, ~2.2-2.8 uF at 1.8 V, 980 k pcs, $0.10
-    # 'GRM155R60J335ME15D': ('JMK105BBJ475MV-F', 'Taiyo Yuden', 'X5R 6.3V +-20% 0402 4.7uF, 0.65 mm max, about 3.7 uF at 1.8 V; Taiyo Yuden new PN MSASJ105BB5475MFNA01; replaces the unobtainable 3.3 uF GRM155R60J335ME15D on the FT2232H VCORE node (FTDI minimum 3.3 uF)'),
+    # applied 2026-09-08; the manufacturer's current number is used, Digi-Key stocks it mainly under the old alias
+    'GRM155R60J335ME15D': ('MSASJ105BB5475MFNA01', 'Taiyo Yuden', 'X5R 6.3V +-20% 0402 4.7uF, 0.65 mm max, about 3.7 uF left at 1.8 V; Digi-Key alias JMK105BBJ475MV-F (587-2787-1-ND, 1.6 M pcs); replaced the unobtainable 3.3 uF GRM155R60J335ME15D on the FT2232H VCORE node (FTDI minimum 3.3 uF) on 2026-09-08', '4.7uF'),
 }
 # SPEC text corrections for parts that already carry the right MANF# (keyed by current MANF#)
 RESPEC = {
@@ -66,10 +68,13 @@ def main(prj):
                 changed.append(f'{desig.get(owner)} SPEC of {old} corrected')
                 continue
             if old not in SUBS: continue
-            new, manf, spec = SUBS[old]
+            new, manf, spec = SUBS[old][:3]
+            comment = SUBS[old][3] if len(SUBS[old]) > 3 else None
             recs[prm['MANF#']][1] = set_field(recs[prm['MANF#']][1], 'Text', new)
             if 'MANF' in prm: recs[prm['MANF']][1] = set_field(recs[prm['MANF']][1], 'Text', manf)
             if 'SPEC' in prm: recs[prm['SPEC']][1] = set_field(recs[prm['SPEC']][1], 'Text', spec)
+            if comment and 'Comment' in prm: recs[prm['Comment']][1] = set_field(recs[prm['Comment']][1], 'Text', comment)
+            if comment and 'DeviceName' in prm and old.startswith('ASEM1'): recs[prm['DeviceName']][1] = set_field(recs[prm['DeviceName']][1], 'Text', 'ECS-3225SMV')
             changed.append(f'{desig.get(owner)} {old} -> {new}')
         if changed:
             out = join(recs)
