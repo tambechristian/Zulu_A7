@@ -28,8 +28,17 @@ SUBS = {
     # 2026-09-08, after the adversarial re-check: KAAJD is itself NRND at Murata ('please use alternative'); the
     # 4.7 uF 10 V X5R 0603 value is dying at every vendor, the 16 V grade is in production and on the same land
     'GRM188R61A475KAAJD': ('GRM188R61C475KE11D', 'Murata', 'X5R 16V +-10% 0603 4.7uF, 0.95 mm max; 10 V grades (KE15D obsolete, KAAJD NRND) replaced by the 16 V one on 2026-09-08'),
-    # optional: the FT2232H wants +-30 ppm; this grade is not stocked anywhere seen, so it stays commented out
-    # 'ASEM1-12.000MHZ-LC-T': ('ASEM1-12.000MHZ-LR-T', 'Abracon', '12 MHz, 3.3 V, -40..85 C, +-25 ppm, reel'),
+    # 2026-09-08 search (20 agents, Digi-Key + datasheets), NOT applied, the choice is the user's. Q1 must be
+    # +-30 ppm or better all-inclusive for the FT2232H; the ASEM1 LR grade is unstocked. Verified on the shelf:
+    #   ECS-3225SMV-120-FP-TR   +-10 ppm incl. aging, -40..105 C, 1,830 pcs, $2.90   (recommended)
+    #   ASEMB-12.000MHZ-LY-T    +-10 ppm + 5 ppm/yr aging, -40..85 C, 6,143 pcs, $4.40 (Abracon, same lineage)
+    #   ECS-3225SMVQ-120-DS-TR  +-20 ppm incl. aging, -40..125 C, 862 pcs, $1.82
+    #   SIT1602BI-22-33E-12.000000  +-25 ppm incl. 1st-year aging, 440 pcs, $1.54
+    # 'ASEM1-12.000MHZ-LC-T': ('ECS-3225SMV-120-FP-TR', 'ECS', '12.000 MHz HCMOS XO, 1.62-3.63 V, +-10 ppm incl. initial, temp -40..105 C, supply, load, reflow and aging (ECS-3225SMV sheet p1), 3.2x2.5x1.2 mm, pin 1 tri-state (H/NC = run); replaces the +-50 ppm ASEM1-12.000MHZ-LC-T'),
+    # C39/C139: no 3.3 uF 0402 >= 6.3 V exists that is not obsolete/NRND; FTDI asks for >= 3.3 uF minimum, so 4.7 uF:
+    #   JMK105BBJ475MV-F (order as MSASJ105BB5475MFNA01)  4.7 uF 6.3 V X5R 0402, 0.65 mm max, ~3.7 uF at 1.8 V, 1.6 M pcs, $0.13 (recommended)
+    #   GRM155R60J475ME47D  4.7 uF 6.3 V X5R 0402, 0.60 mm max, ~2.2-2.8 uF at 1.8 V, 980 k pcs, $0.10
+    # 'GRM155R60J335ME15D': ('JMK105BBJ475MV-F', 'Taiyo Yuden', 'X5R 6.3V +-20% 0402 4.7uF, 0.65 mm max, about 3.7 uF at 1.8 V; Taiyo Yuden new PN MSASJ105BB5475MFNA01; replaces the unobtainable 3.3 uF GRM155R60J335ME15D on the FT2232H VCORE node (FTDI minimum 3.3 uF)'),
 }
 # SPEC text corrections for parts that already carry the right MANF# (keyed by current MANF#)
 RESPEC = {
