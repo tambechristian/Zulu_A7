@@ -127,8 +127,8 @@ GEOM = [
     ('TSOPII-54', 'AS4C32M16SB TSOP II 400 mil, 0.8 mm pitch, lead span 11.76 max', 'pitch 0.8, rows 11.36 apart, 1.2 mm pads OK', 'ok'),
     ('SOIC-8_208MIL', 'W25Q128JVSIQ SOIC-8 208 mil, lead span 7.9-8.1', 'rows 7.3 apart, 1.51 mm pads OK', 'ok'),
     ('SOIC8', '93LC46BT-I/SN: SN = 3.90 mm narrow body, E = 6.00 BSC, foot 0.40-1.27', 'rows 7.62 apart, pads 1.5 long: inner edge at 3.06 mm, lead tip at 3.00 mm - no overlap', 'FAIL'),
-    ('SOD123', 'PMEG2020EJ = SOD323F (SC-90): total length 2.3-2.7, foot 0.3-0.5; Nexperia land 0.6 x 0.5 pads centred +-0.8', 'pads centred +-1.4, 0.9 long (0.95..1.85): lead foot ends at 1.15-1.35, 0.2-0.4 mm on pad, 0.6 mm pad past the tip', 'FAIL'),
-    ('SOD123', 'SMF5.0A = SOD-123FL: lead span 3.5-3.9, foot ~0.9', 'pads 0.95..1.85 cover the foot OK', 'ok'),
+    ('SOD123', 'PMEG2020EJ = SOD323F (SC-90): tip to tip 2.3-2.7, foot 0.3-0.5; Nexperia reflow lands 0.6 x 0.6 mm centred +-1.1 (inner edge 0.8, pitch 2.2)', 'pads centred +-1.4, 0.9 long (0.95..1.85), 0.3 mm outboard of Nexperia: lead tips at 1.15-1.35, only 0.2-0.4 mm of foot on pad, 0.5-0.7 mm of pad past the tip', 'FAIL'),
+    ('SOD123', 'SMF5.0A = SOD-123FL: tip to tip 3.4-3.9, foot 0.35-0.90 (about 0.6 nominal); Littelfuse pads 1.3 x 1.4 with a 1.6 gap', 'pads 0.9 x 1.1 at +-1.4 (0.95..1.85): 0.25-0.80 mm of foot on copper but zero toe at the nominal span and 0.1 mm overhang at the maximum; solderable, not the maker\'s pattern', 'marginal'),
     ('SOT23-3', '2N7002LT1G SOT-23: 1 G, 2 S, 3 D (standard 2N7002 pinout, datasheet not on disk)', 'pads G(-0.95,-0.7) S(0.95,-0.7) D(0,0.7), 0.95 pitch OK', 'ok'),
     ('SOT23-5', 'SC189xSKTRT SOT23-5, datasheet p23 land: 0.95 pitch, pads 0.60 x 1.10, inner gap 1.40, outer span 3.60', 'no such package in the EAGLE library: footprint must be drawn at the PCB stage', 'missing'),
     ('DM3D-SF', 'DM3 catalog p9: 8 x 0.55 pads on 1.1 pitch, 4 cover pads, 2 switch pads, 2 keep-outs', 'no such package in the EAGLE library: footprint must be drawn at the PCB stage', 'missing'),
@@ -136,7 +136,7 @@ GEOM = [
     ('32X25', 'ASEM1 3.2x2.5 mm, 4 pads', 'pads 1.2x1.4 at 1.7 x 2.2 OK', 'ok'),
     ('VS-NRD8', 'VS NRD8 p2 recommended pads: 0.55x0.4 outer at +-0.725, 0.7x0.5 middle', 'identical', 'ok'),
     ('PTA-142', 'PTA-142 catalog: 7.5 x 3.0 lead span, 1.6 x 1.4 pads', 'pads 1.6x1.6 at 7.5 x 2.8 OK (0.2 mm closer than drawn); same-side pads assumed common - verify', 'ok'),
-    ('742C083', 'CTS 742C083: 4 x 0603 array, 0.8 mm pitch', 'pitch 0.8, 8 pads OK; same pattern as the substitutes 742C083472JP, CAT16, EXB-V8V', 'ok'),
+    ('742C083', 'CTS 742C083: 4 x 0603 concave-termination array (3.2 x 1.6), 0.8 mm pitch; CTS land 0.45 x 0.9 pads at +-0.85', 'pitch 0.8, 0.5 x 0.9 pads at +-0.9, 0.05 mm per side wider than CTS: OK; 742C083472JP shares the package code, the Bourns CAT16 and Panasonic EXB-V8V substitutes are convex parts on the same land', 'ok'),
     ('IND2520', 'Murata DFE252010P: 2.5 x 2.0 mm, two pads', 'pads 1.05x2.3 at 2.35 OK', 'ok'),
 ]
 
@@ -173,12 +173,13 @@ SUPPLY = {
     'GRM188R61A475KE15D': ('OBSOLETE', '0', '-', 'Murata GRM188R61A475KAAJD (32,005, $0.42)'),
     'GRM033R60J474KE15D': ('NF', '-', '-', 'typo: GRM033R60J474KE90D is the live number (Active, 1,717,601, $0.10)'),
     'GRM155R61C474KA88D': ('NF', '-', '-', 'GRM155R61C474KE01D is NRND (105,254); Samsung CL05A474KO5NNNC 16 V (67,193) or CL05A474KP5NNNC 10 V (95,280)'),
-    '742C083472JP': ('Active', '98,887', '$0.17', 'replaced 742C083472JTR on 2026-09-07'),
-    'CL21A106KPFNNNG': ('Active', '101,469', '$0.12', 'Samsung 10 uF 10 V X5R 0805; replaced GRM21BR61A106KE19L on 2026-09-07'),
-    'GRM188R61A475KAAJD': ('Active', '32,005', '$0.42', 'replaced GRM188R61A475KE15D on 2026-09-07'),
-    'GRM033R60J474KE90D': ('Active', '1,717,601', '$0.10', 'replaced the mistyped GRM033R60J474KE15D on 2026-09-07'),
-    'CL05A474KO5NNNC': ('Active', '67,193', '$0.20', 'Samsung 0.47 uF 16 V X5R 0402; replaced GRM155R61C474KA88D on 2026-09-07'),
-    'CL10A226MP8NUNE': ('Active', '521,853', '$0.20', 'Samsung 22 uF 10 V X5R 0603; replaced GRM188R60J226MEA0D on 2026-09-07'),
+    '742C083472JP': ('Active', '98,887', '$0.17 reel / $0.18 cut', 'replaced 742C083472JTR on 2026-09-07; same CTS package code, concave terminations (verified 2026-09-08 against CTS DOC 008-0335-0 Rev T)'),
+    'CL21A106KPFNNNG': ('Active', '110,449', '$0.13', 'Samsung 10 uF 10 V X5R 0805, 1.35 mm max; replaced GRM21BR61A106KE19L on 2026-09-07 (verified 2026-09-08)'),
+    'GRM188R61A475KAAJD': ('NRND', '32,005', '$0.42', 'chosen on 2026-09-07, then found NRND on Murata\'s own page and at Digi-Key on 2026-09-08; replaced again by GRM188R61C475KE11D'),
+    'GRM188R61C475KE11D': ('Active', '67,764', '$0.24', 'Murata 4.7 uF 16 V X5R 0603, 0.95 mm max, in production at Murata (2026-09-08); the 10 V value is dying at every vendor'),
+    'GRM033R60J474KE90D': ('Active', '1,717,601', '$0.10', 'replaced the mistyped GRM033R60J474KE15D on 2026-09-07; in production at Murata (verified 2026-09-08)'),
+    'CL05A474KO5NNNC': ('Active', '18,193', '$0.20', 'Samsung 0.47 uF 16 V X5R 0402, 0.55 mm max; replaced GRM155R61C474KA88D on 2026-09-07 (verified 2026-09-08)'),
+    'CL10A226MP8NUNE': ('Active', '469,856', '$0.20', 'Samsung 22 uF 10 V X5R 0603, 1.05 mm max (the Murata was 6.3 V, 1.00 mm); replaced GRM188R60J226MEA0D on 2026-09-07 (verified 2026-09-08)'),
     'RC0402FR-07680RL': ('Active', '0, due 2026-09-28', '$0.10', 'Vishay CRCW0402680RFKTD 16,515'),
 }
 YAGEO_OK = 'RC0402FR-07100RL RC0201FR-075K1L RC0201FR-074K7L RC0201FR-07100RL RC0201FR-072K32L RC0201FR-071KL RC0201FR-07140RL RC0201FR-07845RL RC0402FR-0712KL RC0201FR-0710KL RC0402FR-071KL RC0201FR-0733RL RC0201FR-07200RL RC0402FR-074K7L RC0402FR-07100KL RC0402FR-0733RL RC0402FR-07330RL RC0402FR-0710KL RC0201FR-072K21L'.split()
@@ -349,15 +350,16 @@ def main():
     w('\n## 6. Findings\n')
     for i, f in enumerate([
         '**U10 footprint does not fit the part.** The library package SOIC8 has its pad rows 7.62 mm apart (a 300 mil pattern). The 93LC46BT-I/SN is the 3.90 mm narrow SOIC with a 6.00 mm lead span, so the lead tips end 0.06 mm before the pads begin. Redraw U10 on a 150 mil SOIC-8 pattern (the library\'s SPI-8_SOIC_150 has the right row spacing) or order the SOIJ 208 mil part 93LC46BT-I/SM to suit the pads.',
-        '**D1/D2 footprint is for the wrong package.** PMEG2020EJ is SOD323F: 2.3-2.7 mm tip to tip, 0.3-0.5 mm feet, Nexperia lands centred 0.8 mm from centre. The SOD123 pattern centres its pads 1.4 mm out, leaving 0.2-0.4 mm of foot on pad and 0.6 mm of bare pad beyond the tip. Draw the Nexperia pattern for D1/D2; D3 (SOD-123FL) stays.',
+        '**D1/D2 footprint is for the wrong package.** PMEG2020EJ is SOD323F: 2.3-2.7 mm tip to tip, 0.3-0.5 mm feet, Nexperia reflow lands 0.6 x 0.6 mm centred 1.1 mm from centre (inner edge at 0.8). The SOD123 pattern centres its pads 1.4 mm out, 0.3 mm further, leaving 0.2-0.4 mm of foot on pad and 0.5-0.7 mm of bare pad beyond the tip. Draw the Nexperia pattern for D1/D2. D3 (SMF5.0A, SOD-123FL) is solderable on the SOD123 pads but marginal: zero toe at the nominal lead span and pads far smaller than Littelfuse\'s 1.3 x 1.4 mm, so give it the Littelfuse pattern at the same time.',
         '**CPG236 land pads are undersize.** The library uses 0.225 mm pads; UG475 Table A-1 asks for 0.275 mm NSMD lands with 0.375 mm mask openings on the 0.5 mm pitch. Set that when the PCB library is built.',
         '**Two footprints do not exist yet**: SOT23-5 for the SC189s and DM3D-SF for X3. Both must be drawn at the PCB stage from the catalog land patterns.',
         '**Oscillator grade is out of the FT2232H spec.** ASEM1-12.000MHZ-LC-T decodes (datasheet p3) to 3.3 V, -40..85 C, +-50 ppm; the FT2232H datasheet asks for +-30 ppm. The comment on Q1 says 25 ppm, so the intent was the LR grade (ASEM1-12.000MHZ-LR-T), which no distributor stocks; SiTime SiT8008 or ECS-2520MV in a +-25 ppm grade are pin-compatible.',
-        '**Three parts were obsolete** and were replaced on 2026-09-07 by tools/apply_bom_substitutions.py: R34 742C083472JTR by 742C083472JP, the 10 uF 10 V 0805 GRM21BR61A106KE19L on C78/C147-C149 by Samsung CL21A106KPFNNNG, and the 4.7 uF GRM188R61A475KE15D on eleven decoupling positions by GRM188R61A475KAAJD.',
+        '**Three parts were obsolete** and were replaced on 2026-09-07 by tools/apply_bom_substitutions.py: R34 742C083472JTR by 742C083472JP, the 10 uF 10 V 0805 GRM21BR61A106KE19L on C78/C147-C149 by Samsung CL21A106KPFNNNG, and the 4.7 uF GRM188R61A475KE15D on eleven decoupling positions. The first 4.7 uF replacement (GRM188R61A475KAAJD) turned out to be NRND at Murata, and every 4.7 uF 10 V X5R 0603 on the market is NRND, obsolete or dry, so on 2026-09-08 those eleven positions moved to the 16 V grade GRM188R61C475KE11D, which Murata lists as in production and which also halves the DC-bias loss on the 3.3 V positions.',
         '**Three part numbers were unknown to the distributor**; two were replaced on 2026-09-07 (GRM033R60J474KE15D, a typo, by GRM033R60J474KE90D on 22 positions; GRM155R61C474KA88D on C124 by Samsung CL05A474KO5NNNC) and the 22 uF 0603 on C82/C84 moved to the stocked 10 V Samsung CL10A226MP8NUNE. GRM155R60J335ME15D (C39/C139) stays: only NRND TDK parts exist in 3.3 uF 0402, so it needs a value or size decision (4.7 uF 0603, or 2.2 uF).',
         '**Two parts have no distributor at all**: the PTA-142 button and the VS NRD8 RGB LED. Both work if you already hold stock; otherwise pick the alternatives in section 4 and re-check their pads.',
         '**Long-lead items**: FT2232HQ-REEL is dry at Digi-Key until April 2027 (tray packaging exists; check FTDI direct and Mouser before ordering), the SDRAM -6 grade is dry (the -7 grade, 143 MHz, is in stock), and the 22 uF 0805 value (13 pcs) is dry across Murata, Samsung and TDK\'s active parts, with only NRND TDK stock; C82/C84 now carry the stocked Samsung CL10A226MP8NUNE.',
-        '**Everything else checks out**: the FPGA symbol and power tree, the FT2232H, SDRAM, flash and EEPROM pin functions, the USB receptacle, LED polarity and pads, capacitor voltage margins, resistor power, regulator and diode ratings.',
+        '**C124 returns to the wrong ground.** Seen while re-checking its substitution: C123 (100 nF) returns to GNDADC but C124 (470 nF) returns to digital GND, whereas UG480 Figure 6-1 draws both XADC supply filter capacitors from VCCADC to the analog ground on the far side of the ground ferrite L6. The sheet-1 note describes both as one filter. Move C124\'s ground pin to GNDADC when the XADC front end is next touched; it is a one-wire change.',
+        '**Everything else checks out**: the FPGA symbol and power tree, the FT2232H, SDRAM, flash and EEPROM pin functions, the USB receptacle, LED polarity and pads, capacitor voltage margins, resistor power, regulator and diode ratings. On 2026-09-08 nine of the findings and substitutions above were handed to independent reviewers told to refute them from primary sources; they confirmed all of the conclusions and corrected the details now written here (the D1/D2 land numbers, the D3 verdict, the 4.7 uF replacement, the 22 uF height, R34\'s concave terminations).',
     ], 1):
         w(f'{i}. {f}')
     print('\n'.join(out))

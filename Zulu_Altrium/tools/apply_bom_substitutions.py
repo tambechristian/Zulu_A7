@@ -25,8 +25,16 @@ SUBS = {
     'GRM155R61C474KA88D': ('CL05A474KO5NNNC', 'Samsung', 'X5R 16V +-10% 0402 0.47uF; the Murata family is NRND'),
     # dry until 2027 at Murata, Samsung and TDK's active parts
     'GRM188R60J226MEA0D': ('CL10A226MP8NUNE', 'Samsung', 'X5R 10V +-20% 0603 22uF; the 6.3 V Murata is dry until 2027, this one is rated higher and stocked'),
+    # 2026-09-08, after the adversarial re-check: KAAJD is itself NRND at Murata ('please use alternative'); the
+    # 4.7 uF 10 V X5R 0603 value is dying at every vendor, the 16 V grade is in production and on the same land
+    'GRM188R61A475KAAJD': ('GRM188R61C475KE11D', 'Murata', 'X5R 16V +-10% 0603 4.7uF, 0.95 mm max; 10 V grades (KE15D obsolete, KAAJD NRND) replaced by the 16 V one on 2026-09-08'),
     # optional: the FT2232H wants +-30 ppm; this grade is not stocked anywhere seen, so it stays commented out
     # 'ASEM1-12.000MHZ-LC-T': ('ASEM1-12.000MHZ-LR-T', 'Abracon', '12 MHz, 3.3 V, -40..85 C, +-25 ppm, reel'),
+}
+# SPEC text corrections for parts that already carry the right MANF# (keyed by current MANF#)
+RESPEC = {
+    'CL10A226MP8NUNE': 'X5R 10V +-20% 0603 22uF, 1.05 mm max (T 0.80 +-0.25); replaced the 6.3 V Murata GRM188R60J226MEA0D (1.00 mm max, dry until 2027) on 2026-09-07',
+    'CL05A474KO5NNNC': 'X5R 16V +-10% 0402 0.47uF, 0.55 mm max; replaced GRM155R61C474KA88D (a number no distributor knows) on 2026-09-07',
 }
 
 def main(prj):
@@ -44,6 +52,10 @@ def main(prj):
         for owner, prm in by_owner.items():
             if 'MANF#' not in prm: continue
             old = field(recs[prm['MANF#']][1], 'Text')
+            if old in RESPEC and 'SPEC' in prm and field(recs[prm['SPEC']][1], 'Text') != RESPEC[old]:
+                recs[prm['SPEC']][1] = set_field(recs[prm['SPEC']][1], 'Text', RESPEC[old])
+                changed.append(f'{desig.get(owner)} SPEC of {old} corrected')
+                continue
             if old not in SUBS: continue
             new, manf, spec = SUBS[old]
             recs[prm['MANF#']][1] = set_field(recs[prm['MANF#']][1], 'Text', new)
