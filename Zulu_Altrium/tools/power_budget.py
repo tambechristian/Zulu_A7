@@ -210,9 +210,10 @@ def main():
       "72 uF on VCC1V8 (about 150, 90 and 60 uF after DC bias), needing 150, 300 and 110 uC. Every rail "
       "therefore finishes its ramp in current limit or foldback, and a load that draws more than the foldback "
       "current before the rail is up (the FPGA's VCCINT power-on current is about 200 mA, the FT2232H on 3.3 V "
-      "about 70 mA) could hold it down. The current Cmod A7 revision runs the same three SC189s into this same "
-      "FPGA with its UG483 capacitors, so it works in practice, but it is the one datasheet limit this design "
-      "does not meet: scope the three rails at power-on on the first board. If a rail hangs, the fixes are a "
+      "about 70 mA) could hold it down. A newer Cmod A7 revision runs three SC189s into this same FPGA (the source "
+      "is the user's photo of that board; the rev B.1 schematic on disk still shows the LTC3569), which suggests it "
+      "works in practice, but it is the one datasheet limit this design does not meet: scope the three rails at "
+      "power-on on the first board. If a rail hangs, the fixes are a "
       "regulator with a soft-start pin in the same role (TPS62130/TPS62823 class) or staggering the enables "
       "with RC delays so the rails do not all draw from VU at once.")
     print("\n".join(out))

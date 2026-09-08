@@ -138,6 +138,7 @@ GEOM = [
     ('PTA-142', 'PTA-142 catalog: 7.5 x 3.0 lead span, 1.6 x 1.4 pads', 'pads 1.6x1.6 at 7.5 x 2.8 OK (0.2 mm closer than drawn); same-side pads assumed common - verify', 'ok'),
     ('742C083', 'CTS 742C083: 4 x 0603 concave-termination array (3.2 x 1.6), 0.8 mm pitch; CTS land 0.45 x 0.9 pads at +-0.85', 'pitch 0.8, 0.5 x 0.9 pads at +-0.9, 0.05 mm per side wider than CTS: OK; 742C083472JP shares the package code, the Bourns CAT16 and Panasonic EXB-V8V substitutes are convex parts on the same land', 'ok'),
     ('IND2520', 'Murata DFE252010P: 2.5 x 2.0 mm, two pads', 'pads 1.05x2.3 at 2.35 OK', 'ok'),
+    ('C0402 / R0402', 'Murata GRM15 land 0.5 wide, gap 0.4, span 1.5; Samsung 1005 land 0.51-0.59 wide, gap 0.36-0.44, span 1.34-1.58', 'pads 0.7 x 0.9 at +-0.65 (gap 0.6, span 2.0): larger in every dimension than either vendor asks; solders, but the extra solder volume raises tombstoning exposure on every 0402 position', 'note'),
 ]
 
 # Digi-Key, 2026-09-06 evening (manual lookups; NF = part number not recognised)
@@ -161,7 +162,7 @@ SUPPLY = {
     'BLM18PG601SN1D': ('unverified', '-', '-', 'Digi-Key search returns nothing for this number and the Murata page did not load; a current catalogue part, verify at order time'),
     'DFE252010P-1R5M=P2': ('Active', '16,424', '$0.22', 'Isat 2.1 A, 82 mOhm max'),
     '742C083472JTR': ('OBSOLETE', '0', '-', 'drop-ins: 742C083472JP (98,887, $0.17), Bourns CAT16-472J4LF (225,765, $0.10), Panasonic EXB-V8V472JV (373,378)'),
-    'GRM155R71C104KA88D': ('Active', '0, due 2026-11-25', '$0.10', 'many stocked substitutes (0.1 uF 16 V X7R 0402)'),
+    'GRM155R71C104KA88D': ('Active', '0, due 2026-11-25', '$0.10', 'stocked substitutes (0.1 uF 16 V X7R 0402): Murata GRM155R71C104JA88D (+-5 %, 703,856) or Samsung CL05B104KO3LNNC (1,829,985)'),
     'GRM188R60J106ME47D': ('Active', '0, due 2026-09-10', '$0.12', ''),
     'GRM155R71H102KA01D': ('Active', '4,888,062', '$0.11', ''),
     'GRM033R71E103KE14D': ('Active', '1,919', '$0.10', ''),
@@ -176,7 +177,7 @@ SUPPLY = {
     '742C083472JP': ('Active', '98,887', '$0.17 reel / $0.18 cut', 'replaced 742C083472JTR on 2026-09-07; same CTS package code, concave terminations (verified 2026-09-08 against CTS DOC 008-0335-0 Rev T)'),
     'CL21A106KPFNNNG': ('Active', '110,449', '$0.13', 'Samsung 10 uF 10 V X5R 0805, 1.35 mm max; replaced GRM21BR61A106KE19L on 2026-09-07 (verified 2026-09-08)'),
     'GRM188R61A475KAAJD': ('NRND', '32,005', '$0.42', 'chosen on 2026-09-07, then found NRND on Murata\'s own page and at Digi-Key on 2026-09-08; replaced again by GRM188R61C475KE11D'),
-    'GRM188R61C475KE11D': ('Active', '67,764', '$0.24', 'Murata 4.7 uF 16 V X5R 0603, 0.95 mm max, in production at Murata (2026-09-08); the 10 V value is dying at every vendor'),
+    'GRM188R61C475KE11D': ('Active', '67,764', '$0.24', 'Murata 4.7 uF 16 V X5R 0603, 0.95 mm max, in production at Murata (2026-09-08); the 10 V value is dying at every vendor. Alternate on the same land: TDK C1608X5R1C475K080AC (16 V, 0.90 mm max, 125,661 at $0.25)'),
     'GRM033R60J474KE90D': ('Active', '1,717,601', '$0.10', 'replaced the mistyped GRM033R60J474KE15D on 2026-09-07; in production at Murata (verified 2026-09-08)'),
     'CL05A474KO5NNNC': ('Active', '18,193', '$0.20', 'Samsung 0.47 uF 16 V X5R 0402, 0.55 mm max; replaced GRM155R61C474KA88D on 2026-09-07 (verified 2026-09-08)'),
     'CL10A226MP8NUNE': ('Active', '469,856', '$0.20', 'Samsung 22 uF 10 V X5R 0603, 1.05 mm max (the Murata was 6.3 V, 1.00 mm); replaced GRM188R60J226MEA0D on 2026-09-07 (verified 2026-09-08)'),

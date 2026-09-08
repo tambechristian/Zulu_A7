@@ -164,13 +164,14 @@ VCCINT and VCCBRAM on VCC1V0, VCCAUX and VCCBATT on VCC1V8, every VCCO on VCC3V3
 | PTA-142 | PTA-142 catalog: 7.5 x 3.0 lead span, 1.6 x 1.4 pads | pads 1.6x1.6 at 7.5 x 2.8 OK (0.2 mm closer than drawn); same-side pads assumed common - verify | **ok** |
 | 742C083 | CTS 742C083: 4 x 0603 concave-termination array (3.2 x 1.6), 0.8 mm pitch; CTS land 0.45 x 0.9 pads at +-0.85 | pitch 0.8, 0.5 x 0.9 pads at +-0.9, 0.05 mm per side wider than CTS: OK; 742C083472JP shares the package code, the Bourns CAT16 and Panasonic EXB-V8V substitutes are convex parts on the same land | **ok** |
 | IND2520 | Murata DFE252010P: 2.5 x 2.0 mm, two pads | pads 1.05x2.3 at 2.35 OK | **ok** |
+| C0402 / R0402 | Murata GRM15 land 0.5 wide, gap 0.4, span 1.5; Samsung 1005 land 0.51-0.59 wide, gap 0.36-0.44, span 1.34-1.58 | pads 0.7 x 0.9 at +-0.65 (gap 0.6, span 2.0): larger in every dimension than either vendor asks; solders, but the extra solder volume raises tombstoning exposure on every 0402 position | **note** |
 
 ## 3. Supply chain and lifecycle (Digi-Key, 2026-09-07)
 
 | Part | Status | Stock | Price qty 1 | Note |
 |---|---|---|---|---|
 | PTA-142 (x1) | NF | - | - | no distributor listing; catalog vendor unknown |
-| GRM155R71C104KA88D (x9) | Active | 0, due 2026-11-25 | $0.10 | many stocked substitutes (0.1 uF 16 V X7R 0402) |
+| GRM155R71C104KA88D (x9) | Active | 0, due 2026-11-25 | $0.10 | stocked substitutes (0.1 uF 16 V X7R 0402): Murata GRM155R71C104JA88D (+-5 %, 703,856) or Samsung CL05B104KO3LNNC (1,829,985) |
 | GRM188R60J106ME47D (x1) | Active | 0, due 2026-09-10 | $0.12 |  |
 | GRM155R71H102KA01D (x2) | Active | 4,888,062 | $0.11 |  |
 | GRM033R71E103KE14D (x1) | Active | 1,919 | $0.10 |  |
@@ -179,7 +180,7 @@ VCCINT and VCCBRAM on VCC1V0, VCCAUX and VCCBATT on VCC1V8, every VCCO on VCC3V3
 | CL21A106KPFNNNG (x1) | Active | 110,449 | $0.13 | Samsung 10 uF 10 V X5R 0805, 1.35 mm max; replaced GRM21BR61A106KE19L on 2026-09-07 (verified 2026-09-08) |
 | GRM21BR61A226ME44L (x13) | Active | 0, due 2027-01-04 | $0.32 | Samsung CL21A226MPQNNNE 0, TDK C2012X5R1A226M125AE 5,046 ($0.91), TDK C2012X5R1A226M085AC NRND 117,921 |
 | CL10A226MP8NUNE (x2) | Active | 469,856 | $0.20 | Samsung 22 uF 10 V X5R 0603, 1.05 mm max (the Murata was 6.3 V, 1.00 mm); replaced GRM188R60J226MEA0D on 2026-09-07 (verified 2026-09-08) |
-| GRM188R61C475KE11D (x11) | Active | 67,764 | $0.24 | Murata 4.7 uF 16 V X5R 0603, 0.95 mm max, in production at Murata (2026-09-08); the 10 V value is dying at every vendor |
+| GRM188R61C475KE11D (x11) | Active | 67,764 | $0.24 | Murata 4.7 uF 16 V X5R 0603, 0.95 mm max, in production at Murata (2026-09-08); the 10 V value is dying at every vendor. Alternate on the same land: TDK C1608X5R1C475K080AC (16 V, 0.90 mm max, 125,661 at $0.25) |
 | GRM033R60J474KE90D (x22) | Active | 1,717,601 | $0.10 | replaced the mistyped GRM033R60J474KE15D on 2026-09-07; in production at Murata (verified 2026-09-08) |
 | CL05A474KO5NNNC (x1) | Active | 18,193 | $0.20 | Samsung 0.47 uF 16 V X5R 0402, 0.55 mm max; replaced GRM155R61C474KA88D on 2026-09-07 (verified 2026-09-08) |
 | PMEG2020EJ,115 (x2) | Active | in stock | $0.60 | SOD323F |
