@@ -159,6 +159,12 @@ the project in Altium before running the two fix scripts.
 * `d2_note.py` - D2 gets the NOTE parameter (D1 removal, SOD323F footprint)
   as a hidden parameter, so the master BOM's note for it comes from the sheet
   like every other note.
+* `ft_vcore_caps.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` -
+  2026-09-09: C152, C153 and C154, three 0.1uF 0201 GRM033R61A104KE15D cloned
+  from C136, hung off the FT-VCORE rail beside C39 with their own ground ports,
+  one per FT2232H VCORE pin, after connectivity_check.py found that rail carrying
+  bulk only. The rail is extended left and junctioned; no net label is added
+  because the extension is one wire with the rail. Refuses to run twice.
 * `connectivity_check.py > docs/connectivity_check.md` - power and ground
   architecture plus bus and differential-pair mapping, read from the exported
   netlist and the datasheets. Traces every supply and ground pin of every IC to

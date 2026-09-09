@@ -184,8 +184,39 @@ for rail, (nhf, nmid, nbulk, label) in req.items():
                         f'{fmt(bulk)} of bulk against {nhf}, {nmid} and {fmt(nbulk)}.')
 w('')
 
+# ---- SC189 output capacitance ceiling
+w('### 1.4 The buck regulators against their own output-capacitance limit\n')
+w('The SC189 datasheet says under COUT Selection that "a total output capacitance should not exceed 30uF to '
+  'avoid any start-up problems", and recommends 10 to 22 uF. Ceramic capacitors lose most of their value '
+  'under DC bias, so the figures below are given both at their printed value and derated by case size and '
+  'rail voltage, the way that datasheet derates its own 22 uF 0805 to 6.57 uF at 3.3 V.\n')
+DERATE = {('C0805', 3.3): 0.30, ('C0805', 1.8): 0.45, ('C0805', 1.0): 0.60,
+          ('C0603', 3.3): 0.45, ('C0603', 1.8): 0.60, ('C0603', 1.0): 0.75,
+          ('C0402', 3.3): 0.60, ('C0402', 1.8): 0.75, ('C0402', 1.0): 0.85,
+          ('C0201', 3.3): 0.70, ('C0201', 1.8): 0.80, ('C0201', 1.0): 0.90}
+w('| Regulator | Rail | Capacitors | Printed total | Derated estimate | Datasheet ceiling |')
+w('|---|---|---|---|---|---|')
+over = []
+for reg, rail, v in (('U5 SC189Z', 'VCC3V3', 3.3), ('U6 SC189L', 'VCC1V8', 1.8), ('U7 SC189A', 'VCC1V0', 1.0)):
+    cs = on(rail)
+    nom = sum(c[2] for c in cs)
+    der = sum(c[2] * DERATE.get((COMP[c[0]]['fp'], v), 0.6) for c in cs)
+    w(f'| {reg} | {rail} | {len(cs)} | {nom * 1e6:.0f} uF | about {der * 1e6:.0f} uF | 30 uF |')
+    if der > 30e-6:
+        over.append(f'{rail} about {der * 1e6:.0f} uF')
+if over:
+    findings.append('**Every buck rail carries more output capacitance than the SC189 datasheet allows.** '
+                    'It asks for no more than 30 uF in total; derated for DC bias the rails hold ' +
+                    ', '.join(over) + '. The capacitance is there because UG483 Table 2-2 asks the FPGA for '
+                    'that much bulk, so the regulator choice and the FPGA decoupling requirement pull against '
+                    'each other. The datasheet ties the limit to start-up: the soft-start has to charge all of '
+                    'it inside its 100 us window and against the current limit. Nothing here says the board '
+                    'will fail, but bring up the first one with a scope on all three rails and watch for '
+                    'hiccup or a stretched soft-start before trusting it.')
+w('')
+
 # ---- 1.4 FT2232H against FTDI's reference
-w("### 1.4 The FT2232H against FTDI's reference circuit\n")
+w("### 1.5 The FT2232H against FTDI's reference circuit\n")
 w('DS_FT2232H Figures 4.1 and 6.1 show one 100 nF at every supply pin, a 4.7 uF on each of the 3.3 V and '
   '1.8 V rails, and a ferrite plus 100 nF on VPHY and on VPLL.\n')
 FT = {'VCCIO (pins 20, 31, 42, 56) and VREGIN (50)': ('VCC3V3', 5),
@@ -206,7 +237,7 @@ if not core_hf:
 w('')
 
 # ---- 1.5 the other parts
-w('### 1.5 The other parts, one capacitor per supply pin\n')
+w('### 1.6 The other parts, one capacitor per supply pin\n')
 OTHER = {
     'U3 SDRAM': ('U3', {'VDD': ['1', '14', '27'], 'VDDQ': ['3', '9', '43', '49']},
                  {'VSS': ['28', '41', '54'], 'VSSQ': ['6', '12', '46', '52']}),
@@ -235,7 +266,7 @@ for label, (ref, sup, gnd) in OTHER.items():
 w('')
 
 # ---- 1.6 allocation by sheet
-w('### 1.6 Where the decoupling was drawn\n')
+w('### 1.7 Where the decoupling was drawn\n')
 w('The closest a schematic gets to "near the pin": which sheet each capacitor sits on, beside which part.\n')
 SHEETNAME = {0: 'block diagram', 1: 'power supplies', 2: 'general IO', 3: 'memory', 4: 'FT2232 / JTAG / clock',
              5: 'FPGA', 6: 'FPGA power'}
@@ -368,13 +399,117 @@ for pair, pn, nn, cap, rser, rtop, rbot, rgnd in (
         findings.append(f'**{pair} source impedances are not matched**: {zp:.0f} ohm out of the positive '
                         f'input against {zn:.0f} ohm out of the negative, {err:.1f}% apart.')
 w('')
-w('The divider also sets full scale: 2.32k over 1k turns the 3.3 V a header pin can present into 0.994 V '
-  'at the FPGA, just inside the 1 V the XADC accepts on a unipolar auxiliary channel. The 1 nF across the '
-  'pair against roughly 840 ohm of source impedance rolls off around 190 kHz, well below the 1 Msps the '
-  'converter runs at.\n')
+zsum = 838.795 + 845.0
+w(f'The divider also sets full scale: 2.32k over 1k turns the 3.3 V a header pin can present into 0.994 V '
+  'at the FPGA, just inside the 1 V the XADC accepts on a unipolar auxiliary channel.\n')
+w(f'The anti-alias capacitor sits BETWEEN the two inputs, so what it works against is the sum of the two '
+  f'source impedances, {zsum:.0f} ohm, not one of them. The corner is 1 / (2 pi x {zsum:.0f} x 1 nF) = '
+  f'{1/(2*3.141592653589793*zsum*1e-9)/1000:.1f} kHz. More to the point, UG480 Equation 6-1 makes this same RC '
+  f'the settling limit on throughput: the acquisition has to settle to one part in 2^13, so '
+  f'ln(2^13) x {zsum:.0f} ohm x 1 nF = {9.0109*zsum*1e-9*1e6:.1f} us per sample, about '
+  f'{1/(9.0109*zsum*1e-9)/1000:.0f} kSa/s per channel. That is the ceiling this front end sets, and it is far '
+  'below the 1 Msps the converter itself can do. It is not a fault -- the network is the one Digilent uses on '
+  'the Cmod A7 -- but drive the sequencer accordingly and set the long-acquisition bit on these auxiliary '
+  'channels, because the external resistance adds to the internal multiplexer resistance.\n')
+
+# ---- configuration pins
+RAILS = {'GND': 0.0, 'VCC3V3': 3.3, 'VCC1V8': 1.8, 'VCC1V0': 1.0, 'VU': 4.4}
+
+
+def ohms(v):
+    m = re.match(r'\s*([\d.]+)\s*(k|K|M)?', v or '')
+    return None if not m else float(m.group(1)) * {'k': 1e3, 'K': 1e3, 'M': 1e6, None: 1.0}[m.group(2)]
+
+
+def resting(start):
+    """Thevenin voltage on a net when every active driver is released, solving the resistor
+    network that links it to the supply rails. Returns None when nothing biases it."""
+    edges, nodes, seen = [], set(), set()
+    stack = [start]
+    while stack:
+        n = stack.pop()
+        if n in seen or n in RAILS:
+            continue
+        seen.add(n); nodes.add(n)
+        for pad in NETS.get(n, []):
+            ref = pad.split('-')[0]
+            if not ref.startswith('R') or ref not in COMP or len(COMP[ref]['pins']) != 2:
+                continue
+            other = [net(f'{ref}-{q}') for q in COMP[ref]['pins'] if net(f'{ref}-{q}') != n]
+            if not other:
+                continue
+            o, r = other[0], ohms(value(ref))
+            if not r:
+                continue
+            edges.append((n, o, r))
+            if o not in RAILS:
+                stack.append(o)
+    if not edges:
+        return None
+    idx = {n: i for i, n in enumerate(sorted(nodes))}
+    k = len(idx)
+    G = [[0.0] * k for _ in range(k)]
+    I = [0.0] * k
+    for a, b, r in edges:
+        g = 1.0 / r
+        ia = idx[a]
+        G[ia][ia] += g
+        if b in RAILS:
+            I[ia] += g * RAILS[b]
+        else:
+            G[ia][idx[b]] -= g
+    for col in range(k):                                   # Gaussian elimination, tiny system
+        piv = max(range(col, k), key=lambda r_: abs(G[r_][col]))
+        if abs(G[piv][col]) < 1e-15:
+            return None
+        G[col], G[piv] = G[piv], G[col]; I[col], I[piv] = I[piv], I[col]
+        for r_ in range(k):
+            if r_ != col and G[r_][col]:
+                f = G[r_][col] / G[col][col]
+                for c_ in range(col, k):
+                    G[r_][c_] -= f * G[col][c_]
+                I[r_] -= f * I[col]
+    return I[idx[start]] / G[idx[start]][idx[start]]
+
+
+w('### 2.4 The configuration pins at rest\n')
+w('UG470 requires PROGRAM_B, INIT_B and DONE to be pulled high, and the mode pins strapped to the boot '
+  'mode wanted. With every active driver released, which is how the board sits at power-up before the USB '
+  'host has opened the bridge, each pin settles where its resistor network puts it. LVCMOS33 reads below '
+  '0.8 V as low and above 2.0 V as high; anything between is undefined.\n')
+CFG = [('PROGRAM_B', 'V10', 'high, pulled up to VCCO_0 (UG470)'),
+       ('INIT_B', 'U11', 'high, pulled up'),
+       ('DONE', 'U12', 'high, pulled up'),
+       ('M0', 'V12', 'high for master SPI (mode 001)'),
+       ('M1', 'W11', 'low for master SPI'),
+       ('M2', 'U10', 'low for master SPI'),
+       ('PUDC_B', 'E18', 'high, to disable the pull-ups during configuration'),
+       ('TCK', 'C8', 'either: the bridge drives it, R5 is only a bleeder')]
+w('| Pin | Ball | Net | Resistors on it | Rests at | Wanted | Verdict |')
+w('|---|---|---|---|---|---|---|')
+for name, ball, want in CFG:
+    n = net(f'U1-{ball}')
+    v = resting(n)
+    rs = sorted({q.split('-')[0] for q in NETS.get(n, []) if q.startswith('R')})
+    rtxt = ', '.join(f'{r} {value(r)} to {[net(f"{r}-{q}") for q in COMP[r]["pins"] if net(f"{r}-{q}") != n][0]}' for r in rs) or 'none'
+    driven = want.startswith('either')
+    if v is None:
+        lvl, ok = 'nothing biases it', driven
+    elif v >= 2.0:
+        lvl, ok = f'{v:.2f} V, high', driven or want.startswith('high')
+    elif v <= 0.8:
+        lvl, ok = f'{v:.2f} V, low', driven or want.startswith('low')
+    else:
+        lvl, ok = f'{v:.2f} V, undefined' + ('' if driven else ' **undefined**'), driven
+    w(f'| {name} | {ball} | {n} | {rtxt} | {lvl} | {want} | {"ok" if ok else "**check**"} |')
+    if not ok:
+        findings.append(f'**{name} does not rest where UG470 asks.** Ball {ball} is on net {n}; with every '
+                        f'driver released it sits at {lvl.split(",")[0]}, and the pin wants to be {want}. '
+                        f'The network on it is {rtxt}.')
+w('')
 
 # ---- loose ends
-w('### 2.4 Loose ends\n')
+w('### 2.5 Loose ends\n')
 single = {n: ps for n, ps in NETS.items() if len(ps) == 1}
 w(f'Nets reaching only one pad: {len(single)}'
   + (' - ' + ', '.join(f'{n} ({ps[0]})' for n, ps in sorted(single.items())) if single else '.') + '\n')
