@@ -108,6 +108,7 @@ def main(path):
     arrow(PMIC[2], Y, 'l'); line(PMIC[2] + 10, Y, LIPO[0] - 10, Y); arrow(LIPO[0], Y, 'r')
     text(PMIC[2] + 13, Y + 10, 'VBATT', '4')
 
+    out[0][1] = set_field(out[0][1], 'Weight', str(len(out) - 1))   # the header carries the record count
     blob = join(out)
     write_stream(path, 'FileHeader', blob)
     assert read_stream(path, 'FileHeader') == blob
@@ -117,6 +118,7 @@ def main(path):
 
 def verify(path):
     recs = split(read_stream(path, 'FileHeader'))
+    assert int(field(recs[0][1], 'Weight')) == len(recs) - 1, 'header Weight does not match the record count'
     texts = {field(b, 'Text'): (num(b, 'Location.X'), num(b, 'Location.Y')) for h, b in recs if b.startswith(b'|RECORD=4|')}
     for t in ('PMIC', 'BQ24232', 'LiPo Connect', 'VU', 'VBATT', '+5V'):
         assert t in texts, t
