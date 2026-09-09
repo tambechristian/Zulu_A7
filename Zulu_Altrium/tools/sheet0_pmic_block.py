@@ -19,7 +19,10 @@ VU, and the battery connector hangs off its right edge as VBATT, drawn with an a
 end because the pack both takes charge and supplies the board.
 
 Nothing on this sheet carries connectivity -- it is all drawing furniture, RECORD=4 text and
-RECORD=6 lines with no pins or nets -- so the netlist cannot change. Refuses to run twice.
+RECORD=6 lines with no pins or nets -- so the netlist cannot change. Deleting records renumbers
+every surviving OwnerIndex (the frame component's 40 children point back at it) and the header
+Weight is rewritten; verify() checks both, after a first version of this script broke sheet 0 by
+skipping them and Altium refused to open it. Refuses to run twice.
 
     python tools/sheet0_pmic_block.py tools "Imported zulu_a7.PrjPcb"
 """
@@ -70,7 +73,19 @@ def main(path):
             found.add('+5V')
     assert found == DEAD | {'riser', '+5V'}, found
 
-    out = [r for i, r in enumerate(recs) if i not in kill]
+    # deleting records shifts every later list index, so each surviving OwnerIndex has to follow;
+    # the frame component's 40 children live near the end of the file and all point back at it
+    keep = [i for i in range(len(recs)) if i not in kill]
+    newpos = {old: new for new, old in enumerate(keep)}
+    out = []
+    for old_i in keep:
+        h, b = recs[old_i]
+        o = field(b, 'OwnerIndex')
+        if o is not None:
+            oi = int(o) + 1
+            assert oi in newpos, f'record {old_i} is owned by a deleted record'
+            b = set_field(b, 'OwnerIndex', str(newpos[oi] - 1))
+        out.append([h, b])
 
     def line(x1, y1, x2, y2):
         nonlocal idx
@@ -133,6 +148,13 @@ def verify(path):
     assert ((PMIC[2] + 10, Y), (LIPO[0] - 10, Y)) in segs, 'battery link missing'
     uids = [field(b, 'UniqueID') for h, b in recs if field(b, 'UniqueID')]
     assert len(uids) == len(set(uids)), 'duplicate UniqueID'
+    for i, (h, b) in enumerate(recs):                                            # every parent link resolves
+        o = field(b, 'OwnerIndex')
+        if o is None:
+            continue
+        oi = int(o) + 1
+        assert 0 <= oi < len(recs), (i, oi)
+        assert recs[oi][1].startswith((b'|RECORD=1|', b'|RECORD=44|', b'|RECORD=45|')), (i, oi, recs[oi][1][:20])
     # the frame component's children reuse low IndexInSheet values, so only the loose drawing is checked
     ix = [num(b, 'IndexInSheet') for h, b in recs
           if field(b, 'OwnerIndex') is None and num(b, 'IndexInSheet') is not None and num(b, 'IndexInSheet') >= 0]
