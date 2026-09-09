@@ -60,6 +60,12 @@ the project in Altium before running the two fix scripts.
   an inserted MANF parameter (OwnerIndex renumbering) and the footprint model
   name PTS810; pins 1,2 / 3,4 already match the datasheet's 1-2 / 3-4 pairing.
   Refuses to run twice.
+* `ld0_east1616.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_2.SchDoc"` -
+  2026-09-08: LD0 from the Victory VS NRD8 (maker-direct only) to the Everlight
+  EAST1616RGBA8 (19-337/R6GHBHW-A01/2T), the same body, pads and arrangement
+  with different pad numbers: pins renumbered 1/2/3 -> 2/4/6 (cathodes) and
+  4/5/6 -> 1/3/5 (anodes), nets untouched, footprint model EVERLIGHT-19-337.
+  Refuses to run twice.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED

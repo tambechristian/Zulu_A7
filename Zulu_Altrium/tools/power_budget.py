@@ -71,7 +71,7 @@ def consumers(a):
             ("U1 VCCO dynamic (SDRAM bus, header, LED sink path)", a.fpga_io, 3 * a.fpga_io,
              "ASSUMED; about 1.6 mA per toggling pin at 100 MHz, 10 pF"),
             ("LD0 RGB (R80 33, R81 330, R82 33) + LD1/LD2 (330) + LD5 (680)", 8, 22,
-             "VF from VS NRD8 sheet: red 2.0-2.4, green/blue 3.3-3.8 V"),
+             "VF from the Everlight 19-337 sheet: red 2.05 typ / 2.4 max, green and blue 3.2 typ / 3.7 max V (VS NRD8 was 2.0-2.4 / 3.3-3.8 until 2026-09-08)"),
             ("pull-ups when driven low (6 x 4.7k, 12 x 10k)", 2, 8,
              "R1, R2, R6, R7, R34, R35, R89-R99, R19, R20, R23"),
             ("J1 Pmod pins 6/12 and X2 pins 2/17 +3.3V to header", a.header, a.header,
@@ -192,7 +192,7 @@ def main():
     w("3. **VCC1V8 is lightly loaded**, well under 100 mA even with the XADC running.")
     w(f"4. **USB alone covers typical use** at about {it:.0f} mA from the port. The simultaneous worst case "
       f"({im:.0f} mA) needs the external 5 V input.")
-    w("5. **Green and blue of LD0 may not light.** Their forward voltage is 3.3-3.8 V per the VS NRD8 sheet, "
+    w("5. **Green and blue of LD0 may not light.** Their forward voltage is 3.2 V typical and 3.7 V maximum per the Everlight 19-337 sheet (3.3-3.8 V on the VS NRD8 it replaced on 2026-09-08), "
       "and the FPGA sinks them from a 3.3 V supply through 33 ohm, leaving no headroom; only the red "
       "(2.0-2.4 V) has margin. Expect dim or dark green/blue unless the parts fall at the low end of VF. "
       "Not a power problem, but it fell out of the LED current estimate.")
