@@ -54,6 +54,12 @@ the project in Altium before running the two fix scripts.
   multi-pad shell pins become G1-G4 on the GND bus; new pins A/B for the
   card-detect switch, left open with No-ERC markers; footprint model renamed
   DM3D-SF (to be drawn at the PCB stage). Refuses to run twice.
+* `btn_pts810.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_2.SchDoc"` -
+  2026-09-08: BTN from the PTA-142 (no maker, no distributor) to the C&K /
+  Littelfuse PTS810SJM250SMTR LFS (4.2 x 3.2 mm J-lead, 1.6 N). Parameters,
+  an inserted MANF parameter (OwnerIndex renumbering) and the footprint model
+  name PTS810; pins 1,2 / 3,4 already match the datasheet's 1-2 / 3-4 pairing.
+  Refuses to run twice.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED
