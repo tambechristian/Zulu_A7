@@ -89,6 +89,12 @@ the project in Altium before running the two fix scripts.
   limit, 244 mA charge, 36 mA termination, 7.5 h timer, TS disabled).
   Footprints VQFN16-3X3-RGT and JST-B2B-PH-SM4-TB are for the PCB stage.
   Refuses to run twice.
+* `sheet1_rearrange.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_1.SchDoc"` -
+  2026-09-09 re-layout of sheet 1: the charger block up under the USB
+  connector (+460), the SC189 blocks and the LD5 power-good circuit down
+  (-500), X1's VBUS pin wired straight into U8 IN, C78 moved onto U8 OUT
+  (pins 10/11) with its own ground, C151 nudged left. Netlist unchanged.
+  Refuses to run twice.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED
