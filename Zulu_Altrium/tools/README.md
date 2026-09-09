@@ -114,6 +114,12 @@ the project in Altium before running the two fix scripts.
   11 each). Pin numbers do not move, so the exported netlist is byte-identical;
   only geometry, MANF#/SPEC/NOTE and the text frame change (strips become 2x 1x9
   + 2x 1x11). Refuses to run twice.
+* `sc189_pin_ids.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_1.SchDoc"` -
+  2026-09-09: the fifteen pins of U5, U6 and U7 all carried one UniqueID
+  (PDYAEPSY, from cloning a pin record in sc189_power_section.py); each gets a
+  fresh one, clear of the others on the sheet. Only the UniqueID field changes,
+  which verify() proves by masking it and comparing byte for byte, so the
+  netlist is unaffected. Refuses to run twice.
 * `x2_top_row_order.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09,
   sixth pass: the top row put in channel order (1 GND, 2 CHAN-CLK, 3-9 CHAN0-6,
   USB landing, 10-16 CHAN7-13, 17-20 the supplies), so CHAN12/CHAN13 leave the
