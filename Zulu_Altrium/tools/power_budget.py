@@ -77,7 +77,7 @@ def consumers(a):
              "VF from the Everlight 19-337 sheet: red 2.05 typ / 2.4 max, green and blue 3.2 typ / 3.7 max V (VS NRD8 was 2.0-2.4 / 3.3-3.8 until 2026-09-08)"),
             ("pull-ups when driven low (6 x 4.7k, 12 x 10k)", 2, 8,
              "R1, R2, R6, R7, R34, R35, R89-R99, R19, R20, R23"),
-            ("J1 Pmod pins 6/12 and X2 pins 17/24 +3.3V to header", a.header, a.header,
+            ("J1 Pmod pins 6/12 and X2 pin 17 +3.3V to header", a.header, a.header,
              "external, user allowance"),
         ],
     }

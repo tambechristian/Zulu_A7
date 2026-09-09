@@ -93,6 +93,12 @@ the project in Altium before running the two fix scripts.
   parameters exempt from the sub-part deletion; MANF#/SPEC/NOTE and the text
   frame rewritten (PRPC007 + PRPC014 on the bottom row); U8 NOTE on sheet 1
   loses its D2 sentence. Verifies rows against pad numbers; refuses to run twice.
+* `x2_drop_3v3.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09, third pass:
+  +3.3V2 (pad 24) deleted, its position left empty like the LiPo gap; sub-part
+  removed from all 41 copies and parts renumbered 1-41 (PartCount 42,
+  AllPinCount 40); no pin slides, so the only netlist effect is X2-24 leaving
+  VCC3V3. MANF#/SPEC/NOTE and the text frame rewritten (bottom row now 1x3 +
+  1x3 + 1x14). The header takes 3.3 V from pad 17. Refuses to run twice.
 * `jp_dns.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` - 2026-09-08:
   JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
   their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS
