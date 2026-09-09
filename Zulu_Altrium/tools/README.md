@@ -79,7 +79,20 @@ the project in Altium before running the two fix scripts.
   renumbered 1-43 (PartCount 44, AllPinCount 42); displayed pins 2/3 retyped
   passive and 25/26 power; MANF#/SPEC/NOTE and the text frame rewritten for
   the split bottom row (PRPC020 + PRPC002). Sheet 1: charger note updated.
-  Verifies the result and refuses to run twice.
+  Verifies the result and refuses to run twice. Its sub-part deletion also took the
+  seven catalogue parameters of two copies whose serial OwnerPartId was 35 or 45
+  (found by the review workflow); `x2_restore_params.py` put them back.
+* `x2_restore_params.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_2.SchDoc"` -
+  2026-09-09: re-appends DeviceName/LibraryName/DeviceSetName/MANF/MANF#/SPEC/NOTE
+  to any X2 gate copy missing them, cloned from a healthy copy.
+* `x2_jst_gap.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09, second pass:
+  GND3 deleted, the bottom row closed up and re-numbered by position (23 RST#,
+  24 +3.3V, 25-27 CHAN14-16, 28-30 empty for the LiPo header, 31-44 CHAN17..
+  ANALOG-IO1), gate copies/wires/labels moved to the rows of their new pads,
+  designators remapped in all 42 copies, sub-parts renumbered 1-42, catalogue
+  parameters exempt from the sub-part deletion; MANF#/SPEC/NOTE and the text
+  frame rewritten (PRPC007 + PRPC014 on the bottom row); U8 NOTE on sheet 1
+  loses its D2 sentence. Verifies rows against pad numbers; refuses to run twice.
 * `jp_dns.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` - 2026-09-08:
   JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
   their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS

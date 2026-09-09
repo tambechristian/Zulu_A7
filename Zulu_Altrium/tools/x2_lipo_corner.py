@@ -25,6 +25,11 @@ The displayed pins of pads 2/3 become passive and 25/26 power, as their new nets
 Netlist effect, and nothing else: VEXT disappears; D2, D3, X2-23 and X2-44 disappear;
 X2-2 -> CHAN12, X2-3 -> CHAN13, X2-25 -> VCC3V3, X2-26 -> GND. Refuses to run twice.
 
+KNOWN DEFECT (found by the review of commit 338ea4e, repaired by x2_restore_params.py): the
+sub-part deletion keys on OwnerPartId, but the importer gave the seven catalogue parameters of
+each copy a per-copy serial OwnerPartId, so the two copies whose serial was 35 or 45 lost them.
+x2_jst_gap.py exempts those parameters.
+
     python tools/x2_lipo_corner.py tools "Imported zulu_a7.PrjPcb"
 """
 import sys, os, re
