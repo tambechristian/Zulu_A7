@@ -75,6 +75,12 @@ the project in Altium before running the two fix scripts.
   JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
   their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS
   positions instead of parts. Refuses to run twice.
+* `u2_ft2232hl.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09: U2 from
+  the FT2232HQ (QFN-64, dry until April 2027) to the FT2232HL (LQFP-64, same
+  die and pin numbering): part number, comment, label, device names,
+  description, footprint model FT2232HL-LQFP64, SPEC/NOTE inserted, the EP
+  pin and its ground stub removed (bus wire shortened), sheet-4 title and
+  sheet-0 block renamed. Refuses to run twice.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED

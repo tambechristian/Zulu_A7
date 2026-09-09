@@ -9,9 +9,9 @@ Power comes in as USB VBUS through D1 (PMEG2020EJ) onto VU, or as +5V-INPUT on X
 
 | Consumer | typ mA | max mA | Source |
 |---|---:|---:|---|
-| U2 FT2232HQ core via VREGIN (Icc1) | 70 | 70 | FT2232H DS Table 5.2, 70 mA |
-| U2 FT2232HQ USB PHY (Iccphy, high speed) | 30 | 60 | FT2232H DS Table 5.4, 30 typ / 60 max |
-| U2 FT2232HQ VCCIO switching | 10 | 20 | ASSUMED, 3.3 V I/O cells at JTAG/UART rates |
+| U2 FT2232HL core via VREGIN (Icc1) | 70 | 70 | FT2232H DS Table 5.2, 70 mA |
+| U2 FT2232HL USB PHY (Iccphy, high speed) | 30 | 60 | FT2232H DS Table 5.4, 30 typ / 60 max |
+| U2 FT2232HL VCCIO switching | 10 | 20 | ASSUMED, 3.3 V I/O cells at JTAG/UART rates |
 | U3 SDRAM AS4C32M16SB-7TCN | 100 | 150 | IDD1 110, IDD4 120, IDD5 150 (refresh), IDD2N 80 standby (Rev 1.4); the -6TIN was 120/124/160 until 2026-09-08 |
 | U4 W25Q128JV flash (quad read 104 MHz / program) | 12 | 25 | ICC3 12 typ 20 max; ICC5 program 25 max |
 | X3 microSD card | 60 | 200 | SD spec: ~60 typ, 200 max at 3.3 V for a high-speed card |
@@ -82,7 +82,7 @@ VU = 5.0 - 0.3 = 4.70 V after D1. Input power per rail is Vout x Iout / efficien
 | U5 SC189Z (1.5 A) for VCC3V3 | 0.12 | 0.24 | 90 | 11 | 22 |
 | U6 SC189L (1.5 A) for VCC1V8 | 0.02 | 0.04 | 90 | 2 | 4 |
 | U7 SC189A (1.5 A) for VCC1V0 | 0.09 | 0.09 | 90 | 8 | 8 |
-| U2 FT2232HQ (thJA assumed) | 0.36 | 0.49 | 28 | 10 | 14 |
+| U2 FT2232HL (DS Table 5.7) | 0.36 | 0.49 | 37.66 | 14 | 19 |
 | U3 SDRAM (thJA assumed) | 0.33 | 0.53 | 45 | 15 | 24 |
 
 The FPGA stays well under its 85 C commercial junction limit. The SOT23-5 regulators are the warm parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which at the datasheet's 90 C/W (SOT23-5 on a 10x10 mm 2-layer 1 oz test board) is an 11-22 C rise. Figure 3 of the SC189 sheet rates the SOT23-5 for the full 1.5 A at 3.3 V out up to about 65 C ambient, so no derating applies here. Give the GND pin and the LX/VOUT copper a pour anyway; the 2x2 mm MLPD-UT6 version (SC189xULTRT, 60 C/W) is the fallback if the board must run hot.

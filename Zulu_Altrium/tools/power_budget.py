@@ -21,7 +21,7 @@ USB_LIMIT = 500     # mA, USB 2.0 configured high-power device
 USB_UNCONF = 100    # mA, allowed before enumeration
 SC189_THJA = 90     # C/W, SC189 datasheet p3: SOT23-5 on a 10x10 mm 2-layer 1 oz board, free convection; MLPD-UT6 is 60
 FPGA_THJA = 24.8    # C/W, XC7A35T CPG236 still air, UG475 thermal table
-FT2232_THJA = 28    # C/W, ASSUMED for a 64-QFN 9x9 with exposed pad (datasheet gives none)
+FT2232_THJA = 37.66 # C/W, DS_FT2232H Table 5.7 for the FT2232HL LQFP-64 (the QFN was 29.67; 28 assumed until 2026-09-09)
 SDRAM_THJA = 45     # C/W, ASSUMED for TSOP-II 54 (datasheet gives none)
 
 # channel -> (rail, V, limit mA, efficiency at 5 V in, read from the SC189
@@ -56,9 +56,9 @@ def consumers(a):
             ("X2 pin 18 +1.8V to header", a.header_1v8, a.header_1v8, "external, user allowance"),
         ],
         "VCC3V3": [
-            ("U2 FT2232HQ core via VREGIN (Icc1)", 70, 70, "FT2232H DS Table 5.2, 70 mA"),
-            ("U2 FT2232HQ USB PHY (Iccphy, high speed)", 30, 60, "FT2232H DS Table 5.4, 30 typ / 60 max"),
-            ("U2 FT2232HQ VCCIO switching", 10, 20, "ASSUMED, 3.3 V I/O cells at JTAG/UART rates"),
+            ("U2 FT2232HL core via VREGIN (Icc1)", 70, 70, "FT2232H DS Table 5.2, 70 mA"),
+            ("U2 FT2232HL USB PHY (Iccphy, high speed)", 30, 60, "FT2232H DS Table 5.4, 30 typ / 60 max"),
+            ("U2 FT2232HL VCCIO switching", 10, 20, "ASSUMED, 3.3 V I/O cells at JTAG/UART rates"),
             ("U3 SDRAM AS4C32M16SB-7TCN", 100, 150,
              "IDD1 110, IDD4 120, IDD5 150 (refresh), IDD2N 80 standby (Rev 1.4); the -6TIN was 120/124/160 until 2026-09-08"),
             ("U4 W25Q128JV flash (quad read 104 MHz / program)", 12, 25,
@@ -172,7 +172,7 @@ def main():
         t_, m_ = totals[rail][3], totals[rail][4]
         rows.append((f"{ch} for {rail}", V * t_ / 1000 * (1 / eff - 1), V * m_ / 1000 * (1 / eff - 1), SC189_THJA, ""))
     rows += [
-            ("U2 FT2232HQ", 3.3 * 0.110, 3.3 * 0.150, FT2232_THJA, " (thJA assumed)"),
+            ("U2 FT2232HL", 3.3 * 0.110, 3.3 * 0.150, FT2232_THJA, " (DS Table 5.7)"),
             ("U3 SDRAM", 3.3 * 0.100, 3.3 * 0.160, SDRAM_THJA, " (thJA assumed)")]
     for name, ptw, pmw, th, note in rows:
         w(f"| {name}{note} | {ptw:.2f} | {pmw:.2f} | {th} | {ptw * th:.0f} | {pmw * th:.0f} |")

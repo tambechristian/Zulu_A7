@@ -123,7 +123,7 @@ RGB_ANODE = {'1': 'R80', '3': 'R81', '5': 'R82'}
 # EAGLE package geometry against the datasheet land patterns (mm)
 GEOM = [
     ('XC7A35T-CPG236', 'UG475 v1.20 Table A-1: 0.5 mm pitch, land 0.275 mm NSMD, mask 0.375', 'pitch 0.5 OK; pads 0.225 mm, 0.05 mm under the AMD land', 'deviation'),
-    ('FT2232HQ-QFN64', 'DS_FT2232H QFN-64 9x9, 0.5 mm pitch, exposed pad', 'pitch 0.5, pads 0.25x0.6, EP 4.95 OK', 'ok'),
+    ('FT2232HL-LQFP64', 'DS_FT2232H Figure 8.2: LQFP-64, 10 x 10 mm body, 12 x 12 mm over leads, 0.5 mm pitch, JEDEC MS-026 BCD, no exposed pad', 'no such package in the EAGLE library: draw at the PCB stage; the FT2232HQ QFN pattern it replaces (pitch 0.5, pads 0.25x0.6, EP 4.95) does not fit', 'missing'),
     ('TSOPII-54', 'AS4C32M16SB TSOP II 400 mil, 0.8 mm pitch, lead span 11.76 max', 'pitch 0.8, rows 11.36 apart, 1.2 mm pads OK', 'ok'),
     ('SOIC-8_208MIL', 'W25Q128JVSIQ SOIC-8 208 mil, lead span 7.9-8.1', 'rows 7.3 apart, 1.51 mm pads OK', 'ok'),
     ('SOIC8', '93LC46BT-I/SN: SN = 3.90 mm narrow body, E = 6.00 BSC, foot 0.40-1.27', 'rows 7.62 apart, pads 1.5 long: inner edge at 3.06 mm, lead tip at 3.00 mm - no overlap', 'FAIL'),
@@ -145,8 +145,8 @@ GEOM = [
 # Digi-Key, 2026-09-06 evening (manual lookups; NF = part number not recognised)
 SUPPLY = {
     'XC7A35T-1CPG236C': ('Active', '72', '$57.06', 'XC7A35T-1CPG236I / -2CPG236C / XC7A50T-1CPG236I also listed'),
-    'FT2232HQ-REEL': ('Active', '0, 4,000 due 2027-04-19', '$5.30', 'FT2232HQ-TRAY also 0, 260 due 2027-04-19, 46-week lead time; FTDI, Mouser, Arrow, Newark pages not reachable'),
-    'AS4C32M16SB-6TIN': ('Active', '0', '$31.12', 'replaced by the -7TCN on 2026-09-08; 108 expected 06-Oct-2026 at Digi-Key, 16-week factory lead'),
+    'FT2232HQ-REEL': ('Active', '0, 4,000 due 2027-04-19', '$5.30', 'replaced by the FT2232HL-REEL on 2026-09-09; the QFN-64 stays a same-pin alternate'),
+    'FT2232HL-REEL': ('Active', '0, 1,000 due 2027-02-19', '$5.30', 'LQFP-64 of the same die, 50-week lead (Digi-Key 2026-09-09); LCSC C27882 4,767 at $11.45, not an FTDI-authorized channel; FT2232HL-TRAY 0, 160 due 2027-01-18, LCSC 21'),    'AS4C32M16SB-6TIN': ('Active', '0', '$31.12', 'replaced by the -7TCN on 2026-09-08; 108 expected 06-Oct-2026 at Digi-Key, 16-week factory lead'),
     'AS4C32M16SB-7TCN': ('Active', '1,478', '$23.85', 'commercial 0..70 C grade of the same B die (Digi-Key 2026-09-08); -7TCNTR 455 cut tape at $23.05; industrial -7TIN 47 tray / -7TINTR 160 cut tape; -6TIN 0 until Oct 2026; LCSC lists only the -7TIN (15 at $63.93)'),
     'W25Q128JVSIQ': ('Active', 'in stock', '$4.21', ''),
     'SC189ZSKTRT': ('Active', '5,767', '$1.07', ''), 'SC189LSKTRT': ('Active', '2,846', '$0.97', ''), 'SC189ASKTRT': ('Active', '4,589', '$0.90', ''),
@@ -196,7 +196,7 @@ for y in YAGEO_OK: SUPPLY[y] = ('Active', 'stocked', '$0.10', '')
 
 SECOND_SOURCE = [
     ('U1 XC7A35T-1CPG236C', 'none (sole source)', 'XC7A15T/XC7A50T-1CPG236 are pin-identical (UG475 CPG236 shared footprint); -2 speed or I grade as stop-gaps'),
-    ('U2 FT2232HQ', 'none pin-compatible', 'FT2232HL is the LQFP-64 of the same die (different footprint); no other vendor makes a compatible dual-channel bridge'),
+    ('U2 FT2232HL', 'FT2232HQ-REEL (QFN-64, same pin numbers, 0 stock until April 2027); FT4232HL / FT4232HQ (same pin numbers for every signal the board uses, UART lands on channel C, EEPROM re-templated, PID 0x6011)', 'no other vendor makes a compatible dual-channel bridge; the FT2232H-56Q keeps every signal but renumbers every pin (re-pinned symbol needed)'),
     ('U3 AS4C32M16SB-7TCN', 'Alliance AS4C32M16SB-7TIN (industrial) and -6TIN (166 MHz), timing-identical or faster; ISSI IS42S16320F-7TL / -6TLI, Micron MT48LC32M16A2P', 'JEDEC 54-TSOP II 32M x16 pinout (A12 on 36, NC on 40); Winbond W9825G6KH is 256 Mbit, half the density; the ISSI -6 grades were 0 stock at MOQ 324 on 2026-09-08'),
     ('U4 W25Q128JVSIQ', 'Macronix MX25L12835FM2I-10G, GigaDevice GD25Q128ESIG, ISSI IS25LP128-JBLE', 'SOIC-8 208 mil, same pinout; all in the Vivado configuration-memory list'),
     ('U5-U7 SC189x', 'none pin-compatible in SOT23-5', 'TI TLV62568 (EN-GND-FB-SW-VIN) and its family differ; the SC189 order VIN-GND-EN-VOUT-LX is Semtech-specific. Mitigation: three grades stocked, buy ahead; fallback is a footprint change'),
@@ -266,7 +266,7 @@ def main():
     w('| Part | Check | Result |'); w('|---|---|---|')
     u2 = comps['U2']['pins']
     bad = [(n, u2.get(str(n)), exp) for n, exp in FT2232H.items() if u2.get(str(n)) != exp]
-    w(f'| U2 FT2232HQ | 64 pins + EP, symbol names vs DS_FT2232H tables 3.2-3.4 and the bus pins | {"all match" if not bad else bad} |')
+    w(f'| U2 FT2232HL | 64 pins, symbol names vs DS_FT2232H tables 3.1-3.4 (the LQFP and QFN share the numbering; no EP on the LQFP) | {"all match" if not bad else bad} |')
     u3 = {k[3:]: v for k, v in padnet.items() if k.startswith('U3-')}
     bad = [(i + 1, fn, u3.get(str(i + 1))) for i, fn in enumerate(SDRAM) if not sdram_ok(fn, u3.get(str(i + 1)))]
     w(f'| U3 AS4C32M16SB | 54 pads: net on each pad vs the JEDEC x16 pin assignment | {"all 54 match (pin 40 NC open)" if not bad else bad} |')
@@ -353,7 +353,7 @@ def main():
         ('D3 SMF5.0A', 'Vwm 5 V, Vbr 6.4 V, Vc 9.2 V at Ipp', 'VEXT nominal 5 V, USB max 5.25 V', 'OK; clamps well above the SC189 6 V abs max, so it protects the port, not the regulators'),
         ('Q2 2N7002', '60 V, 115 mA (onsemi), VGS +-20 V', '3.3 V, 1.8 mA LED current, 3.3 V gate', 'OK'),
         ('U1 XC7A35T-1CPG236C', 'VCCINT 0.95-1.05, VCCAUX 1.71-1.89, VCCO 3.135-3.465 V, Tj 0-85 C', 'SC189 +-2.5 % plus +-1 % load: 0.965-1.035, 1.737-1.863, 3.18-3.42 V; Tj rise 10-15 C', 'OK; VCCINT has 15 mV of the 50 mV band left for ripple and drop, keep the 1.0 V path short'),
-        ('U2 FT2232HQ', 'VCCIO 3.0-3.6 V, clock 12 MHz +-30 ppm', '3.3 V; ASEM1-12.000MHZ-LC-T is +-50 ppm over -40..85 C', 'clock tolerance out of spec on paper'),
+        ('U2 FT2232HL', 'VCCIO 3.0-3.6 V, clock 12 MHz +-30 ppm, Tj 125 C', '3.3 V; ECS-3225SMV-120-FP-TR is +-10 ppm incl. aging; LQFP thetaJA 37.66 C/W', 'OK'),
         ('U3 AS4C32M16SB-7TCN', 'VDD 3.0-3.6 V, 143 MHz at CL3 (100 MHz at CL2), TA 0..70 C', '3.3 V; commercial ambient range, the same 0 C floor as the -1C FPGA (Tj 0..85 C)', 'OK; the controller must use the -7 column (tRCD/tRP 21 ns, tRC 63 ns, tWR 14 ns) and CL3 above 100 MHz'),
         ('U4 W25Q128JVSIQ', '2.7-3.6 V, 133 MHz', '3.3 V, CCLK a few tens of MHz', 'OK'),
         ('X1 105017-0001', '1 A per contact, 30 V', '0.66 A worst on VBUS', 'OK, 66 % of the contact rating'),
@@ -373,7 +373,7 @@ def main():
         '**Three parts were obsolete** and were replaced on 2026-09-07 by tools/apply_bom_substitutions.py: R34 742C083472JTR by 742C083472JP, the 10 uF 10 V 0805 GRM21BR61A106KE19L on C78/C147-C149 by Samsung CL21A106KPFNNNG, and the 4.7 uF GRM188R61A475KE15D on eleven decoupling positions. The first 4.7 uF replacement (GRM188R61A475KAAJD) turned out to be NRND at Murata, and every 4.7 uF 10 V X5R 0603 on the market is NRND, obsolete or dry, so on 2026-09-08 those eleven positions moved to the 16 V grade GRM188R61C475KE11D, which Murata lists as in production and which also halves the DC-bias loss on the 3.3 V positions.',
         '**Three part numbers were unknown to the distributor**; two were replaced on 2026-09-07 (GRM033R60J474KE15D, a typo, by GRM033R60J474KE90D on 22 positions; GRM155R61C474KA88D on C124 by Samsung CL05A474KO5NNNC) and the 22 uF 0603 on C82/C84 moved to the stocked 10 V Samsung CL10A226MP8NUNE. GRM155R60J335ME15D (C39/C139, the FT2232H VCORE filter, FTDI minimum 3.3 uF) is unobtainable and no 3.3 uF 0402 at 6.3 V or more exists that is not obsolete or NRND (Digi-Key\'s whole 3.3 uF 0402 list was checked on 2026-09-08). The same-footprint answer is 4.7 uF: Taiyo Yuden JMK105BBJ475MV-F, ordered under its new number MSASJ105BB5475MFNA01 (6.3 V X5R, 0.65 mm max, about 3.7 uF left at 1.8 V, 1.6 M pcs, $0.13, recommended), or Murata GRM155R60J475ME47D (0.60 mm max, in production, 980 k pcs, $0.10, but only about 2.2-2.8 uF left at 1.8 V so the pair sits close to FTDI\'s minimum at the tolerance corners). Both survived two skeptics each. Applied on 2026-09-08: C39 and C139 are now 4.7 uF MSASJ105BB5475MFNA01 (Digi-Key alias JMK105BBJ475MV-F).',
         '**No part is without a distributor any more**: the PTA-142 button became the C&K PTS810SJM250SMTR LFS and the Victory VS NRD8 RGB LED became the Everlight EAST1616RGBA8 (its pad-for-pad twin, pins renumbered) and the X2 ZULU-CONN pin field got its Sullins PRPC024/009/011SAAN-RC strips, all on 2026-09-08. Only JP3/JP4 remain without a part, by design (bare holes).',
-        '**Long-lead items**: FT2232HQ-REEL is dry at Digi-Key until April 2027 (tray packaging exists; check FTDI direct and Mouser before ordering), the SDRAM -6 grade is dry until October 2026, so on 2026-09-08 U3 became the AS4C32M16SB-7TCN (same die, package and pinout, 143 MHz, commercial 0..70 C like the -1C FPGA; 1,478 at Digi-Key), and the 22 uF 0805 value (13 pcs) is dry across Murata, Samsung and TDK\'s active parts, with only NRND TDK stock; C82/C84 now carry the stocked Samsung CL10A226MP8NUNE.',
+        '**Long-lead items**: U2 became the FT2232HL on 2026-09-09 because the FT2232HQ has no authorized stock until April 2027; the HL is itself 0 at Digi-Key (1,000 due 19-Feb-2027) and only LCSC holds it (4,767), so name that channel or consign, the SDRAM -6 grade is dry until October 2026, so on 2026-09-08 U3 became the AS4C32M16SB-7TCN (same die, package and pinout, 143 MHz, commercial 0..70 C like the -1C FPGA; 1,478 at Digi-Key), and the 22 uF 0805 value (13 pcs) is dry across Murata, Samsung and TDK\'s active parts, with only NRND TDK stock; C82/C84 now carry the stocked Samsung CL10A226MP8NUNE.',
         '**C124 returns to the wrong ground.** Seen while re-checking its substitution: C123 (100 nF) returns to GNDADC but C124 (470 nF) returns to digital GND, whereas UG480 Figure 6-1 draws both XADC supply filter capacitors from VCCADC to the analog ground on the far side of the ground ferrite L6. The sheet-1 note describes both as one filter. Move C124\'s ground pin to GNDADC when the XADC front end is next touched; it is a one-wire change.',
         '**Everything else checks out**: the FPGA symbol and power tree, the FT2232H, SDRAM, flash and EEPROM pin functions, the USB receptacle, LED polarity and pads, capacitor voltage margins, resistor power, regulator and diode ratings. On 2026-09-08 nine of the findings and substitutions above were handed to independent reviewers told to refute them from primary sources; they confirmed all of the conclusions and corrected the details now written here (the D1/D2 land numbers, the D3 verdict, the 4.7 uF replacement, the 22 uF height, R34\'s concave terminations).',
     ], 1):
