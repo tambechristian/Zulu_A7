@@ -114,6 +114,18 @@ the project in Altium before running the two fix scripts.
   11 each). Pin numbers do not move, so the exported netlist is byte-identical;
   only geometry, MANF#/SPEC/NOTE and the text frame change (strips become 2x 1x9
   + 2x 1x11). Refuses to run twice.
+* `x2_top_row_order.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09,
+  sixth pass: the top row put in channel order (1 GND, 2 CHAN-CLK, 3-9 CHAN0-6,
+  USB landing, 10-16 CHAN7-13, 17-20 the supplies), so CHAN12/CHAN13 leave the
+  corner. Sixteen gate copies move with their wires and labels and every pin
+  designator is remapped in all 41 copies; connectivity is unchanged, only which
+  X2 pad each net lands on. Refuses to run twice.
+* `sheet0_pmic_block.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09:
+  the block diagram gains PMIC BQ24232 between the USB port and the voltage
+  regulators, with LiPo Connect on its right; the +5V riser is extended into the
+  charger, VU drops from the charger into the regulators and VBATT runs to the
+  battery block. Drawing furniture only (RECORD=4 text, RECORD=6 lines), so the
+  netlist cannot change. Refuses to run twice.
 * `jp_dns.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` - 2026-09-08:
   JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
   their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS
