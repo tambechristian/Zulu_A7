@@ -133,6 +133,8 @@ GEOM = [
     ('SOT23-5', 'SC189xSKTRT SOT23-5, datasheet p23 land: 0.95 pitch, pads 0.60 x 1.10, inner gap 1.40, outer span 3.60', 'no such package in the EAGLE library: footprint must be drawn at the PCB stage', 'missing'),
     ('DM3D-SF', 'DM3 catalog p9: 8 x 0.55 pads on 1.1 pitch, 4 cover pads, 2 switch pads, 2 keep-outs', 'no such package in the EAGLE library: footprint must be drawn at the PCB stage', 'missing'),
     ('ZULU-DIP37', 'Sullins PRPC drawing: 0.64 mm square pins on 2.54 mm, recommended hole 1.02 mm', '44 holes 1.016 mm on 2.54 mm pitch, rows 22.86 mm apart: fits the PRPC strips', 'ok'),
+    ('VQFN16-3X3-RGT', 'bq24232 SLUS821J RGT package: 16-pin VQFN 3.0 x 3.0 mm, 0.5 mm pitch, 1.68 mm thermal pad', 'no such package in the EAGLE library: draw at the PCB stage from the datasheet package drawing', 'missing'),
+    ('JST-B2B-PH-SM4-TB', 'JST PH SM4 top-entry SMT: two contact pads on 2.0 mm pitch plus two 1.6 x 3.0 mm fixing pads (catalog page 1)', 'no such package in the EAGLE library: draw at the PCB stage', 'missing'),
     ('MOLEX-105017-0001', 'Molex 105017 drawing: 5 x 0.4 mm pads on 0.65 pitch, 4 shell pads, 2 pegs', '0.65 pitch, 0.4x1.35 pads, shell pads OK', 'ok'),
     ('32X25', 'ASEM1 3.2x2.5 mm, 4 pads', 'pads 1.2x1.4 at 1.7 x 2.2 OK', 'ok'),
     ('EVERLIGHT-19-337', 'Everlight 19-337 p8 recommended pads: 0.55x0.4 outer at +-0.725, 0.7x0.5 middle, 1.9/2.2 spans (the VS NRD8 p2 drawing line for line)', 'identical to the VS-NRD8 pattern in the library; renumber the pads 1/2/3 -> 2/4/6, 4/5/6 -> 1/3/5 when the footprint is drawn', 'ok'),
@@ -153,6 +155,13 @@ SUPPLY = {
     '93LC46BT-I/SN': ('Active', '5,497', '$0.32', '8-SOIC 3.90 mm: confirms the narrow body'),
     '105017-0001': ('Active', '53,846', '$1.00', ''),
     'DM3D-SF': ('Active', 'in stock', '$2.32', ''),
+    'BQ24232RGTR': ('Active', '541', '$1.93', 'TI single-cell Li-ion charger + power path, 16-VQFN 3x3, 9-week lead (Digi-Key 2026-09-09); added as U8 in place of D1 on 2026-09-09'),
+    'B2B-PH-SM4-TB(LF)(SN)': ('Active', '57,541', '$0.47', 'JST PH 2.0 mm 2-pin top-entry SMT header (Digi-Key 2026-09-09); battery input X4, added 2026-09-09'),
+    'RC0402FR-073K57L': ('Active', 'not checked', '$0.10', 'Yageo RC0402 E96 value, ISET on U8; verify stock at order time'),
+    'RC0402FR-073K09L': ('Active', 'not checked', '$0.10', 'Yageo RC0402 E96 value, ILIM on U8; verify stock at order time'),
+    'RC0402FR-0756K2L': ('Active', 'not checked', '$0.10', 'Yageo RC0402 E96 value, TMR on U8; verify stock at order time'),
+    'RC0402FR-074K32L': ('Active', 'not checked', '$0.10', 'Yageo RC0402 E96 value, ITERM on U8; verify stock at order time'),
+    'RC0402FR-071K5L': ('Active', 'not checked', '$0.10', 'Yageo RC0402 1.5k, LD3/LD4 series resistors; verify stock at order time'),
     'PRPC024SAAN-RC + PRPC009SAAN-RC + PRPC011SAAN-RC': ('Active', '361 / 1,201 / 428', '$0.45 + $0.18 + $0.22', 'Sullins 0.1 in male breakaway strips for the X2 pin field, one of each per board (Digi-Key 2026-09-08); added to the ZULU-CONN placeholder on 2026-09-08'),
     'ASEM1-12.000MHZ-LC-T': ('Active', '11,473', '$3.06', 'the +-50 ppm grade; replaced by ECS-3225SMV-120-FP-TR on 2026-09-08'),
     'ECS-3225SMV-120-FP-TR': ('Active', '1,830', '$2.90', 'ECS 12 MHz HCMOS XO, +-10 ppm incl. aging, -40..105 C, 3.2x2.5x1.2 mm, pin 1 tri-state; direct Digi-Key listing, 25-week factory lead time on backorder'),
@@ -205,8 +214,10 @@ SECOND_SOURCE = [
     ('X1 105017-0001', 'Amphenol 10118194-0001LF, Hirose ZX62D-B-5P8', 'micro-B receptacles with near-identical 0.65 mm pad rows; shell pads differ, check at layout'),
     ('X3 DM3D-SF', 'none footprint-compatible', 'Molex 104031-0811 and GCT MEM2075 need their own patterns'),
     ('X2 Sullins PRPC024/009/011SAAN-RC', 'Wurth 61302411121 (1x24, 5,364 at Digi-Key); any 2.54 mm 1x40 breakaway strip cut to 24 + 11 + 9 (LCSC Boomele C2337, 81,690)', '0.64 mm square pins in 1.016 mm holes on 0.1 in; two rows 0.900 in apart'),
+    ('U8 bq24232', 'bq24230 (same pinout, 6.6 V OVP, TD pin instead of ITERM: fixed 10 % termination); bq24210/bq24232 family members differ', 'RGT VQFN-16 3x3; the ITERM resistor R105 becomes a TD strap on the bq24230'),
+    ('X4 B2B-PH-SM4-TB(LF)(SN)', 'S2B-PH-SM4-TB(LF)(SN) (side entry, 5.5 mm, same pads); JST B2B-PH-K-S (through-hole, different pattern)', 'PH 2.0 mm family; any pack with a PHR-2 housing mates'),
     ('LD0 EAST1616RGBA8', 'Everlight EAST1616RGBA4 (water-clear twin, same pads and numbering); Victory VS NRD8 with the pads renumbered back; Kingbright APTF1616SEEZGKQBKC (pinout to verify)', '1.6 x 1.6 mm six-pad RGB; the Everlight and Victory drawings are identical apart from the pad numbers'),
-    ('D1/D2 PMEG2020EJ', 'Nexperia PMEG2010EJ, PMEG2020EJ alternatives in SOD323F', 'or Diodes SDM2U30 class; any SOD323F 2 A Schottky once the pattern is corrected'),
+    ('D2 PMEG2020EJ', 'Nexperia PMEG2010EJ, PMEG2020EJ alternatives in SOD323F', 'or Diodes SDM2U30 class; any SOD323F 2 A Schottky once the pattern is corrected (D1 was removed for the bq24232 on 2026-09-09)'),
     ('BTN PTS810SJM250SMTR LFS', 'PTS810SJK / SJG / SJS250SMTR LFS (2.6, 4.0, 6.0 N, same body and pads; K grade stocked at LCSC)', 'PTS810 4.2 x 3.2 mm J-lead; other 4.2 x 3.2 tacts (Panasonic EVQ-P7, Alps SKRT) need their own pattern check'),
     ('R34 742C083472JTR', '742C083472JP, Bourns CAT16-472J4LF, Panasonic EXB-V8V472JV', 'Digi-Key lists all three as direct substitutes'),
     ('passives', 'Samsung / TDK / Taiyo Yuden equivalents per the supply table', 'all standard sizes'),
@@ -290,7 +301,12 @@ def main():
     ok = all(r34.get(str(i)) == f'SD-DAT{i - 1}' for i in range(1, 5)) and all(r34.get(str(i)) == 'VCC3V3' for i in range(5, 9))
     w(f'| R34 742C083 | isolated 4-array: 1-8, 2-7, 3-6, 4-5 pairs, SD-DAT0..3 pull-ups | {"all match" if ok else r34} |')
     w('| Q2 2N7002LT1G | G on PGOOD, S on GND, D on the LED; SOT-23 1 G 2 S 3 D | matches (standard 2N7002 pinout, onsemi sheet not fetchable) |')
-    w('| D1/D2/D3 | D1 USB5V0->VU, D2 VEXT->VU, D3 TVS cathode on VEXT | orientation correct |')
+    w('| D2/D3 | D2 VEXT->VU, D3 TVS cathode on VEXT (D1 replaced by U8 on 2026-09-09) | orientation correct |')
+    BQ = {1: 'TS', 2: 'BAT', 3: 'BAT', 4: 'CE', 5: 'EN2', 6: 'EN1', 7: 'PGOOD', 8: 'VSS', 9: 'CHG', 10: 'OUT', 11: 'OUT', 12: 'ILIM', 13: 'IN', 14: 'TMR', 15: 'ITERM', 16: 'ISET', 17: 'PAD'}
+    u8 = comps['U8']['pins']
+    bad = [(n, u8.get(str(n)), exp) for n, exp in BQ.items() if u8.get(str(n)) != exp]
+    bad += [(pad, padnet.get(pad), exp) for pad, exp in (('U8-13', 'USB5V0'), ('U8-10', 'VU'), ('U8-11', 'VU'), ('U8-2', 'VBATT'), ('U8-3', 'VBATT'), ('U8-4', 'GND'), ('U8-6', 'GND'), ('U8-5', 'VU'), ('U8-8', 'GND'), ('U8-17', 'GND'), ('X4-1', 'VBATT'), ('X4-2', 'GND')) if padnet.get(pad) != exp]
+    w(f'| U8 bq24232 | 17 pin names vs SLUS821J Pin Functions; IN on USB5V0, OUT on VU, BAT on VBATT with X4-1, CE/EN1 low, EN2 high | {"all match" if not bad else bad} |')
     w('| BTN PTS810SJM250SMTR LFS | pins 1,2 = 3.3 V, pins 3,4 = BTN net | PTS810 sheet schematic joins 1-2 and 3-4: matches |')
     # --- geometry
     w('\n### 2.3 EAGLE package geometry against the datasheet land patterns\n')
@@ -349,7 +365,9 @@ def main():
     for row in [
         ('U5-U7 SC189', 'VIN 2.9-5.5 V (abs max 6 V), 1.5 A, Tj 125 C', 'VU 4.4-4.95 V, 0.68 A worst on 3.3 V, Tj rise 11-22 C at 90 C/W', 'OK; a +5V-INPUT above 5.5 V is only clamped by D3 at 6.4-9.2 V, so keep the external supply regulated'),
         ('L1-L3 DFE252010P-1R5M', 'Isat 2.1 A, Idc 1.8 A (40 C rise)', 'peak 0.83 A at the 677 mA worst case', 'OK, 40 % of Isat'),
-        ('D1/D2 PMEG2020EJ', '20 V, 2 A, Tj 150 C', '5.25 V, 0.66 A worst; VF 0.35-0.41 V', 'OK, 33 % current; 0.25 W in a 350 K/W package is a 90 C rise on a bare pad, use the 1 cm2 cathode pour Nexperia assumes for 150 K/W'),
+        ('U8 bq24232', 'IN 4.35-10.2 V (OVP 10.5 V), IIN 500 mA, IOUT 1.5 A, ICHG 500 mA, Tj regulated at 125 C', 'USB 5.25 V max, 495 mA input limit, 244 mA charge; 0.6 W worst = 27 C rise at 44.5 C/W', 'OK'),
+        ('X4 JST PH', '2 A per contact, 100 V', 'charge 244 mA, discharge under 0.5 A', 'OK'),
+        ('D2 PMEG2020EJ', '20 V, 2 A, Tj 150 C', '5.25 V, 0.66 A worst; VF 0.35-0.41 V', 'OK, 33 % current; 0.25 W in a 350 K/W package is a 90 C rise on a bare pad, use the 1 cm2 cathode pour Nexperia assumes for 150 K/W'),
         ('D3 SMF5.0A', 'Vwm 5 V, Vbr 6.4 V, Vc 9.2 V at Ipp', 'VEXT nominal 5 V, USB max 5.25 V', 'OK; clamps well above the SC189 6 V abs max, so it protects the port, not the regulators'),
         ('Q2 2N7002', '60 V, 115 mA (onsemi), VGS +-20 V', '3.3 V, 1.8 mA LED current, 3.3 V gate', 'OK'),
         ('U1 XC7A35T-1CPG236C', 'VCCINT 0.95-1.05, VCCAUX 1.71-1.89, VCCO 3.135-3.465 V, Tj 0-85 C', 'SC189 +-2.5 % plus +-1 % load: 0.965-1.035, 1.737-1.863, 3.18-3.42 V; Tj rise 10-15 C', 'OK; VCCINT has 15 mV of the 50 mV band left for ripple and drop, keep the 1.0 V path short'),
@@ -358,7 +376,7 @@ def main():
         ('U4 W25Q128JVSIQ', '2.7-3.6 V, 133 MHz', '3.3 V, CCLK a few tens of MHz', 'OK'),
         ('X1 105017-0001', '1 A per contact, 30 V', '0.66 A worst on VBUS', 'OK, 66 % of the contact rating'),
         ('X2 header / J1 Pmod', '0.1 in pins ~1-3 A', 'VU pass-through and 3.3 V outputs', 'OK'),
-        ('LEDs', 'IF 25 mA (Everlight 19-337, the same table as the VS NRD8), 20-30 mA (LTST)', '3.9 mA red, <10 mA blue/green, 1.8 mA LD5, 4 mA LD1/LD2', 'OK'),
+        ('LEDs', 'IF 25 mA (Everlight 19-337, the same table as the VS NRD8), 20-30 mA (LTST)', '3.9 mA red, <10 mA blue/green, 1.8 mA LD5, 4 mA LD1/LD2, 1.5 mA LD3/LD4 from the 4.4 V charger output', 'OK'),
         ('FPGA I/O driving LEDs', '12 mA default LVCMOS33 drive', '4-10 mA sinks', 'OK'),
     ]:
         w(f'| {row[0]} | {row[1]} | {row[2]} | {row[3]} |')
@@ -366,9 +384,9 @@ def main():
     w('\n## 6. Findings\n')
     for i, f in enumerate([
         '**U10 footprint does not fit the part.** The library package SOIC8 has its pad rows 7.62 mm apart (a 300 mil pattern). The 93LC46BT-I/SN is the 3.90 mm narrow SOIC with a 6.00 mm lead span, so the lead tips end 0.06 mm before the pads begin. Redraw U10 on a 150 mil SOIC-8 pattern (the library\'s SPI-8_SOIC_150 has the right row spacing) or order the SOIJ 208 mil part 93LC46BT-I/SM to suit the pads.',
-        '**D1/D2 footprint is for the wrong package.** PMEG2020EJ is SOD323F: 2.3-2.7 mm tip to tip, 0.3-0.5 mm feet, Nexperia reflow lands 0.6 x 0.6 mm centred 1.1 mm from centre (inner edge at 0.8). The SOD123 pattern centres its pads 1.4 mm out, 0.3 mm further, leaving 0.2-0.4 mm of foot on pad and 0.5-0.7 mm of bare pad beyond the tip. Draw the Nexperia pattern for D1/D2. D3 (SMF5.0A, SOD-123FL) is solderable on the SOD123 pads but marginal: zero toe at the nominal lead span and pads far smaller than Littelfuse\'s 1.3 x 1.4 mm, so give it the Littelfuse pattern at the same time.',
+        '**D2 footprint is for the wrong package** (D1 was removed for the bq24232 on 2026-09-09). PMEG2020EJ is SOD323F: 2.3-2.7 mm tip to tip, 0.3-0.5 mm feet, Nexperia reflow lands 0.6 x 0.6 mm centred 1.1 mm from centre (inner edge at 0.8). The SOD123 pattern centres its pads 1.4 mm out, 0.3 mm further, leaving 0.2-0.4 mm of foot on pad and 0.5-0.7 mm of bare pad beyond the tip. Draw the Nexperia pattern for D2. D3 (SMF5.0A, SOD-123FL) is solderable on the SOD123 pads but marginal: zero toe at the nominal lead span and pads far smaller than Littelfuse\'s 1.3 x 1.4 mm, so give it the Littelfuse pattern at the same time.',
         '**CPG236 land pads are undersize.** The library uses 0.225 mm pads; UG475 Table A-1 asks for 0.275 mm NSMD lands with 0.375 mm mask openings on the 0.5 mm pitch. Set that when the PCB library is built.',
-        '**Three footprints do not exist yet**: SOT23-5 for the SC189s, DM3D-SF for X3 and PTS810 for the button (since 2026-09-08). All must be drawn at the PCB stage from the catalog land patterns.',
+        '**Footprints that do not exist yet**: SOT23-5 for the SC189s, DM3D-SF for X3, PTS810 for the button, EVERLIGHT-19-337 (the VS-NRD8 pattern renumbered), FT2232HL-LQFP64, and since 2026-09-09 VQFN16-3X3-RGT for the charger and JST-B2B-PH-SM4-TB for the battery connector. All must be drawn at the PCB stage from the makers land patterns.',
         '**Oscillator grade is out of the FT2232H spec.** ASEM1-12.000MHZ-LC-T decodes (datasheet p3) to 3.3 V, -40..85 C, +-50 ppm; the FT2232H datasheet asks for +-30 ppm. The comment on Q1 says 25 ppm, so the intent was the LR grade (ASEM1-12.000MHZ-LR-T), which no distributor stocks. A 20-agent search on 2026-09-08 (Digi-Key plus the makers\' datasheets, top picks cross-examined) found four pin-compatible 3.2 x 2.5 mm parts on Digi-Key\'s shelf that meet +-30 ppm all-inclusive: ECS-3225SMV-120-FP-TR (+-10 ppm including aging, -40..105 C, 1,830 pcs, $2.90, recommended), Abracon ASEMB-12.000MHZ-LY-T (+-10 ppm plus 5 ppm/yr aging, 6,143 pcs, $4.40), ECS-3225SMVQ-120-DS-TR (+-20 ppm including aging, 862 pcs, $1.82) and SiTime SIT1602BI-22-33E-12.000000 (+-25 ppm including first-year aging, 440 pcs, $1.54). The SiTime SiT8008 grades that a judge preferred are factory stock programmed to order, not shelf stock. Applied on 2026-09-08 at the user\'s choice: Q1 is now ECS-3225SMV-120-FP-TR (comment 12MHz 10ppm), same 3225 land, pin 1 tied high runs the oscillator.',
         '**Three parts were obsolete** and were replaced on 2026-09-07 by tools/apply_bom_substitutions.py: R34 742C083472JTR by 742C083472JP, the 10 uF 10 V 0805 GRM21BR61A106KE19L on C78/C147-C149 by Samsung CL21A106KPFNNNG, and the 4.7 uF GRM188R61A475KE15D on eleven decoupling positions. The first 4.7 uF replacement (GRM188R61A475KAAJD) turned out to be NRND at Murata, and every 4.7 uF 10 V X5R 0603 on the market is NRND, obsolete or dry, so on 2026-09-08 those eleven positions moved to the 16 V grade GRM188R61C475KE11D, which Murata lists as in production and which also halves the DC-bias loss on the 3.3 V positions.',
         '**Three part numbers were unknown to the distributor**; two were replaced on 2026-09-07 (GRM033R60J474KE15D, a typo, by GRM033R60J474KE90D on 22 positions; GRM155R61C474KA88D on C124 by Samsung CL05A474KO5NNNC) and the 22 uF 0603 on C82/C84 moved to the stocked 10 V Samsung CL10A226MP8NUNE. GRM155R60J335ME15D (C39/C139, the FT2232H VCORE filter, FTDI minimum 3.3 uF) is unobtainable and no 3.3 uF 0402 at 6.3 V or more exists that is not obsolete or NRND (Digi-Key\'s whole 3.3 uF 0402 list was checked on 2026-09-08). The same-footprint answer is 4.7 uF: Taiyo Yuden JMK105BBJ475MV-F, ordered under its new number MSASJ105BB5475MFNA01 (6.3 V X5R, 0.65 mm max, about 3.7 uF left at 1.8 V, 1.6 M pcs, $0.13, recommended), or Murata GRM155R60J475ME47D (0.60 mm max, in production, 980 k pcs, $0.10, but only about 2.2-2.8 uF left at 1.8 V so the pair sits close to FTDI\'s minimum at the tolerance corners). Both survived two skeptics each. Applied on 2026-09-08: C39 and C139 are now 4.7 uF MSASJ105BB5475MFNA01 (Digi-Key alias JMK105BBJ475MV-F).',
@@ -376,6 +394,7 @@ def main():
         '**Long-lead items**: U2 became the FT2232HL on 2026-09-09 because the FT2232HQ has no authorized stock until April 2027; the HL is itself 0 at Digi-Key (1,000 due 19-Feb-2027) and only LCSC holds it (4,767), so name that channel or consign, the SDRAM -6 grade is dry until October 2026, so on 2026-09-08 U3 became the AS4C32M16SB-7TCN (same die, package and pinout, 143 MHz, commercial 0..70 C like the -1C FPGA; 1,478 at Digi-Key), and the 22 uF 0805 value (13 pcs) is dry across Murata, Samsung and TDK\'s active parts, with only NRND TDK stock; C82/C84 now carry the stocked Samsung CL10A226MP8NUNE.',
         '**C124 returns to the wrong ground.** Seen while re-checking its substitution: C123 (100 nF) returns to GNDADC but C124 (470 nF) returns to digital GND, whereas UG480 Figure 6-1 draws both XADC supply filter capacitors from VCCADC to the analog ground on the far side of the ground ferrite L6. The sheet-1 note describes both as one filter. Move C124\'s ground pin to GNDADC when the XADC front end is next touched; it is a one-wire change.',
         '**Everything else checks out**: the FPGA symbol and power tree, the FT2232H, SDRAM, flash and EEPROM pin functions, the USB receptacle, LED polarity and pads, capacitor voltage margins, resistor power, regulator and diode ratings. On 2026-09-08 nine of the findings and substitutions above were handed to independent reviewers told to refute them from primary sources; they confirmed all of the conclusions and corrected the details now written here (the D1/D2 land numbers, the D3 verdict, the 4.7 uF replacement, the 22 uF height, R34\'s concave terminations).',
+        '**LiPo charger added 2026-09-09.** U8 (TI bq24232) replaces D1: USB5V0 into IN, OUT regulated at 4.4 V onto VU (VBAT - 60 mV on battery), battery on X4 (JST PH, pin 1 = +). The input is capped at 495 mA (R103), so the board can no longer exceed the USB limit; DPPM trims the 244 mA charge current (R102) first and the battery supplements peaks. On battery alone the 3.3 V buck holds regulation down to about 3.45 V. TS is a fixed 10 k (R106): the pack must carry its own protection. D2 still ORs +5V-INPUT onto VU without charging. Scope battery-only start-up into the 40 uF on VU on the first board.',
     ], 1):
         w(f'{i}. {f}')
     print('\n'.join(out))

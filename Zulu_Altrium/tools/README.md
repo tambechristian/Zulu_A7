@@ -81,6 +81,14 @@ the project in Altium before running the two fix scripts.
   description, footprint model FT2232HL-LQFP64, SPEC/NOTE inserted, the EP
   pin and its ground stub removed (bus wire shortened), sheet-4 title and
   sheet-0 block renamed. Refuses to run twice.
+* `bq24232_charger.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_1.SchDoc"` -
+  2026-09-09: D1 (USB VBUS Schottky) replaced by a TI bq24232 LiPo charger and
+  power path (U8), JST PH battery connector X4, C150/C151, R102-R108, LD3/LD4:
+  deletes D1 and its cathode wire by content, appends the new symbols, wires,
+  labels, ports and notes. Values from SLUS821J section 9.2.1 (495 mA input
+  limit, 244 mA charge, 36 mA termination, 7.5 h timer, TS disabled).
+  Footprints VQFN16-3X3-RGT and JST-B2B-PH-SM4-TB are for the PCB stage.
+  Refuses to run twice.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED
