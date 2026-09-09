@@ -99,6 +99,14 @@ the project in Altium before running the two fix scripts.
   AllPinCount 40); no pin slides, so the only netlist effect is X2-24 leaving
   VCC3V3. MANF#/SPEC/NOTE and the text frame rewritten (bottom row now 1x3 +
   1x3 + 1x14). The header takes 3.3 V from pad 17. Refuses to run twice.
+* `x2_renumber_40.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09, fourth
+  pass: CHAN14-16 slide one position right into the hole +3.3V2 left, so the LiPo
+  landing widens to four positions and matches the USB landing (12.70 mm between
+  neighbouring pin centres, 11.176 mm clear); the field is then renumbered 1-40
+  straight through, skipping both landings. Designators remapped in all 41 gate
+  copies, three gate copies with their wires and labels shifted, MANF#/SPEC/NOTE
+  and the text frame rewritten (1x6 + 1x14 on the bottom row). Connectivity is
+  untouched: the netlist differs only in X2 pad names. Refuses to run twice.
 * `jp_dns.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` - 2026-09-08:
   JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
   their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS
