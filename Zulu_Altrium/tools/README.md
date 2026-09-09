@@ -71,6 +71,10 @@ the project in Altium before running the two fix scripts.
   (Sullins PRPC024SAAN-RC + PRPC009SAAN-RC + PRPC011SAAN-RC, one of each per
   board) inserted into all 45 placed gates with OwnerIndex renumbering;
   comment and footprint ZULU-DIP37 unchanged. Refuses to run twice.
+* `jp_dns.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` - 2026-09-08:
+  JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
+  their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS
+  positions instead of parts. Refuses to run twice.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED

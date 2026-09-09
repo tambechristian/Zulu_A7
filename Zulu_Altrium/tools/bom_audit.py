@@ -224,10 +224,14 @@ def main():
     for d, c in comps.items():
         if c['lib'] == 'DOCFIELD' or c['lib'].startswith('CC_'): continue
         p = c['params']
-        key = (p.get('MANF#') or p.get('Comment') or c['lib'], p.get('MANF') or '', c['fp'] or '', p.get('Comment') or '')
+        mpn = p.get('MANF#') or p.get('Comment') or c['lib']
+        if p.get('DNS') == 'Yes': mpn = 'DNS: ' + mpn          # do not stuff: bare positions carried in the BOM with the flag PCBWay's template uses
+        key = (mpn, p.get('MANF') or '', c['fp'] or '', p.get('Comment') or '')
         groups.setdefault(key, []).append(d)
     w('## 1. Bill of materials\n')
-    w(f'{sum(len(v) for v in groups.values())} fitted components, {len(groups)} distinct parts. Frames and the licence logos are excluded.\n')
+    dns_groups = [k for k in groups if k[0].startswith('DNS: ')]
+    w(f'{sum(len(v) for k, v in groups.items() if k not in dns_groups)} fitted components, {len(groups) - len(dns_groups)} distinct parts, '
+      f'plus {sum(len(groups[k]) for k in dns_groups)} DNS positions (do not stuff). Frames and the licence logos are excluded.\n')
     w('| Part | Manufacturer | Footprint | Value | Qty | Designators |'); w('|---|---|---|---|---:|---|')
     for (mpn, manf, fpn, val), ds in sorted(groups.items(), key=lambda kv: natkey(sorted(kv[1], key=natkey)[0])):
         ds = sorted(ds, key=natkey)
@@ -300,8 +304,10 @@ def main():
         if mpn in seen or mpn not in SUPPLY: continue
         seen.add(mpn); s = SUPPLY[mpn]
         w(f'| {mpn} (x{len(ds)}) | {s[0]} | {s[1]} | {s[2]} | {s[3]} |')
-    unl = [k[0] for k in groups if k[0] not in SUPPLY]
-    w(f'\nNot looked up (no orderable part): {", ".join(unl)}.\n')
+    dns = [f'{", ".join(sorted(groups[k], key=natkey))} ({k[0][5:]})' for k in groups if k[0].startswith('DNS: ')]
+    if dns: w(f'\nDNS, not stuffed, nothing to order: {"; ".join(dns)}.\n')
+    unl = [k[0] for k in groups if k[0] not in SUPPLY and not k[0].startswith('DNS: ')]
+    if unl: w(f'\nNot looked up (no orderable part): {", ".join(unl)}.\n')
     # --- second source
     w('## 4. Second sourcing\n')
     w('| Part | Pin-compatible alternatives | Note |'); w('|---|---|---|')
