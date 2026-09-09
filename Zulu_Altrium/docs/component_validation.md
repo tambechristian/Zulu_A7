@@ -237,12 +237,12 @@ VCCINT and VCCBRAM on VCC1V0, VCCAUX and VCCBATT on VCC1V8, every VCCO on VCC3V3
 | SC189ZSKTRT (x1) | Active | 5,767 | $1.07 |  |
 | SC189LSKTRT (x1) | Active | 2,846 | $0.97 |  |
 | SC189ASKTRT (x1) | Active | 4,589 | $0.90 |  |
-| BQ24232RGTR (x1) | Active | 541 | $1.93 | TI single-cell Li-ion charger + power path, 16-VQFN 3x3, 9-week lead (Digi-Key 2026-09-09); added as U8 in place of D1 on 2026-09-09 |
+| BQ24232RGTR (x1) | Active | 541 | $1.93 | TI single-cell Li-ion charger + power path, 16-VQFN 3x3, 9-week lead; $1.15 at 100, 3,000-reel $0.97; the 250-piece reel BQ24232RGTT has 1,764 at $1.53; LCSC C528622 766 at $1.18 (Digi-Key and LCSC 2026-09-09); added as U8 in place of D1 on 2026-09-09 |
 | 93LC46BT-I/SN (x1) | Active | 5,497 | $0.32 | 8-SOIC 3.90 mm: confirms the narrow body |
 | 105017-0001 (x1) | Active | 53,846 | $1.00 |  |
 | PRPC024SAAN-RC + PRPC009SAAN-RC + PRPC011SAAN-RC (x1) | Active | 361 / 1,201 / 428 | $0.45 + $0.18 + $0.22 | Sullins 0.1 in male breakaway strips for the X2 pin field, one of each per board (Digi-Key 2026-09-08); added to the ZULU-CONN placeholder on 2026-09-08 |
 | DM3D-SF (x1) | Active | in stock | $2.32 |  |
-| B2B-PH-SM4-TB(LF)(SN) (x1) | Active | 57,541 | $0.47 | JST PH 2.0 mm 2-pin top-entry SMT header (Digi-Key 2026-09-09); battery input X4, added 2026-09-09 |
+| B2B-PH-SM4-TB(LF)(SN) (x1) | Active | 57,541 | $0.47 | JST PH 2.0 mm 2-pin top-entry SMT header, 16-week lead, $0.339 at 100, 2,000-reel $0.288; LCSC C160352 49,145 at $0.22 (MOQ 5), TBT variant with auxiliary solder pins C265003 4,654 (Digi-Key and LCSC 2026-09-09); battery input X4, added 2026-09-09 |
 
 DNS, not stuffed, nothing to order: JP3 (JTAG TCK/TMS/GND); JP4 (JTAG TDI/TDO/3V3).
 
