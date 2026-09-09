@@ -8,7 +8,7 @@ Item,Qty,Refdes,Value,Package,Manufacturer,MANF#,Spec,Fitted,Note
 7,1,C124,470nF,C0402,Samsung,CL05A474KO5NNNC,"X5R 16V +-10% 0402 0.47uF, 0.55 mm max; replaced GRM155R61C474KA88D (a number no distributor knows) on 2026-09-07",yes,
 8,10,C3 C4 C5 C6 C7 C8 C9 C11 C12 C123,0.1uF / 100nF,C0402,Murata,GRM155R71C104KA88D,"X7R 16V +-10%, 0.50 mm max",yes,
 9,2,C36 C37,1nF,C0402,Murata,GRM155R71H102KA01D,"X7R 50V +-10%, 0.50 mm max",yes,
-10,2,C39 C139,4.7uF,C0402,Taiyo Yuden,MSASJ105BB5475MFNA01,"X5R 6.3V +-20% 0402 4.7uF, 0.65 mm max, about 3.7 uF left at 1.8 V; Digi-Key alias JMK105BBJ475MV-F (587-2787-1-ND, 1.6 M pcs); replaced the unobtainable 3.3 uF GRM155R60J335ME15D on the FT2232H VCORE node (FTDI minimum 3.3 uF) on 2026-09-08",yes,
+10,1,C139,4.7uF,C0402,Taiyo Yuden,MSASJ105BB5475MFNA01,"X5R 6.3V +-20% 0402 4.7uF, 0.65 mm max, about 3.7 uF left at 1.8 V; Digi-Key alias JMK105BBJ475MV-F (587-2787-1-ND, 1.6 M pcs); replaced the unobtainable 3.3 uF GRM155R60J335ME15D on the FT2232H VCORE node (FTDI minimum 3.3 uF) on 2026-09-08",yes,
 11,2,C82 C84,22uF,C0603,Samsung,CL10A226MP8NUNE,"X5R 10V +-20% 0603 22uF, 1.05 mm max (T 0.80 +-0.25); replaced the 6.3 V Murata GRM188R60J226MEA0D (1.00 mm max, dry until 2027) on 2026-09-07",yes,
 12,1,C13,10uF,C0603,Murata,GRM188R60J106ME47D,"X5R 6.3V +-20%, 0.90 mm max",yes,
 13,13,C87 C88 C94 C99 C100 C101 C102 C103 C104 C105 C106 C150 C151,4.7uF,C0603,Murata,GRM188R61C475KE11D,"X5R 16V +-10% 0603 4.7uF, 0.95 mm max; 10 V grades (KE15D obsolete, KAAJD NRND) replaced by the 16 V one on 2026-09-08",yes,

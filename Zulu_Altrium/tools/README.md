@@ -165,6 +165,19 @@ the project in Altium before running the two fix scripts.
   one per FT2232H VCORE pin, after connectivity_check.py found that rail carrying
   bulk only. The rail is extended left and junctioned; no net label is added
   because the extension is one wire with the rail. Refuses to run twice.
+* `r3_pullup_c39_out.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` -
+  2026-09-09, two changes.  R3 4.7K moves from GND to VCC3V3: connectivity_check.py
+  solved the resistor network on every configuration pin and found PROGRAM_B (ball
+  V10, net RST#) resting at 1.63 V, in the undefined band, because R3 pulled it
+  down and its only pull-up sat behind R9's 100 ohm on a net the FT2232H tri-states
+  until a host opens the bridge.  UG470 wants that pin pulled up to VCCO_0; the
+  lower end is redrawn the way R1, the INIT_B pull-up on the same sheet, is drawn
+  (ground symbol removed, VCC3V3 net label on the stub end).  Both resets survive:
+  X2-23 and the bridge through R9.  C39 4.7uF goes: DS_FT2232H Figures 4.1 and 6.1
+  show ONE 4.7 uF on the core rail beside the 100 nF parts, and C139 is it, so with
+  C152-C154 added the rail now matches the reference exactly.  Its stub, ground
+  symbol, net label and rail junction go with it.  Deletes records, so every later
+  OwnerIndex is renumbered and the header count rewritten.  Refuses to run twice.
 * `connectivity_check.py > docs/connectivity_check.md` - power and ground
   architecture plus bus and differential-pair mapping, read from the exported
   netlist and the datasheets. Traces every supply and ground pin of every IC to
