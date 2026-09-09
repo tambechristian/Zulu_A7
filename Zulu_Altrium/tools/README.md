@@ -66,6 +66,11 @@ the project in Altium before running the two fix scripts.
   with different pad numbers: pins renumbered 1/2/3 -> 2/4/6 (cathodes) and
   4/5/6 -> 1/3/5 (anodes), nets untouched, footprint model EVERLIGHT-19-337.
   Refuses to run twice.
+* `x2_sullins.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_2.SchDoc"` -
+  2026-09-08: the ZULU-CONN pin field X2 gets MANF, MANF#, SPEC and NOTE
+  (Sullins PRPC024SAAN-RC + PRPC009SAAN-RC + PRPC011SAAN-RC, one of each per
+  board) inserted into all 45 placed gates with OwnerIndex renumbering;
+  comment and footprint ZULU-DIP37 unchanged. Refuses to run twice.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED
