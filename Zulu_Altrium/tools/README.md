@@ -165,6 +165,33 @@ the project in Altium before running the two fix scripts.
   one per FT2232H VCORE pin, after connectivity_check.py found that rail carrying
   bulk only. The rail is extended left and junctioned; no net label is added
   because the extension is one wire with the rail. Refuses to run twice.
+* `resistor_packs.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` -
+  2026-09-09: the six 100 ohm JTAG/config series resistors (R9 PROG#, R38 DONE,
+  R8 TDI, R37 TDO, R4 TMS, R36 TCK) become one CTS 742C163101JP and the two 4.7 K
+  configuration pull-ups (R1 INIT_B, R3 PROGRAM_B) one CTS 742C043472JP, drawn the
+  way R34 is: one RECORD=1 per placed element, all sharing a designator, each
+  carrying the whole pin set, differing only in CurrentPartId, PartCount = elements
+  + 1.  They read R4A..R4F and R1A/R1B.  Isolated arrays pair pad k with pad 2N+1-k,
+  so the bridge side lands on pads 1-6 and the FPGA side on 16-11; the two spare
+  elements hold pads 7-10.  A genuine 6-element part exists (CTS 753123101GP,
+  12-SRT) but Digi-Key holds none at 28 weeks and MOQ 1000, and its body is bigger
+  than the 8-element chip array, so the six go into an eight.  Every pin gets a
+  fresh PinUniqueId and the stale HiddenNetName parameters are dropped.  Nets and
+  placed pad count come out unchanged (178 and 785); component count 190 -> 184.
+  Run sheet4_layout.py first.  Refuses to run twice.
+* `sheet4_layout.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` -
+  2026-09-09, four cosmetic moves that leave the netlist identical.  R3, the
+  PROGRAM_B pull-up, is mirrored about its own origin so it stands ON the RST#
+  wire with the rail above it instead of hanging below on a 110-unit stub with
+  VCC3V3 at the bottom, which read like a pull-down; its rail label becomes a
+  horizontal font-3 one like R1's, and the stub wire is deleted.  R1 moves up 60
+  to clear it.  C41 turns over (orientation 3 -> 1, pin conglomerates swapped)
+  and drops 50 so both FT2232H bypasses hang the same way with their ground
+  symbols side by side, and C40 slides 40 right, with its FT-VPHY label, to make
+  the room.  Everything around C40 carries sub-unit _Frac offsets from the EAGLE
+  import -- three junctions and a 0.04-unit wire hold that node together at three
+  different fractional positions -- so that cluster is translated by whole units
+  with every _Frac untouched.  Refuses to run twice.
 * `r3_pullup_c39_out.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` -
   2026-09-09, two changes.  R3 4.7K moves from GND to VCC3V3: connectivity_check.py
   solved the resistor network on every configuration pin and found PROGRAM_B (ball

@@ -154,14 +154,14 @@ UG470 requires PROGRAM_B, INIT_B and DONE to be pulled high, and the mode pins s
 
 | Pin | Ball | Net | Resistors on it | Rests at | Wanted | Verdict |
 |---|---|---|---|---|---|---|
-| PROGRAM_B | V10 | RST# | R3 4.7K to VCC3V3, R9 100 to PROG# | 3.30 V, high | high, pulled up to VCCO_0 (UG470) | ok |
-| INIT_B | U11 | FPGA-INIT# | R1 4.7K to VCC3V3 | 3.30 V, high | high, pulled up | ok |
-| DONE | U12 | FPGA-DONE | R38 100 to DONE | 3.30 V, high | high, pulled up | ok |
+| PROGRAM_B | V10 | RST# | R1B 4.7K to VCC3V3, R4A 100 to PROG# | 3.30 V, high | high, pulled up to VCCO_0 (UG470) | ok |
+| INIT_B | U11 | FPGA-INIT# | R1A 4.7K to VCC3V3 | 3.30 V, high | high, pulled up | ok |
+| DONE | U12 | FPGA-DONE | R4B 100 to DONE | 3.30 V, high | high, pulled up | ok |
 | M0 | V12 | CFG-M0 | R20 1K to VCC3V3 | 3.30 V, high | high for master SPI (mode 001) | ok |
 | M1 | W11 | CFG-M1 | R21 1K to GND | 0.00 V, low | low for master SPI | ok |
 | M2 | U10 | CFG-M2 | R22 1K to GND | 0.00 V, low | low for master SPI | ok |
 | PUDC_B | E18 | PUDC_B | R23 1K to VCC3V3 | 3.30 V, high | high, to disable the pull-ups during configuration | ok |
-| TCK | C8 | FPGA-TCK | R36 100 to TCK, R5 5.1K to GND | 1.11 V, undefined | either: the bridge drives it, R5 is only a bleeder | ok |
+| TCK | C8 | FPGA-TCK | R4F 100 to TCK, R5 5.1K to GND | 1.11 V, undefined | either: the bridge drives it, R5 is only a bleeder | ok |
 
 ### 2.5 Loose ends
 

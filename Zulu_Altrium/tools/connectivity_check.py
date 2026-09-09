@@ -58,6 +58,32 @@ def value(ref):
     return (COMP[ref]['params'].get('Comment') or '') if ref in COMP else ''
 
 
+def pkg_pads(ref):
+    """How many pads the package has, which is not how many are placed when an array has spares."""
+    c = COMP[ref]
+    return c.get('pkgpins') or len(c['pins'])
+
+
+def partner(pad):
+    """The other end of the element that pad belongs to. An isolated array of N elements numbers its
+    pads so element k joins pad k to pad 2N+1-k; with N=1 that is 3-k, so a discrete two-pin part
+    falls out of the same formula and nothing needs to know which it is looking at."""
+    ref, _, no = pad.partition('-')
+    if ref not in COMP or not no.isdigit():
+        return None
+    q = str(pkg_pads(ref) + 1 - int(no))
+    return f'{ref}-{q}' if q in COMP[ref]['pins'] else None
+
+
+def element(pad):
+    """R3 for a discrete, R1B for the second element of an array -- the name Altium prints."""
+    ref, _, no = pad.partition('-')
+    n = pkg_pads(ref)
+    if n <= 2 or not no.isdigit():
+        return ref
+    return f'{ref}{chr(64 + min(int(no), n + 1 - int(no)))}'
+
+
 def farads(v):
     m = re.match(r'\s*([\d.]+)\s*(p|n|u)?F', v or '', re.I)
     if not m:
@@ -305,7 +331,7 @@ BUSES = {
  'microSD': [('SD-CLK','U1-U8','X3-5'),('SD-CMD','U1-U7','X3-3'),('SD-DAT0','U1-C15','X3-7'),
              ('SD-DAT1','U1-B15','X3-8'),('SD-DAT2','U1-L3','X3-1'),('SD-DAT3','U1-A16','X3-2')],
  'USB (differential)': [('USB_D_P','U2-8','X1-3'),('USB_D_N','U2-7','X1-2')],
- 'JTAG, bridge to FPGA': [('TCK','U2-16','R36-1'),('TMS','U2-19','R4-1'),('TDI','U2-17','R8-1'),('TDO','U2-18','R37-1')],
+ 'JTAG, bridge to FPGA': [('TCK','U2-16','R4-6'),('TMS','U2-19','R4-5'),('TDI','U2-17','R4-3'),('TDO','U2-18','R4-4')],
  'UART, bridge to FPGA': [('UART_FT_TXD','U2-38','U1-K18'),('UART_FT_RXD','U2-39','U1-G19'),
                           ('UART_FT_RTS#','U2-40','U1-L18'),('UART_FT_CTS#','U2-41','U1-B16'),
                           ('UART_FT_DTR#','U2-43','U1-M18')],
@@ -433,13 +459,13 @@ def resting(start):
         seen.add(n); nodes.add(n)
         for pad in NETS.get(n, []):
             ref = pad.split('-')[0]
-            if not ref.startswith('R') or ref not in COMP or len(COMP[ref]['pins']) != 2:
+            if not ref.startswith('R') or ref not in COMP:
                 continue
-            other = [net(f'{ref}-{q}') for q in COMP[ref]['pins'] if net(f'{ref}-{q}') != n]
-            if not other:
+            q = partner(pad)
+            if q is None:
                 continue
-            o, r = other[0], ohms(value(ref))
-            if not r:
+            o, r = net(q), ohms(value(ref))
+            if not r or o == n:
                 continue
             edges.append((n, o, r))
             if o not in RAILS:
@@ -490,8 +516,8 @@ w('|---|---|---|---|---|---|---|')
 for name, ball, want in CFG:
     n = net(f'U1-{ball}')
     v = resting(n)
-    rs = sorted({q.split('-')[0] for q in NETS.get(n, []) if q.startswith('R')})
-    rtxt = ', '.join(f'{r} {value(r)} to {[net(f"{r}-{q}") for q in COMP[r]["pins"] if net(f"{r}-{q}") != n][0]}' for r in rs) or 'none'
+    rs = sorted(q for q in NETS.get(n, []) if q.startswith('R') and partner(q))
+    rtxt = ', '.join(f'{element(q)} {value(q.split("-")[0])} to {net(partner(q))}' for q in rs) or 'none'
     driven = want.startswith('either')
     if v is None:
         lvl, ok = 'nothing biases it', driven

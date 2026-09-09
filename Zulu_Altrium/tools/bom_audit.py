@@ -56,8 +56,11 @@ def load_components():
             d = desig.get(i)
             if not d: continue
             part = field(b, 'CurrentPartId')
-            c = comps.setdefault(d, {'sheet': n, 'lib': field(b, 'LibReference'), 'pins': {}, 'params': {}, 'fp': None, 'gates': 0})
+            c = comps.setdefault(d, {'sheet': n, 'lib': field(b, 'LibReference'), 'pins': {}, 'params': {}, 'fp': None, 'gates': 0, 'pkgpins': None})
             c['gates'] += 1
+            # AllPinCount is the whole package; c['pins'] holds only the gates actually placed,
+            # which is fewer when an array has spare elements. The pad pairing needs the package.
+            c['pkgpins'] = c['pkgpins'] or (int(field(b, 'AllPinCount')) if field(b, 'AllPinCount') else None)
             for des, name, opid in pins.get(i, []):
                 if opid == part: c['pins'][des] = name
             c['params'].update({k: v for k, v in params.get(i, {}).items() if v})
@@ -133,6 +136,8 @@ GEOM = [
     ('ZULU-DIP37', 'Sullins PRPC drawing: 0.64 mm square pins on 2.54 mm, recommended hole 1.02 mm', '40 pins numbered 1-40 on 2026-09-09, the two rows cut identically at 9 + landing + 11 with both landings on the same four x values (36.83..29.21): the imported footprint still carries 44 pads on the old numbering, so redraw it with 40 pads named 1-40 before loading the netlist onto a board', 'redraw'),
     ('VQFN16-3X3-RGT', 'bq24232 SLUS821J RGT package: 16-pin VQFN 3.0 x 3.0 mm, 0.5 mm pitch, 1.68 mm thermal pad', 'no such package in the EAGLE library: draw at the PCB stage from the datasheet package drawing', 'missing'),
     ('JST-B2B-PH-SM4-TB', 'JST PH SM4 top-entry SMT: two contact pads on 2.0 mm pitch plus two 1.6 x 3.0 mm fixing pads (catalog page 1)', 'no such package in the EAGLE library: draw at the PCB stage', 'missing'),
+    ('742C163', 'CTS 742C163 (DOC 008-0335-0 Rev T): 8 x 0603 concave-termination array, body 6.4 x 1.6, 0.8 mm pitch, 16 pads; CTS publishes one land for the whole 742 family, the 0.45 x 0.9 pads at +-0.85 already checked for 742C083', 'no such package in the EAGLE library: draw it at the PCB stage from the 742C083 pad cell, sixteen pads instead of eight; six elements used, pads 7-10 spare', 'missing'),
+    ('742C043', 'CTS 742C043 (DOC 008-0335-0 Rev T): 2 x 0603 concave-termination array, body 1.6 x 1.6, 0.8 mm pitch, 4 pads; same family land as 742C083', 'no such package in the EAGLE library: draw it at the PCB stage from the 742C083 pad cell, four pads instead of eight', 'missing'),
     ('MOLEX-105017-0001', 'Molex 105017 drawing: 5 x 0.4 mm pads on 0.65 pitch, 4 shell pads, 2 pegs', '0.65 pitch, 0.4x1.35 pads, shell pads OK', 'ok'),
     ('32X25', 'ASEM1 3.2x2.5 mm, 4 pads', 'pads 1.2x1.4 at 1.7 x 2.2 OK', 'ok'),
     ('EVERLIGHT-19-337', 'Everlight 19-337 p8 recommended pads: 0.55x0.4 outer at +-0.725, 0.7x0.5 middle, 1.9/2.2 spans (the VS NRD8 p2 drawing line for line)', 'identical to the VS-NRD8 pattern in the library; renumber the pads 1/2/3 -> 2/4/6, 4/5/6 -> 1/3/5 when the footprint is drawn', 'ok'),
@@ -187,6 +192,8 @@ SUPPLY = {
     'GRM188R61A475KE15D': ('OBSOLETE', '0', '-', 'Murata GRM188R61A475KAAJD (32,005, $0.42)'),
     'GRM033R60J474KE15D': ('NF', '-', '-', 'typo: GRM033R60J474KE90D is the live number (Active, 1,717,601, $0.10)'),
     'GRM155R61C474KA88D': ('NF', '-', '-', 'GRM155R61C474KE01D is NRND (105,254); Samsung CL05A474KO5NNNC 16 V (67,193) or CL05A474KP5NNNC 10 V (95,280)'),
+    '742C163101JP': ('Active', '25,352', '$0.47 cut / $0.1214 at 4,000', '8 x 100 ohm isolated, 2506 concave 6.40 x 1.60 mm, 0.80 mm pitch, 63 mW per element, 5 % (the 742C163 has no 1 % option); six of the eight elements used. Digi-Key read live 2026-09-09. The genuine 6-element part, CTS 753123101GP, is 0 in stock at 28 weeks and MOQ 1,000 ($2.63), and its 12-SRT body, 8.76 x 2.03 mm, is larger than this one'),
+    '742C043472JP': ('Active', '36,227', '$0.14 cut / $0.0581 at 100', '2 x 4.7K isolated, 0606 concave 1.60 x 1.60 mm, 0.80 mm pitch, 63 mW per element, 5 %, AEC-Q200. Digi-Key read live 2026-09-09. Same CTS 742 land pattern as R34'),
     '742C083472JP': ('Active', '98,887', '$0.17 reel / $0.18 cut', 'replaced 742C083472JTR on 2026-09-07; same CTS package code, concave terminations (verified 2026-09-08 against CTS DOC 008-0335-0 Rev T)'),
     'CL21A106KPFNNNG': ('Active', '110,449', '$0.13', 'Samsung 10 uF 10 V X5R 0805, 1.35 mm max; replaced GRM21BR61A106KE19L on 2026-09-07 (verified 2026-09-08)'),
     'GRM188R61A475KAAJD': ('NRND', '32,005', '$0.42', 'chosen on 2026-09-07, then found NRND on Murata\'s own page and at Digi-Key on 2026-09-08; replaced again by GRM188R61C475KE11D'),
@@ -215,6 +222,8 @@ SECOND_SOURCE = [
     ('LD0 EAST1616RGBA8', 'Everlight EAST1616RGBA4 (water-clear twin, same pads and numbering); Victory VS NRD8 with the pads renumbered back; Kingbright APTF1616SEEZGKQBKC (pinout to verify)', '1.6 x 1.6 mm six-pad RGB; the Everlight and Victory drawings are identical apart from the pad numbers'),
     ('BTN PTS810SJM250SMTR LFS', 'PTS810SJK / SJG / SJS250SMTR LFS (2.6, 4.0, 6.0 N, same body and pads; K grade stocked at LCSC)', 'PTS810 4.2 x 3.2 mm J-lead; other 4.2 x 3.2 tacts (Panasonic EVQ-P7, Alps SKRT) need their own pattern check'),
     ('R34 742C083472JTR', '742C083472JP, Bourns CAT16-472J4LF, Panasonic EXB-V8V472JV', 'Digi-Key lists all three as direct substitutes'),
+    ('R4 742C163101JP', 'Panasonic EXB-2HV101JV (8 x 100 ohm isolated, 3.80 x 1.60 mm, 73,820 in stock, $0.20)', 'same element count and value in a shorter body, but convex terminals on 0.50 mm pitch: its own land pattern, not a drop-in'),
+    ('R1 742C043472JP', 'Panasonic EXB-V4V472JV (4,562, $0.22)', 'same 1.60 x 1.60 mm concave body on 0.80 mm pitch, a true drop-in; the convex twin EXB-34V472JV is NOT'),
     ('passives', 'Samsung / TDK / Taiyo Yuden equivalents per the supply table', 'all standard sizes'),
 ]
 
@@ -292,9 +301,23 @@ def main():
     bad = [(p, ld0.get(p), n) for p, n in RGB.items() if ld0.get(p) != n]
     bad += [(p, ld0.get(p)) for p, r in RGB_ANODE.items() if padnet.get(f'{r}-2') != ld0.get(p)]
     w(f'| LD0 EAST1616RGBA8 | cathodes 2 B, 4 R, 6 G to the FPGA; anodes 1/3/5 through R80/R81/R82 to 3.3 V (19-337 sheet p8 polarity) | {"all match" if not bad else bad} |')
-    r34 = {k[4:]: v for k, v in padnet.items() if k.startswith('R34-')}
-    ok = all(r34.get(str(i)) == f'SD-DAT{i - 1}' for i in range(1, 5)) and all(r34.get(str(i)) == 'VCC3V3' for i in range(5, 9))
-    w(f'| R34 742C083 | isolated 4-array: 1-8, 2-7, 3-6, 4-5 pairs, SD-DAT0..3 pull-ups | {"all match" if ok else r34} |')
+    # Isolated arrays pair pad k with pad 2N+1-k. Each entry is the pad -> net map that pairing
+    # implies, written out so the netlist is checked against the intent and not against itself.
+    ARRAYS = [
+        ('R34', '742C083', 'isolated 4-array, 1-8 2-7 3-6 4-5, the microSD DAT0..3 pull-ups',
+         {**{str(i): f'SD-DAT{i - 1}' for i in range(1, 5)}, **{str(i): 'VCC3V3' for i in range(5, 9)}}),
+        ('R4', '742C163', 'isolated 8-array, the six 100R series resistors: A PROG#, B DONE, C TDI, '
+         'D TDO, E TMS, F TCK, bridge side on pads 1-6 and FPGA side on pads 16 down to 11',
+         {'1': 'PROG#', '16': 'RST#', '2': 'DONE', '15': 'FPGA-DONE', '3': 'TDI', '14': 'FPGA-TDI', '4': 'TDO', '13': 'FPGA-TDO', '5': 'TMS', '12': 'FPGA-TMS', '6': 'TCK', '11': 'FPGA-TCK'}),
+        ('R1', '742C043', 'isolated 2-array, A the INIT_B pull-up and B the PROGRAM_B pull-up, '
+         'both commons on pads 4 and 3',
+         {'1': 'FPGA-INIT#', '4': 'VCC3V3', '2': 'RST#', '3': 'VCC3V3'}),
+    ]
+    for ref, fp, txt, want in ARRAYS:
+        got = {k[len(ref) + 1:]: v for k, v in padnet.items() if k.startswith(ref + '-')}
+        bad = {p: (got.get(p), n) for p, n in want.items() if got.get(p) != n}
+        extra = {p: n for p, n in got.items() if p not in want}
+        w(f'| {ref} {fp} | {txt} | {"all match" if not bad and not extra else f"{bad} {extra}"} |')
     w('| Q2 2N7002LT1G | G on PGOOD, S on GND, D on the LED; SOT-23 1 G 2 S 3 D | matches (standard 2N7002 pinout, onsemi sheet not fetchable) |')
     X2 = {'X2-1': 'GND', 'X2-2': 'CHAN-CLK', 'X2-3': 'CHAN0', 'X2-9': 'CHAN6', 'X2-10': 'CHAN7', 'X2-16': 'CHAN13', 'X2-17': 'VCC3V3', 'X2-18': 'VCC1V8', 'X2-19': 'VCC1V0', 'X2-20': 'GND',
           'X2-21': 'GND', 'X2-22': 'VU', 'X2-23': 'RST#', 'X2-24': 'CHAN14', 'X2-26': 'CHAN16', 'X2-27': 'CHAN17', 'X2-38': 'CHAN28', 'X2-39': 'ANALOG-IO0', 'X2-40': 'ANALOG-IO1'}
@@ -348,7 +371,7 @@ def main():
     w('### 5.2 Resistors that see DC\n')
     w('| Ref | Value | Package | Nets | Worst V | Power | Of rating |'); w('|---|---|---|---|---:|---:|---:|')
     for d, c in comps.items():
-        if not re.fullmatch(r'R\d+', d) or d == 'R34': continue
+        if not re.fullmatch(r'R\d+', d) or len(c['pins']) != 2: continue   # arrays: pads 1 and 2 are different elements
         m = re.match(r'([\d.]+)\s*([kKmM]?)', c['params'].get('Comment', ''))
         if not m: continue
         R = float(m.group(1)) * {'': 1, 'k': 1e3, 'K': 1e3, 'm': 1e6, 'M': 1e6}[m.group(2)]
