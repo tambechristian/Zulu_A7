@@ -109,9 +109,12 @@ def main(path):
     assert int(field(recs[0][1], 'Weight')) == N - 1, 'header count is already wrong'
     desig = {owner_list_index(b): field(b, 'Text') for h, b in recs if b.startswith(b'|RECORD=34|')}
     where = {d: i for i, d in desig.items() if d in ('R1', 'R3', 'C40', 'C41')}
+    # Ask "has this already run?" before asserting the cast, because tools/resistor_packs.py
+    # absorbs R3 into R1B afterwards and there is then no R3 to look at.
+    if 'R3' not in where or num(recs[where['R3']][1], 'Location.Y') == 442:
+        raise SystemExit('sheet 4 is already laid out this way (R3 stands on RST#, or has since '
+                         'been absorbed into the R1 array); nothing done')
     assert set(where) == {'R1', 'R3', 'C40', 'C41'}, sorted(where)
-    if num(recs[where['R3']][1], 'Location.Y') == 442:
-        raise SystemExit('sheet 4 is already laid out this way; nothing done')
     assert num(recs[where['R3']][1], 'Location.Y') == 332, 'R3 is not where this script expects it'
     assert num(recs[where['R1']][1], 'Location.Y') == 472, 'R1 is not where this script expects it'
     assert num(recs[where['C40']][1], 'Location.X') == 264, 'C40 is not where this script expects it'

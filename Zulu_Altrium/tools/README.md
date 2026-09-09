@@ -242,8 +242,13 @@ the project in Altium before running the two fix scripts.
 * `eagle_netlist.py zulu_a7.sch eagle.json` then
   `compare_netlists.py "Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7/zulu_a7.NET" eagle.json`
   - connectivity of the Altium project (Design > Netlist For Project >
-  Protel) against the EAGLE schematic, pad by pad.  Last result:
-  190 components, 175 nets, 799 pads, identical names, no differences.
+  Protel) against the EAGLE schematic, pad by pad.  It last agreed on
+  2026-09-07 (190 components, 175 nets, 799 pads, no differences) and has
+  since been left behind on purpose: the Altium side has taken the SC189
+  regulators, the bq24232 charger, the X2 pin field, the C39 removal and the
+  two resistor arrays, none of which exist in ../zulu_a7.sch.  As of
+  2026-09-09 it reports 184 components against the EAGLE 190.  Keep it for
+  the day the EAGLE source is regenerated; do not read its output as a fault.
 
 Import Wizard settings that matter: untick "Do not translate hidden net
 names" (else 16 nets named without a label lose their names).  Pins that

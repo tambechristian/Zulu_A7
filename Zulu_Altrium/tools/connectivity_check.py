@@ -510,7 +510,17 @@ CFG = [('PROGRAM_B', 'V10', 'high, pulled up to VCCO_0 (UG470)'),
        ('M1', 'W11', 'low for master SPI'),
        ('M2', 'U10', 'low for master SPI'),
        ('PUDC_B', 'E18', 'high, to disable the pull-ups during configuration'),
-       ('TCK', 'C8', 'either: the bridge drives it, R5 is only a bleeder')]
+       ('TCK', 'C8', 'a defined level while the bridge tri-states it (UG470 Table 2-4 asks that TCK be treated as a critical clock)')]
+WHY = {'TCK': ' The bias is split across the damping resistor: R89, 10k to VCC3V3, sits on the BRIDGE '
+                'side of it on net TCK, while R5, 5.1k to ground, sits on the FPGA side on net FPGA-TCK, so the '
+                'divider lands mid-rail whenever ADBUS0 is tri-state -- which is every moment before a USB host '
+                'opens the MPSSE, power-up included. On a clock pin that means input-buffer crowbar current and '
+                'the one condition in which coupled noise can manufacture an edge. The consequence is bounded: '
+                'TMS idles high through R92, so the TAP sits in Test-Logic-Reset and stray edges only hold it '
+                'there. The clean fix is to drop R89 and leave R5 as the only bias, so TCK has one unambiguous '
+                'idle level. This predates the array work -- the same two resistors and the same 1.11 V were '
+                'there when the six dampers were discretes.'}
+
 w('| Pin | Ball | Net | Resistors on it | Rests at | Wanted | Verdict |')
 w('|---|---|---|---|---|---|---|')
 for name, ball, want in CFG:
@@ -531,7 +541,7 @@ for name, ball, want in CFG:
     if not ok:
         findings.append(f'**{name} does not rest where UG470 asks.** Ball {ball} is on net {n}; with every '
                         f'driver released it sits at {lvl.split(",")[0]}, and the pin wants to be {want}. '
-                        f'The network on it is {rtxt}.')
+                        f'The network on it is {rtxt}.' + WHY.get(name, ''))
 w('')
 
 # ---- loose ends
