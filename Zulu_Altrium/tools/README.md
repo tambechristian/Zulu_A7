@@ -107,6 +107,13 @@ the project in Altium before running the two fix scripts.
   copies, three gate copies with their wires and labels shifted, MANF#/SPEC/NOTE
   and the text frame rewritten (1x6 + 1x14 on the bottom row). Connectivity is
   untouched: the netlist differs only in X2 pad names. Refuses to run twice.
+* `x2_move_landing.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09,
+  fifth pass: CHAN17-19 (pins 27-29) slide four positions towards the corner, so
+  the LiPo landing moves to between pins 29 and 30, on the same four x values as
+  the USB landing above it, and the two rows become mirror images (9 + landing +
+  11 each). Pin numbers do not move, so the exported netlist is byte-identical;
+  only geometry, MANF#/SPEC/NOTE and the text frame change (strips become 2x 1x9
+  + 2x 1x11). Refuses to run twice.
 * `jp_dns.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` - 2026-09-08:
   JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
   their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS
