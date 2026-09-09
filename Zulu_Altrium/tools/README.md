@@ -95,6 +95,14 @@ the project in Altium before running the two fix scripts.
   (-500), X1's VBUS pin wired straight into U8 IN, C78 moved onto U8 OUT
   (pins 10/11) with its own ground, C151 nudged left. Netlist unchanged.
   Refuses to run twice.
+* `d2_note.py` - D2 gets the NOTE parameter (D1 removal, SOD323F footprint)
+  as a hidden parameter, so the master BOM's note for it comes from the sheet
+  like every other note.
+* `master_bom.py` - rewrites ../docs/zulu_a7-bom.csv (the master BOM, formerly
+  from the root tools/bom.py and the EAGLE schematic) from the Altium sheets,
+  keeping its column layout and line order; notes come from the NOTE
+  parameters, DNS parts are marked DNP. Run after any sheet change that
+  touches parts.
 * `bom_audit.py > docs/component_validation.md` - component and BOM validation
   (2026-09-06): BOM from the sheets; FPGA balls and power tree against AMD's
   CPG236 pinout file; FT2232H, SDRAM, flash, EEPROM, oscillator, USB, RGB LED

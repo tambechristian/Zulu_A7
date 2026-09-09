@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 """Generate the bill of materials from zulu_a7.sch.
 
+SUPERSEDED 2026-09-09: docs/zulu_a7-bom.csv is now written by
+Zulu_Altrium/tools/master_bom.py from the Altium sheets, which carry the
+design changes made after the import (SC189 regulators, ECS oscillator,
+SDRAM -7TCN, FT2232HL, DM3D-SF, PTS810, EAST1616RGBA8, the bq24232 charger).
+Running this script would overwrite that file with the EAGLE-era list.
+
     python tools/bom.py
 
 Writes docs/zulu_a7-bom.csv and prints a summary. Reads the schematic and
