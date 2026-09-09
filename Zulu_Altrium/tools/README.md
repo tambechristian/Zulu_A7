@@ -67,7 +67,9 @@ the project in Altium before running the two fix scripts.
   the audit. Rounds applied so far: 2026-09-07 (44 components), 2026-09-08
   (GRM188R61C475KE11D, ECS-3225SMV, the 4.7 uF 0402) and 2026-09-08 U3
   AS4C32M16SB-6TIN -> AS4C32M16SB-7TCN (the -6 grade is dry until October;
-  U3 has no SPEC parameter, so the timing text is appended to its NOTE).
+  U3 has no SPEC parameter, so the timing text is appended to its NOTE),
+  and 2026-09-08 L4-L7 BLM18PG601SN1D (a number Murata never made) ->
+  BLM18KG601SN1D.
 * `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
   power budget from the schematic and the datasheets; writes markdown
   (docs/power_budget.md is its default output). The FPGA dynamic currents

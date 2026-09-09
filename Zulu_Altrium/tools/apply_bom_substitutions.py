@@ -44,6 +44,11 @@ SUBS = {
     # U3, applied 2026-09-08 at the user's choice after the PCBWay sourcing check: the -6TIN (166 MHz, industrial) is
     # 0 at every distributor until Oct 2026; the -7TCN is the same B die, package and pinout in the -7 speed bin,
     # commercial 0..70 C ambient (the XC7A35T-1CPG236C beside it is itself a commercial part), 1,478 at Digi-Key.
+    # L4-L7, applied 2026-09-08 at the user's choice: BLM18PG601SN1D is not a Murata catalogue number (the BLM18PG
+    # series stops at 470 ohm; the sheet's own spec, 600 ohm 1.5 A, is the BLM18SP601SN1D, 567 pcs at Digi-Key).
+    # The beads carry at most 60 mA (L4 FT2232H VPHY, L5 VPLL, L6 GNDADC return, L7 VCCADC 25 mA), so the 1.3 A
+    # power-line BLM18KG601SN1D (913,912 at Digi-Key, LCSC C85833 791,450) on the same 0603 land is the pick.
+    'BLM18PG601SN1D': ('BLM18KG601SN1D', 'Murata', 'ferrite bead 600 ohm at 100 MHz +-25%, 1.3 A at 85 C, 0.15 ohm max, 0603, 0.90 mm max; replaced BLM18PG601SN1D (a number Murata never made; the spec 600 ohm/1.5 A is BLM18SP601SN1D) on 2026-09-08; L4/L5 feed the FT2232H VPHY/VPLL (60 mA max), L6 GNDADC, L7 VCCADC (25 mA)'),
     # U3 carries no SPEC parameter, so the timing note goes onto NOTE (5th element = text appended to NOTE).
     'AS4C32M16SB-6TIN': ('AS4C32M16SB-7TCN', 'Alliance Memory', '', 'AS4C32M16SB-7TCN',
         ' 2026-09-08: AS4C32M16SB-6TIN replaced by AS4C32M16SB-7TCN (same B die, 54-TSOP II 400 mil and pinout, datasheet Rev 1.4 Table 2): -7 speed bin, 143 MHz max at CL3 (tCK 7 ns, tAC 5.4 ns), tRCD/tRP 21 ns, tRC/tRFC 63 ns, tRRD/tMRD/tWR 14 ns, tCH/tCL 2.5 ns; 100 MHz at CL2 for every grade. Commercial TA 0..70 C, matching the -1C FPGA. IDD1 max 110 mA (was 120). AS4C32M16SB-7TIN (industrial) is the timing-identical alternate; the -6TIN only if the controller is clocked above 143 MHz.'),
