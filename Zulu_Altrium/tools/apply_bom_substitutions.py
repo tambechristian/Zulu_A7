@@ -41,6 +41,12 @@ SUBS = {
     #   GRM155R60J475ME47D  4.7 uF 6.3 V X5R 0402, 0.60 mm max, ~2.2-2.8 uF at 1.8 V, 980 k pcs, $0.10
     # applied 2026-09-08; the manufacturer's current number is used, Digi-Key stocks it mainly under the old alias
     'GRM155R60J335ME15D': ('MSASJ105BB5475MFNA01', 'Taiyo Yuden', 'X5R 6.3V +-20% 0402 4.7uF, 0.65 mm max, about 3.7 uF left at 1.8 V; Digi-Key alias JMK105BBJ475MV-F (587-2787-1-ND, 1.6 M pcs); replaced the unobtainable 3.3 uF GRM155R60J335ME15D on the FT2232H VCORE node (FTDI minimum 3.3 uF) on 2026-09-08', '4.7uF'),
+    # U3, applied 2026-09-08 at the user's choice after the PCBWay sourcing check: the -6TIN (166 MHz, industrial) is
+    # 0 at every distributor until Oct 2026; the -7TCN is the same B die, package and pinout in the -7 speed bin,
+    # commercial 0..70 C ambient (the XC7A35T-1CPG236C beside it is itself a commercial part), 1,478 at Digi-Key.
+    # U3 carries no SPEC parameter, so the timing note goes onto NOTE (5th element = text appended to NOTE).
+    'AS4C32M16SB-6TIN': ('AS4C32M16SB-7TCN', 'Alliance Memory', '', 'AS4C32M16SB-7TCN',
+        ' 2026-09-08: AS4C32M16SB-6TIN replaced by AS4C32M16SB-7TCN (same B die, 54-TSOP II 400 mil and pinout, datasheet Rev 1.4 Table 2): -7 speed bin, 143 MHz max at CL3 (tCK 7 ns, tAC 5.4 ns), tRCD/tRP 21 ns, tRC/tRFC 63 ns, tRRD/tMRD/tWR 14 ns, tCH/tCL 2.5 ns; 100 MHz at CL2 for every grade. Commercial TA 0..70 C, matching the -1C FPGA. IDD1 max 110 mA (was 120). AS4C32M16SB-7TIN (industrial) is the timing-identical alternate; the -6TIN only if the controller is clocked above 143 MHz.'),
 }
 # SPEC text corrections for parts that already carry the right MANF# (keyed by current MANF#)
 RESPEC = {
@@ -70,9 +76,12 @@ def main(prj):
             if old not in SUBS: continue
             new, manf, spec = SUBS[old][:3]
             comment = SUBS[old][3] if len(SUBS[old]) > 3 else None
+            note_suffix = SUBS[old][4] if len(SUBS[old]) > 4 else None
             recs[prm['MANF#']][1] = set_field(recs[prm['MANF#']][1], 'Text', new)
             if 'MANF' in prm: recs[prm['MANF']][1] = set_field(recs[prm['MANF']][1], 'Text', manf)
-            if 'SPEC' in prm: recs[prm['SPEC']][1] = set_field(recs[prm['SPEC']][1], 'Text', spec)
+            if spec and 'SPEC' in prm: recs[prm['SPEC']][1] = set_field(recs[prm['SPEC']][1], 'Text', spec)
+            if note_suffix and 'NOTE' in prm and note_suffix not in field(recs[prm['NOTE']][1], 'Text'):
+                recs[prm['NOTE']][1] = set_field(recs[prm['NOTE']][1], 'Text', field(recs[prm['NOTE']][1], 'Text') + note_suffix)
             if comment and 'Comment' in prm: recs[prm['Comment']][1] = set_field(recs[prm['Comment']][1], 'Text', comment)
             if comment and 'DeviceName' in prm and old.startswith('ASEM1'): recs[prm['DeviceName']][1] = set_field(recs[prm['DeviceName']][1], 'Text', 'ECS-3225SMV')
             changed.append(f'{desig.get(owner)} {old} -> {new}')
