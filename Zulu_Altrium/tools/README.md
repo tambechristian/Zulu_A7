@@ -159,6 +159,13 @@ the project in Altium before running the two fix scripts.
 * `d2_note.py` - D2 gets the NOTE parameter (D1 removal, SOD323F footprint)
   as a hidden parameter, so the master BOM's note for it comes from the sheet
   like every other note.
+* `connectivity_check.py > docs/connectivity_check.md` - power and ground
+  architecture plus bus and differential-pair mapping, read from the exported
+  netlist and the datasheets. Traces every supply and ground pin of every IC to
+  its rail (the FPGA against the whole CPG236 package pin list, not just the
+  symbol), counts the decoupling by value tier against UG483 Table 2-2 and the
+  FTDI reference circuit, and verifies every bus line against the pin the part's
+  datasheet gives. Read-only. It cannot judge placement, and says so.
 * `master_bom.py` - rewrites ../docs/zulu_a7-bom.csv (the master BOM, formerly
   from the root tools/bom.py and the EAGLE schematic) from the Altium sheets,
   keeping its column layout and line order; notes come from the NOTE
