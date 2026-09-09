@@ -104,7 +104,7 @@ def main():
       f"--fpga-io {a.fpga_io} --header {a.header}.\n")
     w("Power comes in as USB VBUS into U8, a TI bq24232 charger and power-path manager whose OUT regulates VU at 4.4 V "
       "and caps the input at 495 mA, charging the LiPo on X4 at up to 244 mA with what is left (the battery supplements peaks and "
-      "runs the board alone at VBAT - 60 mV); or as +5V-INPUT on X2 pin 44 through D2 with D3 (SMF5.0A) clamping it, ORed onto VU. VU feeds three fixed SC189 bucks, U5 (3.3 V), "
+      "runs the board alone at VBAT - 60 mV). The +5V-INPUT pin with D2 and D3 went on 2026-09-09, so the charger is the only way in. VU feeds three fixed SC189 bucks, U5 (3.3 V), "
       "U6 (1.8 V) and U7 (1.0 V), 1.5 A each at 2.5 MHz, enables tied to VU, so all three rails soft-start "
       "together when VU appears; UG483 requires no order between VCCINT, VCCAUX and VCCO.\n")
     totals = {}
@@ -156,7 +156,7 @@ def main():
     w(f"- Typical use draws about {it:.0f} mA through the charger: {'inside' if it <= CHG_LIMIT else 'OVER'} the 495 mA input limit, "
       f"leaving about {chg_t:.0f} mA of the 244 mA charge current for the battery while the board runs; the full 244 mA flows when the board idles.")
     w(f"- The simultaneous worst case wants about {im:.0f} mA: {'inside' if im <= CHG_LIMIT else 'over'} the charger's input limit, "
-      "so the excess comes from the battery in supplement mode (or from +5V-INPUT on X2 pin 44, which bypasses the charger); "
+      "so the excess comes from the battery in supplement mode; "
       "with no battery fitted VU sags to the DPPM point and the board browns out under that load.")
     w("- All three rails start as soon as VBUS appears and the FPGA configures from flash immediately, so the "
       "board is above the 100 mA unconfigured limit before the FT2232H enumerates. Hosts tolerate this in "
@@ -193,9 +193,9 @@ def main():
     w("1. **No rail is near its regulator limit any more.** Each SC189 gives 1.5 A; VCC3V3 uses under a "
       "quarter of that in typical use and under half at the datasheet maxima, VCC1V0 a quarter, VCC1V8 a "
       "twentieth. The header and Pmod +3.3V pins can take several hundred milliamps when the board runs "
-      "from the external 5 V.")
+      "from USB with a charged battery supplementing.")
     w("2. **The bq24232 input limit is the ceiling on USB.** The charger holds the port at 495 mA whatever the board does; typical use fits, "
-      "the datasheet-maximum case is served by the battery in supplement mode or by +5V-INPUT, which bypasses the charger.")
+      "the datasheet-maximum case is served by the battery in supplement mode, the only other source now that the +5V-INPUT pin is gone.")
     w("3. **VCC1V8 is lightly loaded**, well under 100 mA even with the XADC running.")
     w(f"4. **USB alone covers typical use** at about {it:.0f} mA through the charger, with about {chg_t:.0f} mA left for charging. The simultaneous worst case "
       f"({im:.0f} mA) needs the battery or the external 5 V input.")

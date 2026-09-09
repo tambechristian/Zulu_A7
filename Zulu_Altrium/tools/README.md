@@ -71,6 +71,15 @@ the project in Altium before running the two fix scripts.
   (Sullins PRPC024SAAN-RC + PRPC009SAAN-RC + PRPC011SAAN-RC, one of each per
   board) inserted into all 45 placed gates with OwnerIndex renumbering;
   comment and footprint ZULU-DIP37 unchanged. Refuses to run twice.
+* `x2_lipo_corner.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09: room for
+  the LiPo connector at the right-hand end of X2. Sheet 2: +5V-INPUT (pad 44)
+  with D2/D3, VEXT and GND5 (pad 23) deleted; +3.3V2/GND3 swapped with
+  CHAN12/CHAN13 (pads 2/3 <-> 25/26) as a net-label, GATE-label and GateName
+  swap; the two dead sub-parts removed from all 43 gate copies and parts
+  renumbered 1-43 (PartCount 44, AllPinCount 42); displayed pins 2/3 retyped
+  passive and 25/26 power; MANF#/SPEC/NOTE and the text frame rewritten for
+  the split bottom row (PRPC020 + PRPC002). Sheet 1: charger note updated.
+  Verifies the result and refuses to run twice.
 * `jp_dns.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` - 2026-09-08:
   JP3/JP4 (bare JTAG holes) get DNS = Yes and a SPEC line, inserted after
   their NOTE with OwnerIndex renumbering; bom_audit lists them as DNS
