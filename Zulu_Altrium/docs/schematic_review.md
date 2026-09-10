@@ -212,17 +212,47 @@ on sheet 5). For a label at 90 degrees the vertical half of the justification mo
 sideways rather than up, so the same flip is not obviously right and eight is few enough to judge by
 eye. `tools/label_justification.py` lists them every time it runs.
 
-**4. Three factual errors on the block diagram.** `CHAN-I/O (28)` should be 29: the netlist holds
-CHAN0 through CHAN28, and the sheet has already taught the reader that a number in brackets is a bus
-width via `CTRL (7)`, `ADDRESS (15)` and `DATA (16)`, all three correct. 28 is a trap because it is
-also the highest channel number, so it survives a spot-check. `SDRAM-CLK` is drawn leaving the FPGA,
-doubling back and re-entering it through a second arrowhead, which reads as a feedback path on a net
-that is exactly two pads, U1-M1 and U3-38. And the microSD note claims six bank-34 balls when the
-six span three banks -- CLK and CMD on 34, DAT0/DAT1/DAT3 on 16, DAT2 on 35.
+**4. Five things the block diagram said that were not true. FIXED 2026-09-09.** Three were the
+factual errors ranked here, and checking the sheet to fix them turned up two more of the same kind.
 
-The block diagram is the index a newcomer and the layout engineer both start from.
+`CHAN-I/O (28)` should have been 29: the netlist holds CHAN0 through CHAN28, and the sheet has
+already taught the reader that a number in brackets is a bus width via `CTRL (7)`, `ADDRESS (15)` and
+`DATA (16)`, all three correct. 28 was a trap because it is also the highest channel number, so it
+survives a spot-check.
 
-*Fix:* retype one label, delete one segment and one arrowhead, reword one sentence.
+`SDRAM-CLK` was drawn leaving the FPGA at (460,612), running down to y 542, jogging right to x 480
+and coming back UP into an arrowhead at (480,612) pointing into the FPGA, while the main line
+continued down into the SDRAM. It read as a clock the FPGA sends out and gets back; the net is
+exactly two pads, U1-M1 and U3-38. The return branch and its arrowhead are gone, leaving one line
+with one arrowhead, drawn the way CTRL and ADDRESS beside it are.
+
+The microSD note claimed six bank-34 balls. It spans three: CLK U8 and CMD U7 in bank 34, DAT0 C15,
+DAT1 B15 and DAT3 A16 in 16, DAT2 L3 in 35 -- confirmed against the package file and the pin
+designators on sheet 5. The note now says so, and keeps the claim that actually matters, which is
+that a card cannot reach the config bus.
+
+Found while fixing those: the `XADC` link was drawn with an arrowhead at BOTH ends, i.e.
+bidirectional, when X2-39 and X2-40 feed the XADC through dividers and nothing comes back. The
+header-end arrowhead is gone and the line now runs flat to the header, which is the shape this sheet
+already uses for one-way links. And the `LED/Button` link had a single arrowhead pointing INTO the
+FPGA, which on this sheet's convention means the FPGA only receives -- but LED0_R (P19), LED0_G
+(R18), LED0_B (N19), LED1 (N18) and LED2 (M19) are FPGA outputs and only BTN (N17) is an input. An
+arrowhead into the block has been added, so it now reads bidirectional.
+
+CHECKED AND LEFT ALONE: the review also said the Pmod link was drawn with a single arrowhead into
+the FPGA. It already had one at each end -- into the FPGA at (615,722) and up into the block at
+(720,787) -- so that claim was wrong and the link was correct as drawn.
+
+`tools/sheet0_fixes.py` does all five: ten line records deleted, two added, two text edits. Sheet 0
+is the sheet that was left unopenable once by deleting records without renumbering OwnerIndex, so
+the script renumbers and rewrites the header count, and the first thing done after applying it was
+to open sheet 0 in Altium and watch it draw.
+
+STILL NOT CHANGED on this sheet, because they are naming style rather than error: the rail nicknames
++5V, +3.3V, +1.8V and +1.0V, which are not the net names (USB5V0, VCC3V3, VCC1V8, VCC1V0); the flash
+link labels FCS_B, CCLK and DQ[3:0], which are pin names where the neighbouring SD-CLK, SD-CMD and
+SD-DAT[3:0] are net names; the 12 MHz oscillator drawn as a two-terminal passive when Q1 is an
+active four-pad part; and the absence of designators on the blocks.
 
 **5. GND and VCC drawn as bare red text instead of power ports.** On sheets 1, 3, 4, 5 and 6, some
 supply and ground connections are plain text sitting on a wire rather than a port symbol. Two places
@@ -270,4 +300,9 @@ expensive to find later.
 
 What is left for the redraw to work around: the symbol pin names `IO_A14`, `IO_A15` and `IO_W7` on
 the Pmod block, which still carry an assignment the board no longer has.
+
+Of the five ranked findings, three are now fixed -- the ball captions, the label justification and
+the block diagram. What remains is finding 2, the `PGOOD` name and its vestigial driver, which is a
+design decision rather than a drawing fault, and finding 5, GND and VCC drawn as bare text on five
+sheets, which is the one that still lets a correct netlist read as a wrong circuit.
 

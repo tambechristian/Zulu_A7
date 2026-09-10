@@ -216,6 +216,19 @@ the project in Altium before running the two fix scripts.
   C152-C154 added the rail now matches the reference exactly.  Its stub, ground
   symbol, net label and rail junction go with it.  Deletes records, so every later
   OwnerIndex is renumbered and the header count rewritten.  Refuses to run twice.
+* `sheet0_fixes.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_0.SchDoc"` -
+  2026-09-09: five things the block diagram said that were not true.  CHAN-I/O
+  (28) -> (29), because the netlist holds CHAN0..CHAN28 and the sheet has already
+  taught the reader that a bracket is a bus width.  The SDRAM-CLK return branch
+  and its arrowhead into the FPGA are deleted -- it implied a feedback path on a
+  net that is two pads, U1-M1 and U3-38.  The microSD note's "six bank-34 balls"
+  becomes banks 34, 16 and 35, which is what the package file and the sheet-5 pin
+  designators say.  The XADC link loses its header-end arrowhead, since the two
+  analogue signals only go one way.  The LED/Button link gains an arrowhead into
+  the block, because five of its six signals are FPGA outputs.  The Pmod link was
+  checked and left alone: the review said it had one arrowhead, it has two.  Ten
+  lines deleted and two added, so OwnerIndex is renumbered and the header count
+  rewritten -- this is the sheet that was left unopenable once by skipping that.
 * `label_justification.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09:
   254 net labels stop hanging below their wires.  Altium's Justification is a 3x3
   anchor grid (h = j%3, v = j//3); a label with v=2 is anchored at the TOP of its
