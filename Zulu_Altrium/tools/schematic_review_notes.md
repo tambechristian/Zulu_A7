@@ -177,10 +177,31 @@ sub-unit trap the C40 cluster on sheet 4 sprang once already. After the fix the 
 identical to the one before any of this work: 183 components, 178 nets, 783 pads, every net the same
 set of pads.
 
-STILL OPEN on the same sheets: on sheet 5's unconnected-balls block the `GNDADC` and `GND` labels are
-printed across the pin names `VP`, `VN`, `VREFP`, `VREFN`, `DXP` and `DXN` -- an overlap of up to 19
-units. It is one of 16 text-on-text overlaps that predate this work and none of them got worse; it is
-listed here because it is in a block this work touched.
+**7. Text printed on top of other text, on five sheets. FIXED 2026-09-10.** Not one of the original
+findings either; it came out of checking that the rail-port work had not made anything worse.
+
+Counting glyph boxes in the exported PDF gives 12409 overlapping pairs, which is nonsense: Altium
+writes three invisible metadata layers into the PDF, `COxxx` per component, `PIxxx` per pin and
+`NLxxx` per net, each sitting exactly on the visible text it describes. Filter those, and ignore a
+parameter drawn twice at one spot the way the title block does it, and 40 real collisions are left --
+5 on sheet 1, 5 on sheet 2, 4 on sheet 3, 13 on sheet 4 and 13 on sheet 5, with sheets 0 and 6 clean.
+
+The worst were two labels drawn on top of each other. Sheet 4 carried two `FT-RESETN` labels on one
+wire, at 302 left justified and 343 right justified, so both sets of glyphs landed on x 300..345; the
+same for `FT-REF`. The net keeps its name from the survivor and the duplicate goes. Everything else
+is a nudge: `tools/text_overlaps.py` takes the geometry from the PDF, because a pin's name and number
+are drawn by the pin and are not records at all, matches each span back to the record that drew it,
+and searches candidate positions until one hits nothing. A net label may only slide along the wire it
+names; a gate pin name only along its own row and only away from its pin; a port not at all unless
+nothing else can move, and then only on its own wire. Pins never move.
+
+Two things were caught by checking rather than by looking. `UART_FT_RXD` slid 30 units up its stub,
+past R94, and landed on the VCC3V3 rail -- which would have named the rail UART_FT_RXD. Sliding is
+now confined to one connected wire run. And the last stubborn overlap was one this project had made
+itself: `rail_ports.py` had pointed a ground symbol on sheet 3 RIGHT, because down was blocked at the
+time, and its name landed on R6's pin number; the fix was to turn it down, not to move it.
+
+40 down to 0 on all seven sheets, with the netlist identical at 182 components, 179 nets and 785 pads.
 
 **6. Sheet 5's right-hand blocks were drawn through the frame. FIXED 2026-09-09.** Not one of the
 original findings -- it came from reading the exported PDF. 25 objects crossed the inner border at
