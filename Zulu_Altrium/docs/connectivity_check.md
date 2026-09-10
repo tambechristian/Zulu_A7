@@ -19,7 +19,7 @@ Source: the Protel netlist Altium exported from `Imported zulu_a7.PrjPcb` (178 n
 | FT-VPHY | VCC3V3 through the ferrite L4 | 3 | none | 1 x 100 nF |
 | FT-VPLL | VCC3V3 through the ferrite L5 | 3 | none | 1 x 100 nF |
 
-GND carries 204 pads and GNDADC 7. They meet only at the ferrite L6, which is the analogue-ground split UG480 asks for around the XADC.
+GND carries 203 pads and GNDADC 8. They meet only at the ferrite L6, which is the analogue-ground split UG480 asks for around the XADC.
 
 ### 1.2 Every FPGA package pin that carries power or ground
 
@@ -156,7 +156,7 @@ UG470 requires PROGRAM_B, INIT_B and DONE to be pulled high, and the mode pins s
 |---|---|---|---|---|---|---|
 | PROGRAM_B | V10 | RST# | R1B 4.7K to VCC3V3, R4A 100 to PROG# | 3.30 V, high | high, pulled up to VCCO_0 (UG470) | ok |
 | INIT_B | U11 | FPGA-INIT# | R1A 4.7K to VCC3V3 | 3.30 V, high | high, pulled up | ok |
-| DONE | U12 | FPGA-DONE | R4B 100 to DONE | 3.30 V, high | high, pulled up | ok |
+| DONE | U12 | FPGA-DONE | R100 330 to VCC3V3, R4B 100 to DONE | 3.30 V, high | high, pulled up | ok |
 | M0 | V12 | CFG-M0 | R20 1K to VCC3V3 | 3.30 V, high | high for master SPI (mode 001) | ok |
 | M1 | W11 | CFG-M1 | R21 1K to GND | 0.00 V, low | low for master SPI | ok |
 | M2 | U10 | CFG-M2 | R22 1K to GND | 0.00 V, low | low for master SPI | ok |
