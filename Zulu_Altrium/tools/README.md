@@ -223,8 +223,10 @@ the project in Altium before running the two fix scripts.
   netlist never complains), that no wire end dangles, that no two net names differ
   only in case or separator, that every label text became a real net and no net
   has a single pad, that every part can be named by a reader, and how much of the
-  printed page the drawing actually gets.  It says where it stops: whether a sheet
-  READS well is a judgement it cannot make.  Read-only.
+  printed page the drawing actually gets.  Read-only.  It says where it stops:
+  whether a sheet READS well is a judgement it cannot make, so the judgement half
+  lives in `schematic_review_notes.md` beside it and is appended verbatim to the
+  output -- re-running the tool never overwrites it.
 * `connectivity_check.py > docs/connectivity_check.md` - power and ground
   architecture plus bus and differential-pair mapping, read from the exported
   netlist and the datasheets. Traces every supply and ground pin of every IC to

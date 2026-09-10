@@ -24,7 +24,7 @@ What it checks, per sheet:
 Everything is read from the .SchDoc records, so it sees what Altium sees, not what the PDF renders.
 Read-only.
 """
-import os, re, sys, math, collections
+import io, os, re, sys, math, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -458,11 +458,16 @@ w('For context on what a clean result here does and does not mean: this checks t
   'wires, that names resolve to nets, that nothing dangles and that the page is used. It cannot see '
   'a sheet that is correct and still hard to read.\n')
 
-w('## What this cannot judge\n')
-w('Whether a sheet reads well. Whether the eye lands on the signal path first, whether related '
-  'parts are grouped the way the circuit works rather than the way the importer happened to place '
-  'them, whether a reader can follow a net from the connector to the ball without a search. Those '
-  'need eyes on the drawing, and they are the half of this review that matters most for a board '
-  'about to be laid out.\n')
+NOTES = os.path.join(HERE, 'schematic_review_notes.md')
+if os.path.exists(NOTES):
+    w(io.open(NOTES, encoding='utf-8').read().rstrip())
+    w('')
+else:
+    w('## What this cannot judge\n')
+    w('Whether a sheet reads well. Whether the eye lands on the signal path first, whether related '
+      'parts are grouped the way the circuit works rather than the way the importer happened to place '
+      'them, whether a reader can follow a net from the connector to the ball without a search. Those '
+      'need eyes on the drawing, and they are the half of this review that matters most for a board '
+      'about to be laid out.\n')
 
 print('\n'.join(out))
