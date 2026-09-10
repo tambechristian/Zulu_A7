@@ -165,6 +165,17 @@ the project in Altium before running the two fix scripts.
   one per FT2232H VCORE pin, after connectivity_check.py found that rail carrying
   bulk only. The rail is extended left and junctioned; no net label is added
   because the extension is one wire with the rail. Refuses to run twice.
+* `tck_pullup_out.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` -
+  2026-09-09: R89, the 10 K pull-up on TCK, is removed.  It sat on the BRIDGE
+  side of the damping resistor and fought R5, 5.1 K to ground on the FPGA side,
+  so with ADBUS0 tri-state -- power-up, and any time no USB host has opened the
+  MPSSE -- the FPGA's clock input rested at 3.3 x 5100/(10000+100+5100) = 1.11 V,
+  between VIL and VIH.  Dropping the pull-up and keeping the pull-down leaves TCK
+  idling low, which is the JTAG convention and the safe level for a clock.  R89's
+  rail drop goes with it and so does the junction at (692,1072), which was a
+  three-wire branch and is now a corner; the wire carrying U2 pin 16 out to the
+  column is SHORTENED rather than deleted, because it holds the TCK net label.
+  Netlist: pads 785 -> 783, TCK keeps JP3-1, R4-6 and U2-16.  Refuses to run twice.
 * `resistor_packs.py <this folder> "Imported zulu_a7.PrjPcb/zulu_a7_4.SchDoc"` -
   2026-09-09: the six 100 ohm JTAG/config series resistors (R9 PROG#, R38 DONE,
   R8 TDI, R37 TDO, R4 TMS, R36 TCK) become one CTS 742C163101JP and the two 4.7 K

@@ -29,7 +29,7 @@ Item,Designator,Qty per board,Qty for 50 boards,Manufacturer,Mfg Part #,Descript
 28,"R12, R16",2,100,Yageo,RC0201FR-07140RL,140 ohm +-1% 1/20 W thick film,0201,SMD,Yes,Digi-Key YAG2406CT-ND,"Digi-Key 78,961 in stock, $0.10; no LCSC listing (E96 value)."
 29,"R13, R17",2,100,Yageo,RC0201FR-07845RL,845 ohm +-1% 1/20 W thick film,0201,SMD,Yes,Digi-Key YAG2820CT-ND,"Digi-Key 4,906 in stock, $0.10; LCSC C474846 out of stock."
 30,R18,1,50,Yageo,RC0402FR-0712KL,12 kohm +-1% 1/16 W thick film,0402,SMD,Yes,Digi-Key 311-12KLRCT-ND,"Digi-Key 1,019,188 in stock; LCSC C114760 1,086,000."
-31,"R19, R89, R90, R91, R92, R93, R94, R96, R97, R98",10,500,Yageo,RC0201FR-0710KL,10 kohm +-1% 1/20 W thick film,0201,SMD,Yes,Digi-Key 311-10.0KMCT-ND,"Digi-Key 6,055,005 in stock; LCSC C106225 1,496,700."
+31,"R19, R90, R91, R92, R93, R94, R96, R97, R98",9,450,Yageo,RC0201FR-0710KL,10 kohm +-1% 1/20 W thick film,0201,SMD,Yes,Digi-Key 311-10.0KMCT-ND,"Digi-Key 6,055,005 in stock; LCSC C106225 1,496,700. 2026-09-09: R89 removed from the board (it was the 10k pull-up on TCK, fighting R5 5.1k on the far side of the damping resistor and holding the FPGA clock input at 1.11 V whenever the bridge was tri-state); this line drops from 10 to 9."
 32,R21,1,50,Yageo,RC0402FR-071KL,1 kohm +-1% 1/16 W thick film,0402,SMD,Yes,Digi-Key 311-1.00KLRCT-ND,"Digi-Key 6,163,347 in stock; LCSC C106235 3,787,600."
 33,"R24, R25",2,100,Yageo,RC0201FR-0733RL,33 ohm +-1% 1/20 W thick film,0201,SMD,Yes,Digi-Key 311-33.0MCT-ND,"Digi-Key 2,735,882 in stock; LCSC C295794 26,600."
 34,"R26, R27, R28, R29, R30, R31, R32, R33",8,400,Yageo,RC0201FR-07200RL,200 ohm +-1% 1/20 W thick film,0201,SMD,Yes,Digi-Key YAG2495CT-ND,"Digi-Key 502,155 in stock; LCSC C274337 8,900."

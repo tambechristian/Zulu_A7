@@ -510,16 +510,15 @@ CFG = [('PROGRAM_B', 'V10', 'high, pulled up to VCCO_0 (UG470)'),
        ('M1', 'W11', 'low for master SPI'),
        ('M2', 'U10', 'low for master SPI'),
        ('PUDC_B', 'E18', 'high, to disable the pull-ups during configuration'),
-       ('TCK', 'C8', 'a defined level while the bridge tri-states it (UG470 Table 2-4 asks that TCK be treated as a critical clock)')]
-WHY = {'TCK': ' The bias is split across the damping resistor: R89, 10k to VCC3V3, sits on the BRIDGE '
-                'side of it on net TCK, while R5, 5.1k to ground, sits on the FPGA side on net FPGA-TCK, so the '
-                'divider lands mid-rail whenever ADBUS0 is tri-state -- which is every moment before a USB host '
-                'opens the MPSSE, power-up included. On a clock pin that means input-buffer crowbar current and '
-                'the one condition in which coupled noise can manufacture an edge. The consequence is bounded: '
-                'TMS idles high through R92, so the TAP sits in Test-Logic-Reset and stray edges only hold it '
-                'there. The clean fix is to drop R89 and leave R5 as the only bias, so TCK has one unambiguous '
-                'idle level. This predates the array work -- the same two resistors and the same 1.11 V were '
-                'there when the six dampers were discretes.'}
+       ('TCK', 'C8', 'low: a clock should idle at a defined level, and UG470 Table 2-4 asks that TCK be treated as a critical clock')]
+WHY = {'TCK': ' A clock pin resting in the forbidden band means input-buffer crowbar current and the '
+                'one condition in which coupled noise can manufacture an edge. That happened here once: R89, a '
+                '10 K pull-up to VCC3V3, sat on the BRIDGE side of the damping resistor and fought R5, 5.1 K to '
+                'ground on the FPGA side, so the divider landed at 1.11 V whenever ADBUS0 was tri-state -- '
+                'power-up included, since the bridge does not drive until a USB host opens the MPSSE. R89 was '
+                'removed on 2026-09-09 (tools/tck_pullup_out.py) leaving R5 as the only bias, so TCK idles low. '
+                'If this row reports undefined again, look for a second bias that has crept back onto either '
+                'side of the 100 ohm.'}
 
 w('| Pin | Ball | Net | Resistors on it | Rests at | Wanted | Verdict |')
 w('|---|---|---|---|---|---|---|')

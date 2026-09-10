@@ -20,7 +20,7 @@ Power comes in as USB VBUS into U8, a TI bq24232 charger and power-path manager 
 | U1 VCCO banks 0/14/16/34/35 (28 balls) static | 5 | 5 | DS181 ICCOQ, about 1 mA per bank |
 | U1 VCCO dynamic (SDRAM bus, header, LED sink path) | 30 | 90 | ASSUMED; about 1.6 mA per toggling pin at 100 MHz, 10 pF |
 | LD0 RGB (R80 33, R81 330, R82 33) + LD1/LD2 (330) + LD5 (680) | 8 | 22 | VF from the Everlight 19-337 sheet: red 2.05 typ / 2.4 max, green and blue 3.2 typ / 3.7 max V (VS NRD8 was 2.0-2.4 / 3.3-3.8 until 2026-09-08) |
-| pull-ups when driven low (6 x 4.7k, 12 x 10k) | 2 | 8 | R1, R2, R6, R7, R34, R35, R89-R99, R19, R20, R23 |
+| pull-ups when driven low (6 x 4.7k, 12 x 10k) | 2 | 8 | R1, R2, R6, R7, R34, R35, R90-R99, R19, R20, R23 |
 | J1 Pmod pins 6/12 and X2 pin 17 +3.3V to header | 0 | 0 | external, user allowance |
 | **Total** | **334** | **662** | channel limit 1500 mA |
 | Headroom | 1166 | 838 | ok |
