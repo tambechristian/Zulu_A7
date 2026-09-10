@@ -216,6 +216,15 @@ the project in Altium before running the two fix scripts.
   C152-C154 added the rail now matches the reference exactly.  Its stub, ground
   symbol, net label and rail junction go with it.  Deletes records, so every later
   OwnerIndex is renumbered and the header count rewritten.  Refuses to run twice.
+* `schematic_review.py > docs/schematic_review.md` - readability and labelling
+  hygiene over the seven sheets, read from the .SchDoc records so it sees what
+  Altium sees rather than what the PDF renders.  Checks that every net label and
+  power port lands on a wire or a pin (a label one unit off names nothing and the
+  netlist never complains), that no wire end dangles, that no two net names differ
+  only in case or separator, that every label text became a real net and no net
+  has a single pad, that every part can be named by a reader, and how much of the
+  printed page the drawing actually gets.  It says where it stops: whether a sheet
+  READS well is a judgement it cannot make.  Read-only.
 * `connectivity_check.py > docs/connectivity_check.md` - power and ground
   architecture plus bus and differential-pair mapping, read from the exported
   netlist and the datasheets. Traces every supply and ground pin of every IC to
