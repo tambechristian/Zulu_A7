@@ -216,6 +216,28 @@ the project in Altium before running the two fix scripts.
   C152-C154 added the rail now matches the reference exactly.  Its stub, ground
   symbol, net label and rail junction go with it.  Deletes records, so every later
   OwnerIndex is renumbered and the header count rewritten.  Refuses to run twice.
+* `label_justification.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09:
+  254 net labels stop hanging below their wires.  Altium's Justification is a 3x3
+  anchor grid (h = j%3, v = j//3); a label with v=2 is anchored at the TOP of its
+  text box, so the anchor sits on the wire and the glyphs are drawn underneath it,
+  while pin designators are bottom-anchored and sit above theirs.  Rows are 10
+  units apart and the text is ~6.8 tall, so every net name landed on the NEXT
+  pin's line: CHAN0 (X2 pin 3) rendered at PDF y 100.88..104.00 against the digit
+  4 at 101.60..104.72.  Subtracting 6 (6->0, 7->1, 8->2) moves the anchor to the
+  bottom and leaves the horizontal half alone; CHAN0 now renders at 97.29..100.40,
+  character for character its own digit 3.  Locations are untouched, so the
+  netlist is unchanged.  Eight ROTATED top-anchored labels are left alone and
+  listed on every run - for those the same flip moves the glyphs sideways.
+* `sheet5_ball_captions.py <this folder> "Imported zulu_a7.PrjPcb"` - 2026-09-09:
+  the grey "<ball>  <pin function>" captions beside each FPGA pin row on sheet 5
+  are regenerated from the pin each one annotates, with the function name read
+  from Datasheet/xc7a35tcpg236pkg_pinout.txt.  They had survived the re-pin: 94 of
+  137 named a ball that no longer carried that row's net (SD-DAT2's row said W2,
+  which really carries SDRAM-CS#), and the Pmod block claimed A14/A15/W7, which
+  carry SDRAM D14/D15/D2.  99 rewritten, 37 already right, one left alone and
+  reported.  Only pins whose OwnerPartId equals their placement's CurrentPartId
+  count as live -- U1 is placed 139 times and every placement carries all 236
+  balls, so a naive search finds thousands.  Text only; the netlist is unchanged.
 * `schematic_review.py > docs/schematic_review.md` - readability and labelling
   hygiene over the seven sheets, read from the .SchDoc records so it sees what
   Altium sees rather than what the PDF renders.  Checks that every net label and

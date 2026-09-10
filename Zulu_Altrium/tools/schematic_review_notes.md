@@ -18,28 +18,28 @@ authoritative.
 
 ### The five that matter, in the order to fix them
 
-**1. Sheet 5's ball annotations are stale on three rows in four.** Beside each FPGA pin row is a
-grey `<ball>  <pin function>` caption. It names a ball that no longer carries that row's net on 94
-of 137 rows. Two independent methods agree: matching each caption to the live pin on its row gives
-42 right and 94 wrong; cross-checking each caption against the exported netlist gives 34 right and
-102 wrong. The failures are coherent, which is what makes it certain -- `SD-DAT2`'s row is captioned
-`W2`, a ball that really carries SDRAM-CS#; `CHAN0`'s row says `W3`, which carries CAS#; `CHAN2`
-says `W5`, which carries D5. It is the fingerprint of a pin reshuffle where the captions were left
-behind.
+**1. Sheet 5's ball annotations were stale on three rows in four. FIXED 2026-09-09.** Beside each
+FPGA pin row is a grey `<ball>  <pin function>` caption. It named a ball that no longer carried that
+row's net on 94 of 137 rows. Two independent methods agreed: matching each caption to the live pin
+on its row gave 42 right and 94 wrong; cross-checking each caption against the exported netlist gave
+34 right and 102 wrong. The failures were coherent, which is what made it certain -- `SD-DAT2`'s row
+was captioned `W2`, a ball that really carries SDRAM-CS#; `CHAN0`'s said `W3`, which carries CAS#;
+`CHAN2`'s said `W5`, which carries D5. It was the fingerprint of a pin reshuffle where the captions
+were left behind.
 
-It gets worse in the Pmod block, where the captions claim balls A14, A15 and W7. Those three balls
-carry SDRAM D14, D15 and D2. The real Pmod balls are U18, U19, G17, C17, T17, E19, V19 and U17, and
-the symbol's own pin NAMES still read `IO_A14`, `IO_A15`, `IO_W7`, so the old assignment is baked
-into the symbol as well as the caption. Three balls appear double-booked on one page.
+Worst was the Pmod block, whose captions claimed balls A14, A15 and W7. Those three carry SDRAM D14,
+D15 and D2. The real Pmod balls are U18, U19, G17, C17, T17, E19, V19 and U17.
 
-The pin designators -- the authoritative ones -- are correct throughout. But sheet 5 is the page a
-layout engineer opens to decide swaps, bank grouping and VCCO, and it is about to be used that way.
-This is the only finding in the review that can put a wrong net on a wrong ball.
+`tools/sheet5_ball_captions.py` rewrote 99 captions from the pin each one annotates, taking the
+function name from `Datasheet/xc7a35tcpg236pkg_pinout.txt` -- the same package file `bom_audit.py`
+checks the power tree against, and the source the originals were copied from. 37 were already right.
+One was left alone and reported: `C13  VCCADC`, whose row has no live pin for the tool to check it
+against, and which is correct anyway. Re-running the netlist cross-check afterwards gives **128 agree,
+0 disagree**, with 9 rows carrying no net label to check (the floating MGT balls).
 
-*Fix:* regenerate the caption column from the pin designators, or delete it. The netlist is already
-exported and the ball-to-function mapping is in `Datasheet/xc7a35tcpg236pkg_pinout.txt`, which
-`tools/bom_audit.py` already reads. The two notes on the same sheet that depend on the old pin map
-need rewriting with it.
+STILL OPEN on the same block: the symbol's own pin NAMES still read `IO_A14`, `IO_A15` and `IO_W7`,
+so the old assignment is still baked into the symbol even though the captions beside it are now
+right. Those are library pin names, not sheet text, and changing them is a different job.
 
 **2. `PGOOD` is two different things wearing one name, and one of them is a dead net.** The netlist
 gives `PGOOD = {Q2-G, R77-1}` with R77's other end on VCC3V3. Nothing can pull Q2's gate down, so Q2
@@ -57,21 +57,32 @@ resistor's job.
 Q2 and R77 and run VCC3V3 - R78 - LD5 - GND, and rename the net. If it is meant to follow the
 charger, wire it to U8 pin 7 and drop the duplicate name. **Not actioned: this is a design choice.**
 
-**3. Every net label hangs below its wire while every pin number sits above its own.** The labels
-are `Justification=8` -- anchored at the top of the text box -- so although the anchor is exactly on
-the wire, the visible text is drawn underneath it. The pin designators are drawn above theirs. The
-result is that each net name lines up with the NEXT pin's number: on sheet 2 `CHAN0` (pin 3) renders
-level with the number 4; on sheet 3 `LDQM` (pin 15) renders level with 16; on sheet 5 `JA1` (ball
-U18) renders level with U19. It affects about 200 rows across sheets 2, 3 and 5 -- X2's forty rows
-in both columns, the Pmod, U3's and U4's left columns, and all 138 FPGA pin rows.
+**3. Every net label hung below its wire while every pin number sat above its own. FIXED
+2026-09-09.** The labels were `Justification=8` -- anchored at the top of the text box -- so although
+the anchor sat exactly on the wire, the glyphs were drawn underneath it, while pin designators are
+anchored at the bottom and sit above theirs. Rows are 10 units apart and the text is about 6.8 units
+tall, which put every net name on the NEXT pin's line.
 
-Sheet 2 is the sheet the 40-pin footprint gets drawn from, and reading horizontally across a header
-to find which pin a signal is on is exactly the operation this breaks. Usually the pin name inside
-the symbol saves you; on the Pmod it does not -- pin 11's `GND` lands on the `PMOD-10` line and says
-pin 10 is ground.
+Measured on the PDF before: on sheet 2 the label `CHAN0` -- X2 pin 3 -- had its glyph box at y
+100.88..104.00 while the digit 4 sat at 101.60..104.72, a 2.4 point overlap of a 3.1 point box; its
+own digit 3 was above at 97.29..100.40. Reading across a row to find which pin a signal is on, which
+is exactly what the 40-pin footprint work needs, gave the wrong answer. On the Pmod the pin name
+inside the symbol did not save you either: pin 11's `GND` landed on the `PMOD-10` line.
 
-*Fix:* one justification property on the label class. `tools/fix_text_orientation.py` already
-carries the helpers for exactly this kind of pass. Highest payoff per keystroke in the review.
+`tools/label_justification.py` subtracted 6 from the justification of every horizontal net label that
+had a top value (6 -> 0, 7 -> 1, 8 -> 2), which moves the anchor to the bottom of the box and leaves
+the horizontal half alone: 254 labels over sheets 1 to 5. Measured on the PDF after, `CHAN0` is at y
+97.29..100.40 -- character for character the same box as its own digit 3. Nothing moved
+electrically; a label's Location is its attachment point and was not touched, and the netlist came
+back with the same 178 nets over 783 pads.
+
+The 117 labels that were already bottom-anchored are why this was worth doing at all: the sheets were
+inconsistent with themselves, so a reader could not learn one rule and trust it.
+
+STILL OPEN: eight ROTATED labels that are also top-anchored (two on sheet 1, three on sheet 4, three
+on sheet 5). For a label at 90 degrees the vertical half of the justification moves the glyphs
+sideways rather than up, so the same flip is not obviously right and eight is few enough to judge by
+eye. `tools/label_justification.py` lists them every time it runs.
 
 **4. Three factual errors on the block diagram.** `CHAN-I/O (28)` should be 29: the netlist holds
 CHAN0 through CHAN28, and the sheet has already taught the reader that a number in brackets is a bus
@@ -123,7 +134,11 @@ but the importer put the reference in a visible parameter instead, so the drawin
 
 ### Where this leaves the ZULU-DIP37 redraw
 
-Nothing here blocks it. The two findings that touch the connector work are the label justification on
-sheet 2, which is the sheet the footprint is drawn from, and the stale captions on sheet 5, which is
-where the ball assignments get read. Both are worth clearing first because both are cheap, and
-because a footprint drawn against a misread row is expensive to find later.
+Nothing blocks it, and the two findings that touched it are now fixed. Sheet 2, the sheet the
+footprint is drawn from, no longer pairs each net name with the next pin's number; sheet 5, where
+the ball assignments get read, no longer names the wrong ball on three rows in four. Both were fixed
+before the redraw rather than after precisely because a footprint drawn against a misread row is
+expensive to find later.
+
+What is left for the redraw to work around: the symbol pin names `IO_A14`, `IO_A15` and `IO_W7` on
+the Pmod block, which still carry an assignment the board no longer has.
