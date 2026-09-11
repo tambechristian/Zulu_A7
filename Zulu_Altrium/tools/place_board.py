@@ -62,17 +62,19 @@ ANCHORS = [
     ('X1',  'top',    0, 33.020, 22.721, BOTH),    # shield tabs 0.49 mm off the top edge
     ('X3',  'top',   90,  8.800, 12.500, PLAN),    # opening faces -x: the card enters over the edge
     ('X4',  'top',    0, 32.400,  3.550, PLAN),    # centred in X2's 11.18 mm pin-free window
-    ('U2',  'top',    0, 32.950, 13.600, FIX),     # plan y 11.80 + 1.80 to clear X4's real land
+    ('U2',  'top',    0, 31.475, 13.600, FIX),     # plan y 11.80 + 1.80 to clear X4's real land;
+                                                   # x 32.950 - 1.475 west 2026-09-11 to widen the
+                                                   # U2-to-U1 corridor 2.2625 -> 3.7375 mm
     ('U1',  'top',    0, 46.400, 11.900, PLAN),    # rotation 0, measured best of four (change 5)
     ('Q1',  'top',    0, 41.300, 19.750, FIX),     # plan 39.75, right to clear U2's LQFP land
     ('U4',  'top',    0, 47.500, 19.400, FIX),     # flash to the FRONT (change 1); plan x 45.0
     ('BTN', 'top',   90, 20.300, 12.920, OLDB),
-    ('LD0', 'top',    0, 24.600, 10.885, OLDB),    # the old LED column, x re-centred 0.25 left
-    ('LD1', 'top',    0, 24.600, 12.585, OLDB),
-    ('LD2', 'top',    0, 24.600, 13.785, OLDB),
-    ('LD5', 'top',    0, 24.600, 14.985, OLDB),
-    ('LD3', 'top',    0, 24.600, 16.185, FIX),     # new part: bq24232 CHG, same column and pitch
-    ('LD4', 'top',    0, 24.600, 17.385, FIX),     # new part: bq24232 DONE
+    ('LD0', 'top',    0, 23.350, 10.885, OLDB),    # the old LED column, x re-centred 0.25 left
+    ('LD1', 'top',    0, 23.350, 12.585, OLDB),
+    ('LD2', 'top',    0, 23.350, 13.785, OLDB),
+    ('LD5', 'top',    0, 23.350, 14.985, OLDB),
+    ('LD3', 'top',    0, 23.350, 16.185, FIX),     # new part: bq24232 CHG, same column and pitch
+    ('LD4', 'top',    0, 23.350, 17.385, FIX),     # new part: bq24232 DONE
     ('J1',  'top',   90, 66.400, 12.700, PLAN),    # plan x, board-centred y
     ('JP3', 'top',    0, 64.300, 21.680, FIX),     # plan x, old y: the plan's y is off the edge
     ('JP4', 'top',    0, 64.300,  3.720, FIX),

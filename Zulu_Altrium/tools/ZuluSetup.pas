@@ -77,11 +77,15 @@
 {  Run:  MakeOneTestClass    canary -- one class named ZULU_CANARY             }
 {        MakeNetClasses      the real ten                                      }
 {        ReportNetClasses    lists what is on the board, changes nothing       }
+{        ReportShift         where the seven movable parts are now             }
+{        ShiftWest           U2 1.475 mm west, LD0-LD5 1.250 mm west           }
 {  Then Ctrl+S.                                                                }
 {..............................................................................}
 
 Var
-    Brd : IPCB_Board;
+    Brd     : IPCB_Board;
+    Log     : TStringList;
+    Missing : String;
 
 
 Function BoardOrNil : IPCB_Board;
@@ -209,6 +213,132 @@ Begin
 
     ShowMessage('Zulu A7 - user classes on the board' + #13#10 + #13#10 +
                 Log.Text + #13#10 + 'Nothing was changed.');
+    Log.Free;
+End;
+
+{..............................................................................}
+{  U2 AND THE LED ROW GO WEST.                                                 }
+{                                                                              }
+{  WHY                                                                          }
+{  This is the one measured regression against the six-layer board that died   }
+{  at 26 airwires. The FT2232 went from a QFN64 to an LQFP64, so the north-     }
+{  south corridor between U2's east face and U1's west lands fell from 3.680 mm }
+{  to 2.2625 mm, while routing layers fell from six to four. North-south        }
+{  capacity at the exact x where the old router built its via wall went from    }
+{  21 lanes x 6 to 13 lanes x 4 -- a 59 per cent cut, and the only budget       }
+{  number on this board that got worse. See docs/routing_readiness.md item 5.   }
+{                                                                              }
+{  THE DISTANCES ARE NOT THE ONES THE REVIEW ASKED FOR, AND THAT IS DELIBERATE. }
+{  It asked for U2 1.600 and the LEDs 1.300. Re-measured from the board as it   }
+{  stands -- after Q2 and R77 were deleted and the packer re-flowed that corner }
+{  -- BTN's east edge is 21.750 and the LED row's west edge is 23.300, so the   }
+{  slack is 1.550 mm, not the 1.650 the review had. At a 1.300 shift the LEDs   }
+{  would sit 0.250 mm from BTN, and Altium's own ComponentClearance rule is     }
+{  GAP = 10mil = 0.254 mm, scope All/All. It would fail DRC by four microns.    }
+{                                                                              }
+{  So the pair is scaled back to the largest shift that holds every neighbour   }
+{  at 0.300 mm or better:                                                       }
+{                                                                              }
+{      U2    1.475 mm west     LED row -> U2 becomes exactly 0.300             }
+{      LEDs  1.250 mm west     BTN -> LED row becomes exactly 0.300            }
+{                                                                              }
+{  and the corridor goes 2.2625 -> 3.7375 mm. That is 92 per cent of the gain   }
+{  the review wanted, for none of the DRC risk. Both distances are exact        }
+{  multiples of the new 0.025 mm snap grid.                                     }
+{                                                                              }
+{  NOTHING ELSE MOVES, AND THAT IS A FINDING, NOT AN OMISSION. The review       }
+{  priced this at "eight parts plus U2, plus U2's bottom-side decoupling        }
+{  following it". There is no bottom-side decoupling under U2: the only         }
+{  bottom parts wholly inside U2's outline are R80-R83, and the area beneath    }
+{  it belongs to U3, which must not move. Checked with tools/shift_u2_leds.py   }
+{  against tools/placement_report.txt regenerated from the live board.          }
+{                                                                              }
+{  Land-to-land clearance was re-checked on every pad pair at these distances   }
+{  (place_board.check, 0.30 mm): 0 off-board, 0 pairs under the rule.           }
+{                                                                              }
+{  Run:  ReportShift    prints where the seven parts are, changes nothing      }
+{        ShiftWest      moves them                                              }
+{  Then Ctrl+S, re-run ReportPlacement, and re-run tools/verify_copper.py.     }
+{..............................................................................}
+
+Procedure MoveWest(D : String; DX : Double);
+Var
+    C : IPCB_Component;
+Begin
+    C := Brd.GetPcbComponentByRefDes(D);
+    If C = Nil Then
+    Begin
+        Missing := Missing + D + ' ';
+        Exit;
+    End;
+    C.BeginModify;
+    C.X := C.X - MMsToCoord(DX);
+    C.EndModify;
+    Log.Add('   ' + D + '  -> ' + FloatToStr(CoordToMMs(C.X)) + ' mm');
+End;
+
+
+Procedure ReportShift;
+Var
+    It : IPCB_BoardIterator;
+    C  : IPCB_Component;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+    Log := TStringList.Create;
+
+    It := Brd.BoardIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(eComponentObject));
+    It.AddFilter_LayerSet(AllLayers);
+    It.AddFilter_Method(eProcessAll);
+    C := It.FirstPCBObject;
+    While C <> Nil Do
+    Begin
+        If (C.Name.Text = 'U2') Or (C.Name.Text = 'LD0') Or (C.Name.Text = 'LD1') Or
+           (C.Name.Text = 'LD2') Or (C.Name.Text = 'LD3') Or (C.Name.Text = 'LD4') Or
+           (C.Name.Text = 'LD5') Or (C.Name.Text = 'BTN') Then
+            Log.Add('   ' + C.Name.Text + '  x ' + FloatToStr(CoordToMMs(C.X)) +
+                    '   y ' + FloatToStr(CoordToMMs(C.Y)));
+        C := It.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(It);
+
+    ShowMessage('Zulu A7 - component origins now' + #13#10 + #13#10 + Log.Text + #13#10 +
+                'BTN does not move. Nothing was changed.');
+    Log.Free;
+End;
+
+
+Procedure ShiftWest;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.' + #13#10 +
+                    'Open zulu_a7.PcbDoc, click in the board window, and run again.');
+        Exit;
+    End;
+    Log := TStringList.Create;
+    Missing := '';
+
+    MoveWest('U2',  1.475);
+    MoveWest('LD0', 1.250);
+    MoveWest('LD1', 1.250);
+    MoveWest('LD2', 1.250);
+    MoveWest('LD3', 1.250);
+    MoveWest('LD4', 1.250);
+    MoveWest('LD5', 1.250);
+
+    Brd.ViewManager_FullUpdate;
+    If Missing <> '' Then Log.Add('   NOT FOUND: ' + Missing);
+    ShowMessage('Zulu A7 - U2 1.475 mm west, LD0-LD5 1.250 mm west' + #13#10 + #13#10 +
+                Log.Text + #13#10 +
+                'Corridor U2 east -> U1 west lands: 2.2625 -> 3.7375 mm.' + #13#10 + #13#10 +
+                'Nothing is saved yet - press Ctrl+S, then re-run ReportPlacement.');
     Log.Free;
 End;
 
