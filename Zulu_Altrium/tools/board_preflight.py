@@ -34,6 +34,7 @@ ROOT = os.path.dirname(HERE)
 NET = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Project Outputs for zulu_a7', 'zulu_a7.NET')
 LIB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'zulu_a7.PcbLib')
 PLAN = os.path.join(ROOT, 'docs', 'placement.html')
+PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'zulu_a7.PcbDoc')
 
 BOARD = (69.85, 25.40)          # the outline about to be drawn; checked, not assumed
 
@@ -157,6 +158,53 @@ def main():
         fails.append('the BGA land closes the escape: margin %+.4f mm at a %.4f mm land'
                      % (margin, land))
     f.close()
+
+    # ---- 6. the PcbDoc itself: outline, stack, and whether the planes agree with the board
+    print('\n6. the PcbDoc')
+    if not os.path.exists(PCB):
+        print('   no PcbDoc yet')
+    else:
+        pf = olefile.OleFileIO(PCB)
+        b6 = pf.openstream(['Board6', 'Data']).read()[4:].decode('latin-1')
+        vx = {int(k): v for k, v in re.findall(r'\|VX(\d+)=([^|]*)', b6)}
+        vy = {int(k): v for k, v in re.findall(r'\|VY(\d+)=([^|]*)', b6)}
+
+        def mil(s):
+            m = re.fullmatch(r'\s*(-?[\d.]+)\s*mil\s*', s)
+            return float(m.group(1)) if m else None
+
+        pts = [(mil(vx[i]), mil(vy[i])) for i in sorted(vx) if i in vy]
+        xs = [p[0] for p in pts if p[0] is not None]
+        ys = [p[1] for p in pts if p[1] is not None]
+        w = (max(xs) - min(xs)) * 0.0254
+        h = (max(ys) - min(ys)) * 0.0254
+        print('   board shape %d vertices, %.3f x %.3f mm, lower-left (%.3f, %.3f) mm'
+              % (len(pts), w, h, min(xs) * 0.0254, min(ys) * 0.0254))
+        if abs(w - BOARD[0]) > 0.01 or abs(h - BOARD[1]) > 0.01:
+            fails.append('board shape is %.3f x %.3f mm, wanted %.2f x %.2f'
+                         % (w, h, BOARD[0], BOARD[1]))
+        elif abs(min(xs)) > 0.01 or abs(min(ys)) > 0.01:
+            warns.append('board shape is the right size but its lower-left corner is at '
+                         '(%.3f, %.3f) mm, not the origin' % (min(xs) * 0.0254, min(ys) * 0.0254))
+
+        # Altium sizes each split-plane polygon to the board shape. If the shape was changed by
+        # poking the file instead of through the editor, the planes stay on the old board -- so
+        # compare them rather than trusting that they followed.
+        try:
+            pg = pf.openstream(['Polygons6', 'Data']).read().decode('latin-1')
+        except Exception:
+            pg = ''
+        pv = [mil(v) for _, v in re.findall(r'\|(VX\d+)=([^|]*)', pg)]
+        pv = [v for v in pv if v is not None]
+        if pv:
+            pw = (max(pv) - min(pv)) * 0.0254
+            gap = (w - pw) / 2.0
+            print('   plane polygons span %.3f mm in x, inset %.3f mm from the board edge'
+                  % (pw, gap))
+            if gap < 0 or gap > 2.0:
+                fails.append('plane polygons do not match the board shape (inset %.3f mm) - they '
+                             'were not regenerated when the outline changed' % gap)
+        pf.close()
 
     print('\n' + '=' * 70)
     for w in warns:
