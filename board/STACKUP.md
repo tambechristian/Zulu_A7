@@ -26,9 +26,27 @@ goes in between) if four signal layers turn out not to close. That step was pric
 - **Specify outer copper as 0.5 oz base plated to 1 oz finished**, not "1 oz". At a typical
   1 oz etch bias the fan-out clearance falls below the fab's own minimum, on a design whose
   DRC passes because DRC runs on nominal geometry.
-- **Rotate U1 so Bank 14's edge faces the SDRAM.** Bank 14 holds 50 I/O and the 39-net SDRAM
-  bus is single-bank; the present orientation sends it out of the opposite package edge. This
-  is free and no earlier analysis proposed it.
+- ~~Rotate U1 so Bank 14's edge faces the SDRAM.~~ **Proposed on 2026-09-10 and MEASURED THE
+  SAME DAY AS WRONG. Do not do this.** The premise was that the 39-net SDRAM bus is a Bank 14
+  bus. It is not. Against the current netlist the bus sits on **bank 34 (22 nets) and bank 35
+  (15 nets)**, with 2 on bank 16 — and those banks already occupy the **west and south** package
+  edges, which is the side the SDRAM is on. Bank 14 carries the **X2 header channels** (25 of
+  its 50 nets), plus the FT2232H and the flash.
+
+  Scored properly — every net with one U1 ball and a locatable far end, ball positions taken
+  from the footprint and destinations from the placement plan, X2 resolved per pin rather than
+  as a blob — all four orientations come out:
+
+  | rotation | total | SDRAM bus | Bank 14 |
+  |---|---|---|---|
+  | **0 deg (as drawn)** | **1730 mm** | **591 mm** | 834 mm |
+  | 90 deg | 1925 mm | 800 mm | 814 mm |
+  | 180 deg (Bank 14 west) | 1945 mm | 838 mm | 752 mm |
+  | 270 deg | 1758 mm | 636 mm | 765 mm |
+
+  The present orientation is already the best of the four. The rotation that was recommended is
+  the **worst**, and it lengthens the timing-critical SDRAM bus by 42% to shorten the header
+  channels by 10%. U1 stays as drawn.
 
 ### Still open
 

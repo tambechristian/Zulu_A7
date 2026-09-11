@@ -73,14 +73,14 @@
 <div class="wrap">
   <header>
     <h1>Zulu A7 Placement</h1>
-    <p class="sub">Front and back placement for the 69.85 × 25.40 mm module, drawn to scale. Four changes
-      from the re-pin study are marked; everything else is as previously planned.</p>
+    <p class="sub">Front and back placement for the 69.85 × 25.40 mm module, drawn to scale. Four changes from the re-pin study are marked, plus one orientation
+      test that changed nothing; everything else is as previously planned.</p>
     <div class="meta">
       <span>BOARD <b>1.000 × 2.750 in</b></span>
       <span>HEADER <b>2.54 mm, rows 22.86 apart</b></span>
       <span>FPGA <b>XC7A35T-CPG236, 10 × 10</b></span>
       <span>SCALE <b>1 mm = 10 units</b></span>
-      <span>REV <b>2026-09-10</b></span>
+      <span>REV <b>2026-09-10b</b></span>
     </div>
   </header>
 
@@ -135,6 +135,18 @@
         <p>The drawing still carried the old 44-pin field. X2 is 40 pins: 21–29 right of the LiPo landing,
           30–40 left of it, mirroring the top row exactly.</p>
         <p class="win">40 pins, contiguous</p>
+      </div>
+      <div class="chg">
+        <div class="tag"><span class="badge">5</span><h3>U1 orientation tested, and left alone</h3></div>
+        <p>A stack review proposed rotating the FPGA so Bank&nbsp;14 faced the SDRAM, on the premise
+          that the 39-net bus is a Bank&nbsp;14 bus. It is not: it sits on bank&nbsp;34 (22 nets) and
+          bank&nbsp;35 (15), which already occupy the west and south edges &mdash; the SDRAM side.
+          Bank&nbsp;14 carries the X2 channels. Scoring every net with one U1 ball against its real
+          destination, per header pin rather than per part, gives <b>0&deg; 1730&nbsp;mm</b> total
+          (591&nbsp;mm of it SDRAM), 270&deg; 1758, 90&deg; 1925, and <b>180&deg; 1945</b> &mdash; the
+          proposed rotation is the worst of the four, and lengthens the timing-critical bus by 42% to
+          shorten the header channels by 10%.</p>
+        <p class="win">as drawn is already optimal</p>
       </div>
     </div>
   </section>
