@@ -131,7 +131,9 @@ def main(path):
              'yes' if len(rows) == 2 and all(len(v) == 20 for v in rows.values()) else 'NO'))
     cp = pads(f, 'XC7A35T-CPG236')
     sz = {(round(p[3], 4), round(p[4], 4)) for p in cp}
-    ok_cp = len(cp) == 238 and all(abs(a - 0.275) < TOL and abs(b - 0.275) < TOL for a, b in sz)
+    # 0.225, not UG475's 0.275 maximum: the larger land closes the escape gap -- see
+    # make_fp_source.py section B and board/STACKUP.md
+    ok_cp = len(cp) == 238 and all(abs(a - 0.225) < TOL and abs(b - 0.225) < TOL for a, b in sz)
     print('  CPG236       %d lands, sizes %s' % (len(cp), sz))
     f.close()
 

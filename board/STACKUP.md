@@ -4,6 +4,52 @@ Decisions: **6 layers**, **JLCPCB**, ball land **0.225 mm**, 3 mil trace at
 3.5 mil clearance in the fan-out. Rules in `zulu_a7-6layer-jlcpcb.dru`. Check them
 against the fab's current capability sheet before ordering — house rules move.
 
+## Re-confirmed 2026-09-10
+
+The decision above was re-opened from scratch and lands in the same place. Five analyses —
+escape feasibility on through vias, what HDI would buy, fab capability and price, comparable
+boards, and SI/PDN — were each run independently and then independently challenged. Outcome:
+**6 layers, all through vias, ball land 0.225 mm.** HDI stays rejected, for the reason PCBWay
+themselves gave in writing on 2026-08-27.
+
+Agreed with the user on 2026-09-10: route on 6 layers, and keep L1–L5 geometry fixed so the
+8-layer all-through promotion stays a drop-in stackup insert (L6 remaps to L8, a SIG/GND pair
+goes in between) if four signal layers turn out not to close. That step was priced at about
++$56 at qty 5 and +$65 at qty 50, so the decision can wait until order time.
+
+### What changed
+
+- **No power plane.** Sig / GND / Sig / Sig / GND / Sig, with VCC1V0, VCC1V8 and VCC3V3 as
+  pours on L1/L4/L6. At 1.6 mm the two plane layers sit about 1.1 mm apart and the pair is
+  worth roughly 40 pF — not a PDN element, while GND on both sides of every transition keeps
+  the SDRAM bus return a stitch via away instead of routing it through a decoupling cap.
+- **Specify outer copper as 0.5 oz base plated to 1 oz finished**, not "1 oz". At a typical
+  1 oz etch bias the fan-out clearance falls below the fab's own minimum, on a design whose
+  DRC passes because DRC runs on nominal geometry.
+- **Rotate U1 so Bank 14's edge faces the SDRAM.** Bank 14 holds 50 I/O and the 39-net SDRAM
+  bus is single-bank; the present orientation sends it out of the opposite package edge. This
+  is free and no earlier analysis proposed it.
+
+### Still open
+
+- PCBWay answered the PAD, never the SPACE BETWEEN pads. That follow-up is still the number
+  that decides everything, and it is unanswered.
+- The fan-out fence was drawn on the 69.85 mm outline. The package escape reproduces exactly;
+  the fan-out half must be re-run on the 60.96 mm board before it means anything.
+- Fence capacity on the worst package side looks short (~33 places wanted against ~26
+  available) before U1 is rotated. Re-measure after the rotation.
+- Confirm in writing: 0.05 mm annular ring on a 0.20 mm drill, and the 0.225 mm land with its
+  mask opening.
+
+### A note for whoever reads the library
+
+`Zulu_Altrium/tools/make_fp_source.py` holds the CPG236 land at 0.225 mm and says why at
+length. It was briefly raised to 0.275 mm on 2026-09-10 by someone reading UG475 Table A-1 as
+a requirement. It is not one: 0.275 mm is the **maximum** land for CPG, and taking it drops the
+inter-pad gap to 0.225 mm against the 0.2562 mm a 3 mil trace at 3.5 mil clearance needs —
+margin goes from +0.0188 mm to -0.0312 mm and the escape becomes impossible. The 0.82:1 land is
+the price of a through-via board and it is deliberate.
+
 > **This document was written for the 2.750 in board.** The outline sections have
 > been corrected to the 2.400 x 1.000 in board (60.96 x 25.40 mm): board outline,
 > the Pmod strip, and the layer-20 rectangle. Everything downstream of placement

@@ -15,9 +15,9 @@ hand-fixed in the PCB editor afterwards:
                   to open the LiPo landing opposite the micro-USB, then renumber 34-44 -> 30-40.
                   X2's contactrefs in <signals> are transformed the same way so the file stays
                   internally consistent (a malformed file makes Altium spin and eat the window).
-  B  XC7A35T-CPG236  lands 0.225 -> 0.275 mm, UG475 Table A-1 NSMD for the 0.5 mm pitch. The
-                  0.375 mm mask opening cannot ride along -- EAGLE keeps mask expansion in the
-                  DRC, not the pad -- so set it in Altium after the import.
+  B  XC7A35T-CPG236  lands HELD at 0.225 mm, NOT raised to UG475's 0.275 mm maximum. Taking
+                  that maximum closes the 0.5 mm-pitch escape gap and makes the board
+                  unroutable on any through-via stack; see the long note at section B.
   C  SPI-8_SOIC_150  copied in from zulu_a7.sch, where it is defined but never placed on the
                   board. This is the narrow-SOIC pattern U10 (93LC46BT-I/SN) has to move to; the
                   300-mil SOIC8 it sits on now is unsolderable.
@@ -108,10 +108,29 @@ s, ncref = re.subn(r'<contactref element="X2" pad="([^"]+)"[^/]*/>\n?', fix_cref
 assert ncref == 44, 'saw %d X2 contactrefs' % ncref
 
 # ------------------------------------------------------------------ B: CPG236 lands
+# HELD AT 0.225 mm DELIBERATELY -- do not "correct" this to UG475's 0.275.
+#
+# Table A-1 gives 0.275 mm as the MAXIMUM PCB solder land for CPG, and the prose recommends a 1:1
+# ratio to the package's own 0.275 mm SMD opening "for improved board level reliability". Taking
+# that maximum makes the board unroutable. At 0.5 mm pitch the gap between adjacent lands is
+# 0.5 - land, and a 3 mil trace with 3.5 mil clearance either side needs 0.0762 + 2(0.09) =
+# 0.2562 mm to pass between two of them:
+#
+#     land 0.225 -> gap 0.275 -> margin +0.0188 mm   escape closes
+#     land 0.275 -> gap 0.225 -> margin -0.0312 mm   escape is geometrically impossible
+#
+# Rings 1 and 2 have to cross a populated row to reach the depopulated annulus whichever way they
+# leave, so that gap is unavoidable, and no layer count fixes it. Only via-in-pad HDI would keep
+# the 1:1 land, and PCBWay declined HDI in writing on 2026-08-27 ("would add the manufacturing a
+# lot, so planA would be recommended"). 0.225 mm is 0.82:1, and PCBWay build BGA lands down to
+# 0.2032 mm at pitches to 0.4 mm, so it is inside their process with 0.022 mm to spare.
+#
+# This was already settled in board/STACKUP.md on 2026-08-30; it was re-derived independently on
+# 2026-09-10 and is recorded here because the EAGLE source looks like an error and is not one.
+LAND = '0.225'
 fm = one(r'<package name="XC7A35T-CPG236".*?</package>', s, 'CPG236 package')
-f2, nsmd = re.subn(r'dx="0.225" dy="0.225"', 'dx="0.275" dy="0.275"', fm.group(0))
-assert nsmd == 238, 'patched %d of 238 CPG236 lands' % nsmd
-s = s[:fm.start()] + f2 + s[fm.end():]
+held = len(re.findall(r'dx="%s" dy="%s"' % (LAND, LAND), fm.group(0)))
+assert held == 238, 'CPG236 lands are not %s mm: %d of 238 match' % (LAND, held)
 
 # ------------------------------------------------------------------ C + D: new packages
 sch = io.open(SCH, encoding='utf-8').read()
@@ -187,7 +206,7 @@ off = {k: (got[k], want[k]) for k in want if got[k] != want[k]}
 assert not off, 'pads off the intended grid: %s' % off
 
 assert len(dip.findall('rectangle')) == 40, 'rectangles: %d' % len(dip.findall('rectangle'))
-assert all(e.get('dx') == '0.275' for e in pkgs['XC7A35T-CPG236'].findall('smd'))
+assert all(e.get('dx') == LAND for e in pkgs['XC7A35T-CPG236'].findall('smd'))
 assert len(pkgs['SPI-8_SOIC_150'].findall('smd')) == 8
 assert len(pkgs['EVERLIGHT-19-337'].findall('smd')) == 6
 
@@ -244,7 +263,7 @@ for y in sorted(rows, reverse=True):
     print('   y=%-6s %2d pads in %d runs: %s' % (
         y, len(rows[y]), len(gs),
         '  |  '.join('%s-%s (x %.2f..%.2f)' % (g[0][1], g[-1][1], g[0][0], g[-1][0]) for g in gs)))
-print('CPG236      238 lands 0.225 -> 0.275 mm  (0.375 mask opening still to set in Altium)')
+print('CPG236      238 lands held at %s mm (0.82:1, for the escape gap; see section B)' % LAND)
 print('added       SPI-8_SOIC_150 (8 smd) and EVERLIGHT-19-337 (6 smd), each on a dummy element')
 for fp in drawn:
     p = pkgs[fp['name']]
