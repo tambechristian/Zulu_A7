@@ -229,6 +229,160 @@ Begin
 End;
 
 
+
+{ Puts LD5's anode back on VCC3V3.
+
+  COLLATERAL DAMAGE FROM FixPgood, caught by board_preflight.py: unconnected pads
+  went from 39 across 7 components to 40 across 8, and the new one was LD5-A.
+  FixPgood deletes every wire with an endpoint on a Q2 or R77 pin. One of those
+  two wires ran from the VCC3V3 power port to R77-2 -- and the same branch fed
+  LD5's anode, so deleting it took LD5-A off VCC3V3 as well. LD5-K and R78 were
+  unaffected; only the anode floated.
+
+  The fix is a VCC3V3 power port placed directly ON the anode pin. A power port
+  sitting on a pin connects to it without a wire, so this cannot be severed again
+  by anything that deletes wires, and it does not depend on finding the old port's
+  coordinates.
+
+  Run ReportLD5Anode first: it says whether the anode already has a port on it. }
+Procedure LD5Anode(DoIt : Boolean);
+Var
+    It, PIt : ISch_Iterator;
+    C       : ISch_Component;
+    P, Anode: ISch_Pin;
+    O       : ISch_GraphicalObject;
+    PP      : ISch_PowerObject;
+    Found, Already : Boolean;
+    AX, AY  : Integer;
+    Msg     : String;
+Begin
+    If Doc = Nil Then
+    Begin
+        ShowMessage('No schematic document is focused.' + #13#10 +
+                    'Open zulu_a7_1.SchDoc, click in it, and run again.');
+        Exit;
+    End;
+
+    Found := False; Already := False; AX := 0; AY := 0;
+
+    It := Doc.SchIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(eSchComponent));
+    C := It.FirstSchObject;
+    While (C <> Nil) And (Not Found) Do
+    Begin
+        If C.Designator.Text = 'LD5' Then
+        Begin
+            PIt := C.SchIterator_Create;
+            PIt.AddFilter_ObjectSet(MkSet(ePin));
+            P := PIt.FirstSchObject;
+            While P <> Nil Do
+            Begin
+                If P.Designator = 'A' Then
+                Begin
+                    AX := P.Location.X;
+                    AY := P.Location.Y;
+                    Found := True;
+                End;
+                P := PIt.NextSchObject;
+            End;
+            C.SchIterator_Destroy(PIt);
+        End;
+        C := It.NextSchObject;
+    End;
+    Doc.SchIterator_Destroy(It);
+
+    If Not Found Then
+    Begin
+        ShowMessage('LD5 pin A was not found on this sheet.');
+        Exit;
+    End;
+
+    { is something already sitting on it }
+    It := Doc.SchIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(ePowerObject));
+    O := It.FirstSchObject;
+    While O <> Nil Do
+    Begin
+        PP := O;
+        If (PP.Location.X = AX) And (PP.Location.Y = AY) Then Already := True;
+        O := It.NextSchObject;
+    End;
+    Doc.SchIterator_Destroy(It);
+
+    Msg := 'Zulu A7 - LD5 anode' + #13#10 + #13#10 +
+           '   LD5 pin A at ' + IntToStr(AX) + ',' + IntToStr(AY) + #13#10 +
+           '   power port already on it: ' + BoolToStr(Already, True) + #13#10;
+
+    If DoIt And (Not Already) Then
+    Begin
+        { Build the object FULLY before opening the transaction, and put only the
+          register call inside it. ISch_PowerObject.OwnerDocument is READ-ONLY --
+          assigning it raises "Property does not exist or is readonly", and the
+          first version of this did that from inside PreProcess, which leaves the
+          transaction open exactly as the PCB side did. RegisterSchObjectInContainer
+          sets ownership; nothing else needs to. }
+        PP := SchServer.SchObjectFactory(ePowerObject, eCreate_Default);
+        PP.Location    := Point(AX, AY);
+        PP.Text        := 'VCC3V3';
+        PP.Style       := ePowerBar;
+        PP.Orientation := eRotate90;
+
+        SchServer.ProcessControl.PreProcess(Doc, '');
+        Doc.RegisterSchObjectInContainer(PP);
+        SchServer.ProcessControl.PostProcess(Doc, '');
+        Doc.GraphicallyInvalidate;
+        Msg := Msg + '   ADDED a VCC3V3 power port on the pin' + #13#10 + #13#10 +
+               'Nothing is saved yet - press Ctrl+S, then Validate and regenerate' + #13#10 +
+               'the netlist to confirm LD5-A is on VCC3V3.';
+    End
+    Else If Already Then
+        Msg := Msg + #13#10 + 'Nothing to do.'
+    Else
+        Msg := Msg + #13#10 + 'REPORT ONLY - nothing was changed.';
+
+    ShowMessage(Msg);
+End;
+
+
+
+{ RECOVERY, the schematic twin of ClosePendingTransaction in ZuluFixDrc.pas.
+  A script that raises between SchServer.ProcessControl.PreProcess and its
+  matching PostProcess leaves the transaction open, and Altium then refuses to
+  save the document. One PostProcess closes it. }
+Procedure CloseSchTransaction;
+Var
+    N : Integer;
+Begin
+    If Doc = Nil Then
+    Begin
+        ShowMessage('No schematic document is focused.');
+        Exit;
+    End;
+    N := 0;
+    Try
+        SchServer.ProcessControl.PostProcess(Doc, '');
+        N := 1;
+    Except
+        N := 0;
+    End;
+    ShowMessage('Zulu A7 - schematic transaction' + #13#10 + #13#10 +
+                'PostProcess calls that succeeded: ' + IntToStr(N) + #13#10 + #13#10 +
+                'Now try Ctrl+S.');
+End;
+
+
+Procedure ReportLD5Anode;
+Begin
+    LD5Anode(False);
+End;
+
+
+Procedure FixLD5Anode;
+Begin
+    LD5Anode(True);
+End;
+
+
 Procedure ReportPgood;
 Begin
     Survey(False);
