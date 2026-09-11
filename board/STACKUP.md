@@ -4,6 +4,30 @@ Decisions: **6 layers**, **JLCPCB**, ball land **0.225 mm**, 3 mil trace at
 3.5 mil clearance in the fan-out. Rules in `zulu_a7-6layer-jlcpcb.dru`. Check them
 against the fab's current capability sheet before ordering — house rules move.
 
+## Current board, confirmed 2026-09-10
+
+**69.85 × 25.40 mm — 2.750 × 1.000 in.** Confirmed by the user on 2026-09-10 against the
+alternative of cutting back to 2.400 in. The 8.89 mm strip past the pin grid is what the Pmod
+and the two JTAG rows live on; at 2.400 in they have nowhere to go.
+
+    outline on layer 20, width 0:
+    (0, 0)          ->  (69.85, 0)
+    (69.85, 0)      ->  (69.85, 25.40)
+    (69.85, 25.40)  ->  (0, 25.40)
+    (0, 25.40)      ->  (0, 0)
+
+**X2 is 40 pins, not 44.** Rows at y 1.27 and 24.13, pins from x 1.27 to 59.69, each row cut
+9 + landing + 11 with both landings on the same four x values (36.83 / 34.29 / 31.75 / 29.21):
+the micro-USB lands on the top row, the JST LiPo header on the bottom row directly opposite it.
+The pin grid therefore stops at x 59.69 and the connector strip runs from 60.96 to 69.85.
+
+> **Everything below this point that says 2.400 in, 60.96 mm, 44 pins, "the Pmod stands in the
+> channel", pin 44 = +5V-INPUT, or the VEXT / D1 / D2 / D3 diode-OR is HISTORY and superseded.**
+> The board went 0.800 in → 2.400 in → 2.750 in (`Claude_Fable/tools/extend_board_275.py` made
+> the last step); the pin field was renumbered 1–40 on 2026-09-09; and D1/D2/D3 went with the
+> bq24232 charger and the removal of the +5V-INPUT pin. The sections are kept because the
+> reasoning in them is still worth reading, not because the numbers are current.
+
 ## Re-confirmed 2026-09-10
 
 The decision above was re-opened from scratch and lands in the same place. Five analyses —
@@ -53,7 +77,7 @@ goes in between) if four signal layers turn out not to close. That step was pric
 - PCBWay answered the PAD, never the SPACE BETWEEN pads. That follow-up is still the number
   that decides everything, and it is unanswered.
 - The fan-out fence was drawn on the 69.85 mm outline. The package escape reproduces exactly;
-  the fan-out half must be re-run on the 60.96 mm board before it means anything.
+  the fan-out half must be re-run on the current 69.85 mm board before it means anything.
 - Fence capacity on the worst package side looks short (~33 places wanted against ~26
   available) before U1 is rotated. Re-measure after the rotation.
 - Confirm in writing: 0.05 mm annular ring on a 0.20 mm drill, and the 0.225 mm land with its
