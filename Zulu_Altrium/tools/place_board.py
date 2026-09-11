@@ -31,8 +31,8 @@ The plan's rectangles are BODY outlines. Several land patterns are larger and th
     JP4 1X03 at y 0.70      a 1.524 mm pad would hang 0.06 mm over the board edge. JP3/JP4 keep
                             the old board's y (21.68 / 3.72) and take the plan's x.
 
-Run:  python tools/place_board.py            report only
-      python tools/place_board.py --emit     also write tools/ZuluPlacement.pas
+Run:  python tools/place_board.py            report only, and check the result
+      python tools/emit_placement.py         write tools/ZuluPlacement.pas from it
 """
 import collections
 import math

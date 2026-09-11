@@ -268,20 +268,14 @@ Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component 
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R6-4.7K (2242.09mil,868.11mil) on Bottom Layer And SMT Small Component R7-4.7K (2289.33mil,868.11mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R77-100K (358.267mil,624.02mil) on Bottom Layer And SMT Small Component R78-680 (448.818mil,624.02mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R80-33 (1163.385mil,750mil) on Bottom Layer And SMT Small Component R81-330 (1253.937mil,750mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R80-33 (1163.385mil,750mil) on Bottom Layer And SMT Small Component R84-330 (1163.385mil,797.24mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R80-33 (1163.385mil,750mil) on Bottom Layer And SMT Small Component R85-10K (1253.937mil,797.24mil) on Bottom Layer
+Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R80-33 (1163.385mil,750mil) on Bottom Layer And SMT Small Component R84-330 (1281.495mil,797.24mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R80-33 (1163.385mil,750mil) on Bottom Layer And SOIC Component U10-93LC46BT-I/SN (877.366mil,736.024mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R81-330 (1253.937mil,750mil) on Bottom Layer And SMT Small Component R82-33 (1344.488mil,750mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R81-330 (1253.937mil,750mil) on Bottom Layer And SMT Small Component R84-330 (1163.385mil,797.24mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R81-330 (1253.937mil,750mil) on Bottom Layer And SMT Small Component R85-10K (1253.937mil,797.24mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R81-330 (1253.937mil,750mil) on Bottom Layer And SMT Small Component R86-10K (1344.488mil,797.24mil) on Bottom Layer
+Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R81-330 (1253.937mil,750mil) on Bottom Layer And SMT Small Component R84-330 (1281.495mil,797.24mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R82-33 (1344.488mil,750mil) on Bottom Layer And SMT Small Component R83-330 (1435.039mil,750mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R82-33 (1344.488mil,750mil) on Bottom Layer And SMT Small Component R85-10K (1253.937mil,797.24mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R82-33 (1344.488mil,750mil) on Bottom Layer And SMT Small Component R86-10K (1344.488mil,797.24mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R83-330 (1435.039mil,750mil) on Bottom Layer And SMT Small Component R86-10K (1344.488mil,797.24mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R84-330 (1163.385mil,797.24mil) on Bottom Layer And SMT Small Component R85-10K (1253.937mil,797.24mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R84-330 (1163.385mil,797.24mil) on Bottom Layer And SOIC Component U10-93LC46BT-I/SN (877.366mil,736.024mil) on Bottom Layer
-Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R85-10K (1253.937mil,797.24mil) on Bottom Layer And SMT Small Component R86-10K (1344.488mil,797.24mil) on Bottom Layer
+Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R82-33 (1344.488mil,750mil) on Bottom Layer And SMT Small Component R84-330 (1281.495mil,797.24mil) on Bottom Layer
+Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R83-330 (1435.039mil,750mil) on Bottom Layer And SMT Small Component R85-10K (1478.346mil,797.24mil) on Bottom Layer
+Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R84-330 (1281.495mil,797.24mil) on Bottom Layer And SMT Small Component R86-10K (1281.495mil,844.48mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R91-10K (2324.802mil,669.685mil) on Bottom Layer And SMT Small Component R92-10K (2405.511mil,669.685mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R92-10K (2405.511mil,669.685mil) on Bottom Layer And SMT Small Component R93-10K (2486.223mil,669.685mil) on Bottom Layer
 Component Clearance Constraint: (Collision < 10mil) Between SMT Small Component R94-10K (2324.802mil,781.496mil) on Bottom Layer And SMT Small Component R99-4.7k (2405.511mil,781.496mil) on Bottom Layer

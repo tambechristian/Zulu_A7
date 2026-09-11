@@ -22,6 +22,7 @@ BW, BH = pb.BOARD
 
 # parts that get their designator drawn on the board; the rest are too small to label
 BIG = 2.2                      # mm; label anything at least this wide or tall
+GEOM = None                    # filled in by main(); pad geometry including hole sizes
 
 DEPARTURES = [
     ('U2', 'FT2232HL', 'plan y 11.80 &rarr; 13.60',
@@ -85,19 +86,19 @@ def svg(parts, side):
         o.append('<text class="tick-l" x="%.1f" y="%.1f" text-anchor="middle">%d</text>'
                  % (X(mm), BH * MM + 17, mm))
     cls = 'front' if side == 'top' else 'back'
-    geom = pb.lib_geometry()
+    geom = GEOM
     for p in sorted(parts, key=lambda p: -p['w'] * p['h']):
         if p['layer'] != side or p['w'] <= 0:
             continue
         tip = ('<title>%s  %s  r%d  centre %.2f, %.2f mm</title>'
                % (p['d'], p['fp'], p['rot'], p['cx'], p['cy']))
-        if p['fp'] in pb.THRU:
+        if any(q[4] > 1e-6 for q in geom[p['fp']][1]):
             # The header's land bounding box is 59.9 x 24.4 mm and would blanket the board. It is
             # forty separate 1.52 mm pins with a 10 mm gap where the LiPo connector sits, and that
             # is what the drawing has to show -- the same reason place_board.py collides against
             # pads rather than boxes for these four footprints.
             o.append('<g class="p %s">%s' % (cls, tip))
-            for dx, dy, pw, ph in geom[p['fp']][1]:
+            for dx, dy, pw, ph, _hole in geom[p['fp']][1]:
                 if p['rot'] % 360 == 90:
                     dx, dy, pw, ph = -dy, dx, ph, pw
                 elif p['rot'] % 360 == 180:
@@ -111,12 +112,13 @@ def svg(parts, side):
             o.append('<rect class="p %s" x="%.2f" y="%.2f" width="%.2f" height="%.2f">%s</rect>'
                      % (cls, X(p['x']), Y(p['y'] + p['h']), p['w'] * MM, p['h'] * MM, tip))
     for p in parts:
-        if p['layer'] != side or max(p['w'], p['h']) < BIG or p['fp'] in pb.THRU:
+        if (p['layer'] != side or max(p['w'], p['h']) < BIG
+                or any(q[4] > 1e-6 for q in geom[p['fp']][1])):
             continue
         o.append('<text class="lab" x="%.2f" y="%.2f" text-anchor="middle">%s</text>'
                  % (X(p['cx']), Y(p['cy']) + 3.4, p['d']))
     for p in parts:
-        if p['layer'] != side or p['fp'] not in pb.THRU:
+        if p['layer'] != side or not any(q[4] > 1e-6 for q in geom[p['fp']][1]):
             continue
         o.append('<text class="lab thru" x="%.2f" y="%.2f" text-anchor="middle">%s</text>'
                  % (X(p['cx']), Y(p['y'] + p['h']) - 4, p['d']))
@@ -195,6 +197,8 @@ td.m{font:400 12px "IBM Plex Mono",monospace; color:var(--front); white-space:no
 
 
 def main():
+    global GEOM
+    GEOM = pb.lib_geometry()
     comp, parts = layout()
     nf = sum(1 for p in parts if p['layer'] == 'top')
     nb = len(parts) - nf

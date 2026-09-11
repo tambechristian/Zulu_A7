@@ -333,9 +333,9 @@ Begin
         Place('R81',    1,   0.0, '1',    31.2000,   19.0500);   { bottom R0402                  region SDR }
         Place('R82',    1,   0.0, '1',    33.5000,   19.0500);   { bottom R0402                  region SDR }
         Place('R83',    1,   0.0, '1',    35.8000,   19.0500);   { bottom R0402                  region SDR }
-        Place('R84',    1,   0.0, '1',    28.9000,   20.2499);   { bottom R0402                  region SDR }
-        Place('R85',    1,   0.0, '1',    31.2000,   20.2499);   { bottom R0402                  region SDR }
-        Place('R86',    1,   0.0, '1',    33.5000,   20.2499);   { bottom R0402                  region SDR }
+        Place('R84',    1,   0.0, '1',    31.9000,   20.2499);   { bottom R0402                  region SDR }
+        Place('R85',    1,   0.0, '1',    36.9000,   20.2499);   { bottom R0402                  region SDR }
+        Place('R86',    1,   0.0, '1',    31.9000,   21.4498);   { bottom R0402                  region SDR }
         Place('R90',    1,   0.0, '1',    62.8501,   14.1700);   { bottom R0201                  region EAST }
         Place('R91',    1,   0.0, '1',    58.7500,   17.0100);   { bottom R0201                  region EAST }
         Place('R92',    1,   0.0, '1',    60.8000,   17.0100);   { bottom R0201                  region EAST }

@@ -5,7 +5,7 @@ Un-Routed Net Constraint: Net VCC3V3 Between Pad X3-4(557.087mil,487.202mil) on 
 Un-Routed Net Constraint: Net VCC3V3 Between Pad BTN-2(756.894mil,590.352mil) on Top Layer And Pad LD5-A(937.004mil,589.961mil) on Top Layer
 Un-Routed Net Constraint: Net VCC3V3 Between Pad BTN-2(756.894mil,590.352mil) on Top Layer And Pad R19-2(761.805mil,738.189mil) on Bottom Layer
 Un-Routed Net Constraint: Net N$BTN Between Pad BTN-3(841.534mil,426.972mil) on Top Layer And Pad BTN-4(841.534mil,590.352mil) on Top Layer
-Un-Routed Net Constraint: Net N$BTN Between Pad BTN-4(841.534mil,590.352mil) on Top Layer And Pad R85-1(1228.347mil,797.24mil) on Bottom Layer
+Un-Routed Net Constraint: Net N$BTN Between Pad BTN-4(841.534mil,590.352mil) on Top Layer And Pad R86-2(1307.085mil,844.48mil) on Bottom Layer
 Un-Routed Net Constraint: Net VCC3V3 Between Pad C100-1(1588.583mil,830.709mil) on Bottom Layer And Pad C106-1(1588.583mil,881.89mil) on Bottom Layer
 Un-Routed Net Constraint: Net VCC3V3 Between Pad C100-1(1588.583mil,830.709mil) on Bottom Layer And Pad Q1-1(1592.52mil,820.862mil) on Top Layer
 Un-Routed Net Constraint: Net GND Between Pad C100-2(1655.503mil,830.709mil) on Bottom Layer And Pad C106-2(1655.503mil,881.89mil) on Bottom Layer
@@ -241,7 +241,7 @@ Un-Routed Net Constraint: Net LED0_G Between Pad LD0-6(941.935mil,400.003mil) on
 Un-Routed Net Constraint: Net N$LD1A Between Pad LD1-A(937.004mil,495.472mil) on Top Layer And Pad R83-2(1460.629mil,750mil) on Bottom Layer
 Un-Routed Net Constraint: Net GND Between Pad LD1-K(1000.004mil,495.472mil) on Top Layer And Pad LD2-K(1000.004mil,542.716mil) on Top Layer
 Un-Routed Net Constraint: Net GND Between Pad LD1-K(1000.004mil,495.472mil) on Top Layer And Pad U2-11(1072.835mil,486.225mil) on Top Layer
-Un-Routed Net Constraint: Net N$LD2A Between Pad LD2-A(937.004mil,542.716mil) on Top Layer And Pad R84-2(1188.975mil,797.24mil) on Bottom Layer
+Un-Routed Net Constraint: Net N$LD2A Between Pad LD2-A(937.004mil,542.716mil) on Top Layer And Pad R84-2(1307.085mil,797.24mil) on Bottom Layer
 Un-Routed Net Constraint: Net NetLD3_A Between Pad R107-1(151.575mil,624.02mil) on Bottom Layer And Pad LD3-A(937.004mil,637.205mil) on Top Layer
 Un-Routed Net Constraint: Net NetLD3_K Between Pad U8-7(454.708mil,279.532mil) on Bottom Layer And Pad LD3-K(1000.004mil,637.205mil) on Top Layer
 Un-Routed Net Constraint: Net NetLD4_A Between Pad R108-1(242.126mil,624.02mil) on Bottom Layer And Pad LD4-A(937.004mil,684.449mil) on Top Layer
@@ -344,11 +344,10 @@ Un-Routed Net Constraint: Net VCC3V3 Between Pad R81-1(1228.347mil,750mil) on Bo
 Un-Routed Net Constraint: Net VCC3V3 Between Pad U2-56(1307.085mil,759.845mil) on Top Layer And Pad R82-1(1318.898mil,750mil) on Bottom Layer
 Un-Routed Net Constraint: Net VCC3V3 Between Pad R82-1(1318.898mil,750mil) on Bottom Layer And Pad U3-49(1368.111mil,690.157mil) on Bottom Layer
 Un-Routed Net Constraint: Net LED1 Between Pad R83-1(1409.449mil,750mil) on Bottom Layer And Pad U1-N18(1984.256mil,409.449mil) on Top Layer
-Un-Routed Net Constraint: Net LED2 Between Pad R84-1(1137.795mil,797.24mil) on Bottom Layer And Pad U1-M19(2003.936mil,429.129mil) on Top Layer
-Un-Routed Net Constraint: Net N$BTN Between Pad R85-1(1228.347mil,797.24mil) on Bottom Layer And Pad R86-2(1370.078mil,797.24mil) on Bottom Layer
-Un-Routed Net Constraint: Net BTN Between Pad R85-2(1279.526mil,797.24mil) on Bottom Layer And Pad U1-N17(1964.566mil,409.449mil) on Top Layer
-Un-Routed Net Constraint: Net GND Between Pad U3-46(1273.621mil,690.157mil) on Bottom Layer And Pad R86-1(1318.898mil,797.24mil) on Bottom Layer
-Un-Routed Net Constraint: Net GND Between Pad X1-5(1248.821mil,836.949mil) on Top Layer And Pad R86-1(1318.898mil,797.24mil) on Bottom Layer
+Un-Routed Net Constraint: Net LED2 Between Pad R84-1(1255.906mil,797.24mil) on Bottom Layer And Pad U1-M19(2003.936mil,429.129mil) on Top Layer
+Un-Routed Net Constraint: Net N$BTN Between Pad R86-2(1307.085mil,844.48mil) on Bottom Layer And Pad R85-1(1452.756mil,797.24mil) on Bottom Layer
+Un-Routed Net Constraint: Net BTN Between Pad R85-2(1503.936mil,797.24mil) on Bottom Layer And Pad U1-N17(1964.566mil,409.449mil) on Top Layer
+Un-Routed Net Constraint: Net GND Between Pad X1-5(1248.821mil,836.949mil) on Top Layer And Pad R86-1(1255.906mil,844.48mil) on Bottom Layer
 Un-Routed Net Constraint: Net VCC3V3 Between Pad R90-2(2498.033mil,557.874mil) on Bottom Layer And Pad R93-2(2498.033mil,669.685mil) on Bottom Layer
 Un-Routed Net Constraint: Net VCC3V3 Between Pad R91-2(2336.612mil,669.685mil) on Bottom Layer And Pad R92-2(2417.321mil,669.685mil) on Bottom Layer
 Un-Routed Net Constraint: Net VCC3V3 Between Pad R92-2(2417.321mil,669.685mil) on Bottom Layer And Pad R93-2(2498.033mil,669.685mil) on Bottom Layer
@@ -581,6 +580,7 @@ Un-Routed Net Constraint: Net USB_D_P Between Pad U2-8(1072.835mil,545.275mil) o
 Un-Routed Net Constraint: Net VCC3V3 Between Pad U3-3(1462.601mil,242.917mil) on Bottom Layer And Pad U3-1(1525.591mil,242.917mil) on Bottom Layer
 Un-Routed Net Constraint: Net GND Between Pad X3-G4(552.167mil,713.582mil) on Top Layer And Pad U3-28(706.691mil,690.157mil) on Bottom Layer
 Un-Routed Net Constraint: Net GND Between Pad U3-41(1116.141mil,690.157mil) on Bottom Layer And Pad U3-46(1273.621mil,690.157mil) on Bottom Layer
+Un-Routed Net Constraint: Net GND Between Pad U3-46(1273.621mil,690.157mil) on Bottom Layer And Pad U3-52(1462.601mil,690.157mil) on Bottom Layer
 Un-Routed Net Constraint: Net GND Between Pad U3-52(1462.601mil,690.157mil) on Bottom Layer And Pad U3-54(1525.591mil,690.157mil) on Bottom Layer
 Un-Routed Net Constraint: Net VU Between Pad U5-1(59.055mil,277.555mil) on Bottom Layer And Pad U5-3(133.855mil,277.555mil) on Bottom Layer
 Un-Routed Net Constraint: Net GND Between Pad U5-2(96.455mil,277.555mil) on Bottom Layer And Pad U6-2(206.684mil,277.555mil) on Bottom Layer
