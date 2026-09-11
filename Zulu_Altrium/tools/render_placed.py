@@ -261,11 +261,13 @@ def main():
   </section>
 
   <section>
-    <p class="note"><b>Still provisional.</b> The four Creative Commons marks are silkscreen art
-      with no copper &mdash; 3.56 and 6.12&nbsp;mm circles, 21&nbsp;mm of it in a row &mdash; and
-      there is no clear space left for them. Two sit on the front above the microSD and two inside
-      the ball field on the back, over the decoupling lattice&rsquo;s silkscreen. Decorative silk
-      belongs after routing and the pours, so expect to move them. The 0201s under the ball field
+    <p class="note"><b>Off the board.</b> The four Creative Commons marks are licence art with no
+      copper, carried through the import as real pinless components. They are not meant to be on
+      the PCB, and they are not: all four sit below the outline on a shared baseline at
+      y&nbsp;&minus;9.502&nbsp;mm, which is where the previous layout parked them. They stay in
+      the design rather than being deleted, because the schematic still owns them and the next
+      Import&nbsp;Changes would bring them straight back.</p>
+    <p class="note" style="margin-top:14px"><b>Still to re-cut.</b> The 0201s under the ball field
       are on an even 6&nbsp;&times;&nbsp;4 lattice, assigned by rail rather than by designator:
       the eight VCC1V0 balls sit in a 0.5&nbsp;&times;&nbsp;3.0&nbsp;mm cluster at the centre of
       the die, and the four core caps are 0.65 to 2.89&nbsp;mm from it. That lattice will want

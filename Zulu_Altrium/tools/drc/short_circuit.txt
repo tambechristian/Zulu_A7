@@ -1,0 +1,5 @@
+Short-Circuit Constraint (Allowed=No) (All),(All)
+=================================================
+Short-Circuit Constraint: Between Pad R84-2(1188.975mil,797.24mil) on Bottom Layer And Pad X1-MH1(1201.571mil,836.949mil) on Multi-Layer Location : [X = 1193.062mil][Y = 811.635mil]
+Short-Circuit Constraint: Between Pad R85-1(1228.347mil,797.24mil) on Bottom Layer And Pad X1-MH1(1201.571mil,836.949mil) on Multi-Layer Location : [X = 1217.169mil][Y = 813.195mil]
+Short-Circuit Constraint: Between Pad R86-2(1370.078mil,797.24mil) on Bottom Layer And Pad X1-MH2(1398.431mil,836.949mil) on Multi-Layer Location : [X = 1382.044mil][Y = 813.678mil]

@@ -76,8 +76,8 @@ td.m{font:400 12px "IBM Plex Mono",monospace; color:var(--front); white-space:no
       millimetres. Hover any part for its footprint, rotation and centre.</p>
     <div class="meta">
       <span>PLACED <b>175 of 175</b></span>
-      <span>FRONT <b>33</b></span>
-      <span>BACK <b>142</b></span>
+      <span>FRONT <b>35</b></span>
+      <span>BACK <b>140</b></span>
       <span>CLEARANCE <b>0.30 mm minimum</b></span>
       <span>SOURCE <b>zulu_a7.PcbDoc</b></span>
     </div>
@@ -87,7 +87,7 @@ td.m{font:400 12px "IBM Plex Mono",monospace; color:var(--front); white-space:no
     <div class="viewhead"><h2>Front</h2>
       <span><i class="swatch" style="background:var(--frontfill);border:1px solid var(--front)"></i>
       top-layer land patterns &middot; pin 1 of the header at the top right</span></div>
-    <div class="sheet"><svg viewBox="-26 -22 960 392" role="img" aria-label="top side, 33 parts drawn to scale">
+    <div class="sheet"><svg viewBox="-26 -22 960 392" role="img" aria-label="top side, 35 parts drawn to scale">
 <rect class="board" x="0" y="0" width="908.0" height="330.2" rx="2"/>
 <line class="tick" x1="0.0" y1="330.2" x2="0.0" y2="336.2"/>
 <text class="tick-l" x="0.0" y="347.2" text-anchor="middle">0</text>
@@ -248,7 +248,7 @@ td.m{font:400 12px "IBM Plex Mono",monospace; color:var(--front); white-space:no
     <div class="viewhead"><h2>Back</h2>
       <span><i class="swatch" style="background:var(--backfill);border:1px solid var(--back)"></i>
       seen through the board, same orientation</span></div>
-    <div class="sheet"><svg viewBox="-26 -22 960 392" role="img" aria-label="bottom side, 142 parts drawn to scale">
+    <div class="sheet"><svg viewBox="-26 -22 960 392" role="img" aria-label="bottom side, 140 parts drawn to scale">
 <rect class="board" x="0" y="0" width="908.0" height="330.2" rx="2"/>
 <line class="tick" x1="0.0" y1="330.2" x2="0.0" y2="336.2"/>
 <text class="tick-l" x="0.0" y="347.2" text-anchor="middle">0</text>
@@ -491,11 +491,13 @@ td.m{font:400 12px "IBM Plex Mono",monospace; color:var(--front); white-space:no
   </section>
 
   <section>
-    <p class="note"><b>Still provisional.</b> The four Creative Commons marks are silkscreen art
-      with no copper &mdash; 3.56 and 6.12&nbsp;mm circles, 21&nbsp;mm of it in a row &mdash; and
-      there is no clear space left for them. Two sit on the front above the microSD and two inside
-      the ball field on the back, over the decoupling lattice&rsquo;s silkscreen. Decorative silk
-      belongs after routing and the pours, so expect to move them. The 0201s under the ball field
+    <p class="note"><b>Off the board.</b> The four Creative Commons marks are licence art with no
+      copper, carried through the import as real pinless components. They are not meant to be on
+      the PCB, and they are not: all four sit below the outline on a shared baseline at
+      y&nbsp;&minus;9.502&nbsp;mm, which is where the previous layout parked them. They stay in
+      the design rather than being deleted, because the schematic still owns them and the next
+      Import&nbsp;Changes would bring them straight back.</p>
+    <p class="note" style="margin-top:14px"><b>Still to re-cut.</b> The 0201s under the ball field
       are on an even 6&nbsp;&times;&nbsp;4 lattice, assigned by rail rather than by designator:
       the eight VCC1V0 balls sit in a 0.5&nbsp;&times;&nbsp;3.0&nbsp;mm cluster at the centre of
       the die, and the four core caps are 0.65 to 2.89&nbsp;mm from it. That lattice will want

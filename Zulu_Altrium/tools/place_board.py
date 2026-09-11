@@ -76,23 +76,26 @@ ANCHORS = [
     ('JP3', 'top',    0, 64.300, 21.680, FIX),     # plan x, old y: the plan's y is off the edge
     ('JP4', 'top',    0, 64.300,  3.720, FIX),
     ('R4',  'top',   90, 59.300, 18.178, FIX),     # old x 59.79 clipped JP3 pad 1 by 0.09
-    # The four Creative Commons marks are silkscreen art with no pads -- 3.56 mm circles for BY
-    # and SA, 6.12 mm for CC and the copyright ring, 21 mm of it in a row. In the old board they
-    # were parked OFF the board entirely, which is why no space was ever reserved. There is none:
-    # the two small ones just fit the free front band above the microSD, and the two large ones
-    # only fit inside the ball field on the back, where they sit over the decoupling lattice's
-    # silkscreen. They carry no copper so they cannot fail a clearance rule, but this is placed
-    # to be REDONE: decorative silk is a finishing job, after routing and the pours.
-    ('U$3', 'top',    0,  3.000, 21.200, FIX),     # CC_BY,        3.56 mm
-    ('U$4', 'top',    0,  7.000, 21.200, FIX),     # CC_SA,        3.56 mm
-    ('U$2', 'bottom', 0, 45.000, 12.700, FIX),     # CC_CC,        6.12 mm
-    ('U$5', 'bottom', 0, 53.000, 12.700, FIX),     # CC_COPYRIGHT, 6.12 mm
     # ---- back
     ('U3',  'bottom', 90, 28.350, 11.850, PLAN),   # BESIDE the FPGA: through-vias, not HDI
     ('U10', 'bottom',  0, 24.750, 20.600, FIX),    # EEPROM behind the bridge (change 3);
                                                    # plan y 20.15 overlapped the SDRAM by 0.14
     ('R1',  'bottom',  0, 58.200,  3.700, FIX),    # 742C043; old y 3.00 sat on X2 pin 5
     ('R34', 'bottom',  0, 11.820, 19.290, OLDB),   # 742C083 SD pull-ups, above the power block
+    # ---- off the board entirely
+    # The four Creative Commons marks are NOT PART OF THE BOARD. They are licence art -- 3.56 mm
+    # circles for BY and SA, 6.12 mm for CC and the copyright ring -- that EAGLE carried as real
+    # pinless components so they would print with the drawing. The previous layout parked all four
+    # BELOW the outline on a shared baseline at y = -9.502, and that is where they go: on the
+    # board there is nowhere to put 21 mm of silkscreen circles without covering something, and
+    # the user confirmed on 2026-09-11 that they are not meant to be on the PCB at all.
+    # Positions are the previous layout's own, read out of zulu_a7.c0.brd. Each package is drawn
+    # centred on its origin, so the element position IS the centre of the mark. They carry no
+    # copper, so nothing here can fail a clearance rule.
+    ('U$2', 'top',    0,  5.059, -6.441, OLDB),    # CC_CC,        6.12 mm
+    ('U$3', 'top',    0, 10.895, -7.722, OLDB),    # CC_BY,        3.56 mm
+    ('U$4', 'top',    0, 15.451, -7.722, OLDB),    # CC_SA,        3.56 mm
+    ('U$5', 'top',    0, 21.288, -6.441, OLDB),    # CC_COPYRIGHT, 6.12 mm
 ]
 
 # ---------------------------------------------------------------- regions

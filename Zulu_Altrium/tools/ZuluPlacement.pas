@@ -184,8 +184,10 @@ Begin
         Place('LD5',    0,   0.0, 'A',    23.7999,   14.9850);   { top    LED0603                old board }
         Place('Q1',     0,   0.0, '1',    40.4500,   20.8499);   { top    32X25                  geometry }
         Place('R4',     0,  90.0, '1',    60.1499,   15.3779);   { top    742C163                geometry }
-        Place('U$3',    0,   0.0, '',      3.0000,   21.2000);   { top    CC_BY                  geometry }
-        Place('U$4',    0,   0.0, '',      7.0000,   21.2000);   { top    CC_SA                  geometry }
+        Place('U$2',    0,   0.0, '',      5.0590,   -6.4410);   { top    CC_CC                  old board }
+        Place('U$3',    0,   0.0, '',     10.8950,   -7.7220);   { top    CC_BY                  old board }
+        Place('U$4',    0,   0.0, '',     15.4510,   -7.7220);   { top    CC_SA                  old board }
+        Place('U$5',    0,   0.0, '',     21.2880,   -6.4410);   { top    CC_COPYRIGHT           old board }
         Place('U1',     0,   0.0, 'A1',   41.9000,   16.4000);   { top    XC7A35T-CPG236         plan }
         Place('U2',     0,   0.0, '1',    27.2500,   17.3501);   { top    FT2232HL-LQFP64        geometry }
         Place('U4',     0,   0.0, '1',    43.8500,   21.3050);   { top    SOIC-8_208MIL          geometry }
@@ -195,8 +197,6 @@ Begin
         Place('X4',     0,   0.0, '1',    31.4000,    3.0501);   { top    JST-B2B-PH-SM4-TB      plan }
         Place('R1',     1,   0.0, '1',    57.8000,    4.5499);   { bottom 742C043                geometry }
         Place('R34',    1,   0.0, '1',    10.6200,   20.1899);   { bottom 742C083                old board }
-        Place('U$2',    1,   0.0, '',     45.0000,   12.7000);   { bottom CC_CC                  geometry }
-        Place('U$5',    1,   0.0, '',     53.0000,   12.7000);   { bottom CC_COPYRIGHT           geometry }
         Place('U10',    1,   0.0, '1',    22.2851,   18.6950);   { bottom SPI-8_SOIC_150         geometry }
         Place('U3',     1,  90.0, '1',    38.7500,    6.1701);   { bottom TSOPII-54              plan }
 
