@@ -404,6 +404,24 @@ def rail_grid(rect, items, ext, rrot=0, rails=None, capnet=None, blocked=()):
 
 def build(verbose=True):
     comp, nets = read_netlist(NET)
+
+    # THE NETLIST IS NOT THE AUTHORITY ON WHICH PARTS EXIST -- THE BOARD IS.
+    # Q2 and R77 were deleted from the schematic on 2026-09-11 (the PGOOD indicator:
+    # nothing drove Q2's gate once the LTC3569 was replaced by the bq24232) and then
+    # removed from the PcbDoc. Altium's compile did not follow: Validate runs, the
+    # ECO reports "No Differences", and a freshly generated Protel netlist STILL
+    # lists Q2, R77, PGOOD and LD5_TO_Q2 although none of the seven .SchDoc files
+    # on disk contain them. Until that is fixed, anything that trusts zulu_a7.NET
+    # for the component list will try to place two parts that are not there.
+    on_board = set(sheets())
+    dropped = sorted(set(comp) - on_board)
+    if dropped:
+        for d in dropped:
+            comp.pop(d, None)
+        if verbose:
+            print('netlist lists %d parts the board does not have, ignored: %s'
+                  % (len(dropped), ' '.join(dropped)))
+
     ext = lib_extents()
     geom = lib_geometry()
     u1 = [a for a in ANCHORS if a[0] == 'U1'][0]

@@ -318,6 +318,175 @@ Begin
 End;
 
 
+
+{ Takes Q2 and R77 off the BOARD, and their two dead nets with them.
+
+  WHY NOT THE NORMAL ECO. The schematic is already correct: FixPgood in
+  ZuluPgood.pas removed Q2, R77 and the PGOOD label from zulu_a7_1.SchDoc and
+  renamed LD5_TO_Q2 to GND, and all seven .SchDoc files on disk were then checked
+  -- Q2 and R77 appear in NONE of them. But Altium will not propagate it:
+  Project > Validate runs, Design > Import Changes and Project > Show Differences
+  both answer "No Differences Detected", and a freshly generated Protel netlist
+  written at 12:43 STILL lists Q2, R77, PGOOD and LD5_TO_Q2. The compile is
+  serving cached data that does not match the files it is compiled from.
+
+  So the board is corrected directly here, to match the verified schematic. The
+  stale compile is a separate problem and is worth re-testing after Altium is
+  restarted, BEFORE the next schematic change is made -- if the ECO is still
+  blind then, no schematic edit can reach the board by the normal route.
+
+  Collect first, remove after -- destroying an object the iterator handed out is
+  what broke the first keep-out strip. }
+Procedure RemoveQ2R77FromPcb;
+Var
+    Iter : IPCB_BoardIterator;
+    C    : IPCB_Component;
+    N    : IPCB_Net;
+    Kill : TInterfaceList;
+    i, NC, NN : Integer;
+    S    : String;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+
+    Kill := TInterfaceList.Create;
+    NC := 0; NN := 0; S := '';
+
+    Iter := Brd.BoardIterator_Create;
+    Iter.AddFilter_ObjectSet(MkSet(eComponentObject));
+    Iter.AddFilter_LayerSet(AllLayers);
+    Iter.AddFilter_Method(eProcessAll);
+    C := Iter.FirstPCBObject;
+    While C <> Nil Do
+    Begin
+        If (C.Name.Text = 'Q2') Or (C.Name.Text = 'R77') Then
+        Begin
+            Kill.Add(C);
+            S := S + '    component ' + C.Name.Text + #13#10;
+            NC := NC + 1;
+        End;
+        C := Iter.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(Iter);
+
+    Iter := Brd.BoardIterator_Create;
+    Iter.AddFilter_ObjectSet(MkSet(eNetObject));
+    Iter.AddFilter_LayerSet(AllLayers);
+    Iter.AddFilter_Method(eProcessAll);
+    N := Iter.FirstPCBObject;
+    While N <> Nil Do
+    Begin
+        If (N.Name = 'PGOOD') Or (N.Name = 'LD5_TO_Q2') Then
+        Begin
+            Kill.Add(N);
+            S := S + '    net ' + N.Name + #13#10;
+            NN := NN + 1;
+        End;
+        N := Iter.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(Iter);
+
+    PCBServer.PreProcess;
+    For i := 0 To Kill.Count - 1 Do
+        Brd.RemovePCBObject(Kill.Items[i]);
+    PCBServer.PostProcess;
+
+    Brd.ViewManager_FullUpdate;
+    Kill.Free;
+
+    ShowMessage('Zulu A7 - Q2 and R77 off the board' + #13#10 + #13#10 + S +
+                #13#10 + 'components removed: ' + IntToStr(NC) + ' (2 expected)' + #13#10 +
+                'nets removed: ' + IntToStr(NN) + ' (2 expected)' + #13#10 + #13#10 +
+                'Board should now hold 173 components and 177 nets.' + #13#10 +
+                'Nothing is saved yet - press Ctrl+S.');
+End;
+
+
+
+{ Puts R78 pad 1 on GND.
+
+  Removing the LD5_TO_Q2 net took R78-1's net with it, so on the board that pad
+  is left connected to nothing while the schematic says GND. The normal ECO would
+  have done this; it cannot, because the compile is stale (see
+  RemoveQ2R77FromPcb). This closes the gap so the board matches the schematic:
+  VCC3V3 - LD5 - R78 - GND. }
+Procedure TieR78ToGnd;
+Var
+    C    : IPCB_Component;
+    It   : IPCB_GroupIterator;
+    P    : IPCB_Pad;
+    NIt  : IPCB_BoardIterator;
+    N, G : IPCB_Net;
+    Was  : String;
+    Done : Boolean;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+
+    G := Nil;
+    NIt := Brd.BoardIterator_Create;
+    NIt.AddFilter_ObjectSet(MkSet(eNetObject));
+    NIt.AddFilter_LayerSet(AllLayers);
+    NIt.AddFilter_Method(eProcessAll);
+    N := NIt.FirstPCBObject;
+    While N <> Nil Do
+    Begin
+        If N.Name = 'GND' Then G := N;
+        N := NIt.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(NIt);
+
+    If G = Nil Then
+    Begin
+        ShowMessage('There is no GND net on this board.');
+        Exit;
+    End;
+
+    Done := False;
+    Was  := '(none)';
+    C := Brd.GetPcbComponentByRefDes('R78');
+    If C = Nil Then
+    Begin
+        ShowMessage('R78 is not on the board.');
+        Exit;
+    End;
+
+    It := C.GroupIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(ePadObject));
+    P := It.FirstPCBObject;
+    While (P <> Nil) And (Not Done) Do
+    Begin
+        If P.Name = '1' Then
+        Begin
+            If P.Net <> Nil Then Was := P.Net.Name;
+            PCBServer.PreProcess;
+            P.BeginModify;
+            P.Net := G;
+            P.EndModify;
+            PCBServer.PostProcess;
+            Done := True;
+        End;
+        P := It.NextPCBObject;
+    End;
+    C.GroupIterator_Destroy(It);
+
+    Brd.ViewManager_FullUpdate;
+    ShowMessage('Zulu A7 - R78 pad 1' + #13#10 + #13#10 +
+                '   was on net: ' + Was + #13#10 +
+                '   now on net: GND' + #13#10 +
+                '   changed: ' + BoolToStr(Done, True) + #13#10 + #13#10 +
+                'Nothing is saved yet - press Ctrl+S.');
+End;
+
+
 Procedure ClosePendingTransaction;
 Var
     N : Integer;
