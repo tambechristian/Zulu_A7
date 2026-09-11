@@ -204,6 +204,36 @@ def main():
             if gap < 0 or gap > 2.0:
                 fails.append('plane polygons do not match the board shape (inset %.3f mm) - they '
                              'were not regenerated when the outline changed' % gap)
+        # the stack as stored, and the one thing that cannot be set until Import Changes has
+        # brought the nets across: an internal Plane layer with no net is floating copper, and
+        # every GND pad and stitch via on it would connect to nothing
+        lay = collections.defaultdict(dict)
+        for m in re.finditer(r'\|V9_STACK_LAYER(\d+)_([A-Z0-9_]+)=([^|]*)', b6):
+            lay[int(m.group(1))][m.group(2)] = m.group(3)
+
+        def milv(s):
+            mm = re.fullmatch(r'\s*([\d.]+)\s*mil\s*', s or '')
+            return float(mm.group(1)) if mm else 0.0
+
+        cu = [(d['NAME'], d.get('COPTHICK', '')) for i, d in sorted(lay.items())
+              if d.get('NAME') and d.get('COPTHICK')]
+        thick = sum(milv(d.get('COPTHICK')) + milv(d.get('DIELHEIGHT'))
+                    for d in lay.values())
+        print('   stack %d copper layers, %.3f mm total: %s'
+              % (len(cu), thick * 0.0254, ', '.join('%s %s' % c for c in cu)))
+        # PLANEnNETNAME is indexed from 1 and there are 16 slots whatever the stack holds, so
+        # take only as many as the stack actually has planes, and sort NUMERICALLY -- a string
+        # sort puts PLANE10 before PLANE1 and names the wrong layers in the warning
+        planes = {int(k): v for k, v in re.findall(r'\|PLANE(\d+)NETNAME=([^|\r]*)', b6)}
+        nplane = sum(1 for d in lay.values()
+                     if d.get('COPTHICK') and d.get('NAME', '').endswith('GND'))
+        unset = ['PLANE%dNETNAME' % k for k in sorted(planes)[:nplane]
+                 if planes[k].strip() == '(No Net)']
+        if unset:
+            warns.append('%d internal plane(s) still have no net assigned (%s). A Plane layer '
+                         'with no net is floating copper. This CANNOT be set until Design > '
+                         'Import Changes has brought GND onto the board - do it immediately '
+                         'after.' % (len(unset), ', '.join(unset)))
         pf.close()
 
     print('\n' + '=' * 70)
