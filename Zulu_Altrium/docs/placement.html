@@ -1,0 +1,303 @@
+<title>Zulu A7 Placement</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#eceeec; --panel:#f7f9f7; --ink:#14201c; --muted:#67766f; --rule:#ccd5d0;
+    --board:#e2ebe4; --edge:#2f6b4f; --part:#fbfdfb; --partline:#7b9488;
+    --copper:#a9632f; --copperhole:#e2ebe4; --changed:#bf5420; --changedfill:#f7e4d7;
+    --field:#fdf3e6; --fieldline:#c79a5e;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0c1110; --panel:#131a18; --ink:#dde6e2; --muted:#8b978f; --rule:#25302b;
+      --board:#132019; --edge:#4e9a76; --part:#1b2723; --partline:#5d7a6d;
+      --copper:#c4824f; --copperhole:#132019; --changed:#e98b52; --changedfill:#3a2416;
+      --field:#2a2014; --fieldline:#8a6a3e;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0c1110; --panel:#131a18; --ink:#dde6e2; --muted:#8b978f; --rule:#25302b;
+    --board:#132019; --edge:#4e9a76; --part:#1b2723; --partline:#5d7a6d;
+    --copper:#c4824f; --copperhole:#132019; --changed:#e98b52; --changedfill:#3a2416;
+    --field:#2a2014; --fieldline:#8a6a3e;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink); margin:0;
+    font:400 15px/1.55 "IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:40px 28px 72px; display:flex; flex-direction:column; gap:34px}
+  header{display:flex; flex-direction:column; gap:10px; border-bottom:1px solid var(--rule); padding-bottom:22px}
+  h1{margin:0; font-size:30px; font-weight:600; letter-spacing:-.015em; text-wrap:balance}
+  .sub{margin:0; color:var(--muted); max-width:66ch}
+  .meta{display:flex; flex-wrap:wrap; gap:10px 26px; font:500 12.5px/1.4 "IBM Plex Mono",ui-monospace,monospace; color:var(--muted)}
+  .meta b{color:var(--ink); font-weight:600}
+
+  .viewhead{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px}
+  .viewhead h2{margin:0; font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase}
+  .viewhead span{color:var(--muted); font-size:13.5px}
+  .sheet{background:var(--panel); border:1px solid var(--rule); border-radius:3px; padding:18px 16px; overflow-x:auto}
+  svg{display:block; min-width:720px; width:100%; height:auto}
+  .lbl{font:500 10px "IBM Plex Sans",sans-serif; fill:var(--ink)}
+  .lblsm{font:400 8.5px "IBM Plex Sans",sans-serif; fill:var(--muted)}
+  .num{font:500 9px "IBM Plex Mono",monospace; fill:var(--muted)}
+  .numc{font:600 9px "IBM Plex Mono",monospace; fill:var(--changed)}
+  .dim{font:400 9.5px "IBM Plex Mono",monospace; fill:var(--muted)}
+
+  .legend{display:flex; flex-wrap:wrap; gap:8px 22px; font-size:12.5px; color:var(--muted); align-items:center}
+  .key{display:inline-flex; align-items:center; gap:7px}
+  .sw{width:16px; height:11px; border-radius:1px; display:inline-block}
+
+  .changes{display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden}
+  .chg{background:var(--panel); padding:17px 19px; display:flex; flex-direction:column; gap:7px}
+  .chg .tag{display:flex; align-items:center; gap:9px}
+  .badge{width:19px; height:19px; border-radius:50%; background:var(--changed); color:var(--ground);
+         font:600 11px/19px "IBM Plex Mono",monospace; text-align:center; flex:none}
+  .chg h3{margin:0; font-size:14px; font-weight:600}
+  .chg p{margin:0; font-size:13px; color:var(--muted)}
+  .chg .win{font:600 12px "IBM Plex Mono",monospace; color:var(--changed)}
+
+  table{border-collapse:collapse; width:100%; font:400 12.5px "IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
+  caption{text-align:left; font:600 13px "IBM Plex Sans",sans-serif; padding-bottom:9px}
+  th,td{text-align:left; padding:5px 9px; border-bottom:1px solid var(--rule); white-space:nowrap}
+  th{font-weight:600; color:var(--muted); font-size:11px; letter-spacing:.07em; text-transform:uppercase}
+  td.p{color:var(--muted); width:3.4em}
+  .tables{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:26px}
+  .note{font-size:13.5px; color:var(--muted); max-width:74ch}
+  .note b{color:var(--ink); font-weight:600}
+  code{font:500 12.5px "IBM Plex Mono",monospace; background:var(--panel); padding:1px 5px; border-radius:2px}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Zulu A7 Placement</h1>
+    <p class="sub">Front and back placement for the 69.85 × 25.40 mm module, drawn to scale. Four changes
+      from the re-pin study are marked; everything else is as previously planned.</p>
+    <div class="meta">
+      <span>BOARD <b>1.000 × 2.750 in</b></span>
+      <span>HEADER <b>2.54 mm, rows 22.86 apart</b></span>
+      <span>FPGA <b>XC7A35T-CPG236, 10 × 10</b></span>
+      <span>SCALE <b>1 mm = 10 units</b></span>
+      <span>REV <b>2026-09-10</b></span>
+    </div>
+  </header>
+
+  <section>
+    <div class="viewhead">
+      <h2>Front</h2>
+      <span>The FPGA and everything a hand has to reach. Pin 1 at the right.</span>
+    </div>
+    <div class="sheet"><svg id="front" viewBox="-16 -30 732 316" role="img"
+      aria-label="Front placement: microSD, button, LEDs, FT2232, oscillator, SPI flash, FPGA, Pmod"></svg></div>
+  </section>
+
+  <section>
+    <div class="viewhead">
+      <h2>Back</h2>
+      <span>Seen through the board, same orientation. Low-profile only.</span>
+    </div>
+    <div class="sheet"><svg id="back" viewBox="-16 -30 732 316" role="img"
+      aria-label="Back placement: power section, EEPROM, SDRAM, FPGA decoupling under the ball field, XADC dividers"></svg></div>
+    <div class="legend" style="margin-top:14px">
+      <span class="key"><i class="sw" style="background:var(--part);border:1px solid var(--partline)"></i> placed to scale</span>
+      <span class="key"><i class="sw" style="background:var(--changedfill);border:1px solid var(--changed)"></i> moved this revision</span>
+      <span class="key"><i class="sw" style="background:var(--field);border:1px dashed var(--fieldline)"></i> ball field / capacitor area</span>
+      <span class="key"><i class="sw" style="background:var(--copper);border-radius:50%;width:11px;height:11px"></i> header pin</span>
+      <span class="key"><i class="sw" style="background:none;border:1px dashed var(--copper);border-radius:50%;width:11px;height:11px"></i> landing, pin omitted</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="viewhead"><h2>What changed</h2><span>and what each one is worth</span></div>
+    <div class="changes">
+      <div class="chg">
+        <div class="tag"><span class="badge">1</span><h3>SPI flash to the front, above the FPGA</h3></div>
+        <p>It sat at the far left of the back while the only thing it talks to is the FPGA. Its six nets
+          are on fixed balls — D18, D19, F18, G18, K19, C11 — so no re-pin could ever have shortened them.</p>
+        <p class="win">−234 mm of net length</p>
+      </div>
+      <div class="chg">
+        <div class="tag"><span class="badge">2</span><h3>XADC dividers beside the FPGA</h3></div>
+        <p>Same problem: fixed balls G2, G3, H2, J2 feeding dividers 45 mm away. Moving them also puts the
+          long run on the raw header signal instead of the high-impedance divided node.</p>
+        <p class="win">−169 mm of net length</p>
+      </div>
+      <div class="chg">
+        <div class="tag"><span class="badge">3</span><h3>Bucks to the far left, EEPROM behind the bridge</h3></div>
+        <p>Three switching nodes sat 0.4 mm from a 16-bit memory bus. The power section takes the whole left
+          end under the microSD's shell; the EEPROM moves to where it belongs, behind the FT2232.</p>
+        <p class="win">1.7 mm clearance, not 0.4</p>
+      </div>
+      <div class="chg">
+        <div class="tag"><span class="badge">4</span><h3>Bottom row renumbered 21–40</h3></div>
+        <p>The drawing still carried the old 44-pin field. X2 is 40 pins: 21–29 right of the LiPo landing,
+          30–40 left of it, mirroring the top row exactly.</p>
+        <p class="win">40 pins, contiguous</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tables">
+    <table>
+      <caption>Top row — pin 1 at the right edge</caption>
+      <thead><tr><th>Pin</th><th>Net</th><th>Pin</th><th>Net</th></tr></thead>
+      <tbody id="toprow"></tbody>
+    </table>
+    <table>
+      <caption>Bottom row — pin 21 below pin 1</caption>
+      <thead><tr><th>Pin</th><th>Net</th><th>Pin</th><th>Net</th></tr></thead>
+      <tbody id="botrow"></tbody>
+    </table>
+  </section>
+
+  <p class="note"><b>Still open.</b> The SDRAM stays beside the FPGA rather than behind it, because that
+    choice belongs to the stack: with through-vias the dog-bones litter the back under the ball field and
+    the SDRAM cannot sit there, but with <code>1+6+1</code> HDI the back is clean and 38 lateral nets become
+    38 short drops. The four landing positions — 36.83, 34.29, 31.75, 29.21 — line up on both rows, so that
+    10 mm window is the one place a signal crosses from row to row without threading the pin fence. Keep it
+    out of the pours.</p>
+</div>
+
+<script>
+(function () {
+  var MM = 10, BW = 698.5, BH = 254;
+  function X(mm) { return mm * MM; }
+  function Y(mm) { return (25.40 - mm) * MM; }
+  var RIGHT = [59.69, 57.15, 54.61, 52.07, 49.53, 46.99, 44.45, 41.91, 39.37];
+  var LAND  = [36.83, 34.29, 31.75, 29.21];
+  var LEFT  = [26.67, 24.13, 21.59, 19.05, 16.51, 13.97, 11.43, 8.89, 6.35, 3.81, 1.27];
+  var TOP = ['GND','CHAN-CLK','CHAN0','CHAN1','CHAN2','CHAN3','CHAN4','CHAN5','CHAN6','CHAN7',
+             'CHAN8','CHAN9','CHAN10','CHAN11','CHAN12','CHAN13','VCC3V3','VCC1V8','VCC1V0','GND'];
+  var BOT = ['GND','VU','RST#','CHAN14','CHAN15','CHAN16','CHAN17','CHAN18','CHAN19','CHAN20',
+             'CHAN21','CHAN22','CHAN23','CHAN24','CHAN25','CHAN26','CHAN27','CHAN28',
+             'ANALOG-IO0','ANALOG-IO1'];
+
+  var FRONT = [
+    [0.5, 5.0, 16.6, 20.0, 'microSD', ''],
+    [17.7, 7.8, 22.4, 17.2, 'BTN', ''],
+    [23.2, 8.7, 27.3, 16.5, 'LEDs', ''],
+    [27.9, 6.4, 38.0, 17.2, 'FT2232HL', ''],
+    [38.1, 18.1, 41.4, 21.4, 'Q1', ''],
+    [42.0, 17.6, 48.0, 21.2, 'FLASH', 'chg1'],
+    [41.4, 6.9, 51.4, 16.9, 'A35T', ''],
+    [28.8, 21.7, 37.2, 24.9, 'USB', 'land'],
+    [27.9, 0.0, 36.9, 3.3, 'JST LiPo', 'land'],
+    [63.8, 4.0, 69.0, 19.6, 'Pmod', ''],
+    [60.9, 22.3, 67.7, 24.2, 'JTAG', ''],
+    [60.9, 0.0, 67.7, 1.4, 'JTAG', '']
+  ];
+  var BACK = [
+    [1.0, 4.0, 15.5, 21.0, 'PWR + L1–L3', 'chg3'],
+    [22.0, 18.3, 27.5, 22.0, 'EEPROM', 'chg3'],
+    [17.2, 5.97, 39.5, 17.73, 'SDRAM', ''],
+    [39.8, 5.0, 58.1, 20.5, '', 'field'],
+    [42.0, 7.5, 54.0, 18.0, 'FPGA decoupling', 'dash'],
+    [40.0, 2.4, 47.0, 4.8, 'XADC dividers', 'chg2'],
+    [60.9, 0.0, 69.85, 25.40, 'Pmod only', 'ghost']
+  ];
+
+  function el(n, a, t) {
+    var e = document.createElementNS('http://www.w3.org/2000/svg', n);
+    for (var k in a) e.setAttribute(k, a[k]);
+    if (t) e.textContent = t;
+    return e;
+  }
+
+  function pads(svg, first, showNums, changed) {
+    var xs = RIGHT.concat(LAND, LEFT), n = 0;
+    for (var i = 0; i < xs.length; i++) {
+      var isLand = i >= RIGHT.length && i < RIGHT.length + LAND.length;
+      [[24.13, -11], [1.27, 271]].forEach(function (row) {
+        var cx = X(xs[i]), cy = Y(row[0]);
+        if (isLand) {
+          svg.appendChild(el('circle', {cx: cx, cy: cy, r: 5.5, fill: 'none',
+            stroke: 'var(--copper)', 'stroke-width': 1, 'stroke-dasharray': '2.5 2'}));
+          return;
+        }
+        svg.appendChild(el('circle', {cx: cx, cy: cy, r: 5.5, fill: 'var(--copper)'}));
+        svg.appendChild(el('circle', {cx: cx, cy: cy, r: 2.1, fill: 'var(--copperhole)'}));
+        if (!showNums) return;
+        var bottom = row[0] < 12;
+        var num = bottom ? (first + 20 + n) : (first + n);
+        svg.appendChild(el('text', {x: cx, y: row[1], 'text-anchor': 'middle',
+          class: bottom && changed ? 'numc' : 'num'}, String(num)));
+      });
+      if (!isLand) n++;
+    }
+  }
+
+  function parts(svg, list) {
+    list.forEach(function (p) {
+      var x = X(p[0]), y = Y(p[3]), w = X(p[2]) - X(p[0]), h = Y(p[1]) - Y(p[3]), tag = p[5];
+      var a = {x: x, y: y, width: w, height: h, rx: 1.5};
+      if (tag === 'chg1' || tag === 'chg2' || tag === 'chg3') {
+        a.fill = 'var(--changedfill)'; a.stroke = 'var(--changed)'; a['stroke-width'] = 1.4;
+      } else if (tag === 'field') {
+        a.fill = 'var(--field)'; a.stroke = 'var(--fieldline)'; a['stroke-width'] = 1;
+      } else if (tag === 'dash') {
+        a.fill = 'none'; a.stroke = 'var(--fieldline)'; a['stroke-dasharray'] = '4 3'; a['stroke-width'] = 1;
+      } else if (tag === 'ghost') {
+        a.fill = 'var(--field)'; a.stroke = 'none'; a.opacity = .5;
+      } else if (tag === 'land') {
+        a.fill = 'var(--part)'; a.stroke = 'var(--partline)'; a['stroke-dasharray'] = '4 3'; a['stroke-width'] = 1;
+      } else {
+        a.fill = 'var(--part)'; a.stroke = 'var(--partline)'; a['stroke-width'] = 1;
+      }
+      svg.appendChild(el('rect', a));
+      if (p[4]) {
+        var cls = (tag === 'ghost' || tag === 'dash') ? 'lblsm' : 'lbl';
+        svg.appendChild(el('text', {x: x + w / 2, y: y + h / 2 + 3.5,
+          'text-anchor': 'middle', class: cls}, p[4]));
+      }
+    });
+  }
+
+  function callout(svg, mmx, mmy, n) {
+    svg.appendChild(el('circle', {cx: X(mmx), cy: Y(mmy), r: 8, fill: 'var(--changed)'}));
+    svg.appendChild(el('text', {x: X(mmx), y: Y(mmy) + 3.2, 'text-anchor': 'middle',
+      font: '600 10px "IBM Plex Mono",monospace', fill: 'var(--ground)'}, String(n)));
+  }
+
+  function ruler(svg) {
+    for (var mm = 0; mm <= 60; mm += 10) {
+      svg.appendChild(el('line', {x1: X(mm), y1: -24, x2: X(mm), y2: -19,
+        stroke: 'var(--rule)', 'stroke-width': 1}));
+      svg.appendChild(el('text', {x: X(mm), y: -26, 'text-anchor': 'middle', class: 'dim'}, String(mm)));
+    }
+    svg.appendChild(el('line', {x1: 0, y1: -21.5, x2: X(60), y2: -21.5,
+      stroke: 'var(--rule)', 'stroke-width': 1}));
+    svg.appendChild(el('text', {x: X(62), y: -19, class: 'dim'}, 'mm'));
+  }
+
+  function board(id, list, first, changedNums, marks, withRuler) {
+    var svg = document.getElementById(id);
+    svg.appendChild(el('rect', {x: 0, y: 0, width: BW, height: BH, rx: 4,
+      fill: 'var(--board)', stroke: 'var(--edge)', 'stroke-width': 1.6}));
+    if (withRuler) ruler(svg);
+    parts(svg, list);
+    pads(svg, first, true, changedNums);
+    marks.forEach(function (m) { callout(svg, m[0], m[1], m[2]); });
+  }
+
+  // badges sit clear of the part labels, not on them
+  board('front', FRONT, 1, true, [[49.9, 19.4, 1], [3.4, 3.4, 4]], true);
+  board('back', BACK, 1, true, [[49.0, 3.6, 2], [8.2, 18.6, 3], [29.6, 20.1, 3], [3.4, 3.4, 4]], false);
+
+  function fill(tb, pins, base) {
+    var half = 10;
+    for (var i = 0; i < half; i++) {
+      var tr = document.createElement('tr');
+      [[i, base + i], [i + half, base + i + half]].forEach(function (c) {
+        var p = document.createElement('td'); p.className = 'p'; p.textContent = c[1];
+        var v = document.createElement('td'); v.textContent = pins[c[0]];
+        tr.appendChild(p); tr.appendChild(v);
+      });
+      tb.appendChild(tr);
+    }
+  }
+  fill(document.getElementById('toprow'), TOP, 1);
+  fill(document.getElementById('botrow'), BOT, 21);
+})();
+</script>
