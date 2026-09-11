@@ -37,6 +37,7 @@ Run:  python tools/place_board.py            report only
 import collections
 import math
 import os
+import struct
 import re
 import sys
 
@@ -149,8 +150,6 @@ assign('TE',    'C85 C86 C93 C97 C98 C140 C141 C142 C143 C144 C145 C146')
 
 GRIDDED = {'DEC', 'EAST'}    # spread out, not shelf-packed
 
-THRU = {'ZULU-DIP37', '2X06', '1X03-NOSILK'}     # pads present on every layer
-
 
 def lib_geometry(path=LIB):
     """footprint -> ((w, h), [(dx, dy, pw, ph), ...]) -- extent, and every pad relative to centre.
@@ -172,8 +171,55 @@ def lib_geometry(path=LIB):
         x0 = min(q[1] - q[3] / 2 for q in p); x1 = max(q[1] + q[3] / 2 for q in p)
         y0 = min(q[2] - q[4] / 2 for q in p); y1 = max(q[2] + q[4] / 2 for q in p)
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
-        out[name] = ((x1 - x0, y1 - y0), [(q[1] - cx, q[2] - cy, q[3], q[4]) for q in p])
+        holes = lib_holes(f, name)
+        out[name] = ((x1 - x0, y1 - y0),
+                     [(q[1] - cx, q[2] - cy, q[3], q[4], holes.get(q[0], 0.0)) for q in p])
     f.close()
+    return out
+
+
+def lib_holes(f, pkg):
+    """pad name -> hole diameter in mm, 0 for surface mount.
+
+    A DRILLED pad is present on EVERY layer, so a part on the far side of the board collides with
+    it. Which pads are drilled was hard-coded here as a THRU set of footprint names, and the set
+    was wrong: it listed ZULU-DIP37, 2X06 and 1X03-NOSILK but not MOLEX-105017-0001, whose four
+    mounting pads ARE drilled. X1 was therefore treated as top-layer-only and R84, R85 and R86
+    were placed on the bottom underneath its shell pads -- three short circuits that the first
+    DRC run found and this checker had passed. So the list is no longer maintained by hand.
+
+    In a PcbLib pad record the hole diameter is the int32 at offset 45 of the geometry block,
+    in units of 1e-7 inch: 1.02 mm for the 0.040 in header pins, 0.85 and 0.60 for X1's shell,
+    and exactly 0 for every surface-mount pad in the library.
+    """
+    d = f.openstream([pkg, 'Data']).read()
+    out, i = {}, 0
+    while i < len(d) - 6:
+        if d[i] != 2:
+            i += 1
+            continue
+        j = i + 1
+        try:
+            nlen = struct.unpack_from('<I', d, j)[0]
+            if not (0 < nlen < 64):
+                i += 1
+                continue
+            sl = d[j + 4]
+            nm = d[j + 5:j + 5 + sl]
+            if sl == 0 or sl != nlen - 1 or not re.fullmatch(rb'[A-Za-z0-9_]+', nm):
+                i += 1
+                continue
+            j += 4 + nlen
+            for _ in range(6):
+                blen = struct.unpack_from('<I', d, j)[0]
+                if blen >= 100:
+                    blk = d[j + 4:j + 4 + blen]
+                    out[nm.decode()] = struct.unpack_from('<i', blk, 45)[0] * 1e-7 * 25.4
+                    break
+                j += 4 + blen
+            i = j
+        except Exception:
+            i += 1
     return out
 
 
@@ -200,7 +246,41 @@ def size(fp, rot, ext):
     return (h, w) if rot % 180 == 90 else (w, h)
 
 
-def pack(rect, items, ext, rrot=0):
+def blocked_by(comp, geom, place, clear=CLEAR):
+    """Rectangles a region-filled part must not land on, whichever side it is on.
+
+    Every DRILLED pad of an already-placed part, grown by the clearance. These are the pads that
+    exist on all six layers, so a resistor on the bottom has to dodge them exactly as if they were
+    on its own side. Without this the shelf packer walked R84, R85 and R86 straight underneath
+    X1's USB shell pads; the DRC called that three short circuits.
+    """
+    out = []
+    for d, (layer, rot, cx, cy) in place.items():
+        fp = comp.get(d)
+        if fp is None or fp not in geom:
+            continue
+        for dx, dy, pw, ph, hole in geom[fp][1]:
+            if hole <= 1e-6:
+                continue
+            if rot % 360 == 90:
+                dx, dy, pw, ph = -dy, dx, ph, pw
+            elif rot % 360 == 180:
+                dx, dy = -dx, -dy
+            elif rot % 360 == 270:
+                dx, dy, pw, ph = dy, -dx, ph, pw
+            out.append((cx + dx - pw / 2 - clear, cy + dy - ph / 2 - clear,
+                        cx + dx + pw / 2 + clear, cy + dy + ph / 2 + clear))
+    return out
+
+
+def hits_blocked(x0, y0, x1, y1, blocked):
+    for bx0, by0, bx1, by1 in blocked:
+        if x0 < bx1 and x1 > bx0 and y0 < by1 and y1 > by0:
+            return True
+    return False
+
+
+def pack(rect, items, ext, rrot=0, blocked=()):
     """Shelf-pack items into rect. items = [(designator, footprint)]. -> placed, overflow."""
     x0, y0, x1, y1 = rect
     order = sorted(items, key=lambda it: (-size(it[1], rrot, ext)[1],
@@ -212,10 +292,17 @@ def pack(rect, items, ext, rrot=0):
         if w <= 0 or h <= 0:                       # the four pinless CC logos
             placed.append((d, 0, x0 + (x1 - x0) / 2, y0 + (y1 - y0) / 2))
             continue
-        if cx + w > x1 + 1e-9:
-            cx = x0
-            cy += shelf + CLEAR
-            shelf = 0.0
+        # slide right past any drilled pad in the way, wrapping to the next shelf if the row runs out
+        while True:
+            if cx + w > x1 + 1e-9:
+                cx = x0
+                cy += shelf + CLEAR
+                shelf = 0.0
+            if cy + h > y1 + 1e-9:
+                break
+            if not hits_blocked(cx, cy, cx + w, cy + h, blocked):
+                break
+            cx += 0.10
         if cy + h > y1 + 1e-9:
             over.append((d, fp))
             continue
@@ -225,7 +312,7 @@ def pack(rect, items, ext, rrot=0):
     return placed, over
 
 
-def grid(rect, items, ext, rrot=0):
+def grid(rect, items, ext, rrot=0, blocked=()):
     """Spread items evenly over rect on a near-square grid.
 
     Shelf packing is right where space is scarce, but wrong for decoupling: it would stack all
@@ -253,6 +340,9 @@ def grid(rect, items, ext, rrot=0):
         c, r = i % cols, i // cols
         px = x0 + w / 2 + (x1 - x0 - w) * (c / float(cols - 1) if cols > 1 else 0.5)
         py = y0 + h / 2 + (y1 - y0 - h) * (r / float(rows - 1) if rows > 1 else 0.5)
+        if hits_blocked(px - w / 2, py - h / 2, px + w / 2, py + h / 2, blocked):
+            over.append((d, fp))
+            continue
         placed.append((d, rrot, px, py))
     return placed, over
 
@@ -289,9 +379,9 @@ def rail_centroids(u1_centre):
             for n, v in out.items()}
 
 
-def rail_grid(rect, items, ext, rrot=0, rails=None, capnet=None):
+def rail_grid(rect, items, ext, rrot=0, rails=None, capnet=None, blocked=()):
     """The DEC lattice, but each cap goes to the free point nearest its own rail's balls."""
-    placed, over = grid(rect, items, ext, rrot)
+    placed, over = grid(rect, items, ext, rrot, blocked)
     if not rails or not capnet:
         return placed, over
     pts = [(d, r, x, y) for d, r, x, y in placed]
@@ -315,6 +405,7 @@ def rail_grid(rect, items, ext, rrot=0, rails=None, capnet=None):
 def build(verbose=True):
     comp, nets = read_netlist(NET)
     ext = lib_extents()
+    geom = lib_geometry()
     u1 = [a for a in ANCHORS if a[0] == 'U1'][0]
     rails = rail_centroids((u1[3], u1[4]))
     capnet = {}
@@ -340,12 +431,13 @@ def build(verbose=True):
         print('REGIONS')
     for name, (layer, x0, y0, x1, y1, rrot, note) in REGIONS.items():
         items = byreg.get(name, [])
+        blocked = blocked_by(comp, geom, out)
         if name == 'DEC':
-            placed, over = rail_grid((x0, y0, x1, y1), items, ext, rrot, rails, capnet)
+            placed, over = rail_grid((x0, y0, x1, y1), items, ext, rrot, rails, capnet, blocked)
         elif name in GRIDDED:
-            placed, over = grid((x0, y0, x1, y1), items, ext, rrot)
+            placed, over = grid((x0, y0, x1, y1), items, ext, rrot, blocked)
         else:
-            placed, over = pack((x0, y0, x1, y1), items, ext, rrot)
+            placed, over = pack((x0, y0, x1, y1), items, ext, rrot, blocked)
         area = sum(ext[fp][0] * ext[fp][1] for _, fp in items)
         box = (x1 - x0) * (y1 - y0)
         for d, rot, px, py in placed:
@@ -374,9 +466,14 @@ def boxes(comp, ext, place):
 
 
 def rects(comp, geom, place):
-    """designator -> (layer, [(x0, y0, x1, y1), ...]) in board mm.
+    """designator -> (layer, [(x0, y0, x1, y1, multilayer), ...]) in board mm.
 
-    One rectangle per part, except the pin fields, which get one per pad.
+    A footprint with any drilled pad is expanded pad by pad, and each pad carries whether it is
+    drilled. A drilled pad exists on every copper layer, so it can collide with a part on the
+    other side; an SMD pad only collides with things on its own side. Doing this per PAD rather
+    than per FOOTPRINT is what the first version got wrong -- X1 is thirteen pads of which only
+    four are drilled, and treating the whole footprint as one kind or the other is wrong either
+    way. Footprints with no drilled pad at all stay a single bounding box, which is conservative.
     """
     out = {}
     for d, (layer, rot, cx, cy) in place.items():
@@ -385,21 +482,22 @@ def rects(comp, geom, place):
         if w <= 0:
             out[d] = (layer, [])
             continue
-        if fp in THRU:
+        if any(q[4] > 1e-6 for q in pl):
             rs = []
-            for dx, dy, pw, ph in pl:
+            for dx, dy, pw, ph, hole in pl:
                 if rot % 360 == 90:
                     dx, dy, pw, ph = -dy, dx, ph, pw
                 elif rot % 360 == 180:
                     dx, dy = -dx, -dy
                 elif rot % 360 == 270:
                     dx, dy, pw, ph = dy, -dx, ph, pw
-                rs.append((cx + dx - pw / 2, cy + dy - ph / 2, cx + dx + pw / 2, cy + dy + ph / 2))
+                rs.append((cx + dx - pw / 2, cy + dy - ph / 2,
+                           cx + dx + pw / 2, cy + dy + ph / 2, hole > 1e-6))
             out[d] = (layer, rs)
         else:
             if rot % 180 == 90:
                 w, h = h, w
-            out[d] = (layer, [(cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)])
+            out[d] = (layer, [(cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2, False)])
     return out
 
 
@@ -408,7 +506,7 @@ def check(comp, geom, place):
     off, hits = [], []
     for d in sorted(rc):
         layer, rs = rc[d]
-        for x0, y0, x1, y1 in rs:
+        for x0, y0, x1, y1, _ in rs:
             if x0 < EDGE or y0 < EDGE or x1 > BOARD[0] - EDGE or y1 > BOARD[1] - EDGE:
                 off.append('%-6s %-6s  x %6.2f..%6.2f  y %6.2f..%6.2f' % (d, layer, x0, x1, y0, y1))
                 break
@@ -417,11 +515,14 @@ def check(comp, geom, place):
         la, ra = rc[a]
         for b in names[i + 1:]:
             lb, rb = rc[b]
-            if la != lb and comp[a] not in THRU and comp[b] not in THRU:
-                continue
+            same_side = (la == lb)
             worst = None
-            for ax0, ay0, ax1, ay1 in ra:
-                for bx0, by0, bx1, by1 in rb:
+            for ax0, ay0, ax1, ay1, am in ra:
+                for bx0, by0, bx1, by1, bm in rb:
+                    # two pads only share space if they are on the same side, or if at least
+                    # one of them is drilled and therefore present on every layer
+                    if not (same_side or am or bm):
+                        continue
                     ox = min(ax1, bx1) - max(ax0, bx0)
                     oy = min(ay1, by1) - max(ay0, by0)
                     gap = min(ox, oy)
