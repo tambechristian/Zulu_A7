@@ -1,0 +1,1234 @@
+[
+ {
+  "name": "742C043",
+  "description": "R1 - CTS 742C043, two isolated elements. zulu_a7.brd (EAGLE package 742C083) and zulu_a7.sch (device 742, package 742C083, connects block). p6, Mechanical Specifications - \"Recommended Pad Layout\". manufacturer recommended land.",
+  "body": {
+   "dx": 1.6,
+   "dy": 1.6
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": -0.4,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": 0.4,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "3",
+    "x": 0.4,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "4",
+    "x": -0.4,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ },
+ {
+  "name": "742C163",
+  "description": "R4 - CTS 742C163, eight isolated elements. a.pdf p6, Mechanical Specifications - \"Recommended Pad Layout\", table row for package code 742. manufacturer recommended land.",
+  "body": {
+   "dx": 6.4,
+   "dy": 1.6
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": -2.8,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": -2.0,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "3",
+    "x": -1.2,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "4",
+    "x": -0.4,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "5",
+    "x": 0.4,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "6",
+    "x": 1.2,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "7",
+    "x": 2.0,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "8",
+    "x": 2.8,
+    "y": -0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "9",
+    "x": 2.8,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "10",
+    "x": 2.0,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "11",
+    "x": 1.2,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "12",
+    "x": 0.4,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "13",
+    "x": -0.4,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "14",
+    "x": -1.2,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "15",
+    "x": -2.0,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "16",
+    "x": -2.8,
+    "y": 0.85,
+    "dx": 0.45,
+    "dy": 0.9,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ },
+ {
+  "name": "DM3D-SF",
+  "description": "X3 - Hirose DM3D-SF microSD socket. DM3AT-SF-PEJM5.pdf p9, \"\u25a0Recommended PCB mounting pattern\". manufacturer recommended land.",
+  "body": {
+   "dx": 11.95,
+   "dy": 11.45
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": 3.2,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": 2.1,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "3",
+    "x": 1.0,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "4",
+    "x": -0.1,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "5",
+    "x": -1.2,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "6",
+    "x": -2.3,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "7",
+    "x": -3.4,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "8",
+    "x": -4.5,
+    "y": -5.35,
+    "dx": 0.7,
+    "dy": 1.75,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "A",
+    "x": 5.6,
+    "y": 5.45,
+    "dx": 1.0,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "B",
+    "x": -5.625,
+    "y": 3.875,
+    "dx": 1.45,
+    "dy": 1.0,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "G1",
+    "x": -5.7,
+    "y": -5.225,
+    "dx": 1.3,
+    "dy": 1.5,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "G2",
+    "x": -5.95,
+    "y": 2.375,
+    "dx": 0.8,
+    "dy": 1.5,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "G3",
+    "x": 6.0,
+    "y": 3.025,
+    "dx": 0.8,
+    "dy": 1.4,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "G4",
+    "x": 5.65,
+    "y": -5.225,
+    "dx": 1.5,
+    "dy": 1.5,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ },
+ {
+  "name": "FT2232HL-LQFP64",
+  "description": "U2 - FTDI FT2232HL USB bridge. DS_FT2232H.pdf p58, Figure 8.2 \"64 pin LQFP Package Details\". DERIVED, no manufacturer land exists.",
+  "body": {
+   "dx": 10.0,
+   "dy": 10.0
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": -5.7,
+    "y": 3.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": -5.7,
+    "y": 3.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "3",
+    "x": -5.7,
+    "y": 2.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "4",
+    "x": -5.7,
+    "y": 2.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "5",
+    "x": -5.7,
+    "y": 1.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "6",
+    "x": -5.7,
+    "y": 1.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "7",
+    "x": -5.7,
+    "y": 0.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "8",
+    "x": -5.7,
+    "y": 0.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "9",
+    "x": -5.7,
+    "y": -0.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "10",
+    "x": -5.7,
+    "y": -0.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "11",
+    "x": -5.7,
+    "y": -1.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "12",
+    "x": -5.7,
+    "y": -1.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "13",
+    "x": -5.7,
+    "y": -2.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "14",
+    "x": -5.7,
+    "y": -2.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "15",
+    "x": -5.7,
+    "y": -3.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "16",
+    "x": -5.7,
+    "y": -3.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "17",
+    "x": -3.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "18",
+    "x": -3.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "19",
+    "x": -2.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "20",
+    "x": -2.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "21",
+    "x": -1.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "22",
+    "x": -1.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "23",
+    "x": -0.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "24",
+    "x": -0.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "25",
+    "x": 0.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "26",
+    "x": 0.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "27",
+    "x": 1.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "28",
+    "x": 1.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "29",
+    "x": 2.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "30",
+    "x": 2.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "31",
+    "x": 3.25,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "32",
+    "x": 3.75,
+    "y": -5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "33",
+    "x": 5.7,
+    "y": -3.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "34",
+    "x": 5.7,
+    "y": -3.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "35",
+    "x": 5.7,
+    "y": -2.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "36",
+    "x": 5.7,
+    "y": -2.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "37",
+    "x": 5.7,
+    "y": -1.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "38",
+    "x": 5.7,
+    "y": -1.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "39",
+    "x": 5.7,
+    "y": -0.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "40",
+    "x": 5.7,
+    "y": -0.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "41",
+    "x": 5.7,
+    "y": 0.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "42",
+    "x": 5.7,
+    "y": 0.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "43",
+    "x": 5.7,
+    "y": 1.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "44",
+    "x": 5.7,
+    "y": 1.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "45",
+    "x": 5.7,
+    "y": 2.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "46",
+    "x": 5.7,
+    "y": 2.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "47",
+    "x": 5.7,
+    "y": 3.25,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "48",
+    "x": 5.7,
+    "y": 3.75,
+    "dx": 1.55,
+    "dy": 0.28,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "49",
+    "x": 3.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "50",
+    "x": 3.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "51",
+    "x": 2.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "52",
+    "x": 2.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "53",
+    "x": 1.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "54",
+    "x": 1.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "55",
+    "x": 0.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "56",
+    "x": 0.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "57",
+    "x": -0.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "58",
+    "x": -0.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "59",
+    "x": -1.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "60",
+    "x": -1.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "61",
+    "x": -2.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "62",
+    "x": -2.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "63",
+    "x": -3.25,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "64",
+    "x": -3.75,
+    "y": 5.7,
+    "dx": 0.28,
+    "dy": 1.55,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ },
+ {
+  "name": "JST-B2B-PH-SM4-TB",
+  "description": "X4 - JST PH 2-circuit top-entry SMT header, the LiPo connector. JST_B2B_PH_SM4_TB_LF_SN_ePH.pdf p1, <SMT type> - SM4 type / Top entry type, under \"PC board layout and Assembly layout\". manufacturer recommended land.",
+  "body": {
+   "dx": 7.95,
+   "dy": 5.0
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": -1.0,
+    "y": -2.25,
+    "dx": 1.0,
+    "dy": 5.5,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": 1.0,
+    "y": -2.25,
+    "dx": 1.0,
+    "dy": 5.5,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "MP1",
+    "x": -3.4,
+    "y": 0.0,
+    "dx": 1.6,
+    "dy": 3.0,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "MP2",
+    "x": 3.4,
+    "y": 0.0,
+    "dx": 1.6,
+    "dy": 3.0,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ },
+ {
+  "name": "PTS810",
+  "description": "BTN - C&K/Littelfuse PTS810SJM250SMTR LFS tact switch. Littelfuse-CK-Tactile-PTS810-Series-Datasheet.pdf p1, \"Recommended PCB Layout\". manufacturer recommended land.",
+  "body": {
+   "dx": 4.2,
+   "dy": 3.2
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": -2.075,
+    "y": 1.075,
+    "dx": 1.05,
+    "dy": 0.65,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": 2.075,
+    "y": 1.075,
+    "dx": 1.05,
+    "dy": 0.65,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "3",
+    "x": -2.075,
+    "y": -1.075,
+    "dx": 1.05,
+    "dy": 0.65,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "4",
+    "x": 2.075,
+    "y": -1.075,
+    "dx": 1.05,
+    "dy": 0.65,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ },
+ {
+  "name": "SOT23-5",
+  "description": "U5, U6, U7 - Semtech SC189 bucks. SC189-datasheet 08 27 10.pdf p23, \"Land Pattern -  SOT23-5\". manufacturer recommended land.",
+  "body": {
+   "dx": 2.95,
+   "dy": 1.6
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": -0.95,
+    "y": -1.25,
+    "dx": 0.6,
+    "dy": 1.1,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": 0.0,
+    "y": -1.25,
+    "dx": 0.6,
+    "dy": 1.1,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "3",
+    "x": 0.95,
+    "y": -1.25,
+    "dx": 0.6,
+    "dy": 1.1,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "4",
+    "x": 0.95,
+    "y": 1.25,
+    "dx": 0.6,
+    "dy": 1.1,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "5",
+    "x": -0.95,
+    "y": 1.25,
+    "dx": 0.6,
+    "dy": 1.1,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ },
+ {
+  "name": "VQFN16-3X3-RGT",
+  "description": "U8 - TI bq24232 charger and power path. bq24232.pdf p44, LAND PATTERN EXAMPLE / EXAMPLE BOARD LAYOUT, RGT0016C, VQFN - 1 mm max height, drawing 4222419/E 07/2025. manufacturer recommended land.",
+  "body": {
+   "dx": 3.0,
+   "dy": 3.0
+  },
+  "pads": [
+   {
+    "name": "1",
+    "x": -1.4,
+    "y": 0.75,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "2",
+    "x": -1.4,
+    "y": 0.25,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "3",
+    "x": -1.4,
+    "y": -0.25,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "4",
+    "x": -1.4,
+    "y": -0.75,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "5",
+    "x": -0.75,
+    "y": -1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "6",
+    "x": -0.25,
+    "y": -1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "7",
+    "x": 0.25,
+    "y": -1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "8",
+    "x": 0.75,
+    "y": -1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "9",
+    "x": 1.4,
+    "y": -0.75,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "10",
+    "x": 1.4,
+    "y": -0.25,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "11",
+    "x": 1.4,
+    "y": 0.25,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "12",
+    "x": 1.4,
+    "y": 0.75,
+    "dx": 0.6,
+    "dy": 0.24,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "13",
+    "x": 0.75,
+    "y": 1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "14",
+    "x": 0.25,
+    "y": 1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "15",
+    "x": -0.25,
+    "y": 1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "16",
+    "x": -0.75,
+    "y": 1.4,
+    "dx": 0.24,
+    "dy": 0.6,
+    "shape": "rect",
+    "drill": 0.0
+   },
+   {
+    "name": "17",
+    "x": 0.0,
+    "y": 0.0,
+    "dx": 1.68,
+    "dy": 1.68,
+    "shape": "rect",
+    "drill": 0.0
+   }
+  ]
+ }
+]

@@ -32,6 +32,7 @@ Writes the patched copy to the scratchpad; nothing in the repo is touched.
 import io
 import os
 import re
+import sys
 import collections
 import xml.etree.ElementTree as ET
 
@@ -129,10 +130,36 @@ close = lib.rindex('</packages>')
 lib2 = lib[:close] + spi + '\n' + ever + '\n' + lib[close:]
 s = s[:lm.start()] + lib2 + s[lm.end():]
 
+new_pkgs = ['SPI-8_SOIC_150', 'EVERLIGHT-19-337']
+
+# ------------------------------------------------- E: the footprints drawn from datasheets
+# tools/new_footprints.json holds the land patterns extracted from the manufacturers' sheets and
+# checked by a second pass; fp_emit turns each into an EAGLE <package>.
+try:
+    import fp_emit
+except ImportError:                                   # running from outside tools/
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fp_emit
+
+drawn = []
+jpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'new_footprints.json')
+if os.path.exists(jpath):
+    drawn = fp_emit.load(jpath)
+
+if drawn:
+    lm = one(r'<library name="ctambe">.*?</library>', s, 'ctambe library (2)')
+    lib = lm.group(0)
+    close = lib.rindex('</packages>')
+    lib = lib[:close] + '\n'.join(fp_emit.package_xml(fp) for fp in drawn) + '\n' + lib[close:]
+    s = s[:lm.start()] + lib + s[lm.end():]
+    new_pkgs += [fp['name'] for fp in drawn]
+
+# every added package needs a placed element, because Make PCB Library harvests placed components
 em = one(r'<elements>', s, '<elements>', flags=0)
-dummies = (
-    '\n<element name="FPX1" library="ctambe" package="SPI-8_SOIC_150" value="U10-PATTERN" x="100" y="40"/>'
-    '\n<element name="FPX2" library="ctambe" package="EVERLIGHT-19-337" value="LD0-PATTERN" x="115" y="40"/>')
+dummies = ''.join(
+    '\n<element name="FPX%d" library="ctambe" package="%s" value="PATTERN" x="%d" y="%d"/>'
+    % (n + 1, name, 100 + 15 * (n % 6), 40 + 15 * (n // 6))
+    for n, name in enumerate(new_pkgs))
 s = s[:em.end()] + dummies + s[em.end():]
 
 # ------------------------------------------------------------------ verify
@@ -183,8 +210,16 @@ placed = collections.Counter(e.get('package') for e in root.iter('element'))
 NEED = ['1X03-NOSILK', '2X06', '742C083', 'C0201', 'C0402', 'C0603', 'C0805', 'EVERLIGHT-19-337',
         'IND0603', 'IND2520', 'LED0603', 'MOLEX-105017-0001', 'R0201', 'R0402', 'SOIC-8_208MIL',
         'SOT23-3', 'SPI-8_SOIC_150', 'TSOPII-54', 'XC7A35T-CPG236', 'ZULU-DIP37']
+NEED += [fp['name'] for fp in drawn]
 missing = [n for n in NEED if not placed.get(n)]
 assert not missing, 'not placed: %s' % missing
+
+# each drawn footprint must arrive with exactly the pads its schematic symbol asks for
+for fp in drawn:
+    got = sorted(p.get('name') for p in pkgs[fp['name']].findall('smd'))
+    got += sorted(p.get('name') for p in pkgs[fp['name']].findall('pad'))
+    want_pads = sorted(p['name'] for p in fp['pads'])
+    assert sorted(got) == want_pads, '%s: pads %s, wanted %s' % (fp['name'], sorted(got), want_pads)
 
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 io.open(OUT, 'w', encoding='utf-8', newline='\n').write(s)
@@ -211,6 +246,11 @@ for y in sorted(rows, reverse=True):
         '  |  '.join('%s-%s (x %.2f..%.2f)' % (g[0][1], g[-1][1], g[0][0], g[-1][0]) for g in gs)))
 print('CPG236      238 lands 0.225 -> 0.275 mm  (0.375 mask opening still to set in Altium)')
 print('added       SPI-8_SOIC_150 (8 smd) and EVERLIGHT-19-337 (6 smd), each on a dummy element')
+for fp in drawn:
+    p = pkgs[fp['name']]
+    print('drawn       %-20s %2d pads, body %s x %s mm' % (
+        fp['name'], len(p.findall('smd')) + len(p.findall('pad')),
+        fp['body']['dx'], fp['body']['dy']))
 print('contactrefs X2 44 -> %d, and no dangling contactref anywhere in the file' % sum(
     1 for sig in root.iter('signal') for c in sig.findall('contactref')
     if c.get('element') == 'X2'))
