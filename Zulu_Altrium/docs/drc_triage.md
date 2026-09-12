@@ -1,3 +1,57 @@
+# DRC RESULT — 2026-09-11, after the pre-routing setup pass
+
+**642 violations, and 640 of them are not defects. Every actionable class is zero.**
+
+| rule | count | |
+|---|---|---|
+| Un-Routed Net Constraint | **603** | airwires — nothing is routed yet |
+| Silk To Solder Mask (0.254 mm, IsPad) | **37** | designator *text* over a neighbouring pad's mask opening |
+| Power Plane Connect (starved thermal) | **2** | both on X2-20, and both already diagnosed |
+| Clearance 0.09 mm (All,All) | 0 | |
+| Short-Circuit | 0 | |
+| Width — generic, PWR_SWITCH, PWR_RAILS | 0, 0, 0 | all three |
+| Hole Size / Hole To Hole | 0 / 0 | |
+| Minimum Solder Mask Sliver | 0 | |
+| Silk to Silk | 0 | |
+| Net Antennae / Height / Modified Polygon / Routing Topology | 0 | |
+| **Warnings** | **0** | |
+
+This is the first DRC since the setup pass — four rule edits, the grid change to
+0.025 mm, two keep-out fills under X3, seven parts moved west, ten net classes, two
+power width rules, the PcbLib strip and `Fanout_BGA` disabled. **None of them
+introduced a violation.**
+
+### The two plane violations are verbatim what the readiness review predicted
+
+```
+Starved Thermal on L2-GND: Pad X2-20(1.27mm,24.13mm) on Multi-Layer. Blocked 3 out of 4 entries.
+Starved Thermal on L5-GND: Pad X2-20(1.27mm,24.13mm) on Multi-Layer. Blocked 3 out of 4 entries.
+```
+
+At the current **0.51 mm** plane pullback that pad has 0.7595 mm to two plane edges
+against the **0.8068 mm** a 45° relief spoke corner needs. At a **0.25 mm** pullback it
+has 1.020 mm and both clear in one edit. That edit is gated on question 1 of
+`board/JLCPCB-DFM-ENQUIRY-2.md` — minimum inner copper to board edge — and it is now
+**the only thing standing between this board and a fully clean pre-routing DRC.**
+
+### The 37 silk hits are designator text, not silkscreen outlines
+
+The offenders are the *inductor* designators and a handful of others, sitting over
+pads that belong to neighbouring parts:
+
+```
+Text "L1" (5.551, 11.368) Bottom Overlay  vs  C147-2, C148-1, C150-1
+Text "L2" (9.638, 11.368) Bottom Overlay  vs  C149-1, C149-2, C151-1, C151-2
+```
+
+plus single hits on U2 (6), X2 (5), L3, JP3, Q1, LD1–LD4, R97, R98, C78, C82.
+`ZuluFixDrc.pas` already carries `HideChipDesignators` and `ShrinkVisibleDesignators`;
+these are what survived them, because L1/L2/L3 are not chip parts. The fix is to move
+or hide these specific designators, not to loosen the rule — 0.254 mm is a real
+manufacturing number and silk printed over a mask opening lands on the solderable pad.
+
+---
+
 ## MUST FIX BEFORE ROUTING
 
 **1. Three copper-on-copper shorts under the USB receptacle — 3 physical defects, 6 report lines (3 in `short_circuit.txt`, 3 duplicated in `clearance.txt`).**
