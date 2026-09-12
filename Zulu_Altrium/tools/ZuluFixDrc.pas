@@ -573,6 +573,177 @@ Begin
     ShowMessage(S);
 End;
 
+{ ============================================================================
+  THE SIXTEEN ORPHANED DESIGNATORS                              added 2026-09-11
+
+  The DRC leaves 37 Silk To Solder Mask violations. They are not 37 objects --
+  they are SIXTEEN designators, each landing on two to five pads that belong to
+  a DIFFERENT component. And the reason is not that the board is tight:
+
+      designator   sits at            its own part is at    distance
+      U3           (19.218, 19.308)   (28.350, 11.850)      11.791 mm
+      J1           (64.508, 21.558)   (66.400, 12.700)       9.058 mm
+      U1           (41.582, 18.578)   (46.400, 11.900)       8.234 mm
+      X4           (29.003,  8.977)   (32.400,  3.550)       6.402 mm
+      U4           (43.900, 23.267)   (47.500, 19.400)       5.284 mm
+      ... every one of the sixteen is between 2.1 and 11.8 mm away.
+
+  So the silkscreen currently MISLABELS THE BOARD. The string "U3" is printed
+  over R97 and R98, eleven millimetres from the SDRAM it names. Fixing the DRC
+  is the smaller half of this; the board is wrong to read.
+
+  These are all parts a human needs labelled -- U1, U3, U4, U6, U7, U8, U10,
+  L1, L2, L3, Q1, J1, R4, X4, BTN, LD0 -- so HideChipDesignators, which already
+  took the 145 chip passives, is the wrong tool. They go back onto their parts.
+
+  WHY AUTOPOSITION AND NOT COMPUTED COORDINATES. Working out a clear spot
+  offline needs the text's true bounding box, and that turned out to be a trap:
+  Texts6 says these are ARIAL, not Altium's stroke font, so glyph widths differ
+  per character ("L1" is narrow, "BTN" wide); and byte 35 is a MIRROR flag, set
+  on every Bottom Overlay string, so a bottom-side designator draws LEFTWARD
+  from its anchor. A left-to-right stroke-font model reproduces neither. Altium
+  knows its own font metrics; let it place the text.
+
+  CANARY FIRST. ChangeNameAutoposition and the eAutoPos_ enum are new names in
+  this project, and an undeclared identifier is fatal here -- Try/Except does
+  not catch it. AutoPositionOne touches exactly one component.
+
+  Run:  ReportOrphanDesignators   how far each of the sixteen has strayed
+        AutoPositionOne           canary -- L1 only
+        AutoPositionOrphans       all sixteen
+  Then Ctrl+S and re-run the DRC.
+  ============================================================================ }
+
+Const
+    ORPHANS = 'U1 U3 U4 U6 U7 U8 U10 L1 L2 L3 Q1 J1 R4 X4 BTN LD0';
+
+
+Function IsOrphan(Const D : String) : Boolean;
+Begin
+    Result := Pos(' ' + D + ' ', ' ' + ORPHANS + ' ') > 0;
+End;
+
+
+Procedure ReportOrphanDesignators;
+Var
+    It  : IPCB_BoardIterator;
+    C   : IPCB_Component;
+    Log : TStringList;
+    DX, DY : Double;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+    Log := TStringList.Create;
+
+    It := Brd.BoardIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(eComponentObject));
+    It.AddFilter_LayerSet(AllLayers);
+    It.AddFilter_Method(eProcessAll);
+    C := It.FirstPCBObject;
+    While C <> Nil Do
+    Begin
+        If IsOrphan(C.Name.Text) Then
+        Begin
+            DX := CoordToMMs(C.Name.XLocation) - CoordToMMs(C.X);
+            DY := CoordToMMs(C.Name.YLocation) - CoordToMMs(C.Y);
+            Log.Add('   ' + C.Name.Text + '   designator offset ' +
+                    FloatToStr(DX) + ' , ' + FloatToStr(DY) + ' mm');
+        End;
+        C := It.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(It);
+
+    ShowMessage('Zulu A7 - designator offset from its own component' + #13#10 + #13#10 +
+                Log.Text + #13#10 + 'Nothing was changed.');
+    Log.Free;
+End;
+
+
+Procedure AutoPositionOne;
+Var
+    C : IPCB_Component;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+
+    C := Brd.GetPcbComponentByRefDes('L1');
+    If C = Nil Then
+    Begin
+        ShowMessage('L1 not found.');
+        Exit;
+    End;
+
+    C.BeginModify;
+    C.ChangeNameAutoposition(eAutoPos_TopCenter);
+    C.EndModify;
+
+    Brd.ViewManager_FullUpdate;
+    ShowMessage('Canary flew.' + #13#10 + #13#10 +
+                'L1 designator moved to (' +
+                FloatToStr(CoordToMMs(C.Name.XLocation)) + ' , ' +
+                FloatToStr(CoordToMMs(C.Name.YLocation)) + ') mm,' + #13#10 +
+                'against the component at (' +
+                FloatToStr(CoordToMMs(C.X)) + ' , ' + FloatToStr(CoordToMMs(C.Y)) + ').' + #13#10 + #13#10 +
+                'ChangeNameAutoposition and eAutoPos_TopCenter are real in this build,' + #13#10 +
+                'so AutoPositionOrphans is safe to run. Nothing is saved yet.');
+End;
+
+
+Procedure AutoPositionOrphans;
+Var
+    It  : IPCB_BoardIterator;
+    C   : IPCB_Component;
+    Log : TStringList;
+    N   : Integer;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+    Log := TStringList.Create;
+    N := 0;
+
+    It := Brd.BoardIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(eComponentObject));
+    It.AddFilter_LayerSet(AllLayers);
+    It.AddFilter_Method(eProcessAll);
+    C := It.FirstPCBObject;
+    While C <> Nil Do
+    Begin
+        If IsOrphan(C.Name.Text) Then
+        Begin
+            C.BeginModify;
+            C.ChangeNameAutoposition(eAutoPos_TopCenter);
+            C.EndModify;
+            Log.Add('   ' + C.Name.Text + '  -> (' +
+                    FloatToStr(CoordToMMs(C.Name.XLocation)) + ' , ' +
+                    FloatToStr(CoordToMMs(C.Name.YLocation)) + ')');
+            N := N + 1;
+        End;
+        C := It.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(It);
+
+    Brd.ViewManager_FullUpdate;
+    ShowMessage('Zulu A7 - ' + IntToStr(N) + ' designators put back on their parts' +
+                #13#10 + #13#10 + Log.Text + #13#10 +
+                'Sixteen expected. Ctrl+S, then re-run the DRC: the 37 Silk To' + #13#10 +
+                'Solder Mask violations should fall, and whatever is left is a' + #13#10 +
+                'genuinely tight spot rather than an orphan.');
+    Log.Free;
+End;
+
+
 End.
 
 { End of ZuluFixDrc.pas }
