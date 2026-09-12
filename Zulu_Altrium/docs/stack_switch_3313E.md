@@ -1,8 +1,16 @@
 # Switching the stack to JLC06161H-3313E — the procedure
 
-**Status 2026-09-11: NOT YET APPLIED.** Everything below is verified and ready; the edit itself is
-fourteen fields in Altium's Layer Stack Manager. `tools/verify_stack.py` currently exits 1 with
-35 deltas, which is what this edit closes.
+**Status 2026-09-12: APPLIED AND VERIFIED.** `tools/verify_stack.py` prints
+`PASS -- stack matches JLC06161H-3313E`, laminate **1.65038 mm** against the 1.65040 mm quote
+(the 0.00002 mm gap is the file's 4-decimal mil quantum, not an error). Total including mask
+1.67070 mm. The 35 deltas are closed. What survived the edit, checked from the saved file:
+two `POLYGONTYPE=Split Plane` polygons, all 47 rules including `SolderMaskExpansion_U1`, both
+planes still `GND` at 20 mil pullback, and all six `LAYERID`s unchanged.
+
+**All FIVE stack copies agree**, including the two the verifier does not read: the base64/zlib
+`V9_STACKCUSTOMDATA` blob holds every new value and not one stale one, and `V9_CACHE_LAYERn_*`
+reads 1.378 mil outer / 0.5984 mil inner / 44.126 mil at Dk 4.523 for the L3-L4 gap. Doing the
+edit in the GUI rather than by patching text is what made that true.
 
 ## Why
 
@@ -63,7 +71,7 @@ highest-ratio builds.)
 | L2-GND | Thickness | `0.0152mm` |
 | Dielectric 4 (L2↔L3) | Type, Thickness, Dk | **Core**, `0.1mm`, `4.6` |
 | L3-SIG | Thickness | `0.0152mm` |
-| Dielectric 1 (L3↔L4) | Type, Thickness, Dk | **Core**, `1.1208mm`, `4.523` |
+| Dielectric 1 (L3↔L4) | Thickness, Dk | `1.1208mm`, `4.523` — leave Type as **Dielectric**, see below |
 | L4-SIG | Thickness | `0.0152mm` |
 | Dielectric 5 (L4↔L5) | Type, Thickness, Dk | **Core**, `0.1mm`, `4.6` |
 | L5-GND | Thickness | `0.0152mm` |
@@ -81,6 +89,28 @@ value, not a mean: `1.1208 / (0.21040/4.4 + 0.700/4.6 + 0.21040/4.4) = 4.5228`.
 > impedance-control flow, and get it onto the order acknowledgement.** A free-text remark is not a
 > binding channel, and the substitution is not cosmetic: `-3313` and `-1080` put L3 0.55 mm from
 > its GND reference and then leave L3 and L4 facing each other across 0.1088 mm.
+
+## The `DIELTYPE` code, corrected
+
+Applying this edit proved what the 2026-09-11 notes had only guessed. Typing `Core` into the
+Layer Stack Manager's Type cell and reading the saved file back gives **1**, not 0:
+
+| code | Layer Stack Manager shows | in this board |
+|---|---|---|
+| 0 | `Dielectric` (generic) | Dielectric 1, the merged L3↔L4 gap |
+| 1 | `Core` | Dielectrics 4 and 5 |
+| 2 | `Prepreg` | Dielectrics 2 and 3 |
+| 3 | `Surface Material` | both solder masks |
+
+`verify_stack.py` had `CORE = 0` and even said code 1 was unknown. That was wrong, and it was
+wrong in the way the project keeps getting caught by: the FR-4 row *displayed* as `Dielectric`
+and was *called* a core in prose, so prose became the constant. The verifier now carries
+`GENERIC, CORE, PREPREG, SURFACE = 0, 1, 2, 3`.
+
+**Dielectric 1 is deliberately left as generic `Dielectric`, not `Core`.** It is 7628 + 0.7 mm
+core + 7628 merged into one row; labelling it `Core` would assert a single-core build that JLC
+do not do there. `Dielectric` is the honest label for a merged row, and it is the label that
+matches the warning above: the merged row is a solver model, not a lamination recipe.
 
 ## Afterwards
 

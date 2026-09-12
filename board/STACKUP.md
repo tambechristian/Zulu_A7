@@ -371,28 +371,43 @@ than a long edge, and the +x end is now Pmod. X3 is turned to eject over the
 > live one — it was on 2026-09-11, by the user and then by me. Read the table below as
 > PCBWay history. **The live stack is the JLC one in the paragraph under it.**
 >
-> **The stack that is actually in `Zulu_Altrium/.../zulu_a7.PcbDoc`,** set by commit
-> `74eef9a` and verified by reading `Board6/Data` rather than the dialog:
+> **THE CUSTOM BUILD IS ALSO GONE.** It was replaced on **2026-09-12** by JLCPCB's published
+> template **`JLC06161H-3313E`**. The table that used to sit here described the custom build
+> set by commit `74eef9a`; it is no longer in the file and has been removed so it cannot be
+> mistaken for live a third time. The claim that went with it — *"JLC publish one 6-layer
+> 1.6 mm build and this is not it"* — was false: JLC publish **fifteen**, and one of them
+> beats the custom build on both axes that mattered.
+>
+> **The stack that is actually in `Zulu_Altrium/.../zulu_a7.PcbDoc`,** read back from
+> `Board6/Data` by `Zulu_Altrium/tools/verify_stack.py`, which exits 0 with
+> `PASS -- stack matches JLC06161H-3313E`:
 >
 > | | material | thickness | Dk |
 > |---|---|---|---|
-> | Top | copper 1.4 mil (0.5 oz base plated to 1 oz) | 0.0356 mm | |
-> | | prepreg **3313** | **0.0994 mm** | 4.100 |
-> | L2-GND | copper 0.689 mil (0.5 oz) | 0.0175 mm | |
-> | | prepreg **2116** | **0.1164 mm** | 4.100 |
-> | L3-SIG | copper 0.689 mil | 0.0175 mm | |
-> | | **FR-4 core** | **1.0173 mm** | 4.800 |
-> | L4-SIG | copper 0.689 mil | 0.0175 mm | |
-> | | prepreg 2116 | 0.1164 mm | 4.100 |
-> | L5-GND | copper 0.689 mil | 0.0175 mm | |
+> | Top | copper | **0.0350 mm** | |
+> | | prepreg **3313** | 0.0994 mm | 4.100 |
+> | L2-GND | copper | **0.0152 mm** | |
+> | | **core** | **0.1000 mm** | **4.600** |
+> | L3-SIG | copper | **0.0152 mm** | |
+> | | 7628 + 0.7 mm core + 7628, merged to one row | **1.1208 mm** | **4.523** |
+> | L4-SIG | copper | **0.0152 mm** | |
+> | | **core** | **0.1000 mm** | **4.600** |
+> | L5-GND | copper | **0.0152 mm** | |
 > | | prepreg 3313 | 0.0994 mm | 4.100 |
-> | Bottom | copper 1.4 mil | 0.0356 mm | |
+> | Bottom | copper | **0.0350 mm** | |
 >
-> Plus 0.4 mil Dk 3.5 solder resist each side. **Total 1.610 mm.** Signal-to-plane 0.1164
-> against signal-to-signal 1.0173 — a ratio of **8.7:1**, which is the whole point and is
-> what both fabs' catalogue builds invert. It is a CUSTOM build made of materials JLC
-> stocks; JLC publish one 6-layer 1.6 mm build and this is not it, so they have to confirm
-> it and will compute impedance from what they actually press.
+> Plus 0.4 mil Dk 3.5 solder resist each side. **Laminate 1.65038 mm, total 1.67070 mm.**
+> Signal-to-plane 0.1000 against signal-to-signal 1.1208 — a ratio of **11.2:1**, up from
+> 8.7:1. The merged L3↔L4 row is a **solver model, not a lamination recipe**: its Dk is the
+> series-capacitance value of the three real layers. **Order the stackup by name in JLC's
+> impedance-control flow and get the name onto the order acknowledgement** — a free-text
+> remark is not a binding channel, and the default `-3313` would put L3 0.55 mm from its
+> reference and leave L3 and L4 facing each other across 0.1088 mm.
+>
+> Two costs were accepted with it, both recorded in `Zulu_Altrium/docs/stack_switch_3313E.md`:
+> inner copper thins to 0.0152 mm, so VCC1V0's 0.400 mm inner track rises 12.2 °C at 367 mA;
+> and **SDRAM Z0 on L3/L4 drops 11–12%**, moving the 50 Ω inner width 0.1651 → 0.1247 mm.
+> Re-derive L3/L4 widths before routing the bus.
 >
 > **Re-confirmed 2026-09-11.** The question "is this board for JLCPCB or PCBWay?" was
 > re-opened from scratch and answered from the files by five independent readings, each

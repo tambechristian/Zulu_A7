@@ -29,12 +29,17 @@ TOL_DK = 0.002                    # DIELCONST is stored to 3 decimals
 DEFAULT = (r"C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altrium"
            r"\Imported zulu_a7.PrjPcb\zulu_a7.PcbDoc")
 
-# DIELTYPE codes as OBSERVED in this file (2026-09-11):
-#   0 -> Core             (was on "FR-4"   Dielectric 1)
-#   2 -> Prepreg          (was on "PP-006" Dielectrics 2/3/4/5)
-#   3 -> Surface Material (Solder Resist)
-# Code 1 does not appear in this file and its meaning is NOT known here.
-CORE, PREPREG, SURFACE = 0, 2, 3
+# DIELTYPE codes, now PROVEN rather than inferred (2026-09-12).  Dielectrics 4
+# and 5 were set to "Core" in the Layer Stack Manager and the saved file was
+# read back: both came out as 1, not 0.
+#   0 -> "Dielectric"       generic / unspecified   (FR-4, Dielectric 1)
+#   1 -> "Core"             (Dielectrics 4 and 5)
+#   2 -> "Prepreg"          (PP-006, Dielectrics 2 and 3)
+#   3 -> "Surface Material" (Solder Resist)
+# The 2026-09-11 reading that 0 meant Core was WRONG.  The old custom stack's
+# FR-4 row merely DISPLAYED as "Dielectric" and was called a core in prose;
+# no row in this file had ever actually been labelled Core until now.
+GENERIC, CORE, PREPREG, SURFACE = 0, 1, 2, 3
 
 # Outer copper: JLCPCB publish 0.035 mm FINISHED.  Altium's stock 1.4 mil is
 # 0.03556 mm.  Set OUTER_CU_MM = 0.03556 if you chose to leave 1.4 mil alone.
@@ -51,7 +56,7 @@ EXPECT = [
     ("L2-GND",         "cu",   INNER_CU_MM, None,  None),
     ("Dielectric 4",   "diel", 0.1000,      4.600, CORE),     # 0.1 mm core
     ("L3-SIG",         "cu",   INNER_CU_MM, None,  None),
-    ("Dielectric 1",   "diel", 1.1208,      4.523, CORE),     # 7628+0.7core+7628
+    ("Dielectric 1",   "diel", 1.1208,      4.523, GENERIC),  # 7628+0.7core+7628 -> mixed
     ("L4-SIG",         "cu",   INNER_CU_MM, None,  None),
     ("Dielectric 5",   "diel", 0.1000,      4.600, CORE),     # 0.1 mm core
     ("L5-GND",         "cu",   INNER_CU_MM, None,  None),
@@ -156,7 +161,7 @@ def main():
                                          "OK" if gt == dt else "BAD (want %d)" % dt))
             if gt != dt:
                 fails.append("V9 %s DIELTYPE got %r want %d "
-                             "(0=Core 2=Prepreg 3=Surface)" % (name, gt, dt))
+                             "(0=Dielectric 1=Core 2=Prepreg 3=Surface)" % (name, gt, dt))
             print("   %-42s %s" % ("V9 %s MATERIAL" % name,
                                    r.get("DIELMATERIAL", "-")))
 
