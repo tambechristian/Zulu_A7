@@ -1,4 +1,47 @@
-# DRC RESULT — 2026-09-11, after the pre-routing setup pass
+# DRC RESULT — 2026-09-11, FINAL: 605, and both remaining classes are accounted for
+
+| rule | count | |
+|---|---|---|
+| Un-Routed Net Constraint | **603** | airwires — nothing is routed yet |
+| Power Plane Connect (starved thermal) | **2** | X2-20 on both planes; cleared by the plane pullback |
+| **Silk To Solder Mask** | **0** | was 37 |
+| everything else | **0** | clearance, short-circuit, all three width rules, hole size, hole-to-hole, mask sliver, silk-to-silk, net antennae, height, modified polygon, routing topology |
+| Warnings | **0** | |
+
+**This is as clean as the board gets before routing.** The only non-airwire item left is the
+X2-20 pair, and it is gated on question 1 of `board/JLCPCB-DFM-ENQUIRY-2.md`.
+
+### How the silk went 37 -> 0
+
+The 37 were never 37 objects. They were **sixteen designators**, each printed on a *different*
+component's pads, because every one had been left 2–12 mm from the part it names — "U3" was
+11.8 mm from U3, sitting on R97 and R98. The silkscreen was **mislabelling the board**; the DRC
+was only the symptom.
+
+1. `AutoPositionOrphans` — `ChangeNameAutoposition(eAutoPos_TopCenter)` on all sixteen put them
+   back on their own parts. **37 → 28.**
+2. `HideCrowdedDesignators` — the 13 that then had nowhere to go came off the silkscreen, on the
+   user's instruction. **28 → 0.** Verified in the saved file: all 13 read `NAMEON=FALSE`.
+
+The 13 are LD0, X4, U3, L1, L2, L3, U6, U7, U8, U10, J1, U4, Q1. **They are hidden, not deleted**
+— every one still appears in the netlist, the BOM and the pick-and-place, and the assembly
+drawing is where a human reads them, which was already true of the 145 chip passives
+`HideChipDesignators` took earlier. Hiding was the only option left: 22 of the 28 were hard
+collisions rather than near-misses, so relaxing the 0.254 mm rule would have cleared nothing, and
+the text was already at 0.8 mm, JLCPCB's minimum silkscreen height, so there was no shrink room.
+
+### A trap worth remembering about Altium text
+
+Two facts out of `Texts6`, both of which defeat the obvious offline model: the designator font is
+**Arial**, not Altium's stroke font, so glyph widths differ per character; and **byte 35 is a
+mirror flag**, set on every Bottom Overlay string, so a bottom-side designator draws **leftward**
+from its anchor. `tools/fix_silk.py` records this, and records that its own box model is *not*
+calibrated — `place_board.rects()` returns one merged rectangle per SMD component rather than one
+per pad, which is right for component clearance and wrong for silk.
+
+---
+
+# DRC RESULT — 2026-09-11, after the pre-routing setup pass (superseded by the block above)
 
 **642 violations, and 640 of them are not defects. Every actionable class is zero.**
 

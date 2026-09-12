@@ -744,6 +744,93 @@ Begin
 End;
 
 
+{ ============================================================================
+  THE THIRTEEN THAT WILL NOT FIT                                added 2026-09-11
+
+  AutoPositionOrphans put all sixteen orphaned designators back onto their own
+  parts and took Silk To Solder Mask from 37 violations to 28. The remainder is
+  not an orphan problem any more -- it is a space problem, and it does not have
+  a geometric answer:
+
+    * 22 of the 28 are HARD COLLISIONS, not near misses, so relaxing the
+      0.254 mm rule clears nothing.
+    * the text is already 0.8 mm high, which is JLCPCB's minimum silkscreen
+      height, so there is no shrink room either.
+    * six of the thirteen are in the bottom-side power corner -- L1, L2, L3 and
+      the three SC189 bucks U6, U7, U8, packed with their 0805s at the 0.30 mm
+      component clearance. There is nowhere within reach to put a 0.8 mm string.
+
+  So they come off the silkscreen, on the user's instruction of 2026-09-11.
+  Silk over a solder-mask opening is ink on solderable copper, which is a real
+  assembly defect, not a cosmetic one -- it is worth more than the label.
+
+  THE DESIGNATORS STILL EXIST. NameOn hides the silkscreen text; it does not
+  delete or rename anything. Every one of these thirteen still appears in the
+  netlist, in the BOM and in the pick-and-place, and the assembly drawing is
+  where a human reads them -- which is already true of the 145 chip passives
+  HideChipDesignators took earlier.
+
+  Run:  HideCrowdedDesignators
+  Then Ctrl+S and re-run the DRC. Silk To Solder Mask should reach zero.
+  ============================================================================ }
+
+Const
+    CROWDED = 'LD0 X4 U3 L1 L2 L3 U6 U7 U8 U10 J1 U4 Q1';
+
+
+Procedure HideCrowdedDesignators;
+Var
+    It  : IPCB_BoardIterator;
+    C   : IPCB_Component;
+    Log : TStringList;
+    N   : Integer;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+    Log := TStringList.Create;
+    N := 0;
+
+    It := Brd.BoardIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(eComponentObject));
+    It.AddFilter_LayerSet(AllLayers);
+    It.AddFilter_Method(eProcessAll);
+    C := It.FirstPCBObject;
+    While C <> Nil Do
+    Begin
+        { the leading and trailing spaces matter: without them 'L1' would also
+          match 'LD1', and LD1 is not on this list }
+        If Pos(' ' + C.Name.Text + ' ', ' ' + CROWDED + ' ') > 0 Then
+        Begin
+            If C.NameOn Then
+            Begin
+                C.BeginModify;
+                C.NameOn := False;
+                C.EndModify;
+                Log.Add('   ' + C.Name.Text + '  hidden');
+                N := N + 1;
+            End
+            Else
+                Log.Add('   ' + C.Name.Text + '  was already hidden');
+        End;
+        C := It.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(It);
+
+    Brd.ViewManager_FullUpdate;
+    ShowMessage('Zulu A7 - ' + IntToStr(N) + ' crowded designators hidden' +
+                #13#10 + #13#10 + Log.Text + #13#10 +
+                'Thirteen expected. The components are untouched - only the' + #13#10 +
+                'silkscreen text is switched off, so the BOM, the netlist and' + #13#10 +
+                'the pick-and-place all still name them.' + #13#10 + #13#10 +
+                'Ctrl+S, then re-run the DRC: Silk To Solder Mask should be 0.');
+    Log.Free;
+End;
+
+
 End.
 
 { End of ZuluFixDrc.pas }
