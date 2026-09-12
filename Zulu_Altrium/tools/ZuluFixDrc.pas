@@ -831,6 +831,111 @@ Begin
 End;
 
 
+{ ============================================================================
+  U1 SOLDER MASK OPENING GOES TO 1:1                            added 2026-09-11
+
+  JLCPCB publish, on their capability page: "Keep at least 0.09 mm clearance
+  between soldermask openings and neighboring traces."  EVERY CPG236 ESCAPE
+  TRACE VIOLATES THAT TODAY, and nothing in Altium's rule set was checking it.
+
+  The arithmetic, from Pads6 and Rules6 rather than from a drawing:
+
+      land-edge to land-edge gap                        0.274828 mm
+      a 3 mil (0.0762 mm) trace centred between them
+      leaves, per side                                  0.099314 mm
+      the SolderMaskExpansion rule grows the opening     0.050000 mm
+      so opening-to-trace is                            0.049314 mm
+      against JLCPCB's                                  0.090000 mm
+                                                       ------------
+      SHORT BY                                          0.040686 mm
+
+  At 1:1 -- expansion 0 -- the opening stops at the land edge and the same
+  clearance becomes 0.099314 mm, which clears by +0.009314 mm. There is no other
+  lever: the land cannot shrink (it is already 0.82:1 and the escape depends on
+  it), and the trace cannot narrow below 3 mil, which is JLCPCB's floor.
+
+  SCOPED TO U1, NOT GLOBAL. The board's other 172 components are nowhere near
+  this constraint and a board-wide 1:1 would make every pad mask-defined for no
+  reason. This is the second scoped mask rule on the board; AddX3MaskRule above
+  made the first, and its comment records the trap that applies here too:
+
+      IPCB_Rule.Priority IS READ-ONLY. Assigning it raises at run time and the
+      rule never gets added at all. Altium decides where the new rule lands, so
+      the priority has to be READ BACK out of Rules6 afterwards and, if the
+      global 0.05 mm rule still outranks it, moved up by hand in
+      Design > Rules > Priorities. A rule that exists but is outranked does
+      nothing, and the DRC will not tell you that.
+
+  Every API name below is already proven in this project by AddX3MaskRule, which
+  is in the saved file as SolderMaskExpansion_X3 -- so no canary is needed.
+
+  Run:  AddU1MaskRule
+  Then Ctrl+S, check the priority in Design > Rules > Mask, and re-run the DRC.
+  ============================================================================ }
+
+Procedure AddU1MaskRule;
+Var
+    Iter    : IPCB_BoardIterator;
+    R, Mine : IPCB_Rule;
+    Existing, Total : Integer;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.');
+        Exit;
+    End;
+
+    Existing := 0;
+    Total    := 0;
+    Iter := Brd.BoardIterator_Create;
+    Iter.AddFilter_ObjectSet(MkSet(eRuleObject));
+    Iter.AddFilter_LayerSet(AllLayers);
+    Iter.AddFilter_Method(eProcessAll);
+    R := Iter.FirstPCBObject;
+    While R <> Nil Do
+    Begin
+        If R.RuleKind = eRule_SolderMaskExpansion Then
+        Begin
+            Total := Total + 1;
+            If R.Name = 'SolderMaskExpansion_U1' Then Existing := Existing + 1;
+        End;
+        R := Iter.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(Iter);
+
+    If Existing > 0 Then
+    Begin
+        ShowMessage('SolderMaskExpansion_U1 already exists - nothing added.');
+        Exit;
+    End;
+
+    PCBServer.PreProcess;
+    Try
+        Mine := PCBServer.PCBRuleFactory(eRule_SolderMaskExpansion);
+        Mine.Name             := 'SolderMaskExpansion_U1';
+        Mine.Scope1Expression := 'InComponent(''U1'')';
+        Mine.Scope2Expression := 'All';
+        Mine.Expansion        := MMsToCoord(0);
+        Mine.NetScope         := eNetScope_AnyNet;
+        Mine.LayerKind        := eRuleLayerKind_SameLayer;
+        Brd.AddPCBObject(Mine);
+    Finally
+        PCBServer.PostProcess;
+    End;
+    Brd.ViewManager_FullUpdate;
+
+    ShowMessage('Zulu A7 - U1 solder-mask opening set to 1:1' + #13#10 + #13#10 +
+                '   SolderMaskExpansion rules before: ' + IntToStr(Total) + #13#10 +
+                '   added SolderMaskExpansion_U1, InComponent(''U1''), 0 mm' + #13#10 + #13#10 +
+                'Opening-to-trace goes 0.049314 -> 0.099314 mm against JLCPCB''s' + #13#10 +
+                '0.09 mm minimum, so the 238 CPG236 lands stop violating it.' + #13#10 + #13#10 +
+                'CHECK THE PRIORITY. It must OUTRANK the global 0.05 mm rule or' + #13#10 +
+                'it does nothing, and the DRC will not say so. Read Rules6 back.' + #13#10 + #13#10 +
+                'Nothing is saved yet - press Ctrl+S.');
+End;
+
+
 End.
 
 { End of ZuluFixDrc.pas }

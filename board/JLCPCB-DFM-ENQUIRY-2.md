@@ -1,113 +1,96 @@
-# Second DFM enquiry to JLCPCB — DRAFT 2026-09-11, NOT YET SENT
+# DFM enquiry to JLCPCB — ONE QUESTION — drafted 2026-09-11, NOT YET SENT
 
-The first enquiry (`JLCPCB-DFM-ENQUIRY.md`) is marked RESOLVED, and it is — but only for the one
-thing they answered. Their reply was the capability-table row *"Multilayer: 0.09 / 0.09 mm
-(3.5 / 3.5 mil). 3 mil is acceptable in BGA fan-outs"*, and that settled line and space. The
-message drafted in that file was written **after** they replied and was never sent, so its
-questions 4, 5 and 6 are still open. Three more have accumulated since, and one of them is
-blocking a change that is otherwise ready to make.
-
-Fab choice re-confirmed 2026-09-11: **JLCPCB**, 6 layers, all through-holes, ball land 0.225 mm.
-A full PCBWay alternative was priced the same day and rejected — they are worse on escape margin,
-on annular ring and on inner line/space.
+This file started with four multi-part questions. Reading JLCPCB's own published pages on
+2026-09-11 answered all but one of them, so the rest are recorded below as **answered** with the
+verbatim source, and are not to be asked again. **Only section 1 goes to the fab.**
 
 ---
 
-## The board, in one paragraph
+# 1. THE QUESTION
 
-69.85 × 25.40 mm, 6 copper layers, 1.6 mm nominal, **all through-holes — no blind, buried or
-microvias**. The critical part is a Xilinx XC7A35T in **CPG236, 0.5 mm ball pitch, 238 balls**.
-Lands are **0.225 mm** (8.86 mil) round, leaving **0.2748 mm** between adjacent land edges. One
-trace escapes between two lands, so it needs `width + 2 × clearance ≤ 0.2748 mm`; at the 3 mil
-width and 0.09 mm clearance you have already confirmed, that is 0.2562 mm and it clears by
-**+0.0186 mm**. Finish is ENIG. Nothing is routed yet.
+**Does ordering with controlled impedance withdraw the "3 mil is acceptable in BGA fan-outs"
+allowance?**
 
----
+Your general capability page states, in the row *Min. track width and spacing (1 oz)*:
 
-## Question 1 — minimum inner copper to board edge  ← THIS ONE IS BLOCKING
+> Multilayer: 0.09 / 0.09 mm (3.5 / 3.5 mil). **3 mil is acceptable in BGA fan-outs.**
+> — https://jlcpcb.com/capabilities/pcb-capabilities
 
-Both internal layers (L2 and L5) are solid ground planes. They are currently pulled back
-**0.51 mm** from the board outline. We want to reduce that to **0.25 mm**.
+But two other pages state a flat 3.5 mil with no exception and no cross-reference:
 
-> **What is your minimum inner-layer copper to board edge on a routed (not V-scored) outline?**
+> Min. Trace width/Spacing | Min. Via | Min. BGA
+> 3.5mil | 0.2mm | 0.25mm
+> — https://jlcpcb.com/impedance, under *"Multilayer high precision PCB's with impedance control"*
 
-It is worth asking rather than assuming because at 0.51 mm the pullback is causing four real
-defects on our own DRC, all in the same corner of the 40-pin header:
+> Minimum trace width and spacing | 3.5mil (0.09mm)
+> — your dedicated 6-layer product page
 
-- pin 20 (GND, at 1.270 / 24.130) has **0.7595 mm** to two plane edges against the **0.8068 mm**
-  a 45° relief spoke corner needs, so 3 of its 4 thermal entries are blocked on both planes;
-- pin 40 (a signal pin, 0.758 mm void) traps a **~0.124 mm²** island of dead copper in the
-  south-west corner of each plane.
+On https://jlcpcb.com/impedance the string "BGA" appears exactly once — in the `Min. BGA` column
+header — and "fan-out", "fanout" and "3 mil" appear zero times. So nothing there withdraws the
+allowance explicitly; it simply is not mentioned.
 
-At a 0.25 mm inset all four clear in one edit: 1.020 mm against 0.8068 (margin +0.213) and
-against 0.758 (margin +0.262). If 0.25 mm is not acceptable, **what is the smallest inset you
-will run**, and does the answer change if the outline is routed with a 2.0 mm cutter?
+**Why it decides the board.** Our part is an XC7A35T in CPG236: 238 balls on 0.5 mm pitch, lands
+held at **0.225 mm**, which leaves **0.2748 mm** between adjacent land edges. One escape trace runs
+between two lands, so it needs `width + 2 × clearance`:
 
-## Question 2 — 0.050 mm annular ring on a 0.20 mm drill
-
-Every fan-out via is **0.20 mm drilled, 0.30 mm finished land — a 0.050 mm (2.0 mil) annular
-ring**, and there are on the order of 250 of them, most inside or beside the BGA field.
-
-Your published minimum via is 0.15 mm drill on a 0.25 mm land, which is the same 0.050 mm ring.
-We use 0.20 mm rather than 0.15 mm deliberately: through 1.6 mm, a 0.15 mm hole is 10.7:1 and over
-the 10:1 aspect ceiling, where 0.20 mm is 8.0:1.
-
-> **Please confirm in writing that a 0.050 mm annular ring on a 0.20 mm drill is standard process
-> for you at 6 layers, and that it carries no surcharge beyond the 3–3.5 mil line/space one.**
-
-## Question 3 — the 0.225 mm BGA land, and its mask opening
-
-> **a.** Will you build a **0.225 mm** ENIG land as drawn, with **no DFM enlargement**? The land
-> is the one term in `width + 2 × clearance` that is ours to choose, and UG475 gives 0.275 mm as a
-> *maximum*, not a requirement. If your process enlarges it, the escape closes and the board does
-> not work.
->
-> **b.** Solder mask expansion is 0.05 mm, so a 0.225 mm land gets a **0.325 mm opening**, leaving
-> a **0.175 mm (6.9 mil) dam** between adjacent openings with the escape trace running underneath.
-> **Will you hold that dam, or will your CAM join the openings?** If you will not hold 0.175 mm,
-> say what you will hold, because the alternative is a mask-defined pad and we would rather know
-> now.
->
-> **c.** Is there a **minimum ENIG pad diameter** below which you decline? 0.225 mm is 8.86 mil.
-
-## Question 4 — the stackup, which is custom
-
-We are not using JLC06161H. Your stock 6-layer build puts the thick cores at L2/L3 and L4/L5 and
-leaves only 0.1164 mm between L3 and L4 — but L3 and L4 are our two inner **signal** layers and
-they carry a 39-net SDRAM bus, so that build couples the bus to itself rather than to a reference
-plane. We have specified the opposite, using materials you stock:
-
-| | material | thickness | Dk |
+| line / space | needs | margin in 0.2748 mm | |
 |---|---|---|---|
-| Top | copper, 0.5 oz base plated to 1 oz | 0.0356 mm | |
-| | prepreg **3313** | **0.0994 mm** | 4.1 |
-| L2-GND | copper 0.5 oz | 0.0175 mm | |
-| | prepreg **2116** | **0.1164 mm** | 4.1 |
-| L3-SIG | copper 0.5 oz | 0.0175 mm | |
-| | **FR-4 core** | **1.0173 mm** | 4.8 |
-| L4-SIG | copper 0.5 oz | 0.0175 mm | |
-| | prepreg 2116 | 0.1164 mm | 4.1 |
-| L5-GND | copper 0.5 oz | 0.0175 mm | |
-| | prepreg 3313 | 0.0994 mm | 4.1 |
-| Bottom | copper, 0.5 oz base plated to 1 oz | 0.0356 mm | |
+| 3 mil / 0.09 mm *(as drawn)* | 0.2562 mm | **+0.0186 mm** | works |
+| 3.5 mil / 3.5 mil | 0.2667 mm | **+0.0081 mm** | works, barely |
+| 4 mil / 4 mil | 0.3048 mm | **−0.0300 mm** | impossible |
 
-Total **1.610 mm** including 0.4 mil of solder resist each side.
+The land cannot be enlarged to buy margin — at 0.25 mm the gap falls to 0.2499 mm and the escape
+closes entirely — and the trace cannot go below 3 mil, which is your floor.
 
-> **a.** Will you press this, and if not, what is the nearest build you will press? A ~1.0 mm core
-> between L3 and L4 with thin prepreg everywhere else is the requirement; the exact numbers are
-> yours to set.
->
-> **b.** We need **0.5 oz base outer copper plated to 1 oz finished**, not 1 oz base — at a 1 oz
-> etch bias the fan-out clearance falls below your own minimum. Please confirm that is what your
-> standard build does, since the design passes DRC on nominal geometry and etch bias is not in it.
->
-> **c.** There is one **90 Ω differential pair** (USB 2.0) on the top layer, currently drawn at
-> 0.15 mm wide with a 0.15 mm gap. On the stack above that computes to roughly **88 Ω** with the
-> solder mask. **What does your impedance calculation give for the stack you actually press?** We
-> will move the width and gap to whatever you return.
+> **So, plainly: if we order this board with controlled impedance on one differential pair, do the
+> 238 BGA fan-out traces still get the 3 mil allowance, or does the whole board fall under the
+> 3.5 mil impedance-page figure?**
+
+If the answer is "3.5 mil applies", we would rather **drop the controlled-impedance service
+altogether** and accept the pair at whatever your standard process yields, than lose 0.0105 mm of
+fan-out margin. Please also tell us the surcharge for 3 mil / 3.5 mil line and space on a 6-layer
+board, and whether impedance control is charged separately.
+
+One related figure that is not published anywhere we could find: **what etch compensation do you
+apply?** Your track width tolerance is ±20% and your impedance tolerance is ±10%, and those two
+cannot both hold unless you compensate the width in CAM. At +20% a 3 mil trace finishes at
+0.0914 mm and our fan-out margin falls to **+0.0034 mm**, so the answer matters to us.
 
 ---
 
-*Nothing in this file is a JLCPCB statement. Every figure is either measured from our own design
-files or read off JLCPCB's published capability tables. Replace each question with their verbatim
-answer when it arrives, the way `JLCPCB-DFM-ENQUIRY.md` records the 2026-08-27 reply.*
+# 2. ANSWERED FROM YOUR OWN PAGES — recorded, not to be asked
+
+Each of these was going to be a question. All quotes read live on 2026-09-11.
+
+| was going to ask | answer | source |
+|---|---|---|
+| Will you press our custom 6-layer stackup? | **No — and no need.** *"The PCB will be strictly produced in accordance with the following stackup."* You publish 15 six-layer 1.6 mm builds. **JLC06161H-3313E** matches our design intent better than the custom one we had drawn, so we have adopted it. | jlcpcb.com/impedance |
+| Minimum inner copper to board edge? | **≧0.2 mm.** *"Copper clearance from routed board edges: ≧0.2 mm"* | capabilities page |
+| Will you run a 0.050 mm annular ring on a 0.20 mm drill? | **Yes, it is your published minimum.** *"Multilayer: 0.15 mm hole size / 0.25 mm via diameter"* — the same 0.050 mm ring. Noted: *"0.2mm or 0.25mm hole size with via diameter less than 0.45mm, will cost more."* | capabilities page |
+| Will you build a 0.225 mm BGA land as drawn? | **Yes, with ENIG.** *"0.2mm-0.25mm BGA pad diameter requires ENIG"* — we are ENIG. *(Held with some caution: 0.25 mm appears as a minimum on three of your pages and 0.2 mm on one. If our reading is wrong, say so, because this number decides the board.)* | capabilities page |
+| Will you hold a 0.175 mm solder-mask dam? | **Yes.** *"Min. pad spacing: 0.10 mm (green, red, yellow, blue, purple)"* | capabilities page |
+| What impedance do you calculate for the pair? | **Computable from your own data.** With your mask model (C1 1.2 mil, C2 0.6 mil, C3 1.2 mil, CEr 3.8), our 0.15 mm / 0.15 mm pair over 3313 at 0.0994 mm gives **≈88 Ω** against a 90 Ω target, inside your **±10%** (±5% on request). Kept as drawn. | jlcpcb.com/impedance + capabilities |
+| Is outer copper base or finished? | **Finished.** *"Finished Outer Layer Copper"*, *"Finished copper weight of inner layer is 0.5oz by default."* Our earlier "0.5 oz base plated to 1 oz" phrasing was wrong and has been dropped. | capabilities page |
+
+**One thing your pages told us that we had wrong, and have now fixed:** *"Keep at least 0.09 mm
+clearance between soldermask openings and neighboring traces."* Our mask expansion was 0.05 mm,
+which left only 0.049 mm between each BGA opening and the escape trace beside it — every one of
+the 238 in violation. The openings are now 1:1, giving 0.099 mm.
+
+---
+
+# 3. THE BOARD, FOR CONTEXT
+
+69.85 × 25.40 mm, 6 copper layers, **1.6 mm**, **all through-holes — no blind, buried or
+microvias**, ENIG. Stackup **JLC06161H-3313E**. Layer roles L1 signal / L2 ground / L3 signal /
+L4 signal / L5 ground / L6 signal — chosen because a 39-net SDRAM bus runs on L3 and L4 and must
+couple to its planes rather than to itself, which is why the default `-3313` build is not suitable
+for us. Vias are 0.20 mm drill on a 0.30 mm land. One 90 Ω USB 2.0 differential pair on the top
+layer at 0.15 / 0.15 mm. Nothing is routed yet, so the fan-out can still be designed around your
+answer.
+
+---
+
+*Every figure above is either measured from our own design files or quoted from JLCPCB's published
+pages on 2026-09-11, with the URL given so it can be re-checked. Replace section 1 with their
+verbatim answer when it arrives, the way `JLCPCB-DFM-ENQUIRY.md` records the 2026-08-27 reply.*
