@@ -4,6 +4,10 @@ Decisions: **6 layers**, **JLCPCB**, ball land **0.225 mm**, 3 mil trace at
 3.5 mil clearance in the fan-out. Rules in `zulu_a7-6layer-jlcpcb.dru`. Check them
 against the fab's current capability sheet before ordering — house rules move.
 
+> **THE ONLY DIELECTRIC TABLE IN THIS FILE IS PCBWAY'S AND IT IS HISTORY.** Jump to
+> *Stackup — PCBWay … SUPERSEDED* for the live JLC stack. The fab choice was
+> re-tested from the files on 2026-09-11 and PCBWay was priced and rejected again.
+
 ## Current board, confirmed 2026-09-10
 
 **69.85 × 25.40 mm — 2.750 × 1.000 in.** Confirmed by the user on 2026-09-10 against the
@@ -360,7 +364,52 @@ The microSD can no longer live there. Its layer-39 keepout is the card plus
 than a long edge, and the +x end is now Pmod. X3 is turned to eject over the
 **-x end**, where the card overhangs by about 5.6 mm.
 
-## Stackup — PCBWay 6-layer, 1.6 mm, 1 oz, 70 % residual
+## Stackup — PCBWay 6-layer, 1.6 mm, 1 oz, 70 % residual  — **SUPERSEDED, HISTORY ONLY**
+
+> **THIS IS NOT THE BOARD'S STACKUP AND HAS NOT BEEN SINCE 2026-09-10.** It is the only
+> dielectric table in this document, which is exactly why it keeps being mistaken for the
+> live one — it was on 2026-09-11, by the user and then by me. Read the table below as
+> PCBWay history. **The live stack is the JLC one in the paragraph under it.**
+>
+> **The stack that is actually in `Zulu_Altrium/.../zulu_a7.PcbDoc`,** set by commit
+> `74eef9a` and verified by reading `Board6/Data` rather than the dialog:
+>
+> | | material | thickness | Dk |
+> |---|---|---|---|
+> | Top | copper 1.4 mil (0.5 oz base plated to 1 oz) | 0.0356 mm | |
+> | | prepreg **3313** | **0.0994 mm** | 4.100 |
+> | L2-GND | copper 0.689 mil (0.5 oz) | 0.0175 mm | |
+> | | prepreg **2116** | **0.1164 mm** | 4.100 |
+> | L3-SIG | copper 0.689 mil | 0.0175 mm | |
+> | | **FR-4 core** | **1.0173 mm** | 4.800 |
+> | L4-SIG | copper 0.689 mil | 0.0175 mm | |
+> | | prepreg 2116 | 0.1164 mm | 4.100 |
+> | L5-GND | copper 0.689 mil | 0.0175 mm | |
+> | | prepreg 3313 | 0.0994 mm | 4.100 |
+> | Bottom | copper 1.4 mil | 0.0356 mm | |
+>
+> Plus 0.4 mil Dk 3.5 solder resist each side. **Total 1.610 mm.** Signal-to-plane 0.1164
+> against signal-to-signal 1.0173 — a ratio of **8.7:1**, which is the whole point and is
+> what both fabs' catalogue builds invert. It is a CUSTOM build made of materials JLC
+> stocks; JLC publish one 6-layer 1.6 mm build and this is not it, so they have to confirm
+> it and will compute impedance from what they actually press.
+>
+> **Re-confirmed 2026-09-11.** The question "is this board for JLCPCB or PCBWay?" was
+> re-opened from scratch and answered from the files by five independent readings, each
+> then adversarially checked. All five landed on JLCPCB. The one rule that discriminates
+> between `zulu_a7-6layer-jlcpcb.dru` and `zulu_a7-6layer-pcbway.dru` is clearance, and
+> `Rules6` carries 0.09 mm — JLC's number verbatim, not PCBWay's 0.0762.
+>
+> A full PCBWay rebuild was then priced and **rejected by the user on 2026-09-11**, because
+> PCBWay is worse on three measured axes: the BGA escape margin falls from +0.0462 mm at
+> 3/3 mil to +0.0081 mm at the 3.5/3.5 mil their table actually permits locally; the
+> board's 0.050 mm annular ring on a 0.20 mm drill is JLC's published standard but a
+> **non-standard-review** item at PCBWay, whose medium tier would grow the via land to
+> 0.4032 mm and kill the interstitial fan-out; and PCBWay force **1 oz inner copper**,
+> which raises the inner line/space floor to 4 mil under the SDRAM bus. Their prototype
+> factory cannot build the part at all (their own rule is BGA pad-to-pad ≥ 0.35 mm; ours
+> is 0.275). See `board/PCBWAY-DFM-ENQUIRY-2.md` for the questions that were drafted.
+
 
 Taken from PCBWay's own standard-stackup list (`multi-layer-laminated-structure`,
 6-layer section, entry 1), not from a blog article. An earlier revision of this
