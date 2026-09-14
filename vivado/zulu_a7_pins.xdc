@@ -105,5 +105,21 @@ set_property -dict {PACKAGE_PIN K18  IOSTANDARD LVCMOS33} [get_ports {UART_FT_TX
 set_property -dict {PACKAGE_PIN L2   IOSTANDARD LVCMOS33} [get_ports {UDQM}]  ;# UDQM  bank 35  IO_L5N_T0_AD13N_35
 set_property -dict {PACKAGE_PIN V4   IOSTANDARD LVCMOS33} [get_ports {WE_N}]  ;# WE#  bank 34  IO_L11N_T1_SRCC_34
 
+# ---- SDRAM bus drive strength, 2026-09-15 -----------------------------------------------
+# Derived from the board by tools/xdc_sdram_drive.py: the 39 SDRAM nets on U1
+# (Zulu_Altrium/docs/sdram_bus_widths.md).  The bus is an unterminated 3.3 V
+# LVTTL run of 9-33 mm; overshoot at the open SDRAM inputs is set by DRIVE, not
+# by trace width: 8 mA gives <= +0.24 V at any width, 12/16 mA FAST gives
+# +0.7..1.0 V.  Vivado's default (DRIVE 12 SLEW SLOW) was acceptable only by
+# omission.  NEVER FAST at 12 or 16 mA without a series resistor -- that is a
+# schematic change, not a constraint.  SDRAM_CLK gets FAST at 8 mA: it wants
+# one monotonic step, and its tAC penalty [(tr+tf)/2 - 1] ns is zero up to a
+# 2.0 ns edge.
+set_property -dict {DRIVE 8 SLEW SLOW} [get_ports {D0 D1 D2 D3 D4 D5 D6 D7 D8 D9 D10 D11 D12 D13 D14 D15}]  ;# SDRAM data
+set_property -dict {DRIVE 8 SLEW SLOW} [get_ports {A0 A1 A2 A3 A4 A5 A6 A7 A8 A9 A10 A11 A12 BS0 BS1}]  ;# SDRAM address + bank
+set_property -dict {DRIVE 8 SLEW SLOW} [get_ports {CAS_N CKE LDQM RAS_N SDRAM_CS_N UDQM WE_N}]  ;# SDRAM control
+set_property -dict {DRIVE 8 SLEW FAST} [get_ports {SDRAM_CLK}]  ;# SDRAM clock: one clean edge
+# ---- end SDRAM bus drive strength -------------------------------------------------
+
 create_clock -period 83.333 -name sysclk  [get_ports CLK_12M_FPGA]
 create_clock -period 20.000 -name chanclk [get_ports CHAN_CLK]
