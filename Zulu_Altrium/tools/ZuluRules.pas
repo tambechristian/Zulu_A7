@@ -97,6 +97,17 @@ Procedure ApplyWidth(R : IPCB_Rule; Log : TStringList; Touched : TStringList);
 Var
     OkTop, OkMid1, OkMid2, OkBot, OkLayers, OkScalar, OkPlain : Boolean;
 Begin
+    { 2026-09-14: ONLY the global rule named 'Width' is touched here. The board
+      now carries per-layer power-rail Width rules (Width_PWR_VCC3V3,
+      Width_PWR_U8, Width_PWR_VCC1V0, Width_PWR_RAILS, set by SetPwrRailWidths
+      in ZuluSetup.pas) and Width_PWR_SWITCH. Dispatching on RuleKind alone
+      used to reach every one of them, and the scalar writes below would have
+      re-uniformed their layer tables to 0.0762 / 0.1 / 0.5 without a word.  }
+    If R.Name <> 'Width' Then
+    Begin
+        Log.Add('Width (' + R.Name + ')  left alone - see SetPwrRailWidths');
+        Exit;
+    End;
     Touched.Add('Width');
     R.BeginModify;
 

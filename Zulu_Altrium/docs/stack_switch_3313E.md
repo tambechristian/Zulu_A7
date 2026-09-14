@@ -132,16 +132,20 @@ verifier (a fourth text copy it also misses) is about eight lines.
 
 ## Follow-on, not part of this edit
 
-- **`Width_PWR_RAILS` needs raising.** Preferred 0.400 → **0.500 mm**; max 1.000 → **1.500 mm**
-  (VCC3V3 at 662 mA needs 1.019 mm on an inner layer, which the present rule cannot even express).
-  Note that **`PREFEREDWIDTH` is router guidance — Altium's Width rule only *checks* MINLIMIT and
-  MAXLIMIT** — so a 3 mil VCC1V0 track passes DRC today. MINLIMIT cannot simply be raised, because
-  VCC1V0, VCC1V8 and VCC3V3 all have BGA balls and must neck to 3 mil to escape; the per-layer
-  Width table is the lever, since the thermal risk is on the inner layers and the necking is on
-  Top.
-- **VCC3V3 (662 mA) and VU (495–720 mA) were already inadequate on a 0.400 mm inner track before
-  this change** — 37.0 °C and 19.1 °C rise on the old stack. The copper change makes them worse
-  but did not cause them. Keep them on outer copper or in pours.
+- **`Width_PWR_RAILS` — DONE 2026-09-14, but not the way this note said.** Raising the
+  *preferred* to 0.500 changes no DRC outcome (only min and max are checked) and 0.500 mm on the
+  new inner copper is 32 °C for VCC3V3 and 36 °C for VU, so the fix is a **per-layer min** in
+  four rules: `Width_PWR_VCC3V3` (inner 1.05), `Width_PWR_U8` (VU/USB5V0/VBATT, inner 1.10),
+  `Width_PWR_VCC1V0` (inner 0.50) and the class rule edited to a 0.15 floor. Only VCC3V3 keeps
+  the 3 mil Top neck — its balls C18/V6/V9/V11 are the only rail balls boxed on all four sides;
+  VCC1V0, VCC1V8 and VCCADC each have a free same-net or empty neighbour. See
+  `docs/pwr_rail_widths.md`; `tools/verify_widths.py` is the acceptance test.
+- **VCC3V3 (662 mA) and VU (697 mA) were already inadequate on a 0.400 mm inner track before
+  this change** — 37.0 °C and, at 697 mA, 44.8 °C rise on the old stack (an earlier draft here
+  said *"495–720 mA … 19.1 °C"*; 19.1 °C is 495 mA, and 720 was never the budget's figure — it
+  is 697, `tools/power_budget.py`). On the new inner copper 0.400 mm is 52.4 °C for VU. The
+  copper change makes them worse but did not cause them. Keep them on outer copper or in
+  **solid** pours; the 1.05/1.10 inner floors now say so in DRC.
 - **Altium's own impedance readout will disagree with JLC's** until the mask rows are changed from
   0.4 mil / Dk 3.5 to JLC's published 1.2 mil / Dk 3.8 — Altium currently reads about **+4.25 Ω
   high**, so tuning the pair to read 90 Ω in Altium would build ≈86 Ω.
