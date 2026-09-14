@@ -114,6 +114,14 @@ Six assessments, eleven challenges. Nine challenges stood, and these are the con
 
 ## WHAT IS STILL GENUINELY UNKNOWN
 
+> **Addendum 2026-09-14, later — via land is now 0.35 mm (user decision, `docs/via_land_decision.md`),
+> and three figures in this review are stale as a result or were wrong already:** the 0.39 mm via
+> pitch used below violates the 0.20 mm HoleToHole rule by 0.01 at *either* land — the binding
+> pitch is 0.44 mm (land 0.35 + clearance 0.09); the west U2→U1 corridor is **3.8375 mm** (U2 east
+> copper 37.950 to U1 west land 41.7875, commit 30b779b moved U2), not 2.3625; and the plane
+> anti-pad is **0.70 mm** (hole 0.20 + 2 × 0.25, PlaneClearance is hole-referenced), not 0.80, at
+> either land. The interstitial via is now closed outright (0.35 needs 0.265 mm, has 0.241).
+>
 > **Addendum 2026-09-14.** Three of the questions below are answered. From JLCPCB's own pages
 > (2026-09-11, `board/JLCPCB-DFM-ENQUIRY-2.md` §2): the 0.05 mm ring on a 0.20 mm drill is their
 > published minimum, the 0.225 mm land is accepted with ENIG, and inner copper to a routed edge is

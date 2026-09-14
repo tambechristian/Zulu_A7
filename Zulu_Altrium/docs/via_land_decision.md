@@ -1,6 +1,6 @@
 # Via land: 0.30 mm or 0.35 mm on a 0.20 mm drill — 2026-09-14
 
-**Decision: PENDING (the user's call).** Prompted by JLCPCB's unasked-for advice in their
+**Decision, 2026-09-14 (the user): 0.35 mm everywhere, with teardrops.** Applied by `SetViaLand035` in `tools/ZuluSetup.pas`; see the note at the end for the verification. Prompted by JLCPCB's unasked-for advice in their
 2026-09-14 reply (`board/JLCPCB-DFM-ENQUIRY-2.md`): *"our standard recommendation is a minimum
 annular ring of 0.075 mm (3 mil), which corresponds to a 0.20 mm drill on a 0.35 mm pad. While
 0.20/0.30 mm can be produced with high-precision registration, adding teardrops … is strongly
@@ -83,3 +83,12 @@ the candidate). Never board-wide, never at an interstitial position.
 
 Two questions worth sending JLC without blocking on them: the layer-to-layer registration
 tolerance on the 6-layer line, and whether the hole-size tolerance applies to via drills.
+
+## Applied
+
+`SetViaLand035` sets `RoutingVias` to hole 0.20 / land 0.35 mm, min = max = preferred, and
+`tools/ZuluRules.pas` now writes the same so a re-run cannot revert it. **Verified from the saved `Rules6` 2026-09-14:** `RoutingVias` MINWIDTH = WIDTH = MAXWIDTH =
+13.7795 mil (0.35 mm), holes 7.874 mil (0.20 mm); it is the only rule that changed against the
+previous commit (50 rules before and after); pads, tracks and texts identical as multisets;
+`verify_widths.py` and `verify_stack.py` still PASS. The mask-tenting rule for vias (step 3) and the
+teardrops (step 4) are routing-stage items and go with the fan-out.

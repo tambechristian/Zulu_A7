@@ -169,10 +169,10 @@ Begin
     Touched.Add('RoutingVias');
     R.BeginModify;
     Try
-        { One via geometry for the whole board: 0.2 mm drill in a 0.3 mm pad,
-          which is a 0.05 mm annular ring - exactly JLC's minimum (msDrill and
-          mdCopperDimension in the .dru) and the smallest through-via they
-          will build without moving the board into their HDI process.  Min,
+        { One via geometry for the whole board: 0.2 mm drill in a 0.35 mm pad,
+          a 0.075 mm annular ring - JLC's own recommendation in their
+          2026-09-14 reply (0.30 was their producible minimum; the change and
+          its arithmetic are in docs/via_land_decision.md).  Min,
           max and preferred are set to the same number on purpose: the
           autorouter and the interactive router then cannot invent a second
           via size that the fab would have to quote separately.
@@ -182,10 +182,10 @@ Begin
         R.MinHoleWidth      := MMsToCoord(0.2);
         R.MaxHoleWidth      := MMsToCoord(0.2);
         R.PreferedHoleWidth := MMsToCoord(0.2);
-        R.MinWidth          := MMsToCoord(0.3);
-        R.MaxWidth          := MMsToCoord(0.3);
-        R.PreferedWidth     := MMsToCoord(0.3);
-        Log.Add('RoutingVias              hole 0.2 mm in 0.3 mm pad');
+        R.MaxWidth          := MMsToCoord(0.35);
+        R.MinWidth          := MMsToCoord(0.35);
+        R.PreferedWidth     := MMsToCoord(0.35);
+        Log.Add('RoutingVias              hole 0.2 mm in 0.35 mm pad');
     Except
         Log.Add('RoutingVias              FAILED - a size property was rejected');
     End;
@@ -417,7 +417,7 @@ Begin
 
     Else If R.RuleKind = eRule_RoutingViaStyle Then
     Begin
-        Log.Add('RoutingVias  (' + R.Name + ')   target hole 0.2 mm, pad 0.3 mm');
+        Log.Add('RoutingVias  (' + R.Name + ')   target hole 0.2 mm, pad 0.35 mm');
         Try
             Log.Add('    hole min/pref/max        = ' + MmText(R.MinHoleWidth) +
                     ' / ' + MmText(R.PreferedHoleWidth) + ' / ' + MmText(R.MaxHoleWidth));

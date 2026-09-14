@@ -749,6 +749,84 @@ Begin
 End;
 
 
+
+
+{ ============================================================================
+  VIA LAND 0.30 -> 0.35 mm, 2026-09-14 (user decision, docs/via_land_decision.md)
+
+  JLCPCB's engineering reply recommended a 0.075 mm annular ring -- a 0.20 mm
+  drill on a 0.35 mm land -- and teardrops on every via. Pads6 shows the
+  CPG236 never needs an interstitial via (rings 0-2 full, rings 3-5 a vacant
+  moat, the 7x7 core all GND/power), so nothing forces the 0.30 land anywhere:
+  0.35 fits every moat cell with +0.122 mm to the 0.09 rule. Cost: the binding
+  via pitch goes 0.40 -> 0.44 mm; plane anti-pads (hole-referenced) and the
+  JLC price tier do not move. Hole stays 0.20. Min = max = preferred, as
+  before, so the routers cannot invent a second via size.
+
+  Write order: MaxWidth first (the rule holds 0.30/0.30/0.30, so raising the
+  min before the max would be clamped), then MinWidth, then PreferedWidth;
+  read all six back. ZuluRules.pas ApplyRoutingVias now writes 0.35 too.
+
+  Teardrops are NOT a rule: Tools > Teardrops after routing, before Gerbers.
+
+  Run:  SetViaLand035    then Ctrl+S and read Rules6 back (RoutingVias
+                         WIDTH / MINWIDTH / MAXWIDTH = 13.7795mil)
+  ============================================================================ }
+
+Procedure SetViaLand035;
+Var
+    R   : IPCB_Rule;
+    Bad : Integer;
+    GMin, GPref, GMax, HMin, HPref, HMax : Double;
+Begin
+    Brd := BoardOrNil;
+    If Brd = Nil Then Exit;
+    R := FindRuleByName('RoutingVias');
+    If R = Nil Then
+    Begin
+        ShowMessage('No rule named RoutingVias - nothing changed.');
+        Exit;
+    End;
+    Log := TStringList.Create;
+
+    PCBServer.PreProcess;
+    Try
+        R.BeginModify;
+        R.MaxWidth      := MMsToCoord(0.35);
+        R.MinWidth      := MMsToCoord(0.35);
+        R.PreferedWidth := MMsToCoord(0.35);
+        R.EndModify;
+    Finally
+        PCBServer.PostProcess;
+    End;
+    Brd.ViewManager_FullUpdate;
+
+    GMin  := CoordToMMs(R.MinWidth);
+    GPref := CoordToMMs(R.PreferedWidth);
+    GMax  := CoordToMMs(R.MaxWidth);
+    HMin  := CoordToMMs(R.MinHoleWidth);
+    HPref := CoordToMMs(R.PreferedHoleWidth);
+    HMax  := CoordToMMs(R.MaxHoleWidth);
+    Bad := 0;
+    If Abs(GMin - 0.35) > 0.0005 Then Bad := Bad + 1;
+    If Abs(GPref - 0.35) > 0.0005 Then Bad := Bad + 1;
+    If Abs(GMax - 0.35) > 0.0005 Then Bad := Bad + 1;
+    If Abs(HMin - 0.20) > 0.0005 Then Bad := Bad + 1;
+    If Abs(HPref - 0.20) > 0.0005 Then Bad := Bad + 1;
+    If Abs(HMax - 0.20) > 0.0005 Then Bad := Bad + 1;
+    Log.Add('RoutingVias  land min/pref/max = ' + WMm(R.MinWidth) + ' / ' + WMm(R.PreferedWidth) + ' / ' + WMm(R.MaxWidth) + ' mm');
+    Log.Add('             hole min/pref/max = ' + WMm(R.MinHoleWidth) + ' / ' + WMm(R.PreferedHoleWidth) + ' / ' + WMm(R.MaxHoleWidth) + ' mm');
+    Log.SaveToFile('C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_Altrium/tools/widths_report.txt');
+    If Bad = 0 Then
+        ShowMessage('Zulu A7 - via land 0.30 -> 0.35 mm, read back OK' + #13#10 + #13#10 + Log.Text + #13#10 +
+                    'Nothing is saved yet - press Ctrl+S.')
+    Else
+        ShowMessage('Zulu A7 - via land: ' + IntToStr(Bad) + ' value(s) READ BACK WRONG' + #13#10 + #13#10 + Log.Text + #13#10 +
+                    'Do NOT save.');
+    Log.Free;
+End;
+
+
 End.
 
 { End of ZuluSetup.pas }
