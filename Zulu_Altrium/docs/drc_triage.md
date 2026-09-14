@@ -8,6 +8,11 @@
 | everything else | **0** | clearance, short-circuit, all three width rules, hole size, hole-to-hole, mask sliver, silk-to-silk, net antennae, height, modified polygon, routing topology |
 | Warnings | **0** | |
 
+**2026-09-14, re-run after the power-rail Width rules (`docs/pwr_rail_widths.md`): still 605,
+same breakdown.** There are now SIX Width rules (VCC3V3, U8, VCC1V0, PWR_SWITCH, PWR_RAILS,
+Width), all at 0; a 13-track probe placed on purpose produced exactly the 7 violations the
+per-layer floors predict and was removed again.
+
 **This is as clean as the board gets before routing.** The only non-airwire item left is the
 X2-20 pair, and it is gated on question 1 of `board/JLCPCB-DFM-ENQUIRY-2.md`.
 

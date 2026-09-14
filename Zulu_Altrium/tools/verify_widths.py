@@ -9,12 +9,18 @@ WHY THIS EXISTS.  Altium's Width rule DRC-checks only min and max; the
 preferred width is router guidance.  The power rails must neck to 3 mil on
 Top under the BGA (VCC3V3 only -- its balls C18, V6, V9 and V11 are the only
 rail balls boxed by foreign nets on all four sides), so the thermal floor on
-the inner layers has to live in the PER-LAYER table.  Before 2026-09-14 no
-Width rule on this board had ever carried a non-uniform table, so the keys
-Altium writes for one were unknown: run --dump after the first save and put
-the real spellings in LAYER_KEYS if the guess is wrong.  If the four rail
-rules carry NO key beyond the 21 a uniform rule has, the table did not
-persist -- STOP, do not route against it.
+the inner layers has to live in the PER-LAYER table.
+
+HOW ALTIUM STORES IT (learned from the first save, 2026-09-14; no Width rule
+on this board had ever carried a non-uniform table before): SPARSE DELTA.
+MINLIMIT / PREFEREDWIDTH / MAXLIMIT are the defaults for every layer, and a
+layer gets a  <LAYER>_MINWIDTH / <LAYER>_PREFWIDTH / <LAYER>_MAXWIDTH  key
+only where its value differs from that default, with <LAYER> one of
+TOPLAYER, MIDLAYER1..MIDLAYER30, BOTTOMLAYER.  Which value becomes the
+default is Altium's choice (it picked the inner preferred, not the scalar
+the script wrote first), so never read MINLIMIT as "the min" -- resolve
+every layer through effective() below.  MINIMP / MAXIMP / FAVIMP (50 ohm)
+also appear; they belong to the impedance-driven mode, which is off.
 
 Targets: docs/pwr_rail_widths.md (the 2026-09-14 decision record).
 """
@@ -65,13 +71,17 @@ UNTOUCHED = {
     'Width':            dict(prio=6, minlimit=0.0762, pref=0.0762, maxlimit=0.5),
 }
 
-# the per-layer keys as the file spells them -- A GUESS until the first --dump
-LAYER_KEYS = {
-    'Top':    ('MINWIDTH_TOP',    'PREFEREDWIDTH_TOP',    'MAXWIDTH_TOP'),
-    'Mid1':   ('MINWIDTH_MID1',   'PREFEREDWIDTH_MID1',   'MAXWIDTH_MID1'),
-    'Mid2':   ('MINWIDTH_MID2',   'PREFEREDWIDTH_MID2',   'MAXWIDTH_MID2'),
-    'Bottom': ('MINWIDTH_BOTTOM', 'PREFEREDWIDTH_BOTTOM', 'MAXWIDTH_BOTTOM'),
-}
+# Altium's layer prefixes for this board's four routing layers
+LAYER_PREFIX = {'Top': 'TOPLAYER', 'Mid1': 'MIDLAYER1', 'Mid2': 'MIDLAYER2', 'Bottom': 'BOTTOMLAYER'}
+FIELD = (('min', 'MINWIDTH', 'MINLIMIT'), ('pref', 'PREFWIDTH', 'PREFEREDWIDTH'), ('max', 'MAXWIDTH', 'MAXLIMIT'))
+
+
+def effective(kv, layer, field):
+    """the value DRC uses on this layer: the per-layer override if present, else the default"""
+    for name, suffix, default in FIELD:
+        if name == field:
+            return mm(kv.get('%s_%s' % (LAYER_PREFIX[layer], suffix), kv.get(default)))
+    raise KeyError(field)
 
 
 def mm(v):
@@ -149,30 +159,16 @@ def main():
         if kv.get('ENABLED') != 'TRUE':
             fails.append('%s not enabled' % name)
 
-        new_keys = sorted(k for k in kv if k not in UNIFORM_KEYS)
+        new_keys = sorted(k for k in kv if k not in UNIFORM_KEYS and not k.endswith('IMP'))
         if not new_keys:
             print('   NO per-layer keys in the record - the layer table did NOT persist')
             fails.append('%s carries no per-layer keys' % name)
-        lay = want['layers']
-        for L, (kmin, kpref, kmax) in LAYER_KEYS.items():
-            emin, epref, emax = lay[L]
-            chk(name, '%s min' % L, mm(kv.get(kmin)), emin)
-            chk(name, '%s pref' % L, mm(kv.get(kpref)), epref)
-            chk(name, '%s max' % L, mm(kv.get(kmax)), emax)
-        # the uniform write-through values; they must not be TIGHTER than the table
-        lo = min(v[0] for v in lay.values())
-        hi = max(v[2] for v in lay.values())
-        gmin, gmax = mm(kv.get('MINLIMIT')), mm(kv.get('MAXLIMIT'))
-        print('   %-32s %-10s (table floor %.4f)' % ('MINLIMIT', '%.4f' % gmin if gmin is not None else '-', lo))
-        print('   %-32s %-10s (table ceiling %.4f)' % ('MAXLIMIT', '%.4f' % gmax if gmax is not None else '-', hi))
-        if gmin is None or gmin > lo + TOL:
-            fails.append('%s MINLIMIT %r tighter than table floor %r' % (name, gmin, lo))
-        if gmax is None or gmax < hi - TOL:
-            fails.append('%s MAXLIMIT %r tighter than table ceiling %r' % (name, gmax, hi))
-        if new_keys:
-            unknown = [k for k in new_keys if k not in sum(LAYER_KEYS.values(), ())]
-            if unknown:
-                print('   keys not in LAYER_KEYS (fix the table above): %s' % unknown)
+        for L, (emin, epref, emax) in want['layers'].items():
+            chk(name, '%s min' % L, effective(kv, L, 'min'), emin)
+            chk(name, '%s pref' % L, effective(kv, L, 'pref'), epref)
+            chk(name, '%s max' % L, effective(kv, L, 'max'), emax)
+        print('   defaults MINLIMIT / PREFEREDWIDTH / MAXLIMIT = %s / %s / %s;  %d per-layer overrides'
+              % (kv.get('MINLIMIT'), kv.get('PREFEREDWIDTH'), kv.get('MAXLIMIT'), len(new_keys)))
 
     for name, want in UNTOUCHED.items():
         kv = byname.get(name)

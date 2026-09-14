@@ -1,6 +1,6 @@
 # Power-rail Width rules — the per-layer table, 2026-09-14
 
-**Status: see the Verification section at the end.** The rule set below was designed on
+**Status: APPLIED AND PROVEN 2026-09-14 — see the Verification section at the end.** The rule set below was designed on
 2026-09-14 from the files (three independent designs, three adversarial checks, one judge —
 `tools/verify_widths.py` is the acceptance test) and applied by `SetPwrRailWidths` in
 `tools/ZuluSetup.pas`.
@@ -119,14 +119,53 @@ lands"* (memory, `ZuluSetup.pas` comment) was wrong: every rail 0201 pad in `Pad
 Only `Width_PWR_VCC3V3`'s Top min changes, to 0.0889 mm; the escape margin drops from
 +0.0186 to +0.0059 mm, still positive. Nothing else in the set moves.
 
-## Verification
+## Verification — all from the saved file and the DRC report, 2026-09-14
 
-*(filled in as each step is done)*
+1. **`SetPwrRailWidths`**: all 48 per-layer values read back through the property that wrote
+   them, `ok` on every line (`tools/widths_report.txt`). The three new rules read
+   `scalar base 0 / 0 / 0` before `AddPCBObject` — a factory-fresh rule reports zero scalars
+   until registered; the file shows they were written.
+2. **How Altium stores a non-uniform table — SPARSE DELTA.** `MINLIMIT / PREFEREDWIDTH /
+   MAXLIMIT` are the per-rule defaults, and a layer gets a `TOPLAYER_MINWIDTH`,
+   `MIDLAYER1_PREFWIDTH`, `BOTTOMLAYER_MAXWIDTH`-style key only where it differs. Which
+   value becomes the default is Altium's choice (it took the inner preferred, 1.05, for
+   VCC3V3 — not the scalar the script wrote first), so `MINLIMIT` must never be read as
+   "the min". `MINIMP / MAXIMP / FAVIMP = 50` also appear (impedance-driven mode, off).
+   `tools/verify_widths.py` resolves every layer through that rule.
+3. **`tools/verify_widths.py`: PASS** — six Width rules, priorities VCC3V3 1 / U8 2 / VCC1V0 3
+   / PWR_SWITCH 4 / PWR_RAILS 5 / Width 6 exactly as the creation order predicted, all 48
+   effective values, both untouched rules byte-for-byte (7.874 / 19.685 / 59.0551 and
+   3 / 3 / 19.685 mil). `verify_stack.py` still PASS; `Pads6` identical to the previous commit;
+   `Tracks6` (630) and `Texts6` (350) identical as multisets — the save re-ordered records and
+   changed nothing else.
+4. **DRC proof.** `PlaceWidthProbes` laid 13 tracks at x 60–62 mm; the DRC reported **exactly
+   7 Width Constraint violations, the seven marked VIOL, and none of the six marked pass**:
 
-1. `SetPwrRailWidths` read every one of the 48 per-layer values back through the same property
-   it wrote — result: **pending**
-2. Saved file, `tools/verify_widths.py --dump` — the per-layer keys Altium actually writes:
-   **pending**
-3. `tools/verify_widths.py` — **pending**
-4. DRC proof with `PlaceWidthProbes` (13 tracks, 7 must violate, 6 must pass) — **pending**
-5. Probes removed, `Tracks6` back to 630 records, DRC back to the 605 baseline — **pending**
+   | y | net | layer | width | rule floor | DRC |
+   |---|---|---|---|---|---|
+   | 1.5 | VCC3V3 | L3-SIG | 0.30 | 1.05 | **violation** |
+   | 2.0 | VCC3V3 | Top | 0.0762 | 0.0762 | pass |
+   | 2.5 | VCC3V3 | L4-SIG | 1.00 | 1.05 | **violation** |
+   | 3.0 | VCC1V0 | Top | 0.0762 | 0.15 | **violation** |
+   | 3.5 | VCC1V0 | L3-SIG | 0.45 | 0.50 | **violation** |
+   | 4.0 | VCC1V0 | L3-SIG | 0.50 | 0.50 | pass |
+   | 4.5 | VU | Bottom | 0.15 | 0.20 | **violation** |
+   | 5.0 | VU | Bottom | 0.20 | 0.20 | pass |
+   | 5.5 | VU | L4-SIG | 1.10 | 1.10 | pass |
+   | 6.0 | FT-VCORE | L3-SIG | 0.10 | 0.15 | **violation** |
+   | 6.5 | FT-VCORE | L3-SIG | 0.15 | 0.15 | pass |
+   | 7.0 | VCC1V8 | Top | 0.15 | 0.15 | pass |
+   | 7.5 | NODE_P0 | Top | 0.15 | 0.20 (PWR_SWITCH) | **violation** |
+
+   The report's row header for VCC3V3 reads *"Min=0.076mm"* — its default — while it flags
+   the 0.30 and 1.00 mm inner tracks: DRC is applying the per-layer floor, not the header
+   value. The global `Width (All)` rule reported 0, so the four rail rules shadow it as
+   intended.
+5. **Probes removed, board back to baseline.** `RemoveWidthProbes` deleted 13; the saved
+   file's `Tracks6` is 630 records and identical to the previous commit as a multiset (so are
+   `Pads6` 829 and `Texts6` 350); the DRC re-ran to **605** — Warnings 0, Clearance 0,
+   Short-Circuit 0, Un-Routed 603, every one of the six Width rules 0 — the exact pre-change
+   baseline of `drc_triage.md`. `verify_widths.py` PASS, `verify_stack.py` PASS, two Split
+   Planes, `PWR_RAILS` class unchanged.
+
+**Status: APPLIED AND PROVEN, 2026-09-14.**
