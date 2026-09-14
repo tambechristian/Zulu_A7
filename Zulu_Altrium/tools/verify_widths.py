@@ -128,6 +128,32 @@ def clearance_rules():
     return out
 
 
+# ---- the solder-mask rules: the via tenting rule must outrank the rest ------
+MASK_EXPECT = {
+    'SolderMaskExpansion_Vias': dict(prio=1, scope='IsVia', expansion=0.0, tented=True),
+    'SolderMaskExpansion_U1':   dict(prio=2, scope="InComponent('U1')", expansion=0.0, tented=False),
+    'SolderMaskExpansion_X3':   dict(prio=3, scope="InComponent('X3')", expansion=0.04, tented=False),
+    'SolderMaskExpansion':      dict(prio=4, scope='All', expansion=0.05, tented=False),
+}
+
+
+def mask_rules():
+    f = olefile.OleFileIO(PCB)
+    d = f.openstream('Rules6/Data').read().decode('latin-1', 'replace')
+    f.close()
+    out = []
+    for r in d.split(chr(0)):
+        if 'RULEKIND=SolderMaskExpansion' not in r:
+            continue
+        kv = {}
+        for item in r.strip('|').split('|'):
+            if '=' in item:
+                k, v = item.split('=', 1)
+                kv[k] = v
+        out.append(kv)
+    return out
+
+
 def width_rules():
     f = olefile.OleFileIO(PCB)
     d = f.openstream('Rules6/Data').read().decode('latin-1', 'replace')
@@ -242,13 +268,33 @@ def main():
             fails.append('%s NETSCOPE %r (want DifferentNets)' % (name, kv.get('NETSCOPE')))
             print('   %-24s NETSCOPE %r' % (name, kv.get('NETSCOPE')))
 
+    msk = {kv.get('NAME'): kv for kv in mask_rules()}
+    print(chr(10) + '[Solder mask rules]  %s' % ', '.join('%s(p%s)' % (kv.get('NAME'), kv.get('PRIORITY')) for kv in sorted(msk.values(), key=lambda k: int(k.get('PRIORITY', 99)))))
+    if len(msk) != len(MASK_EXPECT):
+        fails.append('expected %d SolderMaskExpansion rules, file has %d' % (len(MASK_EXPECT), len(msk)))
+    for name, want in MASK_EXPECT.items():
+        kv = msk.get(name)
+        if kv is None:
+            print('   %-26s MISSING' % name); fails.append('%s missing' % name); continue
+        chk(name, '%s EXPANSION' % name, mm(kv.get('EXPANSION')), want['expansion'])
+        tented = kv.get('ISTENTINGTOP') == 'TRUE' and kv.get('ISTENTINGBOTTOM') == 'TRUE'
+        if tented != want['tented']:
+            fails.append('%s tenting top=%s bottom=%s want %s' % (name, kv.get('ISTENTINGTOP'), kv.get('ISTENTINGBOTTOM'), want['tented']))
+            print('   %-26s tenting top=%s bottom=%s (want %s)' % (name, kv.get('ISTENTINGTOP'), kv.get('ISTENTINGBOTTOM'), want['tented']))
+        if int(kv.get('PRIORITY', -1)) != want['prio']:
+            fails.append('%s priority %s want %d' % (name, kv.get('PRIORITY'), want['prio']))
+            print('   %-26s priority %s != %d' % (name, kv.get('PRIORITY'), want['prio']))
+        if kv.get('SCOPE1EXPRESSION') != want['scope']:
+            fails.append('%s scope %r' % (name, kv.get('SCOPE1EXPRESSION')))
+            print('   %-26s scope %r != %r' % (name, kv.get('SCOPE1EXPRESSION'), want['scope']))
+
     print(chr(10) + '=' * 70)
     if fails:
         print('FAIL -- %d problem(s):' % len(fails))
         for x in fails:
             print('  * ' + x)
         return 1
-    print('PASS -- every Width and Clearance rule matches the target')
+    print('PASS -- every Width, Clearance and solder-mask rule matches the target')
     return 0
 
 

@@ -122,6 +122,41 @@ Begin
     Log.Free;
 End;
 
+
+
+{ ---------------------------------------------------------------------------
+  2026-09-15: is the solder-mask TENTING flag reachable from a script?
+
+  The Rules6 record of a SolderMaskExpansion rule carries ISTENTINGTOP (and,
+  when set, ISTENTINGBOTTOM). The property name that writes it has never been
+  used in this project. An UNDECLARED name halts the script with a modal error
+  and Try/Except never runs -- so this canary uses the name once, on a rule
+  object that is created by the factory and NEVER added to the board. If it
+  halts: dismiss the error, Run > Stop (Ctrl+F3), and set the checkbox in the
+  Rules dialog instead. If it runs: SetViaTenting in ZuluSetup.pas may use it.
+
+  Changes nothing.  Run: ProbeTenting
+  --------------------------------------------------------------------------- }
+
+Procedure ProbeTenting;
+Var
+    R : IPCB_Rule;
+Begin
+    R := PCBServer.PCBRuleFactory(eRule_SolderMaskExpansion);
+    R.IsTentingTop    := True;
+    R.IsTentingBottom := True;
+    If R.IsTentingTop And R.IsTentingBottom Then
+        ShowMessage('Zulu A7 - tenting probe' + #13#10 + #13#10 +
+                    'IsTentingTop and IsTentingBottom are DECLARED and read back True.' + #13#10 +
+                    'The rule object was never added to the board. Nothing was changed.' + #13#10 + #13#10 +
+                    'SetViaTenting in ZuluSetup.pas may now be run.')
+    Else
+        ShowMessage('Zulu A7 - tenting probe' + #13#10 + #13#10 +
+                    'The names are declared but read back FALSE after a True write.' + #13#10 +
+                    'Do NOT run SetViaTenting; set the checkboxes in the Rules dialog.');
+End;
+
+
 End.
 
 { End of ZuluProbe.pas }

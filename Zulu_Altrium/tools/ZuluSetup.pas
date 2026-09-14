@@ -970,6 +970,72 @@ Begin
 End;
 
 
+
+
+{ ============================================================================
+  VIA TENTING, 2026-09-15 -- docs/via_land_decision.md, step 3
+
+  Every via on the board is tented, top and bottom: a SolderMaskExpansion rule
+  scoped IsVia with both tenting flags set. Why a rule and not the global
+  expansion: with the global 0.05 mm opening, two 0.35 mm via lands on
+  adjacent 0.5 mm moat cells under U1 leave a 0.0499 mm mask web against the
+  0.100 mm sliver rule, and two vias at the 0.44 mm binding pitch leave none
+  at all. A 0 mm expansion would still open the land (0.09 mm web at 0.44
+  pitch, still under the sliver rule); tenting removes the opening, which is
+  also what keeps solder from wicking into vias beside the BGA lands and the
+  0201 pads. No via on this board is a test point.
+
+  The rule lands at priority 1 above SolderMaskExpansion_U1 (InComponent, which
+  never matches a via) and the global rule, so it applies to every via. It is
+  only exercised once vias exist -- the fan-out's first vias are the DRC proof.
+
+  ProbeTenting in ZuluProbe.pas (2026-09-15) showed that IsTentingTop is NOT
+  a declared property in this build, so the two Tented checkboxes are set in
+  the Rules dialog after this script has made the rule with the proven names;
+  verify_widths.py checks ISTENTINGTOP / ISTENTINGBOTTOM = TRUE in the file.
+
+  Run:  SetViaTenting    then tick Tented top + bottom in Design > Rules, Ctrl+S,
+                         python tools/verify_widths.py
+  ============================================================================ }
+
+Procedure SetViaTenting;
+Var
+    R : IPCB_Rule;
+Begin
+    Brd := BoardOrNil;
+    If Brd = Nil Then Exit;
+    If FindRuleByName('SolderMaskExpansion_Vias') <> Nil Then
+    Begin
+        ShowMessage('SolderMaskExpansion_Vias already exists - nothing changed.');
+        Exit;
+    End;
+
+    PCBServer.PreProcess;
+    Try
+        R := PCBServer.PCBRuleFactory(eRule_SolderMaskExpansion);
+        R.Name             := 'SolderMaskExpansion_Vias';
+        R.Scope1Expression := 'IsVia';
+        R.Scope2Expression := 'All';
+        R.Expansion        := MMsToCoord(0);
+        R.NetScope         := eNetScope_AnyNet;
+        R.LayerKind        := eRuleLayerKind_SameLayer;
+        Brd.AddPCBObject(R);
+    Finally
+        PCBServer.PostProcess;
+    End;
+    Brd.ViewManager_FullUpdate;
+
+    If R.Scope1Expression = 'IsVia' Then
+        ShowMessage('Zulu A7 - SolderMaskExpansion_Vias written: scope IsVia, expansion 0, read back OK.' + #13#10 + #13#10 +
+                    'The TENTING flags cannot be set by script (IsTentingTop is not declared,' + #13#10 +
+                    'ProbeTenting 2026-09-15). Now: Design > Rules > Mask > Solder Mask Expansion >' + #13#10 +
+                    'SolderMaskExpansion_Vias, tick Tented for Top and Bottom, OK, then Ctrl+S and' + #13#10 +
+                    'python tools/verify_widths.py')
+    Else
+        ShowMessage('Zulu A7 - SolderMaskExpansion_Vias READ BACK WRONG: scope ' + R.Scope1Expression + #13#10 + 'Do NOT save.');
+End;
+
+
 End.
 
 { End of ZuluSetup.pas }

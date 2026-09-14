@@ -90,5 +90,14 @@ tolerance on the 6-layer line, and whether the hole-size tolerance applies to vi
 `tools/ZuluRules.pas` now writes the same so a re-run cannot revert it. **Verified from the saved `Rules6` 2026-09-14:** `RoutingVias` MINWIDTH = WIDTH = MAXWIDTH =
 13.7795 mil (0.35 mm), holes 7.874 mil (0.20 mm); it is the only rule that changed against the
 previous commit (50 rules before and after); pads, tracks and texts identical as multisets;
-`verify_widths.py` and `verify_stack.py` still PASS. The mask-tenting rule for vias (step 3) and the
-teardrops (step 4) are routing-stage items and go with the fan-out.
+`verify_widths.py` and `verify_stack.py` still PASS. **Step 3 done, 2026-09-15:** `SolderMaskExpansion_Vias`, scope `IsVia`, **tented top and bottom**,
+at solder-mask priority 1 above the U1 (2), X3 (3) and global (4) rules. Created by
+`SetViaTenting` (scope, expansion, net/layer kind — proven names) with the two Tented boxes
+ticked in the Rules dialog, because the canary `ProbeTenting` proved `IsTentingTop` is not a
+declared script property in this build. The file stores one `EXPANSION` and `ISTENTINGTOP`
+with bottom linked to top; the link was released and bottom ticked explicitly so `Rules6` now
+carries `ISTENTINGTOP=TRUE` **and** `ISTENTINGBOTTOM=TRUE` (54 rules; nothing else changed but the
+three shifted priorities). Board-wide on purpose: at the 0.44 mm binding via pitch two 0.35
+lands leave no mask web at all under the global 0.05 mm opening, and 0.09 mm at a 0 mm opening
+— both under the 0.10 mm sliver rule — while no via on this board is a test point. Its first
+DRC exercise is the fan-out's first via. The teardrops (step 4) remain a routing-stage item.
