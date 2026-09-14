@@ -827,6 +827,145 @@ Begin
 End;
 
 
+
+
+{ ============================================================================
+  SDRAM BUS RULES, 2026-09-14 -- docs/sdram_bus_widths.md
+
+  The 39 SDRAM nets need no 50 ohm: an unterminated 3.3 V LVTTL bus of
+  9-33 mm with an 8 mA (~50 ohm) driver cannot tell 45 from 60 ohm, and
+  overshoot is set by the FPGA DRIVE setting, not by width. So the width is
+  chosen on driver match, etch tolerance and yield: 0.125 mm on L3/L4 is
+  49-50 ohm (+-4.4 ohm at JLC's +-0.5 mil), 0.10 is the neck (54 ohm) and
+  0.15 the cap (45 ohm). Top keeps the 3 mil escape with PREFERRED = MIN,
+  because the router lays the preferred and never necks by itself.
+
+      Width_SDRAM   Top 0.0762/0.0762/0.15   L3,L4 0.10/0.125/0.15   Bottom 0.10/0.125/0.15
+      Clearance_SDRAM_INNER 0.10 mm  the three classes, L3/L4 ONLY  (yield: tooled space
+                                     0.080-0.087 instead of 0.070-0.077 after etch comp.)
+      Clearance_SDRAM_CLK   0.20 mm  SDRAM-CLK, L3/L4 ONLY  (halves the coupling on the
+                                     one net whose edge IS the timing)
+
+  Neither clearance touches Top or Bottom: the ring-1 escape has 0.0994 mm
+  to its neighbouring lands and any bus clearance >= 0.10 there closes it.
+
+  Clearance rules are created INNER first, CLK second, so that CLK lands at
+  priority 1, INNER 2, the global 0.09 rule 3 (a CLK-to-data pair matches
+  both SDRAM rules and the higher priority must be the 0.20). NetScope is
+  left at the factory default and read back from Rules6 afterwards (the
+  file spells it DifferentNets). Width_SDRAM lands at Width priority 1 and
+  pushes the five power rules and the global Width down one -- their
+  scopes are disjoint, so that is cosmetic; verify_widths.py expects it.
+
+  Precondition outside the board: XDC DRIVE 8 (SLOW or FAST) or 12 SLOW on
+  all 39 outputs; never 12/16 FAST without a series resistor.
+
+  Run:  SetSdramRules       then Ctrl+S, python tools/verify_widths.py
+        PlaceSdramProbes    then Tools > DRC > Run: exactly 5 VIOL lines
+        RemoveWidthProbes   (same rectangle), Ctrl+S, DRC once more
+  ============================================================================ }
+
+Function NewClearanceRule(AName, AScope : String; AGap : Double) : IPCB_Rule;
+Begin
+    Result := PCBServer.PCBRuleFactory(eRule_Clearance);
+    Result.Name             := AName;
+    Result.Scope1Expression := AScope;
+    Result.Scope2Expression := 'All';
+    Result.LayerKind        := eRuleLayerKind_SameLayer;
+    Result.Gap              := MMsToCoord(AGap);
+End;
+
+
+Procedure SetSdramRules;
+Var
+    R   : IPCB_Rule;
+    Bad : Integer;
+    G   : Double;
+Begin
+    Brd := BoardOrNil;
+    If Brd = Nil Then Exit;
+    If (FindRuleByName('Width_SDRAM') <> Nil) Or (FindRuleByName('Clearance_SDRAM_INNER') <> Nil) Or
+       (FindRuleByName('Clearance_SDRAM_CLK') <> Nil) Then
+    Begin
+        ShowMessage('The SDRAM rules already exist - nothing changed.');
+        Exit;
+    End;
+    Log := TStringList.Create;
+    Bad := 0;
+
+    PCBServer.PreProcess;
+    Try
+        R := NewClearanceRule('Clearance_SDRAM_INNER',
+             '(InNetClass(''SDRAM_DATA'') Or InNetClass(''SDRAM_ADDR'') Or InNetClass(''SDRAM_CTRL'')) And (OnLayer(''L3-SIG'') Or OnLayer(''L4-SIG''))', 0.10);
+        Brd.AddPCBObject(R);
+        G := CoordToMMs(R.Gap);
+        If Abs(G - 0.10) > 0.0005 Then Bad := Bad + 1;
+        Log.Add('   Clearance_SDRAM_INNER  gap ' + WMm(R.Gap) + '   ' + R.Scope1Expression);
+
+        R := NewClearanceRule('Clearance_SDRAM_CLK',
+             'InNet(''SDRAM-CLK'') And (OnLayer(''L3-SIG'') Or OnLayer(''L4-SIG''))', 0.20);
+        Brd.AddPCBObject(R);
+        G := CoordToMMs(R.Gap);
+        If Abs(G - 0.20) > 0.0005 Then Bad := Bad + 1;
+        Log.Add('   Clearance_SDRAM_CLK    gap ' + WMm(R.Gap) + '   ' + R.Scope1Expression);
+
+        R := NewWidthRule('Width_SDRAM', 'InNetClass(''SDRAM_DATA'') Or InNetClass(''SDRAM_ADDR'') Or InNetClass(''SDRAM_CTRL'')');
+        SetRuleTable(R, 'Width_SDRAM     ',
+                     0.0762, 0.0762, 0.15,   0.10, 0.125, 0.15,   0.10, 0.125, 0.15, Log, Bad);
+        Brd.AddPCBObject(R);
+    Finally
+        PCBServer.PostProcess;
+    End;
+    Brd.ViewManager_FullUpdate;
+    Log.SaveToFile('C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_Altrium/tools/widths_report.txt');
+    If Bad = 0 Then
+        ShowMessage('Zulu A7 - SDRAM rules written, every value read back OK' + #13#10 + #13#10 + Log.Text + #13#10 +
+                    'Nothing is saved yet - press Ctrl+S, then python tools/verify_widths.py')
+    Else
+        ShowMessage('Zulu A7 - SDRAM rules: ' + IntToStr(Bad) + ' value(s) READ BACK WRONG' + #13#10 + #13#10 + Log.Text + #13#10 +
+                    'Do NOT save.');
+    Log.Free;
+End;
+
+
+Procedure PlaceSdramProbes;
+Var
+    Missing : String;
+Begin
+    Brd := BoardOrNil;
+    If Brd = Nil Then Exit;
+    Log := TStringList.Create;
+    Missing := '';
+    PCBServer.PreProcess;
+    Try
+        { pairs: second track at y + width + gap }
+        Probe('D0',        eMidLayer1,   'L3-SIG', 0.125,  1.0,    'pair A (gap 0.095) -> VIOL Clearance_SDRAM_INNER', Log, Missing);
+        Probe('D1',        eMidLayer1,   'L3-SIG', 0.125,  1.22,   '   ... second of pair A', Log, Missing);
+        Probe('D2',        eMidLayer1,   'L3-SIG', 0.125,  1.7,    'pair B (gap 0.105) -> pass', Log, Missing);
+        Probe('D3',        eMidLayer1,   'L3-SIG', 0.125,  1.93,   '   ... second of pair B', Log, Missing);
+        Probe('SDRAM-CLK', eMidLayer2,   'L4-SIG', 0.125,  2.4,    'pair C (gap 0.15)  -> VIOL Clearance_SDRAM_CLK', Log, Missing);
+        Probe('D4',        eMidLayer2,   'L4-SIG', 0.125,  2.675,  '   ... second of pair C', Log, Missing);
+        Probe('SDRAM-CLK', eMidLayer2,   'L4-SIG', 0.125,  3.2,    'pair D (gap 0.21)  -> pass', Log, Missing);
+        Probe('D5',        eMidLayer2,   'L4-SIG', 0.125,  3.535,  '   ... second of pair D', Log, Missing);
+        Probe('D6',        eTopLayer,    'Top   ', 0.0762, 4.0,    'pair E Top (gap 0.09) -> pass (no SDRAM clearance on Top)', Log, Missing);
+        Probe('D7',        eTopLayer,    'Top   ', 0.0762, 4.1662, '   ... second of pair E', Log, Missing);
+        Probe('D8',        eMidLayer1,   'L3-SIG', 0.095,  4.6,    'VIOL Width_SDRAM (L3 min 0.10)', Log, Missing);
+        Probe('D9',        eTopLayer,    'Top   ', 0.0762, 5.0,    'pass (Top min 0.0762)', Log, Missing);
+        Probe('D10',       eMidLayer1,   'L3-SIG', 0.16,   5.4,    'VIOL Width_SDRAM (max 0.15)', Log, Missing);
+        Probe('A0',        eBottomLayer, 'Bottom', 0.095,  5.8,    'VIOL Width_SDRAM (Bottom min 0.10)', Log, Missing);
+        Probe('A1',        eMidLayer2,   'L4-SIG', 0.125,  6.2,    'pass (L4 pref 0.125)', Log, Missing);
+    Finally
+        PCBServer.PostProcess;
+    End;
+    Brd.ViewManager_FullUpdate;
+    If Missing <> '' Then Log.Add('   NET NOT FOUND:' + Missing);
+    ShowMessage('Zulu A7 - 15 SDRAM probe tracks placed at x 60..62 mm' + #13#10 + #13#10 + Log.Text + #13#10 +
+                'Tools > Design Rule Check > Run: exactly 2 Clearance + 3 Width violations.' + #13#10 +
+                'Then RemoveWidthProbes (same rectangle), Ctrl+S, DRC again.');
+    Log.Free;
+End;
+
+
 End.
 
 { End of ZuluSetup.pas }

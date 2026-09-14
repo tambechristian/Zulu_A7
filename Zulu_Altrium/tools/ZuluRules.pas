@@ -56,6 +56,15 @@ End;
 
 Procedure ApplyClearance(R : IPCB_Rule; Log : TStringList; Touched : TStringList);
 Begin
+    { 2026-09-14: only the global rule named 'Clearance'. The SDRAM bus now has
+      Clearance_SDRAM_INNER (0.10) and Clearance_SDRAM_CLK (0.20) on L3/L4, set by
+      SetSdramRules in ZuluSetup.pas; dispatching on RuleKind alone would write
+      0.09 into both.                                                          }
+    If R.Name <> 'Clearance' Then
+    Begin
+        Log.Add('Clearance (' + R.Name + ')  left alone - see SetSdramRules');
+        Exit;
+    End;
     Touched.Add('Clearance');
     R.BeginModify;
     Try
