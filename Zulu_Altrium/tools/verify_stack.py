@@ -50,7 +50,7 @@ INNER_CU_MM = 0.0152              # 0.5984 mil
 EXPECT = [
     ("Top Paste",      "none", None,        None,  None),
     ("Top Overlay",    "none", None,        None,  None),
-    ("Top Solder",     "diel", 0.4 * MIL,   3.500, SURFACE),
+    ("Top Solder",     "diel", 1.2 * MIL,   3.800, SURFACE),   # JLC mask model, 2026-09-14
     ("Top Layer",      "cu",   OUTER_CU_MM, None,  None),
     ("Dielectric 2",   "diel", 0.0994,      4.100, PREPREG),  # 3313 x1 UNCHANGED
     ("L2-GND",         "cu",   INNER_CU_MM, None,  None),
@@ -62,7 +62,7 @@ EXPECT = [
     ("L5-GND",         "cu",   INNER_CU_MM, None,  None),
     ("Dielectric 3",   "diel", 0.0994,      4.100, PREPREG),  # 3313 x1 UNCHANGED
     ("Bottom Layer",   "cu",   OUTER_CU_MM, None,  None),
-    ("Bottom Solder",  "diel", 0.4 * MIL,   3.500, SURFACE),
+    ("Bottom Solder",  "diel", 1.2 * MIL,   3.800, SURFACE),   # JLC mask model, 2026-09-14
     ("Bottom Overlay", "none", None,        None,  None),
     ("Bottom Paste",   "none", None,        None,  None),
 ]
@@ -165,7 +165,7 @@ def main():
             print("   %-42s %s" % ("V9 %s MATERIAL" % name,
                                    r.get("DIELMATERIAL", "-")))
 
-    lam = total_mm - 2 * 0.4 * MIL
+    lam = total_mm - 2 * 1.2 * MIL
     print("\n    total incl. solder mask : %.5f mm  (%.4f mil)"
           % (total_mm, total_mm / MIL))
     print("    laminate  excl. mask    : %.5f mm   <- JLC quote 1.65040 mm" % lam)

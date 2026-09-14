@@ -1,8 +1,67 @@
-# DFM enquiry to JLCPCB — ONE QUESTION — drafted 2026-09-11, NOT YET SENT
+# DFM enquiry to JLCPCB — RESOLVED 2026-09-14 (sent 2026-09-12, answered by Jasper Wu, JLCPCB engineering support)
 
 This file started with four multi-part questions. Reading JLCPCB's own published pages on
 2026-09-11 answered all but one of them, so the rest are recorded below as **answered** with the
 verbatim source, and are not to be asked again. **Only section 1 goes to the fab.**
+
+
+> ## Answered. 3 mil stands, impedance control is free, and they volunteered a via warning.
+>
+> **Their reply, verbatim (2026-09-14):**
+>
+> > Dear Customer,
+> >
+> > Thank you for contacting JLCPCB engineering support with your detailed technical inquiry regarding BGA fan-out routing and controlled impedance for your 6-layer project.
+> >
+> > Here are the direct answers to your questions:
+> >
+> > 1. Controlled Impedance vs. 3 Mil BGA Fan-Out Allowance: Plainly answered: Ordering with Controlled Impedance does NOT withdraw or invalidate the 3 mil allowance for your BGA fan-outs.
+> >
+> > • When you select Controlled Impedance, our CAM engineers apply impedance matching and adjustments ONLY to the specific designated impedance net (your single USB 2.0 90 ohm differential pair on the top layer) based on the JLC06161H-3313E stackup.
+> >
+> > • All other non-impedance traces on the board, including your 238 BGA fan-out traces under the XC7A35T (CPG236) and your SDRAM bus, retain full access to our fine-line manufacturing capabilities down to 3 mil (0.0762 mm).
+> >
+> > • Therefore, you DO NOT need to drop the controlled impedance service. You can keep both the controlled 90 ohm USB pair and your 3 mil / 0.09 mm escape routing under the BGA lands.
+> >
+> > 2. Surcharges for 3 mil / 3.5 mil and Impedance Control:
+> >
+> > • Controlled Impedance Fee: On 6-layer boards using our standard stackups (including JLC06161H-3313E), Controlled Impedance is provided with NO extra charge ($0 surcharge).
+> >
+> > • 3.5 mil / 3.5 mil Line & Space: This falls within our standard 6-layer manufacturing baseline, so there is no difficulty surcharge.
+> >
+> > • 3.0 mil / 3.0 mil Line & Space: Because line and space under 3.5 mil require high-precision LDI exposure, vacuum etching, and optical inspection, a high-precision process fee of 20% on the PCB board price applies. When configuring your quote online, selecting 3 mil as the minimum track/spacing will reflect this 20% process tier.
+> >
+> > 3. Etch Compensation and Finished Width Tolerances:
+> >
+> > • Etch Compensation in CAM: In wet chemical etching, lateral undercutting naturally occurs. To achieve the nominal finished trace width on your bare board, our CAM engineers apply a standard positive etch compensation of approximately 0.5 mil to 0.8 mil (approx. 0.013 mm to 0.020 mm) on 0.5 oz base copper foils on the photo tooling.
+> >
+> > • For your 3 mil (0.0762 mm) BGA escape traces, CAM compensation is tightly calibrated to ensure the finished copper trace on the board centers around the nominal 3.0 mil target.
+> >
+> > • Clearance Protection in CAM: CAM compensation algorithms strictly protect clearance. If widening a trace would compromise the electrical clearance between adjacent BGA lands below the etching threshold, CAM preserves the required space to prevent solder bridging or copper shorts. Your drawn geometry (0.225 mm land with 0.2748 mm edge-to-edge gap, 3 mil trace, and 0.09 mm clearance) provides healthy manufacturing margin.
+> >
+> > • While general board-wide tolerance is listed at +/-20% to encompass isolated peripheral features, our actual production tolerance on fine-pitch multi-layer inner/outer traces using laser direct imaging (LDI) typically holds within +/-0.3 to +/-0.5 mil (+/-8% to +/-12%).
+> >
+> > 4. Proactive Engineering Tip Regarding Vias: You mentioned using 0.20 mm drill on a 0.30 mm land (annular ring of 0.05 mm / 1.97 mil). For multilayer through-hole vias, our standard recommendation is a minimum annular ring of 0.075 mm (3 mil), which corresponds to a 0.20 mm drill on a 0.35 mm pad. While 0.20/0.30 mm can be produced with high-precision registration, adding teardrops to your 0.20/0.30 mm vias in your layout is strongly recommended to maximize drill-to-pad integrity.
+> >
+> > We hope this provides the clarity you need to proceed confidently with your layout. Please let us know if you need any further engineering details!
+> >
+> > Best regards,
+> >
+> > Jasper Wu
+> >
+> > JLCPCB Customer Service Team
+>
+> **What it decides**, every number re-measured from `Pads6` on 2026-09-14 (land 0.225044, worst
+> pitch 0.499872, land-edge gap 0.274828 mm, clearance rule 0.09):
+>
+> | asked | their answer | consequence for the board |
+> |---|---|---|
+> | Does impedance control withdraw the 3 mil allowance? | **No.** CAM touches only the designated pair. | The escape stays **3 mil / 0.09 mm** and the USB pair stays controlled. `Width_PWR_VCC3V3`'s Top min of 0.0762 stands; nothing in the rule set moves. **The fan-out is unblocked.** |
+| surcharge | impedance **$0** on standard stackups; 3.5/3.5 baseline; **3/3 is a +20 % process tier** (LDI, vacuum etch, AOI) | Budget +20 % on the bare board. **The online quote must have 3 mil selected as min track/space**, or the order is placed in the wrong tier. |
+> | etch compensation | +0.5–0.8 mil on the photo tooling, 0.5 oz base; finished 3 mil **centres on nominal**; CAM protects clearance; real fine-line tolerance **±0.3–0.5 mil (±8–12 %)**, not the published ±20 % | Escape margin at +12 %: clearance/side **0.094742 vs 0.09, +0.0047 mm** (it was +0.0017 at the ±20 % we argued from). At 3.5 mil the same +12 % **fails by 0.0024** — the wider trace is still the one that would fail, so the etch follow-up we had drafted is moot. |
+> | *(not asked)* the via ring | recommend **0.075 mm ring = 0.20 drill / 0.35 land**; 0.20/0.30 **is producible** with high-precision registration; **teardrops strongly recommended** on 0.20/0.30 | A 0.35 land is **impossible at an interstitial (diagonal) position** — centre-to-land-edge is 0.240941 mm and it needs 0.265 (−0.024). At a **vacant ball-grid position** it clears by +0.122 (0.30 clears by +0.147), and two 0.35 lands on adjacent grid positions keep 0.150 mm between them. So the choice is per position, and it is a fan-out decision, not a rule change: interstitial vias were already "legal and not manufacturable" (`docs/routing_readiness.md`) at +0.94 µm with a 0.30 land; this makes the case against them final. **Add teardrops before the fab output** whatever the land. |
+>
+> Nothing here is to be asked again. The question below is kept as the record of what was sent.
 
 ---
 
@@ -92,5 +151,6 @@ answer.
 ---
 
 *Every figure above is either measured from our own design files or quoted from JLCPCB's published
-pages on 2026-09-11, with the URL given so it can be re-checked. Replace section 1 with their
-verbatim answer when it arrives, the way `JLCPCB-DFM-ENQUIRY.md` records the 2026-08-27 reply.*
+pages on 2026-09-11, with the URL given so it can be re-checked. Their verbatim answer of
+2026-09-14 is at the top; the consequences table there supersedes the arithmetic in section 1
+where the two differ (their real etch tolerance is ±8–12 %, not the ±20 % argued from).*

@@ -114,6 +114,19 @@ Six assessments, eleven challenges. Nine challenges stood, and these are the con
 
 ## WHAT IS STILL GENUINELY UNKNOWN
 
+> **Addendum 2026-09-14.** Three of the questions below are answered. From JLCPCB's own pages
+> (2026-09-11, `board/JLCPCB-DFM-ENQUIRY-2.md` §2): the 0.05 mm ring on a 0.20 mm drill is their
+> published minimum, the 0.225 mm land is accepted with ENIG, and inner copper to a routed edge is
+> ≥ 0.2 mm. From their engineering reply (2026-09-14, same file, top): **controlled impedance
+> does not withdraw the 3 mil fan-out allowance**, impedance control is free on the standard
+> stackups, 3/3 mil is a +20 % process tier, real fine-line tolerance is ±8–12 %, and — unasked —
+> they recommend a 0.35 mm via land (0.075 mm ring) with **teardrops** on any 0.20/0.30 via. A
+> 0.35 land is impossible at the interstices (−0.024 mm) and fine at grid positions (+0.122), which
+> only strengthens the interstitial-via verdict two paragraphs up. The coated impedance is being
+> settled by putting JLC's mask model (1.2 mil, Dk 3.8) into the stack.
+
+
+
 **Three questions for JLCPCB that nobody has asked, and one that gates a change above.** Whether they will build a 0.05 mm annular ring on a 0.20 mm drill; whether they accept the 0.225 mm BGA land with its mask opening; and their inner-copper-to-board-edge minimum, which decides recommendation 3. The first two are `board/STACKUP.md`'s bullet 4 and questions 4–6 of the DFM enquiry, still unanswered. A "no" on the 0.225 mm land invalidates the entire escape — that is a four-layer rip-up if it lands after routing. Send the email today. (Bullet 1 of that list is stale: the enquiry is headed RESOLVED 2026-08-27, the fab is JLCPCB not PCBWay, and 0.09/0.09 with "3 mil is acceptable in BGA fan-outs" is in writing.)
 
 **Whether Altium's interactive router honours keep-out regions.** The batch DRC demonstrably ignores keep-out *tracks* (155 physical overlaps, zero reported) and honours *regions* (742C083, 8 reported). What the interactive router does with either is unverified, and recommendation 1 depends on it.

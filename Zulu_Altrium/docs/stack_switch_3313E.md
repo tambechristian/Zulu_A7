@@ -146,6 +146,9 @@ verifier (a fourth text copy it also misses) is about eight lines.
   is 697, `tools/power_budget.py`). On the new inner copper 0.400 mm is 52.4 °C for VU. The
   copper change makes them worse but did not cause them. Keep them on outer copper or in
   **solid** pours; the 1.05/1.10 inner floors now say so in DRC.
-- **Altium's own impedance readout will disagree with JLC's** until the mask rows are changed from
-  0.4 mil / Dk 3.5 to JLC's published 1.2 mil / Dk 3.8 — Altium currently reads about **+4.25 Ω
-  high**, so tuning the pair to read 90 Ω in Altium would build ≈86 Ω.
+- **The mask rows — DONE 2026-09-14.** Top Solder and Bottom Solder were 0.4 mil / Dk 3.5,
+  Altium's stock coating, and Altium's impedance readout sat about +4.25 Ω above JLC's model;
+  tuning the pair to read 90 Ω in Altium would have built ≈86 Ω. Both rows are now JLC's
+  published **1.2 mil (0.03048 mm) / Dk 3.8**; `tools/verify_stack.py` carries the new values and
+  the laminate figure is unchanged at 1.65038 mm (the mask is excluded from it by construction).
+  Total including mask becomes 1.71134 mm — still inside JLC's ±10 % on 1.6 mm.

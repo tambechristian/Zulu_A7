@@ -114,10 +114,15 @@ figure is 697 mA, which is 52.4 °C on 0.400 mm of the new inner copper. And *"0
 lands"* (memory, `ZuluSetup.pas` comment) was wrong: every rail 0201 pad in `Pads6` is
 0.300 × 0.300 mm; 0.240 mm is U8's VQFN16 pad.
 
-## If JLC answer "3.5 mil"
+## JLC answered on 2026-09-14: 3 mil stands
 
-Only `Width_PWR_VCC3V3`'s Top min changes, to 0.0889 mm; the escape margin drops from
-+0.0186 to +0.0059 mm, still positive. Nothing else in the set moves.
+*"Ordering with Controlled Impedance does NOT withdraw or invalidate the 3 mil allowance for
+your BGA fan-outs."* — `board/JLCPCB-DFM-ENQUIRY-2.md` has the verbatim reply. So
+`Width_PWR_VCC3V3`'s Top min stays 0.0762 and nothing in the set moves. Two things from the
+same reply bear on routing these rails: their real fine-line tolerance is ±8–12 %, not the
+±20 % the 0.15 mm etch floor was argued from (the floor stays — it is also the width JLC
+charges nothing extra for); and they recommend teardrops on every 0.20/0.30 via, which the
+via-heavy power drops will want.
 
 ## Verification — all from the saved file and the DRC report, 2026-09-14
 

@@ -14,7 +14,7 @@ Width), all at 0; a 13-track probe placed on purpose produced exactly the 7 viol
 per-layer floors predict and was removed again.
 
 **This is as clean as the board gets before routing.** The only non-airwire item left is the
-X2-20 pair, and it is gated on question 1 of `board/JLCPCB-DFM-ENQUIRY-2.md`.
+X2-20 pair, and it is **waived** (line 176 below: not recoverable by tuning). The enquiry it once pointed at was cut to the 3 mil question and is resolved as of 2026-09-14; nothing in it bears on X2-20.
 
 ### How the silk went 37 -> 0
 
