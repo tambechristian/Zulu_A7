@@ -1,6 +1,6 @@
 # SDRAM bus on L3/L4 — width, spacing and what the bus actually needs, 2026-09-14
 
-**Status: DESIGNED, NOT YET WRITTEN TO THE BOARD.** Three analyses (signal integrity,
+**Status: APPLIED AND PROVEN, 2026-09-15.** Three analyses (signal integrity,
 routability, fab and yield), each adversarially refuted, then a judge — 1.28 M tokens, all
 numbers below survived refutation from the files or are marked general knowledge. The
 implementation is `SetSdramRules` in `tools/ZuluSetup.pas`; `tools/verify_widths.py` carries
@@ -122,6 +122,28 @@ VCCO − 0.400, so pull-up and pull-down source resistance are equal (the 0.45 V
 row); SLOW adds 0.53–0.84 ns of TIOOP; the shortest run is 9.2 mm, not 4; the old-stack-to-new Z0
 drop is 9–12 %; "127 lanes" is the full cut, not the 7.78 mm corridor.
 
-## Verification
+## Verification — 2026-09-15, from the saved file and a preserved DRC report
 
-*(filled in when the rules are written)*
+1. `SetSdramRules` read back both clearance gaps and all twelve width values `ok` (the first
+   attempt, on 2026-09-14, ran while Altium had silently dropped to viewer mode after a licence
+   lapse — it logged but changed nothing; re-run after sign-in on a fresh instance).
+2. Saved `Rules6`: **53 rules** (50 + 3). `Clearance_SDRAM_CLK` GAP = GENERICCLEARANCE = 7.874 mil
+   at priority 1, `Clearance_SDRAM_INNER` 3.937 mil at 2, the global `Clearance` 3.5433 mil at 3,
+   all `NETSCOPE=DifferentNets`, scopes byte-exact including the `OnLayer('L3-SIG')`/`'L4-SIG'`
+   terms. `Width_SDRAM` at Width priority 1 with the five power rules and the global `Width`
+   shifted to 2–7 and their values intact. `tools/verify_widths.py` **PASS** (7 Width + 3
+   Clearance targets); `verify_stack.py` PASS; pads, tracks and texts identical to the previous
+   commit as multisets.
+3. **DRC proof** — `PlaceSdramProbes`, 15 tracks under U1 where L3/L4 carry no other copper
+   (the first attempt in the x 60–62 corner sat on JP4-1's through-hole pad and drowned in noise).
+   The report is kept as `docs/drc_probe_sdram_2026-09-15.drc`. Result: **exactly the designed
+   set** — `Clearance_SDRAM_INNER` 1 (D0/D1 on L3-SIG, 0.095 < 0.10), `Clearance_SDRAM_CLK` 1
+   (SDRAM-CLK/D4 on L4-SIG, 0.15 < 0.20), `Width_SDRAM` 3 (0.095 on L3-SIG under the 0.10 min,
+   0.16 on L3-SIG over the 0.15 max, 0.095 on Bottom under the 0.10 min). The pass cases are
+   proven by their absence at those exact counts: the 0.105 pair on L3, the 0.21 clock pair on
+   L4, the 0.09 pair on **Top** (the inner-only scope holds), 0.0762 on Top and 0.125 on L4.
+   Short-Circuit 0; the only other movement was the global 0.09 rule seeing the two Top probes
+   against U1's lands.
+4. `RemoveWidthProbes` deleted 15; saved file `Tracks6` 630 with none on a signal layer; DRC
+   back to **605** (Un-Routed 603, every SDRAM rule 0), parsed from the report's own
+   `Rule Violations` lines.

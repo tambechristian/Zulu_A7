@@ -611,10 +611,14 @@ End;
 { ---- the DRC proof --------------------------------------------------------- }
 
 Const
-    PROBE_X0 = 60.0;      { the probes live in this rectangle, mm }
-    PROBE_X1 = 62.0;
-    PROBE_Y0 = 1.0;
-    PROBE_Y1 = 8.0;
+    { 2026-09-15: moved under U1 (x 41.79..51.01, y 7.29..16.51). L3/L4 carry no
+      copper there, so the inner-layer rules see only the probe pairs; the old
+      corner at x 60..62 had JP4-1's through-hole pad in it and every probe run
+      picked up clearance noise against it. Probe() adds PROBE_Y0 - 1 to y.   }
+    PROBE_X0 = 43.0;      { the probes live in this rectangle, mm }
+    PROBE_X1 = 45.0;
+    PROBE_Y0 = 9.0;
+    PROBE_Y1 = 16.0;
 
 
 Function NetByName(AName : String) : IPCB_Net;
@@ -651,9 +655,9 @@ Begin
     End;
     T := PCBServer.PCBObjectFactory(eTrackObject, eNoDimension, eCreate_Default);
     T.X1    := MMsToCoord(PROBE_X0 + 0.25);
-    T.Y1    := MMsToCoord(Y);
+    T.Y1    := MMsToCoord(Y + PROBE_Y0 - 1.0);
     T.X2    := MMsToCoord(PROBE_X1 - 0.25);
-    T.Y2    := MMsToCoord(Y);
+    T.Y2    := MMsToCoord(Y + PROBE_Y0 - 1.0);
     T.Layer := L;
     T.Width := MMsToCoord(W);
     T.Net   := N;
