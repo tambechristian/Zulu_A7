@@ -1,10 +1,15 @@
 # Regulator / charger block: re-placement and loop copper, 2026-09-15
 
-**Status: DESIGNED AND GATE-CHECKED, NOT PLACED. The placement change needs the user's go-ahead.**
+**Status: PLACED AND SAVED 2026-09-15 (user approved), DRC-CLEAN ON EVERY GEOMETRIC RULE, VERIFIED
+FROM THE SAVED FILE.** See "Placement record" at the end.
 
 ![before and after](regulator_block.png)
-Generator `tools/regblock_plan.py` → `tools/regblock_placement.json` (24 moves, one pad-net fix) and
-`tools/regblock_route.json` (27 vias, 102 tracks). The checker is `tools/block_place.py`.
+
+Generator `tools/regblock_plan.py` → `tools/regblock_placement.json` (24 moves, one pad-net fix, one
+hidden designator) and `tools/regblock_route.json` (27 vias, 102 tracks). The checker is
+`tools/block_place.py`. The generator needs the **pre-placement** inputs now
+(`git show 328a55e:Zulu_Altrium/tools/route_inputs.json`, passed with `--inputs`) and refuses the
+moved board.
 
 ## Why the block had to move before its power feeds could be routed
 
@@ -116,9 +121,69 @@ Exits, at real widths, from a width-aware raster:
 - Later stages: keep non-GND vias ≥ 1 mm from the three LX nodes (U7/L3 sit under X3's SD contacts,
   shielded by L2/L5).
 
-## To place (after approval)
+## Placement record, 2026-09-15
 
-`PlaceRegBlock` (moves + R78-1 → GND) → DRC → save → verify the saved pads and R78-1's net →
-`route_inputs.py` → `route_emit.py tools/regblock_route.json RegLoops --require-complete`-style
-check against the real board → `PlaceRegLoops` → DRC → save → verify → commit.
-`RestoreRegBlock` undoes the moves (it leaves R78-1 on GND).
+1. **`PlaceRegBlock`**. The script reported "24 parts on their targets and 1 pad net(s) set". After
+   saving, every one of the 829 pads read back from the file at its planned position (block pads
+   within 0.0001 mm), and no track or via changed. **R78-1 still read net −1 in Pads6.**
+2. **The R78-1 net.** A probe (`ProbeR78Net`, `tools/ZuluProbe.pas`) showed the live board had
+   R78-1 on GND, with a single GND net object and R78-1 pointing at it. So the value was right in
+   memory but was not being saved.
+   - `JoinR78ToGndNet` then added `G.AddPCBObject(P)` after `P.Net := G`. The document turned dirty,
+     and after saving, **Pads6 wrote GND**.
+   - `P.Net := G` alone had failed three times: `TieR78ToGnd` (119e15b), Altium's Import Changes
+     ECO (0a7bdda) and the first `BlkPadNet`.
+   - `BlkPadNet` in `tools/block_place.py` now calls `AddPCBObject`.
+3. **DRC after the move** (453 un-routed, +1): the extra connection is R78-1, now correctly
+   unrouted on GND. There was one new Silk To Solder Mask violation, U5's designator on L1-1.
+   `hide_designators: ["U5"]` was added and `PlaceRegBlock` re-run: the moves were skipped as
+   already on target, and the designator was hidden.
+4. **Loop copper.** `route_emit`, the loop-join check, `route_foreclosure` and `route_reach` were
+   re-run against the saved board: clean; 31/31; none foreclosed; 323/323. **`PlaceRegLoops`**
+   reported "removed 0, added 27 vias and 102 tracks".
+5. **DRC** (`docs/drc_regblock_2026-09-15.drc`): **479 = 400 un-routed + 2 waived X2-20 thermals +
+   77 net antennae.**
+   - Zero on all three Clearance rules, Short-Circuit, all seven Width rules, the via plane
+     connect, hole size, hole-to-hole, mask sliver, Silk To Solder Mask, Silk to Silk and height.
+   - Un-routed fell 453 → 400. The block nets left un-routed are only the far feeds (VU → X2-22,
+     USB5V0 ← X1, VBATT ← X4, the LED nets and the rails' distribution).
+   - Antennae went 75 → 77: the LD3_K / LD4_K escape vias, awaiting their LED routes.
+6. **Saved file.** Vias 181 → 208 and tracks 825 → 927: exactly the plan's 27 vias (all 0.20/0.35)
+   and 102 tracks, nothing lost. Pads are unchanged since step 1, R78-1 is GND, and U5 has
+   `NAMEON=FALSE`. `verify_widths.py` and `verify_stack.py` PASS.
+
+`RestoreRegBlock` would undo the moves, leaving R78-1 on GND and the designator hidden;
+`RemoveRegLoops` deletes the 129 loop primitives.
+
+### Independent verification (two verifiers, their own parsers, read-only)
+
+**Confirmed from the saved PcbDoc against git 328a55e:**
+- All 72 block pads sit within 0.000064 mm of target; sizes swap exactly on the 90/270 parts.
+- No other pad changed in any byte of its geometry. The only pad-net change is R78-1: −1 → GND.
+- Vias6 and Tracks6 hold the old records byte-identical plus exactly the plan's 27 vias and 102
+  tracks. The moved parts' own mechanical-layer lines moved with them.
+- Components6 rotations change by exactly each move's turn, and U5 has `NAMEON` FALSE.
+
+**Confirmed by measurement:**
+- LX: one 0.80 mm × 2.014 mm track per regulator; nothing but its own GND within 0.48 mm; the
+  nearest non-GND via 4.2 mm away.
+- VIN and GND to CIN: 1.74 and 1.60 mm of Bottom copper, no vias.
+- COUT GND returns to pin 2 on Bottom copper: 4.30 / 3.95 / 3.95 mm. The table's 1.45 is the pad
+  gap.
+- bq24232: IN / OUT / BAT caps each by ≤ 1.37 mm of Bottom copper. VSS pin 8 reaches GND vias
+  without the thermal pad (1.30 mm).
+- No via within 0.8 mm of the edge, and none in the X3 keep-outs.
+
+**Recorded, not changed:**
+- **C150's GND** returns through its two plane vias. Its only copper path to U8 is the L4 jumper,
+  8.3 mm. The bq24232 is a linear charger, so this is not a switching loop, but it is looser than
+  SLUS821J 11.1's "short trace runs to GND".
+- **R103 (ILIM) shares C150's GND pad** and vias. The other set resistors have their own vias.
+  11.1 bullet 2 prefers low-current grounds kept separate; the error is microvolts.
+- Pre-existing, outside the block: **the fan-out's GND via at (51.40, 11.40) is 0.040 mm from
+  C111-2's pad**, inside the pad's mask expansion, which risks solder wicking. It is the same net,
+  so DRC is silent. It predates route_emit's "no via within 0.09 mm of any SMD pad" check; move it
+  before fab.
+- ComponentClearance stays out of the batch DRC by the earlier decision (EAGLE courtyards, X2's
+  full-board rectangle; `tools/ZuluFixDrc.pas`). The imported outline boxes of C147/C148/C149
+  overlap by 0.116 mm. The placement's own check is the 0.30 mm land gap plus maximum bodies.

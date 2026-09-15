@@ -197,5 +197,8 @@
    "pad": "1",
    "net": "GND"
   }
+ ],
+ "hide_designators": [
+  "U5"
  ]
 }

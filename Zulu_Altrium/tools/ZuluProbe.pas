@@ -189,6 +189,156 @@ Begin
 End;
 
 
+{ ---------------------------------------------------------------------------
+  ProbeR78Net (2026-09-15).  R78 pad 1 is written with net -1 in Pads6 after
+  EVERY attempt to put it on GND: TieR78ToGnd (119e15b), the Import Changes ECO
+  (0a7bdda) and BlkPadNet in PlaceRegBlock (2026-09-15) all reported success and
+  none survived a save.  This reads what the live board holds: each R78 pad's
+  net, how many R78 pads a board-wide pad iterator sees, and whether that
+  iterator reports R78-1 on GND.  Changes nothing.
+  --------------------------------------------------------------------------- }
+
+Procedure ProbeR78Net;
+Var
+    C   : IPCB_Component;
+    It  : IPCB_GroupIterator;
+    BIt, NIt : IPCB_BoardIterator;
+    P, Hit : IPCB_Pad;
+    N   : IPCB_Net;
+    S, nm : String;
+    K, NG, NAll, Same : Integer;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then Exit;
+    S := '';
+    C := Brd.GetPcbComponentByRefDes('R78');
+    If C = Nil Then
+    Begin
+        ShowMessage('R78 not found');
+        Exit;
+    End;
+    It := C.GroupIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(ePadObject));
+    P := It.FirstPCBObject;
+    While P <> Nil Do
+    Begin
+        nm := '(no net)';
+        If P.Net <> Nil Then nm := P.Net.Name;
+        S := S + 'group iterator: R78-' + P.Name + ' at ' + MM(P.X) + ', ' + MM(P.Y) + '  net ' + nm + #13#10;
+        P := It.NextPCBObject;
+    End;
+    C.GroupIterator_Destroy(It);
+    K := 0;
+    BIt := Brd.BoardIterator_Create;
+    BIt.AddFilter_ObjectSet(MkSet(ePadObject));
+    BIt.AddFilter_LayerSet(AllLayers);
+    BIt.AddFilter_Method(eProcessAll);
+    P := BIt.FirstPCBObject;
+    While P <> Nil Do
+    Begin
+        If (Abs(CoordToMMs(P.X) - 6.2) < 0.01) And (Abs(CoordToMMs(P.Y) - 3.9) < 0.01) Then
+        Begin
+            K := K + 1;
+            nm := '(no net)';
+            If P.Net <> Nil Then nm := P.Net.Name;
+            S := S + 'board iterator: pad ' + P.Name + ' at R78-1''s centre (6.2, 3.9)  net ' + nm + #13#10;
+        End;
+        P := BIt.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(BIt);
+    { how many net objects are called GND, and is R78-1's net object one of them? }
+    Hit := Nil;
+    It := C.GroupIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(ePadObject));
+    P := It.FirstPCBObject;
+    While P <> Nil Do
+    Begin
+        If P.Name = '1' Then Hit := P;
+        P := It.NextPCBObject;
+    End;
+    C.GroupIterator_Destroy(It);
+    NG := 0; NAll := 0; Same := 0;
+    NIt := Brd.BoardIterator_Create;
+    NIt.AddFilter_ObjectSet(MkSet(eNetObject));
+    NIt.AddFilter_LayerSet(AllLayers);
+    NIt.AddFilter_Method(eProcessAll);
+    N := NIt.FirstPCBObject;
+    While N <> Nil Do
+    Begin
+        NAll := NAll + 1;
+        If N.Name = 'GND' Then
+        Begin
+            NG := NG + 1;
+            If Hit <> Nil Then
+                If Hit.Net = N Then Same := Same + 1;
+        End;
+        N := NIt.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(NIt);
+    S := S + #13#10 + 'net objects on the board: ' + IntToStr(NAll) + ', named GND: ' + IntToStr(NG) +
+         ', of them the one R78-1 points at: ' + IntToStr(Same);
+    ShowMessage('Zulu A7 - R78 net probe' + #13#10 + #13#10 + S + #13#10 + 'pads at R78-1''s centre seen by the board iterator: ' + IntToStr(K) + #13#10 + 'Nothing was changed.');
+End;
+
+
+{ ---------------------------------------------------------------------------
+  JoinR78ToGndNet: if R78-1's Net already reads GND but the file still writes
+  -1, the pad may be missing from the net's own member list.  Adds it with
+  IPCB_Net.AddPCBObject inside Try/Except (a rejected call is reported; an
+  undeclared name would halt -- no transaction is open, so nothing strands).
+  --------------------------------------------------------------------------- }
+
+Procedure JoinR78ToGndNet;
+Var
+    C   : IPCB_Component;
+    It  : IPCB_GroupIterator;
+    NIt : IPCB_BoardIterator;
+    P, Hit : IPCB_Pad;
+    N, G : IPCB_Net;
+    S   : String;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then Exit;
+    G := Nil;
+    NIt := Brd.BoardIterator_Create;
+    NIt.AddFilter_ObjectSet(MkSet(eNetObject));
+    NIt.AddFilter_LayerSet(AllLayers);
+    NIt.AddFilter_Method(eProcessAll);
+    N := NIt.FirstPCBObject;
+    While N <> Nil Do
+    Begin
+        If N.Name = 'GND' Then G := N;
+        N := NIt.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(NIt);
+    C := Brd.GetPcbComponentByRefDes('R78');
+    If (C = Nil) Or (G = Nil) Then Exit;
+    Hit := Nil;
+    It := C.GroupIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(ePadObject));
+    P := It.FirstPCBObject;
+    While P <> Nil Do
+    Begin
+        If P.Name = '1' Then Hit := P;
+        P := It.NextPCBObject;
+    End;
+    C.GroupIterator_Destroy(It);
+    If Hit = Nil Then Exit;
+    S := '';
+    Try
+        Hit.BeginModify;
+        Hit.Net := G;
+        G.AddPCBObject(Hit);
+        Hit.EndModify;
+        S := 'AddPCBObject accepted.';
+    Except
+        S := 'AddPCBObject raised.';
+    End;
+    Brd.ViewManager_FullUpdate;
+    ShowMessage('Zulu A7 - R78-1 join to GND: ' + S + #13#10 + 'Now save and re-read Pads6.');
+End;
+
+
 End.
 
 { End of ZuluProbe.pas }

@@ -3483,12 +3483,37 @@ Begin
     End;
     If Hit.Net <> Nil Then
         If Hit.Net.Name = NetName Then Exit;
+    { Net := alone is NOT enough: the pad reads the new net in memory, but the save writes -1 unless
+      the pad is also on the net's member list (proven 2026-09-15 on R78-1, after TieR78ToGnd, the
+      Import Changes ECO and this function without AddPCBObject had each failed to persist). }
     Try
         Hit.BeginModify;
         Hit.Net := N;
+        N.AddPCBObject(Hit);
         Hit.EndModify;
     Except
         Result := D + '-' + PN + ': the net write was refused';
+    End;
+End;
+
+
+{ Switch a part's designator off (C.NameOn, as HideCrowdedDesignators in ZuluFixDrc.pas). }
+Function BlkHideName(D : String) : String;
+Var
+    C : IPCB_Component;
+Begin
+    Result := '';
+    C := Brd.GetPcbComponentByRefDes(D);
+    If C = Nil Then
+    Begin
+        Result := D + ' not found';
+        Exit;
+    End;
+    If C.NameOn Then
+    Begin
+        C.BeginModify;
+        C.NameOn := False;
+        C.EndModify;
     End;
 End;
 
@@ -3531,12 +3556,13 @@ Begin
         S := BlkMove('R108', '2', '1', 90, 7.4500, 15.8501, 6.1500, 15.8501, 6.5000, 6.4500, 6.5000, 5.1500); If S <> '' Then Log := Log + #13#10 + S;
         S := BlkMove('R78', '1', '2', 0, 10.7500, 15.8501, 12.0500, 15.8501, 6.2000, 3.9000, 7.5000, 3.9000); If S <> '' Then Log := Log + #13#10 + S;
         S := BlkPadNet('R78', '1', 'GND'); If S <> '' Then Log := Log + #13#10 + S;
+        S := BlkHideName('U5'); If S <> '' Then Log := Log + #13#10 + S;
     Finally
         PCBServer.PostProcess;
     End;
     Brd.ViewManager_FullUpdate;
     If Log = '' Then
-        ShowMessage('Zulu A7 - RegBlock: 24 parts on their targets and 1 pad net(s) set.' + #13#10 + 'Now Tools > Design Rule Check > Run, then Ctrl+S if it is clean.')
+        ShowMessage('Zulu A7 - RegBlock: 24 parts on their targets, 1 pad net(s) set, 1 designator(s) hidden.' + #13#10 + 'Now Tools > Design Rule Check > Run, then Ctrl+S if it is clean.')
     Else
         ShowMessage('Zulu A7 - RegBlock: NOT all parts moved -- do not save:' + Log);
 End;

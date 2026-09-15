@@ -25,7 +25,8 @@ placement.json
     {"moves": [{"ref": "U5", "rot": 180, "pad": "1", "x": 3.40, "y": 4.55}, ...],
      "roles": {"U5": {"l": "L1", "cin": "C147", "cout": "C80"}, ...,
                "U8": {"cin": "C150", "cout": "C78", "cbat": "C151"}},
-     "net_fixes": [{"ref": "R78", "pad": "1", "net": "GND"}]}
+     "net_fixes": [{"ref": "R78", "pad": "1", "net": "GND"}],
+     "hide_designators": ["U5"]}      designators with no room clear of pads (Silk To Solder Mask)
   rot is the counter-clockwise turn of the part's copper as seen from the Top (board axes,
   multiple of 90) applied to its CURRENT pads; the named pad's centre lands on (x, y).  Parts not
   listed stay where they are.  Only the PWR block may move.
@@ -556,12 +557,37 @@ Begin
     End;
     If Hit.Net <> Nil Then
         If Hit.Net.Name = NetName Then Exit;
+    { Net := alone is NOT enough: the pad reads the new net in memory, but the save writes -1 unless
+      the pad is also on the net's member list (proven 2026-09-15 on R78-1, after TieR78ToGnd, the
+      Import Changes ECO and this function without AddPCBObject had each failed to persist). }
     Try
         Hit.BeginModify;
         Hit.Net := N;
+        N.AddPCBObject(Hit);
         Hit.EndModify;
     Except
         Result := D + '-' + PN + ': the net write was refused';
+    End;
+End;
+
+
+{ Switch a part's designator off (C.NameOn, as HideCrowdedDesignators in ZuluFixDrc.pas). }
+Function BlkHideName(D : String) : String;
+Var
+    C : IPCB_Component;
+Begin
+    Result := '';
+    C := Brd.GetPcbComponentByRefDes(D);
+    If C = Nil Then
+    Begin
+        Result := D + ' not found';
+        Exit;
+    End;
+    If C.NameOn Then
+    Begin
+        C.BeginModify;
+        C.NameOn := False;
+        C.EndModify;
     End;
 End;
 
@@ -588,13 +614,15 @@ def emit(inp, moved, placement, name):
                           % (ref, pn, qn, (360 - rot) % 360, t['x'], t['y'], u['x'], u['y'], a['x'], a['y'], b['x'], b['y']))
     fixes = ["    S := BlkPadNet('%s', '%s', '%s'); If S <> '' Then Log := Log + #13#10 + S;" % (f['ref'], f['pad'], f['net'])
              for f in placement.get('net_fixes', [])]
+    fixes += ["    S := BlkHideName('%s'); If S <> '' Then Log := Log + #13#10 + S;" % r for r in placement.get('hide_designators', [])]
     n = len(calls_fwd)
     L = [B, '', 'Procedure Place%s;' % name, 'Var', '    S, Log : String;', 'Begin', '    Brd := BoardOrNil;', '    If Brd = Nil Then Exit;',
          "    Log := '';", '    PCBServer.PreProcess;', '    Try'] + ['    ' + c for c in calls_fwd + fixes] + [
          '    Finally', '        PCBServer.PostProcess;', '    End;', '    Brd.ViewManager_FullUpdate;',
          "    If Log = '' Then",
-         "        ShowMessage('Zulu A7 - %s: %d parts on their targets%s.' + #13#10 + 'Now Tools > Design Rule Check > Run, then Ctrl+S if it is clean.')"
-         % (name, n, (' and %d pad net(s) set' % len(fixes)) if fixes else ''),
+         "        ShowMessage('Zulu A7 - %s: %d parts on their targets%s%s.' + #13#10 + 'Now Tools > Design Rule Check > Run, then Ctrl+S if it is clean.')"
+         % (name, n, (', %d pad net(s) set' % len(placement.get('net_fixes', []))) if placement.get('net_fixes') else '',
+            (', %d designator(s) hidden' % len(placement.get('hide_designators', []))) if placement.get('hide_designators') else ''),
          '    Else',
          "        ShowMessage('Zulu A7 - %s: NOT all parts moved -- do not save:' + Log);" % name,
          'End;', '', '',
@@ -613,6 +641,10 @@ def write_setup(block, B, E):
     assert s.endswith(tail)
     if PAS_HELPERS_B not in s:
         s = s[:-len(tail)] + '\n' + PAS_HELPERS + '\n' + tail
+    else:                               # keep the helpers current (2026-09-15: BlkPadNet gained AddPCBObject)
+        a = s.index(PAS_HELPERS_B)
+        b = s.index(PAS_HELPERS_E) + len(PAS_HELPERS_E) + 1
+        s = s[:a] + PAS_HELPERS + s[b:]
     if B in s:
         a = s.index(B)
         b = s.index(E) + len(E) + 1

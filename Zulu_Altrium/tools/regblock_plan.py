@@ -39,7 +39,16 @@ sys.path.insert(0, TOOLS)
 import block_place as bp
 import route_emit as rem
 
-inp = json.load(io.open(os.path.join(TOOLS, 'route_inputs.json'), encoding='utf-8'))
+# The moves are relative to the board BEFORE placement.  PlaceRegBlock was run and saved on
+# 2026-09-15, so tools/route_inputs.json now describes the moved board; re-running needs the
+# pre-placement inputs:  git show 328a55e:Zulu_Altrium/tools/route_inputs.json > PRE.json
+#                        python tools/regblock_plan.py --inputs PRE.json
+_ri = sys.argv[sys.argv.index('--inputs') + 1] if '--inputs' in sys.argv else os.path.join(TOOLS, 'route_inputs.json')
+inp = json.load(io.open(_ri, encoding='utf-8'))
+_u5 = [p for p in inp['bottom_pads'] if p['ref'] == 'U5' and p['pad'] == '1'][0]
+if abs(_u5['x'] - 1.5) > 1e-3 or abs(_u5['y'] - 7.0499) > 1e-3:
+    sys.exit('regblock_plan.py: %s is not the pre-placement board (U5-1 at %.4f, %.4f); pass --inputs '
+             'with tools/route_inputs.json from commit 328a55e' % (_ri, _u5['x'], _u5['y']))
 M = 0.0015          # land-gap margin over 0.30 (saved pad centres are not on a clean grid)
 
 
@@ -105,7 +114,9 @@ place('R78', Frame(0, 0, 0), 0, '1', 6.20, 3.90)     # GND pad west
 placement = dict(moves=moves,
                  roles={'U5': dict(l='L1', cin='C147', cout='C80'), 'U6': dict(l='L2', cin='C148', cout='C82'),
                         'U7': dict(l='L3', cin='C149', cout='C84'), 'U8': dict(cin='C150', cout='C78', cbat='C151')},
-                 net_fixes=[dict(ref='R78', pad='1', net='GND')])
+                 net_fixes=[dict(ref='R78', pad='1', net='GND')],
+                 # 2026-09-15 DRC after placement: U5's designator lands on L1-1 (Silk To Solder Mask)
+                 hide_designators=['U5'])
 moved, probs = bp.apply_moves(inp, placement)
 probs += bp.legality(inp, moved, placement)
 PADS = {(p['ref'], p['pad']): p for p in moved['bottom_pads']}
