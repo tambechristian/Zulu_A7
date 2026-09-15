@@ -52,6 +52,63 @@ CLS.update({n: 'SDRAM_CTRL' for n in CTRL})
 # them (tools/route_foreclosure.py).  Global Width / Clearance rules apply to them.
 XADC = ['AIN15_N', 'AIN15_P', 'AIN16_N', 'AIN16_P']
 CLS.update({n: 'XADC' for n in XADC})
+# 2026-09-15: the power feeds.  Every pad of these nets must end up in one component;
+# they have no single U1 'end'.  GND/GNDADC are NOT here: they join through vias to the
+# L2/L5 planes, and the pad audit keeps every GND pad a via slot.
+POWER = ['VU', 'USB5V0', 'VBATT', 'NetL1_1', 'NetL2_1', 'NetL3_1', 'VCC3V3', 'VCC1V8',
+         'VCC1V0', 'VCCADC', 'FT-VCORE', 'FT-VPHY', 'FT-VPLL']
+CLS.update({n: 'POWER' for n in POWER})
+OUTLINE = dict(x0=0.0, y0=0.0, x1=69.85, y1=25.40)     # Board6 VX/VY: 2750 x 1000 mil
+EDGE_CLEARANCE = 0.25                                  # JLC: copper >= 0.2 mm from routed edges
+WLAYER = {'Top': 'TOPLAYER', 'L3-SIG': 'MIDLAYER1', 'L4-SIG': 'MIDLAYER2', 'Bottom': 'BOTTOMLAYER'}
+
+
+def mil(v):
+    v = (v or '').strip()
+    if v.endswith('mil'):
+        return float(v[:-3]) * 0.0254
+    if v.endswith('mm'):
+        return float(v[:-2])
+    return float(v) * 0.0254 if v else None
+
+
+def scope_matches(expr, net, classes):
+    """'All', or InNet('x') / InNetClass('c') terms joined by ' Or '.  Anything else raises,
+    so an unfamiliar scope is noticed instead of silently matching nothing."""
+    import re
+    expr = (expr or '').strip()
+    if expr == 'All':
+        return True
+    terms = [t.strip() for t in expr.split(' Or ')]
+    hit = False
+    for term in terms:
+        m = re.fullmatch(r"InNet\('([^']*)'\)", term)
+        if m:
+            hit = hit or m.group(1) == net
+            continue
+        m = re.fullmatch(r"InNetClass\('([^']*)'\)", term)
+        if m:
+            hit = hit or net in classes.get(m.group(1), ())
+            continue
+        raise ValueError('unparsed Width scope term %r in %r' % (term, expr))
+    return hit
+
+
+def width_table(net, width_rules, classes):
+    """the per-layer min/pref/max DRC applies to this net: highest-priority matching Width rule,
+    per-layer keys resolved as override-else-default (the file's sparse-delta form)"""
+    rs = sorted(width_rules, key=lambda kv: int(kv.get('PRIORITY', 99)))
+    for kv in rs:
+        if kv.get('ENABLED') == 'TRUE' and scope_matches(kv.get('SCOPE1EXPRESSION'), net, classes):
+            out = dict(rule=kv['NAME'])
+            for L, pre in WLAYER.items():
+                key = {'Top': 'top', 'L3-SIG': 'inner', 'L4-SIG': 'inner4', 'Bottom': 'bottom'}[L]
+                out[key + '_min'] = round(mil(kv.get(pre + '_MINWIDTH', kv.get('MINLIMIT'))), 4)
+                out[key + '_pref'] = round(mil(kv.get(pre + '_PREFWIDTH', kv.get('PREFEREDWIDTH'))), 4)
+                out[key + '_max'] = round(mil(kv.get(pre + '_MAXWIDTH', kv.get('MAXLIMIT'))), 4)
+            assert (out['inner_min'], out['inner_max']) == (out['inner4_min'], out['inner4_max']), net
+            return out
+    raise KeyError('no Width rule matches ' + net)
 
 
 def kvs(f, stream, key):
@@ -140,6 +197,23 @@ def main():
                            x1=round(struct.unpack('<i', b[13:17])[0] * U, 4), y1=round(struct.unpack('<i', b[17:21])[0] * U, 4),
                            x2=round(struct.unpack('<i', b[21:25])[0] * U, 4), y2=round(struct.unpack('<i', b[25:29])[0] * U, 4),
                            width=round(struct.unpack('<i', b[29:33])[0] * U, 4)))
+    classes = {}
+    for kv in kvs(f, 'Classes6/Data', 'NAME=').values():
+        if kv.get('KIND') == '0':
+            classes[kv['NAME']] = [v for k, v in kv.items() if k[:1] == 'M' and k[1:].isdigit()]
+    width_rules = [kv for kv in kvs(f, 'Rules6/Data', 'RULEKIND=').values() if kv.get('RULEKIND') == 'Width']
+    keepouts = []
+    fd = f.openstream('Fills6/Data').read()
+    j = 0
+    while j + 5 <= len(fd):
+        ln = struct.unpack('<I', fd[j + 1:j + 5])[0]
+        b = fd[j + 5:j + 5 + ln]
+        j += 5 + ln
+        if b and b[0] in LAYER and b[0] != 74:
+            xs = sorted((struct.unpack('<i', b[13:17])[0] * U, struct.unpack('<i', b[21:25])[0] * U))
+            ys = sorted((struct.unpack('<i', b[17:21])[0] * U, struct.unpack('<i', b[25:29])[0] * U))
+            keepouts.append(dict(layer=LAYER[b[0]], x0=round(xs[0], 4), x1=round(xs[1], 4), y0=round(ys[0], 4), y1=round(ys[1], 4),
+                                 keepout=bool(b[1] & 0x08) or (b[1:3] == bytes.fromhex('0c02'))))
     rules = {}
     for kv in kvs(f, 'Rules6/Data', 'RULEKIND=').values():
         if kv.get('NAME') in ('Clearance', 'Clearance_SDRAM_INNER', 'Clearance_SDRAM_CLK', 'RoutingVias',
@@ -163,21 +237,23 @@ def main():
         return lf['x0'] <= x <= lf['x1'] and lf['y0'] <= y <= lf['y1']
 
     out_nets = {}
-    for n in DATA + ADDR + CTRL + XADC:
+    for n in DATA + ADDR + CTRL + XADC + POWER:
         u3p = [dict(pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy']) for p in pads if p['ref'] == 'U3' and p['net'] == n]
         # every non-U1 pad of the net, with its layer: what the route must join
         dest = [dict(ref=p['ref'], pad=p['pad'], layer=p['layer'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'])
-                for p in pads if p['net'] == n and p['ref'] != 'U1']
+                for p in pads if p['net'] == n]      # U1 balls included: every pad must join
         ends = []
-        for b in ball_by_net.get(n, []):
+        for b in ([] if CLS[n] == 'POWER' else ball_by_net.get(n, [])):
             act = ball_action.get(b['pad'], {}).get('action')
             e = dict(ball=b['pad'], ring=ball_action.get(b['pad'], {}).get('ring'), action=act, ball_x=b['x'], ball_y=b['y'])
             if act == 'dogbone-in' or act == 'dogbone-out':
                 v = [w for w in vias if w['net'] == n and abs(w['x'] - b['x']) <= 1.6 and abs(w['y'] - b['y']) <= 1.6]
                 e.update(kind='via', x=v[0]['x'], y=v[0]['y']) if v else e.update(kind='via-missing')
             elif act == 'gap':
-                # the stub segment whose one end lies outside the land field: that end is the free end
-                seg = [t for t in tracks if t['net'] == n and t['layer'] == 'Top' and
+                # the fan-out stub's free end, taken from tools/fanout_plan.json -- NOT from the board's
+                # tracks, where later routing adds Top copper of the same net outside the land field
+                # (2026-09-15: AIN16_N's filter hop was picked up as its 'stub end')
+                seg = [t for t in fan['tracks'] if t['net'] == n and t['layer'] == 'Top' and
                        (not inside(t['x1'], t['y1']) or not inside(t['x2'], t['y2']))]
                 if seg:
                     t = seg[0]
@@ -191,11 +267,12 @@ def main():
                 e.update(kind=act or 'unknown')
             ends.append(e)
         cls = CLS[n]
+        width = width_table(n, width_rules, classes)
         if cls.startswith('SDRAM'):
-            width = dict(top_min=0.0762, top_pref=0.0762, top_max=0.15, inner_min=0.10, inner_pref=0.125, inner_max=0.15, bottom_min=0.10, bottom_pref=0.125, bottom_max=0.15)
+            old = dict(top_min=0.0762, top_pref=0.0762, top_max=0.15, inner_min=0.10, inner_pref=0.125, inner_max=0.15, bottom_min=0.10, bottom_pref=0.125, bottom_max=0.15)
+            assert all(abs(width[k] - v) < 1e-3 for k, v in old.items()), (n, width)
             clearance = dict(top=0.09, bottom=0.09, inner=0.20 if n == 'SDRAM-CLK' else 0.10)
-        else:   # the global Width and Clearance rules
-            width = dict(top_min=0.0762, top_pref=0.0762, top_max=0.5, inner_min=0.0762, inner_pref=0.0762, inner_max=0.5, bottom_min=0.0762, bottom_pref=0.0762, bottom_max=0.5)
+        else:
             clearance = dict(top=0.09, bottom=0.09, inner=0.09)
         out_nets[n] = dict(cls=cls, u3=u3p, pads=dest, u1=ends, width=width, clearance=clearance)
 
@@ -216,6 +293,9 @@ def main():
                 pad_sx=u3pads[0]['sx'], pad_sy=u3pads[0]['sy'], east_copper=max(p['x'] + p['sx'] / 2 for p in u3pads),
                 pocket=dict(y0=max(p['y'] + p['sy'] / 2 for p in u3pads if p['y'] < 10), y1=min(p['y'] - p['sy'] / 2 for p in u3pads if p['y'] > 10))),
         rules=rules,
+        outline=OUTLINE, edge_clearance=EDGE_CLEARANCE,
+        keepouts=[k for k in keepouts if k['keepout']],
+        classes=classes,
     )
     io.open(OUT, 'w', encoding='utf-8').write(json.dumps(out, indent=1))
     kinds = {}
@@ -231,6 +311,8 @@ def main():
         out['u3']['pocket']['y0'], out['u3']['pocket']['y1']))
     missing = [(n, e['ball'], e['kind']) for n, v in out_nets.items() for e in v['u1'] if 'missing' in e['kind'] or e['kind'] == 'unknown']
     print('unresolved U1 ends:', missing)
+    print('power nets: %s' % ', '.join('%s(%d pads, %s)' % (n, len(out_nets[n]['pads']), out_nets[n]['width']['rule']) for n in POWER))
+    print('keep-outs on signal layers: %d; outline %s, edge clearance %.2f' % (len(out['keepouts']), OUTLINE, EDGE_CLEARANCE))
     print('wrote', os.path.normpath(OUT))
 
 

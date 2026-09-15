@@ -214,8 +214,8 @@ def check(inp, plan):
                 problems.append('via %d (%s) %.4f from TH pad %s-%s (%s)' % (i, v['net'], d, p['ref'], p['pad'], p['net']))
         for L in ('Top', 'Bottom'):
             for p in smd[L]:
-                if p['net'] == v['net']:
-                    continue
+                # no via-in-pad and no via touching a pad, whatever its net: a tented via in or at
+                # an SMD pad wicks solder (2026-09-15, power feeds)
                 d = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - VIA_LAND / 2
                 if d < 0.09 - EPS:
                     problems.append('via %d (%s) %.4f from %s pad %s-%s (%s)' % (i, v['net'], d, L, p['ref'], p['pad'], p['net']))
@@ -266,6 +266,29 @@ def check(inp, plan):
             d = seg_dist(seg, (o['x1'], o['y1'], o['x2'], o['y2'])) - t['width'] / 2 - o['width'] / 2
             if d < max(c, clearance_for(o['net'], o['layer'], inp)) - EPS:
                 problems.append('tracks %d (%s) and %d (%s) on %s %.4f apart' % (i, t['net'], j, o['net'], t['layer'], d))
+    # keep-out fills (Altium checks them at the clearance gap) and the board edge
+    edge = inp.get('edge_clearance', 0.25)
+    ol = inp.get('outline')
+    for i, v in enumerate(nv):
+        for k in inp.get('keepouts', []):
+            d = pt_rect(v['x'], v['y'], (k['x0'] + k['x1']) / 2, (k['y0'] + k['y1']) / 2, k['x1'] - k['x0'], k['y1'] - k['y0']) - VIA_LAND / 2
+            if d < 0.09 - EPS:
+                problems.append('via %d (%s) %.4f from the %s keep-out fill' % (i, v['net'], d, k['layer']))
+        if ol and min(v['x'] - ol['x0'], ol['x1'] - v['x'], v['y'] - ol['y0'], ol['y1'] - v['y']) - VIA_LAND / 2 < edge - EPS:
+            problems.append('via %d (%s) closer than %.2f mm to the board edge' % (i, v['net'], edge))
+    for i, t in enumerate(nt):
+        seg = (t['x1'], t['y1'], t['x2'], t['y2'])
+        for k in inp.get('keepouts', []):
+            if k['layer'] != t['layer']:
+                continue
+            d = seg_rect(seg, (k['x0'] + k['x1']) / 2, (k['y0'] + k['y1']) / 2, k['x1'] - k['x0'], k['y1'] - k['y0']) - t['width'] / 2
+            if d < 0.09 - EPS:
+                problems.append('track %d (%s, %s) %.4f from the keep-out fill' % (i, t['net'], t['layer'], d))
+        if ol:
+            m = min(min(t['x1'], t['x2']) - ol['x0'], ol['x1'] - max(t['x1'], t['x2']),
+                    min(t['y1'], t['y2']) - ol['y0'], ol['y1'] - max(t['y1'], t['y2'])) - t['width'] / 2
+            if m < edge - EPS:
+                problems.append('track %d (%s, %s) %.4f from the board edge (min %.2f)' % (i, t['net'], t['layer'], m, edge))
     # connectivity of new track ends
     anchors = [(v['x'], v['y'], v['net'], 'via') for v in allv]
     anchors += [(p['x'], p['y'], p['net'], 'thpad') for p in th]
@@ -332,34 +355,25 @@ def completeness(inp, plan, tol=0.0015):
             pad_nodes.append((ids[0], pad))
         start = pad_nodes[0][0]
         pad = pad_nodes[0][1]
-        e = v['u1'][0]
-        goal_layers = layers if e['kind'] == 'via' else ('Top',)
-        goals = {node(e['x'], e['y'], L) for L in goal_layers}
+        # every pad of the net -- U1 balls included -- must share one component.  The U1 'end'
+        # (moat via / stub end / ball) is informational only: a goal point once went stale when
+        # later routing added same-net copper (2026-09-15).
+        e = v['u1'][0] if v['u1'] else dict(kind='all pads', ball='-')
+        goals = {pn[0] for pn in pad_nodes[1:]} or {start}
+        # one full traversal from the first pad; every other pad must be reached.  (The previous
+        # version broke out when it popped the first goal without expanding that node, then
+        # resumed from the stack -- a pad reachable only through the goal node was missed.)
         seen = {start}
         stack = [start]
-        found = False
         while stack:
             n = stack.pop()
-            if n in goals:
-                found = True
-                break
             for m in adj.get(n, ()):
                 if m not in seen:
                     seen.add(m)
                     stack.append(m)
-        if found:
-            others = [pn for pn in pad_nodes[1:] if pn[0] not in seen]
-            # the walk stopped at the goal; finish it to see every pad
-            while stack:
-                n = stack.pop()
-                for m in adj.get(n, ()):
-                    if m not in seen:
-                        seen.add(m)
-                        stack.append(m)
-            others = [pn for pn in pad_nodes[1:] if pn[0] not in seen]
-            if others:
-                found = False
-        out[net] = (found, '' if found else 'not all pads of %s joined to U1 %s %s' % (net, e['kind'], e['ball']))
+        others = [pn for pn in pad_nodes[1:] if pn[0] not in seen]
+        found = not others
+        out[net] = (found, '' if found else 'not all pads of %s in one component' % net)
     return out
 
 
@@ -490,8 +504,19 @@ def main():
         return 1
     print('geometry and connectivity check: clean')
     comp = completeness(apply_removals(inp, plan)[0], plan)
-    bad = sorted(n for n, (ok, _) in comp.items() if not ok)
-    print('nets joined end to end: %d/%d%s' % (len(comp) - len(bad), len(comp), ('  missing: ' + ' '.join(bad)) if bad else ''))
+    before = completeness(inp, {'vias': [], 'tracks': []})
+    touched = {v['net'] for v in plan.get('vias', [])} | {t['net'] for t in plan.get('tracks', [])}
+    bad_all = sorted(n for n, (ok, _) in comp.items() if not ok)
+    # --require-complete (2026-09-15, staged power routing): every net joined on the board
+    # before the plan stays joined, and every net the plan touches ends up joined.  Nets the
+    # plan leaves alone may stay unjoined -- a later stage owns them.
+    regress = sorted(n for n in comp if before[n][0] and not comp[n][0])
+    unfinished = sorted(n for n in touched if n in comp and not comp[n][0])
+    bad = regress + unfinished
+    print('nets joined end to end: %d/%d  (touched by the plan: %d, of them joined: %d)%s%s' % (
+        len(comp) - len(bad_all), len(comp), len(touched & set(comp)), len([n for n in touched if n in comp and comp[n][0]]),
+        ('  NOT JOINED (touched): ' + ' '.join(unfinished)) if unfinished else '',
+        ('  DISJOINED BY THE PLAN: ' + ' '.join(regress)) if regress else ''))
     if plan.get('remove'):
         print('removes %d existing via(s) and %d track(s); every U1 power/GND ball still reaches its via' % (
             len(plan['remove'].get('vias', [])), len(plan['remove'].get('tracks', []))))

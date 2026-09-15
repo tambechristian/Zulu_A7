@@ -317,8 +317,12 @@ def pad_ok(pad, W, lf, owned):
 
 
 def pad_audit(plans, W0, W1, lf):
-    ri = json.load(io.open(RI, encoding='utf-8'))
-    owned = set(ri['nets'])
+    # 2026-09-15: the nets the plans TOUCH are theirs to finish (route_emit --require-complete);
+    # every other net's pads -- including power nets a later stage will route -- must keep a
+    # way out.  (It used to skip every net in route_inputs.json.)
+    owned = set()
+    for p in plans:
+        owned |= {v['net'] for v in p.get('vias', [])} | {t['net'] for t in p.get('tracks', [])}
     prims = []
     for p in plans:
         prims += [(v['x'], v['y'], v['x'], v['y']) for v in p.get('vias', [])]
