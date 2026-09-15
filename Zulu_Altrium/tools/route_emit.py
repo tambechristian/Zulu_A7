@@ -3,6 +3,7 @@
 
     python tools/route_emit.py <plan.json> <BlockName>            check only
     python tools/route_emit.py <plan.json> <BlockName> --require-complete   fail unless all 39 nets join
+    python tools/route_emit.py <plan.json> <BlockName> --inputs <moved.json>  check against another inputs file
     python tools/route_emit.py <plan.json> <BlockName> --write    also write the
         Place<BlockName> / Remove<BlockName> procedures into tools/ZuluSetup.pas
 
@@ -491,7 +492,10 @@ def main():
         print(__doc__)
         return 2
     plan_path, name = sys.argv[1], sys.argv[2]
-    inp = json.load(io.open(INPUTS, encoding='utf-8'))
+    inputs = INPUTS
+    if '--inputs' in sys.argv:          # e.g. tools/block_place.py --write-inputs: the board with parts moved
+        inputs = sys.argv[sys.argv.index('--inputs') + 1]
+    inp = json.load(io.open(inputs, encoding='utf-8'))
     plan = json.load(io.open(plan_path, encoding='utf-8'))
     print('plan: %d vias, %d tracks' % (len(plan.get('vias', [])), len(plan.get('tracks', []))))
     problems = check(inp, plan)

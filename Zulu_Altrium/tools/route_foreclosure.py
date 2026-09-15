@@ -352,7 +352,13 @@ def pad_audit(plans, W0, W1, lf):
 
 
 def main():
-    plans = [json.load(io.open(p, encoding='utf-8')) for p in sys.argv[1:] if p.endswith('.json')]
+    global RI
+    argv = list(sys.argv[1:])
+    if '--inputs' in argv:              # e.g. tools/block_place.py --write-inputs: the board with parts moved
+        k = argv.index('--inputs')
+        RI = argv[k + 1]
+        del argv[k:k + 2]
+    plans = [json.load(io.open(p, encoding='utf-8')) for p in argv if p.endswith('.json')]
     esc, lf = escapes()
     W0 = world([])
     W1 = world(plans) if plans else None
