@@ -37,7 +37,10 @@ FAN = os.path.join(HERE, 'fanout_plan.json')
 OUT = os.path.join(HERE, 'route_inputs.json')
 U = 2.54e-6
 LAYER = {1: 'Top', 2: 'L3-SIG', 3: 'L4-SIG', 32: 'Bottom', 74: 'Multi'}
-REGION = dict(x0=14.0, x1=45.0, y0=3.5, y1=21.0)
+# The whole board.  2026-09-15: this was x 14..45, y 3.5..21, which silently dropped U1's
+# lands east of x 45 and U4's east pads -- the checker could not see them, and a router
+# (astar) had to synthesise them itself.  Nothing is clipped now.
+REGION = dict(x0=0.0, x1=69.85, y0=0.0, y1=25.40)
 
 DATA = ['D%d' % k for k in range(16)]
 ADDR = ['A%d' % k for k in range(13)] + ['BS0', 'BS1']
