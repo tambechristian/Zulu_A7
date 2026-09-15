@@ -70,10 +70,19 @@ def pt_rect(px, py, cx, cy, sx, sy):
 
 
 def seg_rect(seg, cx, cy, sx, sy):
-    """distance from a segment to an axis-aligned rectangle (0 if it crosses)"""
+    """EXACT distance from a segment to an axis-aligned rectangle (0 if they touch).
+    2026-09-15: this used to sample 25 points along the segment, which missed a
+    0.0893 mm near-miss against a 0.09 rule; it is now closed-form."""
     x1, y1, x2, y2 = seg
-    n = 24
-    return min(pt_rect(x1 + (x2 - x1) * k / n, y1 + (y2 - y1) * k / n, cx, cy, sx, sy) for k in range(n + 1))
+    x0r, x1r, y0r, y1r = cx - sx / 2, cx + sx / 2, cy - sy / 2, cy + sy / 2
+    # an endpoint inside, or the segment crossing an edge -> 0
+    if x0r <= x1 <= x1r and y0r <= y1 <= y1r:
+        return 0.0
+    if x0r <= x2 <= x1r and y0r <= y2 <= y1r:
+        return 0.0
+    edges = ((x0r, y0r, x1r, y0r), (x1r, y0r, x1r, y1r), (x1r, y1r, x0r, y1r), (x0r, y1r, x0r, y0r))
+    best = min(seg_dist(seg, e) for e in edges)
+    return best
 
 
 def clearance_for(net, layer, inp):

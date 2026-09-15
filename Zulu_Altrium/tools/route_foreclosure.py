@@ -22,6 +22,14 @@ lands grown by 0.09 mm + half the track width; the escape's own net carved out)
 and flood-filled from the escape point; a slot counts only if its cell is in the
 same connected region.
 
+PADS (2026-09-15).  The same question is asked of every Top/Bottom SMD pad of a net
+the plans do not own that lies within PAD_NEAR of the plans' copper: flood-fill its
+own layer from anywhere inside the pad; it keeps a way out if the region reaches a
+legal via slot (whose land also clears every pad, so no via-in-pad) or any other
+copper of its own net on that layer.  A pad that had a way out and loses it is
+foreclosed.  (A U1-only escape audit once passed a plan that sealed four XADC filter
+pads.)
+
 This is a necessary condition for routability, not a sufficient one: an escape
 with slots can still be boxed further out. An escape with NONE cannot be routed
 without moving copper that is already there.
@@ -43,6 +51,8 @@ REACH = 2.5          # via slot within this distance of the escape point
 STEP = 0.05          # slot grid
 CELL = 0.025         # Top free-space raster
 WIN = 3.2            # raster half-window
+PAD_NEAR = 1.5       # pads within this of a plan primitive are audited
+PAD_WIN = 2.4        # raster half-window for a pad
 VIA_R = 0.175
 PITCH = 0.44
 C = 0.09
@@ -133,8 +143,8 @@ def world(plans):
         tracks = [t for t in tracks if (t['net'], t['layer']) + tuple(sorted(((round(t['x1'], 4), round(t['y1'], 4)), (round(t['x2'], 4), round(t['y2'], 4))))) not in rt]
         vias += [dict(x=v['x'], y=v['y'], r=VIA_R, net=v['net']) for v in p.get('vias', [])]
         tracks += [dict(t) for t in p.get('tracks', [])]
-    pads_top = ri['top_pads']
-    pads_bot = ri['bottom_pads']
+    pads_top = [dict(q, layer='Top') for q in ri['top_pads']]
+    pads_bot = [dict(q, layer='Bottom') for q in ri['bottom_pads']]
     th = ri['th_pads']
 
     def trk_clr(t):
@@ -217,6 +227,126 @@ def slots(e, W, lf, limit=None):
     return n, first
 
 
+def _pad_ok_window(pad, W, lf, owned, PAD_WIN):
+    """(ok, slots, reason, touches_edge) for one SMD pad, one window size"""
+    L = pad['layer']
+    net = pad['net']
+    R = PAD_WIN + 1.0
+    same_layer_pads = W['top'] if L == 'Top' else W['bot']
+    pads_L = [p for p in near(same_layer_pads, pad['x'], pad['y'], R)]
+    th = [p for p in near(W['th'], pad['x'], pad['y'], R)]
+    vias = near(W['vias'], pad['x'], pad['y'], R)
+    trk_all = [t for t in near(W['tracks'], pad['x'], pad['y'], R)]
+    trk_L = [t for t in trk_all if t['layer'] == L]
+    pads_other = [p for p in near(W['bot'] if L == 'Top' else W['top'], pad['x'], pad['y'], R)]
+
+    gx1 = np.arange(pad['x'] - PAD_WIN, pad['x'] + PAD_WIN + 1e-9, CELL)
+    gy1 = np.arange(pad['y'] - PAD_WIN, pad['y'] + PAD_WIN + 1e-9, CELL)
+    RX, RY = np.meshgrid(gx1, gy1)
+    free = np.ones(RX.shape, dtype=bool)
+    grow = C + TOP_W / 2
+    for p in pads_L + th:
+        if p['net'] == net and net is not None:
+            continue
+        free &= rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], RX, RY) >= grow - 1e-9
+    for t in trk_L:
+        if t['net'] == net:
+            continue
+        free &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], RX, RY) - t['width'] / 2 >= grow - 1e-9
+    for v in vias:
+        if v['net'] == net:
+            continue
+        free &= np.hypot(RX - v['x'], RY - v['y']) - v['r'] >= grow - 1e-9
+    inside = (np.abs(RX - pad['x']) <= pad['sx'] / 2) & (np.abs(RY - pad['y']) <= pad['sy'] / 2)
+    free |= inside
+    lab, _ = ndimage.label(free, structure=np.ones((3, 3), dtype=int))
+    regions = set(np.unique(lab[inside])) - {0}
+    if not regions:
+        return False, 0, 'no free space at the pad', False
+    reg = np.isin(lab, list(regions))
+    edge = bool(reg[0, :].any() or reg[-1, :].any() or reg[:, 0].any() or reg[:, -1].any())
+
+    # other copper of its own net on this layer, reached by the region
+    if net is not None:
+        for p in pads_L:
+            if p['net'] == net and not (p['x'] == pad['x'] and p['y'] == pad['y']):
+                m = (np.abs(RX - p['x']) <= p['sx'] / 2) & (np.abs(RY - p['y']) <= p['sy'] / 2)
+                if (m & reg).any():
+                    return True, 25, 'reaches %s-%s' % (p['ref'], p['pad']), edge
+        for v in vias:
+            if v['net'] == net and ((np.hypot(RX - v['x'], RY - v['y']) <= v['r']) & reg).any():
+                return True, 25, 'reaches a %s via' % net, edge
+        for t in trk_L:
+            if t['net'] == net and ((seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], RX, RY) <= t['width'] / 2) & reg).any():
+                return True, 25, 'reaches %s copper' % net, edge
+
+    # a legal via slot inside the region
+    g = np.arange(-PAD_WIN, PAD_WIN + 1e-9, STEP)
+    gx, gy = np.meshgrid(pad['x'] + g, pad['y'] + g)
+    px, py = gx.ravel(), gy.ravel()
+    ok = ~((px >= lf['x0']) & (px <= lf['x1']) & (py >= lf['y0']) & (py <= lf['y1']))
+    for v in vias:
+        ok &= np.hypot(px - v['x'], py - v['y']) >= PITCH - 1e-9
+    for p in pads_L + pads_other + th:           # every pad, own net included: no via-in-pad
+        ok &= rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], px, py) - VIA_R >= C - 1e-9
+    for t in trk_all:
+        if t['net'] == net:
+            continue
+        ok &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], px, py) - t['width'] / 2 - VIA_R >= t['clr'] - 1e-9
+    cand = np.flatnonzero(ok)
+    n = 0
+    for k in cand:
+        cx = int(round((px[k] - gx1[0]) / CELL))
+        cy = int(round((py[k] - gy1[0]) / CELL))
+        if 0 <= cx < RX.shape[1] and 0 <= cy < RX.shape[0] and reg[cy, cx]:
+            n += 1
+            if n >= 25:
+                break
+    return n > 0, n, ('%d via slot(s)' % n) if n else 'sealed: no via slot and no own-net copper reachable', edge
+
+
+def pad_ok(pad, W, lf, owned):
+    """(ok, slots, reason).  The window grows while the pad's free region runs into its edge
+    without an exit: a fixed 2.4 mm window once called R16-2 sealed when its pocket
+    simply continued past the window to 25 via slots."""
+    for win in (2.4, 4.0, 6.0, 8.0):
+        ok, n, why, edge = _pad_ok_window(pad, W, lf, owned, win)
+        if ok or not edge:
+            return ok, n, why if win == 2.4 else '%s (window +-%.1f mm)' % (why, win)
+    return ok, n, why + ' (still open at +-8 mm: treat as unproven)'
+
+
+def pad_audit(plans, W0, W1, lf):
+    ri = json.load(io.open(RI, encoding='utf-8'))
+    owned = set(ri['nets'])
+    prims = []
+    for p in plans:
+        prims += [(v['x'], v['y'], v['x'], v['y']) for v in p.get('vias', [])]
+        prims += [(t['x1'], t['y1'], t['x2'], t['y2']) for t in p.get('tracks', [])]
+    if not prims:
+        return [], 0
+    P = np.array(prims)
+    cand = []
+    for pad in W1['top'] + W1['bot']:
+        if pad['ref'] == 'U1' or pad['net'] in owned:
+            continue
+        if pad['net'] is None:
+            continue
+        d = np.min(np.maximum(0, np.maximum(np.minimum(P[:, 0], P[:, 2]) - pad['x'], pad['x'] - np.maximum(P[:, 0], P[:, 2])))
+                   + np.maximum(0, np.maximum(np.minimum(P[:, 1], P[:, 3]) - pad['y'], pad['y'] - np.maximum(P[:, 1], P[:, 3]))))
+        if d <= PAD_NEAR + max(pad['sx'], pad['sy']) / 2:
+            cand.append(pad)
+    lost = []
+    for pad in cand:
+        ok0, n0, why0 = pad_ok(pad, W0, lf, owned)
+        if not ok0:
+            continue
+        ok1, n1, why1 = pad_ok(pad, W1, lf, owned)
+        if not ok1:
+            lost.append((pad, why0, why1))
+    return lost, len(cand)
+
+
 def main():
     plans = [json.load(io.open(p, encoding='utf-8')) for p in sys.argv[1:] if p.endswith('.json')]
     esc, lf = escapes()
@@ -238,7 +368,12 @@ def main():
         print(line)
     if plans:
         print('\nforeclosed by the plan(s): %s' % (' '.join(lost) if lost else 'none'))
-        return 1 if lost else 0
+        plost, pn = pad_audit(plans, W0, W1, lf)
+        print('\npads of unowned nets within %.1f mm of the plan copper: %d audited' % (PAD_NEAR, pn))
+        for pad, w0, w1 in plost:
+            print('   %s-%s %-14s %-6s  board: %s   with plan: %s   <-- PAD FORECLOSED' % (pad['ref'], pad['pad'], pad['net'], pad['layer'], w0, w1))
+        print('pads foreclosed by the plan(s): %s' % (' '.join('%s-%s' % (p['ref'], p['pad']) for p, _, _ in plost) if plost else 'none'))
+        return 1 if (lost or plost) else 0
     return 0
 
 
