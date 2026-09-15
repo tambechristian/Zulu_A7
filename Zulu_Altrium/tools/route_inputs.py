@@ -48,6 +48,10 @@ CTRL = ['CAS#', 'RAS#', 'WE#', 'CKE', 'LDQM', 'UDQM', 'SDRAM-CS#', 'SDRAM-CLK']
 CLS = {n: 'SDRAM_DATA' for n in DATA}
 CLS.update({n: 'SDRAM_ADDR' for n in ADDR})
 CLS.update({n: 'SDRAM_CTRL' for n in CTRL})
+# 2026-09-15: nets co-routed with the bus because routing the bus alone forecloses
+# them (tools/route_foreclosure.py).  Global Width / Clearance rules apply to them.
+XADC = ['AIN15_N', 'AIN15_P', 'AIN16_N', 'AIN16_P']
+CLS.update({n: 'XADC' for n in XADC})
 
 
 def kvs(f, stream, key):
@@ -159,8 +163,11 @@ def main():
         return lf['x0'] <= x <= lf['x1'] and lf['y0'] <= y <= lf['y1']
 
     out_nets = {}
-    for n in DATA + ADDR + CTRL:
+    for n in DATA + ADDR + CTRL + XADC:
         u3p = [dict(pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy']) for p in pads if p['ref'] == 'U3' and p['net'] == n]
+        # every non-U1 pad of the net, with its layer: what the route must join
+        dest = [dict(ref=p['ref'], pad=p['pad'], layer=p['layer'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'])
+                for p in pads if p['net'] == n and p['ref'] != 'U1']
         ends = []
         for b in ball_by_net.get(n, []):
             act = ball_action.get(b['pad'], {}).get('action')
@@ -184,9 +191,13 @@ def main():
                 e.update(kind=act or 'unknown')
             ends.append(e)
         cls = CLS[n]
-        out_nets[n] = dict(cls=cls, u3=u3p, u1=ends,
-                           width=dict(top_min=0.0762, top_pref=0.0762, inner_min=0.10, inner_pref=0.125, inner_max=0.15, bottom_min=0.10, bottom_pref=0.125),
-                           clearance=dict(top=0.09, bottom=0.09, inner=0.20 if n == 'SDRAM-CLK' else 0.10))
+        if cls.startswith('SDRAM'):
+            width = dict(top_min=0.0762, top_pref=0.0762, top_max=0.15, inner_min=0.10, inner_pref=0.125, inner_max=0.15, bottom_min=0.10, bottom_pref=0.125, bottom_max=0.15)
+            clearance = dict(top=0.09, bottom=0.09, inner=0.20 if n == 'SDRAM-CLK' else 0.10)
+        else:   # the global Width and Clearance rules
+            width = dict(top_min=0.0762, top_pref=0.0762, top_max=0.5, inner_min=0.0762, inner_pref=0.0762, inner_max=0.5, bottom_min=0.0762, bottom_pref=0.0762, bottom_max=0.5)
+            clearance = dict(top=0.09, bottom=0.09, inner=0.09)
+        out_nets[n] = dict(cls=cls, u3=u3p, pads=dest, u1=ends, width=width, clearance=clearance)
 
     inreg = lambda p: REGION['x0'] <= p['x'] <= REGION['x1'] and REGION['y0'] <= p['y'] <= REGION['y1']
     u3pads = [p for p in pads if p['ref'] == 'U3']

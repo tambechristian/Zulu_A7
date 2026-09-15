@@ -77,8 +77,9 @@ def seg_rect(seg, cx, cy, sx, sy):
 
 
 def clearance_for(net, layer, inp):
-    if layer in ('L3-SIG', 'L4-SIG') and net in inp['nets']:
-        return inp['nets'][net]['clearance']['inner']
+    r = inp['nets'].get(net)
+    if layer in ('L3-SIG', 'L4-SIG') and r is not None:
+        return r['clearance']['inner']
     return 0.09
 
 
@@ -88,12 +89,98 @@ def width_ok(net, layer, w, inp):
         return w >= 0.0762 - EPS
     wr = r['width']
     if layer == 'Top':
-        return wr['top_min'] - EPS <= w <= 0.15 + EPS
+        return wr['top_min'] - EPS <= w <= wr.get('top_max', 0.15) + EPS
+    if layer == 'Bottom':
+        return wr.get('bottom_min', wr['inner_min']) - EPS <= w <= wr.get('bottom_max', wr['inner_max']) + EPS
     return wr['inner_min'] - EPS <= w <= wr['inner_max'] + EPS
+
+
+def _key_v(v):
+    return (v['net'], round(v['x'], 4), round(v['y'], 4))
+
+
+def _key_t(t):
+    a = (round(t['x1'], 4), round(t['y1'], 4))
+    b = (round(t['x2'], 4), round(t['y2'], 4))
+    return (t['net'], t['layer']) + tuple(sorted((a, b)))
+
+
+def apply_removals(inp, plan):
+    """a copy of inp with plan['remove'] taken out; every removal must match exactly one existing primitive"""
+    rem = plan.get('remove') or {}
+    rv = {_key_v(v) for v in rem.get('vias', [])}
+    rt = {_key_t(t) for t in rem.get('tracks', [])}
+    vias = [v for v in inp['vias'] if _key_v(v) not in rv]
+    tracks = [t for t in inp['tracks'] if _key_t(t) not in rt]
+    missing = []
+    if len(inp['vias']) - len(vias) != len(rv):
+        missing.append('remove.vias: %d listed, %d matched' % (len(rv), len(inp['vias']) - len(vias)))
+    if len(inp['tracks']) - len(tracks) != len(rt):
+        missing.append('remove.tracks: %d listed, %d matched' % (len(rt), len(inp['tracks']) - len(tracks)))
+    out = dict(inp)
+    out['vias'] = vias
+    out['tracks'] = tracks
+    return out, missing
+
+
+POWER = ('GND', 'GNDADC', 'VCC3V3', 'VCC1V0', 'VCC1V8', 'VCCADC')
+
+
+def power_balls_on_vias(inp, plan, u1_lands):
+    """every U1 power/GND ball that reached a same-net via before the plan must still reach one"""
+    def reaches(vias, tracks, ball):
+        net = ball['net']
+        segs = [t for t in tracks if t['net'] == net and t['layer'] == 'Top']
+        vs = [v for v in vias if v['net'] == net]
+        pts = [(ball['x'], ball['y'])]
+        for t in segs:
+            pts += [(t['x1'], t['y1']), (t['x2'], t['y2'])]
+        for v in vs:
+            pts.append((v['x'], v['y']))
+        # same-net balls are joined too (a chain runs ball to ball)
+        for b in u1_lands:
+            if b['net'] == net:
+                pts.append((b['x'], b['y']))
+        n = len(pts)
+        adj = [set() for _ in range(n)]
+        for i in range(n):
+            for j in range(i + 1, n):
+                if abs(pts[i][0] - pts[j][0]) < 1.5e-3 and abs(pts[i][1] - pts[j][1]) < 1.5e-3:
+                    adj[i].add(j); adj[j].add(i)
+        idx = {}
+        k = 1
+        for t in segs:
+            adj[k].add(k + 1); adj[k + 1].add(k)
+            k += 2
+        via_ids = set(range(k, k + len(vs)))
+        seen = {0}
+        stack = [0]
+        while stack:
+            i = stack.pop()
+            if i in via_ids:
+                return True
+            for j in adj[i]:
+                if j not in seen:
+                    seen.add(j); stack.append(j)
+        return False
+    if not plan.get('remove'):
+        return []
+    after, _ = apply_removals(inp, plan)
+    va = after['vias'] + [dict(x=v['x'], y=v['y'], net=v['net']) for v in plan.get('vias', [])]
+    ta = after['tracks'] + plan.get('tracks', [])
+    lost = []
+    for b in u1_lands:
+        if b['net'] in POWER and reaches(inp['vias'], inp['tracks'], b) and not reaches(va, ta, b):
+            lost.append('power ball U1-%s (%s) no longer reaches a %s via' % (b['pad'], b['net'], b['net']))
+    return lost
 
 
 def check(inp, plan):
     problems = []
+    u1_lands = [p for p in inp['top_pads'] if p['ref'] == 'U1']
+    problems += power_balls_on_vias(inp, plan, u1_lands)
+    inp, missing = apply_removals(inp, plan)
+    problems += missing
     vias_old = inp['vias']
     tracks_old = inp['tracks']
     th = inp['th_pads']
@@ -223,11 +310,19 @@ def completeness(inp, plan, tol=0.0015):
             ids = [node(w['x'], w['y'], L) for L in layers]
             for j in ids[1:]:
                 link(ids[0], j)
-        pad = v['u3'][0]
-        start = node(pad['x'], pad['y'], 'Bottom')
-        for i, (x, y, L) in enumerate(list(nodes)):
-            if L == 'Bottom' and abs(x - pad['x']) <= pad['sx'] / 2 and abs(y - pad['y']) <= pad['sy'] / 2:
-                link(start, i)
+        dest = v.get('pads') or [dict(v['u3'][0], layer='Bottom')]
+        pad_nodes = []
+        for pad in dest:
+            pls = layers if pad.get('layer') == 'Multi' else (pad.get('layer') or 'Bottom',)
+            ids = [node(pad['x'], pad['y'], L) for L in pls]
+            for j in ids[1:]:
+                link(ids[0], j)
+            for i, (x, y, L) in enumerate(list(nodes)):
+                if L in pls and abs(x - pad['x']) <= pad['sx'] / 2 + 1e-9 and abs(y - pad['y']) <= pad['sy'] / 2 + 1e-9:
+                    link(ids[0], i)
+            pad_nodes.append((ids[0], pad))
+        start = pad_nodes[0][0]
+        pad = pad_nodes[0][1]
         e = v['u1'][0]
         goal_layers = layers if e['kind'] == 'via' else ('Top',)
         goals = {node(e['x'], e['y'], L) for L in goal_layers}
@@ -243,7 +338,19 @@ def completeness(inp, plan, tol=0.0015):
                 if m not in seen:
                     seen.add(m)
                     stack.append(m)
-        out[net] = (found, '' if found else 'U3 pad %s not joined to U1 %s %s' % (pad['pad'], e['kind'], e['ball']))
+        if found:
+            others = [pn for pn in pad_nodes[1:] if pn[0] not in seen]
+            # the walk stopped at the goal; finish it to see every pad
+            while stack:
+                n = stack.pop()
+                for m in adj.get(n, ()):
+                    if m not in seen:
+                        seen.add(m)
+                        stack.append(m)
+            others = [pn for pn in pad_nodes[1:] if pn[0] not in seen]
+            if others:
+                found = False
+        out[net] = (found, '' if found else 'not all pads of %s joined to U1 %s %s' % (net, e['kind'], e['ball']))
     return out
 
 
@@ -317,9 +424,12 @@ def main():
             print('   ... and %d more' % (len(problems) - 40))
         return 1
     print('geometry and connectivity check: clean')
-    comp = completeness(inp, plan)
+    comp = completeness(apply_removals(inp, plan)[0], plan)
     bad = sorted(n for n, (ok, _) in comp.items() if not ok)
     print('nets joined end to end: %d/%d%s' % (len(comp) - len(bad), len(comp), ('  missing: ' + ' '.join(bad)) if bad else ''))
+    if plan.get('remove'):
+        print('removes %d existing via(s) and %d track(s); every U1 power/GND ball still reaches its via' % (
+            len(plan['remove'].get('vias', [])), len(plan['remove'].get('tracks', []))))
     if bad and '--require-complete' in sys.argv:
         print('INCOMPLETE - --require-complete refuses this plan')
         return 1
