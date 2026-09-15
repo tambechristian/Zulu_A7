@@ -343,6 +343,14 @@ Procedure ApplyPlaneConnect(R : IPCB_Rule; Log : TStringList; Touched : TStringL
 Var
     Done : Boolean;
 Begin
+    { 2026-09-15: only the global rule named 'PlaneConnect'. Vias now have their own
+      PlaneConnect_Vias (IsVia, Direct) set in the Rules dialog; writing relief
+      widths into it would be meaningless and touching it here is not wanted.  }
+    If R.Name <> 'PlaneConnect' Then
+    Begin
+        Log.Add('PlaneConnect (' + R.Name + ')  left alone - see PlaneConnect_Vias');
+        Exit;
+    End;
     Touched.Add('PlaneConnect');
     R.BeginModify;
 

@@ -157,6 +157,38 @@ Begin
 End;
 
 
+
+
+{ ---------------------------------------------------------------------------
+  2026-09-15: can a script create a VIA with the obvious names?
+
+  The fan-out needs ~100 vias placed by script. Track creation is proven
+  (ZuluBoardOutline.pas); via creation is not. This canary uses each name
+  once on a via object that is created by the factory and NEVER added to the
+  board, and reads every value back. If it halts with "Undeclared identifier"
+  the editor jumps to the line that names the culprit; dismiss, Ctrl+F3.
+
+  Changes nothing.  Run: ProbeVia
+  --------------------------------------------------------------------------- }
+
+Procedure ProbeVia;
+Var
+    V : IPCB_Via;
+Begin
+    V := PCBServer.PCBObjectFactory(eViaObject, eNoDimension, eCreate_Default);
+    V.X         := MMsToCoord(1.0);
+    V.Y         := MMsToCoord(2.0);
+    V.Size      := MMsToCoord(0.35);
+    V.HoleSize  := MMsToCoord(0.20);
+    V.LowLayer  := eTopLayer;
+    V.HighLayer := eBottomLayer;
+    ShowMessage('Zulu A7 - via probe' + #13#10 + #13#10 +
+                'eViaObject / IPCB_Via / X / Y / Size / HoleSize / LowLayer / HighLayer are all declared.' + #13#10 +
+                'read back: X ' + MM(V.X) + '  Y ' + MM(V.Y) + '  Size ' + MM(V.Size) + '  Hole ' + MM(V.HoleSize) + #13#10 +
+                'The via was never added to the board. Nothing was changed.');
+End;
+
+
 End.
 
 { End of ZuluProbe.pas }
