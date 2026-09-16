@@ -394,6 +394,267 @@ Begin
     Survey(True);
 End;
 
+{ ==========================================================================
+  SHEET 1 LEFTOVERS, removed 2026-09-16 at the user's request
+  ("clean up sheet 1 power supplies and remove unconnected wires, unconnected
+  VCC3V3 source component, and unconnected GND component at the bottom right").
+
+  Everything here is debris from FixPgood / FixLD5Anode in the LD5-R78 corner,
+  identified from the file by tools/sheet1_orphans.py (file units):
+    wires  (785,247)-(805,247)  (735,247)-(785,247)        an island at y 247
+           (845,357)-(845,367)  (845,367)-(845,377)
+           (740,377)-(785,377)  (785,377)-(845,377)        a chain off LD5's anode, dead-ending at (740,377)
+           (845,277)-(845,287)                             a stub under R78-1
+           (845,207)-(845,217)  (735,207)-(845,207)        an island carrying the GND port below
+    power port VCC3V3 at (785,341)   -- on nothing
+    power port GND    at (748,207)   -- on the y 207 island, reaches no pin
+    junctions at (785,247) (845,367) (785,377) (785,341) (748,207)
+  KEPT: the VCC3V3 port ON LD5-A (845,367), the LD5_K label and wire, and the
+  GND net label on R78-1 (845,287).
+
+  Positions are matched through the API's own units: LD5 pin A (file 845,367)
+  and R78 pin 1 (file 845,287) are read back and give the scale and origin,
+  so no file coordinate is ever compared with an API coordinate directly.
+  Junctions are found by kind COUNT (37 on this sheet) inside a single iterator pass.
+  Collect first, then delete in one block that cannot raise; nothing is
+  deleted unless all 16 objects are found exactly once.
+
+  Run:  open zulu_a7_1.SchDoc, click in it, File > Run Script... >
+        ReportSheet1Leftovers, then CleanSheet1Leftovers, then Ctrl+S.
+  ========================================================================== }
+
+Function S1Pin(Des, PinName : String; Var X, Y : Integer) : Boolean;
+Var
+    It, PIt : ISch_Iterator;
+    C       : ISch_Component;
+    P       : ISch_Pin;
+Begin
+    Result := False;
+    It := Doc.SchIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(eSchComponent));
+    C := It.FirstSchObject;
+    While C <> Nil Do
+    Begin
+        If C.Designator.Text = Des Then
+        Begin
+            PIt := C.SchIterator_Create;
+            PIt.AddFilter_ObjectSet(MkSet(ePin));
+            P := PIt.FirstSchObject;
+            While P <> Nil Do
+            Begin
+                If P.Designator = PinName Then
+                Begin
+                    X := P.Location.X;
+                    Y := P.Location.Y;
+                    Result := True;
+                End;
+                P := PIt.NextSchObject;
+            End;
+            C.SchIterator_Destroy(PIt);
+        End;
+        C := It.NextSchObject;
+    End;
+    Doc.SchIterator_Destroy(It);
+End;
+
+Function S1At(AX, AY : Integer; FX, FY, S, X0, Y0 : Double) : Boolean;
+Begin
+    Result := (Abs(AX - (X0 + FX * S)) <= Abs(S) * 0.5) And (Abs(AY - (Y0 + FY * S)) <= Abs(S) * 0.5);
+End;
+
+Function S1Seg(W : ISch_Wire; X1, Y1, X2, Y2, S, X0, Y0 : Double) : Boolean;
+Var
+    A, B : TLocation;
+Begin
+    Result := False;
+    If W.VerticesCount <> 2 Then Exit;
+    A := W.Vertex[1];
+    B := W.Vertex[2];
+    Result := (S1At(A.X, A.Y, X1, Y1, S, X0, Y0) And S1At(B.X, B.Y, X2, Y2, S, X0, Y0)) Or
+              (S1At(A.X, A.Y, X2, Y2, S, X0, Y0) And S1At(B.X, B.Y, X1, Y1, S, X0, Y0));
+End;
+
+Function S1WireIndex(W : ISch_Wire; S, X0, Y0 : Double) : Integer;
+Begin
+    Result := -1;
+    If S1Seg(W, 785, 247, 805, 247, S, X0, Y0) Then Result := 0;
+    If S1Seg(W, 735, 247, 785, 247, S, X0, Y0) Then Result := 1;
+    If S1Seg(W, 845, 357, 845, 367, S, X0, Y0) Then Result := 2;
+    If S1Seg(W, 845, 367, 845, 377, S, X0, Y0) Then Result := 3;
+    If S1Seg(W, 740, 377, 785, 377, S, X0, Y0) Then Result := 4;
+    If S1Seg(W, 785, 377, 845, 377, S, X0, Y0) Then Result := 5;
+    If S1Seg(W, 845, 277, 845, 287, S, X0, Y0) Then Result := 6;
+    If S1Seg(W, 845, 207, 845, 217, S, X0, Y0) Then Result := 7;
+    If S1Seg(W, 735, 207, 845, 207, S, X0, Y0) Then Result := 8;
+End;
+
+Function S1JunctionIndex(X, Y : Integer; S, X0, Y0 : Double) : Integer;
+Begin
+    Result := -1;
+    If S1At(X, Y, 785, 247, S, X0, Y0) Then Result := 0;
+    If S1At(X, Y, 845, 367, S, X0, Y0) Then Result := 1;
+    If S1At(X, Y, 785, 377, S, X0, Y0) Then Result := 2;
+    If S1At(X, Y, 785, 341, S, X0, Y0) Then Result := 3;
+    If S1At(X, Y, 748, 207, S, X0, Y0) Then Result := 4;
+End;
+
+Procedure Sheet1Leftovers(DoIt : Boolean);
+Var
+    Log   : TStringList;
+    Ids   : TStringList;
+    Kill  : TInterfaceList;
+    Other : TInterfaceList;
+    It    : ISch_Iterator;
+    O     : ISch_GraphicalObject;
+    W     : ISch_Wire;
+    PP    : ISch_PowerObject;
+    AX, AY, RX, RY, i, k, n, v, NKinds : Integer;
+    Key, JKind : String;
+    S1s, S1x0, S1y0 : Double;
+    W0, W1, W2, W3, W4, W5, W6, W7, W8 : Integer;
+    J0, J1, J2, J3, J4 : Integer;
+    NP3, NPG : Integer;
+    Ok : Boolean;
+Begin
+    If Doc = Nil Then
+    Begin
+        ShowMessage('No schematic document is focused.' + #13#10 + 'Open zulu_a7_1.SchDoc, click in it, and run again.');
+        Exit;
+    End;
+    If Not (S1Pin('LD5', 'A', AX, AY) And S1Pin('R78', '1', RX, RY)) Then
+    Begin
+        ShowMessage('LD5 pin A or R78 pin 1 not found - is this zulu_a7_1.SchDoc? Nothing changed.');
+        Exit;
+    End;
+    S1s := (AY - RY) / 80.0;
+    S1x0 := AX - 845 * S1s;
+    S1y0 := AY - 367 * S1s;
+    Log := TStringList.Create;
+    Ids := TStringList.Create;
+    Kill := TInterfaceList.Create;
+    Other := TInterfaceList.Create;
+    W0 := 0; W1 := 0; W2 := 0; W3 := 0; W4 := 0; W5 := 0; W6 := 0; W7 := 0; W8 := 0;
+    J0 := 0; J1 := 0; J2 := 0; J3 := 0; J4 := 0;
+    NP3 := 0; NPG := 0;
+    Log.Add('scale ' + FloatToStr(S1s) + ' API units per file unit (LD5-A x ' + IntToStr(AX) + ', R78-1 x ' + IntToStr(RX) + ')');
+
+    { ONE iterator pass only.  Every earlier attempt that opened a second iterator in this
+      procedure stopped at the second loop with Error in declaration block.  Objects that are
+      not components, wires, net labels or power ports are kept aside without touching their
+      Location (not every kind has one), and every object's kind is tallied as kind#n. }
+    It := Doc.SchIterator_Create;
+    O := It.FirstSchObject;
+    While O <> Nil Do
+    Begin
+        Key := IntToStr(O.ObjectId);
+        n := 1;
+        While Ids.IndexOf(Key + '#' + IntToStr(n)) >= 0 Do n := n + 1;
+        Ids.Add(Key + '#' + IntToStr(n));
+        If O.ObjectId = eWire Then
+        Begin
+            W := O;
+            k := S1WireIndex(W, S1s, S1x0, S1y0);
+            If k >= 0 Then Kill.Add(O);
+            If k = 0 Then W0 := W0 + 1;
+            If k = 1 Then W1 := W1 + 1;
+            If k = 2 Then W2 := W2 + 1;
+            If k = 3 Then W3 := W3 + 1;
+            If k = 4 Then W4 := W4 + 1;
+            If k = 5 Then W5 := W5 + 1;
+            If k = 6 Then W6 := W6 + 1;
+            If k = 7 Then W7 := W7 + 1;
+            If k = 8 Then W8 := W8 + 1;
+        End
+        Else If O.ObjectId = ePowerObject Then
+        Begin
+            PP := O;
+            If (PP.Text = 'VCC3V3') And S1At(PP.Location.X, PP.Location.Y, 785, 341, S1s, S1x0, S1y0) Then
+            Begin
+                NP3 := NP3 + 1;
+                Kill.Add(O);
+            End;
+            If (PP.Text = 'GND') And S1At(PP.Location.X, PP.Location.Y, 748, 207, S1s, S1x0, S1y0) Then
+            Begin
+                NPG := NPG + 1;
+                Kill.Add(O);
+            End;
+        End
+        Else If (O.ObjectId <> eSchComponent) And (O.ObjectId <> eNetLabel) Then
+            Other.Add(O);
+        O := It.NextSchObject;
+    End;
+    Doc.SchIterator_Destroy(It);
+
+    { Junctions: this build has no eJunction name, so the junction kind is the one with
+      exactly 37 members -- sheet 1 holds 37 junction records (RECORD=29 in the file) and no
+      other top-level kind has 37.  Only objects of that kind have their Location read. }
+    JKind := '';
+    NKinds := 0;
+    For v := 0 To 200 Do
+        If (Ids.IndexOf(IntToStr(v) + '#37') >= 0) And (Ids.IndexOf(IntToStr(v) + '#38') < 0) Then
+        Begin
+            JKind := IntToStr(v);
+            NKinds := NKinds + 1;
+        End;
+    Log.Add('object kinds with exactly 37 members: ' + IntToStr(NKinds) + ' (kind ' + JKind + ')');
+    If NKinds = 1 Then
+        For i := 0 To Other.Count - 1 Do
+        Begin
+            O := Other.Items[i];
+            If IntToStr(O.ObjectId) = JKind Then
+            Begin
+                k := S1JunctionIndex(O.Location.X, O.Location.Y, S1s, S1x0, S1y0);
+                If k >= 0 Then Kill.Add(O);
+                If k = 0 Then J0 := J0 + 1;
+                If k = 1 Then J1 := J1 + 1;
+                If k = 2 Then J2 := J2 + 1;
+                If k = 3 Then J3 := J3 + 1;
+                If k = 4 Then J4 := J4 + 1;
+            End;
+        End;
+
+    Ok := (NP3 = 1) And (NPG = 1) And (W0 = 1) And (W1 = 1) And (W2 = 1) And (W3 = 1) And (W4 = 1) And
+          (W5 = 1) And (W6 = 1) And (W7 = 1) And (W8 = 1) And (J0 = 1) And (J1 = 1) And (J2 = 1) And
+          (J3 = 1) And (J4 = 1) And (Kill.Count = 16);
+    Log.Add('wires found, each should be 1: ' + IntToStr(W0) + ' ' + IntToStr(W1) + ' ' + IntToStr(W2) + ' ' + IntToStr(W3) + ' ' +
+            IntToStr(W4) + ' ' + IntToStr(W5) + ' ' + IntToStr(W6) + ' ' + IntToStr(W7) + ' ' + IntToStr(W8));
+    Log.Add('junction points found, each should be 1: ' + IntToStr(J0) + ' ' + IntToStr(J1) + ' ' + IntToStr(J2) + ' ' + IntToStr(J3) + ' ' + IntToStr(J4));
+    Log.Add('VCC3V3 port at (785,341): ' + IntToStr(NP3) + '   GND port at (748,207): ' + IntToStr(NPG));
+    Log.Add('objects collected: ' + IntToStr(Kill.Count) + ' (16 expected)');
+
+    If DoIt And Ok Then
+    Begin
+        SchServer.ProcessControl.PreProcess(Doc, '');
+        For i := 0 To Kill.Count - 1 Do
+            Doc.RemoveSchObject(Kill.Items[i]);
+        SchServer.ProcessControl.PostProcess(Doc, '');
+        Doc.GraphicallyInvalidate;
+        Log.Add('');
+        Log.Add('REMOVED 16 objects. Press Ctrl+S.');
+    End
+    Else If DoIt Then
+        Log.Add('NOT every object was found exactly once - NOTHING was changed.')
+    Else
+        Log.Add('REPORT ONLY - nothing was changed.');
+    ShowMessage('Zulu A7 - sheet 1 leftovers' + #13#10 + #13#10 + Log.Text);
+    Kill.Free;
+    Other.Free;
+    Ids.Free;
+    Log.Free;
+End;
+
+
+Procedure ReportSheet1Leftovers;
+Begin
+    Sheet1Leftovers(False);
+End;
+
+
+Procedure CleanSheet1Leftovers;
+Begin
+    Sheet1Leftovers(True);
+End;
+
 End.
 
 { End of ZuluPgood.pas }
