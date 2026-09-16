@@ -368,7 +368,8 @@ def main():
     for e in sorted(esc, key=lambda e: (e['sdram'], e['net'])):
         n0, f0 = slots(e, W0, lf, limit=25)
         line = '%-5s %-14s %-8s %8s' % (e['ball'], e['net'] + ('*' if e['sdram'] else ''), e['kind'], ('%d' % n0) + ('+' if n0 >= 25 else ''))
-        if W1 is not None and not e['sdram']:
+        if W1 is not None:          # SDRAM escapes are checked too: a routed one has 0 slots and is
+            #                           skipped below anyway, but an unrouted one must not be narrowed
             n1, f1 = slots(e, W1, lf, limit=25)
             line += '   %s%s' % (('%d' % n1) + ('+' if n1 >= 25 else ''), '   <-- FORECLOSED BY THE PLAN' if n0 > 0 and n1 == 0 else '')
             if n0 > 0 and n1 == 0:

@@ -58,6 +58,12 @@ CLS.update({n: 'XADC' for n in XADC})
 POWER = ['VU', 'USB5V0', 'VBATT', 'NetL1_1', 'NetL2_1', 'NetL3_1', 'VCC3V3', 'VCC1V8',
          'VCC1V0', 'VCCADC', 'FT-VCORE', 'FT-VPHY', 'FT-VPLL']
 CLS.update({n: 'POWER' for n in POWER})
+# the charger's status LEDs and its programming resistors: small nets, but they share the block's
+# corridors, and a net missing from here is invisible to route_emit's completeness walk and to its
+# width check (2026-09-16: the five LED nets were routed in stage 1 while the gate could not see them)
+CHARGER = ['NetLD3_A', 'NetLD3_K', 'NetLD4_A', 'NetLD4_K', 'LD5_K',
+           'NetR102_2', 'NetR103_2', 'NetR104_2', 'NetR105_2', 'NetR106_2']
+CLS.update({n: 'CHARGER' for n in CHARGER})
 OUTLINE = dict(x0=0.0, y0=0.0, x1=69.85, y1=25.40)     # Board6 VX/VY: 2750 x 1000 mil
 EDGE_CLEARANCE = 0.25                                  # JLC: copper >= 0.2 mm from routed edges
 WLAYER = {'Top': 'TOPLAYER', 'L3-SIG': 'MIDLAYER1', 'L4-SIG': 'MIDLAYER2', 'Bottom': 'BOTTOMLAYER'}
@@ -237,13 +243,13 @@ def main():
         return lf['x0'] <= x <= lf['x1'] and lf['y0'] <= y <= lf['y1']
 
     out_nets = {}
-    for n in DATA + ADDR + CTRL + XADC + POWER:
+    for n in DATA + ADDR + CTRL + XADC + POWER + CHARGER:
         u3p = [dict(pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy']) for p in pads if p['ref'] == 'U3' and p['net'] == n]
         # every non-U1 pad of the net, with its layer: what the route must join
         dest = [dict(ref=p['ref'], pad=p['pad'], layer=p['layer'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'])
                 for p in pads if p['net'] == n]      # U1 balls included: every pad must join
         ends = []
-        for b in ([] if CLS[n] == 'POWER' else ball_by_net.get(n, [])):
+        for b in ([] if CLS[n] in ('POWER', 'CHARGER') else ball_by_net.get(n, [])):
             act = ball_action.get(b['pad'], {}).get('action')
             e = dict(ball=b['pad'], ring=ball_action.get(b['pad'], {}).get('ring'), action=act, ball_x=b['x'], ball_y=b['y'])
             if act == 'dogbone-in' or act == 'dogbone-out':

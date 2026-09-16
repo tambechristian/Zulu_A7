@@ -256,6 +256,9 @@ def check(inp, plan):
                 if d < c - EPS:
                     problems.append('track %d (%s, %s) %.4f from pad %s-%s (%s)' % (i, t['net'], t['layer'], d, p['ref'], p['pad'], p['net']))
         for o in tracks_old:
+            if o['layer'] == t['layer'] and o['net'] == t['net'] and _key_t(o) == _key_t(t):
+                problems.append('track %d (%s, %s) repeats an existing track end for end: Remove would '
+                                'delete the board copper with it' % (i, t['net'], t['layer']))
             if o['layer'] != t['layer'] or o['net'] == t['net']:
                 continue
             d = seg_dist(seg, (o['x1'], o['y1'], o['x2'], o['y2'])) - t['width'] / 2 - o['width'] / 2
@@ -389,14 +392,19 @@ def _via_match(vs, var='V'):
 
 
 def _trk_match(ts):
-    """condition per track: net, layer, and both ends in either order within 1 um"""
+    """condition per track: net, layer, WIDTH and both ends in either order within 1 um.
+
+    Width is part of the key because a plan may lay a track on an existing track's centreline to
+    widen it; without width, Remove<Name> would delete the existing copper as well (found on a
+    stage-1 candidate plan 2026-09-16, where the undo would have disconnected the charger output).
+    check() refuses such a plan outright -- this is the second line of defence."""
     conds = []
     for t in ts:
         lay = LAYER_ENUM[t['layer']]
-        conds.append("((nm = '%s') And (T.Layer = %s) And "
+        conds.append("((nm = '%s') And (T.Layer = %s) And (Abs(tw - %.4f) < 0.0005) And "
                      "(((Abs(x - %.4f) < 0.001) And (Abs(y - %.4f) < 0.001) And (Abs(x2 - %.4f) < 0.001) And (Abs(y2 - %.4f) < 0.001)) Or "
                      "((Abs(x - %.4f) < 0.001) And (Abs(y - %.4f) < 0.001) And (Abs(x2 - %.4f) < 0.001) And (Abs(y2 - %.4f) < 0.001))))"
-                     % (_pas(t['net']), lay, t['x1'], t['y1'], t['x2'], t['y2'], t['x2'], t['y2'], t['x1'], t['y1']))
+                     % (_pas(t['net']), lay, t['width'], t['x1'], t['y1'], t['x2'], t['y2'], t['x2'], t['y2'], t['x1'], t['y1']))
     return conds
 
 
@@ -416,7 +424,8 @@ def _collect(L, vias, tracks, listvar):
               '    It.AddFilter_LayerSet(AllLayers);', '    It.AddFilter_Method(eProcessAll);',
               '    T := It.FirstPCBObject;', '    While T <> Nil Do', '    Begin',
               "        nm := ''; If T.Net <> Nil Then nm := T.Net.Name;",
-              '        x := CoordToMMs(T.X1); y := CoordToMMs(T.Y1); x2 := CoordToMMs(T.X2); y2 := CoordToMMs(T.Y2);']
+              '        x := CoordToMMs(T.X1); y := CoordToMMs(T.Y1); x2 := CoordToMMs(T.X2); y2 := CoordToMMs(T.Y2);',
+              '        tw := CoordToMMs(T.Width);']
         for c in _trk_match(tracks):
             L.append('        If %s Then %s.Add(T);' % (c, listvar))
         L += ['        T := It.NextPCBObject;', '    End;', '    Brd.BoardIterator_Destroy(It);']
@@ -440,7 +449,7 @@ def _add(L, vias, tracks):
 
 
 VARS = ['Var', '    N    : IPCB_Net;', '    V    : IPCB_Via;', '    T    : IPCB_Track;', '    It   : IPCB_BoardIterator;',
-        '    Kill : TInterfaceList;', '    i    : Integer;', '    x, y, x2, y2 : Double;', '    nm   : String;', '    Missing : String;']
+        '    Kill : TInterfaceList;', '    i    : Integer;', '    x, y, x2, y2, tw : Double;', '    nm   : String;', '    Missing : String;']
 
 
 def emit(plan, name, inp=None):
