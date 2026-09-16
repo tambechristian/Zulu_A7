@@ -56,7 +56,8 @@ CLS.update({n: 'XADC' for n in XADC})
 # they have no single U1 'end'.  GND/GNDADC are NOT here: they join through vias to the
 # L2/L5 planes, and the pad audit keeps every GND pad a via slot.
 POWER = ['VU', 'USB5V0', 'VBATT', 'NetL1_1', 'NetL2_1', 'NetL3_1', 'VCC3V3', 'VCC1V8',
-         'VCC1V0', 'VCCADC', 'FT-VCORE', 'FT-VPHY', 'FT-VPLL']
+         'VCC1V0', 'VCCADC', 'GNDADC', 'FT-VCORE', 'FT-VPHY', 'FT-VPLL']   # GNDADC is VCCADC's
+         # own return, not the plane: it is routed copper like any other net (added 2026-09-16)
 CLS.update({n: 'POWER' for n in POWER})
 # the charger's status LEDs and its programming resistors: small nets, but they share the block's
 # corridors, and a net missing from here is invisible to route_emit's completeness walk and to its
