@@ -667,7 +667,14 @@ def main():
         inputs = args[args.index('--inputs') + 1]
     inp = json.load(io.open(inputs, encoding='utf-8'))
     moved, problems = apply_moves(inp, placement)
-    problems += legality(inp, moved, placement)
+    plan = json.load(io.open(args[args.index('--plan') + 1], encoding='utf-8')) if '--plan' in args else None
+    # 2026-09-16: a plan's REMOVALS are part of the move.  Legality used to test the moved pads against
+    # copper the same plan deletes, which rejected the best C123 placement for 0.023-0.035 mm to C92's
+    # old ties.  The removed copper is gone before DRC and save: moves and copper run in one session.
+    sys.path.insert(0, HERE)
+    from route_emit import apply_removals
+    board = apply_removals(moved, plan)[0] if plan and plan.get('remove') else moved
+    problems += legality(inp, board, placement)
     roles = placement.get('roles', {})
     print('placement: %d part(s) moved, %d pad net fix(es)' % (len(placement.get('moves', [])), len(placement.get('net_fixes', []))))
     if problems:
@@ -691,8 +698,7 @@ def main():
             print('U8 (pad edge gaps, mm): ' + ', '.join('%s %.2f' % (k, v) if isinstance(v, float) else '%s %s' % (k, v) for k, v in u8.items()))
         if '--json' in args:
             io.open(args[args.index('--json') + 1], 'w', encoding='utf-8').write(json.dumps(dict(sc189=rows, u8=u8, problems=problems), indent=1))
-    if '--plan' in args and all(k in roles for k in SC189):     # the regulator-block loop checks need its roles
-        plan = json.load(io.open(args[args.index('--plan') + 1], encoding='utf-8'))
+    if plan is not None and all(k in roles for k in SC189):     # the regulator-block loop checks need its roles
         res = loop_joins(moved, plan, roles)
         bad = [r for r in res if not r[0]]
         print('\nblock connections made by the plan: %d/%d' % (len(res) - len(bad), len(res)))
@@ -705,8 +711,7 @@ def main():
         if '--merge-plan' in args:
             # the plan's copper as if already on the board: route_reach --inputs <this> with no plan
             # then asks whether every net -- the block's own power nets included -- can still leave
-            plan = json.load(io.open(args[args.index('--plan') + 1], encoding='utf-8'))
-            out = copy.deepcopy(moved)
+            out = copy.deepcopy(board)          # the plan's removals applied, then its additions
             out['vias'] = out['vias'] + [dict(x=v['x'], y=v['y'], size=VIA_LAND, hole=0.20, net=v['net']) for v in plan.get('vias', [])]
             out['tracks'] = out['tracks'] + [dict(t) for t in plan.get('tracks', [])]
         io.open(path, 'w', encoding='utf-8').write(json.dumps(out, indent=1))

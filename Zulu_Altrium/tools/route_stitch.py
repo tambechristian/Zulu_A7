@@ -38,6 +38,17 @@ WINDOWS = [('whole board', 0.0, 69.85, 0.0, 25.40),
            ('U1 surround         x 39..56, y  5.0..23.0', 39.0, 56.0, 5.0, 23.0)]
 
 
+def without_removals(inp, plans):
+    """the board as the plans leave it: their 'remove' lists taken out first (2026-09-16 -- this used to
+    count the copper a plan deletes as still blocking stitching sites)"""
+    sys.path.insert(0, HERE)
+    from route_emit import apply_removals
+    for p in plans:
+        if p.get('remove'):
+            inp = apply_removals(inp, p)[0]
+    return inp
+
+
 def sites(inp, plans, x0, x1, y0, y1, step):
     xs = np.arange(x0, x1 + 1e-9, step)
     ys = np.arange(y0, y1 + 1e-9, step)
@@ -85,10 +96,11 @@ def main():
     else:
         wins = WINDOWS
     print('%-44s %9s %9s %7s' % ('window', 'board', 'with plan' if plans else '', 'kept'))
+    after = without_removals(inp, plans)
     for name, x0, x1, y0, y1 in wins:
         n0 = sites(inp, [], x0, x1, y0, y1, step)
         if plans:
-            n1 = sites(inp, plans, x0, x1, y0, y1, step)
+            n1 = sites(after, plans, x0, x1, y0, y1, step)
             print('%-44s %9d %9d %6.1f %%' % (name, n0, n1, 100.0 * n1 / n0 if n0 else 100.0))
         else:
             print('%-44s %9d' % (name, n0))
