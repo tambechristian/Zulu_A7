@@ -29,7 +29,8 @@ placement.json
      "hide_designators": ["U5"]}      designators with no room clear of pads (Silk To Solder Mask)
   rot is the counter-clockwise turn of the part's copper as seen from the Top (board axes,
   multiple of 90) applied to its CURRENT pads; the named pad's centre lands on (x, y).  Parts not
-  listed stay where they are.  Only the PWR block may move.
+  listed stay where they are.  Only the PWR block may move, plus any ref the placement names in an
+  explicit "movable" list (2026-09-16: C124 moving under U1).
 
 LEGALITY (the conventions tools/place_board.py placed the board with)
     land to land between different components >= 0.30 mm (Bottom SMD and every through-hole pad)
@@ -113,8 +114,8 @@ def apply_moves(inp, placement):
             problems.append('%s moved twice' % ref)
             continue
         seen.add(ref)
-        if ref not in BLOCK:
-            problems.append('%s is not in the PWR block and may not move' % ref)
+        if ref not in BLOCK and ref not in placement.get('movable', []):
+            problems.append("%s is not in the PWR block (nor in the placement's movable list) and may not move" % ref)
             continue
         pads = by_ref.get(ref)
         if not pads:
@@ -690,7 +691,7 @@ def main():
             print('U8 (pad edge gaps, mm): ' + ', '.join('%s %.2f' % (k, v) if isinstance(v, float) else '%s %s' % (k, v) for k, v in u8.items()))
         if '--json' in args:
             io.open(args[args.index('--json') + 1], 'w', encoding='utf-8').write(json.dumps(dict(sc189=rows, u8=u8, problems=problems), indent=1))
-    if '--plan' in args:
+    if '--plan' in args and all(k in roles for k in SC189):     # the regulator-block loop checks need its roles
         plan = json.load(io.open(args[args.index('--plan') + 1], encoding='utf-8'))
         res = loop_joins(moved, plan, roles)
         bad = [r for r in res if not r[0]]
