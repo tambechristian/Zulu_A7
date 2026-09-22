@@ -61,3 +61,40 @@ have no path at all, and the planes around U1 and in the north band keep almost 
    and the U1 surround on the inner layers.
 3. Try Altium's autorouter (Situs) on the open nets as an experiment, without saving, to measure what
    a global rip-up router closes on the current copper.
+
+## The autorouter experiment (2026-09-22, your call)
+
+Altium's own router was run on the same board, with "Lock All Pre-routes" ticked, and the result saved
+only as a copy (`scratchpad/situs/zulu_a7_situs.PcbDoc`); the document was then closed without saving, and
+the board file is byte-identical to the committed one (md5 f8d8e62c…).
+
+- **Situs's own setup report flagged five pads as unroutable before it started**: R11-2, R12-2, R14-1,
+  R15-2 and R16-2 — the XADC divider nodes, the same pads our planners could not close without
+  re-routing AIN16_P.
+- **Result: "Routing finished with 6 contention(s). Failed to complete 50 connection(s) in 12 minutes
+  48 seconds"** — 90 of 140 routed, against our planners' 92.
+- Measured from the copy: +148 vias, +1659 tracks, 2659 mm of new copper; 127 of 175 nets in one island
+  (ours: 131).
+- The two routers fail on *different* nets — Situs left JTAG (TCK/TDI/TDO/TMS/PROG#), all five UART
+  lines, NODE_P0/P1 and ANALOG-IO1 open where ours closed them, and closed CHAN lines ours could not.
+  Each closes about 90 of 140, but not the same 90: the board is short of capacity overall, not blocked
+  in one place.
+- **Situs also tore up placed power copper despite the lock** — 21 VCC3V3, 10 GND, 8 VCC1V0 and 4 VU
+  tracks, leaving VCC3V3 and VCC1V0 split. It is not safe to let it near this board.
+
+**Conclusion: the capacity limit is real.** Two independent routers, one of them Altium's own, stall at
+the same place with the current placement, pinout and power topology.
+
+## What the numbers say about the biggest lever
+
+| Rail | Copper on the board | Area it blocks |
+|---|---|---|
+| **VCC3V3** | 128 mm Top, 276 mm Bottom, 63 mm L4, 51 vias | **370 mm²** |
+| VCC1V0 | 15 Top, 97 Bottom, 14 L3, 7 vias | 103 mm² |
+| VCC1V8 | 8 Top, 11 Bottom, 94 L3, 25 L4, 10 vias | 85 mm² |
+
+VCC3V3 alone blocks 370 mm² of a 1774 mm² board, including 213 mm inside the U1 surround and 88 mm in
+the north band — exactly where the open flash, LED, SD and CHAN lines have to pass. Making **L5 a
+VCC3V3 plane** (the stack the EAGLE version of this board used) would return all of it. 31 of the 128
+VCC3V3 pads already sit within 0.6 mm of a VCC3V3 via; the other 97 would need a tie via, like the GND
+ties of stage 4a.
