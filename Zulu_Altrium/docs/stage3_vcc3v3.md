@@ -71,9 +71,17 @@ y 5–23 must be re-run through `route_stitch`.
    teardrops there.
 3. **U2-20/31 feed: 7 mm of 0.145 mm Top at exactly 0.09 mm from X4-MP1**, the battery holder's hand-soldered tab.
    Either move X4 0.3 mm south (or shrink MP1's north edge) and re-cut that feed, or accept with a fab note.
-4. **U2's VCCIO/VREGIN pins (20, 31, 42, 50, 56) have no decoupling capacitor, nor does X3-4.** The FT2232H
-   datasheet wants 100 nF on each. Adding 0201 100 nF at pins 50/56 (Bottom, under U2's north pins) and ≥ 1 µF
-   at X3-4 is a schematic and placement change; the north and sdled regions would then be re-cut.
+4. **CORRECTED 2026-09-23 — U2's VCCIO/VREGIN pins are decoupled; the problem is distance, and X3-4 is the
+   real gap.** The earlier wording here ("have no decoupling capacitor") was wrong, and so was any claim that
+   U2's VCORE pins lack decoupling. From the files: `zulu_a7_4.SchDoc` (the FT2232H sheet) carries C38 and
+   C133–C138, seven VCC3V3 capacitors, and FT-VCORE carries C152/C153/C154 (100 nF) on U2-12/37/64 plus C139
+   (4.7 µF) — 8 pads on the net. What the geometry shows is placement: all seven VCC3V3 capacitors sit on
+   Bottom along the y 3.95 row, so the nearest one to each supply pin is U2-20 → C138 3.98 mm,
+   U2-31 → C38 4.12, U2-42 → C112 4.98, U2-50 → C100 5.91, U2-56 → C100 8.81. Moving two of the seven under
+   U2's north pins would shorten the two worst loops without adding a part.
+   **X3-4**, the SD socket's 200 mA supply, is the one position with nothing local: its nearest VCC3V3
+   capacitor is C9 at 9.49 mm. Adding ≥ 1 µF there is a schematic and placement change; the sdled region
+   would then be re-cut.
 5. **FT rail caps are placement-limited**: C40 26 mm from pin 4 (~10 nH), C41 46 mm from pin 9, C139 30 mm from
    pin 12. Moving C40/C41 to within ~1.5 mm of pins 4/9 would take the PHY loop to ~1 nH.
 6. **C112** is a leaf 38 mΩ from its nearest VCCO via; moving it 0.4 mm north-east fixes that.

@@ -65,5 +65,11 @@ function DblClick($x, $y) {
   foreach ($i in 1..2) { [U32]::mouse_event(2, 0, 0, 0, [UIntPtr]::Zero); Start-Sleep -Milliseconds 60; [U32]::mouse_event(4, 0, 0, 0, [UIntPtr]::Zero); Start-Sleep -Milliseconds 90 }
   Start-Sleep -Milliseconds 400
 }
+function Wheel($x, $y, $notches) {
+  # MOUSEEVENTF_WHEEL = 0x0800, 120 units per notch; positive scrolls UP.  Added 2026-09-23: the
+  # Run Script picker's list is longer than the dialog and END/arrow keys are a poor way across it.
+  MoveTo $x $y
+  [U32]::mouse_event(2048, 0, 0, [uint32]($notches * 120), [UIntPtr]::Zero); Start-Sleep -Milliseconds 250
+}
 function Keys($t) { $ws = New-Object -ComObject WScript.Shell; $ws.SendKeys($t); Start-Sleep -Milliseconds 350 }
 function Pause($ms) { Start-Sleep -Milliseconds $ms }
