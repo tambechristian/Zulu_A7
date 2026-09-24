@@ -14,7 +14,9 @@ Why this plan (judge, 2026-09-15, over a 3-net local repair and a regenerated 'p
     R12-2 (NODE_P0) in with no via slot; the 'quality' plan boxed R12-2, R10-1, R10-2 and R16-2 in with no via
     slot (NODE_P0, NODE_P1 and ANALOG-IO0 unroutable, which disconnects the AIN15/AIN16 inputs from their
     sources) and ran AIN16 19 mm on Bottom under U1. This plan leaves every filter-block net routable.
-  * XADC: both pairs on Bottom (over L5-GND, off the SDRAM layers), 0.1663 mm pitch (0.09 gap) down the U1 west
+  * XADC: both pairs on Bottom (over L5, off the SDRAM layers), 0.1663 mm pitch (0.09 gap) down the U1 west
+    -- NOTE 2026-09-24: L5 carried GND when this was planned and now carries VCC3V3 (stage 5).  Eight of the
+    52 reference-plane crossings are XADC; docs/stage5_l5_plane.md prices the move to L3-SIG if it matters.
     strip; loops U1 -> C36 / C37 5.5 / 4.4 mm2; about 3.4 mm of Bottom copper under the U1 land field.
 
 Decisions:

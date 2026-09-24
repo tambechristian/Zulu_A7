@@ -59,7 +59,7 @@ EXPECT = [
     ("Dielectric 1",   "diel", 1.1208,      4.523, GENERIC),  # 7628+0.7core+7628 -> mixed
     ("L4-SIG",         "cu",   INNER_CU_MM, None,  None),
     ("Dielectric 5",   "diel", 0.1000,      4.600, CORE),     # 0.1 mm core
-    ("L5-GND",         "cu",   INNER_CU_MM, None,  None),
+    ("L5-VCC3V3",      "cu",   INNER_CU_MM, None,  None),
     ("Dielectric 3",   "diel", 0.0994,      4.100, PREPREG),  # 3313 x1 UNCHANGED
     ("Bottom Layer",   "cu",   OUTER_CU_MM, None,  None),
     ("Bottom Solder",  "diel", 1.2 * MIL,   3.800, SURFACE),   # JLC mask model, 2026-09-14
@@ -195,7 +195,7 @@ def main():
                      ("L2-GND",       INNER_CU_MM, 0.1000, 4.600),
                      ("L3-SIG",       INNER_CU_MM, 1.1208, 4.523),
                      ("L4-SIG",       INNER_CU_MM, 0.1000, 4.600),
-                     ("L5-GND",       INNER_CU_MM, 0.0994, 4.100),
+                     ("L5-VCC3V3",    INNER_CU_MM, 0.0994, 4.100),
                      ("Bottom Layer", OUTER_CU_MM, None,   None)]
     for name, cu, h, dk in legacy_expect:
         r = legname.get(name)
@@ -212,7 +212,7 @@ def main():
 
     # ---- 4. things the stack edit must NOT have broken ----------------------
     print("\n[4] must be untouched")
-    for k, want in (("PLANE1NETNAME", "GND"), ("PLANE2NETNAME", "GND"),
+    for k, want in (("PLANE1NETNAME", "GND"), ("PLANE2NETNAME", "VCC3V3"),
                     ("PLANE1PULLBACK", "20mil"), ("PLANE2PULLBACK", "20mil")):
         got = d.get(k)
         ok = got == want
@@ -221,7 +221,7 @@ def main():
             fails.append("%s got %r want %r" % (k, got, want))
     for nm, lid in (("Top Layer", "16777217"), ("L2-GND", "16842753"),
                     ("L3-SIG", "16777218"), ("L4-SIG", "16777219"),
-                    ("L5-GND", "16842754"), ("Bottom Layer", "16842751")):
+                    ("L5-VCC3V3", "16842754"), ("Bottom Layer", "16842751")):
         got = by_name.get(nm, {}).get("LAYERID")
         ok = got == lid
         print("   %-42s %-12s %s" % ("LAYERID %s" % nm, got,

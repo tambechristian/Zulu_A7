@@ -171,8 +171,10 @@ End;
 {  WHAT THIS SCRIPT DOES NOT DO.  It changes the two plane polygons' nets and   }
 {  nothing else.  The routed VCC3V3 trunk must be removed and the VCC3V3 pads   }
 {  tied to the plane by via in the same edit -- that is the stage-5 route plan, }
-{  placed by PlaceStage5 in ZuluSetup.pas.  Renaming the L5-GND layer and       }
-{  re-checking Width_PWR_VCC3V3 are separate manual steps; see docs/stage5.     }
+{  placed by PlaceStage5 in ZuluSetup.pas.  Both were done on 2026-09-23, and   }
+{  the layer was renamed L5-GND -> L5-VCC3V3 on 2026-09-24 (Layer Stack Manager,}
+{  Name field only; LAYERID 16842754 unchanged, verify_stack.py PASS).          }
+{  Width_PWR_VCC3V3 needed no change: every new tie meets it as it stands.      }
 {                                                                              }
 {  Run:  File > Run Script... > AssignL5ToVCC3V3    then Ctrl+S.                }
 {..............................................................................}

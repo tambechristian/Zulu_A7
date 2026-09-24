@@ -1,7 +1,9 @@
 { =============================================================================
   ZuluRules.pas
   Zulu A7 - 69.85 x 25.40 mm, 6 layers (Top / L2-GND / L3-SIG / L4-SIG /
-  L5-GND / Bottom), through-vias only, fabricated at JLCPCB.
+  L5-VCC3V3 / Bottom), through-vias only, fabricated at JLCPCB.
+  (L5 carried GND until stage 5, 2026-09-24; it now carries VCC3V3 --
+  docs/stage5_l5_plane.md.  L2 is still the only ground plane.)
 
   Nine stock design rules in zulu_a7.PcbDoc are still at Altium's factory
   values. This script rewrites them to the numbers in
@@ -27,9 +29,10 @@
       Tools > Design Rule Check - existing violation markers stay stale until
       DRC runs again, and the values only reach the Rules6 stream on save.
     * It does not assign nets to the two Plane layers.  That is a layer-stack
-      property (Design > Layer Stack Manager > L2-GND / L5-GND > Net Name),
-      not a rule.  Until GND is assigned there, PlaneClearance and
-      PlaneConnect have nothing to act on.
+      property of the SPLIT PLANE POLYGON on each plane layer -- Altium 26
+      shows no net field in the Layer Stack Manager, so ZuluPlaneNets.pas
+      sets it (AssignL5ToVCC3V3: PLANE1 GND, PLANE2 VCC3V3).  Until a net
+      is assigned, PlaneClearance and PlaneConnect have nothing to act on.
 
   SAFETY NET
     Property names differ slightly between Altium builds (MinSolderMaskSliver
@@ -130,7 +133,7 @@ Begin
           wide without DRC complaining, while still flagging a fat mistake. }
 
     { Form 1: the per-layer table, over this board's four signal layers.
-      L2-GND and L5-GND are Plane layers and carry no width values.         }
+      L2-GND and L5-VCC3V3 are Plane layers, no width values.               }
     OkTop  := ApplyWidthOnLayer(R, eTopLayer);
     OkMid1 := ApplyWidthOnLayer(R, eMidLayer1);   { L3-SIG }
     OkMid2 := ApplyWidthOnLayer(R, eMidLayer2);   { L4-SIG }
@@ -324,7 +327,7 @@ Begin
     Touched.Add('PlaneClearance');
     R.BeginModify;
     Try
-        { The anti-pad: how far L2-GND and L5-GND pull back from a hole that
+        { The anti-pad: how far L2-GND and L5-VCC3V3 pull back from a hole that
           does NOT belong to their net.  0.25 mm is slThermalIsolate in the
           .dru and is a comfortable multiple of JLC's 0.09 mm minimum, which
           matters here because the plane is a drill-hit edge, not an etched
@@ -612,8 +615,9 @@ Begin
     Msg := Msg + #13#10 +
            'Nothing is saved yet.  Ctrl+S, then re-run Tools > Design Rule Check' + #13#10 +
            '(old violation markers stay on screen until DRC runs again).' + #13#10 +
-           'Reminder: L2-GND and L5-GND still need GND in the Layer Stack' + #13#10 +
-           'Manager, or the two plane rules have nothing to act on.';
+           'Reminder: the plane nets live on the split-plane polygons -' + #13#10 +
+           'ZuluPlaneNets.pas > AssignL5ToVCC3V3 (L2 GND, L5 VCC3V3),' + #13#10 +
+           'or the two plane rules have nothing to act on.';
 
     ShowMessage(Msg);
 

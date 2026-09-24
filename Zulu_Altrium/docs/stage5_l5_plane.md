@@ -187,8 +187,15 @@ over copper.
 
 - **The five stitching capacitors** (cost 1 above) — a schematic change, awaiting a decision. Doing it
   before stage 4b is much cheaper than after, because the five sites are free space today.
-- The **layer is still named `L5-GND`** while carrying VCC3V3. No design rule names it
-  (checked: zero rules reference `L5-GND` or `L2-GND`), but `tools/verify_stack.py` hard-codes the
-  string in three places and a fab reading the layer name would be misled. Rename to `L5-PWR`.
+- ~~The layer is still named `L5-GND` while carrying VCC3V3.~~ **DONE 2026-09-24: renamed
+  `L5-GND` -> `L5-VCC3V3`** (the net's own name, so a fab or a later reader cannot mistake it for a
+  ground plane). Layer Stack Manager, Name field only, with Stack Symmetry untouched; every other cell
+  re-read and unchanged, `LAYERID 16842754` unchanged, and the copper model regenerates byte-identical
+  (`tools/route_inputs.json` md5 `a98004c17a422b3048b20b7c219664d7` before and after). No design rule
+  names either plane layer, so nothing else had to move. `tools/verify_stack.py` was updated in four
+  places (the two layer-name rows, `PLANE2NETNAME` GND -> VCC3V3, and the LAYERID row) and now prints
+  **PASS -- stack matches JLC06161H-3313E**. The stale prose in `ZuluRules.pas`, `ZuluPlaneNets.pas`
+  and `coroute_plan.py` was corrected too -- `ZuluRules.pas` had a runtime reminder that told the user
+  both planes still needed GND.
 - U2-5, R15-1 and R13-2 are still the three untied GND pads from stage 4a's open decision.
 - Then: stage 4b as one global route, the NODE_P1 hop, teardrops, final DRC, IBIS, fab outputs.
