@@ -1,0 +1,114 @@
+{
+ "movable": [
+  "C155",
+  "C156",
+  "C157",
+  "C158",
+  "C159"
+ ],
+ "moves": [
+  {
+   "ref": "C155",
+   "rot": 180,
+   "pad": "1",
+   "x": 26.2999,
+   "y": 20.25
+  },
+  {
+   "ref": "C156",
+   "rot": 180,
+   "pad": "1",
+   "x": 29.8499,
+   "y": 20.0
+  },
+  {
+   "ref": "C157",
+   "rot": 180,
+   "pad": "1",
+   "x": 39.3499,
+   "y": 18.0
+  },
+  {
+   "ref": "C158",
+   "rot": 270,
+   "pad": "1",
+   "x": 18.1,
+   "y": 16.9499
+  },
+  {
+   "ref": "C159",
+   "rot": 180,
+   "pad": "1",
+   "x": 23.5999,
+   "y": 7.5
+  }
+ ],
+ "hide_designators": [
+  "C155",
+  "C156",
+  "C157",
+  "C158",
+  "C159"
+ ],
+ "roles": {},
+ "layers": {
+  "C155": "Top",
+  "C156": "Bottom",
+  "C157": "Top",
+  "C158": "Top",
+  "C159": "Top"
+ },
+ "pads": {
+  "C155": {
+   "1": [
+    26.2999,
+    20.25
+   ],
+   "2": [
+    25.7,
+    20.25
+   ]
+  },
+  "C156": {
+   "1": [
+    29.8499,
+    20.0
+   ],
+   "2": [
+    29.25,
+    20.0
+   ]
+  },
+  "C157": {
+   "1": [
+    39.3499,
+    18.0
+   ],
+   "2": [
+    38.75,
+    18.0
+   ]
+  },
+  "C158": {
+   "1": [
+    18.1,
+    16.9499
+   ],
+   "2": [
+    18.1,
+    16.35
+   ]
+  },
+  "C159": {
+   "1": [
+    23.5999,
+    7.5
+   ],
+   "2": [
+    23.0,
+    7.5
+   ]
+  }
+ },
+ "note": "C155-C159 DO NOT EXIST ON THE BOARD YET.  Apply this placement only AFTER the schematic ECO brings the five GRM033R61A104KE15D (C0201) parts across.  PAD 1 IS GND AND PAD 2 IS VCC3V3.  That is what tools/stitch_caps.py produces, because C155-C159 are clones of C136 and every 0201 of that family on this board reads pad1=GND (C133-C138, C38).  The workflow judge assumed the opposite from the all-capacitor majority (28 of 46) and this file corrects it: the lands, the vias and route.json are unchanged and each part is simply turned half a revolution, H 180 and V 270, so pad 1 sits on the GND side.  CHECK IT AFTER THE ECO ANYWAY -- \"pads\" gives both land centres, and if pad 1 arrives on VCC3V3 instead then every stub is on the wrong pad and the planes are shorted.  The ECO must land each part UNROTATED (rotation 0) on the layer named in \"layers\", because block_place applies \"rot\" to the part's CURRENT pads and would otherwise turn it twice.  \"layers\" is NOT applied by this placement: BlkMove in tools/ZuluSetup.pas sets only C.Rotation, C.X and C.Y and never C.Layer, so C156 must be put on the Bottom side by hand (or through Place() in tools/ZuluPlacement.pas) before the placement is run."
+}
