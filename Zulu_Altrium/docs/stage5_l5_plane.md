@@ -82,7 +82,10 @@ python tools/stage5/plane_islands.py --net VCC3V3 --plane L5
 python tools/stage5/plane_islands.py --net GND --plane L2
     285 anti-pads; 211/211 GND pads; 128/128 GND vias on the main island exit 0
 python tools/stage5/gnd_check.py        198 tied, the same 3 untied as before (no regression)
-python tools/stage5/verify.py           18 of 18 checks pass
+python tools/stage5/verify.py tools/stage5_route.json --inputs PRE.json   18 of 18 checks pass
+    (PRE.json = git show 14a8511:Zulu_Altrium/tools/route_inputs.json -- verify.py checks a plan
+     expressed as REMOVALS, so it needs the board those removals still match, and it now refuses
+     the placed board outright rather than reporting two spurious failures)
 python tools/route_reach.py             140/140 routable, none walled off
 python tools/route_foreclosure.py       none foreclosed, 207 pads audited
 python tools/route_width.py --net USB_D_P/USB_D_N   0.539 mm both rows (floor 0.45), unchanged

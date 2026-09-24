@@ -1,9 +1,32 @@
 # -*- coding: utf-8 -*-
-"""Independent checks of the FINAL plan, not using gen.py's working.
-   python verify.py [plan.json]"""
+"""Independent checks of the FINAL stage-5 plan, not using gen.py's working.
+
+    python tools/stage5/verify.py tools/stage5_route.json [--inputs PRE.json]
+
+MUST be run against the board as it stood BEFORE stage 5 was placed -- the plan is expressed as
+removals of copper that is no longer there once it is placed.  Since 2026-09-24 the default
+tools/route_inputs.json IS the placed board, so pass --inputs with the pre-stage-5 model:
+
+    git show 14a8511:Zulu_Altrium/tools/route_inputs.json > PRE.json
+    python tools/stage5/verify.py tools/stage5_route.json --inputs PRE.json     -> 18 of 18
+
+Run against the placed board it reports two spurious failures and nothing else -- the inventory
+check (289 + 140 != 354) and the collinear-overlap check (the plan's tracks now also exist on the
+board, so every one of them pairs with itself).  The guard below refuses that board outright
+rather than letting anyone read those two as real."""
 import io, json, math, os, sys, itertools, collections
 sys.path.insert(0, 'C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_Altrium/tools/stage5')
 from lib import INP0
+
+# the pre-stage-5 board has VCC3V3 at 354 tracks / 51 vias; the placed board has 163 / 81
+_nt = sum(1 for t in INP0['tracks'] if t['net'] == 'VCC3V3')
+_nv = sum(1 for v in INP0['vias'] if v['net'] == 'VCC3V3')
+if (_nt, _nv) != (354, 51):
+    sys.exit('verify.py: this is not the pre-stage-5 board (VCC3V3 has %d tracks and %d vias, the '
+             'pre-stage-5 board has 354 and 51).  This script checks a plan expressed as removals, '
+             'so it needs the board those removals still match:\n'
+             '    git show 14a8511:Zulu_Altrium/tools/route_inputs.json > PRE.json\n'
+             '    python tools/stage5/verify.py tools/stage5_route.json --inputs PRE.json' % (_nt, _nv))
 
 PLAN = sys.argv[1] if len(sys.argv) > 1 else 'plan.json'
 P = json.load(io.open(PLAN, encoding='utf-8'))
