@@ -65,11 +65,16 @@ function DblClick($x, $y) {
   foreach ($i in 1..2) { [U32]::mouse_event(2, 0, 0, 0, [UIntPtr]::Zero); Start-Sleep -Milliseconds 60; [U32]::mouse_event(4, 0, 0, 0, [UIntPtr]::Zero); Start-Sleep -Milliseconds 90 }
   Start-Sleep -Milliseconds 400
 }
-function Wheel($x, $y, $notches) {
-  # MOUSEEVENTF_WHEEL = 0x0800, 120 units per notch; positive scrolls UP.  Added 2026-09-23: the
-  # Run Script picker's list is longer than the dialog and END/arrow keys are a poor way across it.
+function Wheel([int]$x, [int]$y, [int]$notches) {
+  # MOUSEEVENTF_WHEEL = 0x0800, 120 units per notch; POSITIVE scrolls up, NEGATIVE scrolls down.
+  # Added 2026-09-23 (the Run Script picker's list is longer than its dialog); fixed 2026-09-24 --
+  # the parameters were untyped, so PowerShell read $notches as a STRING and '$notches * 120'
+  # repeated it 120 times instead of multiplying.  The delta is also a SIGNED value carried in a
+  # DWORD, so a negative notch count has to go across as its two's complement.
   MoveTo $x $y
-  [U32]::mouse_event(2048, 0, 0, [uint32]($notches * 120), [UIntPtr]::Zero); Start-Sleep -Milliseconds 250
+  $d = $notches * 120
+  if ($d -lt 0) { $dw = [uint32](4294967296 + $d) } else { $dw = [uint32]$d }
+  [U32]::mouse_event(2048, 0, 0, $dw, [UIntPtr]::Zero); Start-Sleep -Milliseconds 250
 }
 function Keys($t) { $ws = New-Object -ComObject WScript.Shell; $ws.SendKeys($t); Start-Sleep -Milliseconds 350 }
 function Pause($ms) { Start-Sleep -Milliseconds $ms }

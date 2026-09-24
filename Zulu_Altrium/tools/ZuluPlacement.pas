@@ -156,6 +156,87 @@ Begin
 End;
 
 
+{..............................................................................}
+{  STAGE 5b, 2026-09-24 -- the five VCC3V3-to-GND stitching capacitors.        }
+{                                                                              }
+{  C155-C159 arrive from the schematic ECO parked outside the outline at       }
+{  x 71-100 mm, rotation 90, all on the Top.  This puts them where the plan    }
+{  wants them: docs/stage5b_stitching_caps.md and tools/stage5b/placement.json }
+{  (gen.py --check reproduces that file).                                      }
+{                                                                              }
+{  ROTATION IS ABSOLUTE here, as everywhere in Place().  The C0201 at rot 0    }
+{  has pad 1 WEST and pad 2 EAST -- derived from the parked parts, which sit   }
+{  at rot 90 with pad 1 south -- so pad 1 ends up east at 180 and north at     }
+{  270.  PAD 1 IS GND AND PAD 2 IS VCC3V3 on this board: every 0201 of this    }
+{  family reads that way (C133-C138, C38) and the ECO confirmed it            }
+{  (C155-1 to GND, C155-2 to VCC3V3).  The workflow that planned these assumed }
+{  the opposite from the all-capacitor majority; placing on that convention    }
+{  would have shorted VCC3V3 to GND through all five parts.                    }
+{                                                                              }
+{  C156 is the only one on the Bottom -- the Bottom under U3 is its moulded    }
+{  body, which overhangs its end pads by 0.5499 mm and which no shipped gate   }
+{  can see (tools/stage5b/bodies.py fits it from the EAGLE package).           }
+{                                                                              }
+{  Run:  File > Run Script... > PlaceStitchCaps     then Ctrl+S.               }
+{..............................................................................}
+
+Procedure PlaceStitchCaps;
+Var
+    C : IPCB_Component;
+    R : String;
+    I : Integer;
+Begin
+    Brd := PCBServer.GetCurrentPCBBoard;
+    If Brd = Nil Then
+    Begin
+        ShowMessage('No PCB document is focused.' + #13#10 +
+                    'Open zulu_a7.PcbDoc, click in the board window, and run again.');
+        Exit;
+    End;
+
+    Missing := '';
+    NDone   := 0;
+
+    PCBServer.PreProcess;
+    Try
+        {      designator  layer  rotation  pad   pad 1 (GND) lands at            }
+        Place('C155',   0,  180.0, '1',    26.2999,   20.2500);   { top    UDQM, CKE, A12        }
+        Place('C156',   1,  180.0, '1',    29.8499,   20.0000);   { BOTTOM D10, D11, U3-43       }
+        Place('C157',   0,  180.0, '1',    39.3499,   18.0000);   { top    D13, and D3/D6's path }
+        Place('C158',   0,  270.0, '1',    18.1000,   16.9499);   { top    A5, A7, A9            }
+        Place('C159',   0,  180.0, '1',    23.5999,    7.5000);   { top    BS0, RAS#, A0, A1     }
+
+        { the designators have no room clear of the lands here; hide them as the
+          other chip passives are hidden (ZuluFixDrc.HideChipDesignators)        }
+        For I := 0 To 4 Do
+        Begin
+            If I = 0 Then R := 'C155';
+            If I = 1 Then R := 'C156';
+            If I = 2 Then R := 'C157';
+            If I = 3 Then R := 'C158';
+            If I = 4 Then R := 'C159';
+            C := Brd.GetPcbComponentByRefDes(R);
+            If C <> Nil Then
+            Begin
+                C.BeginModify;
+                C.NameOn := False;
+                C.EndModify;
+            End;
+        End;
+    Finally
+        PCBServer.PostProcess;
+    End;
+
+    Brd.ViewManager_FullUpdate;
+
+    ShowMessage('Zulu A7 - stage 5b stitching capacitors' + #13#10 + #13#10 +
+                'Placed: ' + IntToStr(NDone) + ' of 5' + #13#10 +
+                'Not found on the board: ' + Missing + #13#10 + #13#10 +
+                'Nothing is saved yet - press Ctrl+S, then run PlaceStage5b' + #13#10 +
+                'for the copper and check every land from the saved file.');
+End;
+
+
 Procedure PlaceAllComponents;
 Begin
     Brd := PCBServer.GetCurrentPCBBoard;
