@@ -36,11 +36,29 @@ close more than 88.**
 - **26 of the 140 are open in ALL THREE plans.** 114 is therefore the ceiling of any composition of
   them — and **0 of 34+ attempted grafts survived `route_emit`**, so the real ceiling of composition
   is 88.
-- **U1's east face is finished as a routing surface.** Of the 17 east ball rows still owing a
-  connection, the widest legal straight Top run east out of the board's own fan-out stub end is
-  **negative on all 17**, and 13 of those are walled by board copper that may not be touched (GND vias
-  at 51.400/16.400, 51.400/11.400, 51.900/8.900; VCC3V3 vias at 51.400/15.900, 51.950/12.450,
-  51.850/11.850; GND tracks at 51.900–52.000). All three routers reached this independently.
+- ~~**U1's east face is finished as a routing surface.**~~ **WITHDRAWN 2026-09-28 — THIS WAS WRONG,
+  and it was the headline of this document.** The routers measured the widest legal straight run
+  **east, on the Top layer only**, out of each fan-out stub end, found it negative on all 17 east ball
+  rows, and concluded the face was dead. It is not. Those balls **already have their own fan-out
+  vias**, so they escape *downward onto the inner layers*, which is how the rest of the board was
+  routed. Re-measured over all four layers by `tools/stage7/escape_audit.py`:
+
+  | ball | net | best straight E, Top only | best over all four layers |
+  |---|---|---|---|
+  | D17 | CHAN5 | −0.5300 | **+0.4702 on L4-SIG** |
+  | G17 | JA3 | −0.5300 | **+0.4698 on L4-SIG** |
+  | U15 | CHAN21 | −0.5300 | **+0.4698 on L4-SIG (S)** |
+  | U8 | SD-CLK | −0.5300 | **+0.4698 on L3-SIG (S)** |
+  | C16 | CHAN4 | −0.5300 | **+0.2502 on L4-SIG (N)** |
+
+  Every one of those is six times the 0.0762 mm minimum. Over all 117 signal balls: **6 are dead**
+  (no legal direction and no via site within 1.20 mm), and **five of the six carry nets that are
+  already routed** (A3, AIN16_N, D6, BS1, LDQM); the only dead ball owing a connection is L17
+  CLK-12M-FPGA. 72 balls have a legal direction outright and 39 more have a via site in reach.
+
+  **The contradiction was visible at the time and I missed it:** `route_reach` reports **140 / 140
+  routable on the bare board**, which cannot be true if 17 balls have no escape. Escape capability is
+  not what caps the routers at 86–88.
 - **The closure/foreclosure curve is steep and unfavourable.** Four re-measured points: 86 closed /
   25 walled, 88 / 44, 88 / 43, 90 / 44. **Every closure past 86 costs roughly five connections that
   can never be routed afterwards.** The judge chose 86/25 because a walled-off connection is
@@ -95,8 +113,10 @@ Three independent routers on a board with 16 % corridor load, plus the earlier s
 Altium's own Situs, have now all stopped between 86 and 92 of 140. **The board cannot be finished by
 routing alone.** The levers, in the order they were measured to matter:
 
-1. **U1's east face** — the 17 east ball rows with no legal straight escape. This is the big one and
-   it is a re-pin or a placement change, not a route.
+1. ~~U1's east face~~ — **withdrawn, see above.** The east balls escape on L3/L4 through vias they
+   already have. What actually caps the routers is **simultaneity**: every connection is individually
+   routable (140/140) and they do not fit together. That is a different problem and a re-pin is only
+   one of the possible answers to it.
 2. **FT-REF versus the USB pair versus U2-5** — needs R18 moved next to U2-6, or the
    CKE/SDRAM-CLK/UDQM via cluster or LD3/LD5 moved out of the y 15.5–16.8 strip.
 3. **The unspent approvals** are still available and still measured good: the AIN16_N via move at
