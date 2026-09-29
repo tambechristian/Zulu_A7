@@ -30020,6 +30020,11 @@
   }
  ],
  "classes": {
+  "PWR_SWITCH": [
+   "NetL1_1",
+   "NetL2_1",
+   "NetL3_1"
+  ],
   "SDCARD": [
    "SD-CLK",
    "SD-CMD",
@@ -30110,13 +30115,6 @@
    "A12",
    "BS0",
    "BS1"
-  ],
-  "PWR_SWITCH": [
-   "NODE_P0",
-   "NODE_P1",
-   "NetL1_1",
-   "NetL2_1",
-   "NetL3_1"
   ],
   "PWR_RAILS": [
    "VCC1V0",

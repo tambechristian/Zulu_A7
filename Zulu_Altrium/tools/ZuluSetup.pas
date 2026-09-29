@@ -159,8 +159,9 @@ Begin
              'VCC1V0 VCC1V8 VCC3V3 VCCADC VU VBATT USB5V0 FT-VCORE FT-VPHY FT-VPLL');
 
     { buck switching nodes -- small loops, wide copper, keep them off the
-      analog and off the SDRAM }
-    AddClass('PWR_SWITCH', 'NODE_P0 NODE_P1 NetL1_1 NetL2_1 NetL3_1');
+      analog and off the SDRAM. NODE_P0 and NODE_P1 were here until 2026-09-29;
+      they are XADC divider taps, not switching nodes -- see FixPwrSwitchClass. }
+    AddClass('PWR_SWITCH', 'NetL1_1 NetL2_1 NetL3_1');
 
     AddClass('SDRAM_ADDR',
              'A0 A1 A2 A3 A4 A5 A6 A7 A8 A9 A10 A11 A12 BS0 BS1');
@@ -187,6 +188,93 @@ Begin
                 'Check them in Design > Classes, then Ctrl+S.' + #13#10 +
                 'Run ReportNetClasses to see the members the board actually kept.');
 End;
+
+{..............................................................................}
+{  NODE_P0 AND NODE_P1 LEAVE PWR_SWITCH.                                       }
+{                                                                              }
+{  WHY                                                                          }
+{  PWR_SWITCH was built to hold the three SC189 buck switching nodes -- NetL1_1 }
+{  (L1-1 to U5-5), NetL2_1 (L2-1 to U6-5) and NetL3_1 (L3-1 to U7-5). Those are }
+{  real switching loops and they earn the 7.874 mil (0.2 mm) minimum that       }
+{  Width_PWR_SWITCH gives them at priority 5.                                   }
+{                                                                              }
+{  NODE_P0 (R10-1, R11-2, R12-2) and NODE_P1 (R14-1, R15-2, R16-2) are not      }
+{  switching nodes at all. They are the XADC resistor-divider taps, carrying    }
+{  microamps into an FPGA analogue input behind a 1 nF anti-alias cap. They     }
+{  were swept into the class by their names looking like power nodes.           }
+{                                                                              }
+{  The cost is not cosmetic. At 0.2 mm a NODE_P1 track needs                    }
+{  0.2 + 2 x 0.09 = 0.38 mm, and the gaps it must pass through in the y 3.950   }
+{  resistor row are 0.30 mm pad edge to pad edge -- short by 0.08 mm.           }
+{  NODE_P1 CANNOT BE ROUTED AT ALL at that width. Stage 8 routed it at the      }
+{  global 3 mil minimum and Altium raised 11 Width Constraint violations.       }
+{                                                                              }
+{  Dropping the two nets out of the class puts them on the global Width rule    }
+{  (priority 7, All, 3 mil minimum), which is what an XADC tap wants.           }
+{  No copper moves.                                                            }
+{                                                                              }
+{  HOW                                                                          }
+{  IPCB_ObjectClass has no proven member-removal call in this build, so the     }
+{  class object is removed whole and re-made with AddClass under the SAME name. }
+{  Width_PWR_SWITCH scopes by InNetClass('PWR_SWITCH'), a name expression, so   }
+{  it re-binds to the new object; nothing else references the class.            }
+{..............................................................................}
+Procedure FixPwrSwitchClass;
+Var
+    It   : IPCB_BoardIterator;
+    Cls  : IPCB_ObjectClass;
+    Kill : TInterfaceList;
+    i, j : Integer;
+Begin
+    Brd := BoardOrNil;
+    If Brd = Nil Then Exit;
+
+    Kill := TInterfaceList.Create;
+
+    It := Brd.BoardIterator_Create;
+    It.AddFilter_ObjectSet(MkSet(eClassObject));
+    It.AddFilter_LayerSet(AllLayers);
+    It.AddFilter_Method(eProcessAll);
+    Cls := It.FirstPCBObject;
+    While Cls <> Nil Do
+    Begin
+        If (Not Cls.SuperClass) And (Cls.Name = 'PWR_SWITCH') Then Kill.Add(Cls);
+        Cls := It.NextPCBObject;
+    End;
+    Brd.BoardIterator_Destroy(It);
+
+    If Kill.Count = 0 Then
+    Begin
+        ShowMessage('Zulu A7 - no net class named PWR_SWITCH is on the board.' + #13#10 +
+                    'Nothing was changed.');
+        Kill.Free;
+        Exit;
+    End;
+
+    j := Kill.Count;
+
+    PCBServer.PreProcess;
+    Try
+        For i := 0 To Kill.Count - 1 Do
+            Brd.RemovePCBObject(Kill.Items[i]);
+        AddClass('PWR_SWITCH', 'NetL1_1 NetL2_1 NetL3_1');
+    Finally
+        PCBServer.PostProcess;
+    End;
+
+    Brd.ViewManager_FullUpdate;
+
+    ShowMessage('Zulu A7 - PWR_SWITCH rebuilt.' + #13#10 + #13#10 +
+                'Removed ' + IntToStr(j) + ' old class object(s).' + #13#10 +
+                'PWR_SWITCH now holds NetL1_1, NetL2_1, NetL3_1 only.' + #13#10 +
+                'NODE_P0 and NODE_P1 fall through to the global Width rule (3 mil min).' + #13#10 + #13#10 +
+                'Run ReportNetClasses to confirm, then Tools > Design Rule Check > Run:' + #13#10 +
+                'Width Constraint must fall from 18 to 7. Then Ctrl+S.');
+
+    Kill.Free;
+End;
+
+
 
 
 Procedure ReportNetClasses;
