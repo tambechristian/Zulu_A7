@@ -223,8 +223,15 @@ def main():
                                  keepout=bool(b[1] & 0x08) or (b[1:3] == bytes.fromhex('0c02'))))
     rules = {}
     for kv in kvs(f, 'Rules6/Data', 'RULEKIND=').values():
-        if kv.get('NAME') in ('Clearance', 'Clearance_SDRAM_INNER', 'Clearance_SDRAM_CLK', 'RoutingVias',
-                              'HoleToHoleClearance', 'Width_SDRAM', 'Width', 'PlaneClearance'):
+        # EVERY Width rule is kept, not just Width and Width_SDRAM.  Until 2026-09-29 the power Width
+        # rules were left out, so route_emit.width_ok() -- which falls back to the global 0.0762 for
+        # any net that is not one of the 67 modelled ones -- could not see them.  NODE_P0 and NODE_P1
+        # are in the PWR_SWITCH class (Width_PWR_SWITCH, 0.2 mm minimum) but are not modelled nets, so
+        # a stage-8 plan routed NODE_P1 at 0.0762 and route_emit passed it; Altium's DRC then reported
+        # 11 Width Constraint violations on copper that was already saved.
+        if kv.get('RULEKIND') == 'Width' or kv.get('NAME') in (
+                'Clearance', 'Clearance_SDRAM_INNER', 'Clearance_SDRAM_CLK', 'RoutingVias',
+                'HoleToHoleClearance', 'PlaneClearance'):
             rules[kv['NAME']] = {k: v for k, v in kv.items() if k not in (
                 'SELECTION', 'LAYER', 'LOCKED', 'POLYGONOUTLINE', 'USERROUTED', 'KEEPOUT', 'UNIONINDEX', 'UNIQUEID',
                 'DEFINEDBYLOGICALDOCUMENT', 'COMMENT')}

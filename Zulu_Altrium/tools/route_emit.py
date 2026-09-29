@@ -93,10 +93,45 @@ def clearance_for(net, layer, inp):
     return 0.09
 
 
+def _class_width_min(net, inp):
+    """The tightest MINLIMIT of any Width rule whose scope matches `net`, or None.
+
+    Added 2026-09-29.  route_inputs.json builds a per-net `width` table only for the 67 modelled
+    power/SDRAM/XADC nets; every other net used to fall back to the global 0.0762 here, which ignored
+    any class-scoped Width rule.  NODE_P0 and NODE_P1 are in PWR_SWITCH (Width_PWR_SWITCH, 0.2 mm) but
+    are not modelled, so a stage-8 plan routed NODE_P1 at 0.0762, this gate passed it, and Altium's
+    DRC then reported 11 Width Constraint violations on copper that had already been saved.
+    Rules are scanned in PRIORITY order, lowest number first, the way Altium applies them.
+    """
+    cls_of = {}
+    for cname, members in (inp.get('classes') or {}).items():
+        for m in members:
+            cls_of.setdefault(m, set()).add(cname)
+    mine = cls_of.get(net, set())
+    best = None
+    for name, r in sorted((inp.get('rules') or {}).items(),
+                          key=lambda kv: int(kv[1].get('PRIORITY', 99))):
+        if r.get('RULEKIND') != 'Width':
+            continue
+        scope = r.get('SCOPE1EXPRESSION', '')
+        if scope == 'All':
+            continue                                    # the global rule is the caller's own fallback
+        hit = ("InNet('%s')" % net) in scope or any(("InNetClass('%s')" % c) in scope for c in mine)
+        if hit:
+            lim = r.get('MINLIMIT')
+            if lim is not None:
+                if isinstance(lim, str):
+                    lim = lim.strip()
+                    return float(lim[:-3]) * 0.0254 if lim.endswith('mil') else float(lim.rstrip('m'))
+                return float(lim)
+    return best
+
+
 def width_ok(net, layer, w, inp):
     r = inp['nets'].get(net)
     if r is None:
-        return w >= 0.0762 - EPS
+        m = _class_width_min(net, inp)
+        return w >= (m if m is not None else 0.0762) - EPS
     wr = r['width']
     if layer == 'Top':
         return wr['top_min'] - EPS <= w <= wr.get('top_max', 0.15) + EPS
