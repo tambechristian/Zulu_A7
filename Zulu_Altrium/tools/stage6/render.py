@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Polygon, Patch
 
 TOOLS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, TOOLS)
+import hdi
 a = sys.argv[1:]
 RI = a[a.index('--inputs') + 1] if '--inputs' in a else os.path.join(TOOLS, 'route_inputs.json')
 plan_path, out = a[0], a[1]
@@ -22,9 +24,9 @@ COL = {'VCC3V3': '#c62828', 'FT-VCORE': '#00838f', 'FT-VPHY': '#6a1b9a', 'FT-VPL
 TITLE = a[a.index('--title') + 1] if '--title' in a else 'Zulu A7 routing plan'
 _pk = collections.Counter((t['net'], t['layer'], round(t['x1'], 3), round(t['y1'], 3), round(t['x2'], 3), round(t['y2'], 3)) for t in plan['tracks'])
 _pk.update((t['net'], t['layer'], round(t['x2'], 3), round(t['y2'], 3), round(t['x1'], 3), round(t['y1'], 3)) for t in plan['tracks'])
-_pv = collections.Counter((v['net'], round(v['x'], 3), round(v['y'], 3)) for v in plan.get('vias', []))
+_pv = collections.Counter((v['net'], round(v['x'], 3), round(v['y'], 3), hdi.span_of(v)) for v in plan.get('vias', []))
 inp['tracks'] = [t for t in inp['tracks'] if (t['net'], t['layer'], round(t['x1'], 3), round(t['y1'], 3), round(t['x2'], 3), round(t['y2'], 3)) not in _pk]
-inp['vias'] = [v for v in inp['vias'] if (v['net'], round(v['x'], 3), round(v['y'], 3)) not in _pv]
+inp['vias'] = [v for v in inp['vias'] if (v['net'], round(v['x'], 3), round(v['y'], 3), hdi.span_of(v)) not in _pv]
 fig, ax = plt.subplots(figsize=(20, 7.6))
 ax.set_xlim(-0.5, 70.35); ax.set_ylim(-0.5, 25.9); ax.set_aspect('equal')
 ax.add_patch(Rectangle((0, 0), 69.85, 25.4, fill=False, ec='k', lw=1.2))
@@ -50,7 +52,9 @@ for t in plan['tracks']:
     for q in ((t['x1'], t['y1']), (t['x2'], t['y2'])):
         ax.add_patch(Circle(q, t['width'] / 2, fc=c, ec='none', alpha=al))
 for v in plan.get('vias', []):
-    ax.add_patch(Circle((v['x'], v['y']), 0.175, fc=COL.get(v['net'], '#000'), ec='k', lw=0.4))
+    # a microvia (any span but through) gets an orange ring so a plan picture shows it
+    thru = hdi.is_through(hdi.span_of(v))
+    ax.add_patch(Circle((v['x'], v['y']), 0.175, fc=COL.get(v['net'], '#000'), ec='k' if thru else '#ff6f00', lw=0.4 if thru else 1.0))
     ax.add_patch(Circle((v['x'], v['y']), 0.10, fc='white', ec='none'))
 for x, y, s in ((5.2, 18.75, '3.3 V source'), (8.89, 24.13, 'X2-17'), (14.15, 12.37, 'X3-4 SD'), (31.5, 13.6, 'U2 FT2232HL'),
                 (28.3, 11.9, 'U3 SDRAM (Bottom)'), (46.4, 12.0, 'U1'), (66.4, 19.05, 'J1 Pmod'), (66.84, 3.72, 'JP4-3')):

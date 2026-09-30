@@ -30,6 +30,12 @@ copper of its own net on that layer.  A pad that had a way out and loses it is
 foreclosed.  (A U1-only escape audit once passed a plan that sealed four XADC filter
 pads.)
 
+SPANS (2026-09-29, HDI).  A slot is counted for any via span tools/hdi.json allows that can serve
+the escape (touches the escape's layer and reaches a second signal layer, or that net's plane):
+land and pitch per span, only the pads/tracks on layers in the span, the land-field ban only for
+spans that reach Bottom or are not via-in-pad spans, and a same-net pad's centre allowed for a
+via-in-pad span.  A via blocks the Top raster only if Top is in its span.  Through-only = as before.
+
 This is a necessary condition for routability, not a sufficient one: an escape
 with slots can still be boxed further out. An escape with NONE cannot be routed
 without moving copper that is already there.
@@ -44,6 +50,9 @@ import numpy as np
 from scipy import ndimage
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import hdi
+
 FI = os.path.join(HERE, 'fanout_inputs.json')
 FP = os.path.join(HERE, 'fanout_plan.json')
 RI = os.path.join(HERE, 'route_inputs.json')
@@ -53,7 +62,7 @@ CELL = 0.025         # Top free-space raster
 WIN = 3.2            # raster half-window
 PAD_NEAR = 1.5       # pads within this of a plan primitive are audited
 PAD_WIN = 2.4        # raster half-window for a pad
-VIA_R = 0.175
+VIA_R = 0.175            # the through via; per-span land / pitch come from tools/hdi.json (2026-09-29, HDI)
 PITCH = 0.44
 C = 0.09
 TOP_W = 0.0762
@@ -133,15 +142,17 @@ def escapes():
 def world(plans):
     ri = json.load(io.open(RI, encoding='utf-8'))
     sdram = {n for n, v in ri['nets'].items() if v.get('cls', 'SDRAM').startswith('SDRAM')}
-    vias = [dict(x=v['x'], y=v['y'], r=v['size'] / 2, net=v['net']) for v in ri['vias']]
+    H = hdi.load(ri)
+    vias = [dict(x=v['x'], y=v['y'], r=v['size'] / 2, net=v['net'], span=hdi.span_of(v)) for v in ri['vias']]
     tracks = [dict(t) for t in ri['tracks']]
     for p in plans:
         rem = p.get('remove') or {}
-        rv = {(v['net'], round(v['x'], 4), round(v['y'], 4)) for v in rem.get('vias', [])}
+        kv = lambda v: (v['net'], round(v['x'], 4), round(v['y'], 4), hdi.span_of(v))
+        rv = {kv(v) for v in rem.get('vias', [])}
         rt = {(t['net'], t['layer']) + tuple(sorted(((round(t['x1'], 4), round(t['y1'], 4)), (round(t['x2'], 4), round(t['y2'], 4))))) for t in rem.get('tracks', [])}
-        vias = [v for v in vias if (v['net'], round(v['x'], 4), round(v['y'], 4)) not in rv]
+        vias = [v for v in vias if kv(v) not in rv]
         tracks = [t for t in tracks if (t['net'], t['layer']) + tuple(sorted(((round(t['x1'], 4), round(t['y1'], 4)), (round(t['x2'], 4), round(t['y2'], 4))))) not in rt]
-        vias += [dict(x=v['x'], y=v['y'], r=VIA_R, net=v['net']) for v in p.get('vias', [])]
+        vias += [dict(x=v['x'], y=v['y'], r=H.land(hdi.span_of(v)) / 2, net=v['net'], span=hdi.span_of(v)) for v in p.get('vias', [])]
         tracks += [dict(t) for t in p.get('tracks', [])]
     pads_top = [dict(q, layer='Top') for q in ri['top_pads']]
     pads_bot = [dict(q, layer='Bottom') for q in ri['bottom_pads']]
@@ -153,7 +164,7 @@ def world(plans):
         return C
     for t in tracks:
         t['clr'] = trk_clr(t)
-    return dict(vias=vias, tracks=tracks, top=pads_top, bot=pads_bot, th=th)
+    return dict(vias=vias, tracks=tracks, top=pads_top, bot=pads_bot, th=th, H=H)
 
 
 def near(objs, x, y, r, key=('x', 'y')):
@@ -179,14 +190,9 @@ def slots(e, W, lf, limit=None):
     g = np.arange(-REACH, REACH + 1e-9, STEP)
     gx, gy = np.meshgrid(e['x'] + g, e['y'] + g)
     px, py = gx.ravel(), gy.ravel()
-    ok = np.hypot(px - e['x'], py - e['y']) <= REACH
-    ok &= ~((px >= lf['x0']) & (px <= lf['x1']) & (py >= lf['y0']) & (py <= lf['y1']))
-    for v in vias:
-        ok &= np.hypot(px - v['x'], py - v['y']) >= PITCH - 1e-9
-    for p in top + bot + th:
-        ok &= rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], px, py) - VIA_R >= C - 1e-9
-    for t in tracks:
-        ok &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], px, py) - t['width'] / 2 - VIA_R >= t['clr'] - 1e-9
+    ok0 = np.hypot(px - e['x'], py - e['y']) <= REACH
+    ok = slot_mask(W['H'], W['H'].usable('Top', net), ok0, px, py, lf, vias, tracks,
+                   dict(Top=top, Bottom=bot), th, net)
     cand = np.flatnonzero(ok)
     if cand.size == 0:
         return 0, None
@@ -202,7 +208,7 @@ def slots(e, W, lf, limit=None):
         if t['layer'] == 'Top':
             free &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], RX, RY) - t['width'] / 2 >= grow - 1e-9
     for v in vias:
-        if v['net'] != net:
+        if v['net'] != net and 'Top' in v['span']:
             free &= np.hypot(RX - v['x'], RY - v['y']) - v['r'] >= grow - 1e-9
     ix0 = int(round((e['x'] - gx1[0]) / CELL))
     iy0 = int(round((e['y'] - gy1[0]) / CELL))
@@ -225,6 +231,34 @@ def slots(e, W, lf, limit=None):
             if limit and n >= limit:
                 break
     return n, first
+
+
+def slot_mask(H, spans, ok0, px, py, lf, vias, tracks, smd, th, net):
+    """which of the candidate centres (px, py) are legal for at least one of the via spans: the
+    land-field ban where hdi bans it, the pitch to every via whose span shares a layer, the land
+    clear of every pad and track on a layer of the span (a same-net pad's centre allowed for a
+    via-in-pad span), foreign tracks at their clearance.  Through only = the rules above."""
+    out = np.zeros(ok0.shape, dtype=bool)
+    for S in spans:
+        ok = ok0.copy()
+        land = H.land(S)
+        if H.field_ban(S):
+            ok &= ~((px >= lf['x0']) & (px <= lf['x1']) & (py >= lf['y0']) & (py <= lf['y1']))
+        for v in vias:
+            need = H.pitch_between(S, v['span'])
+            if need is not None:
+                ok &= np.hypot(px - v['x'], py - v['y']) >= need - 1e-9
+        pads = list(th) + [p for L in ('Top', 'Bottom') if L in S for p in smd.get(L, [])]
+        for p in pads:
+            m = rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], px, py) - land / 2 >= C - 1e-9
+            if H.via_in_pad(S) and net is not None and p.get('net') == net and p.get('layer') in H.outer(S):
+                m |= (np.abs(px - p['x']) < 1e-6) & (np.abs(py - p['y']) < 1e-6)
+            ok &= m
+        for t in tracks:
+            if t['layer'] in S:
+                ok &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], px, py) - t['width'] / 2 - land / 2 >= t['clr'] - 1e-9
+        out |= ok
+    return out
 
 
 def _pad_ok_window(pad, W, lf, owned, PAD_WIN):
@@ -254,7 +288,7 @@ def _pad_ok_window(pad, W, lf, owned, PAD_WIN):
             continue
         free &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], RX, RY) - t['width'] / 2 >= grow - 1e-9
     for v in vias:
-        if v['net'] == net:
+        if v['net'] == net or L not in v['span']:
             continue
         free &= np.hypot(RX - v['x'], RY - v['y']) - v['r'] >= grow - 1e-9
     inside = (np.abs(RX - pad['x']) <= pad['sx'] / 2) & (np.abs(RY - pad['y']) <= pad['sy'] / 2)
@@ -274,7 +308,7 @@ def _pad_ok_window(pad, W, lf, owned, PAD_WIN):
                 if (m & reg).any():
                     return True, 25, 'reaches %s-%s' % (p['ref'], p['pad']), edge
         for v in vias:
-            if v['net'] == net and ((np.hypot(RX - v['x'], RY - v['y']) <= v['r']) & reg).any():
+            if v['net'] == net and L in v['span'] and ((np.hypot(RX - v['x'], RY - v['y']) <= v['r']) & reg).any():
                 return True, 25, 'reaches a %s via' % net, edge
         for t in trk_L:
             if t['net'] == net and ((seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], RX, RY) <= t['width'] / 2) & reg).any():
@@ -284,15 +318,10 @@ def _pad_ok_window(pad, W, lf, owned, PAD_WIN):
     g = np.arange(-PAD_WIN, PAD_WIN + 1e-9, STEP)
     gx, gy = np.meshgrid(pad['x'] + g, pad['y'] + g)
     px, py = gx.ravel(), gy.ravel()
-    ok = ~((px >= lf['x0']) & (px <= lf['x1']) & (py >= lf['y0']) & (py <= lf['y1']))
-    for v in vias:
-        ok &= np.hypot(px - v['x'], py - v['y']) >= PITCH - 1e-9
-    for p in pads_L + pads_other + th:           # every pad, own net included: no via-in-pad
-        ok &= rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], px, py) - VIA_R >= C - 1e-9
-    for t in trk_all:
-        if t['net'] == net:
-            continue
-        ok &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], px, py) - t['width'] / 2 - VIA_R >= t['clr'] - 1e-9
+    # every pad, own net included: no via-in-pad -- except a same-net pad's centre for a via-in-pad span
+    other = 'Bottom' if L == 'Top' else 'Top'
+    ok = slot_mask(W['H'], W['H'].usable(L, net), np.ones(px.shape, dtype=bool), px, py, lf, vias,
+                   [t for t in trk_all if t['net'] != net], {L: pads_L, other: pads_other}, th, net)
     cand = np.flatnonzero(ok)
     n = 0
     for k in cand:

@@ -50,6 +50,9 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import hdi
+
 INPUTS = os.path.join(HERE, 'route_inputs.json')
 SETUP = os.path.join(HERE, 'ZuluSetup.pas')
 
@@ -60,7 +63,7 @@ LAND_CLEAR = 0.30
 EDGE = 0.30
 SOT_BODY = (3.10, 1.75)          # SC189 p23 SOT23-5 outline, MAX D along the pin rows and MAX E1
                                  # across them (both exclude mould flash)
-VIA_LAND, VIA_PITCH, C = 0.35, 0.44, 0.09
+VIA_LAND, VIA_PITCH, C = 0.35, 0.44, 0.09      # the through via; per-span values from tools/hdi.json (2026-09-29)
 EPS = 1e-6
 
 
@@ -207,6 +210,8 @@ def legality(inp, moved, placement):
                 if g < C - EPS:
                     problems.append('%s-%s %.3f from an existing Bottom %s track' % (r, p['pad'], g, t['net']))
         for v in moved['vias']:
+            if 'Bottom' not in hdi.span_of(v):           # a via meets a Bottom pad only if its span reaches Bottom
+                continue
             for p in by_ref[r]:
                 g = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - v['size'] / 2
                 if g < C - EPS:
@@ -215,13 +220,19 @@ def legality(inp, moved, placement):
 
 
 # ------------------------------------------------------------------ metrics
-def via_sites(moved, pad, reach=1.2, limit=6):
-    """greedy count of legal 0.20/0.35 via positions within `reach` of a pad's edge, 0.44 apart"""
+def via_sites(moved, pad, reach=1.2, limit=6, span=hdi.THROUGH):
+    """greedy count of legal via positions within `reach` of a pad's edge for one via span (default
+    the 0.20/0.35 through via, 0.44 apart): land / pitch from tools/hdi.json, only the pads on layers
+    of the span, the pitch to a via only if the spans share a layer"""
+    H = hdi.load(moved)
+    VIA_LAND, VIA_PITCH = H.land(span), H.pitch(span)
     cands = []
     step = 0.05
     nx = int((pad['sx'] / 2 + reach) / step)
     ny = int((pad['sy'] / 2 + reach) / step)
     top, bot, th = moved['top_pads'], moved['bottom_pads'], moved['th_pads']
+    top = top if 'Top' in span else []
+    bot = bot if 'Bottom' in span else []
     ol = moved['outline']
     for i in range(-nx, nx + 1):
         for j in range(-ny, ny + 1):
@@ -248,7 +259,8 @@ def via_sites(moved, pad, reach=1.2, limit=6):
                         break
             if not bad:
                 for v in moved['vias']:
-                    if math.hypot(x - v['x'], y - v['y']) < VIA_PITCH - EPS:
+                    need = H.pitch_between(span, hdi.span_of(v))
+                    if need is not None and math.hypot(x - v['x'], y - v['y']) < need - EPS:
                         bad = True
                         break
             if not bad:
@@ -323,9 +335,22 @@ def metrics(moved, roles):
 
 
 # ------------------------------------------------------------------ the block's own copper
+def via_label(v):
+    """the island label of a via: 'via@x,y' for a through via (as always), 'via@x,y|Top,L2-GND' for a
+    span, so tie_check / gnd_check can ask whether it reaches the plane"""
+    sp = hdi.span_of(v)
+    return 'via@%.3f,%.3f' % (v['x'], v['y']) + ('' if hdi.is_through(sp) else '|' + ','.join(sp))
+
+
+def label_span(label):
+    """the span a 'via@' label carries (through when it carries none)"""
+    return tuple(label.split('|', 1)[1].split(',')) if '|' in label else hdi.THROUGH
+
+
 def islands(moved, plan, net):
     """connected components of one net's copper: plan + existing tracks, vias, and its pads.
-    Returns (list of sets of 'ref-pad' / 'via' labels)."""
+    Returns (list of sets of 'ref-pad' / 'via' labels).  A via joins only the signal layers of
+    its span (2026-09-29, HDI; a record without a span is a through via)."""
     layers = ('Top', 'L3-SIG', 'L4-SIG', 'Bottom')
     segs = [t for t in plan.get('tracks', []) + moved['tracks'] if t['net'] == net]
     vias = [v for v in plan.get('vias', []) + moved['vias'] if v['net'] == net]
@@ -348,10 +373,12 @@ def islands(moved, plan, net):
     for t in segs:
         link(node(t['x1'], t['y1'], t['layer']), node(t['x2'], t['y2'], t['layer']))
     for k, v in enumerate(vias):
-        ids = [node(v['x'], v['y'], L) for L in layers]
+        ids = [node(v['x'], v['y'], L) for L in layers if L in hdi.span_of(v)]
+        if not ids:
+            continue
         for j in ids[1:]:
             link(ids[0], j)
-        label.setdefault(ids[0], set()).add('via@%.3f,%.3f' % (v['x'], v['y']))
+        label.setdefault(ids[0], set()).add(via_label(v))
     for p in pads:
         pls = layers if p['layer'] == 'Multi' else (p['layer'],)
         ids = [node(p['x'], p['y'], L) for L in pls]
@@ -712,7 +739,9 @@ def main():
             # the plan's copper as if already on the board: route_reach --inputs <this> with no plan
             # then asks whether every net -- the block's own power nets included -- can still leave
             out = copy.deepcopy(board)          # the plan's removals applied, then its additions
-            out['vias'] = out['vias'] + [dict(x=v['x'], y=v['y'], size=VIA_LAND, hole=0.20, net=v['net']) for v in plan.get('vias', [])]
+            H = hdi.load(board)
+            out['vias'] = out['vias'] + [dict(span=list(hdi.span_of(v)), x=v['x'], y=v['y'], size=H.land(hdi.span_of(v)),
+                                              hole=H.hole(hdi.span_of(v)), net=v['net']) for v in plan.get('vias', [])]
             out['tracks'] = out['tracks'] + [dict(t) for t in plan.get('tracks', [])]
         io.open(path, 'w', encoding='utf-8').write(json.dumps(out, indent=1))
         print('wrote', path, '(plan copper merged)' if out is not moved else '')

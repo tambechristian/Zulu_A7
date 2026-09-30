@@ -4,6 +4,7 @@ import io, json, os, sys, math
 TOOLS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, TOOLS)
 import route_emit as re
+import hdi
 
 # Stage 6 IS the stage-4b job -- the last 140 signal connections -- retried on the board that
 # stages 5 and 5b freed.  The first attempt (docs/stage4b_attempt.md) closed 92 of 140 and was never
@@ -11,21 +12,26 @@ import route_emit as re
 # board where VCC3V3's trunks blocked 370 mm2.  Those trunks are gone: L5 carries VCC3V3, the north
 # band has 669 lanes instead of 439 (L4 alone 0 -> 205) and the U1 east corridor 382 instead of 248.
 #
-# The board this measures against is commit a87c4af, PcbDoc md5 33aece2b03e9037466e366447c81a32d,
+# The board this was written against is commit a87c4af, PcbDoc md5 33aece2b03e9037466e366447c81a32d,
 # tools/route_inputs.json md5 1c187fd975046aaf8cc93216abb4d863: 1498 tracks, 371 vias, GND 341/133,
 # VCC3V3 168/86 (a plane net now -- tie_check.py, not signals_check, proves it complete).
-# Once a stage-6 block is placed, route_inputs.json describes the routed board; re-running then needs
+# Stage 8 was placed on 2026-09-29 (082f769 / 2a1d060): the board is now PcbDoc md5
+# 210a6f2b7669980309fb2472a125ad98, 1518 tracks, 377 vias, GND 345/134; tools/route_inputs.json md5
+# ac1f219f793e29662f0f6fc007ee23db once the 'span' field and the 'hdi' key were added (same day).
+# The guard accepts either board by its counts: the current one, and the stage-5b one for
 #     git show a87c4af:Zulu_Altrium/tools/route_inputs.json > PRE.json
-#     python tools/stage6/gen.py --inputs PRE.json
+#     python tools/stage8/gen.py --check --inputs PRE.json
 RI = sys.argv[sys.argv.index('--inputs') + 1] if '--inputs' in sys.argv else os.path.join(TOOLS, 'route_inputs.json')
+BOARDS = {(345, 134, 1518, 377): 'stage 8 (082f769)', (341, 133, 1498, 371): 'stage 5b (a87c4af)'}
 
 def load():
     inp = json.load(io.open(RI, encoding='utf-8'))
     ng, nv = sum(1 for t in inp['tracks'] if t['net'] == 'GND'), sum(1 for v in inp['vias'] if v['net'] == 'GND')
     nt, nvv = len(inp['tracks']), len(inp['vias'])
-    if (ng, nv, nt, nvv) != (341, 133, 1498, 371):
-        sys.exit('stage6/segw.py: %s is not the post-stage-5b board (it has %d tracks and %d vias, GND %d/%d; '
-                 'the stage-5b board has 1498 and 371, GND 341/133).  Pass --inputs with\n'
+    if (ng, nv, nt, nvv) not in BOARDS:
+        sys.exit('stage6/segw.py: %s is not a board this gate knows (it has %d tracks and %d vias, GND %d/%d; '
+                 'the stage-8 board has 1518 and 377, GND 345/134, the stage-5b board 1498 and 371, GND 341/133).  '
+                 'Pass --inputs with\n'
                  '    git show a87c4af:Zulu_Altrium/tools/route_inputs.json > PRE.json'
                  % (RI, nt, nvv, ng, nv))
     return inp
@@ -59,14 +65,15 @@ def maxwidth(inp, net, layer, seg, plan_tracks=(), plan_vias=(), report=False):
         v = 2.0 * (d - gap)
         if v < best:
             best = v; who = (tag, d, gap)
-    # existing vias
+    # existing vias -- only those whose span includes this layer (2026-09-29, HDI); plan vias at hdi's land
+    H = hdi.load(inp)
     for v in inp['vias']:
-        if v['net'] == net: continue
+        if v['net'] == net or layer not in hdi.span_of(v): continue
         d = re.seg_dist(seg, (v['x'], v['y'], v['x'], v['y'])) - v.get('size', 0.35)/2
         upd(d, gap_for(v['net']), 'via %s %.3f,%.3f' % (v['net'], v['x'], v['y']))
     for v in plan_vias:
-        if v['net'] == net: continue
-        d = re.seg_dist(seg, (v['x'], v['y'], v['x'], v['y'])) - 0.175
+        if v['net'] == net or layer not in hdi.span_of(v): continue
+        d = re.seg_dist(seg, (v['x'], v['y'], v['x'], v['y'])) - H.land(hdi.span_of(v)) / 2
         upd(d, gap_for(v['net']), 'planvia %s %.3f,%.3f' % (v['net'], v['x'], v['y']))
     # through-hole pads: every layer
     for p in inp['th_pads']:

@@ -7,13 +7,20 @@
     python tools/route_emit.py <plan.json> <BlockName> --write    also write the
         Place<BlockName> / Remove<BlockName> procedures into tools/ZuluSetup.pas
 
-The plan has the fan-out's schema: {"vias": [{net,x,y}], "tracks": [{net,x1,y1,
+The plan has the fan-out's schema: {"vias": [{net,x,y[,span]}], "tracks": [{net,x1,y1,
 x2,y2,layer,width}]}.  The check is independent of whatever produced the plan:
 
   every new via   : 0.20/0.35; >= clearance from every existing via, through-hole
                     pad, Top/Bottom pad it does not belong to (its land on the
                     outer layers, its 0.70 anti-pad is a plane matter); >= 0.44
                     centre-to-centre from every other via, new or old
+  span (2026-09-29, HDI): a via's optional "span" is its layer list, outer to inner
+                    (default through).  Its land/hole/pitch come from tools/hdi.json for
+                    that span; it meets only pads, tracks and keep-outs on layers of its
+                    span, another via only if the spans share a layer (pitch per pair),
+                    joins copper only on its layers, and may sit at the CENTRE of a same-net
+                    SMD pad on its outer layer when hdi.json allows via-in-pad for the span.
+                    Emitted with LowLayer/HighLayer from the span; through = FanVia as before.
   every new track : on Top / L3-SIG / L4-SIG / Bottom; width within its net's rule
                     on that layer; >= the layer clearance from every foreign object
                     on that layer -- existing tracks (segment-segment), vias and
@@ -36,11 +43,22 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import hdi
+
 INPUTS = os.path.join(HERE, 'route_inputs.json')
 SETUP = os.path.join(HERE, 'ZuluSetup.pas')
 LAYER_ENUM = {'Top': 'eTopLayer', 'L3-SIG': 'eMidLayer1', 'L4-SIG': 'eMidLayer2', 'Bottom': 'eBottomLayer'}
+# the whole stack, for a via's LowLayer / HighLayer (2026-09-29, HDI).  Every name is used verbatim in
+# the project's own scripts: eTopLayer/eMidLayer1/eMidLayer2/eBottomLayer in ZuluSetup.pas and
+# ZuluRules.pas, eInternalPlane1/eInternalPlane2 in ZuluPlaneNets.pas:52-53 (L2 = plane 1, L5 = plane 2:
+# line 226 reads the VCC3V3 polygon on eInternalPlane2).  eMultiLayer is in no .pas file: never emitted.
+VIA_LAYER_ENUM = {'Top': 'eTopLayer', 'L2-GND': 'eInternalPlane1', 'L3-SIG': 'eMidLayer1', 'L4-SIG': 'eMidLayer2',
+                  'L5-VCC3V3': 'eInternalPlane2', 'Bottom': 'eBottomLayer'}
+# the through via (the fallback stage2..5b modules import); per-span values come from tools/hdi.json
 VIA_LAND, VIA_HOLE, VIA_PITCH = 0.35, 0.20, 0.44
 EPS = 1e-6
+PAD_CENTRE = 1e-3         # a via-in-pad sits at the pad centre: within 1 um, like a track end on an anchor
 
 
 def seg_dist(a, b):
@@ -141,7 +159,8 @@ def width_ok(net, layer, w, inp):
 
 
 def _key_v(v):
-    return (v['net'], round(v['x'], 4), round(v['y'], 4))
+    # the span is part of a via's identity: a stack puts two or three vias at one x,y (2026-09-29)
+    return (v['net'], round(v['x'], 4), round(v['y'], 4), hdi.span_of(v))
 
 
 def _key_t(t):
@@ -176,7 +195,7 @@ def power_balls_on_vias(inp, plan, u1_lands):
     def reaches(vias, tracks, ball):
         net = ball['net']
         segs = [t for t in tracks if t['net'] == net and t['layer'] == 'Top']
-        vs = [v for v in vias if v['net'] == net]
+        vs = [v for v in vias if v['net'] == net and 'Top' in hdi.span_of(v)]     # a ball is on a via that reaches Top
         pts = [(ball['x'], ball['y'])]
         for t in segs:
             pts += [(t['x1'], t['y1']), (t['x2'], t['y2'])]
@@ -211,7 +230,7 @@ def power_balls_on_vias(inp, plan, u1_lands):
     if not plan.get('remove'):
         return []
     after, _ = apply_removals(inp, plan)
-    va = after['vias'] + [dict(x=v['x'], y=v['y'], net=v['net']) for v in plan.get('vias', [])]
+    va = after['vias'] + [dict(x=v['x'], y=v['y'], net=v['net'], span=v.get('span')) for v in plan.get('vias', [])]
     ta = after['tracks'] + plan.get('tracks', [])
     lost = []
     for b in u1_lands:
@@ -232,37 +251,66 @@ def check(inp, plan):
     smd = {'Top': inp['top_pads'], 'Bottom': inp['bottom_pads']}
     nv, nt = plan.get('vias', []), plan.get('tracks', [])
     known_nets = set(inp['nets'])
-    # vias
+    H = hdi.load(inp)
+    # vias.  Each has a span (default through): its land, hole and pitch come from tools/hdi.json for
+    # that span; it meets only the pads, tracks and keep-outs on layers in its span, and another via
+    # only if the two spans share a layer (2026-09-29, HDI).
     for i, v in enumerate(nv):
         c = 0.10 if v['net'] in known_nets else 0.09
+        sp = hdi.span_of(v)
+        if not H.is_allowed(sp) and not hdi.is_through(sp):
+            problems.append('via %d (%s) span %s is not allowed by tools/hdi.json' % (i, v['net'], '/'.join(sp)))
+            continue
+        # a span with one signal layer is a plane tie: it must land on a plane of its own net, or it
+        # is a voided dead end that connects nothing (the raster gates exclude it through hdi.usable)
+        if len(hdi.signal_layers(sp)) < 2 and not any(H.plane_nets.get(P) == v['net'] for P in sp):
+            problems.append('via %d (%s) span %s reaches one signal layer and lands on a plane of another net'
+                            % (i, v['net'], '/'.join(sp)))
+        land = H.land(sp)
         for w in vias_old:
+            need = H.pitch_between(sp, hdi.span_of(w))
+            if need is None or H.stacked(v, sp, w, hdi.span_of(w)):
+                continue
             d = math.hypot(v['x'] - w['x'], v['y'] - w['y'])
-            if d < VIA_PITCH - EPS:
+            if d < need - EPS:
                 problems.append('via %d (%s) %.4f from existing via (%s) at %.3f,%.3f' % (i, v['net'], d, w['net'], w['x'], w['y']))
         for j, w in enumerate(nv):
-            if j > i and math.hypot(v['x'] - w['x'], v['y'] - w['y']) < VIA_PITCH - EPS:
+            if j <= i:
+                continue
+            need = H.pitch_between(sp, hdi.span_of(w))
+            if need is None or H.stacked(v, sp, w, hdi.span_of(w)):
+                continue
+            if math.hypot(v['x'] - w['x'], v['y'] - w['y']) < need - EPS:
                 problems.append('vias %d and %d %.4f apart' % (i, j, math.hypot(v['x'] - w['x'], v['y'] - w['y'])))
         for p in th:
             if p['net'] == v['net']:
                 continue
-            d = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - VIA_LAND / 2
+            d = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - land / 2
             if d < c - EPS:
                 problems.append('via %d (%s) %.4f from TH pad %s-%s (%s)' % (i, v['net'], d, p['ref'], p['pad'], p['net']))
         for L in ('Top', 'Bottom'):
+            if L not in sp:
+                continue
             for p in smd[L]:
                 # no via-in-pad and no via touching a pad, whatever its net: a tented via in or at
-                # an SMD pad wicks solder (2026-09-15, power feeds)
-                d = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - VIA_LAND / 2
+                # an SMD pad wicks solder (2026-09-15, power feeds).  Waived for ONE pad only: a
+                # same-net pad on the outer layer of a span hdi.json marks via_in_pad, with the via
+                # at the pad's centre.
+                d = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - land / 2
                 if d < 0.09 - EPS:
+                    if (H.via_in_pad(sp) and p['net'] == v['net'] and L in H.outer(sp) and
+                            abs(v['x'] - p['x']) < PAD_CENTRE and abs(v['y'] - p['y']) < PAD_CENTRE):
+                        continue
                     problems.append('via %d (%s) %.4f from %s pad %s-%s (%s)' % (i, v['net'], d, L, p['ref'], p['pad'], p['net']))
         for t in tracks_old:
-            if t['net'] == v['net']:
+            if t['net'] == v['net'] or t['layer'] not in sp:
                 continue
-            d = seg_dist((t['x1'], t['y1'], t['x2'], t['y2']), (v['x'], v['y'], v['x'], v['y'])) - t['width'] / 2 - VIA_LAND / 2
+            d = seg_dist((t['x1'], t['y1'], t['x2'], t['y2']), (v['x'], v['y'], v['x'], v['y'])) - t['width'] / 2 - land / 2
             if d < clearance_for(t['net'], t['layer'], inp) - EPS:
                 problems.append('via %d (%s) %.4f from existing %s track (%s)' % (i, v['net'], d, t['layer'], t['net']))
     # tracks
-    allv = vias_old + [dict(x=v['x'], y=v['y'], size=VIA_LAND, net=v['net']) for v in nv]
+    allv = vias_old + [dict(x=v['x'], y=v['y'], size=H.land(hdi.span_of(v)), net=v['net'], span=list(hdi.span_of(v)))
+                       for v in nv if H.is_allowed(hdi.span_of(v)) or hdi.is_through(hdi.span_of(v))]
     for i, t in enumerate(nt):
         if t['layer'] not in LAYER_ENUM:
             problems.append('track %d layer %r' % (i, t['layer']))
@@ -272,7 +320,7 @@ def check(inp, plan):
         c = clearance_for(t['net'], t['layer'], inp)
         seg = (t['x1'], t['y1'], t['x2'], t['y2'])
         for w in allv:
-            if w['net'] == t['net']:
+            if w['net'] == t['net'] or t['layer'] not in hdi.span_of(w):     # a via blocks only the layers of its span
                 continue
             # BOTH nets' clearances, as the track-vs-track loop below already did.  Until 2026-09-28
             # this used the track's own `c` alone, so a non-SDRAM track passing an SDRAM via on L3/L4
@@ -318,11 +366,17 @@ def check(inp, plan):
     edge = inp.get('edge_clearance', 0.25)
     ol = inp.get('outline')
     for i, v in enumerate(nv):
+        sp = hdi.span_of(v)
+        if not H.is_allowed(sp) and not hdi.is_through(sp):
+            continue                                    # reported above
+        land = H.land(sp)
         for k in inp.get('keepouts', []):
-            d = pt_rect(v['x'], v['y'], (k['x0'] + k['x1']) / 2, (k['y0'] + k['y1']) / 2, k['x1'] - k['x0'], k['y1'] - k['y0']) - VIA_LAND / 2
+            if k['layer'] not in sp:
+                continue
+            d = pt_rect(v['x'], v['y'], (k['x0'] + k['x1']) / 2, (k['y0'] + k['y1']) / 2, k['x1'] - k['x0'], k['y1'] - k['y0']) - land / 2
             if d < 0.09 - EPS:
                 problems.append('via %d (%s) %.4f from the %s keep-out fill' % (i, v['net'], d, k['layer']))
-        if ol and min(v['x'] - ol['x0'], ol['x1'] - v['x'], v['y'] - ol['y0'], ol['y1'] - v['y']) - VIA_LAND / 2 < edge - EPS:
+        if ol and min(v['x'] - ol['x0'], ol['x1'] - v['x'], v['y'] - ol['y0'], ol['y1'] - v['y']) - land / 2 < edge - EPS:
             problems.append('via %d (%s) closer than %.2f mm to the board edge' % (i, v['net'], edge))
     for i, t in enumerate(nt):
         seg = (t['x1'], t['y1'], t['x2'], t['y2'])
@@ -338,14 +392,19 @@ def check(inp, plan):
             if m < edge - EPS:
                 problems.append('track %d (%s, %s) %.4f from the board edge (min %.2f)' % (i, t['net'], t['layer'], m, edge))
     # connectivity of new track ends
-    anchors = [(v['x'], v['y'], v['net'], 'via') for v in allv]
-    anchors += [(p['x'], p['y'], p['net'], 'thpad') for p in th]
+    # an anchor's fifth field is the layers it exists on: a track end lands on a via only on a layer
+    # in its span, on an SMD pad, ball or stub end only on that pad's / stub's layer (an inner-layer
+    # track ending at a via-in-pad centre is joined by the VIA, and only if its span reaches that
+    # layer); None = any layer (TH pads, and via ends of an older inputs file without spans)
+    anchors = [(v['x'], v['y'], v['net'], 'via', hdi.span_of(v)) for v in allv]
+    anchors += [(p['x'], p['y'], p['net'], 'thpad', None) for p in th]
     for L in ('Top', 'Bottom'):
-        anchors += [(p['x'], p['y'], p['net'], L + 'pad') for p in smd[L]]
+        anchors += [(p['x'], p['y'], p['net'], L + 'pad', (L,)) for p in smd[L]]
     for n, v in inp['nets'].items():
         for e in v['u1']:
             if e.get('x') is not None:
-                anchors.append((e['x'], e['y'], n, e['kind']))
+                on = tuple(e['span']) if e.get('span') else ((e['layer'],) if e.get('layer') else None)
+                anchors.append((e['x'], e['y'], n, e['kind'], on))
     ends = {}
     for t in nt + tracks_old:
         for (x, y) in ((t['x1'], t['y1']), (t['x2'], t['y2'])):
@@ -356,7 +415,8 @@ def check(inp, plan):
             continue
         for (x, y) in ((t['x1'], t['y1']), (t['x2'], t['y2'])):
             ok = ends.get((t['net'], t['layer'], round(x, 4), round(y, 4)), 0) >= 2
-            ok = ok or any(a[2] == t['net'] and math.hypot(a[0] - x, a[1] - y) < 1e-3 for a in anchors)
+            ok = ok or any(a[2] == t['net'] and math.hypot(a[0] - x, a[1] - y) < 1e-3 and (a[4] is None or t['layer'] in a[4])
+                           for a in anchors)
             if not ok:
                 problems.append('track %d (%s, %s) end %.4f,%.4f connects to nothing of its net' % (i, t['net'], t['layer'], x, y))
     return problems
@@ -387,7 +447,7 @@ def completeness(inp, plan, tol=0.0015):
         for t in segs:
             link(node(t['x1'], t['y1'], t['layer']), node(t['x2'], t['y2'], t['layer']))
         for w in vias:
-            ids = [node(w['x'], w['y'], L) for L in layers]
+            ids = [node(w['x'], w['y'], L) for L in layers if L in hdi.span_of(w)]   # only the layers the via spans
             for j in ids[1:]:
                 link(ids[0], j)
         dest = v.get('pads') or [dict(v['u3'][0], layer='Bottom')]
@@ -430,8 +490,16 @@ def _pas(net):
 
 
 def _via_match(vs, var='V'):
-    """DelphiScript condition matching any of the vias vs (net name + centre within 1 um)"""
-    conds = ["((nm = '%s') And (Abs(x - %.4f) < 0.001) And (Abs(y - %.4f) < 0.001))" % (_pas(v['net']), v['x'], v['y']) for v in vs]
+    """DelphiScript condition matching any of the vias vs (net name + centre within 1 um; for a
+    non-through span also its LowLayer / HighLayer, so a Remove takes one member of a stack, not all).
+    A through via matches as it always did."""
+    conds = []
+    for v in vs:
+        sp = hdi.span_of(v)
+        c = "((nm = '%s') And (Abs(x - %.4f) < 0.001) And (Abs(y - %.4f) < 0.001))" % (_pas(v['net']), v['x'], v['y'])
+        if not hdi.is_through(sp):
+            c = "(%s And (%s.LowLayer = %s) And (%s.HighLayer = %s))" % (c, var, VIA_LAYER_ENUM[sp[0]], var, VIA_LAYER_ENUM[sp[-1]])
+        conds.append(c)
     return conds
 
 
@@ -475,7 +543,8 @@ def _collect(L, vias, tracks, listvar):
         L += ['        T := It.NextPCBObject;', '    End;', '    Brd.BoardIterator_Destroy(It);']
 
 
-def _add(L, vias, tracks):
+def _add(L, vias, tracks, H=None):
+    H = H or hdi.load()
     nets = sorted({v['net'] for v in vias} | {t['net'] for t in tracks})
     for net in nets:
         q = _pas(net)
@@ -484,7 +553,17 @@ def _add(L, vias, tracks):
         L.append('        Begin')
         for v in vias:
             if v['net'] == net:
-                L.append('            FanVia(N, %.4f, %.4f);' % (v['x'], v['y']))
+                sp = hdi.span_of(v)
+                if hdi.is_through(sp):
+                    L.append('            FanVia(N, %.4f, %.4f);' % (v['x'], v['y']))
+                else:
+                    # FanVia (ZuluSetup.pas) hard-codes 0.35 / 0.20 / eTopLayer..eBottomLayer and is not
+                    # edited; any other span is built inline from the same identifiers, with V from VARS
+                    L += ['            V := PCBServer.PCBObjectFactory(eViaObject, eNoDimension, eCreate_Default);',
+                          '            V.X := MMsToCoord(%.4f); V.Y := MMsToCoord(%.4f);' % (v['x'], v['y']),
+                          '            V.Size := MMsToCoord(%.4f); V.HoleSize := MMsToCoord(%.4f);' % (H.land(sp), H.hole(sp)),
+                          '            V.LowLayer := %s; V.HighLayer := %s;' % (VIA_LAYER_ENUM[sp[0]], VIA_LAYER_ENUM[sp[-1]]),
+                          '            V.Net := N; Brd.AddPCBObject(V);']
         for t in tracks:
             if t['net'] == net:
                 L.append('            FanTrk(N, %s, %.4f, %.4f, %.4f, %.4f, %.4f);' % (
@@ -509,6 +588,7 @@ def emit(plan, name, inp=None):
         byk = {_key_t(t): t for t in inp['tracks']}
         rt = [dict(t, width=byk[_key_t(t)]['width']) for t in rt]
     nv, nt = plan.get('vias', []), plan.get('tracks', [])
+    H = hdi.load(inp)
 
     L = [B, '', 'Procedure Place%s;' % name] + VARS + ['Begin', '    Brd := BoardOrNil;', '    If Brd = Nil Then Exit;',
                                                       "    Missing := '';", '    Kill := TInterfaceList.Create;']
@@ -519,7 +599,7 @@ def emit(plan, name, inp=None):
               "        ShowMessage('Zulu A7 - %s: found ' + IntToStr(Kill.Count) + ' of the %d objects it must replace. Nothing changed.');" % (name, len(rv) + len(rt)),
               '        Kill.Free;', '        Exit;', '    End;']
     L += ['    PCBServer.PreProcess;', '    Try', '        For i := 0 To Kill.Count - 1 Do', '            Brd.RemovePCBObject(Kill.Items[i]);']
-    _add(L, nv, nt)
+    _add(L, nv, nt, H)
     L += ['    Finally', '        PCBServer.PostProcess;', '    End;', '    Kill.Free;', '    Brd.ViewManager_FullUpdate;',
           "    If Missing <> '' Then",
           "        ShowMessage('Zulu A7 - %s placed, but these nets were NOT found:' + Missing + #13#10 + 'Their primitives were skipped. Do not save until this is understood.')" % name,
@@ -532,7 +612,7 @@ def emit(plan, name, inp=None):
     L += ['    PCBServer.PreProcess;', '    Try', '        For i := 0 To Kill.Count - 1 Do', '            Brd.RemovePCBObject(Kill.Items[i]);']
     if rv or rt:
         L.append('        { put back the copper Place%s removed }' % name)
-        _add(L, rv, rt)
+        _add(L, rv, rt, H)
     L += ['    Finally', '        PCBServer.PostProcess;', '    End;', '    Brd.ViewManager_FullUpdate;',
           "    ShowMessage('Zulu A7 - removed ' + IntToStr(Kill.Count) + ' %s object(s) (expected %d)%s. Press Ctrl+S.');"
           % (name, len(nv) + len(nt), (' and restored %d' % (len(rv) + len(rt))) if (rv or rt) else ''),

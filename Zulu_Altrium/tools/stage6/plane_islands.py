@@ -9,6 +9,13 @@ anti-pad around every hole that is NOT on the plane's net: diameter = hole + 2 x
 and PlaneClearance is 9.8425 mil = 0.25 mm, so a 0.20 mm via hole punches 0.70 mm.  Holes ON the
 plane net connect Direct (rule PlaneConnect_Vias) and punch nothing.
 
+SPANS (2026-09-29, HDI): a via voids the plane only if the plane layer is IN its span -- passed
+through, or landed on -- and the via's net is not the plane's (its own net connects Direct, exactly
+as a through via of the plane net does today).  A via whose span does not touch the plane makes no
+void and is not expected to land on the island.  The void radius comes from tools/hdi.json for the
+span ('antipad' diameter, else hole/2 + PlaneClearance).  --plane L2 / L5 names the layer
+(L2-GND / L5-VCC3V3); through-only inputs give exactly the numbers above.
+
 The plane is rasterised at 0.02 mm and labelled **4-connected**.  4 and not 8: two plane regions that
 meet at a single diagonal pixel corner touch at a point of zero width and conduct nothing, and an
 8-connected labelling calls them one island.  This gate existed to find exactly that failure, and it
@@ -36,12 +43,15 @@ sys.path.insert(0, TOOLS)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import merge as M
 
+import hdi
+
 PULLBACK = 0.508
 PLANE_CLR = 0.25
 STEP = 0.02
+PLANE_LAYER = {'L2': 'L2-GND', 'L5': 'L5-VCC3V3'}
 
 
-def analyse(inp, plane_net, extra_vias=()):
+def analyse(inp, plane_net, extra_vias=(), plane_layer=None):
     o = inp['outline']
     x0, y0 = o['x0'] + PULLBACK, o['y0'] + PULLBACK
     x1, y1 = o['x1'] - PULLBACK, o['y1'] - PULLBACK
@@ -49,8 +59,15 @@ def analyse(inp, plane_net, extra_vias=()):
     ny = int(round((y1 - y0) / STEP)) + 1
     X, Y = np.meshgrid(x0 + np.arange(nx) * STEP, y0 + np.arange(ny) * STEP, indexing='ij')
     copper = np.ones((nx, ny), bool)
-    holes = [(v['x'], v['y'], v.get('hole', 0.2) / 2.0 + PLANE_CLR)
-             for v in list(inp['vias']) + list(extra_vias) if v.get('net') != plane_net]
+    H = hdi.load(inp)
+    holes = []
+    for v in list(inp['vias']) + list(extra_vias):
+        sp = hdi.span_of(v)
+        if plane_layer is not None and plane_layer not in sp:
+            continue                        # never touches this plane: no void
+        if v.get('net') == plane_net:
+            continue                        # its own plane: connects Direct
+        holes.append((v['x'], v['y'], H.antipad_r(sp, v.get('hole', H.hole(sp)), PLANE_CLR)))
     holes += [(p['x'], p['y'], p['hole'] / 2.0 + PLANE_CLR)
               for p in inp['th_pads'] if p.get('net') != plane_net]
     for hx, hy, r in holes:
@@ -85,8 +102,11 @@ def main():
         if missing:
             print('REMOVALS DO NOT MATCH THE BOARD: %s' % '; '.join(missing))
             return 2
-    extra = [dict(x=v['x'], y=v['y'], hole=v.get('hole', 0.2), net=v.get('net')) for v in plan['vias']]
-    r = analyse(inp, net, extra)
+    H = hdi.load(inp)
+    plane_layer = PLANE_LAYER.get(plane)
+    extra = [dict(x=v['x'], y=v['y'], hole=v.get('hole', H.hole(hdi.span_of(v))), net=v.get('net'), span=list(hdi.span_of(v)))
+             for v in plan['vias']]
+    r = analyse(inp, net, extra, plane_layer)
     allp = inp['top_pads'] + inp['bottom_pads'] + inp['th_pads']
     pads = [p for p in allp if p.get('net') == net]
     main_isl = int(r['order'][0]) + 1
@@ -114,7 +134,8 @@ def main():
           % (len(pads) - len(bad), len(pads), net))
 
     # a pad reaches the plane through a BARREL, not by lying over copper: check every via of the net
-    conn = [v for v in list(inp['vias']) + extra if v.get('net') == net]
+    # whose span touches this plane
+    conn = [v for v in list(inp['vias']) + extra if v.get('net') == net and (plane_layer is None or plane_layer in hdi.span_of(v))]
     offv = []
     for v in conn:
         i = int(round((v['x'] - r['x0']) / STEP)); j = int(round((v['y'] - r['y0']) / STEP))

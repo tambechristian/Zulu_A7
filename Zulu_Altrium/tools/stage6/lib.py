@@ -8,6 +8,7 @@ import io, json, math, os, sys, copy
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import segw
+import hdi
 
 INP0 = segw.load()
 GRID = 0.005
@@ -26,7 +27,7 @@ class Plan(object):
         self.BASE_VIAS = [dict(v) for bp in base_plans for v in bp.get('vias', [])]
         self.BASE_TRACKS = [dict(t) for bp in base_plans for t in bp.get('tracks', [])]
         inp = copy.deepcopy(INP0)
-        rk = lambda v: (v['net'], round(v['x'], 4), round(v['y'], 4))
+        rk = lambda v: (v['net'], round(v['x'], 4), round(v['y'], 4), hdi.span_of(v))     # the span is part of a via's identity
         rv = {rk(v) for v in self.remove.get('vias', []) + self.BASE_REMOVE['vias']}
         tk = lambda t: (t['net'], t['layer']) + tuple(sorted(((round(t['x1'], 4), round(t['y1'], 4)), (round(t['x2'], 4), round(t['y2'], 4)))))
         rt = {tk(t) for t in self.remove.get('tracks', []) + self.BASE_REMOVE['tracks']}
@@ -36,7 +37,7 @@ class Plan(object):
         assert n0v - len(inp['vias']) == len(rv) and n0t - len(inp['tracks']) == len(rt), 'removal mismatch'
         self.INP = inp
         for v in replace_vias:
-            self.via(v['net'], v['x'], v['y'], check=False)
+            self.via(v['net'], v['x'], v['y'], check=False, span=v.get('span'))
         for t in replace_tracks:
             self.TRACKS.append(dict(t))
 
@@ -52,8 +53,13 @@ class Plan(object):
             return w['inner_min'], w['inner_max']
         return w['inner4_min'], w['inner4_max']
 
-    def via(self, net, x, y, check=True):
-        self.VIAS.append(dict(net=net, x=round(x, 4), y=round(y, 4)))
+    def via(self, net, x, y, check=True, span=None):
+        """span: the via's layer list, outer to inner (tools/hdi.json); None = through, and then the
+        record has no 'span' key, so every plan written before 2026-09-29 rebuilds byte for byte"""
+        v = dict(net=net, x=round(x, 4), y=round(y, 4))
+        if span is not None:
+            v['span'] = list(span)
+        self.VIAS.append(v)
 
     def maxw(self, net, layer, seg):
         return segw.maxwidth(self.INP, net, layer, seg, plan_tracks=self.BASE_TRACKS + self.TRACKS,

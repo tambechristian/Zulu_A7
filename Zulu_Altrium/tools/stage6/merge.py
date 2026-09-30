@@ -4,7 +4,9 @@
 Exact duplicates (same net, layer, end points and width; same net and centre for vias) are kept once
 and reported.  'remove' keys are carried through as their union (stage 4b allows the removals the user
 approved; route_emit checks each one matches exactly one existing primitive)."""
-import io, json, sys
+import io, json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import hdi
 
 
 def key_t(t):
@@ -13,7 +15,16 @@ def key_t(t):
 
 
 def key_v(v):
-    return (v['net'], round(v['x'], 4), round(v['y'], 4))
+    return (v['net'], round(v['x'], 4), round(v['y'], 4), hdi.span_of(v))     # a stack has several vias at one x,y
+
+
+def _via(v):
+    """the via record a merged plan carries: net, x, y, and its span only when it has one (a through
+    plan stays byte-identical)"""
+    out = dict(net=v['net'], x=v['x'], y=v['y'])
+    if v.get('span'):
+        out['span'] = list(v['span'])
+    return out
 
 
 def merge(paths):
@@ -25,7 +36,7 @@ def merge(paths):
         for v in rem.get('vias', []):
             k = key_v(v)
             if k not in rvs:
-                rvs.add(k); rvias.append(dict(net=v['net'], x=v['x'], y=v['y']))
+                rvs.add(k); rvias.append(_via(v))
         for t in rem.get('tracks', []):
             k = key_t(t)
             if k not in rts:
@@ -35,7 +46,7 @@ def merge(paths):
             if k in sv:
                 dup += 1
                 continue
-            sv.add(k); vias.append(dict(net=v['net'], x=v['x'], y=v['y']))
+            sv.add(k); vias.append(_via(v))
         for t in d.get('tracks', []):
             k = key_t(t)
             if k in st:

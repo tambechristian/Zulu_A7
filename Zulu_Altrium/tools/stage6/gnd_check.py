@@ -13,6 +13,7 @@ TOOLS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, TOOLS); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import block_place as BP
 import merge as M
+import hdi
 
 
 def main():
@@ -36,17 +37,20 @@ def main():
             return 2
     isl = BP.islands(inp, plan, 'GND')
     th = {p['ref'] + '-' + str(p['pad']) for p in inp['th_pads'] if p.get('net') == 'GND'}
+    # a via ties only if its span reaches the GND plane (L2-GND, hdi.json plane_nets; 2026-09-29, HDI)
+    plane_layer = hdi.load(inp).plane_of.get('GND')
+    reaches = lambda v: plane_layer is None or plane_layer in hdi.span_of(v)
     tied = set()
     for s in isl:
         names = {str(x) for x in s}
-        if any(n.startswith('via@') for n in names) or (names & th):
+        if any(n.startswith('via@') and (plane_layer is None or plane_layer in BP.label_span(n)) for n in names) or (names & th):
             tied |= names
     smd = [(p['ref'] + '-' + str(p['pad']), L, p) for k, L in (('top_pads', 'Top'), ('bottom_pads', 'Bottom')) for p in inp[k] if p.get('net') == 'GND']
     untied = [(nm, L, p) for nm, L, p in smd if nm not in tied]
     print('GND SMD pads %d, tied %d, untied %d (board + %d plan file(s): %d vias, %d tracks)' % (
         len(smd), len(smd) - len(untied), len(untied), len(paths), len(plan['vias']), len(plan['tracks'])))
     # tie length: the plan track(s) that end inside the pad, to the nearest plan/board via or TH pad along them
-    vias = [(v['x'], v['y']) for v in plan['vias']] + [(v['x'], v['y']) for v in inp['vias'] if v['net'] == 'GND']
+    vias = [(v['x'], v['y']) for v in plan['vias'] if reaches(v)] + [(v['x'], v['y']) for v in inp['vias'] if v['net'] == 'GND' and reaches(v)]
     ths = [(p['x'], p['y']) for p in inp['th_pads'] if p.get('net') == 'GND']
     long = []
     for nm, L, p in smd:

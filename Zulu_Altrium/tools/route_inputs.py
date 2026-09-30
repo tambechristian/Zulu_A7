@@ -10,7 +10,9 @@ WHAT IT WRITES
               whose free end sits 0.10 mm outside the land field (ring 1), or
               the ball itself (ring 0, nothing placed) -- plus the net's class
               and its rule set (width, clearance on L3/L4)
-  vias        every via on the board (107): x, y, size, hole, net
+  vias        every via on the board (377): span (layer names in stack order, Top first), x, y,
+              size, hole, net -- the via span parameters themselves stay in tools/hdi.json (tools/hdi.py
+              reads it; nothing is copied here, so an edit to hdi.json is in force at once)
   tracks      every track on Top / L3-SIG / L4-SIG / Bottom: net, layer, ends, width
   th_pads     every through-hole pad (copper on every layer): x, y, size, net
   bottom_pads every Bottom SMD pad inside the region (obstacles for Bottom stubs)
@@ -21,7 +23,7 @@ WHAT IT WRITES
 
 Pad rotation is the double at byte 52 of the pad body; a 90/270 pad swaps its
 size axes on the board.  Via records: layer@0, net int16@3, x@13, y@17,
-size@21, hole@25.  Track records: layer@0, net@3, x1@13 y1@17 x2@21 y2@25
+size@21, hole@25, start layer id@29, end layer id@30.  Track records: layer@0, net@3, x1@13 y1@17 x2@21 y2@25
 width@29.  Coordinates in mm on the board origin, y up.
 """
 import io
@@ -36,7 +38,13 @@ PCB = os.path.join(HERE, '..', 'Imported zulu_a7.PrjPcb', 'zulu_a7.PcbDoc')
 FAN = os.path.join(HERE, 'fanout_plan.json')
 OUT = os.path.join(HERE, 'route_inputs.json')
 U = 2.54e-6
-LAYER = {1: 'Top', 2: 'L3-SIG', 3: 'L4-SIG', 32: 'Bottom', 74: 'Multi'}
+LAYER = {1: 'Top', 2: 'L3-SIG', 3: 'L4-SIG', 32: 'Bottom', 74: 'Multi', 39: 'L2-GND', 40: 'L5-VCC3V3'}
+# 2026-09-29 (HDI): the Board6 layer chain LAYER1NEXT=39 -> 2 -> 3 -> 40 -> 32, i.e. the order a via's
+# start/end layer bytes (body [29] and [30], the same numeric ids as above) are sorted by.  A via's
+# span is STACK[idx(low) : idx(high) + 1]; every via on the board today reads (1, 32) = through.
+STACK = ['Top', 'L2-GND', 'L3-SIG', 'L4-SIG', 'L5-VCC3V3', 'Bottom']
+PLANE_IDS = (39, 40)                 # never a track or fill layer: excluded explicitly below
+HDI = os.path.join(HERE, 'hdi.json')
 # The whole board.  2026-09-15: this was x 14..45, y 3.5..21, which silently dropped U1's
 # lands east of x 45 and U4's east pads -- the checker could not see them, and a router
 # (astar) had to synthesise them itself.  Nothing is clipped now.
@@ -184,7 +192,11 @@ def main():
         if t != 3:
             continue
         net = struct.unpack('<h', b[3:5])[0]
-        vias.append(dict(x=round(struct.unpack('<i', b[13:17])[0] * U, 4), y=round(struct.unpack('<i', b[17:21])[0] * U, 4),
+        lo, hi = b[29], b[30]                # start / end layer ids (1 = Top, 32 = Bottom on every via today)
+        assert lo in LAYER and hi in LAYER and lo != 74 and hi != 74, ('via layer bytes', lo, hi)
+        i0, i1 = sorted((STACK.index(LAYER[lo]), STACK.index(LAYER[hi])))
+        vias.append(dict(span=STACK[i0:i1 + 1],
+                         x=round(struct.unpack('<i', b[13:17])[0] * U, 4), y=round(struct.unpack('<i', b[17:21])[0] * U, 4),
                          size=round(struct.unpack('<i', b[21:25])[0] * U, 4), hole=round(struct.unpack('<i', b[25:29])[0] * U, 4),
                          net=nets.get(net) if net >= 0 else None))
 
@@ -197,7 +209,7 @@ def main():
         ln = struct.unpack('<I', d[i + 1:i + 5])[0]
         b = d[i + 5:i + 5 + ln]
         i += 5 + ln
-        if t != 4 or b[0] not in LAYER or b[0] == 74:
+        if t != 4 or b[0] not in LAYER or b[0] == 74 or b[0] in PLANE_IDS:
             continue
         net = struct.unpack('<h', b[3:5])[0]
         tracks.append(dict(layer=LAYER[b[0]], net=nets.get(net) if net >= 0 else None,
@@ -216,7 +228,7 @@ def main():
         ln = struct.unpack('<I', fd[j + 1:j + 5])[0]
         b = fd[j + 5:j + 5 + ln]
         j += 5 + ln
-        if b and b[0] in LAYER and b[0] != 74:
+        if b and b[0] in LAYER and b[0] != 74 and b[0] not in PLANE_IDS:
             xs = sorted((struct.unpack('<i', b[13:17])[0] * U, struct.unpack('<i', b[21:25])[0] * U))
             ys = sorted((struct.unpack('<i', b[17:21])[0] * U, struct.unpack('<i', b[25:29])[0] * U))
             keepouts.append(dict(layer=LAYER[b[0]], x0=round(xs[0], 4), x1=round(xs[1], 4), y0=round(ys[0], 4), y1=round(ys[1], 4),
@@ -262,7 +274,7 @@ def main():
             e = dict(ball=b['pad'], ring=ball_action.get(b['pad'], {}).get('ring'), action=act, ball_x=b['x'], ball_y=b['y'])
             if act == 'dogbone-in' or act == 'dogbone-out':
                 v = [w for w in vias if w['net'] == n and abs(w['x'] - b['x']) <= 1.6 and abs(w['y'] - b['y']) <= 1.6]
-                e.update(kind='via', x=v[0]['x'], y=v[0]['y']) if v else e.update(kind='via-missing')
+                e.update(kind='via', span=v[0]['span'], x=v[0]['x'], y=v[0]['y']) if v else e.update(kind='via-missing')
             elif act == 'gap':
                 # the fan-out stub's free end, taken from tools/fanout_plan.json -- NOT from the board's
                 # tracks, where later routing adds Top copper of the same net outside the land field
@@ -320,6 +332,15 @@ def main():
     print('vias %d, tracks %d (%s), th pads in region %d, bottom pads %d, top pads %d' % (
         len(vias), len(tracks), {L: sum(1 for t in tracks if t['layer'] == L) for L in ('Top', 'L3-SIG', 'L4-SIG', 'Bottom')},
         len(out['th_pads']), len(out['bottom_pads']), len(out['top_pads'])))
+    # the spans the board actually has, against the model in tools/hdi.json (a span the model does
+    # not list is written all the same -- the board is the truth -- but every gate will refuse it)
+    listed = {tuple(s['span']) for s in json.load(io.open(HDI, encoding='utf-8'))['spans']}
+    listed |= {s[::-1] for s in listed}
+    by_span = {}
+    for v in vias:
+        by_span['/'.join(v['span'])] = by_span.get('/'.join(v['span']), 0) + 1
+    unlisted = sorted(k for k in by_span if tuple(k.split('/')) not in listed)
+    print('via spans: %s%s' % (by_span, ('; NOT LISTED in tools/hdi.json: %s' % ', '.join(unlisted)) if unlisted else ''))
     print('U3: pad rows y %s, x %.4f..%.4f, pad %.3f x %.3f, east copper %.4f, pocket y %.4f..%.4f' % (
         out['u3']['rows_y'], out['u3']['x_min'], out['u3']['x_max'], out['u3']['pad_sx'], out['u3']['pad_sy'], out['u3']['east_copper'],
         out['u3']['pocket']['y0'], out['u3']['pocket']['y1']))

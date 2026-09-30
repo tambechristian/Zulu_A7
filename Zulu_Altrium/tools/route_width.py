@@ -30,6 +30,7 @@ from scipy import ndimage
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import route_reach as rr
+import hdi
 
 RI = os.path.join(HERE, 'route_inputs.json')
 LAY = rr.LAYERS
@@ -40,7 +41,15 @@ class World(object):
         self.inp = inp
         self.R = rr.Raster(inp['outline'])
         self.objs = rr.world(inp, plans)
-        _, self.via_cov0, _, self.edge_v = rr.base_rasters(self.R, inp, self.objs)
+        # one via raster per candidate span hdi.json allows (2026-09-29, HDI); via_cov0 / edge_v stay
+        # the through raster for stage3/stage6 corr.py
+        self.H = hdi.load(inp)
+        self.spans = [S for S in self.H.allowed() if len(hdi.signal_layers(S)) >= 2]
+        _, self.via_cov, _, self.edge_vs = rr.base_rasters(self.R, inp, self.objs, self.spans)
+        self.via_cov0, self.edge_v = self.via_cov.get(hdi.THROUGH), self.edge_vs.get(hdi.THROUGH)
+        if self.via_cov0 is None:
+            raise SystemExit('tools/hdi.json does not list the through span: route_width.World (and the stage3..6 '
+                             'corr.py via_ok_mask / via_sites / widest2 built on it) need its raster')
         self.X = self.R.x0 + np.arange(self.R.nx) * rr.CELL
         self.Y = self.R.y0 + np.arange(self.R.ny) * rr.CELL
 
@@ -67,8 +76,8 @@ class World(object):
         R = self.R
         own = [o for o in self.objs if o['net'] == net]
         tc = [np.zeros((R.ny, R.nx), np.int16) for _ in LAY]
-        vc = self.via_cov0.copy()
-        rr.accumulate(R, own, -1, tc, vc, own_net=net)
+        vc = {S: c.copy() for S, c in self.via_cov.items()}
+        rr.accumulate(R, own, -1, tc, vc, own_net=net, H=self.H)
         # the net's own copper is not a free pass -- a wide track must clear foreign copper
         # everywhere -- but its pads, its through-hole pads and its vias are where it starts
         carve = [o for o in own if o.get('pad') or o.get('via')]
@@ -79,7 +88,6 @@ class World(object):
                 free.append(np.zeros((R.ny, R.nx), bool))
                 continue
             free.append((~self.blocked(net, L, widths[L])) | oc[i])
-        via_ok = (vc <= 0) & ~self.edge_v
         labels, off = [], 0
         st = np.ones((3, 3), int)
         for i in range(4):
@@ -102,14 +110,16 @@ class World(object):
                 a, b = find(ids[0]), find(v)
                 if a != b:
                     parent[b] = a
-        ys, xs = np.nonzero(via_ok)
-        for row in np.unique(np.stack([labels[i][ys, xs] for i in range(4)], axis=1), axis=0):
-            union(row)
-        for o in carve:                      # an own via or TH pad joins all four layers
-            if len(o['layers']) == 4:
+        for S in vc:                         # a layer change joins only the signal layers of its span
+            idx = [LAY.index(L) for L in hdi.signal_layers(S)]
+            ys, xs = np.nonzero((vc[S] <= 0) & ~self.edge_vs[S])
+            for row in np.unique(np.stack([labels[i][ys, xs] for i in idx], axis=1), axis=0):
+                union(row)
+        for o in carve:                      # an own via or TH pad joins the layers it spans
+            if o.get('via') or len(o['layers']) == 4:
                 s = rr.shape_mask(R, o, 0.0)
                 if s is not None:
-                    union([l for i in range(4) for l in np.unique(labels[i][s[0]][s[1]])])
+                    union([l for L in o['layers'] for l in np.unique(labels[LAY.index(L)][s[0]][s[1]])])
 
         def roots(o):
             s = rr.shape_mask(R, o, rr.CELL * 0.75)

@@ -28,6 +28,13 @@ the pad audit already keeps every GND pad a via slot):
   regions on different layers are joined wherever a via-legal cell is free on all
   four.  The connection is routable iff its two end objects touch one joined region.
 
+  SPANS (2026-09-29, HDI): a via occupies only the layers of its span (route_inputs.json 'span',
+  default through).  It blocks and joins only the signal layers in that span, and the via raster
+  is built once per candidate span tools/hdi.json allows (pitch per pair of spans, land per span,
+  the land-field ban only for spans that reach Bottom or are not via-in-pad spans, an own-net SMD
+  pad's centre legal for a via-in-pad span).  With hdi.json at its through-only default this is
+  exactly the model above.
+
 The connection list comes from a DRC report (the Un-Routed Net Constraint entries);
 by default Altium's latest report, which must describe the same board state as the
 inputs.  Exit 1 if any connection routable on the board is not routable with the
@@ -46,12 +53,19 @@ import numpy as np
 from scipy import ndimage
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import hdi
+
 RI = os.path.join(HERE, 'route_inputs.json')
 DRC = os.path.join(HERE, '..', 'Imported zulu_a7.PrjPcb', 'Project Outputs for zulu_a7', 'Design Rule Check - zulu_a7.drc')
 LAYERS = ('Top', 'L3-SIG', 'L4-SIG', 'Bottom')
-DRC_LAYER = {'Top Layer': 'Top', 'Bottom Layer': 'Bottom', 'L3-SIG': 'L3-SIG', 'L4-SIG': 'L4-SIG', 'Multi-Layer': 'Multi'}
+DRC_LAYER = {'Top Layer': 'Top', 'Bottom Layer': 'Bottom', 'L3-SIG': 'L3-SIG', 'L4-SIG': 'L4-SIG', 'Multi-Layer': 'Multi',
+             'L2-GND': 'L2-GND', 'L5-VCC3V3': 'L5-VCC3V3'}
 CELL = 0.025
 HALF_W = 0.0381           # half a 3 mil track
+# the THROUGH via as every gate modelled it before 2026-09-29; kept by name for the modules that import
+# them (stage6/capacity, corr, route_width, stage7/escape_audit).  Per-span values come from hdi.json:
+# a via blocks only the signal layers in its span, and the via raster is built per candidate span.
 VIA_R = 0.175
 PITCH = 0.44
 C = 0.09
@@ -116,16 +130,19 @@ def shape_mask(R, obj, grow):
 def world(inp, plans):
     """list of copper objects: dict(kind, geometry, net, layers, clr_inner, is_pad)"""
     sdram = {n for n, v in inp['nets'].items() if v.get('cls', '').startswith('SDRAM')}
+    H = hdi.load(inp)
     vias = [dict(v) for v in inp['vias']]
     tracks = [dict(t) for t in inp['tracks']]
     for p in plans:
         rem = p.get('remove') or {}
-        rv = {(v['net'], round(v['x'], 4), round(v['y'], 4)) for v in rem.get('vias', [])}
+        kv = lambda v: (v['net'], round(v['x'], 4), round(v['y'], 4), hdi.span_of(v))
+        rv = {kv(v) for v in rem.get('vias', [])}
         key = lambda t: (t['net'], t['layer']) + tuple(sorted(((round(t['x1'], 4), round(t['y1'], 4)), (round(t['x2'], 4), round(t['y2'], 4)))))
         rt = {key(t) for t in rem.get('tracks', [])}
-        vias = [v for v in vias if (v['net'], round(v['x'], 4), round(v['y'], 4)) not in rv]
+        vias = [v for v in vias if kv(v) not in rv]
         tracks = [t for t in tracks if key(t) not in rt]
-        vias += [dict(x=v['x'], y=v['y'], size=0.35, hole=0.20, net=v['net']) for v in p.get('vias', [])]
+        vias += [dict(x=v['x'], y=v['y'], size=H.land(hdi.span_of(v)), hole=H.hole(hdi.span_of(v)), net=v['net'],
+                      span=list(hdi.span_of(v))) for v in p.get('vias', [])]
         tracks += [dict(t) for t in p.get('tracks', [])]
 
     def inner_clr(net):
@@ -140,8 +157,9 @@ def world(inp, plans):
     for q in inp['th_pads']:
         objs.append(dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], net=q['net'], layers=LAYERS, pad=True, ref=q['ref'], name=q['pad']))
     for v in vias:
-        objs.append(dict(kind='circle', x=v['x'], y=v['y'], r=v.get('size', 0.35) / 2, net=v['net'], layers=LAYERS, pad=False, via=True,
-                         inner=inner_clr(v['net'])))
+        sp = hdi.span_of(v)                 # a via blocks / joins only the signal layers in its span
+        objs.append(dict(kind='circle', x=v['x'], y=v['y'], r=v.get('size', 0.35) / 2, net=v['net'], layers=hdi.signal_layers(sp),
+                         pad=False, via=True, span=sp, inner=inner_clr(v['net'])))
     for t in tracks:
         objs.append(dict(kind='seg', x1=t['x1'], y1=t['y1'], x2=t['x2'], y2=t['y2'], w=t['width'], net=t['net'], layers=(t['layer'],),
                          pad=False, inner=inner_clr(t['net'])))
@@ -157,10 +175,29 @@ def clr_on(obj, layer):
     return C
 
 
-def accumulate(R, objs, sign, track_cov, via_cov, own_net=None):
+def _centre_cells(R, sl, x, y):
+    """within the window sl: the cells within 0.75 CELL of (x, y) -- one via centre.  For a via-in-pad
+    this frees the raster cell nearest the pad centre, which can sit up to 0.0177 mm (half a cell
+    diagonal) off the centre where route_emit demands the via (PAD_CENTRE 1 um): the cell only FLAGS
+    that the centre is legal; a site proposer must return the pad's exact centre (corr.via_sites does)"""
+    X = R.x0 + np.arange(sl[1].start, sl[1].stop) * CELL
+    Y = R.y0 + np.arange(sl[0].start, sl[0].stop) * CELL
+    return (np.abs(Y - y) <= CELL * 0.75)[:, None] & (np.abs(X - x) <= CELL * 0.75)[None, :]
+
+
+def accumulate(R, objs, sign, track_cov, via_cov, own_net=None, H=None):
     """add (sign=+1) or remove (sign=-1) objects' cover.  With own_net set, only that net's
     tracks and vias are touched in via_cov (own pads still forbid a via-in-pad, own vias still
-    set the pitch)."""
+    set the pitch).
+
+    via_cov is one raster per CANDIDATE via span ({span: raster}); a plain array is the through
+    raster, as before 2026-09-29.  An object contributes to a span's raster only where it meets the
+    span: a via if the two spans share a layer, grown by hdi's pitch for the pair; a pad, track or
+    keep-out if it lies on a signal layer of the span, grown by its clearance + that span's land
+    radius.  With own_net set, an own SMD pad on the outer layer of a via-in-pad span (and, when
+    hdi.json allows stacking, an own via of an adjacent span) stops blocking at its centre cell."""
+    H = H or hdi.default()
+    covs = via_cov if isinstance(via_cov, dict) else {hdi.THROUGH: via_cov}
     for o in objs:
         for L in o['layers']:
             li = LAYERS.index(L)
@@ -168,19 +205,42 @@ def accumulate(R, objs, sign, track_cov, via_cov, own_net=None):
             if m is not None:
                 sl, mask = m
                 track_cov[li][sl] += sign * mask.astype(np.int16)
-        if own_net is not None and (o.get('pad') or o.get('via')):
-            continue
-        g = PITCH - o['r'] if o.get('via') else max(clr_on(o, L) for L in o['layers']) + VIA_R
-        m = shape_mask(R, o, g)
-        if m is not None:
-            sl, mask = m
-            via_cov[sl] += sign * mask.astype(np.int16)
+        for S, cov in covs.items():
+            if o.get('via'):
+                need = H.pitch_between(o['span'], S)
+                if need is None:
+                    continue
+                g = need - o['r']
+                free_centre = (own_net is not None and o['net'] == own_net and H.stacking and hdi.adjacent(o['span'], S))
+            else:
+                Ls = [L for L in o['layers'] if L in S]
+                if not Ls:
+                    continue
+                g = max(clr_on(o, L) for L in Ls) + H.land(S) / 2
+                free_centre = (own_net is not None and o.get('pad') and o['net'] == own_net and len(o['layers']) == 1 and
+                               H.via_in_pad(S) and o['layers'][0] in H.outer(S))
+            if own_net is not None and (o.get('pad') or o.get('via')):
+                if free_centre:                 # via-in-pad / stack: only the centre cell is given back
+                    m = shape_mask(R, o, g)
+                    if m is not None:
+                        sl, mask = m
+                        cov[sl] += sign * (mask & _centre_cells(R, sl, o['x'], o['y'])).astype(np.int16)
+                continue
+            m = shape_mask(R, o, g)
+            if m is not None:
+                sl, mask = m
+                cov[sl] += sign * mask.astype(np.int16)
 
 
-def base_rasters(R, inp, objs):
+def base_rasters(R, inp, objs, spans=None):
+    """(track_cov per layer, via_cov, edge_t, edge_v).  With `spans` (candidate via spans) via_cov
+    and edge_v are dicts keyed by span; without, they are the through raster as before."""
+    H = hdi.load(inp)
+    single = spans is None
+    spans = [hdi.THROUGH] if single else [tuple(S) for S in spans]
     track_cov = [np.zeros((R.ny, R.nx), np.int16) for _ in LAYERS]
-    via_cov = np.zeros((R.ny, R.nx), np.int16)
-    accumulate(R, objs, +1, track_cov, via_cov)
+    via_cov = {S: np.zeros((R.ny, R.nx), np.int16) for S in spans}
+    accumulate(R, objs, +1, track_cov, via_cov, H=H)
     X = R.x0 + np.arange(R.nx) * CELL
     Y = R.y0 + np.arange(R.ny) * CELL
     ol = inp['outline']
@@ -188,12 +248,19 @@ def base_rasters(R, inp, objs):
     ex = (X < ol['x0'] + e + HALF_W) | (X > ol['x1'] - e - HALF_W)
     ey = (Y < ol['y0'] + e + HALF_W) | (Y > ol['y1'] - e - HALF_W)
     edge_t = ey[:, None] | ex[None, :]
-    exv = (X < ol['x0'] + e + VIA_R) | (X > ol['x1'] - e - VIA_R)
-    eyv = (Y < ol['y0'] + e + VIA_R) | (Y > ol['y1'] - e - VIA_R)
-    edge_v = eyv[:, None] | exv[None, :]
     lf = inp['land_field']
     field = ((Y[:, None] >= lf['y0']) & (Y[:, None] <= lf['y1'])) & ((X[None, :] >= lf['x0']) & (X[None, :] <= lf['x1']))
-    return track_cov, via_cov, edge_t, edge_v | field
+    edge_v = {}
+    for S in spans:
+        r = H.land(S) / 2
+        exv = (X < ol['x0'] + e + r) | (X > ol['x1'] - e - r)
+        eyv = (Y < ol['y0'] + e + r) | (Y > ol['y1'] - e - r)
+        ev = eyv[:, None] | exv[None, :]
+        # U1's land field is banned for a via that reaches Bottom or is not a via-in-pad span
+        edge_v[S] = (ev | field) if H.field_ban(S) else ev
+    if single:
+        return track_cov, via_cov[hdi.THROUGH], edge_t, edge_v[hdi.THROUGH]
+    return track_cov, via_cov, edge_t, edge_v
 
 
 def own_cells(R, objs):
@@ -222,15 +289,28 @@ def endpoint_cells(R, ep, inp_objs):
     return out
 
 
-def reachable_for_net(R, net, conns, base, objs):
+def reachable_for_net(R, net, conns, base, objs, H=None):
     track_cov, via_cov, edge_t, edge_v = base
+    if not isinstance(via_cov, dict):
+        via_cov, edge_v = {hdi.THROUGH: via_cov}, {hdi.THROUGH: edge_v}
+    H = H or hdi.default()
     own = [o for o in objs if o['net'] == net]
     tc = [c.copy() for c in track_cov]
-    vc = via_cov.copy()
-    accumulate(R, own, -1, tc, vc, own_net=net)
+    vc = {S: c.copy() for S, c in via_cov.items()}
+    accumulate(R, own, -1, tc, vc, own_net=net, H=H)
     oc = own_cells(R, own)
     free = [((tc[i] <= 0) & ~edge_t) | oc[i] for i in range(4)]
-    via_ok = (vc <= 0) & ~edge_v & free[0] & free[1] & free[2] & free[3]
+    # a layer change is legal for a span where its raster is clear and every signal layer of the
+    # span is free; it joins only those layers (a Top..L3 microvia never joins Bottom)
+    via_ok = {}
+    for S in vc:
+        idx = [LAYERS.index(L) for L in hdi.signal_layers(S)]
+        if len(idx) < 2:
+            continue
+        ok = (vc[S] <= 0) & ~edge_v[S]
+        for i in idx:
+            ok &= free[i]
+        via_ok[S] = (idx, ok)
     st = np.ones((3, 3), int)
     labels = []
     offset = 0
@@ -247,27 +327,29 @@ def reachable_for_net(R, net, conns, base, objs):
             parent[a] = parent[parent[a]]
             a = parent[a]
         return a
-    ys, xs = np.nonzero(via_ok)
-    if ys.size:
-        quad = np.stack([labels[i][ys, xs] for i in range(4)], axis=1)
-        quad = np.unique(quad, axis=0)
-        for row in quad:
-            r0 = find(int(row[0]))
-            for v in row[1:]:
-                rv = find(int(v))
-                if rv != r0:
-                    parent[rv] = r0
+    for S, (idx, ok) in via_ok.items():
+        ys, xs = np.nonzero(ok)
+        if ys.size:
+            quad = np.stack([labels[i][ys, xs] for i in idx], axis=1)
+            quad = np.unique(quad, axis=0)
+            for row in quad:
+                r0 = find(int(row[0]))
+                for v in row[1:]:
+                    rv = find(int(v))
+                    if rv != r0:
+                        parent[rv] = r0
     # the net's EXISTING vias and through-hole pads join their layers unconditionally: they are
     # copper through the board already, wherever a new via would or would not be legal (a moat
-    # via inside U1's land field was once reported as a dead end)
+    # via inside U1's land field was once reported as a dead end).  A via joins only the signal
+    # layers of its span.
     for o in own:
-        if len(o['layers']) == 4 and not o.get('keepout'):
+        if (o.get('via') or len(o['layers']) == 4) and not o.get('keepout'):
             m = shape_mask(R, o, 0.0)
             if m is None:
                 continue
             sl, mask = m
             ids = set()
-            for i in range(4):
+            for i in [LAYERS.index(L) for L in o['layers']]:
                 ids |= {int(l) for l in np.unique(labels[i][sl][mask]) if l > 0}
             ids = sorted(ids)
             if ids:
@@ -303,9 +385,10 @@ def parse_connections(inp, drc_path, owned):
         pads[(q['ref'] + '-' + q['pad'], 'Multi')] = dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], layers=LAYERS)
     obj_re = re.compile(r"(Pad ([^\s(]+)\(([-\d.]+)mm,([-\d.]+)mm\) on ([A-Za-z0-9 -]+?)(?= And |\s*$))|"
                         r"(Track \(([-\d.]+)mm,([-\d.]+)mm\)\(([-\d.]+)mm,([-\d.]+)mm\) on ([A-Za-z0-9 -]+?)(?= And |\s*$))|"
-                        r"(Via \(([-\d.]+)mm,([-\d.]+)mm\) from )")
+                        r"(Via \(([-\d.]+)mm,([-\d.]+)mm\) from ([A-Za-z0-9 -]+?) to ([A-Za-z0-9 -]+?)(?= And |\s*$))")
     conns = []
     bad = 0
+    unknown = set()
     for net, body in re.findall(r'Un-Routed Net Constraint: Net (\S+) Between (.*?)\n', seg):
         if net in owned or net in SKIP:
             continue
@@ -321,23 +404,41 @@ def parse_connections(inp, drc_path, owned):
                 layer = DRC_LAYER.get(m.group(11).strip(), m.group(11).strip())
                 eps.append(dict(desc='track', obj=dict(kind='seg', x1=float(m.group(7)), y1=float(m.group(8)), x2=float(m.group(9)), y2=float(m.group(10)), w=0.0762, layers=(layer,))))
             elif m.group(12):
-                eps.append(dict(desc='via', obj=dict(kind='circle', x=float(m.group(13)), y=float(m.group(14)), r=0.175, layers=LAYERS)))
-        if len(eps) != 2:
+                # 'from Top Layer to Bottom Layer' round-trips to the through span; a microvia's span is
+                # the stack between its two layer names, and it joins only the signal layers in it.  A
+                # layer name the stack does not know (a plane printed under another name?) leaves the
+                # entry unparsed, like every other malformed endpoint, and is named on stderr
+                lo, hi = (DRC_LAYER.get(m.group(k).strip(), m.group(k).strip()) for k in (15, 16))
+                try:
+                    sp = hdi.span_between(lo, hi)
+                except ValueError:
+                    unknown.update(L for L in (lo, hi) if L not in hdi.STACK)
+                    eps = None
+                    break
+                eps.append(dict(desc='via', obj=dict(kind='circle', x=float(m.group(13)), y=float(m.group(14)), r=0.175,
+                                                     layers=hdi.signal_layers(sp), span=sp)))
+        if eps is None or len(eps) != 2:
             bad += 1
             continue
         conns.append(dict(net=net, a=eps[0], b=eps[1]))
+    if unknown:
+        sys.stderr.write('route_reach: DRC via endpoints on layer(s) %s are not on hdi.STACK %s; those entries are unparsed\n'
+                         % (', '.join(sorted(unknown)), '/'.join(hdi.STACK)))
     return conns, bad
 
 
 def evaluate(R, inp, plans, conns):
     objs = world(inp, plans)
-    base = base_rasters(R, inp, objs)
+    H = hdi.load(inp)
+    # one via raster per candidate span hdi.json allows that can join two signal layers
+    spans = [S for S in H.allowed() if len(hdi.signal_layers(S)) >= 2]
+    base = base_rasters(R, inp, objs, spans)
     by = {}
     for i, c in enumerate(conns):
         by.setdefault(c['net'], []).append(i)
     res = [None] * len(conns)
     for net, idx in by.items():
-        ok = reachable_for_net(R, net, [conns[i] for i in idx], base, objs)
+        ok = reachable_for_net(R, net, [conns[i] for i in idx], base, objs, H)
         for i, v in zip(idx, ok):
             res[i] = v
     return res
@@ -361,8 +462,10 @@ def main():
         len(conns), os.path.basename(a.drc), (', %d entries unparsed' % bad) if bad else ''))
     import hashlib, tempfile
     h = hashlib.md5()
-    for pth in (a.inputs, a.drc, os.path.abspath(__file__)):
-        h.update(io.open(pth, 'rb').read())
+    for pth in (a.inputs, a.drc, os.path.abspath(__file__), hdi.PATH, os.path.join(HERE, 'hdi.py')):
+        if os.path.exists(pth):
+            h.update(io.open(pth, 'rb').read())
+    h.update(json.dumps(inp.get('hdi'), sort_keys=True).encode('utf-8'))   # the span model in force
     cache = os.path.join(tempfile.gettempdir(), 'route_reach_board_%s.json' % h.hexdigest())
     keyc = lambda c: '%s|%s|%s' % (c['net'], c['a']['desc'], c['b']['desc'])
     known = json.load(io.open(cache, encoding='utf-8')) if os.path.exists(cache) else {}

@@ -29,6 +29,7 @@ sys.path.insert(0, TOOLS)
 sys.path.insert(0, os.path.join(TOOLS, 'stage6'))
 import route_reach as RR
 import segw
+import hdi
 
 MINW = 0.0762
 REACH = 1.20                      # how far from the stub end a via site may sit and still serve it
@@ -61,8 +62,13 @@ def main():
 
     objs = RR.world(inp, [])
     R = RR.Raster(inp['outline'])
-    tc, vc, edge_t, edge_v = RR.base_rasters(R, inp, objs)
-    via_ok = (vc == 0) & (~edge_v)
+    # a fresh via site for any span hdi.json allows that joins two signal layers (through only = as before)
+    H = hdi.load(inp)
+    spans = [S for S in H.allowed() if len(hdi.signal_layers(S)) >= 2]
+    tc, vc, edge_t, edge_v = RR.base_rasters(R, inp, objs, spans)
+    via_ok = np.zeros((R.ny, R.nx), bool)
+    for S in spans:
+        via_ok |= (vc[S] == 0) & (~edge_v[S])
 
     def via_within(x, y, r):
         i0 = max(0, int((x - r - R.x0) / RR.CELL)); i1 = min(R.nx, int((x + r - R.x0) / RR.CELL) + 1)
@@ -78,13 +84,18 @@ def main():
     ownvia = {}
     for b in balls:
         ex, ey = ends[b['pad']]
-        ownvia[b['pad']] = any(v['net'] == b['net'] and abs(v['x'] - ex) < 1e-4 and abs(v['y'] - ey) < 1e-4
-                               for v in inp['vias'])
+        mine = [v for v in inp['vias'] if v['net'] == b['net'] and abs(v['x'] - ex) < 1e-4 and abs(v['y'] - ey) < 1e-4]
+        ownvia[b['pad']] = bool(mine)
+        # the layers that via reaches (its span; a through via reaches all four)
+        ends_on = set()
+        for v in mine:
+            ends_on |= set(hdi.signal_layers(hdi.span_of(v)))
+        ownvia[b['pad'], 'layers'] = tuple(L for L in ('Top', 'Bottom', 'L3-SIG', 'L4-SIG') if L in ends_on)
 
     rows = []
     for b in balls:
         ex, ey = ends[b['pad']]
-        layers = ('Top', 'Bottom', 'L3-SIG', 'L4-SIG') if ownvia[b['pad']] else ('Top', 'Bottom')
+        layers = ownvia[b['pad'], 'layers'] if ownvia[b['pad']] else ('Top', 'Bottom')
         w = {}
         wl = {}
         for name, dx, dy in DIRS:

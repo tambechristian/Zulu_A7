@@ -15,6 +15,7 @@ TOOLS = 'C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_Altrium/tools'
 sys.path.insert(0, TOOLS)
 import route_reach as rr
 import route_width as rw
+import hdi
 
 RI = sys.argv[sys.argv.index('--inputs') + 1] if '--inputs' in sys.argv else os.path.join(TOOLS, 'route_inputs.json')
 
@@ -81,12 +82,16 @@ def widest(W, net, layer, a, b, wm=None, wmin=0.0):
     return best[jb, ib], path
 
 
-def via_ok_mask(W, net):
+def via_ok_mask(W, net, span=hdi.THROUGH):
+    """legal via cells for `net` for one via span (default through; route_width's per-span rasters)"""
+    if span not in W.via_cov:
+        raise SystemExit('route_width built no via raster for span %s: tools/hdi.json does not list it, or it joins fewer '
+                         'than two signal layers (a plane tie, not a layer change)' % '/'.join(span))
     own = [o for o in W.objs if o['net'] == net]
-    vc = W.via_cov0.copy()
-    tc = [np.zeros(vc.shape, np.int16) for _ in rr.LAYERS]
-    rr.accumulate(W.R, own, -1, tc, vc, own_net=net)
-    return (vc <= 0) & ~W.edge_v
+    vc = {span: W.via_cov[span].copy()}
+    tc = [np.zeros(vc[span].shape, np.int16) for _ in rr.LAYERS]
+    rr.accumulate(W.R, own, -1, tc, vc, own_net=net, H=W.H)
+    return (vc[span] <= 0) & ~W.edge_vs[span]
 
 
 def widest2(W, net, a, b, la='Top', lb='Top', wmin=0.0, via_pen=0.0):
@@ -94,8 +99,10 @@ def widest2(W, net, a, b, la='Top', lb='Top', wmin=0.0, via_pen=0.0):
     (bottleneck, [(layer, x, y), ...])"""
     wm = {'Top': wmap(W, net, 'Top'), 'Bottom': wmap(W, net, 'Bottom')}
     vok = via_ok_mask(W, net)
-    # the net's own vias and through-hole pads join the layers wherever they stand
-    joins = [o for o in W.objs if o['net'] == net and (o.get('via') or (o.get('pad') and len(o['layers']) == 4))]
+    # the net's own vias and through-hole pads join the layers wherever they stand -- a via only if
+    # its span reaches both Top and Bottom (2026-09-29, HDI)
+    joins = [o for o in W.objs if o['net'] == net and ((o.get('via') and 'Top' in o['layers'] and 'Bottom' in o['layers'])
+                                                       or (o.get('pad') and len(o['layers']) == 4))]
     oc = rr.own_cells(W.R, joins)
     vok = vok | oc[0]
     ny, nx = vok.shape
@@ -167,21 +174,35 @@ def simplify(path, tol=0.05):
     return rdp(list(path))
 
 
-def via_sites(W, net, x0, x1, y0, y1, margin=0.0):
+def via_sites(W, net, x0, x1, y0, y1, margin=0.0, span=hdi.THROUGH):
     """legal via cells in the window for `net` (own tracks do not block; own pads and vias do), with the
-    distance (mm) to the nearest illegal cell as a margin, sorted by margin descending"""
-    own = [o for o in W.objs if o['net'] == net]
-    vc = W.via_cov0.copy()
-    tc = [np.zeros(vc.shape, np.int16) for _ in rr.LAYERS]
-    rr.accumulate(W.R, own, -1, tc, vc, own_net=net)
-    ok = (vc <= 0) & ~W.edge_v
+    distance (mm) to the nearest illegal cell as a margin, sorted by margin descending; `span` picks
+    the via span (default through).  A via-in-pad cell -- the one cell accumulate() frees at an
+    own-net pad centre on the span's outer layer -- is returned at the pad's EXACT centre, where
+    route_emit demands the via (PAD_CENTRE 1 um); the raster cell can sit up to 0.0177 mm off it"""
+    ok = via_ok_mask(W, net, span)
     d = ndimage.distance_transform_edt(ok) * rr.CELL
     j0, i0 = cell(W, x0, y0); j1, i1 = cell(W, x1, y1)
+    centres = []
+    if W.H.via_in_pad(span):
+        centres = [(o['x'], o['y']) for o in W.objs
+                   if o.get('pad') and o['net'] == net and len(o['layers']) == 1 and o['layers'][0] in W.H.outer(span)]
     out = []
+    snapped = set()
     for j in range(j0, j1 + 1):
         for i in range(i0, i1 + 1):
             if ok[j, i] and d[j, i] >= margin:
-                out.append((d[j, i], ) + xy(W, j, i))
+                x, y = xy(W, j, i)
+                for cx, cy in centres:
+                    if abs(cx - x) <= rr.CELL * 0.75 and abs(cy - y) <= rr.CELL * 0.75:
+                        if (cx, cy) in snapped:       # a centre near a cell boundary frees two cells: one site
+                            x = None
+                        else:
+                            snapped.add((cx, cy))
+                            x, y = cx, cy
+                        break
+                if x is not None:
+                    out.append((d[j, i], x, y))
     out.sort(reverse=True)
     return out
 
