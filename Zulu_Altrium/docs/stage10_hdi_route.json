@@ -1,0 +1,323 @@
+{
+ "judgement": {
+  "verdict": "DO-NOT-PLACE",
+  "closed_of_140": 96,
+  "one_line": "96 of 140 closed (95 signal + the U2-5 GND tie), reproduced byte for byte twice, but 44 stay open in four local corridors, signals_check/gnd_check fail, the USB pair is single-ended 0.0762 mm with zero coupled length, and the brief's void-alternation boundary is broken at 3 laser-laser sites (webs 0.020-0.030 mm) -- not placeable, and a partial placement would freeze the very commit order that keeps the 44 open.",
+  "plan_path": "C:/Users/tambe/AppData/Local/Temp/claude/C--Users-tambe-Documents-Electronics-Zulu-A7-Zulu-Altrium/1e3d9c42-62fe-43bd-a170-baf7d18a0d60/scratchpad/stage10/judge/decision.md",
+  "gates_summary": "All on global/plan.json (md5 a1ed28d5db5a2af10e9c6cb978979007) with global/inputs_hdi.json (md5 730bac7e... = the brief's B-field merged model), commands in global/run_gates.sh, logs global/gates/*.log, reviewer's re-runs review/gates/*.log byte-identical. route_emit --require-complete: PASS (429 vias, 1198 tracks, clean; --pas 640 Altium objects, md5 b2f5c111...). signals_check: FAIL 132 joined / 43 split (= the 43 open signal connections; VCC3V3 86 islands pre-exists). tie_check VCC3V3: PASS (worst 2.999 mm). gnd_check: FAIL 205/206, R15-1 untied (U2-5 newly tied; my exact check: worst clearance slack +0.0569 mm, worst pitch slack +0.035 mm). plane_L2: one island 100 % (brief criterion met), EXIT 1 on the heuristic C115-2 (a Bottom pad) under the plan's JA9 Top-stack antipad + 0.0156 mm2 plan-caused slivers. plane_L5: one island 100 %, EXIT 1 on U1-K1 (Top ball) under the plan's SD-CLK Bottom-stack antipad; the 0.48 mm2 island PRE-EXISTS on the bare board (reviewer correct, bare EXIT 0), plan adds 0.006 mm2. route_foreclosure: EXIT 1 naming FLASH-D02/D10/D15 -- formal only: FLASH-D02 is joined by the plan (its G18 stub-end slot is consumed by its own neighbours), D10/D15 are routed SDRAM nets outside the DRC's 140. route_reach: PASS 37/37 routable with the plan, none walled off (bare 138/138) -- scope excludes the 6 open connections of nets the plan touches; for UART_FT_RXD U2-39<->G19 the only witness is raster-legal and exactly illegal by -0.0203 mm. route_stitch: PASS (69.9 % kept; U1 surround 15.4 %). route_width USB: tool EXIT 0 (max 0.325/0.363) but the pair requirement FAILS: single-ended 0.0762 mm, coupled length 0, skew 1.95 mm, no USB width rule in the inputs. capacity: PASS (-553.3 mm2; north band lanes 669->499). Void alternation (brief boundary, no gate; my judge/webs.py): FAIL -- L2 TMS/CHAN24 (36.5,7.8)/(37.0,7.85) web 0.0225; L5 N$LD0R/N$LD1A (29.7,13.4)/(29.2,13.4) web 0.020, FPGA-TDO/CHAN22 (45.7,5.8)/(45.2,5.9) web 0.0299; 8 laser-through thin webs 0.0049-0.029; merged pairs 32 (L2) / 25 (L5); planes remain one island. Via census 325 sites / 429 objects (buried 102 incl. 17 in field, Top stack 53 incl. 2 in field, Bottom stack 54, through 31, chains 85), track length 1641.6 mm.",
+  "still_open_and_why": [
+   "A. U1 NE/east edge column x 50.9-52.0 y 11.4-15.3 (22): CHAN0 track<->X2-3 -- walls off CHAN3 at (50.900,13.35-13.475), the A16/A17/A18 stubs share one Top lane down x 50.9; via-slot denial then no route on any lattice",
+   "CHAN3 X2-6<->U1-A17 -- walls off CHAN0 at (50.900,13.25-13.375), 256 cells",
+   "CHAN1 U1-A18<->X2-4 -- walls off CHAN0 at (50.75-50.875,16.65), 251 cells",
+   "CHAN2 X2-5<->track -- walls off CHAN0 at (50.900,13.25..), 329 cells",
+   "CHAN4 X2-7<->via -- walls off CHAN0 at (51.000,13.15)-(51.125,13.025)",
+   "CHAN6 X2-9<->via -- walls off CHAN0, same cells",
+   "CHAN9 X2-12<->via -- walls off CHAN0, same cells; pass A also spent its budget (110 searches)",
+   "CHAN11 X2-14<->via -- walls off CHAN0, same cells; budget spent (108) then no route",
+   "SD-DAT0 X3-7<->via -- walls off CHAN0, same cells",
+   "SD-DAT3 X3-2<->U1-A16 -- walls off CHAN0 at (50.900,13.25-13.375), 329 cells",
+   "CHAN7 X2-10<->U1-H19 -- walls off CHAN10 at (51.15-51.275,12.2-12.35): the K19/J19/H19 lane x 51.0-51.9 carries one track",
+   "CHAN8 X2-11<->track -- walls off CHAN10 at (51.0-51.125,12.375-12.4)",
+   "CHAN10 X2-13<->U1-J19 -- walls off UART_FT_TXD at (51.125-51.25,12.0-12.125)",
+   "FLASH-CS# U4-1<->U1-K19 -- walls off CHAN10 at (51.300,11.925-12.05); detour 6 cells no route",
+   "LED2 R84-1<->U1-M19 -- walls off CHAN10 at (51.825-51.95,11.45-11.475)",
+   "UART_FT_DTR# U2-43<->track -- walls off CHAN10 at (51.8-51.925,11.45-11.5)",
+   "UART_FT_RTS# U2-40<->track -- walls off CHAN10 at (47.575-47.7,17.95), the north band over U1 is CHAN10's only corridor once the edge is full",
+   "UART_FT_TXD U2-38<->track -- walls off CHAN10 at (47.575-47.7,17.95)",
+   "FLASH-D01 U4-2<->U1-D19 -- walls off FLASH-D03 at (51.825-51.925,14.425-14.525): the D19/F18/E19 column x 51.1-51.9 y 14.2-15.3 holds one lane / one laser site; knots/ne_d closed it only when D03 or JA8 opened instead",
+   "FLASH-D03 track<->U4-7 -- walls off FLASH-D01 at (51.725-51.85,14.6); closed in ne_d/test3_ne when D01 lost",
+   "JA8 U1-E19<->R31-2 -- walls off FLASH-D03 at (51.25-51.375,14.175-14.225); its route damages 28 witnesses",
+   "UART_FT_RXD U2-39<->U1-G19 -- no route on the lattice (after 1 exact retries): the last corridor into G19 rides own copper 0.02 mm too close to the GND via (51.4,13.9), exact slack -0.0203; closed under other commit orders (test2_ne/test3_ne/run1); the one open connection whose 'not walled off' is unproven",
+   "B. South band under the W row x 46.8-50.3 y 2.3-7.2 (14): CHAN16 X2-26<->U1-W16 -- walls off CHAN18 at (46.85-46.975,2.55-2.6), 262 cells; one lane per stub column; bare-board knot test 2 of 6",
+   "CHAN18 X2-28<->track -- walls off CHAN16 at (47.000,2.325-2.45), 324 cells",
+   "CHAN19 X2-29<->U1-W15 -- walls off CHAN16 at (49.225-49.325,6.125-6.75)",
+   "CHAN20 X2-30<->track -- walls off CHAN16, same cells",
+   "CHAN23 X2-33<->track -- walls off CHAN16 at (49.000,5.5-5.775)",
+   "CHAN25 X2-35<->U1-W13 -- walls off CHAN16 at (49.000,5.5-5.775); budget spent (114) in one chunk",
+   "CHAN26 X2-36<->track -- walls off CHAN16 at (49.000,5.5-5.675)",
+   "CHAN13 X2-16<->U1-W18 -- walls off CHAN15 at (50.15-50.2,6.75-7.15): the W18/W19 stub lanes",
+   "CHAN15 X2-25<->track -- walls off CHAN13 at (50.15-50.3,6.75-6.9)",
+   "FPGA-TMS U1-W9<->R4-12 -- walls off CHAN16 at (48.500,4.375-4.5); the 0.4 mm pocket south of W9/W10 (x 45.95-46.35, 0.3 mm at y 6.9) must hold TDI+TMS+RST# at 0.175 pitch with 0.009 mm margins, never achieved on the 0.1/0.05/0.025 lattices; 7 SW order/lattice runs closed at most 3 of 6",
+   "RST# track<->X2-23 -- walls off FPGA-TMS at (46.000-46.05,6.5-6.65); TMS and RST# never both in any SW run",
+   "LED0_B LD0-2<->U1-N19 -- 62.7 mm / 24-via route damages 19 witnesses and walls off CHAN16 at (48.500,4.35-4.475)",
+   "LED0_R LD0-4<->U1-P19 -- 61.8 mm route, 19 witnesses, walls off CHAN16 same cells",
+   "LED0_G LD0-6<->track -- 61.2 mm route, 19 witnesses, walls off CHAN16 same cells",
+   "C. U1 east edge y 8.5-8.7 (5): JA1 track<->R26-1 -- walls off CHAN27 at (51.75-51.875,8.5): one lane for JA1/JA2/CHAN27/CHAN-CLK/CHAN28",
+   "JA2 U1-U19<->R27-1 -- walls off CHAN27, same cells",
+   "CHAN27 X2-37<->track -- walls off JA1 at (51.525-51.65,8.55-8.65)",
+   "CHAN-CLK track<->X2-2 -- walls off CHAN27 at (52.1-52.225,9.95); detour 6 no route",
+   "CHAN28 X2-38<->U1-R19 -- walls off CHAN27 at (28.325..,7.75), 952 cells (its 73 mm witness circles the board); closed on the bare board in knots/chan",
+   "D. R10/R11 lane and R14/R15 channel (3): NODE_P0 R10-1<->R11-2 -- walls off NODE_P0 R12-2<->R10-1 at (45.000,2.300): the two NODE_P0 links and ANALOG-IO0/IO1 share one lane along y 2.3-2.45 (ANALOG-IO0/IO1 arbitrated first, 44 and 47 mm)",
+   "NODE_P0 R12-2<->R10-1 -- walls off NODE_P0 R10-1<->R11-2 at (45.0,2.3)/(47.0,2.6); its own route is 95-110 mm",
+   "GND R15-1 tie (Bottom 43.75,3.95) -- my re-measure from the inputs: the only exit is the band x 43.3362..43.4719 = 0.1357 mm between NODE_P1's stage-8 track at x 43.17 and the AIN16_P pad C37-2 (43.6-44.3, y 2.6-3.5), one 0.0762 track wide, and it is ANALOG-IO1 X2-40<->R14-2's only exit too (north sealed by the D-row through vias at y 4.4, west by NODE_P1 copper); no via fits in the 0.30 mm pad gaps; 33 GND joins within 6 mm tried by agent and reviewer, every route walls off ANALOG-IO1; widening needs NODE_P1 <= 43.1395 vs the AIN16_N stub needing >= 43.1462 (6.7 um conflict = two removals, the addendum allows one). User decision: R15-1 tie OR ANALOG-IO1 on this placement, or authorise the two-removal edit."
+  ],
+  "what_next": [
+   "Decide R15-1 before any plan can reach 140: tie it and leave ANALOG-IO1 X2-40<->R14-2 open, or keep ANALOG-IO1 and leave R15-1 untied, or authorise the two-removal edit (NODE_P1's Bottom run (43.17, 2.42-3.65) to x <= 43.1395 and the AIN16_N stub (42.65,3.05)-(42.98,2.90) re-drawn to end at x <= 42.973) with replacement copper in the same plan.",
+   "Give the router a differential mode or hand-plan the USB pair at 0.150/0.150 with a 0.150 gap and protect it as a base plan; today the pair passes only a per-track width tool (coupled length 0, skew 1.95 mm, 0.0762 mm tracks) and would violate the board's DiffPairsRouting rule the moment it is placed.",
+   "Add a plane-web gate (judge/webs.py: laser antipad 0.48, through 0.53, report every foreign-net pair with 0 < web <= 0.03 mm) and re-site the three laser-laser offenders (TMS (36.5,7.8) or CHAN24 (37.0,7.85); N$LD0R (29.7,13.4) or N$LD1A (29.2,13.4); FPGA-TDO (45.7,5.8) or CHAN22 (45.2,5.9)); every gate must then be re-run since gen.py --check no longer applies.",
+   "Close the raster-vs-exact gap in the instrument: port inset_own_cells (router_fine.diff) into route_reach.py and re-warm the stage-9 witness cache so every witness is exactly legal (UART_FT_RXD's surviving witness is illegal by -0.0203 mm).",
+   "One more global run with a commit-order search restricted to the four corridors (22 NE/east-edge, 14 south-band, 5 east-edge, 2 NODE_P0) on top of the rest of this plan as base; where a corridor holds one lane for N stubs (the A16-A18 Top lane, the W9/W10 pocket, the JA1/JA2/CHAN27 edge) no order closes all N -- report those as placement-limited with the smallest move that opens a second lane (U4 turn/shift, R20/R21/R23, per docs/hdi_gain.md), proposed, not placed.",
+   "Only after the above does PLACE or PLACE-PARTIAL become a question; if copper is wanted sooner, the safest partial is this plan minus the USB pair and minus the three re-sited laser stacks, re-gated -- not global/plan.json as delivered."
+  ],
+  "corrections_to_the_record": [
+   "route_foreclosure's FAIL (FLASH-D02, D10, D15) names no open connection: FLASH-D02 is joined by the plan (Top tracks off the ball (50.4,13.4) and the stub corner (50.65,13.65); no FLASH-D02 split in signals_check) and its G18 stub-end slot is consumed by the plan's PUDC_B buried via 0.531 mm away -- the tool counts every via regardless of net (slot_mask 'for v in vias') and enumerates escapes from fanout actions, not routed state; D10 (K2) and D15 (A15) are routed SDRAM nets absent from the DRC's 140 (K2's stub continues on Top to (41.2,12.14), A15 reaches its own through via at (48.9,16.8)). What remains is a 0.46 mm dangling Top stub of FLASH-D02, electrically harmless.",
+   "plane_L2/plane_L5 EXIT 1 is the reportable pad-in-void heuristic, not an island failure: both planes are one island (100 %), the brief's criterion; C115-2 is a Bottom 0.3x0.3 pad and U1-K1 a Top 0.225 ball, neither on a layer the offending laser stack touches, and every GND/VCC3V3 via lands on the main island (135/135, 86/86). Reviewer's correction adopted: the 0.48 mm2 L5 island at x 48.648-49.148 y 12.208-13.588 is on the bare board (bare plane_L5 EXIT 0), the plan adds 0.006 mm2.",
+   "route_width EXIT 0 for USB_D_P/USB_D_N is not a pass of the pair rule: the plan's USB copper is single-ended 0.0762 mm on separate paths, coupled length 0, min same-layer centre distance 0.204 mm, skew 1.95 mm; the inputs carry no USB width rule at all, so the board's DiffPairsRouting 0.150/0.150 is unmet. The report's VERDICT line listing route_width among the passes must not be read as the pair being acceptable.",
+   "'pass A: closed 4 of 138' in run2/gen.log is the last chunk's count only (the chunked log prints per-chunk results); pass A closed 95 in all, pass B 0 of 43.",
+   "Reviewer's three corrections stand: 96 of 140 confirmed by an independent union-find; 'diff empty' of the check lines was true only after sorting (13 pass-B lines reordered by chunk boundaries, substance intact, plan.json byte-identical in three copies); the void-alternation boundary is broken and unmeasured -- re-measured by me (judge/webs.py): both exact cases confirmed (L2 TMS/CHAN24 web 0.0225 at d 0.5025; L5 N$LD0R/N$LD1A web 0.020 at d 0.500) plus FPGA-TDO/CHAN22 (0.0299) and eight laser-through thin webs down to 0.0049 mm; the bare board already carries webs of this class between its own through vias (BS0/A0 0.0223, UDQM/SDRAM-CLK 0.0251, VCC1V0/GND 0.0151)."
+  ],
+  "risks": [
+   "UART_FT_RXD U2-39<->U1-G19: the plan's own measurement says its last corridor is exactly illegal by -0.0203 mm although the raster witness survives; any placement of this plan may leave it with no exactly-legal corridor at all (route_reach cannot see it: its net is touched by the plan).",
+   "The plane-web boundary is not measured by any gate in the set; a placement decision on any future plan must run a web check (judge/webs.py or a tools/ equivalent) or the same violation recurs silently.",
+   "The R15-1 tie is placement-limited: no plan reaches 140 on this placement without the user's choice between R15-1 and ANALOG-IO1 X2-40<->R14-2 or a two-removal edit of stage-8 NODE_P1/AIN16_N copper.",
+   "Order dependence is real and measured (UART_FT_RXD, FLASH-D01/D03/JA8, CHAN28, TMS-vs-RST#): a partial placement of the 95 routes would freeze the order and make a later 140 strictly harder; every number in this stage comes from one instrument (router + stage-9 witness cache) whose raster is permissive under own copper, so the 43 'routable alone' verdicts are raster-level, not exact.",
+   "The DRC file used for the 140 has 141 'Un-Routed Net Constraint' lines (one header); the reviewer's parser found 140 connections with 0 unmatched endpoints, so the count is sound, but any re-export of the DRC changes the connection names the router keys on."
+  ]
+ },
+ "global": {
+  "closed_of_140": 96,
+  "plan_path": "C:/Users/tambe/AppData/Local/Temp/claude/C--Users-tambe-Documents-Electronics-Zulu-A7-Zulu-Altrium/1e3d9c42-62fe-43bd-a170-baf7d18a0d60/scratchpad/stage10/global/plan.json",
+  "gen_check": "gen.py = C:/Users/tambe/AppData/Local/Temp/claude/C--Users-tambe-Documents-Electronics-Zulu-A7-Zulu-Altrium/1e3d9c42-62fe-43bd-a170-baf7d18a0d60/scratchpad/stage10/global/gen.py (ZULU_TOOLS=<instrument>/tools; router = global/router = the instrument's router + router_fine.diff (322 lines) + engine_fine.diff (69 lines): 0.1->0.05->0.025 mm lattice fallbacks in route/find_witness/repair, proximity pricing (PROX 6 cells), witness-aware smoothing, own-copper cells inset by half a track, own-via-pitch retry denies the model pitch, close own vias merged into stacks, via_discs 0.44, RADII 6/12/24; the gates and tools/ untouched). Produced by: cd global; python gen.py --out=run2 --state=run2/state.json --deadline=500 [--resume] --passes=AB  (10 chunks, 5026 s; pass A 138 in knot-first order, budget 90/36 with the three knots at 400/120; pass B the 43 left, budget 400/120; pass C skipped by --passes=AB). Reproduced: python gen.py --out=check --state=check/state.json --deadline=500 [--resume] --passes=AB --check=global/plan.json (10 chunks) -> log tail: 'pass B: closed 0 of 43, 95 routed in all, 409 s / CLOSED 95 of 138 signal connections in all / --check .../global/plan.json: IDENTICAL byte for byte'; md5 a1ed28d5db5a2af10e9c6cb978979007 for both global/plan.json and check/plan.json; every one of the 174 per-connection decision lines of the check equals run 2's (check/lines.txt vs check/run2_lines.txt, counters and times stripped, diff empty).",
+  "removals": [],
+  "route_reach_before_after": "Bare board, this model (python tools/route_reach.py --inputs inputs_hdi.json --drc drc_hdi_rules_2026-09-29.drc, cache %TEMP%/route_reach_board_565af2dd47b18a0a1a649aa5db766d08.json, key recomputed and confirmed): routable on the board 138 / 138 (warmed in 370 s by the earlier agent's reach_warm, not 50 min). With global/plan.json: 37 un-routed connections of nets the plan does not touch -> routable on the board 37 / 37, routable with the plan 37 / 37, walled off: none (EXIT 0). Inside the router every one of the 43 open connections still holds a witness after the run (diag/state_open.log: 'routable alone' for all 43), i.e. nothing is walled off; they are open for SIMULTANEITY, each one's route cuts a neighbour whose witness cannot be re-found.",
+  "via_census": "Printed by gen.py (MR.census on the merged plan): via census: 325 sites, 429 via objects; track length 1641.6 mm -- buried L3-L4 102 (inside U1 land field: 17); laser stack Bottom>L5>L4 54 (0 in field); laser stack Top>L2>L3 53 (2 in field); chain L3-SIG/L4-SIG+L4-SIG/L5-VCC3V3/Bottom 39 (0); through 31 (0); chain Top/L2-GND/L3-SIG+L3-SIG/L4-SIG 27 (0); chain Top/L2-GND/L3-SIG+L3-SIG/L4-SIG+L4-SIG/L5-VCC3V3/Bottom 19 (0). Every merged laser span is one plan record and route_emit emits it as two Pascal vias (uVia 1:2 + 2:3 / 5:6 + 4:5, 0.30/0.15), buried 0.27/0.15 -- instrument phase 1 as delivered; route_emit --require-complete clean.",
+  "track_length_mm": 1641.6,
+  "usb_pair": "Both closed (USB_D_P U2-8<->X1-3 len 16.02 mm 5 vias; USB_D_N U2-7<->X1-2 len 14.07 mm 3 vias, pass A) but NOT as a coupled pair: the router has no differential mode, each is a single 0.0762 mm track on its own path (Top/L3/L4/Bottom); coupled length 0, uncoupled length = 16.02 / 14.07 mm, skew 1.95 mm, width 0.0762 not 0.150. route_width says both could be widened to 0.325 / 0.363 mm max, EXIT 0, but the DiffPairsRouting 0.150/0.150 coupled requirement is not met by this plan -- report as open for the pair rule.",
+  "gnd_ties": "U2-5: TIED -- Top track (25.775,15.3501)-(26.8,15.15) 0.0762 mm + GND laser stack Top/L2-GND/L3-SIG at (26.8,15.15) (the U2S agent's site, verified: exact slack ok, route_emit clean, gnd_check counts it, lay_base cut 1 witness and re-found it, WALLED OFF 0); no through via fits there (0 THRU-legal cells within 1.5 mm). R15-1 (43.75,3.95, Bottom): OPEN. Measured (global/tie_r15.log, objdump/map.py): no THRU-legal cell within 3 mm (nearest 2.46 mm), B45 nearest 1.43 mm (lands on L4, no GND anyway), T23/L34 legal at the pad centre but they start on Top. Every Bottom tie the router found (33 GND joins tried, nearest first: the R12-? pad/tracks at 1.64 mm, R11-1 pad 45.95,2.75 at 2.51 mm, the via 46.575,3.225, ...) commits only by walling off ANALOG-IO1 X2-40<->R14-2: R14-2 (43.15,3.95) is boxed in by the NODE_P1 stage-8 track at x 43.17 (y 2.42-3.65) and the D3/D5 through-via row at y 4.4, its ONLY exit is the channel between the NODE_P1 track and the AIN16_P 0.7x0.9 pad (43.6-44.3, y 2.6-3.5): free centre-lines x 43.336..43.472 = 0.136 mm = ONE 0.0762 track, and that same channel is R15-1's only exit too. Widening it needs NODE_P1's run at <= 43.14, which collides with the AIN16_N track at x 42.98 (needs >= 43.146): two placed-copper removals, more than the single removal the addendum allows, so nothing was removed. The U2S agent's tie (ties_u2s.json, via the channel and y 2.45) walls off NODE_P0 x2, ANALOG-IO0 and ANALOG-IO1 -- gen.py refuses it; ties.json carries U2-5 alone. User decision: R15-1 tie OR ANALOG-IO1 X2-40<->R14-2 on this placement, not both.",
+  "wall_clock_s": 16400,
+  "caveats": [
+   "96 of 140 closed (95 signal + U2-5), 44 open -- the plan is NOT placeable as delivered: gnd_check 205/206, signals_check 43 split nets, plane_L2/L5 report a pad over a void each (C115-2 GND, U1-K1 VCC3V3) and a 0.48 mm2 L5 sliver at x 48.65-49.15 y 12.2-13.6, route_foreclosure names FLASH-D02, D10, D15; only route_emit, route_reach, route_stitch, tie_check, capacity and route_width pass.",
+   "Instrument gap found and measured, not in the brief: route_reach frees EVERY cell under a net's own copper, so fine-lattice routes rode 0.02-0.04 mm off own stubs at exact clearance and route_emit refused them by -0.004..-0.024 mm ('no route on the lattice (after N exact retries)'); fixed in the router copy by insetting own-copper cells by half a track (router_fine.diff inset_own_cells) -- the stage-9 witness cache and route_reach's regions still use the permissive rule, so a 'witness' can be raster-legal but exactly illegal (UART_FT_RXD U2-39<->U1-G19 is the surviving case).",
+   "The 0.1 mm lattice is structurally blind to this board: two tracks 0.1662 apart in a 0.2 mm lane (CFG-M0/CFG-M1, both close only with the 0.05/0.025 mm rungs and witness-aware smoothing), laser sites at ball interstices (x,y = 0.15 mod 0.5), the 0.4 mm pocket south of W9/W10 (three tracks at 0.175 mm pitch only on the 0.025 mm lattice, not achieved).",
+   "The knot orders in gen.py (U2 pocket: DONE, PROG#, TMS, TDO, TDI, TCK, FT-RESETN on the 0.05 mm lattice; SW: CFG-M0, CFG-M1 first) were measured in knots/*/log; a full commit-order search over 138 is infeasible (one run = 84 min), 3 orders were tried per knot, pass B retried every leftover at 400/120 and closed none; pass C (reverse order) was skipped by --passes=AB.",
+   "USB pair is routed single-ended (no differential mode in the router): coupled length 0, skew 1.95 mm, width 0.0762 -- DiffPairsRouting 0.150 coupled is not met.",
+   "No hand paths were placed (the time went into the instrument fixes and the global run + its byte-for-byte reproduction); the hand-path mechanism (--hand) exists in mustroute.py but gen.py routes everything itself.",
+   "No copper removed, nothing moved, nothing written to Altium; the 'D0..D6' through-via row at y 4.4 north of R14/R15 and the NODE_P1/AIN16 copper are placed stage-8 copper and were left alone.",
+   "Wall clock 16400 s is approximate (04:30 start to 09:03 finish); the global run itself took 5026 s in 10 chunks and its --check reproduction ~5200 s in 10 chunks; the host's ~10 min limit forced chunking, which the state file makes byte-identical.",
+   "route_reach on the bare board was already cached by the earlier knot agent (370 s, not ~50 min); the cache key was recomputed and matches 565af2dd47b18a0a1a649aa5db766d08.",
+   "Evidence files: global/gen.py, global/plan.json (md5 a1ed28d5db5a2af10e9c6cb978979007), global/global_result.json (closed/open names + per-pass results), global/run2/gen.log (the run), global/check/*.log (the reproduction), global/gates/*.log + tails.txt + PlaceStage10.pas (read only), global/diag/state_open.log (per-open-connection measurement), global/knots/*/log and global/orders/*/route.log (knot and order tests), global/tie_r15.log (the R15-1 tie search), global/router_fine.diff + engine_fine.diff (every router change), global/ties.json / ties_u2s.json."
+  ],
+  "open": [
+   {
+    "conn": "R15-1 GND tie (Bottom 43.75,3.95)",
+    "reason": "Only exit is the 0.136 mm channel x 43.336..43.472 (NODE_P1 track at 43.17 | AIN16_P pad 43.6-44.3, y 2.6-3.5), one track wide, and it is ANALOG-IO1 X2-40<->R14-2's only exit too; no via fits (THRU none within 3 mm, B45 1.43 mm and lands on L4).",
+    "tried": "33 GND joins within 6 mm as tie targets nearest first, every route commits only by walling off ANALOG-IO1 (tie_r15.log); channel widening needs NODE_P1 <= 43.14 which hits AIN16_N at 42.98 (two removals, not allowed); U2S agent's tie rejected (walls off NODE_P0 x2, ANALOG-IO0, ANALOG-IO1)."
+   },
+   {
+    "conn": "RST# track<->X2-23",
+    "reason": "Shares the 0.4 mm pocket south of balls W9/W10 (x 45.95-46.35, y 6.6-7.05; only 0.3 mm at y 6.9) with FPGA-TMS and FPGA-TDI: three 0.0762 tracks need exact lanes 45.975/46.15/46.325 (0.175 pitch, 0.009 mm margins); the route now walls off FPGA-TMS (witness len 24.51, 8 vias), hit at (46.000,6.625)..(46.050,6.550).",
+    "tried": "pass A ladder (via-slot denial, 0.05 and 0.025 mm rungs, detours 6/12/24 cells, TDI arbitrated first), pass B 400/120, 3 knot orders (orders/sw_1..3), explicit 0.025 mm lattice runs (knots/sw_s1, sw_s1b) and default-lattice orders (sw_d1, sw_d2): TMS and RST# never both."
+   },
+   {
+    "conn": "FPGA-TMS U1-W9<->R4-12",
+    "reason": "Same pocket as RST# track<->X2-23 and CHAN16's south-band corridor; route now walls off CHAN16 X2-26<->U1-W16 (witness len 7.23, 3 vias) at (48.500,4.375)..(48.500,4.500).",
+    "tried": "as RST# track; also first in orders sw_2/sw_s1 -- then FPGA-TDI is arbitrated first and TMS still finds no lane."
+   },
+   {
+    "conn": "FLASH-D01 U4-2<->U1-D19",
+    "reason": "Walls off FLASH-D03 track<->U4-7 (witness len 8.38, 3 vias) at (51.825,14.425)..(51.925,14.525): the U1 NE edge column x 51.1-51.9, y 14.2-15.3 holds one lane / one laser site for D01, D03 and JA8.",
+    "tried": "pass A (knot order, 0.05/0.025 rungs, arbitration laid FLASH-D00 first), pass B 400/120; knots/ne_* orders closed it in 3 of 5 runs but then FLASH-D03 or JA8 opened instead."
+   },
+   {
+    "conn": "FLASH-D03 track<->U4-7",
+    "reason": "Walls off FLASH-D01 U4-2<->U1-D19 (witness len 13.17, 4 vias) at (51.725,14.600)..(51.850,14.600) -- the same NE-edge lane.",
+    "tried": "pass A/B ladders; closed in knots/ne_d, test3_ne when FLASH-D01 lost instead."
+   },
+   {
+    "conn": "JA8 U1-E19<->R31-2",
+    "reason": "Walls off FLASH-D03 track<->U4-7 at (51.250,14.175)..(51.375,14.225); its route now damages 28 witnesses (the NE edge column is the corridor of D01/D03/JA8/CHAN0..3/SD-DAT3).",
+    "tried": "pass A/B ladders, knot orders ne_s2/ne_d."
+   },
+   {
+    "conn": "UART_FT_RXD U2-39<->U1-G19",
+    "reason": "no route on the lattice (after 1 exact retries): the last corridor into G19 rides own UART_FT_RXD copper 0.02 mm too close to the GND via (51.4,13.9) (exact slack -0.0203) -- raster-vs-exact gap; with the inset fix the corridor is gone on all three lattices.",
+    "tried": "pass A and B, 0.05/0.025 mm fallbacks; closed in test2_ne/test3_ne/run1 (different order) -- order dependent."
+   },
+   {
+    "conn": "FLASH-CS# U4-1<->U1-K19",
+    "reason": "Walls off CHAN10 X2-13<->U1-J19 (witness len 43.61) at (51.300,11.950)..(51.325,11.925): U1's east edge column x 51.0-51.9, y 11.4-12.4 carries one lane for K19/J19/H19 and the UART_FT_* stubs.",
+    "tried": "pass A (0.05/0.025 rungs, via-slot denial), pass B 400/120."
+   },
+   {
+    "conn": "CHAN10 X2-13<->U1-J19",
+    "reason": "Walls off UART_FT_TXD U2-38<->track (witness len 31.73, 8 vias) at (51.125,12.125)..(51.250,12.000) -- same east-edge lane.",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN7 X2-10<->U1-H19",
+    "reason": "Walls off CHAN10 X2-13<->U1-J19 at (51.150,12.350)..(51.275,12.200).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "LED2 R84-1<->U1-M19",
+    "reason": "Walls off CHAN10 at (51.825,11.475)..(51.950,11.450).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "UART_FT_TXD U2-38<->track",
+    "reason": "Walls off CHAN10 X2-13<->U1-J19 at (47.575,17.950)..(47.700,17.950) (the north band over U1 is CHAN10's only corridor once the east edge is full).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "UART_FT_RTS# U2-40<->track",
+    "reason": "Walls off CHAN10 at (47.575,17.950)..(47.700,17.950).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "UART_FT_DTR# U2-43<->track",
+    "reason": "Walls off CHAN10 at (51.800,11.500)..(51.925,11.450).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN8 X2-11<->track",
+    "reason": "Walls off CHAN10 at (51.000,12.400)..(51.125,12.375).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN0 track<->X2-3",
+    "reason": "Walls off CHAN3 X2-6<->U1-A17 (witness len 22.39) at (50.900,13.350)..(50.900,13.475): the A16/A17/A18 stubs at U1's NE corner share one Top lane down x 50.9.",
+    "tried": "pass A and B ladders; via-slot denial then no route on any lattice."
+   },
+   {
+    "conn": "CHAN3 X2-6<->U1-A17",
+    "reason": "Walls off CHAN0 track<->X2-3 (witness len 18.95) at (50.900,13.250)..; 256 hit cells -- the same NE corner lane.",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN1 U1-A18<->X2-4",
+    "reason": "Walls off CHAN0 track<->X2-3 at the NE corner lane x 50.9, y 13.25-13.5.",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "SD-DAT3 X3-2<->U1-A16",
+    "reason": "Walls off CHAN0 at (50.900,13.250)..(50.900,13.375), 329 hit cells.",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN9 X2-12<->via",
+    "reason": "Walls off CHAN0 at (51.000,13.150)..(51.125,13.025).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN11 X2-14<->via",
+    "reason": "Walls off CHAN0 at (51.000,13.150)..(51.125,13.025).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN2 X2-5<->track",
+    "reason": "Walls off CHAN0 at (50.900,13.250)..",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN4 X2-7<->via",
+    "reason": "Walls off CHAN0 at (51.000,13.150)..(51.125,13.025).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN6 X2-9<->via",
+    "reason": "Walls off CHAN0 at (51.000,13.150)..(51.125,13.025).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "SD-DAT0 X3-7<->via",
+    "reason": "Walls off CHAN0 at (51.000,13.150)..(51.125,13.025).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN16 X2-26<->U1-W16",
+    "reason": "Walls off CHAN18 X2-28<->track (witness len 12.70, 4 vias) at (46.850,2.550)..(46.975,2.600): the south band below the W row (y 2.3-7.2, x 46.8-50.3) holds one lane per stub column and every X2-to-W-row connection needs one.",
+    "tried": "pass A (0.05/0.025 rungs, exact retry), pass B; bare-board knot test knots/chan (2 of 6)."
+   },
+   {
+    "conn": "CHAN18 X2-28<->track",
+    "reason": "Walls off CHAN16 X2-26<->U1-W16 (witness len 7.23) at (47.000,2.325)..(47.000,2.450), 324 hit cells.",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN25 X2-35<->U1-W13",
+    "reason": "Walls off CHAN16 at (49.000,5.500)..(49.000,5.775).",
+    "tried": "pass A and B ladders, knots/chan."
+   },
+   {
+    "conn": "CHAN19 X2-29<->U1-W15",
+    "reason": "Walls off CHAN16 at (49.225,6.125)..(49.325,6.750).",
+    "tried": "pass A and B ladders, knots/chan."
+   },
+   {
+    "conn": "CHAN20 X2-30<->track",
+    "reason": "Walls off CHAN16 at (49.225,6.125)..(49.325,6.750).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN23 X2-33<->track",
+    "reason": "Walls off CHAN16 at (49.000,5.500)..(49.000,5.775).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN26 X2-36<->track",
+    "reason": "Walls off CHAN16 at (49.000,5.500)..(49.000,5.675).",
+    "tried": "pass A and B ladders, knots/chan."
+   },
+   {
+    "conn": "CHAN13 X2-16<->U1-W18",
+    "reason": "Walls off CHAN15 X2-25<->track (witness len 9.45) at (50.150,6.750)..(50.200,7.100): the W18/W19 stub lanes at x 50.15-50.3.",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN15 X2-25<->track",
+    "reason": "Walls off CHAN13 X2-16<->U1-W18 at (50.150,6.750)..(50.300,6.900).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN27 X2-37<->track",
+    "reason": "Walls off JA1 track<->R26-1 (witness len 13.56) at (51.525,8.650)..(51.650,8.550): U1's east edge at y 8.5-8.7 has one lane for JA1/JA2/CHAN27/CHAN-CLK/CHAN28.",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "CHAN28 X2-38<->U1-R19",
+    "reason": "Walls off CHAN27 X2-37<->track (witness len 70.78) at (28.325,7.750).., 952 hit cells (its 73 mm witness circles the board).",
+    "tried": "pass A and B ladders; closed in knots/chan on the bare board."
+   },
+   {
+    "conn": "CHAN-CLK track<->X2-2",
+    "reason": "Walls off CHAN27 at (52.100,9.950)..(52.225,9.950).",
+    "tried": "pass A and B ladders (detour 6 cells, no route)."
+   },
+   {
+    "conn": "JA1 track<->R26-1",
+    "reason": "Walls off CHAN27 at (51.750,8.500)..(51.875,8.500).",
+    "tried": "pass A and B ladders (0.05/0.025 rungs, detour 6)."
+   },
+   {
+    "conn": "JA2 U1-U19<->R27-1",
+    "reason": "Walls off CHAN27 at (51.750,8.500)..(51.875,8.500).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "LED0_B LD0-2<->U1-N19",
+    "reason": "Its 57-63 mm route damages 19 witnesses and walls off CHAN16 X2-26<->U1-W16 at (48.500,4.350)..(48.500,4.475).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "LED0_R LD0-4<->U1-P19",
+    "reason": "Walls off CHAN16 at (48.500,4.350)..(48.500,4.475).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "LED0_G LD0-6<->track",
+    "reason": "Walls off CHAN16 at (48.500,4.350)..(48.500,4.475).",
+    "tried": "pass A and B ladders."
+   },
+   {
+    "conn": "NODE_P0 R10-1<->R11-2",
+    "reason": "Walls off NODE_P0 R12-2<->R10-1 at (45.000,2.300): the two NODE_P0 links and ANALOG-IO0/IO1 share the one lane along y 2.3-2.45 under R10/R11 (ANALOG-IO0 and IO1 were arbitrated first, 44 and 47 mm).",
+    "tried": "pass A (arbitration laid ANALOG-IO0 first), pass B."
+   },
+   {
+    "conn": "NODE_P0 R12-2<->R10-1",
+    "reason": "Walls off NODE_P0 R10-1<->R11-2 at (45.000,2.300) (47.000,2.600); its own route is 95-110 mm around the board.",
+    "tried": "pass A and B ladders."
+   }
+  ]
+ }
+}
