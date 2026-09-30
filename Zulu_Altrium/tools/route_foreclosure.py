@@ -86,6 +86,12 @@ def rect_pts_dist(cx, cy, sx, sy, px, py):
     return np.hypot(dx, dy)
 
 
+def pad_pts_dist(p, px, py):
+    """distance from points to pad p as a rounded rectangle (route_emit.pad_pt, vectorised)"""
+    cr = p.get('cr', 0.0)
+    return rect_pts_dist(p['x'], p['y'], p['sx'] - 2 * cr, p['sy'] - 2 * cr, px, py) - cr
+
+
 def seg_seg_dist(a, b):
     def pt(px, py, x1, y1, x2, y2):
         dx, dy = x2 - x1, y2 - y1
@@ -203,7 +209,7 @@ def slots(e, W, lf, limit=None):
     free = np.ones(RX.shape, dtype=bool)
     grow = C + TOP_W / 2
     for p in top:
-        free &= rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], RX, RY) >= grow - 1e-9
+        free &= pad_pts_dist(p, RX, RY) >= grow - 1e-9
     for t in tracks:
         if t['layer'] == 'Top':
             free &= seg_pts_dist(t['x1'], t['y1'], t['x2'], t['y2'], RX, RY) - t['width'] / 2 >= grow - 1e-9
@@ -250,7 +256,7 @@ def slot_mask(H, spans, ok0, px, py, lf, vias, tracks, smd, th, net):
                 ok &= np.hypot(px - v['x'], py - v['y']) >= need - 1e-9
         pads = list(th) + [p for L in ('Top', 'Bottom') if L in S for p in smd.get(L, [])]
         for p in pads:
-            m = rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], px, py) - land / 2 >= C - 1e-9
+            m = pad_pts_dist(p, px, py) - land / 2 >= C - 1e-9
             if H.via_in_pad(S) and net is not None and p.get('net') == net and p.get('layer') in H.outer(S):
                 m |= (np.abs(px - p['x']) < 1e-6) & (np.abs(py - p['y']) < 1e-6)
             ok &= m
@@ -282,7 +288,7 @@ def _pad_ok_window(pad, W, lf, owned, PAD_WIN):
     for p in pads_L + th:
         if p['net'] == net and net is not None:
             continue
-        free &= rect_pts_dist(p['x'], p['y'], p['sx'], p['sy'], RX, RY) >= grow - 1e-9
+        free &= pad_pts_dist(p, RX, RY) >= grow - 1e-9
     for t in trk_L:
         if t['net'] == net:
             continue

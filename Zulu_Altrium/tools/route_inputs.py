@@ -175,10 +175,18 @@ def main():
         rot = struct.unpack('<d', b[52:60])[0]
         if round(rot) % 180 == 90:
             sx, sy = sy, sx
+        # Pads6 shape bytes top/mid/bottom (1 round, 2 rect, 3 octagon).  A pad is modelled round only when
+        # all three say round; every other pad keeps the rectangle (an octagon lies inside it: conservative).
+        # Round -> corner radius cr = min(sx, sy) / 2 (a circle, or an obround when sx != sy).  2026-09-30:
+        # until then every pad was a rectangle, which put U1's 0.225 mm round lands' corners 0.047 mm too close
+        # to every diagonal neighbour and killed every interstitial via site under U1.
+        round_pad = b[49] == 1 and b[50] == 1 and b[51] == 1
+        cr = min(sx, sy) / 2 if round_pad else 0.0
         c = comps.get(comp, {})
         pads.append(dict(ref=c.get('SOURCEDESIGNATOR'), pad=name, layer=LAYER.get(b[0], str(b[0])),
                          x=round(x, 4), y=round(y, 4), sx=round(sx, 4), sy=round(sy, 4),
-                         hole=round(hole, 4), rot=rot, net=nets.get(net) if net >= 0 else None))
+                         hole=round(hole, 4), rot=rot, net=nets.get(net) if net >= 0 else None,
+                         shape='round' if round_pad else 'rect', cr=round(cr, 4)))
 
     # ---- vias ---------------------------------------------------------------
     d = f.openstream('Vias6/Data').read()
@@ -309,11 +317,14 @@ def main():
         nets=out_nets,
         vias=vias,
         tracks=[t for t in tracks],
-        th_pads=[dict(ref=p['ref'], pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'], hole=p['hole'], net=p['net'])
+        th_pads=[dict(ref=p['ref'], pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'], hole=p['hole'], net=p['net'],
+                      shape=p['shape'], cr=p['cr'])
                  for p in pads if p['layer'] == 'Multi' and inreg(p)],
-        bottom_pads=[dict(ref=p['ref'], pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'], net=p['net'])
+        bottom_pads=[dict(ref=p['ref'], pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'], net=p['net'],
+                          shape=p['shape'], cr=p['cr'])
                      for p in pads if p['layer'] == 'Bottom' and inreg(p)],
-        top_pads=[dict(ref=p['ref'], pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'], net=p['net'])
+        top_pads=[dict(ref=p['ref'], pad=p['pad'], x=p['x'], y=p['y'], sx=p['sx'], sy=p['sy'], net=p['net'],
+                       shape=p['shape'], cr=p['cr'])
                   for p in pads if p['layer'] == 'Top' and inreg(p)],
         u3=dict(rows_y=sorted(set(round(p['y'], 3) for p in u3pads)), x_min=min(p['x'] for p in u3pads), x_max=max(p['x'] for p in u3pads),
                 pad_sx=u3pads[0]['sx'], pad_sy=u3pads[0]['sy'], east_copper=max(p['x'] + p['sx'] / 2 for p in u3pads),

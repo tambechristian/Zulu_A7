@@ -78,14 +78,14 @@ def maxwidth(inp, net, layer, seg, plan_tracks=(), plan_vias=(), report=False):
     # through-hole pads: every layer
     for p in inp['th_pads']:
         if p['net'] == net: continue
-        d = re.seg_rect(seg, p['x'], p['y'], p['sx'], p['sy'])
+        d = re.pad_seg(seg, p)
         upd(d, gap_for(p['net']), 'th %s-%s' % (p['ref'], p['pad']))
     # smd pads on this layer
     if layer in ('Top', 'Bottom'):
         key = 'top_pads' if layer == 'Top' else 'bottom_pads'
         for p in inp[key]:
             if p['net'] == net: continue
-            d = re.seg_rect(seg, p['x'], p['y'], p['sx'], p['sy'])
+            d = re.pad_seg(seg, p)
             upd(d, gap_for(p['net']), 'pad %s-%s' % (p['ref'], p['pad']))
     # tracks on this layer
     for t in list(inp['tracks']) + list(plan_tracks):

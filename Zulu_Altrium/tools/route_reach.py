@@ -100,9 +100,10 @@ def shape_mask(R, obj, grow):
         if w is None:
             return None
         sl, X, Y = w
-        dx = np.maximum(np.abs(X - obj['x']) - obj['sx'] / 2, 0)
-        dy = np.maximum(np.abs(Y - obj['y']) - obj['sy'] / 2, 0)
-        return sl, np.hypot(dx, dy) <= grow + 1e-9
+        cr = obj.get('cr', 0.0)             # rounded rectangle: inner box swept by a disc of radius cr
+        dx = np.maximum(np.abs(X - obj['x']) - (obj['sx'] / 2 - cr), 0)
+        dy = np.maximum(np.abs(Y - obj['y']) - (obj['sy'] / 2 - cr), 0)
+        return sl, np.hypot(dx, dy) <= grow + cr + 1e-9
     if k == 'circle':
         r = obj['r'] + grow
         w = R.window(obj['x'] - r, obj['y'] - r, obj['x'] + r, obj['y'] + r)
@@ -151,11 +152,11 @@ def world(inp, plans):
         return 0.10 if net in sdram else C
     objs = []
     for q in inp['top_pads']:
-        objs.append(dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], net=q['net'], layers=('Top',), pad=True, ref=q['ref'], name=q['pad']))
+        objs.append(dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], cr=q.get('cr', 0.0), net=q['net'], layers=('Top',), pad=True, ref=q['ref'], name=q['pad']))
     for q in inp['bottom_pads']:
-        objs.append(dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], net=q['net'], layers=('Bottom',), pad=True, ref=q['ref'], name=q['pad']))
+        objs.append(dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], cr=q.get('cr', 0.0), net=q['net'], layers=('Bottom',), pad=True, ref=q['ref'], name=q['pad']))
     for q in inp['th_pads']:
-        objs.append(dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], net=q['net'], layers=LAYERS, pad=True, ref=q['ref'], name=q['pad']))
+        objs.append(dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], cr=q.get('cr', 0.0), net=q['net'], layers=LAYERS, pad=True, ref=q['ref'], name=q['pad']))
     for v in vias:
         sp = hdi.span_of(v)                 # a via blocks / joins only the signal layers in its span
         objs.append(dict(kind='circle', x=v['x'], y=v['y'], r=v.get('size', 0.35) / 2, net=v['net'], layers=hdi.signal_layers(sp),
@@ -378,11 +379,11 @@ def parse_connections(inp, drc_path, owned):
     seg = seg[:seg.find('Rule Violations :')]
     pads = {}
     for q in inp['top_pads']:
-        pads[(q['ref'] + '-' + q['pad'], 'Top')] = dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], layers=('Top',))
+        pads[(q['ref'] + '-' + q['pad'], 'Top')] = dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], cr=q.get('cr', 0.0), layers=('Top',))
     for q in inp['bottom_pads']:
-        pads[(q['ref'] + '-' + q['pad'], 'Bottom')] = dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], layers=('Bottom',))
+        pads[(q['ref'] + '-' + q['pad'], 'Bottom')] = dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], cr=q.get('cr', 0.0), layers=('Bottom',))
     for q in inp['th_pads']:
-        pads[(q['ref'] + '-' + q['pad'], 'Multi')] = dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], layers=LAYERS)
+        pads[(q['ref'] + '-' + q['pad'], 'Multi')] = dict(kind='rect', x=q['x'], y=q['y'], sx=q['sx'], sy=q['sy'], cr=q.get('cr', 0.0), layers=LAYERS)
     obj_re = re.compile(r"(Pad ([^\s(]+)\(([-\d.]+)mm,([-\d.]+)mm\) on ([A-Za-z0-9 -]+?)(?= And |\s*$))|"
                         r"(Track \(([-\d.]+)mm,([-\d.]+)mm\)\(([-\d.]+)mm,([-\d.]+)mm\) on ([A-Za-z0-9 -]+?)(?= And |\s*$))|"
                         r"(Via \(([-\d.]+)mm,([-\d.]+)mm\) from ([A-Za-z0-9 -]+?) to ([A-Za-z0-9 -]+?)(?= And |\s*$))")

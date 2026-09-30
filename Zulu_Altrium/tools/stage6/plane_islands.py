@@ -51,7 +51,24 @@ STEP = 0.02
 PLANE_LAYER = {'L2': 'L2-GND', 'L5': 'L5-VCC3V3'}
 
 
-def analyse(inp, plane_net, extra_vias=(), plane_layer=None):
+def uvia_clearance(inp, override=None):
+    """the PlaneClearance a LASER (microvia) span gets.  Stage 10 (2026-09-30): the board carries
+    PlaneClearance_uVia, scope IsMicroVia, 0.165 (tools/ZuluHdiRules.pas:147-155, commit faf26a2), but
+    route_inputs.py keeps rules by a fixed NAME list (route_inputs.py:244) and does not carry it, so an
+    inputs file voids a microvia at hole + 2 x 0.25 = 0.65 mm where the board cuts 0.15 + 2 x 0.165 = 0.48.
+    Honoured here: a PlaneClearance rule in the inputs whose scope is IsMicroVia, else --uvia-clearance X,
+    else the All rule (PLANE_CLR).  The header line says which."""
+    if override is not None:
+        return float(override), '--uvia-clearance %.3f (the board rule PlaneClearance_uVia; NOT in this inputs file)' % float(override)
+    for name, r in (inp.get('rules') or {}).items():
+        if r.get('RULEKIND') == 'PlaneClearance' and r.get('SCOPE1EXPRESSION') == 'IsMicroVia':
+            c = r.get('CLEARANCE', '')
+            c = float(c[:-3]) * 0.0254 if str(c).endswith('mil') else float(str(c).rstrip('m'))
+            return c, 'inputs rule %s %.3f' % (name, c)
+    return PLANE_CLR, 'the All-scoped PlaneClearance %.2f (no IsMicroVia rule in the inputs; pass --uvia-clearance 0.165 for the board rule)' % PLANE_CLR
+
+
+def analyse(inp, plane_net, extra_vias=(), plane_layer=None, uvia_clr=None):
     o = inp['outline']
     x0, y0 = o['x0'] + PULLBACK, o['y0'] + PULLBACK
     x1, y1 = o['x1'] - PULLBACK, o['y1'] - PULLBACK
@@ -67,7 +84,8 @@ def analyse(inp, plane_net, extra_vias=(), plane_layer=None):
             continue                        # never touches this plane: no void
         if v.get('net') == plane_net:
             continue                        # its own plane: connects Direct
-        holes.append((v['x'], v['y'], H.antipad_r(sp, v.get('hole', H.hole(sp)), PLANE_CLR)))
+        clr = PLANE_CLR if (uvia_clr is None or H.kind(sp) != 'laser') else uvia_clr     # stage 10: the microvia rule
+        holes.append((v['x'], v['y'], H.antipad_r(sp, v.get('hole', H.hole(sp)), clr)))
     holes += [(p['x'], p['y'], p['hole'] / 2.0 + PLANE_CLR)
               for p in inp['th_pads'] if p.get('net') != plane_net]
     for hx, hy, r in holes:
@@ -91,7 +109,7 @@ def main():
     plane = opt('--plane', 'L5')
     inp = json.load(io.open(opt('--inputs', os.path.join(TOOLS, 'route_inputs.json')), encoding='utf-8'))
     skip = set()
-    for k in ('--inputs', '--net', '--plane'):
+    for k in ('--inputs', '--net', '--plane', '--uvia-clearance'):
         if k in a:
             skip.add(a.index(k)); skip.add(a.index(k) + 1)
     paths = [p for i, p in enumerate(a) if i not in skip and p.endswith('.json')]
@@ -106,7 +124,8 @@ def main():
     plane_layer = PLANE_LAYER.get(plane)
     extra = [dict(x=v['x'], y=v['y'], hole=v.get('hole', H.hole(hdi.span_of(v))), net=v.get('net'), span=list(hdi.span_of(v)))
              for v in plan['vias']]
-    r = analyse(inp, net, extra, plane_layer)
+    uclr, usrc = uvia_clearance(inp, opt('--uvia-clearance'))
+    r = analyse(inp, net, extra, plane_layer, uclr)
     allp = inp['top_pads'] + inp['bottom_pads'] + inp['th_pads']
     pads = [p for p in allp if p.get('net') == net]
     main_isl = int(r['order'][0]) + 1
@@ -114,6 +133,8 @@ def main():
     print('plane %s carrying %s: %d anti-pads, %d island(s), %.1f mm2 of %.1f mm2 gross '
           '(board + %d plan file(s): %d plan vias)'
           % (plane, net, r['holes'], r['n'], r['total'], r['gross'], len(paths), len(extra)))
+    if any(H.kind(hdi.span_of(v)) == 'laser' for v in list(inp['vias']) + list(plan['vias'])):
+        print('   microvia plane clearance: %s -> a 0.15 hole voids %.2f mm' % (usrc, max(2 * (0.075 + uclr), 0.48)))
     for k in r['order'][:5]:
         if r['sizes'][k] > 0.0005:
             print('   island %2d  %8.3f mm2  (%5.1f %%)' % (k + 1, r['sizes'][k], 100.0 * r['sizes'][k] / r['total']))

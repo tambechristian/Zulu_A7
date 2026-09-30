@@ -180,6 +180,20 @@ class Hdi(object):
         return (self.stacking and va.get('net') == vb.get('net') and adjacent(tuple(sa), tuple(sb)) and
                 abs(va['x'] - vb['x']) < eps and abs(va['y'] - vb['y']) < eps)
 
+    def altium_objects(self, span):
+        """the Altium via OBJECTS one plan via of `span` becomes, outer to inner in STACK order, each as
+        (span, land, hole).  A LASER span of three or more layers is a STACK of microvias -- one object
+        per adjacent layer pair, all at one x,y, all of the span's land/hole (stage 10, 2026-09-30: the
+        merged Top/L2-GND/L3-SIG span is uVia 1:2 + uVia 2:3 in the Layer Stack Manager, the merged
+        L4-SIG/L5-VCC3V3/Bottom span is uVia 4:5 + uVia 5:6).  A mechanical span (buried, through) is
+        one object.  The CHECK never uses this: a merged span is one site with one land and one pitch"""
+        span = canonical(span)
+        p = self.params(span)
+        land, hole = float(p['land']), float(p['hole'])
+        if p.get('kind', 'mechanical') == 'laser' and len(span) > 2:
+            return [(span[k:k + 2], land, hole) for k in range(len(span) - 1)]
+        return [(span, land, hole)]
+
     def antipad_r(self, span, hole, plane_clr):
         """radius of the plane void: hole/2 + PlaneClearance (the PcbDoc's one PlaneClearance rule
         voids every via that way), ENLARGED to hdi's 'antipad' diameter for the span when that is

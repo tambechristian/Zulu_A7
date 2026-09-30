@@ -6,6 +6,8 @@
     python tools/route_emit.py <plan.json> <BlockName> --inputs <moved.json>  check against another inputs file
     python tools/route_emit.py <plan.json> <BlockName> --write    also write the
         Place<BlockName> / Remove<BlockName> procedures into tools/ZuluSetup.pas
+    python tools/route_emit.py <plan.json> <BlockName> --pas <out.pas>   write the same block to a
+        file of your own (stage 10: proof of emission without touching ZuluSetup.pas)
 
 The plan has the fan-out's schema: {"vias": [{net,x,y[,span]}], "tracks": [{net,x1,y1,
 x2,y2,layer,width}]}.  The check is independent of whatever produced the plan:
@@ -21,6 +23,14 @@ x2,y2,layer,width}]}.  The check is independent of whatever produced the plan:
                     joins copper only on its layers, and may sit at the CENTRE of a same-net
                     SMD pad on its outer layer when hdi.json allows via-in-pad for the span.
                     Emitted with LowLayer/HighLayer from the span; through = FanVia as before.
+                    A merged LASER stack (Top/L2-GND/L3-SIG, L4-SIG/L5-VCC3V3/Bottom) is ONE plan
+                    record and ONE site for the check, but TWO Altium objects when emitted (stage 10,
+                    2026-09-30): uVia eTopLayer->eInternalPlane1 + eInternalPlane1->eMidLayer1, or
+                    eMidLayer2->eInternalPlane2 + eInternalPlane2->eBottomLayer, each Size 0.30 /
+                    HoleSize 0.15, each V.Net := N + Brd.AddPCBObject(V) + N.AddPCBObject(V) (the
+                    net-membership write that made a pad's net persist, ZuluSetup.pas BlkPadNet).
+                    The buried L3-SIG/L4-SIG span is one object eMidLayer1->eMidLayer2, 0.27 / 0.15.
+                    Remove<Name> matches every object of a stack by LowLayer/HighLayer.
   every new track : on Top / L3-SIG / L4-SIG / Bottom; width within its net's rule
                     on that layer; >= the layer clearance from every foreign object
                     on that layer -- existing tracks (segment-segment), vias and
@@ -86,6 +96,19 @@ def pt_rect(px, py, cx, cy, sx, sy):
     dx = max(abs(px - cx) - sx / 2, 0.0)
     dy = max(abs(py - cy) - sy / 2, 0.0)
     return math.hypot(dx, dy)
+
+
+def pad_pt(px, py, p):
+    """distance from a point to pad p, a rounded rectangle: the inner box (sx-2cr) x (sy-2cr) minus cr.
+    cr is 0 for a rectangular pad (identical to pt_rect), sx/2 for a round one."""
+    cr = p.get('cr', 0.0)
+    return pt_rect(px, py, p['x'], p['y'], p['sx'] - 2 * cr, p['sy'] - 2 * cr) - cr
+
+
+def pad_seg(seg, p):
+    """distance from a segment to pad p (see pad_pt)"""
+    cr = p.get('cr', 0.0)
+    return seg_rect(seg, p['x'], p['y'], p['sx'] - 2 * cr, p['sy'] - 2 * cr) - cr
 
 
 def seg_rect(seg, cx, cy, sx, sy):
@@ -285,7 +308,7 @@ def check(inp, plan):
         for p in th:
             if p['net'] == v['net']:
                 continue
-            d = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - land / 2
+            d = pad_pt(v['x'], v['y'], p) - land / 2
             if d < c - EPS:
                 problems.append('via %d (%s) %.4f from TH pad %s-%s (%s)' % (i, v['net'], d, p['ref'], p['pad'], p['net']))
         for L in ('Top', 'Bottom'):
@@ -296,7 +319,7 @@ def check(inp, plan):
                 # an SMD pad wicks solder (2026-09-15, power feeds).  Waived for ONE pad only: a
                 # same-net pad on the outer layer of a span hdi.json marks via_in_pad, with the via
                 # at the pad's centre.
-                d = pt_rect(v['x'], v['y'], p['x'], p['y'], p['sx'], p['sy']) - land / 2
+                d = pad_pt(v['x'], v['y'], p) - land / 2
                 if d < 0.09 - EPS:
                     if (H.via_in_pad(sp) and p['net'] == v['net'] and L in H.outer(sp) and
                             abs(v['x'] - p['x']) < PAD_CENTRE and abs(v['y'] - p['y']) < PAD_CENTRE):
@@ -336,7 +359,7 @@ def check(inp, plan):
             if p['net'] == t['net']:
                 continue
             need = max(c, clearance_for(p['net'], t['layer'], inp))   # both nets, same fix as the vias
-            d = seg_rect(seg, p['x'], p['y'], p['sx'], p['sy']) - t['width'] / 2
+            d = pad_seg(seg, p) - t['width'] / 2
             if d < need - EPS:
                 problems.append('track %d (%s, %s) %.4f from TH pad %s-%s (needs %.4f)'
                                 % (i, t['net'], t['layer'], d, p['ref'], p['pad'], need))
@@ -344,7 +367,7 @@ def check(inp, plan):
             for p in smd[t['layer']]:
                 if p['net'] == t['net']:
                     continue
-                d = seg_rect(seg, p['x'], p['y'], p['sx'], p['sy']) - t['width'] / 2
+                d = pad_seg(seg, p) - t['width'] / 2
                 if d < c - EPS:
                     problems.append('track %d (%s, %s) %.4f from pad %s-%s (%s)' % (i, t['net'], t['layer'], d, p['ref'], p['pad'], p['net']))
         for o in tracks_old:
@@ -489,13 +512,28 @@ def _pas(net):
     return net.replace("'", "''")
 
 
-def _via_match(vs, var='V'):
-    """DelphiScript condition matching any of the vias vs (net name + centre within 1 um; for a
-    non-through span also its LowLayer / HighLayer, so a Remove takes one member of a stack, not all).
-    A through via matches as it always did."""
-    conds = []
+def via_objects(vs, H=None):
+    """the Altium via objects the plan vias vs become: [(v, span, land, hole)], a merged laser stack
+    expanded into its microvias (hdi.Hdi.altium_objects); a through via stays one object"""
+    H = H or hdi.load()
+    out = []
     for v in vs:
         sp = hdi.span_of(v)
+        if hdi.is_through(sp):
+            out.append((v, sp, VIA_LAND, VIA_HOLE))
+            continue
+        for (s2, land, hole) in H.altium_objects(sp):
+            out.append((v, tuple(s2), land, hole))
+    return out
+
+
+def _via_match(vs, var='V', H=None):
+    """DelphiScript condition matching any of the via OBJECTS the vias vs become (net name + centre within
+    1 um; for a non-through span also its LowLayer / HighLayer, so a Remove takes one member of a stack,
+    not all -- and takes BOTH members of a merged laser stack, one condition each).
+    A through via matches as it always did."""
+    conds = []
+    for v, sp, land, hole in via_objects(vs, H):
         c = "((nm = '%s') And (Abs(x - %.4f) < 0.001) And (Abs(y - %.4f) < 0.001))" % (_pas(v['net']), v['x'], v['y'])
         if not hdi.is_through(sp):
             c = "(%s And (%s.LowLayer = %s) And (%s.HighLayer = %s))" % (c, var, VIA_LAYER_ENUM[sp[0]], var, VIA_LAYER_ENUM[sp[-1]])
@@ -520,7 +558,7 @@ def _trk_match(ts):
     return conds
 
 
-def _collect(L, vias, tracks, listvar):
+def _collect(L, vias, tracks, listvar, H=None):
     """emit two iterator passes (typed IPCB_Via, then IPCB_Track) adding matches to listvar"""
     if vias:
         L += ['    It := Brd.BoardIterator_Create;', '    It.AddFilter_ObjectSet(MkSet(eViaObject));',
@@ -528,7 +566,7 @@ def _collect(L, vias, tracks, listvar):
               '    V := It.FirstPCBObject;', '    While V <> Nil Do', '    Begin',
               "        nm := ''; If V.Net <> Nil Then nm := V.Net.Name;",
               '        x := CoordToMMs(V.X); y := CoordToMMs(V.Y);']
-        for c in _via_match(vias):
+        for c in _via_match(vias, 'V', H):
             L.append('        If %s Then %s.Add(V);' % (c, listvar))
         L += ['        V := It.NextPCBObject;', '    End;', '    Brd.BoardIterator_Destroy(It);']
     if tracks:
@@ -551,19 +589,26 @@ def _add(L, vias, tracks, H=None):
         L.append("        N := FanNet('%s');" % q)
         L.append("        If N = Nil Then Missing := Missing + ' %s' Else" % q)
         L.append('        Begin')
-        for v in vias:
-            if v['net'] == net:
-                sp = hdi.span_of(v)
+        for v, sp, land, hole in via_objects([v for v in vias if v['net'] == net], H):
+            if True:
                 if hdi.is_through(sp):
                     L.append('            FanVia(N, %.4f, %.4f);' % (v['x'], v['y']))
                 else:
                     # FanVia (ZuluSetup.pas) hard-codes 0.35 / 0.20 / eTopLayer..eBottomLayer and is not
-                    # edited; any other span is built inline from the same identifiers, with V from VARS
-                    L += ['            V := PCBServer.PCBObjectFactory(eViaObject, eNoDimension, eCreate_Default);',
+                    # edited; any other span is built inline from the same identifiers, with V from VARS.
+                    # One plan via of a merged laser span yields TWO of these (via_objects), at one x,y.
+                    # LowLayer / HighLayer are the object's two layers in STACK (Top-first) order, the
+                    # convention FanVia uses (eTopLayer .. eBottomLayer).  N.AddPCBObject(V) after
+                    # Brd.AddPCBObject(V): the net-membership write (ZuluSetup.pas BlkPadNet, proven on
+                    # a pad 2026-09-15) so the object's net is on the net's member list when saved.
+                    full = list(hdi.span_of(v))
+                    L += ['            { %s via %s of plan span %s }' % (
+                              H.kind(hdi.span_of(v)), '/'.join(sp), '/'.join(full)),
+                          '            V := PCBServer.PCBObjectFactory(eViaObject, eNoDimension, eCreate_Default);',
                           '            V.X := MMsToCoord(%.4f); V.Y := MMsToCoord(%.4f);' % (v['x'], v['y']),
-                          '            V.Size := MMsToCoord(%.4f); V.HoleSize := MMsToCoord(%.4f);' % (H.land(sp), H.hole(sp)),
+                          '            V.Size := MMsToCoord(%.4f); V.HoleSize := MMsToCoord(%.4f);' % (land, hole),
                           '            V.LowLayer := %s; V.HighLayer := %s;' % (VIA_LAYER_ENUM[sp[0]], VIA_LAYER_ENUM[sp[-1]]),
-                          '            V.Net := N; Brd.AddPCBObject(V);']
+                          '            V.Net := N; Brd.AddPCBObject(V); N.AddPCBObject(V);']
         for t in tracks:
             if t['net'] == net:
                 L.append('            FanTrk(N, %s, %.4f, %.4f, %.4f, %.4f, %.4f);' % (
@@ -589,14 +634,16 @@ def emit(plan, name, inp=None):
         rt = [dict(t, width=byk[_key_t(t)]['width']) for t in rt]
     nv, nt = plan.get('vias', []), plan.get('tracks', [])
     H = hdi.load(inp)
+    n_obj = len(via_objects(nv, H))            # Altium via OBJECTS (a merged laser stack = 2), not plan records
+    n_robj = len(via_objects(rv, H))
 
     L = [B, '', 'Procedure Place%s;' % name] + VARS + ['Begin', '    Brd := BoardOrNil;', '    If Brd = Nil Then Exit;',
                                                       "    Missing := '';", '    Kill := TInterfaceList.Create;']
     if rv or rt:
         L.append('    { the existing copper this plan replaces: all of it, or nothing happens }')
-        _collect(L, rv, rt, 'Kill')
-        L += ['    If Kill.Count <> %d Then' % (len(rv) + len(rt)), '    Begin',
-              "        ShowMessage('Zulu A7 - %s: found ' + IntToStr(Kill.Count) + ' of the %d objects it must replace. Nothing changed.');" % (name, len(rv) + len(rt)),
+        _collect(L, rv, rt, 'Kill', H)
+        L += ['    If Kill.Count <> %d Then' % (n_robj + len(rt)), '    Begin',
+              "        ShowMessage('Zulu A7 - %s: found ' + IntToStr(Kill.Count) + ' of the %d objects it must replace. Nothing changed.');" % (name, n_robj + len(rt)),
               '        Kill.Free;', '        Exit;', '    End;']
     L += ['    PCBServer.PreProcess;', '    Try', '        For i := 0 To Kill.Count - 1 Do', '            Brd.RemovePCBObject(Kill.Items[i]);']
     _add(L, nv, nt, H)
@@ -604,18 +651,18 @@ def emit(plan, name, inp=None):
           "    If Missing <> '' Then",
           "        ShowMessage('Zulu A7 - %s placed, but these nets were NOT found:' + Missing + #13#10 + 'Their primitives were skipped. Do not save until this is understood.')" % name,
           '    Else',
-          "        ShowMessage('Zulu A7 - %s placed: removed %d, added %d vias and %d tracks.' + #13#10 + 'Now Tools > Design Rule Check > Run, then Ctrl+S if it is clean.');" % (name, len(rv) + len(rt), len(nv), len(nt)),
+          "        ShowMessage('Zulu A7 - %s placed: removed %d, added %d via objects (%d plan vias) and %d tracks.' + #13#10 + 'Now Tools > Design Rule Check > Run, then Ctrl+S if it is clean.');" % (name, n_robj + len(rt), n_obj, len(nv), len(nt)),
           'End;', '', '',
           'Procedure Remove%s;' % name] + VARS + ['Begin', '    Brd := BoardOrNil;', '    If Brd = Nil Then Exit;',
                                                  "    Missing := '';", '    Kill := TInterfaceList.Create;']
-    _collect(L, nv, nt, 'Kill')
+    _collect(L, nv, nt, 'Kill', H)
     L += ['    PCBServer.PreProcess;', '    Try', '        For i := 0 To Kill.Count - 1 Do', '            Brd.RemovePCBObject(Kill.Items[i]);']
     if rv or rt:
         L.append('        { put back the copper Place%s removed }' % name)
         _add(L, rv, rt, H)
     L += ['    Finally', '        PCBServer.PostProcess;', '    End;', '    Brd.ViewManager_FullUpdate;',
           "    ShowMessage('Zulu A7 - removed ' + IntToStr(Kill.Count) + ' %s object(s) (expected %d)%s. Press Ctrl+S.');"
-          % (name, len(nv) + len(nt), (' and restored %d' % (len(rv) + len(rt))) if (rv or rt) else ''),
+          % (name, n_obj + len(nt), (' and restored %d' % (n_robj + len(rt))) if (rv or rt) else ''),
           '    Kill.Free;', 'End;', '', E]
     return '\n'.join(L) + '\n', B, E
 
@@ -660,6 +707,13 @@ def main():
     if bad and '--require-complete' in sys.argv:
         print('INCOMPLETE - --require-complete refuses this plan')
         return 1
+    if '--pas' in sys.argv:              # stage 10: the block to a file of one's own, ZuluSetup.pas untouched
+        out = sys.argv[sys.argv.index('--pas') + 1]
+        block, B, E = emit(plan, name, inp)
+        io.open(out, 'w', encoding='utf-8', newline='\n').write(block)
+        H = hdi.load(inp)
+        print('wrote Place%s / Remove%s to %s: %d plan via(s) -> %d Altium via object(s), %d track(s)'
+              % (name, name, os.path.normpath(out), len(plan.get('vias', [])), len(via_objects(plan.get('vias', []), H)), len(plan.get('tracks', []))))
     if '--write' not in sys.argv:
         return 0
     block, B, E = emit(plan, name, inp)

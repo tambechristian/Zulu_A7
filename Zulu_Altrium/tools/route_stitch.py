@@ -77,9 +77,10 @@ def sites(inp, plans, x0, x1, y0, y1, step, span=hdi.THROUGH):
         if L is not None and L not in span:
             continue
         for p in inp[k]:
-            dx = np.maximum(np.abs(X - p['x']) - p['sx'] / 2, 0)
-            dy = np.maximum(np.abs(Y - p['y']) - p['sy'] / 2, 0)
-            ok &= (dx * dx + dy * dy) >= (C + land / 2) ** 2
+            cr = p.get('cr', 0.0)            # rounded rectangle (round pads: cr = sx / 2)
+            dx = np.maximum(np.abs(X - p['x']) - (p['sx'] / 2 - cr), 0)
+            dy = np.maximum(np.abs(Y - p['y']) - (p['sy'] / 2 - cr), 0)
+            ok &= (dx * dx + dy * dy) >= (C + land / 2 + cr) ** 2
     for t in inp['tracks'] + [t for p in plans for t in p.get('tracks', [])]:
         if t['layer'] not in span:
             continue
