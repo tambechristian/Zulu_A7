@@ -230,6 +230,29 @@ def main():
             fails.append("LAYERID %s got %r want %r -- layer identity changed, "
                          "primitives may have moved" % (nm, got, lid))
 
+    # ---- 5. the HDI via types (Layer Stack Manager > Via Types, 2026-09-29) --
+    # Board6 carries VIATYPEn{LOW,HIGH,...} with layer names TOP/PLANE1/MID1/
+    # MID2/PLANE2/BOTTOM and VIATYPEnDRILLPAIRTYPE=1 on the uVia-flagged types
+    # only.  Found by diffing the file before and after the GUI edit; no open
+    # parser knew these keys.  Order is the order the types were added.
+    print("\n[5] via types")
+    VIA_TYPES = (("TOP", "BOTTOM", None),    # Thru 1:6
+                 ("TOP", "PLANE1", "1"),     # uVia 1:2  Top -> L2-GND
+                 ("PLANE1", "MID1", "1"),    # uVia 2:3  L2-GND -> L3-SIG
+                 ("MID2", "PLANE2", "1"),    # uVia 4:5  L4-SIG -> L5-VCC3V3
+                 ("PLANE2", "BOTTOM", "1"),  # uVia 5:6  L5-VCC3V3 -> Bottom
+                 ("MID1", "MID2", None))     # Buried 3:4 (mechanical)
+    for i, (lo, hi, uv) in enumerate(VIA_TYPES):
+        got = (d.get("VIATYPE%dLOW" % i), d.get("VIATYPE%dHIGH" % i),
+               d.get("VIATYPE%dDRILLPAIRTYPE" % i))
+        ok = got == (lo, hi, uv)
+        print("   VIATYPE%d %-6s -> %-6s uVia=%-4s %s"
+              % (i, got[0], got[1], got[2], "OK" if ok else "BAD (want %s -> %s uVia=%s)" % (lo, hi, uv)))
+        if not ok:
+            fails.append("VIATYPE%d is %s, want %s" % (i, got, (lo, hi, uv)))
+    if d.get("VIATYPE6LOW") is not None:
+        fails.append("an unexpected seventh via type VIATYPE6 exists")
+
     print("\n" + "=" * 72)
     if fails:
         print("FAIL -- %d problem(s):" % len(fails))
