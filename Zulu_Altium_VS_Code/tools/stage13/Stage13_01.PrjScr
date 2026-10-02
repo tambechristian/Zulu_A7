@@ -1,0 +1,8 @@
+[Design]
+Version=1.0
+
+[Document1]
+DocumentPath=..\ZuluSetup.pas
+
+[Document2]
+DocumentPath=PlaceStage13_01.pas

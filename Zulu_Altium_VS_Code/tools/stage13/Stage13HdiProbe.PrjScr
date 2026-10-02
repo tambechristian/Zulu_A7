@@ -1,0 +1,14 @@
+[Design]
+Version=1.0
+
+[Document1]
+DocumentPath=..\ZuluSetup.pas
+
+[Document2]
+DocumentPath=Stage13HdiProbe.pas
+
+[Document3]
+DocumentPath=Stage13SelectProbe.pas
+
+[Document4]
+DocumentPath=Stage13SignalPlanes.pas

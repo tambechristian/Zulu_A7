@@ -1,0 +1,520 @@
+<title>Zulu A7 As Placed</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#f6f4ef; --ink:#1a212a; --muted:#6a6f78; --rule:#dcd8cf; --panel:#efece5;
+  --board:#e7e3d9; --boardline:#b9b3a5;
+  --front:#b1472f; --frontfill:#b1472f22; --back:#2f5d9e; --backfill:#2f5d9e22;
+  --ok:#3d7a4e;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#12161b; --ink:#e7e5e0; --muted:#959aa3; --rule:#2a3138; --panel:#191e25;
+    --board:#1d232a; --boardline:#3a434c;
+    --front:#e0714f; --frontfill:#e0714f26; --back:#6f9fe0; --backfill:#6f9fe026;
+    --ok:#6fb583;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12161b; --ink:#e7e5e0; --muted:#959aa3; --rule:#2a3138; --panel:#191e25;
+  --board:#1d232a; --boardline:#3a434c;
+  --front:#e0714f; --frontfill:#e0714f26; --back:#6f9fe0; --backfill:#6f9fe026;
+  --ok:#6fb583;
+}
+*{box-sizing:border-box}
+body{background:var(--paper); color:var(--ink);
+     font:400 15px/1.55 "IBM Plex Sans","Segoe UI",system-ui,sans-serif; margin:0}
+.wrap{max-width:1060px; margin:0 auto; padding:40px 24px 72px}
+header{border-bottom:2px solid var(--ink); padding-bottom:16px; margin-bottom:26px}
+h1{font:600 27px/1.15 "IBM Plex Sans",sans-serif; margin:0 0 6px; letter-spacing:-.015em}
+.sub{color:var(--muted); margin:0 0 16px; max-width:70ch; font-size:14.5px}
+.meta{display:flex; flex-wrap:wrap; gap:8px 22px;
+      font:500 11.5px/1 "IBM Plex Mono",monospace; letter-spacing:.06em;
+      text-transform:uppercase; color:var(--muted)}
+.meta b{color:var(--ink); font-weight:600}
+section{margin:34px 0}
+.viewhead{display:flex; align-items:baseline; gap:14px; margin-bottom:10px}
+h2{font:600 17px/1 "IBM Plex Sans",sans-serif; margin:0}
+.viewhead span{color:var(--muted); font-size:13px}
+.swatch{display:inline-block; width:10px; height:10px; border-radius:2px; vertical-align:-1px}
+.sheet{background:var(--panel); border:1px solid var(--rule); border-radius:3px;
+       padding:16px 14px 10px; overflow-x:auto}
+svg{display:block; width:100%; min-width:760px; height:auto}
+.board{fill:var(--board); stroke:var(--boardline); stroke-width:1.2}
+.tick{stroke:var(--boardline); stroke-width:1}
+.tick-l{fill:var(--muted); font:500 9px "IBM Plex Mono",monospace}
+.p{stroke-width:.9}
+g.p rect{stroke-width:.9}
+g.p.front rect{fill:var(--frontfill); stroke:var(--front)}
+g.p.back rect{fill:var(--backfill); stroke:var(--back)}
+.lab.thru{opacity:.7; font-size:8.5px}
+.p.front{fill:var(--frontfill); stroke:var(--front)}
+.p.back{fill:var(--backfill); stroke:var(--back)}
+.lab{font:600 9px "IBM Plex Mono",monospace; fill:var(--ink); opacity:.85; pointer-events:none}
+.checks{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px;
+        background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden}
+.check{background:var(--panel); padding:14px 16px}
+.check .n{font:600 21px/1 "IBM Plex Mono",monospace; font-variant-numeric:tabular-nums;
+          color:var(--ok); display:block; margin-bottom:5px}
+.check .t{font-size:12.5px; color:var(--muted); line-height:1.4}
+table{border-collapse:collapse; width:100%; font-size:13.5px}
+th,td{text-align:left; padding:9px 12px 9px 0; border-bottom:1px solid var(--rule);
+      vertical-align:top}
+th{font:600 11px "IBM Plex Sans",sans-serif; letter-spacing:.07em; text-transform:uppercase;
+   color:var(--muted)}
+td.d{font:600 12.5px "IBM Plex Mono",monospace; white-space:nowrap; width:7.5em}
+td.m{font:400 12px "IBM Plex Mono",monospace; color:var(--front); white-space:nowrap; width:15em}
+.note{color:var(--muted); font-size:13.5px; max-width:76ch}
+.note b{color:var(--ink); font-weight:600}
+</style>
+<div class="wrap">
+  <header>
+    <h1>Zulu A7 &mdash; as placed</h1>
+    <p class="sub">Every land drawn from the position Altium reports, not from the plan. The board
+      is 69.85 &times; 25.40&nbsp;mm; the drawing is to scale and the ruler below each view is in
+      millimetres. Hover any part for its footprint, rotation and centre.</p>
+    <div class="meta">
+      <span>PLACED <b>175 of 175</b></span>
+      <span>FRONT <b>35</b></span>
+      <span>BACK <b>140</b></span>
+      <span>CLEARANCE <b>0.30 mm minimum</b></span>
+      <span>SOURCE <b>zulu_a7.PcbDoc</b></span>
+    </div>
+  </header>
+
+  <section>
+    <div class="viewhead"><h2>Front</h2>
+      <span><i class="swatch" style="background:var(--frontfill);border:1px solid var(--front)"></i>
+      top-layer land patterns &middot; pin 1 of the header at the top right</span></div>
+    <div class="sheet"><svg viewBox="-26 -22 960 392" role="img" aria-label="top side, 35 parts drawn to scale">
+<rect class="board" x="0" y="0" width="908.0" height="330.2" rx="2"/>
+<line class="tick" x1="0.0" y1="330.2" x2="0.0" y2="336.2"/>
+<text class="tick-l" x="0.0" y="347.2" text-anchor="middle">0</text>
+<line class="tick" x1="65.0" y1="330.2" x2="65.0" y2="336.2"/>
+<text class="tick-l" x="65.0" y="347.2" text-anchor="middle">5</text>
+<line class="tick" x1="130.0" y1="330.2" x2="130.0" y2="336.2"/>
+<text class="tick-l" x="130.0" y="347.2" text-anchor="middle">10</text>
+<line class="tick" x1="195.0" y1="330.2" x2="195.0" y2="336.2"/>
+<text class="tick-l" x="195.0" y="347.2" text-anchor="middle">15</text>
+<line class="tick" x1="260.0" y1="330.2" x2="260.0" y2="336.2"/>
+<text class="tick-l" x="260.0" y="347.2" text-anchor="middle">20</text>
+<line class="tick" x1="325.0" y1="330.2" x2="325.0" y2="336.2"/>
+<text class="tick-l" x="325.0" y="347.2" text-anchor="middle">25</text>
+<line class="tick" x1="390.0" y1="330.2" x2="390.0" y2="336.2"/>
+<text class="tick-l" x="390.0" y="347.2" text-anchor="middle">30</text>
+<line class="tick" x1="455.0" y1="330.2" x2="455.0" y2="336.2"/>
+<text class="tick-l" x="455.0" y="347.2" text-anchor="middle">35</text>
+<line class="tick" x1="520.0" y1="330.2" x2="520.0" y2="336.2"/>
+<text class="tick-l" x="520.0" y="347.2" text-anchor="middle">40</text>
+<line class="tick" x1="585.0" y1="330.2" x2="585.0" y2="336.2"/>
+<text class="tick-l" x="585.0" y="347.2" text-anchor="middle">45</text>
+<line class="tick" x1="650.0" y1="330.2" x2="650.0" y2="336.2"/>
+<text class="tick-l" x="650.0" y="347.2" text-anchor="middle">50</text>
+<line class="tick" x1="715.0" y1="330.2" x2="715.0" y2="336.2"/>
+<text class="tick-l" x="715.0" y="347.2" text-anchor="middle">55</text>
+<line class="tick" x1="780.0" y1="330.2" x2="780.0" y2="336.2"/>
+<text class="tick-l" x="780.0" y="347.2" text-anchor="middle">60</text>
+<line class="tick" x1="845.0" y1="330.2" x2="845.0" y2="336.2"/>
+<text class="tick-l" x="845.0" y="347.2" text-anchor="middle">65</text>
+<g class="p front"><title>X2  ZULU-DIP37  r0  centre 30.48, 12.70 mm</title>
+<rect rx="1" x="667.00" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="600.96" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="567.94" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="633.98" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="534.92" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="501.90" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="336.80" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="303.78" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="270.76" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="237.74" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="204.72" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="171.70" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="138.68" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="105.66" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="72.64" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="39.62" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="6.60" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="667.00" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="633.98" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="600.96" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="567.94" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="534.92" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="501.90" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="336.80" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="303.78" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="270.76" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="237.74" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="204.72" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="171.70" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="138.68" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="105.66" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="72.64" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="39.62" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="6.60" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="766.06" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="733.04" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="700.02" y="6.60" width="19.81" height="19.81"/>
+<rect rx="1" x="766.06" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="733.04" y="303.78" width="19.81" height="19.81"/>
+<rect rx="1" x="700.02" y="303.78" width="19.81" height="19.81"/>
+</g>
+<rect class="p front" x="344.18" y="69.22" width="168.35" height="168.35"><title>U2  FT2232HL-LQFP64  r0  centre 32.95, 13.60 mm</title></rect>
+<rect class="p front" x="33.47" y="84.82" width="161.85" height="165.75"><title>X3  DM3D-SF  r90  centre 8.80, 12.50 mm</title></rect>
+<rect class="p front" x="543.24" y="115.54" width="119.93" height="119.93"><title>U1  XC7A35T-CPG236  r0  centre 46.40, 11.90 mm</title></rect>
+<g class="p front"><title>J1  2X06  r90  centre 66.40, 12.70 mm</title>
+<rect rx="1" x="834.47" y="235.43" width="24.43" height="24.43"/>
+<rect rx="1" x="834.47" y="202.41" width="24.43" height="24.43"/>
+<rect rx="1" x="834.47" y="169.39" width="24.43" height="24.43"/>
+<rect rx="1" x="834.47" y="136.37" width="24.43" height="24.43"/>
+<rect rx="1" x="834.47" y="103.35" width="24.43" height="24.43"/>
+<rect rx="1" x="834.47" y="70.33" width="24.43" height="24.43"/>
+<rect rx="1" x="867.49" y="235.43" width="24.43" height="24.43"/>
+<rect rx="1" x="867.49" y="202.41" width="24.43" height="24.43"/>
+<rect rx="1" x="867.49" y="169.39" width="24.43" height="24.43"/>
+<rect rx="1" x="867.49" y="136.37" width="24.43" height="24.43"/>
+<rect rx="1" x="867.49" y="103.35" width="24.43" height="24.43"/>
+<rect rx="1" x="867.49" y="70.33" width="24.43" height="24.43"/>
+</g>
+<rect class="p front" x="366.60" y="241.80" width="109.20" height="84.50"><title>X4  JST-B2B-PH-SM4-TB  r0  centre 32.40, 3.55 mm</title></rect>
+<rect class="p front" x="560.23" y="49.59" width="114.53" height="56.81"><title>U4  SOIC-8_208MIL  r0  centre 47.50, 19.40 mm</title></rect>
+<g class="p front"><title>X1  MOLEX-105017-0001  r0  centre 33.02, 22.72 mm</title>
+<rect rx="1" x="443.56" y="45.06" width="5.20" height="17.55"/>
+<rect rx="1" x="435.11" y="45.06" width="5.20" height="17.55"/>
+<rect rx="1" x="426.66" y="45.06" width="5.20" height="17.55"/>
+<rect rx="1" x="418.21" y="45.06" width="5.20" height="17.55"/>
+<rect rx="1" x="409.76" y="45.06" width="5.20" height="17.55"/>
+<rect rx="1" x="375.96" y="6.39" width="23.40" height="24.70"/>
+<rect rx="1" x="406.51" y="6.39" width="19.50" height="24.70"/>
+<rect rx="1" x="432.51" y="6.39" width="19.50" height="24.70"/>
+<rect rx="1" x="459.16" y="6.39" width="23.40" height="24.70"/>
+<rect rx="1" x="387.33" y="44.41" width="18.85" height="18.85"/>
+<rect rx="1" x="452.34" y="44.41" width="18.85" height="18.85"/>
+<rect rx="1" x="377.91" y="12.89" width="11.70" height="11.70"/>
+<rect rx="1" x="468.91" y="12.89" width="11.70" height="11.70"/>
+</g>
+<rect class="p front" x="754.00" y="54.56" width="33.80" height="78.65"><title>R4  742C163  r90  centre 59.30, 18.18 mm</title></rect>
+<rect class="p front" x="245.70" y="128.44" width="36.40" height="67.60"><title>BTN  PTS810  r90  centre 20.30, 12.92 mm</title></rect>
+<rect class="p front" x="518.05" y="50.05" width="37.70" height="46.80"><title>Q1  32X25  r0  centre 41.30, 19.75 mm</title></rect>
+<g class="p front"><title>JP3  1X03-NOSILK  r0  centre 64.30, 21.68 mm</title>
+<rect rx="1" x="859.01" y="38.45" width="19.81" height="19.81"/>
+<rect rx="1" x="825.99" y="38.45" width="19.81" height="19.81"/>
+<rect rx="1" x="792.97" y="38.45" width="19.81" height="19.81"/>
+</g>
+<g class="p front"><title>JP4  1X03-NOSILK  r0  centre 64.30, 3.72 mm</title>
+<rect rx="1" x="859.01" y="271.93" width="19.81" height="19.81"/>
+<rect rx="1" x="825.99" y="271.93" width="19.81" height="19.81"/>
+<rect rx="1" x="792.97" y="271.93" width="19.81" height="19.81"/>
+</g>
+<rect class="p front" x="679.25" y="223.60" width="19.50" height="39.00"><title>C140  C0805  r90  centre 53.00, 6.70 mm</title></rect>
+<rect class="p front" x="702.65" y="223.60" width="19.50" height="39.00"><title>C141  C0805  r90  centre 54.80, 6.70 mm</title></rect>
+<rect class="p front" x="726.05" y="223.60" width="19.50" height="39.00"><title>C142  C0805  r90  centre 56.60, 6.70 mm</title></rect>
+<rect class="p front" x="679.25" y="180.71" width="19.50" height="39.00"><title>C143  C0805  r90  centre 53.00, 10.00 mm</title></rect>
+<rect class="p front" x="702.65" y="180.71" width="19.50" height="39.00"><title>C144  C0805  r90  centre 54.80, 10.00 mm</title></rect>
+<rect class="p front" x="726.05" y="180.71" width="19.50" height="39.00"><title>C145  C0805  r90  centre 56.60, 10.00 mm</title></rect>
+<rect class="p front" x="679.25" y="137.81" width="19.50" height="39.00"><title>C146  C0805  r90  centre 53.00, 13.30 mm</title></rect>
+<rect class="p front" x="702.65" y="137.81" width="19.50" height="39.00"><title>C85  C0805  r90  centre 54.80, 13.30 mm</title></rect>
+<rect class="p front" x="726.05" y="137.81" width="19.50" height="39.00"><title>C86  C0805  r90  centre 56.60, 13.30 mm</title></rect>
+<rect class="p front" x="679.25" y="94.91" width="19.50" height="39.00"><title>C93  C0805  r90  centre 53.00, 16.60 mm</title></rect>
+<rect class="p front" x="702.65" y="94.91" width="19.50" height="39.00"><title>C97  C0805  r90  centre 54.80, 16.60 mm</title></rect>
+<rect class="p front" x="726.05" y="94.91" width="19.50" height="39.00"><title>C98  C0805  r90  centre 56.60, 16.60 mm</title></rect>
+<rect class="p front" x="305.50" y="176.67" width="28.60" height="24.05"><title>LD0  EVERLIGHT-19-337  r0  centre 24.60, 10.88 mm</title></rect>
+<rect class="p front" x="303.55" y="160.75" width="32.50" height="11.70"><title>LD1  LED0603  r0  centre 24.60, 12.58 mm</title></rect>
+<rect class="p front" x="303.55" y="145.15" width="32.50" height="11.70"><title>LD2  LED0603  r0  centre 24.60, 13.78 mm</title></rect>
+<rect class="p front" x="303.55" y="113.95" width="32.50" height="11.70"><title>LD3  LED0603  r0  centre 24.60, 16.18 mm</title></rect>
+<rect class="p front" x="303.55" y="98.35" width="32.50" height="11.70"><title>LD4  LED0603  r0  centre 24.60, 17.38 mm</title></rect>
+<rect class="p front" x="303.55" y="129.55" width="32.50" height="11.70"><title>LD5  LED0603  r0  centre 24.60, 14.98 mm</title></rect>
+<text class="lab" x="263.90" y="165.64" text-anchor="middle">BTN</text>
+<text class="lab" x="689.00" y="246.50" text-anchor="middle">C140</text>
+<text class="lab" x="712.40" y="246.50" text-anchor="middle">C141</text>
+<text class="lab" x="735.80" y="246.50" text-anchor="middle">C142</text>
+<text class="lab" x="689.00" y="203.61" text-anchor="middle">C143</text>
+<text class="lab" x="712.40" y="203.61" text-anchor="middle">C144</text>
+<text class="lab" x="735.80" y="203.61" text-anchor="middle">C145</text>
+<text class="lab" x="689.00" y="160.71" text-anchor="middle">C146</text>
+<text class="lab" x="712.40" y="160.71" text-anchor="middle">C85</text>
+<text class="lab" x="735.80" y="160.71" text-anchor="middle">C86</text>
+<text class="lab" x="689.00" y="117.81" text-anchor="middle">C93</text>
+<text class="lab" x="712.40" y="117.81" text-anchor="middle">C97</text>
+<text class="lab" x="735.80" y="117.81" text-anchor="middle">C98</text>
+<text class="lab" x="319.80" y="192.10" text-anchor="middle">LD0</text>
+<text class="lab" x="319.80" y="170.00" text-anchor="middle">LD1</text>
+<text class="lab" x="319.80" y="154.40" text-anchor="middle">LD2</text>
+<text class="lab" x="319.80" y="123.20" text-anchor="middle">LD3</text>
+<text class="lab" x="319.80" y="107.60" text-anchor="middle">LD4</text>
+<text class="lab" x="319.80" y="138.80" text-anchor="middle">LD5</text>
+<text class="lab" x="536.90" y="76.85" text-anchor="middle">Q1</text>
+<text class="lab" x="770.90" y="97.29" text-anchor="middle">R4</text>
+<text class="lab" x="603.20" y="178.90" text-anchor="middle">U1</text>
+<text class="lab" x="428.35" y="156.80" text-anchor="middle">U2</text>
+<text class="lab" x="617.50" y="81.40" text-anchor="middle">U4</text>
+<text class="lab" x="114.40" y="171.10" text-anchor="middle">X3</text>
+<text class="lab" x="421.20" y="287.45" text-anchor="middle">X4</text>
+<text class="lab thru" x="863.20" y="66.33" text-anchor="middle">J1</text>
+<text class="lab thru" x="835.90" y="34.45" text-anchor="middle">JP3</text>
+<text class="lab thru" x="835.90" y="267.93" text-anchor="middle">JP4</text>
+<text class="lab thru" x="429.26" y="2.39" text-anchor="middle">X1</text>
+<text class="lab thru" x="396.24" y="2.60" text-anchor="middle">X2</text>
+</svg></div>
+  </section>
+
+  <section>
+    <div class="viewhead"><h2>Back</h2>
+      <span><i class="swatch" style="background:var(--backfill);border:1px solid var(--back)"></i>
+      seen through the board, same orientation</span></div>
+    <div class="sheet"><svg viewBox="-26 -22 960 392" role="img" aria-label="bottom side, 140 parts drawn to scale">
+<rect class="board" x="0" y="0" width="908.0" height="330.2" rx="2"/>
+<line class="tick" x1="0.0" y1="330.2" x2="0.0" y2="336.2"/>
+<text class="tick-l" x="0.0" y="347.2" text-anchor="middle">0</text>
+<line class="tick" x1="65.0" y1="330.2" x2="65.0" y2="336.2"/>
+<text class="tick-l" x="65.0" y="347.2" text-anchor="middle">5</text>
+<line class="tick" x1="130.0" y1="330.2" x2="130.0" y2="336.2"/>
+<text class="tick-l" x="130.0" y="347.2" text-anchor="middle">10</text>
+<line class="tick" x1="195.0" y1="330.2" x2="195.0" y2="336.2"/>
+<text class="tick-l" x="195.0" y="347.2" text-anchor="middle">15</text>
+<line class="tick" x1="260.0" y1="330.2" x2="260.0" y2="336.2"/>
+<text class="tick-l" x="260.0" y="347.2" text-anchor="middle">20</text>
+<line class="tick" x1="325.0" y1="330.2" x2="325.0" y2="336.2"/>
+<text class="tick-l" x="325.0" y="347.2" text-anchor="middle">25</text>
+<line class="tick" x1="390.0" y1="330.2" x2="390.0" y2="336.2"/>
+<text class="tick-l" x="390.0" y="347.2" text-anchor="middle">30</text>
+<line class="tick" x1="455.0" y1="330.2" x2="455.0" y2="336.2"/>
+<text class="tick-l" x="455.0" y="347.2" text-anchor="middle">35</text>
+<line class="tick" x1="520.0" y1="330.2" x2="520.0" y2="336.2"/>
+<text class="tick-l" x="520.0" y="347.2" text-anchor="middle">40</text>
+<line class="tick" x1="585.0" y1="330.2" x2="585.0" y2="336.2"/>
+<text class="tick-l" x="585.0" y="347.2" text-anchor="middle">45</text>
+<line class="tick" x1="650.0" y1="330.2" x2="650.0" y2="336.2"/>
+<text class="tick-l" x="650.0" y="347.2" text-anchor="middle">50</text>
+<line class="tick" x1="715.0" y1="330.2" x2="715.0" y2="336.2"/>
+<text class="tick-l" x="715.0" y="347.2" text-anchor="middle">55</text>
+<line class="tick" x1="780.0" y1="330.2" x2="780.0" y2="336.2"/>
+<text class="tick-l" x="780.0" y="347.2" text-anchor="middle">60</text>
+<line class="tick" x1="845.0" y1="330.2" x2="845.0" y2="336.2"/>
+<text class="tick-l" x="845.0" y="347.2" text-anchor="middle">65</text>
+<rect class="p back" x="230.42" y="94.51" width="276.25" height="163.28"><title>U3  TSOPII-54  r90  centre 28.35, 11.85 mm</title></rect>
+<rect class="p back" x="276.25" y="34.32" width="91.00" height="56.16"><title>U10  SPI-8_SOIC_150  r0  centre 24.75, 20.60 mm</title></rect>
+<rect class="p back" x="124.80" y="234.00" width="44.20" height="44.20"><title>U8  VQFN16-3X3-RGT  r0  centre 11.30, 5.70 mm</title></rect>
+<rect class="p back" x="15.60" y="231.40" width="32.50" height="46.80"><title>U5  SOT23-5  r0  centre 2.45, 5.80 mm</title></rect>
+<rect class="p back" x="52.00" y="231.40" width="32.50" height="46.80"><title>U6  SOT23-5  r0  centre 5.25, 5.80 mm</title></rect>
+<rect class="p back" x="88.40" y="231.40" width="32.50" height="46.80"><title>U7  SOT23-5  r0  centre 8.05, 5.80 mm</title></rect>
+<rect class="p back" x="134.81" y="61.88" width="37.70" height="35.10"><title>R34  742C083  r0  centre 11.82, 19.29 mm</title></rect>
+<rect class="p back" x="49.40" y="197.60" width="44.20" height="29.90"><title>L1  IND2520  r0  centre 5.50, 9.05 mm</title></rect>
+<rect class="p back" x="97.50" y="197.60" width="44.20" height="29.90"><title>L2  IND2520  r0  centre 9.20, 9.05 mm</title></rect>
+<rect class="p back" x="145.60" y="197.60" width="44.20" height="29.90"><title>L3  IND2520  r0  centre 12.90, 9.05 mm</title></rect>
+<rect class="p back" x="15.60" y="197.60" width="29.90" height="29.90"><title>Q2  SOT23-3  r0  centre 2.35, 9.05 mm</title></rect>
+<rect class="p back" x="15.60" y="174.20" width="39.00" height="19.50"><title>C147  C0805  r0  centre 2.70, 11.25 mm</title></rect>
+<rect class="p back" x="58.50" y="174.20" width="39.00" height="19.50"><title>C148  C0805  r0  centre 6.00, 11.25 mm</title></rect>
+<rect class="p back" x="101.39" y="174.20" width="39.00" height="19.50"><title>C149  C0805  r0  centre 9.30, 11.25 mm</title></rect>
+<rect class="p back" x="144.29" y="174.20" width="39.00" height="19.50"><title>C78  C0805  r0  centre 12.60, 11.25 mm</title></rect>
+<rect class="p back" x="15.60" y="150.80" width="39.00" height="19.50"><title>C80  C0805  r0  centre 2.70, 13.05 mm</title></rect>
+<rect class="p back" x="748.47" y="265.20" width="16.25" height="33.80"><title>R1  742C043  r0  centre 58.20, 3.70 mm</title></rect>
+<rect class="p back" x="517.40" y="49.40" width="36.40" height="13.00"><title>C100  C0603  r0  centre 41.20, 21.10 mm</title></rect>
+<rect class="p back" x="557.70" y="49.40" width="36.40" height="13.00"><title>C101  C0603  r0  centre 44.30, 21.10 mm</title></rect>
+<rect class="p back" x="598.00" y="49.40" width="36.40" height="13.00"><title>C102  C0603  r0  centre 47.40, 21.10 mm</title></rect>
+<rect class="p back" x="638.29" y="49.40" width="36.40" height="13.00"><title>C103  C0603  r0  centre 50.50, 21.10 mm</title></rect>
+<rect class="p back" x="678.59" y="49.40" width="36.40" height="13.00"><title>C104  C0603  r0  centre 53.60, 21.10 mm</title></rect>
+<rect class="p back" x="718.89" y="49.40" width="36.40" height="13.00"><title>C105  C0603  r0  centre 56.70, 21.10 mm</title></rect>
+<rect class="p back" x="517.40" y="32.50" width="36.40" height="13.00"><title>C106  C0603  r0  centre 41.20, 22.40 mm</title></rect>
+<rect class="p back" x="15.60" y="44.98" width="36.40" height="13.00"><title>C13  C0603  r0  centre 2.60, 21.44 mm</title></rect>
+<rect class="p back" x="58.50" y="157.30" width="36.40" height="13.00"><title>C150  C0603  r0  centre 5.90, 12.80 mm</title></rect>
+<rect class="p back" x="98.79" y="157.30" width="36.40" height="13.00"><title>C151  C0603  r0  centre 9.00, 12.80 mm</title></rect>
+<rect class="p back" x="139.09" y="157.30" width="36.40" height="13.00"><title>C82  C0603  r0  centre 12.10, 12.80 mm</title></rect>
+<rect class="p back" x="15.60" y="133.90" width="36.40" height="13.00"><title>C84  C0603  r0  centre 2.60, 14.60 mm</title></rect>
+<rect class="p back" x="557.70" y="32.50" width="36.40" height="13.00"><title>C87  C0603  r0  centre 44.30, 22.40 mm</title></rect>
+<rect class="p back" x="598.00" y="32.50" width="36.40" height="13.00"><title>C88  C0603  r0  centre 47.40, 22.40 mm</title></rect>
+<rect class="p back" x="638.29" y="32.50" width="36.40" height="13.00"><title>C94  C0603  r0  centre 50.50, 22.40 mm</title></rect>
+<rect class="p back" x="678.59" y="32.50" width="36.40" height="13.00"><title>C99  C0603  r0  centre 53.60, 22.40 mm</title></rect>
+<rect class="p back" x="226.20" y="284.70" width="32.50" height="11.70"><title>L4  IND0603  r0  centre 18.65, 3.05 mm</title></rect>
+<rect class="p back" x="262.60" y="284.70" width="32.50" height="11.70"><title>L5  IND0603  r0  centre 21.45, 3.05 mm</title></rect>
+<rect class="p back" x="618.80" y="284.70" width="32.50" height="11.70"><title>L6  IND0603  r0  centre 48.85, 3.05 mm</title></rect>
+<rect class="p back" x="655.20" y="284.70" width="32.50" height="11.70"><title>L7  IND0603  r0  centre 51.65, 3.05 mm</title></rect>
+<rect class="p back" x="55.90" y="46.28" width="26.00" height="11.70"><title>C11  C0402  r0  centre 5.30, 21.39 mm</title></rect>
+<rect class="p back" x="85.80" y="46.28" width="26.00" height="11.70"><title>C12  C0402  r0  centre 7.60, 21.39 mm</title></rect>
+<rect class="p back" x="691.60" y="284.70" width="26.00" height="11.70"><title>C123  C0402  r0  centre 54.20, 3.05 mm</title></rect>
+<rect class="p back" x="618.80" y="269.10" width="26.00" height="11.70"><title>C124  C0402  r0  centre 48.60, 4.25 mm</title></rect>
+<rect class="p back" x="299.00" y="284.70" width="26.00" height="11.70"><title>C139  C0402  r0  centre 24.00, 3.05 mm</title></rect>
+<rect class="p back" x="328.90" y="284.70" width="26.00" height="11.70"><title>C3  C0402  r0  centre 26.30, 3.05 mm</title></rect>
+<rect class="p back" x="520.00" y="284.70" width="26.00" height="11.70"><title>C36  C0402  r0  centre 41.00, 3.05 mm</title></rect>
+<rect class="p back" x="549.90" y="284.70" width="26.00" height="11.70"><title>C37  C0402  r0  centre 43.30, 3.05 mm</title></rect>
+<rect class="p back" x="358.80" y="284.70" width="26.00" height="11.70"><title>C4  C0402  r0  centre 28.60, 3.05 mm</title></rect>
+<rect class="p back" x="388.70" y="284.70" width="26.00" height="11.70"><title>C5  C0402  r0  centre 30.90, 3.05 mm</title></rect>
+<rect class="p back" x="418.60" y="284.70" width="26.00" height="11.70"><title>C6  C0402  r0  centre 33.20, 3.05 mm</title></rect>
+<rect class="p back" x="448.50" y="284.70" width="26.00" height="11.70"><title>C7  C0402  r0  centre 35.50, 3.05 mm</title></rect>
+<rect class="p back" x="478.40" y="284.70" width="26.00" height="11.70"><title>C8  C0402  r0  centre 37.80, 3.05 mm</title></rect>
+<rect class="p back" x="226.20" y="269.10" width="26.00" height="11.70"><title>C9  C0402  r0  centre 18.40, 4.25 mm</title></rect>
+<rect class="p back" x="55.90" y="135.20" width="26.00" height="11.70"><title>R102  R0402  r0  centre 5.30, 14.55 mm</title></rect>
+<rect class="p back" x="85.80" y="135.20" width="26.00" height="11.70"><title>R103  R0402  r0  centre 7.60, 14.55 mm</title></rect>
+<rect class="p back" x="115.70" y="135.20" width="26.00" height="11.70"><title>R104  R0402  r0  centre 9.90, 14.55 mm</title></rect>
+<rect class="p back" x="145.60" y="135.20" width="26.00" height="11.70"><title>R105  R0402  r0  centre 12.20, 14.55 mm</title></rect>
+<rect class="p back" x="15.60" y="118.30" width="26.00" height="11.70"><title>R106  R0402  r0  centre 2.20, 15.85 mm</title></rect>
+<rect class="p back" x="45.50" y="118.30" width="26.00" height="11.70"><title>R107  R0402  r0  centre 4.50, 15.85 mm</title></rect>
+<rect class="p back" x="75.40" y="118.30" width="26.00" height="11.70"><title>R108  R0402  r0  centre 6.80, 15.85 mm</title></rect>
+<rect class="p back" x="256.10" y="269.10" width="26.00" height="11.70"><title>R18  R0402  r0  centre 20.70, 4.25 mm</title></rect>
+<rect class="p back" x="648.70" y="269.10" width="26.00" height="11.70"><title>R21  R0402  r0  centre 50.90, 4.25 mm</title></rect>
+<rect class="p back" x="115.70" y="46.28" width="26.00" height="11.70"><title>R35  R0402  r0  centre 9.90, 21.39 mm</title></rect>
+<rect class="p back" x="105.30" y="118.30" width="26.00" height="11.70"><title>R77  R0402  r0  centre 9.10, 15.85 mm</title></rect>
+<rect class="p back" x="135.20" y="118.30" width="26.00" height="11.70"><title>R78  R0402  r0  centre 11.40, 15.85 mm</title></rect>
+<rect class="p back" x="371.15" y="76.70" width="26.00" height="11.70"><title>R80  R0402  r0  centre 29.55, 19.05 mm</title></rect>
+<rect class="p back" x="401.05" y="76.70" width="26.00" height="11.70"><title>R81  R0402  r0  centre 31.85, 19.05 mm</title></rect>
+<rect class="p back" x="430.95" y="76.70" width="26.00" height="11.70"><title>R82  R0402  r0  centre 34.15, 19.05 mm</title></rect>
+<rect class="p back" x="460.85" y="76.70" width="26.00" height="11.70"><title>R83  R0402  r0  centre 36.45, 19.05 mm</title></rect>
+<rect class="p back" x="410.15" y="61.10" width="26.00" height="11.70"><title>R84  R0402  r0  centre 32.55, 20.25 mm</title></rect>
+<rect class="p back" x="475.15" y="61.10" width="26.00" height="11.70"><title>R85  R0402  r0  centre 37.55, 20.25 mm</title></rect>
+<rect class="p back" x="410.15" y="45.50" width="26.00" height="11.70"><title>R86  R0402  r0  centre 32.55, 21.45 mm</title></rect>
+<rect class="p back" x="603.72" y="228.80" width="11.70" height="3.90"><title>C107  C0201  r0  centre 46.89, 7.65 mm</title></rect>
+<rect class="p back" x="546.00" y="184.60" width="11.70" height="3.90"><title>C108  C0201  r0  centre 42.45, 11.05 mm</title></rect>
+<rect class="p back" x="574.86" y="228.80" width="11.70" height="3.90"><title>C109  C0201  r0  centre 44.67, 7.65 mm</title></rect>
+<rect class="p back" x="632.58" y="228.80" width="11.70" height="3.90"><title>C110  C0201  r0  centre 49.11, 7.65 mm</title></rect>
+<rect class="p back" x="661.44" y="184.60" width="11.70" height="3.90"><title>C111  C0201  r0  centre 51.33, 11.05 mm</title></rect>
+<rect class="p back" x="546.00" y="140.40" width="11.70" height="3.90"><title>C112  C0201  r0  centre 42.45, 14.45 mm</title></rect>
+<rect class="p back" x="546.00" y="228.80" width="11.70" height="3.90"><title>C113  C0201  r0  centre 42.45, 7.65 mm</title></rect>
+<rect class="p back" x="661.44" y="140.40" width="11.70" height="3.90"><title>C114  C0201  r0  centre 51.33, 14.45 mm</title></rect>
+<rect class="p back" x="661.44" y="228.80" width="11.70" height="3.90"><title>C115  C0201  r0  centre 51.33, 7.65 mm</title></rect>
+<rect class="p back" x="603.72" y="96.20" width="11.70" height="3.90"><title>C116  C0201  r0  centre 46.89, 17.85 mm</title></rect>
+<rect class="p back" x="574.86" y="96.20" width="11.70" height="3.90"><title>C117  C0201  r0  centre 44.67, 17.85 mm</title></rect>
+<rect class="p back" x="632.58" y="96.20" width="11.70" height="3.90"><title>C118  C0201  r0  centre 49.11, 17.85 mm</title></rect>
+<rect class="p back" x="690.30" y="184.60" width="11.70" height="3.90"><title>C119  C0201  r0  centre 53.55, 11.05 mm</title></rect>
+<rect class="p back" x="546.00" y="96.20" width="11.70" height="3.90"><title>C120  C0201  r0  centre 42.45, 17.85 mm</title></rect>
+<rect class="p back" x="690.30" y="140.40" width="11.70" height="3.90"><title>C121  C0201  r0  centre 53.55, 14.45 mm</title></rect>
+<rect class="p back" x="690.30" y="228.80" width="11.70" height="3.90"><title>C122  C0201  r0  centre 53.55, 7.65 mm</title></rect>
+<rect class="p back" x="286.00" y="276.90" width="11.70" height="3.90"><title>C133  C0201  r0  centre 22.45, 3.95 mm</title></rect>
+<rect class="p back" x="301.60" y="276.90" width="11.70" height="3.90"><title>C134  C0201  r0  centre 23.65, 3.95 mm</title></rect>
+<rect class="p back" x="317.20" y="276.90" width="11.70" height="3.90"><title>C135  C0201  r0  centre 24.85, 3.95 mm</title></rect>
+<rect class="p back" x="332.80" y="276.90" width="11.70" height="3.90"><title>C136  C0201  r0  centre 26.05, 3.95 mm</title></rect>
+<rect class="p back" x="348.40" y="276.90" width="11.70" height="3.90"><title>C137  C0201  r0  centre 27.25, 3.95 mm</title></rect>
+<rect class="p back" x="363.99" y="276.90" width="11.70" height="3.90"><title>C138  C0201  r0  centre 28.45, 3.95 mm</title></rect>
+<rect class="p back" x="379.59" y="276.90" width="11.70" height="3.90"><title>C152  C0201  r0  centre 29.65, 3.95 mm</title></rect>
+<rect class="p back" x="395.19" y="276.90" width="11.70" height="3.90"><title>C153  C0201  r0  centre 30.85, 3.95 mm</title></rect>
+<rect class="p back" x="410.79" y="276.90" width="11.70" height="3.90"><title>C154  C0201  r0  centre 32.05, 3.95 mm</title></rect>
+<rect class="p back" x="426.39" y="276.90" width="11.70" height="3.90"><title>C38  C0201  r0  centre 33.25, 3.95 mm</title></rect>
+<rect class="p back" x="441.99" y="276.90" width="11.70" height="3.90"><title>C40  C0201  r0  centre 34.45, 3.95 mm</title></rect>
+<rect class="p back" x="457.59" y="276.90" width="11.70" height="3.90"><title>C41  C0201  r0  centre 35.65, 3.95 mm</title></rect>
+<rect class="p back" x="603.72" y="184.60" width="11.70" height="3.90"><title>C89  C0201  r0  centre 46.89, 11.05 mm</title></rect>
+<rect class="p back" x="574.86" y="184.60" width="11.70" height="3.90"><title>C90  C0201  r0  centre 44.67, 11.05 mm</title></rect>
+<rect class="p back" x="632.58" y="184.60" width="11.70" height="3.90"><title>C91  C0201  r0  centre 49.11, 11.05 mm</title></rect>
+<rect class="p back" x="603.72" y="140.40" width="11.70" height="3.90"><title>C92  C0201  r0  centre 46.89, 14.45 mm</title></rect>
+<rect class="p back" x="632.58" y="140.40" width="11.70" height="3.90"><title>C95  C0201  r0  centre 49.11, 14.45 mm</title></rect>
+<rect class="p back" x="574.86" y="140.40" width="11.70" height="3.90"><title>C96  C0201  r0  centre 44.67, 14.45 mm</title></rect>
+<rect class="p back" x="579.80" y="292.50" width="11.70" height="3.90"><title>R10  R0201  r0  centre 45.05, 2.75 mm</title></rect>
+<rect class="p back" x="226.20" y="84.50" width="11.70" height="3.90"><title>R101  R0201  r0  centre 17.85, 18.75 mm</title></rect>
+<rect class="p back" x="595.40" y="292.50" width="11.70" height="3.90"><title>R11  R0201  r0  centre 46.25, 2.75 mm</title></rect>
+<rect class="p back" x="520.00" y="276.90" width="11.70" height="3.90"><title>R12  R0201  r0  centre 40.45, 3.95 mm</title></rect>
+<rect class="p back" x="535.60" y="276.90" width="11.70" height="3.90"><title>R13  R0201  r0  centre 41.65, 3.95 mm</title></rect>
+<rect class="p back" x="551.20" y="276.90" width="11.70" height="3.90"><title>R14  R0201  r0  centre 42.85, 3.95 mm</title></rect>
+<rect class="p back" x="566.80" y="276.90" width="11.70" height="3.90"><title>R15  R0201  r0  centre 44.05, 3.95 mm</title></rect>
+<rect class="p back" x="582.40" y="276.90" width="11.70" height="3.90"><title>R16  R0201  r0  centre 45.25, 3.95 mm</title></rect>
+<rect class="p back" x="597.99" y="276.90" width="11.70" height="3.90"><title>R17  R0201  r0  centre 46.45, 3.95 mm</title></rect>
+<rect class="p back" x="241.80" y="84.50" width="11.70" height="3.90"><title>R19  R0201  r0  centre 19.05, 18.75 mm</title></rect>
+<rect class="p back" x="718.89" y="41.60" width="11.70" height="3.90"><title>R2  R0201  r0  centre 55.75, 22.05 mm</title></rect>
+<rect class="p back" x="678.60" y="276.90" width="11.70" height="3.90"><title>R20  R0201  r0  centre 52.65, 3.95 mm</title></rect>
+<rect class="p back" x="694.20" y="276.90" width="11.70" height="3.90"><title>R22  R0201  r0  centre 53.85, 3.95 mm</title></rect>
+<rect class="p back" x="709.80" y="276.90" width="11.70" height="3.90"><title>R23  R0201  r0  centre 55.05, 3.95 mm</title></rect>
+<rect class="p back" x="761.80" y="254.80" width="11.70" height="3.90"><title>R24  R0201  r0  centre 59.05, 5.65 mm</title></rect>
+<rect class="p back" x="788.45" y="254.80" width="11.70" height="3.90"><title>R25  R0201  r0  centre 61.10, 5.65 mm</title></rect>
+<rect class="p back" x="815.10" y="254.80" width="11.70" height="3.90"><title>R26  R0201  r0  centre 63.15, 5.65 mm</title></rect>
+<rect class="p back" x="761.80" y="217.88" width="11.70" height="3.90"><title>R27  R0201  r0  centre 59.05, 8.49 mm</title></rect>
+<rect class="p back" x="788.45" y="217.88" width="11.70" height="3.90"><title>R28  R0201  r0  centre 61.10, 8.49 mm</title></rect>
+<rect class="p back" x="815.10" y="217.88" width="11.70" height="3.90"><title>R29  R0201  r0  centre 63.15, 8.49 mm</title></rect>
+<rect class="p back" x="761.80" y="180.96" width="11.70" height="3.90"><title>R30  R0201  r0  centre 59.05, 11.33 mm</title></rect>
+<rect class="p back" x="788.45" y="180.96" width="11.70" height="3.90"><title>R31  R0201  r0  centre 61.10, 11.33 mm</title></rect>
+<rect class="p back" x="815.10" y="180.96" width="11.70" height="3.90"><title>R32  R0201  r0  centre 63.15, 11.33 mm</title></rect>
+<rect class="p back" x="761.80" y="144.04" width="11.70" height="3.90"><title>R33  R0201  r0  centre 59.05, 14.17 mm</title></rect>
+<rect class="p back" x="788.45" y="144.04" width="11.70" height="3.90"><title>R5  R0201  r0  centre 61.10, 14.17 mm</title></rect>
+<rect class="p back" x="734.49" y="41.60" width="11.70" height="3.90"><title>R6  R0201  r0  centre 56.95, 22.05 mm</title></rect>
+<rect class="p back" x="750.09" y="41.60" width="11.70" height="3.90"><title>R7  R0201  r0  centre 58.15, 22.05 mm</title></rect>
+<rect class="p back" x="815.10" y="144.04" width="11.70" height="3.90"><title>R90  R0201  r0  centre 63.15, 14.17 mm</title></rect>
+<rect class="p back" x="761.80" y="107.12" width="11.70" height="3.90"><title>R91  R0201  r0  centre 59.05, 17.01 mm</title></rect>
+<rect class="p back" x="788.45" y="107.12" width="11.70" height="3.90"><title>R92  R0201  r0  centre 61.10, 17.01 mm</title></rect>
+<rect class="p back" x="815.10" y="107.12" width="11.70" height="3.90"><title>R93  R0201  r0  centre 63.15, 17.01 mm</title></rect>
+<rect class="p back" x="761.80" y="70.20" width="11.70" height="3.90"><title>R94  R0201  r0  centre 59.05, 19.85 mm</title></rect>
+<rect class="p back" x="257.40" y="84.50" width="11.70" height="3.90"><title>R96  R0201  r0  centre 20.25, 18.75 mm</title></rect>
+<rect class="p back" x="226.20" y="76.70" width="11.70" height="3.90"><title>R97  R0201  r0  centre 17.85, 19.35 mm</title></rect>
+<rect class="p back" x="241.80" y="76.70" width="11.70" height="3.90"><title>R98  R0201  r0  centre 19.05, 19.35 mm</title></rect>
+<rect class="p back" x="788.45" y="70.20" width="11.70" height="3.90"><title>R99  R0201  r0  centre 61.10, 19.85 mm</title></rect>
+<text class="lab" x="535.60" y="59.30" text-anchor="middle">C100</text>
+<text class="lab" x="575.90" y="59.30" text-anchor="middle">C101</text>
+<text class="lab" x="616.19" y="59.30" text-anchor="middle">C102</text>
+<text class="lab" x="656.49" y="59.30" text-anchor="middle">C103</text>
+<text class="lab" x="696.79" y="59.30" text-anchor="middle">C104</text>
+<text class="lab" x="737.09" y="59.30" text-anchor="middle">C105</text>
+<text class="lab" x="535.60" y="42.40" text-anchor="middle">C106</text>
+<text class="lab" x="33.80" y="54.88" text-anchor="middle">C13</text>
+<text class="lab" x="35.10" y="187.35" text-anchor="middle">C147</text>
+<text class="lab" x="77.99" y="187.35" text-anchor="middle">C148</text>
+<text class="lab" x="120.89" y="187.35" text-anchor="middle">C149</text>
+<text class="lab" x="76.70" y="167.20" text-anchor="middle">C150</text>
+<text class="lab" x="116.99" y="167.20" text-anchor="middle">C151</text>
+<text class="lab" x="163.79" y="187.35" text-anchor="middle">C78</text>
+<text class="lab" x="35.10" y="163.95" text-anchor="middle">C80</text>
+<text class="lab" x="157.29" y="167.20" text-anchor="middle">C82</text>
+<text class="lab" x="33.80" y="143.80" text-anchor="middle">C84</text>
+<text class="lab" x="575.90" y="42.40" text-anchor="middle">C87</text>
+<text class="lab" x="616.19" y="42.40" text-anchor="middle">C88</text>
+<text class="lab" x="656.49" y="42.40" text-anchor="middle">C94</text>
+<text class="lab" x="696.79" y="42.40" text-anchor="middle">C99</text>
+<text class="lab" x="71.50" y="215.95" text-anchor="middle">L1</text>
+<text class="lab" x="119.60" y="215.95" text-anchor="middle">L2</text>
+<text class="lab" x="167.70" y="215.95" text-anchor="middle">L3</text>
+<text class="lab" x="242.45" y="293.95" text-anchor="middle">L4</text>
+<text class="lab" x="278.85" y="293.95" text-anchor="middle">L5</text>
+<text class="lab" x="635.05" y="293.95" text-anchor="middle">L6</text>
+<text class="lab" x="671.45" y="293.95" text-anchor="middle">L7</text>
+<text class="lab" x="30.55" y="215.95" text-anchor="middle">Q2</text>
+<text class="lab" x="756.60" y="285.50" text-anchor="middle">R1</text>
+<text class="lab" x="153.66" y="82.83" text-anchor="middle">R34</text>
+<text class="lab" x="321.75" y="65.80" text-anchor="middle">U10</text>
+<text class="lab" x="368.55" y="179.55" text-anchor="middle">U3</text>
+<text class="lab" x="31.85" y="258.20" text-anchor="middle">U5</text>
+<text class="lab" x="68.25" y="258.20" text-anchor="middle">U6</text>
+<text class="lab" x="104.65" y="258.20" text-anchor="middle">U7</text>
+<text class="lab" x="146.90" y="259.50" text-anchor="middle">U8</text>
+</svg></div>
+  </section>
+
+  <section>
+    <div class="viewhead"><h2>Checks</h2><span>run against the saved file, not a dialog</span></div>
+    <div class="checks">
+      <div class="check"><span class="n">175 / 175</span>
+        <span class="t">placed, none missing and none left off the board</span></div>
+      <div class="check"><span class="n">0</span>
+        <span class="t">pairs of lands closer than 0.30&nbsp;mm, on either side</span></div>
+      <div class="check"><span class="n">0</span>
+        <span class="t">parts within 0.30&nbsp;mm of the board edge</span></div>
+      <div class="check"><span class="n">0.0001 mm</span>
+        <span class="t">worst copper error against the intended centre</span></div>
+      <div class="check"><span class="n">59.690, 24.130</span>
+        <span class="t">X2 pin 1, exactly &mdash; the grid every carrier board is built to</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="viewhead"><h2>Where this departs from the plan</h2>
+      <span>and why the geometry decided it</span></div>
+    <table>
+      <thead><tr><th>Part</th><th>Move</th><th>Reason</th></tr></thead>
+      <tbody><tr><td class="d">U2</td><td class="m">plan y 11.80 &rarr; 13.60</td><td>The LQFP64 land is 12.95&nbsp;mm, not the 10&nbsp;mm body the plan drew, and X4 below it is 6.50&nbsp;mm deep rather than 3.30. X4 cannot move sideways &mdash; it has to sit in the 11.18&nbsp;mm window where X2 omits four pins &mdash; so the bridge moved up instead.</td></tr>
+<tr><td class="d">Q1</td><td class="m">plan x 39.75 &rarr; 41.30</td><td>Cleared the same LQFP land, which ends at x&nbsp;39.43.</td></tr>
+<tr><td class="d">U4</td><td class="m">plan x 45.00 &rarr; 47.50</td><td>Follows Q1 right. Still on the front directly above the FPGA, which is what change&nbsp;1 was for; it now sits centred over the ball field rather than to its left.</td></tr>
+<tr><td class="d">JP3 / JP4</td><td class="m">plan y 23.25 / 0.70 &rarr; 21.68 / 3.72</td><td>A 1.524&nbsp;mm pad at the plan&rsquo;s lower y would have hung 0.06&nbsp;mm over the board edge. Both take the plan&rsquo;s x and the previous layout&rsquo;s y.</td></tr>
+<tr><td class="d">U10</td><td class="m">plan y 20.15 &rarr; 20.60</td><td>Overlapped the SDRAM land by 0.14&nbsp;mm.</td></tr>
+<tr><td class="d">R1</td><td class="m">old y 3.00 &rarr; 3.70</td><td>The 742C043 is 1.25&nbsp;mm wide and the gap between X2 pins 5 and 6 is 1.02&nbsp;mm, so it cannot sit between them. It moved above the pin row.</td></tr>
+<tr><td class="d">R4</td><td class="m">old x 59.79 &rarr; 59.30</td><td>Clipped JP3&rsquo;s first pad by 0.09&nbsp;mm.</td></tr>
+<tr><td class="d">LD3 / LD4</td><td class="m">new parts</td><td>The bq24232 indicators continue the previous layout&rsquo;s LED column at its 1.20&nbsp;mm pitch, on the front where a hand can see them, even though their series resistors are in the power block on the back.</td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <p class="note"><b>Off the board.</b> The four Creative Commons marks are licence art with no
+      copper, carried through the import as real pinless components. They are not meant to be on
+      the PCB, and they are not: all four sit below the outline on a shared baseline at
+      y&nbsp;&minus;9.502&nbsp;mm, which is where the previous layout parked them. They stay in
+      the design rather than being deleted, because the schematic still owns them and the next
+      Import&nbsp;Changes would bring them straight back.</p>
+    <p class="note" style="margin-top:14px"><b>Still to re-cut.</b> The 0201s under the ball field
+      are on an even 6&nbsp;&times;&nbsp;4 lattice, assigned by rail rather than by designator:
+      the eight VCC1V0 balls sit in a 0.5&nbsp;&times;&nbsp;3.0&nbsp;mm cluster at the centre of
+      the die, and the four core caps are 0.65 to 2.89&nbsp;mm from it. That lattice will want
+      re-cutting once the BGA fan-out is drawn.</p>
+  </section>
+</div>

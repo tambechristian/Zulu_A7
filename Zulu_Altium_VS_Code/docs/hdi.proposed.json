@@ -1,0 +1,30 @@
+{
+ "_comment": [
+  "Zulu A7 HDI (2026-09-29, judge spec): Structure B on JLCPCB JLCH061611N2-2116 AS NAMED (2+2+2: L1 0.035 / PP2116 0.112 / L2 0.030 / PP2116 0.112 / L3 0.030 / core 0.930 / L4 0.030 / PP2116 0.112 / L5 0.030 / PP2116 0.112 / L6 0.035 mm; inner copper 1 oz forced on HDI).",
+  "Microvia 0.15 hole / 0.30 land is the only laser via legal on 0.112 mm of 2116 under JLC's published rules (aspect <= 1:1 -> hole >= 0.112; pad >= hole + 0.15) using their DEFAULT sizes; a 0.12 hole / 0.27 land is also rule-legal (0.93:1, ring 0.075) if JLC laser a non-default size -- see _alternates and fab question 2. 0.10/0.25 is ILLEGAL on this stack.",
+  "Spans: stacked laser Top->L2-GND->L3-SIG and Bottom->L5-VCC3V3->L4-SIG (two objects at one XY, stacked_same_xy true), buried mechanical L3-SIG->L4-SIG through the 0.930 core (JLC: buried 0.15-0.55, core >= 0.30; fee is a MANUAL QUOTE -- no plan may depend on it before JLC price it), through 0.20/0.35 unchanged.",
+  "Pitch (centre-centre, different nets) = max(mean hole + 0.24, mean land + 0.09): laser 0.39, buried 0.39, through 0.44; laser_to_mechanical_pitch 0.415 = max((0.15+0.20)/2 + 0.24, (0.30+0.35)/2 + 0.09). Same-net 0.13 hole-edge is not modelled (one pitch per span); same-net stacks at one XY go through stacked().",
+  "antipad 0.48 on a plane the laser via passes or lands on with a FOREIGN net = 2 x max(hole/2 + 0.15 JLC hole-to-copper, land/2 + 0.09 Clearance) = 2 x max(0.225, 0.24); Altium: PlaneClearance rule scoped IsMicroVia at 0.165 mm (hole-edge model). Through vias keep null = 0.20 + 2 x 0.25 = 0.70. Two foreign-net voids in ADJACENT 0.5 mm sites leave a 0.02 mm plane web (< 3 mil): alternate sites (diagonal 0.7071 pitch leaves 0.227).",
+  "via_in_pad is FALSE on every span: a 0.15 (or 0.12) hole in U1's 0.225 land leaves a 0.0375 (0.0525) ring, below JLC's 0.075 minimum. field_ok is a NEW key: true = a via of this span may sit inside U1's land field (the 87 legal sites measured 2026-09-29); tools/hdi.py must change field_ban() to read it (return not params(span).get('field_ok', False)) -- until then hdi.py's old rule (banned unless via_in_pad and not reaching Bottom) bans every span here inside the field, which is conservative, not wrong. The Bottom-reaching laser span keeps the ban (Bottom under U1 carries C123 and the XADC bundle; not needed for the Top-side escape).",
+  "Every number is a MODEL parameter from scratchpad/hdi/jlcpcb_hdi_facts.md (fetched 2026-09-29) and Rules6 of zulu_a7.PcbDoc md5 210a6f2b (Clearance 0.09, HoleToHole 0.20 -> 0.24, PlaneClearance 0.25); confirm JLC's stack review (pressed PP, Dk, laser sizes, buried fee) before an HDI plan is placed."
+ ],
+ "stack": ["Top", "L2-GND", "L3-SIG", "L4-SIG", "L5-VCC3V3", "Bottom"],
+ "signal_layers": ["Top", "L3-SIG", "L4-SIG", "Bottom"],
+ "plane_nets": {"L2-GND": "GND", "L5-VCC3V3": "VCC3V3"},
+ "spans": [
+  {"span": ["Top", "L2-GND"], "kind": "laser", "hole": 0.15, "land": 0.30, "pitch": 0.39, "via_in_pad": false, "field_ok": true, "antipad": 0.48},
+  {"span": ["L2-GND", "L3-SIG"], "kind": "laser", "hole": 0.15, "land": 0.30, "pitch": 0.39, "via_in_pad": false, "field_ok": true, "antipad": 0.48},
+  {"span": ["L4-SIG", "L5-VCC3V3"], "kind": "laser", "hole": 0.15, "land": 0.30, "pitch": 0.39, "via_in_pad": false, "field_ok": true, "antipad": 0.48},
+  {"span": ["L5-VCC3V3", "Bottom"], "kind": "laser", "hole": 0.15, "land": 0.30, "pitch": 0.39, "via_in_pad": false, "field_ok": false, "antipad": 0.48},
+  {"span": ["L3-SIG", "L4-SIG"], "kind": "mechanical", "hole": 0.15, "land": 0.27, "pitch": 0.39, "via_in_pad": false, "field_ok": true, "antipad": null},
+  {"span": ["Top", "L2-GND", "L3-SIG", "L4-SIG", "L5-VCC3V3", "Bottom"], "kind": "mechanical", "hole": 0.20, "land": 0.35, "pitch": 0.44, "via_in_pad": false, "field_ok": false, "antipad": null}
+ ],
+ "laser_to_mechanical_pitch": 0.415,
+ "disjoint_span_pitch": 0.0,
+ "stacked_same_xy": true,
+ "_alternates": {
+  "0.12_0.27": {"note": "if JLC accept a 0.12 mm laser hole on the 0.112 mm 2116 outer PP (fab question 2): laser hole 0.12 / land 0.27 / pitch 0.36 / antipad 0.45 / laser_to_mechanical_pitch 0.40; U1 interstitial margin to the 0.09 rule 0.0161 mm (0.0061 under a 0.10 BGA-pad reading, all 87 sites kept) against 0.0011 / -0.0089 (87 -> 40) at 0.15/0.30; max simultaneous 84 either way"},
+  "thin_pp_hybrid_NOT_CHOSEN": {"note": "1078 (0.0784 pressed) on L1-L2 only with 2116 on L2-L3 would admit 0.10/0.25 on the Top,L2-GND span alone (pitch 0.34, antipad 0.43); the L2-L3 member of every signal stack still needs hole >= 0.112, so it buys no U1 signal site, costs the USB pair 7.4 ohm (85.3 -> 77.9, rule 0.1235/0.150) and is a custom stack. 1080/1078 on L2-L3 as well drops the PLACED SDRAM bus to 43.1-45.2 ohm and wants 0.092-0.105 mm on 607.8 mm of L3/L4 copper = a re-route: refused."}
+ },
+ "_dfm_source": "scratchpad/hdi/jlcpcb_hdi_facts.md (2026-09-29) + Rules6 of zulu_a7.PcbDoc md5 210a6f2b7669980309fb2472a125ad98; U1 site counts from scratchpad/hdi/judge/remeasure/sites_0p12.out"
+}
