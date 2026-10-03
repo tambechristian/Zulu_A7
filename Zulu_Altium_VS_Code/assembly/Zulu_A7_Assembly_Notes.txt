@@ -1,0 +1,80 @@
+ZULU A7 - JLCPCB ASSEMBLY NOTES
+Release date: 2026-10-02
+Source commit: 716a41d27958f2cddd0442217275ba54df33ab60
+PCB SHA-256: 72E9A716E03616D9464C0040A7B1187561E740C551104720DD288EA147B4E30B
+
+UPLOAD SET
+Upload the fabrication ZIP, BOM CSV, and CPL CSV in their separate
+JLCPCB order fields. Copy all critical instructions from this file into
+the online order remarks; do not rely on this file being read automatically.
+
+ASSEMBLY SCOPE
+Fitted PCB designators: 172
+Top-side fitted designators: 32
+Bottom-side fitted designators: 140
+Do not populate: JP3, JP4
+Assembly is required on both sides.
+
+HDI ORDER GATE
+This is a six-layer, two-step sequential HDI board with stacked laser
+microvias and an L3-L4 buried-via stage. Obtain written confirmation that
+JLCPCB PCBA can be attached to the manually reviewed HDI fabrication quote
+before relying on turnkey assembly.
+
+CPL AND ORIENTATION
+CPL units are millimetres from the board lower-left origin. The top drawing
+is viewed from the top; the bottom drawing is mirrored and viewed from the
+bottom. CPL rotations are the rotations stored in the final Altium PCB.
+Review every polarized part and all rotations in JLCPCB's placement preview.
+Do not approve the order if the preview disagrees with either assembly drawing.
+
+SPECIAL COMPONENT INSTRUCTIONS
+- X2 is not one 40-pin component. It is four underside-mounted THT strips:
+  2 x PRPC009SAAN-RC (9-pin) and 2 x PRPC011SAAN-RC (11-pin). The BOM
+  therefore reports physical quantity 4 for the single PCB designator X2.
+  Quote this as manual THT work. If JLCPCB cannot process that exception,
+  leave X2 unpopulated for post-assembly installation.
+- J1 is a vertical 2x6 female through-hole Pmod header on the top side.
+- JP3 and JP4 are intentional DNP flying-lead/pogo positions.
+- X4 pin 1 is battery positive.
+- X3's microSD card opening faces the left board edge.
+- X1's micro-USB opening faces the upper board edge.
+- Verify pin 1/A1 on U1, U2, U3, U4, U8, U10, Q1, and every polarized LED.
+- LD0 cathodes are pads 2, 4, and 6; its anodes are pads 1, 3, and 5.
+
+SOURCING
+The LCSC codes in the BOM are exact identities captured by the project's
+September 2026 sourcing audit, not a claim of current stock. Revalidate
+manufacturer, MPN, package, lifecycle, authenticity, and stock in the live
+JLCPCB parts selector. Do not make substitutions without written approval.
+BOM lines without a verified exact LCSC code: 17
+  C124: CL05A474KO5NNNC (C0402)
+  L1,L2,L3: DFE252010P-1R5M=P2 (IND2520)
+  LD0: EAST1616RGBA8 (EVERLIGHT-19-337)
+  R1: 742C043472JP (742C043)
+  R2,R6,R7,R99: RC0201FR-074K7L (R0201)
+  R4: 742C163101JP (742C163)
+  R10,R14: RC0201FR-072K32L (R0201)
+  R12,R16: RC0201FR-07140RL (R0201)
+  R101: RC0201FR-072K21L (R0201)
+  R102: RC0402FR-073K57L (R0402)
+  R103: RC0402FR-073K09L (R0402)
+  R104: RC0402FR-0756K2L (R0402)
+  R105: RC0402FR-074K32L (R0402)
+  R107,R108: RC0402FR-071K5L (R0402)
+  U3: AS4C32M16SB-7TCN (TSOPII-54)
+  U7: SC189ASKTRT (SOT23-5)
+  X2: 2x PRPC009SAAN-RC + 2x PRPC011SAAN-RC (ZULU-DIP37)
+
+QUALITY AND TEST
+- Inspect all BGA joints for U1 with the process controls appropriate to
+  an Artix-7 CPG236 package; follow MSL storage/bake requirements.
+- No firmware programming or functional test is included unless separately
+  quoted and supplied with a test procedure and programming image.
+- Request first-article inspection and placement-photo approval before the
+  remainder of the build.
+
+REQUIRED ORDER REVIEW
+Confirm HDI fabrication plus two-sided SMT/THT assembly, X2's four-piece
+manual installation, unresolved/consigned parts, polarity, and placement
+preview before releasing the order.

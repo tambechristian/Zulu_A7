@@ -1,0 +1,59 @@
+﻿Comment,Designator,Footprint,LCSC Part #,Manufacturer,Manufacturer Part Number,Qty per PCB,Assembly Type,Sourcing Note
+PTS810,BTN,PTS810,C116501,Littelfuse (C&K),PTS810SJM250SMTR LFS,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+0.1uF,"C3,C4,C5,C6,C7,C8,C9,C11,C12",C0402,C71629,Murata,GRM155R71C104KA88D,9,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+10uF,C13,C0603,C77041,Murata,GRM188R60J106ME47D,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+1nF,"C36,C37",C0402,C77018,Murata,GRM155R71H102KA01D,2,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+0.01uF,C38,C0201,C85930,Murata,GRM033R71E103KE14D,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+0.1uF / 100nF,"C40,C41,C123,C133,C134,C135,C136,C137,C138,C152,C153,C154,C155,C156,C157,C158,C159",C0201,C76934,Murata,GRM033R61A104KE15D,17,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+10uF / 10uF 10V,"C78,C147,C148,C149",C0805,C307523,Samsung,CL21A106KPFNNNG,4,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+22uF,"C80,C85,C86,C93,C97,C98,C140,C141,C142,C143,C144,C145,C146",C0805,C441864,Murata,GRM21BR61A226ME44L,13,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+22uF,"C82,C84",C0603,C86295,Samsung,CL10A226MP8NUNE,2,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+4.7uF,"C87,C88,C94,C99,C100,C101,C102,C103,C104,C105,C106,C150,C151",C0603,C77045,Murata,GRM188R61C475KE11D,13,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+0.47uF,"C89,C90,C91,C92,C95,C96,C107,C108,C109,C110,C111,C112,C113,C114,C115,C116,C117,C118,C119,C120,C121,C122",C0201,C85926,Murata,GRM033R60J474KE90D,22,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+470nF,C124,C0402,,Samsung,CL05A474KO5NNNC,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+4.7uF,C139,C0402,C7235186,Taiyo Yuden,MSASJ105BB5475MFNA01,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+Pmod 2x6,J1,2X06,C3321957,Sullins,PPTC062LFBN-RC,1,THT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+1.5uH,"L1,L2,L3",IND2520,,Murata,DFE252010P-1R5M=P2,3,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+FB 600R,"L4,L5,L6,L7",IND0603,C85833,Murata,BLM18KG601SN1D,4,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+EAST1616RGBA8,LD0,EVERLIGHT-19-337,,Everlight,EAST1616RGBA8,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+red,"LD1,LD2,LD4",LED0603,C125099,Lite-On,LTST-C191KRKT,3,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+green,"LD3,LD5",LED0603,C125098,Lite-On,LTST-C191KGKT,2,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+12MHz 10ppm (FPGA + FT2232HL),Q1,32X25,C17218076,ECS,ECS-3225SMV-120-FP-TR,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+4.7K,R1,742C043,,CTS,742C043472JP,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+4.7K / 4.7k,"R2,R6,R7,R99",R0201,,Yageo,RC0201FR-074K7L,4,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+100,R4,742C163,,CTS,742C163101JP,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+5.1K,R5,R0201,C274341,Yageo,RC0201FR-075K1L,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+2.32K,"R10,R14",R0201,,Yageo,RC0201FR-072K32L,2,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+1K,"R11,R15,R20,R22,R23",R0201,C138165,Yageo,RC0201FR-071KL,5,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+140,"R12,R16",R0201,,Yageo,RC0201FR-07140RL,2,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+845,"R13,R17",R0201,C474846,Yageo,RC0201FR-07845RL,2,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+12K 1%,R18,R0402,C114760,Yageo,RC0402FR-0712KL,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+10K / 10k,"R19,R90,R91,R92,R93,R94,R96,R97,R98",R0201,C106225,Yageo,RC0201FR-0710KL,9,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+1K,R21,R0402,C106235,Yageo,RC0402FR-071KL,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+33,"R24,R25",R0201,C295794,Yageo,RC0201FR-0733RL,2,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+200,"R26,R27,R28,R29,R30,R31,R32,R33",R0201,C274337,Yageo,RC0201FR-07200RL,8,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+4.7K,R34,742C083,C2961927,CTS,742C083472JP,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+4.7K,R35,R0402,C105871,Yageo,RC0402FR-074K7L,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+680,R78,R0402,C137948,Yageo,RC0402FR-07680RL,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+33,"R80,R82",R0402,C138002,Yageo,RC0402FR-0733RL,2,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+330,"R81,R83,R84",R0402,C105875,Yageo,RC0402FR-07330RL,3,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+10K,"R85,R86,R106",R0402,C60490,Yageo,RC0402FR-0710KL,3,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+2.21k,R101,R0201,,Yageo,RC0201FR-072K21L,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+3.57K,R102,R0402,,Yageo,RC0402FR-073K57L,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+3.09K,R103,R0402,,Yageo,RC0402FR-073K09L,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+56.2K,R104,R0402,,Yageo,RC0402FR-0756K2L,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+4.32K,R105,R0402,,Yageo,RC0402FR-074K32L,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+1.5K,"R107,R108",R0402,,Yageo,RC0402FR-071K5L,2,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+XC7A35T-1CPG236C,U1,XC7A35T-CPG236,C1521738,AMD/Xilinx,XC7A35T-1CPG236C,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+FT2232HL USB-UART/JTAG Bridge,U2,FT2232HL-LQFP64,C27882,FTDI,FT2232HL-REEL,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+AS4C32M16SB-7TCN,U3,TSOPII-54,,Alliance Memory,AS4C32M16SB-7TCN,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+W25Q128JVSIQ,U4,SOIC-8_208MIL,C97521,Winbond,W25Q128JVSIQ,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+SC189ZSKTRT,U5,SOT23-5,C2650317,Semtech,SC189ZSKTRT,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+SC189LSKTRT,U6,SOT23-5,C842844,Semtech,SC189LSKTRT,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+SC189ASKTRT,U7,SOT23-5,,Semtech,SC189ASKTRT,1,SMT,No exact LCSC code verified; resolve an exact approved part or consign before ordering
+BQ24232 LiPo charger + power path,U8,VQFN16-3X3-RGT,C528622,Texas Instruments,BQ24232RGTR,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+93LC46BT-I/SN,U10,SPI-8_SOIC_150,C16253,Microchip,93LC46BT-I/SN,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+Molex 105017-0001 Micro-USB-B,X1,MOLEX-105017-0001,C136000,Molex,105017-0001,1,Mixed,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+ZULU-CONN,X2,ZULU-DIP37,,Sullins,2x PRPC009SAAN-RC + 2x PRPC011SAAN-RC,4,THT,MANUAL REVIEW: one PCB designator represents two 9-pin and two 11-pin underside THT header strips
+DM3D-SF,X3,DM3D-SF,C719027,Hirose,DM3D-SF,1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
+"JST PH 2-pin, 1S LiPo",X4,JST-B2B-PH-SM4-TB,C160352,JST,B2B-PH-SM4-TB(LF)(SN),1,SMT,"Exact LCSC identity from the 2026-09 sourcing audit; revalidate identity, stock, and lifecycle before ordering"
