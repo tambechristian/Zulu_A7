@@ -1,15 +1,15 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altium_VS_Code\Imported zulu_a7.PrjPcb\zulu_a7.PcbDoc
-Date     : 10/2/2026
-Time     : 12:44:33 PM
+Date     : 10/7/2026
+Time     : 10:03:41 AM
 
 Processing Rule : Clearance Constraint (Gap=0.09mm) (All),(All)
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=0.2mm) (InNet('SDRAM-CLK') And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
+Processing Rule : Clearance Constraint (Gap=0.1mm) ((InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=0.1mm) ((InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
+Processing Rule : Clearance Constraint (Gap=0.2mm) (InNet('SDRAM-CLK') And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
 Rule Violations :0
 
 Processing Rule : Clearance Constraint (Gap=0.175mm) ((InNamedPolygon('L2_GND_PLANE') Or InNamedPolygon('L5_VCC3V3_PLANE'))),(IsThruVia)
@@ -24,25 +24,25 @@ Rule Violations :0
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.15mm) (Max=1mm) (Preferred=0.2mm) (InNetClass('PWR_RAILS'))
+Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=0.5mm) (InNetClass('PWR_SWITCH'))
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.076mm) (Max=0.15mm) (Preferred=0.125mm) (InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL'))
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1mm) (Preferred=0.2mm) (InNetClass('PWR_RAILS'))
 Rule Violations :0
 
 Processing Rule : Width Constraint (Min=0.076mm) (Max=0.5mm) (Preferred=0.076mm) (All)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=0.5mm) (InNetClass('PWR_SWITCH'))
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1.5mm) (Preferred=0.5mm) (InNet('VCC1V0'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.076mm) (Max=0.15mm) (Preferred=0.125mm) (InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL'))
 Rule Violations :0
 
 Processing Rule : Width Constraint (Min=0.076mm) (Max=1.5mm) (Preferred=1.05mm) (InNet('VCC3V3'))
 Rule Violations :0
 
 Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=1.1mm) (InNet('VU') Or InNet('USB5V0') Or InNet('VBATT'))
-Rule Violations :0
-
-Processing Rule : Width Constraint (Min=0.15mm) (Max=1.5mm) (Preferred=0.5mm) (InNet('VCC1V0'))
 Rule Violations :0
 
 Processing Rule : Routing Topology Rule(Topology=Shortest) (All)
@@ -58,6 +58,9 @@ Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.02mm) (All)
 Rule Violations :0
 
 Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.15mm) (IsMicroVia)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.3mm) (InComponent('X1'))
 Rule Violations :0
 
 Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.55mm) (IsBuriedVia)
@@ -84,4 +87,4 @@ Rule Violations :0
 
 Violations Detected : 0
 Waived Violations : 0
-Time Elapsed        : 00:00:01
+Time Elapsed        : 00:00:04

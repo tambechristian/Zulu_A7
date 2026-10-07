@@ -1,20 +1,21 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: zulu_a7.PcbDoc   10/2/2026  1:08:57 PM
+NCDrill File Report For: zulu_a7.PcbDoc   10/7/2026  9:42:34 AM
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
-ASCII RoundHoles File : zulu_a7.TXT
+ASCII RoundHoles File : zulu_a7-RoundHoles.TXT
+ASCII SlotHoles File : zulu_a7-SlotHoles.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
 T2      0.2mm (8mil)                                              Round             380       PTH        604.70mm (23.81inch)
-T3      0.6mm (24mil)                                             Round             2         PTH        7.00mm (0.28inch)
+T3      0.6mm (24mil)                                             Slot              2         PTH        15.44mm (0.61inch)
 T4      0.85mm (33mil)                                            Round             2         PTH        5.00mm (0.20inch)
 T5      1.016mm (40mil)                                           Round             58        PTH        235.35mm (9.27inch)
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              442
 Layer Pair : L3-SIG to L4-SIG
-ASCII RoundHoles File : zulu_a7.TX3
+ASCII RoundHoles File : zulu_a7-RoundHoles.TX3
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Totals                                                                          
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              811
 MicroVia : Top Layer to L2-GND
-ASCII RoundHoles File : zulu_a7.TX6
+ASCII RoundHoles File : zulu_a7-RoundHoles.TX6
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -32,7 +33,7 @@ T1      0.15mm (6mil)                                             Round         
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              296
 MicroVia : L2-GND to L3-SIG
-ASCII RoundHoles File : zulu_a7.TX7
+ASCII RoundHoles File : zulu_a7-RoundHoles.TX7
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -40,22 +41,22 @@ T1      0.15mm (6mil)                                             Round         
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              282
 MicroVia : L4-SIG to L5-VCC3V3
-ASCII RoundHoles File : zulu_a7.TX9
+ASCII RoundHoles File : zulu_a7-RoundHoles.TX9
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      0.15mm (6mil)                                             Round             230       PTH        417.76mm (16.45inch)
+T1      0.15mm (6mil)                                             Round             230       PTH        418.97mm (16.49inch)
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              230
 MicroVia : L5-VCC3V3 to Bottom Layer
-ASCII RoundHoles File : zulu_a7.TX10
+ASCII RoundHoles File : zulu_a7-RoundHoles.TX10
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      0.15mm (6mil)                                             Round             230       PTH        417.76mm (16.45inch)
+T1      0.15mm (6mil)                                             Round             230       PTH        418.97mm (16.49inch)
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              230
 ----------------------------------------------------------------------------------------------------------------------------------
 MicroVia Totals                                                                     1038
 
-Total Processing Time (hh:mm:ss) : 00:00:00
+Total Processing Time (hh:mm:ss) : 00:00:01

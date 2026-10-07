@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 """
 verify_stack.py -- read the SAVED PcbDoc and check the layer stack against the
-JLCPCB catalogue template JLC06161H-3313E.  Reads the file; changes nothing.
+JLCPCB HDI stack JLCH061611N2-2116 (2+2+2, inner 1 oz forced), ordered by
+name.  Until 2026-10-04 this checked the through-only JLC06161H-3313E; the
+board was routed with laser microvias, so the HDI stack is the one that
+matches the drill data.  Reads the file; changes nothing.
+
+Dk values are placeholders until JLC's stack review: 4.29 is the JLC PP
+library figure for 2116 at 1 GHz; the 0.930 core Dk is unpublished and 4.6
+is assumed in every impedance solve (docs/hdi_spec.md section 3).
 
 Altium stores every stack length in Board6/Data as a mil STRING with trailing
 zeros stripped ("0.4mil", "3.9134mil", "44.126mil") and every dielectric
@@ -26,7 +33,7 @@ MIL = 0.0254                      # mm per mil
 TOL_MM = 0.0005                   # generous: the 4-dp mil quantum is 2.5e-6 mm
 TOL_DK = 0.002                    # DIELCONST is stored to 3 decimals
 
-DEFAULT = (r"C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altrium"
+DEFAULT = (r"C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altium_VS_Code"
            r"\Imported zulu_a7.PrjPcb\zulu_a7.PcbDoc")
 
 # DIELTYPE codes, now PROVEN rather than inferred (2026-09-12).  Dielectrics 4
@@ -44,7 +51,9 @@ GENERIC, CORE, PREPREG, SURFACE = 0, 1, 2, 3
 # Outer copper: JLCPCB publish 0.035 mm FINISHED.  Altium's stock 1.4 mil is
 # 0.03556 mm.  Set OUTER_CU_MM = 0.03556 if you chose to leave 1.4 mil alone.
 OUTER_CU_MM = 0.035               # 1.378 mil
-INNER_CU_MM = 0.0152              # 0.5984 mil
+INNER_CU_MM = 0.030               # 1 oz, forced on JLC HDI (was 0.0152 on 3313E)
+PP_MM, PP_DK = 0.112, 4.290       # SY 2116, pressed thickness per JLCH061611N2-2116
+CORE_MM, CORE_DK = 0.930, 4.600   # core Dk unpublished -- placeholder
 
 # (row name, kind, thickness mm, Dk, dieltype)   kind: 'cu' | 'diel' | 'none'
 EXPECT = [
@@ -52,15 +61,15 @@ EXPECT = [
     ("Top Overlay",    "none", None,        None,  None),
     ("Top Solder",     "diel", 1.2 * MIL,   3.800, SURFACE),   # JLC mask model, 2026-09-14
     ("Top Layer",      "cu",   OUTER_CU_MM, None,  None),
-    ("Dielectric 2",   "diel", 0.0994,      4.100, PREPREG),  # 3313 x1 UNCHANGED
+    ("Dielectric 2",   "diel", PP_MM,       PP_DK, PREPREG),  # 2116 L1-L2 (laser span)
     ("L2-GND",         "cu",   INNER_CU_MM, None,  None),
-    ("Dielectric 4",   "diel", 0.1000,      4.600, CORE),     # 0.1 mm core
+    ("Dielectric 4",   "diel", PP_MM,       PP_DK, PREPREG),  # 2116 L2-L3 (laser span)
     ("L3-SIG",         "cu",   INNER_CU_MM, None,  None),
-    ("Dielectric 1",   "diel", 1.1208,      4.523, GENERIC),  # 7628+0.7core+7628 -> mixed
+    ("Dielectric 1",   "diel", CORE_MM,     CORE_DK, CORE),   # 0.930 core L3-L4 (buried span)
     ("L4-SIG",         "cu",   INNER_CU_MM, None,  None),
-    ("Dielectric 5",   "diel", 0.1000,      4.600, CORE),     # 0.1 mm core
+    ("Dielectric 5",   "diel", PP_MM,       PP_DK, PREPREG),  # 2116 L4-L5 (laser span)
     ("L5-VCC3V3",      "cu",   INNER_CU_MM, None,  None),
-    ("Dielectric 3",   "diel", 0.0994,      4.100, PREPREG),  # 3313 x1 UNCHANGED
+    ("Dielectric 3",   "diel", PP_MM,       PP_DK, PREPREG),  # 2116 L5-L6 (laser span)
     ("Bottom Layer",   "cu",   OUTER_CU_MM, None,  None),
     ("Bottom Solder",  "diel", 1.2 * MIL,   3.800, SURFACE),   # JLC mask model, 2026-09-14
     ("Bottom Overlay", "none", None,        None,  None),
@@ -168,7 +177,7 @@ def main():
     lam = total_mm - 2 * 1.2 * MIL
     print("\n    total incl. solder mask : %.5f mm  (%.4f mil)"
           % (total_mm, total_mm / MIL))
-    print("    laminate  excl. mask    : %.5f mm   <- JLC quote 1.65040 mm" % lam)
+    print("    laminate  excl. mask    : %.5f mm   <- JLCH061611N2-2116 1.568 (JLC 1.58 +-10 %%)" % lam)
 
     # ---- 2. the V8 cache must agree ----------------------------------------
     v8 = rows(d, "LAYER_V8_", "")
@@ -191,11 +200,11 @@ def main():
         if "NAME" in r:
             legname.setdefault(r["NAME"], r)
     print("\n[3] legacy LAYERn table (dielectric BELOW each copper layer)")
-    legacy_expect = [("Top Layer",    OUTER_CU_MM, 0.0994, 4.100),
-                     ("L2-GND",       INNER_CU_MM, 0.1000, 4.600),
-                     ("L3-SIG",       INNER_CU_MM, 1.1208, 4.523),
-                     ("L4-SIG",       INNER_CU_MM, 0.1000, 4.600),
-                     ("L5-VCC3V3",    INNER_CU_MM, 0.0994, 4.100),
+    legacy_expect = [("Top Layer",    OUTER_CU_MM, PP_MM,   PP_DK),
+                     ("L2-GND",       INNER_CU_MM, PP_MM,   PP_DK),
+                     ("L3-SIG",       INNER_CU_MM, CORE_MM, CORE_DK),
+                     ("L4-SIG",       INNER_CU_MM, PP_MM,   PP_DK),
+                     ("L5-VCC3V3",    INNER_CU_MM, PP_MM,   PP_DK),
                      ("Bottom Layer", OUTER_CU_MM, None,   None)]
     for name, cu, h, dk in legacy_expect:
         r = legname.get(name)
@@ -266,7 +275,7 @@ def main():
         for f in fails:
             print("  *", f)
         return 1
-    print("PASS -- stack matches JLC06161H-3313E")
+    print("PASS -- stack matches JLCH061611N2-2116")
     return 0
 
 

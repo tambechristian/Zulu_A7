@@ -32,7 +32,7 @@ The final file-level checks pass:
 
 - `verify_placed.py`: 4,196 / 4,196 tracks, 1,787 / 1,787 vias, no missing or extra geometry, and no pad-net
   differences.
-- `verify_stack.py`: stack matches JLC06161H-3313E.
+- `verify_stack.py`: stack matches JLCH061611N2-2116 (updated 2026-10-04 in the Layer Stack Manager: 2116 prepreg 0.112 mm Dk 4.29 in all four outer gaps, 0.930 mm core Dk 4.6 between L3 and L4, inner copper 0.030 mm / 1 oz; laminate 1.568 mm. Copper, polygons and rules unchanged; DRC re-run 2026-10-04 21:57: 0 warnings, 0 violations). It previously matched JLC06161H-3313E.
 - `verify_widths.py`: every effective Width, Clearance, and solder-mask rule matches the target.
 - Polygon connectivity:
   - L2: 216/216 GND pads and 135/135 GND vias are on the main island;

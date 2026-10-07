@@ -1,0 +1,111 @@
+ZULU A7 - PCBWAY FABRICATION NOTES
+Release date: 2026-10-07
+Source: uncommitted working copy on top of commit cf1c705; zulu_a7.PcbDoc SHA-256
+4f73e1a215a21d19623c0956719072aeaa8c6b258501a21de8923bfff705f688
+
+FABRICATOR
+PCBWay, bare-board fabrication. Order as Material "HDI (Buried/blind vias)"
+with Custom stackup ticked and impedance control ticked. Online HDI pricing
+covers 1+N+1 only, so this two-step build needs a manual quotation and
+engineering review before release.
+
+HDI CONSTRUCTION (sequential 1+1+N+1+1, symmetric)
+  Top -> L2       0.15 mm laser microvia
+  L2 -> L3        0.15 mm laser microvia
+  L3 -> L4        0.15 mm mechanically drilled buried via (in the core)
+  L4 -> L5        0.15 mm laser microvia
+  L5 -> Bottom    0.15 mm laser microvia
+  Top -> Bottom   0.20 mm plated through via
+Stacked adjacent-layer microvias share XY locations: copper-fill and planarize
+them ("Via filled with copper"). The vias around U1 (0.5 mm BGA) are
+interstitial, NOT via-in-pad; no resin-filled via-in-pad is required.
+
+TARGET STACKUP (as modelled in the PCB file; please return your proposed
+manufacturable stack with pressed thicknesses and Dk for approval)
+  L1  Top          copper 0.035
+      Prepreg      0.112   (2116-class; design assumed Dk 4.29)
+  L2  GND          copper 0.030
+      Prepreg      0.112
+  L3  Signal       copper 0.030
+      Core         0.930   (Dk 4.6 assumed)
+  L4  Signal       copper 0.030
+      Prepreg      0.112
+  L5  VCC3V3       copper 0.030
+      Prepreg      0.112
+  L6  Bottom       copper 0.035
+  Laminate about 1.57 mm; about 1.63 mm with solder mask. Inner copper 1 oz.
+The outer prepregs carry the 0.15 mm laser vias, so keep them at or below
+about 0.12 mm (1:1 laser aspect ratio).
+
+CONTROLLED IMPEDANCE
+USB_D_P / USB_D_N: 90 ohm differential, +/-10 %.
+Top layer, 0.150 mm trace / 0.150 mm gap, referenced to L2 GND.
+Please return the calculated impedance on your stack; trace width may be
+adjusted by your CAM within tolerance.
+
+BOARD
+Finished outline 69.85 mm x 25.40 mm. Layer order:
+  L1  Top
+  L2  GND plane polygon (positive plot)
+  L3  Signal
+  L4  Signal
+  L5  VCC3V3 plane polygon (positive plot)
+  L6  Bottom
+The L2 and L5 Gerbers are positive polygon plots, not negative plane files.
+
+VIA AND HOLE GEOMETRY
+Laser microvias: 0.15 mm hole / 0.30 mm land
+L3-L4 buried vias: 0.15 mm hole / 0.27 mm land
+Signal through vias: 0.20 mm hole / 0.35 mm land
+Component holes: 0.85 mm (X1 MH1/MH2) and 1.016 mm (headers), plated.
+There are no non-plated holes.
+
+PLATED SLOTS (X1, Molex 105017-0001 micro-USB-B rear shell legs)
+Two plated slots, 0.60 mm wide x 1.30 mm long overall, long axis
+perpendicular to the board edge, centred at X 29.520 / Y 23.959 mm and
+X 36.520 / Y 23.959 mm. They are in zulu_a7-SlotHoles.TXT as G85 drilled
+slots (0.60 mm tool, 0.70 mm between end centres). They are oval; do not
+make them round. There are no slots on GKO/GM1. Lands: 1.11 x 1.81 mm oblong
+on Top and Bottom (0.255 mm ring), 0.90 x 1.60 mm on the inner layers.
+
+ITEMS FOR ENGINEERING REVIEW (the design was drawn to tighter limits than
+some of your published "normal" values; please confirm or propose changes)
+  - Minimum track / space 0.0762 / 0.09 mm (3.0 / 3.5 mil) on all layers.
+  - Via annular rings: through 0.075 mm, laser 0.075 mm, buried 0.06 mm.
+  - Different-net via hole-to-hole down to 0.24 mm.
+  - 0.20 mm through vias in a board of about 1.63 mm (aspect about 8:1).
+  - Laser and buried via holes to inner plane copper about 0.165 mm
+    (0.075 mm ring + 0.09 mm clearance).
+
+FILE MAP
+  zulu_a7.GTL   Top copper
+  zulu_a7.G1    L2 GND
+  zulu_a7.G2    L3 signal
+  zulu_a7.G3    L4 signal
+  zulu_a7.G4    L5 VCC3V3
+  zulu_a7.GBL   Bottom copper
+  zulu_a7.GTS   Top solder mask
+  zulu_a7.GBS   Bottom solder mask
+  zulu_a7.GTO   Top silkscreen
+  zulu_a7.GBO   Bottom silkscreen
+  zulu_a7.GTP   Top paste
+  zulu_a7.GBP   Bottom paste
+  zulu_a7.GM    Board profile
+  zulu_a7-RoundHoles.TXT   Top-Bottom plated round holes
+  zulu_a7-SlotHoles.TXT    Top-Bottom plated slots (X1, G85)
+  zulu_a7-RoundHoles.TX3   L3-L4 buried vias
+  zulu_a7-RoundHoles.TX6   Top-L2 microvias
+  zulu_a7-RoundHoles.TX7   L2-L3 microvias
+  zulu_a7-RoundHoles.TX9   L4-L5 microvias
+  zulu_a7-RoundHoles.TX10  L5-Bottom microvias
+  zulu_a7.LDP   Drill-pair layer map
+  zulu_a7.DRR   Drill sizes and counts
+
+FINAL VERIFICATION
+Altium DRC 2026-10-07 10:03 (after the final save): 0 warnings, 0 rule violations
+Gerbers: metric RS-274X, 0.0001 mm coordinate resolution
+Microvias: 1,038 total; L3-L4 buried vias: 369; signal through vias: 380;
+plated slots: 2 (X1).
+
+Solder-mask colour, surface finish, quantity and panelization are order
+selections and are not encoded by this text file.

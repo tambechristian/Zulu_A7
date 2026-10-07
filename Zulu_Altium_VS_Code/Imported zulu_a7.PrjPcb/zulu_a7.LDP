@@ -1,7 +1,8 @@
 Layer Pairs Export File for PCB: C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altium_VS_Code\Imported zulu_a7.PrjPcb\zulu_a7.PcbDoc
-LayersSetName=Top_Bot_Thru_Holes|DrillFile=zulu_a7.txt|DrillLayers=gtl,g1,g2,g3,g4,gbl
-LayersSetName=L3-SIG_L4-SIG_Buried_Vias|DrillFile=zulu_a7.tx3|DrillLayers=g2,g3
-LayersSetName=Top_L2-GND_Blind_Vias|DrillFile=zulu_a7.tx6|DrillLayers=gtl,g1
-LayersSetName=L2-GND_L3-SIG_Buried_Vias|DrillFile=zulu_a7.tx7|DrillLayers=g1,g2
-LayersSetName=L4-SIG_L5-VCC3V3_Buried_Vias|DrillFile=zulu_a7.tx9|DrillLayers=g3,g4
-LayersSetName=L5-VCC3V3_Bot_Blind_Vias|DrillFile=zulu_a7.tx10|DrillLayers=g4,gbl
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=zulu_a7-roundholes.txt|DrillLayers=gtl,g1,g2,g3,g4,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=zulu_a7-slotholes.txt|DrillLayers=gtl,g1,g2,g3,g4,gbl
+LayersSetName=L3-SIG_L4-SIG_Buried_Vias|DrillFile=zulu_a7-roundholes.tx3|DrillLayers=g2,g3
+LayersSetName=Top_L2-GND_Blind_Vias|DrillFile=zulu_a7-roundholes.tx6|DrillLayers=gtl,g1
+LayersSetName=L2-GND_L3-SIG_Buried_Vias|DrillFile=zulu_a7-roundholes.tx7|DrillLayers=g1,g2
+LayersSetName=L4-SIG_L5-VCC3V3_Buried_Vias|DrillFile=zulu_a7-roundholes.tx9|DrillLayers=g3,g4
+LayersSetName=L5-VCC3V3_Bot_Blind_Vias|DrillFile=zulu_a7-roundholes.tx10|DrillLayers=g4,gbl
