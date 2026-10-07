@@ -1,0 +1,99 @@
+ZULU A7 HDI OPTIMIZED - JLCPCB FABRICATION NOTES
+Release date: 2026-10-07
+PCB SHA-256: 5E885D522F27F39FE3042062336B2A9D71FBCC85A11B77017C1D22DBD5F929C8
+
+FABRICATOR AND ASSEMBLY LIMITATION
+This bare-board release targets the named JLCPCB six-layer stack
+JLC06161H-3313E. Select that stack by name in the impedance-control flow
+and place it on the order acknowledgement. Do not substitute the similarly
+named -3313 or -1080 stacks.
+
+Request JLCPCB engineering review and a manual HDI fabrication quotation
+before release. JLCPCB does not support assembly of this HDI board. Send the
+separate assembly release to a qualified HDI-capable assembly provider.
+
+BOARD
+Finished outline: 69.85 mm x 25.40 mm
+Layer order:
+  L1  Top
+  L2  GND plane polygon
+  L3  Signal
+  L4  Signal
+  L5  VCC3V3 plane polygon
+  L6  Bottom
+
+The L2 and L5 Gerbers are positive signal-layer polygon plots, not negative
+plane files.
+
+HDI CONSTRUCTION
+The drill data requires a symmetric two-step sequential buildup:
+  Top -> L2       0.15 mm laser microvia
+  L2 -> L3        0.15 mm laser microvia
+  L3 -> L4        0.15 mm mechanically drilled buried via
+  L4 -> L5        0.15 mm laser microvia
+  L5 -> Bottom    0.15 mm laser microvia
+  Top -> Bottom   0.20 mm plated through via
+
+Stacked adjacent-layer microvias occur at common XY locations. Apply JLCPCB's
+required copper fill and planarization process for stacked microvias.
+
+VIA GEOMETRY AND DRILL COUNTS
+Laser microvias: 0.15 mm hole / 0.30 mm land
+L3-L4 buried vias: 0.15 mm hole / 0.35 mm land
+Signal through vias: 0.20 mm hole / 0.35 mm land
+
+  Top -> Bottom signal through vias: 393
+  Top -> L2 microvias:               291
+  L2 -> L3 microvias:                278
+  L3 -> L4 buried vias:              362
+  L4 -> L5 microvias:                222
+  L5 -> Bottom microvias:            222
+  Total laser-microvia records:    1,013
+
+The Top-Bottom round-hole drill file also contains two 0.85 mm and 58
+1.016 mm plated component holes. There are no separate non-plated holes.
+
+X1 MOLEX 105017-0001 PLATED SLOTS
+X1-MS1 and X1-MS2 are two plated, vertical 0.60 mm x 1.30 mm full-radius
+rear shell slots. Their centers are (29.5199, 23.9585) mm and
+(36.5201, 23.9585) mm. The dedicated SlotHoles file uses a 0.60 mm tool
+over a 0.70 mm G85 centerline route to produce the 1.30 mm overall length.
+Do not convert these slots to round holes or treat them as non-plated.
+
+CONTROLLED IMPEDANCE
+USB_D_P / USB_D_N: 90 ohm differential target
+Top-layer geometry: 0.15 mm trace / 0.15 mm pair gap, referenced to L2 GND
+
+FILE MAP
+  zulu_a7_hdi_optimized.GTL   Top copper
+  zulu_a7_hdi_optimized.G1    L2 GND
+  zulu_a7_hdi_optimized.G2    L3 signal
+  zulu_a7_hdi_optimized.G3    L4 signal
+  zulu_a7_hdi_optimized.G4    L5 VCC3V3
+  zulu_a7_hdi_optimized.GBL   Bottom copper
+  zulu_a7_hdi_optimized.GTS   Top solder mask
+  zulu_a7_hdi_optimized.GBS   Bottom solder mask
+  zulu_a7_hdi_optimized.GTO   Top silkscreen
+  zulu_a7_hdi_optimized.GBO   Bottom silkscreen
+  zulu_a7_hdi_optimized.GTP   Top paste
+  zulu_a7_hdi_optimized.GBP   Bottom paste
+  zulu_a7_hdi_optimized.GM    Board profile
+  zulu_a7_hdi_optimized-RoundHoles.TXT   Top-Bottom plated round holes
+  zulu_a7_hdi_optimized-SlotHoles.TXT    Top-Bottom plated X1 slots
+  zulu_a7_hdi_optimized-RoundHoles.TX3   L3-L4 buried vias
+  zulu_a7_hdi_optimized-RoundHoles.TX6   Top-L2 microvias
+  zulu_a7_hdi_optimized-RoundHoles.TX7   L2-L3 microvias
+  zulu_a7_hdi_optimized-RoundHoles.TX9   L4-L5 microvias
+  zulu_a7_hdi_optimized-RoundHoles.TX10  L5-Bottom microvias
+  zulu_a7_hdi_optimized.LDP   Drill-pair layer map
+  zulu_a7_hdi_optimized.DRR   Drill sizes and counts
+
+FINAL VERIFICATION
+Altium DRC: 0 warnings, 0 rule violations
+Gerbers: metric RS-274X, 0.0001 mm coordinate resolution
+NC Drill: metric Excellon, separate round/slot files, G85 plated slots
+Total via objects: 1,768
+Physical HDI sites: 688
+
+Solder-mask color, surface finish, finished copper options, quantity, and
+panelization are order selections and are not encoded by this text file.

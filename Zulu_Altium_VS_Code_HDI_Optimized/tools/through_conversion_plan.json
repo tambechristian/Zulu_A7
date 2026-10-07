@@ -1,0 +1,492 @@
+{
+  "source": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_Altium_VS_Code_HDI_Optimized\\tools\\route_inputs_before.json",
+  "hdi": {
+    "stack": [
+      "Top",
+      "L2-GND",
+      "L3-SIG",
+      "L4-SIG",
+      "L5-VCC3V3",
+      "Bottom"
+    ],
+    "signal_layers": [
+      "Top",
+      "L3-SIG",
+      "L4-SIG",
+      "Bottom"
+    ],
+    "plane_nets": {
+      "L2-GND": "GND",
+      "L5-VCC3V3": "VCC3V3"
+    },
+    "spans": [
+      {
+        "kind": "laser",
+        "hole": 0.15,
+        "land": 0.3,
+        "pitch": 0.39,
+        "via_in_pad": false,
+        "antipad": 0.48,
+        "land_field_ban": false,
+        "span": [
+          "Top",
+          "L2-GND"
+        ]
+      },
+      {
+        "kind": "laser",
+        "hole": 0.15,
+        "land": 0.3,
+        "pitch": 0.39,
+        "via_in_pad": false,
+        "antipad": 0.48,
+        "land_field_ban": false,
+        "span": [
+          "L2-GND",
+          "L3-SIG"
+        ]
+      },
+      {
+        "kind": "mechanical",
+        "hole": 0.15,
+        "land": 0.27,
+        "pitch": 0.39,
+        "via_in_pad": false,
+        "antipad": null,
+        "land_field_ban": false,
+        "span": [
+          "L3-SIG",
+          "L4-SIG"
+        ]
+      },
+      {
+        "kind": "laser",
+        "hole": 0.15,
+        "land": 0.3,
+        "pitch": 0.39,
+        "via_in_pad": false,
+        "antipad": 0.48,
+        "land_field_ban": false,
+        "span": [
+          "L4-SIG",
+          "L5-VCC3V3"
+        ]
+      },
+      {
+        "kind": "laser",
+        "hole": 0.15,
+        "land": 0.3,
+        "pitch": 0.39,
+        "via_in_pad": false,
+        "antipad": 0.48,
+        "land_field_ban": true,
+        "span": [
+          "L5-VCC3V3",
+          "Bottom"
+        ]
+      },
+      {
+        "kind": "mechanical",
+        "hole": 0.2,
+        "land": 0.35,
+        "pitch": 0.44,
+        "via_in_pad": false,
+        "antipad": null,
+        "land_field_ban": true,
+        "span": [
+          "Top",
+          "L2-GND",
+          "L3-SIG",
+          "L4-SIG",
+          "L5-VCC3V3",
+          "Bottom"
+        ]
+      }
+    ],
+    "laser_to_mechanical_pitch": 0.415,
+    "disjoint_span_pitch": 0.0,
+    "stacked_same_xy": true
+  },
+  "plan": {
+    "remove": {
+      "vias": [
+        {
+          "net": "TDI",
+          "x": 62.75,
+          "y": 12.7,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "TDI",
+          "x": 62.75,
+          "y": 12.7,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        },
+        {
+          "net": "PMOD-4",
+          "x": 63.5,
+          "y": 9.9,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "PMOD-4",
+          "x": 63.5,
+          "y": 9.9,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        },
+        {
+          "net": "PMOD-4",
+          "x": 63.5,
+          "y": 9.9,
+          "span": [
+            "L3-SIG",
+            "L4-SIG"
+          ]
+        },
+        {
+          "net": "PMOD-4",
+          "x": 63.5,
+          "y": 9.9,
+          "span": [
+            "L2-GND",
+            "L3-SIG"
+          ]
+        },
+        {
+          "net": "PMOD-4",
+          "x": 63.5,
+          "y": 9.9,
+          "span": [
+            "Top",
+            "L2-GND"
+          ]
+        },
+        {
+          "net": "JA1",
+          "x": 61.35,
+          "y": 6.2,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "JA1",
+          "x": 61.35,
+          "y": 6.2,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        },
+        {
+          "net": "EE-CLK",
+          "x": 24.4,
+          "y": 20.0,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "EE-CLK",
+          "x": 24.4,
+          "y": 20.0,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        },
+        {
+          "net": "EE-CLK",
+          "x": 24.4,
+          "y": 20.0,
+          "span": [
+            "L3-SIG",
+            "L4-SIG"
+          ]
+        },
+        {
+          "net": "CLK-12M-FT",
+          "x": 61.1,
+          "y": 13.0,
+          "span": [
+            "L3-SIG",
+            "L4-SIG"
+          ]
+        },
+        {
+          "net": "CHAN9",
+          "x": 49.4,
+          "y": 12.4,
+          "span": [
+            "L3-SIG",
+            "L4-SIG"
+          ]
+        },
+        {
+          "net": "CHAN9",
+          "x": 49.4,
+          "y": 12.4,
+          "span": [
+            "L2-GND",
+            "L3-SIG"
+          ]
+        },
+        {
+          "net": "CHAN9",
+          "x": 49.4,
+          "y": 12.4,
+          "span": [
+            "Top",
+            "L2-GND"
+          ]
+        },
+        {
+          "net": "CHAN7",
+          "x": 49.4,
+          "y": 13.45,
+          "span": [
+            "L3-SIG",
+            "L4-SIG"
+          ]
+        },
+        {
+          "net": "CHAN7",
+          "x": 49.4,
+          "y": 13.45,
+          "span": [
+            "L2-GND",
+            "L3-SIG"
+          ]
+        },
+        {
+          "net": "CHAN7",
+          "x": 49.4,
+          "y": 13.45,
+          "span": [
+            "Top",
+            "L2-GND"
+          ]
+        },
+        {
+          "net": "CHAN28",
+          "x": 16.5,
+          "y": 6.0,
+          "span": [
+            "L2-GND",
+            "L3-SIG"
+          ]
+        },
+        {
+          "net": "CHAN28",
+          "x": 16.5,
+          "y": 6.0,
+          "span": [
+            "Top",
+            "L2-GND"
+          ]
+        },
+        {
+          "net": "CHAN27",
+          "x": 38.825,
+          "y": 4.075,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "CHAN27",
+          "x": 38.825,
+          "y": 4.075,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        },
+        {
+          "net": "CHAN27",
+          "x": 38.825,
+          "y": 4.075,
+          "span": [
+            "L3-SIG",
+            "L4-SIG"
+          ]
+        },
+        {
+          "net": "CHAN25",
+          "x": 47.9,
+          "y": 2.0,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "CHAN25",
+          "x": 47.9,
+          "y": 2.0,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        },
+        {
+          "net": "CHAN23",
+          "x": 36.3,
+          "y": 7.1,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "CHAN23",
+          "x": 36.3,
+          "y": 7.1,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        },
+        {
+          "net": "CHAN23",
+          "x": 36.3,
+          "y": 7.1,
+          "span": [
+            "L3-SIG",
+            "L4-SIG"
+          ]
+        },
+        {
+          "net": "GND",
+          "x": 45.9,
+          "y": 11.8999,
+          "span": [
+            "Top",
+            "L2-GND"
+          ]
+        },
+        {
+          "net": "CHAN19",
+          "x": 53.2,
+          "y": 23.5,
+          "span": [
+            "L5-VCC3V3",
+            "Bottom"
+          ]
+        },
+        {
+          "net": "CHAN19",
+          "x": 53.2,
+          "y": 23.5,
+          "span": [
+            "L4-SIG",
+            "L5-VCC3V3"
+          ]
+        }
+      ]
+    },
+    "vias": [
+      {
+        "net": "TDI",
+        "x": 62.75,
+        "y": 12.7
+      },
+      {
+        "net": "PMOD-4",
+        "x": 63.5,
+        "y": 9.9
+      },
+      {
+        "net": "JA1",
+        "x": 61.35,
+        "y": 6.2
+      },
+      {
+        "net": "EE-CLK",
+        "x": 24.4,
+        "y": 20.0
+      },
+      {
+        "net": "CLK-12M-FT",
+        "x": 61.1,
+        "y": 13.0
+      },
+      {
+        "net": "CHAN9",
+        "x": 49.4,
+        "y": 12.4
+      },
+      {
+        "net": "CHAN7",
+        "x": 49.4,
+        "y": 13.45
+      },
+      {
+        "net": "CHAN28",
+        "x": 16.5,
+        "y": 6.0
+      },
+      {
+        "net": "CHAN27",
+        "x": 38.825,
+        "y": 4.075
+      },
+      {
+        "net": "CHAN25",
+        "x": 47.9,
+        "y": 2.0
+      },
+      {
+        "net": "CHAN23",
+        "x": 36.3,
+        "y": 7.1
+      },
+      {
+        "net": "GND",
+        "x": 45.9,
+        "y": 11.8999
+      },
+      {
+        "net": "CHAN19",
+        "x": 53.2,
+        "y": 23.5
+      }
+    ]
+  },
+  "stats": {
+    "selected_sites": 13,
+    "hdi_objects_removed": 32,
+    "via_object_reduction": 19,
+    "selected_weights": {
+      "2": 5,
+      "5": 1,
+      "3": 5,
+      "1": 2
+    },
+    "rejected_reasons": {
+      "Bottom-track": 121,
+      "top-pad": 188,
+      "via-spacing": 171,
+      "bottom-pad": 103,
+      "Top-track": 65,
+      "through-pad": 10,
+      "L3-SIG-track": 22,
+      "L4-SIG-track": 8
+    }
+  }
+}
