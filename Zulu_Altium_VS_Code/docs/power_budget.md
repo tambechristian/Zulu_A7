@@ -21,7 +21,7 @@ Power comes in as USB VBUS into U8, a TI bq24232 charger and power-path manager 
 | U1 VCCO dynamic (SDRAM bus, header, LED sink path) | 30 | 90 | ASSUMED; about 1.6 mA per toggling pin at 100 MHz, 10 pF |
 | LD0 RGB (R80 33, R81 330, R82 33) + LD1/LD2 (330) + LD5 (680) | 8 | 22 | VF from the Everlight 19-337 sheet: red 2.05 typ / 2.4 max, green and blue 3.2 typ / 3.7 max V (VS NRD8 was 2.0-2.4 / 3.3-3.8 until 2026-09-08) |
 | pull-ups when driven low (6 x 4.7k, 12 x 10k) | 2 | 8 | R1, R2, R6, R7, R34, R35, R90-R99, R19, R20, R23 |
-| J1 Pmod pins 6/12 and X2 pin 17 +3.3V to header | 0 | 0 | external, user allowance |
+| J1 Pmod pins 6/12 and X2 pin 18 +3.3V to header | 0 | 0 | external, user allowance |
 | **Total** | **334** | **662** | channel limit 1500 mA |
 | Headroom | 1166 | 838 | ok |
 
@@ -33,7 +33,7 @@ Power comes in as USB VBUS into U8, a TI bq24232 charger and power-path manager 
 | U1 VCCAUX dynamic (MMCM, config, I/O aux) | 15 | 30 | ASSUMED; Vivado report_power |
 | U1 VCCADC via L7 (XADC on, AIN15/AIN16 used) | 12 | 25 | DS181 ICCADC 25 mA max |
 | U1 VCCBATT (C9) | 0 | 0 | tied to VCC1V8, no battery: negligible |
-| X2 pin 18 +1.8V to header | 0 | 0 | external, user allowance |
+| X2 pin 19 +1.8V to header | 0 | 0 | external, user allowance |
 | **Total** | **49** | **77** | channel limit 1500 mA |
 | Headroom | 1451 | 1423 | ok |
 
@@ -44,7 +44,7 @@ Power comes in as USB VBUS into U8, a TI bq24232 charger and power-path manager 
 | U1 VCCINT quiescent (6 balls) | 95 | 95 | DS181 Table 7, XC7A35T ICCINTQ 95 mA typ at 85 C junction |
 | U1 VCCINT dynamic | 250 | 250 | ASSUMED design load; replace with Vivado report_power |
 | U1 VCCBRAM (2 balls) quiescent + dynamic | 22 | 22 | DS181 ICCBRAMQ 2 mA; dynamic assumed |
-| X2 pin 19 +1.0V to header | 0 | 0 | external, user allowance |
+| X2 pin 20 +1.0V to header | 0 | 0 | external, user allowance |
 | **Total** | **367** | **367** | channel limit 1500 mA |
 | Headroom | 1133 | 1133 | ok |
 

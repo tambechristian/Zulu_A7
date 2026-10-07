@@ -1,18 +1,24 @@
-Output: NC Drill Files
-Type  : NC Drill
-From  : Project [zulu_a7_hdi_optimized.PrjPcb]
-   Generated File[zulu_a7_hdi_optimized-RoundHoles.TXT]
-   Generated File[zulu_a7_hdi_optimized-SlotHoles.TXT]
-   Generated File[zulu_a7_hdi_optimized-RoundHoles.TX3]
-   Generated File[zulu_a7_hdi_optimized-RoundHoles.TX6]
-   Generated File[zulu_a7_hdi_optimized-RoundHoles.TX7]
-   Generated File[zulu_a7_hdi_optimized-RoundHoles.TX9]
-   Generated File[zulu_a7_hdi_optimized-RoundHoles.TX10]
-   Generated File[zulu_a7_hdi_optimized.LDP]
-   Generated File[zulu_a7_hdi_optimized.DRR]
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [zulu_a7_hdi_optimized.PrjPcb]
+   Generated File[zulu_a7_hdi_optimized.GTO]
+   Generated File[zulu_a7_hdi_optimized.GTP]
+   Generated File[zulu_a7_hdi_optimized.GTS]
+   Generated File[zulu_a7_hdi_optimized.GTL]
+   Generated File[zulu_a7_hdi_optimized.G1]
+   Generated File[zulu_a7_hdi_optimized.G2]
+   Generated File[zulu_a7_hdi_optimized.G3]
+   Generated File[zulu_a7_hdi_optimized.G4]
+   Generated File[zulu_a7_hdi_optimized.GBL]
+   Generated File[zulu_a7_hdi_optimized.GBS]
+   Generated File[zulu_a7_hdi_optimized.GBP]
+   Generated File[zulu_a7_hdi_optimized.GBO]
+   Generated File[zulu_a7_hdi_optimized.GM]
+   Generated File[zulu_a7_hdi_optimized.EXTREP]
+   Generated File[zulu_a7_hdi_optimized.REP]
 
 
-Files Generated   : 9
+Files Generated   : 15
 Documents Printed : 0
 
-Finished Output Generation At 5:11:52 AM On 10/7/2026
+Finished Output Generation At 2:35:54 PM On 10/7/2026

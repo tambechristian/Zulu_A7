@@ -1,6 +1,6 @@
 ZULU A7 HDI OPTIMIZED - JLCPCB FABRICATION NOTES
 Release date: 2026-10-07
-PCB SHA-256: 5E885D522F27F39FE3042062336B2A9D71FBCC85A11B77017C1D22DBD5F929C8
+PCB SHA-256: 71E75C10890AF834F98ECEB9E10981AA1AD6301A51087FBB7A328B4E49486D6E
 
 FABRICATOR AND ASSEMBLY LIMITATION
 This bare-board release targets the named JLCPCB six-layer stack
@@ -39,7 +39,7 @@ required copper fill and planarization process for stacked microvias.
 
 VIA GEOMETRY AND DRILL COUNTS
 Laser microvias: 0.15 mm hole / 0.30 mm land
-L3-L4 buried vias: 0.15 mm hole / 0.35 mm land
+L3-L4 buried vias: 0.15 mm hole / 0.27 mm land
 Signal through vias: 0.20 mm hole / 0.35 mm land
 
   Top -> Bottom signal through vias: 393
@@ -59,6 +59,9 @@ rear shell slots. Their centers are (29.5199, 23.9585) mm and
 (36.5201, 23.9585) mm. The dedicated SlotHoles file uses a 0.60 mm tool
 over a 0.70 mm G85 centerline route to produce the 1.30 mm overall length.
 Do not convert these slots to round holes or treat them as non-plated.
+Slot lands: 1.11 x 1.81 mm oblong on Top and Bottom (0.255 mm ring),
+0.90 x 1.60 mm oblong on L2-L5. Other-net copper is at least 0.247 mm
+from the slot walls on every layer.
 
 CONTROLLED IMPEDANCE
 USB_D_P / USB_D_N: 90 ohm differential target
@@ -89,7 +92,7 @@ FILE MAP
   zulu_a7_hdi_optimized.DRR   Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC: 0 warnings, 0 rule violations
+Altium DRC 2026-10-07 14:34: 0 warnings, 0 rule violations
 Gerbers: metric RS-274X, 0.0001 mm coordinate resolution
 NC Drill: metric Excellon, separate round/slot files, G85 plated slots
 Total via objects: 1,768

@@ -1,18 +1,21 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_Altium_VS_Code_HDI_Optimized\Imported zulu_a7.PrjPcb\zulu_a7_hdi_optimized.PcbDoc
 Date     : 10/7/2026
-Time     : 5:02:33 AM
+Time     : 2:34:34 PM
 
 Processing Rule : Clearance Constraint (Gap=0.09mm) (All),(All)
-Rule Violations :0
-
-Processing Rule : Clearance Constraint (Gap=0.1mm) ((InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
 Rule Violations :0
 
 Processing Rule : Clearance Constraint (Gap=0.2mm) (InNet('SDRAM-CLK') And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
 Rule Violations :0
 
+Processing Rule : Clearance Constraint (Gap=0.1mm) ((InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
+Rule Violations :0
+
 Processing Rule : Clearance Constraint (Gap=0.175mm) ((InNamedPolygon('L2_GND_PLANE') Or InNamedPolygon('L5_VCC3V3_PLANE'))),(IsThruVia)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.1mm) (InComponent('X1')),(InNamedPolygon('L5_VCC3V3_PLANE'))
 Rule Violations :0
 
 Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
@@ -24,16 +27,16 @@ Rule Violations :0
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=0.5mm) (InNetClass('PWR_SWITCH'))
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1.5mm) (Preferred=0.5mm) (InNet('VCC1V0'))
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.15mm) (Max=1mm) (Preferred=0.2mm) (InNetClass('PWR_RAILS'))
+Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=0.5mm) (InNetClass('PWR_SWITCH'))
 Rule Violations :0
 
 Processing Rule : Width Constraint (Min=0.076mm) (Max=0.5mm) (Preferred=0.076mm) (All)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.15mm) (Max=1.5mm) (Preferred=0.5mm) (InNet('VCC1V0'))
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1mm) (Preferred=0.2mm) (InNetClass('PWR_RAILS'))
 Rule Violations :0
 
 Processing Rule : Width Constraint (Min=0.076mm) (Max=0.15mm) (Preferred=0.125mm) (InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL'))
@@ -54,16 +57,19 @@ Rule Violations :0
 Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (IsVia)
 Rule Violations :0
 
+Processing Rule : Minimum Annular Ring (Minimum=0.14mm) (InComponent('X1'))
+Rule Violations :0
+
 Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.02mm) (All)
 Rule Violations :0
 
-Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.15mm) (IsMicroVia)
+Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.55mm) (IsBuriedVia)
 Rule Violations :0
 
 Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.3mm) (InComponent('X1'))
 Rule Violations :0
 
-Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.55mm) (IsBuriedVia)
+Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.15mm) (IsMicroVia)
 Rule Violations :0
 
 Processing Rule : Hole To Hole Clearance (Gap=0.24mm) (All),(All)
@@ -87,4 +93,4 @@ Rule Violations :0
 
 Violations Detected : 0
 Waived Violations : 0
-Time Elapsed        : 00:00:02
+Time Elapsed        : 00:00:01

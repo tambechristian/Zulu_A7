@@ -7,7 +7,7 @@ G04 Board_Origin=0|0*
 %MOMM*%
 G71*
 G04*
-G04 #@! TF.SameCoordinates,425261C2-683E-4928-8915-23858BF2E2A7*
+G04 #@! TF.SameCoordinates,98F30FFA-264E-49EF-A4B7-CBC2A7AA9A9C*
 G04*
 G04*
 G04 #@! TF.FilePolarity,Negative*
@@ -60,7 +60,7 @@ G04:AMPARAMS|DCode=44|XSize=1.9001mm|YSize=1.9999mm|CornerRadius=0.554mm|HoleSiz
 %ADD60C,1.6240*%
 %ADD61R,1.6240X1.6240*%
 %ADD62C,1.5501*%
-%ADD63C,0.9999*%
+%ADD63O,1.2100X1.9100*%
 %ADD64R,1.9796X1.9796*%
 G04:AMPARAMS|DCode=65|XSize=1.9796mm|YSize=1.9796mm|CornerRadius=0mm|HoleSize=0mm|Usage=FLASHONLY|Rotation=90.000|XOffset=0mm|YOffset=0mm|HoleType=Round|Shape=Octagon|*
 %AMOCTAGOND65*

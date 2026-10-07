@@ -1,7 +1,7 @@
 ZULU A7 - JLCPCB ASSEMBLY NOTES
-Release date: 2026-10-02
-Source commit: 716a41d27958f2cddd0442217275ba54df33ab60
-PCB SHA-256: 72E9A716E03616D9464C0040A7B1187561E740C551104720DD288EA147B4E30B
+Release date: 2026-10-07
+Source commit: 636906b068f4cd9a555721b9db5c1a154d196433
+PCB SHA-256: 517B553E53D2148F2704600BB90345A12782C01B58199DC36E62376971A67054
 
 UPLOAD SET
 Upload the fabrication ZIP, BOM CSV, and CPL CSV in their separate
@@ -39,6 +39,8 @@ SPECIAL COMPONENT INSTRUCTIONS
 - X4 pin 1 is battery positive.
 - X3's microSD card opening faces the left board edge.
 - X1's micro-USB opening faces the upper board edge.
+- X1-MS1/MS2 are plated 0.60 x 1.30 mm rear shell slots. Confirm
+  that both connector shell stakes seat fully before soldering.
 - Verify pin 1/A1 on U1, U2, U3, U4, U8, U10, Q1, and every polarized LED.
 - LD0 cathodes are pads 2, 4, and 6; its anodes are pads 1, 3, and 5.
 

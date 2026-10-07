@@ -66,3 +66,33 @@ Library footprint `zulu_a7.pretty/MOLEX-105017-0001.kicad_mod`:
 - MS1/MS2 now match the board (slot drill and front/inner/back lands).
 - The change was made with `tools/apply_x1_libpads.py`, then a splice that keeps the pad UUIDs.
 - The X1 entry in the 7 `lib_footprint_mismatch` warnings remains, for MH1/MH2's inner-layer sizes as before.
+
+## Update 2026-10-07 (later): X2 power pins re-ordered
+
+At the user's request X2's supply pins were re-ordered on all three copies: 17 GND, 18 VCC3V3, 19 VCC1V8,
+20 VCC1V0 (was 17 VCC3V3, 18 VCC1V8, 19 VCC1V0, 20 GND). Pin 16 (CHAN13) is unchanged. The Altium side is
+recorded in `Zulu_Altium_VS_Code/docs/x2_power_pins.md`.
+
+Schematic (`tools/apply_x2_pins_sch.py`):
+- ZULU-CONN units 15/14/17/16 (gates +3.3V/+1.8V/+1.0V/GND) now carry pins 18/19/20/17. The change was made both in
+  `zulu_a7_2.kicad_sch`'s embedded symbol and in `ctambe.kicad_sym`.
+- The four placed units moved to the rows of their new pins with their global labels. The row wires are identical,
+  so they stayed.
+- The X2 NOTE (41 copies) and the sheet's text box are reworded as on the Altium sheet.
+- `kicad-cli sch export netlist` before and after differs in exactly the four X2 pins.
+
+Board (`tools/apply_x2_pins_pcb.py`, values from KiCad's import of the changed production PcbDoc `517b553e...`):
+- X2-17..20 re-netted.
+- The VCC1V8 In2 stub moved to pin 19.
+- The VCC1V0 Bottom run extended to pin 20, with its stub moved there.
+- GND (In1) and VCC3V3 (In4) fills replaced from the import.
+- X2's NOTE field updated.
+
+Verification:
+- `geom_diff.py` against a fresh import of the changed production board: footprints, pads, tracks/vias and zones are
+  IDENTICAL. The same check on the pre-change pair was also identical.
+- DRC with schematic parity: 0 parity issues, 0 unconnected items.
+- The total stays at about 2,026 violations under KiCad's default rules. That count varies by a few between runs of
+  the same unchanged board (2,021-2,030 seen), all in `clearance` and `hole_clearance`.
+- ERC: 1,648, the same types and counts as before.
+- `reports/kicad.net`, `erc.rpt` and `drc.rpt` were regenerated.

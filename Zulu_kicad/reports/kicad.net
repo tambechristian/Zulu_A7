@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_kicad\\kicad_project\\zulu_a7.kicad_sch")
-		(date "2026-10-06T10:14:14")
+		(date "2026-10-07T14:42:10")
 		(tool "Eeschema 10.0.5")
 		(textvar
 			(name "AUTHOR") "Christian Tambe")
@@ -6849,7 +6849,7 @@
 				(field
 					(name "SPEC") "four 0.1 in male breakaway header strips, 0.64 mm square gold-flash pins, 2.54 mm pitch, through-hole, mounted from the underside, two part numbers and two of each per board: PRPC009SAAN-RC 1x9 twice (pins 1-9 and 21-29) and PRPC011SAAN-RC 1x11 twice (pins 10-20 and 30-40); the two rows are cut identically since the LiPo landing was moved opposite the micro-USB on 2026-09-09")
 				(field
-					(name "NOTE") "Pin field ZULU-DIP37: 40 pins of 1.016 mm on 2.54 mm pitch, two rows 22.86 mm (0.900 in) apart, numbered 1-40 straight through and skipping both landings. The rows are mirror images: top row pins 1-9 (x 59.69..39.37) = GND, CHAN-CLK, CHAN0..CHAN6, FOUR positions for the micro-USB X1 (36.83..29.21), pins 10-20 (26.67..1.27) = CHAN7..CHAN13, +3.3V, +1.8V, +1.0V, GND, in channel order since 2026-09-09; bottom row pins 21-29 (59.69..39.37), FOUR positions for the LiPo header X4 at the SAME four x values (36.83..29.21), pins 30-40 (26.67..1.27), so X4 sits on the top side directly opposite the edge-mounted USB receptacle. Each landing is 12.70 mm between the neighbouring pin centres, 11.176 mm clear: the JST B2B-PH-SM4-TB body is 7.95 mm, so 1.61 mm each side. Reworked 2026-09-09 from the old 44-position pattern: +5V-INPUT with D2/D3, GND5, GND3 and +3.3V2 removed, CHAN12/CHAN13 moved to pins 2/3, the bottom row closed up, the field renumbered and the landing moved. Three grounds (1, 20, 21); 3.3 V for the header is pin 17 alone; pin 22 VU sources the 4.4 V rail. THE PCB FOOTPRINT MUST BE REDRAWN with 40 pads named 1-40 in these positions -- the imported ZULU-DIP37 still names 44. Sullins PRPC strips fit the holes (0.64 mm square pins, Sullins recommends 1.02 mm). Digi-Key 2026-09-08: PRPC009SAAN-RC 1,201 at $0.18, PRPC011SAAN-RC 428 at $0.22, two of each per board (the 1x11 stock covers about 200 boards). Alternate: any 2.54 mm 1x40 breakaway strip (LCSC Boomele C2337, 81,690) cut to 9 + 11 twice.")
+					(name "NOTE") "Pin field ZULU-DIP37: 40 pins of 1.016 mm on 2.54 mm pitch, two rows 22.86 mm (0.900 in) apart, numbered 1-40 straight through and skipping both landings. The rows are mirror images: top row pins 1-9 (x 59.69..39.37) = GND, CHAN-CLK, CHAN0..CHAN6, FOUR positions for the micro-USB X1 (36.83..29.21), pins 10-20 (26.67..1.27) = CHAN7..CHAN13, GND, +3.3V, +1.8V, +1.0V (channel order since 2026-09-09, power pins re-ordered 2026-10-07); bottom row pins 21-29 (59.69..39.37), FOUR positions for the LiPo header X4 at the SAME four x values (36.83..29.21), pins 30-40 (26.67..1.27), so X4 sits on the top side directly opposite the edge-mounted USB receptacle. Each landing is 12.70 mm between the neighbouring pin centres, 11.176 mm clear: the JST B2B-PH-SM4-TB body is 7.95 mm, so 1.61 mm each side. Reworked 2026-09-09 from the old 44-position pattern: +5V-INPUT with D2/D3, GND5, GND3 and +3.3V2 removed, CHAN12/CHAN13 moved to pins 2/3, the bottom row closed up, the field renumbered and the landing moved. Three grounds (1, 17, 21); 3.3 V for the header is pin 18 alone; pin 22 VU sources the 4.4 V rail. THE PCB FOOTPRINT MUST BE REDRAWN with 40 pads named 1-40 in these positions -- the imported ZULU-DIP37 still names 44. Sullins PRPC strips fit the holes (0.64 mm square pins, Sullins recommends 1.02 mm). Digi-Key 2026-09-08: PRPC009SAAN-RC 1,201 at $0.18, PRPC011SAAN-RC 428 at $0.22, two of each per board (the 1x11 stock covers about 200 boards). Alternate: any 2.54 mm 1x40 breakaway strip (LCSC Boomele C2337, 81,690) cut to 9 + 11 twice.")
 				(field
 					(name "GATE") "CHAN-CLK")
 				(field
@@ -7221,7 +7221,7 @@
 			)
 			(property
 				(name "NOTE")
-				(value "Pin field ZULU-DIP37: 40 pins of 1.016 mm on 2.54 mm pitch, two rows 22.86 mm (0.900 in) apart, numbered 1-40 straight through and skipping both landings. The rows are mirror images: top row pins 1-9 (x 59.69..39.37) = GND, CHAN-CLK, CHAN0..CHAN6, FOUR positions for the micro-USB X1 (36.83..29.21), pins 10-20 (26.67..1.27) = CHAN7..CHAN13, +3.3V, +1.8V, +1.0V, GND, in channel order since 2026-09-09; bottom row pins 21-29 (59.69..39.37), FOUR positions for the LiPo header X4 at the SAME four x values (36.83..29.21), pins 30-40 (26.67..1.27), so X4 sits on the top side directly opposite the edge-mounted USB receptacle. Each landing is 12.70 mm between the neighbouring pin centres, 11.176 mm clear: the JST B2B-PH-SM4-TB body is 7.95 mm, so 1.61 mm each side. Reworked 2026-09-09 from the old 44-position pattern: +5V-INPUT with D2/D3, GND5, GND3 and +3.3V2 removed, CHAN12/CHAN13 moved to pins 2/3, the bottom row closed up, the field renumbered and the landing moved. Three grounds (1, 20, 21); 3.3 V for the header is pin 17 alone; pin 22 VU sources the 4.4 V rail. THE PCB FOOTPRINT MUST BE REDRAWN with 40 pads named 1-40 in these positions -- the imported ZULU-DIP37 still names 44. Sullins PRPC strips fit the holes (0.64 mm square pins, Sullins recommends 1.02 mm). Digi-Key 2026-09-08: PRPC009SAAN-RC 1,201 at $0.18, PRPC011SAAN-RC 428 at $0.22, two of each per board (the 1x11 stock covers about 200 boards). Alternate: any 2.54 mm 1x40 breakaway strip (LCSC Boomele C2337, 81,690) cut to 9 + 11 twice.")
+				(value "Pin field ZULU-DIP37: 40 pins of 1.016 mm on 2.54 mm pitch, two rows 22.86 mm (0.900 in) apart, numbered 1-40 straight through and skipping both landings. The rows are mirror images: top row pins 1-9 (x 59.69..39.37) = GND, CHAN-CLK, CHAN0..CHAN6, FOUR positions for the micro-USB X1 (36.83..29.21), pins 10-20 (26.67..1.27) = CHAN7..CHAN13, GND, +3.3V, +1.8V, +1.0V (channel order since 2026-09-09, power pins re-ordered 2026-10-07); bottom row pins 21-29 (59.69..39.37), FOUR positions for the LiPo header X4 at the SAME four x values (36.83..29.21), pins 30-40 (26.67..1.27), so X4 sits on the top side directly opposite the edge-mounted USB receptacle. Each landing is 12.70 mm between the neighbouring pin centres, 11.176 mm clear: the JST B2B-PH-SM4-TB body is 7.95 mm, so 1.61 mm each side. Reworked 2026-09-09 from the old 44-position pattern: +5V-INPUT with D2/D3, GND5, GND3 and +3.3V2 removed, CHAN12/CHAN13 moved to pins 2/3, the bottom row closed up, the field renumbered and the landing moved. Three grounds (1, 17, 21); 3.3 V for the header is pin 18 alone; pin 22 VU sources the 4.4 V rail. THE PCB FOOTPRINT MUST BE REDRAWN with 40 pads named 1-40 in these positions -- the imported ZULU-DIP37 still names 44. Sullins PRPC strips fit the holes (0.64 mm square pins, Sullins recommends 1.02 mm). Digi-Key 2026-09-08: PRPC009SAAN-RC 1,201 at $0.18, PRPC011SAAN-RC 428 at $0.22, two of each per board (the 1x11 stock covers about 200 boards). Alternate: any 2.54 mm 1x40 breakaway strip (LCSC Boomele C2337, 81,690) cut to 9 + 11 twice.")
 			)
 			(property
 				(name "GATE")
@@ -7243,26 +7243,26 @@
 				(names "/zulu_a7_2/")
 				(tstamps "/f39f6a8e-3442-442a-ada4-f5f6f6e8678c/")
 			)
-			(tstamps "9521f705-54a0-4f20-ab3d-f8f0be0b130d" "5ca7ebcc-906b-43a9-8995-30be358c49c0"
-				"dcc7f6e0-c004-4957-866d-44da7021823a" "500b0727-db1c-4089-a7af-a7590709c6f3"
-				"a7a2952c-02a5-4c0b-b361-e60ae59a8cf0" "d3771e8a-e708-4c80-a6c8-f52d8f889cd3"
-				"307adf0c-f443-4a42-8ff1-82c60e46bcc0" "592fc5dd-b836-42f5-b147-e31a468fa842"
-				"506de7bf-d9ef-4ff1-aa0f-ef34ad3371c2" "e2ef4929-909f-436f-8e9f-204eb7002f63"
-				"d09ab7db-b75f-4cf6-8f69-22355914b4e3" "b79aa0d4-ed8b-4113-8450-271087e527e5"
-				"50444ed4-ae8e-44a0-961b-26dd576d3369" "224a2179-1bea-4361-a59e-f2a9c3a34a6b"
-				"e346c47c-8e05-42f9-a37a-eca4825eb185" "688b839a-476b-48ae-9d13-1ad899be3dab"
-				"178405c8-0a30-421d-932c-003cacb3fe85" "be22e10e-135c-44d3-bd3b-fc5dc29520ed"
-				"7d7a07f1-dda0-4c3e-9b05-a399fcc0735a" "eb781bb5-a1d0-48d2-8b6d-f610689dcf78"
-				"7b5ccde9-c260-4384-9f3d-a8fa1cd4b0cb" "ba823520-5821-4c4b-9c0a-71b2bb125b20"
-				"56069331-d5da-430f-a6ef-021200cd898b" "c82a17c5-8846-4efe-b44d-b23feeec09e7"
-				"2557e90e-1212-4b15-b18d-48f8e588f2a5" "b117517d-0ee1-4c61-ba99-8f5ea6f3587b"
-				"1a1f61b1-2d66-455d-9f2d-39ecc8be4ac8" "f8d8a20a-6c88-4050-b2fe-2b85fed02013"
-				"eebb7ffa-b8ec-498a-8eed-26315c5c5d55" "c637aac5-e949-4a59-926e-45d93378497f"
+			(tstamps "9521f705-54a0-4f20-ab3d-f8f0be0b130d" "688b839a-476b-48ae-9d13-1ad899be3dab"
+				"500b0727-db1c-4089-a7af-a7590709c6f3" "dcc7f6e0-c004-4957-866d-44da7021823a"
+				"592fc5dd-b836-42f5-b147-e31a468fa842" "a7a2952c-02a5-4c0b-b361-e60ae59a8cf0"
+				"d3771e8a-e708-4c80-a6c8-f52d8f889cd3" "307adf0c-f443-4a42-8ff1-82c60e46bcc0"
+				"506de7bf-d9ef-4ff1-aa0f-ef34ad3371c2" "33d4d190-ccd8-471a-ae53-ad2da0fa65b3"
 				"25b4224d-37a0-4925-9d49-748585099ff0" "ccf889e7-a2bd-4d7e-a62a-86b3377e7952"
-				"222e7db6-d0af-4056-9260-3bac03d797d2" "32b3d419-9c03-47b9-9c7c-8a50be7935d7"
-				"7feb9a89-fcd0-4aa1-8c18-63d2b199fa51" "c43dc795-3d47-4ca9-a356-a1107b85fa3c"
-				"c18796e9-ac30-4fb8-a088-a0732b3582e6" "a80b3d58-306c-489f-af63-84bd3719cd8d"
-				"33d4d190-ccd8-471a-ae53-ad2da0fa65b3" "b6097a65-c09f-4848-b5df-e3d8645043ab"
+				"224a2179-1bea-4361-a59e-f2a9c3a34a6b" "e346c47c-8e05-42f9-a37a-eca4825eb185"
+				"b79aa0d4-ed8b-4113-8450-271087e527e5" "d09ab7db-b75f-4cf6-8f69-22355914b4e3"
+				"50444ed4-ae8e-44a0-961b-26dd576d3369" "222e7db6-d0af-4056-9260-3bac03d797d2"
+				"e2ef4929-909f-436f-8e9f-204eb7002f63" "c18796e9-ac30-4fb8-a088-a0732b3582e6"
+				"a80b3d58-306c-489f-af63-84bd3719cd8d" "32b3d419-9c03-47b9-9c7c-8a50be7935d7"
+				"c43dc795-3d47-4ca9-a356-a1107b85fa3c" "7feb9a89-fcd0-4aa1-8c18-63d2b199fa51"
+				"b6097a65-c09f-4848-b5df-e3d8645043ab" "eebb7ffa-b8ec-498a-8eed-26315c5c5d55"
+				"c637aac5-e949-4a59-926e-45d93378497f" "5ca7ebcc-906b-43a9-8995-30be358c49c0"
+				"178405c8-0a30-421d-932c-003cacb3fe85" "ba823520-5821-4c4b-9c0a-71b2bb125b20"
+				"f8d8a20a-6c88-4050-b2fe-2b85fed02013" "7d7a07f1-dda0-4c3e-9b05-a399fcc0735a"
+				"be22e10e-135c-44d3-bd3b-fc5dc29520ed" "eb781bb5-a1d0-48d2-8b6d-f610689dcf78"
+				"7b5ccde9-c260-4384-9f3d-a8fa1cd4b0cb" "b117517d-0ee1-4c61-ba99-8f5ea6f3587b"
+				"1a1f61b1-2d66-455d-9f2d-39ecc8be4ac8" "2557e90e-1212-4b15-b18d-48f8e588f2a5"
+				"56069331-d5da-430f-a6ef-021200cd898b" "c82a17c5-8846-4efe-b44d-b23feeec09e7"
 				"02504728-06bc-4710-9f4e-3839b5d2b30a"
 			)
 			(units
@@ -7374,7 +7374,7 @@
 					(name "N")
 					(pins
 						(pin
-							(num "18")
+							(num "19")
 						)
 					)
 				)
@@ -7382,7 +7382,7 @@
 					(name "O")
 					(pins
 						(pin
-							(num "17")
+							(num "18")
 						)
 					)
 				)
@@ -7390,7 +7390,7 @@
 					(name "P")
 					(pins
 						(pin
-							(num "20")
+							(num "17")
 						)
 					)
 				)
@@ -7398,7 +7398,7 @@
 					(name "Q")
 					(pins
 						(pin
-							(num "19")
+							(num "20")
 						)
 					)
 				)
@@ -31448,8 +31448,8 @@
 			)
 			(node
 				(ref "X2")
-				(pin "20")
-				(pinfunction "1_20")
+				(pin "17")
+				(pinfunction "1_17")
 				(pintype "bidirectional")
 			)
 			(node
@@ -33009,8 +33009,8 @@
 			)
 			(node
 				(ref "X2")
-				(pin "19")
-				(pinfunction "1_19")
+				(pin "20")
+				(pinfunction "1_20")
 				(pintype "bidirectional")
 			)
 		)
@@ -33092,8 +33092,8 @@
 			)
 			(node
 				(ref "X2")
-				(pin "18")
-				(pinfunction "1_18")
+				(pin "19")
+				(pinfunction "1_19")
 				(pintype "bidirectional")
 			)
 		)
@@ -33889,8 +33889,8 @@
 			)
 			(node
 				(ref "X2")
-				(pin "17")
-				(pinfunction "1_17")
+				(pin "18")
+				(pinfunction "1_18")
 				(pintype "bidirectional")
 			)
 			(node

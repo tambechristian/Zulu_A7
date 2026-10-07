@@ -2,36 +2,14 @@
 FileName = zulu_a7_hdi_optimized.GBR
 AutoAperture = True
 *************************************************************
-Generating : Bottom Paste
-      File : zulu_a7_hdi_optimized.GBP
+Generating : Bottom Overlay
+      File : zulu_a7_hdi_optimized.GBO
 
-    Adding Layer      : Bottom Paste
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Bottom Overlay
 
 
 Used DCodes :
-    D15
-    D23
-    D35
-    D119
-    D120
-    D121
-    D122
-    D123
-    D124
-    D125
-    D126
-    D127
-    D128
-    D129
-    D130
-    D131
-    D132
-    D133
-    D134
+    D11
 *************************************************************
 
 *************************************************************
@@ -73,43 +51,45 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Bottom Solder
-      File : zulu_a7_hdi_optimized.GBS
+Generating : Top Overlay
+      File : zulu_a7_hdi_optimized.GTO
 
-    Adding Layer      : Bottom Solder
+    Adding Layer      : Top Overlay
 
-    Adding Layer      : Bottom Layer
+
+Used DCodes :
+    D10
+    D11
+*************************************************************
+
+*************************************************************
+Generating : L3-SIG
+      File : zulu_a7_hdi_optimized.G2
+
+    Adding Layer      : L3-SIG
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D46
-    D56
-    D59
-    D60
-    D61
-    D62
-    D63
-    D64
-    D65
-    D66
-    D160
-    D161
-    D162
-    D163
-    D164
-    D165
-    D166
-    D167
-    D168
-    D169
-    D170
-    D171
-    D172
-    D173
-    D174
-    D175
+    D67
+    D68
+    D69
+    D71
+    D74
+    D75
+    D97
+    D102
+    D104
+    D106
+    D111
+    D112
+    D113
+    D114
+    D115
+    D116
+    D117
+    D118
 *************************************************************
 
 *************************************************************
@@ -159,26 +139,22 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Bottom Overlay
-      File : zulu_a7_hdi_optimized.GBO
+Generating : L2-GND
+      File : zulu_a7_hdi_optimized.G1
 
-    Adding Layer      : Bottom Overlay
+    Adding Layer      : L2-GND
 
-
-Used DCodes :
-    D10
-*************************************************************
-
-*************************************************************
-Generating : Top Overlay
-      File : zulu_a7_hdi_optimized.GTO
-
-    Adding Layer      : Top Overlay
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D10
-    D11
+    D104
+    D106
+    D111
+    D112
+    D113
+    D114
+    D115
 *************************************************************
 
 *************************************************************
@@ -191,7 +167,7 @@ Generating : Bottom Layer
 
 
 Used DCodes :
-    D11
+    D10
     D15
     D23
     D35
@@ -228,9 +204,8 @@ Used DCodes :
     D110
     D111
     D112
-    D115
     D116
-    D118
+    D117
     D119
     D120
     D121
@@ -272,6 +247,7 @@ Used DCodes :
     D157
     D158
     D159
+    D160
 *************************************************************
 
 *************************************************************
@@ -286,11 +262,11 @@ Generating : L5-VCC3V3
 Used DCodes :
     D104
     D106
-    D107
     D111
     D112
     D113
     D114
+    D115
 *************************************************************
 
 *************************************************************
@@ -311,7 +287,6 @@ Used DCodes :
     D75
     D104
     D106
-    D107
     D111
     D112
     D113
@@ -320,55 +295,40 @@ Used DCodes :
     D116
     D117
     D118
+    D119
 *************************************************************
 
 *************************************************************
-Generating : L3-SIG
-      File : zulu_a7_hdi_optimized.G2
+Generating : Bottom Paste
+      File : zulu_a7_hdi_optimized.GBP
 
-    Adding Layer      : L3-SIG
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D67
-    D68
-    D69
-    D71
-    D74
-    D75
-    D97
-    D102
-    D104
-    D106
-    D107
-    D111
-    D112
-    D113
-    D114
-    D115
-    D116
-    D117
-*************************************************************
-
-*************************************************************
-Generating : L2-GND
-      File : zulu_a7_hdi_optimized.G1
-
-    Adding Layer      : L2-GND
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D104
-    D106
-    D107
-    D111
-    D112
-    D113
-    D114
+    D15
+    D23
+    D35
+    D120
+    D121
+    D122
+    D123
+    D124
+    D125
+    D126
+    D127
+    D128
+    D129
+    D130
+    D131
+    D132
+    D133
+    D134
+    D135
 *************************************************************
 
 *************************************************************
@@ -381,7 +341,7 @@ Generating : Top Layer
 
 
 Used DCodes :
-    D11
+    D10
     D12
     D13
     D14
@@ -455,11 +415,51 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
+Generating : Bottom Solder
+      File : zulu_a7_hdi_optimized.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D46
+    D56
+    D59
+    D60
+    D61
+    D62
+    D63
+    D64
+    D65
+    D66
+    D161
+    D162
+    D163
+    D164
+    D165
+    D166
+    D167
+    D168
+    D169
+    D170
+    D171
+    D172
+    D173
+    D174
+    D175
+    D176
+*************************************************************
+
+*************************************************************
 Generating : Profile
       File : zulu_a7_hdi_optimized.GM
 
 
 Used DCodes :
-    D176
+    D177
 *************************************************************
 

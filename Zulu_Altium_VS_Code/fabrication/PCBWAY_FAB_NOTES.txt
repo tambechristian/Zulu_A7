@@ -1,7 +1,8 @@
 ZULU A7 - PCBWAY FABRICATION NOTES
 Release date: 2026-10-07
-Source: uncommitted working copy on top of commit cf1c705; zulu_a7.PcbDoc SHA-256
-4f73e1a215a21d19623c0956719072aeaa8c6b258501a21de8923bfff705f688
+Source: working copy after commit 636906b plus the 2026-10-07 X2 power-pin
+re-order; zulu_a7.PcbDoc SHA-256
+517b553e53d2148f2704600bb90345a12782c01b58199dc36e62376971a67054
 
 FABRICATOR
 PCBWay, bare-board fabrication. Order as Material "HDI (Buried/blind vias)"
@@ -102,7 +103,7 @@ FILE MAP
   zulu_a7.DRR   Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-10-07 10:03 (after the final save): 0 warnings, 0 rule violations
+Altium DRC 2026-10-07 14:28 (after the final save): 0 warnings, 0 rule violations
 Gerbers: metric RS-274X, 0.0001 mm coordinate resolution
 Microvias: 1,038 total; L3-L4 buried vias: 369; signal through vias: 380;
 plated slots: 2 (X1).
