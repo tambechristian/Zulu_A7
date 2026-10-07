@@ -1,6 +1,6 @@
 ZULU A7 HDI OPTIMIZED - PCBWAY FABRICATION NOTES
 Release date: 2026-10-07
-PCB SHA-256: 71E75C10890AF834F98ECEB9E10981AA1AD6301A51087FBB7A328B4E49486D6E
+PCB SHA-256: A3436176F03BD3E7195F777322BC68DA107D3A8AB82A80259D8F1A6A5AAC6A4E
 
 ORDER AND CAM GATE
 This is a bare-board, six-layer, two-step sequential HDI release. Route it to
@@ -89,7 +89,7 @@ The Top-Bottom round-hole drill file also contains two 0.85 mm and 58
 
 X1 MOLEX 105017-0001 PLATED SLOTS
 X1-MS1 and X1-MS2 are two plated, vertical 0.60 mm x 1.30 mm full-radius
-rear shell slots. Their centers are (29.5199, 23.9585) mm and
+front shell slots (mating-face end). Their centers are (29.5199, 23.9585) mm and
 (36.5201, 23.9585) mm. The dedicated SlotHoles file uses a 0.60 mm tool
 over a 0.70 mm G85 centerline route to produce the 1.30 mm overall length.
 Do not convert these slots to round holes or treat them as non-plated.
@@ -131,7 +131,7 @@ FILE MAP
   zulu_a7_hdi_optimized.DRR   Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-10-07 14:34: 0 warnings, 0 rule violations
+Altium DRC 2026-10-07 16:16: 0 warnings, 0 rule violations
 Gerbers: metric RS-274X, 0.0001 mm coordinate resolution
 NC Drill: metric Excellon, separate round/slot files, G85 plated slots
 Total via objects: 1,768

@@ -30,7 +30,7 @@ Steps 2 and 4 read the schematic netlist from `kicad.net` in this folder. The la
 - 7 `lib_footprint_mismatch` warnings (X1, JP3, JP4, J1, X2, U5, U7): the library copy is normalised to the top side at 0 degrees. This is cosmetic.
 - The HDI vias come in as plain blind/buried vias, not as KiCad *microvia* types. There are 380 through vias (0.2 mm drill) and 1,407 vias with a 0.15 mm drill: blind F.Cu-In1 296, In4-B.Cu 230; buried In1-In2 282, In2-In3 369, In3-In4 230. Each stacked microvia is split into one via per layer pair. Check them against JLC's stack before fabricating from KiCad. Altium remains the fabrication master.
 
-## Update 2026-10-07: X1 rear shell slots
+## Update 2026-10-07: X1 shell-stake slots
 
 The production Altium board got the X1 slot fix (see `Zulu_Altium_VS_Code/docs/x1_slot_fix.md`). The same change
 was applied here by a scratch copy of `tools/apply_x1_slots.py` (same logic; the tools copy only adds file paths
@@ -96,3 +96,16 @@ Verification:
   the same unchanged board (2,021-2,030 seen), all in `clearance` and `hole_clearance`.
 - ERC: 1,648, the same types and counts as before.
 - `reports/kicad.net`, `erc.rpt` and `drc.rpt` were regenerated.
+
+## Update 2026-10-07 (later): X2 pin labels
+
+X2's pin numbers and short names are now on the top silkscreen, as on the Altium boards
+(`Zulu_Altium_VS_Code/docs/x2_pin_labels.md`): 63 texts covering 33 pins, plus the U2 and X3 references moved
+clear of them. `tools/apply_x2_labels.py` copied them from KiCad's import of the labelled production PcbDoc
+(`bd7cbfd7...`); it refuses to run twice and requires exactly 63 new texts.
+
+Verification:
+- DRC with schematic parity: 0 parity issues, 0 unconnected items.
+- No silkscreen-type findings.
+- The total stays at about 2,026 violations, in the noise band.
+- `reports/drc.rpt` was regenerated.

@@ -30,6 +30,9 @@ The optimization is deliberately conservative:
 - Also on 2026-10-07, at the user's request, X2's supply pins were re-ordered:
   17 GND, 18 VCC3V3, 19 VCC1V8, 20 VCC1V0 (was 17 VCC3V3, 18 VCC1V8,
   19 VCC1V0, 20 GND). See "X2 power pins" below.
+- Then X2's pin numbers and short names went onto the top silkscreen for the
+  33 pins with room. To make room, the U2 designator moved, and the `ZULU A7`
+  title moved to free space at 1.6 mm. See "X2 pin labels" below.
 
 This remains an HDI board. It is not the full placement/layer-function/reroute
 redesign that would be required to approach zero buried vias, and it does not
@@ -42,17 +45,20 @@ make the design eligible for JLCPCB assembly.
 | Historical production source used for the optimization | `72E9A716E03616D9464C0040A7B1187561E740C551104720DD288EA147B4E30B` |
 | Production `zulu_a7.PcbDoc` when the X1 slot correction was made here, not written by it | `181B1A8CC47D591023BFB5E683A1D7FC3F66063C18EC0D94D65964AD3BB25504` |
 | Production `zulu_a7.PcbDoc` after its own X1 slot and land fixes (never written from this copy) | `4F73E1A215A21D19623C0956719072AEAA8C6B258501A21DE8923BFFF705F688` |
-| Production `zulu_a7.PcbDoc` now, after the X2 power-pin re-order | `517B553E53D2148F2704600BB90345A12782C01B58199DC36E62376971A67054` |
+| Production `zulu_a7.PcbDoc` after the X2 power-pin re-order | `517B553E53D2148F2704600BB90345A12782C01B58199DC36E62376971A67054` |
+| Production `zulu_a7.PcbDoc` now, after the X2 pin labels | `BD7CBFD775B741521D8AB8AC197FF58D2A7674C2757522FA4702CB32F46489C2` |
 | Via-only intermediate, before Altium repour | `FB9CE613BED4512F1B3B67D9AB6BFB29A3CFA007ED5AE46BBEAC22C5E7F620C7` |
 | Optimized board, 2026-10-04 (History `~(2)`) | `60294BF7E6B159569DF3BF40E12B51081653BCD40C5434E55782723CB1B5F80B` |
 | Board just before the X1 slot correction (History `~(5)`, 2026-10-06) | `52E8438F649E04845077D82DEA01D3EB8FE0A85B03D1F2F668040158DBF87F8A` |
 | After the X1 slot correction, round 0.90 mm lands (History `~(8)`); superseded | `5E885D522F27F39FE3042062336B2A9D71FBCC85A11B77017C1D22DBD5F929C8` |
 | After the X1 land fix (slots plus PCBWay lands and clearances); superseded | `0CFFBF05E98EB0DCA85336350EE6244E748E4679B6C28E9545B0198F8F05D6C5` |
-| Final `zulu_a7_hdi_optimized.PcbDoc`, after the X2 power-pin re-order | `71E75C10890AF834F98ECEB9E10981AA1AD6301A51087FBB7A328B4E49486D6E` |
+| After the X2 power-pin re-order; superseded | `71E75C10890AF834F98ECEB9E10981AA1AD6301A51087FBB7A328B4E49486D6E` |
+| Final `zulu_a7_hdi_optimized.PcbDoc`, after the X2 pin labels | `A3436176F03BD3E7195F777322BC68DA107D3A8AB82A80259D8F1A6A5AAC6A4E` |
 
 The production board hash was rechecked after the isolated X1 slot correction
 and was still `181B...`; only the optimized derivative was written. The
-production board has since had its own fixes (`4F73...`, then `517B...`).
+production board has since had its own fixes (`4F73...`, then `517B...`, then
+`BD7C...`).
 
 `~(2)` is not the board immediately before the slot correction. Between them,
 History `~(3)` (2026-10-05) moved the X1 designator, and `~(4)` (2026-10-06)
@@ -173,6 +179,8 @@ The final reports are:
     (`X2PinsCanary`, then `FixX2PowerPins`) on the board. Save, close and
     reopen, repour, run the DRC, import the X2 NOTE change only (untick the
     ten net-class removals and the USB pair), and save again.
+11. Add the X2 pin labels with `tools/X2PinLabels.pas` (`X2LabelsCanary`, then
+    `PlaceX2LabelsHdi`), run the DRC and save.
 
 The optimizer uses `altium-monkey==2026.6.9` and refuses an input board whose
 source hash or planned via-span multiset does not match the verified baseline.
@@ -256,10 +264,37 @@ change as on the production board (`Zulu_Altium_VS_Code/docs/x2_power_pins.md`).
 
 Altium DRC on the saved board, 2026-10-07 14:34: 0 warnings, 0 rule violations.
 
+## X2 pin labels (2026-10-07, later)
+
+X2's pin numbers and short pin names are now on the TOP silkscreen. The strips
+mount on the underside, so the top is the side that can be seen. This matches
+the production board (`Zulu_Altium_VS_Code/docs/x2_pin_labels.md`): 0.8 mm
+stroke text with a 0.15 mm stroke, PCBWay's minimum.
+
+- Pins 3, 10-20, 22-29 and 31-40 have two lines: the number, then the name.
+- Pins 2, 21 and 30 have one vertical line.
+- Pins 1 and 4-9 have no label: U4, Q1 and R4 leave too little room.
+- U2's designator moved from (25.309, 21.239) to (23.509, 19.639).
+- The `ZULU A7` title sat across pins 13-19's labels. It moved from (6.0, 20.0)
+  to (37.5, 5.0), below U1, and shrank from 2.0 to 1.6 mm with a 0.20 mm
+  stroke. No free 2.0 mm spot exists on the top side. It first landed at
+  (37.5, 5.25), where an independent check found its top 0.05 mm under U1's
+  10 x 10 mm body; `tools/HdiTitleNudge.pas` moved it 0.25 mm down, so it is
+  now 0.20 mm clear.
+- The script is `tools/X2PinLabels.pas` (`PlaceX2LabelsHdi`), generated from a
+  clearance-checked plan.
+
+Only GTO changed geometrically (38 old strokes went: the U2 designator and the
+title). The drill files and every other layer are unchanged.
+
+Altium DRC on the saved board, 2026-10-07 16:16 (after the title nudge): 0
+warnings, 0 rule violations, including Silk To Solder Mask and Silk to Silk
+(0.254 mm).
+
 ## Release artifacts
 
 Fresh Gerbers and NC Drill files were generated from the final corrected
-PcbDoc on 2026-10-07 at 14:35, after the X2 power-pin re-order. Altium emits six `RoundHoles` drill files plus a
+PcbDoc on 2026-10-07 at 16:17, after the X2 pin labels and the title nudge. Altium emits six `RoundHoles` drill files plus a
 dedicated plated `SlotHoles` file. `tools/package_fabrication_release.py`
 validates the PCB fingerprint, all round-hole drill counts, both X1 G85 slot
 records and their geometry, all seven drill-file layer mappings, the exact
@@ -269,7 +304,7 @@ equality between every archive entry and its source.
 - Fabrication archive:
   `fabrication/Zulu_A7_HDI_Optimized_JLCPCB_Fabrication_2026-10-07.zip`
 - Archive SHA-256:
-  `9C3E89E2AD6A9738DC78A2C54CCAAE3EFBEAD70E2E7B74790692409B8D3038D6`
+  `5F68EC187D9A31C997E0E06A20E79B1901738A9B8BDEE0D561AF6492BEA4A3EC`
 - Assembly release: `assembly/`
 - Assembly contents: 58 BOM lines, 172 fitted designators
   (32 top / 140 bottom), assembler-neutral notes, and three-page top and
@@ -287,13 +322,13 @@ instructions:
 - PCBWay fabrication archive:
   `fabrication/Zulu_A7_HDI_Optimized_PCBWay_Fabrication_2026-10-07.zip`
 - Archive SHA-256:
-  `B679B6A3C824442F336A5351E2B9B3EA1440B566CE6C298C7AC5B01D2A965B71`
+  `D28EE93CD366DD2637C1B6EAE8DF2C112ED387AC75BCAB2C9689914A4A93BF4B`
 
 PCBWay must return its proposed manufacturable stack and calculated 90-ohm USB
 differential impedance for approval. The PCBWay package does not authorize a
 silent substitution of a standard six-layer stack. The superseded 2026-10-04
-archives contain the old round X1 rear holes and must not be fabricated. The
+archives contain the old round X1 shell-stake holes and must not be fabricated. The
 earlier 2026-10-07 archives (`1112753F...` and `9B5CB933...`) have the slots but
 not the land fix, and must not be fabricated either. The land-fix archives
-(`C73C05F1...` and `CB9F6DB1...`) have the old X2 pin order and are superseded
-too.
+(`C73C05F1...` and `CB9F6DB1...`) have the old X2 pin order, and the X2 re-order
+archives (`9C3E89E2...` and `B679B6A3...`) have no X2 labels; both are superseded.

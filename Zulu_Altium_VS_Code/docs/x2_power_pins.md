@@ -46,7 +46,7 @@ unticked, as always.
 
 - **Altium DRC** 2026-10-07 14:28, after the final save: 0 warnings, 0 rule violations.
 - **Board hash:** PcbDoc SHA-256 `517b553e53d2148f2704600bb90345a12782c01b58199dc36e62376971a67054` (was
-  `4f73e1a2...`).
+  `4f73e1a2...`; superseded by the X2 pin labels, `x2_pin_labels.md`).
 - **Object counts:** tracks, vias, pads, nets, classes, rules and polygons are the same as before (4,828 / 1,787 /
   839 / 177 / 30 / 63 / 2).
 
@@ -66,7 +66,8 @@ Against the previous release:
 The release files were updated as follows:
 - `fabrication/PCBWAY_FAB_NOTES.txt`: board hash and DRC time.
 - `fabrication/Zulu_A7_PCBWay_Fabrication_2026-10-07.zip`: rebuilt with the same 23 entries, each byte-identical
-  to its source. SHA-256 `FD44329E99735988F4353921D5E475DA6D2AE82D376192CDE338037E41BB097D`.
+  to its source. SHA-256 `FD44329E99735988F4353921D5E475DA6D2AE82D376192CDE338037E41BB097D` (rebuilt since;
+  see `x2_pin_labels.md`).
 
 ## Assembly
 

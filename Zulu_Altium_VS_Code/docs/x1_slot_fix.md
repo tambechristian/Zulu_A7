@@ -1,6 +1,6 @@
-# X1 rear shell slots (2026-10-07)
+# X1 shell-stake slots (2026-10-07)
 
-X1 is a Molex 105017-0001 micro-USB-B. Its two rear shell legs (MS1/MS2) were drilled as 0.60 mm round holes,
+X1 is a Molex 105017-0001 micro-USB-B. Its two front shell legs (MS1/MS2, at the mating-face end; the earlier text said "rear") were drilled as 0.60 mm round holes,
 but the Molex land pattern (SD-105017-001, "Recommended P.C.B. pattern layout") calls for 0.60 x 1.30 mm slots
 with full-radius ends. The legs are 0.60 +/- 0.10 mm wide and 0.30 mm thick, so they cannot enter a 0.60 mm round
 hole and the connector would sit high on its SMT joints.
@@ -46,7 +46,8 @@ guard, which accepts this board only, and in the X1 designator guard. On this bo
   - L2, L4, L5, Bottom copper and Top silk differ only at X1's slots, CHAN12 and the designator, plus the 1.9 um
     L2 vertex above.
 - **New board hash:** PcbDoc SHA-256 `e91c148d92b3d73828f69b7a5623f56d86d6e40dd546c6b97d5ce94c9e88d4b7`. The
-  pre-fix hash was `181b1a8c...`.
+  pre-fix hash was `181b1a8c...`. (Superseded by the later changes below and in `x2_power_pins.md` and
+  `x2_pin_labels.md`.)
 
 ## Release files
 
@@ -106,7 +107,8 @@ No pad moved or changed net.
 
 - **Altium DRC** 2026-10-07 09:40: 0 warnings, 0 violations. It was re-run at 10:03, after the 09:41 save, on the
   unchanged board: 0 / 0. `verify_stack.py` passes. The PcbDoc SHA-256 is
-  `4f73e1a215a21d19623c0956719072aeaa8c6b258501a21de8923bfff705f688`.
+  `4f73e1a215a21d19623c0956719072aeaa8c6b258501a21de8923bfff705f688` (superseded by the X2 changes:
+  `x2_power_pins.md`, then `x2_pin_labels.md`).
 - **Fab outputs** regenerated. The slot file is unchanged: two G85 slots. The round-hole counts are unchanged
   (440 / 369 / 296 / 282 / 230 / 230). Gerbers changed only at the MS lands, CHAN12 and the planes; GM and GBP differ
   only by aperture numbering.

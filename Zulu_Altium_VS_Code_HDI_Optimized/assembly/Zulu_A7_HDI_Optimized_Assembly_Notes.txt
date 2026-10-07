@@ -1,7 +1,7 @@
 ZULU A7 HDI OPTIMIZED - ASSEMBLY NOTES
 Release date: 2026-10-07
-Source commit: 636906b068f4cd9a555721b9db5c1a154d196433
-PCB SHA-256: 71E75C10890AF834F98ECEB9E10981AA1AD6301A51087FBB7A328B4E49486D6E
+Source: working copy after commit dac84ed (the PCB SHA-256 below identifies it)
+PCB SHA-256: A3436176F03BD3E7195F777322BC68DA107D3A8AB82A80259D8F1A6A5AAC6A4E
 
 UPLOAD SET
 Provide the fabrication ZIP to the PCB fabricator and provide this BOM,
@@ -39,7 +39,7 @@ SPECIAL COMPONENT INSTRUCTIONS
 - X4 pin 1 is battery positive.
 - X3's microSD card opening faces the left board edge.
 - X1's micro-USB opening faces the upper board edge.
-- X1-MS1/MS2 are plated 0.60 x 1.30 mm rear shell slots. Confirm
+- X1-MS1/MS2 are plated 0.60 x 1.30 mm front shell-stake slots. Confirm
   that both connector shell stakes seat fully before soldering.
 - Verify pin 1/A1 on U1, U2, U3, U4, U8, U10, Q1, and every polarized LED.
 - LD0 cathodes are pads 2, 4, and 6; its anodes are pads 1, 3, and 5.

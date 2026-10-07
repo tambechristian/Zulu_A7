@@ -2,22 +2,49 @@
 FileName = zulu_a7.GBR
 AutoAperture = True
 *************************************************************
-Generating : L2-GND
-      File : zulu_a7.G1
+Generating : Top Solder
+      File : zulu_a7.GTS
 
-    Adding Layer      : L2-GND
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D107
-    D110
-    D111
-    D112
-    D113
-    D114
-    D115
+    D19
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+    D52
+    D53
+    D54
+    D55
+    D56
+    D57
+    D58
+    D59
+    D60
+    D61
+    D62
+    D63
+    D64
+    D65
+    D66
 *************************************************************
 
 *************************************************************
@@ -32,7 +59,6 @@ Generating : Top Paste
 
 
 Used DCodes :
-    D11
     D12
     D13
     D14
@@ -56,6 +82,59 @@ Used DCodes :
     D32
     D33
     D34
+    D35
+*************************************************************
+
+*************************************************************
+Generating : L2-GND
+      File : zulu_a7.G1
+
+    Adding Layer      : L2-GND
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D107
+    D110
+    D111
+    D112
+    D113
+    D114
+    D115
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : zulu_a7.GBP
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D12
+    D23
+    D32
+    D120
+    D121
+    D122
+    D123
+    D124
+    D125
+    D126
+    D127
+    D128
+    D129
+    D130
+    D131
+    D132
+    D133
+    D134
+    D135
 *************************************************************
 
 *************************************************************
@@ -68,7 +147,7 @@ Generating : L3-SIG
 
 
 Used DCodes :
-    D66
+    D10
     D67
     D68
     D70
@@ -89,46 +168,6 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Bottom Solder
-      File : zulu_a7.GBS
-
-    Adding Layer      : Bottom Solder
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D35
-    D45
-    D55
-    D59
-    D60
-    D61
-    D62
-    D63
-    D64
-    D65
-    D161
-    D162
-    D163
-    D164
-    D165
-    D166
-    D167
-    D168
-    D169
-    D170
-    D171
-    D172
-    D173
-    D174
-    D175
-    D176
-*************************************************************
-
-*************************************************************
 Generating : Top Layer
       File : zulu_a7.GTL
 
@@ -138,7 +177,7 @@ Generating : Top Layer
 
 
 Used DCodes :
-    D11
+    D10
     D12
     D13
     D14
@@ -162,7 +201,7 @@ Used DCodes :
     D32
     D33
     D34
-    D66
+    D35
     D67
     D68
     D69
@@ -212,87 +251,6 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Bottom Paste
-      File : zulu_a7.GBP
-
-    Adding Layer      : Bottom Paste
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D11
-    D22
-    D31
-    D120
-    D121
-    D122
-    D123
-    D124
-    D125
-    D126
-    D127
-    D128
-    D129
-    D130
-    D131
-    D132
-    D133
-    D134
-    D135
-*************************************************************
-
-*************************************************************
-Generating : L4-SIG
-      File : zulu_a7.G3
-
-    Adding Layer      : L4-SIG
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D66
-    D67
-    D68
-    D70
-    D73
-    D74
-    D107
-    D110
-    D111
-    D112
-    D113
-    D114
-    D115
-    D116
-    D117
-    D118
-    D119
-*************************************************************
-
-*************************************************************
-Generating : L5-VCC3V3
-      File : zulu_a7.G4
-
-    Adding Layer      : L5-VCC3V3
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D107
-    D110
-    D111
-    D112
-    D113
-    D114
-    D115
-*************************************************************
-
-*************************************************************
 Generating : Bottom Layer
       File : zulu_a7.GBL
 
@@ -302,10 +260,10 @@ Generating : Bottom Layer
 
 
 Used DCodes :
-    D11
-    D22
-    D31
-    D66
+    D10
+    D12
+    D23
+    D32
     D67
     D68
     D70
@@ -386,14 +344,51 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Top Overlay
-      File : zulu_a7.GTO
+Generating : L5-VCC3V3
+      File : zulu_a7.G4
 
-    Adding Layer      : Top Overlay
+    Adding Layer      : L5-VCC3V3
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D107
+    D110
+    D111
+    D112
+    D113
+    D114
+    D115
+*************************************************************
+
+*************************************************************
+Generating : L4-SIG
+      File : zulu_a7.G3
+
+    Adding Layer      : L4-SIG
+
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
     D10
+    D67
+    D68
+    D70
+    D73
+    D74
+    D107
+    D110
+    D111
+    D112
+    D113
+    D114
+    D115
+    D116
+    D117
+    D118
+    D119
 *************************************************************
 
 *************************************************************
@@ -404,53 +399,59 @@ Generating : Bottom Overlay
 
 
 Used DCodes :
-    D10
+    D11
 *************************************************************
 
 *************************************************************
-Generating : Top Solder
-      File : zulu_a7.GTS
+Generating : Bottom Solder
+      File : zulu_a7.GBS
 
-    Adding Layer      : Top Solder
+    Adding Layer      : Bottom Solder
 
-    Adding Layer      : Top Layer
+    Adding Layer      : Bottom Layer
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D18
-    D35
     D36
-    D37
-    D38
-    D39
-    D40
-    D41
-    D42
-    D43
-    D44
-    D45
     D46
-    D47
-    D48
-    D49
-    D50
-    D51
-    D52
-    D53
-    D54
-    D55
     D56
-    D57
-    D58
-    D59
     D60
     D61
     D62
     D63
     D64
     D65
+    D66
+    D161
+    D162
+    D163
+    D164
+    D165
+    D166
+    D167
+    D168
+    D169
+    D170
+    D171
+    D172
+    D173
+    D174
+    D175
+    D176
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : zulu_a7.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
 *************************************************************
 
 *************************************************************
