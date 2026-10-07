@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Generate and validate the Zulu A7 JLCPCB assembly release.
+"""Generate and validate a Zulu A7 assembly release.
 
 The BOM is read from the current Altium schematics. Component locations,
 rotations, layers, and pad geometry are read from the current PcbDoc.
 
     python tools/generate_jlcpcb_assembly.py
+    python tools/generate_jlcpcb_assembly.py --pcb <PcbDoc> \
+        --assembly-dir <output-dir> --release-prefix <filename-prefix> \
+        --release-name <drawing-title> --assembler-neutral
 """
 
+import argparse
 import csv
 import hashlib
 import os
@@ -24,6 +28,12 @@ ROOT = os.path.dirname(HERE)
 PROJECT = os.path.join(ROOT, "Imported zulu_a7.PrjPcb")
 PCB = os.path.join(PROJECT, "zulu_a7.PcbDoc")
 ASSEMBLY = os.path.join(ROOT, "assembly")
+BOM_FILENAME = "Zulu_A7_JLCPCB_BOM.csv"
+CPL_FILENAME = "Zulu_A7_JLCPCB_CPL.csv"
+NOTES_FILENAME = "Zulu_A7_Assembly_Notes.txt"
+DRAWING_FILENAME = "Zulu_A7_Assembly_Drawing_{side}.pdf"
+RELEASE_NAME = "Zulu A7"
+ASSEMBLER_NEUTRAL = False
 
 sys.path.insert(0, HERE)
 import bom_audit
@@ -105,6 +115,49 @@ def git_commit():
         text=True,
     )
     return result.stdout.strip()
+
+
+def configure():
+    global PCB
+    global ASSEMBLY
+    global BOM_FILENAME
+    global CPL_FILENAME
+    global NOTES_FILENAME
+    global DRAWING_FILENAME
+    global RELEASE_NAME
+    global ASSEMBLER_NEUTRAL
+    global RELEASE_DATE
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--pcb", default=PCB, help="PcbDoc used for placement data")
+    parser.add_argument(
+        "--assembly-dir", default=ASSEMBLY, help="directory for generated outputs"
+    )
+    parser.add_argument(
+        "--release-prefix",
+        help="filename prefix; omitted to preserve the production release names",
+    )
+    parser.add_argument("--release-name", default=RELEASE_NAME)
+    parser.add_argument("--release-date", default=RELEASE_DATE)
+    parser.add_argument(
+        "--assembler-neutral",
+        action="store_true",
+        help="require a separate HDI-capable assembler instead of JLCPCB PCBA",
+    )
+    args = parser.parse_args()
+
+    PCB = os.path.abspath(args.pcb)
+    ASSEMBLY = os.path.abspath(args.assembly_dir)
+    RELEASE_NAME = args.release_name
+    RELEASE_DATE = args.release_date
+    ASSEMBLER_NEUTRAL = args.assembler_neutral
+    if args.release_prefix:
+        BOM_FILENAME = f"{args.release_prefix}_BOM.csv"
+        CPL_FILENAME = f"{args.release_prefix}_CPL.csv"
+        NOTES_FILENAME = f"{args.release_prefix}_Assembly_Notes.txt"
+        DRAWING_FILENAME = f"{args.release_prefix}_Assembly_Drawing_{{side}}.pdf"
+    if not os.path.isfile(PCB):
+        parser.error(f"PCB does not exist: {PCB}")
 
 
 def read_board():
@@ -280,7 +333,7 @@ def make_bom(parts, geometry):
 
 
 def write_bom(rows):
-    path = os.path.join(ASSEMBLY, "Zulu_A7_JLCPCB_BOM.csv")
+    path = os.path.join(ASSEMBLY, BOM_FILENAME)
     columns = [
         "Comment",
         "Designator",
@@ -300,7 +353,7 @@ def write_bom(rows):
 
 
 def write_cpl(parts, geometry):
-    path = os.path.join(ASSEMBLY, "Zulu_A7_JLCPCB_CPL.csv")
+    path = os.path.join(ASSEMBLY, CPL_FILENAME)
     columns = ["Designator", "Mid X", "Mid Y", "Layer", "Rotation"]
     fitted = [
         ref
@@ -356,16 +409,65 @@ def write_notes(parts, geometry, bom_rows):
         for row in bom_rows
         if not row["LCSC Part #"]
     ]
+    if ASSEMBLER_NEUTRAL:
+        title = f"{RELEASE_NAME.upper()} - ASSEMBLY NOTES"
+        upload_lines = [
+            "Provide the fabrication ZIP to the PCB fabricator and provide this BOM,",
+            "CPL, both drawings, and these notes separately to the assembly provider.",
+            "Copy all critical instructions into the quotation/order remarks.",
+        ]
+        gate_lines = [
+            "ASSEMBLER QUALIFICATION",
+            "JLCPCB does not support assembly of this HDI board. Use a separate",
+            "assembler qualified for six-layer two-step sequential HDI, stacked",
+            "laser microvias, an L3-L4 buried-via stage, 0201 parts, two-sided SMT,",
+            "mixed SMT/THT assembly, and X-ray inspection of the CPG236 BGA.",
+        ]
+        placement_preview = "the assembly provider's placement preview"
+        x2_provider = "the assembler"
+        sourcing_lines = [
+            "manufacturer, MPN, package, lifecycle, authenticity, and stock using",
+            "the selected supplier's live parts system. Do not make substitutions",
+            "without written approval.",
+        ]
+        review_lines = [
+            "Confirm HDI-capable two-sided SMT/THT assembly, BGA X-ray inspection,",
+            "X2's four-piece manual installation, unresolved/consigned parts,",
+            "polarity, and placement preview before releasing the order.",
+        ]
+    else:
+        title = "ZULU A7 - JLCPCB ASSEMBLY NOTES"
+        upload_lines = [
+            "Upload the fabrication ZIP, BOM CSV, and CPL CSV in their separate",
+            "JLCPCB order fields. Copy all critical instructions from this file into",
+            "the online order remarks; do not rely on this file being read automatically.",
+        ]
+        gate_lines = [
+            "HDI ORDER GATE",
+            "This is a six-layer, two-step sequential HDI board with stacked laser",
+            "microvias and an L3-L4 buried-via stage. Obtain written confirmation that",
+            "JLCPCB PCBA can be attached to the manually reviewed HDI fabrication quote",
+            "before relying on turnkey assembly.",
+        ]
+        placement_preview = "JLCPCB's placement preview"
+        x2_provider = "JLCPCB"
+        sourcing_lines = [
+            "manufacturer, MPN, package, lifecycle, authenticity, and stock in the live",
+            "JLCPCB parts selector. Do not make substitutions without written approval.",
+        ]
+        review_lines = [
+            "Confirm HDI fabrication plus two-sided SMT/THT assembly, X2's four-piece",
+            "manual installation, unresolved/consigned parts, polarity, and placement",
+            "preview before releasing the order.",
+        ]
     lines = [
-        "ZULU A7 - JLCPCB ASSEMBLY NOTES",
+        title,
         f"Release date: {RELEASE_DATE}",
         f"Source commit: {git_commit()}",
         f"PCB SHA-256: {sha256(PCB)}",
         "",
         "UPLOAD SET",
-        "Upload the fabrication ZIP, BOM CSV, and CPL CSV in their separate",
-        "JLCPCB order fields. Copy all critical instructions from this file into",
-        "the online order remarks; do not rely on this file being read automatically.",
+        *upload_lines,
         "",
         "ASSEMBLY SCOPE",
         f"Fitted PCB designators: {len(fitted)}",
@@ -374,38 +476,35 @@ def write_notes(parts, geometry, bom_rows):
         f"Do not populate: {', '.join(dnp)}",
         "Assembly is required on both sides.",
         "",
-        "HDI ORDER GATE",
-        "This is a six-layer, two-step sequential HDI board with stacked laser",
-        "microvias and an L3-L4 buried-via stage. Obtain written confirmation that",
-        "JLCPCB PCBA can be attached to the manually reviewed HDI fabrication quote",
-        "before relying on turnkey assembly.",
+        *gate_lines,
         "",
         "CPL AND ORIENTATION",
         "CPL units are millimetres from the board lower-left origin. The top drawing",
         "is viewed from the top; the bottom drawing is mirrored and viewed from the",
         "bottom. CPL rotations are the rotations stored in the final Altium PCB.",
-        "Review every polarized part and all rotations in JLCPCB's placement preview.",
+        f"Review every polarized part and all rotations in {placement_preview}.",
         "Do not approve the order if the preview disagrees with either assembly drawing.",
         "",
         "SPECIAL COMPONENT INSTRUCTIONS",
         "- X2 is not one 40-pin component. It is four underside-mounted THT strips:",
         "  2 x PRPC009SAAN-RC (9-pin) and 2 x PRPC011SAAN-RC (11-pin). The BOM",
         "  therefore reports physical quantity 4 for the single PCB designator X2.",
-        "  Quote this as manual THT work. If JLCPCB cannot process that exception,",
+        f"  Quote this as manual THT work. If {x2_provider} cannot process that exception,",
         "  leave X2 unpopulated for post-assembly installation.",
         "- J1 is a vertical 2x6 female through-hole Pmod header on the top side.",
         "- JP3 and JP4 are intentional DNP flying-lead/pogo positions.",
         "- X4 pin 1 is battery positive.",
         "- X3's microSD card opening faces the left board edge.",
         "- X1's micro-USB opening faces the upper board edge.",
+        "- X1-MS1/MS2 are plated 0.60 x 1.30 mm rear shell slots. Confirm",
+        "  that both connector shell stakes seat fully before soldering.",
         "- Verify pin 1/A1 on U1, U2, U3, U4, U8, U10, Q1, and every polarized LED.",
         "- LD0 cathodes are pads 2, 4, and 6; its anodes are pads 1, 3, and 5.",
         "",
         "SOURCING",
         "The LCSC codes in the BOM are exact identities captured by the project's",
         "September 2026 sourcing audit, not a claim of current stock. Revalidate",
-        "manufacturer, MPN, package, lifecycle, authenticity, and stock in the live",
-        "JLCPCB parts selector. Do not make substitutions without written approval.",
+        *sourcing_lines,
         f"BOM lines without a verified exact LCSC code: {len(unresolved)}",
     ]
     for row in unresolved:
@@ -425,12 +524,10 @@ def write_notes(parts, geometry, bom_rows):
             "  remainder of the build.",
             "",
             "REQUIRED ORDER REVIEW",
-            "Confirm HDI fabrication plus two-sided SMT/THT assembly, X2's four-piece",
-            "manual installation, unresolved/consigned parts, polarity, and placement",
-            "preview before releasing the order.",
+            *review_lines,
         ]
     )
-    path = os.path.join(ASSEMBLY, "Zulu_A7_Assembly_Notes.txt")
+    path = os.path.join(ASSEMBLY, NOTES_FILENAME)
     with open(path, "w", encoding="utf-8", newline="\n") as handle:
         handle.write("\n".join(lines) + "\n")
     return path
@@ -453,7 +550,7 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
     page = doc.new_page(width=1190.55, height=841.89)
     page.insert_text(
         (42, 37),
-        f"Zulu A7 - {side} Assembly Drawing - {label}",
+        f"{RELEASE_NAME} - {side} Assembly Drawing - {label}",
         fontsize=18,
         fontname="hebo",
         color=(0.08, 0.10, 0.14),
@@ -638,10 +735,15 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
                 width=0.4,
             )
 
+    preview_text = (
+        "the assembler's placement preview"
+        if ASSEMBLER_NEUTRAL
+        else "JLCPCB's placement preview"
+    )
     page.insert_text(
         (52, page.rect.height - 28),
         "Red dot = pin 1/A1. Dashed red label = DNP. "
-        "Verify every rotation and polarity in JLCPCB's placement preview.",
+        f"Verify every rotation and polarity in {preview_text}.",
         fontsize=8,
         color=(0.24, 0.27, 0.31),
     )
@@ -649,7 +751,7 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
 
 
 def write_drawing(side, parts, geometry):
-    output = os.path.join(ASSEMBLY, f"Zulu_A7_Assembly_Drawing_{side}.pdf")
+    output = os.path.join(ASSEMBLY, DRAWING_FILENAME.format(side=side))
     document = fitz.open()
     regions = [
         ((0.0, 0.0, BOARD_WIDTH, BOARD_HEIGHT), "Overview"),
@@ -661,13 +763,21 @@ def write_drawing(side, parts, geometry):
         shown.update(draw_assembly_page(document, side, region, label, parts, geometry))
     document.set_metadata(
         {
-            "title": f"Zulu A7 {side} Assembly Drawing",
+            "title": f"{RELEASE_NAME} {side} Assembly Drawing",
             "author": "Zulu A7 project",
-            "subject": "JLCPCB assembly reference",
-            "keywords": "Zulu A7, JLCPCB, assembly, pick and place",
+            "subject": (
+                "assembly reference"
+                if ASSEMBLER_NEUTRAL
+                else "JLCPCB assembly reference"
+            ),
+            "keywords": (
+                "Zulu A7, assembly, pick and place"
+                if ASSEMBLER_NEUTRAL
+                else "Zulu A7, JLCPCB, assembly, pick and place"
+            ),
             "creator": "tools/generate_jlcpcb_assembly.py",
             "producer": "PyMuPDF",
-            "creationDate": "D:20261002000000-07'00'",
+            "creationDate": f"D:{RELEASE_DATE.replace('-', '')}000000-07'00'",
         }
     )
     document.save(output, garbage=4, deflate=True)
@@ -746,6 +856,7 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
 
 
 def main():
+    configure()
     os.makedirs(ASSEMBLY, exist_ok=True)
     board_components, pads = read_board()
     board_refs = set(board_components) - ARTWORK_REFS
