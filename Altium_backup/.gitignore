@@ -1,0 +1,10 @@
+# Altium writes these beside every document it saves: per-save backup zips and
+# thumbnail caches. They describe the editing session, not the design.
+History/
+__Previews/
+Project Logs for */
+*.PrjPcbStructure
+*.PrjPcbPreview
+# Altium output folder: the Protel netlist and status report are regenerated
+# by Design > Netlist For Project; tools/compare_netlists.py reads the .NET.
+Project Outputs for */
