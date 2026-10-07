@@ -1,0 +1,7 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "ctambe") (type "KiCad") (uri "${KIPRJMOD}/ctambe.kicad_sym") (options "") (descr "from Altium import"))
+	(lib (name "pinhead") (type "KiCad") (uri "${KIPRJMOD}/pinhead.kicad_sym") (options "") (descr "from Altium import"))
+	(lib (name "rcl") (type "KiCad") (uri "${KIPRJMOD}/rcl.kicad_sym") (options "") (descr "from Altium import"))
+	(lib (name "zulu_a7-altium-import") (type "KiCad") (uri "${KIPRJMOD}/zulu_a7-altium-import.kicad_sym") (options "") (descr "from Altium import"))
+)

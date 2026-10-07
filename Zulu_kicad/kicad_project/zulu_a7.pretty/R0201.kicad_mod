@@ -1,0 +1,128 @@
+(footprint "R0201"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 1.063171 1.673098 180)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "e63f7762-cf6d-49a6-a2db-2253aaf85115")
+		(effects
+			(font
+				(size 1.524 1.524)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "845"
+		(at -2.062843 -2.530602 180)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "cee1361f-5085-4411-8fc9-e9d72b543c5b")
+		(effects
+			(font
+				(size 1.524 1.524)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 180)
+		(layer "B.Fab")
+		(hide yes)
+		(uuid "bbe71ac5-bee6-4b9a-bc70-7e6ea0b77915")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 180)
+		(layer "B.Fab")
+		(hide yes)
+		(uuid "f8fe1be4-eb13-46fc-bfff-ea94c4552213")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify mirror)
+		)
+	)
+	(sheetname "zulu_a7_2")
+	(sheetfile "zulu_a7_2.kicad_sch")
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_poly
+		(pts
+			(xy -0.11988 0.15012) (xy -0.11988 -0.15011) (xy 0.11989 -0.15011) (xy 0.11989 0.15012)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "F.Adhes")
+		(uuid "3464d032-ddc0-4505-8812-adea565febb4")
+	)
+	(fp_line
+		(start -0.15011 -0.14706)
+		(end 0.15012 -0.14706)
+		(stroke
+			(width 0.1016)
+			(type solid)
+		)
+		(layer "User.3")
+		(uuid "6cac6568-9f89-4793-8c8a-5d5279de5571")
+	)
+	(fp_line
+		(start -0.15011 0.14707)
+		(end 0.15012 0.14707)
+		(stroke
+			(width 0.1016)
+			(type solid)
+		)
+		(layer "User.3")
+		(uuid "af82be2d-1cc0-446c-90d4-fef7653bc68b")
+	)
+	(fp_poly
+		(pts
+			(xy -0.29997 0.15012) (xy -0.29997 -0.15011) (xy -0.15011 -0.15011) (xy -0.15011 0.15012)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.3")
+		(uuid "5070ffb3-335b-4f78-8f7f-c09349bfdd0d")
+	)
+	(fp_poly
+		(pts
+			(xy 0.15012 0.15012) (xy 0.15012 -0.15011) (xy 0.29998 -0.15011) (xy 0.29998 0.15012)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "User.3")
+		(uuid "a9b9b906-8493-4682-b6f9-ac120cdcba7b")
+	)
+	(pad "1" smd rect
+		(at -0.29997 0)
+		(size 0.29997 0.29997)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "325a1605-d78a-469d-9897-29c64a768164")
+	)
+	(pad "2" smd rect
+		(at 0.29998 0)
+		(size 0.29997 0.29997)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "13fc6114-5b95-4e99-899d-4add23beec48")
+	)
+	(embedded_fonts no)
+)

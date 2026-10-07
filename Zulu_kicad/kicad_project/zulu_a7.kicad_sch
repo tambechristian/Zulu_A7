@@ -1,0 +1,305 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "9fcdb36a-f4bd-4ae1-b56b-571e79d2681b")
+	(paper "A4")
+	(title_block
+		(title "Zulu A7")
+		(comment 1 "Converted from Altium (Zulu_Altium_VS_Code); Altium Flat net scope -> global labels")
+	)
+	(lib_symbols)
+	(sheet
+		(at 30 40)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "450876bf-1fc6-4025-aee8-245dc555510b")
+		(property "Sheetname" "zulu_a7_0"
+			(at 30 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "zulu_a7_0.kicad_sch"
+			(at 30 60.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "zulu_a7"
+				(path "/9fcdb36a-f4bd-4ae1-b56b-571e79d2681b"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 40)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "02d513f8-4ef4-4001-a50a-819fb3e4f2bc")
+		(property "Sheetname" "zulu_a7_1"
+			(at 90 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "zulu_a7_1.kicad_sch"
+			(at 90 60.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "zulu_a7"
+				(path "/9fcdb36a-f4bd-4ae1-b56b-571e79d2681b"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 150 40)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "f39f6a8e-3442-442a-ada4-f5f6f6e8678c")
+		(property "Sheetname" "zulu_a7_2"
+			(at 150 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "zulu_a7_2.kicad_sch"
+			(at 150 60.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "zulu_a7"
+				(path "/9fcdb36a-f4bd-4ae1-b56b-571e79d2681b"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 210 40)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "4cfd67b9-47dc-42a9-b1f0-215b5addb24e")
+		(property "Sheetname" "zulu_a7_3"
+			(at 210 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "zulu_a7_3.kicad_sch"
+			(at 210 60.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "zulu_a7"
+				(path "/9fcdb36a-f4bd-4ae1-b56b-571e79d2681b"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30 80)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "3dfd4c5d-a9f6-41b8-9197-7f9986d32bf5")
+		(property "Sheetname" "zulu_a7_4"
+			(at 30 79.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "zulu_a7_4.kicad_sch"
+			(at 30 100.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "zulu_a7"
+				(path "/9fcdb36a-f4bd-4ae1-b56b-571e79d2681b"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 80)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "a4db7070-6946-4b86-8266-bced3507910a")
+		(property "Sheetname" "zulu_a7_5"
+			(at 90 79.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "zulu_a7_5.kicad_sch"
+			(at 90 100.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "zulu_a7"
+				(path "/9fcdb36a-f4bd-4ae1-b56b-571e79d2681b"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 150 80)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "182f95a8-36ed-41b8-99b8-fd772efbef3d")
+		(property "Sheetname" "zulu_a7_6"
+			(at 150 79.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "zulu_a7_6.kicad_sch"
+			(at 150 100.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "zulu_a7"
+				(path "/9fcdb36a-f4bd-4ae1-b56b-571e79d2681b"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
