@@ -57571,8 +57571,19 @@
 				(justify right bottom)
 			)
 		)
-		(property "AUTHOR" "AUTHOR"
+		(property "AUTHOR" "Christian Tambe"
 			(at 116.84 315.976 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right bottom)
+			)
+		)
+		(property "AUTHOR_LABEL" "AUTHOR:"
+			(at 97.79 315.976 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

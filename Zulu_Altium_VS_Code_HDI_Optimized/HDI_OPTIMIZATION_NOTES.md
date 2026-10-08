@@ -338,6 +338,13 @@ Against the previous release:
 - Top silkscreen: BTN's designator moved with it and X2's went.
 - Every other layer has identical geometry.
 
+## Author in the title blocks (2026-10-08)
+
+Every sheet's title block now reads "AUTHOR: Christian Tambe", as on the production copy
+(`Zulu_Altium_VS_Code/docs/schematic_author.md`). The production copy's `tools/schematic_author.py` was run on this
+copy's seven SchDocs. It sets the DOCFIELD AUTHOR parameter, which the EAGLE importer had left as the literal word
+"AUTHOR", and adds the missing "AUTHOR:" label. The PcbDoc and the release files are unchanged.
+
 ## Release artifacts
 
 Fresh Gerbers and NC Drill files were generated from the final corrected

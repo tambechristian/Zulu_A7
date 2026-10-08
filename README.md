@@ -104,8 +104,12 @@ In every copy of the schematic, the General IO sheet (sheet 3 of 7 in EAGLE
 and Altium, `zulu_a7_2.SchDoc`; page 4 of 8 in KiCad, `zulu_a7_2.kicad_sch`,
 under the added root sheet) carries "2026, Christian Tambe. Some rights
 reserved." and the three CC BY-SA Unported licence lines, beside the CC
-logos. In the EAGLE files the title block names AUTHOR: Christian Tambe; in
-the Altium and KiCad copies it shows the unresolved placeholder "AUTHOR".
+logos. The title block of every sheet reads "AUTHOR: Christian Tambe": in the
+EAGLE files through the AUTHOR attribute, and in the Altium copies
+(`Zulu_Altium_VS_Code/`, `Zulu_Altium_VS_Code_HDI_Optimized/`) and the KiCad
+copy since 2026-10-08 (`Zulu_Altium_VS_Code/docs/schematic_author.md`). The
+superseded `Zulu_Altrium/` and the `Altium_backup/` snapshot still show the
+importer's placeholder "AUTHOR".
 The upstream line "2012, XESS Corp. Some rights reserved." and the upstream
 AUTHOR "Dave Vandenbout / XESS Corp." were replaced during the XuLA3 rework
 and have never been in this repository's history, and the sheets do not yet

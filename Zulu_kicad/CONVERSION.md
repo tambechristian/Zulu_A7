@@ -135,3 +135,18 @@ Verification:
 - KiCad's python exits with code 127 after `SaveBoard` returns. The saved files are complete and load; the gate
   above was run on them.
 
+## Update 2026-10-08: author in the title blocks
+
+At the user's request every sheet's title block now reads "AUTHOR: Christian Tambe", as on the Altium copies
+(`Zulu_Altium_VS_Code/docs/schematic_author.md`). The imported DOCFIELD symbol carried property `AUTHOR` with the
+literal value "AUTHOR" and no "AUTHOR:" label. `tools/apply_schematic_author.py` sets the value to "Christian Tambe"
+and adds an `AUTHOR_LABEL` property ("AUTHOR:"), a copy of the PROJECT: label property moved to the author row. It
+refuses to run twice.
+
+Verification:
+- A `kicad-cli sch export pdf` plot shows the row on all seven design pages.
+- `sch export netlist` output is identical apart from its timestamp: the title-block symbol is not on the board or
+  in the BOM.
+- ERC: 1,648, the same types and counts as before.
+- The "schematic has annotation errors" warning that the export prints was already printed by the committed
+  sheets.
