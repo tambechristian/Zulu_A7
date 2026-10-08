@@ -46,19 +46,21 @@ make the design eligible for JLCPCB assembly.
 | Production `zulu_a7.PcbDoc` when the X1 slot correction was made here, not written by it | `181B1A8CC47D591023BFB5E683A1D7FC3F66063C18EC0D94D65964AD3BB25504` |
 | Production `zulu_a7.PcbDoc` after its own X1 slot and land fixes (never written from this copy) | `4F73E1A215A21D19623C0956719072AEAA8C6B258501A21DE8923BFFF705F688` |
 | Production `zulu_a7.PcbDoc` after the X2 power-pin re-order | `517B553E53D2148F2704600BB90345A12782C01B58199DC36E62376971A67054` |
-| Production `zulu_a7.PcbDoc` now, after the X2 pin labels | `BD7CBFD775B741521D8AB8AC197FF58D2A7674C2757522FA4702CB32F46489C2` |
+| Production `zulu_a7.PcbDoc` after the X2 pin labels | `BD7CBFD775B741521D8AB8AC197FF58D2A7674C2757522FA4702CB32F46489C2` |
+| Production `zulu_a7.PcbDoc` now, after the BTN move | `89A421B9060195D66BED82F7A4E7D80121BD0E9D679A3FEE32289E8F541F4BDE` |
 | Via-only intermediate, before Altium repour | `FB9CE613BED4512F1B3B67D9AB6BFB29A3CFA007ED5AE46BBEAC22C5E7F620C7` |
 | Optimized board, 2026-10-04 (History `~(2)`) | `60294BF7E6B159569DF3BF40E12B51081653BCD40C5434E55782723CB1B5F80B` |
 | Board just before the X1 slot correction (History `~(5)`, 2026-10-06) | `52E8438F649E04845077D82DEA01D3EB8FE0A85B03D1F2F668040158DBF87F8A` |
 | After the X1 slot correction, round 0.90 mm lands (History `~(8)`); superseded | `5E885D522F27F39FE3042062336B2A9D71FBCC85A11B77017C1D22DBD5F929C8` |
 | After the X1 land fix (slots plus PCBWay lands and clearances); superseded | `0CFFBF05E98EB0DCA85336350EE6244E748E4679B6C28E9545B0198F8F05D6C5` |
 | After the X2 power-pin re-order; superseded | `71E75C10890AF834F98ECEB9E10981AA1AD6301A51087FBB7A328B4E49486D6E` |
-| Final `zulu_a7_hdi_optimized.PcbDoc`, after the X2 pin labels | `A3436176F03BD3E7195F777322BC68DA107D3A8AB82A80259D8F1A6A5AAC6A4E` |
+| After the X2 pin labels; superseded | `A3436176F03BD3E7195F777322BC68DA107D3A8AB82A80259D8F1A6A5AAC6A4E` |
+| Final `zulu_a7_hdi_optimized.PcbDoc`, after the BTN move | `F97D0F4D6FB9439ADDF64BD6DA2620E2BF3D35228E0CC4B053859F38BDB5E64B` |
 
 The production board hash was rechecked after the isolated X1 slot correction
 and was still `181B...`; only the optimized derivative was written. The
 production board has since had its own fixes (`4F73...`, then `517B...`, then
-`BD7C...`).
+`BD7C...`, then `89A4...`).
 
 `~(2)` is not the board immediately before the slot correction. Between them,
 History `~(3)` (2026-10-05) moved the X1 designator, and `~(4)` (2026-10-06)
@@ -72,9 +74,9 @@ appears in `~(6)` (2026-10-07 04:27).
 - Layer stack: JLC06161H-3313E, unchanged.
 - Signal tracks: 4,200 (4,828 track objects in all). The land fix changed four
   CHAN12 tracks and added four; the slot correction before it only moved CHAN12
-  endpoints.
+  endpoints. The BTN move added three: 4,203 (4,831).
 - Physical via locations: 1,081, unchanged.
-- Via objects: 1,768, unchanged by the X1 correction.
+- Via objects: 1,768, unchanged by the X1 correction; 1,771 after the BTN move.
 - X1 slot centers: (29.5199, 23.9585) mm and (36.5201, 23.9585) mm.
 - X1 slot geometry: plated 0.60 mm x 1.30 mm, vertical.
 - X1-MS1/MS2 lands: 1.11 x 1.81 mm oblong on Top and Bottom, 0.90 x 1.60 mm on
@@ -95,7 +97,8 @@ appears in `~(6)` (2026-10-07 04:27).
 | Total via objects | 1,787 | 1,768 | -19 |
 
 Laser-microvia records fell from 1,038 to 1,013. Physical HDI sites fell from
-701 to 688.
+701 to 688. The BTN move (below) later added one Top-L5 stack and removed one through
+via: 1,016 records, 689 sites.
 
 ## Converted sites
 
@@ -291,10 +294,54 @@ Altium DRC on the saved board, 2026-10-07 16:16 (after the title nudge): 0
 warnings, 0 rule violations, including Silk To Solder Mask and Silk to Silk
 (0.254 mm).
 
+## BTN moved 0.5 mm left; X2 designator hidden (2026-10-07, later)
+
+The user found BTN (the PTS810 user button) too close to the RGB LEDs and asked
+for it to move a little left, and for X2's designator to be hidden. The same
+change was made on the production board; the full record is
+`Zulu_Altium_VS_Code/docs/btn_move.md`. The BTN area is identical on both
+boards, so one plan and one script (`tools/BtnMove.pas`) serve both.
+
+- BTN moved 0.5 mm west, from x 20.3 to 19.8 mm. Its pads now sit 0.90 mm from
+  LD5's pads (was 0.40 mm).
+- Three via stacks that stood in the new pad field moved: LED0_B (Top-L3) to
+  (21.50, 10.55), N$BTN (Top-Bottom) into pad 3 at (20.875, 10.47) and
+  FT-RESETN (Top-Bottom) to (18.15, 15.50).
+- BTN pad 1's VCC3V3 through via at (18.50, 10.50) had no legal place left. It
+  became a Top-L5 microvia stack at (18.47, 10.45) that lands on the L5
+  VCC3V3 plane.
+- 14 tracks were re-drawn and 3 FT-RESETN tracks added.
+- X2's designator is hidden. It was printed off the board edge at (0.78, 26.6).
+- The three new laser vias were marked as microvias with
+  `stage13_mark_microvias.py` (expect 1,016), since scripted vias default to
+  the regular drill type.
+
+Via-in-pad: three filled Top-L2 microvias now overlap BTN's pads 1, 3 and 4.
+They are the only vias in any SMD pad on the board (none before). Both fab
+notes ask for them to be filled and capped flat.
+
+Counts after the move: 392 through vias, 292 Top-L2, 279 L2-L3, 363 L3-L4,
+223 L4-L5 and 222 L5-Bottom; 1,771 via objects, 1,016 laser-via records and
+689 physical HDI sites (counted per XY and net, as the 688 above); 4,203 signal
+tracks.
+
+Altium DRC on the saved board, 2026-10-07 16:48 (after save, close, microvia
+marking, reopen and repour): 0 warnings, 0 rule violations.
+
+Against the previous release:
+- Drill: the through-via file lost one hole. Each laser and buried file moved
+  the stack holes and gained the new VCC3V3 hole, except L5-Bottom, which only
+  moved.
+- Copper: every change lies in x 17.9-22.8, y 9.9-16.3. Elsewhere, the L2 and
+  L5 fills only dropped one collinear vertex each.
+- Masks and paste: BTN's four pads moved.
+- Top silkscreen: BTN's designator moved with it and X2's went.
+- Every other layer has identical geometry.
+
 ## Release artifacts
 
 Fresh Gerbers and NC Drill files were generated from the final corrected
-PcbDoc on 2026-10-07 at 16:17, after the X2 pin labels and the title nudge. Altium emits six `RoundHoles` drill files plus a
+PcbDoc on 2026-10-07 at 16:58, after the BTN move. Altium emits six `RoundHoles` drill files plus a
 dedicated plated `SlotHoles` file. `tools/package_fabrication_release.py`
 validates the PCB fingerprint, all round-hole drill counts, both X1 G85 slot
 records and their geometry, all seven drill-file layer mappings, the exact
@@ -304,7 +351,7 @@ equality between every archive entry and its source.
 - Fabrication archive:
   `fabrication/Zulu_A7_HDI_Optimized_JLCPCB_Fabrication_2026-10-07.zip`
 - Archive SHA-256:
-  `5F68EC187D9A31C997E0E06A20E79B1901738A9B8BDEE0D561AF6492BEA4A3EC`
+  `494F1CA509DB3F0C240738DAF3E9D9F6F4BAEE9965CD16F372066D4248DF08BC`
 - Assembly release: `assembly/`
 - Assembly contents: 58 BOM lines, 172 fitted designators
   (32 top / 140 bottom), assembler-neutral notes, and three-page top and
@@ -322,7 +369,7 @@ instructions:
 - PCBWay fabrication archive:
   `fabrication/Zulu_A7_HDI_Optimized_PCBWay_Fabrication_2026-10-07.zip`
 - Archive SHA-256:
-  `D28EE93CD366DD2637C1B6EAE8DF2C112ED387AC75BCAB2C9689914A4A93BF4B`
+  `40763DECE6856A326A925A556C81247FCF358B7F736B212BC97DB7810D4A7317`
 
 PCBWay must return its proposed manufacturable stack and calculated 90-ohm USB
 differential impedance for approval. The PCBWay package does not authorize a
@@ -331,4 +378,6 @@ archives contain the old round X1 shell-stake holes and must not be fabricated. 
 earlier 2026-10-07 archives (`1112753F...` and `9B5CB933...`) have the slots but
 not the land fix, and must not be fabricated either. The land-fix archives
 (`C73C05F1...` and `CB9F6DB1...`) have the old X2 pin order, and the X2 re-order
-archives (`9C3E89E2...` and `B679B6A3...`) have no X2 labels; both are superseded.
+archives (`9C3E89E2...` and `B679B6A3...`) have no X2 labels, and the X2-label
+archives (`5F68EC18...` and `D28EE93C...`) have BTN at its old place; all are
+superseded.

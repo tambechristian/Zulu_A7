@@ -1,8 +1,8 @@
 ZULU A7 - PCBWAY FABRICATION NOTES
 Release date: 2026-10-07
-Source: working copy after commit dac84ed plus the 2026-10-07 X2 pin labels;
+Source: working copy after commit 07b7bb4 plus the 2026-10-07 BTN move;
 zulu_a7.PcbDoc SHA-256
-bd7cbfd775b741521d8ab8ac197ff58d2a7674c2757522fa4702cb32f46489c2
+89a421b9060195d66bed82f7a4e7d80121bd0e9d679a3fee32289e8f541f4bde
 
 FABRICATOR
 PCBWay, bare-board fabrication. Order as Material "HDI (Buried/blind vias)"
@@ -23,6 +23,10 @@ sit at depopulated ball sites or interstitial positions, never in a land, so no
 via-in-pad is required. The 0.20 mm through vias there are tented but not
 filled: please plug or fill them per your BGA rule (tent and fill vias near BGA
 pads) and state the method in the quotation.
+Via-in-pad occurs only at BTN (PTS810 switch, top side): three filled Top-L2
+microvias overlap its pads 1, 3 and 4 (pad 3's lies inside the pad; the other
+two cross the pad edge). Copper-fill and cap them flat (VIPPO) so the pads
+take paste normally.
 
 TARGET STACKUP (as modelled in the PCB file; please return your proposed
 manufacturable stack with pressed thicknesses and Dk for approval)
@@ -106,9 +110,9 @@ FILE MAP
   zulu_a7.DRR   Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-10-07 15:51 (after the final save): 0 warnings, 0 rule violations
+Altium DRC 2026-10-07 16:53 (after the final save): 0 warnings, 0 rule violations
 Gerbers: metric RS-274X, 0.0001 mm coordinate resolution
-Microvias: 1,038 total; L3-L4 buried vias: 369; signal through vias: 380;
+Microvias: 1,041 total; L3-L4 buried vias: 370; signal through vias: 379;
 plated slots: 2 (X1).
 
 Solder-mask colour, surface finish, quantity and panelization are order

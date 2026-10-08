@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: zulu_a7_hdi_optimized.PcbDoc   10/7/2026  4:16:50 PM
+NCDrill File Report For: zulu_a7_hdi_optimized.PcbDoc   10/7/2026  4:58:04 PM
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -8,20 +8,20 @@ ASCII SlotHoles File : zulu_a7_hdi_optimized-SlotHoles.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T2      0.2mm (8mil)                                              Round             393       PTH        623.41mm (24.54inch)
+T2      0.2mm (8mil)                                              Round             392       PTH        621.50mm (24.47inch)
 T3      0.6mm (24mil)                                             Slot              2         PTH        15.44mm (0.61inch)
 T4      0.85mm (33mil)                                            Round             2         PTH        5.00mm (0.20inch)
 T5      1.016mm (40mil)                                           Round             58        PTH        235.35mm (9.27inch)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              455
+Totals                                                                              454
 Layer Pair : L3-SIG to L4-SIG
 ASCII RoundHoles File : zulu_a7_hdi_optimized-RoundHoles.TX3
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      0.15mm (6mil)                                             Round             362       PTH        567.02mm (22.32inch)
+T1      0.15mm (6mil)                                             Round             363       PTH        576.77mm (22.71inch)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              362
+Totals                                                                              363
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              817
 MicroVia : Top Layer to L2-GND
@@ -29,34 +29,34 @@ ASCII RoundHoles File : zulu_a7_hdi_optimized-RoundHoles.TX6
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      0.15mm (6mil)                                             Round             291       PTH        501.56mm (19.75inch)
+T1      0.15mm (6mil)                                             Round             292       PTH        484.75mm (19.08inch)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              291
+Totals                                                                              292
 MicroVia : L2-GND to L3-SIG
 ASCII RoundHoles File : zulu_a7_hdi_optimized-RoundHoles.TX7
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      0.15mm (6mil)                                             Round             278       PTH        487.04mm (19.17inch)
+T1      0.15mm (6mil)                                             Round             279       PTH        472.85mm (18.62inch)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              278
+Totals                                                                              279
 MicroVia : L4-SIG to L5-VCC3V3
 ASCII RoundHoles File : zulu_a7_hdi_optimized-RoundHoles.TX9
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      0.15mm (6mil)                                             Round             222       PTH        403.09mm (15.87inch)
+T1      0.15mm (6mil)                                             Round             223       PTH        435.18mm (17.13inch)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              222
+Totals                                                                              223
 MicroVia : L5-VCC3V3 to Bottom Layer
 ASCII RoundHoles File : zulu_a7_hdi_optimized-RoundHoles.TX10
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      0.15mm (6mil)                                             Round             222       PTH        403.09mm (15.87inch)
+T1      0.15mm (6mil)                                             Round             222       PTH        403.52mm (15.89inch)
 ----------------------------------------------------------------------------------------------------------------------------------
 Totals                                                                              222
 ----------------------------------------------------------------------------------------------------------------------------------
-MicroVia Totals                                                                     1013
+MicroVia Totals                                                                     1016
 
-Total Processing Time (hh:mm:ss) : 00:00:00
+Total Processing Time (hh:mm:ss) : 00:00:01

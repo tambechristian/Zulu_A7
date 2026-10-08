@@ -44,13 +44,14 @@ The left-edge groups (pins 10-20 and 31-40) sit 0.127 mm right of centre to stay
 - **Altium DRC:** 2026-10-07 15:51, after the final save: 0 warnings, 0 rule violations. Silk To Solder Mask
   (0.254) and Silk to Silk (0.254) are among the rules checked.
 - **Board hash:** PcbDoc SHA-256 `bd7cbfd775b741521d8ab8ac197ff58d2a7674c2757522fa4702cb32f46489c2` (was
-  `517b553e...`).
+  `517b553e...`; superseded by the BTN move, `btn_move.md`).
 - **Outputs:** regenerated with G85 ticked. Against the previous release only the GTO layer changed: 25 old strokes
   went (U2 and X3 moved) and the labels were added. Every other layer has identical geometry, and the drill files
   are identical.
 - **Release:** `fabrication/PCBWAY_FAB_NOTES.txt` has the new hash.
   `Zulu_A7_PCBWay_Fabrication_2026-10-07.zip` was rebuilt (23 entries). After the U1 via wording fix in the fab
-  notes, its SHA-256 is `7EEACEFC6055E9F04CC54571B018060404EB98106EF0EA88291D98F20F1BD448`.
+  notes, its SHA-256 is `7EEACEFC6055E9F04CC54571B018060404EB98106EF0EA88291D98F20F1BD448` (rebuilt
+  since; see `btn_move.md`).
 - **Other copies:**
   - HDI_Optimized: same labels, U2 moved, and the title moved, finally to (37.5, 5.0). See its notes.
   - KiCad: `Zulu_kicad/tools/apply_x2_labels.py` copies the 63 texts and the two references from KiCad's import of

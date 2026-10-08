@@ -109,3 +109,29 @@ Verification:
 - No silkscreen-type findings.
 - The total stays at about 2,026 violations, in the noise band.
 - `reports/drc.rpt` was regenerated.
+
+## Update 2026-10-07 (later): BTN moved 0.5 mm left, X2 reference hidden
+
+BTN (the PTS810 user button) moved 0.5 mm west, away from the RGB LEDs, and X2's reference is hidden, as on the
+Altium boards (`Zulu_Altium_VS_Code/docs/btn_move.md`).
+
+`tools/apply_btn_move.py` takes everything from KiCad's import of the moved production PcbDoc (`89a421b9...`):
+- The tracks and vias that differ from that import are swapped in. The geometry match ignores net names, because
+  this copy names some nets from the schematic. The swap was 14 tracks out and 17 in, 13 vias out and 16 in, all on
+  VCC3V3, N$BTN, LED0_B and FT-RESETN and inside BTN's area.
+- BTN takes its new position.
+- X2's reference is set invisible.
+- The GND (In1) and VCC3V3 (In4) fills are copied from the import; they are not refilled.
+
+The script stops unless BTN is at its old place and the difference has exactly these counts.
+
+Verification:
+- `geom_diff.py` against a fresh import of the moved board: footprints, pads, tracks/vias and zones are IDENTICAL.
+  The unmoved board against the same import differs, as a control.
+- DRC with schematic parity: 0 parity issues, 0 unconnected items. The total is 2,022, in the noise band.
+- The BTN-area findings that changed are the same default-rule types reported before (0.2 mm clearance, 0.3 mm
+  minimum hole, stacked holes co-located), now at the moved objects. This copy's rules were never translated.
+- `reports/drc.rpt` was regenerated. The schematic did not change, so `kicad.net` and `erc.rpt` stand.
+- KiCad's python exits with code 127 after `SaveBoard` returns. The saved files are complete and load; the gate
+  above was run on them.
+

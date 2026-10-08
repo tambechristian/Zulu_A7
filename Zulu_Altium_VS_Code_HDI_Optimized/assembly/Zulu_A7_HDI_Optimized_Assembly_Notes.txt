@@ -1,7 +1,7 @@
 ZULU A7 HDI OPTIMIZED - ASSEMBLY NOTES
 Release date: 2026-10-07
-Source: working copy after commit dac84ed (the PCB SHA-256 below identifies it)
-PCB SHA-256: A3436176F03BD3E7195F777322BC68DA107D3A8AB82A80259D8F1A6A5AAC6A4E
+Source: working copy after commit 07b7bb4 (the PCB SHA-256 below identifies it)
+PCB SHA-256: F97D0F4D6FB9439ADDF64BD6DA2620E2BF3D35228E0CC4B053859F38BDB5E64B
 
 UPLOAD SET
 Provide the fabrication ZIP to the PCB fabricator and provide this BOM,
