@@ -5,6 +5,31 @@ Impedance of every routed trace width on the production board, `Imported zulu_a7
 saved PcbDoc and solves each cross-section with a 2-D field solver. The HDI_Optimized copy has a different stack;
 see its `HDI_OPTIMIZATION_NOTES.md`.
 
+## Which fabricator these numbers are for
+
+The table is computed for the stack stored in the board file: JLCPCB's catalogue stack JLCH061611N2-2116, with
+JLC's layer thicknesses and its 2116 prepreg library Dk of 4.29.
+
+The board is fabricated at PCBWay. `fabrication/PCBWAY_FAB_NOTES.txt` sends this same stack as the target, but it
+also asks PCBWay to propose its own buildable stack (pressed thicknesses and Dk) and to return the USB pair
+calculation for approval. The real board will therefore differ slightly from this table.
+
+PCBWay quoted Dk 4.45 for its 2116 prepreg (`hdi_spec.md`). With only that change, every value falls by about
+1 ohm:
+
+| Trace | JLC stack (prepreg Dk 4.29) | PCBWay prepreg (Dk 4.45) |
+|---|---:|---:|
+| 3 mil, Top / Bottom | 67.8 ohm | 66.9 ohm |
+| 3 mil, L3 / L4 | 60.0 ohm | 59.2 ohm |
+| SDRAM bus, 0.125 mm, L3 / L4 | 50.4 ohm | 49.7 ohm |
+| USB pair, 0.150 / 0.150 mm | 87.9 ohm differential | 86.8 ohm differential |
+
+The core Dk (4.6, assumed) and the solder-mask model carry more uncertainty than the choice of fab; see "Method and
+assumptions". When PCBWay returns its stack:
+1. Enter it in the board's Layer Stack Manager.
+2. Update the expected stack in `tools/verify_stack.py`, which checks against the JLC stack today, and run it.
+3. Regenerate this table with `tools/stackup_impedance.py`.
+
 ## Stack
 
 JLCH061611N2-2116 as stored in the PcbDoc (`tools/verify_stack.py` passes):
