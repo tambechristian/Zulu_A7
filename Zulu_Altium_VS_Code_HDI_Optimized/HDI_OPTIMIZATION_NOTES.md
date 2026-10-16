@@ -345,6 +345,31 @@ Every sheet's title block now reads "AUTHOR: Christian Tambe", as on the product
 copy's seven SchDocs. It sets the DOCFIELD AUTHOR parameter, which the EAGLE importer had left as the literal word
 "AUTHOR", and adds the missing "AUTHOR:" label. The PcbDoc and the release files are unchanged.
 
+## Trace impedance on this copy's stack (2026-10-15)
+
+This copy keeps the JLC06161H-3313E nominal stack:
+- prepreg 0.0994 mm, Dk 4.10, on the outer pairs;
+- 0.100 mm cores, Dk 4.6, on L2-L3 and L4-L5;
+- a 1.1208 mm central structure, Dk 4.523;
+- 0.0152 mm finished inner copper.
+
+Its impedances therefore differ from the production board's (`Zulu_Altium_VS_Code/docs/stackup_impedance.md`).
+The same tool computes them from this PcbDoc:
+`python ../Zulu_Altium_VS_Code/tools/stackup_impedance.py "Imported zulu_a7.PrjPcb/zulu_a7_hdi_optimized.PcbDoc"`.
+
+| Trace | Layer | Width | Z0 |
+|---|---|---|---|
+| General signals | Top, Bottom | 0.0762 mm | 65.2 ohm |
+| General signals | L3, L4 | 0.0762 mm | 59.6 ohm |
+| SDRAM bus | L3, L4 | 0.125 mm | 49.0 ohm |
+| SDRAM escapes | Top | 0.0762 mm | 65.2 ohm |
+| SDRAM escapes | Bottom | 0.125 mm | 54.3 ohm |
+| LED and resistor nets | Top, Bottom | 0.100 mm | 59.3 ohm |
+| USB D+/D- pair | Top | 0.150 mm, 0.150 mm gap | 85.4 ohm differential |
+
+USB pair modes: odd 42.7 ohm, even 56.7 ohm. The fab notes ask the fabricator to calculate this pair from its own
+stack.
+
 ## Release artifacts
 
 Fresh Gerbers and NC Drill files were generated from the final corrected

@@ -203,6 +203,8 @@ assembly notes:
    and `Altium_backup/` read stale sheets.
 5. `Zulu_Altium_VS_Code/docs/power_budget.md`: power path, current budget
    and the caveats above.
+   `Zulu_Altium_VS_Code/docs/stackup_impedance.md` gives the layer stack and the
+   impedance of every routed trace width (`tools/stackup_impedance.py`).
 6. `Zulu_Altium_VS_Code/docs/stage13_route_plan.md`, section "Final
    implementation closeout": how routing was finished. Later board changes
    are in `x1_slot_fix.md`, `x2_power_pins.md`, `x2_pin_labels.md` and
