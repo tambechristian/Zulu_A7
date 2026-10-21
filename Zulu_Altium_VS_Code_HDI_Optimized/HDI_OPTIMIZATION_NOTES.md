@@ -407,6 +407,9 @@ PCBWay assembly release (2026-10-21), for a turnkey order at PCBWay:
   - The notes name this copy's fabrication ZIP and fab notes.
   - The U1 via census is computed from this board: 62 through vias, 30 laser microvias, none in a land.
   - They give this board's 1.65 mm laminate.
+- **Upload ZIP:** `assembly/Zulu_A7_HDI_Optimized_PCBWay_Assembly_2026-10-21.zip` holds the BOM, CPL, notes and
+  both drawings (5 entries, each byte-identical to its source), SHA-256
+  `E01C477C52D66FDE26D7D2EFCDFAFBDE51902DC476123DAF7C236C74899B8B04`.
 - **Older files kept:** the assembler-neutral files (`Zulu_A7_HDI_Optimized_BOM.csv`, `_CPL.csv`, notes, drawings)
   remain for other assemblers.
 
