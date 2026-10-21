@@ -74,3 +74,19 @@ The new notes:
 - **Fab notes, X1 slots:** `PCBWAY_FAB_NOTES.txt` called X1's slots "rear shell legs". They are the front shell stakes at the
   mating-face end beside the board edge (MH1/MH2 are the rear pegs). The wording was corrected here and in the
   HDI copy's notes.
+
+## Later: the HDI_Optimized copy (2026-10-21)
+
+The generator gained `--fab-archive` and `--fab-notes`, so a PCBWay release can name another board's fabrication
+files. The defaults are this board's files.
+
+The notes now compute two values that were hard-coded to this board's figures:
+- U1's land size (0.225 mm here);
+- the laminate thickness, from the PcbDoc's stack. It is stated without the mask, because the mask models differ
+  between copies (1.57 mm here, 1.65 mm on the HDI copy).
+
+Regenerating this board's release gives an identical BOM and CPL. Only the source line and that one thickness line
+in the notes change.
+
+The HDI copy's PCBWay release is recorded in `Zulu_Altium_VS_Code_HDI_Optimized/HDI_OPTIMIZATION_NOTES.md`.
+

@@ -390,6 +390,26 @@ equality between every archive entry and its source.
   bottom assembly drawings. The notes carry the final PcbDoc hash and the
   X1 plated-slot seating requirement.
 
+PCBWay assembly release (2026-10-21), for a turnkey order at PCBWay:
+- **Files:** in `assembly/`:
+  - `Zulu_A7_HDI_Optimized_PCBWay_BOM.csv` (PCBWay's BOM template);
+  - `Zulu_A7_HDI_Optimized_PCBWay_CPL.csv` (the pick-and-place file, SMT parts only; J1 and X2 are
+    hand-soldered);
+  - `Zulu_A7_HDI_Optimized_PCBWay_Assembly_Notes.txt` and the two `..._PCBWay_Assembly_Drawing_*.pdf`.
+- **Command:** run from `Zulu_Altium_VS_Code/`:
+  `python tools/generate_jlcpcb_assembly.py --pcb <this PcbDoc> --assembly-dir <this>/assembly
+  --release-prefix Zulu_A7_HDI_Optimized_PCBWay --release-name "Zulu A7 HDI Optimized" --release-date 2026-10-21
+  --assembler pcbway --fab-archive Zulu_A7_HDI_Optimized_PCBWay_Fabrication_2026-10-07.zip
+  --fab-notes Zulu_A7_HDI_Optimized_PCBWay_FAB_NOTES.txt`. Validation passed.
+- **Same as production:** the BOM and CPL are byte-identical to the production board's PCBWay files, because both
+  boards have the same parts in the same places.
+- **Different from production:**
+  - The notes name this copy's fabrication ZIP and fab notes.
+  - The U1 via census is computed from this board: 62 through vias, 30 laser microvias, none in a land.
+  - They give this board's 1.65 mm laminate.
+- **Older files kept:** the assembler-neutral files (`Zulu_A7_HDI_Optimized_BOM.csv`, `_CPL.csv`, notes, drawings)
+  remain for other assemblers.
+
 The fabrication archive is for JLCPCB bare-board fabrication after manual HDI
 engineering review. The assembly release is intentionally separate because
 JLCPCB does not support assembly of this HDI design.

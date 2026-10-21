@@ -42,6 +42,7 @@ RELEASE_NAME = "Zulu A7"
 ASSEMBLER = "pcbway"
 ASSEMBLER_NEUTRAL = False
 FAB_ARCHIVE = "Zulu_A7_PCBWay_Fabrication_2026-10-07.zip"
+FAB_NOTES = "PCBWAY_FAB_NOTES.txt"
 
 sys.path.insert(0, HERE)
 import bom_audit
@@ -147,6 +148,8 @@ def configure():
     global ASSEMBLER_NEUTRAL
     global ASSEMBLER
     global RELEASE_DATE
+    global FAB_ARCHIVE
+    global FAB_NOTES
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pcb", default=PCB, help="PcbDoc used for placement data")
@@ -170,7 +173,13 @@ def configure():
         action="store_true",
         help="same as --assembler neutral: a separate HDI-capable assembler",
     )
+    parser.add_argument("--fab-archive", default=FAB_ARCHIVE,
+                        help="fabrication ZIP the PCBWay notes point to")
+    parser.add_argument("--fab-notes", default=FAB_NOTES,
+                        help="fabrication notes file (inside the ZIP) the PCBWay notes point to")
     args = parser.parse_args()
+    FAB_ARCHIVE = args.fab_archive
+    FAB_NOTES = args.fab_notes
 
     PCB = os.path.abspath(args.pcb)
     ASSEMBLY = os.path.abspath(args.assembly_dir)
@@ -657,6 +666,21 @@ def x2_housing_neighbours(geometry):
     return near
 
 
+def board_thickness():
+    """Laminate thickness (copper + dielectrics, no solder mask) from the PcbDoc's layer stack (verify_stack helpers)."""
+    import verify_stack
+    rows = verify_stack.rows(verify_stack.load(PCB), "V9_STACK_LAYER", "_")
+    total, on = 0.0, False
+    for i in sorted(rows):
+        r = rows[i]
+        on = on or r.get("NAME") == "Top Solder"
+        if on and "Solder" not in (r.get("NAME") or ""):
+            total += verify_stack.mm(r.get("COPTHICK") or r.get("DIELHEIGHT") or "0mil") or 0.0
+        if r.get("NAME") == "Bottom Solder":
+            break
+    return total
+
+
 def write_notes_pcbway(parts, geometry, bom_rows):
     fitted = {ref for ref, component in parts.items() if component["params"].get("DNS") != "Yes"}
     dnp = sorted(set(parts) - fitted, key=bom_audit.natkey)
@@ -684,16 +708,16 @@ def write_notes_pcbway(parts, geometry, bom_rows):
     worst = min(near.values()) if near else 0.0
 
     lines = [
-        "ZULU A7 - PCBWAY ASSEMBLY NOTES",
+        f"{RELEASE_NAME.upper()} - PCBWAY ASSEMBLY NOTES",
         f"Release date: {RELEASE_DATE}",
         source_line(),
         f"PCB SHA-256: {sha256(PCB)}",
         "",
         "UPLOAD SET",
         "PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.",
-        f"- PCB: {FAB_ARCHIVE} (Gerbers incl. the GTP/GBP paste",
-        "  layers, drill files, PCBWAY_FAB_NOTES.txt), ordered as \"HDI (Buried/blind",
-        "  vias)\" per PCBWAY_FAB_NOTES.txt.",
+        f"- PCB: {FAB_ARCHIVE}",
+        f"  (Gerbers incl. the GTP/GBP paste layers, drill files and {FAB_NOTES}),",
+        f"  ordered as \"HDI (Buried/blind vias)\" per {FAB_NOTES}.",
         f"- BOM: {BOM_FILENAME} (PCBWay's BOM template columns). Centroid:",
         f"  {CPL_FILENAME} (SMT parts only, both sides in one file).",
         f"- Drawings: {DRAWING_FILENAME.format(side='Top')},",
@@ -718,7 +742,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "- Do you accept alternatives/substitutes made in China = No.",
         "- Number of X-ray test = the number of boards ordered (one X-ray of U1 per",
         "  board); please confirm what this field counts.",
-        "- PCB: surface finish ENIG recommended (0.225 mm BGA lands, 0201 pads).",
+        f"- PCB: surface finish ENIG recommended ({u1_land:.3f} mm BGA lands, 0201 pads).",
         "- Panel (the board is only 69.85 x 25.40 mm): PCB Board type = Panel by",
         "  Supplier; Break-away rail = Yes; Route Process = Panel as Tab Route;",
         "  X-out Allowance = Not Accept. Assembly Board type = Panelized PCBs;",
@@ -736,13 +760,13 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"BGA: U1 only, XC7A35T-1CPG236C, 0.5 mm pitch, {len(u1)} round lands of",
         f"{u1_land:.3f} mm. Other 0.5 mm pitch: U2 LQFP-64 (top), U8 VQFN-16 with",
         f"exposed pad (bottom). Smallest package 0201: {n0201} parts ({top0201} on top).",
-        "Board: 69.85 x 25.40 mm, six-layer two-step sequential HDI, about 1.63 mm",
-        "thick with solder mask.",
+        "Board: 69.85 x 25.40 mm, six-layer two-step sequential HDI,",
+        f"about {board_thickness():.2f} mm laminate plus solder mask.",
         "",
         "HDI AND U1 ORDER GATE",
         "The bare board is a 1+1+N+1+1 HDI build with stacked, copper-filled laser",
         "microvias and an L3-L4 buried-via stage, quoted manually after engineering",
-        "review (PCBWAY_FAB_NOTES.txt). Before payment, please confirm in writing:",
+        f"review ({FAB_NOTES}). Before payment, please confirm in writing:",
         "- turnkey assembly is accepted on this HDI build within the same order;",
         f"- U1's {u1_land:.3f} mm round lands (0.5 mm pitch) are within your fabrication",
         "  line and the assembly process you quote;",
@@ -836,7 +860,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  U10, Q1 and X4.",
         "- Stencil from the GTP/GBP layers, whose apertures are 1:1 with copper.",
         "  Please apply your house reductions, in particular: U2 LQFP-64 0.5 mm",
-        "  pitch; U8 exposed pad (about 85 % area, windowpane); U1 0.225 mm round",
+        f"  pitch; U8 exposed pad (about 85 % area, windowpane); U1 {u1_land:.3f} mm round",
         "  apertures need a thin stencil (0.08 mm or thinner suggested) and a",
         "  paste that releases them reliably.",
         "",
