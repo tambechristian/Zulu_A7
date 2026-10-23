@@ -1,0 +1,7 @@
+# Altium session output, not design sources
+History/
+Project Logs for */
+__Previews/
+*.PrjPcbStructure
+# script caches
+__pycache__/
