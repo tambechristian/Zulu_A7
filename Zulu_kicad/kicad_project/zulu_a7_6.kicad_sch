@@ -845,7 +845,7 @@
 					)
 				)
 			)
-			(property "Description" "Xilinx Artix-7 XC7A35T-1CPG236C   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
+			(property "Description" "Xilinx Artix-7 XC7A35T-2CPG236I   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -15147,7 +15147,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "XC7A35T-1CPG236C"
+		(property "Value" "XC7A35T-2CPG236I"
 			(at 19.304 251.714 90)
 			(hide yes)
 			(show_name no)
@@ -15181,7 +15181,7 @@
 				)
 			)
 		)
-		(property "Description" "Xilinx Artix-7 XC7A35T-1CPG236C   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
+		(property "Description" "Xilinx Artix-7 XC7A35T-2CPG236I   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
 			(at 19.304 249.174 0)
 			(hide yes)
 			(show_name no)
@@ -18600,7 +18600,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "DEVICENAME" "-1CPG236C"
+		(property "DEVICENAME" "-2CPG236I"
 			(at 19.05 236.22 90)
 			(hide yes)
 			(show_name no)
@@ -18659,7 +18659,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "MANF#" "XC7A35T-1CPG236C"
+		(property "MANF#" "XC7A35T-2CPG236I"
 			(at 0 313.182 90)
 			(hide yes)
 			(show_name no)
@@ -20078,7 +20078,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "XC7A35T-1CPG236C"
+		(property "Value" "XC7A35T-2CPG236I"
 			(at 21.844 205.994 90)
 			(hide yes)
 			(show_name no)
@@ -20112,7 +20112,7 @@
 				)
 			)
 		)
-		(property "Description" "Xilinx Artix-7 XC7A35T-1CPG236C   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
+		(property "Description" "Xilinx Artix-7 XC7A35T-2CPG236I   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
 			(at 21.844 203.454 0)
 			(hide yes)
 			(show_name no)
@@ -23531,7 +23531,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "DEVICENAME" "-1CPG236C"
+		(property "DEVICENAME" "-2CPG236I"
 			(at 21.59 198.12 90)
 			(hide yes)
 			(show_name no)
@@ -23590,7 +23590,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "MANF#" "XC7A35T-1CPG236C"
+		(property "MANF#" "XC7A35T-2CPG236I"
 			(at 0 313.182 90)
 			(hide yes)
 			(show_name no)
@@ -29002,7 +29002,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "XC7A35T-1CPG236C"
+		(property "Value" "XC7A35T-2CPG236I"
 			(at 95.504 86.614 90)
 			(hide yes)
 			(show_name no)
@@ -29036,7 +29036,7 @@
 				)
 			)
 		)
-		(property "Description" "Xilinx Artix-7 XC7A35T-1CPG236C   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
+		(property "Description" "Xilinx Artix-7 XC7A35T-2CPG236I   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
 			(at 95.504 84.074 0)
 			(hide yes)
 			(show_name no)
@@ -32455,7 +32455,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "DEVICENAME" "-1CPG236C"
+		(property "DEVICENAME" "-2CPG236I"
 			(at 89.916 78.74 90)
 			(hide yes)
 			(show_name no)
@@ -32514,7 +32514,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "MANF#" "XC7A35T-1CPG236C"
+		(property "MANF#" "XC7A35T-2CPG236I"
 			(at 0 313.182 90)
 			(hide yes)
 			(show_name no)

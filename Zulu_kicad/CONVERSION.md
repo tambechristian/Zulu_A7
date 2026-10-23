@@ -150,3 +150,22 @@ Verification:
 - ERC: 1,648, the same types and counts as before.
 - The "schematic has annotation errors" warning that the export prints was already printed by the committed
   sheets.
+
+## Update 2026-10-23: BOM substitutions
+
+U1 XC7A35T-1CPG236C -> XC7A35T-2CPG236I and LD0 EAST1616RGBA8 -> 19-337/R6GHBHC-A01/2T, as on the Altium copies
+(`Zulu_Altium_VS_Code/docs/bom_substitutions_2026-10-23.md`).
+
+`tools/apply_bom_subs_kicad.py kicad_project <Altium project folder>` changes fields only, in the three sheets,
+the board and `ctambe.kicad_sym`:
+- U1: MANF#, Value, DEVICENAME, Description.
+- LD0: MANF#, Value, NOTE, SPEC. NOTE and SPEC are copied from the Altium General IO sheet.
+
+The library symbol names (`XC7A35T-CPG236-1CPG236C`) were kept. The script refuses to run twice; its
+`--resync-ld0` mode copies LD0's NOTE and SPEC from Altium again after an Altium-side correction, and is
+repeatable. It was used once, when LD0's SPEC was reworded to name the datasheet revisions.
+
+Verification:
+- The exported netlist differs only in U1's and LD0's field values.
+- `pcb drc --schematic-parity`: 0 unconnected items, 0 parity issues.
+- ERC: 1,648, as before.

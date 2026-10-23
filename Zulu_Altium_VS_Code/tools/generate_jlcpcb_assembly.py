@@ -56,7 +56,8 @@ NON_PART_LIBS = {"DOCFIELD", "CC_BY", "CC_CC", "CC_SA", "CC_COPYRIGHT"}
 ASSEMBLY_LAYER_OVERRIDES = {"X2": "Bottom"}
 
 # Exact MPN-to-LCSC identities recorded in the project's September 2026
-# sourcing audit. Stock status is intentionally not asserted here.
+# sourcing audit, plus later additions whose source LCSC_SOURCES names.
+# Stock status is intentionally not asserted here.
 LCSC_CODES = {
     "PTS810SJM250SMTR LFS": "C116501",
     "GRM155R71C104KA88D": "C71629",
@@ -91,7 +92,8 @@ LCSC_CODES = {
     "RC0402FR-0733RL": "C138002",
     "RC0402FR-07330RL": "C105875",
     "RC0402FR-0710KL": "C60490",
-    "XC7A35T-1CPG236C": "C1521738",
+    "19-337/R6GHBHC-A01/2T": "C264519",
+    "XC7A35T-2CPG236I": "C1552335",
     "FT2232HL-REEL": "C27882",
     "W25Q128JVSIQ": "C97521",
     "SC189ZSKTRT": "C2650317",
@@ -102,6 +104,25 @@ LCSC_CODES = {
     "DM3D-SF": "C719027",
     "B2B-PH-SM4-TB(LF)(SN)": "C160352",
 }
+
+# Where an LCSC code was checked, for codes added after the September 2026 audit.
+LCSC_SOURCES = {
+    "19-337/R6GHBHC-A01/2T": "checked 2026-10-23 on its LCSC part page",
+}
+
+# LD0 parts whose datasheet numbers the pins differently from the footprint
+# (anodes 1/3/5, cathodes 2/4/6 on the board).
+LD0_NUMBERING = {
+    "19-337/R6GHBHC-A01/2T": [
+        "  Its datasheet's pin numbers depend on the revision: Rev.4 (DSE-0002657)",
+        "  numbers the cathodes 1-3 and the anodes 4-6, Rev.6 numbers them like the",
+        "  footprint. Follow the cathode mark, not the pad numbers.",
+    ],
+}
+
+
+def ld0_numbering_lines(mpn):
+    return LD0_NUMBERING.get(mpn, [])
 
 
 def clean(value):
@@ -345,8 +366,8 @@ def make_bom(parts, geometry):
             )
         elif lcsc:
             sourcing_note = (
-                "Exact LCSC identity from the 2026-09 sourcing audit; revalidate "
-                "identity, stock, and lifecycle before ordering"
+                f"Exact LCSC identity {LCSC_SOURCES.get(mpn, 'from the 2026-09 sourcing audit')}; "
+                "revalidate identity, stock, and lifecycle before ordering"
             )
         else:
             sourcing_note = (
@@ -408,8 +429,9 @@ PACKAGE_NAMES = {
 
 # Per-MPN instructions written into the BOM line itself, where PCBWay's buyer reads them.
 PCBWAY_LINE_NOTES = {
-    "XC7A35T-1CPG236C": (
-        "Buy only from an AMD-authorized distributor (e.g. Digi-Key, Mouser, Avnet); "
+    "XC7A35T-2CPG236I": (
+        "Speed grade -2, industrial temperature: the approved substitute for XC7A35T-1CPG236C "
+        "(same die, package and pinout). Buy only from an AMD-authorized distributor (e.g. Digi-Key, Mouser, Avnet); "
         "no local, broker or open-market stock. 0.5 mm BGA: X-ray every board. "
         "Moisture sensitive: follow the MSL label."
     ),
@@ -426,9 +448,11 @@ PCBWAY_LINE_NOTES = {
     ),
     "SC189LSKTRT": "U6 = 1.8 V. Look-alike of U5/U7: check reel and marking.",
     "SC189ASKTRT": "U7 = 1.0 V FPGA core. Look-alike of U5/U6: check reel and marking.",
-    "EAST1616RGBA8": (
-        "Polarity: cathodes are pads 2, 4, 6 on the WEST side; anodes 1, 3, 5 on the "
-        "east side (opposite to LD1-LD5). The drawing's red dot marks pad 1, an anode."
+    "19-337/R6GHBHC-A01/2T": (
+        "Water-clear lens. Polarity: cathodes on the WEST side, the cathode-mark column (board footprint "
+        "pads 2, 4, 6; datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint); anodes on the east "
+        "side (opposite to "
+        "LD1-LD5). The drawing's red dot marks footprint pad 1, an anode."
     ),
     "105017-0001": (
         "Rated for ONE reflow: place in the last (top) reflow. Shell stakes in plated "
@@ -695,6 +719,9 @@ def write_notes_pcbway(parts, geometry, bom_rows):
                   for ref in row["_refs"] if geometry[ref]["layer"] == "Top")
     u1 = geometry["U1"]["pads"]
     u1_land = max(pad["sx"] for pad in u1)
+    u1_mpn = parts["U1"]["params"].get("MANF#")
+    ld0_mpn = parts["LD0"]["params"].get("MANF#")
+    ld0_manf = parts["LD0"]["params"].get("MANF")
     vias = u1_via_census(geometry)
     leds = led_polarity_notes(geometry)
     led_refs = ", ".join(sorted(leds, key=bom_audit.natkey))
@@ -735,9 +762,9 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"  Number of BGA/QFP Parts = 2 (U1 BGA, U2 LQFP); Number of Through-Hole",
         f"  Parts = {tht_parts} (J1 and four X2 strips, {tht_joints} joints).",
         "- Contains sensitive components/parts = Yes. Paste into its box:",
-        "  \"XC7A35T-1CPG236C, FT2232HL-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,",
+        f"  \"{u1_mpn}, FT2232HL-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,",
         "  BQ24232RGTR: moisture sensitive, follow the MSL label, bake if floor life",
-        "  is exceeded. XC7A35T-1CPG236C: 0.5 mm BGA, X-ray every board. 105017-0001:",
+        f"  is exceeded. {u1_mpn}: 0.5 mm BGA, X-ray every board. 105017-0001:",
         "  one reflow cycle maximum.\"",
         "- Do you accept alternatives/substitutes made in China = No.",
         "- Number of X-ray test = the number of boards ordered (one X-ray of U1 per",
@@ -757,7 +784,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"BOM purchase lines: {len(buy_rows)}; DNS lines: {len(rows) - len(buy_rows)} "
         f"({', '.join(dnp)})",
         "Assembly is required on both sides: SMT bottom, SMT top, then hand soldering.",
-        f"BGA: U1 only, XC7A35T-1CPG236C, 0.5 mm pitch, {len(u1)} round lands of",
+        f"BGA: U1 only, {u1_mpn}, 0.5 mm pitch, {len(u1)} round lands of",
         f"{u1_land:.3f} mm. Other 0.5 mm pitch: U2 LQFP-64 (top), U8 VQFN-16 with",
         f"exposed pad (bottom). Smallest package 0201: {n0201} parts ({top0201} on top).",
         "Board: 69.85 x 25.40 mm, six-layer two-step sequential HDI,",
@@ -852,10 +879,12 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  marking at each position on the first article.",
         f"- {led_refs} (0603): cathode = pad K on the {led_side} side (X {led_kx:.2f} mm);",
         "  all face the same way. The drawings mark it with a red bar.",
-        "- LD0 (Everlight EAST1616RGBA8, 1.6 x 1.6 mm): cathodes are pads 2, 4, 6",
-        "  on the WEST side, anodes 1, 3, 5 on the east side, opposite to the",
-        "  0603 LEDs. The drawing's red dot marks pad 1, an anode. The land is",
-        "  symmetric, so a part turned 180 degrees fits but stays dark.",
+        f"- LD0 ({ld0_manf} {ld0_mpn}, 1.6 x 1.6 mm): cathodes are on the WEST side,",
+        "  the cathode-mark column (board footprint pads 2, 4, 6), anodes on the east",
+        "  side (pads 1, 3, 5), opposite to the 0603 LEDs. The drawing's red dot marks",
+        "  footprint pad 1, an anode. The land is symmetric, so a part turned 180",
+        "  degrees fits but stays dark.",
+        *ld0_numbering_lines(ld0_mpn),
         "- Verify pin 1/A1 against the drawings on U1, U2, U3, U4, U5, U6, U7, U8,",
         "  U10, Q1 and X4.",
         "- Stencil from the GTP/GBP layers, whose apertures are 1:1 with copper.",
@@ -869,7 +898,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "carries an exact manufacturer part number. Nothing is consigned.",
         "- Make no substitution without our written approval. Report any line with",
         "  no stock, a lifecycle problem or an ambiguous MPN as an engineering query.",
-        "- U1 XC7A35T-1CPG236C: AMD-authorized distributors only (e.g. Digi-Key,",
+        f"- U1 {u1_mpn}: AMD-authorized distributors only (e.g. Digi-Key,",
         "  Mouser, Avnet); no local, broker or open-market stock. Ask us first if",
         "  none can supply it.",
         "- U2 FT2232HL-REEL: FTDI-authorized distributors only (FTDI clones exist).",
@@ -1028,11 +1057,15 @@ def write_notes(parts, geometry, bom_rows):
         "- X1-MS1/MS2 are plated 0.60 x 1.30 mm front shell-stake slots. Confirm",
         "  that both connector shell stakes seat fully before soldering.",
         "- Verify pin 1/A1 on U1, U2, U3, U4, U8, U10, Q1, and every polarized LED.",
-        "- LD0 cathodes are pads 2, 4, and 6; its anodes are pads 1, 3, and 5.",
+        "- LD0 cathodes are pads 2, 4, and 6, on the WEST side under the part's",
+        "  cathode mark; its anodes are pads 1, 3, and 5. The drawings' red dot",
+        "  marks pad 1, an anode.",
+        *ld0_numbering_lines(parts["LD0"]["params"].get("MANF#")),
         "",
         "SOURCING",
         "The LCSC codes in the BOM are exact identities captured by the project's",
-        "September 2026 sourcing audit, not a claim of current stock. Revalidate",
+        "September 2026 sourcing audit (the BOM's sourcing column dates any later",
+        "addition), not a claim of current stock. Revalidate",
         *sourcing_lines,
         f"BOM lines without a verified exact LCSC code: {len(unresolved)}",
     ]

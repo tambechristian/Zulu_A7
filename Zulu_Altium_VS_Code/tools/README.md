@@ -289,7 +289,12 @@ the project in Altium before running the two fix scripts.
   AS4C32M16SB-6TIN -> AS4C32M16SB-7TCN (the -6 grade is dry until October;
   U3 has no SPEC parameter, so the timing text is appended to its NOTE),
   and 2026-09-08 L4-L7 BLM18PG601SN1D (a number Murata never made) ->
-  BLM18KG601SN1D.
+  BLM18KG601SN1D. 2026-10-23, on both Altium copies (PCBWay's quoted
+  substitutes, approved by the user): U1 XC7A35T-1CPG236C -> XC7A35T-2CPG236I
+  (MANF#, Comment, DeviceName via DEVICE_NAMES, the RECORD=1
+  ComponentDescription via DESCRIPTION_TEXT) and LD0 EAST1616RGBA8 ->
+  19-337/R6GHBHC-A01/2T (MANF#, Comment, SPEC, NOTE suffix; RESPEC keeps the
+  SPEC).
 * `power_budget.py [--fpga-int mA --fpga-io mA --header mA ...]` - rail-by-rail
   power budget from the schematic and the datasheets; writes markdown
   (docs/power_budget.md is its default output). The FPGA dynamic currents

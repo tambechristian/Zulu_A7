@@ -5,7 +5,8 @@ NOT applied automatically: the vendor choice is the user's. Each entry maps
 the MANF# now on the sheets to a stocked replacement found on Digi-Key on
 2026-09-06, with the same value, size, rating and pad pattern. Entries can
 be commented out before running. Edits MANF#, MANF and SPEC on every
-component of every sheet whose MANF# matches; values and footprints are
+component of every sheet whose MANF# matches (and, per entry, Comment, the
+NOTE suffix, DeviceName and the component description); footprints are
 untouched, so the netlist does not change.
 
 Run with the project closed in Altium, then re-run tools/bom_audit.py:
@@ -52,9 +53,27 @@ SUBS = {
     # U3 carries no SPEC parameter, so the timing note goes onto NOTE (5th element = text appended to NOTE).
     'AS4C32M16SB-6TIN': ('AS4C32M16SB-7TCN', 'Alliance Memory', '', 'AS4C32M16SB-7TCN',
         ' 2026-09-08: AS4C32M16SB-6TIN replaced by AS4C32M16SB-7TCN (same B die, 54-TSOP II 400 mil and pinout, datasheet Rev 1.4 Table 2): -7 speed bin, 143 MHz max at CL3 (tCK 7 ns, tAC 5.4 ns), tRCD/tRP 21 ns, tRC/tRFC 63 ns, tRRD/tMRD/tWR 14 ns, tCH/tCL 2.5 ns; 100 MHz at CL2 for every grade. Commercial TA 0..70 C, matching the -1C FPGA. IDD1 max 110 mA (was 120). AS4C32M16SB-7TIN (industrial) is the timing-identical alternate; the -6TIN only if the controller is clocked above 143 MHz.'),
+    # 2026-10-23, the user's choice after PCBWay's quotation T-3P7W1150632A proposed both as its actual purchase:
+    'EAST1616RGBA8': ('19-337/R6GHBHC-A01/2T', 'Everlight',
+        'RGB LED, three independent diodes, 1.6 x 1.6 x 0.35 mm, water-clear lens, 624 / 525 / 470 nm, '
+        'VF at 20 mA 1.7-2.4 / 2.7-3.8 / 2.7-3.8 V, IF 25 mA max per colour; '
+        'footprint pads: anodes 1 B, 3 R, 5 G, cathodes 2 B, 4 R, 6 G (datasheet Rev.4 numbers the cathodes 1/2/3 '
+        'and the anodes 4/5/6, Rev.6 like the footprint); replaced the diffused EAST1616RGBA8 on 2026-10-23',
+        '19-337/R6GHBHC-A01/2T',
+        ' 2026-10-23: replaced by 19-337/R6GHBHC-A01/2T (= EAST1616RGBA4, the water-clear twin; Everlight '
+        'DSE-0002657 Rev.4), as quoted by PCBWay and approved by the user. Same body, pads and physical pin '
+        'arrangement: cathodes in the cathode-mark column, blue / red / green top to bottom. That sheet numbers the '
+        'cathodes 1/2/3 and the anodes 4/5/6; the footprint keeps the 2/4/6 and 1/3/5 numbering, so no net or '
+        'footprint change. VF at 20 mA 1.7-2.4 / 2.7-3.8 / 2.7-3.8 V (the diffused A8: 2.4 / 3.7 / 3.7 max).'),
+    'XC7A35T-1CPG236C': ('XC7A35T-2CPG236I', 'AMD/Xilinx', '', 'XC7A35T-2CPG236I'),
 }
+# DeviceName parameter updates that go with a substitution (keyed by the old MANF#)
+DEVICE_NAMES = {'XC7A35T-1CPG236C': '-2CPG236I'}
+# Part numbers quoted inside the component's own description (RECORD=1 ComponentDescription), keyed by old MANF#
+DESCRIPTION_TEXT = {'XC7A35T-1CPG236C': ('XC7A35T-1CPG236C', 'XC7A35T-2CPG236I')}
 # SPEC text corrections for parts that already carry the right MANF# (keyed by current MANF#)
 RESPEC = {
+    '19-337/R6GHBHC-A01/2T': SUBS['EAST1616RGBA8'][2],
     'CL10A226MP8NUNE': 'X5R 10V +-20% 0603 22uF, 1.05 mm max (T 0.80 +-0.25); replaced the 6.3 V Murata GRM188R60J226MEA0D (1.00 mm max, dry until 2027) on 2026-09-07',
     'CL05A474KO5NNNC': 'X5R 16V +-10% 0402 0.47uF, 0.55 mm max; replaced GRM155R61C474KA88D (a number no distributor knows) on 2026-09-07',
 }
@@ -89,6 +108,14 @@ def main(prj):
                 recs[prm['NOTE']][1] = set_field(recs[prm['NOTE']][1], 'Text', field(recs[prm['NOTE']][1], 'Text') + note_suffix)
             if comment and 'Comment' in prm: recs[prm['Comment']][1] = set_field(recs[prm['Comment']][1], 'Text', comment)
             if comment and 'DeviceName' in prm and old.startswith('ASEM1'): recs[prm['DeviceName']][1] = set_field(recs[prm['DeviceName']][1], 'Text', 'ECS-3225SMV')
+            if old in DEVICE_NAMES and 'DeviceName' in prm:
+                recs[prm['DeviceName']][1] = set_field(recs[prm['DeviceName']][1], 'Text', DEVICE_NAMES[old])
+            if old in DESCRIPTION_TEXT:
+                assert recs[owner][1].startswith(b'|RECORD=1|'), (path, owner)
+                was, now = DESCRIPTION_TEXT[old]
+                desc = field(recs[owner][1], 'ComponentDescription')
+                if desc and was in desc:
+                    recs[owner][1] = set_field(recs[owner][1], 'ComponentDescription', desc.replace(was, now))
             changed.append(f'{desig.get(owner)} {old} -> {new}')
         if changed:
             out = join(recs)

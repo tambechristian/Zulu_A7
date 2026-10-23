@@ -1,7 +1,7 @@
 # Zulu A7
 
 Zulu A7 is a USB FPGA board built around an AMD/Xilinx Artix-7
-XC7A35T-1CPG236C. An FTDI FT2232HL bridge provides JTAG (channel A) and a
+XC7A35T-2CPG236I. An FTDI FT2232HL bridge provides JTAG (channel A) and a
 UART (channel B) over one micro-USB port. The board carries 64 MB of SDRAM,
 a 128 Mbit quad-SPI configuration flash, a microSD socket, a Pmod host
 header and a 40-pin breadboard header. It runs from USB through a
@@ -62,7 +62,7 @@ aux JTAG header.
 
 | | XuLA2 | Zulu A7 |
 |---|---|---|
-| FPGA | Xilinx Spartan-6 XC6SLX25, FT256 | AMD/Xilinx Artix-7 XC7A35T-1CPG236C |
+| FPGA | Xilinx Spartan-6 XC6SLX25, FT256 | AMD/Xilinx Artix-7 XC7A35T-2CPG236I |
 | USB bridge | Microchip PIC18F14K50 | FTDI FT2232HL with a 93LC46B EEPROM |
 | USB connector | Hirose UX60SC-MB-5ST mini-USB | Molex 105017-0001 micro-USB |
 | SDRAM | W9825G6JH-5, 256 Mbit | Alliance AS4C32M16SB-7TCN, 512 Mbit |
@@ -119,7 +119,7 @@ XuLA2; keep it with any copy of the schematics.
 
 ## Board facts
 
-- **FPGA**: U1 XC7A35T-1CPG236C, CPG236 BGA, 10 x 10 mm, 0.5 mm pitch.
+- **FPGA**: U1 XC7A35T-2CPG236I, CPG236 BGA, 10 x 10 mm, 0.5 mm pitch.
 - **USB**: U2 FTDI FT2232HL (LQFP-64). Channel A is MPSSE JTAG plus
   PROG#/DONE, channel B is the UART. U10 93LC46B configuration EEPROM.
   X1 Molex 105017-0001 micro-USB-B.

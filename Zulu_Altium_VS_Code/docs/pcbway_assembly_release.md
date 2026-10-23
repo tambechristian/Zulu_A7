@@ -90,3 +90,12 @@ in the notes change.
 
 The HDI copy's PCBWay release is recorded in `Zulu_Altium_VS_Code_HDI_Optimized/HDI_OPTIMIZATION_NOTES.md`.
 
+## Later: BOM substitutions (2026-10-23)
+
+U1 is now XC7A35T-2CPG236I and LD0 is 19-337/R6GHBHC-A01/2T, as PCBWay's quotation offered and the user approved.
+The release was regenerated with `--release-date 2026-10-23`.
+- The BOM's U1 and LD0 rows and the notes changed.
+- The CPL did not change.
+- The notes now take U1's and LD0's part numbers from the schematic instead of hard-coding them.
+
+The details are in `docs/bom_substitutions_2026-10-23.md`.

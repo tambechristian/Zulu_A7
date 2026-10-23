@@ -86,7 +86,7 @@ VU = 4.40 V, the bq24232 OUT regulation while USB is present (the charger is an 
 | U3 SDRAM (thJA assumed) | 0.33 | 0.53 | 45 | 15 | 24 |
 | U8 bq24232 (DS 7.4, path + charge) | 0.36 | 0.61 | 44.5 | 16 | 27 |
 
-The FPGA stays well under its 85 C commercial junction limit. The SOT23-5 regulators are the warm parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which at the datasheet's 90 C/W (SOT23-5 on a 10x10 mm 2-layer 1 oz test board) is an 11-22 C rise. Figure 3 of the SC189 sheet rates the SOT23-5 for the full 1.5 A at 3.3 V out up to about 65 C ambient, so no derating applies here. Give the GND pin and the LX/VOUT copper a pour anyway; the 2x2 mm MLPD-UT6 version (SC189xULTRT, 60 C/W) is the fallback if the board must run hot.
+The FPGA stays well under its 100 C industrial junction limit (XC7A35T-2CPG236I since 2026-10-23; the -1C was 85 C). The SOT23-5 regulators are the warm parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which at the datasheet's 90 C/W (SOT23-5 on a 10x10 mm 2-layer 1 oz test board) is an 11-22 C rise. Figure 3 of the SC189 sheet rates the SOT23-5 for the full 1.5 A at 3.3 V out up to about 65 C ambient, so no derating applies here. Give the GND pin and the LX/VOUT copper a pour anyway; the 2x2 mm MLPD-UT6 version (SC189xULTRT, 60 C/W) is the fallback if the board must run hot.
 
 
 ## Findings

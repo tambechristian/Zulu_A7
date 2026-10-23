@@ -9495,7 +9495,7 @@
 				)
 			)
 		)
-		(property "Description" "Xilinx Artix-7 XC7A35T-1CPG236C   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
+		(property "Description" "Xilinx Artix-7 XC7A35T-2CPG236I   Replacement for the Spartan-6 XC6SLX25-FT256. See design notes: SDRAM/microSD/GPIO ball assignments verified against Digilent Cmod A7-35T (same device+package); config/JTAG/power ball assignments are functionally correct placeholders pending verification against the official Xilinx pinout file."
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

@@ -150,6 +150,9 @@ GEOM = [
 # Digi-Key, 2026-09-06 evening (manual lookups; NF = part number not recognised)
 SUPPLY = {
     'XC7A35T-1CPG236C': ('Active', '72', '$57.06', 'XC7A35T-1CPG236I / -2CPG236C / XC7A50T-1CPG236I also listed'),
+    # 2026-10-23 substitutes (PCBWay quotation T-3P7W1150632A, approved by the user); not a Digi-Key lookup
+    'XC7A35T-2CPG236I': ('Active', 'LCSC 56 (C1552335, 2026-09 audit)', '$129.03 (PCBWay quote 2026-10-21)', 'U1 since 2026-10-23: -2 speed, industrial grade of the same die and pinout; authorized channel only'),
+    '19-337/R6GHBHC-A01/2T': ('Active', 'LCSC C264519, not checked', '$0.48 (PCBWay quote 2026-10-21)', 'LD0 since 2026-10-23: the water-clear EAST1616RGBA4, same pads; datasheet Rev.4 numbers the pins differently, follow the cathode mark'),
     'FT2232HQ-REEL': ('Active', '0, 4,000 due 2027-04-19', '$5.30', 'replaced by the FT2232HL-REEL on 2026-09-09; the QFN-64 stays a same-pin alternate'),
     'FT2232HL-REEL': ('Active', '0, 1,000 due 2027-02-19', '$5.30', 'LQFP-64 of the same die, 50-week lead (Digi-Key 2026-09-09); LCSC C27882 4,767 at $11.45, not an FTDI-authorized channel; FT2232HL-TRAY 0, 160 due 2027-01-18, LCSC 21'),    'AS4C32M16SB-6TIN': ('Active', '0', '$31.12', 'replaced by the -7TCN on 2026-09-08; 108 expected 06-Oct-2026 at Digi-Key, 16-week factory lead'),
     'AS4C32M16SB-7TCN': ('Active', '1,478', '$23.85', 'commercial 0..70 C grade of the same B die (Digi-Key 2026-09-08); -7TCNTR 455 cut tape at $23.05; industrial -7TIN 47 tray / -7TINTR 160 cut tape; -6TIN 0 until Oct 2026; LCSC lists only the -7TIN (15 at $63.93)'),
@@ -207,7 +210,7 @@ YAGEO_OK = 'RC0402FR-07100RL RC0201FR-075K1L RC0201FR-074K7L RC0201FR-07100RL RC
 for y in YAGEO_OK: SUPPLY[y] = ('Active', 'stocked', '$0.10', '')
 
 SECOND_SOURCE = [
-    ('U1 XC7A35T-1CPG236C', 'none (sole source)', 'XC7A15T/XC7A50T-1CPG236 are pin-identical (UG475 CPG236 shared footprint); -2 speed or I grade as stop-gaps'),
+    ('U1 XC7A35T-2CPG236I', 'none (sole source)', 'XC7A15T/XC7A50T CPG236 parts are pin-identical (UG475 CPG236 shared footprint); the original XC7A35T-1CPG236C and the other speed and temperature grades are the same die and pinout'),
     ('U2 FT2232HL', 'FT2232HQ-REEL (QFN-64, same pin numbers, 0 stock until April 2027); FT4232HL / FT4232HQ (same pin numbers for every signal the board uses, UART lands on channel C, EEPROM re-templated, PID 0x6011)', 'no other vendor makes a compatible dual-channel bridge; the FT2232H-56Q keeps every signal but renumbers every pin (re-pinned symbol needed)'),
     ('U3 AS4C32M16SB-7TCN', 'Alliance AS4C32M16SB-7TIN (industrial) and -6TIN (166 MHz), timing-identical or faster; ISSI IS42S16320F-7TL / -6TLI, Micron MT48LC32M16A2P', 'JEDEC 54-TSOP II 32M x16 pinout (A12 on 36, NC on 40); Winbond W9825G6KH is 256 Mbit, half the density; the ISSI -6 grades were 0 stock at MOQ 324 on 2026-09-08'),
     ('U4 W25Q128JVSIQ', 'Macronix MX25L12835FM2I-10G, GigaDevice GD25Q128ESIG, ISSI IS25LP128-JBLE', 'SOIC-8 208 mil, same pinout; all in the Vivado configuration-memory list'),
@@ -219,7 +222,7 @@ SECOND_SOURCE = [
     ('X2 Sullins 2x PRPC009SAAN-RC + 2x PRPC011SAAN-RC', 'any 2.54 mm 1x40 breakaway strip cut to 9 + 11 twice (LCSC Boomele C2337, 81,690); Wurth 6130xx11121 series', '0.64 mm square pins in 1.016 mm holes; four strips per board, one each side of the USB landing and one each side of the LiPo landing directly opposite it'),
     ('U8 bq24232', 'bq24230 (same pinout, 6.6 V OVP, TD pin instead of ITERM: fixed 10 % termination); bq24210/bq24232 family members differ', 'RGT VQFN-16 3x3; the ITERM resistor R105 becomes a TD strap on the bq24230'),
     ('X4 B2B-PH-SM4-TB(LF)(SN)', 'S2B-PH-SM4-TB(LF)(SN) (side entry, 5.5 mm, same pads); JST B2B-PH-K-S (through-hole, different pattern)', 'PH 2.0 mm family; any pack with a PHR-2 housing mates'),
-    ('LD0 EAST1616RGBA8', 'Everlight EAST1616RGBA4 (water-clear twin, same pads and numbering); Victory VS NRD8 with the pads renumbered back; Kingbright APTF1616SEEZGKQBKC (pinout to verify)', '1.6 x 1.6 mm six-pad RGB; the Everlight and Victory drawings are identical apart from the pad numbers'),
+    ('LD0 19-337/R6GHBHC-A01/2T', 'Everlight EAST1616RGBA8 (the diffused twin and the original part, same pads); Victory VS NRD8 with the pads renumbered back; Kingbright APTF1616SEEZGKQBKC (pinout to verify)', '1.6 x 1.6 mm six-pad RGB; the Everlight and Victory drawings are identical apart from the pad numbers'),
     ('BTN PTS810SJM250SMTR LFS', 'PTS810SJK / SJG / SJS250SMTR LFS (2.6, 4.0, 6.0 N, same body and pads; K grade stocked at LCSC)', 'PTS810 4.2 x 3.2 mm J-lead; other 4.2 x 3.2 tacts (Panasonic EVQ-P7, Alps SKRT) need their own pattern check'),
     ('R34 742C083472JTR', '742C083472JP, Bourns CAT16-472J4LF, Panasonic EXB-V8V472JV', 'Digi-Key lists all three as direct substitutes'),
     ('R4 742C163101JP', 'Panasonic EXB-2HV101JV (8 x 100 ohm isolated, 3.80 x 1.60 mm, 73,820 in stock, $0.20)', 'same element count and value in a shorter body, but convex terminals on 0.50 mm pitch: its own land pattern, not a drop-in'),
@@ -253,7 +256,7 @@ def main():
         w(f'| {mpn} | {manf} | {fpn} | {val} | {len(ds)} | {", ".join(ds)} |')
     # --- FPGA
     w('\n## 2. Footprint and pin verification\n')
-    w('### 2.1 U1 XC7A35T-1CPG236C against the AMD pinout file\n')
+    w(f"### 2.1 U1 {comps['U1']['params'].get('MANF#')} against the AMD pinout file\n")
     u1 = {k[3:]: v for k, v in padnet.items() if k.startswith('U1-')}
     sym = comps['U1']['pins']
     missing = sorted(set(xl) - set(sym)); extra = sorted(set(sym) - set(xl))
@@ -300,7 +303,7 @@ def main():
     ld0 = {k[4:]: v for k, v in padnet.items() if k.startswith('LD0-')}
     bad = [(p, ld0.get(p), n) for p, n in RGB.items() if ld0.get(p) != n]
     bad += [(p, ld0.get(p)) for p, r in RGB_ANODE.items() if padnet.get(f'{r}-2') != ld0.get(p)]
-    w(f'| LD0 EAST1616RGBA8 | cathodes 2 B, 4 R, 6 G to the FPGA; anodes 1/3/5 through R80/R81/R82 to 3.3 V (19-337 sheet p8 polarity) | {"all match" if not bad else bad} |')
+    w(f'| LD0 {comps["LD0"]["params"].get("MANF#")} | cathodes 2 B, 4 R, 6 G to the FPGA; anodes 1/3/5 through R80/R81/R82 to 3.3 V (19-337 sheet p8 polarity) | {"all match" if not bad else bad} |')
     # Isolated arrays pair pad k with pad 2N+1-k. Each entry is the pad -> net map that pairing
     # implies, written out so the netlist is checked against the intent and not against itself.
     ARRAYS = [
@@ -392,9 +395,9 @@ def main():
         ('U8 bq24232', 'IN 4.35-10.2 V (OVP 10.5 V), IIN 500 mA, IOUT 1.5 A, ICHG 500 mA, Tj regulated at 125 C', 'USB 5.25 V max, 495 mA input limit, 244 mA charge; 0.6 W worst = 27 C rise at 44.5 C/W', 'OK'),
         ('X4 JST PH', '2 A per contact, 100 V', 'charge 244 mA, discharge under 0.5 A', 'OK'),
         ('Q2 2N7002', '60 V, 115 mA (onsemi), VGS +-20 V', '3.3 V, 1.8 mA LED current, 3.3 V gate', 'OK'),
-        ('U1 XC7A35T-1CPG236C', 'VCCINT 0.95-1.05, VCCAUX 1.71-1.89, VCCO 3.135-3.465 V, Tj 0-85 C', 'SC189 +-2.5 % plus +-1 % load: 0.965-1.035, 1.737-1.863, 3.18-3.42 V; Tj rise 10-15 C', 'OK; VCCINT has 15 mV of the 50 mV band left for ripple and drop, keep the 1.0 V path short'),
+        ('U1 XC7A35T-2CPG236I', 'VCCINT 0.95-1.05, VCCAUX 1.71-1.89, VCCO 3.135-3.465 V, Tj -40-100 C', 'SC189 +-2.5 % plus +-1 % load: 0.965-1.035, 1.737-1.863, 3.18-3.42 V; Tj rise 10-15 C', 'OK; VCCINT has 15 mV of the 50 mV band left for ripple and drop, keep the 1.0 V path short'),
         ('U2 FT2232HL', 'VCCIO 3.0-3.6 V, clock 12 MHz +-30 ppm, Tj 125 C', '3.3 V; ECS-3225SMV-120-FP-TR is +-10 ppm incl. aging; LQFP thetaJA 37.66 C/W', 'OK'),
-        ('U3 AS4C32M16SB-7TCN', 'VDD 3.0-3.6 V, 143 MHz at CL3 (100 MHz at CL2), TA 0..70 C', '3.3 V; commercial ambient range, the same 0 C floor as the -1C FPGA (Tj 0..85 C)', 'OK; the controller must use the -7 column (tRCD/tRP 21 ns, tRC 63 ns, tWR 14 ns) and CL3 above 100 MHz'),
+        ('U3 AS4C32M16SB-7TCN', 'VDD 3.0-3.6 V, 143 MHz at CL3 (100 MHz at CL2), TA 0..70 C', '3.3 V; commercial ambient range, now the narrowest on the board (U1 is the industrial -2I since 2026-10-23)', 'OK; the controller must use the -7 column (tRCD/tRP 21 ns, tRC 63 ns, tWR 14 ns) and CL3 above 100 MHz'),
         ('U4 W25Q128JVSIQ', '2.7-3.6 V, 133 MHz', '3.3 V, CCLK a few tens of MHz', 'OK'),
         ('X1 105017-0001', '1 A per contact, 30 V', '0.66 A worst on VBUS', 'OK, 66 % of the contact rating'),
         ('X2 header / J1 Pmod', '0.1 in pins ~1-3 A', 'VU pass-through and 3.3 V outputs', 'OK'),

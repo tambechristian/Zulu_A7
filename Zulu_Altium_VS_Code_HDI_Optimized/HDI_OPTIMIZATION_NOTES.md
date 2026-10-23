@@ -398,7 +398,7 @@ PCBWay assembly release (2026-10-21), for a turnkey order at PCBWay:
   - `Zulu_A7_HDI_Optimized_PCBWay_Assembly_Notes.txt` and the two `..._PCBWay_Assembly_Drawing_*.pdf`.
 - **Command:** run from `Zulu_Altium_VS_Code/`:
   `python tools/generate_jlcpcb_assembly.py --pcb <this PcbDoc> --assembly-dir <this>/assembly
-  --release-prefix Zulu_A7_HDI_Optimized_PCBWay --release-name "Zulu A7 HDI Optimized" --release-date 2026-10-21
+  --release-prefix Zulu_A7_HDI_Optimized_PCBWay --release-name "Zulu A7 HDI Optimized" --release-date 2026-10-23
   --assembler pcbway --fab-archive Zulu_A7_HDI_Optimized_PCBWay_Fabrication_2026-10-07.zip
   --fab-notes Zulu_A7_HDI_Optimized_PCBWay_FAB_NOTES.txt`. Validation passed.
 - **Same as production:** the BOM and CPL are byte-identical to the production board's PCBWay files, because both
@@ -407,9 +407,14 @@ PCBWay assembly release (2026-10-21), for a turnkey order at PCBWay:
   - The notes name this copy's fabrication ZIP and fab notes.
   - The U1 via census is computed from this board: 62 through vias, 30 laser microvias, none in a land.
   - They give this board's 1.65 mm laminate.
-- **Upload ZIP:** `assembly/Zulu_A7_HDI_Optimized_PCBWay_Assembly_2026-10-21.zip` holds the BOM, CPL, notes and
+- **Upload ZIP:** `assembly/Zulu_A7_HDI_Optimized_PCBWay_Assembly_2026-10-23.zip` holds the BOM, CPL, notes and
   both drawings (5 entries, each byte-identical to its source), SHA-256
-  `E01C477C52D66FDE26D7D2EFCDFAFBDE51902DC476123DAF7C236C74899B8B04`.
+  `1E4098F26ABA6C20D5B66D400E421FEC96221EB75D1A709ED7F306ADD0064572`. It replaces the 2026-10-21 ZIP
+  (SHA-256 `E01C477C...899B8B04`, in git history at cc1d7d5).
+- **BOM substitutions (2026-10-23):** U1 is now XC7A35T-2CPG236I and LD0 19-337/R6GHBHC-A01/2T, as PCBWay's
+  quotation T-3P7W1150632A offered and the user approved. The change is in this copy's schematics, not its
+  PcbDoc. The release was regenerated with `--release-date 2026-10-23`; the CPL and drawings are unchanged. See
+  `Zulu_Altium_VS_Code/docs/bom_substitutions_2026-10-23.md`.
 - **Older files kept:** the assembler-neutral files (`Zulu_A7_HDI_Optimized_BOM.csv`, `_CPL.csv`, notes, drawings)
   remain for other assemblers.
 

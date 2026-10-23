@@ -183,7 +183,8 @@ def main():
             ("U8 bq24232", (USB_VBUS - VU) * it / 1000 + (USB_VBUS - VBAT_CHG) * chg_t / 1000, (USB_VBUS - VU) * min(im, CHG_LIMIT) / 1000 + (USB_VBUS - VBAT_CHG) * CHG_ICHG / 1000, BQ_THJA, " (DS 7.4, path + charge)")]
     for name, ptw, pmw, th, note in rows:
         w(f"| {name}{note} | {ptw:.2f} | {pmw:.2f} | {th} | {ptw * th:.0f} | {pmw * th:.0f} |")
-    w("\nThe FPGA stays well under its 85 C commercial junction limit. The SOT23-5 regulators are the warm "
+    w("\nThe FPGA stays well under its 100 C industrial junction limit (XC7A35T-2CPG236I since 2026-10-23; "
+      "the -1C was 85 C). The SOT23-5 regulators are the warm "
       "parts now: the 3.3 V one dissipates about 0.12 W typical and up to 0.25 W at the datasheet maxima, which at "
       "the datasheet's 90 C/W (SOT23-5 on a 10x10 mm 2-layer 1 oz test board) is an 11-22 C rise. Figure 3 of the "
       "SC189 sheet rates the SOT23-5 for the full 1.5 A at 3.3 V out up to about 65 C ambient, so no derating "

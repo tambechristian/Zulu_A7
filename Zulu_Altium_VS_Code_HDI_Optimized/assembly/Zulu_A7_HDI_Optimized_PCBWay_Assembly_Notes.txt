@@ -1,6 +1,6 @@
 ZULU A7 HDI OPTIMIZED - PCBWAY ASSEMBLY NOTES
-Release date: 2026-10-21
-Source commit: 80d91e29d6f7d721a3c56d9e641b8f0b4498a9fd
+Release date: 2026-10-23
+Source commit: cc1d7d58c98bde39649f3dec0a890baec9ed9ae3
 PCB SHA-256: F97D0F4D6FB9439ADDF64BD6DA2620E2BF3D35228E0CC4B053859F38BDB5E64B
 
 UPLOAD SET
@@ -25,9 +25,9 @@ RECOMMENDED FORM SETTINGS (adjust if you decide otherwise)
   Number of BGA/QFP Parts = 2 (U1 BGA, U2 LQFP); Number of Through-Hole
   Parts = 5 (J1 and four X2 strips, 52 joints).
 - Contains sensitive components/parts = Yes. Paste into its box:
-  "XC7A35T-1CPG236C, FT2232HL-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,
+  "XC7A35T-2CPG236I, FT2232HL-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,
   BQ24232RGTR: moisture sensitive, follow the MSL label, bake if floor life
-  is exceeded. XC7A35T-1CPG236C: 0.5 mm BGA, X-ray every board. 105017-0001:
+  is exceeded. XC7A35T-2CPG236I: 0.5 mm BGA, X-ray every board. 105017-0001:
   one reflow cycle maximum."
 - Do you accept alternatives/substitutes made in China = No.
 - Number of X-ray test = the number of boards ordered (one X-ray of U1 per
@@ -45,7 +45,7 @@ Bottom-side fitted designators: 140
 Physical parts per board: 175 (X2 is four strips under one designator)
 BOM purchase lines: 59; DNS lines: 2 (JP3, JP4)
 Assembly is required on both sides: SMT bottom, SMT top, then hand soldering.
-BGA: U1 only, XC7A35T-1CPG236C, 0.5 mm pitch, 238 round lands of
+BGA: U1 only, XC7A35T-2CPG236I, 0.5 mm pitch, 238 round lands of
 0.225 mm. Other 0.5 mm pitch: U2 LQFP-64 (top), U8 VQFN-16 with
 exposed pad (bottom). Smallest package 0201: 76 parts (4 on top).
 Board: 69.85 x 25.40 mm, six-layer two-step sequential HDI,
@@ -136,10 +136,14 @@ SPECIAL COMPONENT INSTRUCTIONS
   marking at each position on the first article.
 - LD1, LD2, LD3, LD4, LD5 (0603): cathode = pad K on the EAST side (X 24.15 mm);
   all face the same way. The drawings mark it with a red bar.
-- LD0 (Everlight EAST1616RGBA8, 1.6 x 1.6 mm): cathodes are pads 2, 4, 6
-  on the WEST side, anodes 1, 3, 5 on the east side, opposite to the
-  0603 LEDs. The drawing's red dot marks pad 1, an anode. The land is
-  symmetric, so a part turned 180 degrees fits but stays dark.
+- LD0 (Everlight 19-337/R6GHBHC-A01/2T, 1.6 x 1.6 mm): cathodes are on the WEST side,
+  the cathode-mark column (board footprint pads 2, 4, 6), anodes on the east
+  side (pads 1, 3, 5), opposite to the 0603 LEDs. The drawing's red dot marks
+  footprint pad 1, an anode. The land is symmetric, so a part turned 180
+  degrees fits but stays dark.
+  Its datasheet's pin numbers depend on the revision: Rev.4 (DSE-0002657)
+  numbers the cathodes 1-3 and the anodes 4-6, Rev.6 numbers them like the
+  footprint. Follow the cathode mark, not the pad numbers.
 - Verify pin 1/A1 against the drawings on U1, U2, U3, U4, U5, U6, U7, U8,
   U10, Q1 and X4.
 - Stencil from the GTP/GBP layers, whose apertures are 1:1 with copper.
@@ -153,7 +157,7 @@ Please buy by the Manufacturer and Mfg Part # columns; every purchase line
 carries an exact manufacturer part number. Nothing is consigned.
 - Make no substitution without our written approval. Report any line with
   no stock, a lifecycle problem or an ambiguous MPN as an engineering query.
-- U1 XC7A35T-1CPG236C: AMD-authorized distributors only (e.g. Digi-Key,
+- U1 XC7A35T-2CPG236I: AMD-authorized distributors only (e.g. Digi-Key,
   Mouser, Avnet); no local, broker or open-market stock. Ask us first if
   none can supply it.
 - U2 FT2232HL-REEL: FTDI-authorized distributors only (FTDI clones exist).
