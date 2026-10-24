@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_feather\Zulu_feather.PrjPcb\zulu_feather.PcbDoc
 Date     : 10/23/2026
-Time     : 7:09:30 PM
+Time     : 7:17:23 PM
 
 Processing Rule : Clearance Constraint (Gap=0.09mm) (All),(All)
 Rule Violations :0
@@ -668,11 +668,7 @@ Processing Rule : Hole To Hole Clearance (Gap=0.24mm) (All),(All)
 Rule Violations :0
 
 Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
-   Violation between Minimum Solder Mask Sliver Constraint: (0.085mm < 0.1mm) Between Pad U2-1(9.275mm,11.15mm) on Top Layer And Pad U2-64(9.95mm,11.825mm) on Top Layer [Top Solder] Mask Sliver [0.085mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.085mm < 0.1mm) Between Pad U2-16(9.275mm,3.65mm) on Top Layer And Pad U2-17(9.95mm,2.975mm) on Top Layer [Top Solder] Mask Sliver [0.085mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.085mm < 0.1mm) Between Pad U2-32(17.45mm,2.975mm) on Top Layer And Pad U2-33(18.125mm,3.65mm) on Top Layer [Top Solder] Mask Sliver [0.085mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.085mm < 0.1mm) Between Pad U2-48(18.125mm,11.15mm) on Top Layer And Pad U2-49(17.45mm,11.825mm) on Top Layer [Top Solder] Mask Sliver [0.085mm]
-Rule Violations :4
+Rule Violations :0
 
 Processing Rule : Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)
 Rule Violations :0
@@ -687,6 +683,6 @@ Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (Al
 Rule Violations :0
 
 
-Violations Detected : 599
+Violations Detected : 595
 Waived Violations : 0
 Time Elapsed        : 00:00:00
