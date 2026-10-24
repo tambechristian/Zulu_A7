@@ -22,6 +22,7 @@ Not routed.** Everything below was checked from the files, not from the GUI.
 | R26-R28 | Pmod series resistors | R26 = 100 k EN pull-up; R27/R28 = 5.1 k CC pull-downs | Re-used, so no new parts. |
 | X2 | 40-pin XuLA2-style DIP | Feather 16 + 12 (footprint FEATHER-28, with the 4 corner holes) | Form factor. |
 | SC189 EN (U5-U7) | tied to VIN (VU) | net EN, pulled to VU by R26, out on Feather EN | Feather meaning: grounding EN turns the board off. |
+| RESET (new) | none | C&K PTS810, the same part and footprint as BTN, from RST# (FPGA PROGRAM_B) to GND, top side at (23.95, 4.55) mm along the 16-pin edge | A hardware reset: on release the FPGA reloads from flash whatever design is running, which a user button driven by HDL cannot do when the FPGA is blank or hung. R1 already pulls RST# up; R4's 100 ohm limits the current if the FT2232H drives the line while the button is held. Added by `tools/add_reset_button.py` and placed by `FeatherPlaceReset.pas`. |
 | JP3/JP4 JTAG | 1x3 through-hole | 1x3 SMD test pads (TP-1X03-SMD) | Size; the bridge does JTAG. |
 
 ## Feather pin map (`tools/feather_map.py`)

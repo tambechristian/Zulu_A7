@@ -82,6 +82,8 @@ GROUPS = [
     # restored 2026-10-23: the FT2232H config EEPROM and its two pull-ups, last so nothing above moves
     # placed at the free bottom spot nearest U2's EEPROM pins 61-63 (top row, around x 12.7, y 12.0)
     (['B_left', 'B_u2', 'B_u1'], ['U10', 'R96', 'R98'], (12.7, 12.0)),
+    # hardware reset button (added 2026-10-23), top side, nearest free spot to the USB end like a Feather's reset
+    (['T_left_low', 'T_band_low', 'T_ft_top', 'T_right'], ['RESET'], (4.0, 4.5)),
 ]
 PARK = ['U$2', 'U$3', 'U$4', 'U$5']     # Creative Commons silk art: kept off the board as on the production copy
 

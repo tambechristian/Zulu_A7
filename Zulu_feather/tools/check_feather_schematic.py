@@ -47,6 +47,8 @@ def expected():
             if ref == 'U3':
                 d = M.SDRAM_BALL[int(d)]
             out.setdefault(moved.get((ref, d), name), set()).add((ref, d))
+    for (ref, d), net in getattr(M, 'ADDED_PINS', {}).items():   # parts the Feather adds
+        out.setdefault(net, set()).add((ref, d))
     # no-connect pins stay single; nets whose labels clear_single_pin_nets.py removed are gone too, once it has run
     cleared = set(M.CLEARED_NETS) if CLEARED else set()
     return {k: v for k, v in out.items() if not k.startswith('unconnected-') and k not in cleared}

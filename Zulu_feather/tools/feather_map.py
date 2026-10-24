@@ -100,3 +100,7 @@ PARAMS = {
     'JP3': {'Comment': 'JTAG TCK/TMS/GND test pads'},
     'JP4': {'Comment': 'JTAG TDI/TDO/3V3 test pads'},
 }
+
+# Parts added on the Feather (not on the production board): (ref, pin) -> net. RESET = hardware reset button,
+# a second PTS810 from RST# (FPGA PROGRAM_B) to GND, 2026-10-23 (tools/add_reset_button.py).
+ADDED_PINS = {('RESET', '1'): 'RST#', ('RESET', '2'): 'RST#', ('RESET', '3'): 'GND', ('RESET', '4'): 'GND'}
