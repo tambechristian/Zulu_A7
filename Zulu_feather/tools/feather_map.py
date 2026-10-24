@@ -75,6 +75,12 @@ REUSED = {
 X1_PINS = {'4': ('CC1', 'USB-CC1'), 'MH1': ('CC2', 'USB-CC2')}
 X1_DROPPED_PINS = ['MS1', 'MS2']
 
+# Nets left with a single pin by the removals: their labels and stubs are deleted and the pin gets a no-ERC
+# mark (tools/clear_single_pin_nets.py). AREF keeps its label (it names a Feather pin) and only gets the mark.
+CLEARED_NETS = ['CHAN9', 'CHAN10', 'CHAN11', 'CHAN12', 'CHAN13', 'CHAN23', 'CHAN24', 'CHAN25', 'CHAN26', 'CHAN27',
+                'CHAN28', 'JA1', 'JA2', 'JA3', 'JA4', 'JA7', 'JA8', 'JA9', 'JA10', 'EE-CLK', 'EE-CS']
+NO_ERC_ONLY = ['AREF']
+
 PARAMS = {
     'U3': {'MANF#': 'AS4C32M16SB-7BIN', 'Comment': 'AS4C32M16SB-7BIN',
            'NOTE': '512Mbit (32M x 16) = 64MB, 54-ball FBGA 8 x 8 mm, 0.8 mm pitch, industrial. Same die as the '

@@ -16,6 +16,7 @@ from sch_netlist import build  # noqa: E402
 
 ROOT = os.path.dirname(HERE)
 REF = os.path.join(ROOT, '..', 'Zulu_kicad', 'reports', 'kicad.net')
+CLEARED = '--before-clear' not in sys.argv     # default: the single-pin net labels have been cleared
 
 
 def expected():
@@ -46,7 +47,9 @@ def expected():
             if ref == 'U3':
                 d = M.SDRAM_BALL[int(d)]
             out.setdefault(moved.get((ref, d), name), set()).add((ref, d))
-    return {k: v for k, v in out.items() if not k.startswith('unconnected-')}   # no-connect pins stay single
+    # no-connect pins stay single; nets whose labels clear_single_pin_nets.py removed are gone too, once it has run
+    cleared = set(M.CLEARED_NETS) if CLEARED else set()
+    return {k: v for k, v in out.items() if not k.startswith('unconnected-') and k not in cleared}
 
 
 def main():
