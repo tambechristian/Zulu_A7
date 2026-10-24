@@ -7,7 +7,7 @@ Every decision comes from feather_map.py:
   sheet 2  X2 becomes the Feather connector: 12 gates deleted, the rest renumbered 1-28, four gate labels
            renamed (AREF, VBATT, EN, USB5V0); J1 and R29-R33 deleted; R26-R28 re-used (EN pull-up, CC Rd).
   sheet 3  U3 pins renumbered TSOP -> FBGA balls; U3/U4 footprints and parameters swapped.
-  sheet 4  U10, R96, R98 deleted; U2/JP3/JP4 footprints and parameters swapped.
+  sheet 4  U2/JP3/JP4/U10 footprints and parameters swapped (U10 kept, in the 2x3 TDFN).
 Wires, labels, ports, junctions and no-ERC marks left dangling by a deleted part are removed with it.
 The script refuses to run on an already converted project; check the result with check_feather_schematic.py.
     python tools/apply_feather_schematic.py      (close the project in Altium first)
@@ -303,19 +303,14 @@ def sheet3():
 
 def sheet4():
     s = Sheet(4)
-    seeds = []
-    for ref in ('U10', 'R96', 'R98'):
-        seeds += s.drop_comp(s.comps(ref)[0])
-    s.log.append('deleted U10, R96, R98')
-    s.cleanup(seeds)
-    for ref in ('U2', 'JP3', 'JP4'):
+    for ref in ('U2', 'JP3', 'JP4', 'U10'):
         s.footprint(ref, M.FOOTPRINT[ref])
         s.params(ref, M.PARAMS[ref])
     s.save()
 
 
 if __name__ == '__main__':
-    sheet2()
-    sheet1()
-    sheet3()
-    sheet4()
+    only = sys.argv[sys.argv.index('--sheet') + 1] if '--sheet' in sys.argv else None
+    for n, fn in (('2', sheet2), ('1', sheet1), ('3', sheet3), ('4', sheet4)):
+        if only in (None, n):
+            fn()

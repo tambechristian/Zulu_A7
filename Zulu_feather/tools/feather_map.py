@@ -55,13 +55,17 @@ FOOTPRINT = {
     'U3': 'FBGA-54-8X8-P0.8',
     'U2': 'QFN-64-9X9-P0.5-EP4.35',
     'U4': 'WSON-8-6X5-P1.27',
+    'U10': 'TDFN-8-2X3-P0.5',
     'X1': 'USB-C-HRO-TYPE-C-31-M-12',
     'X2': 'FEATHER-28',
     'JP3': 'TP-1X03-SMD',
     'JP4': 'TP-1X03-SMD',
 }
 
-REMOVED = ['J1', 'R29', 'R30', 'R31', 'R32', 'R33', 'U10', 'R96', 'R98']
+# U10 (FT2232H config EEPROM) and its pull-ups R96/R98 were removed on 2026-10-23 and RESTORED the same day in the
+# 2x3 mm TDFN: without it Vivado cannot use the bridge (program_ftdi needs an EEPROM), there is no USB serial
+# number, and the chip declares only the default bus power.
+REMOVED = ['J1', 'R29', 'R30', 'R31', 'R32', 'R33']
 
 # Pmod series resistors kept and re-used: ref -> (pin1 net, pin2 net, value, MANF#)
 REUSED = {
@@ -78,7 +82,7 @@ X1_DROPPED_PINS = ['MS1', 'MS2']
 # Nets left with a single pin by the removals: their labels and stubs are deleted and the pin gets a no-ERC
 # mark (tools/clear_single_pin_nets.py). AREF keeps its label (it names a Feather pin) and only gets the mark.
 CLEARED_NETS = ['CHAN9', 'CHAN10', 'CHAN11', 'CHAN12', 'CHAN13', 'CHAN23', 'CHAN24', 'CHAN25', 'CHAN26', 'CHAN27',
-                'CHAN28', 'JA1', 'JA2', 'JA3', 'JA4', 'JA7', 'JA8', 'JA9', 'JA10', 'EE-CLK', 'EE-CS']
+                'CHAN28', 'JA1', 'JA2', 'JA3', 'JA4', 'JA7', 'JA8', 'JA9', 'JA10']
 NO_ERC_ONLY = ['AREF']
 
 PARAMS = {
@@ -89,6 +93,7 @@ PARAMS = {
            'SPEC': 'USB 2.0 Hi-Speed dual-channel UART/FIFO/MPSSE bridge, QFN-64 9 x 9 mm, 0.5 mm pitch, '
                    '4.35 mm exposed pad (not internally grounded; left without a net). Same pin numbers as FT2232HL.'},
     'U4': {'MANF#': 'W25Q128JVPIQ', 'Comment': 'W25Q128JVPIQ'},
+    'U10': {'MANF#': '93LC46BT-I/MNY', 'Comment': '93LC46BT-I/MNY', 'DeviceName': '-I/MNY'},
     'X1': {'MANF': 'HRO (Korean Hroparts)', 'MANF#': 'TYPE-C-31-M-12',
            'Comment': 'USB-C receptacle, USB 2.0 (LCSC C165948)'},
     'X2': {'Comment': 'Feather headers: 1x16 + 1x12, 0.1 in'},

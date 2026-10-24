@@ -17,6 +17,7 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DUMP = json.load(open(os.path.join(HERE, 'board_dump.json')))
+DUMP.pop('_board', None)            # board-edge box, not a part
 W, H = 50.8, 22.86
 GRID = 0.1
 
@@ -32,7 +33,9 @@ FIXED = {
     'U4': ('top', 0, 44.3, 15.6, 6.0, 5.0),             # SPI flash WSON-8
     'BTN': ('top', 0, 43.6, 5.2, 4.2, 3.2),
     'LD0': ('top', 0, 44.5, 9.0, 1.6, 1.6),
-    'X3': ('bottom', 90, 43.9, 11.43, None, None),      # microSD at the far end, card entry to check
+    'X3': ('bottom', 90, 43.8, 11.43, None, None),      # microSD at the far end, card slot at the right edge
+    # (43.8 here = 43.85 pad-centre box, as placed and verified; the dump now holds X3 flipped, which moves its
+    #  pad-extent offset by 0.1 mm compared with the first plan made from the unflipped part)
     # bottom buck cells: input cap | SC189 | inductor, one row per rail (3V3, 1V8, 1V0)
     'C147': ('bottom', 90, 9.6, 18.6, None, None), 'U5': ('bottom', 0, 11.8, 18.6, None, None),
     'L1': ('bottom', 90, 14.6, 18.6, None, None),
@@ -76,6 +79,9 @@ GROUPS = [
     (['B_u3', 'B_u1', 'B_right'], ['C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C11', 'C12', 'C13']),
     (['B_u2', 'B_u1', 'B_u3', 'B_left', 'B_right'], ['C85', 'C86', 'C140', 'C141', 'C142', 'C143', 'C93', 'C144',
                                                      'C80', 'C97', 'C98', 'C145', 'C146']),
+    # restored 2026-10-23: the FT2232H config EEPROM and its two pull-ups, last so nothing above moves
+    # placed at the free bottom spot nearest U2's EEPROM pins 61-63 (top row, around x 12.7, y 12.0)
+    (['B_left', 'B_u2', 'B_u1'], ['U10', 'R96', 'R98'], (12.7, 12.0)),
 ]
 PARK = ['U$2', 'U$3', 'U$4', 'U$5']     # Creative Commons silk art: kept off the board as on the production copy
 
@@ -153,11 +159,33 @@ def main():
             side_rects[side].append(rect)
     # the USB-C rear SMD pads and the microSD body are real extents, not just their centres
     unplaced = []
-    for zones, refs in GROUPS:
+    for group in GROUPS:
+        zones, refs = group[0], group[1]
+        target = group[2] if len(group) > 2 else None
         for ref in refs:
             done = False
             m = margin(ref)
-            for zn in zones:
+            if target:                      # free spot nearest the target point, any listed zone, either rotation
+                best = None
+                for zn in zones:
+                    side, x0, y0, x1, y1 = Z[zn]
+                    for rot in (0, 90):
+                        w, h = size(ref, rot)
+                        y = y0 + h / 2 + m
+                        while y + h / 2 + m <= y1 + 1e-9:
+                            x = x0 + w / 2 + m
+                            while x + w / 2 + m <= x1 + 1e-9:
+                                r = (x - w / 2 - m, y - h / 2 - m, x + w / 2 + m, y + h / 2 + m)
+                                d = (x - target[0]) ** 2 + (y - target[1]) ** 2
+                                if (best is None or d < best[0]) and not any(overlap(r, o) for o in obs)                                         and not any(overlap(r, o) for o in side_rects[side]):
+                                    best = (d, side, rot, round(x, 2), round(y, 2), r)
+                                x += GRID
+                            y += GRID
+                if best:
+                    placed[ref] = best[1:]
+                    side_rects[best[1]].append(best[5])
+                    done = True
+            for zn in ([] if target else zones):
                 side, x0, y0, x1, y1 = Z[zn]
                 for rot in (0, 90):
                     w, h = size(ref, rot)
