@@ -70,8 +70,9 @@ FIXED = {
     'C80': ('bottom', 90, 17.0, 18.6, None, None), 'C97': ('bottom', 90, 18.75, 18.6, None, None),
     'C93': ('bottom', 90, 17.0, 14.6, None, None), 'C144': ('bottom', 90, 18.75, 14.6, None, None),
     'C85': ('bottom', 90, 17.0, 10.6, None, None), 'C86': ('bottom', 90, 18.75, 10.6, None, None),
-    # U10 EEPROM on top, right above U2's EECS/EECLK/EEDATA pins 61-63
-    'U10': ('top', 90, 11.0, 13.5, None, None),
+    # U10 EEPROM on top, right above U2's EECS/EECLK/EEDATA pins 61-63; y 13.75 keeps its outline 0.25 mm of silk
+    # clearance off U2's top pad row (at 13.5 it ran 0.075 mm from U2-59..64's mask; 14.0 crowds X4's pads)
+    'U10': ('top', 90, 11.0, 13.75, None, None),
     # bottom buck cells: input cap | SC189 | inductor, one row per rail (3V3, 1V8, 1V0)
     'C147': ('bottom', 90, 9.6, 18.6, None, None), 'U5': ('bottom', 0, 11.8, 18.6, None, None),
     'L1': ('bottom', 90, 14.6, 18.6, None, None),
@@ -117,7 +118,7 @@ GROUPS = [
                                                      'C80', 'C97', 'C98', 'C145', 'C146']),
     # restored 2026-10-23: the FT2232H config EEPROM and its two pull-ups, last so nothing above moves
     # placed at the free bottom spot nearest U2's EEPROM pins 61-63 (top row, around x 12.7, y 12.0)
-    (['T_ft_top', 'B_u2', 'B_left'], ['R96', 'R98'], (11.0, 13.5)),     # EEPROM pull-ups by U10
+    (['T_ft_top', 'B_u2', 'B_left'], ['R96', 'R98'], (11.0, 13.75)),     # EEPROM pull-ups by U10
     # hardware reset button (added 2026-10-23), top side, nearest free spot to the USB end like a Feather's reset
     (['T_left_low', 'T_band_low', 'T_ft_top', 'T_right'], ['RESET'], (4.0, 4.5)),
 ]
