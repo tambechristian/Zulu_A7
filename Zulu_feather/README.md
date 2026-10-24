@@ -32,22 +32,23 @@ Not routed.** Everything below was checked from the files, not from the GUI.
 | 1 | RST | RST# (PROGRAM_B: reloads the FPGA) | | 17 | VBAT | VBATT |
 | 2 | 3V3 | VCC3V3 | | 18 | EN | EN (SC189 enables) |
 | 3 | AREF | AREF (open) | | 19 | VUSB | USB5V0 |
-| 4 | GND | GND | | 20 | D13 | CHAN14 U1-W17 |
-| 5 | A0 | ANALOG-IO0 -> XADC AD15 divider | | 21 | D12 | CHAN15 U1-V17 |
-| 6 | A1 | ANALOG-IO1 -> XADC AD16 divider | | 22 | D11 | CHAN16 U1-W16 |
-| 7 | A2 | CHAN0 U1-B18 | | 23 | D10 | CHAN17 U1-U16 |
-| 8 | A3 | CHAN1 U1-A18 | | 24 | D9 | CHAN18 U1-V16 |
-| 9 | A4 | CHAN2 U1-B17 | | 25 | D6 | CHAN19 U1-W15 |
-| 10 | A5 | CHAN3 U1-A17 | | 26 | D5 | CHAN20 U1-V15 |
-| 11 | SCK | CHAN4 U1-C16 | | 27 | SCL | CHAN21 U1-U15 |
-| 12 | MOSI | CHAN5 U1-D17 | | 28 | SDA | CHAN22 U1-W14 |
-| 13 | MISO | CHAN6 U1-H17 | | | | |
-| 14 | RX | CHAN7 U1-G17 | | | | |
-| 15 | TX | CHAN8 U1-J18 | | | | |
+| 4 | GND | GND | | 20 | D13 | CHAN14 U1-C16 |
+| 5 | A0 | ANALOG-IO0 -> XADC AD15 divider | | 21 | D12 | CHAN15 U1-A17 |
+| 6 | A1 | ANALOG-IO1 -> XADC AD16 divider | | 22 | D11 | CHAN16 U1-B17 |
+| 7 | A2 | CHAN0 U1-W13 | | 23 | D10 | CHAN17 U1-A18 |
+| 8 | A3 | CHAN1 U1-W14 | | 24 | D9 | CHAN18 U1-B18 |
+| 9 | A4 | CHAN2 U1-W15 | | 25 | D6 | CHAN19 U1-C17 |
+| 10 | A5 | CHAN3 U1-W16 | | 26 | D5 | CHAN20 U1-D17 |
+| 11 | SCK | CHAN4 U1-W17 | | 27 | SCL | CHAN21 U1-E19 |
+| 12 | MOSI | CHAN5 U1-W18 | | 28 | SDA | CHAN22 U1-H19 |
+| 13 | MISO | CHAN6 U1-W19 | | | | |
+| 14 | RX | CHAN7 U1-V19 | | | | |
+| 15 | TX | CHAN8 U1-U19 | | | | |
 | 16 | D4 | CHAN-CLK U1-P18 (clock-capable) | | | | |
 
 19 FPGA I/O plus 2 analog inputs (A0/A1 only; the board has two XADC dividers, not four). A2-A5 are digital.
-Ball assignments can be swapped later in the XDC.
+Balls as swapped in the pre-routing pass (`tools/pin_swap.json`); Vivado constraints in `vivado/zulu_feather_pins.xdc`,
+where the header ports are named F_<Feather pin> (F_A2 ... F_SDA, F_D4).
 
 ## How it was done, and what checks it
 
@@ -71,11 +72,25 @@ Ball assignments can be swapped later in the XDC.
 - **Bottom:** the three bucks as tight cells (input cap | SC189 | inductor) behind the USB, with the charger and its resistors under the USB. FT2232 passives and the R4 array sit under the bridge, the FPGA decoupling under the FPGA, and the SDRAM decoupling under the SDRAM. The microSD is at the right end, card slot opening at the right edge (contacts at x = 38.45 mm, inboard).
 - The four Creative Commons logos are parked off the board, as on the production copy.
 
+## Pre-routing pass (2026-10-23)
+
+| Step | Tool | Result |
+|---|---|---|
+| Feather header balls | `tools/plan_pin_swap.py` -> `tools/pin_swap.json`; `tools/apply_pin_swap.py` renames U1's symbol pins (ball + pin name) in every U1 part | Minimum-total-distance assignment over the 37 header + freed balls on banks 14/16 (both 3.3 V); D4 keeps P18 (clock-capable). Straight-line ball-to-pad length 291.1 -> 168.8 mm: the south-strip pins take U1's W/V/U balls, the north strip its A-E balls. `check_feather_schematic.py` reads the permutation, **PASS**; Import Changes moved the 18 nets on U1's pads (the 11 class/diff-pair removals unticked); `sch_vs_board.py` **MATCH**. |
+| XDC | `tools/make_xdc.py` -> `vivado/zulu_feather_pins.xdc` | 82 pins, each ball checked against the schematic netlist; 19 ports of balls the Feather no longer connects dropped; `create_clock` moved to F_D4. |
+| Buck loops | `plan_placement.py` FIXED | Two output 0805s beside each inductor (C80/C97 3V3, C93/C144 1V8, C85/C86 1V0), 1.75 mm apart for a 0.1 mm mask web. |
+| FPGA decoupling | `plan_placement.py` FIXED | The production board's 24 under-BGA caps (C89-C92, C95/C96, C107-C124) at the same offsets from U1's centre, same sides and rotations (U1 is rot 0 on both boards). |
+| SDRAM decoupling | `plan_placement.py` FIXED | C3-C8 in U3's empty centre ball columns at 1.15 mm pitch, C9/C11 at its ends. |
+| U10 | `plan_placement.py` FIXED | Top, above U2's EECS/EECLK/EEDATA pins 61-63, with R96/R98 grouped beside it. |
+| Placement on the board | `FeatherPlace3.pas` (generated as `FeatherPlace.pas`, renamed because Altium caches compiled scripts) | `verify_placement.py` **PASS** on the re-dumped board, `check_placement.py` **PASS**: 0 clashes. |
+| Rules | `FeatherRules.pas` / `FeatherRules2.pas` (`FixFeatherRules`) | The 6-layer HDI stack, via types and production rules are unchanged. Fixed: `Clearance_Plane_ThruVia` scoped the production pour names and matched nothing (now L2_GND_FEATHER / L5_VCC3V3_FEATHER); new `HoleSize_X2` 0.20-2.60 mm for the 2.5 mm Feather corner holes; `HoleSize_X1` max 1.30 -> 1.80 mm for the 1.7 mm USB-C shell slots. |
+| DRC | Altium DRC, `docs/drc_prerouting.drc` | 664: 595 un-routed (nothing is routed yet), 65 silk-to-mask (designators over pads, a silkscreen pass after routing), 4 mask slivers of 0.085 mm between U2's QFN corner pins (in the footprint, as on production). No clearance, short, hole, width or component violations. |
+
 ## Open items
 
 1. **Routing**: not started. The production board needed 6-layer HDI on a 35 % larger area, so expect the same stack at minimum.
 2. **Compile errors: done (2cf527c).** The 22 single-pin nets are cleared by `tools/clear_single_pin_nets.py`: labels deleted plus no-ERC marks, and AREF keeps its label. Altium now reports "Compile successful, no errors found". 30 warnings remain, of the existing no-driving-source / unused sub-part kinds.
 3. **Schematic cosmetics**: X2's gate names still read GND/+1.8V/+1.0V inside the symbol, and the sheet notes describe the XuLA2 40-pin header. U3's symbol text still says TSOP-II.
-4. **Placement review**: buck hot loops and output caps, decoupling next to the right BGA balls, USB pair length, and silkscreen.
-5. **Not added yet**: USB ESD protection (none on the production board either) and an XDC for the new pin map.
+4. **Silkscreen**: designators were left where the parts' auto-position put them (65 silk-to-mask DRC hits, U10's is oversized); tidy after routing.
+5. **Not added yet**: USB ESD protection (none on the production board either). Four swapped header balls are configuration dual-purpose pins, harmless after DONE but active during configuration: W18 CSI_B (MOSI), U19 RDWR_B (TX), V19 DOUT/CSO_B (RX, can drive during configuration) and E19 EMCCLK (SCL). U1's symbol bank grouping is now mixed (banks 14 and 16 are both 3.3 V; cosmetic).
 6. **Availability to check before ordering**: AS4C32M16SB-7BIN (FBGA) and FT2232HQ. The HQ was dry when last checked; the fallback is an FT232H, which keeps JTAG but loses the second channel used for the UART.

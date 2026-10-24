@@ -36,6 +36,42 @@ FIXED = {
     'X3': ('bottom', 90, 43.8, 11.43, None, None),      # microSD at the far end, card slot at the right edge
     # (43.8 here = 43.85 pad-centre box, as placed and verified; the dump now holds X3 flipped, which moves its
     #  pad-extent offset by 0.1 mm compared with the first plan made from the unflipped part)
+    # FPGA decoupling: production layout under U1 (bottom), same offsets from U1's centre (U1 rot 0 on both)
+    'C89': ('bottom', 0, 24.89, 10.58, None, None),
+    'C90': ('bottom', 0, 22.67, 10.58, None, None),
+    'C91': ('bottom', 0, 27.11, 10.58, None, None),
+    'C92': ('bottom', 0, 23.90, 13.98, None, None),
+    'C95': ('bottom', 0, 27.11, 13.98, None, None),
+    'C96': ('bottom', 0, 22.67, 13.98, None, None),
+    'C107': ('bottom', 0, 24.89, 7.18, None, None),
+    'C108': ('bottom', 0, 20.45, 10.58, None, None),
+    'C109': ('bottom', 0, 22.67, 7.18, None, None),
+    'C110': ('bottom', 0, 27.11, 7.18, None, None),
+    'C111': ('bottom', 0, 29.33, 10.58, None, None),
+    'C112': ('bottom', 0, 20.45, 13.98, None, None),
+    'C113': ('bottom', 0, 20.45, 7.18, None, None),
+    'C114': ('bottom', 0, 29.33, 13.98, None, None),
+    'C115': ('bottom', 0, 29.33, 7.18, None, None),
+    'C116': ('bottom', 0, 24.89, 17.38, None, None),
+    'C117': ('bottom', 0, 22.67, 17.38, None, None),
+    'C118': ('bottom', 0, 27.11, 17.38, None, None),
+    'C119': ('bottom', 0, 31.55, 10.58, None, None),
+    'C120': ('bottom', 0, 20.45, 17.38, None, None),
+    'C121': ('bottom', 0, 31.55, 13.98, None, None),
+    'C122': ('bottom', 0, 31.55, 7.18, None, None),
+    'C123': ('bottom', 0, 25.15, 13.98, None, None),
+    'C124': ('bottom', 0, 26.60, 3.78, None, None),
+    # SDRAM decoupling: six 0402s at 1.15 mm pitch (0.1 mm mask web) in U3's empty centre channel (ball columns 4-6), two at its edges
+    'C3': ('bottom', 0, 35.0, 8.555, None, None), 'C4': ('bottom', 0, 35.0, 9.705, None, None),
+    'C5': ('bottom', 0, 35.0, 10.855, None, None), 'C6': ('bottom', 0, 35.0, 12.005, None, None),
+    'C7': ('bottom', 0, 35.0, 13.155, None, None), 'C8': ('bottom', 0, 35.0, 14.305, None, None),
+    'C9': ('bottom', 0, 35.0, 7.0, None, None), 'C11': ('bottom', 0, 35.0, 15.85, None, None),
+    # buck outputs: two 0805s right of each inductor, 1.75 mm apart (0.1 mm mask web) (L1 3V3 row y 18.6, L2 1V8 14.6, L3 1V0 10.6)
+    'C80': ('bottom', 90, 17.0, 18.6, None, None), 'C97': ('bottom', 90, 18.75, 18.6, None, None),
+    'C93': ('bottom', 90, 17.0, 14.6, None, None), 'C144': ('bottom', 90, 18.75, 14.6, None, None),
+    'C85': ('bottom', 90, 17.0, 10.6, None, None), 'C86': ('bottom', 90, 18.75, 10.6, None, None),
+    # U10 EEPROM on top, right above U2's EECS/EECLK/EEDATA pins 61-63
+    'U10': ('top', 90, 11.0, 13.5, None, None),
     # bottom buck cells: input cap | SC189 | inductor, one row per rail (3V3, 1V8, 1V0)
     'C147': ('bottom', 90, 9.6, 18.6, None, None), 'U5': ('bottom', 0, 11.8, 18.6, None, None),
     'L1': ('bottom', 90, 14.6, 18.6, None, None),
@@ -81,7 +117,7 @@ GROUPS = [
                                                      'C80', 'C97', 'C98', 'C145', 'C146']),
     # restored 2026-10-23: the FT2232H config EEPROM and its two pull-ups, last so nothing above moves
     # placed at the free bottom spot nearest U2's EEPROM pins 61-63 (top row, around x 12.7, y 12.0)
-    (['B_left', 'B_u2', 'B_u1'], ['U10', 'R96', 'R98'], (12.7, 12.0)),
+    (['T_ft_top', 'B_u2', 'B_left'], ['R96', 'R98'], (11.0, 13.5)),     # EEPROM pull-ups by U10
     # hardware reset button (added 2026-10-23), top side, nearest free spot to the USB end like a Feather's reset
     (['T_left_low', 'T_band_low', 'T_ft_top', 'T_right'], ['RESET'], (4.0, 4.5)),
 ]
@@ -165,6 +201,8 @@ def main():
         zones, refs = group[0], group[1]
         target = group[2] if len(group) > 2 else None
         for ref in refs:
+            if ref in FIXED:                # a FIXED spot wins over any group
+                continue
             done = False
             m = margin(ref)
             if target:                      # free spot nearest the target point, any listed zone, either rotation

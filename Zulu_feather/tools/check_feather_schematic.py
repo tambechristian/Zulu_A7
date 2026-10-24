@@ -5,6 +5,7 @@ Expected = the original Zulu A7 netlist (the KiCad-proven reports/kicad.net, whi
 Actual = sch_netlist.py run on Zulu_feather.PrjPcb. They must match net for net, names included.
     python tools/check_feather_schematic.py
 """
+import json
 import os
 import sys
 
@@ -17,6 +18,8 @@ from sch_netlist import build  # noqa: E402
 ROOT = os.path.dirname(HERE)
 REF = os.path.join(ROOT, '..', 'Zulu_kicad', 'reports', 'kicad.net')
 CLEARED = '--before-clear' not in sys.argv     # default: the single-pin net labels have been cleared
+_SWAP = os.path.join(HERE, 'pin_swap.json')
+PERM = json.load(open(_SWAP))['perm'] if os.path.exists(_SWAP) and '--before-swap' not in sys.argv else {}
 
 
 def expected():
@@ -46,6 +49,8 @@ def expected():
                 d = str(M.X2_OLD_TO_NEW[int(d)])
             if ref == 'U3':
                 d = M.SDRAM_BALL[int(d)]
+            if ref == 'U1' and d in PERM:                  # Feather pin swap (tools/pin_swap.json)
+                d = PERM[d]
             out.setdefault(moved.get((ref, d), name), set()).add((ref, d))
     for (ref, d), net in getattr(M, 'ADDED_PINS', {}).items():   # parts the Feather adds
         out.setdefault(net, set()).add((ref, d))
