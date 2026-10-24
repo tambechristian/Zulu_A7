@@ -63,3 +63,35 @@ Bottom minimum. No width, short, hole or mask violations.
 
 The 190 open connections are spread over about 120 nets: GND 22 and VCC3V3 19 (plane ties), most of the SDRAM
 bus with one connection each, JTAG, flash, microSD, FT2232 control, clocks, header CHAN nets, USB pair, LEDs, XADC.
+
+## Stage 3 -- targeted HDI router (2026-10-24)
+
+Freerouting stopped at 190 open connections and used no microvias, so stage 3 is a router of our own.
+
+| Tool | What it does |
+|---|---|
+| `tools/route_model.py` (KiCad python) | The saved board as the router sees it, written to `tools/route/model.json`: pads (true extents, BGA lands round), tracks, vias with spans, planes |
+| `tools/route_conn.py` | Connectivity the way Altium judges it: copper overlap on a shared layer, a via joins its span, the L2/L5 pours join GND/VCC3V3 vias. **Reproduces Altium's 190 exactly.** |
+| `tools/router.py` | A* on a 0.025 mm grid over Top/L3/L4/Bottom. Clearance comes from distance transforms with a 1.5 mm halo; every shape is painted 0.7 cell fatter, plus a 0.02 mm allowance. Uses the board's per-layer width table and its via types: Top-L3 and Bottom-L4 microvia stacks, buried L3-L4, through. Plane ties are microvias Top-L2 (GND) and L5-Bottom (VCC3V3), or through vias. String-pulling straightens paths. Hole-to-hole 0.24 mm applies within a net too (Altium only exempts a stack at exactly one point). Optional rip-up and reroute (`--rip`; it gained 3 connections in 3 hours, so stage 3 used `--rip 0`). |
+| `tools/route_check.py` | Independent exact check of a plan against all copper: clearance per net/layer, widths, edge 0.3 mm, hole-to-hole, then a connectivity recount |
+| `tools/emit_copper.py` | Now also deletes a plan's `remove` tracks first (all of them or nothing) |
+
+Bugs found on the way, each caught by `route_check.py` or Altium before placement stuck:
+- The distance field ignored copper outside the search window.
+- Raster edges under-drew copper by up to one cell.
+- The path trace put each via on the node before the layer change, so tracks landed on the wrong layer.
+- Two vias of one net were placed within hole spacing.
+- The same via was committed twice where two routes met (3 duplicates removed with `FeatherDedupeVias.pas`).
+
+Result on the board (`tools/route/stage3b.json`, `FeatherCopper_Stage3b.pas`):
+- The 6 failing VCC3V3 stubs were removed (`tools/route/remove_stage3.json`).
+- 398 vias and 1,464 tracks added; 280 microvias marked, 365 in all.
+- `verify_copper.py` stages 1+2+3: **PASS**, 725/725 vias, 3,725/3,725 tracks.
+- Altium DRC (`docs/drc_stage3.drc`): **169 = 64 un-routed + 105 net antennae**, nothing else.
+- All 43 plane ties closed but one (VCC3V3 at 18.12, 8.15).
+
+**Open: 64 connections.** Most are the SDRAM bus between U1 and U3 (the A, D and control nets). The rest are
+JTAG/config (FPGA-T*, CFG-M*, CCLK, INIT#, DONE), microSD, FT2232 UART/power-enable, XADC (AIN15/16, ANALOG-IO*),
+a few header CHAN nets, RST#, VBATT and VCC1V0. The SDRAM bus needs a planned lane assignment on L3/L4, as
+production did (`sdram_route_plan.py`), not more search. The 105 antennae are dead-end stubs from stages 1-2;
+the ones still unused at the end get trimmed.

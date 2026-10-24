@@ -1,0 +1,59 @@
+{
+"reason": "stage 2 VCC3V3 Bottom stubs in clearance violation once widened to 0.2 mm (docs/drc_stage2_fr.drc)",
+"tracks": [
+{
+"net": "VCC3V3",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 14.6873,
+"y1": 4.2277,
+"x2": 14.5524,
+"y2": 4.2277
+},
+{
+"net": "VCC3V3",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 14.01,
+"y1": 4.2363,
+"x2": 14.01,
+"y2": 4.3051
+},
+{
+"net": "VCC3V3",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 14.0186,
+"y1": 4.2277,
+"x2": 14.01,
+"y2": 4.2363
+},
+{
+"net": "VCC3V3",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 14.5524,
+"y1": 4.2277,
+"x2": 14.0186,
+"y2": 4.2277
+},
+{
+"net": "VCC3V3",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 20.5142,
+"y1": 17.0398,
+"x2": 20.174,
+"y2": 17.38
+},
+{
+"net": "VCC3V3",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 21.2134,
+"y1": 17.0398,
+"x2": 20.5142,
+"y2": 17.0398
+}
+]
+}

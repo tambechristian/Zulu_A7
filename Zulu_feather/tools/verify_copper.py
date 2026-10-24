@@ -3,7 +3,8 @@
     "C:/Program Files/KiCad/10.0/bin/python.exe" tools/verify_copper.py tools/route/stage1_u1.json [more plans]
 
 Every plan via (net, x, y, span, size, hole) and track (net, layer, width, ends either way round) must be on the
-board within 0.002 mm, and the board must carry no via or track that is in no plan. Coordinates board-relative,
+board within 0.002 mm, and the board must carry no via or track that is in no plan. A plan's 'remove' tracks are taken out of the tracks
+expected from the plans before it. Coordinates board-relative,
 from the board-edge box centre (the board is 50.8 x 22.86 mm).
 """
 import json
@@ -39,6 +40,14 @@ def main():
     pv, pt = [], []
     for path in sys.argv[1:]:
         P = json.load(open(path))
+        for r in P.get('remove', []):          # a later plan's removals take tracks out of the expected set
+            key = (r['net'], r['layer'], round(r['w'], 3),
+                   tuple(sorted([(round(r['x1'], 3), round(r['y1'], 3)), (round(r['x2'], 3), round(r['y2'], 3))])))
+            hit = [i for i, q in enumerate(pt) if q[:3] == key[:3] and all(
+                abs(a - b) <= 0.003 for P_, Q_ in zip(q[3], key[3]) for a, b in zip(P_, Q_))]
+            if len(hit) != 1:
+                sys.exit('%s: removal %s matches %d expected tracks' % (path, key, len(hit)))
+            del pt[hit[0]]
         pv += [(v['net'], round(v['x'], 3), round(v['y'], 3), v['from'], v['to'], round(v['size'], 3), round(v['hole'], 3))
                for v in P['vias']]
         pt += [(t['net'], t['layer'], round(t['w'], 3),

@@ -3,7 +3,8 @@
     python tools/emit_copper.py tools/route/stage1_u1.json Stage1U1     writes tools/FeatherCopper_Stage1U1.pas/.PrjScr
 
 The procedure Place<Name> refuses to run unless zulu_feather.PcbDoc is focused and the board holds no copper of
-this plan yet (it counts vias at the plan's first via position). Coordinates are board-relative mm, added to the
+this plan yet (it counts vias at the plan's first via position). A plan's 'remove' tracks are deleted first,
+and only if every one of them is found. Coordinates are board-relative mm, added to the
 board origin. Layer mapping as on production (tools/stage13 in Zulu_Altium_VS_Code): Top eTopLayer, L2-GND
 eMidLayer3, L3-SIG eMidLayer1, L4-SIG eMidLayer2, L5-VCC3V3 eMidLayer4, Bottom eBottomLayer; a via's LowLayer is
 its upper layer. Vias join their net with N.AddPCBObject as well (production practice); tracks take T.Net.
@@ -65,6 +66,29 @@ def main():
         "            ShowMessage('Refusing: this plan''s first via is already on the board.');", '            Exit;',
         '        End;', '        O := It.NextPCBObject;', '    End;', '    Brd.BoardIterator_Destroy(It);',
         "    Missing := '';"]
+    rm = P.get('remove', [])
+    if rm:
+        # the plan's 'remove' tracks go first: all of them must be found (net, layer, width, ends either way round
+        # within 0.002 mm), or nothing at all is changed
+        L += ['    Kill := TInterfaceList.Create;', '    It := Brd.BoardIterator_Create;',
+              '    It.AddFilter_ObjectSet(MkSet(eTrackObject));', '    It.AddFilter_LayerSet(AllLayers);',
+              '    It.AddFilter_Method(eProcessAll);', '    K := It.FirstPCBObject;', '    While K <> Nil Do', '    Begin',
+              "        nm := ''; If K.Net <> Nil Then nm := K.Net.Name;",
+              '        x := CoordToMMs(K.X1 - Brd.XOrigin); y := CoordToMMs(K.Y1 - Brd.YOrigin);',
+              '        x2 := CoordToMMs(K.X2 - Brd.XOrigin); y2 := CoordToMMs(K.Y2 - Brd.YOrigin);',
+              '        tw := CoordToMMs(K.Width);']
+        for t in rm:
+            a = '(Abs(x - %.4f) < 0.002) And (Abs(y - %.4f) < 0.002) And (Abs(x2 - %.4f) < 0.002) And (Abs(y2 - %.4f) < 0.002)'
+            L.append("        If (nm = '%s') And (K.Layer = %s) And (Abs(tw - %.4f) < 0.002) And ((%s) Or (%s)) Then Kill.Add(K);" % (
+                t['net'], LAYER[t['layer']], t['w'], a % (t['x1'], t['y1'], t['x2'], t['y2']),
+                a % (t['x2'], t['y2'], t['x1'], t['y1'])))
+        L += ['        K := It.NextPCBObject;', '    End;', '    Brd.BoardIterator_Destroy(It);',
+              '    If Kill.Count <> %d Then' % len(rm), '    Begin',
+              "        ShowMessage('Refusing: found ' + IntToStr(Kill.Count) + ' of the %d tracks to remove; nothing changed.');" % len(rm),
+              '        Kill.Free;', '        Exit;', '    End;',
+              '    For i := 0 To Kill.Count - 1 Do Brd.RemovePCBObject(Kill.Items[i]);', '    Kill.Free;']
+        L[L.index('    Missing : String;')] = ('    Missing : String;\n    Kill : TInterfaceList;\n    K : IPCB_Track;\n'
+                                                 '    i : Integer;\n    nm : String;\n    x, y, x2, y2, tw : Double;')
     for net in sorted(by):
         vs, ts = by[net]
         L.append("    N := NetByName('%s');" % net.replace("'", "''"))
@@ -78,8 +102,8 @@ def main():
                                                                          t['x2'], t['y2']))
         L.append('    End;')
     L += ['    Brd.ViewManager_FullUpdate;',
-          "    ShowMessage('Placed %d vias and %d tracks. Missing nets:' + Missing + '. Save, then mark microvias.');" % (
-              len(P['vias']), len(P['tracks'])), 'End;', '']
+          "    ShowMessage('Removed %d, placed %d vias and %d tracks. Missing nets:' + Missing + '. Save, then mark microvias.');" % (
+              len(rm), len(P['vias']), len(P['tracks'])), 'End;', '']
     out = os.path.join(HERE, 'FeatherCopper_%s.pas' % name)
     open(out, 'w', newline='\n').write('\n'.join(L))
     open(os.path.join(HERE, 'FeatherCopper_%s.PrjScr' % name), 'w', newline='\n').write(
