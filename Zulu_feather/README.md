@@ -73,7 +73,7 @@ Ball assignments can be swapped later in the XDC.
 ## Open items
 
 1. **Routing**: not started. The production board needed 6-layer HDI on a 35 % larger area, so expect the same stack at minimum.
-2. **Compile errors (29)**: all are single-pin nets left by the removed connectors. CHAN9-13 and CHAN23-28 are U1 balls no longer on a header. JA1-JA10 are the old Pmod balls. Then EE-CLK/EE-CS and AREF. They need no-ERC flags, or their labels deleted.
+2. **Compile errors: done (2cf527c).** The 22 single-pin nets are cleared by `tools/clear_single_pin_nets.py`: labels deleted plus no-ERC marks, and AREF keeps its label. Altium now reports "Compile successful, no errors found". 30 warnings remain, of the existing no-driving-source / unused sub-part kinds.
 3. **Schematic cosmetics**: X2's gate names still read GND/+1.8V/+1.0V inside the symbol, and the sheet notes describe the XuLA2 40-pin header. U3's symbol text still says TSOP-II.
 4. **Placement review**: buck hot loops and output caps, decoupling next to the right BGA balls, USB pair length, and silkscreen.
 5. **Not added yet**: USB ESD protection (none on the production board either) and an XDC for the new pin map.
