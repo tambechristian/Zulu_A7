@@ -90,7 +90,7 @@ where the header ports are named F_<Feather pin> (F_A2 ... F_SDA, F_D4).
 
 ## Open items
 
-1. **Routing**: not started. The production board needed 6-layer HDI on a 35 % larger area, so expect the same stack at minimum.
+1. **Routing**: stage 1 done. Production's U1 fan-out was transplanted (201 vias, 771 tracks; DRC: 465 un-routed + 115 antenna stubs, nothing else). The log and the open choice of router for the remaining 465 connections are in `docs/routing.md`.
 2. **Compile errors: done (2cf527c).** The 22 single-pin nets are cleared by `tools/clear_single_pin_nets.py`: labels deleted plus no-ERC marks, and AREF keeps its label. Altium now reports "Compile successful, no errors found". 30 warnings remain, of the existing no-driving-source / unused sub-part kinds.
 3. **Schematic cosmetics**: X2's gate names still read GND/+1.8V/+1.0V inside the symbol, and the sheet notes describe the XuLA2 40-pin header. U3's symbol text still says TSOP-II.
 4. **Silkscreen**: DRC-clean. Not yet fixed: U10 lost its pin-1 tick (no clean spot beside pad 1), and 10 designators are hidden. Revisit after routing, when vias and copper fix what space is left.

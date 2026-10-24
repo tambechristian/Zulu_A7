@@ -40,7 +40,7 @@ FIXED = {
     'C89': ('bottom', 0, 24.89, 10.58, None, None),
     'C90': ('bottom', 0, 22.67, 10.58, None, None),
     'C91': ('bottom', 0, 27.11, 10.58, None, None),
-    'C92': ('bottom', 0, 23.90, 13.98, None, None),
+    'C92': ('bottom', 180, 23.90, 13.98, None, None),     # rot 180 as on production (pad nets swap sides)
     'C95': ('bottom', 0, 27.11, 13.98, None, None),
     'C96': ('bottom', 0, 22.67, 13.98, None, None),
     'C107': ('bottom', 0, 24.89, 7.18, None, None),
@@ -59,17 +59,17 @@ FIXED = {
     'C120': ('bottom', 0, 20.45, 17.38, None, None),
     'C121': ('bottom', 0, 31.55, 13.98, None, None),
     'C122': ('bottom', 0, 31.55, 7.18, None, None),
-    'C123': ('bottom', 0, 25.15, 13.98, None, None),
+    'C123': ('bottom', 180, 25.15, 13.98, None, None),   # rot 180 as on production
     'C124': ('bottom', 0, 26.60, 3.78, None, None),
     # SDRAM decoupling: six 0402s at 1.15 mm pitch (0.1 mm mask web) in U3's empty centre channel (ball columns 4-6), two at its edges
     'C3': ('bottom', 0, 35.0, 8.555, None, None), 'C4': ('bottom', 0, 35.0, 9.705, None, None),
     'C5': ('bottom', 0, 35.0, 10.855, None, None), 'C6': ('bottom', 0, 35.0, 12.005, None, None),
     'C7': ('bottom', 0, 35.0, 13.155, None, None), 'C8': ('bottom', 0, 35.0, 14.305, None, None),
     'C9': ('bottom', 0, 35.0, 7.0, None, None), 'C11': ('bottom', 0, 35.0, 15.85, None, None),
-    # buck outputs: two 0805s right of each inductor, 1.75 mm apart (0.1 mm mask web) (L1 3V3 row y 18.6, L2 1V8 14.6, L3 1V0 10.6)
-    'C80': ('bottom', 90, 17.0, 18.6, None, None), 'C97': ('bottom', 90, 18.75, 18.6, None, None),
-    'C93': ('bottom', 90, 17.0, 14.6, None, None), 'C144': ('bottom', 90, 18.75, 14.6, None, None),
-    'C85': ('bottom', 90, 17.0, 10.6, None, None), 'C86': ('bottom', 90, 18.75, 10.6, None, None),
+    # buck outputs: two 0805s right of each inductor, 1.75 mm apart (0.1 mm mask web), x 16.705/18.455 (0.1 mm mask webs to the inductors) to stay clear of U1's west via ring (L1 3V3 row y 18.6, L2 1V8 14.6, L3 1V0 10.6)
+    'C80': ('bottom', 90, 16.705, 18.6, None, None), 'C97': ('bottom', 90, 18.455, 18.6, None, None),
+    'C93': ('bottom', 90, 16.705, 14.6, None, None), 'C144': ('bottom', 90, 18.455, 14.6, None, None),
+    'C85': ('bottom', 90, 16.705, 10.6, None, None), 'C86': ('bottom', 90, 18.455, 10.6, None, None),
     # U10 EEPROM on top, right above U2's EECS/EECLK/EEDATA pins 61-63; y 13.75 keeps its outline 0.25 mm of silk
     # clearance off U2's top pad row (at 13.5 it ran 0.075 mm from U2-59..64's mask; 14.0 crowds X4's pads)
     'U10': ('top', 90, 11.0, 13.75, None, None),
@@ -93,6 +93,10 @@ Z = {
     'B_left':      ('bottom', 0.4, 2.3, 8.6, 20.6),
     'B_u2':        ('bottom', 8.6, 2.3, 19.2, 20.6),
     'B_u1':        ('bottom', 19.2, 2.3, 30.0, 20.6),
+    # U1's via window (centre +-5.5 mm): only the production under-U1 decaps (FIXED) may sit inside it, so the
+    # transplanted production fan-out (tools/transplant_u1.py) keeps its through vias -- bulk parts go north/south
+    'B_u1n':       ('bottom', 19.2, 17.0, 30.0, 20.6),
+    'B_u1s':       ('bottom', 19.2, 2.3, 30.0, 5.85),
     'B_u3':        ('bottom', 30.0, 2.3, 37.9, 20.6),
     'B_right':     ('bottom', 37.9, 2.3, 50.5, 20.6),
 }
@@ -108,13 +112,13 @@ GROUPS = [
                                        'R90', 'R91', 'R92', 'R93', 'R94', 'R99', 'R101', 'R97', 'R4', 'JP3', 'JP4']),
     (['B_left', 'B_u2'], ['U8', 'C150', 'C151', 'R102', 'R103', 'R104', 'R105', 'R106', 'R107', 'R108', 'C78',
                           'R26']),
-    (['B_u1', 'B_u2', 'B_u3'], ['R1', 'R34', 'C89', 'C90', 'C91', 'C92', 'C95', 'C96', 'C107', 'C108', 'C109', 'C110',
+    (['B_u1n', 'B_u1s', 'B_u2', 'B_u3'], ['R1', 'R34', 'C89', 'C90', 'C91', 'C92', 'C95', 'C96', 'C107', 'C108', 'C109', 'C110',
                                 'C111', 'C112', 'C113', 'C114', 'C115', 'C116', 'C117', 'C118', 'C119', 'C120', 'C121',
                                 'C122', 'C133', 'C134', 'C135', 'C136', 'C137', 'C138', 'C155', 'C156', 'C157', 'C158',
                                 'C159', 'C38', 'C84', 'C87', 'C88', 'C82', 'C94', 'C99', 'C100', 'C101', 'C102',
                                 'C103', 'C104', 'C105', 'C106']),
-    (['B_u3', 'B_u1', 'B_right'], ['C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C11', 'C12', 'C13']),
-    (['B_u2', 'B_u1', 'B_u3', 'B_left', 'B_right'], ['C85', 'C86', 'C140', 'C141', 'C142', 'C143', 'C93', 'C144',
+    (['B_u3', 'B_u1n', 'B_u1s', 'B_right'], ['C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C11', 'C12', 'C13']),
+    (['B_u2', 'B_u1n', 'B_u1s', 'B_u3', 'B_left', 'B_right'], ['C85', 'C86', 'C140', 'C141', 'C142', 'C143', 'C93', 'C144',
                                                      'C80', 'C97', 'C98', 'C145', 'C146']),
     # restored 2026-10-23: the FT2232H config EEPROM and its two pull-ups, last so nothing above moves
     # placed at the free bottom spot nearest U2's EEPROM pins 61-63 (top row, around x 12.7, y 12.0)
