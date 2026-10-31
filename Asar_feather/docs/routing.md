@@ -196,3 +196,328 @@ edited stream by stream): Zulu_feather -> Asar_feather, zulu_feather -> asar_fea
 References to the production board (Zulu_Altium_VS_Code, Zulu_kicad, vivado/zulu_a7_pins.xdc) and the part names
 ZULU-CONN / ZULU-DIP37 are unchanged. Checks after: check_feather_schematic PASS, verify_copper PASS, the board
 opens in Altium with ASAR A7 on the silkscreen. Earlier `docs/drc_*.drc` keep the old paths (they record past runs).
+
+## Stage 5 -- finishing passes and ball swaps (2026-10-26 .. 28)
+
+Working base: `model_53` = stage 1 (7 mm) + the SDRAM bus + a stage-4 re-run (`short_r3_p400000`, rip 3, short-first
+order: 53 open, 4 better than the plan on the board). The board itself still holds `stage4.json` (57 open), so the
+copper of stages 1/3/4 is cleared (`FeatherClearCopper3.pas`, which insists on the board's 1112 vias / 3783 tracks)
+and everything re-placed when the next plan goes on.
+
+- Finishing passes on top of model_53 (`router.py --seed`, the seeds rippable): name order at 6M pops **45 open on
+  36 nets, 0 violations** (`fin_name_6000000`); short order 45, y order 46. Seeded rip-up passes that also let the
+  SDRAM bus move (model = stage 1 only, bus + stage 4 + plan as seeds): rip 3 at 1.5M pops 50 and 56 (short / y
+  order), rip 6 at 800k 51. Rip-up makes it worse: the victims re-route and fail.
+- `tools/diagnose_open.py` on the 45: no placement walls; 19 blocked by fixed copper, 16 by congestion, 18 by
+  budget/order.
+- **Probes (2026-10-28, `router.py` now records `Rt.pops`): every failing search ends by exhausting its pocket, never
+  its budget** -- LED1 at N18 after 5,238 pops, LED0_R moved to the spare ball U19 after 20,433, CHAN18 at W13 has 60
+  free cells and no via site, the large ones (SD-CMD, A5, CLK-12M-FPGA) after 130k-600k with 3M allowed. The open
+  islands sit in pockets sealed by other nets' copper: on U1's west face FLASH-CS#, FPGA-DONE, FPGA-TMS, FT-PWREN#,
+  UART_FT_DTR#, FLASH-D02, CHAN22 on L3/L4, GND, VCC1V8, VCC1V0, BTN on Bottom, RST#, CHAN-CLK on Top (U2 sits 1.8
+  mm west of U1; the flash is east beyond X3, the LEDs and SD socket east too, so the west-face nets have to get
+  round or through U1). `tools/pocket_walls.py <model> <plan> <stage1> <ball>` lists a pocket's walls per layer
+  with their owning plan.
+- **`tools/swap_reach.py`**: for every swappable or spare U1 ball, an exact flood of the router's free cells from
+  the ball's stub (or bare pad), crossing layers wherever the router's own via test passes, the ball's net stripped
+  to its stub and everything else fixed; says which single-ball nets' far-end pads the pocket touches. 99 balls in
+  4 minutes on 16 cores (`reach.json`). Findings on model_53 + fin_name:
+  - 34 balls are sealed outright, among them the open nets' own balls for A5 A7 AIN16_P/N CHAN18 CLK-12M-FPGA D1 D2
+    D3 LDQM LED1 SD-CLK SDRAM-CS# SD-DAT3 and 16 of the 19 spare (NC) balls (all bank 14, west face).
+  - the north-face header balls CHAN15/16/17/19/20/21/22 (W14-W16, V13-V15, U14, U15) sit in pockets of 0.9M
+    cells that reach 42-46 far ends, including the open SDRAM lines' U3 pads and the LEDs.
+  - a pair swap needs both pockets: X's target must reach X's far end and X's old ball must reach the displaced
+    net's far end; a sealed ball fails the second test, so those nets only move by a **rotation** through a spare
+    ball (X takes a header ball, the header net takes a spare ball whose pocket reaches its header pin, the
+    sealed ball is vacated). Spare balls with a pocket: E19 (reaches CHAN0/14/15, SD-DAT0/1), H19, J19.
+  - own-ball re-route possible (strip the partial copper, route from the stub): AIN15_N, AIN15_P, SD-DAT0, SD-DAT1.
+- Swap rules (`tools/swap_rules.py`, from the CPG236 pinout): all used banks are 3.3 V, so an I/O net may take any
+  HR ball of banks 14/16/34/35 except the configuration balls the board uses (D00-D03, FCS_B, PUDC_B) and bank 0;
+  XADC inputs move as P/N pairs onto ADnP/ADnN; CLK-12M-FPGA stays on an MRCC ball; header nets avoid RDWR_B and
+  EMCCLK; SDRAM nets stay in banks 34/35/16. 131 of U1's balls are fixed, 19 spare, 86 movable.
+- `tools/swap_eval.py --reach reach.json`: only the 199 swaps the floods allow (4 own-ball re-routes, 80 pairs, 115
+  rotations) are routed for real, one whole-board window at 1.2M pops, the swapped balls' islands stripped to the
+  stubs (`swapped(..., side=True)`), gain = connections closed minus connections opened. `swap_apply.py` turns the
+  chosen set into the swapped model + seed for the finishing pass, `perm.json` for `apply_pin_swap.py` (the
+  symbol-pin renames follow the pin positions, so rotations work) and the re-netted stage-1 plan for the board.
+- `router.py --soft 0.5`: rip-up now looks for the path crossing the least rippable copper (a cost per cell of it)
+  and rips only what that path's own clearance overlaps, instead of the straight base-only path and every net near
+  it. Running on model_53 + fin_name as `soft_r3`.
+- **Swap evaluation result (2026-10-28, `swap_reach.log`)**: 47 of the 199 jobs close a connection (gain +1 each; every
+  base job, every pair without a header or SD-DAT2 ball, and every rotation that hands a ball to A5/A7/AIN16 is 0
+  or negative), and every gain is bounded by the receiving pocket: L3 (SD-DAT2) and W15 (CHAN15) each take one of
+  CHAN18 / LED0_R / LED1 / LED2 / SD-CLK / SD-CMD, W16 (CHAN14) takes SD-DAT3, the spares E19/H19/J19 take the
+  displaced header net or SD-DAT3 straight, and SD-DAT0 / SD-DAT1 swap with CHAN4 (C17), CHAN17 (V15), CHAN21
+  (U15) or CHAN16 (W14). Five disjoint swaps is the most the floods allow at once; the greedy set (the cheapest
+  copper per gain) is applied as `swapA`:
+
+  | swap | nets | expected |
+  |---|---|---|
+  | P17 <-> L3 | LED0_R -> L3, SD-DAT2 -> P17 | +1 |
+  | W16 -> J19, A16 -> W16 | SD-DAT3 -> W16, CHAN14 -> J19, A16 vacated | +1 |
+  | C15 <-> C17 | SD-DAT0 -> C17, CHAN4 -> C15 | +1 |
+  | W15 -> H19, W13 -> W15 | CHAN18 -> W15, CHAN15 -> H19, W13 vacated | +1 |
+  | B15 <-> V15 | SD-DAT1 -> V15, CHAN17 -> B15 | +1 |
+
+  Ten nets move; `swap_apply.py` dropped their copper from the seeds (2768 tracks / 776 vias left) and re-netted
+  16 stage-1 via stubs. Finishing passes on the swapped model: `swapA/plain` (rip 3, 1.5M pops) and `swapA/soft`
+  (rip 3, soft 0.5). The nine nets no swap reaches (A5, A7, AIN16, CLK-12M-FPGA, D1-D3, LDQM, SDRAM-CS#, ...) still
+  need the walls moved, which is what the soft pass is for.
+- **Review of the swap toolchain (2026-10-28, 49 agents, before anything touched the project)**: the ten moves are
+  legal (every destination an HR ball of a 3.3 V bank, none a configuration ball the board uses, CHAN4 keeps a
+  SRCC ball, no clock or XADC net moved, H19/J19 really unconnected), the symbol-pin rename moves every net label
+  to the intended ball on both sheets that hold U1 (1668 + 36 pin records) and the routing inputs match their
+  sources object for object. Three defects, all fixed:
+  - `swap_apply.py` re-netted none of the 71 stub **tracks** (only the 16 vias): its track key depended on the end
+    order and the board export stores every stage-1 stub end-reversed. The board chain would have put old-net
+    tracks under new-net vias at every swapped ball. Keys are end-order-free now; the script also refuses when
+    the re-netted count differs from the touched balls' stub count, de-duplicates the seed (short_r3 holds 12
+    tracks twice) and refuses an XADC input whose mate ends on another ADn pair. `tools/swap_check.py` proves an
+    output folder: pads, stubs, `stage1.json + stage3_sdram == model.json`, seed clean -- PASS on swapA.
+  - `apply_pin_swap.py`'s run-twice guard could not fire (a pool closed under its permutation looks the same after
+    any number of runs) and its default argument re-applied the pre-routing swap. It now needs the path and
+    refuses unless every net of the plan's `swap` table still sits on its old ball in the schematic netlist
+    (tested on copies: first run applies, second refused, `pin_swap.json` refused).
+  - `check_feather_schematic.py` knew only `pin_swap.json`; `--perm <file>` composes later permutations in
+    order (PASS on the swapped copies with swapA's perm.json, FAIL without it).
+  Noted, not fixed: `tools/route/model.json`, `board_dump.json` and the committed stage-1 artefacts carry the
+  pre-swap pad nets until the ECO and a re-dump; README's pin table is stale since the first swap; EXTERNAL_AVOID
+  does not list DOUT_CSO_B/CSI_B (unused in SPI x4, harmless on a header). `tools/plan_dedupe.py` strips the
+  duplicate tracks from a finished plan before it is emitted.
+- **swapA finishing passes, first results (2026-10-29)**: name order **49 open on 35 nets** (`swapA/plain`, 0
+  violations, 20 h), y order 50 on 35 (`swapA/y`); the pre-swap best stays 45 on 36. Every moved net routed except
+  SD-DAT0, SD-DAT1 (plain) and LED0_R (y), and the passes closed nine nets the seed had open (AIN15_N CHAN18
+  CLK-12M-SHARED FLASH-D00 LED2 SD-CLK SD-CMD SD-DAT3 TMS in plain) -- but rip-up lost eight seed nets that never
+  re-routed (CFG-M2 CHAN2 CHAN22 FLASH-CS# FLASH-D02 GNDADC UART_FT_CTS# VCC1V8), so the count did not move. The
+  two passes lost different nets (y: BTN CHAN16 CHAN17 CHAN20 FPGA-TMS VCCADC ...), so the loss is the rip-up
+  heuristic, not a wall. Round 2 started on `plain.dedup.json` (`plan_dedupe.py`: 3005 -> 2988 tracks): a second
+  flood + reach-filtered evaluation (`swapA/reach2.json`, `swapA/swap_eval2.json`, W13/A16 now spare) and two
+  passes seeded from plain (`r2soft` soft 0.5 name order, `r2short` short order). `swapA/soft`, `swapA/short` and
+  the no-swap control `soft_r3` are still running (checkpoints 68 / 69 / 75 open at 16 h).
+- **Round 2 (2026-10-29, `swapA/reach2.json`, `swapA/swap_eval2.json`, 163 jobs)**: on the 49-open plan only four
+  nets have a swap at all -- SD-DAT0 (C17) routes from its own ball and every rotation through C17 gains, CHAN22 and
+  LED1 can take H19/C17, UART_FT_CTS# L18; the rest (A5 A7 AIN15/16 CLK-12M-FPGA D1-D3 LDQM SDRAM-CS# LED0_R SD-DAT1)
+  have no candidate. Greedy disjoint set +4, of which the AIN16 rotation (`H2>L3 J2>M3`) was dropped: it buys LED0_R
+  by leaving A12, a routed SDRAM address line, open. Applied as `swapB` (`swap_apply.py --stage1-src swapA/stage1.json`,
+  `swap_check.py` PASS; `perm.json` composes after swapA's):
+
+  | swap | nets | expected |
+  |---|---|---|
+  | C17 -> W18, A17 -> C17 | CHAN2 -> C17, SD-DAT0 -> W18, A17 vacated | +2 |
+  | H19 -> R19, V15 -> H19 | SD-DAT1 -> H19, CHAN15 -> R19, V15 vacated | +1 |
+
+  Finishing passes `swapB/plain`, `swapB/soft`, `swapB/short` seeded from `swapA/plain.dedup.json` minus the four nets.
+- **Pocket walls of the sixteen sealed balls (`swapA/walls2.log`)**: A5 (R2), A7 (P1), D1 (V7), D3 (W6), LDQM (W4) and
+  SD-DAT1 (V15) reach a few hundred Top cells, no inner layer and no via site -- their walls are the *model's* own
+  stage-1 stubs (A7 and A5 wall each other, D0/D2 wall D1, WE#/D6 wall LDQM, CHAN19/AIN15_N wall V15). The
+  transplanted fan-out gave these balls Top-only stubs (W4 none) because on the Zulu board they ran on Top straight
+  into the SDRAM; here U3's west edge sits 0.7 mm east of P1. No swap or finishing pass can open them: the fix is
+  at the fan-out. The other sealed balls (AIN15_P, AIN16_P/N, LED0_R, CLK-12M-FPGA, CHAN2, D2) have pockets of
+  thousands of cells walled by routed plans, which the soft passes may move.
+- **Corner experiment (`corner/`, `tools/corner_seed.py`)**: the stage-1 stubs of the 34 balls at x >= 25.6,
+  y >= 12.6 (26 with stubs, 112 tracks + 11 vias of 26 nets: A0-A11, BS0/1, D1-D7, RAS#, WE#, SD-CMD, SDRAM-CS#,
+  VCC3V3) moved from the model into a rippable seed (`corner/stubs.json`, dropped list in `corner/dropped.json`),
+  so the router may rip a neighbour's stub to escape a sealed ball; `corner/soft` (soft 0.5, name order) and
+  `corner/short` on swapB's model + seed. If a plan from here is chosen, the board chain must drop the dropped
+  stubs from stage1.json before placing.
+- **Six of the open power connections are U3's own balls** (GND E3, B7; VCC3V3 C7, A7, A9 and one more site): the
+  router's plane-tie search fails under the SDRAM (`FAIL plane tie` lines in every log since fin_name). A
+  via-in-pad or a hand-placed via each, not a routing problem.
+- Memory: every router / evaluation worker commits ~2 GB; 50 python processes at once hit the Windows commit limit
+  (`tools/procs.ps1` lists and kills by command line; `swap_eval.py --procs 6` while routers run).
+- **swapA/short finished (2026-10-29 07:30): 48 open on 34 nets**, the best on the swapped model, with yet another
+  open set (it closes AIN15_P AIN16_P/N CHAN2 CHAN22 LED0_R SD-DAT0 UART_FT_CTS# CFG-M2 FPGA-TCK that plain leaves
+  open, and loses CHAN14 CHAN18 CHAN3 FLASH-D00 FPGA-TMS LED0_B LED2 NODE_P1 SD-DAT3). So CHAN2 and SD-DAT0, moved in
+  swapB, are routable where they were -- the sealed pockets of the big balls are plan-dependent; only the
+  fan-out-sealed five and the fixed configuration/JTAG/power connections are open in every pass. Merging the passes
+  does not work: every donor route collides with base copper (`scratchpad/merge/merge.py` kept nothing; the
+  merge-then-repair variant `merge2.py` had to rip 19 base nets for 4 donor routes, 70 open). Iteration pass
+  `swapA/r3soft` seeded from short.
+- **The U3 plane ties, diagnosed (2026-10-29):** the two GND balls (E3, B7) tie once the router may place a single
+  Top>L2 microvia (`uvia_top`; `uvia_bot` L5>Bottom for VCC3V3 on the Bottom side) -- `planetest` closed both. The
+  three VCC3V3 balls A7, A9, C7 and U1's own VCC3V3 ball R1 cannot be tied on any plan: VCC3V3 may only run on Top and
+  Bottom, its plane is L5, and the fixed SDRAM bus runs on L3/L4 directly under the pad centres (D4 0.055 mm from A7's
+  centre, A4 0.015 mm from C7's, RAS# and its L4>L5>Bottom stack 0.07 mm from A9's; A1/A4/A6 under R1), while every
+  interstitial around them holds a bus via and its dogbone -- `scratchpad/tie_probe.py` found no site for a through
+  via (0.35 land) nor for a stacked column Top>L2>L3>L4>L5 (0.30/0.27 lands) within 1.7 mm, and a Top-only join to
+  the tied island exhausts 1.3 M cells (the Top is sealed by the bus dogbones). So the ties need bus copper moved:
+  `router.py` gained the `stack_tie` column type (via-in-pad allowed, Bottom untouched) and a rip-up step in the
+  plane-tie branch (base-board search, blockers, rip, retry; victims re-queued), and `tools/bus_seed.py` moves the
+  bus (`stage3_sdram.json`, 801 tracks / 162 vias) out of a model into a rippable seed. Test: `$D/tie/` = swapA model
+  minus the bus + seed (short.dedup + bus, route_check 48 open / 0 violations), `--nets GND,VCC3V3 --rip 2 --soft
+  0.5`. If a plan from here is chosen, the board chain must drop `tie/dropped.json` from the stage-3 emission.
+- **No-swap control `soft_r3` finished (13:21): 50 open on 36 nets** (route_check PASS), worse than the 45 of
+  `fin_name` it was seeded from: the soft rip-up iteration on the unswapped model lost BTN CFG-M2 CHAN14 CHAN4
+  FLASH-CS# FLASH-D02 GNDADC VCCADC for FPGA-TCK LED0_R LED1 LED2 SD-CMD SD-DAT0 SD-DAT1 TMS. Another plan-dependent
+  open set; the control line stays at 45.
+- **swapA/soft finished (13:26): 48 open on 38 nets** (route_check PASS, `soft.dedup.json`), level with short's 48
+  but on a different set again (closes CHAN14 CHAN18 CHAN3 CLK-12M-FPGA FLASH-CS# FLASH-D00 FLASH-D03 FPGA-TMS LED0_B
+  NODE_P1 SD-DAT3 VCC1V8; loses AIN15_P AIN16_N/P ANALOG-IO1 BTN CHAN19 CHAN20 FPGA-CCLK FPGA-TCK LED0_G SD-CLK
+  SD-CMD SD-DAT0 SD-DAT2 UART_FT_CTS# VCCADC). The swapped model's three passes sit at 48-50; the swapped nets
+  themselves are closed, the loss is rip-up collateral that differs per pass.
+- **Tie pass `tie/ties` finished (15:03): 47 open on 37 nets** (route_check PASS, 0 violations). Both GND balls tied
+  with a Top>L2 microvia (E3 at 34.95,9.80; B7 at 32.65,12.90). Three of the four VCC3V3 islands tied with an in-pad
+  `stack_tie` column (C7 at 33.375,12.875 after ripping A4 A6 D0 D4; A9 at 31.775,14.475 after A1 A2 A3 RAS#; A7 at
+  31.775,12.875 after A11 A8 A9); the torn bus nets cascaded (D0's re-route ripped nine more, A2's five) and A3 D0 D6
+  RAS# ran out of rip budget and stayed open -- the pass's own summary hid them because the OPEN report under
+  `--nets` only listed the wanted nets (router.py now reports every net the pass touched). U1's own VCC3V3 ball R1
+  has no router site: its 1.5 mm Top stub ends in the channel between the A5 and A2 fan-out stubs, 0.554 mm edge to
+  edge, where a 0.30 land needs 0.48 by the rule but 0.56 with the router's raster margin counted twice; a hand
+  column at the stub's end (30.400,13.935, `tie/ties_r1.json`) passes route_check with 0 violations: **46 open on 36
+  nets, VCC3V3 and GND fully tied**. Pass 2 (`tie/ties2`, `--nets A3,D0,D6,RAS# --rip 2 --soft 0.5`, seeded from
+  ties_r1) re-routes the four bus nets.
+- **`tie/ties2` (bus re-route after the ties) finished worse: 50 open on 40 nets.** None of A3 D0 D6 RAS# found a
+  path once fully ripped, and their rip-ups cascaded through 20 more nets (A2 BS1 CAS# D5 lost). A bus net torn out
+  of the packed corner cannot be re-fitted by a from-scratch A* with rip-up. Local repair instead
+  (`tools/tie_cut.py`): the column sites inside each pad that collide with the least seed copper
+  (`scratchpad/tie_sites.py`: A7 31.725,12.880 hits only D4's L4 track; C7 33.400,12.830 hits A4 L4 and A6 L3; A9
+  cannot avoid RAS#'s L4>L5>Bottom stack 0.07 mm from its centre, 31.725,14.455 adds only A2's Top track), the
+  copper of those nets within 0.6 / 1.2 mm of the site cut out, and a `--rip 0 --margin 1.0` pass re-joining the
+  five nets (`tie/rep0.6`, `tie/rep1.2`).
+- **Local tie repair, rounds 1-4 (`tie/rep_*`)**: cutting whole segments let A4/A6/D4 re-join in some variants (45
+  open, PASS) but never A1 or RAS#; clipping the tracks at the cut circle (`tie_cut.py` now keeps the parts outside)
+  made every net fail, and the free-cell maps (`scratchpad/pocket_map.py`) show why: D4's only way around the A7
+  column is the gap to the dangling end of A8's fixed L4 stub at (31.400,13.367), 0.352 mm free for a 0.30 need --
+  legal, but not with the router's 0.02 mm raster allowance on each side. `router.py --slack` sets that allowance;
+  at 0 the pass re-joined A1 A6 D4 (44 open) but D4 landed 0.095 from the column on L4 (rule 0.10, raster error), at
+  0.01 D4 failed again. So the stub's tail is trimmed instead (plan `remove` of the stub + a seed track to its via at
+  30.875,13.425; the tail was dead copper). A4 at the C7 column is sealed between D4's L4 diagonal (0.104 free) and
+  D0's L4 via (0.161 free): D4 is cut there too so A4 can take its lane and D4 shifts south-west. RAS# at A9: the L4
+  pocket next to the column is 0.25 mm wide, no stack_bot fits, and the Bottom is free only in the 0.25 mm cap-pad
+  channel at y 14.63-14.88 -- its whole Bottom jog (both stacks) is freed in variant k.
+- **Local tie repair reached 43 open on 33 nets (`tie/rep_n_s0.005`, route_check PASS, 0 violations)**: all six ties
+  in, A1 A4 A6 D0 D4 RAS# re-joined. What it took: A8's dead stub tail trimmed (plan `remove`); the A9 column on the
+  grid at (31.700,14.500) with A2's Top run nudged 0.01 mm south so A1 clears the column at exactly the 0.10 rule;
+  D0 clipped 0.6 mm at C7 so A4 and D4 each get a lane; RAS# freed 2.5 mm -- its new L4>L5>Bottom stack sits at
+  (32.075,14.700), 0.3 mm east of the old one, in the space of A3's stack and L4 diagonal, which were clipped 0.8 mm
+  and did not re-join (A3 is the one net still open). A 0.005 mm raster allowance (`--slack`) is the sweet spot: 0
+  leaves 0.095 mm near-misses the exact checker rejects, 0.01 and the default 0.02 seal the lanes. Next: keep A3's
+  stack, clip only the first 0.45 mm of its diagonal at RAS#'s new site, and route RAS# before A3 in two passes.
+- **TIE REPAIR COMPLETE: 42 open on 32 nets (`tie/rep_s2_0.005.json`, deduped `tie/final.dedup.json`; route_check
+  PASS, 0 violations; open set = the short seed's 48 minus GND 2 and VCC3V3 4, nothing lost).** The chain, every stage
+  `--rip 0 --margin 1.0 --pops 1500000` on `tie/model.json` with `--remove tie/remove_a8.json`:
+  1. `tie_cut.py` with `tie/sites_p.json` on the seed (short.dedup + bus): the six ties (A7 column 31.725,12.905;
+     C7 33.400,12.830; A9 31.700,14.500; R1 30.400,13.935; GND uvias 34.95,9.80 / 32.65,12.90), clips D4 0.4 at A7;
+     A4 A6 0.4, D4 0.5, D0 0.6 at C7; A1 0.4, RAS# 2.5 at A9; A3 0.45 around 32.075,14.700 (kind-less cut site);
+     then A8's stub tail trimmed and A2's Top run nudged to y 14.215 (`cut_p.json`).
+  2. `--nets RAS# --slack 0.005` (its stack lands at 32.075,14.700, the pocket's only via site; routed first or A1
+     takes it with a needless Bottom stack).
+  3. `--nets A1 --slack 0.0` (its L3 lane past the A9 column is exactly at the 0.10 rule; any allowance seals it).
+  4. `--nets A4,A6,D0,D4 --slack 0.005`.
+  5. `tie_cut.py` with `tie/sites_s.json` (A0 clipped 0.6 around 32.2,15.2 -- its L4 staircase pinched A3's gap to
+     0.325 mm; BS0 at y 15.625 leaves it 0.2 mm to move north), then `--nets A3 --slack 0.005`, then `--nets A0
+     --slack 0.005`.
+  Board chain for this plan: stage1 copper minus nothing new, stage3_sdram NOT emitted (the bus is inside the plan,
+  `tie/dropped.json` lists it), the plan's `remove` (A8's L4 stub 29.800,13.530-31.400,13.367) deleted from the
+  board, then the plan. The repair is seed-specific: a better signal plan needs the chain re-run on it.
+- Housekeeping 19:30: `swapA/model.json` had been overwritten at 13:30 with the soft pass's deduped plan (a wrong
+  output path); moved back to `swapA/soft.dedup.json` and the model rebuilt as `tie/model.json` + `tie/dropped.json`
+  (1788 tracks / 433 vias / 821 pads) -- short.dedup and soft.dedup re-check at 48/34 and 48/38 as recorded. The
+  passes running since before 13:30 loaded the model at launch and are unaffected. `tools/tie_repair.py` runs the
+  whole tie recipe as one command (`<model with bus> <signal plan> <outdir>`).
+- **swapB/short finished (2026-10-30 21:34): 42 open on 34 nets** (route_check PASS, 0 violations; rip 3, short
+  order, seeded from `swapA/plain.dedup.json` minus the four swapped nets = 52 open). Against that seed it closes
+  AIN15_P AIN16_N AIN16_P CFG-M2 CHAN15 CHAN2 CLK-12M-FPGA FLASH-D02 GND LED1 PUDC_B SD-DAT0 VCC1V8 (and one each of
+  FLASH-CS#, SD-DAT1, VCC1V0) and loses BTN CHAN16 CHAN18 CHAN20 CLK-12M-SHARED FLASH-D00 LED0_G SD-CLK SD-CMD
+  SD-DAT3 UART_FT_CTS# UART_FT_DTR#. The pass closed both GND ties itself; the four VCC3V3 ties still `FAIL plane tie`.
+- **NEW BEST: tie repair on swapB/short = 38 open on 33 nets** (`swapB/tie_short/final.json`, md5 3de9caa7,
+  route_check PASS, 0 violations, 4364 tracks / 1032 vias / 1 remove; repo copy `tools/route/stage5/tie38_swapB.json`).
+  `python tools/tie_repair.py swapB/model.json swapB/short.json swapB/tie_short` ran unchanged in 12 min (the bus
+  copper is identical in swapB's model: 801 tracks, 75 vias), stages 44 / 43 / 39 / 39 / 38, no bus net lost; its two
+  GND sites duplicate vias the pass had already placed (deduped away). Open set: the fan-out-sealed five (A5 A7 D1
+  D3 LDQM), D2, SDRAM-CS#, the configuration/JTAG group (CFG-M0 CFG-M1 FPGA-TCK x2 FPGA-TDI FPGA-TDO RST#), flash
+  (FLASH-CS# FLASH-D00 FLASH-D01 FLASH-D03 x2), SD (SD-CLK SD-CMD SD-DAT1 SD-DAT3), CHAN16 CHAN18 CHAN20 CHAN22,
+  CLK-12M-SHARED x2, BTN, LED0_G LED0_R, UART_FT_CTS# x2 UART_FT_DTR#, GNDADC x2, VCC1V0. Board chain for this
+  plan: apply_pin_swap swapA then swapB (`swapB/perm.json` composes both), check_feather_schematic --perm, make_xdc,
+  ECO (untick the 10 net classes + USB pair), FeatherClearCopper3, re-dump the model, emit swapB's stage1.json, NOT
+  stage3_sdram.json (the bus is inside the plan; `bus_dropped.json` lists what must not be emitted), the plan with its
+  `remove` (A8 stub), mark microvias, repour, DRC, verify_copper. Still running at 21:50: swapA r2soft / r2short /
+  r3soft, swapB plain / soft, corner soft / short (queues 2-36 nets); any that beats 42 gets the same tie repair.
+- **swapB/plain finished (2026-10-30 22:46): 47 open on 32 nets** (route_check PASS, 0 violations; rip 3, name
+  order, same 52-open seed). Worse than swapB/short's 42, so no tie repair; it closes AIN15_P AIN16_N AIN16_P
+  CFG-M2 CHAN15 CHAN2 CHAN22 CLK-12M-FPGA FLASH-D02 FLASH-D03 GND GNDADC LED0_R SD-DAT0 SD-DAT1 of the seed and loses
+  AIN15_N CHAN-CLK CHAN18 CLK-12M-SHARED FLASH-D00 LED0_B NODE_P0 NODE_P1 RST# SD-CLK SD-CMD VCC1V8. Same four
+  VCC3V3 `FAIL plane tie` sites. Four swap passes left: swapA r2soft / r2short / r3soft, swapB soft.
+- **corner/short finished (2026-10-31 01:25): 54 open on 39 nets, route_check FAIL** (one hole-hole: two VCCADC vias
+  0.225 apart at 21.600,18.075; rip 3, short order, seed = swapB seed + the 26 corner stubs, 52 open). Far worse
+  than swapB/short's 42, so not a candidate -- but it answers the corner question: with the stubs rippable, **A7 and
+  LDQM close** (two of the five fan-out-sealed balls) and one more VCC3V3 tie lands, while the pass tears the bus
+  apart and cannot re-fit it (A0 A2 A3 BS0 BS1 D6 D7 WE# SD-CMD lost, plus CHAN16 CHAN20 CHAN6 NODE_P0 RST# SD-CLK
+  UART_FT_RTS#). So the sealed balls are stub-walled as the pocket-wall analysis said, and the fix has to be a
+  targeted stub move for A5/A7/D1/D3/LDQM with the bus held fixed, not a rippable corner. corner/soft still running.
+- **swapA/r2short finished (2026-10-31 02:47): 49 open on 38 nets** (route_check PASS, 0 violations; rip 3, short
+  order, seeded from `swapA/plain.dedup.json`, 49 open). No gain at all: it closes 16 nets of the seed (AIN15_P
+  AIN16_N AIN16_P CFG-M2 CHAN2 CHAN22 CLK-12M-FPGA FLASH-CS# FLASH-D02 FLASH-D03 FPGA-TCK GND GNDADC LED0_R LED1
+  VCC1V8) and loses 20 (AIN15_N BTN CHAN-CLK CHAN17 CHAN18 CHAN20 CHAN3 CHAN6 FLASH-D00 FPGA-TMS LED0_B NODE_P0
+  NODE_P1 RST# SD-CLK SD-DAT3 UART_FT_CTS# UART_FT_RTS# VCC1V0 VCCADC). Same four VCC3V3 tie failures. Left:
+  swapA r2soft / r3soft, swapB soft, corner soft.
+- **swapB/soft finished (2026-10-31 04:40): 47 open on 36 nets** (route_check PASS, 0 violations; rip 3, soft 0.5,
+  name order, 52-open swapB seed). Same count as swapB/plain, worse than swapB/short's 42, no tie repair. Closes
+  AIN15_P AIN16_N AIN16_P CFG-M2 CHAN15 CHAN2 CHAN22 CLK-12M-FPGA FLASH-CS# FLASH-D02 FPGA-TCK GND SD-DAT0 VCC1V8,
+  loses CHAN17 CHAN18 CHAN3 CLK-12M-SHARED FLASH-D00 FPGA-TMS LED2 NODE_P1 PROG# SD-CMD SD-DAT3. Same four VCC3V3 tie
+  failures. All three swapB passes are in: short 42 / plain 47 / soft 47; short order wins on both swap models.
+  Left: swapA r2soft / r3soft, corner soft.
+- **swapA/r3soft finished (2026-10-31 05:35): 44 open on 34 nets** (route_check PASS, 0 violations; rip 3, soft 0.5,
+  name order, seeded from `swapA/short.dedup.json`, 48 open). Closes CHAN14 CHAN3 CLK-12M-FPGA FLASH-CS# FLASH-D00
+  FPGA-TMS GND GNDADC SD-DAT1 SD-DAT3 VCC1V8, loses AIN15_P AIN16_P CHAN-CLK CHAN16 CHAN19 CHAN20 CLK-12M-SHARED
+  LED0_R RST# UART_FT_DTR# VCC1V0 VCCADC; GND ties closed by the pass, the four VCC3V3 ties not.
+- **swapA/r2soft finished (2026-10-31 05:40): 44 open on 33 nets** (route_check PASS, 0 violations; rip 3, soft 0.5,
+  name order, seeded from `swapA/plain.dedup.json`, 49 open). Closes AIN15_P AIN16_N CFG-M2 CHAN2 CLK-12M-FPGA
+  FLASH-CS# FPGA-TCK GND GNDADC LED0_R LED1 SD-DAT0 SD-DAT1 UART_FT_CTS# VCC1V8, loses AIN15_N ANALOG-IO0 ANALOG-IO1
+  BTN CHAN18 CHAN3 FLASH-D00 LED2 SD-CMD SD-DAT2 SD-DAT3 UART_FT_TXD VCC1V0; same tie picture. Both beat swapA's 48,
+  so both get the tie repair (`swapA/tie_r3soft`, `swapA/tie_r2soft`; expected 40 each, since only the four VCC3V3
+  ties are left to add). All six swap passes are in: swapA short 48 / r2short 49 / r2soft 44 / r3soft 44, swapB
+  short 42 / plain 47 / soft 47. Only corner/soft still runs.
+- **corner/soft finished (2026-10-31 05:42): 55 open on 41 nets** (route_check PASS, 0 violations; rip 3, soft 0.5,
+  name order, same 52-open corner seed). Same story as corner/short: A7 closes once the neighbouring stubs are
+  rippable (plus AIN15_P CFG-M2 CHAN15 CHAN2 CHAN22 FLASH-CS# FLASH-D02 FLASH-D03 GND LED0_R UART_FT_CTS# VCC1V0
+  VCC3V3), but the bus is torn and not re-fitted (A2 A8 BS0 D6 WE# lost, plus ANALOG-IO0 CHAN-CLK CHAN16 CHAN21
+  CHAN3 CLK-12M-SHARED FPGA-TMS LED2 NODE_P1 SD-CMD VCC1V8 VCCADC). The corner experiment is closed: not a
+  candidate, but the stub-wall diagnosis for A7 (and LDQM in corner/short) is confirmed. **All eight stage-5 passes
+  are finished**; results: swapA short 48 / r2short 49 / r2soft 44 / r3soft 44, swapB short 42 / plain 47 / soft 47,
+  corner short 54 (FAIL) / soft 55. Pending: the tie repairs of swapA r3soft and r2soft.
+- **Tie repair on swapA/r3soft: 40 open on 33 nets** (`swapA/tie_r3soft/final.json`, route_check PASS, stages
+  46 / 45 / 41 / 41 / 40, 12 min, no bus net lost) -- the expected -4, two behind the swapB result (38).
+- **Tie repair on swapA/r2soft: 40 open on 32 nets** (`swapA/tie_r2soft/final.json`, route_check PASS, stages
+  46 / 45 / 41 / 41 / 40). **Stage 5 is complete (2026-10-31 05:45)**; after the tie repair the candidates are
+  swapB/short 38 (best, `tools/route/stage5/tie38_swapB.json`), swapA r2soft 40, swapA r3soft 40, swapA short 42.
+  Six finishing passes on two swap models span 42-49 before ties, each trading one open set for another, so the
+  finishing passes have plateaued. What the 38 still holds: the five fan-out-sealed balls (A5 A7 D1 D3 LDQM; the
+  corner passes show A7 and LDQM open as soon as the walling stubs move, so a *local* stub cut-and-reroute in the
+  tie_repair style with the bus held fixed is the next lever), D2, SDRAM-CS#, the configuration/JTAG group, flash,
+  SD, four CHANs, CLK-12M-SHARED, BTN, LED0_G/R, the UART pair, GNDADC, VCC1V0.
+- **Walls of the five sealed balls on the 38 plan** (`pocket_walls.py` on `swapB/tie_short`, `scratchpad/walls38_*.log`,
+  2026-10-31): every one is a Top-only pocket with no via site, walled by *model* copper, i.e. stage-1 stubs --
+  A5 (R2, 475 cells): VCC3V3 107, A7 82, GND 21, A4 20, A2 18; A7 (P1, 195): A5 134, GND 122; D1 (V7, 628): D2 100,
+  AIN16_P 53, VCC3V3 45, D3 25, SD-CMD 21, D0 19; D3 (W6, 292): VCC3V3 93, D1 66, D2 57, AIN16_P 53; LDQM (W4, 58):
+  WE# 43, D6 41 (D6 partly plan copper). The stub repair therefore means moving the A5/A7 pair's own stubs (they wall
+  each other), one of D0/D2 for D1, D2 for D3, and WE# or D6 for LDQM, with each displaced net re-routed locally
+  (tie_repair style, --rip 0, bus held fixed).
+
+## Stage 5 placed: the 38-open plan is on the board (2026-10-31, user's call "Place 38 now")
+
+- **Schematic**: `apply_pin_swap.py` with `tools/route/stage5/swapA_perm.json` (1668 + 36 U1 pin records over 12 balls)
+  then `swapB_perm.json` (834 + 18 over 6 balls), Altium closed; `check_feather_schematic.py --perm swapA_perm.json
+  --perm swapB_perm.json` PASS (136 named nets, 0 mismatches). `make_xdc.py` regenerated `vivado/asar_feather_pins.xdc`
+  (82 pins checked; it takes each ball from the schematic netlist, so the swaps carry through: CHAN2 C17, CHAN15 R19,
+  CHAN18 W15, CHAN14 J19, CHAN17 B15, CHAN4 C15).
+- **ECO** (Design > Import Changes): 11 pin removals + 11 additions on U1 (SD-DAT3 A16>W16, CHAN2 A17>C17, SD-DAT1
+  B15>H19, SD-DAT0 C15>W18, CHAN4 C17>C15, SD-DAT2 L3>P17, LED0_R P17>L3, CHAN17 V15>B15, CHAN18 W13>W15, CHAN15 W15>R19,
+  CHAN14 W16>J19), the 10 net-class removals and the USB differential pair unticked. All green.
+- **Copper**: `FeatherClearCopper3.pas` removed 1112 vias / 3783 tracks (stages 1/3/4); `emit_copper.py` scripts
+  `FeatherCopper_Stage1SwapB` (swapB's stage1: 271 vias, 975 tracks), `FeatherCopper_Tie38A` (562 / 2395, removes the
+  A8 L4 stub) and `FeatherCopper_Tie38B` (470 / 1969) -- the plan was split into two chunks (`tie38_swapB_a/b.json`)
+  to stay near stage 4's script size; no missing nets. stage3_sdram.json NOT emitted (the bus is inside the plan).
+- **Microvias**: `stage13_mark_microvias.py --expect 875` marked 875 of 875 (Top>L2 255, L2>L3 245, L4>L5 192,
+  L5>Bottom 183).
+- **DRC** (`docs/drc_stage5.drc`, after Repour All): first run 109 = 38 Un-Routed + 69 Net Antennae + 2 Hole To Hole
+  (the stage-4 artefact again: VCC3V3 through via + L4>L5>Bottom microvia stack at 34.95,12.425). `FeatherFixStage5.pas`
+  removed the two microvias and `tools/route/stage5/fix_stage5.py` trimmed them from the plan files (1030 vias). Second
+  run: **107 = 38 Un-Routed + 69 Net Antennae, nothing else**. The 38 are exactly the plan's open set (A5 A7 BTN CFG-M0
+  CFG-M1 CHAN16 CHAN18 CHAN20 CHAN22 CLK-12M-SHARED x2 D1 D2 D3 FLASH-CS# FLASH-D00 FLASH-D01 FLASH-D03 x2 FPGA-TCK x2
+  FPGA-TDI FPGA-TDO GNDADC x2 LDQM LED0_G LED0_R RST# SD-CLK SD-CMD SD-DAT1 SD-DAT3 SDRAM-CS# UART_FT_CTS# x2
+  UART_FT_DTR# VCC1V0); the antennae are the open nets' stubs.
+- **Verify**: `verify_copper.py swapB_stage1.json tie38_swapB.json` PASS: 1301/1301 vias, 5338/5338 tracks, nothing
+  missing or extra. Model re-dumped (`board_dump.py`, `route_model.py`): 821 pads, 5338 tracks, 1301 vias, the swapped
+  balls carry their new nets, open 38 on 33 nets. Board md5 d0bdb7d0 (saved after the DRC; copper identical to the
+  verified a6aa6192 save). Board went 57 -> 38 open. Not committed.

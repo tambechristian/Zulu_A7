@@ -3,7 +3,8 @@
 Expected = the original Zulu A7 netlist (the KiCad-proven reports/kicad.net, which sch_netlist.py reproduces
 177/177) transformed by feather_map.py: parts removed, X2/U3 pins renumbered, the moved pins re-netted.
 Actual = sch_netlist.py run on Asar_feather.PrjPcb. They must match net for net, names included.
-    python tools/check_feather_schematic.py
+    python tools/check_feather_schematic.py [--perm <perm.json> ...]   (each later ball permutation, in the order
+                                                                       applied after tools/pin_swap.json)
 """
 import json
 import os
@@ -19,7 +20,20 @@ ROOT = os.path.dirname(HERE)
 REF = os.path.join(ROOT, '..', 'Zulu_kicad', 'reports', 'kicad.net')
 CLEARED = '--before-clear' not in sys.argv     # default: the single-pin net labels have been cleared
 _SWAP = os.path.join(HERE, 'pin_swap.json')
-PERM = json.load(open(_SWAP))['perm'] if os.path.exists(_SWAP) and '--before-swap' not in sys.argv else {}
+
+
+def compose(files):
+    """original ball -> ball after the permutations in `files`, applied in order (perm[d]: the pin at d moves to perm[d])"""
+    perm = {}
+    for f in files:
+        p = json.load(open(f))['perm']
+        perm = {d: p.get(perm.get(d, d), perm.get(d, d)) for d in set(perm) | set(p)}
+    return perm
+
+
+_FILES = [_SWAP] if os.path.exists(_SWAP) and '--before-swap' not in sys.argv else []
+_FILES += [sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == '--perm']
+PERM = compose(_FILES)
 
 
 def expected():

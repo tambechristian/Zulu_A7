@@ -2,6 +2,7 @@
 board's own HDI via types.
 
     python tools/router.py [--nets N1,N2] [--remove tools/route/remove.json] [--out tools/route/stage3.json]
+                           [--checkpoint tools/route/stage3.partial.json]
 
 Reads tools/route/model.json (route_model.py) and finds the open connections with route_conn.py (it agrees with
 Altium's DRC count). Plane nets (GND on L2, VCC3V3 on L5) are closed by dropping a via onto their pour; every other
@@ -11,6 +12,8 @@ MODEL
   layers   Top, L3-SIG, L4-SIG, Bottom are routed; L2-GND and L5-VCC3V3 only carry via lands
   vias     uvia_top   Top->L2 0.30/0.15 (GND plane tie)          uvia_bot   L5->Bottom 0.30/0.15 (VCC3V3 tie)
            stack_top  Top->L2->L3 0.30/0.15 x2 (signal Top<->L3)  stack_bot  L4->L5->Bottom 0.30/0.15 x2
+           uvia_top   Top->L2 0.30/0.15 (GND plane tie only)      uvia_bot   L5->Bottom (VCC3V3 tie only)
+           stack_tie  Top>L2>L3 + L3>L4 + L4>L5 column (a Top pad to the VCC3V3 plane, via-in-pad allowed)
            buried     L3->L4 0.27/0.15                            through    0.35/0.20 (any layer change)
   widths   the board's per-layer Width minimums (WIDTH below); SDRAM 0.1 on L3/L4/Bottom; USB 0.15
   clearance 0.09 mm (Clearance rule), 0.10 for SDRAM nets on L3/L4 and 0.20 for SDRAM-CLK there; 0.30 to the
@@ -51,8 +54,15 @@ VIAS = {
     'stack_bot': ([('L4-SIG', 'L5-VCC3V3', 0.30, 0.15), ('L5-VCC3V3', 'Bottom Layer', 0.30, 0.15)], STACK[3:6], ('L4-SIG', 'Bottom Layer')),
     'buried': ([('L3-SIG', 'L4-SIG', 0.27, 0.15)], STACK[2:4], ('L3-SIG', 'L4-SIG')),
     'through': ([('Top Layer', 'Bottom Layer', 0.35, 0.20)], STACK, tuple(ROUTE)),
+    # single-level microvias: plane ties only (they join no pair of routing layers)
+    'uvia_top': ([('Top Layer', 'L2-GND', 0.30, 0.15)], STACK[0:2], ('Top Layer',)),
+    'uvia_bot': ([('L5-VCC3V3', 'Bottom Layer', 0.30, 0.15)], STACK[4:6], ('Bottom Layer',)),
+    # a Top pad down to the VCC3V3 plane: stacked microvias over the buried via, Bottom untouched
+    'stack_tie': ([('Top Layer', 'L2-GND', 0.30, 0.15), ('L2-GND', 'L3-SIG', 0.30, 0.15),
+                   ('L3-SIG', 'L4-SIG', 0.27, 0.15), ('L4-SIG', 'L5-VCC3V3', 0.30, 0.15)], STACK[0:5], ('Top Layer',)),
 }
-VIA_COST = {'stack_top': 0.8, 'stack_bot': 0.8, 'buried': 0.8, 'through': 1.5}
+VIA_COST = {'stack_top': 0.8, 'stack_bot': 0.8, 'buried': 0.8, 'through': 1.5, 'uvia_top': 0.5, 'uvia_bot': 0.5,
+            'stack_tie': 1.5}
 
 
 def width(net, layer):
@@ -92,6 +102,7 @@ class Board:
         nets = sorted({p['net'] for p in M['pads'] if p['net']} | {t['net'] for t in M['tracks']} |
                       {v['net'] for v in M['vias']})
         self.nid = {n: i + 1 for i, n in enumerate(nets)}
+        self.net_by_nid = {i: n for n, i in self.nid.items()}
         self.r = {l: np.zeros((self.H, self.W), np.int32) for l in STACK}
         e = int(round(EDGE / G))
         cr = int(round(1.2 / G))
@@ -169,10 +180,11 @@ class Router:
         self.B = B
         self.max_pops = max_pops                     # A* expansion budget per connection
         self.layer_cost = {}                         # net -> {layer: step-cost multiplier} (router.py --layers)
+        self.soft = 0.0                              # base=True routes: penalty (mm) per cell of rippable copper
         self.out_v, self.out_t = [], []
 
     def dist(self, net, win, base=False):
-        """per-layer distance (mm) from each cell of the window to the nearest copper not of `net`"""
+        """per-layer free radius after the larger of this net's and each obstacle net's clearance"""
         i0, i1, j0, j1 = win
         n = self.B.nid[net]
         hp = int(round(1.5 / G))                     # halo: copper just outside the window still counts
@@ -182,7 +194,18 @@ class Router:
             sub = (self.B.base if base else self.B.r)[l][a0:a1, b0:b1]
             foreign = (sub != 0) & (sub != n)
             d = ndimage.distance_transform_edt(~foreign) * G if foreign.any() else np.full(sub.shape, 99.0)
-            D[l] = d[i0 - a0:i1 - a0, j0 - b0:j1 - b0]
+            own_clear = clearance(net, l)
+            available = d - own_clear
+            ids_by_clear = defaultdict(list)
+            for oid in np.unique(sub[(sub > 0) & (sub != n)]):
+                obstacle_clear = clearance(self.B.net_by_nid[int(oid)], l)
+                if obstacle_clear > own_clear:
+                    ids_by_clear[obstacle_clear].append(oid)
+            for obstacle_clear, ids in ids_by_clear.items():
+                high_clearance = np.isin(sub, ids)
+                hd = ndimage.distance_transform_edt(~high_clearance) * G
+                available = np.minimum(available, hd - obstacle_clear)
+            D[l] = available[i0 - a0:i1 - a0, j0 - b0:j1 - b0]
         return D
 
     def via_ok(self, net, kind, x, y, D, win, base=False):
@@ -192,7 +215,7 @@ class Router:
         land = max(o[2] for o in objs) / 2
         for l in occ:
             a = D[l]
-            if not (0 <= i < a.shape[0] and 0 <= j < a.shape[1]) or a[i, j] < land + CLEAR + MARGIN:
+            if not (0 <= i < a.shape[0] and 0 <= j < a.shape[1]) or a[i, j] < land + MARGIN:
                 return False
         hole = max(o[3] for o in objs) / 2
         for vx, vy, vh, vspan, vnet in (self.B.base_vias if base else self.B.vias):
@@ -214,9 +237,15 @@ class Router:
         i0, i1, j0, j1 = win
         h, w = i1 - i0, j1 - j0
         free = {}
+        soft = bool(base and self.soft > 0)          # pass through rippable copper, at a price per cell crossed
+        Dl = self.dist(net, win, False) if soft else None
+        pen = {}
         for l in ROUTE:
-            need = width(net, l) / 2 + clearance(net, l) + MARGIN
+            need = width(net, l) / 2 + MARGIN
             free[l] = D[l] >= need
+            pen[l] = np.zeros((h, w), np.float32)
+            if soft:
+                pen[l] = np.where(Dl[l] >= need, 0.0, self.soft).astype(np.float32)
         if net in ('VCC3V3', 'VU', 'USB5V0', 'VBATT'):
             for l in INNER:
                 free[l][:] = False
@@ -253,6 +282,7 @@ class Router:
             if gc > g[k, i, j]:
                 continue
             pops += 1
+            self.pops = pops
             if pops > self.max_pops:
                 return None
             l = ROUTE[k]
@@ -268,7 +298,7 @@ class Router:
             for di, dj, c in steps:
                 ni, nj = i + di, j + dj
                 if 0 <= ni < h and 0 <= nj < w and free[l][ni, nj]:
-                    ng = gc + c * G * mult[k]
+                    ng = gc + c * G * mult[k] + pen[l][ni, nj]
                     if ng < g[k, ni, nj]:
                         g[k, ni, nj] = ng
                         came[(k, ni, nj)] = (k, i, j, None)
@@ -286,6 +316,10 @@ class Router:
                     if ng < g[k2, i, j] and self.recent_via(came, (k, i, j), x, y, win):
                         continue
                     if ng < g[k2, i, j] and self.via_ok(net, kind, x, y, D, win, base):
+                        if soft and not self.via_ok(net, kind, x, y, Dl, win, False):
+                            ng += self.soft * 12               # about what crossing one track costs
+                            if ng >= g[k2, i, j]:
+                                continue
                         g[k2, i, j] = ng
                         came[(k2, i, j)] = (k, i, j, kind)
                         heapq.heappush(pq, (ng + float(Hd[i, j]), ng, k2, i, j))
@@ -321,7 +355,7 @@ class Router:
         """is the straight track a-b clear, judged on the route's distance field (half-cell samples)?"""
         D, win = self.last
         i0, i1, j0, j1 = win
-        need = width(net, l) / 2 + clearance(net, l) + MARGIN + G / 2
+        need = width(net, l) / 2 + MARGIN + G / 2
         n = max(1, int(math.hypot(b[0] - a[0], b[1] - a[1]) / (G / 2)))
         d = D[l]
         for k in range(n + 1):
@@ -363,17 +397,19 @@ class Router:
             i = j
         return keep
 
-    def blockers(self, net, path):
-        """nets whose router-added copper lies near a path found with base=True (generous radius)"""
+    def blockers(self, net, path, tight=False):
+        """nets whose router-added copper lies near a path found with base=True (generous radius; tight: only
+        copper the path's own clearance actually overlaps, for a minimum-victim path)"""
         n = self.B.nid[net]
         inv = {v: k for k, v in self.B.nid.items()}
         out = set()
+        extra = 0.0 if tight else 0.2
         for l, x, y, kind in path:
-            rad = width(net, l) / 2 + clearance(net, l) + MARGIN + 0.2
+            rad = width(net, l) / 2 + clearance(net, l) + MARGIN + extra
             layers = [l]
             if kind:
                 layers = VIAS[kind][1]
-                rad = max(rad, max(o[2] for o in VIAS[kind][0]) / 2 + CLEAR + MARGIN + 0.2)
+                rad = max(rad, max(o[2] for o in VIAS[kind][0]) / 2 + CLEAR + MARGIN + extra)
             c = int(math.ceil(rad / G))
             i, j = int(round(y / G)), int(round(x / G))
             sl = (slice(max(0, i - c), i + c + 1), slice(max(0, j - c), j + c + 1))
@@ -495,9 +531,9 @@ def window(B, boxes, margin):
     return (max(0, int(y0 / G)), min(B.H, int(y1 / G) + 1), max(0, int(x0 / G)), min(B.W, int(x1 / G) + 1))
 
 
-PLANE_VIAS = {'GND': {'Top Layer': ('stack_top', 'through'), 'Bottom Layer': ('through',),
+PLANE_VIAS = {'GND': {'Top Layer': ('uvia_top', 'stack_top', 'through'), 'Bottom Layer': ('through',),
                       'L3-SIG': ('stack_top',), 'L4-SIG': ('through',)},
-              'VCC3V3': {'Bottom Layer': ('stack_bot', 'through'), 'Top Layer': ('through',),
+              'VCC3V3': {'Bottom Layer': ('uvia_bot', 'stack_bot', 'through'), 'Top Layer': ('through', 'stack_tie'),
                          'L4-SIG': ('stack_bot',), 'L3-SIG': ('through',)}}
 
 
@@ -514,7 +550,16 @@ def main():
                     'to this many negotiated-congestion iterations (0: off)')
     ap.add_argument('--rip', type=int, default=2, help='rip-up limit per net (0: no rip-up)')
     ap.add_argument('--pops', type=int, default=400000, help='A* expansions allowed per connection')
+    ap.add_argument('--seed', default='', help='comma-separated plans loaded as router copper (rippable): their nets '
+                    'are re-routed from the live islands when ripped')
+    ap.add_argument('--checkpoint', default='', help='write the complete in-progress routing plan after each net so '
+                    'an interrupted run can resume by using it as --seed')
+    ap.add_argument('--soft', type=float, default=0.0, help='rip-up picks the path crossing the least rippable copper: '
+                    'this many mm of cost per cell of it (0: the straight base-only path, every net near it ripped)')
+    ap.add_argument('--slack', type=float, default=MARGIN, help='raster allowance in mm on top of every clearance '
+                    '(default 0.02); 0 lets a local repair re-enter a lane routed at the rule limit -- route_check it')
     a = ap.parse_args()
+    globals()['MARGIN'] = a.slack
     M = json.load(open(a.model))
     removed = []
     if a.remove:
@@ -531,14 +576,33 @@ def main():
         print('removed %d tracks before routing' % len(removed))
     B = Board(M)
     Rt = Router(B, a.pops)
+    Rt.soft = a.soft
     if a.layers:
         Rt.layer_cost = json.load(open(a.layers))['cost']
-    isl = C.islands(M)
+    S = {'M': M}
+
+    def cur():
+        """the model plus the copper the router holds now (seeds and commits)"""
+        Mx = dict(M)
+        Mx['tracks'] = M['tracks'] + Rt.out_t
+        Mx['vias'] = M['vias'] + [dict(v, span=STACK[STACK.index(v['from']):STACK.index(v['to']) + 1])
+                                  for v in Rt.out_v]
+        return Mx
+    if a.seed:
+        for f in a.seed.split(','):
+            P = json.load(open(f))
+            Rt.out_t += P['tracks']
+            Rt.out_v += P['vias']
+        Rt.rip(set())                                 # repaint: the seeds are router copper, so rip-up can move them
+        S['M'] = cur()
+        print('seeded %d vias, %d tracks' % (len(Rt.out_v), len(Rt.out_t)), flush=True)
+    isl = C.islands(S['M'])
     want = set(a.nets.split(',')) if a.nets else None
     log = []
     ripped = defaultdict(int)
 
     def try_route(net, main_g, gi, base=False):
+        M = S['M']
         mb = bbox(M, main_g)
         for mg in (a.margin, a.margin * 2.5, 60.0):
             win = window(B, [mb, bbox(M, gi)], mg)
@@ -549,21 +613,65 @@ def main():
 
     def route_net(net):
         """join the net's islands nearest first; returns the nets ripped up to make room"""
-        groups = [{k: (list(v) if isinstance(v, list) else v) for k, v in g.items()} for g in isl[net]]
+        if a.seed:                                    # islands as the net stands now (seeds, rips, commits)
+            S['M'] = cur()
+            now = C.islands(S['M']).get(net, [])
+        else:
+            now = isl[net]
+        M = S['M']
+        groups = [{k: (list(v) if isinstance(v, list) else v) for k, v in g.items()} for g in now]
         if net in PLANE_VIAS:
+            tied = [g for g in groups if g['plane']]
+            torn = set()
+
+            def tie(base=False):
+                for mg in (0.8, 1.6, 3.0):
+                    win = window(B, [bx], mg)
+                    r = Rt.route(net, island_mask(B, M, gi, win), None, win, plane=PLANE_VIAS[net], base=base)
+                    if r:
+                        return r
+                return None
             for gi in groups:
                 if gi['plane']:
                     continue
                 bx = bbox(M, gi)
-                for mg in (0.8, 1.6, 3.0):
-                    win = window(B, [bx], mg)
-                    r = Rt.route(net, island_mask(B, M, gi, win), None, win, plane=PLANE_VIAS[net])
-                    if r:
-                        Rt.commit(net, *r)
-                        break
-                else:
-                    log.append('FAIL plane tie %s at %.2f,%.2f' % (net, (bx[0] + bx[2]) / 2, (bx[1] + bx[3]) / 2))
-            return set()
+                r = tie()
+                if r:
+                    Rt.commit(net, *r)
+                    gi['plane'] = True
+                    tied.append(gi)
+                else:                                 # no tie via fits: join the nearest island that is tied
+                    cx, cy = (bx[0] + bx[2]) / 2, (bx[1] + bx[3]) / 2
+                    r = None
+                    for tg in sorted(tied, key=lambda g: math.hypot((bbox(M, g)[0] + bbox(M, g)[2]) / 2 - cx,
+                                                                    (bbox(M, g)[1] + bbox(M, g)[3]) / 2 - cy))[:3]:
+                        r = try_route(net, tg, gi)
+                        if r:
+                            Rt.commit(net, *r)
+                            for k in ('pads', 'tracks', 'vias'):
+                                tg[k] = tg[k] + gi[k]
+                            log.append('plane join %s at %.2f,%.2f' % (net, cx, cy))
+                            break
+                    if not r and a.rip:               # rip up the least rippable copper in the way of a tie via
+                        rb = tie(base=True)
+                        if rb:
+                            path, (kind, vx, vy) = rb
+                            victims = {v for v in Rt.blockers(net, path + [(path[-1][0], vx, vy, kind)],
+                                                              tight=Rt.soft > 0) if v not in PLANE_VIAS}
+                            if victims and all(ripped[v] < a.rip for v in victims):
+                                for v in victims:
+                                    ripped[v] += 1
+                                Rt.rip(victims)
+                                torn |= victims
+                                r = tie()
+                                if r:
+                                    Rt.commit(net, *r)
+                                    gi['plane'] = True
+                                    tied.append(gi)
+                                    log.append('plane tie %s at %.2f,%.2f ripped %s' % (net, cx, cy, ' '.join(sorted(victims))))
+                    if not r:
+                        log.append('FAIL plane tie %s at %.2f,%.2f' % (net, cx, cy))
+            return torn
         main_g, rest = groups[0], groups[1:]
         torn = set()
         while rest:
@@ -575,7 +683,7 @@ def main():
             if not r and a.rip:
                 rb = try_route(net, main_g, gi, base=True)
                 if rb:
-                    victims = {v for v in Rt.blockers(net, rb[0]) if v not in PLANE_VIAS}
+                    victims = {v for v in Rt.blockers(net, rb[0], tight=Rt.soft > 0) if v not in PLANE_VIAS}
                     if victims and all(ripped[v] < a.rip for v in victims):
                         for v in victims:
                             ripped[v] += 1
@@ -591,7 +699,7 @@ def main():
         return torn
 
     def span_of(n):                                  # straight distance between a net's two farthest islands
-        bs = [bbox(M, g) for g in isl[n]]
+        bs = [bbox(S['M'], g) for g in isl[n]]
         cs = [((b[0] + b[2]) / 2, (b[1] + b[3]) / 2) for b in bs]
         return max((math.hypot(p[0] - q[0], p[1] - q[1]) for p in cs for q in cs), default=0)
 
@@ -609,26 +717,30 @@ def main():
         print('negotiated SDRAM: %d committed, %d left to the normal pass: %s' % (len(keep), len(drop), ' '.join(drop)),
               flush=True)
         queue = [n for n in queue if n not in keep]
+    touched = set()
     while queue:
         net = queue.pop(0)
         if net in queue:
             continue                                  # a later copy of this net is still waiting
+        touched.add(net)
         torn = route_net(net)
         for v in sorted(torn):
             if v not in queue:
                 queue.append(v)                       # its copper is gone: route it again from scratch
         print('%-14s %s' % (net, ('ripped ' + ' '.join(sorted(torn))) if torn else ''), flush=True)
+        if a.checkpoint:
+            json.dump({'vias': Rt.out_v, 'tracks': Rt.out_t, 'remove': removed,
+                       'log': ['CHECKPOINT: %d queued nets remain' % len(queue)]},
+                      open(a.checkpoint, 'w'), indent=0)
     # what the kept copper actually closes (a ripped net's earlier successes may not have survived)
-    Mx = dict(M)
-    Mx['tracks'] = M['tracks'] + Rt.out_t
-    Mx['vias'] = M['vias'] + [dict(v, span=STACK[STACK.index(v['from']):STACK.index(v['to']) + 1]) for v in Rt.out_v]
+    Mx = cur()
     oc_b = C.open_count(isl)
     oc_a = C.open_count(C.islands(Mx))
-    if want:
-        oc_b = {k: v for k, v in oc_b.items() if k in want}
-        oc_a = {k: v for k, v in oc_a.items() if k in want}
+    if want:                                      # report the wanted nets and every net the pass touched
+        oc_b = {k: v for k, v in oc_b.items() if k in want or k in touched}
+        oc_a = {k: v for k, v in oc_a.items() if k in want or k in touched}
     done, fail = sum(oc_b.values()) - sum(oc_a.values()), sum(oc_a.values())
-    log = ['OPEN %s %d' % kv for kv in sorted(oc_a.items())] + [l for l in log if l.startswith('FAIL plane')]
+    log = ['OPEN %s %d' % kv for kv in sorted(oc_a.items())] + [l for l in log if l.startswith(('FAIL plane', 'plane '))]
     json.dump({'vias': Rt.out_v, 'tracks': Rt.out_t, 'remove': removed, 'log': log}, open(a.out, 'w'), indent=0)
     print('routed %d connections, failed %d; %d vias, %d tracks -> %s' % (done, fail, len(Rt.out_v), len(Rt.out_t),
                                                                          a.out))
