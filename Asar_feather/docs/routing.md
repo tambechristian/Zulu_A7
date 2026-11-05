@@ -979,3 +979,34 @@ after the final save: 1095. route_conn 0 open. sch_vs_board MATCH. check_feather
     so fan-out vias are never checked against pads; route_conn.py:164 hides pad-less islands.
   - Not done: the PcbLib keeps U1 at 0.225 (never update U1 from the library); README pin table is stale; no Vivado place
     / report_drc on the re-pinned XDC; no SI simulation.
+
+### 2026-11-05 13:20-14:00 -- stage 7 clean-up: necks, NPTH pullback, trunks, U1 library footprint
+
+**Board md5 3c46c977: DRC 0 on every rule (`docs/drc_stage7_clean.drc`), 1487 vias, 4827 tracks, verify_copper PASS against
+`tools/route/stage7/final/plan.clean.json` (md5 c2c38921), 1095 microvias still marked, route_conn 0 open, sch_vs_board
+MATCH.** The routed board before this is commit 1f55305.
+
+- **Plane necks:** Remove Necks at 3 mil on both pours (`FeatherPourClean.pas`). Measured on the saved polygons: webs
+  under 0.0762 mm 18 -> 0 on L2 and 29 -> 0 on L5 (min 0.0764 and 0.0807). The orthogonal U1 webs stay 0.085-0.09 mm.
+- **NPTH pullback:** new rule Clearance_Plane_NPTH, 0.25 mm, priority 1. Measured: 0.250 mm from all six holes on both
+  planes (was 0.076). Pour copper lost: about 8 mm2 per plane (L2 944.1 -> 936.3, L5 922.3 -> 914.5 mm2).
+  - TRAP, cost one round: the first scope `IsPad And InNet('No Net')` matches NOTHING, so the rule did nothing and the DRC
+    passed vacuously. A clearance rule passing proves nothing; only measuring the saved pour caught it. `R.Scope2Includes(P)`
+    counts what a scope matches (`FeatherProbeNpth.pas`): `Net = 'No Net'` 68 pads, `Name = 'X2-'` 4 and `Name = 'X1-'` 2.
+    Final scope `IsPad And ((Name = 'X2-') Or (Name = 'X1-'))` (`FeatherNpthScope.pas`). FeatherPourClean.pas still shows the
+    wrong scope in its source; it was loaded, so it stays as it ran.
+- **Trunks:** `tools/widen.py` keeps every centreline and only changes width, in pieces of at most 0.4 mm so a pinch narrows
+  only its own piece, capped at the short side of a same-net SMD pad. 96 tracks became 199 (`FeatherCopper_S7W`). Length at
+  the old minimum width: VCC1V0 Top/Bottom 32.6 -> 10.7 mm of 0.15; VU 35.5 -> 18.0, VBATT 23.9 -> 8.5, USB5V0 35.1 -> 8.5
+  mm of 0.2; each SW node 2.7 -> 1.2-1.9 mm of 0.2. Everything else on these nets is 0.25-0.5. The sum of length / width
+  falls 26-39 % on VCC1V0 (Top/Bottom), VU, VBATT and USB5V0.
+  - NOT gained: the narrowest section in series is unchanged (0.15 on VCC1V0, 0.2 on the others), so the worst-case
+    current figure at the pinches stands. No legal site within 3 mm for a second VCC1V0 L4>L5 + L5>Bottom stack, so the two
+    single stacks remain.
+  - The audit's own geometry code on plan.clean: 0 shorts, 0 under 0.0762, 0 dangling, 0 floating.
+- **U1 library footprint:** XC7A35T-CPG236 in asar_feather.PcbLib now has 0.25 mm lands (`FeatherLibU1.pas`, guarded on 238
+  pads at 0.225). Saving made Altium re-serialise a few other footprints (1X03-NOSILK primitive order, small changes in
+  CC_* and TDFN-8); the board does not read them unless updated from the library.
+- Enquiry updated: pour to non-plated hole 0.25 mm, no strip under 0.0762 mm.
+- Still open: 113 through vias in pads (PCBWay's answer), tracks 0.086-0.095 mm from the X1 non-plated holes, long 3 mil GND
+  ties at C109 / C107 / C113, README pin table, no Vivado run on the re-pinned XDC, no SI simulation.

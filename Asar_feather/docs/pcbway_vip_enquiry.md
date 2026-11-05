@@ -2,7 +2,8 @@
 
 History: first draft 2026-10-31 (all-signals-to-L3 scheme), question on 3/3 mil added 2026-11-04. Rewritten 2026-11-05
 for the layer-per-ring fan-out and checked by three readers against the files; that version used counts from partial
-plans. THIS version carries the counts of the board as placed (stage 7, DRC 0: 1487 vias, 4724 tracks, md5 1162f2f9).
+plans. THIS version carries the counts of the board as placed and cleaned up (stage 7, DRC 0: 1487 vias, 4827 tracks, md5
+3c46c977).
 What the checks changed against the earlier drafts:
 - no "we could go to 0.275 mm lands": at 0.275 a 3 mil track between two balls has 0.0744 mm a side
 - PCBWay's CAM for W1150632AS3P6 lasered our 0.15 vias at 0.127 mm, drilled most buried vias with a 0.20 tool and most
@@ -11,7 +12,7 @@ What the checks changed against the earlier drafts:
 - stack figures are from PCBWay's approved file of 2026-10-27 (0.1016, not 0.1015); the reference order was 0.0762
   track / 0.09 gap, 69.85 x 25.40 mm, 0.225 lands; drl2-5 was confirmed a CAM helper (EQ 2026-10-27 item 1)
 - plane strip MEASURED on the saved repoured polygons: 65 of the orthogonal U1 webs on L2 are 0.085-0.09 mm, not the
-  ideal-circle 0.098 (Altium's antipads are 16-gons); 18 + 29 webs on L2 + L5 are under 0.0762 mm
+  ideal-circle 0.098 (Altium's antipads are 16-gons); after Remove Necks no web on L2 or L5 is under 0.0762 mm (min 0.0764)
 The text between the rules is what goes to PCBWay, as plain text.
 
 ---
@@ -55,9 +56,9 @@ Questions:
 
 4. Mechanical vias: on W1150632AS3P6 your working file drilled most of our 0.15 mm buried vias with a 0.20 mm tool and most of our 0.20 mm through vias with a 0.25 mm tool, and enlarged their lands. On this board there is no room for that: tracks pass 0.0762 mm from the drawn 0.27 mm and 0.35 mm lands, and 54 buried vias sit under BGA balls at 0.5 mm pitch. Can you build the buried via as drawn (0.15 mm in a 0.27 mm land) and the through via as drawn (0.20 mm in a 0.35 mm land), without enlarging the lands? If not, what are your minimum tool and land for each?
 
-5. Spacing: your minimum hole-edge to hole-edge distance (laser to laser, laser to buried or through hole). Adjacent BGA balls give 0.40 mm; our smallest distance between two holes that meet on a common layer is 0.24 mm, as on W1150632AS3P6. Your minimum from a hole wall to copper of another net: we have 0.15 mm from a laser hole to the L2 / L5 plane copper, 0.136 mm from a buried via and 0.151 mm from a through via. And your minimum from a non-plated hole to copper: we have 0.086 mm to a track and 0.076 mm to the plane pour.
+5. Spacing: your minimum hole-edge to hole-edge distance (laser to laser, laser to buried or through hole). Adjacent BGA balls give 0.40 mm; our smallest distance between two holes that meet on a common layer is 0.24 mm, as on W1150632AS3P6. Your minimum from a hole wall to copper of another net: we have 0.15 mm from a laser hole to the L2 / L5 plane copper, 0.136 mm from a buried via and 0.151 mm from a through via. And your minimum from a non-plated hole to copper: we have 0.086 mm to a track and 0.25 mm to the plane pour.
 
-6. Plane copper between clearance holes: between two adjacent via-in-pad balls the L2 ground plane keeps a copper strip about 0.09 mm wide. Can you hold that, or should we remove these strips? In about 45 other places on L2 and L5 a strip is narrower than 0.0762 mm. No connection depends on any of these, so you may clear any strip below your minimum.
+6. Plane copper between clearance holes: between two adjacent via-in-pad balls the L2 ground plane keeps a copper strip about 0.09 mm wide. Can you hold that, or should we remove these strips? No connection depends on them, so you may clear any strip below your minimum. No strip is narrower than 0.0762 mm.
 
 7. 3/3 mil: can you hold 0.0762 mm track and gap on all six layers at the copper weights of that stack, including (a) one 3 mil track between two 0.25 mm BGA lands at 0.5 mm pitch on Top (0.082 to 0.087 mm from track to land; the solder mask opening on these lands is drawn 1:1 - can you keep the track under mask?) and (b) 3 mil gaps from tracks to laser via lands on L3 / L4? If any layer needs thinner copper for 3/3 mil, please say which.
 
