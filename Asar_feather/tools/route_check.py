@@ -27,7 +27,28 @@ def span(v):
     return STACK[STACK.index(v['from']):STACK.index(v['to']) + 1]
 
 
+def rule_flags(argv):
+    """--clear X and --sdram-plain, as router.py: the plan is judged by the rules it was routed with"""
+    out = []
+    i = 0
+    while i < len(argv):
+        if argv[i] == '--clear':
+            R.CLEAR = float(argv[i + 1])
+            i += 2
+            continue
+        if argv[i] == '--sdram-plain':
+            R.SDRAM_RULES = False
+            i += 1
+            continue
+        out.append(argv[i])
+        i += 1
+    if R.CLEAR != 0.09 or not R.SDRAM_RULES:
+        print('rules: clearance %.4f, SDRAM rules %s' % (R.CLEAR, 'on' if R.SDRAM_RULES else 'OFF (plain)'))
+    return out
+
+
 def main():
+    sys.argv[:] = rule_flags(sys.argv)
     plan = json.load(open(sys.argv[1]))
     M = json.load(open(sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, 'route', 'model.json')))
     rm = plan.get('remove', [])
@@ -36,6 +57,11 @@ def main():
             {(round(t['x1'], 3), round(t['y1'], 3)), (round(t['x2'], 3), round(t['y2'], 3))} == \
             {(round(r['x1'], 3), round(r['y1'], 3)), (round(r['x2'], 3), round(r['y2'], 3))}
     M['tracks'] = [t for t in M['tracks'] if not any(same(t, r) for r in rm)]
+    rmv = plan.get('remove_vias', [])
+    if rmv:
+        def samev(v, r):
+            return v['net'] == r['net'] and abs(v['x'] - r['x']) < 0.002 and abs(v['y'] - r['y']) < 0.002 and                 abs(v['hole'] - r['hole']) < 0.002
+        M['vias'] = [v for v in M['vias'] if not any(samev(v, r) for r in rmv)]
     old_t, old_v = len(M['tracks']), len(M['vias'])
     newv = [dict(v, span=span(v)) for v in plan['vias']]
     M['tracks'] = M['tracks'] + plan['tracks']

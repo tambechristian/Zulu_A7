@@ -3,7 +3,7 @@
     python tools/emit_copper.py tools/route/stage1_u1.json Stage1U1     writes tools/FeatherCopper_Stage1U1.pas/.PrjScr
 
 The procedure Place<Name> refuses to run unless asar_feather.PcbDoc is focused and the board holds no copper of
-this plan yet (it counts vias at the plan's first via position). A plan's 'remove' tracks are deleted first,
+this plan yet (it counts vias at the plan's first via position). A plan's 'remove' tracks and 'remove_vias' are deleted first,
 and only if every one of them is found. Coordinates are board-relative mm, added to the
 board origin. Layer mapping as on production (tools/stage13 in Zulu_Altium_VS_Code): Top eTopLayer, L2-GND
 eMidLayer3, L3-SIG eMidLayer1, L4-SIG eMidLayer2, L5-VCC3V3 eMidLayer4, Bottom eBottomLayer; a via's LowLayer is
@@ -89,6 +89,28 @@ def main():
               '    For i := 0 To Kill.Count - 1 Do Brd.RemovePCBObject(Kill.Items[i]);', '    Kill.Free;']
         L[L.index('    Missing : String;')] = ('    Missing : String;\n    Kill : TInterfaceList;\n    K : IPCB_Track;\n'
                                                  '    i : Integer;\n    nm : String;\n    x, y, x2, y2, tw : Double;')
+    rmv = P.get('remove_vias', [])
+    if rmv:
+        # the plan's 'remove_vias' go next: every one must be found (net, hole, centre within 0.002 mm)
+        L += ['    KillV := TInterfaceList.Create;', '    It := Brd.BoardIterator_Create;',
+              '    It.AddFilter_ObjectSet(MkSet(eViaObject));', '    It.AddFilter_LayerSet(AllLayers);',
+              '    It.AddFilter_Method(eProcessAll);', '    KV := It.FirstPCBObject;', '    While KV <> Nil Do', '    Begin',
+              "        nm := ''; If KV.Net <> Nil Then nm := KV.Net.Name;",
+              '        x := CoordToMMs(KV.X - Brd.XOrigin); y := CoordToMMs(KV.Y - Brd.YOrigin);',
+              '        tw := CoordToMMs(KV.HoleSize); hit := False;']
+        # a stacked column has two vias at one point: each board via is added once, whichever lines it matches
+        for v in rmv:
+            L.append("        If (nm = '%s') And (Abs(tw - %.4f) < 0.002) And (Abs(x - %.4f) < 0.002) And (Abs(y - %.4f) < 0.002) Then hit := True;" % (
+                v['net'].replace("'", "''"), v['hole'], v['x'], v['y']))
+        L += ['        If hit Then KillV.Add(KV);',
+              '        KV := It.NextPCBObject;', '    End;', '    Brd.BoardIterator_Destroy(It);',
+              '    If KillV.Count <> %d Then' % len(rmv), '    Begin',
+              "        ShowMessage('Refusing: found ' + IntToStr(KillV.Count) + ' of the %d vias to remove; nothing changed.');" % len(rmv),
+              '        KillV.Free;', '        Exit;', '    End;',
+              '    For i := 0 To KillV.Count - 1 Do Brd.RemovePCBObject(KillV.Items[i]);', '    KillV.Free;']
+        mi = [k for k, l in enumerate(L) if l.startswith('    Missing : String;')][0]
+        L[mi] = L[mi] + chr(10).join(['', '    KillV : TInterfaceList;', '    KV : IPCB_Via;', '    hit : Boolean;'] +
+                                 ([] if rm else ['    i : Integer;', '    nm : String;', '    x, y, x2, y2, tw : Double;']))
     for net in sorted(by):
         vs, ts = by[net]
         L.append("    N := NetByName('%s');" % net.replace("'", "''"))
@@ -102,8 +124,8 @@ def main():
                                                                          t['x2'], t['y2']))
         L.append('    End;')
     L += ['    Brd.ViewManager_FullUpdate;',
-          "    ShowMessage('Removed %d, placed %d vias and %d tracks. Missing nets:' + Missing + '. Save, then mark microvias.');" % (
-              len(rm), len(P['vias']), len(P['tracks'])), 'End;', '']
+          "    ShowMessage('Removed %d tracks and %d vias, placed %d vias and %d tracks. Missing nets:' + Missing + '. Save, then mark microvias.');" % (
+              len(rm), len(rmv), len(P['vias']), len(P['tracks'])), 'End;', '']
     out = os.path.join(HERE, 'FeatherCopper_%s.pas' % name)
     open(out, 'w', newline='\n').write('\n'.join(L))
     open(os.path.join(HERE, 'FeatherCopper_%s.PrjScr' % name), 'w', newline='\n').write(

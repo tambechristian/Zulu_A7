@@ -40,7 +40,8 @@ import route_conn as C  # noqa: E402
 G = 0.025                       # grid, mm
 MARGIN = 0.02                   # raster allowance, mm
 INFL = 0.71 * G                 # every shape is painted this much fatter, so the raster always covers real copper
-CLEAR = 0.09
+CLEAR = 0.09                    # router.py --clear: the Clearance rule (3 mil = 0.0762 opens the lanes between U1's lands)
+SDRAM_RULES = True              # router.py --sdram-plain: False routes SDRAM nets with the default width/clearance
 EDGE = 0.30
 HOLE_HOLE = 0.24
 ROUTE = ['Top Layer', 'L3-SIG', 'L4-SIG', 'Bottom Layer']
@@ -79,15 +80,15 @@ def width(net, layer):
         return 0.15
     if net in ('USB_D_P', 'USB_D_N'):
         return 0.15
-    if net in SDRAM and (inner or layer == 'Bottom Layer'):
+    if SDRAM_RULES and net in SDRAM and (inner or layer == 'Bottom Layer'):
         return 0.1
     return 0.0762
 
 
 def clearance(net, layer):
-    if layer in INNER and net == 'SDRAM-CLK':
+    if SDRAM_RULES and layer in INNER and net == 'SDRAM-CLK':
         return 0.20
-    if layer in INNER and net in SDRAM:
+    if SDRAM_RULES and layer in INNER and net in SDRAM:
         return 0.10
     return CLEAR
 
@@ -180,6 +181,7 @@ class Router:
         self.B = B
         self.max_pops = max_pops                     # A* expansion budget per connection
         self.layer_cost = {}                         # net -> {layer: step-cost multiplier} (router.py --layers)
+        self.why = ''
         self.soft = 0.0                              # base=True routes: penalty (mm) per cell of rippable copper
         self.out_v, self.out_t = [], []
 
@@ -222,7 +224,7 @@ class Router:
             # hole to hole 0.24 mm for every pair of vias whose spans share a layer, the same net included; only a
             # stack at exactly the same point is exempt (Altium's HoleToHoleClearance behaves this way)
             dd = math.hypot(vx - x, vy - y)
-            if dd > 1e-6 and vspan & set(occ) and dd < HOLE_HOLE + hole + vh / 2 + 0.005:
+            if dd > 1e-6 and vspan & set(occ) and dd < HOLE_HOLE + hole + vh / 2 + 0.001:
                 return False
         for hx, hy, hd in self.B.holes:
             if math.hypot(hx - x, hy - y) < HOLE_HOLE + hole + hd / 2:
@@ -259,6 +261,8 @@ class Router:
             if not anyt.any():
                 return None
             Hd = (ndimage.distance_transform_edt(~anyt) * G).astype(np.float32)
+            if getattr(self, 'hw', 1.0) != 1.0:      # finish.py: weighted A* (greedy probe, bounded suboptimal)
+                Hd *= self.hw
         own = np.zeros((h, w), bool)                 # cells of the source copper (no through via in a pad)
         L = {l: k for k, l in enumerate(ROUTE)}
         lc = self.layer_cost.get(net, {})
@@ -284,6 +288,7 @@ class Router:
             pops += 1
             self.pops = pops
             if pops > self.max_pops:
+                self.why = 'budget'
                 return None
             l = ROUTE[k]
             x, y = (j + j0) * G, (i + i0) * G
@@ -323,6 +328,7 @@ class Router:
                         g[k2, i, j] = ng
                         came[(k2, i, j)] = (k, i, j, kind)
                         heapq.heappush(pq, (ng + float(Hd[i, j]), ng, k2, i, j))
+        self.why = 'nopath'
         return None
 
     def recent_via(self, came, node, x, y, win):
@@ -536,6 +542,28 @@ PLANE_VIAS = {'GND': {'Top Layer': ('uvia_top', 'stack_top', 'through'), 'Bottom
               'VCC3V3': {'Bottom Layer': ('uvia_bot', 'stack_bot', 'through'), 'Top Layer': ('through', 'stack_tie'),
                          'L4-SIG': ('stack_bot',), 'L3-SIG': ('through',)}}
 
+def _laser_objs(objs, size, hole):
+    return [(fr, to, size, hole) if (sz, hl) == (0.30, 0.15) else (fr, to, sz, hl) for fr, to, sz, hl in objs]
+
+
+def set_laser(size, hole):
+    """router.py --laser S/H: every standard laser microvia (0.30/0.15) becomes S/H (the buried and through vias stay)"""
+    for kind, (objs, occ, joins) in list(VIAS.items()):
+        VIAS[kind] = (_laser_objs(objs, size, hole), occ, joins)
+
+
+def add_small_lasers(size, hole, extra_cost=0.3):
+    """router.py --laser-small S/H: a second laser family (kinds *_s) the router may pick where the standard
+    0.30/0.15 land does not fit, e.g. interstitial sites inside a BGA field; costs extra_cost more per via"""
+    for kind in ('stack_top', 'stack_bot', 'uvia_top', 'uvia_bot', 'stack_tie'):
+        objs, occ, joins = VIAS[kind]
+        VIAS[kind + '_s'] = (_laser_objs(objs, size, hole), occ, joins)
+        VIA_COST[kind + '_s'] = VIA_COST[kind] + extra_cost
+    for net, per_layer in PLANE_VIAS.items():
+        for l, kinds in list(per_layer.items()):
+            per_layer[l] = kinds + tuple(k + '_s' for k in kinds if k + '_s' in VIAS)
+
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -556,10 +584,23 @@ def main():
                     'an interrupted run can resume by using it as --seed')
     ap.add_argument('--soft', type=float, default=0.0, help='rip-up picks the path crossing the least rippable copper: '
                     'this many mm of cost per cell of it (0: the straight base-only path, every net near it ripped)')
+    ap.add_argument('--laser', default='', help='standard laser microvia SIZE/HOLE instead of 0.30/0.15')
+    ap.add_argument('--laser-small', default='', help='add a second, smaller laser family SIZE/HOLE (kinds *_s)')
     ap.add_argument('--slack', type=float, default=MARGIN, help='raster allowance in mm on top of every clearance '
                     '(default 0.02); 0 lets a local repair re-enter a lane routed at the rule limit -- route_check it')
+    ap.add_argument('--clear', type=float, default=CLEAR, help='Clearance rule in mm (default 0.09; 0.0762 = 3 mil)')
+    ap.add_argument('--sdram-plain', action='store_true', help='SDRAM nets use the default width and clearance on '
+                    'the inner layers and Bottom too (no 0.1 width / 0.10 clearance / 0.20 for SDRAM-CLK)')
     a = ap.parse_args()
     globals()['MARGIN'] = a.slack
+    globals()['CLEAR'] = a.clear
+    globals()['SDRAM_RULES'] = not a.sdram_plain
+    if a.clear != 0.09 or a.sdram_plain:
+        print('rules: clearance %.4f, SDRAM rules %s' % (CLEAR, 'on' if SDRAM_RULES else 'OFF (plain)'), flush=True)
+    if a.laser:
+        set_laser(*[float(v) for v in a.laser.split('/')])
+    if a.laser_small:
+        add_small_lasers(*[float(v) for v in a.laser_small.split('/')])
     M = json.load(open(a.model))
     removed = []
     if a.remove:
@@ -695,7 +736,7 @@ def main():
                 for k in ('pads', 'tracks', 'vias'):
                     main_g[k] = main_g[k] + gi[k]
             else:
-                log.append('FAIL %s' % net)
+                log.append('FAIL %s (%s)' % (net, getattr(Rt, 'why', '?')))
         return torn
 
     def span_of(n):                                  # straight distance between a net's two farthest islands
@@ -740,7 +781,7 @@ def main():
         oc_b = {k: v for k, v in oc_b.items() if k in want or k in touched}
         oc_a = {k: v for k, v in oc_a.items() if k in want or k in touched}
     done, fail = sum(oc_b.values()) - sum(oc_a.values()), sum(oc_a.values())
-    log = ['OPEN %s %d' % kv for kv in sorted(oc_a.items())] + [l for l in log if l.startswith(('FAIL plane', 'plane '))]
+    log = ['OPEN %s %d' % kv for kv in sorted(oc_a.items())] + [l for l in log if l.startswith(('FAIL', 'plane '))]
     json.dump({'vias': Rt.out_v, 'tracks': Rt.out_t, 'remove': removed, 'log': log}, open(a.out, 'w'), indent=0)
     print('routed %d connections, failed %d; %d vias, %d tracks -> %s' % (done, fail, len(Rt.out_v), len(Rt.out_t),
                                                                          a.out))

@@ -1,0 +1,200 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\tambe\Documents\Electronics\Zulu_A7\Asar_feather\Asar_feather.PrjPcb\asar_feather.PcbDoc
+Date     : 11/4/2026
+Time     : 5:43:05 PM
+
+Processing Rule : Clearance Constraint (Gap=0.076mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.1mm) ((InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.2mm) (InNet('SDRAM-CLK') And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.175mm) ((InNamedPolygon('L2_GND_FEATHER') Or InNamedPolygon('L5_VCC3V3_FEATHER'))),(IsThruVia)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Net GNDADC Between Pad C124-2(27.83mm,18.83mm) on Bottom Layer And Pad L6-2(39.03mm,17.83mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net GNDADC Between Track (22.45mm,15.18mm)(22.45mm,18.33mm) on L4-SIG And Pad C124-2(27.83mm,18.83mm) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net VCC1V0 Between Pad C140-1(34.1mm,8.9mm) on Bottom Layer And Track (34.9mm,14.3mm)(35mm,14.55mm) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net LED0_R Between Via (31.2mm,10.03mm) from L3-SIG to L4-SIG And Pad LD0-4(43.75mm,9mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net LED0_G Between Track (30.95mm,16.28mm)(31.4mm,16.185mm) on Top Layer And Pad LD0-6(43.825mm,8.275mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net CLK-12M-SHARED Between Pad R24-1(11.27mm,3.97mm) on Bottom Layer And Pad Q1-3(15.85mm,13.2mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net CLK-12M-SHARED Between Pad Q1-3(15.85mm,13.2mm) on Top Layer And Pad R25-1(35.87mm,17.47mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net CFG-M0 Between Track (23.65mm,15.68mm)(23.65mm,16.143mm) on Top Layer And Pad R20-1(27.27mm,16.97mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net CFG-M1 Between Track (23.825mm,16.405mm)(23.825mm,16.655mm) on Top Layer And Pad R21-2(30.03mm,17.83mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FPGA-TCK Between Pad R4-11(13.08mm,5.6mm) on Bottom Layer And Via (25.9mm,8.43mm) from Top Layer to Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net FPGA-TDO Between Pad R4-13(11.48mm,5.6mm) on Bottom Layer And Track (25.4mm,15.93mm)(25.475mm,16.005mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FPGA-TDI Between Pad R4-14(10.68mm,5.6mm) on Bottom Layer And Track (24.4mm,15.93mm)(24.475mm,16.005mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FPGA-TCK Between Track (30mm,12.53mm)(31.4mm,12.686mm) on L4-SIG And Pad R5-2(35.27mm,17.47mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FLASH-D03 Between Pad R6-1(29.87mm,16.87mm) on Top Layer And Pad U4-7(47.15mm,16.235mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FLASH-D03 Between Via (20.65mm,9.18mm) from L2-GND to L3-SIG And Pad R6-1(29.87mm,16.87mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net BTN Between Track (19.15mm,12.93mm)(19.9mm,12.93mm) on Top Layer And Pad R85-2(43.63mm,12.13mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net UART_FT_CTS# Between Pad R93-1(11.27mm,4.57mm) on Bottom Layer And Pad U2-41(18.125mm,7.65mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net SD-DAT1 Between Pad U1-H19(19.9mm,10.43mm) on Top Layer And Track (22.8mm,19.85mm)(22.85mm,19.875mm) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net CHAN16 Between Pad U1-W14(22.4mm,15.93mm) on Top Layer And Pad X2-22(29.21mm,21.59mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net CHAN18 Between Pad U1-W15(21.9mm,15.93mm) on Top Layer And Pad X2-24(34.29mm,21.59mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net LDQM Between Pad U1-W4(27.4mm,15.93mm) on Top Layer And Pad U3-E8(35mm,13.83mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net UART_FT_CTS# Between Pad U2-41(18.125mm,7.65mm) on Top Layer And Track (21.4mm,7.43mm)(21.65mm,7.18mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net UART_FT_DTR# Between Pad U2-43(18.125mm,8.65mm) on Top Layer And Via (21.65mm,12.08mm) from Top Layer to L2-GND 
+   Violation between Un-Routed Net Constraint: Net D2 Between Track (25.9mm,15.93mm)(25.9mm,16.78mm) on Top Layer And Pad U3-B8(32.6mm,13.83mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net D1 Between Track (25.9mm,15.43mm)(26.15mm,15.68mm) on Top Layer And Pad U3-B9(32.6mm,14.63mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net D3 Between Track (26.325mm,16.18mm)(26.4mm,15.93mm) on Top Layer And Pad U3-C9(33.4mm,14.63mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net SDRAM-CS# Between Track (28.4mm,15.93mm)(28.4mm,16.78mm) on Top Layer And Pad U3-G9(36.6mm,14.63mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net A7 Between Track (30.4mm,13.45mm)(31.4mm,13.45mm) on Top Layer And Pad U3-H2(37.4mm,9.03mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net A5 Between Track (30.4mm,13.62mm)(31.4mm,13.62mm) on Top Layer And Pad U3-J2(38.2mm,9.03mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FLASH-D01 Between Track (18.65mm,8.43mm)(19.9mm,8.43mm) on Top Layer And Pad U4-2(41.45mm,16.235mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FLASH-D00 Between Track (20.15mm,8.18mm)(20.4mm,8.43mm) on Top Layer And Pad U4-5(47.15mm,13.695mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net CHAN20 Between Track (30.75mm,16.08mm)(31.4mm,15.43mm) on Top Layer And Pad X2-26(39.37mm,21.59mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net CHAN22 Between Via (30.2mm,17.08mm) from L2-GND to L3-SIG And Pad X2-28(44.45mm,21.59mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net SD-CLK Between Via (29.2mm,11.48mm) from L4-SIG to L5-VCC3V3 And Pad X3-5(38.45mm,10.205mm) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Net SD-DAT3 Between Track (21.4mm,15.93mm)(21.475mm,16.28mm) on Top Layer And Via (24.4mm,19.475mm) from L3-SIG to L4-SIG 
+   Violation between Un-Routed Net Constraint: Net RST# Between Via (17.25mm,14.85mm) from L2-GND to L3-SIG And Track (24.4mm,15.43mm)(24.65mm,15.855mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net SD-CMD Between Via (27.65mm,17.18mm) from L4-SIG to L5-VCC3V3 And Track (32.8mm,16.875mm)(33.6mm,16.5mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net FLASH-CS# Between Via (19.85mm,11.88mm) from L3-SIG to L4-SIG And Via (31.175mm,17.85mm) from Top Layer to L2-GND 
+Rule Violations :38
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=0.5mm) (InNetClass('PWR_SWITCH'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1.5mm) (Preferred=0.5mm) (InNet('VCC1V0'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1mm) (Preferred=0.2mm) (InNetClass('PWR_RAILS'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.076mm) (Max=0.5mm) (Preferred=0.076mm) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.076mm) (Max=0.15mm) (Preferred=0.125mm) (InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.076mm) (Max=1.5mm) (Preferred=1.05mm) (InNet('VCC3V3'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=1.1mm) (InNet('VU') Or InNet('USB5V0') Or InNet('VBATT'))
+Rule Violations :0
+
+Processing Rule : Routing Topology Rule(Topology=Shortest) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.25mm) (Air Gap=0.25mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (IsVia)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.55mm) (IsBuriedVia)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.02mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=2.6mm) (InComponent('X2'))
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.8mm) (InComponent('X1'))
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.15mm) (IsMicroVia)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.24mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+   Violation between Net Antennae: Track (17.4mm,10.53mm)(17.5mm,10.53mm) on L3-SIG 
+   Violation between Net Antennae: Track (17.4mm,10.83mm)(19.15mm,12.58mm) on L4-SIG 
+   Violation between Net Antennae: Track (17.4mm,11.08mm)(17.8mm,11.48mm) on L3-SIG 
+   Violation between Net Antennae: Track (17.4mm,11.08mm)(18.3mm,11.98mm) on L4-SIG 
+   Violation between Net Antennae: Track (17.4mm,11.33mm)(18.65mm,12.58mm) on L3-SIG 
+   Violation between Net Antennae: Track (17.4mm,12.48mm)(17.7mm,12.48mm) on L4-SIG 
+   Violation between Net Antennae: Track (17.4mm,12.68mm)(17.5mm,12.68mm) on L4-SIG 
+   Violation between Net Antennae: Track (17.4mm,14.63mm)(17.7mm,14.93mm) on L4-SIG 
+   Violation between Net Antennae: Track (17.4mm,17.33mm)(19.3mm,17.33mm) on L4-SIG 
+   Violation between Net Antennae: Track (17.4mm,8.63mm)(18.6mm,8.63mm) on L4-SIG 
+   Violation between Net Antennae: Track (17.8mm,15.78mm)(18.8mm,16.13mm) on Top Layer 
+   Violation between Net Antennae: Track (17.8mm,4.43mm)(19.5mm,5.73mm) on L4-SIG 
+   Violation between Net Antennae: Track (18.067mm,18.43mm)(18.9mm,17.93mm) on L4-SIG 
+   Violation between Net Antennae: Track (18.65mm,8.43mm)(19.9mm,8.43mm) on Top Layer 
+   Violation between Net Antennae: Track (18.6mm,11.68mm)(18.75mm,11.83mm) on Top Layer 
+   Violation between Net Antennae: Track (19.17mm,12.28mm)(19.4mm,11.93mm) on Bottom Layer 
+   Violation between Net Antennae: Track (19.45mm,11.18mm)(19.65mm,11.18mm) on Bottom Layer 
+   Violation between Net Antennae: Track (19.45mm,17.105mm)(19.525mm,17.08mm) on Bottom Layer 
+   Violation between Net Antennae: Track (19.65mm,4.565mm)(20.835mm,4.565mm) on Top Layer 
+   Violation between Net Antennae: Track (19.65mm,5.835mm)(19.65mm,6.38mm) on Top Layer 
+   Violation between Net Antennae: Track (19.77mm,7.43mm)(19.77mm,8.88mm) on Bottom Layer 
+   Violation between Net Antennae: Track (20.15mm,15.68mm)(20.4mm,15.43mm) on Top Layer 
+   Violation between Net Antennae: Track (20.85mm,5.83mm)(21.05mm,5.83mm) on Top Layer 
+   Violation between Net Antennae: Track (21.45mm,6.48mm)(21.7mm,6.23mm) on Bottom Layer 
+   Violation between Net Antennae: Track (21.4mm,15.93mm)(21.475mm,16.28mm) on Top Layer 
+   Violation between Net Antennae: Track (21.775mm,6.205mm)(22.025mm,6.205mm) on Top Layer 
+   Violation between Net Antennae: Track (22.45mm,15.18mm)(22.45mm,18.33mm) on L4-SIG 
+   Violation between Net Antennae: Track (22mm,18.08mm)(22mm,18.43mm) on L4-SIG 
+   Violation between Net Antennae: Track (23.4mm,15.93mm)(23.4mm,17.08mm) on Top Layer 
+   Violation between Net Antennae: Track (23.65mm,15.68mm)(23.65mm,16.143mm) on Top Layer 
+   Violation between Net Antennae: Track (23.825mm,16.405mm)(23.825mm,16.655mm) on Top Layer 
+   Violation between Net Antennae: Track (23.95mm,5.73mm)(25.25mm,4.43mm) on L3-SIG 
+   Violation between Net Antennae: Track (24.3mm,4.43mm)(24.3mm,4.78mm) on L3-SIG 
+   Violation between Net Antennae: Track (24.4mm,15.43mm)(24.65mm,15.855mm) on Top Layer 
+   Violation between Net Antennae: Track (25.9mm,15.93mm)(25.9mm,16.78mm) on Top Layer 
+   Violation between Net Antennae: Track (26.15mm,15.68mm)(26.15mm,16.143mm) on Top Layer 
+   Violation between Net Antennae: Track (26.325mm,16.18mm)(26.4mm,15.93mm) on Top Layer 
+   Violation between Net Antennae: Track (28.4mm,15.93mm)(28.4mm,16.78mm) on Top Layer 
+   Violation between Net Antennae: Track (29.3mm,8.58mm)(31.4mm,8.182mm) on L4-SIG 
+   Violation between Net Antennae: Track (29.45mm,9.61mm)(30.2mm,9.28mm) on Top Layer 
+   Violation between Net Antennae: Track (29.9mm,8.23mm)(31.4mm,7.85mm) on L4-SIG 
+   Violation between Net Antennae: Track (30.05mm,12.33mm)(31.4mm,12.33mm) on L4-SIG 
+   Violation between Net Antennae: Track (30.1mm,12.23mm)(31.4mm,13.53mm) on L3-SIG 
+   Violation between Net Antennae: Track (30.225mm,16.43mm)(31.4mm,16.43mm) on L4-SIG 
+   Violation between Net Antennae: Track (30.4mm,13.45mm)(31.4mm,13.45mm) on Top Layer 
+   Violation between Net Antennae: Track (30.4mm,13.62mm)(31.4mm,13.62mm) on Top Layer 
+   Violation between Net Antennae: Track (30.75mm,16.08mm)(31.4mm,15.43mm) on Top Layer 
+   Violation between Net Antennae: Track (30.775mm,14.08mm)(31.4mm,13.872mm) on L4-SIG 
+   Violation between Net Antennae: Track (30.822mm,8.83mm)(31.4mm,8.83mm) on Top Layer 
+   Violation between Net Antennae: Track (30.8mm,7.43mm)(31.4mm,8.03mm) on L3-SIG 
+   Violation between Net Antennae: Track (30.95mm,16.28mm)(31.4mm,16.185mm) on Top Layer 
+   Violation between Net Antennae: Track (30.988mm,9.28mm)(31.4mm,9.28mm) on Top Layer 
+   Violation between Net Antennae: Track (30mm,12.53mm)(31.4mm,12.686mm) on L4-SIG 
+   Violation between Net Antennae: Track (31.1mm,4.78mm)(31.35mm,4.53mm) on Top Layer 
+   Violation between Net Antennae: Track (31.25mm,14.73mm)(31.4mm,14.865mm) on L4-SIG 
+   Violation between Net Antennae: Track (31.25mm,7.08mm)(31.4mm,7.08mm) on L4-SIG 
+   Violation between Net Antennae: Track (31.2mm,8.68mm)(31.4mm,8.48mm) on L3-SIG 
+   Violation between Net Antennae: Track (31.321mm,10.18mm)(31.4mm,10.18mm) on Top Layer 
+   Violation between Net Antennae: Track (32.125mm,12.925mm)(32.875mm,12.925mm) on L4-SIG 
+   Violation between Net Antennae: Track (33.466mm,12.334mm)(34.075mm,11.725mm) on L4-SIG 
+   Violation between Net Antennae: Track (33.75mm,12.05mm)(33.75mm,12.473mm) on Top Layer 
+   Violation between Net Antennae: Via (18.05mm,4.98mm) from L2-GND to L3-SIG 
+   Violation between Net Antennae: Via (18.05mm,8.28mm) from L4-SIG to L5-VCC3V3 
+   Violation between Net Antennae: Via (18.85mm,9.28mm) from L4-SIG to L5-VCC3V3 
+   Violation between Net Antennae: Via (20.45mm,4.73mm) from L4-SIG to L5-VCC3V3 
+   Violation between Net Antennae: Via (25.4mm,6.13mm) from L2-GND to L3-SIG 
+   Violation between Net Antennae: Via (27.65mm,17.18mm) from L4-SIG to L5-VCC3V3 
+   Violation between Net Antennae: Via (29.65mm,17.13mm) from L2-GND to L3-SIG 
+   Violation between Net Antennae: Via (30.2mm,17.08mm) from L2-GND to L3-SIG 
+Rule Violations :69
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 107
+Waived Violations : 0
+Time Elapsed        : 00:00:02

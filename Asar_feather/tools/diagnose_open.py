@@ -32,7 +32,11 @@ def with_plan(M, P):
     return Mx
 
 
-def init(model, plan, pops):
+def init(model, plan, pops, laser_small='', clear=0.09, sdram_rules=True):
+    R.CLEAR = clear
+    R.SDRAM_RULES = sdram_rules
+    if laser_small:
+        R.add_small_lasers(*[float(v) for v in laser_small.split('/')])
     M = json.load(open(model))
     P = json.load(open(plan))
     Mx = with_plan(M, P)
@@ -77,7 +81,13 @@ def main():
     ap.add_argument('model')
     ap.add_argument('--pops', type=int, default=1500000)
     ap.add_argument('--out', default='')
+    ap.add_argument('--nets', default='', help='diagnose only these nets (comma list)')
+    ap.add_argument('--laser-small', default='', help='second laser family SIZE/HOLE, as router.py --laser-small')
+    ap.add_argument('--clear', type=float, default=0.09, help='Clearance rule, as router.py --clear')
+    ap.add_argument('--sdram-plain', action='store_true', help='as router.py --sdram-plain')
     a = ap.parse_args()
+    R.CLEAR = a.clear
+    R.SDRAM_RULES = not a.sdram_plain
     M = json.load(open(a.model))
     Mx = with_plan(M, json.load(open(a.plan)))
     isl = C.islands(Mx)
@@ -93,8 +103,10 @@ def main():
             ck = centre(Mx, gs[k])
             j = min(range(k), key=lambda j: math.dist(ck, centre(Mx, gs[j])))
             tasks.append((net, j, k))
+    if a.nets:
+        tasks = [t for t in tasks if t[0] in a.nets.split(',')]
     print('%d open connections to diagnose' % len(tasks), flush=True)
-    with Pool(min(20, len(tasks)), initializer=init, initargs=(a.model, a.plan, a.pops)) as pool:
+    with Pool(min(20, len(tasks)), initializer=init, initargs=(a.model, a.plan, a.pops, a.laser_small, a.clear, not a.sdram_plain)) as pool:
         res = pool.map(job, tasks, chunksize=1)
     cls = {}
     for r in res:

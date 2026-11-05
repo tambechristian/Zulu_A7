@@ -521,3 +521,461 @@ and everything re-placed when the next plan goes on.
   missing or extra. Model re-dumped (`board_dump.py`, `route_model.py`): 821 pads, 5338 tracks, 1301 vias, the swapped
   balls carry their new nets, open 38 on 33 nets. Board md5 d0bdb7d0 (saved after the DRC; copper identical to the
   verified a6aa6192 save). Board went 57 -> 38 open. Not committed.
+
+## Stage 6 -- the five stub-walled balls (2026-10-31, user: "Start the five-ball stub repair")
+
+Base: the ed2677b board model (`tools/route/model.json`, 38 open). Work dir `%LOCALAPPDATA%/Temp/routing/s6`.
+- **Dead stubs**: the six sealed balls' Top-only stage-1 stubs (A5 5 tracks, A7 4, D1 2, D2 1, D3 1, SDRAM-CS# 1; LDQM
+  has none) are dead copper that walls the neighbours. `tools/route/stage6/dead_stubs.json` lists them (a router
+  `--remove` file, carried into every plan's `remove`); `model_nostub.json` is the model without them.
+- **Pockets without the stubs** (`scratchpad/walls6_*.log`): A7, D2, D3, SDRAM-CS# open into thousands of cells with
+  via sites; A5 opens only at slack 0 (its lane sits exactly at the rule); D1 (V7) stays a 432-cell Top pocket with
+  no via site; LDQM (W4) 58 cells walled by WE# 43 / D6 41. The U3 ends: J2 (A5) and H2 (A7) wide open; B9 (D1) a
+  685-cell Top pocket walled by the bus (A1 93, D2 60, A2 32, D4 29); E8 (LDQM) open.
+- **Seven corner nets on the stub-free model, every order, 1.5M-3M pops, slack 0.005 and 0: 0 of 7 routed** (v_name,
+  v_short, v_y, v_short3M, v_short_sd, v_short_s0, each route_check PASS at 38). Open pockets at both ends do not
+  connect: the corridor between U1's east edge and U3's north-west corner is full of bus copper.
+- **Why U1's field has no via sites**: the interstitial centres (x.15/x.65, y.18/y.68) give exactly 0.0915 mm to
+  the four 0.225 lands (rule 0.09) and are off the 0.025 grid in y, so a Top>L2 microvia never fits; the stage-1
+  dogbones use buried L3>L4 vias (no Top land) at y.13/y.83 instead. Via-in-pad stacks (kind stack_top at the ball
+  centre) collide on L3 with the copper already under the balls: V7 (CHAN20 track, -0.088), B9 (D5 via/track), R2
+  (A1 track, -0.070) -- and did not route anyway.
+- **tools/knot.py** (generic tie_repair: `net_seed.py` moves the cut nets' copper into a rippable seed, `tie_cut.py`
+  cuts around the sites, ordered `--rip 0` passes, route_check each stage) and **tools/net_seed.py** are new.
+  `diagnose_open.py --nets` filters the diagnosis.
+- **LDQM**: cuts of WE#/D6 at 0.5/0.7/0.9/2.0 mm free W4 completely yet LDQM fails; diagnosis = congestion (it routes
+  when WE# and D6 are absent). Removing both entirely: LDQM closes, WE# re-routes, **D6 does not** (both orders end at
+  38 with D6 swapped for LDQM). Removing only D6: LDQM closes (`ldqm_d6`); D6's re-route and two wide-window
+  (margin 8, 3M pops) D6 retries are running.
+- **D1**: diagnosis = fixed copper. Cuts of D0, SD-CMD, the U6 GND strap, the CHAN22 via, LED0_G's via and the bus
+  around B9 (A1/A2/D4/D0 at 0.5-0.7 mm) in every combination leave D1 open while the cut nets re-join cleanly
+  (d1_a..h all end at 38). The C109 decap (VCC3V3/GND 0201 between rows V and W at x 25.83/26.43) sits on V7's two
+  northern via sites; moving it is the remaining local lever, not tried.
+- **Negotiated corner re-route** (`router.py --negotiate 40`, tools/negotiate.py) launched on two groups with their
+  copper removed from the model: G1 = the 7 + A1 A2 A4 A6 A8 A10 A11 A12 D0 D4 D5 D6 D7 WE# RAS# CAS# BS0 BS1 (25
+  nets, 707 tracks / 116 vias out), G2 = the 7 + A1 A2 A4 A6 D0 D4 D6 WE# (15 nets); `negG1/short`, `negG1/name`,
+  `negG2/short`. The board chain for any plan from here must delete `negG*/dropped.json` (the group's stage-1 stubs
+  included) before placing.
+- **Diagnosis of the six** (`diagnose_open.py --nets`, 3M pops, board-wide windows, stub-free model): A5 A7 D2 D3 LDQM
+  SDRAM-CS# are all "fixed copper" -- routable with the pads alone, walled by the model's copper. Only the
+  negotiated group re-route (which takes that copper out) can move them; LDQM-only knots are a swap with D6.
+- **Single nets on the bus-free model** (`negG1/one_*.json`, the 18 corner bus nets removed = 56 open): A5 (slack 0),
+  A7, SDRAM-CS#, LDQM, D3, D2 each route alone; D1 never does (B9/V7 stays sealed by non-bus copper).
+- **Sequential knots** (`knot.py`, `sites_all99.json` = the 18 bus nets cut entirely, `--rip 0` stages, margin 4,
+  1.5M pops): seqA/seqB (A5:0 > A7 > CS# > LDQM > D3 > D2 > D1) close six of the seven, 56 -> 50; seqD (D1 first)
+  closes the other five (D1 fails first, 56 -> 51). **seqA's bus stage** (all 18 bus nets back, --rip 0)
+  re-routes 11 and loses BS1 D0 D4 D6 D7 RAS# WE#: **39 on 34 nets, route_check PASS** -- one worse than the board.
+  `negG2/short` (15 nets negotiated) also ends at 39. The corner's capacity, not the order, is the wall so far.
+- **Retries running** (`retry/`, 3M pops, margin 8): the 7 lost nets on seqA's bus stage (orders name/short/y and a
+  `--rip 3` pass), the 18 bus nets on seqA's st7 in the other orders and with `--rip 2`, and two bus-first knots
+  (seqE name / seqF short: bus first, then the sealed six). `router.py` now logs `FAIL net (budget|nopath)`;
+  `knot.py --reuse <dir>` re-runs other stage orders on an existing cut; `tools/plan_open.py` lists a plan's open
+  nets. A computer restart killed seqB/seqD's bus stage and the negG1 runs (not relaunched: negG2 covers them).
+- **Board chain for a knot result**: `tools/knot_full.py <knot dir> <plan> <out>` rewrites a knot plan for the full
+  model (the moved copper of `dropped.json` goes into `remove` / `remove_vias`); `route_check.py`, `plan_open.py` and
+  `emit_copper.py` now honour `remove_vias` (net, x, y, hole; a board via is deleted once even when a stacked column
+  shares the point). Proven on seqA: `seqA/final_full.json` against `tools/route/model.json` = 39, PASS.
+- **Corridor lanes are not the wall** (`tools/corridor.py`, cut lines with every copper + clearance): on the seqA plan
+  the escape edges of U1 (x 29.25 east, y 16.25 south, the corner band) still hold 3-14 free lanes per layer and the
+  mid-corridor (x 30.3) 8-10 per layer, yet seven bus nets fail. The binding resource is inside U1's field (via
+  sites and ball escapes), as on Zulu A7.
+
+## Stage 7 -- via-in-pad laser microvias on U1 (2026-10-31, user: "go ahead with the via-in-pad laser microvias on U1")
+
+Why: forty-odd stage-5/6 runs plateau at 38-39 open; `corridor.py` shows free lanes everywhere outside U1; every
+open net is a U1 net; the field's escape capacity (interstitial via sites + Top necks) is the wall. A laser via in
+every netted ball removes it: the ball leaves on L3 at its own position, rings 3-5 (vacant) take the buried
+L3>L4 vias to leave the field on L4.
+- **Fab assumption** (PCBWay's published floor, docs/pcbway_vip_enquiry.md is the draft to send): laser 0.10 mm
+  hole / 0.25 mm land (0.075 ring), filled and capped; the U1 lands must grow 0.225 -> 0.25 on the board (no Top
+  neck between netted balls afterwards; none is needed). Laser-to-plane clearance 0.15 keeps an L2 web.
+- **`tools/vip_fanout.py`** -> `tools/route/stage7/`: `model_bare.json` (the board with every track and via removed),
+  `vip.json` (410 via objects on 211 balls: 68 GND Top>L2, 28 VCC3V3 Top..L5 columns, 115 signal Top>L2>L3
+  stacks), `model_vip.json` (bare + columns). route_check on the bare board: **0 violations, PASS**; the columns
+  close the 96 U1 plane ties (595 -> 499 open on 153 nets).
+- **Global routes from the columns** (`%LOCALAPPDATA%/Temp/routing/s7`, 1.5M pops, `--rip 2`): `g_name`, `g_short`,
+  `g_y` (all nets), and `s_sdram` (39 SDRAM nets with `route/sdram_layers.json`, y order, margin 7) followed by
+  `s_rest` seeded on it. Running.
+- Still to do when a plan wins: U1 lands 0.25 on the board (footprint + placed pads), a 0.10/0.25 laser via type
+  and rules (Routing Via Style, Hole Size + Annular Ring `IsMicroVia`, Hole-to-Hole with stacked allowed, plane
+  clearance for laser holes), `stage13_mark_microvias.py` extended to 0.25/0.10 (it matches 0.30/0.15 only), then
+  the chain: clear all routing copper -> place vip.json + the plan -> mark microvias -> DRC -> verify_copper.
+- Stage 6 side result: seqE/seqF (bus first, then the sealed six) are worse at their first stage (41 / 45 open) and
+  seqE died on an A5 slack-0 lane 0.0981 from A1 (route_check FAIL). The seven lost-bus-net retries are still
+  running; any result below 38 is a bonus, not the path to zero.
+- **Plane web under the rings (design consequence, not modelled)**: a 0.25 land on L2 at 0.5 mm pitch with the
+  0.09 polygon clearance leaves a 0.07 mm GND web between netted balls, below 3 mil -- the L2 pour under rings 0-2
+  becomes a mesh with slivers or, with neck removal, a perforated band 1.5 mm wide. L5 is untouched except under the
+  28 VCC3V3 columns. Standard via-in-pad compromise on a 6-layer 0.5 mm BGA; PCBWay's minimum plane web is asked
+  in the enquiry. `vip_fanout.py --land 0.25` writes the models with the enlarged U1 lands for the final check
+  (`s7/land25/`); the running routes use 0.225 pads with 0.25 via lands (0.0125 mm optimistic next to the 27
+  no-net balls only).
+
+### Stage 7 result (2026-11-01): the all-to-L3 columns are a trap; layer-per-ring columns replace them
+
+- The three global routes finished after 18 h: g_name **36** open / g_short **34** / g_y **44** (route_check PASS each;
+  the board is 38). Not a win. The staged SDRAM-first run was stopped (same flawed model). Stage 6's last retries
+  finished at 38-43 -- that lever is closed for good.
+- **Why so little** (`s7/diag`): AIN16_N and LED1 fail *alone on the bare via-in-pad board* ("nopath"), and the
+  SDRAM "budget" failures are the same thing with a bigger pocket. A laser stack at every signal ball puts a
+  0.25 mm land on L3 at every ball of rings 0-2, so a ring-1/2 ball is fenced on L3 exactly as on Top: the gap
+  between adjacent lands is 0.25 mm and a 0.0762 track needs 0.256 with 0.09 clearance. The only L3 exits are
+  chains of GND / no-net sites (GND stacks stop at L2). Geometry, not congestion.
+- Dead ends checked before the fix: (a) 0.225/0.075 lasers (lands unchanged): the Top necks between 0.225 lands
+  exist exactly (0.019 mm slack) but the 0.025 mm raster cannot represent them (INFL 0.018 + 0.09 leaves the
+  midpoint cell 0.030 < 0.043 needed) -- the production necks were placed exactly by hand, never by this router;
+  (b) interstitial laser + buried L3>L4 column: the buried 0.15 hole is 0.2411 from the ball lasers' 0.075 holes
+  exactly (rule 0.24) and 0.2375 once snapped to the grid (U1 sits 0.005 mm off the y grid) -- not usable.
+- **The right via-in-pad**: `vip_fanout.py --scheme rings` -- ring 0 (36 signal balls) keeps a bare pad and leaves on
+  Top; ring 1 (35) gets Top>L2>L3 and leaves on L3 where ring 0 has no land; ring 2 (34) and the 10 core power
+  balls get Top>L2>L3 + buried L3>L4 and leave on L4 where rings 0-1 have nothing; GND 68 Top>L2, VCC3V3 28 full
+  columns as before. 382 via objects, route_check PASS on the bare board, 499 open from scratch (same as before).
+  Alone on it: AIN16_N routes, A8 (ring 2) routes, LED1 needs more than 400k pops (3M retry running) -- the pocket
+  is gone.
+- Two models, both running two global routes (short/name orders, 1.5M pops, rip 2, slack 0.005):
+  `s7/v3a` = laser 0.25/0.10 with U1 lands grown to 0.25 (PCBWay's published floor; router `--laser-small 0.25/0.10`);
+  `s7/v3b` = laser 0.225/0.075, lands unchanged (0.075 drill is "on evaluation"; `--laser-small 0.225/0.075`).
+- Tool changes: `router.py --laser S/H` (replace the standard 0.30/0.15 laser), `--laser-small S/H` (adds a second
+  laser family `*_s`, +0.3 via cost, also in the plane tie lists), hole-to-hole raster safety 0.005 -> 0.001;
+  `vip_fanout.py --laser S/H --scheme rings`. Board to-do for v3a adds the 0.25 lands; for v3b only the rules change
+  (HoleSize/RoutingVias IsMicroVia 0.075..0.15, land 0.225..0.30). FeatherVip.pas still encodes the old 0.25 plan.
+
+**Paused 2026-11-01 16:46 for a reboot.** LED1 routes alone with 3M pops (2 vias, 15 tracks): the sealed-net
+proof is complete on the ring scheme. The four global runs were stopped cleanly at their per-net checkpoints
+(v3a short 51 nets queued / name 59; v3b short 83 / name 65, of 154) and resume with
+`bash "$LOCALAPPDATA/Temp/routing/s7/resume.sh"` (each run seeds from its checkpoint copy, appends to its log).
+
+**Stage 7 ring-scheme results (2026-11-02 07:20, resumed after the reboot, route_check arbiter):**
+v3a (0.25/0.10, U1 lands 0.25) short **25** on 24 nets, name 27; v3b (0.225/0.075, lands 0.225) short 26, name 27.
+Board 38, old all-to-L3 model 34. Survivors common to every run: SDRAM data (D0/D3/D5/D6/D10), SDRAM-CS#/CLK,
+CHAN-CLK, flash CS#/D00/D02/D03, JTAG TDI/TDO/TMS, LED2, UART_FT_CTS#, PUDC_B, CFG-M0; mostly `budget`, a few
+`nopath` (PUDC_B, JTAG, LED1/LED2, BTN, D15 in v3b short). Nothing placed. Next: diagnose_open on both short plans,
+seeded finishing passes (rip 3, 3M pops), corridor analysis.
+
+- **Diagnosis of v3a short's 25** (`diagnose_open.py --laser-small 0.25/0.10`, 1.5M pops): **23 congestion, 2
+  routable (budget)**, none placement- or fixed-copper-sealed -- every survivor routes alone on the pads and on the
+  via-in-pad model; only the other nets' copper blocks it. Corridors are open (cut x=30.3: 34/25/12/17 free lanes
+  Top/L3/L4/Bottom; cut y=16.4: 22/29/18/38). Running: seeded finishing passes (`fin_short`, rip 3, 3M pops, both
+  variants) and keystone-first chains (`keystone.sh`: the union of all four runs' survivors -- 40 nets on v3a, 44 on
+  v3b -- routed first on the bare model with rip 2 / 3M pops, then the rest seeded; k1_*/k2_* in v3a and v3b).
+  `diagnose_open.py` gained `--laser-small`.
+
+- **Keystone-first chains (2026-11-03 04:26)**: k2 = 27 (v3a short), **23** (v3a name), 26 (v3b short). Stage 1 alone
+  -- the 40/44 hard nets on the otherwise EMPTY board, rip 2, 3M pops -- already fails 6 / 5 / 11 of them (v3a short:
+  LDQM D3 CAS# SDRAM-CS# CHAN20 CFG-M0; name: CAS# D0 D2 D6 FPGA-TDI), so the hard set conflicts with itself.
+  Geometry (`s7/u1_balls.json`): 13 SDRAM nets sit on U1's y=15.93 row, east half (W2-W7, V3-V8, U4, U5: D0-D7,
+  LDQM, CAS#, RAS#, WE#, CS#) and must turn U1's NE corner (x 28.9, y 15.93) to reach U3's top rows (y 13-14.6);
+  the east column already carries 26 SDRAM + 4 XADC + LED0_R; no spare I/O ball exists (80 permutable, 18 fixed).
+  Running (`iso.sh`, v3a, rip 2, 3M pops): the 24 corner SDRAM nets alone, all 39 SDRAM alone, SDRAM + 18 fixed.
+
+**Isolation runs (2026-11-03 06:11-06:53, v3a, rip 2, 3M pops, short):** the 24 corner nets ALONE on the empty
+model fail 4 (`iso_corner`: D3 W6, D4 U5, SDRAM-CS# W2, D6 V5 -- nopath/nopath/budget/nopath); all 39 SDRAM alone
+fail 3 (D4, SDRAM-CS#, D6); SDRAM + the 18 fixed nets fail 7 (D3 D5 SDRAM-CS# LDQM CFG-M0 D7 RAS#). **U1's NE corner
+is over capacity by itself** -- the conflict is not with the fixed config/JTAG nets. The v3b finishing pass (rip 3,
+3M) ends at 24 open (from 26); v3a's is still running. In `iso_corner.json` the router itself lays laser stacks at
+ring-0 balls (CAS# at 27.98,15.9) and THROUGH vias in the Top band north of row W (D2 25.88,16.1; D1 27.4,16.32),
+each one sealing every layer around it; lanes across the gap are plentiful (cut x=29.3: 17/20/26/27 free), so the wall
+is the simultaneous escape from rows U-W x columns 1-8. Geometry: the Top band between row W's lands and the pull-up
+pads R20/R6/R7 (y 16.72) is 0.6 mm = 3 outer lanes for six Top-only SDRAM balls W2-W7 (+ CFG-M1, SD-DAT0/3 going
+east); the Bottom of the U1-U3 gap is blocked for y 12.95-16.55 by C141/C143 (VCC1V0 0603s at x 30.9/32.6).
+
+Experiments launched 06:55 (`s7/exp/iso_exp.sh`, 8 router processes, same 24-net corner protocol):
+order sensitivity on v3a (`o_name`, `o_y`, `o_neg` = --negotiate 30, `o_key` = the four failures first, then the
+rest seeded) and four model variants built by `s7/exp/build_variants.py`, each proven with route_check (vip.json on
+model_bare.json PASS): `v1_pullups` (R6 R7 R20 R23 R21 +1.5 mm north: Top band 0.6 -> 2.1 mm), `v2_northvip`
+(row W Top>L2>L3, row V + buried = L4, row U full column to Bottom; rings elsewhere; 448 vias), `v3_both`,
+`v4_nocaps` (C141 C143 C7 C8 removed: upper bound of the Bottom-gap lever). A proposal workflow (three lenses:
+placement / via scheme / pin permutation, each adversarially refuted on legality and mechanism) runs alongside;
+facts brief in `s7/exp/FACTS.md`. Nothing on the board.
+
+**Order sensitivity (2026-11-03, first results):** the same 24 corner nets on the same v3a model: `--order short`
+4 fail, `--order name` 3 (CAS# budget, D3 nopath, SDRAM-CS# budget), **`--order y` 1 (RAS#, budget)**; the four
+failures routed first (`o_key1`) go 4/4. So the corner is simultaneity- and order-limited, not hard-capacity-
+limited; a RAS# retry seeded from `o_y.json` with 8M pops (`o_y_fin`) and a global `--order y` run (`g_y`, 1.5M
+pops) are running. The v3a rip-3 finishing pass lost ground (28 open). Workflow proposals, all route_check PASS,
+now routing in `s7/exp/` (short and y orders): `p_band_clear` (R20 R6 R7 R23 R21 moved to a row at y 19.7 north
+of U3, x 30.5-36.9, leaving 4.6 mm of empty Top above row W; sub-variant `plus_caps` also moves C141/C143 under
+U1's VCC1V0 core at y 10.6), `p_w_holes` (17 extra via objects: Top>L2>L3 at W3/W15/W16/W18, Top>L2>L3+L3>L4 at
+W5/W6/W7, nothing else), `p_perm_a` (30-ball re-pin: W6/W7/U3 vacated, SD-CMD/SD-CLK/LED0_R to bank-14 balls,
+SDRAM data in planar order; perm.json + xdc_edits.txt in its folder; legality still to be refuted).
+
+**Corner levers measured (2026-11-03 10:40):** every corner isolation (24 nets, rip 2, 3M pops) is in except the
+proposal runs. Unchanged v3a: short 20/24, name 21, y 23 (RAS# budget); `o_key` stage 2 (the four seeded, then the
+rest) 16/20 (CAS# nopath, RAS# WE# D5 budget); `o_neg` (--negotiate 30) stalled at 4217 shared cells after 18
+iterations. Variants: `v1_pullups` 20 (the SAME four, rip log byte-identical to `iso_corner`), `v2_northvip` 22
+(BS0 budget, D5 nopath), `v3_both` 22 (md5-identical plan to v2 -- the pull-up move changes nothing once row W is
+on L3), `v4_nocaps` 20. **`p_perm_a` (U1-side re-pin) 24/24 in short order, 30 vias, 766 tracks, route_check PASS,
+0 violations** -- the only lever measured above the unchanged board. Workflow verdicts (journal of
+wf_ddf16187-102): p_band_clear and p_w_holes pass legality but their MECHANISM is refuted -- the Top band is not the
+binding resource (o_y put more copper in the band than iso_corner and still routed the four; v1_pullups with 22-25
+free band lanes repeats the four); the four die inside U1's land field, boxed by the router's own L4>L5>Bottom
+stacks / buried vias / ball-edge lasers between rows T and W, and each layer group's lane order is reversed relative
+to U3's pad order by the control nets fixed at W2/W3/W4 and V2/V3/V4 -- which only a U1-side move can change.
+p_perm_a's legality refuter: not refuted (pure permutation, all moves swap_rules.legal, non-U1 pads identical --
+re-verified here for p_perm_a, x_perm_b and x_perm_min). Synthesis: the single lever expected to win is
+`exp/x_perm_b` = p_perm_a minus the A5<->A9 (R2/N2) swap (24 XDC lines, 28 balls re-netted, vip 387 vias PASS);
+`exp/x_perm_min` = the 19-line minimum that keeps the planar order (W2 D3, W3 D5, W4 CAS#, W5 SDRAM-CS#, W6 A10,
+W7 empty; V2 D0, V3 D6, V4 RAS#, V5 WE#, V7 BS0, V8 BS1; U1 D1, U3 empty, U4 D2, U7 D7, U8 LDQM; U2 A2, T2 A0;
+V16 SD-CMD, V17 SD-CLK; 383 vias PASS); `exp/x_nobot` = unchanged pinout + a netless Bottom keepout over U1's NE
+field (x 25.1-29.2, y 13.7-16.6; the zero-ECO control of the "router-made knot" hypothesis). Launched 10:40
+(`exp/x_corner.sh`, `exp/x_global.sh`): x_perm_b tier 2 (39 SDRAM, v3a 36/39) and tier 3 (SDRAM + 18 fixed, v3a
+50/57), x_perm_min short + y, x_nobot short + y, and the GLOBAL short-order route on x_perm_b (1.5M pops, the long
+pole). Correction: `g_y` (global y order on v3a) is NOT finished -- 21 of 154 nets routed at 10:35; the synthesis
+agent's "44 failed" was wrong. 18 router processes alive. Nothing on the board, enquiry unsent, nothing committed.
+`o_y_fin` (RAS# retry seeded from o_y, 8M pops, 11:0x): ripped 9 nets and ended at 22/24 (D5 and RAS# nopath) --
+the unchanged pinout tops out at o_y's 23/24; more budget does not close the corner.
+`o_neg` (--negotiate 30) finished at 22/24 (LDQM, WE# budget; 73 vias, 1469 tracks). First-batch summary on the
+unchanged pinout, all orders and strategies: 20 / 21 / 22 / 23 of 24, never 24.
+
+**Proposal isolations finished (2026-11-03 ~11:30, 24 corner nets, short / y order):** `p_band_clear` 20 / 23 (the
+baseline's own numbers: D3 D4 SDRAM-CS# D6 / RAS#), `plus_caps` 20 / 21, `p_w_holes` 22 / 21, `alt_l3` 18,
+**`p_perm_a` 24 / 21 (y order fails D2 nopath, D3 nopath, SDRAM-CS# budget)**. So the re-pin's 24/24 is a
+single-order result, not a robust closure: every model is order-sensitive, and the re-pin raises the best-of-orders
+from 23 to 24 while its worst order (21) is no better than the baseline's. What decides is a complete GLOBAL plan,
+and any order that yields one is acceptable, so the corner plan that closed (`p_perm_a/iso.json`, 30 vias, 766
+tracks, route_check PASS on the x_perm_b model too) is now used as a keystone seed for a global route on x_perm_b
+(`g_seed`: --seed iso.json, short order, 1.5M pops) alongside the unseeded g_short / g_y; `iso_name` (third order)
+also launched. The Bottom-keepout control (`x_nobot`) and the 19-line `x_perm_min` are still routing.
+
+**Re-pin tiers (2026-11-03 ~12:00):** on `x_perm_b` the 24 corner nets close in NAME order too (24/24, 36 vias,
+613 tracks) -- so short 24 / name 24 / y 21 -- and **tier 2, all 39 SDRAM nets alone, closes 39/39** (63 vias, 1059
+tracks; the unchanged pinout gave 36/39). The 19-line `x_perm_min` closes the corner 24/24 in short order (30 vias,
+779 tracks). The Bottom-keepout control `x_nobot` in y order repeats the baseline's 23/24 (RAS#), so forbidding the
+router's Bottom drops under U1's NE field is not the lever. Still running: x_perm_b tier 3 (57), g_short, g_y,
+g_seed; x_perm_min y; x_nobot short; v3a g_y.
+Tier 3 on x_perm_b (SDRAM + 18 fixed nets, short, 16:3x): 58 of 66 connections, 8 FAIL (FLASH-D02, A5, CKE,
+SDRAM-CLK, CFG-M1 nopath, D3, D5, SDRAM-CS#) -- the fixed config/flash nets re-enter the conflict once the corner
+is re-pinned (A10's Top lane between R6 and R21/R23 walls R6-1/R7-1 off, as the synthesis warned). `x_perm_min` y
+order 19/24 (worse than its short 24), `x_nobot` short 19/24. Globals at 16:37: x_perm_b g_short 151 net lines /
+8 rips, g_y 143 / 15, g_seed 118 / 10; v3a g_y 161 / 17.
+
+**First global on the re-pin (2026-11-04 01:25):** `x_perm_b/g_seed` (seeded with the 24/24 corner plan, short,
+1.5M pops) = **25 open on 23 nets** -- the same plateau as the unchanged pinout's best (v3a short 25). The seed
+itself was ripped (D6 nopath, SDRAM-CS#, BS0, BS1 budget) and the non-corner knot is the rest: AIN16_N/P nopath x2
+each, FPGA-TDI/TDO/TMS nopath, CFG-M1 nopath, LED0_R nopath, plus budget failures on D8 A2 A5 UDQM SDRAM-CLK
+CHAN18-21 CHAN-CLK UART_FT_CTS# SD-CLK. The corner lever does not move the global number. g_short / g_y on x_perm_b
+and v3a g_y are in their rip phase.
+
+## 3 mil clearance -- the lanes between U1's lands (2026-11-04)
+
+Reading the raster code while the re-pin globals ran: a lane cell is free when the distance to the nearest painted
+foreign pixel is >= width/2 + clearance + slack. U1's 0.25 lands at 0.5 pitch paint out to 0.125 from their centres
+on the 0.025 grid, so the midline between two lands has 0.125 free: 0.0381 + 0.09 + 0.005 = 0.133 > 0.125 blocks it
+(the "U1 is a wall" of every stage since 7), while **0.0381 + 0.0762 + 0.005 = 0.119 <= 0.125 opens it** -- a
+3 mil Clearance rule (exact geometry: 0.0869 between a 3 mil track and the land edge) turns the whole 236-ball field
+into a sieve on Top. Probe (`Router.dist` on v3a, CHAN0 and D3): with clearance 0.09 the Top lanes between columns /
+rows are 55-91 % free (broken by the lands); with 0.0762 they are **100 % free on all 18 columns and rows**, for
+SDRAM nets too (their 0.10 clearance is inner-only). On L3/L4 the ring-1 laser lands (0.25) open the same way for
+non-SDRAM nets (81-100 %); the buried 0.27 lands of ring >= 2 do not (exact margin 0.0007 mm) and SDRAM's inner
+0.1/0.10 rules keep L3/L4 closed for the bus. Fab: 3/3 mil is on PCBWay's order form (docs/x1_slot_fix.md) and
+already in the enquiry draft; it is a user/fab decision, so this is MEASURED, not applied.
+Tooling (uncommitted): `router.py --clear X` and `--sdram-plain` (SDRAM nets at the default width/clearance),
+`route_check.py --clear X / --sdram-plain` (judges the plan by the rules it was routed with; without the flag a
+3 mil plan FAILs, as it should), `corridor.py clear=X sdram=plain`, `diagnose_open.py --clear/--sdram-plain`.
+Smoke: D3 (W6, Top-only) alone at 3 mil routes on Top with 0 vias / 6 tracks, PASS at 0.0762, 11 violations at 0.09.
+Launched (`s7/c3/`, v3a model, unchanged pinout): corner 24 in short / y / name, corner short with --sdram-plain,
+tier 3 (57) short; globals g_short and g_y (1.5M pops). The x_perm_b g_short / g_y and v3a g_y continue.
+`v3a/g_y` (global, y order, unchanged pinout, 0.09 rules) finished 01:45: **29 open on 27 nets** -- worse than
+g_short's 25; the y order that helped the corner in isolation does not help globally (corner nets RAS# SDRAM-CS#
+D0 D1 D4 D7 D8 A2 A3 A10 BS1 WE# SDRAM-CLK open, plus AIN15_N/AIN16_N x2, LED0_R, FPGA-INIT#, FLASH-CS#/D00, CFG-M0,
+CHAN-CLK/3/19, GNDADC, SD-DAT0/2, UART_FT_RTS#). 0.09-rule series on the ring scheme: 25 / 27 / 29 / 36 (short,
+name, y, fin). Only the 3 mil runs (`c3/`) and the x_perm_b g_short / g_y remain.
+`x_perm_b/g_short` (global, short, re-pin, 0.09 rules) finished 02:37: **26 open on 23 nets** (corner nets WE# A8
+A10 D5 D7 RAS# BS1 D4 D6 LDQM SDRAM-CS# all budget; FPGA-TDI/TDO nopath; LED1/LED2/D15/CFG-M0 nopath; VCC1V8 x4,
+VCC1V0, CHAN16, UART_FT_DTR#/RTS#, FLASH-D03 budget). Re-pin globals so far: 25 (seeded) / 26 (short); the
+re-pin is confirmed NOT to move the global plateau at the 0.09 rules. The 3 mil runs are the open question.
+`x_perm_b/g_y` (global, y order, re-pin, 0.09 rules) finished 03:1x: **33 open** (466 routed) -- the worst re-pin
+global. Re-pin series: 25 (seeded) / 26 (short) / 33 (y) against the unchanged pinout's 25 / 27 / 29 / 36. Closed:
+the U1 re-pin is not a lever for the whole board and no ECO is justified by it.
+
+**3 mil corner isolations (c3, unchanged pinout, 24 nets, rip 2, 3M pops, --clear 0.0762), finished ~03:10:**
+short 21/24 (RAS# SDRAM-CS# WE# budget), y 19/24 (D3 D5 SDRAM-CS# budget, D0 LDQM nopath), name 21/24 (BS1
+SDRAM-CS# budget, D4 nopath), short with --sdram-plain 20/24 (LDQM budget, CAS# D0 D4 nopath) -- against the 0.09
+rules' 20 / 23 / 21. The 3 mil Top sieve does NOT close the corner: the corner knot is an inner-layer problem (the
+four die between the router's own buried/laser stacks under rows T-W, where the 0.27 buried lands never open at any
+clearance and the SDRAM inner rules keep L3/L4 at 0.1/0.10), and the plain-SDRAM variant that lifts those rules is
+no better. The y order that was the baseline's best (23) is the 3 mil worst (19): the opened Top field widens the
+search and the same 3M budget runs out sooner (every failure above but five is "budget"). Still running: iso_fixed
+(57), g_short, g_y at 3 mil -- the global number is what matters for the non-SDRAM nets that CAN use the Top lanes.
+`diagnose_open` on the 3 mil corner plans (c3/iso, iso_y, iso_name; --clear 0.0762, 1.5M pops): every corner
+failure is **congestion** -- each open net routes on the bare pads and on the model's fixed copper, and fails only
+with the plan's own 20-21 corner nets present (short: RAS# SDRAM-CS# WE#; y: D0 D3 D5 LDQM SDRAM-CS#; name: A2 BS1
+D4 SDRAM-CS#). No placement or fixed-copper wall; the 24 nets do not fit the region simultaneously at any clearance.
+Side finding: 3-4 VCC3V3 plane ties at U3's supply pads (x 31.8-35.0, y 13.0-14.6) are also "congestion" on every
+corner plan -- the corner routes take the lanes those ties need, which a global route has to pay for too.
+Launched 03:5x (`c3/more.sh`): corner y / short at 8M pops (the 3 mil failures are budget), and two more 3 mil
+globals -- `g_plain` (short, --sdram-plain: SDRAM at 0.0762/0.0762 on the inner layers, a signal-integrity rule
+change to decide only if it wins) and `g_name`. Seven router processes alive.
+`c3/iso_fixed` (tier 3, SDRAM + 18 fixed nets, short, 3M pops, 3 mil) finished 07:2x: **57 of 66, 9 FAIL** (D5 BS0
+CAS# LDQM BS1 SDRAM-CS# WE# budget, D0 D4 nopath -- all corner nets) against 59/66 at 0.09 and 58/66 on the re-pin.
+Third tier in a row where 3 mil is no better than 0.09 for the SDRAM corner. At 07:31: g_short 133 nets / 6 rips,
+g_y 141 / 8, g_plain 55 / 2, g_name 57 / 3, iso_y8 37 / 5, iso_s8 14 / 1.
+
+**3 mil globals finished 15:2x (c3, unchanged pinout, ring scheme, 1.5M pops): `g_short` = 12 open on 11 nets**
+(487 routed, 1044 vias, 4229 tracks; all 12 budget: WE# BS1 D2 D3 D5 D6 CAS#, AIN16_P, VCC1V0, FPGA-TCK, SD-DAT1 x2,
+UART_FT_DTR#) -- **the first lever that moves the global number: 25 -> 12**. `g_y` = 24 (vs 29 at 0.09; many
+nopath: AIN15_P/AIN16_P x2, FPGA-TDI/TDO/TMS, D0 D2 D8 D9 BS0, CLK-12M-FPGA). route_check at 0.0762 on g_short: 7
+violations, all raster rounding at the limit (VU tracks on Bottom 0.0759 from GND pads, 0.0759 from EE-CS, a GND via
+0.0756 from AIN16_P) -- so the ROUTING clearance has to carry a hair of margin: route at 0.077, judge at 0.0762
+(0.0381 + 0.077 + 0.005 = 0.1201 still opens U1's lanes). The 8M-pop corner runs (`iso_y8` 19, `iso_s8` 21) produced
+plans byte-equal in size to the 3M ones with the failures now "nopath": the corner in isolation is a real 24-net
+congestion knot, not budget -- yet the global in short order routes 17 of the 24 corner nets, so isolation is the
+wrong frame for it. Launched 15:3x (`c3/fin.sh`): `g_short_fin` (seeded with g_short, 8M pops, short, --clear
+0.077), `g_s77` (fresh global, short, 0.077, the clean candidate), `diag_g_short` (12 open at 4M pops). g_plain
+(218 net lines / 13 rips) and g_name (235 / 20) continue. DECISION FOR THE USER: 3/3 mil is a PCBWay order-form tier
+and an Altium Clearance-rule change (0.0762 board-wide or a U1-region rule); nothing applied.
+17:19: `g_plain` (3 mil, short, SDRAM inner rules lifted) = **13 open on 12 nets** (A2 A3 BS1 D3 D5 WE# CHAN19
+FLASH-D02 budget; FPGA-DONE x2, FPGA-INIT#, FPGA-TDI/TDO nopath) -- no better than g_short's 12, so the SDRAM
+inner rules stay (no signal-integrity change to decide). `g_name` = 21 on 18 nets. 3 mil series: **short 12 / plain
+13 / name 21 / y 24** (0.09: 25 / 27 / 29). `diag_g_short` (4M pops): **11 of the 12 are congestion** with the
+plan's own copper (the seven corner nets, AIN16_P, SD-DAT1 x2, UART_FT_DTR#), only FPGA-TCK is budget -- so the
+seeded 8M finish can close them only through rip-up, not budget. The residue is 7/12 the SDRAM corner, which only
+the U1 re-pin has ever closed (24/24, 39/39) while 3 mil is what moved everything else: launched 17:2x
+(`exp/x_perm_b/c3.sh`) the combination -- `x_perm_b/g_s77` (re-pin, fresh, short, 0.077) and `x_perm_b/g_seed77`
+(re-pin seeded with the 24/24 corner plan, 0.077) -- plus `c3/g_s77_3m` (unchanged pinout, 0.077, 3M pops). Still
+running: `c3/g_short_fin` (11 nets / 3 rips), `c3/g_s77` (108 / 3). Five router processes.
+
+**DECIDED by the user 2026-11-04 (evening): 3/3 mil.** The Feather is ordered at PCBWay's 3/3 mil tier and the
+Altium Clearance rule goes to 0.0762 mm; routing runs at --clear 0.077 and plans are judged at 0.0762.
+**3 mil APPLIED TO THE BOARD 2026-11-04 17:44** (`tools/FeatherRules3.pas` SetClearance3mil, run from its own
+`FeatherRules3.PrjScr` via File > Run Script > Browse > From file): the rule named `Clearance` (All/All) went
+0.0900 -> 0.0762 mm; Clearance_SDRAM_INNER 0.10, Clearance_SDRAM_CLK 0.20 and Clearance_Plane_ThruVia 0.175 untouched
+(the script lists all four before and after). Then Tools > Polygon Pours > Repour All, DRC, File > Save. Verified
+from the saved file (Rules6): `Clearance GAP=3mil GENERICCLEARANCE=3mil`, the other three unchanged. DRC
+(`docs/drc_3mil.drc`, 17:43): **107 = 38 Un-Routed + 69 Net Antennae, 0 clearance** -- identical to stage 5's
+107, as it must be (the board's copper was routed at 0.09). PcbDoc md5 391629d2 (was d0bdb7d0). The enquiry draft
+got a question 7 on 3/3 mil against BGA / microvia lands and the 0.098 mm L2 webs (still NOT sent). Not committed.
+Altium leg notes: the retry of open_application started a SECOND X2 instance (killed, PID by start time); Edge in
+front blocks clicks -- `altium_drive.ps1 Activate` brings Altium forward; the on-screen-keyboard strip sat over the
+DRC dialog's Run button, Alt+R pressed it; File menu: Up x11 = Run Script, Down x6 = Save; Tools: Down x6, Right,
+Down x4 = Repour All; the window jumped to the built-in display when the DRC report opened (frame 1389x868).
+18:0x: the user restarts the laptop. The five 3 mil routers were stopped by Stop-Process; their checkpoints are
+valid JSON and `s7/c3/resume.sh` relaunches each as `<tag>_r` seeded from `<tag>.ckpt.json` (a seeded continuation,
+not the identical run). Board saved (md5 391629d2), Altium open with nothing dirty, nothing committed.
+18:12 after the restart: checkpoints, models and the board (md5 391629d2) intact; `c3/resume.sh` relaunched the
+five runs as g_short_fin_r, g_s77_r, g_s77_3m_r, x_perm_b/g_seed77_r (seeded from their checkpoints) and
+x_perm_b/g_s77 (fresh, its checkpoint was truncated).
+21:00: the machine rebooted a second time at 20:11 (EventLog 6005 with no clean-shutdown 6006 before it), killing
+the five resumed runs at 20:04-20:08 with none finished. All five checkpoints valid; `c3/resume2.sh` relaunched them
+as g_short_fin_r2, g_s77_r2, g_s77_3m_r2, x_perm_b/g_s77_r2, x_perm_b/g_seed77_r2.
+
+### 2026-11-05 07:15 -- first two 3 mil results in (both re-pin, both incomplete)
+
+- `exp/x_perm_b/g_s77_r2` (re-pin, fresh, short, 0.077): **10 open on 10 nets** -- SD-DAT3, BS1, CHAN19,
+  WE#, AIN16_N, PUDC_B, FPGA-TCK (budget); CFG-M0, FPGA-TDO, RAS# (nopath). 1064 vias, 4005 tracks.
+- `exp/x_perm_b/g_seed77_r2` (re-pin, corner-seeded): 13 open on 12 nets. Seeding the corner is worse again.
+- route_check at 0.0762: one violation in both, the routed GND through via at 26.900,18.000, 0.0756 from
+  pad AIN16_P. Same via is in c3/g_short.json, so routing at 0.077 does not remove every raster case;
+  it needs a nudge in post before any placement.
+- Still running (no reboot since 20:11): c3/g_short_fin_r2, c3/g_s77_r2, c3/g_s77_3m_r2.
+- Best so far: re-pin 10 open; unchanged pinout 12 open (g_short). No complete plan.
+
+### 2026-11-05 07:55 -- diagnosis of the re-pin 10-open plan, three seeded finishes started
+
+- `diagnose_open` on `exp/x_perm_b/g_s77_r2`: 9 congestion (AIN16_N, BS1, CFG-M0, CHAN19, FPGA-TDO, PUDC_B, RAS#,
+  SD-DAT3, WE#), 1 routable on budget/order (FPGA-TCK).
+- Started `exp/x_perm_b/fin2.sh`: seeded finishes of that plan -- fin_short (rip 2, 8M, short), fin_y3 (rip 3, 4M, y),
+  fin_name (rip 2, 4M, name), all at 0.077.
+- c3/g_short_fin_r2, c3/g_s77_r2, c3/g_s77_3m_r2 still running.
+
+### 2026-11-05 10:00-11:00 -- all five overnight 3 mil globals in; `tools/finish.py` (partial rip-up) starts closing the residue
+
+- Overnight globals at 0.077 (resume2): `x_perm_b/g_s77_r2` **10**, `x_perm_b/g_seed77_r2` 13, `c3/g_short_fin_r2` 15
+  (the seeded 8M "finish" of the 12-open plan made it WORSE), `c3/g_s77_3m_r2` 21, `c3/g_s77_r2` 28. The whole-net
+  rip-up router scatters between 10 and 28 on the same board and never converges; more runs of it are pointless.
+- Why: `router.py` rips WHOLE nets (every track and via of each victim, multi-pin power nets included) and
+  re-routes them from scratch, so each rip cascades. Its base=True probe is also slow: `via_ok` walks every via in
+  Python (~0.3 ms per candidate), a few hundred expansions per second on a probe.
+- **`tools/finish.py`** (new): local finisher on an almost complete plan. For an open connection it probes the
+  cheapest path through rippable copper (plane-tie copper included, locked nets painted hard), cuts each victim only
+  within `--rc` of the cells where the path conflicts with it, routes the net through the freed corridor, then
+  re-joins each victim the same way one level down (depth-limited, backtracking; a victim that cannot be re-joined
+  becomes immovable for the next probe). GND / VCC3V3 ties are re-tied with a plane via. It monkey-patches
+  `Router.via_ok` with a numpy version (same test) and adds `Router.hw` (heuristic weight, default 1.0 = unchanged)
+  to `router.py`. `--kick NET@x,y,r` cuts and re-joins copper at a point with a wider raster allowance first.
+- First results on `x_perm_b/g_s77_r2` (10 open): single-net runs closed **9 of the 10 nets individually** in
+  2-17 min each (AIN16_N, BS1, CFG-M0, FPGA-TCK, FPGA-TDO, PUDC_B, RAS#, SD-DAT3, WE#); CHAN19 needs the exact
+  probe with cheap crossings (`--hw 1.0 --soft 0.05`: path in 84 s; `--hw 1.5 --soft 0.2` blows 1.6M pops).
+  Chains (all ten in sequence, `s7/fin/run1.sh`, `run2.sh`) are at 6-7 open and still running.
+- **Raster misses**: the base plan has 7 objects 0.0756-0.0759 from a pad (six VU tracks on Bottom, the GND via at
+  26.9,18.0) -- routing at 0.077 with slack 0.005 does not cover every raster case. `tools/fix_clear.py` (new) loops
+  route_check -> `finish.py --kick` (re-join with allowance 0.02 first) until PASS: 7 -> 0 on the base plan in one
+  round. New finisher copper is routed at 0.078.
+- Post-processing (new): `tools/plan_prune.py` (stub tails, dead vias; island count per net as the guard) and
+  `tools/plan_final.py` (fan-out + plan as one set on the bare model: dedupe, drop stacks on a same-net through
+  via, prune -- which removes the unused fan-out column ends -- then split into vip.final / plan.final /
+  model.final and print NV / NT / NE). On a 9-open test plan: fan-out 387 -> 308 vias.
+- Board scripts written for the placement (not run): `tools/FeatherVip2.pas` (VipPrepare2, U1 pads through the
+  group iterator) and `tools/FeatherClearCopper4.pas` (guard 1301 vias / 5338 tracks).
+- A read-only workflow produced the placement runbook (`%TEMP%/routing/s7/runbook.md`, 22 steps, both variants,
+  cross-checked against the files): re-pin = apply_pin_swap + make_xdc + ECO BEFORE any placement.
+
+### 2026-11-05 11:00-12:10 -- stage 7: COMPLETE PLAN (0 open), gates pass; not on the board yet
+
+- User decisions this morning: the U1 re-pin (schematic + XDC + ECO per `x_perm_b/perm.json`) is AUTHORIZED; the
+  PCBWay via-in-pad enquiry was rewritten for the ring scheme, checked by three readers and handed to the user to send
+  (`docs/pcbway_vip_enquiry.md`, 10 questions).
+- Finisher relays on `x_perm_b/g_s77_r2` (10 open): chain D (`--hw 1.0 --soft 0.1`) reached 4, relay `rD2` from its
+  6-open snapshot reached **1 open (BS1)** and stuck there: every cheap BS1 path (U1 V8, L3-only column -> U3 G8) cuts
+  9-15 routed nets, and seven more runs (crossing limit 6-10, soft 0.05-6.0, rc 0.4-0.6) all failed it.
+- What closed it: the finisher only re-joins a victim LOCALLY, it never sends a slow net the long way round. With the
+  slow nets that wall BS1 in removed WHOLE from the seed (`seedJ2` = rD2's plan minus LED0_R and CFG-M0), BS1 first,
+  then CFG-M0 and LED0_R routed anywhere: `rJ2` -> **`finish: open 0 on 0 nets`** in 482 s (1197 vias, 4816 tracks).
+  Lever to remember: whole-rip the static / slow nets around a walled-in fast net.
+- `fix_clear.py` on it: 11 violations (6 VU raster misses, the GND via at 26.9,18.0, two GND hole-to-hole pairs) ->
+  it looped on the two hole-to-hole pairs: its kick re-joins a GND tie with a laser stack 0.16 mm beside the buried
+  via it serves, which is itself a hole-to-hole violation. Fixed by hand: each laser stack replaced by one L2>L3
+  0.25/0.10 ON the buried via (26.700,13.350 and 27.025,17.450), the L3 link track dropped. BUG TO FIX in
+  finish.py's tie placement: no hole-to-hole test against same-net vias.
+- `plan_final.py`: dedupe 4819 -> 4818 tracks, 15 vias dropped on three same-net through vias (TMS 10.125,4.5; GND
+  32.0,10.475; GND 29.15,17.75; GND 35.6,15.175), 52 nets pruned, fan-out 387 -> 312 vias.
+  **NV 1482, NT 4773, NE 1093.**
+- Gates: `route_check plan.final.json model.final.json --clear 0.0762` -> violations 0, open 0, PASS; the same at
+  0.0763; `plan_open` 0 on 0 nets.
+- Frozen in `tools/route/stage7/final/`: plan.final.json (md5 8a94694f), vip.final.json (c387cb26),
+  model.final.json (8fe8e24c), x_perm_b_perm.json (2a453dbc), x_perm_b_model_bare.json, x_perm_b_vip.json,
+  x_perm_b_xdc_edits.txt, plan.raw_rJ2.json (the finisher's output, 154a77e5), plan_final.log. The older
+  `tools/route/stage7/{vip,model_vip,model_bare}.json` are the all-to-L3 scheme -- never place them.
+- Board backup before the re-pin: `%TEMP%/routing/s7/backup_pre_stage7/` (PcbDoc 391629d2, seven SchDocs, XDC).
+- Known quality items of the plan (from the enquiry check on partial plans; being re-measured on the final one):
+  ~115 through vias and ~240 lasers in or on SMD pads, 1-2 through vias on U1 lands, the USB pair not coupled
+  (N on Top, P on L3, ~4 mm each).
+
+### 2026-11-05 12:10-13:20 -- stage 7 PLACED: 140/140 ROUTED ON THE BOARD, DRC 0
+
+**Board md5 1162f2f9: DRC 0 violations on every rule (`docs/drc_stage7.drc`), Un-Routed 0, Net Antennae 0, Hole To Hole
+0, Hole Size 0.** verify_copper: vias 1487/1487, tracks 4724/4724, missing 0, extra 0, PASS. mark_microvias --verify
+after the final save: 1095. route_conn 0 open. sch_vs_board MATCH. check_feather_schematic (3 perms) PASS.
+
+- Order done: re-pin first (apply_pin_swap: 3892 + 84 U1 pin records over 28 balls; two-perm control FAILs with 24, a
+  second apply REFUSED; make_xdc: exactly the 24 expected rows), ECO 24 + 24 pins with the 10 net-class removals and the
+  USB pair unticked (md5 4383b19d), VipPrepare2 (238 lands 0.25, both rules read back, 36987548), ClearRoutingCopper4
+  (1301 / 5338 removed, 9048e895; re-dump equals x_perm_b_model_bare on 821 pads, 0 tracks, 0 vias), four-chunk
+  placement (S7Vip 312/0, S7A 259/1710, S7B 423/1612, S7C 493/1402, Missing nets empty on all), mark (--expect 1095),
+  Repour All, DRC, save. Stage copies: `%TEMP%/routing/s7/stages/` (1_eco .. 6_routed_drc0); pre-stage-7 board and
+  schematics in `%TEMP%/routing/s7/backup_pre_stage7/`.
+- The two untested Altium behaviours passed on the real board: Hole To Hole on a 0.10 laser coincident with a 0.15 buried
+  via, and IsMicroVia beating IsBuriedVia on marked L2>L3 / L4>L5 0.10 vias. The canary was skipped on purpose: the
+  whole chain is restorable from 3_cleared and a rule question would not have needed a re-place.
+- A read-only four-lens audit (own exact geometry code, pour raster, DFM/electrical, placement chain) said "place" with
+  no blockers but found what route_check cannot see. Fixed in `tools/route/stage7/final/plan.patched.json` (md5 ea2e0144;
+  `patch_audit.py`, `dead_copper.json`): 49 dead tracks + 5 dead vias, including a 4-track floating GND island that
+  route_conn.py:164 drops silently; three overhangs; C113-2's only link was a 12.8 um corner graze (track now ends at the
+  pad centre); GNDADC through via off ball A13; 10 power vias (VCC3V3 entered L5 through one laser at L1-2, U5-4 and
+  C80-2; U8's exposed pad had one via). The audit's code, re-run on the result: 0 shorts, 0 under 0.0762, smallest
+  0.076345, 0 dangling ends, 0 floating islands, every joint overlaps >= 0.0375 mm.
+- **Open quality items, none of them DRC errors:**
+  - Plane necks under 3 mil stay in the pour (18 on L2, 29 on L5; REMOVENECKS=FALSE). Measured on the saved polygons: the
+    orthogonal U1 webs on L2 are 0.085-0.09 mm (65 of them), not 0.098.
+  - Pours sit 0.0762 mm from the six NPTH holes (no rule pulls them back); tracks down to 0.086 mm from them.
+  - Power trunks at rule minimum: VCC1V0 0.15 (0.6 A by IPC-2221 10 C), VU / VBATT 0.2 at 94 % of capacity at the 0.7 A
+    budget. Widening needs no re-route (VCC1V0 could reach 0.5 on 28 of 47 mm).
+  - 113 through vias in or on SMD pads, including BGA lands U1-W8, U3-G9, U3-H2: the build depends on resin plug + plate
+    over (enquiry item D, question 8), otherwise the HIGH / MEDIUM wicking pads need dogbones.
+  - Decoupling: C109-2, C107-2, C113-2 reach GND through 2.6-3.8 mm of 3 mil track.
+  - USB pair not coupled (N on Top 4.4 mm, P on L3 3.7 mm; ~20 ps, low risk). XADC inputs not routed as pairs. SDRAM
+    spread 3.8-25.7 mm. R25 is far from the 12 MHz oscillator.
+  - Bugs: finish.py's plane tie has no hole-to-hole test against same-net vias; route_check.py:128 tests plan vias only,
+    so fan-out vias are never checked against pads; route_conn.py:164 hides pad-less islands.
+  - Not done: the PcbLib keeps U1 at 0.225 (never update U1 from the library); README pin table is stale; no Vivado place
+    / report_drc on the re-pinned XDC; no SI simulation.

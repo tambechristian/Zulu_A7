@@ -1,0 +1,70 @@
+dedupe: 1586 -> 1586 vias, 4819 -> 4818 tracks
+through-stack: dropped TMS L4-SIG>L5-VCC3V3 at 10.1250,4.5000
+through-stack: dropped TMS L5-VCC3V3>Bottom Layer at 10.1250,4.5000
+through-stack: dropped TMS L3-SIG>L4-SIG at 10.1250,4.5000
+through-stack: dropped GND L4-SIG>L5-VCC3V3 at 32.0000,10.4750
+through-stack: dropped GND L5-VCC3V3>Bottom Layer at 32.0000,10.4750
+through-stack: dropped GND L3-SIG>L4-SIG at 32.0000,10.4750
+through-stack: dropped GND Top Layer>L2-GND at 32.0000,10.4750
+through-stack: dropped GND L2-GND>L3-SIG at 32.0000,10.4750
+through-stack: dropped GND L4-SIG>L5-VCC3V3 at 29.1500,17.7500
+through-stack: dropped GND L5-VCC3V3>Bottom Layer at 29.1500,17.7500
+through-stack: dropped GND L3-SIG>L4-SIG at 29.1500,17.7500
+through-stack: dropped GND Top Layer>L2-GND at 29.1500,17.7500
+through-stack: dropped GND L2-GND>L3-SIG at 29.1500,17.7500
+through-stack: dropped GND Top Layer>L2-GND at 35.6000,15.1750
+through-stack: dropped GND L2-GND>L3-SIG at 35.6000,15.1750
+prune: A10 45 -> 45 tracks, 14 -> 14 vias
+prune: A12 42 -> 40 tracks, 9 -> 9 vias
+prune: A3 25 -> 25 tracks, 4 -> 4 vias
+prune: A4 39 -> 39 tracks, 13 -> 10 vias
+prune: A5 112 -> 112 tracks, 16 -> 14 vias
+prune: A6 62 -> 62 tracks, 5 -> 4 vias
+prune: AIN15_N 77 -> 73 tracks, 20 -> 16 vias
+prune: AIN15_P 55 -> 54 tracks, 12 -> 10 vias
+prune: AIN16_N 64 -> 64 tracks, 14 -> 12 vias
+prune: AIN16_P 56 -> 55 tracks, 24 -> 24 vias
+prune: CFG-M0 15 -> 15 tracks, 2 -> 0 vias
+prune: CFG-M1 28 -> 24 tracks, 6 -> 6 vias
+prune: CFG-M2 9 -> 9 tracks, 9 -> 6 vias
+prune: CHAN-CLK 35 -> 35 tracks, 7 -> 5 vias
+prune: CHAN1 18 -> 18 tracks, 2 -> 0 vias
+prune: CHAN17 27 -> 27 tracks, 5 -> 4 vias
+prune: CHAN18 26 -> 25 tracks, 4 -> 4 vias
+prune: CHAN20 35 -> 35 tracks, 6 -> 6 vias
+prune: CHAN21 59 -> 59 tracks, 10 -> 10 vias
+prune: CHAN22 48 -> 47 tracks, 3 -> 3 vias
+prune: CHAN4 5 -> 5 tracks, 3 -> 2 vias
+prune: CHAN6 17 -> 17 tracks, 3 -> 2 vias
+prune: CHAN7 7 -> 7 tracks, 3 -> 2 vias
+prune: CKE 56 -> 56 tracks, 2 -> 0 vias
+prune: CLK-12M-FPGA 34 -> 34 tracks, 13 -> 10 vias
+prune: CLK-12M-SHARED 66 -> 62 tracks, 15 -> 15 vias
+prune: D10 21 -> 21 tracks, 2 -> 0 vias
+prune: D2 27 -> 27 tracks, 9 -> 6 vias
+prune: D6 88 -> 88 tracks, 16 -> 14 vias
+prune: D7 30 -> 28 tracks, 7 -> 6 vias
+prune: D9 18 -> 18 tracks, 3 -> 0 vias
+prune: FLASH-D00 141 -> 141 tracks, 8 -> 6 vias
+prune: FLASH-D01 72 -> 69 tracks, 14 -> 12 vias
+prune: FLASH-D03 29 -> 29 tracks, 12 -> 10 vias
+prune: FPGA-CCLK 36 -> 36 tracks, 5 -> 4 vias
+prune: FPGA-TCK 58 -> 58 tracks, 14 -> 11 vias
+prune: GND 153 -> 151 tracks, 219 -> 216 vias
+prune: GNDADC 111 -> 111 tracks, 29 -> 25 vias
+prune: LED0_B 33 -> 33 tracks, 11 -> 10 vias
+prune: LED0_R 32 -> 32 tracks, 7 -> 4 vias
+prune: LED1 87 -> 87 tracks, 14 -> 12 vias
+prune: NODE_P0 21 -> 19 tracks, 4 -> 4 vias
+prune: PUDC_B 62 -> 59 tracks, 18 -> 18 vias
+prune: RST# 60 -> 55 tracks, 25 -> 23 vias
+prune: SD-CMD 50 -> 45 tracks, 9 -> 7 vias
+prune: SDRAM-CS# 40 -> 38 tracks, 10 -> 10 vias
+prune: TDO 33 -> 30 tracks, 13 -> 11 vias
+prune: UART_FT_DTR# 17 -> 17 tracks, 2 -> 0 vias
+prune: UART_FT_RTS# 16 -> 16 tracks, 2 -> 0 vias
+prune: UDQM 21 -> 21 tracks, 6 -> 6 vias
+prune: VCC1V0 112 -> 112 tracks, 52 -> 41 vias
+prune: WE# 58 -> 58 tracks, 6 -> 4 vias
+vip.final 312 vias (of 387); plan.final 1170 vias, 4773 tracks
+NV 1482  NT 4773  NE 1093

@@ -203,14 +203,18 @@ GenerateClassCluster=0
 DocumentUniqueId=LWLWKRHD
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for zulu_a7\Design Rule Check - zulu_a7.html
+DocumentPath=Project Outputs for asar_feather\Design Rule Check - asar_feather.html
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=zulu_a7.LOG
+DocumentPath=Project Outputs for zulu_a7\Design Rule Check - zulu_a7.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
+DocumentPath=zulu_a7.LOG
+DItemRevisionGUID=
+
+[GeneratedDocument4]
 DocumentPath=Project Outputs for zulu_a7\zulu_a7.NET
 DItemRevisionGUID=
 

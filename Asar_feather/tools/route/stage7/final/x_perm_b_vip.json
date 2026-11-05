@@ -1,0 +1,3492 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 23.3999,
+"y": 15.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 24.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 24.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 24.9,
+"y": 15.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 24.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 26.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 26.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 26.3999,
+"y": 15.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 26.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 20.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CFG-M0",
+"x": 23.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CFG-M0",
+"x": 23.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 23.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.9,
+"y": 15.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "RST#",
+"x": 24.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "RST#",
+"x": 24.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 26.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "FPGA-DONE",
+"x": 23.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-DONE",
+"x": 23.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "FPGA-DONE",
+"x": 23.3999,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "FPGA-INIT#",
+"x": 23.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-INIT#",
+"x": 23.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "FPGA-INIT#",
+"x": 23.9,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CFG-M2",
+"x": 24.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CFG-M2",
+"x": 24.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CFG-M2",
+"x": 24.3999,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 19.9,
+"y": 14.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 13.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 22.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 23.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 23.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 23.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 23.9,
+"y": 12.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 12.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 12.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 22.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 12.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "SD-CLK",
+"x": 20.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "SD-CLK",
+"x": 20.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "SD-CMD",
+"x": 21.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "SD-CMD",
+"x": 21.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN19",
+"x": 22.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN19",
+"x": 22.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN20",
+"x": 22.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN20",
+"x": 22.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "BS0",
+"x": 25.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "BS0",
+"x": 25.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED0_R",
+"x": 20.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "LED0_R",
+"x": 20.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED0_R",
+"x": 20.9,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CHAN17",
+"x": 21.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN17",
+"x": 21.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN17",
+"x": 21.3999,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CHAN21",
+"x": 21.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN21",
+"x": 21.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN21",
+"x": 21.9,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CHAN22",
+"x": 22.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN22",
+"x": 22.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN22",
+"x": 22.3999,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "PUDC_B",
+"x": 20.3999,
+"y": 8.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "PUDC_B",
+"x": 20.3999,
+"y": 8.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V8",
+"x": 24.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V8",
+"x": 24.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V8",
+"x": 24.9,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GNDADC",
+"x": 22.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GNDADC",
+"x": 22.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GNDADC",
+"x": 23.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GNDADC",
+"x": 23.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 23.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 23.9,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCCADC",
+"x": 22.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCCADC",
+"x": 22.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCCADC",
+"x": 22.9,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GNDADC",
+"x": 23.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GNDADC",
+"x": 23.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GNDADC",
+"x": 23.3999,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 25.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 23.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 23.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 23.9,
+"y": 12.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 12.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 19.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 23.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 11.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 25.3999,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.3999,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 10.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC1V8",
+"x": 22.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V8",
+"x": 22.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V8",
+"x": 22.9,
+"y": 10.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 23.3999,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 23.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 10.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 25.3999,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 20.3999,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V8",
+"x": 22.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V8",
+"x": 22.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V8",
+"x": 22.9,
+"y": 10.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 23.3999,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 23.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 10.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 25.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 9.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 9.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 23.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 23.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.3999,
+"y": 9.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 19.9,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 9.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.9,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 20.9,
+"y": 8.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-TCK",
+"x": 25.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-TCK",
+"x": 25.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "FPGA-TCK",
+"x": 25.3999,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 19.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.3999,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 22.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 22.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.3999,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 22.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "FPGA-CCLK",
+"x": 23.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-CCLK",
+"x": 23.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "FPGA-CCLK",
+"x": 23.9,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 24.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 19.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 19.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 19.9,
+"y": 7.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 19.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 22.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 24.9,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.9,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 19.9,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 15.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "BS1",
+"x": 25.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "BS1",
+"x": 25.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "WE#",
+"x": 26.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "WE#",
+"x": 26.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "RAS#",
+"x": 27.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "RAS#",
+"x": 27.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D6",
+"x": 27.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D6",
+"x": 27.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D0",
+"x": 28.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D0",
+"x": 28.3999,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 15.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 15.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "LDQM",
+"x": 25.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "LDQM",
+"x": 25.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LDQM",
+"x": 25.3999,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "D7",
+"x": 25.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D7",
+"x": 25.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D7",
+"x": 25.9,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "D4",
+"x": 26.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D4",
+"x": 26.9,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D4",
+"x": 26.9,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "D2",
+"x": 27.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D2",
+"x": 27.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D2",
+"x": 27.3999,
+"y": 14.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "A2",
+"x": 28.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A2",
+"x": 28.3999,
+"y": 14.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A1",
+"x": 27.9,
+"y": 14.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A1",
+"x": 27.9,
+"y": 14.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A1",
+"x": 27.9,
+"y": 14.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "A0",
+"x": 28.3999,
+"y": 14.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A0",
+"x": 28.3999,
+"y": 14.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A4",
+"x": 27.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A4",
+"x": 27.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A4",
+"x": 27.9,
+"y": 13.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "A5",
+"x": 28.3999,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A5",
+"x": 28.3999,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED0_G",
+"x": 20.3999,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "LED0_G",
+"x": 20.3999,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 13.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 13.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "A6",
+"x": 27.9,
+"y": 13.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A6",
+"x": 27.9,
+"y": 13.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A6",
+"x": 27.9,
+"y": 13.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 28.3999,
+"y": 13.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN-CLK",
+"x": 20.3999,
+"y": 13.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN-CLK",
+"x": 20.3999,
+"y": 13.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "SD-DAT2",
+"x": 20.9,
+"y": 13.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "SD-DAT2",
+"x": 20.9,
+"y": 13.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "SD-DAT2",
+"x": 20.9,
+"y": 13.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "A7",
+"x": 27.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A7",
+"x": 27.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A7",
+"x": 27.9,
+"y": 12.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "A9",
+"x": 28.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A9",
+"x": 28.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED1",
+"x": 20.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "LED1",
+"x": 20.3999,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED0_B",
+"x": 20.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "LED0_B",
+"x": 20.9,
+"y": 12.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED0_B",
+"x": 20.9,
+"y": 12.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "A8",
+"x": 27.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A8",
+"x": 27.9,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A8",
+"x": 27.9,
+"y": 12.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CKE",
+"x": 28.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CKE",
+"x": 28.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "UART_FT_DTR#",
+"x": 20.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "UART_FT_DTR#",
+"x": 20.3999,
+"y": 12.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A12",
+"x": 27.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "A12",
+"x": 27.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "A12",
+"x": 27.9,
+"y": 11.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "UDQM",
+"x": 28.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "UDQM",
+"x": 28.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "UART_FT_RTS#",
+"x": 20.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "UART_FT_RTS#",
+"x": 20.3999,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CLK-12M-FPGA",
+"x": 20.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CLK-12M-FPGA",
+"x": 20.9,
+"y": 11.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CLK-12M-FPGA",
+"x": 20.9,
+"y": 11.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "D9",
+"x": 27.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D9",
+"x": 27.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D9",
+"x": 27.9,
+"y": 11.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "D10",
+"x": 28.3999,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D10",
+"x": 28.3999,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "UART_FT_TXD",
+"x": 20.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "UART_FT_TXD",
+"x": 20.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "UART_FT_TXD",
+"x": 20.9,
+"y": 11.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 11.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.9,
+"y": 11.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "D12",
+"x": 27.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "D12",
+"x": 27.9,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D12",
+"x": 27.9,
+"y": 10.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "AIN16_N",
+"x": 28.3999,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "AIN16_N",
+"x": 28.3999,
+"y": 10.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 27.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 27.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 27.9,
+"y": 10.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 27.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "AIN16_P",
+"x": 28.3999,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "AIN16_P",
+"x": 28.3999,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN8",
+"x": 20.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN8",
+"x": 20.9,
+"y": 10.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN8",
+"x": 20.9,
+"y": 10.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "AIN15_P",
+"x": 27.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "AIN15_P",
+"x": 27.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "AIN15_P",
+"x": 27.9,
+"y": 9.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "AIN15_N",
+"x": 28.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "AIN15_N",
+"x": 28.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "FLASH-D02",
+"x": 20.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FLASH-D02",
+"x": 20.3999,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN7",
+"x": 20.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN7",
+"x": 20.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN7",
+"x": 20.9,
+"y": 9.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 9.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.9,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.3999,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FLASH-D03",
+"x": 20.3999,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FLASH-D03",
+"x": 20.3999,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 9.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.9,
+"y": 8.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.3999,
+"y": 8.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 8.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.9,
+"y": 8.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FLASH-D00",
+"x": 20.3999,
+"y": 8.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FLASH-D00",
+"x": 20.3999,
+"y": 8.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN6",
+"x": 20.9,
+"y": 8.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN6",
+"x": 20.9,
+"y": 8.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN6",
+"x": 20.9,
+"y": 8.4301,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 26.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 26.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN2",
+"x": 20.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN2",
+"x": 20.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN2",
+"x": 20.9,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CHAN5",
+"x": 21.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN5",
+"x": 21.3999,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN5",
+"x": 21.3999,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CHAN4",
+"x": 21.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN4",
+"x": 21.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN4",
+"x": 21.9,
+"y": 7.93,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 7.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 26.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 26.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN1",
+"x": 20.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN1",
+"x": 20.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN3",
+"x": 20.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN3",
+"x": 20.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "UART_FT_CTS#",
+"x": 21.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "UART_FT_CTS#",
+"x": 21.3999,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 7.4301,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 26.3999,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 26.9,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.3999,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 27.9,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 6.93,
+"size": 0.25,
+"hole": 0.1,
+"from": "Top Layer",
+"to": "L2-GND"
+}
+],
+"tracks": [],
+"remove": [],
+"log": [
+"corner experiment x_perm_b"
+]
+}

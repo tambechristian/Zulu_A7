@@ -1,0 +1,25 @@
+# PACKAGE_PIN edits for asar_feather_pins.xdc (net, old ball -> new ball, current line)
+A0         U2   -> T2   set_property -dict {PACKAGE_PIN U2   IOSTANDARD LVCMOS33} [get_ports {A0}]  ;# A0  bank 34  IO_L9N_T1_DQS_34
+A10        U3   -> W5   set_property -dict {PACKAGE_PIN U3   IOSTANDARD LVCMOS33} [get_ports {A10}]  ;# A10  bank 34  IO_L9P_T1_DQS_34
+A12        M3   -> L3   set_property -dict {PACKAGE_PIN M3   IOSTANDARD LVCMOS33} [get_ports {A12}]  ;# A12  bank 35  IO_L8N_T1_AD14N_35
+A2         T2   -> U2   set_property -dict {PACKAGE_PIN T2   IOSTANDARD LVCMOS33} [get_ports {A2}]  ;# A2  bank 34  IO_L1N_T0_34
+A7         P1   -> N3   set_property -dict {PACKAGE_PIN P1   IOSTANDARD LVCMOS33} [get_ports {A7}]  ;# A7  bank 35  IO_L19N_T3_VREF_35
+A8         N3   -> M3   set_property -dict {PACKAGE_PIN N3   IOSTANDARD LVCMOS33} [get_ports {A8}]  ;# A8  bank 35  IO_L12P_T1_MRCC_35
+BS0        V2   -> V7   set_property -dict {PACKAGE_PIN V2   IOSTANDARD LVCMOS33} [get_ports {BS0}]  ;# BS0  bank 34  IO_L5P_T0_34
+BS1        U1   -> V8   set_property -dict {PACKAGE_PIN U1   IOSTANDARD LVCMOS33} [get_ports {BS1}]  ;# BS1  bank 34  IO_L3N_T0_DQS_34
+CAS#       W3   -> P1   set_property -dict {PACKAGE_PIN W3   IOSTANDARD LVCMOS33} [get_ports {CAS_N}]  ;# CAS#  bank 34  IO_L6N_T0_VREF_34
+CHAN17     B15  -> U16  set_property -dict {PACKAGE_PIN B15  IOSTANDARD LVCMOS33} [get_ports {F_D10}]  ;# CHAN17  bank 16  IO_L11N_T1_SRCC_16
+D0         V8   -> V2   set_property -dict {PACKAGE_PIN V8   IOSTANDARD LVCMOS33} [get_ports {D0}]  ;# D0  bank 34  IO_L14N_T2_SRCC_34
+D1         V7   -> U1   set_property -dict {PACKAGE_PIN V7   IOSTANDARD LVCMOS33} [get_ports {D1}]  ;# D1  bank 34  IO_L19N_T3_VREF_34
+D2         W7   -> U4   set_property -dict {PACKAGE_PIN W7   IOSTANDARD LVCMOS33} [get_ports {D2}]  ;# D2  bank 34  IO_L13P_T2_MRCC_34
+D3         W6   -> W2   set_property -dict {PACKAGE_PIN W6   IOSTANDARD LVCMOS33} [get_ports {D3}]  ;# D3  bank 34  IO_L13N_T2_MRCC_34
+D5         W5   -> W3   set_property -dict {PACKAGE_PIN W5   IOSTANDARD LVCMOS33} [get_ports {D5}]  ;# D5  bank 34  IO_L12P_T1_MRCC_34
+D6         V5   -> V3   set_property -dict {PACKAGE_PIN V5   IOSTANDARD LVCMOS33} [get_ports {D6}]  ;# D6  bank 34  IO_L16N_T2_34
+D7         U4   -> U7   set_property -dict {PACKAGE_PIN U4   IOSTANDARD LVCMOS33} [get_ports {D7}]  ;# D7  bank 34  IO_L11P_T1_SRCC_34
+LDQM       W4   -> U8   set_property -dict {PACKAGE_PIN W4   IOSTANDARD LVCMOS33} [get_ports {LDQM}]  ;# LDQM  bank 34  IO_L12N_T1_MRCC_34
+LED0_R     L3   -> U17  set_property -dict {PACKAGE_PIN L3   IOSTANDARD LVCMOS33} [get_ports {LED0_R}]  ;# LED0_R  bank 35  IO_L8P_T1_AD14P_35
+RAS#       V3   -> V4   set_property -dict {PACKAGE_PIN V3   IOSTANDARD LVCMOS33} [get_ports {RAS_N}]  ;# RAS#  bank 34  IO_L6P_T0_34
+SD-CLK     U8   -> V17  set_property -dict {PACKAGE_PIN U8   IOSTANDARD LVCMOS33} [get_ports {SD_CLK}]  ;# SD-CLK  bank 34  IO_L14P_T2_SRCC_34
+SD-CMD     U7   -> V16  set_property -dict {PACKAGE_PIN U7   IOSTANDARD LVCMOS33} [get_ports {SD_CMD}]  ;# SD-CMD  bank 34  IO_L19P_T3_34
+SDRAM-CS#  W2   -> W4   set_property -dict {PACKAGE_PIN W2   IOSTANDARD LVCMOS33} [get_ports {SDRAM_CS_N}]  ;# SDRAM-CS#  bank 34  IO_L5N_T0_34
+WE#        V4   -> V5   set_property -dict {PACKAGE_PIN V4   IOSTANDARD LVCMOS33} [get_ports {WE_N}]  ;# WE#  bank 34  IO_L11N_T1_SRCC_34
