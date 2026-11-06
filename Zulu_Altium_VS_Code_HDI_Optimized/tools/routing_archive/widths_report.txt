@@ -1,0 +1,7 @@
+   Clearance_SDRAM_INNER  gap 0.1   (InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))
+   Clearance_SDRAM_CLK    gap 0.2   InNet('SDRAM-CLK') And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))
+   Width_SDRAM        scalar base 0 / 0 / 0
+      Top     0.0762 / 0.0762 / 0.15  ok
+      L3-SIG  0.1 / 0.125 / 0.15  ok
+      L4-SIG  0.1 / 0.125 / 0.15  ok
+      Bottom  0.1 / 0.125 / 0.15  ok

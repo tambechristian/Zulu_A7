@@ -1,0 +1,58 @@
+{
+ "_comment": [
+  "Via SPAN parameters for every routing gate (tools/hdi.py reads this file; route_inputs.json carries NO copy -- an inputs file with its own 'hdi' key is a test model and overrides it).",
+  "A span is the list of layer names a via occupies, outer to inner order, on the Board6 stack Top / L2-GND / L3-SIG / L4-SIG / L5-VCC3V3 / Bottom.",
+  "This DEFAULT allows the through via only, so every gate behaves exactly as before 2026-09-29.  To model HDI, add spans here:",
+  "  Top,L2-GND and L5-VCC3V3,Bottom (1+4+1 microvias), Top,L2-GND,L3-SIG and L4-SIG,L5-VCC3V3,Bottom (2+2+2 stacked), L3-SIG,L4-SIG (buried core).",
+  "  A span may be written in either order (Top-first or outer-to-inner); it is read in stack order.  hdi.py refuses a non-contiguous span,",
+  "  a land <= hole, a pitch < land + 0.09 (lands would overlap), an antipad <= hole, and a laser_to_mechanical_pitch below (land_a + land_b) / 2 + 0.09.",
+  "Per span: kind (mechanical | laser), hole, land, pitch (centre to centre against another via of the same kind: max of the two spans' pitches),",
+  "  via_in_pad (a via of net N may sit at the CENTRE of an SMD pad of net N on the span's outer layer; the land-field ban is waived for such spans that do not reach Bottom),",
+  "  land_field_ban (optional: true / false overrides that default for the span, e.g. false to let the buried L3-SIG,L4-SIG via under U1 -- a capacity decision),",
+  "  antipad (plane void diameter for a plane the via passes through or lands on with another net; null = hole + 2 x PlaneClearance, the mechanical rule.",
+  "  It can only ENLARGE that void: the PcbDoc has one PlaneClearance rule (0.25 from the hole edge) and cuts hole + 0.50 for every via until a rule scoped to the span exists).",
+  "laser_to_mechanical_pitch: centre pitch between a laser span and a mechanical span that share a layer.",
+  "disjoint_span_pitch: centre pitch between two vias whose spans share NO layer (0 = no rule, e.g. a Top,L2-GND over an L5-VCC3V3,Bottom).",
+  "stacked_same_xy: whether two same-net vias with ADJACENT spans may share one x,y (a Top..L3 over an L3..L4 over an L4..Bottom stack).",
+  "Every number here is a MODEL parameter: confirm the fab's laser via hole/land/pitch before trusting an HDI plan.  Through: hole 0.20, land 0.35, pitch 0.44 (JLC, applied 2026-09-12)."
+ ],
+ "stack": [
+  "Top",
+  "L2-GND",
+  "L3-SIG",
+  "L4-SIG",
+  "L5-VCC3V3",
+  "Bottom"
+ ],
+ "signal_layers": [
+  "Top",
+  "L3-SIG",
+  "L4-SIG",
+  "Bottom"
+ ],
+ "plane_nets": {
+  "L2-GND": "GND",
+  "L5-VCC3V3": "VCC3V3"
+ },
+ "spans": [
+  {
+   "span": [
+    "Top",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom"
+   ],
+   "kind": "mechanical",
+   "hole": 0.2,
+   "land": 0.35,
+   "pitch": 0.44,
+   "via_in_pad": false,
+   "antipad": null
+  }
+ ],
+ "laser_to_mechanical_pitch": 0.44,
+ "disjoint_span_pitch": 0.0,
+ "stacked_same_xy": false
+}

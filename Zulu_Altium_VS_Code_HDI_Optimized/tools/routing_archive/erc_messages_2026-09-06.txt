@@ -1,0 +1,42 @@
+Class	Document	Source	Message	Time	Date	No.
+
+[Warning]	zulu_a7_5.SchDoc	Compiler	FLASH-D01 contains IO Pin and Output Pin objects (Pin U1-D19, Pin U4-2).	5:26:14 PM	9/6/2026	1
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net AIN15_N has no driving source (Pin C36-1, Pin R13-1, Pin U1-G2)	5:26:14 PM	9/6/2026	2
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net AIN15_P has no driving source (Pin C36-2, Pin R12-1, Pin U1-G3)	5:26:14 PM	9/6/2026	3
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net AIN16_N has no driving source (Pin C37-1, Pin R17-1, Pin U1-J2)	5:26:14 PM	9/6/2026	4
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net AIN16_P has no driving source (Pin C37-2, Pin R16-1, Pin U1-H2)	5:26:14 PM	9/6/2026	5
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net BTN has no driving source (Pin R85-2, Pin U1-N17)	5:26:14 PM	9/6/2026	6
+[Warning]	zulu_a7_5.SchDoc	Compiler	Net CFG-M0 has no driving source (Pin R20-1, Pin U1-V12)	5:26:14 PM	9/6/2026	7
+[Warning]	zulu_a7_5.SchDoc	Compiler	Net CFG-M1 has no driving source (Pin R21-2, Pin U1-W11)	5:26:14 PM	9/6/2026	8
+[Warning]	zulu_a7_5.SchDoc	Compiler	Net CFG-M2 has no driving source (Pin R22-2, Pin U1-U10)	5:26:14 PM	9/6/2026	9
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net CHAN28 has no driving source (Pin U1-R19, Pin X2-41)	5:26:14 PM	9/6/2026	10
+[Warning]	zulu_a7_4.SchDoc	Compiler	Net CLK-12M-FPGA has no driving source (Pin R25-2, Pin U1-L17)	5:26:14 PM	9/6/2026	11
+[Warning]	zulu_a7_1.SchDoc	Compiler	Net EN_BIAS has no driving source (Pin Q3-4, Pin Q3-5, Pin Q3-6, Pin R67-1, Pin R70-2, Pin R75-1, Pin R76-1, Pin U8-12, Pin U8-13)	5:26:14 PM	9/6/2026	12
+[Warning]	zulu_a7_4.SchDoc	Compiler	Net FPGA-DONE has no driving source (Pin R38-2, Pin U1-U12)	5:26:14 PM	9/6/2026	13
+[Warning]	zulu_a7_4.SchDoc	Compiler	Net FPGA-INIT# has no driving source (Pin R1-1, Pin U1-U11)	5:26:14 PM	9/6/2026	14
+[Warning]	zulu_a7_4.SchDoc	Compiler	Net FPGA-TCK has no driving source (Pin R5-2, Pin R36-2, Pin U1-C8)	5:26:14 PM	9/6/2026	15
+[Warning]	zulu_a7_4.SchDoc	Compiler	Net FPGA-TDI has no driving source (Pin R8-2, Pin U1-W10)	5:26:14 PM	9/6/2026	16
+[Warning]	zulu_a7_4.SchDoc	Compiler	Net FPGA-TDO has no driving source (Pin R37-2, Pin U1-W8)	5:26:14 PM	9/6/2026	17
+[Warning]	zulu_a7_4.SchDoc	Compiler	Net FPGA-TMS has no driving source (Pin R4-2, Pin U1-W9)	5:26:14 PM	9/6/2026	18
+[Warning]	zulu_a7_5.SchDoc	Compiler	Net GNDADC has no driving source (Pin C123-2, Pin L6-2, Pin U1-A12, Pin U1-A13, Pin U1-B12, Pin U1-B13, Pin U1-C12)	5:26:14 PM	9/6/2026	19
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net JA1 has no driving source (Pin R26-1, Pin U1-U18)	5:26:14 PM	9/6/2026	20
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net JA2 has no driving source (Pin R27-1, Pin U1-U19)	5:26:14 PM	9/6/2026	21
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net JA3 has no driving source (Pin R28-1, Pin U1-G17)	5:26:14 PM	9/6/2026	22
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net JA4 has no driving source (Pin R29-1, Pin U1-C17)	5:26:14 PM	9/6/2026	23
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net JA7 has no driving source (Pin R30-2, Pin U1-T17)	5:26:14 PM	9/6/2026	24
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net JA8 has no driving source (Pin R31-2, Pin U1-E19)	5:26:14 PM	9/6/2026	25
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net JA9 has no driving source (Pin R32-2, Pin U1-V19)	5:26:14 PM	9/6/2026	26
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net LED0_B has no driving source (Pin LD0-1, Pin U1-N19)	5:26:14 PM	9/6/2026	27
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net LED0_G has no driving source (Pin LD0-3, Pin U1-R18)	5:26:14 PM	9/6/2026	28
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net LED0_R has no driving source (Pin LD0-2, Pin U1-P19)	5:26:14 PM	9/6/2026	29
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net LED1 has no driving source (Pin R83-1, Pin U1-N18)	5:26:14 PM	9/6/2026	30
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net LED2 has no driving source (Pin R84-1, Pin U1-M19)	5:26:14 PM	9/6/2026	31
+[Warning]	zulu_a7_1.SchDoc	Compiler	Net MODE_NET has no driving source (Pin R72-1, Pin R74-2, Pin U8-5)	5:26:14 PM	9/6/2026	32
+[Warning]	zulu_a7_1.SchDoc	Compiler	Net PGOOD has no driving source (Pin Q2-G, Pin R77-1, Pin U8-4)	5:26:14 PM	9/6/2026	33
+[Warning]	zulu_a7_5.SchDoc	Compiler	Net PUDC_B has no driving source (Pin R23-2, Pin U1-E18)	5:26:14 PM	9/6/2026	34
+[Warning]	zulu_a7_1.SchDoc	Compiler	Net Q3A_BASE has no driving source (Pin Q3-1, Pin R79-2)	5:26:14 PM	9/6/2026	35
+[Warning]	zulu_a7_2.SchDoc	Compiler	Net RST# has no driving source (Pin R3-1, Pin R9-2, Pin U1-V10, Pin X2-24)	5:26:14 PM	9/6/2026	36
+[Warning]	zulu_a7_1.SchDoc	Compiler	Net USB5V0 has no driving source (Pin D1-A, Pin X1-1)	5:26:14 PM	9/6/2026	37
+[Warning]	zulu_a7_5.SchDoc	Compiler	Net VCCADC has no driving source (Pin C123-1, Pin C124-1, Pin L7-2, Pin U1-C13)	5:26:14 PM	9/6/2026	38
+[Warning]	zulu_a7_4.SchDoc	Compiler	UART_FT_CTS# contains IO Pin and Output Pin objects (Pin U2-41, Pin U1-B16).	5:26:14 PM	9/6/2026	39
+[Info]	zulu_a7.PrjPcb	Compiler	Compile successful, no errors found.	5:26:14 PM	9/6/2026	40

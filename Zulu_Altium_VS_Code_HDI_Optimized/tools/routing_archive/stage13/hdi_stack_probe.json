@@ -1,0 +1,49 @@
+{
+ "vias": [
+  {
+   "net": "CHAN0",
+   "x": 2.5,
+   "y": 2.0,
+   "span": [
+    "Top",
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "GND",
+   "x": 2.5,
+   "y": 2.75,
+   "span": [
+    "Top",
+    "L2-GND"
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "CHAN0",
+   "layer": "Top",
+   "x1": 2.0,
+   "y1": 2.0,
+   "x2": 2.5,
+   "y2": 2.0,
+   "width": 0.0762,
+   "free_end": true
+  },
+  {
+   "net": "CHAN0",
+   "layer": "L3-SIG",
+   "x1": 2.5,
+   "y1": 2.0,
+   "x2": 3.0,
+   "y2": 2.0,
+   "width": 0.0762,
+   "free_end": true
+  }
+ ],
+ "remove": {
+  "vias": [],
+  "tracks": []
+ }
+}

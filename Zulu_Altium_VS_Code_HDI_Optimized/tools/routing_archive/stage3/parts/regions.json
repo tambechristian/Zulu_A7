@@ -1,0 +1,30 @@
+{
+ "_comment": "Stage-3 regions. Each region owns the listed pads (VCC3V3 unless the net is given) and works inside its box; it starts from the trunk's tap of the same name (taps.json written by the chosen trunk). max_mA is the datasheet-maximum current the region draws through its tap (docs/power_budget.md). The trunk designer must end a track at every tap.",
+ "regions": {
+  "west":      {"box": [0.0, 14.5, 15.0, 25.4], "max_mA": 5,
+                "pads": ["C13-2", "C11-2", "C12-2", "R35-2", "X2-17", "R34-5", "R34-6", "R34-7", "R34-8"],
+                "note": "the header corner: X2-17 (TH) and its caps at y 21.4, the R34 array at y 18.39; the source island C80-2/L1-2/U5-4 is in this box too"},
+  "sdled":     {"box": [9.0, 28.5, 3.0, 21.0], "max_mA": 230,
+                "pads": ["X3-4", "BTN-1", "BTN-2", "LD5-A", "R19-2", "R96-2", "R97-2", "R98-2", "U10-8"],
+                "note": "the SD socket pin X3-4 (Top, 200 mA card), BTN and LD5 (TH), the 0201 pull-ups at y 18.75-19.35, U10-8 (Bottom); the LED lanes and USB5V0 already run here"},
+  "north":     {"box": [26.0, 40.0, 12.0, 25.4], "max_mA": 160,
+                "pads": ["R80-1", "R81-1", "R82-1", "U3-43", "U3-49", "U2-56", "U2-50", "U2-42"],
+                "note": "U2's north pins 50 (VREGIN, 70 mA) and 56 (VCCIO) at y 19.3, U2-42 (VCCIO, east side y 14.35), U3's north VDDQ pads 43/49 (Bottom y 17.53), the LED resistors R80-R82 (Bottom y 19.05); X1 (USB, TH) sits at x 29.5-36.5 y 21.3-24"},
+  "south":     {"box": [16.0, 40.0, 0.0, 9.0], "max_mA": 200,
+                "pads": ["C9-2", "L4-2", "L5-2", "C133-2", "C134-2", "C135-2", "C136-2", "C137-2", "C138-2", "C3-2", "C4-2", "C5-2", "C6-2", "C7-2", "C8-2", "C38-2", "U3-27", "U3-14", "U3-9", "U3-3", "U3-1", "U2-20", "U2-31"],
+                "note": "the cap row (0603 at y 3.05, 0201 at y 3.95), the beads' VCC3V3 ends L4-2/L5-2, U3's south VDD/VDDQ pads (Bottom y 6.17), U2's south VCCIO pins 20/31 (Top y 7.9, reachable only at 0.163 / 0.538 mm today); VU and VBATT run on Top here, the SDRAM bus on L3/L4"},
+  "u1field":   {"box": [39.0, 54.5, 5.0, 17.5], "max_mA": 95,
+                "pads": ["U1-V1", "U1-R1", "U1-K1", "U1-H3", "U1-V6", "U1-V9", "U1-V11", "U1-U13", "U1-J7", "U1-K12", "U1-G12", "U1-M17", "U1-R17", "U1-F17", "U1-C14", "U1-C18", "C113-1", "C109-1", "C107-1", "C110-1", "C115-1", "C122-1", "C108-1", "C111-1", "C119-1", "C112-1", "C114-1", "C121-1"],
+                "note": "the 17 VCCO islands (one ball named per island; each island's via is in stage3_facts.md) and the twelve 0201s on the y 7.65 / 11.05 / 14.45 rows; Bottom only inside the land field; VCC1V0 owns the north strip y 15.935 and the east flank x 50.23; the AIN bundle runs down the west strip"},
+  "northbank": {"box": [39.0, 58.0, 16.5, 25.4], "max_mA": 35,
+                "pads": ["C120-1", "C117-1", "C116-1", "C118-1", "C100-1", "C101-1", "C102-1", "C103-1", "C104-1", "C105-1", "C106-1", "C99-1", "Q1-1", "Q1-4", "U4-8"],
+                "note": "the 0201 row at y 17.85, the 0603 bank at y 21.1 / 22.4 (Bottom), Q1 (Top, 12 MHz oscillator) and U4-8 (Top, flash); VCC1V0's C87/C88 columns run at x 44.3 and 47.4"},
+  "east":      {"box": [52.0, 69.85, 0.0, 25.4], "max_mA": 20,
+                "pads": ["C97-1", "C98-1", "C145-1", "C146-1", "R20-2", "R23-1", "R1-3", "R1-4", "JP4-3", "R2-2", "R6-2", "R7-2", "R90-2", "R91-2", "R92-2", "R93-2", "R94-2", "R99-2", "R4-8", "J1-6", "J1-12"],
+                "note": "the 1206 caps C97/C98/C145/C146 (Top), the south-east pull-ups and JP4-3 (TH), the north-east pull-ups, R4-8 (Top), J1-6/12 (TH Pmod, user current); VCC1V0's 22 uF bank and VCC1V8's L4 run sit at x 53-58"},
+  "ft":        {"box": [16.0, 40.0, 0.0, 21.0], "max_mA": 70,
+                "pads": [], "nets": {"FT-VCORE": ["U2-12", "C139-2", "C152-2", "C153-2", "C154-2", "U2-37", "U2-49", "U2-64"], "FT-VPHY": ["L4-1", "C40-2", "U2-4"], "FT-VPLL": ["L5-1", "C41-2", "U2-9"]},
+                "note": "routed AFTER the south region, with the trunk and the south plan as base copper; no VCC3V3 tap -- these are their own nets"}
+ },
+ "taps_required": ["west", "sdled", "north", "south", "u1field", "northbank", "east"]
+}

@@ -1,0 +1,5771 @@
+{
+ "vias": [
+  {
+   "net": "GND",
+   "x": 43.4001,
+   "y": 14.8999,
+   "cell": "D4",
+   "why": "GND: C3 (diag), C4, D3 share it"
+  },
+  {
+   "net": "GND",
+   "x": 43.9,
+   "y": 14.8999,
+   "cell": "D5",
+   "why": "GND straight dog-bone"
+  },
+  {
+   "net": "GND",
+   "x": 44.4001,
+   "y": 14.8999,
+   "cell": "D6",
+   "why": "GND straight dog-bone; C7 chains into C6"
+  },
+  {
+   "net": "GND",
+   "x": 43.4001,
+   "y": 14.4,
+   "cell": "E4",
+   "why": "GND straight dog-bone; F3 chains into E3"
+  },
+  {
+   "net": "FPGA-TCK",
+   "x": 44.9,
+   "y": 14.8999,
+   "cell": "D7",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "VCC1V8",
+   "x": 45.4001,
+   "y": 14.8999,
+   "cell": "D8",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "GND",
+   "x": 45.9,
+   "y": 14.8999,
+   "cell": "D9",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "FPGA-CCLK",
+   "x": 46.4001,
+   "y": 14.8999,
+   "cell": "D10",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "GNDADC",
+   "x": 46.9,
+   "y": 14.8999,
+   "cell": "D11",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "VCCADC",
+   "x": 47.4001,
+   "y": 14.8999,
+   "cell": "D12",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 47.9,
+   "y": 14.8999,
+   "cell": "D13",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "SD-DAT0",
+   "x": 48.4001,
+   "y": 14.8999,
+   "cell": "D14",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "CHAN4",
+   "x": 48.9,
+   "y": 14.8999,
+   "cell": "D15",
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "CHAN5",
+   "x": 49.4001,
+   "y": 14.8999,
+   "cell": "D16",
+   "why": "D17 has only D16 (E16 is blocked by C95 pad 2)"
+  },
+  {
+   "net": "JA4",
+   "x": 50.1501,
+   "y": 16.78,
+   "cell": null,
+   "why": "C17 JA4 via in the north corridor (U4 copper at 17.215: 0.26 clear); it splits the corridor"
+  },
+  {
+   "net": "AIN15_P",
+   "x": 43.4001,
+   "y": 13.8999,
+   "cell": "F4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 43.4001,
+   "y": 13.4,
+   "cell": "G4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "D12",
+   "x": 43.4001,
+   "y": 12.8999,
+   "cell": "H4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "D9",
+   "x": 43.4001,
+   "y": 12.4,
+   "cell": "J4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "SD-DAT2",
+   "x": 43.4001,
+   "y": 11.8999,
+   "cell": "K4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A12",
+   "x": 43.4001,
+   "y": 11.4,
+   "cell": "L4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A8",
+   "x": 43.4001,
+   "y": 10.8999,
+   "cell": "M4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A6",
+   "x": 43.4001,
+   "y": 10.4,
+   "cell": "N4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A4",
+   "x": 43.4001,
+   "y": 9.8999,
+   "cell": "P4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A1",
+   "x": 43.4001,
+   "y": 9.4,
+   "cell": "R4",
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A10",
+   "x": 41.4,
+   "y": 8.65,
+   "cell": null,
+   "why": "U3 A10 via one pitch west of col 1 (SDRAM on Bottom, west)"
+  },
+  {
+   "net": "D7",
+   "x": 43.4001,
+   "y": 8.8999,
+   "cell": "T4",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "D4",
+   "x": 43.9,
+   "y": 8.8999,
+   "cell": "T5",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "GND",
+   "x": 44.4001,
+   "y": 8.8999,
+   "cell": "T6",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "SD-CMD",
+   "x": 44.9,
+   "y": 8.8999,
+   "cell": "T7",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "SD-CLK",
+   "x": 45.4001,
+   "y": 8.8999,
+   "cell": "T8",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "GND",
+   "x": 45.9,
+   "y": 8.8999,
+   "cell": "T9",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CFG-M2",
+   "x": 46.4001,
+   "y": 8.8999,
+   "cell": "T10",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "FPGA-INIT#",
+   "x": 46.9,
+   "y": 8.8999,
+   "cell": "T11",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "FPGA-DONE",
+   "x": 47.4001,
+   "y": 8.8999,
+   "cell": "T12",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 47.9,
+   "y": 8.8999,
+   "cell": "T13",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN24",
+   "x": 48.4001,
+   "y": 8.8999,
+   "cell": "T14",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN21",
+   "x": 48.9,
+   "y": 8.8999,
+   "cell": "T15",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "JA7",
+   "x": 49.4001,
+   "y": 8.8999,
+   "cell": "T16",
+   "why": "straight dog-bone into ring 3 (T16 is the only SE cell; U16/U17 leave outward)"
+  },
+  {
+   "net": "CHAN17",
+   "x": 49.6501,
+   "y": 7.02,
+   "cell": null,
+   "why": "U16 CHAN17 via just south of the land field (X2 pad 27 is at the bottom edge)"
+  },
+  {
+   "net": "JA10",
+   "x": 51.4,
+   "y": 8.15,
+   "cell": null,
+   "why": "U17 JA10 via one pitch east of col 19 (R33 on Bottom, east); T19 via is staggered to x=51.9"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 49.4001,
+   "y": 13.8999,
+   "cell": "F16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "JA3",
+   "x": 49.4001,
+   "y": 13.4,
+   "cell": "G16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN6",
+   "x": 49.4001,
+   "y": 12.8999,
+   "cell": "H16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN9",
+   "x": 49.4001,
+   "y": 12.4,
+   "cell": "J16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN11",
+   "x": 49.4001,
+   "y": 11.8999,
+   "cell": "K16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "BTN",
+   "x": 49.4001,
+   "y": 10.4,
+   "cell": "N16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "FT-PWREN#",
+   "x": 49.4001,
+   "y": 9.8999,
+   "cell": "P16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 49.4001,
+   "y": 9.4,
+   "cell": "R16",
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "GND",
+   "x": 48.9,
+   "y": 13.8999,
+   "cell": "F15",
+   "why": "2-pitch dog-bone for E17 through blocked E16"
+  },
+  {
+   "net": "CLK-12M-FPGA",
+   "x": 48.9,
+   "y": 11.8999,
+   "cell": "K15",
+   "why": "2-pitch dog-bone for L17 through blocked L16"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 48.9,
+   "y": 10.4,
+   "cell": "N15",
+   "why": "2-pitch dog-bone for M17 through blocked M16"
+  },
+  {
+   "net": "GND",
+   "x": 44.9,
+   "y": 13.8999,
+   "cell": "F7",
+   "why": "GND via for core ball G7"
+  },
+  {
+   "net": "GND",
+   "x": 45.4001,
+   "y": 13.8999,
+   "cell": "F8",
+   "why": "GND via for core ball G8"
+  },
+  {
+   "net": "GND",
+   "x": 45.9,
+   "y": 13.8999,
+   "cell": "F9",
+   "why": "GND via for core ball G9"
+  },
+  {
+   "net": "VCC1V0",
+   "x": 46.4001,
+   "y": 13.8999,
+   "cell": "F10",
+   "why": "VCC1V0 via for core ball G10"
+  },
+  {
+   "net": "GND",
+   "x": 46.9,
+   "y": 13.8999,
+   "cell": "F11",
+   "why": "GND via for core ball G11"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 47.4001,
+   "y": 13.8999,
+   "cell": "F12",
+   "why": "VCC3V3 via for core ball G12"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 47.9,
+   "y": 13.8999,
+   "cell": "F13",
+   "why": "VCC3V3 via for core ball G13"
+  },
+  {
+   "net": "GND",
+   "x": 44.4001,
+   "y": 13.8999,
+   "cell": "F6",
+   "why": "GND via for core ball G7"
+  },
+  {
+   "net": "GND",
+   "x": 44.4001,
+   "y": 13.4,
+   "cell": "G6",
+   "why": "GND via for core ball G7"
+  },
+  {
+   "net": "GND",
+   "x": 44.4001,
+   "y": 12.8999,
+   "cell": "H6",
+   "why": "GND via for core ball H7"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 44.4001,
+   "y": 12.4,
+   "cell": "J6",
+   "why": "VCC3V3 via for core ball J7"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 44.4001,
+   "y": 11.8999,
+   "cell": "K6",
+   "why": "VCC3V3 via for core ball K7"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 44.9,
+   "y": 9.8999,
+   "cell": "P7",
+   "why": "VCC3V3 via for core ball N7"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 45.4001,
+   "y": 9.8999,
+   "cell": "P8",
+   "why": "VCC3V3 via for core ball N8"
+  },
+  {
+   "net": "GND",
+   "x": 45.9,
+   "y": 9.8999,
+   "cell": "P9",
+   "why": "GND via for core ball N9"
+  },
+  {
+   "net": "VCC1V0",
+   "x": 46.4001,
+   "y": 9.8999,
+   "cell": "P10",
+   "why": "VCC1V0 via for core ball N10"
+  },
+  {
+   "net": "VCC1V0",
+   "x": 46.9,
+   "y": 9.8999,
+   "cell": "P11",
+   "why": "VCC1V0 via for core ball N11"
+  },
+  {
+   "net": "GND",
+   "x": 47.4001,
+   "y": 9.8999,
+   "cell": "P12",
+   "why": "GND via for core ball N12"
+  },
+  {
+   "net": "GND",
+   "x": 47.9,
+   "y": 9.8999,
+   "cell": "P13",
+   "why": "GND via for core ball N13"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 44.4001,
+   "y": 9.8999,
+   "cell": "P6",
+   "why": "VCC3V3 via for core ball N7"
+  },
+  {
+   "net": "GND",
+   "x": 48.4001,
+   "y": 9.8999,
+   "cell": "P14",
+   "why": "GND via for core ball N13"
+  },
+  {
+   "net": "VCC1V8",
+   "x": 48.4001,
+   "y": 12.8999,
+   "cell": "H14",
+   "why": "VCC1V8 via for core ball H13"
+  },
+  {
+   "net": "VCC1V8",
+   "x": 48.4001,
+   "y": 12.4,
+   "cell": "J14",
+   "why": "VCC1V8 via for core ball J13"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 48.4001,
+   "y": 11.8999,
+   "cell": "K14",
+   "why": "VCC3V3 via for core ball K13"
+  },
+  {
+   "net": "GND",
+   "x": 48.4001,
+   "y": 10.4,
+   "cell": "N14",
+   "why": "GND via for core ball N13"
+  },
+  {
+   "net": "VCC1V8",
+   "x": 48.4001,
+   "y": 13.4,
+   "cell": "G14",
+   "why": "VCC1V8 via for core ball H13"
+  },
+  {
+   "net": "GND",
+   "x": 45.9,
+   "y": 11.8999,
+   "cell": "K9",
+   "why": "GND via for core ball J9"
+  },
+  {
+   "net": "VCC1V0",
+   "x": 46.4001,
+   "y": 11.8999,
+   "cell": "K10",
+   "why": "VCC1V0 via for core ball J10"
+  },
+  {
+   "net": "GND",
+   "x": 46.9,
+   "y": 11.8999,
+   "cell": "K11",
+   "why": "GND via for core ball J11"
+  },
+  {
+   "net": "GND",
+   "x": 44.4001,
+   "y": 10.4,
+   "cell": "N6",
+   "why": "GND stitch for C90 pad 2 (Bottom); no ball on Top"
+  },
+  {
+   "net": "GND",
+   "x": 48.4001,
+   "y": 11.4,
+   "cell": "L14",
+   "why": "GND stitch for C91 pad 2 (Bottom); no ball on Top"
+  },
+  {
+   "net": "GND",
+   "x": 41.4,
+   "y": 16.4,
+   "cell": null,
+   "why": "A1 ring-0 GND: outside west, row line at x=41.40"
+  },
+  {
+   "net": "GND",
+   "x": 41.4,
+   "y": 15.8999,
+   "cell": null,
+   "why": "B1 ring-0 GND: outside west, row line at x=41.40"
+  },
+  {
+   "net": "GND",
+   "x": 41.4,
+   "y": 15.4,
+   "cell": null,
+   "why": "C1 ring-0 GND: outside west, row line at x=41.40"
+  },
+  {
+   "net": "GND",
+   "x": 41.4,
+   "y": 14.4,
+   "cell": null,
+   "why": "E1 ring-0 GND: outside west, row line at x=41.40"
+  },
+  {
+   "net": "GND",
+   "x": 41.4,
+   "y": 13.8999,
+   "cell": null,
+   "why": "F1 ring-0 GND: outside west, row line at x=41.40"
+  },
+  {
+   "net": "GND",
+   "x": 40.9,
+   "y": 13.4,
+   "cell": null,
+   "why": "G1 ring-0 GND: outside west, row line at x=40.90"
+  },
+  {
+   "net": "GND",
+   "x": 41.4,
+   "y": 6.9,
+   "cell": null,
+   "why": "W1 corner GND via, SW"
+  },
+  {
+   "net": "GND",
+   "x": 51.4,
+   "y": 16.4,
+   "cell": null,
+   "why": "A19 ring-0 GND: outside east, row line at x=51.40"
+  },
+  {
+   "net": "GND",
+   "x": 51.4,
+   "y": 15.4,
+   "cell": null,
+   "why": "C19 ring-0 GND: outside east, row line at x=51.40"
+  },
+  {
+   "net": "GND",
+   "x": 51.4,
+   "y": 13.8999,
+   "cell": null,
+   "why": "F19 ring-0 GND: outside east, row line at x=51.40"
+  },
+  {
+   "net": "GND",
+   "x": 51.4,
+   "y": 11.4,
+   "cell": null,
+   "why": "L19 ring-0 GND: outside east, row line at x=51.40"
+  },
+  {
+   "net": "GND",
+   "x": 51.9,
+   "y": 8.8999,
+   "cell": null,
+   "why": "T19 ring-0 GND: outside east, row line at x=51.90"
+  },
+  {
+   "net": "GND",
+   "x": 51.9,
+   "y": 13.15,
+   "cell": null,
+   "why": "H18 neck via, staggered to x=51.9 (F19 via at 51.4,13.9 is 0.75 away)"
+  },
+  {
+   "net": "GND",
+   "x": 47.4001,
+   "y": 6.25,
+   "cell": null,
+   "why": "W12 ring-0 GND: outside south, column line, second row y=6.25"
+  },
+  {
+   "net": "GND",
+   "x": 50.6501,
+   "y": 6.35,
+   "cell": null,
+   "why": "V18 neck via, south (zone-disjoint from the CHAN17 via at 49.65,7.02)"
+  },
+  {
+   "net": "GND",
+   "x": 40.9,
+   "y": 10.15,
+   "cell": null,
+   "why": "P2 neck via at x=40.9 (K1 via 40.9,11.9 is 1.75 away; R1 via is at 40.4)"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 51.4,
+   "y": 15.8999,
+   "cell": null,
+   "why": "B19 outside east, row line (+ C18)"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 40.9,
+   "y": 11.8999,
+   "cell": null,
+   "why": "K1 outside west, row line at x=40.90"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 40.4,
+   "y": 9.4,
+   "cell": null,
+   "why": "R1 outside west, row line at x=40.40"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 40.9,
+   "y": 7.8999,
+   "cell": null,
+   "why": "V1 outside west, row line at x=40.90"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 44.1501,
+   "y": 6.9,
+   "cell": null,
+   "why": "V6 neck via (half-column 44.15, y=6.90)"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 45.6501,
+   "y": 6.9,
+   "cell": null,
+   "why": "V9 neck via (half-column 45.65, y=6.90)"
+  },
+  {
+   "net": "VCC3V3",
+   "x": 46.6501,
+   "y": 6.9,
+   "cell": null,
+   "why": "V11 neck via (half-column 46.65, y=6.90)"
+  },
+  {
+   "net": "VCC1V8",
+   "x": 43.9,
+   "y": 14.4,
+   "cell": "E5",
+   "why": "VCC1V8 via for C96 pad 1 (0.145 from the pad); fed from D8 on L3"
+  }
+ ],
+ "tracks": [
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 15.4,
+   "x2": 43.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "ring-2 corner GND diagonal into the shared D4 via"
+  },
+  {
+   "net": "GND",
+   "x1": 43.4001,
+   "y1": 15.4,
+   "x2": 43.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND straight dog-bone into D4"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 14.8999,
+   "x2": 43.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND straight dog-bone into D4"
+  },
+  {
+   "net": "GND",
+   "x1": 43.9,
+   "y1": 15.4,
+   "x2": 43.9,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND straight dog-bone"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 15.4,
+   "x2": 44.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND straight dog-bone; C7 chains into C6"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 15.4,
+   "x2": 44.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND chain C7-C6 frees D7 for the row-C shift"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 14.4,
+   "x2": 43.4001,
+   "y2": 14.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND straight dog-bone; F3 chains into E3"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 13.8999,
+   "x2": 42.9,
+   "y2": 14.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND chain F3-E3 frees F4 for the col-3 shift"
+  },
+  {
+   "net": "FPGA-TCK",
+   "x1": 45.4001,
+   "y1": 15.4,
+   "x2": 44.9,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 45.9,
+   "y1": 15.4,
+   "x2": 45.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "GND",
+   "x1": 46.4001,
+   "y1": 15.4,
+   "x2": 45.9,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "FPGA-CCLK",
+   "x1": 46.9,
+   "y1": 15.4,
+   "x2": 46.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "GNDADC",
+   "x1": 47.4001,
+   "y1": 15.4,
+   "x2": 46.9,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "VCCADC",
+   "x1": 47.9,
+   "y1": 15.4,
+   "x2": 47.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 48.4001,
+   "y1": 15.4,
+   "x2": 47.9,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "SD-DAT0",
+   "x1": 48.9,
+   "y1": 15.4,
+   "x2": 48.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "CHAN4",
+   "x1": 49.4001,
+   "y1": 15.4,
+   "x2": 48.9,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "row-C shift: diagonal one cell west because D16 belongs to D17"
+  },
+  {
+   "net": "CHAN5",
+   "x1": 49.9,
+   "y1": 14.8999,
+   "x2": 49.4001,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "D17 has only D16 (E16 is blocked by C95 pad 2)"
+  },
+  {
+   "net": "JA4",
+   "x1": 49.9,
+   "y1": 15.4,
+   "x2": 50.1501,
+   "y2": 15.6501,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "C17 out north: 45 deg to the col 17|18 lane"
+  },
+  {
+   "net": "JA4",
+   "x1": 50.1501,
+   "y1": 15.6501,
+   "x2": 50.1501,
+   "y2": 16.78,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "C17 out north: 3 mil lane through B17|B18 and A17|A18"
+  },
+  {
+   "net": "AIN15_P",
+   "x1": 42.9,
+   "y1": 13.4,
+   "x2": 43.4001,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 42.9,
+   "y1": 12.8999,
+   "x2": 43.4001,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "D12",
+   "x1": 42.9,
+   "y1": 12.4,
+   "x2": 43.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "D9",
+   "x1": 42.9,
+   "y1": 11.8999,
+   "x2": 43.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "SD-DAT2",
+   "x1": 42.9,
+   "y1": 11.4,
+   "x2": 43.4001,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A12",
+   "x1": 42.9,
+   "y1": 10.8999,
+   "x2": 43.4001,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A8",
+   "x1": 42.9,
+   "y1": 10.4,
+   "x2": 43.4001,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A6",
+   "x1": 42.9,
+   "y1": 9.8999,
+   "x2": 43.4001,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A4",
+   "x1": 42.9,
+   "y1": 9.4,
+   "x2": 43.4001,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A1",
+   "x1": 42.9,
+   "y1": 8.8999,
+   "x2": 43.4001,
+   "y2": 9.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "col-3 shift: diagonal one cell north because T4 belongs to U4"
+  },
+  {
+   "net": "A10",
+   "x1": 42.9,
+   "y1": 8.4,
+   "x2": 42.6501,
+   "y2": 8.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U3 out west: 45 deg to the row T|U lane"
+  },
+  {
+   "net": "A10",
+   "x1": 42.6501,
+   "y1": 8.65,
+   "x2": 41.4,
+   "y2": 8.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U3 out west: 3 mil lane through T2|U2 and T1|U1"
+  },
+  {
+   "net": "D7",
+   "x1": 43.4001,
+   "y1": 8.4,
+   "x2": 43.4001,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "D4",
+   "x1": 43.9,
+   "y1": 8.4,
+   "x2": 43.9,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 8.4,
+   "x2": 44.4001,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "SD-CMD",
+   "x1": 44.9,
+   "y1": 8.4,
+   "x2": 44.9,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "SD-CLK",
+   "x1": 45.4001,
+   "y1": 8.4,
+   "x2": 45.4001,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 8.4,
+   "x2": 45.9,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CFG-M2",
+   "x1": 46.4001,
+   "y1": 8.4,
+   "x2": 46.4001,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "FPGA-INIT#",
+   "x1": 46.9,
+   "y1": 8.4,
+   "x2": 46.9,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "FPGA-DONE",
+   "x1": 47.4001,
+   "y1": 8.4,
+   "x2": 47.4001,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.9,
+   "y1": 8.4,
+   "x2": 47.9,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN24",
+   "x1": 48.4001,
+   "y1": 8.4,
+   "x2": 48.4001,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN21",
+   "x1": 48.9,
+   "y1": 8.4,
+   "x2": 48.9,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "JA7",
+   "x1": 49.9,
+   "y1": 8.8999,
+   "x2": 49.4001,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3 (T16 is the only SE cell; U16/U17 leave outward)"
+  },
+  {
+   "net": "CHAN17",
+   "x1": 49.4001,
+   "y1": 8.4,
+   "x2": 49.6501,
+   "y2": 8.1501,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U16 out south: 45 deg to the col 16|17 lane"
+  },
+  {
+   "net": "CHAN17",
+   "x1": 49.6501,
+   "y1": 8.1501,
+   "x2": 49.6501,
+   "y2": 7.02,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U16 out south: 3 mil lane through V16|V17 and W16|W17"
+  },
+  {
+   "net": "JA10",
+   "x1": 49.9,
+   "y1": 8.4,
+   "x2": 50.1501,
+   "y2": 8.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U17 out east: 45 deg to the row U|V lane"
+  },
+  {
+   "net": "JA10",
+   "x1": 50.1501,
+   "y1": 8.15,
+   "x2": 51.4,
+   "y2": 8.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U17 out east: 3 mil lane through U18|V18 and U19|V19"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 49.9,
+   "y1": 13.8999,
+   "x2": 49.4001,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "JA3",
+   "x1": 49.9,
+   "y1": 13.4,
+   "x2": 49.4001,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN6",
+   "x1": 49.9,
+   "y1": 12.8999,
+   "x2": 49.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN9",
+   "x1": 49.9,
+   "y1": 12.4,
+   "x2": 49.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "CHAN11",
+   "x1": 49.9,
+   "y1": 11.8999,
+   "x2": 49.4001,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "BTN",
+   "x1": 49.9,
+   "y1": 10.4,
+   "x2": 49.4001,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "FT-PWREN#",
+   "x1": 49.9,
+   "y1": 9.8999,
+   "x2": 49.4001,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 49.9,
+   "y1": 9.4,
+   "x2": 49.4001,
+   "y2": 9.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "straight dog-bone into ring 3"
+  },
+  {
+   "net": "GND",
+   "x1": 49.9,
+   "y1": 14.4,
+   "x2": 49.4001,
+   "y2": 14.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "2-pitch dog-bone: E16 is blocked for a via, used as a Top pass-through"
+  },
+  {
+   "net": "GND",
+   "x1": 49.4001,
+   "y1": 14.4,
+   "x2": 48.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "2-pitch dog-bone: diagonal on to the ring-4 via F15"
+  },
+  {
+   "net": "CLK-12M-FPGA",
+   "x1": 49.9,
+   "y1": 11.4,
+   "x2": 49.4001,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "2-pitch dog-bone: L16 is blocked for a via, used as a Top pass-through"
+  },
+  {
+   "net": "CLK-12M-FPGA",
+   "x1": 49.4001,
+   "y1": 11.4,
+   "x2": 48.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "2-pitch dog-bone: diagonal on to the ring-4 via K15"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 49.9,
+   "y1": 10.8999,
+   "x2": 49.4001,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "2-pitch dog-bone: M16 is blocked for a via, used as a Top pass-through"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 49.4001,
+   "y1": 10.8999,
+   "x2": 48.9,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "2-pitch dog-bone: diagonal on to the ring-4 via N15"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 13.4,
+   "x2": 45.4001,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain G7-G8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 13.4,
+   "x2": 45.9,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain G8-G9"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 13.4,
+   "x2": 44.9,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain G7-H7"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 13.4,
+   "x2": 45.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain G8-H8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 13.4,
+   "x2": 45.9,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain G9-H9"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 12.8999,
+   "x2": 45.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain H7-H8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 12.8999,
+   "x2": 45.9,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain H8-H9"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 12.8999,
+   "x2": 45.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain H8-J8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 12.8999,
+   "x2": 45.9,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain H9-J9"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 12.4,
+   "x2": 45.9,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain J8-J9"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 12.4,
+   "x2": 45.4001,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain J8-K8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 11.8999,
+   "x2": 45.4001,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain K8-L8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 11.4,
+   "x2": 45.9,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain L8-L9"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 11.4,
+   "x2": 45.9,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain L9-M9"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 10.8999,
+   "x2": 45.9,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain M9-N9"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 13.4,
+   "x2": 46.9,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain G11-H11"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 12.8999,
+   "x2": 46.9,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain H11-J11"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 12.8999,
+   "x2": 47.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain H11-H12"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 12.4,
+   "x2": 47.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain J11-J12"
+  },
+  {
+   "net": "GND",
+   "x1": 47.4001,
+   "y1": 12.8999,
+   "x2": 47.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain H12-J12"
+  },
+  {
+   "net": "GND",
+   "x1": 47.9,
+   "y1": 10.8999,
+   "x2": 47.9,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain M13-N13"
+  },
+  {
+   "net": "GND",
+   "x1": 47.4001,
+   "y1": 10.4,
+   "x2": 47.9,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND core chain N12-N13"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 12.4,
+   "x2": 44.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain J7-K7"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 11.8999,
+   "x2": 44.9,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain K7-L7"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 11.4,
+   "x2": 44.9,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain L7-M7"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 10.8999,
+   "x2": 44.9,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain M7-N7"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 10.8999,
+   "x2": 45.4001,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain M7-M8"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 10.4,
+   "x2": 45.4001,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain N7-N8"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 45.4001,
+   "y1": 10.8999,
+   "x2": 45.4001,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain M8-N8"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.4001,
+   "y1": 13.4,
+   "x2": 47.9,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain G12-G13"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.4001,
+   "y1": 11.8999,
+   "x2": 47.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain K12-K13"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.4001,
+   "y1": 11.4,
+   "x2": 47.9,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain L12-L13"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.4001,
+   "y1": 11.8999,
+   "x2": 47.4001,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain K12-L12"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.9,
+   "y1": 11.8999,
+   "x2": 47.9,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain K13-L13"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.4001,
+   "y1": 11.4,
+   "x2": 47.4001,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 core chain L12-M12"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 13.4,
+   "x2": 46.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 core chain G10-H10"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 12.8999,
+   "x2": 46.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 core chain H10-J10"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 11.4,
+   "x2": 46.4001,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 core chain L10-M10"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 10.8999,
+   "x2": 46.4001,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 core chain M10-N10"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 10.8999,
+   "x2": 46.9,
+   "y2": 10.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 core chain M10-M11"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 10.4,
+   "x2": 46.9,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 core chain N10-N11"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.9,
+   "y1": 10.8999,
+   "x2": 46.9,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 core chain M11-N11"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 47.9,
+   "y1": 12.8999,
+   "x2": 47.9,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V8 core chain H13-J13"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 13.4,
+   "x2": 44.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball G7 to its via F7"
+  },
+  {
+   "net": "GND",
+   "x1": 45.4001,
+   "y1": 13.4,
+   "x2": 45.4001,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball G8 to its via F8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 13.4,
+   "x2": 45.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball G9 to its via F9"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 13.4,
+   "x2": 46.4001,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 ball G10 to its via F10"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 13.4,
+   "x2": 46.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball G11 to its via F11"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.4001,
+   "y1": 13.4,
+   "x2": 47.4001,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 ball G12 to its via F12"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.9,
+   "y1": 13.4,
+   "x2": 47.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 ball G13 to its via F13"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 13.4,
+   "x2": 44.4001,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "GND ball G7 to its via F6"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 13.4,
+   "x2": 44.4001,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball G7 to its via G6"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 12.8999,
+   "x2": 44.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball H7 to its via H6"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 12.4,
+   "x2": 44.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 ball J7 to its via J6"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 11.8999,
+   "x2": 44.4001,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 ball K7 to its via K6"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 10.4,
+   "x2": 44.9,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 ball N7 to its via P7"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 45.4001,
+   "y1": 10.4,
+   "x2": 45.4001,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 ball N8 to its via P8"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 10.4,
+   "x2": 45.9,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball N9 to its via P9"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 10.4,
+   "x2": 46.4001,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 ball N10 to its via P10"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.9,
+   "y1": 10.4,
+   "x2": 46.9,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 ball N11 to its via P11"
+  },
+  {
+   "net": "GND",
+   "x1": 47.4001,
+   "y1": 10.4,
+   "x2": 47.4001,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball N12 to its via P12"
+  },
+  {
+   "net": "GND",
+   "x1": 47.9,
+   "y1": 10.4,
+   "x2": 47.9,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball N13 to its via P13"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.9,
+   "y1": 10.4,
+   "x2": 44.4001,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "VCC3V3 ball N7 to its via P6"
+  },
+  {
+   "net": "GND",
+   "x1": 47.9,
+   "y1": 10.4,
+   "x2": 48.4001,
+   "y2": 9.8999,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "GND ball N13 to its via P14"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 47.9,
+   "y1": 12.8999,
+   "x2": 48.4001,
+   "y2": 12.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V8 ball H13 to its via H14"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 47.9,
+   "y1": 12.4,
+   "x2": 48.4001,
+   "y2": 12.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V8 ball J13 to its via J14"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 47.9,
+   "y1": 11.8999,
+   "x2": 48.4001,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC3V3 ball K13 to its via K14"
+  },
+  {
+   "net": "GND",
+   "x1": 47.9,
+   "y1": 10.4,
+   "x2": 48.4001,
+   "y2": 10.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball N13 to its via N14"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 47.9,
+   "y1": 12.8999,
+   "x2": 48.4001,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "VCC1V8 ball H13 to its via G14"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 12.4,
+   "x2": 45.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball J9 to its via K9"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 11.4,
+   "x2": 45.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball L9 to its via K9"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 12.4,
+   "x2": 46.4001,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 ball J10 to its via K10"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 11.4,
+   "x2": 46.4001,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "VCC1V0 ball L10 to its via K10"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 12.4,
+   "x2": 46.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball J11 to its via K11"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 11.4,
+   "x2": 46.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GND ball L11 to its via K11"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 16.4,
+   "x2": 41.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 15.8999,
+   "x2": 41.9,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 15.4,
+   "x2": 42.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 42.4001,
+   "y1": 15.4,
+   "x2": 42.9,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 15.4,
+   "x2": 43.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 43.4001,
+   "y1": 15.4,
+   "x2": 43.9,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 43.9,
+   "y1": 15.4,
+   "x2": 44.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 15.4,
+   "x2": 44.9,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 16.4,
+   "x2": 42.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 15.8999,
+   "x2": 42.9,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 43.4001,
+   "y1": 16.4,
+   "x2": 43.4001,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 43.4001,
+   "y1": 15.8999,
+   "x2": 43.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 43.9,
+   "y1": 16.4,
+   "x2": 43.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 43.9,
+   "y1": 15.8999,
+   "x2": 43.9,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 16.4,
+   "x2": 44.4001,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 15.8999,
+   "x2": 44.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 16.4,
+   "x2": 44.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 15.8999,
+   "x2": 44.9,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh column"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 16.4,
+   "x2": 43.4001,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row A"
+  },
+  {
+   "net": "GND",
+   "x1": 43.4001,
+   "y1": 16.4,
+   "x2": 43.9,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row A"
+  },
+  {
+   "net": "GND",
+   "x1": 43.9,
+   "y1": 16.4,
+   "x2": 44.4001,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row A"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 16.4,
+   "x2": 44.9,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row A"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 15.8999,
+   "x2": 43.4001,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row B"
+  },
+  {
+   "net": "GND",
+   "x1": 43.4001,
+   "y1": 15.8999,
+   "x2": 43.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row B"
+  },
+  {
+   "net": "GND",
+   "x1": 43.9,
+   "y1": 15.8999,
+   "x2": 44.4001,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row B"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 15.8999,
+   "x2": 44.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row B"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 15.4,
+   "x2": 42.9,
+   "y2": 14.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh col 3"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 14.8999,
+   "x2": 42.9,
+   "y2": 14.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh col 3"
+  },
+  {
+   "net": "GND",
+   "x1": 42.9,
+   "y1": 14.4,
+   "x2": 42.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh col 3"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 14.4,
+   "x2": 42.4001,
+   "y2": 14.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row E"
+  },
+  {
+   "net": "GND",
+   "x1": 42.4001,
+   "y1": 14.4,
+   "x2": 42.9,
+   "y2": 14.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row E"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 13.8999,
+   "x2": 42.4001,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row F"
+  },
+  {
+   "net": "GND",
+   "x1": 42.4001,
+   "y1": 13.8999,
+   "x2": 42.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh row F"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 14.4,
+   "x2": 41.9,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "NW GND mesh col 1 (C1-E1 would cross the no-net D1 land)"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 16.4,
+   "x2": 41.4,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "A1 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 15.8999,
+   "x2": 41.4,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "B1 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 15.4,
+   "x2": 41.4,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "C1 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 14.4,
+   "x2": 41.4,
+   "y2": 14.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "E1 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 13.8999,
+   "x2": 41.4,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "F1 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 13.4,
+   "x2": 40.9,
+   "y2": 13.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "G1 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 41.9,
+   "y1": 7.4,
+   "x2": 41.4,
+   "y2": 6.9,
+   "layer": "Top",
+   "width": 0.15,
+   "why": "W1 -> SW corner via (45 deg, 0.141 to V1 at 0.15 wide)"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 16.4,
+   "x2": 45.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "north GND pair"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 16.4,
+   "x2": 46.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "north GND pair"
+  },
+  {
+   "net": "GND",
+   "x1": 45.9,
+   "y1": 15.8999,
+   "x2": 46.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "B9 -> C10 diagonal between B10 (no-net) and C9 (VCC1V8): 0.141 at 0.20"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 15.8999,
+   "x2": 46.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "B11 -> C10 diagonal between B10 (no-net) and C11: 0.141 at 0.20"
+  },
+  {
+   "net": "GND",
+   "x1": 48.4001,
+   "y1": 15.8999,
+   "x2": 48.1501,
+   "y2": 16.1499,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B14 thread: 45 deg into the A13|A14 gap"
+  },
+  {
+   "net": "GND",
+   "x1": 48.1501,
+   "y1": 16.1499,
+   "x2": 48.1501,
+   "y2": 16.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B14 thread: north through the A13|A14 gap"
+  },
+  {
+   "net": "GND",
+   "x1": 48.1501,
+   "y1": 16.65,
+   "x2": 47.1501,
+   "y2": 16.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B14 thread: west along the corridor floor over A13/A12 (0.0995)"
+  },
+  {
+   "net": "GND",
+   "x1": 47.1501,
+   "y1": 16.65,
+   "x2": 46.9,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B14 thread: 45 deg down into A11"
+  },
+  {
+   "net": "GNDADC",
+   "x1": 47.4001,
+   "y1": 16.4,
+   "x2": 47.4001,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GNDADC mesh"
+  },
+  {
+   "net": "GNDADC",
+   "x1": 47.4001,
+   "y1": 15.8999,
+   "x2": 47.4001,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GNDADC mesh"
+  },
+  {
+   "net": "GNDADC",
+   "x1": 47.9,
+   "y1": 16.4,
+   "x2": 47.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GNDADC mesh"
+  },
+  {
+   "net": "GNDADC",
+   "x1": 47.4001,
+   "y1": 16.4,
+   "x2": 47.9,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GNDADC mesh"
+  },
+  {
+   "net": "GNDADC",
+   "x1": 47.4001,
+   "y1": 15.8999,
+   "x2": 47.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "GNDADC mesh"
+  },
+  {
+   "net": "GND",
+   "x1": 50.9,
+   "y1": 16.4,
+   "x2": 51.4,
+   "y2": 16.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "A19 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 50.9,
+   "y1": 15.4,
+   "x2": 51.4,
+   "y2": 15.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "C19 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 50.9,
+   "y1": 13.8999,
+   "x2": 51.4,
+   "y2": 13.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "F19 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 50.9,
+   "y1": 11.4,
+   "x2": 51.4,
+   "y2": 11.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "L19 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 50.9,
+   "y1": 8.8999,
+   "x2": 51.9,
+   "y2": 8.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "T19 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 50.4001,
+   "y1": 12.8999,
+   "x2": 50.6501,
+   "y2": 13.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "H18 neck: 45 deg to the G19|H19 gap"
+  },
+  {
+   "net": "GND",
+   "x1": 50.6501,
+   "y1": 13.15,
+   "x2": 51.9,
+   "y2": 13.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "H18 neck: through the gap to the via"
+  },
+  {
+   "net": "GND",
+   "x1": 47.4001,
+   "y1": 7.4,
+   "x2": 47.4001,
+   "y2": 6.25,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "W12 -> outside via"
+  },
+  {
+   "net": "GND",
+   "x1": 50.4001,
+   "y1": 7.8999,
+   "x2": 50.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V18 neck: 45 deg to the W18|W19 gap"
+  },
+  {
+   "net": "GND",
+   "x1": 50.6501,
+   "y1": 7.65,
+   "x2": 50.6501,
+   "y2": 6.35,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V18 neck: south through the W18|W19 gap"
+  },
+  {
+   "net": "GND",
+   "x1": 42.4001,
+   "y1": 9.8999,
+   "x2": 42.1501,
+   "y2": 10.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "P2 neck: 45 deg to the N1|P1 gap"
+  },
+  {
+   "net": "GND",
+   "x1": 42.1501,
+   "y1": 10.15,
+   "x2": 40.9,
+   "y2": 10.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "P2 neck: through the gap to the via"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 50.9,
+   "y1": 15.8999,
+   "x2": 51.4,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "B19 -> via"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 50.4001,
+   "y1": 15.4,
+   "x2": 50.9,
+   "y2": 15.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "C18 -> B19 diagonal between B18 and C19 (0.141 at 0.20: not a neck)"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 41.9,
+   "y1": 11.8999,
+   "x2": 40.9,
+   "y2": 11.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "K1 -> via"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 41.9,
+   "y1": 9.4,
+   "x2": 40.4,
+   "y2": 9.4,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "R1 -> via"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 41.9,
+   "y1": 7.8999,
+   "x2": 40.9,
+   "y2": 7.8999,
+   "layer": "Top",
+   "width": 0.2,
+   "why": "V1 -> via"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.4001,
+   "y1": 7.8999,
+   "x2": 44.1501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V6 neck: 45 deg to the W5|W6 gap"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 44.1501,
+   "y1": 7.65,
+   "x2": 44.1501,
+   "y2": 6.9,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V6 neck: south through the gap to the via"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 45.9,
+   "y1": 7.8999,
+   "x2": 45.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V9 neck: 45 deg to the W8|W9 gap"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 45.6501,
+   "y1": 7.65,
+   "x2": 45.6501,
+   "y2": 6.9,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V9 neck: south through the gap to the via"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 46.9,
+   "y1": 7.8999,
+   "x2": 46.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V11 neck: 45 deg to the W10|W11 gap"
+  },
+  {
+   "net": "VCC3V3",
+   "x1": 46.6501,
+   "y1": 7.65,
+   "x2": 46.6501,
+   "y2": 6.9,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V11 neck: south through the gap to the via"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9,
+   "y1": 13.8999,
+   "x2": 44.9699,
+   "y2": 14.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: F7 GND up into C96 pad 2"
+  },
+  {
+   "net": "GND",
+   "x1": 46.9,
+   "y1": 13.8999,
+   "x2": 47.1899,
+   "y2": 14.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: F11 GND to C92 pad 2"
+  },
+  {
+   "net": "GND",
+   "x1": 48.9,
+   "y1": 13.8999,
+   "x2": 49.4099,
+   "y2": 14.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: F15 GND to C95 pad 2"
+  },
+  {
+   "net": "GND",
+   "x1": 44.4001,
+   "y1": 10.4,
+   "x2": 44.9699,
+   "y2": 10.4,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: N6 GND east then north into C90 pad 2"
+  },
+  {
+   "net": "GND",
+   "x1": 44.9699,
+   "y1": 10.4,
+   "x2": 44.9699,
+   "y2": 11.05,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: N6 GND east then north into C90 pad 2"
+  },
+  {
+   "net": "GND",
+   "x1": 47.1899,
+   "y1": 11.05,
+   "x2": 47.4001,
+   "y2": 10.8398,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: C89 pad 2 GND 45 deg then south along x 47.40 into P12 (a K11 stub would cut the VCC1V0 trunk off C91-1)"
+  },
+  {
+   "net": "GND",
+   "x1": 47.4001,
+   "y1": 10.8398,
+   "x2": 47.4001,
+   "y2": 9.8999,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: C89 pad 2 GND 45 deg then south along x 47.40 into P12 (a K11 stub would cut the VCC1V0 trunk off C91-1)"
+  },
+  {
+   "net": "GND",
+   "x1": 48.4001,
+   "y1": 11.4,
+   "x2": 49.4099,
+   "y2": 11.4,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: L14 GND east along y 11.40 then south into C91 pad 2"
+  },
+  {
+   "net": "GND",
+   "x1": 49.4099,
+   "y1": 11.4,
+   "x2": 49.4099,
+   "y2": 11.05,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: L14 GND east along y 11.40 then south into C91 pad 2"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 13.8999,
+   "x2": 46.59,
+   "y2": 14.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: F10 VCC1V0 to C92 pad 1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.4001,
+   "y1": 11.8999,
+   "x2": 46.59,
+   "y2": 11.05,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: K10 VCC1V0 to C89 pad 1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.59,
+   "y1": 11.05,
+   "x2": 46.59,
+   "y2": 11.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom VCC1V0 trunk: C89-1 north to y 11.45, west over C90-2 (0.175), south into C90-1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.59,
+   "y1": 11.45,
+   "x2": 44.37,
+   "y2": 11.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom VCC1V0 trunk: C89-1 north to y 11.45, west over C90-2 (0.175), south into C90-1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 44.37,
+   "y1": 11.45,
+   "x2": 44.37,
+   "y2": 11.05,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom VCC1V0 trunk: C89-1 north to y 11.45, west over C90-2 (0.175), south into C90-1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.59,
+   "y1": 11.05,
+   "x2": 46.59,
+   "y2": 11.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom VCC1V0 trunk: C89-1 north to y 11.45, east over C89-2, 45 deg down, east along y 11.05 (0.10 to the L14 via) into C91-1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 46.59,
+   "y1": 11.45,
+   "x2": 47.5,
+   "y2": 11.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom VCC1V0 trunk: C89-1 north to y 11.45, east over C89-2, 45 deg down, east along y 11.05 (0.10 to the L14 via) into C91-1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 47.5,
+   "y1": 11.45,
+   "x2": 47.9,
+   "y2": 11.05,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom VCC1V0 trunk: C89-1 north to y 11.45, east over C89-2, 45 deg down, east along y 11.05 (0.10 to the L14 via) into C91-1"
+  },
+  {
+   "net": "VCC1V0",
+   "x1": 47.9,
+   "y1": 11.05,
+   "x2": 48.81,
+   "y2": 11.05,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom VCC1V0 trunk: C89-1 north to y 11.45, east over C89-2, 45 deg down, east along y 11.05 (0.10 to the L14 via) into C91-1"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 48.4001,
+   "y1": 13.4,
+   "x2": 48.4001,
+   "y2": 13.8999,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: G14 VCC1V8 north through empty F14 then into C95 pad 1"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 48.4001,
+   "y1": 13.8999,
+   "x2": 48.81,
+   "y2": 14.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: G14 VCC1V8 north through empty F14 then into C95 pad 1"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 43.9,
+   "y1": 14.4,
+   "x2": 44.37,
+   "y2": 14.45,
+   "layer": "Bottom",
+   "width": 0.15,
+   "why": "Bottom: E5 VCC1V8 to C96 pad 1"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 45.4001,
+   "y1": 14.8999,
+   "x2": 45.4001,
+   "y2": 14.4,
+   "layer": "L3-SIG",
+   "width": 0.15,
+   "why": "L3 feed for E5: D8 south to the empty E8 cell (0.25 to D7/D9)"
+  },
+  {
+   "net": "VCC1V8",
+   "x1": 45.4001,
+   "y1": 14.4,
+   "x2": 43.9,
+   "y2": 14.4,
+   "layer": "L3-SIG",
+   "width": 0.15,
+   "why": "L3 feed for E5: west along row E over the blocked E7/E6 (no vias there)"
+  },
+  {
+   "net": "SD-DAT1",
+   "x1": 48.9,
+   "y1": 15.8999,
+   "x2": 48.6501,
+   "y2": 16.1499,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B15 ring-1 stub: 45 deg to the interstitial, then through the 14|15 gap (N) to just outside the field"
+  },
+  {
+   "net": "SD-DAT1",
+   "x1": 48.6501,
+   "y1": 16.1499,
+   "x2": 48.6501,
+   "y2": 16.6125,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B15 ring-1 stub: 45 deg to the interstitial, then through the 14|15 gap (N) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "UART_FT_CTS#",
+   "x1": 49.4001,
+   "y1": 15.8999,
+   "x2": 49.1501,
+   "y2": 16.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B16 ring-1 stub: 45 deg to the interstitial, then through the 15|16 gap (N) to just outside the field"
+  },
+  {
+   "net": "UART_FT_CTS#",
+   "x1": 49.1501,
+   "y1": 16.15,
+   "x2": 49.1501,
+   "y2": 16.6125,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B16 ring-1 stub: 45 deg to the interstitial, then through the 15|16 gap (N) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN2",
+   "x1": 49.9,
+   "y1": 15.8999,
+   "x2": 49.6501,
+   "y2": 16.1499,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B17 ring-1 stub: 45 deg to the interstitial, then through the 16|17 gap (N) to just outside the field"
+  },
+  {
+   "net": "CHAN2",
+   "x1": 49.6501,
+   "y1": 16.1499,
+   "x2": 49.6501,
+   "y2": 16.6125,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B17 ring-1 stub: 45 deg to the interstitial, then through the 16|17 gap (N) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN0",
+   "x1": 50.4001,
+   "y1": 15.8999,
+   "x2": 50.6501,
+   "y2": 16.1499,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B18 ring-1 stub: 45 deg to the interstitial, then through the 18|19 gap (N) to just outside the field"
+  },
+  {
+   "net": "CHAN0",
+   "x1": 50.6501,
+   "y1": 16.1499,
+   "x2": 50.6501,
+   "y2": 16.6125,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "B18 ring-1 stub: 45 deg to the interstitial, then through the 18|19 gap (N) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "FLASH-D00",
+   "x1": 50.4001,
+   "y1": 14.8999,
+   "x2": 50.6502,
+   "y2": 15.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "D18 ring-1 stub: 45 deg to the interstitial, then through the C|D gap (E) to just outside the field"
+  },
+  {
+   "net": "FLASH-D00",
+   "x1": 50.6502,
+   "y1": 15.15,
+   "x2": 51.1125,
+   "y2": 15.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "D18 ring-1 stub: 45 deg to the interstitial, then through the C|D gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "PUDC_B",
+   "x1": 50.4001,
+   "y1": 14.4,
+   "x2": 50.6501,
+   "y2": 14.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "E18 ring-1 stub: 45 deg to the interstitial, then through the D|E gap (E) to just outside the field"
+  },
+  {
+   "net": "PUDC_B",
+   "x1": 50.6501,
+   "y1": 14.65,
+   "x2": 51.1125,
+   "y2": 14.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "E18 ring-1 stub: 45 deg to the interstitial, then through the D|E gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "FLASH-D03",
+   "x1": 50.4001,
+   "y1": 13.8999,
+   "x2": 50.6502,
+   "y2": 14.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "F18 ring-1 stub: 45 deg to the interstitial, then through the E|F gap (E) to just outside the field"
+  },
+  {
+   "net": "FLASH-D03",
+   "x1": 50.6502,
+   "y1": 14.15,
+   "x2": 51.1125,
+   "y2": 14.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "F18 ring-1 stub: 45 deg to the interstitial, then through the E|F gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "FLASH-D02",
+   "x1": 50.4001,
+   "y1": 13.4,
+   "x2": 50.6501,
+   "y2": 13.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "G18 ring-1 stub: 45 deg to the interstitial, then through the F|G gap (E) to just outside the field"
+  },
+  {
+   "net": "FLASH-D02",
+   "x1": 50.6501,
+   "y1": 13.65,
+   "x2": 51.1125,
+   "y2": 13.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "G18 ring-1 stub: 45 deg to the interstitial, then through the F|G gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "AIN15_N",
+   "x1": 42.4001,
+   "y1": 13.4,
+   "x2": 42.1502,
+   "y2": 13.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "G2 ring-1 stub: 45 deg to the interstitial, then through the F|G gap (W) to just outside the field"
+  },
+  {
+   "net": "AIN15_N",
+   "x1": 42.1502,
+   "y1": 13.65,
+   "x2": 41.6875,
+   "y2": 13.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "G2 ring-1 stub: 45 deg to the interstitial, then through the F|G gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "AIN16_P",
+   "x1": 42.4001,
+   "y1": 12.8999,
+   "x2": 42.1501,
+   "y2": 13.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "H2 ring-1 stub: 45 deg to the interstitial, then through the G|H gap (W) to just outside the field"
+  },
+  {
+   "net": "AIN16_P",
+   "x1": 42.1501,
+   "y1": 13.15,
+   "x2": 41.6875,
+   "y2": 13.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "H2 ring-1 stub: 45 deg to the interstitial, then through the G|H gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN8",
+   "x1": 50.4001,
+   "y1": 12.4,
+   "x2": 50.6501,
+   "y2": 12.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "J18 ring-1 stub: 45 deg to the interstitial, then through the H|J gap (E) to just outside the field"
+  },
+  {
+   "net": "CHAN8",
+   "x1": 50.6501,
+   "y1": 12.65,
+   "x2": 51.1125,
+   "y2": 12.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "J18 ring-1 stub: 45 deg to the interstitial, then through the H|J gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "AIN16_N",
+   "x1": 42.4001,
+   "y1": 12.4,
+   "x2": 42.1502,
+   "y2": 12.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "J2 ring-1 stub: 45 deg to the interstitial, then through the H|J gap (W) to just outside the field"
+  },
+  {
+   "net": "AIN16_N",
+   "x1": 42.1502,
+   "y1": 12.65,
+   "x2": 41.6875,
+   "y2": 12.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "J2 ring-1 stub: 45 deg to the interstitial, then through the H|J gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "UART_FT_TXD",
+   "x1": 50.4001,
+   "y1": 11.8999,
+   "x2": 50.6502,
+   "y2": 12.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "K18 ring-1 stub: 45 deg to the interstitial, then through the J|K gap (E) to just outside the field"
+  },
+  {
+   "net": "UART_FT_TXD",
+   "x1": 50.6502,
+   "y1": 12.15,
+   "x2": 51.1125,
+   "y2": 12.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "K18 ring-1 stub: 45 deg to the interstitial, then through the J|K gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "D10",
+   "x1": 42.4001,
+   "y1": 11.8999,
+   "x2": 42.1501,
+   "y2": 12.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "K2 ring-1 stub: 45 deg to the interstitial, then through the J|K gap (W) to just outside the field"
+  },
+  {
+   "net": "D10",
+   "x1": 42.1501,
+   "y1": 12.15,
+   "x2": 41.6875,
+   "y2": 12.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "K2 ring-1 stub: 45 deg to the interstitial, then through the J|K gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "UART_FT_RTS#",
+   "x1": 50.4001,
+   "y1": 11.4,
+   "x2": 50.6501,
+   "y2": 11.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "L18 ring-1 stub: 45 deg to the interstitial, then through the K|L gap (E) to just outside the field"
+  },
+  {
+   "net": "UART_FT_RTS#",
+   "x1": 50.6501,
+   "y1": 11.65,
+   "x2": 51.1125,
+   "y2": 11.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "L18 ring-1 stub: 45 deg to the interstitial, then through the K|L gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "UDQM",
+   "x1": 42.4001,
+   "y1": 11.4,
+   "x2": 42.1502,
+   "y2": 11.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "L2 ring-1 stub: 45 deg to the interstitial, then through the K|L gap (W) to just outside the field"
+  },
+  {
+   "net": "UDQM",
+   "x1": 42.1502,
+   "y1": 11.65,
+   "x2": 41.6875,
+   "y2": 11.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "L2 ring-1 stub: 45 deg to the interstitial, then through the K|L gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "UART_FT_DTR#",
+   "x1": 50.4001,
+   "y1": 10.8999,
+   "x2": 50.6502,
+   "y2": 11.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "M18 ring-1 stub: 45 deg to the interstitial, then through the L|M gap (E) to just outside the field"
+  },
+  {
+   "net": "UART_FT_DTR#",
+   "x1": 50.6502,
+   "y1": 11.15,
+   "x2": 51.1125,
+   "y2": 11.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "M18 ring-1 stub: 45 deg to the interstitial, then through the L|M gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CKE",
+   "x1": 42.4001,
+   "y1": 10.8999,
+   "x2": 42.1501,
+   "y2": 11.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "M2 ring-1 stub: 45 deg to the interstitial, then through the L|M gap (W) to just outside the field"
+  },
+  {
+   "net": "CKE",
+   "x1": 42.1501,
+   "y1": 11.15,
+   "x2": 41.6875,
+   "y2": 11.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "M2 ring-1 stub: 45 deg to the interstitial, then through the L|M gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "LED1",
+   "x1": 50.4001,
+   "y1": 10.4,
+   "x2": 50.6501,
+   "y2": 10.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "N18 ring-1 stub: 45 deg to the interstitial, then through the M|N gap (E) to just outside the field"
+  },
+  {
+   "net": "LED1",
+   "x1": 50.6501,
+   "y1": 10.65,
+   "x2": 51.1125,
+   "y2": 10.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "N18 ring-1 stub: 45 deg to the interstitial, then through the M|N gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "A9",
+   "x1": 42.4001,
+   "y1": 10.4,
+   "x2": 42.1502,
+   "y2": 10.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "N2 ring-1 stub: 45 deg to the interstitial, then through the M|N gap (W) to just outside the field"
+  },
+  {
+   "net": "A9",
+   "x1": 42.1502,
+   "y1": 10.65,
+   "x2": 41.6875,
+   "y2": 10.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "N2 ring-1 stub: 45 deg to the interstitial, then through the M|N gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN-CLK",
+   "x1": 50.4001,
+   "y1": 9.8999,
+   "x2": 50.6502,
+   "y2": 10.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "P18 ring-1 stub: 45 deg to the interstitial, then through the N|P gap (E) to just outside the field"
+  },
+  {
+   "net": "CHAN-CLK",
+   "x1": 50.6502,
+   "y1": 10.15,
+   "x2": 51.1125,
+   "y2": 10.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "P18 ring-1 stub: 45 deg to the interstitial, then through the N|P gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "LED0_G",
+   "x1": 50.4001,
+   "y1": 9.4,
+   "x2": 50.6501,
+   "y2": 9.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "R18 ring-1 stub: 45 deg to the interstitial, then through the P|R gap (E) to just outside the field"
+  },
+  {
+   "net": "LED0_G",
+   "x1": 50.6501,
+   "y1": 9.65,
+   "x2": 51.1125,
+   "y2": 9.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "R18 ring-1 stub: 45 deg to the interstitial, then through the P|R gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "A5",
+   "x1": 42.4001,
+   "y1": 9.4,
+   "x2": 42.1502,
+   "y2": 9.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "R2 ring-1 stub: 45 deg to the interstitial, then through the P|R gap (W) to just outside the field"
+  },
+  {
+   "net": "A5",
+   "x1": 42.1502,
+   "y1": 9.65,
+   "x2": 41.6875,
+   "y2": 9.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "R2 ring-1 stub: 45 deg to the interstitial, then through the P|R gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN27",
+   "x1": 50.4001,
+   "y1": 8.8999,
+   "x2": 50.6502,
+   "y2": 9.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "T18 ring-1 stub: 45 deg to the interstitial, then through the R|T gap (E) to just outside the field"
+  },
+  {
+   "net": "CHAN27",
+   "x1": 50.6502,
+   "y1": 9.15,
+   "x2": 51.1125,
+   "y2": 9.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "T18 ring-1 stub: 45 deg to the interstitial, then through the R|T gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "A2",
+   "x1": 42.4001,
+   "y1": 8.8999,
+   "x2": 42.1501,
+   "y2": 9.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "T2 ring-1 stub: 45 deg to the interstitial, then through the R|T gap (W) to just outside the field"
+  },
+  {
+   "net": "A2",
+   "x1": 42.1501,
+   "y1": 9.15,
+   "x2": 41.6875,
+   "y2": 9.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "T2 ring-1 stub: 45 deg to the interstitial, then through the R|T gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "JA1",
+   "x1": 50.4001,
+   "y1": 8.4,
+   "x2": 50.6501,
+   "y2": 8.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U18 ring-1 stub: 45 deg to the interstitial, then through the T|U gap (E) to just outside the field"
+  },
+  {
+   "net": "JA1",
+   "x1": 50.6501,
+   "y1": 8.65,
+   "x2": 51.1125,
+   "y2": 8.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U18 ring-1 stub: 45 deg to the interstitial, then through the T|U gap (E) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "A0",
+   "x1": 42.4001,
+   "y1": 8.4,
+   "x2": 42.1501,
+   "y2": 8.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U2 ring-1 stub: 45 deg to the interstitial, then through the U|V gap (W) to just outside the field"
+  },
+  {
+   "net": "A0",
+   "x1": 42.1501,
+   "y1": 8.15,
+   "x2": 41.6875,
+   "y2": 8.15,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "U2 ring-1 stub: 45 deg to the interstitial, then through the U|V gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "RST#",
+   "x1": 46.4001,
+   "y1": 7.8999,
+   "x2": 46.1501,
+   "y2": 7.6498,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V10 ring-1 stub: 45 deg to the interstitial, then through the 9|10 gap (S) to just outside the field"
+  },
+  {
+   "net": "RST#",
+   "x1": 46.1501,
+   "y1": 7.6498,
+   "x2": 46.1501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V10 ring-1 stub: 45 deg to the interstitial, then through the 9|10 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CFG-M0",
+   "x1": 47.4001,
+   "y1": 7.8999,
+   "x2": 47.1501,
+   "y2": 7.6498,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V12 ring-1 stub: 45 deg to the interstitial, then through the 11|12 gap (S) to just outside the field"
+  },
+  {
+   "net": "CFG-M0",
+   "x1": 47.1501,
+   "y1": 7.6498,
+   "x2": 47.1501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V12 ring-1 stub: 45 deg to the interstitial, then through the 11|12 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN26",
+   "x1": 47.9,
+   "y1": 7.8999,
+   "x2": 47.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V13 ring-1 stub: 45 deg to the interstitial, then through the 12|13 gap (S) to just outside the field"
+  },
+  {
+   "net": "CHAN26",
+   "x1": 47.6501,
+   "y1": 7.65,
+   "x2": 47.6501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V13 ring-1 stub: 45 deg to the interstitial, then through the 12|13 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN23",
+   "x1": 48.4001,
+   "y1": 7.8999,
+   "x2": 48.1501,
+   "y2": 7.6498,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V14 ring-1 stub: 45 deg to the interstitial, then through the 13|14 gap (S) to just outside the field"
+  },
+  {
+   "net": "CHAN23",
+   "x1": 48.1501,
+   "y1": 7.6498,
+   "x2": 48.1501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V14 ring-1 stub: 45 deg to the interstitial, then through the 13|14 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN20",
+   "x1": 48.9,
+   "y1": 7.8999,
+   "x2": 48.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V15 ring-1 stub: 45 deg to the interstitial, then through the 14|15 gap (S) to just outside the field"
+  },
+  {
+   "net": "CHAN20",
+   "x1": 48.6501,
+   "y1": 7.65,
+   "x2": 48.6501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V15 ring-1 stub: 45 deg to the interstitial, then through the 14|15 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN18",
+   "x1": 49.4001,
+   "y1": 7.8999,
+   "x2": 49.1501,
+   "y2": 7.6498,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V16 ring-1 stub: 45 deg to the interstitial, then through the 15|16 gap (S) to just outside the field"
+  },
+  {
+   "net": "CHAN18",
+   "x1": 49.1501,
+   "y1": 7.6498,
+   "x2": 49.1501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V16 ring-1 stub: 45 deg to the interstitial, then through the 15|16 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "CHAN15",
+   "x1": 49.9,
+   "y1": 7.8999,
+   "x2": 50.1501,
+   "y2": 7.6498,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V17 ring-1 stub: 45 deg to the interstitial, then through the 17|18 gap (S) to just outside the field"
+  },
+  {
+   "net": "CHAN15",
+   "x1": 50.1501,
+   "y1": 7.6498,
+   "x2": 50.1501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V17 ring-1 stub: 45 deg to the interstitial, then through the 17|18 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "BS0",
+   "x1": 42.4001,
+   "y1": 7.8999,
+   "x2": 42.1502,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V2 ring-1 stub: 45 deg to the interstitial, then through the V|W gap (W) to just outside the field"
+  },
+  {
+   "net": "BS0",
+   "x1": 42.1502,
+   "y1": 7.65,
+   "x2": 41.6875,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V2 ring-1 stub: 45 deg to the interstitial, then through the V|W gap (W) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "RAS#",
+   "x1": 42.9,
+   "y1": 7.8999,
+   "x2": 42.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V3 ring-1 stub: 45 deg to the interstitial, then through the 2|3 gap (S) to just outside the field"
+  },
+  {
+   "net": "RAS#",
+   "x1": 42.6501,
+   "y1": 7.65,
+   "x2": 42.6501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V3 ring-1 stub: 45 deg to the interstitial, then through the 2|3 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "WE#",
+   "x1": 43.4001,
+   "y1": 7.8999,
+   "x2": 43.1501,
+   "y2": 7.6498,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V4 ring-1 stub: 45 deg to the interstitial, then through the 3|4 gap (S) to just outside the field"
+  },
+  {
+   "net": "WE#",
+   "x1": 43.1501,
+   "y1": 7.6498,
+   "x2": 43.1501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V4 ring-1 stub: 45 deg to the interstitial, then through the 3|4 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "D6",
+   "x1": 43.9,
+   "y1": 7.8999,
+   "x2": 43.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V5 ring-1 stub: 45 deg to the interstitial, then through the 4|5 gap (S) to just outside the field"
+  },
+  {
+   "net": "D6",
+   "x1": 43.6501,
+   "y1": 7.65,
+   "x2": 43.6501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V5 ring-1 stub: 45 deg to the interstitial, then through the 4|5 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "D1",
+   "x1": 44.9,
+   "y1": 7.8999,
+   "x2": 44.6501,
+   "y2": 7.65,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V7 ring-1 stub: 45 deg to the interstitial, then through the 6|7 gap (S) to just outside the field"
+  },
+  {
+   "net": "D1",
+   "x1": 44.6501,
+   "y1": 7.65,
+   "x2": 44.6501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V7 ring-1 stub: 45 deg to the interstitial, then through the 6|7 gap (S) to just outside the field",
+   "free_end": true
+  },
+  {
+   "net": "D0",
+   "x1": 45.4001,
+   "y1": 7.8999,
+   "x2": 45.1501,
+   "y2": 7.6498,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V8 ring-1 stub: 45 deg to the interstitial, then through the 7|8 gap (S) to just outside the field"
+  },
+  {
+   "net": "D0",
+   "x1": 45.1501,
+   "y1": 7.6498,
+   "x2": 45.1501,
+   "y2": 7.1875,
+   "layer": "Top",
+   "width": 0.0762,
+   "why": "V8 ring-1 stub: 45 deg to the interstitial, then through the 7|8 gap (S) to just outside the field",
+   "free_end": true
+  }
+ ],
+ "balls": [
+  {
+   "name": "A1",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (41.40, 16.40)"
+  },
+  {
+   "name": "A2",
+   "net": null,
+   "ring": 0,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "A3",
+   "net": "GND",
+   "ring": 0,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "A4",
+   "net": "GND",
+   "ring": 0,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "A5",
+   "net": "GND",
+   "ring": 0,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "A6",
+   "net": "GND",
+   "ring": 0,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "A7",
+   "net": "GND",
+   "ring": 0,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "A8",
+   "net": null,
+   "ring": 0,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "A9",
+   "net": "GND",
+   "ring": 0,
+   "action": "chain",
+   "detail": "north GND group -> C10 -> D9"
+  },
+  {
+   "name": "A10",
+   "net": null,
+   "ring": 0,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "A11",
+   "net": "GND",
+   "ring": 0,
+   "action": "chain",
+   "detail": "north GND group -> C10 -> D9"
+  },
+  {
+   "name": "A12",
+   "net": "GNDADC",
+   "ring": 0,
+   "action": "chain",
+   "detail": "GNDADC mesh -> C12 -> D11"
+  },
+  {
+   "name": "A13",
+   "net": "GNDADC",
+   "ring": 0,
+   "action": "chain",
+   "detail": "GNDADC mesh -> C12 -> D11"
+  },
+  {
+   "name": "A14",
+   "net": "D14",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit N col 14"
+  },
+  {
+   "name": "A15",
+   "net": "D15",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit N col 15"
+  },
+  {
+   "name": "A16",
+   "net": "SD-DAT3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit N col 16"
+  },
+  {
+   "name": "A17",
+   "net": "CHAN3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit N col 17"
+  },
+  {
+   "name": "A18",
+   "net": "CHAN1",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit N col 18"
+  },
+  {
+   "name": "A19",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (51.40, 16.40)"
+  },
+  {
+   "name": "B1",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (41.40, 15.90)"
+  },
+  {
+   "name": "B2",
+   "net": null,
+   "ring": 1,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "B3",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "B4",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "B5",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "B6",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "B7",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "B8",
+   "net": null,
+   "ring": 1,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "B9",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "north GND group -> C10 -> D9"
+  },
+  {
+   "name": "B10",
+   "net": null,
+   "ring": 1,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "B11",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "north GND group -> C10 -> D9"
+  },
+  {
+   "name": "B12",
+   "net": "GNDADC",
+   "ring": 1,
+   "action": "chain",
+   "detail": "GNDADC mesh -> C12 -> D11"
+  },
+  {
+   "name": "B13",
+   "net": "GNDADC",
+   "ring": 1,
+   "action": "chain",
+   "detail": "GNDADC mesh -> C12 -> D11"
+  },
+  {
+   "name": "B14",
+   "net": "GND",
+   "ring": 1,
+   "action": "gap",
+   "detail": "GND thread: A13|A14 gap -> corridor floor -> A11 (uses the corridor floor x 47.15..48.15)"
+  },
+  {
+   "name": "B15",
+   "net": "SD-DAT1",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit N 14|15: 3 mil stub placed to (48.6501, 16.6125); via left to routing"
+  },
+  {
+   "name": "B16",
+   "net": "UART_FT_CTS#",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit N 15|16: 3 mil stub placed to (49.1501, 16.6125); via left to routing"
+  },
+  {
+   "name": "B17",
+   "net": "CHAN2",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit N 16|17: 3 mil stub placed to (49.6501, 16.6125); via left to routing"
+  },
+  {
+   "name": "B18",
+   "net": "CHAN0",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit N 18|19: 3 mil stub placed to (50.6501, 16.6125); via left to routing"
+  },
+  {
+   "name": "B19",
+   "net": "VCC3V3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (51.40, 15.90)"
+  },
+  {
+   "name": "C1",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (41.40, 15.40)"
+  },
+  {
+   "name": "C2",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "C3",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "shared NW GND via"
+  },
+  {
+   "name": "C4",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "shared NW GND via"
+  },
+  {
+   "name": "C5",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "shared NW GND via"
+  },
+  {
+   "name": "C6",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "shared NW GND via"
+  },
+  {
+   "name": "C7",
+   "net": "GND",
+   "ring": 2,
+   "action": "chain",
+   "detail": "C7-C6 -> D6"
+  },
+  {
+   "name": "C8",
+   "net": "FPGA-TCK",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D7 (diagonal)"
+  },
+  {
+   "name": "C9",
+   "net": "VCC1V8",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D8 (diagonal)"
+  },
+  {
+   "name": "C10",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D9 (diagonal)"
+  },
+  {
+   "name": "C11",
+   "net": "FPGA-CCLK",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D10 (diagonal)"
+  },
+  {
+   "name": "C12",
+   "net": "GNDADC",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D11 (diagonal)"
+  },
+  {
+   "name": "C13",
+   "net": "VCCADC",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D12 (diagonal)"
+  },
+  {
+   "name": "C14",
+   "net": "VCC3V3",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D13 (diagonal)"
+  },
+  {
+   "name": "C15",
+   "net": "SD-DAT0",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D14 (diagonal)"
+  },
+  {
+   "name": "C16",
+   "net": "CHAN4",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D15 (diagonal)"
+  },
+  {
+   "name": "C17",
+   "net": "JA4",
+   "ring": 2,
+   "action": "dogbone-out",
+   "detail": "north lane x=50.15 -> via (50.15, 16.78)"
+  },
+  {
+   "name": "C18",
+   "net": "VCC3V3",
+   "ring": 1,
+   "action": "chain",
+   "detail": "0.20 diagonal into B19 (boxed orthogonally, B19 is the same net diagonally)"
+  },
+  {
+   "name": "C19",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (51.40, 15.40)"
+  },
+  {
+   "name": "D1",
+   "net": null,
+   "ring": 0,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "D2",
+   "net": null,
+   "ring": 1,
+   "action": "none",
+   "detail": "no-net ball"
+  },
+  {
+   "name": "D3",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "shared NW GND via"
+  },
+  {
+   "name": "D17",
+   "net": "CHAN5",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "D16"
+  },
+  {
+   "name": "D18",
+   "net": "FLASH-D00",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E C|D: 3 mil stub placed to (51.1125, 15.1500); via left to routing"
+  },
+  {
+   "name": "D19",
+   "net": "FLASH-D01",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row D"
+  },
+  {
+   "name": "E1",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (41.40, 14.40)"
+  },
+  {
+   "name": "E2",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "E3",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "shared NW GND via"
+  },
+  {
+   "name": "E17",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "E17 -> E16 -> F15"
+  },
+  {
+   "name": "E18",
+   "net": "PUDC_B",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E D|E: 3 mil stub placed to (51.1125, 14.6500); via left to routing"
+  },
+  {
+   "name": "E19",
+   "net": "JA8",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row E"
+  },
+  {
+   "name": "F1",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (41.40, 13.90)"
+  },
+  {
+   "name": "F2",
+   "net": "GND",
+   "ring": 1,
+   "action": "chain",
+   "detail": "NW GND mesh"
+  },
+  {
+   "name": "F3",
+   "net": "GND",
+   "ring": 2,
+   "action": "chain",
+   "detail": "F3-E3 -> E4"
+  },
+  {
+   "name": "F17",
+   "net": "VCC3V3",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "F16"
+  },
+  {
+   "name": "F18",
+   "net": "FLASH-D03",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E E|F: 3 mil stub placed to (51.1125, 14.1500); via left to routing"
+  },
+  {
+   "name": "F19",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (51.40, 13.90)"
+  },
+  {
+   "name": "G1",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (40.90, 13.40)"
+  },
+  {
+   "name": "G2",
+   "net": "AIN15_N",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W F|G: 3 mil stub placed to (41.6875, 13.6500); via left to routing"
+  },
+  {
+   "name": "G3",
+   "net": "AIN15_P",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "F4 (diagonal)"
+  },
+  {
+   "name": "G7",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "G8",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "G9",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "G10",
+   "net": "VCC1V0",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "G11",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "G12",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "G13",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "G17",
+   "net": "JA3",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "G16"
+  },
+  {
+   "name": "G18",
+   "net": "FLASH-D02",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E F|G: 3 mil stub placed to (51.1125, 13.6500); via left to routing"
+  },
+  {
+   "name": "G19",
+   "net": "UART_FT_RXD",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row G"
+  },
+  {
+   "name": "H1",
+   "net": "D13",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row H"
+  },
+  {
+   "name": "H2",
+   "net": "AIN16_P",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W G|H: 3 mil stub placed to (41.6875, 13.1500); via left to routing"
+  },
+  {
+   "name": "H3",
+   "net": "VCC3V3",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "G4 (diagonal)"
+  },
+  {
+   "name": "H7",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "H8",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "H9",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "H10",
+   "net": "VCC1V0",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "H11",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "H12",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "H13",
+   "net": "VCC1V8",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC1V8"
+  },
+  {
+   "name": "H17",
+   "net": "CHAN6",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "H16"
+  },
+  {
+   "name": "H18",
+   "net": "GND",
+   "ring": 1,
+   "action": "gap",
+   "detail": "GND neck through G|H (y=13.15) -> via (51.90, 13.15)"
+  },
+  {
+   "name": "H19",
+   "net": "CHAN7",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row H"
+  },
+  {
+   "name": "J1",
+   "net": "D11",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row J"
+  },
+  {
+   "name": "J2",
+   "net": "AIN16_N",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W H|J: 3 mil stub placed to (41.6875, 12.6500); via left to routing"
+  },
+  {
+   "name": "J3",
+   "net": "D12",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "H4 (diagonal)"
+  },
+  {
+   "name": "J7",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "J8",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "J9",
+   "net": "GND",
+   "ring": 8,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "J10",
+   "net": "VCC1V0",
+   "ring": 8,
+   "action": "via-adjacent",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "J11",
+   "net": "GND",
+   "ring": 8,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "J12",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "J13",
+   "net": "VCC1V8",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC1V8"
+  },
+  {
+   "name": "J17",
+   "net": "CHAN9",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "J16"
+  },
+  {
+   "name": "J18",
+   "net": "CHAN8",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E H|J: 3 mil stub placed to (51.1125, 12.6500); via left to routing"
+  },
+  {
+   "name": "J19",
+   "net": "CHAN10",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row J"
+  },
+  {
+   "name": "K1",
+   "net": "VCC3V3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (40.90, 11.90)"
+  },
+  {
+   "name": "K2",
+   "net": "D10",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W J|K: 3 mil stub placed to (41.6875, 12.1500); via left to routing"
+  },
+  {
+   "name": "K3",
+   "net": "D9",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "J4 (diagonal)"
+  },
+  {
+   "name": "K7",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "K8",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "K12",
+   "net": "VCC3V3",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "K13",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "K17",
+   "net": "CHAN11",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "K16"
+  },
+  {
+   "name": "K18",
+   "net": "UART_FT_TXD",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E J|K: 3 mil stub placed to (51.1125, 12.1500); via left to routing"
+  },
+  {
+   "name": "K19",
+   "net": "FLASH-CS#",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row K"
+  },
+  {
+   "name": "L1",
+   "net": "D8",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row L"
+  },
+  {
+   "name": "L2",
+   "net": "UDQM",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W K|L: 3 mil stub placed to (41.6875, 11.6500); via left to routing"
+  },
+  {
+   "name": "L3",
+   "net": "SD-DAT2",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "K4 (diagonal)"
+  },
+  {
+   "name": "L7",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "chain",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "L8",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "L9",
+   "net": "GND",
+   "ring": 8,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "L10",
+   "net": "VCC1V0",
+   "ring": 8,
+   "action": "via-adjacent",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "L11",
+   "net": "GND",
+   "ring": 8,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "L12",
+   "net": "VCC3V3",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "L13",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "chain",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "L17",
+   "net": "CLK-12M-FPGA",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "L17 -> L16 -> K15"
+  },
+  {
+   "name": "L18",
+   "net": "UART_FT_RTS#",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E K|L: 3 mil stub placed to (51.1125, 11.6500); via left to routing"
+  },
+  {
+   "name": "L19",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (51.40, 11.40)"
+  },
+  {
+   "name": "M1",
+   "net": "SDRAM-CLK",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row M"
+  },
+  {
+   "name": "M2",
+   "net": "CKE",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W L|M: 3 mil stub placed to (41.6875, 11.1500); via left to routing"
+  },
+  {
+   "name": "M3",
+   "net": "A12",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "L4 (diagonal)"
+  },
+  {
+   "name": "M7",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "chain",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "M8",
+   "net": "VCC3V3",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "M9",
+   "net": "GND",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "M10",
+   "net": "VCC1V0",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "M11",
+   "net": "VCC1V0",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "M12",
+   "net": "VCC3V3",
+   "ring": 7,
+   "action": "chain",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "M13",
+   "net": "GND",
+   "ring": 6,
+   "action": "chain",
+   "detail": "core GND"
+  },
+  {
+   "name": "M17",
+   "net": "VCC3V3",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "M17 -> M16 -> N15"
+  },
+  {
+   "name": "M18",
+   "net": "UART_FT_DTR#",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E L|M: 3 mil stub placed to (51.1125, 11.1500); via left to routing"
+  },
+  {
+   "name": "M19",
+   "net": "LED2",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row M"
+  },
+  {
+   "name": "N1",
+   "net": "A11",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row N"
+  },
+  {
+   "name": "N2",
+   "net": "A9",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W M|N: 3 mil stub placed to (41.6875, 10.6500); via left to routing"
+  },
+  {
+   "name": "N3",
+   "net": "A8",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "M4 (diagonal)"
+  },
+  {
+   "name": "N7",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "N8",
+   "net": "VCC3V3",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC3V3"
+  },
+  {
+   "name": "N9",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "N10",
+   "net": "VCC1V0",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "N11",
+   "net": "VCC1V0",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core VCC1V0"
+  },
+  {
+   "name": "N12",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "N13",
+   "net": "GND",
+   "ring": 6,
+   "action": "via-adjacent",
+   "detail": "core GND"
+  },
+  {
+   "name": "N17",
+   "net": "BTN",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "N16"
+  },
+  {
+   "name": "N18",
+   "net": "LED1",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E M|N: 3 mil stub placed to (51.1125, 10.6500); via left to routing"
+  },
+  {
+   "name": "N19",
+   "net": "LED0_B",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row N"
+  },
+  {
+   "name": "P1",
+   "net": "A7",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row P"
+  },
+  {
+   "name": "P2",
+   "net": "GND",
+   "ring": 1,
+   "action": "gap",
+   "detail": "GND neck through N|P (y=10.15) -> via (40.90, 10.15)"
+  },
+  {
+   "name": "P3",
+   "net": "A6",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "N4 (diagonal)"
+  },
+  {
+   "name": "P17",
+   "net": "FT-PWREN#",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "P16"
+  },
+  {
+   "name": "P18",
+   "net": "CHAN-CLK",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E N|P: 3 mil stub placed to (51.1125, 10.1500); via left to routing"
+  },
+  {
+   "name": "P19",
+   "net": "LED0_R",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row P"
+  },
+  {
+   "name": "R1",
+   "net": "VCC3V3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (40.40, 9.40)"
+  },
+  {
+   "name": "R2",
+   "net": "A5",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W P|R: 3 mil stub placed to (41.6875, 9.6500); via left to routing"
+  },
+  {
+   "name": "R3",
+   "net": "A4",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "P4 (diagonal)"
+  },
+  {
+   "name": "R17",
+   "net": "VCC3V3",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "R16"
+  },
+  {
+   "name": "R18",
+   "net": "LED0_G",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E P|R: 3 mil stub placed to (51.1125, 9.6500); via left to routing"
+  },
+  {
+   "name": "R19",
+   "net": "CHAN28",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row R"
+  },
+  {
+   "name": "T1",
+   "net": "A3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row T"
+  },
+  {
+   "name": "T2",
+   "net": "A2",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W R|T: 3 mil stub placed to (41.6875, 9.1500); via left to routing"
+  },
+  {
+   "name": "T3",
+   "net": "A1",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "R4 (diagonal)"
+  },
+  {
+   "name": "T17",
+   "net": "JA7",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T16"
+  },
+  {
+   "name": "T18",
+   "net": "CHAN27",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E R|T: 3 mil stub placed to (51.1125, 9.1500); via left to routing"
+  },
+  {
+   "name": "T19",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (51.90, 8.90)"
+  },
+  {
+   "name": "U1",
+   "net": "BS1",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit W row U"
+  },
+  {
+   "name": "U2",
+   "net": "A0",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W U|V: 3 mil stub placed to (41.6875, 8.1500); via left to routing"
+  },
+  {
+   "name": "U3",
+   "net": "A10",
+   "ring": 2,
+   "action": "dogbone-out",
+   "detail": "west lane y=8.65 -> via (41.40, 8.65)"
+  },
+  {
+   "name": "U4",
+   "net": "D7",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T4"
+  },
+  {
+   "name": "U5",
+   "net": "D4",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T5"
+  },
+  {
+   "name": "U6",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T6"
+  },
+  {
+   "name": "U7",
+   "net": "SD-CMD",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T7"
+  },
+  {
+   "name": "U8",
+   "net": "SD-CLK",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T8"
+  },
+  {
+   "name": "U9",
+   "net": "GND",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T9"
+  },
+  {
+   "name": "U10",
+   "net": "CFG-M2",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T10"
+  },
+  {
+   "name": "U11",
+   "net": "FPGA-INIT#",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T11"
+  },
+  {
+   "name": "U12",
+   "net": "FPGA-DONE",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T12"
+  },
+  {
+   "name": "U13",
+   "net": "VCC3V3",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T13"
+  },
+  {
+   "name": "U14",
+   "net": "CHAN24",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T14"
+  },
+  {
+   "name": "U15",
+   "net": "CHAN21",
+   "ring": 2,
+   "action": "dogbone-in",
+   "detail": "T15"
+  },
+  {
+   "name": "U16",
+   "net": "CHAN17",
+   "ring": 2,
+   "action": "dogbone-out",
+   "detail": "south lane x=49.65 -> via (49.65, 7.02)"
+  },
+  {
+   "name": "U17",
+   "net": "JA10",
+   "ring": 2,
+   "action": "dogbone-out",
+   "detail": "east lane y=8.15 -> via (51.40, 8.15)"
+  },
+  {
+   "name": "U18",
+   "net": "JA1",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit E T|U: 3 mil stub placed to (51.1125, 8.6500); via left to routing"
+  },
+  {
+   "name": "U19",
+   "net": "JA2",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row U"
+  },
+  {
+   "name": "V1",
+   "net": "VCC3V3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (40.90, 7.90)"
+  },
+  {
+   "name": "V2",
+   "net": "BS0",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit W V|W: 3 mil stub placed to (41.6875, 7.6500); via left to routing"
+  },
+  {
+   "name": "V3",
+   "net": "RAS#",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 2|3: 3 mil stub placed to (42.6501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V4",
+   "net": "WE#",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 3|4: 3 mil stub placed to (43.1501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V5",
+   "net": "D6",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 4|5: 3 mil stub placed to (43.6501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V6",
+   "net": "VCC3V3",
+   "ring": 1,
+   "action": "gap",
+   "detail": "VCC3V3 3 mil neck through W5|W6 (x=44.15) -> via (44.15, 6.90)"
+  },
+  {
+   "name": "V7",
+   "net": "D1",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 6|7: 3 mil stub placed to (44.6501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V8",
+   "net": "D0",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 7|8: 3 mil stub placed to (45.1501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V9",
+   "net": "VCC3V3",
+   "ring": 1,
+   "action": "gap",
+   "detail": "VCC3V3 3 mil neck through W8|W9 (x=45.65) -> via (45.65, 6.90)"
+  },
+  {
+   "name": "V10",
+   "net": "RST#",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 9|10: 3 mil stub placed to (46.1501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V11",
+   "net": "VCC3V3",
+   "ring": 1,
+   "action": "gap",
+   "detail": "VCC3V3 3 mil neck through W10|W11 (x=46.65) -> via (46.65, 6.90)"
+  },
+  {
+   "name": "V12",
+   "net": "CFG-M0",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 11|12: 3 mil stub placed to (47.1501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V13",
+   "net": "CHAN26",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 12|13: 3 mil stub placed to (47.6501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V14",
+   "net": "CHAN23",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 13|14: 3 mil stub placed to (48.1501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V15",
+   "net": "CHAN20",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 14|15: 3 mil stub placed to (48.6501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V16",
+   "net": "CHAN18",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 15|16: 3 mil stub placed to (49.1501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V17",
+   "net": "CHAN15",
+   "ring": 1,
+   "action": "gap",
+   "detail": "exit S 17|18: 3 mil stub placed to (50.1501, 7.1875); via left to routing"
+  },
+  {
+   "name": "V18",
+   "net": "GND",
+   "ring": 1,
+   "action": "gap",
+   "detail": "GND neck through W18|W19 (x=50.65) -> via (50.65, 6.35)"
+  },
+  {
+   "name": "V19",
+   "net": "JA9",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row V"
+  },
+  {
+   "name": "W1",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.15 diagonal to the corner via (41.40, 6.90)"
+  },
+  {
+   "name": "W2",
+   "net": "SDRAM-CS#",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 2"
+  },
+  {
+   "name": "W3",
+   "net": "CAS#",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 3"
+  },
+  {
+   "name": "W4",
+   "net": "LDQM",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 4"
+  },
+  {
+   "name": "W5",
+   "net": "D5",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 5"
+  },
+  {
+   "name": "W6",
+   "net": "D3",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 6"
+  },
+  {
+   "name": "W7",
+   "net": "D2",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 7"
+  },
+  {
+   "name": "W8",
+   "net": "FPGA-TDO",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 8"
+  },
+  {
+   "name": "W9",
+   "net": "FPGA-TMS",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 9"
+  },
+  {
+   "name": "W10",
+   "net": "FPGA-TDI",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 10"
+  },
+  {
+   "name": "W11",
+   "net": "CFG-M1",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 11"
+  },
+  {
+   "name": "W12",
+   "net": "GND",
+   "ring": 0,
+   "action": "direct",
+   "detail": "0.20 to the outside via (47.40, 6.25)"
+  },
+  {
+   "name": "W13",
+   "net": "CHAN25",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 13"
+  },
+  {
+   "name": "W14",
+   "net": "CHAN22",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 14"
+  },
+  {
+   "name": "W15",
+   "net": "CHAN19",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 15"
+  },
+  {
+   "name": "W16",
+   "net": "CHAN16",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 16"
+  },
+  {
+   "name": "W17",
+   "net": "CHAN14",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 17"
+  },
+  {
+   "name": "W18",
+   "net": "CHAN13",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit S col 18"
+  },
+  {
+   "name": "W19",
+   "net": "CHAN12",
+   "ring": 0,
+   "action": "direct",
+   "detail": "exit E row W"
+  }
+ ],
+ "notes": [
+  "MERGE: rings 2-5 and the core follow the moat plan (all 56 ring-2 balls resolved: 48 ring-3 cells, 3 blocked ones as Top pass-throughs to F15/K15/N15, NW GND sharing at D4 D5 D6 E4, row-C and col-3 shifted one cell as diagonals, four outward escapes C17 north / U3 west / U16 south / U17 east). Rings 0-1 power follows the power plan with the outside vias staggered outward so no two on one side that are 0.75 mm apart share a zone.",
+  "WHY U17 AND NOT T17 LEAVES EAST: T19 (GND) has no same-net neighbour and needs the row-line via. A row-line via and a half-row via 0.75 mm apart at the same x leave a window of 0.75 - 0.53 = 0.22 mm between their lands, which holds ONE 3 mil track, and the T|U lane plus the U19 exit are two. T17 -> T16 straight; U17 takes the U|V lane (8.15) to (51.40, 8.15) and T19 goes to (51.90, 8.90): 0.90 apart, zones disjoint (0.5 in x >= 0.45).",
+  "OUTSIDE VIAS PLACED NOW (rule): only where the ball has no in-array option AND the via position is forced by the land field: ring-0/1 power balls with no same-net neighbour (A1 B1 C1 E1 F1 W1 W12 A19 C19 F19 L19 T19 GND; K1 R1 V1 B19 VCC3V3), the boxed ring-1 necks (H18 P2 V18 GND; V6 V9 V11 VCC3V3) and the four ring-2 outward escapes (their via must be within 1.6 mm of the ball for tools/fanout_emit.py). Every ring-0/1 SIGNAL via is left to routing: its position depends on the route direction, and the ledger shows each such ball keeps a free slot (ring-1 signals get their stub, ring-0 signals nothing).",
+  "LANE LEDGER (proved by search in this script): each ring-0 gap carries one 3 mil track; a track 0.25 mm from an outside via bumps 0.053 mm away (0.175 + 0.09 + 0.038 = 0.303 centre distance) and the next slot at 0.5 keeps 0.121; between two outside vias whose outward coordinates differ by < 0.45 the tracks between them must fit sum(w) + 0.09 (n-1) <= d - 0.53 (0.75 apart: one 3 mil track of two slots; 1.0 apart: all three). The assignment found is written into each ball's detail and the ring-1 signal balls get their 3 mil stub PLACED (45 deg to the interstitial, through the named gap, ending 0.10 outside the land-field box, before any bump region); their vias are routing's. Staggers used: west K1 (40.9) R1 (40.4) V1 (40.9) P2 neck (40.9); east T19 (51.9) H18 neck (51.9); south W12 (y 6.25) V18 neck (y 6.35). The east side has one spare gap: A|B and B|C are dead between the 0.5-pitch A19/B19/C19 vias (B18 goes north, C18 goes diagonally into B19), leaving C|D..V|W (16) for D18..U18 (13 signals), the H18 neck (G|H) and the U17 lane (U|V); V|W is spare because V18 necks south.",
+  "NORTH SIDE: U4 is a wide SOIC-8 whose pads sit at x 43.10..44.60 (pads 1-4) and 50.40..51.905 (pads 5-8) with the south copper edge at y 17.215; between x 44.6 and 50.4 only the body is above the corridor, so A14 A15 A16 A17 and the B15 B16 B17 gap lanes (48.65 49.15 49.65) run straight north under the body (CHAN2-5 end on X2 pads 5-8 at the top edge, x 41.9..49.5). The JA4 via at (50.15, 16.78) is forced (C17 has no other cell; its via must be within 1.6 mm) and is a full barrier at that x (16.78 + 0.303 + 0.038 = 17.12 > 17.215 - 0.09). A18 (x 50.4) runs into U4 pad 5 and must go EAST above A19 (y >= 16.641 for 0.09 to the A19 land), B18 through the A18|A19 gap likewise: two corridor tracks at 16.65 and 16.82, bumping to 16.70 and 16.87 past the A19 row-line via, then north between U4 pad 5 (x <= 51.905) and C93 (x >= 52.35): 0.445 mm, exactly two 3 mil tracks. This is why A19 keeps a row-line via and not a corner via. The B14 GND thread uses the corridor floor from x 48.15 to 47.15 only, where nothing else exits north.",
+  "GND VIAS: 40 (24 in rings 2-5/core incl. the N6/L14 stitches, 16 outside for the rings 0-1 GND balls that have no same-net neighbour). GNDADC has its own via D11 and never touches GND. A 0.20/0.35 through via in the 1.65 mm laminate is ~1 nH / ~1.5 mohm; the count is set by isolated balls and by decoupling-loop length (every Bottom 0201 GND pad under the die has a GND via within 0.7 mm with a stub placed), not by current.",
+  "PLANE RASTER (this script, 10 um, one GND plane, moat band rings 3-5 = 30.0 mm2): copper left with the present Relief rule (1.716 mm OD voids on GND vias) 24.8 %, with Direct on vias 42.8 %; connected copper crossing into the core: relief 1.05 mm, direct 7.50 mm. RECOMMENDATION: add PlaneConnect_Vias (scope IsVia, Direct, priority above the Relief rule), keep Relief for through-hole pads (X2, X4). Tented, never-soldered vias have no thermal reason for reliefs. Secondary lever: PlaneClearance 0.25 -> 0.20 (JLC minimum) widens every ring-3 bridge from 0.30 to 0.40 mm.",
+  "VCC3V3 NECKS: only V6 V9 V11 neck to 3 mil (through W5|W6, W8|W9, W10|W11 to vias at y 6.9). C18 is boxed orthogonally but B19 is VCC3V3 diagonally: a 0.20 diagonal clears B18 and C19 by 0.141, so it is not a neck. M17 -> M16 -> N15 runs 0.15 (0.104 to the N16 via). All other VCC3V3 copper is 0.20.",
+  "DIAGONAL WIDTHS: a diagonal between two foreign balls clears them by 0.354 - 0.1125 - w/2: 0.141 at 0.20; a diagonal beside a foreign VIA clears 0.354 - 0.175 - w/2: 0.104 at 0.15, 0.079 at 0.20 (fails). Hence 0.15 for every power diagonal that flanks a via, 0.20 for the B9/B11 -> C10 and C18 -> B19 diagonals, 3 mil for signals.",
+  "UNDER-DIE CAPS, all placed: GND C96-2 <- F7, C92-2 <- F11, C95-2 <- F15, C90-2 <- N6, C89-2 <- K11, C91-2 <- L14; VCC1V0 C92-1 <- F10, C89-1 <- K10, C90-1 and C91-1 by the Bottom trunk from C89-1 (y 11.45 over the pad tops, 0.175; y 11.05 past the L14 via at 0.10); VCC1V8 C95-1 <- G14 (via F14), C96-1 <- E5 (new ring-4 via, fed D8 -> E8 -> E5 on L3 at 0.15 with 0.25 to the D/F-row vias). Ring-0/1 caps C107-C115 are left to routing.",
+  "LEFT TO ROUTING: every escape below the vias (L3/L4/Bottom): between adjacent ring-3 vias no lane passes on any layer, three 3 mil lanes pass between vias 1.0 mm apart, one between vias 0.75 mm apart; the rail feeds into the core (Width_PWR_VCC3V3 mid-layer min 1.05 and Width_PWR_VCC1V0 mid-layer min 0.50 cannot pass the wall, so VCC3V3/VCC1V0 come in on Bottom, min 0.20/0.15, or those minima are re-derived); the GNDADC trace from D11 to C123/C124/L6; all ring-0/1 signal exits and their vias (slots named in the balls list); the north corridor problem above; the outer cap ties."
+ ],
+ "counts": {
+  "vias": 107,
+  "tracks": 318,
+  "gnd_vias": 40,
+  "vias_by_net": {
+   "A1": 1,
+   "A10": 1,
+   "A12": 1,
+   "A4": 1,
+   "A6": 1,
+   "A8": 1,
+   "AIN15_P": 1,
+   "BTN": 1,
+   "CFG-M2": 1,
+   "CHAN11": 1,
+   "CHAN17": 1,
+   "CHAN21": 1,
+   "CHAN24": 1,
+   "CHAN4": 1,
+   "CHAN5": 1,
+   "CHAN6": 1,
+   "CHAN9": 1,
+   "CLK-12M-FPGA": 1,
+   "D12": 1,
+   "D4": 1,
+   "D7": 1,
+   "D9": 1,
+   "FPGA-CCLK": 1,
+   "FPGA-DONE": 1,
+   "FPGA-INIT#": 1,
+   "FPGA-TCK": 1,
+   "FT-PWREN#": 1,
+   "GND": 40,
+   "GNDADC": 1,
+   "JA10": 1,
+   "JA3": 1,
+   "JA4": 1,
+   "JA7": 1,
+   "SD-CLK": 1,
+   "SD-CMD": 1,
+   "SD-DAT0": 1,
+   "SD-DAT2": 1,
+   "VCC1V0": 4,
+   "VCC1V8": 5,
+   "VCC3V3": 21,
+   "VCCADC": 1
+  },
+  "vias_outside": 27,
+  "moat_cells_used": 77,
+  "ring3_cells_used": 45,
+  "ring4_cells_used": 4,
+  "ring5_cells_used": 28,
+  "tracks_by_layer": {
+   "Top": 295,
+   "Bottom": 21,
+   "L3-SIG": 2
+  },
+  "actions": {
+   "direct": 59,
+   "none": 8,
+   "chain": 44,
+   "gap": 47,
+   "dogbone-in": 50,
+   "dogbone-out": 4,
+   "via-adjacent": 26
+  }
+ },
+ "check": {
+  "problems": [],
+  "warnings": [],
+  "tightest": [
+   "0.0599 via-via CFG-M2(46.40,8.90) - FPGA-INIT#(46.90,8.90) over 0.44",
+   "0.0599 via-via CHAN24(48.40,8.90) - CHAN21(48.90,8.90) over 0.44",
+   "0.0599 via-via CLK-12M-FPGA(48.90,11.90) - VCC3V3(48.40,11.90) over 0.44",
+   "0.0599 via-via D7(43.40,8.90) - D4(43.90,8.90) over 0.44",
+   "0.0599 via-via FPGA-CCLK(46.40,14.90) - GNDADC(46.90,14.90) over 0.44",
+   "0.0599 via-via FPGA-DONE(47.40,8.90) - VCC3V3(47.90,8.90) over 0.44",
+   "0.0599 via-via GND(43.40,14.40) - VCC1V8(43.90,14.40) over 0.44",
+   "0.0599 via-via GND(43.40,14.90) - GND(43.90,14.90) over 0.44",
+   "0.0599 via-via GND(44.40,14.90) - FPGA-TCK(44.90,14.90) over 0.44",
+   "0.0599 via-via GND(44.40,8.90) - SD-CMD(44.90,8.90) over 0.44",
+   "0.0599 via-via GND(44.90,13.90) - GND(44.40,13.90) over 0.44",
+   "0.0599 via-via GND(45.40,13.90) - GND(45.90,13.90) over 0.44",
+   "0.0599 via-via GND(47.40,9.90) - GND(47.90,9.90) over 0.44",
+   "0.0599 via-via SD-CLK(45.40,8.90) - GND(45.90,8.90) over 0.44",
+   "0.0599 via-via SD-DAT0(48.40,14.90) - CHAN4(48.90,14.90) over 0.44"
+  ],
+  "tightest_by_kind": {
+   "via-via": "0.0599 via-via CFG-M2(46.40,8.90) - FPGA-INIT#(46.90,8.90) over 0.44",
+   "via ": "0.1223 via GND (51.40,11.40) - Bottom pad C111.1",
+   "track ": "0.0993 track CHAN0 [B18 ring-1 stub: 45 deg to the interstit] - land A19",
+   "track-track": "0.1118 track-track GND/CHAN0 on Top"
+  },
+  "ledger": [
+   "side W: outside vias GND(6.90 @-41.40), VCC3V3(7.90 @-40.90), A10(8.65 @-41.40), VCC3V3(9.40 @-40.40), GND(10.15 @-40.90), VCC3V3(11.90 @-40.90), GND(13.40 @-40.90), GND(13.90 @-41.40), GND(14.40 @-41.40), GND(15.40 @-41.40), GND(15.90 @-41.40), GND(16.40 @-41.40)",
+   "side W: fixed lanes BS0@7.65, VCC3V3@7.90, A0@8.15, A10@8.65, A2@9.15, VCC3V3@9.40, A5@9.65, GND@10.15, A9@10.65, CKE@11.15, UDQM@11.65, VCC3V3@11.90, D10@12.15, AIN16_N@12.65, AIN16_P@13.15, GND@13.40, AIN15_N@13.65, GND@13.90, GND@14.40, GND@15.40, GND@15.90, GND@16.40",
+   "side W: gaps -> ",
+   "side E: outside vias JA10(8.15 @51.40), GND(8.90 @51.90), GND(11.40 @51.40), GND(13.15 @51.90), GND(13.90 @51.40), GND(15.40 @51.40), VCC3V3(15.90 @51.40), GND(16.40 @51.40)",
+   "side E: fixed lanes JA10@8.15, JA1@8.65, GND@8.90, CHAN27@9.15, LED0_G@9.65, CHAN-CLK@10.15, LED1@10.65, UART_FT_DTR#@11.15, GND@11.40, UART_FT_RTS#@11.65, UART_FT_TXD@12.15, CHAN8@12.65, GND@13.15, FLASH-D02@13.65, GND@13.90, FLASH-D03@14.15, PUDC_B@14.65, FLASH-D00@15.15, GND@15.40, VCC3V3@15.90, GND@16.40",
+   "side E: gaps -> ",
+   "side S: outside vias VCC3V3(44.15 @-6.90), VCC3V3(45.65 @-6.90), VCC3V3(46.65 @-6.90), GND(47.40 @-6.25), CHAN17(49.65 @-7.02), GND(50.65 @-6.35)",
+   "side S: fixed lanes RAS#@42.65, WE#@43.15, D6@43.65, VCC3V3@44.15, D1@44.65, D0@45.15, VCC3V3@45.65, RST#@46.15, VCC3V3@46.65, CFG-M0@47.15, GND@47.40, CHAN26@47.65, CHAN23@48.15, CHAN20@48.65, CHAN18@49.15, CHAN17@49.65, CHAN15@50.15, GND@50.65",
+   "side S: gaps -> ",
+   "side N: outside vias JA4(50.15 @16.78)",
+   "side N: fixed lanes GND@48.15, SD-DAT1@48.65, UART_FT_CTS#@49.15, CHAN2@49.65, JA4@50.15, CHAN0@50.65",
+   "side N: gaps -> "
+  ],
+  "plane": {
+   "band_mm2": 30.0,
+   "copper_relief": 0.2485,
+   "copper_direct": 0.4284,
+   "crossing_mm_relief": 1.05,
+   "crossing_mm_direct": 7.5
+  }
+ }
+}

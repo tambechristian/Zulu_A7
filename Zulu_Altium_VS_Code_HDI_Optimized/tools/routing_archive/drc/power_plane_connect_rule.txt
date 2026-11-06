@@ -1,0 +1,4 @@
+Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=9.842mil) (Air Gap=9.842mil) (Entries=4) (All)
+==========================================================================================================================
+Starved Thermal on L2-GND: Pad X2-20(50mil,950mil) on Multi-Layer. Blocked 3 out of 4 entries.
+Starved Thermal on L5-GND: Pad X2-20(50mil,950mil) on Multi-Layer. Blocked 3 out of 4 entries.
