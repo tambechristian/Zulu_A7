@@ -4,6 +4,9 @@ History: first draft 2026-10-31 (all-signals-to-L3 scheme), question on 3/3 mil 
 for the layer-per-ring fan-out and checked by three readers against the files; that version used counts from partial
 plans. THIS version carries the counts of the board as placed, cleaned up and with the STEMMA QT connector X5 (DRC 0: 1512
 vias, 4861 tracks, md5 243ef145).
+Board changed after this text, 2026-11-07 (LED row and pin labels, md5 7789390c, DRC 0; designator edits since, md5 786c6120, copper unchanged): 1521 vias, 4718 tracks. Against 243ef145, by one count
+applied to both boards: lasers 1113 -> 1123, 0.10 mm lasers 349 -> 354, through vias 169 -> 165, buried 230 -> 233, lasers in non-U1 SMD pads 250 -> 252,
+through vias in non-U1 SMD pads 110 -> 107, lasers on U1 lands 156 -> 157. The counts below are still the 243ef145 ones; quote the new totals with the order.
 What the checks changed against the earlier drafts:
 - no "we could go to 0.275 mm lands": at 0.275 a 3 mil track between two balls has 0.0744 mm a side
 - PCBWay's CAM for W1150632AS3P6 lasered our 0.15 vias at 0.127 mm, drilled most buried vias with a 0.20 tool and most

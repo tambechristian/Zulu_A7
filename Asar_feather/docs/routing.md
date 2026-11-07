@@ -1038,3 +1038,44 @@ check_feather_schematic PASS, verify_footprints PASS.** Pads on the board equal 
   that drops that filter (`n not in PLANES`).
 - Not done: no XDC change was needed, and no PULLUP was added on F_SCL / F_SDA (the devices carry pull-ups, FPGA internal ones
   are optional). No ESD part on SDA / SCL. Vivado not run. Gerbers not generated. README pin table corrected from the XDC.
+
+### 2026-11-07 -- LED row and pin labels: DRC 0
+
+**Board md5 7789390c: Altium DRC 0 on every rule, silk rules included (`docs/drc_led_row.drc`), 1521 vias, 4718 tracks,
+verify_copper PASS against `tools/route/stage7/final/plan.led.json`, 1123 microvias marked, route_conn 0 open, sch_vs_board MATCH
+(174 parts), check_feather_schematic PASS.** Pads on the board equal `model.led.json`, 827 of 827, worst 0.0002 mm. All 25 text
+anchors in the saved file equal `labels.led.json`.
+
+- LEDs: LD5, LD1, LD2, LD0 in one row 3.2 mm apart, x centres 28.8, 32.0, 35.2, 38.4 at y 4.675. R78, R83, R84 sit north of the row at
+  y 6.3, also 3.2 mm apart. LD1, LD2 and the three resistors turned 180 degrees, so every resistor faces its LED's east pad. R80 to R82
+  stay. The first trial had the resistors south of the row at y 3.1, which routed but sat exactly where 5 pin labels go.
+- Labels: 22 of 28 header pins, Feather names at PCBWay's minimum, 0.8 mm high, 0.15 mm stroke. South: RS, A1, A4, A5, SCK, MO, MI, RX, TX,
+  D4. North: BAT, EN, USB, D13, D12, D11, D10, D9, D6, D5, SCL, SDA. 3V3, AREF, GND, A0, A2 and A3 have no spot on either side: U2 and the
+  reset switch on Top, capacitors and inductors on Bottom. Names match the XDC's `F_<name>` ports.
+- Other silk: BTN up to 0.8 mm above its switch; title on two lines, ASAR and A7, at 1.2 mm beside X5; RESET's designator off. The reset
+  switch has no label: its only spot went to A1, and RST there read as the name of pin 6 or 7. RS is pin 1, because RST would sit 0.08 mm
+  from the edge. A4 is upright, 0.68 mm east of its pin. 9 Top vias lie under label strokes (tented, rule scope IsPad). The earlier 0.6 mm
+  BTN and the 0.6 mm RST I proposed were below PCBWay's minimum, which their capabilities page calls too small to recognise.
+- Font, measured from `zulu_a7.GTO` by the independent review: grid unit height / 6, most glyphs 4 wide with advance 6, I and 1 are 2 wide
+  with advance 5, ink starts at the anchor, rot 90 ink runs west of the anchor. M, O and E have no Gerber sample: `LittFont.Fnt` gives 4 wide,
+  advance 6. Altium's `BoundingRectangle` is one half stroke wider than the ink on each side (`docs/labels.log`); DRC passed anyway.
+- Copper: `tools/finish.py` on scratch copies, first run moved D14, FPGA-CCLK and six more bystanders. A scratch copy with a list of nets its
+  probe may not cut gave 17 changed nets: the LED nets, BTN, N$BTN, FLASH-D00 (+3.7 mm, now the longest flash net), SD-DAT0, the GND ties of
+  the moved parts and of C9, C12 and X3-G1, and LD5-A's VCC3V3 column. No SDRAM, clock or other power-rail copper moved. Delta -496 +353 tracks,
+  -64 +73 vias.
+- Reviews: three independent checks of the trial, two more of the final files. They found what the gates cannot see: five GND vias stacked
+  inside the through via at 30.3, 8.175 (now `tools/hole_gate.py`, controls 0 pairs on the committed plan, 5 on the trial), M narrower than
+  assumed, and the misreadable RST. finish.py left 54 orphan FLASH-D00 tracks that plan_prune does not remove (route_check passes them): the
+  audit's floating-island line is the gate.
+- Scripts: `tools/emit_led_row.py` writes `FeatherLedParts.pas` and `FeatherPinLabels.pas`; `route/stage7/final/led_delta.py` writes the delta
+  behind `FeatherCopper_S7L.pas`. Order: LedParts, PinLabels, PlaceS7L, save, close, mark_microvias, reopen, Repour All, DRC, save.
+- Not done: Vivado not run, Gerbers not generated, no polarity mark on LED0603 (LD1 and LD2 now face the other way from LD5, only pad names and
+  the placement file carry it). The enquiry text still quotes the 243ef145 counts, with the new totals noted at its top. The wrong XADC channel
+  numbers in the docs (A0 is AD4, A1 is AD12) are being corrected in a separate session.
+- Designators, same day (board md5 786c6120, Altium DRC 0 in `docs/drc_designators.drc`): the user moved U1's designator by hand to
+  (19.292, 5.700), which DRC flagged at 0.235 mm from the mask of balls A18 and A19 (Silk To Solder Mask 0.254). U1's designator went
+  0.05 mm south to y 5.650, and X1's went from 1.0 to 0.8 mm high (stroke 0.15) with its centre kept, anchor (3.664, 17.118). U1 and U2
+  were already at PCBWay's 0.8 mm minimum and stay there. Against the user's save only these two texts changed. verify_copper PASS,
+  1123 microvias, route_conn 0 open, sch_vs_board MATCH, check_feather_schematic PASS, all 25 label anchors as planned.
+  Scripts: `FeatherSilkDesig.pas` (X1; its direct `YLocation` write on U1 did not hold) and `FeatherSilkU1.pas` (U1: autoposition
+  manual, then `MoveByXY` between robot modify messages). `Near` is a reserved word in DelphiScript ("Program name expected").
