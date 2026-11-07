@@ -1079,3 +1079,12 @@ anchors in the saved file equal `labels.led.json`.
   1123 microvias, route_conn 0 open, sch_vs_board MATCH, check_feather_schematic PASS, all 25 label anchors as planned.
   Scripts: `FeatherSilkDesig.pas` (X1; its direct `YLocation` write on U1 did not hold) and `FeatherSilkU1.pas` (U1: autoposition
   manual, then `MoveByXY` between robot modify messages). `Near` is a reserved word in DelphiScript ("Program name expected").
+- Stale ratsnest, same day (board md5 edc539d8, Altium DRC 0 in `docs/drc_connections.drc`): Altium drew about 280 thin connection lines
+  although its DRC found Un-Routed 0 and route_conn 0 open. They were not open nets. The PcbDoc saves its ratsnest (`Connections6`,
+  47 bytes a line): 368 lines at stage 5, 271 at stage 7, 278 at 786c6120. Altium loads them as saved, and copper placed by script never
+  made it recompute them, so they still pointed at old pad positions and at the parking grid east of the board (x 53-57 mm).
+  `tools/FeatherRebuildConn.pas` (every net `ConnectivelyInValidate`, then `Board.ConnectivelyValidateNets`) cleared all but GND's 124;
+  `tools/FeatherRebuildGnd.pas` removed those (display objects only) and re-validated: Altium re-created none, so `Connections6` is now
+  empty. Against 786c6120 no track, arc, fill, text, region, pad or via changed (one net record gained a cached routed length);
+  verify_copper PASS, 1123 microvias, route_conn 0 open, sch_vs_board MATCH. `tools/FeatherRatsnest.pas` lists the connection objects
+  Altium holds. Gate from now on: a fully routed save must have an empty `Connections6`.

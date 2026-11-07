@@ -6,8 +6,8 @@ factor: 50.80 x 22.86 mm, 16-pin and 12-pin 0.1 in strips. Altium project:
 `Zulu_Altium_VS_Code` (commit 8df3577) by `tools/make_project.py`. The board keeps the production 6-layer HDI
 stack, via types, rules and net classes.
 
-**State, 2026-11-07: routed. Altium DRC 0 on every rule, Un-Routed 0 (`docs/drc_designators.drc`), board md5
-786c6120.** Not done: Vivado place and `report_drc` on the XDC, Gerbers, SI simulation. Everything below was checked
+**State, 2026-11-07: routed. Altium DRC 0 on every rule, Un-Routed 0 (`docs/drc_connections.drc`), board md5
+edc539d8.** Not done: Vivado place and `report_drc` on the XDC, Gerbers, SI simulation. Everything below was checked
 from the files, not from the GUI. The dated sections describe the board on that date; the routing history and the
 open quality items are in `docs/routing.md`.
 
