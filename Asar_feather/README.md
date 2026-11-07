@@ -6,8 +6,10 @@ factor: 50.80 x 22.86 mm, 16-pin and 12-pin 0.1 in strips. Altium project:
 `Zulu_Altium_VS_Code` (commit 8df3577) by `tools/make_project.py`. The board keeps the production 6-layer HDI
 stack, via types, rules and net classes.
 
-**State, 2026-10-23: schematic converted, footprints drawn, board outlined, first-pass placement done.
-Not routed.** Everything below was checked from the files, not from the GUI.
+**State, 2026-11-07: routed. Altium DRC 0 on every rule, Un-Routed 0 (`docs/drc_designators.drc`), board md5
+786c6120.** Not done: Vivado place and `report_drc` on the XDC, Gerbers, SI simulation. Everything below was checked
+from the files, not from the GUI. The dated sections describe the board on that date; the routing history and the
+open quality items are in `docs/routing.md`.
 
 ## Design changes
 
@@ -34,8 +36,8 @@ Not routed.** Everything below was checked from the files, not from the GUI.
 | 2 | 3V3 | VCC3V3 | | 18 | EN | EN (SC189 enables) |
 | 3 | AREF | AREF (open) | | 19 | VUSB | USB5V0 |
 | 4 | GND | GND | | 20 | D13 | CHAN14 U1-J19 |
-| 5 | A0 | ANALOG-IO0 -> XADC AD15 divider | | 21 | D12 | CHAN15 U1-R19 |
-| 6 | A1 | ANALOG-IO1 -> XADC AD16 divider | | 22 | D11 | CHAN16 U1-W14 |
+| 5 | A0 | ANALOG-IO0 -> XADC AD4 divider (U1 G3/G2) | | 21 | D12 | CHAN15 U1-R19 |
+| 6 | A1 | ANALOG-IO1 -> XADC AD12 divider (U1 H2/J2) | | 22 | D11 | CHAN16 U1-W14 |
 | 7 | A2 | CHAN0 U1-A18 | | 23 | D10 | CHAN17 U1-U16 |
 | 8 | A3 | CHAN1 U1-B18 | | 24 | D9 | CHAN18 U1-W15 |
 | 9 | A4 | CHAN2 U1-C17 | | 25 | D6 | CHAN19 U1-V14 |
@@ -48,6 +50,8 @@ Not routed.** Everything below was checked from the files, not from the GUI.
 | 16 | D4 | CHAN-CLK U1-P18 (clock-capable) | | | | |
 
 19 FPGA I/O plus 2 analog inputs (A0/A1 only; the board has two XADC dividers, not four). A2-A5 are digital.
+The XADC nets keep their inherited names, which do not match the channels: AIN15_P/N (A0) are on AD4P/AD4N and
+AIN16_P/N (A1) on AD12P/AD12N. On this package AD15 is on SDRAM balls N2/N1, and the pinout has no AD16.
 Balls as they are on the routed board; Vivado constraints in `vivado/asar_feather_pins.xdc`,
 where the header ports are named F_<Feather pin> (F_A2 ... F_SDA, F_D4).
 
@@ -56,7 +60,7 @@ where the header ports are named F_<Feather pin> (F_A2 ... F_SDA, F_D4).
 | Step | Tool | Check |
 |---|---|---|
 | Copy the project | `tools/make_project.py` | md5 of every copied file |
-| Schematic edit at file level (4 sheets) | `tools/apply_feather_schematic.py` (data in `feather_map.py`) | `tools/check_feather_schematic.py`: the netlist read from the SchDocs equals the proven Zulu A7 netlist transformed by `feather_map.py`. **PASS**: 155 named nets, 0 mismatches, no merged nets. The extractor `sch_netlist.py` reproduces all 177 multi-pin nets of `Zulu_kicad/reports/kicad.net` on the unedited copy. |
+| Schematic edit at file level (4 sheets) | `tools/apply_feather_schematic.py` (data in `feather_map.py`) | `tools/check_feather_schematic.py`: the netlist read from the SchDocs equals the proven Zulu A7 netlist transformed by `feather_map.py`. **PASS** with the three later ball permutations (`--perm tools/route/stage5/swapA_perm.json --perm tools/route/stage5/swapB_perm.json --perm tools/route/stage7/final/x_perm_b_perm.json`): 136 named nets, 0 mismatches, no merged nets. The extractor `sch_netlist.py` reproduces all 177 multi-pin nets of `Zulu_kicad/reports/kicad.net` on the unedited copy. |
 | SDRAM ball map | `feather_map.SDRAM_BALL` | AS4C32M16SB datasheet Rev 1.2, Figure 1.1, read with coordinates |
 | Six new footprints | `tools/footprints.py` -> `FeatherFootprints.pas` (run in the PcbLib) | `tools/verify_footprints.py` reads the saved PcbLib through KiCad's Altium reader. **PASS**: 181 pads, including slots and non-plated holes. |
 | Empty board + outline | `FeatherBoard.pas` (StripFeatherBoard), `FeatherOutline.pas` | `ReportFeatherOutline`: (0,0) (50.8,0) (50.8,22.86) (0,22.86). Writing `Board.BoardOutline` directly reported success but changed nothing; the Mechanical 1 track method worked. |
@@ -77,7 +81,7 @@ where the header ports are named F_<Feather pin> (F_A2 ... F_SDA, F_D4).
 
 | Step | Tool | Result |
 |---|---|---|
-| Feather header balls | `tools/plan_pin_swap.py` -> `tools/pin_swap.json`; `tools/apply_pin_swap.py <plan.json>` renames U1's symbol pins (ball + pin name) in every U1 part, refusing a plan whose nets no longer sit on their old balls | Minimum-total-distance assignment over the 37 header + freed balls on banks 14/16 (both 3.3 V); D4 keeps P18 (clock-capable). Straight-line ball-to-pad length 291.1 -> 168.8 mm: the south-strip pins take U1's W/V/U balls, the north strip its A-E balls. `check_feather_schematic.py` reads the permutation, **PASS**; Import Changes moved the 18 nets on U1's pads (the 11 class/diff-pair removals unticked); `sch_vs_board.py` **MATCH**. |
+| Feather header balls (first of four re-pins) | `tools/plan_pin_swap.py` -> `tools/pin_swap.json`; `tools/apply_pin_swap.py <plan.json>` renames U1's symbol pins (ball + pin name) in every U1 part, refusing a plan whose nets no longer sit on their old balls | Minimum-total-distance assignment over the 37 header + freed balls on banks 14/16 (both 3.3 V); D4 keeps P18 (clock-capable). Straight-line ball-to-pad length 250.9 -> 243.7 mm (`pin_swap.json`, redone on 2026-10-24 with U1 at rot 180): the south (16-pin) strip pins take U1's A-H balls, the north (12-pin) strip its U-W balls. Routing then re-pinned three more times for escape, not length: `tools/route/stage5/swapA_perm.json`, `tools/route/stage5/swapB_perm.json` and `tools/route/stage7/final/x_perm_b_perm.json` moved six header nets again (final balls CHAN2 C17, CHAN4 C15, CHAN14 J19, CHAN15 R19, CHAN17 U16, CHAN18 W15) along with SDRAM, SD and LED nets, so the north strip also uses J19 and R19. The pin map above and the XDC show the final balls. `check_feather_schematic.py` reads the permutations with `--perm`, **PASS**; `sch_vs_board.py` **MATCH** (`docs/routing.md`). |
 | XDC | `tools/make_xdc.py` -> `vivado/asar_feather_pins.xdc` | 82 pins, each ball checked against the schematic netlist; 19 ports of balls the Feather no longer connects dropped; `create_clock` moved to F_D4. |
 | Buck loops | `plan_placement.py` FIXED | Two output 0805s beside each inductor (C80/C97 3V3, C93/C144 1V8, C85/C86 1V0), 1.75 mm apart for a 0.1 mm mask web. |
 | FPGA decoupling | `plan_placement.py` FIXED | The production board's 24 under-BGA caps (C89-C92, C95/C96, C107-C124) at the same offsets from U1's centre, same sides and rotations (U1 is rot 0 on both boards). |
@@ -91,9 +95,9 @@ where the header ports are named F_<Feather pin> (F_A2 ... F_SDA, F_D4).
 
 ## Open items
 
-1. **Routing**: stage 1 done. Production's U1 fan-out was transplanted (201 vias, 771 tracks; DRC: 465 un-routed + 115 antenna stubs, nothing else). The log and the open choice of router for the remaining 465 connections are in `docs/routing.md`.
+1. **Routing: done.** 1521 vias and 4718 tracks on the board; Altium DRC 0, Un-Routed 0 (`docs/drc_designators.drc`). The log and the open quality items, none of them DRC errors, are in `docs/routing.md`.
 2. **Compile errors: done (2cf527c).** The 22 single-pin nets are cleared by `tools/clear_single_pin_nets.py`: labels deleted plus no-ERC marks, and AREF keeps its label. Altium now reports "Compile successful, no errors found". 30 warnings remain, of the existing no-driving-source / unused sub-part kinds.
 3. **Schematic cosmetics**: X2's gate names still read GND/+1.8V/+1.0V inside the symbol, and the sheet notes describe the XuLA2 40-pin header. U3's symbol text still says TSOP-II.
-4. **Silkscreen**: DRC-clean. Not yet fixed: U10 lost its pin-1 tick (no clean spot beside pad 1), and 10 designators are hidden. Revisit after routing, when vias and copper fix what space is left.
-5. **Not added yet**: USB ESD protection (none on the production board either). Four swapped header balls are configuration dual-purpose pins, harmless after DONE but active during configuration: W18 CSI_B (MOSI), U19 RDWR_B (TX), V19 DOUT/CSO_B (RX, can drive during configuration) and E19 EMCCLK (SCL). U1's symbol bank grouping is now mixed (banks 14 and 16 are both 3.3 V; cosmetic).
+4. **Silkscreen**: DRC-clean. 22 of the 28 header pins carry their Feather name at PCBWay's 0.8 mm minimum (`docs/routing.md`, 2026-11-07). Only U1, U2 and X1 show designators; the other 171 are hidden (assembly works from the placement file). Not yet fixed: U10 lost its pin-1 tick (no clean spot beside pad 1), and LED0603 has no polarity mark.
+5. **Not added yet**: USB ESD protection (none on the production board either). No Feather header ball is on a pin that the SPIx4 configuration in the XDC uses. The re-pins left U19 (RDWR_B), V19 (DOUT_CSO_B) and E19 (EMCCLK) unconnected, and W18 (CSI_B) carries SD-DAT0 to the microSD, not to the header. Ten header balls (G17, H17, J19, R19, W14, U16, W15, V14, V13, U15) still have BPI/SelectMAP data or address names in the pinout, which SPIx4 does not use. U1's symbol bank grouping is now mixed (banks 14 and 16 are both 3.3 V; cosmetic).
 6. **Availability to check before ordering**: AS4C32M16SB-7BIN (FBGA) and FT2232HQ. The HQ was dry when last checked; the fallback is an FT232H, which keeps JTAG but loses the second channel used for the UART.

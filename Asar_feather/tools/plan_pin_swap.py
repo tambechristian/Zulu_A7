@@ -3,10 +3,11 @@
 Pool: the 19 balls already on Feather pins (CHAN0-8, CHAN14-22, CHAN-CLK) plus the 19 balls the Feather freed
 (old CHAN9-13, CHAN23-28 and the Pmod JA1-4/JA7-10), all on 3.3 V banks 14/16. D4 keeps P18 (CHAN-CLK,
 clock-capable SRCC). The other 18 header pads get balls by a minimum-total-distance assignment (straight line,
-ball to pad, board coordinates from tools/board_dump.json), so pads on the south strip take U1's south (U-W)
-balls and the north strip its north (A-D) balls. Net names stay as they are (CHANn); only the ball under each
-net changes. Writes tools/pin_swap.json: {net: [old ball, new ball]} and the ball permutation used to rename
-U1's symbol pins.
+ball to pad, board coordinates from tools/board_dump.json). With U1 at rot 180 its A row faces south, so pads on
+the south (16-pin) strip take U1's A-H balls and the north (12-pin) strip its U-W balls. This is only the first
+re-pin: swapA, swapB and x_perm_b (README) moved six of these nets again. Net names stay as they are (CHANn);
+only the ball under each net changes. Writes tools/pin_swap.json: {net: [old ball, new ball]} and the ball
+permutation used to rename U1's symbol pins.
     python tools/plan_pin_swap.py
 """
 import json

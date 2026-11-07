@@ -6,35 +6,39 @@ USB end, the 12-pin strip 1.2 in, strips 0.8 in apart on a 2.0 x 0.9 in board.
 """
 
 # Feather pad -> (Feather name, old X2 pin whose schematic gate becomes this pad, new net label or None to keep)
+# Ball comments are the final balls, as in vivado/asar_feather_pins.xdc: the schematic netlist holds them, this
+# table does not. The XADC net names AIN15_P/N and AIN16_P/N are inherited and do not match the channel numbers:
+# the balls are AD4 and AD12 (Datasheet/xc7a35tcpg236pkg_pinout.txt); AD15 is on SDRAM balls N2/N1, and the
+# package has no AD16.
 FEATHER = {
     1: ('RST', 23, None),           # RST# = FPGA PROGRAM_B: pressing RST reloads the FPGA
     2: ('3V3', 18, None),           # VCC3V3
     3: ('AREF', 17, 'AREF'),        # no Artix equivalent: a one-pin net, left open
     4: ('GND', 1, None),
-    5: ('A0', 39, None),            # ANALOG-IO0 -> R10/R11 divider -> XADC AD15 (U1 G3/G2)
-    6: ('A1', 40, None),            # ANALOG-IO1 -> R14/R15 divider -> XADC AD16 (U1 H2/J2)
-    7: ('A2', 3, None),             # CHAN0  U1-B18 (digital only)
-    8: ('A3', 4, None),             # CHAN1  U1-A18
-    9: ('A4', 5, None),             # CHAN2  U1-B17
-    10: ('A5', 6, None),            # CHAN3  U1-A17
-    11: ('SCK', 7, None),           # CHAN4  U1-C16
-    12: ('MOSI', 8, None),          # CHAN5  U1-D17
-    13: ('MISO', 9, None),          # CHAN6  U1-H17
+    5: ('A0', 39, None),            # ANALOG-IO0 -> R10/R11 divider -> XADC AD4 (U1 G3/G2, nets AIN15_P/N)
+    6: ('A1', 40, None),            # ANALOG-IO1 -> R14/R15 divider -> XADC AD12 (U1 H2/J2, nets AIN16_P/N)
+    7: ('A2', 3, None),             # CHAN0  U1-A18 (digital only)
+    8: ('A3', 4, None),             # CHAN1  U1-B18
+    9: ('A4', 5, None),             # CHAN2  U1-C17
+    10: ('A5', 6, None),            # CHAN3  U1-B17
+    11: ('SCK', 7, None),           # CHAN4  U1-C15
+    12: ('MOSI', 8, None),          # CHAN5  U1-C16
+    13: ('MISO', 9, None),          # CHAN6  U1-D17
     14: ('RX', 10, None),           # CHAN7  U1-G17
-    15: ('TX', 11, None),           # CHAN8  U1-J18
+    15: ('TX', 11, None),           # CHAN8  U1-H17
     16: ('D4', 2, None),            # CHAN-CLK U1-P18 (clock-capable)
     17: ('VBAT', 20, 'VBATT'),      # was VCC1V0
     18: ('EN', 22, 'EN'),           # was VU; EN now drives the three SC189 enables
     19: ('VUSB', 19, 'USB5V0'),     # was VCC1V8
-    20: ('D13', 24, None),          # CHAN14 U1-W17
-    21: ('D12', 25, None),          # CHAN15 U1-V17
-    22: ('D11', 26, None),          # CHAN16 U1-W16
+    20: ('D13', 24, None),          # CHAN14 U1-J19
+    21: ('D12', 25, None),          # CHAN15 U1-R19
+    22: ('D11', 26, None),          # CHAN16 U1-W14
     23: ('D10', 27, None),          # CHAN17 U1-U16
-    24: ('D9', 28, None),           # CHAN18 U1-V16
-    25: ('D6', 29, None),           # CHAN19 U1-W15
-    26: ('D5', 30, None),           # CHAN20 U1-V15
+    24: ('D9', 28, None),           # CHAN18 U1-W15
+    25: ('D6', 29, None),           # CHAN19 U1-V14
+    26: ('D5', 30, None),           # CHAN20 U1-V13
     27: ('SCL', 31, None),          # CHAN21 U1-U15
-    28: ('SDA', 32, None),          # CHAN22 U1-W14
+    28: ('SDA', 32, None),          # CHAN22 U1-U14
 }
 X2_OLD_TO_NEW = {old: pad for pad, (_, old, _) in FEATHER.items()}
 X2_DROPPED = sorted(set(range(1, 41)) - set(X2_OLD_TO_NEW))   # 12-16 (CHAN9-13), 21 (GND), 33-38 (CHAN23-28)
