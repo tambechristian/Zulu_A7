@@ -2,13 +2,13 @@
 
 History: first draft 2026-10-31 (all-signals-to-L3 scheme), question on 3/3 mil added 2026-11-04. Rewritten 2026-11-05
 for the layer-per-ring fan-out and checked by three readers against the files; that version used counts from partial
-plans. THIS version carries the counts of the board as placed and cleaned up (stage 7, DRC 0: 1487 vias, 4827 tracks, md5
-3c46c977).
+plans. THIS version carries the counts of the board as placed, cleaned up and with the STEMMA QT connector X5 (DRC 0: 1512
+vias, 4861 tracks, md5 243ef145).
 What the checks changed against the earlier drafts:
 - no "we could go to 0.275 mm lands": at 0.275 a 3 mil track between two balls has 0.0744 mm a side
 - PCBWay's CAM for W1150632AS3P6 lasered our 0.15 vias at 0.127 mm, drilled most buried vias with a 0.20 tool and most
   through vias with 0.25, and enlarged the lands (working file ca45692c06a0.*). No room for that at 3 mil -> question 4
-- item D / question 8: the Zulu order had via-in-pad only at BTN; here 113 through vias and ~265 lasers sit in pads
+- item D / question 8: the Zulu order had via-in-pad only at BTN; here 114 through vias and ~270 lasers sit in pads
 - stack figures are from PCBWay's approved file of 2026-10-27 (0.1016, not 0.1015); the reference order was 0.0762
   track / 0.09 gap, 69.85 x 25.40 mm, 0.225 lands; drl2-5 was confirmed a CAM helper (EQ 2026-10-27 item 1)
 - plane strip MEASURED on the saved repoured polygons: 65 of the orthogonal U1 webs on L2 are 0.085-0.09 mm, not the
@@ -40,11 +40,11 @@ A. Laser via-in-pad under the FPGA (XC7A35T-CPG236: 0.5 mm pitch, 238 balls, 0.2
 - 89 balls have no centred via; on 9 of them (outer rows) a via overlaps the land off-centre: 8 laser vias and 1 through via (ball W8)
 In total 258 laser vias of 0.10 / 0.25 in BGA lands (149 Top-L2, 81 L2-L3, 28 L4-L5) and 54 buried vias under them.
 
-B. 89 more laser vias of 0.10 / 0.25 that are not centred on a ball land (on Top-L2, L2-L3, L4-L5 and L5-Bottom), 43 of them under the FPGA, where a 0.30 mm land does not fit. All other laser vias (748) stay 0.15 / 0.30. The board also has 225 buried vias and 167 through vias.
+B. 91 more laser vias of 0.10 / 0.25 that are not centred on a ball land (on Top-L2, L2-L3, L4-L5 and L5-Bottom), 43 of them under the FPGA, where a 0.30 mm land does not fit. All other laser vias (764) stay 0.15 / 0.30. The board also has 230 buried vias and 169 through vias.
 
 C. Clearance 0.0762 mm (3 mil) on all layers. The track stays 0.0762 mm; W1150632AS3P6 was 0.0762 mm track / 0.09 mm clearance.
 
-D. Via-in-pad on other parts: about 265 laser vias (252 of them 0.15 / 0.30) sit in SMD pads, copper-filled and flat. 113 through vias (0.20 / 0.35) also sit in or on the edge of SMD pads, including ball W8 of the FPGA and balls G9 and H2 of the SDRAM (0.8 mm pitch, 0.40 mm lands). We would like these through vias resin-plugged and plated over.
+D. Via-in-pad on other parts: about 270 laser vias (256 of them 0.15 / 0.30) sit in SMD pads, copper-filled and flat. 114 through vias (0.20 / 0.35) also sit in or on the edge of SMD pads, including ball W8 of the FPGA and balls G9 and H2 of the SDRAM (0.8 mm pitch, 0.40 mm lands). We would like these through vias resin-plugged and plated over.
 
 Questions:
 

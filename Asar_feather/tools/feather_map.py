@@ -103,4 +103,7 @@ PARAMS = {
 
 # Parts added on the Feather (not on the production board): (ref, pin) -> net. RESET = hardware reset button,
 # a second PTS810 from RST# (FPGA PROGRAM_B) to GND, 2026-10-23 (tools/add_reset_button.py).
-ADDED_PINS = {('RESET', '1'): 'RST#', ('RESET', '2'): 'RST#', ('RESET', '3'): 'GND', ('RESET', '4'): 'GND'}
+# X5 = STEMMA QT connector, JST SH 4-pin, on the Feather I2C pins, 2026-11-06 (tools/add_stemma_qt.py).
+ADDED_PINS = {('RESET', '1'): 'RST#', ('RESET', '2'): 'RST#', ('RESET', '3'): 'GND', ('RESET', '4'): 'GND',
+              ('X5', '1'): 'GND', ('X5', '2'): 'VCC3V3', ('X5', '3'): 'CHAN22', ('X5', '4'): 'CHAN21',
+              ('X5', 'MP1'): 'GND', ('X5', 'MP2'): 'GND'}

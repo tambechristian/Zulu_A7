@@ -1010,3 +1010,31 @@ MATCH.** The routed board before this is commit 1f55305.
 - Enquiry updated: pour to non-plated hole 0.25 mm, no strip under 0.0762 mm.
 - Still open: 113 through vias in pads (PCBWay's answer), tracks 0.086-0.095 mm from the X1 non-plated holes, long 3 mil GND
   ties at C109 / C107 / C113, README pin table, no Vivado run on the re-pinned XDC, no SI simulation.
+
+### 2026-11-06 -- STEMMA QT connector X5 added: DRC 0
+
+**Board md5 243ef145: Altium DRC 0 on every rule (`docs/drc_stemma_qt.drc`), 1512 vias, 4861 tracks, verify_copper PASS against
+`tools/route/stage7/final/plan.stemma.json`, 1113 microvias marked, route_conn 0 open, sch_vs_board MATCH (174 parts),
+check_feather_schematic PASS, verify_footprints PASS.** Pads on the board equal `model.stemma.json`, 827 of 827.
+
+- Part: JST SM04B-SRSS-TB, side entry, X5 (J1 is on the Feather's removed list). Top side, right end, rotation 90, pad 1 at
+  45.725, 8.2, mouth towards x = 50.8; housing front 0.5 mm inside the edge, tabs 0.30 mm from it, the plug ends about 1.5 mm
+  past the edge (JST's 6.25 mm mated depth). Pins 1 GND, 2 VCC3V3, 3 SDA (CHAN22), 4 SCL (CHAN21), MP1 and MP2 GND. Schematic on
+  asar_a7_2.SchDoc by `tools/add_stemma_qt.py`, footprint by `tools/footprints.py`.
+- Why side entry: top entry (BM04B) needs no part moved at 36.3, 4.3, but stands 6.3 mm mated plus the cable bend under a stacked
+  Wing, and its trial disturbed 198 tracks including SDRAM nets; this one 76 added, 42 removed.
+- Parts moved to make room: R80, R81 and R82 right of BTN, R84 left of BTN, LD0 0.90 mm west. BTN's designator gave way to a free
+  'BTN' text, 0.6 mm high, between X2's pads and BTN; X5's designator is hidden.
+- Routing: `tools/finish.py` on scratch copies. SDA and SCL both run on L3, about 11 mm each, from X2-28 and X2-27. The first SCL
+  route ran on Top under U4; a temporary obstacle over U4's body in the routing model moved it to L3.
+- An independent review before placement confirmed orientation and pin order four ways, including Adafruit's own SHT40 design
+  file, which has the same pads at the same rotation on a +x edge. It found what route_check cannot see, all fixed before
+  placing: R82 0.05 mm from X5-MP1 (`tools/pad_gate.py` is the new gate for moved pads), two mask slivers at BTN, X5's silk
+  into BTN's mask and U4's silk, BTN's designator landing on R80 and R81, and no mask dam between LD0-3 and X5-2. DRC then
+  caught one more: R84 0.202 mm from the 'ASAR A7' silk, moved 0.06 mm north.
+- Traps: `RemovePCBObject` on a library footprint did not survive the save, even with that footprint current (the track count
+  in the script dropped, the file kept them); selecting and deleting in the editor did. Library silk coordinates carry an
+  offset in a script. finish.py leaves GND and VCC3V3 out of its top-level net list by design: tie new plane pads with a copy
+  that drops that filter (`n not in PLANES`).
+- Not done: no XDC change was needed, and no PULLUP was added on F_SCL / F_SDA (the devices carry pull-ups, FPGA internal ones
+  are optional). No ESD part on SDA / SCL. Vivado not run. Gerbers not generated. README pin table corrected from the XDC.

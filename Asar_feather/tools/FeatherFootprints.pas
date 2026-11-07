@@ -374,6 +374,25 @@ Begin
     Lib.CurrentComponent := Fp;
 End;
 
+Procedure Draw_JST_SM04B_SRSS_TB(Lib : IPCB_Library);
+Var
+    Fp : IPCB_LibComponent;
+Begin
+    Fp := NewFp(Lib, 'JST-SM04B-SRSS-TB', 'JST SH 1.0 mm 4-pin side-entry SMT header, STEMMA QT / Qwiic');
+    If Fp = Nil Then Exit;
+    AddPad(Fp, '1', -1.5000, 2.3950, 0.6000, 1.5500, 0.0000, 0.0000, eRectangular, True);
+    AddPad(Fp, '2', -0.5000, 2.3950, 0.6000, 1.5500, 0.0000, 0.0000, eRectangular, True);
+    AddPad(Fp, '3', 0.5000, 2.3950, 0.6000, 1.5500, 0.0000, 0.0000, eRectangular, True);
+    AddPad(Fp, '4', 1.5000, 2.3950, 0.6000, 1.5500, 0.0000, 0.0000, eRectangular, True);
+    AddPad(Fp, 'MP1', -2.8000, -1.4800, 1.2000, 1.8000, 0.0000, 0.0000, eRectangular, True);
+    AddPad(Fp, 'MP2', 2.8000, -1.4800, 1.2000, 1.8000, 0.0000, 0.0000, eRectangular, True);
+    AddSilk(Fp, -3.0000, -0.1500, -3.0000, 1.2500);
+    AddSilk(Fp, 3.0000, -0.1500, 3.0000, 1.2500);
+    AddSilk(Fp, -1.8000, -2.1800, 1.8000, -2.1800);
+    AddSilk(Fp, -2.6000, 2.7500, -2.2000, 2.7500);
+    Lib.CurrentComponent := Fp;
+End;
+
 Procedure FeatherFpCanary;
 Var
     Lib : IPCB_Library;
@@ -398,6 +417,7 @@ Begin
     Draw_USB_C_HRO_TYPE_C_31_M_12(Lib);
     Draw_FEATHER_28(Lib);
     Draw_TDFN_8_2X3_P0_5(Lib);
+    Draw_JST_SM04B_SRSS_TB(Lib);
     Lib.Board.ViewManager_FullUpdate;
     ShowMessage('Done. Already present, skipped:' + Skipped + '. Save asar_feather.PcbLib.');
 End;

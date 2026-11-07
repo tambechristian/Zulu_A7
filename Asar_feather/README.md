@@ -23,6 +23,7 @@ Not routed.** Everything below was checked from the files, not from the GUI.
 | X2 | 40-pin XuLA2-style DIP | Feather 16 + 12 (footprint FEATHER-28, with the 4 corner holes) | Form factor. |
 | SC189 EN (U5-U7) | tied to VIN (VU) | net EN, pulled to VU by R26, out on Feather EN | Feather meaning: grounding EN turns the board off. |
 | RESET (new) | none | C&K PTS810, the same part and footprint as BTN, from RST# (FPGA PROGRAM_B) to GND, top side at (23.95, 4.55) mm along the 16-pin edge | A hardware reset: on release the FPGA reloads from flash whatever design is running, which a user button driven by HDL cannot do when the FPGA is blank or hung. R1 already pulls RST# up; R4's 100 ohm limits the current if the FT2232H drives the line while the button is held. Added by `tools/add_reset_button.py` and placed by `FeatherPlaceReset.pas`. |
+| X5 STEMMA QT (new) | none | JST SM04B-SRSS-TB, 1.0 mm 4-pin side-entry header, top side at the end opposite the USB, plug leaving past the board edge. Pins 1 GND, 2 VCC3V3, 3 SDA (CHAN22), 4 SCL (CHAN21), on the same bus as Feather pins 27 and 28. No pull-ups on the board: STEMMA QT devices carry them. | I2C sensors without soldering; 2.95 mm tall, fits under a stacked FeatherWing. |
 | JP3/JP4 JTAG | 1x3 through-hole | 1x3 SMD test pads (TP-1X03-SMD) | Size; the bridge does JTAG. |
 
 ## Feather pin map (`tools/feather_map.py`)
@@ -32,22 +33,22 @@ Not routed.** Everything below was checked from the files, not from the GUI.
 | 1 | RST | RST# (PROGRAM_B: reloads the FPGA) | | 17 | VBAT | VBATT |
 | 2 | 3V3 | VCC3V3 | | 18 | EN | EN (SC189 enables) |
 | 3 | AREF | AREF (open) | | 19 | VUSB | USB5V0 |
-| 4 | GND | GND | | 20 | D13 | CHAN14 U1-C16 |
-| 5 | A0 | ANALOG-IO0 -> XADC AD15 divider | | 21 | D12 | CHAN15 U1-A17 |
-| 6 | A1 | ANALOG-IO1 -> XADC AD16 divider | | 22 | D11 | CHAN16 U1-B17 |
-| 7 | A2 | CHAN0 U1-W13 | | 23 | D10 | CHAN17 U1-A18 |
-| 8 | A3 | CHAN1 U1-W14 | | 24 | D9 | CHAN18 U1-B18 |
-| 9 | A4 | CHAN2 U1-W15 | | 25 | D6 | CHAN19 U1-C17 |
-| 10 | A5 | CHAN3 U1-W16 | | 26 | D5 | CHAN20 U1-D17 |
-| 11 | SCK | CHAN4 U1-W17 | | 27 | SCL | CHAN21 U1-E19 |
-| 12 | MOSI | CHAN5 U1-W18 | | 28 | SDA | CHAN22 U1-H19 |
-| 13 | MISO | CHAN6 U1-W19 | | | | |
-| 14 | RX | CHAN7 U1-V19 | | | | |
-| 15 | TX | CHAN8 U1-U19 | | | | |
+| 4 | GND | GND | | 20 | D13 | CHAN14 U1-J19 |
+| 5 | A0 | ANALOG-IO0 -> XADC AD15 divider | | 21 | D12 | CHAN15 U1-R19 |
+| 6 | A1 | ANALOG-IO1 -> XADC AD16 divider | | 22 | D11 | CHAN16 U1-W14 |
+| 7 | A2 | CHAN0 U1-A18 | | 23 | D10 | CHAN17 U1-U16 |
+| 8 | A3 | CHAN1 U1-B18 | | 24 | D9 | CHAN18 U1-W15 |
+| 9 | A4 | CHAN2 U1-C17 | | 25 | D6 | CHAN19 U1-V14 |
+| 10 | A5 | CHAN3 U1-B17 | | 26 | D5 | CHAN20 U1-V13 |
+| 11 | SCK | CHAN4 U1-C15 | | 27 | SCL | CHAN21 U1-U15 |
+| 12 | MOSI | CHAN5 U1-C16 | | 28 | SDA | CHAN22 U1-U14 |
+| 13 | MISO | CHAN6 U1-D17 | | | | |
+| 14 | RX | CHAN7 U1-G17 | | | | |
+| 15 | TX | CHAN8 U1-H17 | | | | |
 | 16 | D4 | CHAN-CLK U1-P18 (clock-capable) | | | | |
 
 19 FPGA I/O plus 2 analog inputs (A0/A1 only; the board has two XADC dividers, not four). A2-A5 are digital.
-Balls as swapped in the pre-routing pass (`tools/pin_swap.json`); Vivado constraints in `vivado/asar_feather_pins.xdc`,
+Balls as they are on the routed board; Vivado constraints in `vivado/asar_feather_pins.xdc`,
 where the header ports are named F_<Feather pin> (F_A2 ... F_SDA, F_D4).
 
 ## How it was done, and what checks it
