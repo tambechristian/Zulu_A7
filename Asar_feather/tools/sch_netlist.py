@@ -63,7 +63,11 @@ def sheet_objects(path, recs=None):
             pins.append((refs.get(c), field(b, 'Designator'), p))
         elif r == '27' and owner(b) in (None, 0):
             n = int(field(b, 'LocationCount'))
-            wires.append([(num(b, 'X%d' % k), num(b, 'Y%d' % k)) for k in range(1, n + 1)])
+            w = [(num(b, 'X%d' % k), num(b, 'Y%d' % k)) for k in range(1, n + 1)]
+            # a wire of more than 50 vertices keeps the rest as EX51/EY51... (sheet 7's GND bus has 52)
+            m = int(field(b, 'EXTRALOCATIONCOUNT') or 0)
+            w += [(num(b, 'EX%d' % k), num(b, 'EY%d' % k)) for k in range(n + 1, n + m + 1)]
+            wires.append(w)
         elif r == '29' and field(b, 'OwnerPartId') in ('-1', None):
             juncs.append((num(b, 'Location.X'), num(b, 'Location.Y')))
         elif r in ('25', '17'):
