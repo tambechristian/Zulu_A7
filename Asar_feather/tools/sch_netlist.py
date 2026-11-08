@@ -68,7 +68,7 @@ def sheet_objects(path, recs=None):
             m = int(field(b, 'EXTRALOCATIONCOUNT') or 0)
             w += [(num(b, 'EX%d' % k), num(b, 'EY%d' % k)) for k in range(n + 1, n + m + 1)]
             wires.append(w)
-        elif r == '29' and field(b, 'OwnerPartId') in ('-1', None):
+        elif r == '29' and owner(b) in (None, 0):      # sheet-level junction (the EAGLE import gave them OwnerPartId=1)
             juncs.append((num(b, 'Location.X'), num(b, 'Location.Y')))
         elif r in ('25', '17'):
             labels.append((field(b, 'Text'), (num(b, 'Location.X'), num(b, 'Location.Y'))))
