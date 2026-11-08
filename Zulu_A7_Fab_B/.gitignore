@@ -1,0 +1,9 @@
+# Altium writes these beside the project on every save/compile; git history replaces them.
+Imported zulu_a7.PrjPcb/History/
+Imported zulu_a7.PrjPcb/__Previews/
+Imported zulu_a7.PrjPcb/Project Logs for */
+# Outputs copied over from the HDI_Optimized project: they describe that board, not Fab B.
+Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7_hdi_optimized/
+# Pre-edit copies written by mark_microvias.py and by hand before each scripted edit; git history replaces them.
+*.pre-microvia*
+backups/
