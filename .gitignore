@@ -40,3 +40,7 @@ archives/
 
 # per-copy Python environment (Claude_Fable/.venv)
 .venv/
+
+# Claude Code side-session worktrees (e.g. Asar_feather/.claude/worktrees/<name>/): checkouts of
+# their own branches, never content of this one
+**/.claude/worktrees/
