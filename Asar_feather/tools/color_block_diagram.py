@@ -2,7 +2,8 @@
 
 The thick arrows are outlines drawn with separate sheet-level lines, closed at their base by a block's edge. This
 splits every line at its crossings, traces the enclosed faces, and picks each arrow's face by a seed point: the
-anchor of its label, or a point in its leg for the two unlabelled arrows (STEMMA QT and LED/Button into the FPGA).
+anchor of its label, or a point in its leg for the two unlabelled arrows (the STEMMA QT block -- Pmod Header on the
+Zulu A7 -- and LED/Button into the FPGA). The Zulu A7 sheets (zulu_a7_0.SchDoc) have the same 272 lines; pass --src.
 Each picked face must have arrowhead diagonals and must not be a block. One filled Polygon record (RECORD=7) per
 arrow goes in right after the block fills (fill_block_diagram.py), under every line and text that follows.
 Every grey (8421504) sheet-level label becomes the new text colour. OwnerIndex values past the insertion point move
@@ -28,8 +29,17 @@ from schdoc import read_stream, split, join, field, set_field, owner, write_stre
 
 SHEET = os.path.join(os.path.dirname(HERE), 'Asar_feather.PrjPcb', 'asar_a7_0.SchDoc')
 GREY = '8421504'
-LABELLED = ['JTAG', 'CTRL (7)', 'ADDRESS (15)', 'DATA (16)', 'DQ[3:0]', 'SD-DAT[3:0]', 'CHAN-I/O (18)']
-SEEDS = {'STEMMA QT -> FPGA': (721.0, 760.0), 'LED/Button <-> FPGA': (712.0, 590.0)}
+LABELLED = ['JTAG', 'CTRL (7)', 'ADDRESS (15)', 'DATA (16)', 'DQ[3:0]', 'SD-DAT[3:0]', 'CHAN-I/O (*)']   # (*): any count
+SEEDS = {'STEMMA QT / Pmod -> FPGA': (721.0, 760.0), 'LED/Button <-> FPGA': (712.0, 590.0)}
+
+
+def label_named(labels, pattern):
+    if pattern.endswith('(*)'):
+        hits = [t for t in labels if t.startswith(pattern[:-2])]
+        assert len(hits) == 1, 'expected one label like %r, found %r' % (pattern, hits)
+        return hits[0]
+    assert pattern in labels, 'label %r not on the sheet' % pattern
+    return pattern
 
 
 def bgr(rgb):
@@ -163,8 +173,7 @@ def main():
     fs = faces(segs)
     seeds = dict(SEEDS)
     for name in LABELLED:
-        assert name in labels, 'label %r not on the sheet' % name
-        seeds[name] = labels[name]
+        seeds[name] = labels[label_named(labels, name)]
     picked = {}
     for name, pt in seeds.items():
         hits = sorted((ar, f) for ar, f in fs if inside(pt, f))

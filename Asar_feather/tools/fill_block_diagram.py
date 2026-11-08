@@ -8,7 +8,8 @@ count, so nothing else in the file changes. Refuses if the sheet already has a f
 
     python tools/fill_block_diagram.py [--color 0xRRGGBB] [--out path] [--dry-run]
 
-Close the sheet in Altium first; the default colour is sky blue (#87CEEB).
+Close the sheet in Altium first. Default colour: light sky blue #CDEBF7 (first applied as #87CEEB, lightened
+2026-11-07); --recolor changes only the AreaColor of the 14 block fills already on the sheet.
 """
 import argparse
 import os
@@ -90,10 +91,11 @@ def uid(taken):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--color', default='0x87CEEB', help='fill colour as 0xRRGGBB (default sky blue)')
+    ap.add_argument('--color', default='0xCDEBF7', help='fill colour as 0xRRGGBB (default light sky blue; was #87CEEB)')
     ap.add_argument('--src', default=SHEET)
     ap.add_argument('--out', default=None, help='write here instead of editing the sheet in place')
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--recolor', action='store_true', help='only change the colour of the block fills already placed')
     a = ap.parse_args()
     rgb = int(a.color, 16)
     bgr = ((rgb & 0xFF) << 16) | (rgb & 0xFF00) | (rgb >> 16)        # Altium stores colours as 0xBBGGRR
@@ -101,8 +103,22 @@ def main():
     recs = split(read_stream(a.src))
     assert text(recs[0][1]).startswith('|HEADER='), 'record 0 is not the header'
     assert text(recs[1][1]).startswith('|RECORD=31|'), 'record 1 is not the sheet record'
-    if any(text(b).startswith('|RECORD=14|') and field(b, 'IsSolid') == 'T' for _, b in recs):
-        sys.exit('Refusing: the sheet already has a filled rectangle.')
+    fills = [i for i, (_, b) in enumerate(recs) if text(b).startswith('|RECORD=14|') and field(b, 'IsSolid') == 'T'
+             and field(b, 'OwnerIndex') is None]
+    if a.recolor:
+        if len(fills) != 14:
+            sys.exit('Refusing: expected the 14 block fills, found %d.' % len(fills))
+        old = {field(recs[i][1], 'AreaColor') for i in fills}
+        out = [[h, set_field(b, 'AreaColor', str(bgr)) if i in fills else b] for i, (h, b) in enumerate(recs)]
+        for i, ((_, b0), (_, b1)) in enumerate(zip(recs, out)):
+            assert b0 == b1 or (i in fills and set_field(b1, 'AreaColor', field(b0, 'AreaColor')) == b0)
+        dst = a.out or a.src
+        shutil.copy2(a.src, (a.src + '.pre-recolor') if not a.out else dst)
+        write_stream(dst, join(out))
+        print('recoloured %d block fills: AreaColor %s -> %d (#%06X) in %s' % (len(fills), sorted(old), bgr, rgb, dst))
+        return
+    if fills:
+        sys.exit('Refusing: the sheet already has a filled rectangle (use --recolor to change its colour).')
     found = boxes(recs)
     named = [(b, t) for b, t in found if t]
     for b, t in named:
