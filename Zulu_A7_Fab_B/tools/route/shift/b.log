@@ -30,3 +30,12 @@ N$BTN
 SD-DAT0        
 LED0_B         
 N$LD0G         ripped LED0_G LED0_R N$BTN N$LD0R
+LED0_G         ripped LED0_B N$LD0G
+LED0_R         
+N$BTN          
+N$LD0R         
+LED0_B         
+N$LD0G         
+routed 28 connections, failed 1; 61 vias, 162 tracks -> route/shift/b.json
+OPEN N$LD0G 1
+FAIL N$LD0G (budget)
