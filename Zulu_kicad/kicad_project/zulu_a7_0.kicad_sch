@@ -717,7 +717,7 @@
 		(at 63.5 143.764 0)
 		(effects
 			(font
-				(size 0.889 0.889)
+				(size 1.397 1.397)
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
@@ -1221,7 +1221,7 @@
 		(at 51.18 189.164 0)
 		(effects
 			(font
-				(size 1.016 1.016)
+				(size 1.397 1.397)
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
