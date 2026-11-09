@@ -1,0 +1,17 @@
+GND            
+VCC3V3         
+CHAN22         
+CLK-12M-FPGA   
+FPGA-TCK       
+UART_FT_CTS#   
+PROG#          
+TMS            
+TDO            
+TDI            
+TCK            
+CLK-12M-FT     
+CLK-12M-SHARED 
+routed 20 connections, failed 2; 62 vias, 222 tracks -> route/no_pmod/y.json
+OPEN TDI 2
+FAIL TDI (budget)
+FAIL TDI (budget)

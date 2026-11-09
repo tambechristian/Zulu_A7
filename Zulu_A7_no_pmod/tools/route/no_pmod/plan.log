@@ -1,0 +1,6 @@
+seeded 62 vias, 222 tracks
+TDI            
+routed 0 connections, failed 2; 62 vias, 222 tracks -> route/no_pmod/plan.json
+OPEN TDI 2
+FAIL TDI (budget)
+FAIL TDI (budget)

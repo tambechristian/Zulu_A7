@@ -1,0 +1,5 @@
+seeded 53 vias, 174 tracks; open 1 on 1 nets: LED0_R (1 s)
+== LED0_R (pass 1)
+LED0_R: no probe path (budget)
+== LED0_R: not closed, 188 s
+finish: open 1 on 1 nets: LED0_R; 53 vias, 174 tracks -> route/led/f1.json (189 s)
