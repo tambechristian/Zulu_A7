@@ -26,9 +26,10 @@ import sch_netlist  # noqa: E402
 
 num, setxy, pin_end, on_seg, wire_pts, inbox = A.num, A.setxy, A.pin_end, A.on_seg, A.wire_pts, A.inbox
 
-# deletion area: the whole power section, minus a hole round LD5/R78 (the VCC3V3 LED stays as drawn)
-BOXES = [(40, 165, 815, 1056), (815, 390, 895, 1056), (815, 165, 895, 255)]
-KEEP = {'X1', 'X4', 'R26', 'R27', 'R28', 'LD5', 'R78'}
+# deletion area: the whole power section (2026-11-10: LD5/R78, the VCC3V3 LED, removed too -- LD3 on PGOODALL already
+# shows the rails are up, and its pull-up R107 comes from VCC3V3)
+BOXES = [(40, 165, 895, 1056)]
+KEEP = {'X1', 'X4', 'R26', 'R27', 'R28'}
 
 # ---- U8 symbol: body x 360..500, y 440..1020
 X0, X1B, YB, YT = 360, 500, 380, 1020
