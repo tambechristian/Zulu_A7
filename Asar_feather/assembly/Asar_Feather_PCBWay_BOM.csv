@@ -1,0 +1,71 @@
+﻿Item #,Designator,Qty,Manufacturer,Mfg Part #,Description / Value,Package/Footprint,Type,Your Instructions / Notes
+1,"BTN,RESET",2,Littelfuse (C&K),PTS810SJM250SMTR LFS,"PTS810: tactile switch SPST-NO momentary, SMT J-lead, 4.2 x 3.2 x 2.5 mm, 1.6 N (160 gf), 0.15 mm travel, 150000 cycles, 16 VDC 50 mA, -40..85 C","C&K PTS810 SMT tactile switch, 4.2 x 3.2 mm",SMD,"BTN (user) and RESET (FPGA reload): same part, top side."
+2,"C3,C4,C5,C6,C7,C8,C9,C11,C12",9,Murata,GRM155R71C104KA88D,"0.1uF: X7R 16V +-10%, 0.50 mm max",C0402,SMD,
+3,C13,1,Murata,GRM188R60J106ME47D,"10uF: X5R 6.3V +-20%, 0.90 mm max",C0603,SMD,
+4,"C36,C37",2,Murata,GRM155R71H102KA01D,"1nF: X7R 50V +-10%, 0.50 mm max",C0402,SMD,
+5,C38,1,Murata,GRM033R71E103KE14D,"0.01uF: X7R 25V +-10%, 0.30 mm max",C0201,SMD,
+6,"C40,C41,C123,C133,C134,C135,C136,C137,C138,C152,C153,C154,C155,C156,C157,C158,C159",17,Murata,GRM033R61A104KE15D,"0.1uF / 100nF: X5R 10V +-10%, 0.30 mm max",C0201,SMD,
+7,"C78,C149",2,Samsung,CL21A106KPFNNNG,10uF / 10uF 10V: X5R 10V +-10% 0805 10uF,C0805,SMD,
+8,"C80,C85,C86,C93,C97,C98,C140,C141,C142,C143,C144,C145,C146",13,Murata,GRM21BR61A226ME44L,22uF: X5R 10V +-20% 0805 22uF,C0805,SMD,
+9,"C82,C84",2,Samsung,CL10A226MP8NUNE,22uF: X5R 10V +-20% 0603 22uF,C0603,SMD,
+10,"C87,C88,C94,C99,C100,C101,C102,C103,C104,C105,C106,C151",12,Murata,GRM188R61C475KE11D,"4.7uF: X5R 16V +-10% 0603 4.7uF, 0.95 mm max",C0603,SMD,
+11,"C89,C90,C91,C92,C95,C96,C107,C108,C109,C110,C111,C112,C113,C114,C115,C116,C117,C118,C119,C120,C121,C122",22,Murata,GRM033R60J474KE90D,0.47uF: X5R 6.3V +-10% 0201 0.47uF,C0201,SMD,
+12,C124,1,Samsung,CL05A474KO5NNNC,"470nF: X5R 16V +-10% 0402 0.47uF, 0.55 mm max",C0402,SMD,
+13,C139,1,Taiyo Yuden,MSASJ105BB5475MFNA01,"4.7uF X5R 6.3V +-20% 0402 MLCC, 0.65 mm max",C0402,SMD,
+14,"C147,C148,C168",3,Murata,GRM188R61A106KE69D,10uF: X5R 10V +-10% 0603 10uF,C0603,SMD,
+15,C150,1,Murata,GRM188R61C106MA73D,10uF: X5R 16V +-20% 0603 10uF,C0603,SMD,
+16,C160,1,Murata,GRM155R61A225KE95D,2.2uF: X5R 10V +-10% 0402 2.2uF,C0402,SMD,
+17,"C161,C167",2,Murata,GRM155R61A105KE15D,1uF: X5R 10V +-10% 0402 1uF,C0402,SMD,
+18,"C163,C164",2,Murata,GRM0335C1H100JA01D,10pF: C0G 50V +-5% 0201 10pF,C0201,SMD,
+19,C165,1,Murata,GRM0335C1H331JA01D,330pF: C0G 50V +-5% 0201 330pF,C0201,SMD,
+20,C166,1,Murata,GRM0335C1H330JA01D,33pF: C0G 50V +-5% 0201 33pF,C0201,SMD,
+21,"L1,L2,L9",3,Murata,DFE252012F-2R2M=P2,"2.2uH: 2.2uH +-20%, Isat 3.3 A, Itemp 2.3 A, DCR 82 mOhm max, 2520 1.2 mm","2520 SMD inductor, 2.5 x 2.0 mm",SMD,"L1, L2, L9 = 2.2 uH. Look-alike 2520 bodies: L3 is 1.5 uH (DFE252010P-1R5M=P2) and L8 3.3 uH (DFE252012F-3R3M=P2). Load each position from its own reel."
+22,L3,1,Murata,DFE252010P-1R5M=P2,"1.5uH: 1.5uH +-20%, Isat >=1.8A, 1.00 mm max","2520 SMD inductor, 2.5 x 2.0 mm",SMD,L3 = 1.5 uH (U7 buck). Look-alike of L1/L2/L8/L9: load from its own reel.
+23,"L4,L5,L6,L7",4,Murata,BLM18KG601SN1D,"FB 600R: ferrite bead 600 ohm at 100 MHz +-25%, 1.3 A at 85 C, 0.15 ohm max, 0603, 0.90 mm max",0603 SMD ferrite bead,SMD,
+24,L8,1,Murata,DFE252012F-3R3M=P2,"3.3uH: 3.3uH +-20%, Isat 2.5 A, Itemp 1.8 A, DCR 135 mOhm max, 2520 1.2 mm","2520 SMD inductor, 2.5 x 2.0 mm",SMD,L8 = 3.3 uH (U8 PowerPath). Look-alike of L1/L2/L3/L9: load from its own reel.
+25,LD0,1,Everlight,19-337/R6GHBHC-A01/2T,"RGB LED, three independent diodes, 1.6 x 1.6 x 0.35 mm, water-clear lens, 624 / 525 / 470 nm, VF at 20 mA 1.7-2.4 / 2.7-3.8 / 2.7-3.8 V, IF 25 mA max per colour",1.6 x 1.6 mm SMD RGB LED (Everlight 19-337 land),SMD,"Water-clear lens. Polarity: cathodes = the cathode-mark column (board footprint pads 2, 4, 6; datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint). The drawing's red dot marks footprint pad 1, an anode."
+26,"LD1,LD2",2,Lite-On,LTST-C191KRKT,red 0603 SMD indicator LED,0603 SMD LED,SMD,Polarity: cathode = pad K; LD1 K on the WEST side (X 31.20 mm); LD2 K on the WEST side (X 34.40 mm). Follow the drawings' red bar.
+27,"LD3,LD4",2,Lite-On,LTST-C191KGKT,green 0603 SMD indicator LED,0603 SMD LED,SMD,Polarity: cathode = pad K; LD3 K on the EAST side (X 6.33 mm); LD4 K on the EAST side (X 6.33 mm). Follow the drawings' red bar.
+28,Q1,1,ECS,ECS-3225SMV-120-FP-TR,"12 MHz HCMOS SMD oscillator, +-10 ppm, 1.62-3.63 V, 3.2 x 2.5 mm",3.2 x 2.5 mm SMD oscillator,SMD,
+29,R1,1,CTS,742C043472JP,"4.7K: 2 x 4.7K +-5% isolated array, 0606 concave 1.60 x 1.60 mm, 0.80 mm pitch, 63 mW per element","CTS 742C043: 2-element concave resistor array, 1.6 x 1.6 mm, 0.8 mm pitch",SMD,
+30,"R2,R6,R7,R99",4,Yageo,RC0201FR-074K7L,"4.7K / 4.7k: thick film +-1%, 1/20W, 0201",R0201,SMD,
+31,R4,1,CTS,742C163101JP,"8 x 100 ohm +-5% isolated concave resistor array, 6.4 x 1.6 mm, 0.8 mm pitch","CTS 742C163: 8-element concave resistor array, 6.4 x 1.6 mm, 0.8 mm pitch",SMD,
+32,"R5,R27,R28",3,Yageo,RC0201FR-075K1L,"5.1K / 5.1k: thick film +-1%, 1/20W, 0201",R0201,SMD,
+33,"R10,R14",2,Yageo,RC0201FR-072K32L,"2.32K: thick film +-1%, 1/20W, 0201",R0201,SMD,
+34,"R11,R15,R20,R22,R23",5,Yageo,RC0201FR-071KL,"1K: thick film +-1%, 1/20W, 0201",R0201,SMD,
+35,"R12,R16",2,Yageo,RC0201FR-07140RL,"140: thick film +-1%, 1/20W, 0201",R0201,SMD,
+36,"R13,R17",2,Yageo,RC0201FR-07845RL,"845: thick film +-1%, 1/20W, 0201",R0201,SMD,
+37,R18,1,Yageo,RC0402FR-0712KL,"12K 1%: thick film +-1%, 1/16W, 0402",R0402,SMD,
+38,"R19,R90,R91,R92,R93,R94,R96,R97,R98",9,Yageo,RC0201FR-0710KL,"10K / 10k: thick film +-1%, 1/20W, 0201",R0201,SMD,
+39,"R21,R108",2,Yageo,RC0402FR-071KL,"1K: thick film +-1%, 1/16W, 0402",R0402,SMD,
+40,"R24,R25",2,Yageo,RC0201FR-0733RL,"33: thick film +-1%, 1/20W, 0201",R0201,SMD,
+41,R26,1,Yageo,RC0201FR-07100KL,"100k: thick film +-1%, 1/20W, 0201",R0201,SMD,
+42,R34,1,CTS,742C083472JP,"4.7K: 4x4.7K isolated array 0603x4, 0.8 mm pitch","CTS 742C083: 4-element concave resistor array, 3.2 x 1.6 mm, 0.8 mm pitch",SMD,
+43,R35,1,Yageo,RC0402FR-074K7L,"4.7K: thick film +-1%, 1/16W, 0402",R0402,SMD,
+44,"R80,R82",2,Yageo,RC0402FR-0733RL,"33: thick film +-1%, 1/16W, 0402",R0402,SMD,
+45,"R81,R83,R84",3,Yageo,RC0402FR-07330RL,"330: thick film +-1%, 1/16W, 0402",R0402,SMD,
+46,"R85,R86",2,Yageo,RC0402FR-0710KL,"10K: thick film +-1%, 1/16W, 0402",R0402,SMD,
+47,R101,1,Yageo,RC0201FR-072K21L,"2.21k: thick film +-1%, 1/20W, 0201",R0201,SMD,
+48,R102,1,Yageo,RC0402FR-074K12L,4.12K: thick film +-1% 0402,R0402,SMD,
+49,R103,1,Yageo,RC0402FR-07576RL,576: thick film +-1% 0402,R0402,SMD,
+50,R107,1,Yageo,RC0402FR-07680RL,680: thick film +-1% 0402,R0402,SMD,
+51,R113,1,Yageo,RC0201FR-07150KL,150K: thick film +-1% 0201,R0201,SMD,
+52,R114,1,Yageo,RC0201FR-07120KL,120K: thick film +-1% 0201,R0201,SMD,
+53,R115,1,Yageo,RC0201FR-07324KL,324K: thick film +-1% 0201,R0201,SMD,
+54,R116,1,Panasonic,ERA-1AEB1043C,104K: thin film +-0.1% 0201 (104k is E192: not in the 1% E96 RC0201 range),R0201,SMD,R116 = 104 kohm 0.1 % thin film (sets VCC3V3). No 1 % or other-value substitute.
+55,R117,1,Yageo,RC0201FR-0715KL,15K: thick film +-1% 0201,R0201,SMD,
+56,R118,1,Yageo,RC0201FR-07121KL,121K: thick film +-1% 0201,R0201,SMD,
+57,U1,1,AMD/Xilinx,XC7A35T-2CPG236I,"AMD Artix-7 FPGA XC7A35T, speed grade -2, industrial, CPG236 BGA 0.5 mm pitch","CPG236 BGA, 10 x 10 mm, 0.5 mm pitch, 238 balls",SMD,"Speed grade -2, industrial temperature: the approved substitute for XC7A35T-1CPG236C (same die, package and pinout). Buy only from an AMD-authorized distributor (e.g. Digi-Key, Mouser, Avnet); no local, broker or open-market stock. 0.5 mm BGA on 0.25 mm lands with filled, capped microvias in the lands: X-ray every board. Moisture sensitive: follow the MSL label."
+58,U2,1,FTDI,FT2232HQ-REEL,"FTDI FT2232HQ dual high-speed USB to UART/FIFO/JTAG bridge, QFN-64 9 x 9 mm","QFN-64 (VQFN), 9 x 9 mm, 0.5 mm pitch, 4.35 mm exposed pad",SMD,"QFN-64 9 x 9 mm (the HQ, not the LQFP HL). Buy only from an FTDI-authorized distributor (FTDI clones exist); no broker stock. Exposed pad: the land has no net (the datasheet says the pad is not internally grounded); solder it with reduced paste. Moisture sensitive: follow the MSL label."
+59,U3,1,Alliance Memory,AS4C32M16SB-7BIN,"512 Mbit SDRAM (32M x 16), 143 MHz, industrial, 54-ball FBGA 8 x 8 mm","54-ball FBGA, 8 x 8 mm, 0.8 mm pitch",SMD,"54-ball FBGA 8 x 8 mm, 0.8 mm pitch, 0.40 mm lands (the -7BIN, not the TSOP -7TCN). X-ray every board. Moisture sensitive: follow the MSL label."
+60,U4,1,Winbond,W25Q128JVPIQ,"128 Mbit SPI/QSPI NOR flash, industrial, WSON-8 6 x 5 mm","WSON-8, 6 x 5 mm, 1.27 mm pitch, exposed pad",SMD,"WSON-8 6 x 5 mm (the JVPIQ, not the SOIC JVSIQ). Exposed pad land has no net: solder it with reduced paste. Moisture sensitive: follow the MSL label."
+61,U7,1,Semtech,SC189ASKTRT,"1.5 A synchronous buck regulator, fixed 1.0 V output, SOT-23-5",SOT-23-5,SMD,U7 = 1.0 V FPGA core (the only SOT-23-5 on the board).
+62,U8,1,Analog Devices,LTC3556EUFD#PBF,"USB power manager with PowerPath, 4.2 V Li-ion charger, two 400 mA buck regulators and a 1 A buck-boost, QFN-28 4 x 5 mm (UFD), exposed pad","QFN-28 (ADI UFD), 4 x 5 mm, 0.5 mm pitch, exposed pad (pin 29)",SMD,"Bottom side. Exposed pad (pin 29) is GND: reduced, windowpane paste. The tape-and-reel ordering code LTC3556EUFD#TRPBF is the same part. Follow the MSL label."
+63,U10,1,Microchip,93LC46BT-I/MNY,"1 Kbit Microwire serial EEPROM, industrial, TDFN-8 2 x 3 mm","TDFN-8 (Microchip MN), 2 x 3 mm, 0.5 mm pitch, exposed pad",SMD,"TDFN-8 2 x 3 mm, top side. Exposed pad land has no net: solder it with reduced paste."
+64,X1,1,HRO (Korean Hroparts),TYPE-C-31-M-12,"USB Type-C receptacle, USB 2.0, SMT, 4 through-hole shell legs","USB Type-C receptacle, SMT contacts + 4 shell legs in plated slots + 2 pegs",SMD,"Top side, mouth flush with the left (USB) board edge. Place in the LAST (top) reflow. Four shell legs in plated 0.6 mm slots (MP1-MP4) have no paste: hand/selective solder them after reflow to full barrel fill (see notes). Two 0.65 mm non-plated holes take the locating pegs."
+65,X3,1,Hirose,DM3D-SF,"microSD push-pull (no eject), top mount, 0.5 A; 8 contacts + 4 shell pads G1-G4 + card-detect switch A/B (open without card)","Hirose DM3D microSD socket, SMT",SMD,Bottom side; it sees the second (top-side) reflow upside down: support or glue if your process needs it.
+66,X4,1,JST,B2B-PH-SM4-TB(LF)(SN),"JST PH 2-pin, 1S LiPo: JST PH 2.0 mm, 2 circuits, top-entry SMT header with fixing tabs, 2 A, 100 V, -25..85 C, mates with PHR-2 housing; pin 1 = battery +, pin 2 = GND",JST PH 2-pin top-entry SMT header,SMD,"Polarity: pin 1 is battery +, pin 2 is GND (see notes for its position)."
+67,X5,1,JST,SM04B-SRSS-TB(LF)(SN),JST SH 1.0 mm 4-pin side-entry SMT header (STEMMA QT / Qwiic),JST SH 1.0 mm 4-pin side-entry SMT header,SMD,"STEMMA QT. Top side, mouth toward the right board edge. Pin 1 = GND."
+68,JP3,0,,none (do not populate),"DNS - do not stuff: three bottom-side 1.0 mm round SMD pads, 1x3 on 1.27 mm (TP-1X03-SMD), for pogo pins or flying leads","three 1.0 mm round SMD test pads, 1.27 mm pitch",DNS,"DNS - do not populate, do not buy. Bare SMD test pads (JTAG): leave empty; please remove their apertures from the bottom stencil (tinned pads are acceptable if you cannot)."
+69,JP4,0,,none (do not populate),"DNS - do not stuff: three bottom-side 1.0 mm round SMD pads, 1x3 on 1.27 mm (TP-1X03-SMD), for pogo pins or flying leads","three 1.0 mm round SMD test pads, 1.27 mm pitch",DNS,"DNS - do not populate, do not buy. Bare SMD test pads (JTAG): leave empty; please remove their apertures from the bottom stencil (tinned pads are acceptable if you cannot)."
+70,X2,0,,none (do not populate),"Feather headers: 1x16 + 1x12, 0.1 in","Feather header holes, 1x16 + 1x12, 2.54 mm pitch, 1.0 mm plated",DNS,"DNS - do not populate, do not buy. Feather headers (1x16 + 1x12, 2.54 mm, 1.0 mm plated holes): NOT populated and NOT bought in this release. The schematic MPN field still names the Zulu A7 40-pin strips (2x PRPC009SAAN-RC + 2x PRPC011SAAN-RC), which do not fit a 16 + 12 Feather, and the design record does not say whether the headers are soldered or shipped loose. Leave the 28 holes empty; ask us before quoting headers."

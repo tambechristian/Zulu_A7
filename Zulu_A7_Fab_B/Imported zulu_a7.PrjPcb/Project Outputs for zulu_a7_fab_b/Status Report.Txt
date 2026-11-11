@@ -1,0 +1,18 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [zulu_a7_fab_b.PrjPcb]
+   Generated File[zulu_a7_fab_b-RoundHoles.TXT]
+   Generated File[zulu_a7_fab_b-SlotHoles.TXT]
+   Generated File[zulu_a7_fab_b-RoundHoles.TX3]
+   Generated File[zulu_a7_fab_b-RoundHoles.TX6]
+   Generated File[zulu_a7_fab_b-RoundHoles.TX7]
+   Generated File[zulu_a7_fab_b-RoundHoles.TX9]
+   Generated File[zulu_a7_fab_b-RoundHoles.TX10]
+   Generated File[zulu_a7_fab_b.LDP]
+   Generated File[zulu_a7_fab_b.DRR]
+
+
+Files Generated   : 9
+Documents Printed : 0
+
+Finished Output Generation At 8:46:54 AM On 11/11/2026

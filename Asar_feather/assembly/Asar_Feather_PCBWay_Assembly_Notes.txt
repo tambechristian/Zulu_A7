@@ -1,0 +1,243 @@
+ASAR FEATHER - PCBWAY ASSEMBLY NOTES
+*** PROVISIONAL RELEASE - NOT FOR PRODUCTION UNTIL CONFIRMED ***
+Release date: 2026-11-11
+Source: working copy after commit 3058c12 (the PCB SHA-256 below identifies it)
+PCB SHA-256: 4A9A971430CF72848D477669B824418F1333AD07DC8490B8F9253F96095BBA1D
+
+PROVISIONAL STATUS
+This release is provisional. We are waiting for your answers to our enquiry
+about laser via-in-pad under a 0.5 mm BGA and 3/3 mil design rules. Please quote
+it and raise engineering queries, but do not start production until we have
+confirmed the points below in writing. The fabrication notes
+(Asar_Feather_PCBWay_FAB_NOTES.txt) restate the full list; the counts below are
+this board's current counts (they supersede the counts in the enquiry).
+A. Via-in-pad on U1 (0.5 mm BGA, 238 round lands of 0.25 mm): 258 laser microvias of
+   0.10 mm hole / 0.25 mm land centred in ball lands (149 Top-L2 0.10/0.25, 81 L2-L3
+   0.10/0.25, 28 L4-L5 0.10/0.25), 54 buried L3-L4 vias stacked under them; 68 balls
+   Top-L2 only, 27 Top-L2 + L2-L3, 26 also on a buried via, 28 full columns to L5; 89
+   balls have no centred via, and on 11 of them a via overlaps the land off-centre (7
+   Top-L2 0.15/0.30, 2 Top-Bot 0.20/0.35, 2 Top-L2 0.10/0.25). All filled with copper
+   and capped flat.
+B. 0.10 mm laser microvias (0.25 mm land), lasered at 0.10 mm through the 0.1016 mm
+   outer and 0.071 mm inner prepregs: 348 in all, 90 not on a U1 ball (37 of them
+   under U1). Other lasers 0.15 / 0.30 mm: 828. Totals: 1176 lasers, 249 buried L3-L4,
+   160 through vias (0.20 / 0.35 mm).
+C. 3/3 mil on all six layers: 0.0762 mm tracks; smallest track-to-copper gap 0.0763
+   mm; one 0.0762 mm track passes between two U1 lands on Top, with the mask opening
+   1:1 on the lands.
+D. Via-in-pad on other parts: 286 laser via-to-pad contacts on SMD pads of other parts
+   (272 0.15 mm, 14 0.1 mm hole), filled and capped; 108 through vias (0.20 / 0.35 mm)
+   in or on the edge of SMD pads, 116 via-to-pad contacts (22 with the hole inside the
+   pad, 83 with the hole on the pad edge, 11 touching with the land only; 17 on the
+   top side, 99 on the bottom), to be resin-plugged and plated over (POFV). This
+   includes U1-W8 and U3 balls G9 and H2.
+E. Stacking: 278 Top-L2 lasers stacked on L2-L3, 110 L2-L3 and 86 L4-L5 lasers on
+   buried vias, 65 L2-to-L5 columns (5 running Top to Bottom); no mechanical L2-L5
+   drill.
+F. Mechanical vias as drawn (buried 0.15 / 0.27 mm, through 0.20 / 0.35 mm), not
+   enlarged; smallest hole-to-hole edge gap 0.241 mm; hole wall to other-net copper
+   0.157 mm (laser), 0.142 mm (buried), 0.161 mm (through); non-plated hole to track
+   0.086 mm.
+G. Plane webs: the L2 ground plane keeps copper strips of about 0.09 mm between
+   adjacent via-in-pad balls under U1 (measured for the enquiry, none under 0.0762 mm;
+   not re-measured on this board). No connection depends on them: you may clear any
+   strip below your minimum.
+If any of A-G changes, this assembly release is re-issued.
+
+UPLOAD SET
+PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
+- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-11_PROVISIONAL.zip
+  (Gerbers incl. the GTP/GBP paste layers, drill files and
+  Asar_Feather_PCBWay_FAB_NOTES.txt),
+  ordered as "HDI (Buried/blind vias)" per Asar_Feather_PCBWay_FAB_NOTES.txt.
+- BOM: Asar_Feather_PCBWay_BOM.csv (PCBWay's BOM template columns). Centroid:
+  Asar_Feather_PCBWay_CPL.csv (SMT parts only, both sides in one file).
+- Drawings: Asar_Feather_PCBWay_Assembly_Drawing_Top.pdf,
+  Asar_Feather_PCBWay_Assembly_Drawing_Bottom.pdf. These notes.
+- Preferred: tick Assembly Service on the HDI quote, so it is one order.
+Copy every critical item below into "Detailed information of assembly" and
+email this file to Service@pcbway.com with the quote number.
+
+RECOMMENDED FORM SETTINGS (adjust if you decide otherwise)
+- Assembly: Service = Turnkey; Assembly side(s) = Both sides.
+- Number of Unique Parts = 67; Number of SMD Parts = 176;
+  Number of BGA/QFP Parts = 2 BGA (U1 CPG236, U3 FBGA-54); also 4 leadless
+  parts with exposed pads (U2 QFN-64, U8 QFN-28, U4 WSON-8, U10 TDFN-8);
+  Number of Through-Hole Parts = 0 (X2 headers not fitted; X1's four
+  shell legs in plated slots need hand/selective soldering, see below).
+- Contains sensitive components/parts = Yes. Paste into its box:
+  "XC7A35T-2CPG236I, FT2232HQ-REEL, AS4C32M16SB-7BIN, W25Q128JVPIQ,
+  LTC3556EUFD#PBF: moisture sensitive, follow the MSL label, bake if floor life
+  is exceeded. XC7A35T-2CPG236I (0.5 mm BGA) and AS4C32M16SB-7BIN
+  (0.8 mm FBGA): X-ray every board."
+- Do you accept alternatives/substitutes made in China = No.
+- Number of X-ray test = the number of boards ordered (U1 and U3 on every
+  board); please confirm what this field counts.
+- PCB: surface finish ENIG (0.25 mm BGA lands, 0201 pads, filled via-in-pad).
+- Panel (the board is only 50.80 x 22.86 mm, corners rounded 2.54 mm): PCB Board type
+  = Panel by Supplier; panel per PCBWay proposal, to be approved (see PANEL below).
+  Assembly Board type = Panelized PCBs; Depanel the boards to delivery = Yes.
+
+ASSEMBLY SCOPE
+Fitted PCB designators: 176
+Top-side fitted designators: 47
+Bottom-side fitted designators: 129
+Physical parts per board: 176
+BOM purchase lines: 67; DNS lines: 3 (JP3, JP4, X2)
+Assembly is required on both sides: SMT bottom, SMT top, then hand soldering of X1's
+shell legs.
+BGAs (top side): U1 XC7A35T-2CPG236I, 0.5 mm pitch, 238 round lands of 0.25 mm; U3
+AS4C32M16SB-7BIN, 0.8 mm pitch, 54 round lands of 0.40 mm.
+Other 0.5 mm pitch: U2 FT2232HQ-REEL QFN-64 (top), U8 LTC3556EUFD#PBF QFN-28 (bottom),
+U10 93LC46BT-I/MNY TDFN-8 (top).
+Smallest package 0201: 81 parts (18 on top).
+Board: 50.80 x 22.86 mm (Adafruit Feather outline), six-layer two-step sequential HDI,
+finished 1.60 +/- 0.16 mm on the stack you agreed for the earlier Zulu A7 HDI order
+(Asar_Feather_PCBWay_FAB_NOTES.txt).
+
+VIA-IN-PAD AND ASSEMBLY
+Via-in-pad is used throughout this board, by design (see PROVISIONAL STATUS A and D):
+- Mask openings on pads expose 304 via lands on the top side and 260 on the bottom
+  (fabrication census). Every laser microvia in a pad must be copper-filled and capped
+  flat, and every through via in a pad resin-plugged and plated over, so that no via
+  wicks solder or traps flux. Please confirm the dimple/planarity you guarantee on the
+  capped lands.
+- 166 parts carry a via in or on a pad; through vias in pads touch 91 parts, among
+  them U1-A13, U1-W8, U2-1, U2-17, U2-6, U3-G9, U3-H2, U3-H8, U4-3, U7-2, U8-1, U8-13,
+  U8-16, U8-17, U8-18, U8-20, U8-27, U8-3, U8-5, U10-5, X3-3, X3-6, X3-G1, X3-G2,
+  X3-G3, X3-G4, X4-2.
+- If you cannot plug and cap a via in a pad, send an engineering query before
+  building; do not tent, mask or leave it open.
+
+PANEL
+Panel per PCBWay proposal, to be approved: please send the panel drawing for
+approval before production. Constraints for your proposal:
+- The outline has 2.54 mm corner radii and four 2.50 mm non-plated holes (X2's corner
+  holes), so the board edge needs routing; tabs or V-cut where you advise.
+- X1 (USB-C) is flush with the left short edge and X5 (STEMMA QT) faces the
+  right short edge: keep both connector mouths clear of rails, tabs and
+  break-off residue.
+- Parts whose pad copper is within 1.0 mm of a straight edge: X5 0.30 mm from the
+  right edge; L1 0.31 mm from the top edge; R115 0.49 mm from the top edge; C165 0.59
+  mm from the top edge; C80 0.66 mm from the top edge; X3 0.78 mm from the right edge;
+  R82 0.80 mm from the right edge. Confirm the depanelizer and support fixture cannot
+  touch them.
+- X2's 28 header holes run along both long edges: no tab residue over them.
+- Depanel with a supported cutter, not by hand-snapping.
+- The board has no fiducials. Please put global fiducials on the rails (top
+  and bottom) and confirm that they suffice for U1, U3 and the 0201s, or
+  propose another alignment method.
+
+CPL AND ORIENTATION
+Asar_Feather_PCBWay_CPL.csv: Designator, Mid X, Mid Y, Layer (Top/Bottom), Rotation.
+It lists every fitted part with SMD pads (X1 included); X2 and the DNS test pads are
+not in it.
+If your line needs one file per side, please split it by the Layer column.
+- Units are millimetres ("mm" suffix). Origin: the board's lower-left
+  corner; the outline runs from 0,0 to 50.80,22.86.
+- Coordinates on both sides are as viewed from the top. Bottom-side X
+  values are NOT mirrored.
+- Mid X/Y is the centre of each part's pad extents, not the footprint
+  origin. For connectors (X1, X3, X4, X5) align the part to its pads in CAM.
+- Rotations are the values stored in the final Altium PCB, in degrees
+  (0/90/180/270), not converted for bottom-side parts. Please confirm your
+  bottom-side convention against the bottom drawing before programming.
+- The top drawing is viewed from the top; the bottom drawing is mirrored,
+  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);
+  dashed red label = DNP. Most designators are hidden on the silkscreen and
+  U10 and the 0603 LEDs have no silkscreen polarity mark, so the drawings
+  and this file are the orientation reference.
+If the CPL and a drawing disagree, please send an engineering query.
+
+SPECIAL COMPONENT INSTRUCTIONS
+- Reflow order: bottom side FIRST, top side LAST, so U1, U3 and X1 (all on top)
+  see one reflow. The bottom side then rides the second reflow upside down:
+  its heaviest parts are X3 (microSD socket), U8 and the 2520 inductors; support
+  or glue them if your process needs it.
+- X1 (HRO (Korean Hroparts) TYPE-C-31-M-12, USB-C receptacle, top side): the mouth
+  is flush with the left (USB) board edge. We have no HRO datasheet on file
+  and give no reflow-cycle limit: please apply HRO's published profile and
+  tell us if it limits the number of reflows. The four shell legs go into
+  plated 0.60 mm slots MP1-MP4 (two 1.70 mm and two 1.20 mm long); the top
+  stencil has no paste on them, so hand- or selective-solder them after
+  reflow to full barrel fill (paste-in-hole is acceptable if you prefer).
+  The two locating pegs go into 0.65 mm non-plated holes and are not
+  soldered.
+- X2 (Feather headers, 1x16 + 1x12, 2.54 mm): NOT fitted in this release (DNS).
+  Leave the 28 plated holes empty and do not buy headers; we will tell you
+  if they are to be quoted (fitted or shipped loose).
+- X5 (SM04B-SRSS-TB(LF)(SN), STEMMA QT, top side): the mouth faces the right board
+  edge. Pin 1 (GND) is the south contact; check against the top drawing.
+- X4 (JST B2B-PH-SM4-TB(LF)(SN), top side): pin 1 (the west contact) is battery
+  positive, pin 2 is GND.
+- X3 (Hirose DM3D-SF microSD, bottom side): per our placement record the card opening
+  faces the right board edge; please check it against the bottom drawing.
+- U2 (FT2232HQ-REEL, QFN-64), U4 (W25Q128JVPIQ, WSON-8) and U10
+  (93LC46BT-I/MNY, TDFN-8): their exposed-pad lands have no net; the paste
+  layer prints them 1:1. Please apply your windowpane reduction.
+- U8 (LTC3556EUFD#PBF, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm
+  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot.
+- U7 (Semtech SC189ASKTRT, SOT-23-5, bottom side): 1.0 V FPGA core buck.
+- Inductors L1, L2, L3, L8, L9 (bottom side) share one 2.5 x 2.0 mm body and
+  are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =
+  DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each
+  position from its own reel and check the reels on the first article.
+- R116 (Panasonic ERA-1AEB1043C, 0201) is a 104 kohm 0.1 % thin-film part;
+  do not substitute a 1 % resistor.
+- 0603 LEDs: LD1, LD2: cathode (pad K) on the WEST side (X 31.20, 34.40 mm); LD3, LD4:
+  cathode (pad K) on the EAST side (X 6.33 mm). The two pairs face opposite ways; the
+  drawings mark each cathode with a red bar.
+- LD0 (Everlight 19-337/R6GHBHC-A01/2T, 1.6 x 1.6 mm): cathodes are on the WEST side,
+  the cathode-mark column (board footprint pads 2, 4, 6), anodes opposite (pads 1, 3,
+  5). The drawing's red dot marks footprint pad 1, an anode. The land is symmetric, so
+  a part turned 180 degrees fits but stays dark.
+  Its datasheet's pin numbers depend on the revision: Rev.4 (DSE-0002657)
+  numbers the cathodes 1-3 and the anodes 4-6, Rev.6 numbers them like the
+  footprint. Follow the cathode mark, not the pad numbers.
+- BTN and RESET (PTS810SJM250SMTR LFS, top side): same part twice.
+- JP3 and JP4 are intentional DNS JTAG test-pad positions (three 1.0 mm SMD
+  pads each, bottom side): no part. Please remove their six apertures from
+  the bottom stencil (tinned pads are acceptable if you cannot).
+- Verify pin 1/A1 against the drawings on Q1, U1, U2, U3, U4, U7, U8, U10, X4 and X5.
+- Stencil from the GTP/GBP layers, whose apertures are 1:1 with copper.
+  Please apply your house reductions, in particular: U1 0.25 mm round
+  apertures (0.08 mm or thinner stencil suggested, paste that releases
+  them reliably); U3 0.40 mm lands; the exposed pads of U2, U4, U8 and U10.
+
+SOURCING
+Please buy by the Manufacturer and Mfg Part # columns; every purchase line
+carries an exact manufacturer part number. Nothing is consigned.
+- Make no substitution without our written approval. Report any line with
+  no stock, a lifecycle problem or an ambiguous MPN as an engineering query.
+- U1 XC7A35T-2CPG236I: AMD-authorized distributors only (e.g. Digi-Key,
+  Mouser, Avnet); no local, broker or open-market stock. Ask us first if
+  none can supply it.
+- U2 FT2232HQ-REEL: FTDI-authorized distributors only (FTDI clones exist).
+  It and U3 AS4C32M16SB-7BIN have had thin stock: please report availability
+  with the quote.
+- The BOM's last column carries per-line instructions; please follow them.
+
+QUALITY AND TEST
+- Lead-free (SAC) solder process.
+- Moisture-sensitive parts: U1, U2, U3, U4 and U8 (and any reel with an MSL
+  label). Follow their MSL labels for storage, floor life and bake.
+- X-ray U1 and U3 on every board and include it in the quotation.
+- AOI on both sides; workmanship to IPC-A-610 Class 2.
+- No firmware programming or functional test is included unless separately
+  quoted and supplied with a test procedure and programming image.
+- First article: please send photos of BOTH sides and the U1 and U3 X-ray
+  images, and wait for our approval before building the rest.
+
+REQUIRED ORDER REVIEW
+Before releasing the order, please confirm in writing:
+- the answers to the PROVISIONAL STATUS points A-G;
+- the HDI fabrication quote, with turnkey assembly on the same order;
+- filling/capping of every via in a pad (lasers) and plugging/plating over of
+  the through vias in pads;
+- the panel drawing and rail fiducials;
+- your bottom-side CPL rotation convention;
+- authorized sourcing for U1 and U2, and any lines with no stock;
+- hand soldering of X1's four shell legs; X2 left empty;
+- the stencil apertures for U1, U3 and the exposed pads, and X-ray of U1 and
+  U3 (and what the Number of X-ray test field counts);
+- polarity and pin 1 against both drawings, then first-article approval.

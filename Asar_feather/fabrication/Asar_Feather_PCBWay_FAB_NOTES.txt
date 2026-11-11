@@ -1,0 +1,480 @@
+ASAR A7 FEATHER - PCBWAY FABRICATION NOTES - *** PROVISIONAL ***
+Revision: Asar A7 Feather  (silkscreen "ASAR A7")
+Release date: 2026-11-11
+PCB SHA-256: 4A9A971430CF72848D477669B824418F1333AD07DC8490B8F9253F96095BBA1D
+Source: asar_feather.PcbDoc (MD5 d22906e17ffc2d908914f34efcd5acd0)
+
+*** PROVISIONAL RELEASE - DO NOT START PRODUCTION ***
+This data set is released for quotation and CAM/engineering review only. It
+depends on PCBWay's answers to our engineering enquiry about 0.10 mm laser
+via-in-pad on the 0.5 mm-pitch BGA lands, 3/3 mil, resin-plugged through vias
+in SMD pads, stacking and hole spacing, which are still outstanding. Every
+assumption that enquiry asks about is restated in the next section with the
+counts of THIS board. The enquiry quoted counts of an older layout (before the
+LTC3556 power-block change); where they differ, the enquiry's figure is shown
+in brackets and the figure in these notes is the one that applies. Please
+answer each numbered item, or confirm it, before fabrication is released.
+
+ASSUMPTIONS PENDING PCBWAY CONFIRMATION (one per enquiry question)
+
+Q1  Laser via-in-pad in the BGA lands (U1, XC7A35T CPG236, 0.5 mm pitch).
+    A 0.10 mm laser via in a 0.25 mm land (0.075 mm ring) sits at the centre
+    of 149 of the 238 ball lands, copper-filled and capped flat, on Top and on
+    the inner lands L2 to L5. The U1 lands cannot grow: above about 0.27 mm a
+    3 mil track no longer fits between two balls. Centred vias per ball:
+       68 balls  Top-L2 only                                    (GND 68)
+       27 balls  Top-L2 + L2-L3 stacked                         (VCC1V0 2, signal 25)
+       26 balls  Top-L2 + L2-L3 on a buried L3-L4 (0.15/0.27)   (VCC1V0 3, VCC1V8 3, signal 20)
+       28 balls  Top-L2 + L2-L3 + buried L3-L4 + L4-L5 column   (VCC3V3 28)
+       89 balls  no centred via
+    Totals in the U1 lands: 258 laser vias of 0.10/0.25 (Top-L2 149, L2-L3 81,
+    L4-L5 28) and 54 buried vias under them [enquiry: 258 = 149/81/28, 54]; no
+    0.15 laser and no through via is centred on a U1 land.
+    Off-centre: on 11 of the balls without a centred via, a via overlaps the
+    land off-centre: 2 x Top-Bot 0.20/0.35, 2 x Top-L2 0.10/0.25, 7 x Top-L2
+    0.15/0.30 [enquiry: 9 balls, 8 lasers + 1 through via]. They are listed in
+    Asar_Feather_VIA_IN_PAD.csv and must be filled and capped like the centred
+    ones.
+      A13 Top-Bot GNDADC (23.030, 7.121) land only
+      D19 Top-L2 FLASH-D01 (19.975, 8.375) hole on pad edge
+      H19 Top-L2 SD-DAT1 (19.950, 10.475) hole on pad edge
+      J19 Top-L2 CHAN14 (19.950, 10.875) hole on pad edge
+      M19 Top-L2 LED2 (20.000, 12.550) hole on pad edge
+      N19 Top-L2 BTN (19.950, 12.950) hole on pad edge
+      R19 Top-L2 CHAN15 (19.925, 14.025) hole on pad edge
+      W10 Top-L2 FPGA-TDI (24.275, 16.025) hole on pad edge
+      W14 Top-L2 CHAN16 (22.400, 15.775) hole on pad edge
+      W8 Top-Bot FPGA-TDO (25.275, 16.100) hole on pad edge
+      W9 Top-L2 FPGA-TMS (24.850, 16.000) hole on pad edge
+
+Q2  Laser hole size.
+    The 0.10 mm laser holes are to be lasered at 0.10 mm (not 0.127 mm)
+    through the 0.1016 mm 3313 (Top-L2, L5-Bottom) and 0.071 mm 1080 (L2-L3,
+    L4-L5) prepregs: 348 holes (TX6 173, TX7 105, TX9 47, TX10 23) [enquiry:
+    349]. If PCBWay must use 0.127 mm, the 0.25 mm land leaves a 0.0615 mm
+    ring - please say whether that is acceptable or propose a thinner outer
+    prepreg.
+    258 of them are centred in U1 lands (Q1); the other 90 are not on a ball
+    (Top-L2 24, L2-L3 24, L4-L5 19, L5-Bottom 23), 37 of those inside the U1
+    land field, where a 0.30 mm land does not fit [enquiry: 91, 43 under the
+    FPGA]. All other 828 laser vias are 0.15/0.30 [enquiry: 764].
+
+Q3  Stacking, with no mechanical L2-L5 drill.
+    All stacks are separate drills at one XY, on filled and capped vias, as
+    drawn. There is no L2-L5 drill in the data; do not merge stacks into one.
+    Counts of coincident sites:
+      (a) Top-L2 on L2-L3 laser:                 278  (0.10/0.10 102, 0.15/0.15 176)
+      (b) L2-L3 laser on a buried L3-L4 via:     110  (0.10 laser 61, 0.15 laser 49)
+          L4-L5 laser on a buried L3-L4 via:      86  (0.10 laser 31, 0.15 laser 55)
+      (c) L2-L3 + L3-L4 + L4-L5 coincident:       65  (with Top-L2 too: 61)
+      (d) full Top-to-Bottom column (5 drills):    5  [enquiry: 4]; 3 mix 0.10 and 0.15
+            (10.575, 16.500) GND        Top-L2 0.15 L2-L3 0.15 L3-L4 0.15 L4-L5 0.15 L5-Bot 0.15
+            (24.225, 13.450) PUDC_B     Top-L2 0.15 L2-L3 0.15 L3-L4 0.15 L4-L5 0.10 L5-Bot 0.10
+            (24.850, 16.000) FPGA-TMS   Top-L2 0.10 L2-L3 0.10 L3-L4 0.15 L4-L5 0.15 L5-Bot 0.15
+            (27.925, 18.925) GNDADC     Top-L2 0.10 L2-L3 0.10 L3-L4 0.15 L4-L5 0.15 L5-Bot 0.15
+            (29.975, 16.975) FLASH-D03  Top-L2 0.15 L2-L3 0.15 L3-L4 0.15 L4-L5 0.15 L5-Bot 0.15
+          L4-L5 on L5-Bottom laser:              187  (0.10/0.10 19, 0.15/0.15 168)
+    Physical blind/buried XY sites: 764; none coincides with a through via.
+    Sites by number of stacked drills: 1: 303, 2: 331, 3: 65, 4: 60, 5: 5.
+
+Q4  Mechanical vias built as drawn, lands not enlarged.
+    Buried L3-L4: 0.15 mm drill in a 0.27 mm land, 245 vias, plus 4 in a 0.30
+    mm land (VBATT (11.600, 14.725), VBATT (11.150, 14.725), GND (15.150,
+    11.250), GND (14.750, 14.600)) = 249 [enquiry: 230]. Through: 0.20 mm
+    drill in a 0.35 mm land, 160 vias [enquiry: 169]. 54 buried vias sit under
+    U1 balls. The clearance rule to these lands is 0.0762 mm and tracks run
+    close to it, so the drill and land cannot be enlarged; if PCBWay cannot
+    build them as drawn, please give the minimum tool and land for each.
+
+Q5  Hole spacing (measured on this board).
+      Minimum hole edge to hole edge, holes meeting on a common layer: 0.241 mm
+      (DRC Hole To Hole rule 0.24 mm). By pair of hole types:
+      L2-L3 / L2-L3            0.245   L2-L3 / L3-L4            0.241
+      L2-L3 / Top-Bot          0.249   L2-L3 / Top-L2           0.245
+      L2-L3 / pad hole         0.501   L3-L4 / L3-L4            0.241
+      L3-L4 / L4-L5            0.241   L3-L4 / Top-Bot          0.241
+      L3-L4 / pad hole         0.427   L4-L5 / L4-L5            0.245
+      L4-L5 / L5-Bot           0.243   L4-L5 / Top-Bot          0.249
+      L4-L5 / pad hole         0.501   L5-Bot / L5-Bot          0.245
+      L5-Bot / Top-Bot         0.249   L5-Bot / pad hole        0.578
+      Top-Bot / Top-Bot        0.278   Top-Bot / Top-L2         0.243
+      Top-Bot / pad hole       0.526   Top-L2 / Top-L2          0.245
+      Top-L2 / pad hole        0.485   pad hole / pad hole      1.540
+    Hole wall to the nearest other-net TRACK on a layer the hole passes: laser
+    0.157 mm, buried 0.142 mm, through via 0.161 mm. Hole wall to PLANE copper
+    is governed by the rules (planes to through vias 0.175 mm, everything else
+    0.0762 mm, both pass DRC); the enquiry quoted 0.15 / 0.136 / 0.151 mm
+    (laser / buried / through) from the earlier layout and the solid pours
+    were not re-measured here. Non-plated holes: 0.086 mm to the nearest
+    track, 0.367 mm to the nearest via land, 0.25 mm to the plane pours (rule
+    Clearance_Plane_NPTH, passes DRC) [enquiry: 0.086 / 0.25].
+
+Q6  Plane copper between clearance holes.
+    Between adjacent via-in-pad balls of U1 the L2 GND plane keeps strips of
+    about 0.085-0.09 mm, none under 0.0762 mm (necks were removed at 3 mil).
+    This was measured on the saved pours of 2026-11-05 and was NOT re-measured
+    on this file. No connection depends on these strips: PCBWay may clear any
+    strip below its minimum.
+
+Q7  3/3 mil on all six layers at the stack's copper weights.
+    Minimum track width 0.0762 mm on Top, L3, L4 and Bottom (L2 and L5 carry
+    only plane pours). Global clearance rule 0.0762 mm (3 mil). Measured
+    minimum track to other-net copper: Top 0.0763 mm, L3-SIG 0.0818 mm, L4-SIG
+    0.0819 mm, Bottom 0.0784 mm. (a) One 3 mil track between two 0.25 mm U1
+    lands on Top: track-to-land minimum 0.0818 mm [enquiry: 0.082-0.087]; the
+    U1 mask openings are drawn 1:1 (238 openings of 0.25 mm in GTS) - please
+    keep the track under mask. (b) Track to laser via land: L3 0.0818 mm, L4
+    0.0869 mm. If any layer needs thinner copper for 3/3 mil, say which.
+
+Q8  Through vias in SMD pads: resin-plugged and plated over.
+    108 through vias (0.20/0.35) touch an SMD pad (116 pad contacts: hole
+    inside the pad 22, hole on the pad edge 83, land only 11) [enquiry: 114],
+    including U1 balls W8 and A13 and SDRAM U3 balls G9, H2 and H8. They stay
+    in the pads by design. Please resin-plug them and plate over flat
+    (IPC-4761 type VII, VIPPO), and say whether this changes your minimum hole
+    or land. Full list under THROUGH VIAS IN SMD PADS below.
+
+Q9  Planarity of the filled lasers in the U1 field.
+    149 U1 lands carry a centred filled 0.10 mm laser; 11 more vias overlap U1
+    lands off-centre (Q1); 37 0.10 mm lasers inside the U1 land field (ball
+    centres +/-0.25 mm) are not centred on a ball, 2 of them among the
+    off-centre ones. Please state any DFM concern (dimple depth, planarity)
+    [enquiry: 149 + about 30].
+
+Q10 Price for 5 and 10 pieces, with and without the plugged through vias, and
+    lead time: pending.
+
+Other laser via-in-pad (not U1), also copper-filled and capped flat:
+    286 laser vias touch non-U1 SMD pads (272 of 0.15/0.30, 14 of 0.10/0.25)
+    [enquiry: about 270, 256 of them 0.15/0.30].
+
+ORDER AND CAM GATE
+Bare board, six layers, two-step sequential HDI, in the same family as the
+earlier Zulu A7 HDI order: same layer use, same agreed stack, same via classes
+plus a 0.10 mm laser class. Route it to PCBWay HDI engineering/CAM review. Do
+not release fabrication as a standard six-layer prototype and do not start
+production until the items above are answered in writing.
+
+BOARD
+Finished outline: 50.80 mm x 22.86 mm, rectangle with four 2.54 mm corner radii
+  (from the GM profile: 4 straight edges, 4 arcs centred 2.54 mm in from each
+  corner; Adafruit Feather form factor)
+Finished thickness: 1.60 mm +/-0.16 mm
+Material: Shengyi S1000-2M, Tg 180
+Surface finish: ENIG
+Solder mask: green;  Silkscreen: white
+Layer order (PcbDoc layer names):
+  L1  Top Layer     signal/components
+  L2  L2-GND        GND plane polygon
+  L3  L3-SIG        signal
+  L4  L4-SIG        signal
+  L5  L5-VCC3V3     VCC3V3 plane polygon
+  L6  Bottom Layer  signal/components
+The L2 and L5 Gerbers are positive signal-layer polygon plots, not negative
+plane files.
+
+STACK (AS AGREED WITH PCBWAY ENGINEERING FOR THE EARLIER ZULU A7 HDI ORDER,
+PCBWay stackup file of 2026-10-27)
+  Layer/material                     Thickness
+  L1 copper                          0.5 oz base, plated to 1 oz
+  3313 prepreg, L1-L2                0.1016 mm
+  L2 copper                          0.5 oz
+  1080 prepreg, L2-L3                0.071 mm
+  L3 copper                          0.5 oz
+  Core, L3-L4                        1.065 mm
+  L4 copper                          0.5 oz
+  1080 prepreg, L4-L5                0.071 mm
+  L5 copper                          0.5 oz
+  3313 prepreg, L5-L6                0.1016 mm
+  L6 copper                          0.5 oz base, plated to 1 oz
+Inner copper is 0.5 oz; do not substitute 1 oz without confirming 3/3 mil
+(Q7). Any change to the construction needs our written approval.
+
+HDI CONSTRUCTION, VIA TYPES AND DRILL COUNTS (PcbDoc and drill files agree)
+  Span           Type                Hole   Land   Ring    Count  File, tool
+  Top-L2         laser microvia      0.10   0.25   0.075    173  TX6, T01
+  Top-L2         laser microvia      0.15   0.30   0.075    214  TX6, T02
+  L2-L3          laser microvia      0.10   0.25   0.075    105  TX7, T01
+  L2-L3          laser microvia      0.15   0.30   0.075    178  TX7, T02
+  L3-L4          buried, mechanical  0.15   0.27   0.060    245  TX3, T02
+  L3-L4          buried, mechanical  0.15   0.30   0.075      4  TX3, T02
+  L4-L5          laser microvia      0.10   0.25   0.075     47  TX9, T01
+  L4-L5          laser microvia      0.15   0.30   0.075    196  TX9, T02
+  L5-Bottom      laser microvia      0.10   0.25   0.075     23  TX10, T01
+  L5-Bottom      laser microvia      0.15   0.30   0.075    240  TX10, T02
+  Top-Bottom     plated through via  0.20   0.35   0.075    160  TXT, T03
+  Laser microvias 1176 (0.10 mm: 348, 0.15 mm: 828), buried 249, through 160;
+  1585 via objects in all.
+Drill-file hit counts per tool equal the PcbDoc via counts above, matched
+one-to-one by position and hole size. The L3-L4 buried via is a 0.15 mm
+mechanical drill through the 1.065 mm core (aspect ratio about 7.1:1), as on
+the earlier Zulu A7 HDI order. Fill and planarize every receiving microvia and
+buried via before the next build-up step; confirm the lamination and fill/cap
+sequence in the CAM response.
+
+PLATED HOLES, PLATED SLOTS AND NON-PLATED HOLES (Top-Bottom)
+  1.00 mm plated round x28  X2 Feather header pins (0.1 in), 1.70 mm lands
+  0.60 mm plated slots x4    X1 USB-C receptacle (HRO TYPE-C-31-M-12) shell legs:
+    X1-MP1  0.60 x 1.70 mm, horizontal, centre (6.7795, 15.7500), land 1.10 x 2.20 mm, net GND
+    X1-MP2  0.60 x 1.70 mm, horizontal, centre (6.7795, 7.1100), land 1.10 x 2.20 mm, net GND
+    X1-MP3  0.60 x 1.20 mm, horizontal, centre (2.5995, 15.7500), land 1.10 x 1.70 mm, net GND
+    X1-MP4  0.60 x 1.20 mm, horizontal, centre (2.5995, 7.1100), land 1.10 x 1.70 mm, net GND
+    The slots are in asar_feather-SlotHoles-Plated.TXT as G85 routes of a 0.60
+    mm tool (route length + tool = overall length). Do not convert them to
+    round holes or make them non-plated.
+  Non-plated holes (asar_feather-RoundHoles-NonPlated.TXT):
+    0.65 mm  (  6.250,   8.540)  X1 USB-C locating peg
+    0.65 mm  (  6.250,  14.320)  X1 USB-C locating peg
+    2.50 mm  (  2.540,   2.540)  Feather mounting hole
+    2.50 mm  (  2.540,  20.320)  Feather mounting hole
+    2.50 mm  ( 48.260,   2.540)  Feather mounting hole
+    2.50 mm  ( 48.260,  20.320)  Feather mounting hole
+    The plane pours are pulled back 0.25 mm from all six non-plated holes.
+
+TRACK AND SPACE
+  Minimum designed track: 0.0762 mm (3 mil), used on Top, L3, L4 and Bottom.
+  Clearance rules (all pass DRC):
+    0.25 mm    L2/L5 plane pours to the X1/X2 holes
+    0.175 mm   L2/L5 plane pours to through vias
+    0.20 mm    SDRAM-CLK on L3/L4
+    0.10 mm    SDRAM data/address/control nets on L3/L4
+    0.0762 mm  all copper, all layers (global)
+  Measured minimum track to other-net copper: 0.0763 mm (Top, USB_D_N to pad X1-3).
+  Do not globally resize copper without approval.
+
+BGA U1
+U1 is an XC7A35T in CPG236 (0.5 mm pitch, 238 balls) on Top, with 0.25 mm
+round lands on this board (the earlier Zulu A7 HDI order had 0.225 mm). Mask
+openings are 1:1 (238 x 0.250 x 0.250 in GTS); minimum mask web (DRC rule)
+0.10 mm. Do not enlarge the U1 mask openings without approval. Via-in-pad on
+U1: Q1.
+
+VIA-IN-PAD (FILL AND CAP REQUIRED)
+552 vias have a land that overlaps an SMD pad (560 pad contacts; 8 vias touch
+two pads of the same net). By via type: L5-Bot 0.10/0.25 9, L5-Bot 0.15/0.30
+148, Top-Bot 0.20/0.35 108, Top-L2 0.10/0.25 156, Top-L2 0.15/0.30 131.
+Position of the hole: centred in the pad 150 (U1 balls and one resistor pad),
+inside the pad 113, on the pad edge 280, land only 17 (counted per pad
+contact). Every microvia in a pad is copper-filled and capped flat; every
+through via in a pad is resin-plugged and plated over (Q8). The complete table
+(ref, pad, net, side, via type, hole, land, XY, position) is in
+Asar_Feather_VIA_IN_PAD.csv, which is part of this package.
+  Pad contacts per part (type: L=laser 0.15/0.30, l=laser 0.10/0.25, T=through):
+     BTN 3L;  C3 1L+1T;  C4 1L+1T;  C5 1L+1T;  C6 1L+1T;  C7 1L+1T;  C8 1L;
+     C9 1L;  C11 1L+1T;  C12 2L;  C13 1L+1T;  C36 1l+1L;  C37 2L;  C38 1L+1T;
+     C40 2L+1T;  C41 2T;  C78 1T;  C80 1L+1T;  C82 1L+1T;  C84 1T;  C85 1T;
+     C86 1T;  C87 1L+1T;  C88 1L+2T;  C89 1l;  C91 1L+1T;  C92 2T;  C93 1L+1T;
+     C94 1T;  C95 1l+1T;  C96 1L+1T;  C97 1L+1T;  C98 1L+1T;  C99 1L+1T;
+     C100 1L+1T;  C101 1L+1T;  C102 1L+1T;  C103 1L+1T;  C104 1L+1T;
+     C105 1L+1T;  C106 1L+2T;  C107 1l;  C108 1L;  C109 1l;  C110 1L;
+     C111 1L+1T;  C112 1L;  C113 1L;  C114 2L;  C115 1l;  C116 1L;
+     C117 1L+1T;  C118 2L;  C119 1L+1T;  C120 1L+1T;  C121 1L+1T;  C122 1L+1T;
+     C123 1l;  C124 2L+1T;  C133 1L+1T;  C134 1L+1T;  C135 1L+1T;  C136 1L+1T;
+     C137 1L+1T;  C138 1L+1T;  C139 2L;  C140 1T;  C141 1T;  C142 1L;
+     C143 1T;  C144 1T;  C145 1l+1T;  C146 1L+1T;  C147 1L;  C148 1T;
+     C149 1T;  C150 2L;  C151 2L;  C152 2L;  C153 2L+1T;  C154 1l+1T;
+     C155 1L+1T;  C156 1L;  C157 1L+1T;  C158 1L+1T;  C159 1L+1T;  C160 1T;
+     C161 1L+1T;  C164 2L;  C167 1T;  C168 1T;  JP3 1L+1T;  JP4 1L;  L2 1L;
+     L4 2L;  L5 2L;  L6 1L;  L7 1L+1T;  L8 1L;  LD0 3L;  LD1 1L;  LD2 1L;
+     LD3 2L;  LD4 1L;  Q1 4L;  R1 3L;  R2 1L;  R4 13L+1T;  R5 1L;  R6 2L;
+     R7 1L;  R11 1L;  R13 2L;  R15 1L;  R16 1L;  R17 1L;  R18 1T;  R19 1L;
+     R20 1L;  R21 1L+2T;  R22 2L;  R23 1l+1L;  R24 1L;  R25 1L;  R26 1L+1T;
+     R27 1L;  R28 2L;  R34 5L+1T;  R35 1L;  R80 1L;  R81 1L;  R82 1L;  R84 1L;
+     R86 1l+1L+1T;  R90 2L;  R91 2L;  R92 1L+1T;  R93 1L+1T;  R94 1l+1L;
+     R96 1L+1T;  R97 1L;  R98 1L;  R99 1L+1T;  R101 1L+1T;  R102 1L+1T;
+     R103 2L+1T;  R107 2L;  R108 2L;  R113 1L;  R114 1T;  R115 1L;  R116 1L;
+     R117 1L;  R118 1L;  RESET 3L+1T;  U1 151l+7L+2T;  U2 28L+3T;  U3 26L+3T;
+     U4 4L+1T;  U7 2L+1T;  U8 11L+10T;  U10 5L+1T;  X1 8L;  X3 4L+6T;
+     X4 1L+2T;  X5 2l+3L;
+
+THROUGH VIAS IN SMD PADS (resin plug + plate over; 108 vias, 116 pad contacts)
+  Ref-pad     Side    Net             Hole vs pad       Via centre (mm)
+  C3-1        Bottom  GND             hole on pad edge  ( 36.600,  10.475)
+  C4-1        Bottom  GND             hole on pad edge  ( 35.450,  10.475)
+  C5-1        Bottom  GND             hole on pad edge  ( 34.300,  10.475)
+  C6-1        Bottom  GND             hole on pad edge  ( 33.150,  10.475)
+  C7-1        Bottom  GND             hole on pad edge  ( 32.000,  10.475)
+  C11-1       Bottom  GND             hole on pad edge  ( 32.675,   6.850)
+  C13-1       Bottom  GND             hole on pad edge  ( 30.300,   8.175)
+  C38-1       Bottom  GND             hole on pad edge  ( 25.350,   2.525)
+  C40-1       Bottom  GND             hole on pad edge  (  8.750,   2.525)
+  C41-1       Bottom  GND             land only         ( 10.175,   2.350)
+  C41-2       Bottom  FT-VPLL         land only         ( 10.675,   2.350)
+  C78-1       Bottom  GND             hole in pad       (  1.800,   9.300)
+  C80-1       Bottom  GND             hole in pad       ( 13.100,  21.025)
+  C82-1       Bottom  GND             hole in pad       ( 13.075,  15.250)
+  C84-1       Bottom  GND             hole on pad edge  (  6.250,  11.000)
+  C85-2       Bottom  GND             hole in pad       ( 16.125,  10.925)
+  C86-2       Bottom  GND             hole in pad       ( 18.750,  10.925)
+  C87-2       Bottom  GND             hole on pad edge  ( 21.900,   3.275)
+  C88-1       Bottom  VCC1V0          hole on pad edge  ( 23.600,   3.800)
+  C88-2       Bottom  GND             hole on pad edge  ( 24.400,   3.275)
+  C91-2       Bottom  GND             hole on pad edge  ( 21.275,  12.150)
+  C92-1       Bottom  VCC1V0          land only         ( 24.400,   9.175)
+  C92-2       Bottom  GND             hole on pad edge  ( 25.100,   8.750)
+  C93-2       Bottom  GND             hole in pad       ( 16.750,  14.925)
+  C94-2       Bottom  GND             hole on pad edge  ( 21.200,   4.675)
+  C95-2       Bottom  GND             hole on pad edge  ( 21.275,   8.750)
+  C96-2       Bottom  GND             hole on pad edge  ( 25.725,   8.750)
+  C97-2       Bottom  GND             hole in pad       ( 17.875,  18.925)
+  C98-2       Bottom  GND             hole in pad       ( 35.600,  15.175)
+  C99-2       Bottom  GND             hole on pad edge  ( 24.400,   4.675)
+  C100-2      Bottom  GND             hole on pad edge  ( 16.300,   6.925)
+  C101-2      Bottom  GND             hole on pad edge  ( 32.000,   2.675)
+  C102-2      Bottom  GND             hole on pad edge  ( 35.200,   2.675)
+  C103-2      Bottom  GND             hole on pad edge  ( 32.000,   4.075)
+  C104-2      Bottom  GND             hole on pad edge  ( 35.200,   4.075)
+  C105-2      Bottom  GND             hole on pad edge  ( 32.000,   5.475)
+  C106-2      Bottom  GND             hole on pad edge  ( 35.200,   5.475)
+  C106-2      Bottom  GND             hole in pad       ( 35.475,   6.275)
+  C111-2      Bottom  GND             land only         ( 25.750,  17.000)
+  C117-2      Bottom  GND             hole on pad edge  ( 25.750,  17.625)
+  C119-2      Bottom  GND             hole on pad edge  ( 27.950,  17.750)
+  C120-2      Bottom  GND             hole on pad edge  ( 29.150,  17.750)
+  C121-2      Bottom  GND             hole on pad edge  ( 25.575,  18.325)
+  C122-2      Bottom  GND             hole on pad edge  ( 29.150,  18.325)
+  C124-1      Bottom  VCCADC          land only         ( 26.100,  18.300)
+  C133-1      Bottom  GND             hole on pad edge  ( 24.950,  18.950)
+  C134-1      Bottom  GND             hole on pad edge  ( 28.575,  18.950)
+  C135-1      Bottom  GND             hole on pad edge  ( 24.950,  19.550)
+  C136-1      Bottom  GND             hole on pad edge  ( 28.575,  19.550)
+  C137-1      Bottom  GND             hole on pad edge  ( 26.150,  19.625)
+  C138-1      Bottom  GND             hole on pad edge  ( 27.350,  19.625)
+  C140-2      Bottom  GND             hole in pad       ( 35.275,   8.625)
+  C141-2      Bottom  GND             hole in pad       ( 32.075,  13.425)
+  C143-2      Bottom  GND             hole in pad       ( 32.100,  15.175)
+  C144-2      Bottom  GND             hole in pad       ( 17.875,  14.925)
+  C145-2      Bottom  GND             hole in pad       ( 33.125,  17.750)
+  C146-2      Bottom  GND             hole in pad       ( 35.575,  17.850)
+  C148-1      Bottom  GND             hole on pad edge  (  5.650,  20.350)
+  C149-1      Bottom  GND             hole in pad       (  1.250,  12.625)
+  C153-1      Bottom  GND             land only         ( 14.725,   2.350)
+  C154-1      Bottom  GND             land only         ( 16.175,   2.350)
+  C155-1      Bottom  GND             hole on pad edge  ( 19.350,   2.525)
+  C157-1      Bottom  GND             hole on pad edge  ( 21.775,   2.525)
+  C158-1      Bottom  GND             hole on pad edge  ( 22.950,   2.525)
+  C159-1      Bottom  GND             hole on pad edge  ( 24.150,   2.525)
+  C160-1      Bottom  GND             hole on pad edge  ( 16.300,  18.950)
+  C161-1      Bottom  GND             hole on pad edge  (  2.425,  16.675)
+  C167-1      Bottom  GND             hole on pad edge  (  9.400,  11.250)
+  C168-1      Bottom  GND             hole in pad       (  2.850,  17.950)
+  JP3-3       Bottom  GND             hole on pad edge  ( 17.475,   7.275)
+  L7-1        Top     VCC1V8          hole in pad       ( 19.475,  17.625)
+  R4-2        Bottom  DONE            hole on pad edge  ( 10.050,   6.950)
+  R18-1       Bottom  GND             hole on pad edge  (  8.875,   3.225)
+  R21-1       Top     GND             hole on pad edge  ( 29.150,  17.750)
+  R21-1       Top     GND             hole on pad edge  ( 29.150,  18.325)
+  R26-1       Bottom  VU              hole on pad edge  (  7.675,   4.125)
+  R34-1       Bottom  SD-DAT0         hole on pad edge  ( 21.500,  19.000)
+  R86-1       Top     GND             hole on pad edge  ( 19.350,   2.525)
+  R92-1       Bottom  TMS             hole on pad edge  ( 10.125,   4.500)
+  R93-1       Bottom  UART_FT_CTS#    hole on pad edge  ( 11.350,   4.650)
+  R96-1       Bottom  EE-CLK          hole on pad edge  (  9.525,  12.450)
+  R99-1       Bottom  PROG#           hole on pad edge  ( 13.550,   4.475)
+  R101-2      Bottom  EE-DATA         hole on pad edge  ( 15.425,   4.675)
+  R102-2      Bottom  GND             hole on pad edge  ( 13.075,   9.800)
+  R103-2      Bottom  GND             hole on pad edge  (  4.650,  16.800)
+  R114-2      Bottom  GND             hole on pad edge  (  8.725,  11.650)
+  RESET-3     Top     GND             hole in pad       ( 21.900,   3.275)
+  U1-A13      Top     GNDADC          land only         ( 23.030,   7.121)
+  U1-W8       Top     FPGA-TDO        hole on pad edge  ( 25.275,  16.100)
+  U2-1        Top     GND             hole on pad edge  (  9.400,  11.250)
+  U2-6        Top     FT-REF          hole on pad edge  (  9.575,   8.575)
+  U2-17       Top     TDI             hole on pad edge  (  9.825,   3.075)
+  U3-G9       Top     SDRAM-CS#       hole on pad edge  ( 36.675,  14.775)
+  U3-H2       Top     A7              hole on pad edge  ( 37.200,   9.075)
+  U3-H8       Top     A1              land only         ( 37.075,  13.875)
+  U4-3        Top     FLASH-D02       hole on pad edge  ( 41.000,  14.725)
+  U7-2        Bottom  GND             hole on pad edge  (  4.425,  13.450)
+  U8-1        Bottom  VU              hole on pad edge  (  8.300,  15.600)
+  U8-1        Bottom  VU              hole on pad edge  (  8.800,  15.600)
+  U8-3        Bottom  GND             hole on pad edge  (  8.300,  16.475)
+  U8-5        Bottom  VU              hole on pad edge  (  8.800,  17.500)
+  U8-13       Bottom  GND             hole on pad edge  ( 11.175,  19.400)
+  U8-16       Bottom  GND             hole on pad edge  ( 12.100,  18.475)
+  U8-17       Bottom  PWR_FB2         hole on pad edge  ( 12.700,  18.000)
+  U8-18       Bottom  VU              hole on pad edge  ( 12.775,  17.500)
+  U8-20       Bottom  PWR_PROG        hole on pad edge  ( 12.675,  16.475)
+  U8-27       Bottom  GND             land only         (  9.850,  14.425)
+  U10-5       Top     GND             hole on pad edge  (  9.850,  14.425)
+  X3-3        Bottom  SD-CMD          hole on pad edge  ( 37.775,  12.750)
+  X3-6        Bottom  GND             hole on pad edge  ( 38.625,   8.800)
+  X3-G1       Bottom  GND             hole in pad       ( 39.175,   5.875)
+  X3-G2       Bottom  GND             hole on pad edge  ( 45.575,   5.125)
+  X3-G3       Bottom  GND             hole on pad edge  ( 46.275,  17.075)
+  X3-G4       Bottom  GND             hole in pad       ( 37.975,  16.450)
+  X4-2        Top     GND             land only         ( 11.175,  19.400)
+  X4-2        Top     GND             hole in pad       ( 12.100,  18.475)
+
+SOLDER MASK AND VIA TENTING (checked against GTS/GBS)
+Every mask opening sits on a pad (523 Top, 366 Bottom; none on a bare via).
+Vias whose land reaches into a mask opening: Top 304 (Top-Bot 17, hole exposed
+16, Top-L2 287, hole exposed 287), Bottom 260 (L5-Bot 159, hole exposed 155,
+Top-Bot 101, hole exposed 95); all of them are via-in-pad vias listed above
+except the 4 below (5 openings). Every other via is tented on both sides.
+  Bottom L5-Bot  TDO     (  9.125,   4.850) land overlapped 0.053 mm by the opening of R91-1
+                  (same net), hole not exposed (hole edge 0.022 mm from the opening)
+  Bottom L5-Bot  VBATT   ( 12.050,  14.900) land overlapped 0.050 mm by the opening of C151-2
+                  (same net), hole not exposed (hole edge 0.025 mm from the opening)
+  Bottom L5-Bot  VBATT   ( 12.050,  14.900) land overlapped 0.025 mm by the opening of U8-23
+                  (same net), hole not exposed (hole edge 0.050 mm from the opening)
+  Bottom Top-Bot GND     ( 13.550,   2.325) land overlapped 0.030 mm by the opening of C152-1
+                  (same net), hole not exposed (hole edge 0.045 mm from the opening)
+  Bottom Top-Bot GND     ( 20.575,   2.300) land overlapped 0.005 mm by the opening of C156-1
+                  (same net), hole not exposed (hole edge 0.070 mm from the opening)
+The 52 through vias that are not in pads are tented. PLEASE PLUG ALL 160
+THROUGH VIAS (the 108 in pads resin-plugged and plated over, the rest at least
+resin-plugged, IPC-4761 type VI or VII) so that mask registration cannot leave
+an open hole beside a pad, and state the method in the CAM response. All
+microvias and buried vias are filled anyway for the stacking.
+
+CONTROLLED IMPEDANCE
+None requested. The only high-speed pair, USB 2.0 D+/D- between the USB-C
+receptacle X1 (HRO TYPE-C-31-M-12) and the FT2232HQ U2, is not routed as a
+coupled pair: USB_D_P runs 3.72 mm on L3 (0.15 mm wide, with 4 stacked Top-L2
++ L2-L3 0.15 mm laser sites, 8 vias), USB_D_N runs 4.39 mm on Top (0.15 mm
+wide). It is electrically short; do not adjust it.
+
+PANEL
+Please propose a panel for approval. The outline has 2.54 mm corner radii, so
+the boards must be routed out (tabs/mouse bites), not V-cut through the
+corners.
+
+FILE MAP
+  asar_feather.GTL                       L1 Top copper
+  asar_feather.G1                        L2 GND
+  asar_feather.G2                        L3 signal
+  asar_feather.G3                        L4 signal
+  asar_feather.G4                        L5 VCC3V3
+  asar_feather.GBL                       L6 Bottom copper
+  asar_feather.GTS                       Top solder mask
+  asar_feather.GBS                       Bottom solder mask
+  asar_feather.GTO                       Top silkscreen
+  asar_feather.GBO                       Bottom silkscreen
+  asar_feather.GTP                       Top paste
+  asar_feather.GBP                       Bottom paste
+  asar_feather.GM                        Board profile (rounded corners)
+  asar_feather-RoundHoles-Plated.TXT     Top-Bottom plated: through vias, X2 pins
+  asar_feather-RoundHoles-NonPlated.TXT  Top-Bottom non-plated holes
+  asar_feather-SlotHoles-Plated.TXT      Top-Bottom plated X1 slots (G85)
+  asar_feather-RoundHoles-Plated.TX3     L3-L4 buried vias
+  asar_feather-RoundHoles-Plated.TX6     Top-L2 microvias (0.10 + 0.15)
+  asar_feather-RoundHoles-Plated.TX7     L2-L3 microvias (0.10 + 0.15)
+  asar_feather-RoundHoles-Plated.TX9     L4-L5 microvias (0.10 + 0.15)
+  asar_feather-RoundHoles-Plated.TX10    L5-Bottom microvias (0.10 + 0.15)
+  asar_feather.LDP                       Drill-pair layer map
+  asar_feather.DRR                       Drill sizes and counts
+  Asar_Feather_VIA_IN_PAD.csv            Complete via-in-pad table
+
+FINAL VERIFICATION
+Altium DRC 11/11/2026 9:11:56 AM on asar_feather.PcbDoc:
+0 warnings, 0 rule violations, 0 waived (29 rules checked).
+Gerbers: metric RS-274X, 0.0001 mm coordinate resolution
+NC drill: metric Excellon 4:4, separate plated / non-plated / slot files
+Every drill hit was matched one-to-one against the PcbDoc via and pad
+positions by tool size (0 missing, 0 extra in every file): TXT 160/28,
+RoundHoles-NP 2/4, SlotHoles 4, TX3 249, TX6 173/214, TX7 105/178, TX9 47/196,
+TX10 23/240.
+
+This ZIP contains fabrication data only. Assembly BOM, CPL and assembly
+instructions are supplied separately if assembly is quoted.

@@ -1,0 +1,561 @@
+ref,pad,net,pad_side,via_span,hole_mm,land_mm,via_x_mm,via_y_mm,hole_vs_pad,land_overlap_mm,pad_shape,pad_size_mm,fill_request
+BTN,1,VCC3V3,Top,Top-L2,0.15,0.30,41.1250,6.0250,hole in pad,0.1500,rect,1.050x0.650,copper fill + cap flat
+BTN,2,VCC3V3,Top,Top-L2,0.15,0.30,45.2750,6.0250,hole in pad,0.1500,rect,1.050x0.650,copper fill + cap flat
+BTN,3,N$BTN,Top,Top-L2,0.15,0.30,41.1250,3.9750,hole in pad,0.1500,rect,1.050x0.650,copper fill + cap flat
+C3,1,GND,Bottom,Top-Bot,0.20,0.35,36.6000,10.4750,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C3,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,36.6000,11.8000,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C4,1,GND,Bottom,Top-Bot,0.20,0.35,35.4500,10.4750,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C4,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,35.4500,11.8000,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C5,1,GND,Bottom,Top-Bot,0.20,0.35,34.3000,10.4750,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C5,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,34.3000,11.8000,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C6,1,GND,Bottom,Top-Bot,0.20,0.35,33.1500,10.4750,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C6,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,33.1500,11.8000,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C7,1,GND,Bottom,Top-Bot,0.20,0.35,32.0000,10.4750,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C7,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,32.0000,11.8000,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C8,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,30.8500,11.8000,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C9,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,31.5500,6.8750,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C11,1,GND,Bottom,Top-Bot,0.20,0.35,32.6750,6.8500,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C11,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,33.9500,6.8750,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C12,1,GND,Bottom,L5-Bot,0.15,0.30,35.0500,6.8500,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C12,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,36.3750,6.8750,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+C13,1,GND,Bottom,Top-Bot,0.20,0.35,30.3000,8.1750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C13,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,32.0000,8.2000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C36,1,AIN15_N,Top,Top-L2,0.15,0.30,22.8250,17.3500,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+C36,2,AIN15_P,Top,Top-L2,0.10,0.25,24.3500,17.6000,hole on pad edge,0.1250,rect,0.700x0.900,copper fill + cap flat
+C37,1,AIN16_N,Top,Top-L2,0.15,0.30,25.1250,17.2250,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+C37,2,AIN16_P,Top,Top-L2,0.15,0.30,26.4750,17.2000,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+C38,1,GND,Bottom,Top-Bot,0.20,0.35,25.3500,2.5250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C38,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,25.9500,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C40,1,GND,Bottom,Top-Bot,0.20,0.35,8.7500,2.5250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C40,2,FT-VPHY,Bottom,L5-Bot,0.15,0.30,9.3750,2.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C40,2,FT-VPHY,Bottom,L5-Bot,0.15,0.30,9.6750,2.5000,hole on pad edge,0.0914,rect,0.300x0.300,copper fill + cap flat
+C41,1,GND,Bottom,Top-Bot,0.20,0.35,10.1750,2.3500,land only,0.0050,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C41,2,FT-VPLL,Bottom,Top-Bot,0.20,0.35,10.6750,2.3500,land only,0.0050,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C78,1,GND,Bottom,Top-Bot,0.20,0.35,1.8000,9.3000,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C80,1,GND,Bottom,Top-Bot,0.20,0.35,13.1000,21.0250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C80,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,13.1000,19.3500,hole in pad,0.1500,rect,1.300x1.500,copper fill + cap flat
+C82,1,GND,Bottom,Top-Bot,0.20,0.35,13.0750,15.2500,hole in pad,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C82,2,VCC1V8,Bottom,L5-Bot,0.15,0.30,15.6750,15.1750,hole on pad edge,0.1500,rect,1.100x1.000,copper fill + cap flat
+C84,1,GND,Bottom,Top-Bot,0.20,0.35,6.2500,11.0000,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C85,2,GND,Bottom,Top-Bot,0.20,0.35,16.1250,10.9250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C86,2,GND,Bottom,Top-Bot,0.20,0.35,18.7500,10.9250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C87,1,VCC1V0,Bottom,L5-Bot,0.15,0.30,20.3750,3.8000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C87,2,GND,Bottom,Top-Bot,0.20,0.35,21.9000,3.2750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C88,1,VCC1V0,Bottom,L5-Bot,0.15,0.30,22.7000,3.8000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C88,1,VCC1V0,Bottom,Top-Bot,0.20,0.35,23.6000,3.8000,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C88,2,GND,Bottom,Top-Bot,0.20,0.35,24.4000,3.2750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C89,1,VCC1V0,Bottom,L5-Bot,0.10,0.25,24.0750,12.1000,hole on pad edge,0.0950,rect,0.300x0.300,copper fill + cap flat
+C91,1,VCC1V0,Bottom,L5-Bot,0.15,0.30,21.8750,12.1750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C91,2,GND,Bottom,Top-Bot,0.20,0.35,21.2750,12.1500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C92,1,VCC1V0,Bottom,Top-Bot,0.20,0.35,24.4000,9.1750,land only,0.0216,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C92,2,GND,Bottom,Top-Bot,0.20,0.35,25.1000,8.7500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C93,1,VCC1V8,Bottom,L5-Bot,0.15,0.30,15.9250,14.5250,land only,0.0216,rect,1.300x1.500,copper fill + cap flat
+C93,2,GND,Bottom,Top-Bot,0.20,0.35,16.7500,14.9250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C94,2,GND,Bottom,Top-Bot,0.20,0.35,21.2000,4.6750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C95,1,VCC1V8,Bottom,L5-Bot,0.10,0.25,22.1000,9.0000,hole on pad edge,0.1250,rect,0.300x0.300,copper fill + cap flat
+C95,2,GND,Bottom,Top-Bot,0.20,0.35,21.2750,8.7500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C96,1,VCC1V8,Bottom,L5-Bot,0.15,0.30,26.3250,8.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C96,2,GND,Bottom,Top-Bot,0.20,0.35,25.7250,8.7500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C97,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,17.8750,17.2500,hole in pad,0.1500,rect,1.300x1.500,copper fill + cap flat
+C97,2,GND,Bottom,Top-Bot,0.20,0.35,17.8750,18.9250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C98,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,33.9000,15.2000,hole in pad,0.1500,rect,1.300x1.500,copper fill + cap flat
+C98,2,GND,Bottom,Top-Bot,0.20,0.35,35.6000,15.1750,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C99,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,22.7000,4.7000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C99,2,GND,Bottom,Top-Bot,0.20,0.35,24.4000,4.6750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C100,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,15.5000,5.2000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C100,2,GND,Bottom,Top-Bot,0.20,0.35,16.3000,6.9250,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C101,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,30.3000,2.7000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C101,2,GND,Bottom,Top-Bot,0.20,0.35,32.0000,2.6750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C102,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,33.5000,2.7000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C102,2,GND,Bottom,Top-Bot,0.20,0.35,35.2000,2.6750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C103,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,30.3000,4.1000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C103,2,GND,Bottom,Top-Bot,0.20,0.35,32.0000,4.0750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C104,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,33.5000,4.1000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C104,2,GND,Bottom,Top-Bot,0.20,0.35,35.2000,4.0750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C105,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,30.3000,5.5000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C105,2,GND,Bottom,Top-Bot,0.20,0.35,32.0000,5.4750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C106,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,33.5000,5.5000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C106,2,GND,Bottom,Top-Bot,0.20,0.35,35.2000,5.4750,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C106,2,GND,Bottom,Top-Bot,0.20,0.35,35.4750,6.2750,hole in pad,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C107,1,VCC3V3,Bottom,L5-Bot,0.10,0.25,24.2250,15.5750,hole on pad edge,0.1250,rect,0.300x0.300,copper fill + cap flat
+C108,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,28.5500,12.1750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C109,1,VCC3V3,Bottom,L5-Bot,0.10,0.25,26.5250,15.7500,hole in pad,0.1250,rect,0.300x0.300,copper fill + cap flat
+C110,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,21.8750,15.5750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C111,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,24.9500,17.1500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C111,2,GND,Bottom,Top-Bot,0.20,0.35,25.7500,17.0000,land only,0.0550,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C112,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,28.5500,8.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C113,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,28.5500,15.5750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C114,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,26.1500,17.1500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C114,2,GND,Bottom,L5-Bot,0.15,0.30,27.0250,17.4500,hole on pad edge,0.1196,rect,0.300x0.300,copper fill + cap flat
+C115,1,VCC3V3,Bottom,L5-Bot,0.10,0.25,27.5500,17.2000,hole in pad,0.1250,rect,0.300x0.300,copper fill + cap flat
+C116,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,28.5750,17.1500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C117,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,24.9500,17.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C117,2,GND,Bottom,Top-Bot,0.20,0.35,25.7500,17.6250,hole on pad edge,0.0800,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C118,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,26.1500,17.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C118,2,GND,Bottom,L5-Bot,0.15,0.30,26.9500,17.9250,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C119,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,27.3500,17.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C119,2,GND,Bottom,Top-Bot,0.20,0.35,27.9500,17.7500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C120,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,28.5750,17.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C120,2,GND,Bottom,Top-Bot,0.20,0.35,29.1500,17.7500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C121,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,24.9500,18.3500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C121,2,GND,Bottom,Top-Bot,0.20,0.35,25.5750,18.3250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C122,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,28.5750,18.3500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C122,2,GND,Bottom,Top-Bot,0.20,0.35,29.1500,18.3250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C123,1,VCCADC,Bottom,L5-Bot,0.10,0.25,23.1500,9.0250,land only,0.0750,rect,0.300x0.300,copper fill + cap flat
+C124,1,VCCADC,Bottom,Top-Bot,0.20,0.35,26.1000,18.3000,land only,0.0618,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C124,2,GNDADC,Bottom,L5-Bot,0.15,0.30,27.9250,18.9250,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+C124,2,GNDADC,Bottom,L5-Bot,0.15,0.30,28.1750,18.6000,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C133,1,GND,Bottom,Top-Bot,0.20,0.35,24.9500,18.9500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C133,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,25.5750,18.9750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C134,1,GND,Bottom,Top-Bot,0.20,0.35,28.5750,18.9500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C134,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,29.1500,18.9750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C135,1,GND,Bottom,Top-Bot,0.20,0.35,24.9500,19.5500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C135,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,25.5750,19.5750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C136,1,GND,Bottom,Top-Bot,0.20,0.35,28.5750,19.5500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C136,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,29.1500,19.5750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C137,1,GND,Bottom,Top-Bot,0.20,0.35,26.1500,19.6250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C137,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,26.7750,19.6500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C138,1,GND,Bottom,Top-Bot,0.20,0.35,27.3500,19.6250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C138,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,27.9500,19.6500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C139,2,FT-VCORE,Bottom,L5-Bot,0.15,0.30,12.3500,3.4750,land only,0.0200,rect,0.700x0.900,copper fill + cap flat
+C139,2,FT-VCORE,Bottom,L5-Bot,0.15,0.30,13.1250,2.6750,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+C140,2,GND,Bottom,Top-Bot,0.20,0.35,35.2750,8.6250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C141,2,GND,Bottom,Top-Bot,0.20,0.35,32.0750,13.4250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C142,2,GND,Bottom,L5-Bot,0.15,0.30,36.1750,14.3500,hole in pad,0.1500,rect,1.300x1.500,copper fill + cap flat
+C143,2,GND,Bottom,Top-Bot,0.20,0.35,32.1000,15.1750,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C144,2,GND,Bottom,Top-Bot,0.20,0.35,17.8750,14.9250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C145,1,VCC3V3,Bottom,L5-Bot,0.10,0.25,30.4000,17.3000,hole in pad,0.1250,rect,1.300x1.500,copper fill + cap flat
+C145,2,GND,Bottom,Top-Bot,0.20,0.35,33.1250,17.7500,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C146,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,33.9000,17.3000,hole in pad,0.1500,rect,1.300x1.500,copper fill + cap flat
+C146,2,GND,Bottom,Top-Bot,0.20,0.35,35.5750,17.8500,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C147,1,GND,Bottom,L5-Bot,0.15,0.30,15.1500,11.2500,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C148,1,GND,Bottom,Top-Bot,0.20,0.35,5.6500,20.3500,hole on pad edge,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+C149,1,GND,Bottom,Top-Bot,0.20,0.35,1.2500,12.6250,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+C150,2,USB5V0,Bottom,L5-Bot,0.15,0.30,11.3500,13.3000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C150,2,USB5V0,Bottom,L5-Bot,0.15,0.30,11.3500,13.7500,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C151,1,GND,Bottom,L5-Bot,0.15,0.30,14.7500,14.6000,hole in pad,0.1500,rect,1.100x1.000,copper fill + cap flat
+C151,2,VBATT,Bottom,L5-Bot,0.15,0.30,12.4500,14.9000,hole on pad edge,0.1500,rect,1.100x1.000,copper fill + cap flat
+C152,2,FT-VCORE,Bottom,L5-Bot,0.15,0.30,14.1500,2.6750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C152,2,FT-VCORE,Bottom,L5-Bot,0.15,0.30,14.5000,2.9000,land only,0.0368,rect,0.300x0.300,copper fill + cap flat
+C153,1,GND,Bottom,Top-Bot,0.20,0.35,14.7250,2.3500,land only,0.0050,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C153,2,FT-VCORE,Bottom,L5-Bot,0.15,0.30,15.3500,2.7000,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C153,2,FT-VCORE,Bottom,L5-Bot,0.15,0.30,15.6750,2.4750,hole on pad edge,0.0789,rect,0.300x0.300,copper fill + cap flat
+C154,1,GND,Bottom,Top-Bot,0.20,0.35,16.1750,2.3500,land only,0.0050,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C154,2,FT-VCORE,Bottom,L5-Bot,0.10,0.25,16.4750,2.7000,hole on pad edge,0.0800,rect,0.300x0.300,copper fill + cap flat
+C155,1,GND,Bottom,Top-Bot,0.20,0.35,19.3500,2.5250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C155,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,19.9500,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C156,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,21.1500,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C157,1,GND,Bottom,Top-Bot,0.20,0.35,21.7750,2.5250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C157,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,22.3500,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C158,1,GND,Bottom,Top-Bot,0.20,0.35,22.9500,2.5250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C158,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,23.5750,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C159,1,GND,Bottom,Top-Bot,0.20,0.35,24.1500,2.5250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+C159,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,24.7750,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C160,1,GND,Bottom,Top-Bot,0.20,0.35,16.3000,18.9500,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C161,1,GND,Bottom,Top-Bot,0.20,0.35,2.4250,16.6750,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C161,2,PWR_CLPROG,Bottom,L5-Bot,0.15,0.30,3.9250,16.6750,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+C164,1,PWR_FB3,Bottom,L5-Bot,0.15,0.30,5.4500,19.1500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C164,2,PWR_VC3,Bottom,L5-Bot,0.15,0.30,5.4500,19.7500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+C167,1,GND,Bottom,Top-Bot,0.20,0.35,9.4000,11.2500,hole on pad edge,0.1250,rect,0.700x0.900,resin plug + plate over (VIPPO)
+C168,1,GND,Bottom,Top-Bot,0.20,0.35,2.8500,17.9500,hole in pad,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
+JP3,1,TCK,Bottom,L5-Bot,0.15,0.30,17.3750,5.1750,hole in pad,0.1500,round,1.000x1.000,copper fill + cap flat
+JP3,3,GND,Bottom,Top-Bot,0.20,0.35,17.4750,7.2750,hole on pad edge,0.1750,round,1.000x1.000,resin plug + plate over (VIPPO)
+JP4,3,VCC3V3,Bottom,L5-Bot,0.15,0.30,7.2750,2.7750,hole in pad,0.1500,round,1.000x1.000,copper fill + cap flat
+L2,2,VCC1V8,Bottom,L5-Bot,0.15,0.30,15.3750,18.6000,land only,0.0750,rect,1.050x2.300,copper fill + cap flat
+L4,1,FT-VPHY,Bottom,L5-Bot,0.15,0.30,13.6750,3.2750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+L4,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,15.2750,3.2750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+L5,1,FT-VPLL,Bottom,L5-Bot,0.15,0.30,16.5750,3.3000,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+L5,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,18.1750,3.2750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+L6,1,GND,Top,Top-L2,0.15,0.30,37.0750,17.4750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+L7,1,VCC1V8,Top,Top-Bot,0.20,0.35,19.4750,17.6250,hole in pad,0.1750,rect,0.900x0.900,resin plug + plate over (VIPPO)
+L7,2,VCCADC,Top,Top-L2,0.15,0.30,20.4750,17.5750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+L8,2,VU,Bottom,L5-Bot,0.15,0.30,12.2500,12.9500,hole in pad,0.1500,rect,1.050x2.300,copper fill + cap flat
+LD0,2,LED0_B,Top,Top-L2,0.15,0.30,37.6750,5.5500,hole on pad edge,0.1500,rect,0.550x0.400,copper fill + cap flat
+LD0,3,N$LD0R,Top,Top-L2,0.15,0.30,39.4250,4.7750,hole in pad,0.1500,rect,0.700x0.500,copper fill + cap flat
+LD0,6,LED0_G,Top,Top-L2,0.15,0.30,37.9250,4.1000,hole on pad edge,0.1500,rect,0.550x0.400,copper fill + cap flat
+LD1,K,GND,Top,Top-L2,0.15,0.30,30.8500,4.3250,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+LD2,K,GND,Top,Top-L2,0.15,0.30,34.0500,4.3250,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+LD3,A,PWR_PGOODALL,Top,Top-L2,0.15,0.30,4.9500,3.4000,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+LD3,K,GND,Top,Top-L2,0.15,0.30,5.9750,2.6750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+LD4,K,PWR_CHRG,Top,Top-L2,0.15,0.30,5.9750,4.7000,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
+Q1,1,VCC3V3,Top,Top-L2,0.15,0.30,13.6750,14.8500,hole in pad,0.1500,rect,1.200x1.400,copper fill + cap flat
+Q1,2,GND,Top,Top-L2,0.15,0.30,13.6750,12.6500,hole in pad,0.1500,rect,1.200x1.400,copper fill + cap flat
+Q1,3,CLK-12M-SHARED,Top,Top-L2,0.15,0.30,15.3750,12.6500,hole in pad,0.1500,rect,1.200x1.400,copper fill + cap flat
+Q1,4,VCC3V3,Top,Top-L2,0.15,0.30,15.3750,14.8500,hole in pad,0.1500,rect,1.200x1.400,copper fill + cap flat
+R1,2,RST#,Bottom,L5-Bot,0.15,0.30,20.4500,19.4750,land only,0.0450,rect,0.450x0.900,copper fill + cap flat
+R1,3,VCC3V3,Bottom,L5-Bot,0.15,0.30,20.6000,17.3500,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R1,4,VCC3V3,Bottom,L5-Bot,0.15,0.30,19.8000,17.3500,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R2,2,VCC3V3,Top,Top-L2,0.15,0.30,18.1500,16.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R4,1,PROG#,Bottom,L5-Bot,0.15,0.30,9.2250,6.9500,hole in pad,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,2,DONE,Bottom,Top-Bot,0.20,0.35,10.0500,6.9500,hole on pad edge,0.1750,rect,0.450x0.900,resin plug + plate over (VIPPO)
+R4,3,TDI,Bottom,L5-Bot,0.15,0.30,10.7500,6.9500,hole in pad,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,4,TDO,Bottom,L5-Bot,0.15,0.30,11.5250,6.9500,hole in pad,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,5,TMS,Bottom,L5-Bot,0.15,0.30,12.1000,6.9500,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,6,TCK,Bottom,L5-Bot,0.15,0.30,12.9000,7.2500,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,6,TCK,Bottom,L5-Bot,0.15,0.30,13.2750,7.0250,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,7,FPGA-DONE,Bottom,L5-Bot,0.15,0.30,13.6750,7.5250,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,7,FPGA-DONE,Bottom,L5-Bot,0.15,0.30,14.0500,7.6500,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,8,VCC3V3,Bottom,L5-Bot,0.15,0.30,14.5250,7.0500,hole on pad edge,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,14,FPGA-TDI,Bottom,L5-Bot,0.15,0.30,10.6250,5.2500,hole in pad,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,15,FPGA-DONE,Bottom,L5-Bot,0.15,0.30,10.0250,5.9500,hole in pad,0.1500,rect,0.450x0.900,copper fill + cap flat
+R4,16,RST#,Bottom,L5-Bot,0.15,0.30,8.8250,5.1750,hole on pad edge,0.1201,rect,0.450x0.900,copper fill + cap flat
+R4,16,RST#,Bottom,L5-Bot,0.15,0.30,9.2250,5.2750,hole in pad,0.1500,rect,0.450x0.900,copper fill + cap flat
+R5,1,GND,Top,Top-L2,0.15,0.30,34.5500,17.3500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R6,1,FLASH-D03,Top,Top-L2,0.15,0.30,29.9750,16.9750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R6,2,VCC3V3,Top,Top-L2,0.15,0.30,30.3500,16.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R7,2,VCC3V3,Top,Top-L2,0.15,0.30,31.5750,16.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R11,1,GND,Top,Top-L2,0.15,0.30,35.7500,16.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R13,1,AIN15_N,Top,Top-L2,0.15,0.30,38.1750,16.9750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R13,2,GND,Top,Top-L2,0.15,0.30,38.7500,16.7750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R15,1,GND,Top,Top-L2,0.15,0.30,18.7750,16.8500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R16,1,AIN16_P,Top,Top-L2,0.15,0.30,20.1750,17.0500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R17,2,GND,Top,Top-L2,0.15,0.30,21.7750,16.8500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R18,1,GND,Bottom,Top-Bot,0.20,0.35,8.8750,3.2250,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+R19,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,17.7750,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R20,2,VCC3V3,Top,Top-L2,0.15,0.30,27.7750,16.8500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R21,1,GND,Top,Top-Bot,0.20,0.35,29.1500,17.7500,hole on pad edge,0.1050,rect,0.700x0.900,resin plug + plate over (VIPPO)
+R21,1,GND,Top,Top-Bot,0.20,0.35,29.1500,18.3250,hole on pad edge,0.0918,rect,0.700x0.900,resin plug + plate over (VIPPO)
+R21,2,CFG-M1,Top,Top-L2,0.15,0.30,30.3000,18.1750,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R22,1,GND,Top,Top-L2,0.15,0.30,17.5750,17.3500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R22,2,CFG-M2,Top,Top-L2,0.15,0.30,18.3750,17.3500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R23,1,VCC3V3,Top,Top-L2,0.15,0.30,30.7750,17.3500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R23,2,PUDC_B,Top,Top-L2,0.10,0.25,31.4250,17.3500,hole on pad edge,0.1250,rect,0.300x0.300,copper fill + cap flat
+R24,1,CLK-12M-SHARED,Bottom,L5-Bot,0.15,0.30,11.3500,3.9500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R25,2,CLK-12M-FPGA,Top,Top-L2,0.15,0.30,36.3500,17.4500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R26,1,VU,Bottom,Top-Bot,0.20,0.35,7.6750,4.1250,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+R26,2,EN,Bottom,L5-Bot,0.15,0.30,8.2500,4.1500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R27,1,GND,Top,Top-L2,0.15,0.30,7.1500,2.5500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R28,1,GND,Top,Top-L2,0.15,0.30,7.1500,3.1500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R28,2,USB-CC2,Top,Top-L2,0.15,0.30,7.9750,3.3750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R34,1,SD-DAT0,Bottom,Top-Bot,0.20,0.35,21.5000,19.0000,hole on pad edge,0.1044,rect,0.500x0.900,resin plug + plate over (VIPPO)
+R34,2,SD-DAT1,Bottom,L5-Bot,0.15,0.30,22.4250,19.3250,hole in pad,0.1500,rect,0.500x0.900,copper fill + cap flat
+R34,5,VCC3V3,Bottom,L5-Bot,0.15,0.30,24.0000,17.3500,hole on pad edge,0.1500,rect,0.500x0.900,copper fill + cap flat
+R34,6,VCC3V3,Bottom,L5-Bot,0.15,0.30,23.2000,17.3500,hole on pad edge,0.1500,rect,0.500x0.900,copper fill + cap flat
+R34,7,VCC3V3,Bottom,L5-Bot,0.15,0.30,22.4250,17.3500,hole in pad,0.1500,rect,0.500x0.900,copper fill + cap flat
+R34,8,VCC3V3,Bottom,L5-Bot,0.15,0.30,21.6000,17.3500,hole on pad edge,0.1500,rect,0.500x0.900,copper fill + cap flat
+R35,2,VCC3V3,Top,Top-L2,0.15,0.30,33.5500,16.8750,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+R80,1,VCC3V3,Top,Top-L2,0.15,0.30,47.7750,4.3000,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R81,1,VCC3V3,Top,Top-L2,0.15,0.30,47.7750,5.4500,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R82,1,VCC3V3,Top,Top-L2,0.15,0.30,49.2000,4.1250,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R84,1,LED2,Top,Top-L2,0.15,0.30,38.3250,6.6250,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R86,1,GND,Top,Top-Bot,0.20,0.35,19.3500,2.5250,hole on pad edge,0.1200,rect,0.700x0.900,resin plug + plate over (VIPPO)
+R86,1,GND,Top,Top-L2,0.10,0.25,18.9750,2.6750,hole in pad,0.1250,rect,0.700x0.900,copper fill + cap flat
+R86,2,N$BTN,Top,Top-L2,0.15,0.30,20.8250,3.3750,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+R90,1,TDI,Bottom,L5-Bot,0.15,0.30,12.3500,4.1000,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R90,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,12.9500,3.8750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R91,1,TDO,Bottom,L5-Bot,0.15,0.30,8.9750,4.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R91,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,9.3750,4.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R92,1,TMS,Bottom,Top-Bot,0.20,0.35,10.1250,4.5000,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+R92,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,10.5500,4.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R93,1,UART_FT_CTS#,Bottom,Top-Bot,0.20,0.35,11.3500,4.6500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+R93,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,11.7500,4.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R94,1,UART_FT_RXD,Bottom,L5-Bot,0.10,0.25,12.6500,4.7000,hole on pad edge,0.0950,rect,0.300x0.300,copper fill + cap flat
+R94,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,12.9500,4.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R96,1,EE-CLK,Bottom,Top-Bot,0.20,0.35,9.5250,12.4500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+R96,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,10.0250,12.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R97,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,16.5750,4.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R98,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,8.1500,13.9500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R99,1,PROG#,Bottom,Top-Bot,0.20,0.35,13.5500,4.4750,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+R99,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,14.1500,4.4750,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R101,1,EE-DATA-DO,Bottom,L5-Bot,0.15,0.30,14.7500,4.6500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R101,2,EE-DATA,Bottom,Top-Bot,0.20,0.35,15.4250,4.6750,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+R102,1,PWR_PROG,Bottom,L5-Bot,0.15,0.30,12.3500,10.0250,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R102,2,GND,Bottom,Top-Bot,0.20,0.35,13.0750,9.8000,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+R103,1,PWR_CLPROG,Bottom,L5-Bot,0.15,0.30,4.6500,15.9500,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R103,1,PWR_CLPROG,Bottom,L5-Bot,0.15,0.30,5.4000,16.1250,hole on pad edge,0.1500,rect,0.700x0.900,copper fill + cap flat
+R103,2,GND,Bottom,Top-Bot,0.20,0.35,4.6500,16.8000,hole on pad edge,0.1750,rect,0.700x0.900,resin plug + plate over (VIPPO)
+R107,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,8.9750,9.2500,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R107,2,PWR_PGOODALL,Bottom,L5-Bot,0.15,0.30,7.6750,9.3000,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R108,1,VU,Bottom,L5-Bot,0.15,0.30,10.6250,10.6000,centred,0.1500,rect,0.700x0.900,copper fill + cap flat
+R108,2,LD4_A,Bottom,L5-Bot,0.15,0.30,10.2750,9.0250,hole in pad,0.1500,rect,0.700x0.900,copper fill + cap flat
+R113,2,PWR_FB2,Bottom,L5-Bot,0.15,0.30,15.9750,12.8000,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R114,2,GND,Bottom,Top-Bot,0.20,0.35,8.7250,11.6500,hole on pad edge,0.1750,rect,0.300x0.300,resin plug + plate over (VIPPO)
+R115,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,6.9500,22.1250,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R116,1,PWR_FB3,Bottom,L5-Bot,0.15,0.30,8.3250,12.2000,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+R117,1,PWR_VC3,Bottom,L5-Bot,0.15,0.30,8.2000,21.5500,hole in pad,0.1500,rect,0.300x0.300,copper fill + cap flat
+R118,1,VCC3V3,Bottom,L5-Bot,0.15,0.30,8.1500,11.4500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
+RESET,1,RST#,Top,Top-L2,0.15,0.30,21.5250,5.3750,hole in pad,0.1500,rect,1.050x0.650,copper fill + cap flat
+RESET,3,GND,Top,Top-Bot,0.20,0.35,21.9000,3.2750,hole in pad,0.1750,rect,1.050x0.650,resin plug + plate over (VIPPO)
+RESET,3,GND,Top,Top-L2,0.15,0.30,21.4750,3.2250,hole in pad,0.1500,rect,1.050x0.650,copper fill + cap flat
+RESET,4,GND,Top,Top-L2,0.15,0.30,25.6250,3.2250,hole in pad,0.1500,rect,1.050x0.650,copper fill + cap flat
+U1,A1,GND,Top,Top-L2,0.10,0.25,28.9000,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A3,GND,Top,Top-L2,0.10,0.25,27.9000,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A4,GND,Top,Top-L2,0.10,0.25,27.3999,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A5,GND,Top,Top-L2,0.10,0.25,26.9000,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A6,GND,Top,Top-L2,0.10,0.25,26.3999,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A7,GND,Top,Top-L2,0.10,0.25,25.9000,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A9,GND,Top,Top-L2,0.10,0.25,24.9000,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A11,GND,Top,Top-L2,0.10,0.25,23.9000,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,A13,GNDADC,Top,Top-Bot,0.20,0.35,23.0300,7.1210,land only,0.0690,round,0.250x0.250,resin plug + plate over (VIPPO)
+U1,A19,GND,Top,Top-L2,0.10,0.25,19.9000,6.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B1,GND,Top,Top-L2,0.10,0.25,28.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B3,GND,Top,Top-L2,0.10,0.25,27.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B4,GND,Top,Top-L2,0.10,0.25,27.3999,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B5,GND,Top,Top-L2,0.10,0.25,26.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B6,GND,Top,Top-L2,0.10,0.25,26.3999,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B7,GND,Top,Top-L2,0.10,0.25,25.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B9,GND,Top,Top-L2,0.10,0.25,24.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B11,GND,Top,Top-L2,0.10,0.25,23.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B14,GND,Top,Top-L2,0.10,0.25,22.3999,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B16,UART_FT_CTS#,Top,Top-L2,0.10,0.25,21.3999,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B17,CHAN3,Top,Top-L2,0.10,0.25,20.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,B19,VCC3V3,Top,Top-L2,0.10,0.25,19.9000,7.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C1,GND,Top,Top-L2,0.10,0.25,28.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C2,GND,Top,Top-L2,0.10,0.25,28.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C3,GND,Top,Top-L2,0.10,0.25,27.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C4,GND,Top,Top-L2,0.10,0.25,27.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C5,GND,Top,Top-L2,0.10,0.25,26.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C6,GND,Top,Top-L2,0.10,0.25,26.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C7,GND,Top,Top-L2,0.10,0.25,25.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C9,VCC1V8,Top,Top-L2,0.10,0.25,24.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C10,GND,Top,Top-L2,0.10,0.25,24.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C11,FPGA-CCLK,Top,Top-L2,0.10,0.25,23.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C12,GNDADC,Top,Top-L2,0.10,0.25,23.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C13,VCCADC,Top,Top-L2,0.10,0.25,22.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C14,VCC3V3,Top,Top-L2,0.10,0.25,22.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C15,CHAN4,Top,Top-L2,0.10,0.25,21.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C16,CHAN5,Top,Top-L2,0.10,0.25,21.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C17,CHAN2,Top,Top-L2,0.10,0.25,20.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C18,VCC3V3,Top,Top-L2,0.10,0.25,20.3999,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,C19,GND,Top,Top-L2,0.10,0.25,19.9000,7.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,D3,GND,Top,Top-L2,0.10,0.25,27.9000,8.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,D17,CHAN6,Top,Top-L2,0.10,0.25,20.9000,8.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,D19,FLASH-D01,Top,Top-L2,0.15,0.30,19.9750,8.3750,hole on pad edge,0.1500,round,0.250x0.250,copper fill + cap flat
+U1,E1,GND,Top,Top-L2,0.10,0.25,28.9000,8.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,E2,GND,Top,Top-L2,0.10,0.25,28.3999,8.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,E3,GND,Top,Top-L2,0.10,0.25,27.9000,8.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,E17,GND,Top,Top-L2,0.10,0.25,20.9000,8.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,E18,PUDC_B,Top,Top-L2,0.10,0.25,20.3999,8.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,F1,GND,Top,Top-L2,0.10,0.25,28.9000,9.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,F2,GND,Top,Top-L2,0.10,0.25,28.3999,9.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,F3,GND,Top,Top-L2,0.10,0.25,27.9000,9.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,F17,VCC3V3,Top,Top-L2,0.10,0.25,20.9000,9.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,F19,GND,Top,Top-L2,0.10,0.25,19.9000,9.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G1,GND,Top,Top-L2,0.10,0.25,28.9000,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G3,AIN15_P,Top,Top-L2,0.10,0.25,27.9000,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G7,GND,Top,Top-L2,0.10,0.25,25.9000,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G8,GND,Top,Top-L2,0.10,0.25,25.3999,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G9,GND,Top,Top-L2,0.10,0.25,24.9000,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G10,VCC1V0,Top,Top-L2,0.10,0.25,24.3999,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G11,GND,Top,Top-L2,0.10,0.25,23.9000,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G12,VCC3V3,Top,Top-L2,0.10,0.25,23.3999,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G13,VCC3V3,Top,Top-L2,0.10,0.25,22.9000,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G17,CHAN7,Top,Top-L2,0.10,0.25,20.9000,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,G18,FLASH-D02,Top,Top-L2,0.10,0.25,20.3999,9.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H2,AIN16_P,Top,Top-L2,0.10,0.25,28.3999,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H3,VCC3V3,Top,Top-L2,0.10,0.25,27.9000,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H7,GND,Top,Top-L2,0.10,0.25,25.9000,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H8,GND,Top,Top-L2,0.10,0.25,25.3999,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H9,GND,Top,Top-L2,0.10,0.25,24.9000,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H11,GND,Top,Top-L2,0.10,0.25,23.9000,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H12,GND,Top,Top-L2,0.10,0.25,23.3999,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H13,VCC1V8,Top,Top-L2,0.10,0.25,22.9000,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H17,CHAN8,Top,Top-L2,0.10,0.25,20.9000,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H18,GND,Top,Top-L2,0.10,0.25,20.3999,10.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,H19,SD-DAT1,Top,Top-L2,0.15,0.30,19.9500,10.4750,hole on pad edge,0.1500,round,0.250x0.250,copper fill + cap flat
+U1,J3,D12,Top,Top-L2,0.10,0.25,27.9000,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J7,VCC3V3,Top,Top-L2,0.10,0.25,25.9000,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J8,GND,Top,Top-L2,0.10,0.25,25.3999,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J9,GND,Top,Top-L2,0.10,0.25,24.9000,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J10,VCC1V0,Top,Top-L2,0.10,0.25,24.3999,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J11,GND,Top,Top-L2,0.10,0.25,23.9000,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J12,GND,Top,Top-L2,0.10,0.25,23.3999,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J13,VCC1V8,Top,Top-L2,0.10,0.25,22.9000,10.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,J19,CHAN14,Top,Top-L2,0.15,0.30,19.9500,10.8750,hole on pad edge,0.1500,round,0.250x0.250,copper fill + cap flat
+U1,K1,VCC3V3,Top,Top-L2,0.10,0.25,28.9000,11.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,K7,VCC3V3,Top,Top-L2,0.10,0.25,25.9000,11.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,K8,GND,Top,Top-L2,0.10,0.25,25.3999,11.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,K12,VCC3V3,Top,Top-L2,0.10,0.25,23.3999,11.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,K13,VCC3V3,Top,Top-L2,0.10,0.25,22.9000,11.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,K17,UART_FT_TXD,Top,Top-L2,0.10,0.25,20.9000,11.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L2,UDQM,Top,Top-L2,0.10,0.25,28.3999,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L3,A12,Top,Top-L2,0.10,0.25,27.9000,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L7,VCC3V3,Top,Top-L2,0.10,0.25,25.9000,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L8,GND,Top,Top-L2,0.10,0.25,25.3999,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L9,GND,Top,Top-L2,0.10,0.25,24.9000,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L10,VCC1V0,Top,Top-L2,0.10,0.25,24.3999,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L11,GND,Top,Top-L2,0.10,0.25,23.9000,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L12,VCC3V3,Top,Top-L2,0.10,0.25,23.3999,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L13,VCC3V3,Top,Top-L2,0.10,0.25,22.9000,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,L19,GND,Top,Top-L2,0.10,0.25,19.9000,11.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M3,A8,Top,Top-L2,0.10,0.25,27.9000,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M7,VCC3V3,Top,Top-L2,0.10,0.25,25.9000,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M8,VCC3V3,Top,Top-L2,0.10,0.25,25.3999,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M9,GND,Top,Top-L2,0.10,0.25,24.9000,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M11,VCC1V0,Top,Top-L2,0.10,0.25,23.9000,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M12,VCC3V3,Top,Top-L2,0.10,0.25,23.3999,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M13,GND,Top,Top-L2,0.10,0.25,22.9000,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M17,VCC3V3,Top,Top-L2,0.10,0.25,20.9000,12.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,M19,LED2,Top,Top-L2,0.15,0.30,20.0000,12.5500,hole on pad edge,0.1189,round,0.250x0.250,copper fill + cap flat
+U1,N2,A9,Top,Top-L2,0.10,0.25,28.3999,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N3,A7,Top,Top-L2,0.10,0.25,27.9000,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N7,VCC3V3,Top,Top-L2,0.10,0.25,25.9000,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N8,VCC3V3,Top,Top-L2,0.10,0.25,25.3999,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N9,GND,Top,Top-L2,0.10,0.25,24.9000,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N11,VCC1V0,Top,Top-L2,0.10,0.25,23.9000,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N12,GND,Top,Top-L2,0.10,0.25,23.3999,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N13,GND,Top,Top-L2,0.10,0.25,22.9000,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N17,LED0_B,Top,Top-L2,0.10,0.25,20.9000,12.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,N19,BTN,Top,Top-L2,0.15,0.30,19.9500,12.9500,hole on pad edge,0.1500,round,0.250x0.250,copper fill + cap flat
+U1,P2,GND,Top,Top-L2,0.10,0.25,28.3999,13.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,P3,A6,Top,Top-L2,0.10,0.25,27.9000,13.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,P17,SD-DAT2,Top,Top-L2,0.10,0.25,20.9000,13.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,R1,VCC3V3,Top,Top-L2,0.10,0.25,28.9000,13.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,R17,VCC3V3,Top,Top-L2,0.10,0.25,20.9000,13.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,R18,LED0_G,Top,Top-L2,0.10,0.25,20.3999,13.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,R19,CHAN15,Top,Top-L2,0.15,0.30,19.9250,14.0250,hole on pad edge,0.1500,round,0.250x0.250,copper fill + cap flat
+U1,T2,A0,Top,Top-L2,0.10,0.25,28.3999,14.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,T3,A1,Top,Top-L2,0.10,0.25,27.9000,14.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,T19,GND,Top,Top-L2,0.10,0.25,19.9000,14.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U2,A2,Top,Top-L2,0.10,0.25,28.3999,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U5,D4,Top,Top-L2,0.10,0.25,26.9000,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U6,GND,Top,Top-L2,0.10,0.25,26.3999,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U7,D7,Top,Top-L2,0.10,0.25,25.9000,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U8,LDQM,Top,Top-L2,0.10,0.25,25.3999,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U9,GND,Top,Top-L2,0.10,0.25,24.9000,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U11,FPGA-INIT#,Top,Top-L2,0.10,0.25,23.9000,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U12,FPGA-DONE,Top,Top-L2,0.10,0.25,23.3999,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U13,VCC3V3,Top,Top-L2,0.10,0.25,22.9000,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U14,CHAN22,Top,Top-L2,0.10,0.25,22.3999,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U15,CHAN21,Top,Top-L2,0.10,0.25,21.9000,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,U16,CHAN17,Top,Top-L2,0.10,0.25,21.3999,14.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V1,VCC3V3,Top,Top-L2,0.10,0.25,28.9000,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V2,D0,Top,Top-L2,0.10,0.25,28.3999,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V4,RAS#,Top,Top-L2,0.10,0.25,27.3999,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V6,VCC3V3,Top,Top-L2,0.10,0.25,26.3999,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V7,BS0,Top,Top-L2,0.10,0.25,25.9000,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V8,BS1,Top,Top-L2,0.10,0.25,25.3999,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V9,VCC3V3,Top,Top-L2,0.10,0.25,24.9000,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V10,RST#,Top,Top-L2,0.10,0.25,24.3999,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V11,VCC3V3,Top,Top-L2,0.10,0.25,23.9000,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V13,CHAN20,Top,Top-L2,0.10,0.25,22.9000,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V14,CHAN19,Top,Top-L2,0.10,0.25,22.3999,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V17,SD-CLK,Top,Top-L2,0.10,0.25,20.9000,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,V18,GND,Top,Top-L2,0.10,0.25,20.3999,15.4301,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,W1,GND,Top,Top-L2,0.10,0.25,28.9000,15.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,W8,FPGA-TDO,Top,Top-Bot,0.20,0.35,25.2750,16.1000,hole on pad edge,0.0891,round,0.250x0.250,resin plug + plate over (VIPPO)
+U1,W9,FPGA-TMS,Top,Top-L2,0.10,0.25,24.8500,16.0000,hole on pad edge,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,W10,FPGA-TDI,Top,Top-L2,0.15,0.30,24.2750,16.0250,hole on pad edge,0.1181,round,0.250x0.250,copper fill + cap flat
+U1,W12,GND,Top,Top-L2,0.10,0.25,23.3999,15.9300,centred,0.1250,round,0.250x0.250,copper fill + cap flat
+U1,W14,CHAN16,Top,Top-L2,0.10,0.25,22.4000,15.7750,hole on pad edge,0.0950,round,0.250x0.250,copper fill + cap flat
+U2,1,GND,Top,Top-Bot,0.20,0.35,9.4000,11.2500,hole on pad edge,0.1750,rect,0.750x0.280,resin plug + plate over (VIPPO)
+U2,1,GND,Top,Top-L2,0.15,0.30,9.0000,11.0750,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,4,FT-VPHY,Top,Top-L2,0.15,0.30,9.0500,9.5500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,5,GND,Top,Top-L2,0.15,0.30,9.0250,9.0750,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,6,FT-REF,Top,Top-Bot,0.20,0.35,9.5750,8.5750,hole on pad edge,0.1750,rect,0.750x0.280,resin plug + plate over (VIPPO)
+U2,8,USB_D_P,Top,Top-L2,0.15,0.30,9.0000,7.7500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,9,FT-VPLL,Top,Top-L2,0.15,0.30,9.0000,7.0500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,10,GND,Top,Top-L2,0.15,0.30,9.0000,6.5500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,11,GND,Top,Top-L2,0.15,0.30,9.0500,6.0750,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,12,FT-VCORE,Top,Top-L2,0.15,0.30,9.6750,5.7500,hole on pad edge,0.1250,rect,0.750x0.280,copper fill + cap flat
+U2,13,GND,Top,Top-L2,0.15,0.30,9.0000,5.0500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,15,GND,Top,Top-L2,0.15,0.30,9.0000,4.0500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,17,TDI,Top,Top-Bot,0.20,0.35,9.8250,3.0750,hole on pad edge,0.1750,rect,0.280x0.750,resin plug + plate over (VIPPO)
+U2,18,TDO,Top,Top-L2,0.15,0.30,10.3500,3.2500,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,20,VCC3V3,Top,Top-L2,0.15,0.30,11.3500,2.6750,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,21,PROG#,Top,Top-L2,0.15,0.30,12.0500,3.1500,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,25,GND,Top,Top-L2,0.15,0.30,13.8500,2.6750,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,31,VCC3V3,Top,Top-L2,0.15,0.30,16.8500,2.6750,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,35,GND,Top,Top-L2,0.15,0.30,17.8500,4.5500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,37,FT-VCORE,Top,Top-L2,0.15,0.30,17.8500,5.5500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,37,FT-VCORE,Top,Top-L2,0.15,0.30,18.2000,5.7500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,38,UART_FT_TXD,Top,Top-L2,0.15,0.30,17.8500,6.2250,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,41,UART_FT_CTS#,Top,Top-L2,0.15,0.30,18.3250,7.7000,hole in pad,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,42,VCC3V3,Top,Top-L2,0.15,0.30,17.8500,8.0500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,47,GND,Top,Top-L2,0.15,0.30,17.8500,10.5500,hole on pad edge,0.1500,rect,0.750x0.280,copper fill + cap flat
+U2,51,GND,Top,Top-L2,0.15,0.30,16.3750,11.5250,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,56,VCC3V3,Top,Top-L2,0.15,0.30,13.9250,11.5250,hole in pad,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,61,EE-DATA,Top,Top-L2,0.15,0.30,11.5500,12.0250,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,63,EE-CS,Top,Top-L2,0.15,0.30,10.3500,11.6500,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,63,EE-CS,Top,Top-L2,0.15,0.30,10.5500,12.0000,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U2,64,FT-VCORE,Top,Top-L2,0.15,0.30,9.9250,11.5000,hole on pad edge,0.1500,rect,0.280x0.750,copper fill + cap flat
+U3,A1,GND,Top,Top-L2,0.15,0.30,31.7750,8.0750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,A2,D15,Top,Top-L2,0.15,0.30,31.6750,9.1000,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,A3,GND,Top,Top-L2,0.15,0.30,31.7750,9.6750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,A7,VCC3V3,Top,Top-L2,0.15,0.30,31.7750,12.8750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,A9,VCC3V3,Top,Top-L2,0.15,0.30,31.7750,14.4750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,B1,D14,Top,Top-L2,0.15,0.30,32.3750,8.3000,hole on pad edge,0.1144,round,0.400x0.400,copper fill + cap flat
+U3,B3,VCC3V3,Top,Top-L2,0.15,0.30,32.5750,9.6750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,B7,GND,Top,Top-L2,0.15,0.30,32.5750,12.8750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,C1,D12,Top,Top-L2,0.15,0.30,33.1750,8.3500,hole on pad edge,0.0950,round,0.400x0.400,copper fill + cap flat
+U3,C3,GND,Top,Top-L2,0.15,0.30,33.3750,9.6750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,C7,VCC3V3,Top,Top-L2,0.15,0.30,33.3750,12.8750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,C8,D4,Top,Top-L2,0.15,0.30,33.4000,13.8750,hole in pad,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,D3,VCC3V3,Top,Top-L2,0.15,0.30,34.1750,9.6750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,D7,GND,Top,Top-L2,0.15,0.30,34.1750,12.8750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,E3,GND,Top,Top-L2,0.15,0.30,34.9750,9.6750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,E7,VCC3V3,Top,Top-L2,0.15,0.30,34.9750,12.8750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,E8,LDQM,Top,Top-L2,0.15,0.30,34.8500,13.8500,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,F1,UDQM,Top,Top-L2,0.15,0.30,35.6250,8.2750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,G1,A12,Top,Top-L2,0.15,0.30,36.4250,8.2750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,G3,A9,Top,Top-L2,0.15,0.30,36.4250,9.8750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,G7,BS0,Top,Top-L2,0.15,0.30,36.4250,12.9750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,G9,SDRAM-CS#,Top,Top-Bot,0.20,0.35,36.6750,14.7750,hole on pad edge,0.1750,round,0.400x0.400,resin plug + plate over (VIPPO)
+U3,H1,A8,Top,Top-L2,0.15,0.30,37.2750,8.4500,hole on pad edge,0.0970,round,0.400x0.400,copper fill + cap flat
+U3,H2,A7,Top,Top-Bot,0.20,0.35,37.2000,9.0750,hole on pad edge,0.1700,round,0.400x0.400,resin plug + plate over (VIPPO)
+U3,H8,A1,Top,Top-Bot,0.20,0.35,37.0750,13.8750,land only,0.0469,round,0.400x0.400,resin plug + plate over (VIPPO)
+U3,J1,GND,Top,Top-L2,0.15,0.30,38.1750,8.0750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,J2,A5,Top,Top-L2,0.15,0.30,38.3250,9.1250,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U3,J7,A3,Top,Top-L2,0.15,0.30,37.9750,13.1500,hole on pad edge,0.0950,round,0.400x0.400,copper fill + cap flat
+U3,J9,VCC3V3,Top,Top-L2,0.15,0.30,38.1750,14.4750,hole on pad edge,0.1500,round,0.400x0.400,copper fill + cap flat
+U4,2,FLASH-D01,Top,Top-L2,0.15,0.30,41.0250,16.0500,hole on pad edge,0.1500,rect,1.000x0.500,copper fill + cap flat
+U4,3,FLASH-D02,Top,Top-Bot,0.20,0.35,41.0000,14.7250,hole on pad edge,0.1750,rect,1.000x0.500,resin plug + plate over (VIPPO)
+U4,4,GND,Top,Top-L2,0.15,0.30,41.0500,13.5000,hole on pad edge,0.1500,rect,1.000x0.500,copper fill + cap flat
+U4,7,FLASH-D03,Top,Top-L2,0.15,0.30,46.7250,16.0500,hole on pad edge,0.1500,rect,1.000x0.500,copper fill + cap flat
+U4,8,VCC3V3,Top,Top-L2,0.15,0.30,46.7500,17.3250,hole on pad edge,0.1500,rect,1.000x0.500,copper fill + cap flat
+U7,2,GND,Bottom,Top-Bot,0.20,0.35,4.4250,13.4500,hole on pad edge,0.1750,rect,0.600x1.100,resin plug + plate over (VIPPO)
+U7,3,EN,Bottom,L5-Bot,0.15,0.30,5.2750,14.4000,hole on pad edge,0.1500,rect,0.600x1.100,copper fill + cap flat
+U7,3,EN,Bottom,L5-Bot,0.15,0.30,5.2750,14.8000,hole in pad,0.1500,rect,0.600x1.100,copper fill + cap flat
+U8,1,VU,Bottom,Top-Bot,0.20,0.35,8.3000,15.6000,hole on pad edge,0.1750,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,1,VU,Bottom,Top-Bot,0.20,0.35,8.8000,15.6000,hole on pad edge,0.1750,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,2,PWR_CLPROG,Bottom,L5-Bot,0.15,0.30,8.6250,16.1250,hole on pad edge,0.1500,rect,0.700x0.250,copper fill + cap flat
+U8,3,GND,Bottom,Top-Bot,0.20,0.35,8.3000,16.4750,hole on pad edge,0.1750,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,5,VU,Bottom,Top-Bot,0.20,0.35,8.8000,17.5000,hole on pad edge,0.1750,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,7,PWR_FB3,Bottom,L5-Bot,0.15,0.30,8.4250,18.6250,hole on pad edge,0.1500,rect,0.700x0.250,copper fill + cap flat
+U8,7,PWR_FB3,Bottom,L5-Bot,0.15,0.30,8.8750,18.4500,hole on pad edge,0.1500,rect,0.700x0.250,copper fill + cap flat
+U8,8,PWR_VC3,Bottom,L5-Bot,0.15,0.30,8.3250,19.1250,hole on pad edge,0.1500,rect,0.700x0.250,copper fill + cap flat
+U8,10,GND,Bottom,L5-Bot,0.15,0.30,9.6500,19.4250,hole on pad edge,0.1500,rect,0.250x0.700,copper fill + cap flat
+U8,12,VCC3V3,Bottom,L5-Bot,0.15,0.30,10.7000,19.5750,hole in pad,0.1500,rect,0.250x0.700,copper fill + cap flat
+U8,13,GND,Bottom,Top-Bot,0.20,0.35,11.1750,19.4000,hole on pad edge,0.1750,rect,0.250x0.700,resin plug + plate over (VIPPO)
+U8,15,PWR_PGOODALL,Bottom,L5-Bot,0.15,0.30,12.1250,18.9750,hole on pad edge,0.1500,rect,0.700x0.250,copper fill + cap flat
+U8,16,GND,Bottom,Top-Bot,0.20,0.35,12.1000,18.4750,hole on pad edge,0.1750,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,17,PWR_FB2,Bottom,Top-Bot,0.20,0.35,12.7000,18.0000,hole on pad edge,0.1750,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,18,VU,Bottom,Top-Bot,0.20,0.35,12.7750,17.5000,hole on pad edge,0.1500,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,20,PWR_PROG,Bottom,Top-Bot,0.20,0.35,12.6750,16.4750,hole on pad edge,0.1750,rect,0.700x0.250,resin plug + plate over (VIPPO)
+U8,21,PWR_CHRG,Bottom,L5-Bot,0.15,0.30,12.1250,15.9500,hole on pad edge,0.1500,rect,0.700x0.250,copper fill + cap flat
+U8,27,GND,Bottom,Top-Bot,0.20,0.35,9.8500,14.4250,land only,0.0500,rect,0.250x0.700,resin plug + plate over (VIPPO)
+U8,28,EN,Bottom,L5-Bot,0.15,0.30,9.2750,14.7750,hole in pad,0.1500,rect,0.250x0.700,copper fill + cap flat
+U8,28,EN,Bottom,L5-Bot,0.15,0.30,9.3500,15.1750,hole on pad edge,0.1500,rect,0.250x0.700,copper fill + cap flat
+U8,29,GND,Bottom,L5-Bot,0.15,0.30,10.5750,16.5000,hole in pad,0.1500,rect,2.650x3.650,copper fill + cap flat
+U10,1,EE-CS,Top,Top-L2,0.15,0.30,12.0500,12.8250,hole on pad edge,0.1000,rect,0.250x0.850,copper fill + cap flat
+U10,3,EE-DATA,Top,Top-L2,0.15,0.30,12.3250,13.8750,hole on pad edge,0.1500,rect,0.250x0.850,copper fill + cap flat
+U10,4,EE-DATA-DO,Top,Top-L2,0.15,0.30,12.6000,14.3750,hole on pad edge,0.1500,rect,0.250x0.850,copper fill + cap flat
+U10,5,GND,Top,Top-Bot,0.20,0.35,9.8500,14.4250,hole on pad edge,0.1750,rect,0.250x0.850,resin plug + plate over (VIPPO)
+U10,5,GND,Top,Top-L2,0.15,0.30,9.2250,14.4000,hole on pad edge,0.1500,rect,0.250x0.850,copper fill + cap flat
+U10,8,VCC3V3,Top,Top-L2,0.15,0.30,9.2250,12.9000,hole on pad edge,0.1500,rect,0.250x0.850,copper fill + cap flat
+X1,1,USB5V0,Top,Top-L2,0.15,0.30,7.9000,13.8800,hole in pad,0.1500,rect,0.600x1.450,copper fill + cap flat
+X1,1,USB5V0,Top,Top-L2,0.15,0.30,8.2900,8.9800,hole in pad,0.1500,rect,0.600x1.450,copper fill + cap flat
+X1,3,USB_D_P,Top,Top-L2,0.15,0.30,7.2500,10.7750,hole on pad edge,0.1500,rect,0.300x1.450,copper fill + cap flat
+X1,3,USB_D_P,Top,Top-L2,0.15,0.30,7.2500,11.5750,hole on pad edge,0.1500,rect,0.300x1.450,copper fill + cap flat
+X1,3,USB_D_P,Top,Top-L2,0.15,0.30,8.2500,10.5750,hole on pad edge,0.1500,rect,0.300x1.450,copper fill + cap flat
+X1,5,GND,Top,Top-L2,0.15,0.30,7.1250,14.4500,hole on pad edge,0.1500,rect,0.600x1.450,copper fill + cap flat
+X1,MH1,USB-CC2,Top,Top-L2,0.15,0.30,8.0000,9.5500,hole on pad edge,0.1500,rect,0.300x1.450,copper fill + cap flat
+X1,MH2,GND,Top,Top-L2,0.15,0.30,7.6000,7.9500,hole on pad edge,0.1500,rect,0.600x1.450,copper fill + cap flat
+X3,1,SD-DAT2,Bottom,L5-Bot,0.15,0.30,37.6750,14.9500,hole on pad edge,0.1500,rect,0.700x1.750,copper fill + cap flat
+X3,2,SD-DAT3,Bottom,L5-Bot,0.15,0.30,37.9000,13.6750,hole in pad,0.1500,rect,0.700x1.750,copper fill + cap flat
+X3,3,SD-CMD,Bottom,Top-Bot,0.20,0.35,37.7750,12.7500,hole on pad edge,0.1750,rect,0.700x1.750,resin plug + plate over (VIPPO)
+X3,4,VCC3V3,Bottom,L5-Bot,0.15,0.30,37.7500,11.0250,hole on pad edge,0.1500,rect,0.700x1.750,copper fill + cap flat
+X3,6,GND,Bottom,Top-Bot,0.20,0.35,38.6250,8.8000,hole on pad edge,0.1750,rect,0.700x1.750,resin plug + plate over (VIPPO)
+X3,7,SD-DAT0,Bottom,L5-Bot,0.15,0.30,37.8250,7.8000,hole in pad,0.1500,rect,0.700x1.750,copper fill + cap flat
+X3,G1,GND,Bottom,Top-Bot,0.20,0.35,39.1750,5.8750,hole in pad,0.1750,rect,1.300x1.500,resin plug + plate over (VIPPO)
+X3,G2,GND,Bottom,Top-Bot,0.20,0.35,45.5750,5.1250,hole on pad edge,0.1750,rect,0.800x1.500,resin plug + plate over (VIPPO)
+X3,G3,GND,Bottom,Top-Bot,0.20,0.35,46.2750,17.0750,hole on pad edge,0.1750,rect,0.800x1.400,resin plug + plate over (VIPPO)
+X3,G4,GND,Bottom,Top-Bot,0.20,0.35,37.9750,16.4500,hole in pad,0.1750,rect,1.500x1.500,resin plug + plate over (VIPPO)
+X4,2,GND,Top,Top-Bot,0.20,0.35,11.1750,19.4000,land only,0.0500,rect,1.000x5.500,resin plug + plate over (VIPPO)
+X4,2,GND,Top,Top-Bot,0.20,0.35,12.1000,18.4750,hole in pad,0.1750,rect,1.000x5.500,resin plug + plate over (VIPPO)
+X4,2,GND,Top,Top-L2,0.15,0.30,11.4250,16.9250,hole in pad,0.1500,rect,1.000x5.500,copper fill + cap flat
+X5,1,GND,Top,Top-L2,0.10,0.25,45.5750,7.9750,hole in pad,0.1250,rect,0.600x1.550,copper fill + cap flat
+X5,2,VCC3V3,Top,Top-L2,0.15,0.30,45.1250,8.9750,hole in pad,0.1500,rect,0.600x1.550,copper fill + cap flat
+X5,3,CHAN22,Top,Top-L2,0.15,0.30,45.1250,10.4250,hole in pad,0.1500,rect,0.600x1.550,copper fill + cap flat
+X5,MP1,GND,Top,Top-L2,0.10,0.25,50.1250,6.4250,hole in pad,0.1250,rect,1.200x1.800,copper fill + cap flat
+X5,MP2,GND,Top,Top-L2,0.15,0.30,48.9000,12.0250,hole in pad,0.1500,rect,1.200x1.800,copper fill + cap flat
