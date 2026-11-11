@@ -188,8 +188,6 @@ SPECIAL COMPONENT INSTRUCTIONS
   are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =
   DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each
   position from its own reel and check the reels on the first article.
-- R116 (Panasonic ERA-1AEB1043C, 0201) is a 104 kohm 0.1 % thin-film part;
-  do not substitute a 1 % resistor.
 - 0603 LEDs: LD1, LD2: cathode (pad K) on the WEST side (X 31.20, 34.40 mm); LD3, LD4:
   cathode (pad K) on the EAST side (X 6.33 mm). The two pairs face opposite ways; the
   drawings mark each cathode with a red bar.

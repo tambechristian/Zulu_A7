@@ -53,7 +53,7 @@
 52,R113,1,Yageo,RC0201FR-07150KL,150K: thick film +-1% 0201,R0201,SMD,
 53,R114,1,Yageo,RC0201FR-07120KL,120K: thick film +-1% 0201,R0201,SMD,
 54,R115,1,Yageo,RC0201FR-07324KL,324K: thick film +-1% 0201,R0201,SMD,
-55,R116,1,Panasonic,ERA-1AEB1043C,104K: thin film +-0.1% 0201 (104k is E192: not in the 1% E96 RC0201 range),R0201,SMD,R116 = 104 kohm 0.1 % thin film (sets VCC3V3). No 1 % or other-value substitute.
+55,R116,1,Yageo,RC0201FR-07102KL,102K: thick film +-1% 0201,R0201,SMD,
 56,R117,1,Yageo,RC0201FR-0715KL,15K: thick film +-1% 0201,R0201,SMD,
 57,R118,1,Yageo,RC0201FR-07121KL,121K: thick film +-1% 0201,R0201,SMD,
 58,U1,1,AMD/Xilinx,XC7A35T-2CPG236I,XC7A35T-2CPG236I,"CPG236 BGA, 10 x 10 mm, 0.5 mm pitch",SMD,"Speed grade -2, industrial temperature: the approved substitute for XC7A35T-1CPG236C (same die, package and pinout). Buy only from an AMD-authorized distributor (e.g. Digi-Key, Mouser, Avnet); no local, broker or open-market stock. 0.5 mm BGA: X-ray every board. Moisture sensitive: follow the MSL label."

@@ -496,7 +496,6 @@ PCBWAY_LINE_NOTES = {
     ),
     "DFE252010P-1R5M=P2": "L3 = 1.5 uH (U7 buck). Look-alike of L1/L2/L8/L9: load from its own reel.",
     "DFE252012F-3R3M=P2": "L8 = 3.3 uH (U8 PowerPath). Look-alike of L1/L2/L3/L9: load from its own reel.",
-    "ERA-1AEB1043C": "R116 = 104 kohm 0.1 % thin film (sets VCC3V3). No 1 % or other-value substitute.",
     "19-337/R6GHBHC-A01/2T": (
         "Water-clear lens. Polarity: cathodes on the WEST side, the cathode-mark column (board footprint "
         "pads 2, 4, 6; datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint); anodes on the east "
@@ -957,8 +956,6 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =",
         "  DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each",
         "  position from its own reel and check the reels on the first article.",
-        "- R116 (Panasonic ERA-1AEB1043C, 0201) is a 104 kohm 0.1 % thin-film part;",
-        "  do not substitute a 1 % resistor.",
         f"- {led_refs} (0603): cathode = pad K on the {led_side} side ({led_x});",
         "  all face the same way. The drawings mark it with a red bar.",
         f"- LD0 ({ld0_manf} {ld0_mpn}, 1.6 x 1.6 mm): cathodes are on the WEST side,",
