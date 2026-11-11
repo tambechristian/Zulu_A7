@@ -60,7 +60,7 @@ PARTS = [
     ('R117', 'R', '15K', 'RC0201FR-0715KL', 'thick film +-1% 0201 -- Type III R2 (with C165, VC3 to FB3)', 'R0201', 'PWR_VC3', 'PWR_VC3_RC'),
     ('C165', 'C', '330pF', 'GRM0335C1H331JA01D', 'C0G 50V +-5% 0201 330pF -- Type III C2', 'C0201', 'PWR_VC3_RC', 'PWR_FB3'),
     ('R102', 'R', '4.12K', 'RC0402FR-074K12L', 'thick film +-1% 0402 -- LTC3556 PROG: 1022 V / 4.12k = 248 mA charge current', 'R0402', 'PWR_PROG', 'GND'),
-    ('R103', 'R', '3.01K', 'RC0402FR-073K01L', 'thick film +-1% 0402 -- LTC3556 CLPROG: PLACEHOLDER (datasheet default, ~96 mA in the I2C-off 1x mode); ~560-620 ohm planned for ~440-480 mA, value to be chosen', 'R0402', 'PWR_CLPROG', 'GND'),
+    ('R103', 'R', '576', 'RC0402FR-07576RL', 'thick film +-1% 0402 -- LTC3556 CLPROG, 500 mA USB limit with I2C off (1x mode, hCLPROG 224): 1.188 V x 225 / 576 = 464 mA + 0.4 mA typ, ~425-489 mA over the datasheet spread; CLPROG pin 2.1 mA < 3 mA abs max', 'R0402', 'PWR_CLPROG', 'GND'),
     ('R107', 'R', '680', 'RC0402FR-07680RL', 'thick film +-1% 0402 -- PGOODALL pull-up and LD3 current: (3.3 - 2.0) / 680 = 1.9 mA', 'R0402', 'VCC3V3', 'PWR_PGOODALL'),
     ('R108', 'R', '1K', 'RC0402FR-071KL', 'thick film +-1% 0402 -- LD4 (CHRG) current: (3.7 - 2.0) / 1.0k = 1.7 mA', 'R0402', 'VU', 'LD4_A'),
 ]
@@ -90,7 +90,7 @@ GRID = [(x, y) for y in (940, 870, 800, 730, 660) for x in (110, 210, 310, 410, 
 NOTES = ['2026-11-10: U8 bq24232 + U5 TPS63802 + U6 SC189L -> one Analog Devices LTC3556 (USB PowerPath, charger 248 mA,',
          'Buck2 VCC1V8 400 mA, buck-boost VCC3V3 1 A); VCC1V0 stays on U7 SC189A (1.5 A: XPE puts a half-full XC7A35T at ~0.4 A).',
          'U7 starts on ENALL; Buck1 runs unloaded as a sequencing slot (SEQ = GND), so 1V0 -> 1V8 -> 3V3. I2C off (DVCC/SCL/SDA = GND):',
-         'USB input limit = 1x mode set by R103 (3.01k placeholder, value TBD). NTC grounded, GATE open. LD3 = rails good, LD4 = charging.']
+         'USB input limit = 1x mode set by R103 = 576R: ~465 mA typ, 489 mA max (500 mA USB). NTC grounded, GATE open. LD3 = rails good, LD4 = charging.']
 NOTE_XY = (100, 590)
 
 

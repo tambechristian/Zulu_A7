@@ -275,9 +275,10 @@ def main():
                     b = set_field(b, 'Text', S.uid())
                 if field(b, 'RECORD') == '34':
                     b = set_field(b, 'Text', des)
-                if des in spec and field(b, 'RECORD') == '41' and field(b, 'Name') in ('SPEC', 'Comment', 'MANF#'):
-                    b = set_field(b, 'Text', {'SPEC': spec[des][4], 'Comment': spec[des][2],
-                                              'MANF#': spec[des][3]}[field(b, 'Name')])
+            # values, MPNs and specs always follow the parts list (apply_ltc3556.PARTS is the master)
+            if des in spec and field(b, 'RECORD') == '41' and field(b, 'Name') in ('SPEC', 'Comment', 'MANF#'):
+                b = set_field(b, 'Text', {'SPEC': spec[des][4], 'Comment': spec[des][2],
+                                          'MANF#': spec[des][3]}[field(b, 'Name')])
             if k == 0:
                 b = set_field(set_field(b, 'IndexInSheet', S.nxt()), 'UniqueID', cur_uid.get(des) or S.uid())
             if o is not None:
