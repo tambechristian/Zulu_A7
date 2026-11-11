@@ -1,0 +1,166 @@
+== plan vias vs pads (outer-layer landing)
+  VU via 0.30/0.15 (10.625,10.600) Bot on R108-1 VU FULL
+  USB5V0 via 0.30/0.15 (11.350,13.300) Bot on C150-2 USB5V0 FULL
+  USB5V0 via 0.30/0.15 (11.350,13.750) Bot on C150-2 USB5V0 FULL
+  VU via 0.30/0.15 (12.250,12.950) Bot on L8-2 VU FULL
+  VBATT via 0.30/0.15 (12.050,14.900) Bot on C151-2 VBATT PARTLY OFF PAD
+  VBATT via 0.30/0.15 (12.450,14.900) Bot on C151-2 VBATT PARTLY OFF PAD
+  GND via 0.30/0.15 (14.750,14.600) Bot on C151-1 GND FULL
+  GND via 0.30/0.15 (15.150,11.250) Bot on C147-1 GND FULL
+== all vias (any) partly over a pad on outer layers, block box
+  FT-VPHY via 0.30/0.15 (9.050,9.550) span Top-L2- overlaps U2-4 (FT-VPHY) PARTLY
+  FT-VCORE via 0.30/0.15 (9.925,11.500) span Top-L2- overlaps U2-64 (FT-VCORE) PARTLY
+  EE-DATA-DO via 0.30/0.15 (12.600,14.375) span Top-L2- overlaps U10-4 (EE-DATA-DO) PARTLY
+  EE-DATA via 0.30/0.15 (11.550,12.025) span Top-L2- overlaps U2-61 (EE-DATA) PARTLY
+  EE-DATA via 0.30/0.15 (12.325,13.875) span Top-L2- overlaps U10-3 (EE-DATA) PARTLY
+  EE-CS via 0.30/0.15 (10.350,11.650) span Top-L2- overlaps U2-63 (EE-CS) PARTLY
+  EE-CS via 0.30/0.15 (10.550,12.000) span Top-L2- overlaps U2-63 (EE-CS) PARTLY
+  EE-CS via 0.30/0.15 (12.050,12.825) span Top-L2- overlaps U10-1 (EE-CS) PARTLY
+  EE-CLK via 0.35/0.20 (9.525,12.450) span Top-Bot overlaps R96-1 (EE-CLK) PARTLY
+  CLK-12M-SHARED via 0.30/0.15 (15.375,12.650) span Top-L2- overlaps Q1-3 (CLK-12M-SHARED) PARTLY
+  GND via 0.30/0.15 (9.225,14.400) span Top-L2- overlaps U10-5 (GND) PARTLY
+  GND via 0.30/0.15 (16.375,11.525) span Top-L2- overlaps U2-51 (GND) PARTLY
+  GND via 0.30/0.15 (9.000,11.075) span Top-L2- overlaps U2-1 (GND) PARTLY
+  GND via 0.30/0.15 (13.675,12.650) span Top-L2- overlaps Q1-2 (GND) PARTLY
+  GND via 0.35/0.20 (13.075,15.250) span Top-Bot overlaps C82-1 (GND) PARTLY
+  GND via 0.35/0.20 (9.400,11.250) span Top-Bot overlaps U2-1 (GND) PARTLY
+  GND via 0.35/0.20 (9.400,11.250) span Top-Bot overlaps C167-1 (GND) PARTLY
+  GND via 0.35/0.20 (9.850,14.425) span Top-Bot overlaps U10-5 (GND) PARTLY
+  GND via 0.35/0.20 (9.850,14.425) span Top-Bot overlaps U8-27 (GND) PARTLY
+  GND via 0.35/0.20 (13.075,9.800) span Top-Bot overlaps R102-2 (GND) PARTLY
+  GND via 0.35/0.20 (8.725,11.650) span Top-Bot overlaps R114-2 (GND) PARTLY
+  VCC3V3 via 0.30/0.15 (9.225,12.900) span Top-L2- overlaps U10-8 (VCC3V3) PARTLY
+  VCC3V3 via 0.30/0.15 (10.025,12.475) span L5--Bot overlaps R96-2 (VCC3V3) PARTLY
+  VCC3V3 via 0.30/0.15 (13.925,11.525) span Top-L2- overlaps U2-56 (VCC3V3) PARTLY
+  VCC3V3 via 0.30/0.15 (13.675,14.850) span Top-L2- overlaps Q1-1 (VCC3V3) PARTLY
+  VCC3V3 via 0.30/0.15 (15.375,14.850) span Top-L2- overlaps Q1-4 (VCC3V3) PARTLY
+  VCC1V8 via 0.30/0.15 (15.675,15.175) span L5--Bot overlaps C82-2 (VCC1V8) PARTLY
+  VU via 0.35/0.20 (8.800,15.600) span Top-Bot overlaps U8-1 (VU) PARTLY
+  PWR_CLPROG via 0.30/0.15 (8.625,16.125) span L5--Bot overlaps U8-2 (PWR_CLPROG) PARTLY
+  EN via 0.30/0.15 (9.350,15.175) span L5--Bot overlaps U8-28 (EN) PARTLY
+  EN via 0.30/0.15 (9.275,14.775) span L5--Bot overlaps U8-28 (EN) PARTLY
+  PWR_CHRG via 0.30/0.15 (12.125,15.950) span L5--Bot overlaps U8-21 (PWR_CHRG) PARTLY
+  PWR_FB2 via 0.30/0.15 (15.975,12.800) span L5--Bot overlaps R113-2 (PWR_FB2) PARTLY
+  PWR_PROG via 0.30/0.15 (12.350,10.025) span L5--Bot overlaps R102-1 (PWR_PROG) PARTLY
+  VBATT via 0.30/0.15 (12.050,14.900) span L5--Bot overlaps C151-2 (VBATT) PARTLY
+  VBATT via 0.30/0.15 (12.450,14.900) span L5--Bot overlaps C151-2 (VBATT) PARTLY
+== plan track widths per net/layer (min)
+   ('GND', 'Bottom Layer') 0.25
+   ('PWR_FB2', 'Bottom Layer') 0.0762
+   ('PWR_FB2', 'L3-SIG') 0.0762
+   ('PWR_FB2', 'L4-SIG') 0.0762
+   ('PWR_PGOODALL', 'L3-SIG') 0.0762
+   ('PWR_PGOODALL', 'L4-SIG') 0.0762
+   ('PWR_PROG', 'L3-SIG') 0.0762
+   ('PWR_PROG', 'L4-SIG') 0.0762
+   ('PWR_SW', 'Bottom Layer') 0.3
+   ('USB5V0', 'Bottom Layer') 0.25
+   ('USB5V0', 'L3-SIG') 0.25
+   ('USB5V0', 'L4-SIG') 0.25
+   ('VBATT', 'Bottom Layer') 0.4
+   ('VBATT', 'L4-SIG') 0.35
+   ('VBATT', 'Top Layer') 0.35
+   ('VU', 'Bottom Layer') 0.25
+   ('VU', 'L4-SIG') 0.3
+== acute angles (<90 deg interior) among block-net tracks, same net+layer, shared endpoint
+  GND Bottom at (14.775, 10.4) angle 0.0 (w 0.300/0.400)
+  VU Top La at (8.375, 15.85) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.75, 16.225) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.75, 16.225) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.75, 16.25) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.75, 16.25) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.775, 16.275) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.775, 16.275) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.775, 16.3) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.775, 16.3) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.8, 16.325) angle 0.0 (w 0.400/0.400)
+  VU Top La at (8.8, 16.325) angle 0.0 (w 0.400/0.400)
+  VU Top La at (15.55, 14.225) angle 7.3 (w 0.400/0.400)
+  VU Bottom at (15.55, 14.225) angle 64.2 (w 0.400/0.400)
+== PWR_SW neighbours: edge-to-edge copper gaps < 0.35 mm (same layer) and overlaps on other layers
+  SAME Bottom: GND w0.30 gap 0.160
+  CROSS on L3-SIG: PWR_CHRG w0.08 (SW on Bottom)
+  CROSS on L4-SIG: PWR_PGOODALL w0.08 (SW on Bottom)
+  CROSS on L4-SIG: PWR_PGOODALL w0.08 (SW on Bottom)
+  CROSS on L3-SIG: PWR_PGOODALL w0.08 (SW on Bottom)
+  SAME Bottom: USB5V0 w0.25 gap 0.175
+  SAME Bottom: GND w0.25 gap 0.225
+  CROSS on Top Layer: VBATT w0.35 (SW on Bottom)
+  CROSS on Top Layer: VBATT w0.35 (SW on Bottom)
+  PAD U8-25 USB5V0 gap 0.175
+  PAD U8-27 GND gap 0.225
+  SAME Bottom: GND w0.30 gap 0.150
+  CROSS on L3-SIG: PWR_CHRG w0.08 (SW on Bottom)
+  CROSS on L4-SIG: PWR_PGOODALL w0.08 (SW on Bottom)
+  CROSS on L4-SIG: PWR_PGOODALL w0.08 (SW on Bottom)
+  SAME Bottom: USB5V0 w0.25 gap 0.175
+  SAME Bottom: GND w0.25 gap 0.275
+  CROSS on Top Layer: VBATT w0.35 (SW on Bottom)
+  CROSS on Top Layer: VBATT w0.35 (SW on Bottom)
+  PAD R96-2 VCC3V3 gap 0.141
+  PAD C150-1 GND gap 0.150
+  PAD C150-2 USB5V0 gap 0.150
+  PAD U8-25 USB5V0 gap 0.175
+  PAD U8-27 GND gap 0.275
+  CROSS on L4-SIG: USB5V0 w0.25 (SW on Bottom)
+  PAD R96-2 VCC3V3 gap 0.105
+  PAD C150-1 GND gap 0.154
+  PAD C150-2 USB5V0 gap 0.097
+  CROSS on Top Layer: EE-CLK w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-CS w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-CS w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-CS w0.08 (SW on Bottom)
+  CROSS on L4-SIG: USB5V0 w0.25 (SW on Bottom)
+  PAD R96-2 VCC3V3 gap 0.130
+  PAD C150-2 USB5V0 gap 0.100
+  CROSS on Top Layer: FT-PWREN# w0.08 (SW on Bottom)
+  CROSS on Top Layer: EE-CLK w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-DATA-DO w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-DATA w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-DATA w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-DATA w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-DATA w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-DATA w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-CS w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-CS w0.08 (SW on Bottom)
+  CROSS on L3-SIG: EE-CS w0.08 (SW on Bottom)
+  CROSS on L4-SIG: VU w0.30 (SW on Bottom)
+  CROSS on L4-SIG: VU w0.30 (SW on Bottom)
+  PAD C150-2 USB5V0 gap 0.100
+  PAD C167-2 VU gap 0.104
+  PAD L8-2 VU gap 0.174
+  CROSS on L3-SIG: EE-DATA-DO w0.08 (SW on Bottom)
+== L8 footprint shadow (inner-layer copper under L8 pads/body, x 11.9-14.2, y 10.35-13.75)
+  EE-DATA-DO L3-SIG w0.076 (12.60,10.32)-(12.60,14.38)
+  EE-DATA L3-SIG w0.076 (11.80,12.15)-(11.97,12.32)
+  EE-DATA L3-SIG w0.076 (11.97,12.32)-(11.97,12.35)
+  EE-DATA L3-SIG w0.076 (11.97,12.35)-(12.32,12.70)
+  EE-DATA L3-SIG w0.076 (12.32,12.70)-(12.32,13.88)
+  EE-CS L3-SIG w0.076 (11.55,12.75)-(11.97,12.75)
+  EE-CS L3-SIG w0.076 (11.97,12.75)-(12.05,12.82)
+  PWR_PROG L4-SIG w0.076 (12.35,10.03)-(12.35,10.45)
+  PWR_PROG L4-SIG w0.076 (12.35,10.45)-(12.60,10.70)
+  PWR_PROG L4-SIG w0.076 (12.60,10.70)-(13.35,10.70)
+  VU L4-SIG w0.300 (12.25,12.95)-(11.75,12.45)
+  PWR_PROG L3-SIG w0.076 (13.35,10.70)-(13.35,14.95)
+== VU vias in block box
+  VU (8.800,15.600) 0.35/0.20 Top-Bot
+  VU (15.550,14.225) 0.35/0.20 Top-Bot
+  VU (10.625,10.600) 0.30/0.15 L5--Bot
+  VU (10.625,10.600) 0.30/0.15 L4--L5-
+  USB5V0 (11.350,13.300) 0.30/0.15 L4--L5-
+  USB5V0 (11.350,13.300) 0.30/0.15 L5--Bot
+  USB5V0 (11.350,13.750) 0.30/0.15 L4--L5-
+  USB5V0 (11.350,13.750) 0.30/0.15 L5--Bot
+  VU (12.250,12.950) 0.30/0.15 L4--L5-
+  VU (12.250,12.950) 0.30/0.15 L5--Bot
+  VBATT (12.050,14.900) 0.30/0.15 L4--L5-
+  VBATT (12.050,14.900) 0.30/0.15 L5--Bot
+  VBATT (12.450,14.900) 0.30/0.15 L4--L5-
+  VBATT (12.450,14.900) 0.30/0.15 L5--Bot
+  VBATT (11.150,14.725) 0.30/0.15 Top-L2-
+  VBATT (11.150,14.725) 0.30/0.15 L2--L3-
+  VBATT (11.150,14.725) 0.30/0.15 L3--L4-
+  VBATT (11.600,14.725) 0.30/0.15 Top-L2-
+  VBATT (11.600,14.725) 0.30/0.15 L2--L3-
+  VBATT (11.600,14.725) 0.30/0.15 L3--L4-

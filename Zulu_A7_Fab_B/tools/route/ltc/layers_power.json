@@ -1,0 +1,12 @@
+{"cost": {
+ "PWR_SW": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40},
+ "PWR_SW1": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40},
+ "PWR_SW2": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40},
+ "PWR_SWAB3": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40},
+ "PWR_SWCD3": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40},
+ "VU": {"Top Layer": 4, "L3-SIG": 4, "L4-SIG": 4},
+ "VCC3V3": {"Top Layer": 4, "L3-SIG": 4, "L4-SIG": 4},
+ "VCC1V0": {"Top Layer": 4, "L3-SIG": 4, "L4-SIG": 4},
+ "VCC1V8": {"Top Layer": 4, "L3-SIG": 4, "L4-SIG": 4},
+ "USB5V0": {"Top Layer": 3, "L3-SIG": 3, "L4-SIG": 3},
+ "VBATT": {"Top Layer": 3, "L3-SIG": 3, "L4-SIG": 3}}}

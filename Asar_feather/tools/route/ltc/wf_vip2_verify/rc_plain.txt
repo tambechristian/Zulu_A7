@@ -1,0 +1,8 @@
+plan: 68 tracks, 41 vias, 28 removed; board then: 4881 tracks, 1605 vias
+violations: 4
+  width USB5V0 L3-SIG 0.2500
+  width USB5V0 L4-SIG 0.2500
+  width VBATT L4-SIG 0.3500
+  width VU L4-SIG 0.3000
+open connections after the plan: 0 on 0 nets
+FAIL

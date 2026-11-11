@@ -6,3 +6,6 @@ __Previews/
 # script caches
 __pycache__/
 Project Outputs for */
+# pre-edit copies (mark_microvias.py backups, hand backups); git history replaces them
+*.pre-microvia*
+backups/

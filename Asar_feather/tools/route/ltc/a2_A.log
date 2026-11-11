@@ -1,0 +1,17 @@
+GND            
+VCC3V3         
+PWR_SW2        
+PWR_SWAB3      
+PWR_SWCD3      
+NetL3_1        
+PWR_SW         
+VBATT          ripped PWR_SW
+VCC1V8         
+VU             ripped VBATT
+USB5V0         ripped VCC1V8 VU
+VCC1V0         
+PWR_SW         
+VBATT          
+VCC1V8         
+VU             ripped USB5V0
+EXIT 124

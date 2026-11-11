@@ -1,0 +1,17 @@
+VCC3V3         
+GND            
+PWR_VC3_RC     
+PWR_FB3_FF     
+PWR_VC3        
+PWR_SWCD3      
+PWR_PROG       
+PWR_SW1        
+PWR_FB2        
+PWR_CLPROG     
+PWR_FB1        
+PWR_FB3        
+PWR_PGOODALL   
+PWR_CHRG       
+LD4_A          
+USB5V0         
+EXIT 124

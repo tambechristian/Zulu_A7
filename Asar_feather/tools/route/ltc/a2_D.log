@@ -1,0 +1,17 @@
+PWR_SW         
+VU             ripped PWR_SW
+VBATT          
+USB5V0         
+PWR_SW         
+routed 2 connections, failed 7; 10 vias, 14 tracks -> route/ltc/a2_D.json
+OPEN USB5V0 4
+OPEN VBATT 2
+OPEN VU 1
+FAIL VU (budget)
+FAIL VBATT (budget)
+FAIL VBATT (budget)
+FAIL USB5V0 (budget)
+FAIL USB5V0 (budget)
+FAIL USB5V0 (budget)
+FAIL USB5V0 (budget)
+EXIT 0

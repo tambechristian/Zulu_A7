@@ -1,0 +1,36 @@
+GND            
+VCC3V3         
+PWR_VC3_RC     
+PWR_FB3_FF     
+PWR_SW1        
+PWR_VC3        
+PWR_FB1        
+VU             
+PWR_CLPROG     
+PWR_PROG       
+LD4_A          
+VBATT          
+PWR_FB2        
+PWR_FB3        
+PWR_CHRG       
+USB5V0         
+PWR_PGOODALL   
+EN             ripped PWR_CHRG PWR_FB2 PWR_FB3 PWR_PGOODALL PWR_PROG
+PWR_CHRG       
+PWR_FB2        
+PWR_FB3        
+PWR_PGOODALL   
+PWR_PROG       
+routed 25 connections, failed 8; 59 vias, 163 tracks -> route/ltc/a2_B.json
+OPEN USB5V0 4
+OPEN VBATT 2
+OPEN VU 2
+FAIL VU (nopath)
+FAIL VU (nopath)
+FAIL VBATT (nopath)
+FAIL VBATT (nopath)
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)
+EXIT 0

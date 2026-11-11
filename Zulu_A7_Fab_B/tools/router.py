@@ -66,8 +66,13 @@ VIA_COST = {'stack_top': 0.8, 'stack_bot': 0.8, 'buried': 0.8, 'through': 1.5, '
             'stack_tie': 1.5}
 
 
+WIDTH_OVERRIDE = {}           # router.py --widths: {net: [outer, inner]} (2026-11-10, LTC3556 power nets)
+
+
 def width(net, layer):
     inner = layer in INNER
+    if net in WIDTH_OVERRIDE:
+        return WIDTH_OVERRIDE[net][1 if inner else 0]
     if net == 'VCC3V3':
         return 1.05 if inner else (0.2 if layer == 'Bottom Layer' else 0.0762)
     if net in ('VU', 'USB5V0', 'VBATT'):
@@ -588,12 +593,15 @@ def main():
     ap.add_argument('--laser-small', default='', help='add a second, smaller laser family SIZE/HOLE (kinds *_s)')
     ap.add_argument('--slack', type=float, default=MARGIN, help='raster allowance in mm on top of every clearance '
                     '(default 0.02); 0 lets a local repair re-enter a lane routed at the rule limit -- route_check it')
+    ap.add_argument('--widths', default='', help='JSON {net: [outer width, inner width]} overriding the width table')
     ap.add_argument('--clear', type=float, default=CLEAR, help='Clearance rule in mm (default 0.09; 0.0762 = 3 mil)')
     ap.add_argument('--sdram-plain', action='store_true', help='SDRAM nets use the default width and clearance on '
                     'the inner layers and Bottom too (no 0.1 width / 0.10 clearance / 0.20 for SDRAM-CLK)')
     a = ap.parse_args()
     globals()['MARGIN'] = a.slack
     globals()['CLEAR'] = a.clear
+    if a.widths:
+        WIDTH_OVERRIDE.update(json.load(open(a.widths)))
     globals()['SDRAM_RULES'] = not a.sdram_plain
     if a.clear != 0.09 or a.sdram_plain:
         print('rules: clearance %.4f, SDRAM rules %s' % (CLEAR, 'on' if SDRAM_RULES else 'OFF (plain)'), flush=True)

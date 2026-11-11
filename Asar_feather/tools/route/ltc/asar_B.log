@@ -1,0 +1,14 @@
+GND            
+VCC3V3         
+PWR_FB3_FF     
+PWR_VC3_RC     
+PWR_SWAB3      
+PWR_FB2        
+PWR_CLPROG     
+PWR_SW         
+PWR_FB1        
+PWR_PROG       
+PWR_VC3        
+LD4_A          
+PWR_FB3        
+EXIT 127
