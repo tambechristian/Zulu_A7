@@ -32,7 +32,8 @@ rng = random.Random(3556)
 # ---- the circuit (docs/ltc3556.md). Two-pin parts: (des, kind, value, MPN, SPEC, model, pin1 net, pin2 net)
 PARTS = [
     ('L8', 'L', '3.3uH', 'DFE252012F-3R3M=P2', '3.3uH +-20%, Isat 2.5 A, Itemp 1.8 A, DCR 135 mOhm max, 2520 1.2 mm -- LTC3556 PowerPath inductor (SW to VOUT)', 'IND2520', 'PWR_SW', 'VU'),
-    ('L3', 'L', '2.2uH', 'DFE252012F-2R2M=P2', '2.2uH +-20%, Isat 3.3 A, Itemp 2.3 A, DCR 82 mOhm max, 2520 1.2 mm -- LTC3556 Buck1 (VCC1V0) inductor', 'IND2520', 'PWR_SW1', 'VCC1V0'),
+    ('L3', 'L', '1.5uH', 'DFE252010P-1R5M=P2', '1.5uH +-20%, Isat >=1.8A, 1.00 mm max -- U7 SC189A LX inductor (VCC1V0), 2.5 MHz, <=0.31 A p-p ripple', 'IND2520', 'PWR_LX1V0', 'VCC1V0'),
+    ('L9', 'L', '2.2uH', 'DFE252012F-2R2M=P2', '2.2uH +-20%, 2520 -- LTC3556 Buck1 kept running unloaded as the sequencing slot (SEQ = GND: Buck1 -> Buck2 -> buck-boost), so 1.8 V starts after U7 has brought up 1.0 V', 'IND2520', 'PWR_SW1', 'PWR_FB1'),
     ('L2', 'L', '2.2uH', 'DFE252012F-2R2M=P2', '2.2uH +-20%, Isat 3.3 A, Itemp 2.3 A, DCR 82 mOhm max, 2520 1.2 mm -- LTC3556 Buck2 (VCC1V8) inductor (2520 like L1/L3: no verified Murata land pattern for the 2016 part)', 'IND2520', 'PWR_SW2', 'VCC1V8'),
     ('L1', 'L', '2.2uH', 'DFE252012F-2R2M=P2', '2.2uH +-20%, Isat 3.3 A, Itemp 2.3 A, DCR 82 mOhm max, 2520 1.2 mm -- LTC3556 buck-boost (VCC3V3) inductor, SWAB3 to SWCD3', 'IND2520', 'PWR_SWAB3', 'PWR_SWCD3'),
     ('C150', 'C', '10uF', 'GRM188R61C106MA73D', 'X5R 16V +-20% 0603 10uF -- LTC3556 VBUS bypass (pin 25)', 'C0603', 'GND', 'USB5V0'),
@@ -40,15 +41,14 @@ PARTS = [
     ('C147', 'C', '10uF', 'GRM188R61A106KE69D', 'X5R 10V +-10% 0603 10uF -- LTC3556 VOUT (PowerPath output, pin 24) bypass', 'C0603', 'GND', 'VU'),
     ('C78', 'C', '10uF 10V', 'CL21A106KPFNNNG', 'X5R 10V +-10% 0805 10uF -- VU bulk', 'C0805', 'GND', 'VU'),
     ('C148', 'C', '10uF', 'GRM188R61A106KE69D', 'X5R 10V +-10% 0603 10uF -- LTC3556 VIN3 (buck-boost input, pin 11) bypass', 'C0603', 'GND', 'VU'),
-    ('C149', 'C', '2.2uF', 'GRM155R61A225KE95D', 'X5R 10V +-10% 0402 2.2uF -- LTC3556 VIN1 (Buck1 input, pin 5) bypass', 'C0402', 'GND', 'VU'),
+    ('C149', 'C', '10uF', 'CL21A106KPFNNNG', 'X5R 10V +-10% 0805 10uF -- U7 SC189A VIN bypass (>= 4.7 uF effective)', 'C0805', 'GND', 'VU'),
+    ('C167', 'C', '1uF', 'GRM155R61A105KE15D', 'X5R 10V +-10% 0402 1uF -- LTC3556 VIN1 (Buck1 input, pin 5) bypass, the 1 uF the datasheet asks for', 'C0402', 'GND', 'VU'),
+    ('C168', 'C', '10uF', 'GRM188R61A106KE69D', 'X5R 10V +-10% 0603 10uF -- LTC3556 Buck1 output (sequencing slot, FB1 tied to it: 0.8 V, no load)', 'C0603', 'GND', 'PWR_FB1'),
     ('C160', 'C', '2.2uF', 'GRM155R61A225KE95D', 'X5R 10V +-10% 0402 2.2uF -- LTC3556 VIN2 (Buck2 input, pin 18) bypass', 'C0402', 'GND', 'VU'),
     ('C161', 'C', '1uF', 'GRM155R61A105KE15D', 'X5R 10V +-10% 0402 1uF -- LTC3556 CLPROG averaging capacitor (>= 0.47 uF)', 'C0402', 'GND', 'PWR_CLPROG'),
-    ('C84', 'C', '22uF', 'CL10A226MP8NUNE', 'X5R 10V +-20% 0603 22uF -- Buck1 (VCC1V0) output capacitor', 'C0603', 'GND', 'VCC1V0'),
+    ('C84', 'C', '22uF', 'CL10A226MP8NUNE', 'X5R 10V +-20% 0603 22uF -- U7 SC189A (VCC1V0) output capacitor', 'C0603', 'GND', 'VCC1V0'),
     ('C82', 'C', '22uF', 'CL10A226MP8NUNE', 'X5R 10V +-20% 0603 22uF -- Buck2 (VCC1V8) output capacitor', 'C0603', 'GND', 'VCC1V8'),
     ('C80', 'C', '22uF', 'GRM21BR61A226ME44L', 'X5R 10V +-20% 0805 22uF -- buck-boost (VCC3V3) output capacitor, the 22 uF the Type III values assume', 'C0805', 'GND', 'VCC3V3'),
-    ('R111', 'R', '100K', 'RC0201FR-07100KL', 'thick film +-1% 0201 -- Buck1 divider top: 0.8 V x (1 + 100k/402k) = 0.999 V', 'R0201', 'VCC1V0', 'PWR_FB1'),
-    ('R112', 'R', '402K', 'RC0201FR-07402KL', 'thick film +-1% 0201 -- Buck1 divider bottom', 'R0201', 'PWR_FB1', 'GND'),
-    ('C162', 'C', '10pF', 'GRM0335C1H100JA01D', 'C0G 50V +-5% 0201 10pF -- Buck1 feed-forward across R111', 'C0201', 'VCC1V0', 'PWR_FB1'),
     ('R113', 'R', '150K', 'RC0201FR-07150KL', 'thick film +-1% 0201 -- Buck2 divider top: 0.8 V x (1 + 150k/120k) = 1.800 V', 'R0201', 'VCC1V8', 'PWR_FB2'),
     ('R114', 'R', '120K', 'RC0201FR-07120KL', 'thick film +-1% 0201 -- Buck2 divider bottom', 'R0201', 'PWR_FB2', 'GND'),
     ('C163', 'C', '10pF', 'GRM0335C1H100JA01D', 'C0G 50V +-5% 0201 10pF -- Buck2 feed-forward across R113', 'C0201', 'VCC1V8', 'PWR_FB2'),
@@ -64,6 +64,7 @@ PARTS = [
     ('R107', 'R', '680', 'RC0402FR-07680RL', 'thick film +-1% 0402 -- PGOODALL pull-up and LD3 current: (3.3 - 2.0) / 680 = 1.9 mA', 'R0402', 'VCC3V3', 'PWR_PGOODALL'),
     ('R108', 'R', '1K', 'RC0402FR-071KL', 'thick film +-1% 0402 -- LD4 (CHRG) current: (3.7 - 2.0) / 1.0k = 1.7 mA', 'R0402', 'VU', 'LD4_A'),
 ]
+U7_NETS = {'1': 'VU', '2': 'GND', '3': None, '4': 'VCC1V0', '5': 'PWR_LX1V0'}   # pin 3 EN = the ENALL net
 LEDS = [('LD3', 'PWR_PGOODALL', 'GND', 'green -- LTC3556 PGOODALL: all three rails good (lights 230 ms after VCC3V3 is up)'),
         ('LD4', 'LD4_A', 'PWR_CHRG', 'red -- LTC3556 CHRG: on = charging, off = done / no USB, fast blink = bad battery')]
 #        pin  name       side  electrical (0 in, 3 open collector, 4 passive, 7 power)
@@ -86,10 +87,10 @@ U8_MODEL = 'QFN28-UFD-4X5'
 IND_SLOTS = [(150, 1010), (350, 1010), (550, 1010), (750, 1010)]
 GRID = [(x, y) for y in (940, 870, 800, 730, 660) for x in (110, 210, 310, 410, 510, 610, 710)
         if not (y == 940 and x >= 610)]                 # X4 sits at (700, 940)
-NOTES = ['2026-11-10: U8 bq24232 + U5 TPS63802 + U6/U7 SC189 -> one Analog Devices LTC3556 (USB PowerPath, charger 248 mA,',
-         'Buck1 VCC1V0 400 mA, Buck2 VCC1V8 400 mA, buck-boost VCC3V3 1 A). SEQ = GND starts 1V0 -> 1V8 -> 3V3 on ENALL;',
-         'I2C off (DVCC/SCL/SDA = GND), so the USB input limit is the 1x mode set by R103 (3.01k placeholder, ~96 mA; value TBD).',
-         'NTC grounded (pack has its own protection), GATE open (no external ideal-diode FET). LD3 = all rails good, LD4 = charging.']
+NOTES = ['2026-11-10: U8 bq24232 + U5 TPS63802 + U6 SC189L -> one Analog Devices LTC3556 (USB PowerPath, charger 248 mA,',
+         'Buck2 VCC1V8 400 mA, buck-boost VCC3V3 1 A); VCC1V0 stays on U7 SC189A (1.5 A: XPE puts a half-full XC7A35T at ~0.4 A).',
+         'U7 starts on ENALL; Buck1 runs unloaded as a sequencing slot (SEQ = GND), so 1V0 -> 1V8 -> 3V3. I2C off (DVCC/SCL/SDA = GND):',
+         'USB input limit = 1x mode set by R103 (3.01k placeholder, value TBD). NTC grounded, GATE open. LD3 = rails good, LD4 = charging.']
 NOTE_XY = (100, 590)
 
 

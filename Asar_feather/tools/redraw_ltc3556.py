@@ -92,8 +92,14 @@ def main():
     pin_net = {p: n for n, pins in old_nets.items() for p in pins}
 
     # UniqueIDs of the LTC3556 block, from the current sheet (component and per-pin)
+    # parts whose symbol comes from somewhere other than the current sheet's part of the same designator (2026-11-10:
+    # U7 SC189A takes VCC1V0 back from LTC3556 Buck1; L3/C149 return to their SC189 values; L9/C167/C168 are new)
+    SRC = {'U7': ('backup', 'U7'), 'L3': ('backup', 'L3'), 'C149': ('backup', 'C149'),
+           'L9': ('current', 'L2'), 'C167': ('current', 'C161'), 'C168': ('current', 'C147')}
     cur_uid, cur_pin_uid = {}, {}
     for des in [p[0] for p in A.PARTS] + ['LD3', 'LD4', 'U8']:
+        if des not in C.byname:
+            continue
         i = C.byname[des]
         cur_uid[des] = field(C.recs[i][1], 'UniqueID')
         for k in C.sub(i):
@@ -102,7 +108,12 @@ def main():
                 pb = C.recs[owner(b)][1]
                 cur_pin_uid[(des, field(pb, 'Designator'))] = field(b, 'Text')
     # templates from the CURRENT sheet (already the LTC3556 parts, values, models and the tidied X1)
-    T = {d: C.template(d) for d in [p[0] for p in A.PARTS] + ['LD3', 'LD4', 'U8']}
+    T = {d: C.template(d) for d in [p[0] for p in A.PARTS] + ['LD3', 'LD4', 'U8'] if d not in SRC}
+    for d, (where, src) in SRC.items():
+        T[d] = (S if where == 'backup' else C).template(src)
+    if 'U7' not in cur_uid:
+        cur_uid['U7'] = field(S.recs[S.byname['U7']][1], 'UniqueID')     # the SC189A's own UID from before the swap
+    spec = {p[0]: p for p in A.PARTS}
     x1_cur = C.template('X1')
     top_t = {}
     for h, b in C.recs:
@@ -243,18 +254,32 @@ def main():
             for pd, side in want.items():
                 x, y = rot_pt(pins0[pd][0], pins0[pd][1], mx, my, q)
                 dxp, dyp = x - mx, y - my
-                got = 'top' if dyp > 0.5 else 'bottom' if dyp < -0.5 else 'right' if dxp > 0.5 else 'left'
+                if abs(dyp) >= abs(dxp):
+                    got = 'top' if dyp > 0 else 'bottom'
+                else:
+                    got = 'right' if dxp > 0 else 'left'
                 ok &= got == side
             if ok:
                 best = q
                 break
         assert best is not None, (des, want)
         base = len(S.recs)
+        fresh = des in SRC
         for k, (h, b, o) in enumerate(tmpl):
             b = rotate_rec(b, mx, my, best, root=(k == 0))
             b = A.shift(b, cx - mx, cy - my)
+            if fresh:
+                if k and field(b, 'UniqueID'):
+                    b = set_field(b, 'UniqueID', S.uid())
+                if field(b, 'RECORD') == '41' and field(b, 'Name') == 'PinUniqueId':
+                    b = set_field(b, 'Text', S.uid())
+                if field(b, 'RECORD') == '34':
+                    b = set_field(b, 'Text', des)
+                if des in spec and field(b, 'RECORD') == '41' and field(b, 'Name') in ('SPEC', 'Comment', 'MANF#'):
+                    b = set_field(b, 'Text', {'SPEC': spec[des][4], 'Comment': spec[des][2],
+                                              'MANF#': spec[des][3]}[field(b, 'Name')])
             if k == 0:
-                b = set_field(set_field(b, 'IndexInSheet', S.nxt()), 'UniqueID', cur_uid[des])
+                b = set_field(set_field(b, 'IndexInSheet', S.nxt()), 'UniqueID', cur_uid.get(des) or S.uid())
             if o is not None:
                 b = set_field(b, 'OwnerIndex', str(base + o - 1))
             S.recs.append([h, b])
@@ -341,15 +366,36 @@ def main():
     vin = [u8['5'], u8['18'], u8['11']]                     # x 390, 430, 470 at y 1050
     for e in vin:
         wire(e, (e[0], BUS))
-    for des, x in (('C149', 410), ('C160', 450), ('C148', 490)):
+    for des, x in (('C167', 410), ('C160', 450), ('C148', 490)):
         t, bt = vpart(des, x, 1080, 'VU')                     # pins at 1090 / 1070
         wire(t, (x, BUS))
         gnd(*bt)
-    xs = [390, 410, 430, 450, 470, 490, 530]
-    wire(*[(x, BUS) for x in xs])
+    # ---- U7 SC189A (fixed 1.0 V, 1.5 A) for VCC1V0, on the same VU bus, enabled with the LTC3556 (ENALL net)
+    e7 = place('U7', 670, 1110, {'1': 'left', '5': 'right'})  # VIN (600,1130), EN (600,1110), GND (670,1070)
+    t, bt = vpart('C149', 520, BUS - 20, 'VU')                # SC189A input capacitor, hangs from the bus
+    wire(t, (520, BUS))
+    gnd(*bt)
+    xs = [390, 410, 430, 450, 470, 490, 520, 540]
+    wire(*[(x, BUS) for x in xs], (540, e7['1'][1]), e7['1'])
     for x in xs[1:-1]:
         junction(x, BUS)
-    label(530, BUS, 'VU')
+    label(390, BUS, 'VU', 2)
+    if nets_u8['28'] == 'VU':
+        wire(e7['3'], (e7['3'][0] - 15, e7['3'][1]), (e7['3'][0] - 15, e7['1'][1]))
+        junction(e7['3'][0] - 15, e7['1'][1])
+    else:
+        wire(e7['3'], (e7['3'][0] - 30, e7['3'][1]))
+        label(e7['3'][0] - 30, e7['3'][1], nets_u8['28'], 2)
+    gnd(*e7['2'])
+    l3 = H('L3', e7['5'][0] + 30, e7['5'][1], '1', '2')      # pin 1 = LX, pin 2 = VCC1V0
+    wire(e7['5'], l3['1'])
+    nx = l3['2'][0] + 20
+    wire(l3['2'], (nx, l3['2'][1]), (nx + 20, l3['2'][1]), (nx + 40, l3['2'][1]))
+    wire(e7['4'], (nx, e7['4'][1]), (nx, l3['2'][1]))
+    junction(nx, l3['2'][1])
+    junction(nx + 20, l3['2'][1])
+    gnd(*hang('C84', nx + 20, l3['2'][1], 'VCC1V0'))
+    label(nx + 40, l3['2'][1], 'VCC1V0')
 
     # ---- left: PowerPath, charger, control
     # VBUS
@@ -455,7 +501,17 @@ def main():
         junction(710, f[1])
         gnd(*b)
         label(560, f[1], fb_net)
-    buck('4', '6', 'L3', 'C162', 'R111', 'R112', 'C84', 'VCC1V0', 'PWR_SW1', 'PWR_FB1')
+    # Buck1: the sequencing slot -- SW1 -> L9 -> C168, FB1 tied to its own output (0.8 V, no load). With SEQ = GND the
+    # LTC3556 starts Buck2 only after Buck1 has started, so 1.8 V follows U7's 1.0 V; PGOODALL still covers 1.8/3.3 V.
+    s1, f1 = u8['4'], u8['6']
+    l9 = H('L9', 620, s1[1], '1', '2')
+    wire(s1, l9['1'])
+    label(540, s1[1], 'PWR_SW1')
+    wire(l9['2'], (680, s1[1]), (720, s1[1]))
+    junction(680, s1[1])
+    gnd(*hang('C168', 720, s1[1], 'PWR_FB1'))
+    wire(f1, (680, f1[1]), (680, s1[1]))
+    label(560, f1[1], 'PWR_FB1')
     buck('19', '17', 'L2', 'C163', 'R113', 'R114', 'C82', 'VCC1V8', 'PWR_SW2', 'PWR_FB2')
 
     # ---- buck-boost: L1 across SWAB3 / SWCD3, Type III network between VOUT3, FB3 and VC3
