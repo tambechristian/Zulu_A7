@@ -14,9 +14,9 @@ Asar_Feather_PCBWay_Assembly_2026-11-11_PROVISIONAL.zip, then validates them and
 ORIGIN: copied 2026-11-11 from Zulu_A7_Fab_B/tools/generate_jlcpcb_assembly.py (PCBWay mode only) and
 retargeted to the Asar Feather. Changes from Fab B: the board constants; the Asar parts (USB-C X1 with plated
 shell slots, FT2232HQ QFN-64, AS4C32M16SB-7BIN FBGA, W25Q128JVPIQ WSON, 93LC46BT-I/MNY TDFN, STEMMA QT X5,
-RESET button, SMD test pads JP3/JP4); X2 (the Feather 1x16 + 1x12 headers) is NOT assembled in this release
-(DNS_OVERRIDES: its schematic MPN still names the Zulu 40-pin strips and nothing on record says whether the
-headers are fitted or shipped loose); LED polarity per LED (LD1/LD2 and LD3/LD4 face opposite ways here);
+RESET button, SMD test pads JP3/JP4); X2 (the Feather 1x16 + 1x12 headers) is bought by PCBWay and SHIPPED
+LOOSE, not soldered (LOOSE_PARTS, user decision 2026-11-11: two BOM purchase lines, X2 not in the CPL, its
+holes left empty); LED polarity per LED (LD1/LD2 and LD3/LD4 face opposite ways here);
 the panel is left to PCBWay's proposal; MPN sanity checks (package vs footprint, value code vs Comment);
 the PROVISIONAL banner tied to docs/pcbway_vip_enquiry.md. Fab B's JLCPCB/neutral modes and LCSC table are
 not carried over. Helpers are in tools/pcbway_inputs.py (cut-down copies of Fab B's bom_audit.py,
@@ -72,13 +72,23 @@ FORBIDDEN_TEXT = ("W1150632AS3P6", "JLCPCB", "LCSC")   # never in a deliverable
 ARTWORK_REFS = {"U$2", "U$3", "U$4", "U$5"}
 NON_PART_LIBS = {"DOCFIELD", "CC_BY", "CC_CC", "CC_SA", "CC_COPYRIGHT"}
 
-# Parts the schematic marks fitted but this release does not assemble or buy, with the reason (BOM DNS row).
-DNS_OVERRIDES = {
-    "X2": ("Feather headers (1x16 + 1x12, 2.54 mm, 1.0 mm plated holes): NOT populated and NOT bought in this "
-           "release. The schematic MPN field still names the Zulu A7 40-pin strips (2x PRPC009SAAN-RC + 2x "
-           "PRPC011SAAN-RC), which do not fit a 16 + 12 Feather, and the design record does not say whether "
-           "the headers are soldered or shipped loose. Leave the 28 holes empty; ask us before quoting headers."),
+# Parts PCBWay buys but does NOT solder: packed loose with each board (user decision 2026-11-11). Each entry is
+# one BOM purchase line: (MPN, maker, qty per board, description). The designator is not placed, not in the
+# CPL and not DNS; main() checks that the schematic's MANF# / MANF name exactly these parts.
+LOOSE_PARTS = {
+    "X2": [
+        ("PRPC016SAAN-RC", "Sullins", 1,
+         "Feather header 1x16: 0.1 in (2.54 mm) male single-row strip, straight (vertical), through-hole, "
+         "0.64 mm square gold-flash pins"),
+        ("PRPC012SAAN-RC", "Sullins", 1,
+         "Feather header 1x12: 0.1 in (2.54 mm) male single-row strip, straight (vertical), through-hole, "
+         "0.64 mm square gold-flash pins"),
+    ],
 }
+LOOSE_TYPE = "Ship loose"          # BOM Type of a loose line: bought, not placed
+LOOSE_NOTE = ("SHIP LOOSE - do not solder, pack with each board. Buy {qty} per board and pack {qty} with each "
+              "finished board; X2's 28 plated holes stay EMPTY at assembly (we solder the headers ourselves). "
+              "Not in the CPL.")
 
 # The maker each MPN prefix belongs to (as Fab B). The LTC3556-block edit wrote MANF=Samsung on Murata GRM
 # parts and MANF=Yageo on the Panasonic ERA part; the BOM takes the maker from the MPN and prints each fix.
@@ -279,11 +289,35 @@ def schematic_parts():
 
 
 def is_fitted(ref, parts):
-    return parts[ref]["params"].get("DNS") != "Yes" and ref not in DNS_OVERRIDES
+    """Placed (soldered) by the assembler: not DNS and not a ship-loose part."""
+    return parts[ref]["params"].get("DNS") != "Yes" and ref not in LOOSE_PARTS
 
 
 def fitted_refs(parts):
     return {ref for ref in parts if is_fitted(ref, parts)}
+
+
+def loose_refs(parts):
+    """Bought by the assembler and shipped loose: neither fitted nor DNS."""
+    return {ref for ref in parts if ref in LOOSE_PARTS and parts[ref]["params"].get("DNS") != "Yes"}
+
+
+def dns_refs_of(parts):
+    return set(parts) - fitted_refs(parts) - loose_refs(parts)
+
+
+def check_loose(parts):
+    """The schematic must name exactly the loose lines' MPNs (joined by ' + ') and their maker."""
+    for ref, lines in LOOSE_PARTS.items():
+        if ref not in parts:
+            raise ValueError(f"loose part {ref} is not in the schematic")
+        params = parts[ref]["params"]
+        want_mpn = " + ".join(mpn for mpn, _, _, _ in lines)
+        if clean(params.get("MANF#")) != want_mpn:
+            raise ValueError(f"{ref} schematic MANF# '{clean(params.get('MANF#'))}' != loose lines '{want_mpn}'")
+        makers = {maker for _, maker, _, _ in lines}
+        if makers != {clean(params.get("MANF"))}:
+            raise ValueError(f"{ref} schematic MANF '{clean(params.get('MANF'))}' != loose makers {sorted(makers)}")
 
 
 def value_in_ohms(text):
@@ -550,13 +584,18 @@ def pcbway_rows(rows, parts, geometry):
         if is_fitted(ref, parts):
             continue
         fp = component["fp"] or geometry[ref]["footprint"]
-        if ref in DNS_OVERRIDES:
-            note = "DNS - do not populate, do not buy. " + DNS_OVERRIDES[ref]
-            desc = clean(component["params"].get("Comment"))
-        else:
-            note = ("DNS - do not populate, do not buy. Bare SMD test pads (JTAG): leave empty; please remove "
-                    "their apertures from the bottom stencil (tinned pads are acceptable if you cannot).")
-            desc = buyer_spec(component["params"].get("SPEC")) or clean(component["params"].get("Comment"))
+        if ref in loose_refs(parts):
+            for mpn, maker, qty, desc in LOOSE_PARTS[ref]:
+                out.append({
+                    "Designator": ref, "Qty": str(qty), "Manufacturer": maker, "Mfg Part #": mpn,
+                    "Description / Value": desc, "Package/Footprint": "through-hole pin header, 2.54 mm pitch "
+                    "(not placed: shipped loose)", "Type": LOOSE_TYPE,
+                    "Your Instructions / Notes": LOOSE_NOTE.format(qty=qty), "_refs": [ref], "_qty": qty,
+                })
+            continue
+        note = ("DNS - do not populate, do not buy. Bare SMD test pads (JTAG): leave empty; please remove "
+                "their apertures from the bottom stencil (tinned pads are acceptable if you cannot).")
+        desc = buyer_spec(component["params"].get("SPEC")) or clean(component["params"].get("Comment"))
         out.append({
             "Designator": ref, "Qty": "0", "Manufacturer": "", "Mfg Part #": "none (do not populate)",
             "Description / Value": desc, "Package/Footprint": PACKAGE_NAMES.get(fp, fp), "Type": "DNS",
@@ -622,10 +661,13 @@ def counts_line(counter):
 
 def write_notes(parts, geometry, bom_rows, facts, totals):
     fitted = fitted_refs(parts)
-    dnp = sorted(set(parts) - fitted, key=bom_audit.natkey)
+    dnp = sorted(dns_refs_of(parts), key=bom_audit.natkey)
     counts = assembly_counts(parts, geometry)
     rows = pcbway_rows(bom_rows, parts, geometry)
     buy_rows = [row for row in rows if row["Type"] != "DNS"]
+    placed_rows = [row for row in buy_rows if row["Type"] != LOOSE_TYPE]
+    loose_rows = [row for row in buy_rows if row["Type"] == LOOSE_TYPE]
+    loose_text = ", ".join(f"{row['Mfg Part #']} x{row['Qty']}" for row in loose_rows)
     smd = sorted(cpl_refs(parts, geometry), key=bom_audit.natkey)
     n0201 = sum(len(row["_refs"]) for row in bom_rows if row["Footprint"] in ("C0201", "R0201"))
     top0201 = sum(1 for row in bom_rows if row["Footprint"] in ("C0201", "R0201")
@@ -739,8 +781,12 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         f"Number of SMD Parts = {len(smd)};",
         "  Number of BGA/QFP Parts = 2 BGA (U1 CPG236, U3 FBGA-54); also 4 leadless",
         "  parts with exposed pads (U2 QFN-64, U8 QFN-28, U4 WSON-8, U10 TDFN-8);",
-        "  Number of Through-Hole Parts = 0 (X2 headers not fitted; X1's four",
-        "  shell legs in plated slots need hand/selective soldering, see below).",
+        "  Number of Through-Hole Parts = 0 (the X2 headers are shipped loose, not",
+        "  soldered; X1's four shell legs in plated slots need hand/selective",
+        "  soldering, see below).",
+        f"- Loose parts (bought, NOT soldered, packed with each board): {len(loose_rows)} BOM lines, "
+        f"X2 = {loose_text}. Put \"X2 headers {loose_text}: buy, do not solder, pack one set with each "
+        "board\" in \"Detailed information of assembly\"; they are counted in Number of Unique Parts above.",
         "- Contains sensitive components/parts = Yes. Paste into its box:",
         f"  \"{mpn['U1']}, {mpn['U2']}, {mpn['U3']}, {mpn['U4']},",
         f"  {mpn['U8']}: moisture sensitive, follow the MSL label, bake if floor life",
@@ -759,8 +805,10 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         f"Fitted PCB designators: {len(fitted)}",
         f"Top-side fitted designators: {counts['Top']}",
         f"Bottom-side fitted designators: {counts['Bottom']}",
-        f"Physical parts per board: {sum(row['_qty'] for row in buy_rows)}",
-        f"BOM purchase lines: {len(buy_rows)}; DNS lines: {len(rows) - len(buy_rows)} ({', '.join(dnp)})",
+        f"Physical parts placed per board: {sum(row['_qty'] for row in placed_rows)}; plus "
+        f"{sum(row['_qty'] for row in loose_rows)} shipped loose (X2 headers)",
+        f"BOM purchase lines: {len(buy_rows)} ({len(placed_rows)} placed + {len(loose_rows)} ship-loose); "
+        f"DNS lines: {len(rows) - len(buy_rows)} ({', '.join(dnp)})",
         "Assembly is required on both sides: SMT bottom, SMT top, then hand soldering of X1's shell legs.",
         f"BGAs (top side): U1 {mpn['U1']}, 0.5 mm pitch, {len(u1)} round lands of {u1_land:.2f} mm; "
         f"U3 {mpn['U3']}, 0.8 mm pitch, {len(u3)} round lands of {u3_land:.2f} mm.",
@@ -800,7 +848,8 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "",
         "CPL AND ORIENTATION",
         f"{CPL_FILENAME}: Designator, Mid X, Mid Y, Layer (Top/Bottom), Rotation.",
-        "It lists every fitted part with SMD pads (X1 included); X2 and the DNS test pads are not in it.",
+        "It lists every fitted part with SMD pads (X1 included); X2 (shipped loose) and the DNS test pads "
+        "are not in it.",
         "If your line needs one file per side, please split it by the Layer column.",
         "- Units are millimetres (\"mm\" suffix). Origin: the board's lower-left",
         f"  corner; the outline runs from 0,0 to {BOARD_WIDTH:.2f},{BOARD_HEIGHT:.2f}.",
@@ -832,9 +881,10 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "  reflow to full barrel fill (paste-in-hole is acceptable if you prefer).",
         "  The two locating pegs go into 0.65 mm non-plated holes and are not",
         "  soldered.",
-        f"- X2 (Feather headers, 1x16 + 1x12, 2.54 mm): NOT fitted in this release (DNS).",
-        "  Leave the 28 plated holes empty and do not buy headers; we will tell you",
-        "  if they are to be quoted (fitted or shipped loose).",
+        f"- X2 (Feather headers, 1x16 + 1x12, 2.54 mm): SHIPPED LOOSE. Buy {loose_text} (Sullins, "
+        "straight male, gold) per the BOM, do NOT solder them, and pack one set with each finished board. "
+        "Leave X2's 28 plated holes empty (no paste, no solder, no masking residue in the holes): we solder "
+        "the headers ourselves.",
         f"- X5 ({mpn['X5']}, STEMMA QT, top side): the mouth faces the right board",
         "  edge. Pin 1 (GND) is the south contact; check against the top drawing.",
         f"- X4 (JST {mpn['X4']}, top side): pin 1 (the {x4_pin1_side} contact) is battery",
@@ -903,7 +953,8 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "- the panel drawing and rail fiducials;",
         "- your bottom-side CPL rotation convention;",
         "- authorized sourcing for U1 and U2, and any lines with no stock;",
-        "- hand soldering of X1's four shell legs; X2 left empty;",
+        "- hand soldering of X1's four shell legs; X2 holes left empty, X2 headers",
+        "  bought and shipped loose with each board;",
         "- the stencil apertures for U1, U3 and the exposed pads, and X-ray of U1 and",
         "  U3 (and what the Number of X-ray test field counts);",
         "- polarity and pin 1 against both drawings, then first-article approval.",
@@ -1012,7 +1063,7 @@ def draw_assembly_page(doc, side, region, title, parts, geometry):
                 cx = min(max(sum(xs) / n, x0 + 6), x1 - 6)
                 ly = row_y + (1.6 if row_y < BOARD_HEIGHT / 2 else -1.6)
                 pos = board_to_page(cx, ly, region, plot, side)
-                label(page, pos, f"DNP X2 - {n}-pin Feather header holes, leave empty", font_size,
+                label(page, pos, f"X2 holes left empty - headers shipped loose ({n}-pin row)", font_size,
                       (0.55, 0.12, 0.10), 0.86)
             continue
         bx0, by0, bx1, by1 = item["bbox"]
@@ -1075,14 +1126,27 @@ def read_csv(path):
 
 def validate(outputs, parts, geometry, bom_rows, drawing_refs):
     fitted = fitted_refs(parts)
-    dnp = set(parts) - fitted
+    loose = loose_refs(parts)
+    dnp = dns_refs_of(parts)
+    if fitted & loose or dnp & loose or fitted | loose | dnp != set(parts):
+        raise ValueError("fitted / loose / DNS sets overlap or miss a part")
     bom_all = read_csv(outputs["bom"])
     if list(bom_all[0].keys()) != PCBWAY_COLUMNS:
         raise ValueError(f"PCBWay BOM columns changed: {list(bom_all[0].keys())}")
-    buy = [row for row in bom_all if row["Type"] != "DNS"]
+    loose_rows = [row for row in bom_all if row["Type"] == LOOSE_TYPE]
+    buy = [row for row in bom_all if row["Type"] not in ("DNS", LOOSE_TYPE)]
     dns_refs = {row["Designator"] for row in bom_all if row["Type"] == "DNS"}
     if dns_refs != dnp:
         raise ValueError(f"BOM DNS rows {sorted(dns_refs)} != DNP parts {sorted(dnp)}")
+    want_loose = sorted((ref, mpn, maker, str(qty)) for ref, lines in LOOSE_PARTS.items() if ref in loose
+                        for mpn, maker, qty, _ in lines)
+    got_loose = sorted((row["Designator"], row["Mfg Part #"], row["Manufacturer"], row["Qty"]) for row in loose_rows)
+    if got_loose != want_loose:
+        raise ValueError(f"ship-loose BOM lines {got_loose} != LOOSE_PARTS {want_loose}")
+    for row in loose_rows:
+        if int(row["Qty"]) < 1 or "SHIP LOOSE - do not solder, pack with each board" not in \
+                row["Your Instructions / Notes"]:
+            raise ValueError(f"ship-loose line without quantity or instruction: {row}")
     for row in buy:
         refs = row["Designator"].split(",")
         if not row["Mfg Part #"] or not row["Manufacturer"]:
@@ -1111,6 +1175,8 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
         raise ValueError(f"fitted SMD parts missing from the CPL: {sorted(smd_fitted - set(cpl_seen))}")
     if dnp & set(cpl_seen):
         raise ValueError("DNP designators leaked into the CPL")
+    if loose & set(cpl_seen):
+        raise ValueError("ship-loose designators leaked into the CPL")
     for row in cpl_rows:
         ref = row["Designator"]
         x = float(row["Mid X"].removesuffix("mm"))
@@ -1199,10 +1265,7 @@ def main():
     geometry = component_geometry(board_components, pads)
     facts, totals = load_fab_facts()
     check_mpns(parts)
-    x2_mpn = clean(parts["X2"]["params"].get("MANF#"))
-    MPN_PROBLEMS.append((["X2"], f"MANF# '{x2_mpn}' is the Zulu A7 40-pin strip set, not a Feather 1x16 + "
-                                 "1x12; SPEC/NOTE also describe the 40-pin DIP. Not bought (DNS in this "
-                                 "release); the user must give the header MPNs and say fitted or loose."))
+    check_loose(parts)
     bom_rows = make_bom(parts, geometry)
 
     outputs = {
@@ -1218,9 +1281,13 @@ def main():
     fitted = fitted_refs(parts)
     counts = assembly_counts(parts, geometry)
     buy = [r for r in read_csv(outputs["bom"]) if r["Type"] != "DNS"]
+    loose = [r for r in buy if r["Type"] == LOOSE_TYPE]
+    dnp = sorted(dns_refs_of(parts), key=bom_audit.natkey)
     print("ASSEMBLY_RELEASE PASS (PROVISIONAL)")
     print(f"PCB md5 {md5(PCB)}")
-    print(f"{len(buy)} BOM purchase lines, {len(set(parts) - fitted)} DNS ({', '.join(sorted(set(parts) - fitted, key=bom_audit.natkey))}), "
+    print(f"{len(buy)} BOM purchase lines ({len(buy) - len(loose)} placed + {len(loose)} ship-loose: "
+          f"{', '.join(r['Designator'] + ' ' + r['Mfg Part #'] + ' x' + r['Qty'] for r in loose)}), "
+          f"{len(dnp)} DNS ({', '.join(dnp)}), "
           f"{len(fitted)} fitted designators ({counts['Top']} top / {counts['Bottom']} bottom), "
           f"{len(read_csv(outputs['cpl']))} CPL rows")
     for ref, was, mpn, maker in sorted(MANUFACTURER_FIXES, key=lambda t: bom_audit.natkey(t[0])):

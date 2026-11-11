@@ -60,11 +60,16 @@ email this file to Service@pcbway.com with the quote number.
 
 RECOMMENDED FORM SETTINGS (adjust if you decide otherwise)
 - Assembly: Service = Turnkey; Assembly side(s) = Both sides.
-- Number of Unique Parts = 67; Number of SMD Parts = 176;
+- Number of Unique Parts = 69; Number of SMD Parts = 176;
   Number of BGA/QFP Parts = 2 BGA (U1 CPG236, U3 FBGA-54); also 4 leadless
   parts with exposed pads (U2 QFN-64, U8 QFN-28, U4 WSON-8, U10 TDFN-8);
-  Number of Through-Hole Parts = 0 (X2 headers not fitted; X1's four
-  shell legs in plated slots need hand/selective soldering, see below).
+  Number of Through-Hole Parts = 0 (the X2 headers are shipped loose, not
+  soldered; X1's four shell legs in plated slots need hand/selective
+  soldering, see below).
+- Loose parts (bought, NOT soldered, packed with each board): 2 BOM lines, X2 =
+  PRPC016SAAN-RC x1, PRPC012SAAN-RC x1. Put "X2 headers PRPC016SAAN-RC x1,
+  PRPC012SAAN-RC x1: buy, do not solder, pack one set with each board" in "Detailed
+  information of assembly"; they are counted in Number of Unique Parts above.
 - Contains sensitive components/parts = Yes. Paste into its box:
   "XC7A35T-2CPG236I, FT2232HQ-REEL, AS4C32M16SB-7BIN, W25Q128JVPIQ,
   LTC3556EUFD#PBF: moisture sensitive, follow the MSL label, bake if floor life
@@ -82,8 +87,8 @@ ASSEMBLY SCOPE
 Fitted PCB designators: 176
 Top-side fitted designators: 47
 Bottom-side fitted designators: 129
-Physical parts per board: 176
-BOM purchase lines: 67; DNS lines: 3 (JP3, JP4, X2)
+Physical parts placed per board: 176; plus 2 shipped loose (X2 headers)
+BOM purchase lines: 69 (67 placed + 2 ship-loose); DNS lines: 2 (JP3, JP4)
 Assembly is required on both sides: SMT bottom, SMT top, then hand soldering of X1's
 shell legs.
 BGAs (top side): U1 XC7A35T-2CPG236I, 0.5 mm pitch, 238 round lands of 0.25 mm; U3
@@ -130,8 +135,8 @@ approval before production. Constraints for your proposal:
 
 CPL AND ORIENTATION
 Asar_Feather_PCBWay_CPL.csv: Designator, Mid X, Mid Y, Layer (Top/Bottom), Rotation.
-It lists every fitted part with SMD pads (X1 included); X2 and the DNS test pads are
-not in it.
+It lists every fitted part with SMD pads (X1 included); X2 (shipped loose) and the DNS
+test pads are not in it.
 If your line needs one file per side, please split it by the Layer column.
 - Units are millimetres ("mm" suffix). Origin: the board's lower-left
   corner; the outline runs from 0,0 to 50.80,22.86.
@@ -163,9 +168,10 @@ SPECIAL COMPONENT INSTRUCTIONS
   reflow to full barrel fill (paste-in-hole is acceptable if you prefer).
   The two locating pegs go into 0.65 mm non-plated holes and are not
   soldered.
-- X2 (Feather headers, 1x16 + 1x12, 2.54 mm): NOT fitted in this release (DNS).
-  Leave the 28 plated holes empty and do not buy headers; we will tell you
-  if they are to be quoted (fitted or shipped loose).
+- X2 (Feather headers, 1x16 + 1x12, 2.54 mm): SHIPPED LOOSE. Buy PRPC016SAAN-RC x1,
+  PRPC012SAAN-RC x1 (Sullins, straight male, gold) per the BOM, do NOT solder them,
+  and pack one set with each finished board. Leave X2's 28 plated holes empty (no
+  paste, no solder, no masking residue in the holes): we solder the headers ourselves.
 - X5 (SM04B-SRSS-TB(LF)(SN), STEMMA QT, top side): the mouth faces the right board
   edge. Pin 1 (GND) is the south contact; check against the top drawing.
 - X4 (JST B2B-PH-SM4-TB(LF)(SN), top side): pin 1 (the west contact) is battery
@@ -237,7 +243,8 @@ Before releasing the order, please confirm in writing:
 - the panel drawing and rail fiducials;
 - your bottom-side CPL rotation convention;
 - authorized sourcing for U1 and U2, and any lines with no stock;
-- hand soldering of X1's four shell legs; X2 left empty;
+- hand soldering of X1's four shell legs; X2 holes left empty, X2 headers
+  bought and shipped loose with each board;
 - the stencil apertures for U1, U3 and the exposed pads, and X-ray of U1 and
   U3 (and what the Number of X-ray test field counts);
 - polarity and pin 1 against both drawings, then first-article approval.
