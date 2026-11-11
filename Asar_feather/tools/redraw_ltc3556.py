@@ -46,7 +46,7 @@ PINS = [('5', 'VIN1', 'T', 390), ('18', 'VIN2', 'T', 430), ('11', 'VIN3', 'T', 4
 ELEC = {p[0]: p[3] for p in A.U8_PINS}
 CONG = {'L': 58, 'R': 56, 'T': 57, 'B': 59}            # orientation bits: 0 right, 1 up, 2 left, 3 down; 0x38 = show
 NOTE_XY = (60, 310)
-X4_AT = (200, 210)                                     # X4 (battery JST) moves out of the converters' way
+X4_AT = (100, 790)                                     # X4 (battery JST): pin 1 end lands on U8's BAT row at (130, 830)
 
 
 def rot_pt(x, y, ox, oy, q):
@@ -170,12 +170,27 @@ def main():
                 S.recs.append([h, set_field(b, 'IndexInSheet', S.nxt())])
     S.reindex()
 
-    # X4 moves out of the way (its wiring was inside BOXES and is gone; its pins get labels below)
+    # X4 (battery JST) goes to the left end of U8's BAT row, mirrored so its pins face right: BAT+ (pin 1) wired
+    # straight to U8 pin 23, GND (pin 2) to a GND port (2026-11-10, user sketch). Body 40 x 60 at origin X4_AT.
     i4 = S.byname['X4']
     b4 = S.recs[i4][1]
     dx, dy = X4_AT[0] - num(b4, 'Location.X'), X4_AT[1] - num(b4, 'Location.Y')
+    mid = X4_AT[0]                                        # Altium mirrors about the component origin
     for k in S.sub(i4):
-        S.recs[k][1] = A.shift(S.recs[k][1], dx, dy)
+        b = A.shift(S.recs[k][1], dx, dy)
+        r = field(b, 'RECORD')
+        if r == '1':
+            b = set_field(b, 'IsMirrored', 'T')
+        elif r == '2':
+            c = int(field(b, 'PinConglomerate'))
+            b = set_field(b, 'PinConglomerate', str((c & ~3) | ((2 - (c & 3)) % 4)))   # left <-> right
+            b = setxy(b, 'Location.X', 'Location.Y', 2 * mid - num(b, 'Location.X'), num(b, 'Location.Y'))
+        elif r == '6':
+            for kx in ('X1', 'X2'):
+                b = set_field(del_field(b, kx + '_Frac'), kx, '%d' % round(2 * mid - num(b, kx)))
+        elif r == '41' and field(b, 'Name') == 'Comment':
+            b = setxy(b, 'Location.X', 'Location.Y', X4_AT[0] - 40, X4_AT[1] - 13)
+        S.recs[k][1] = b
 
     # prune dangling wire stubs, then label surviving pins that lost their connection (as apply_ltc3556)
     def anchors():
@@ -207,7 +222,7 @@ def main():
         d = S.des.get(owner(b))
         e = pin_end(b)
         net = pin_net.get((d, field(b, 'Designator')))
-        if not net or net.startswith('N$') or d in T:
+        if not net or net.startswith('N$') or d in T or d == 'X4':
             continue
         connected = any(any(on_seg(e, a, c) for a, c in zip(w, w[1:])) for j, w in segs) or \
             any((num(bb, 'Location.X'), num(bb, 'Location.Y')) == e for hh, bb in S.recs
@@ -420,10 +435,18 @@ def main():
     gnd(*hang('C78', 160, vo[1], 'VU'))
     # BAT
     e = u8['23']
-    wire(e, (200, e[1]), (120, e[1]))
+    x4 = {}
+    for k in S.sub(S.byname['X4']):
+        bb = S.recs[k][1]
+        if field(bb, 'RECORD') == '2':
+            pe = pin_end(bb)
+            x4[field(bb, 'Designator')] = (round(pe[0]), round(pe[1]))
+    assert x4['1'][1] == e[1], ('X4 pin 1 is not on the BAT row', x4, e)
+    wire(e, (200, e[1]), x4['1'])
     junction(200, e[1])
-    label(120, e[1], 'VBATT', 2)
+    label(145, e[1], 'VBATT')
     gnd(*hang('C151', 200, e[1], 'VBATT'))
+    gnd(*x4['2'])
     # LDO3V3 (tied to VOUT)
     e = u8['1']
     wire(e, (290, e[1]))
