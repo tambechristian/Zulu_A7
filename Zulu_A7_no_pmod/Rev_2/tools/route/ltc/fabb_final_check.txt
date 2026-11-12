@@ -1,0 +1,9 @@
+plan: 442 tracks, 137 vias, 129 removed; board then: 4562 tracks, 1874 vias
+violations: 5
+  track PWR_CHRG L3-SIG (16.150,17.075)-(13.300,14.225) -0.0131 from t VCC1V8
+  track PWR_CHRG L3-SIG (16.175,17.075)-(16.150,17.075) -0.0131 from t VCC1V8
+  track PWR_CHRG L3-SIG (16.200,17.100)-(16.175,17.075) -0.0381 from t VCC1V8
+  track PWR_CHRG L3-SIG (22.625,17.100)-(16.200,17.100) -0.0381 from t VCC1V8
+  via PWR_CHRG at 22.625,17.100 on L3-SIG -0.1500 from t VCC1V8
+open connections after the plan: 0 on 0 nets
+FAIL

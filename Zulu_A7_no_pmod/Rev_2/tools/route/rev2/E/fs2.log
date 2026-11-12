@@ -1,0 +1,6 @@
+seeded 125 vias, 546 tracks; open 1: {'CHAN13': 1}
+== CHAN13 focus 24,20.5,41,24.5 (2 islands)
+CHAN13 joined through LED0_R
+  LED0_R joined (hard)
+== CHAN13: open 1 -> 0, 414 s
+ffocus: open 0 {}; 132 vias 604 tracks -> fs2.json (416 s)

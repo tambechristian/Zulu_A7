@@ -1,0 +1,27 @@
+rip1.json                    -86/35 +65/0
+usb1.json                    -4/4 +45/2
+leaf2v.json                  -15/2 +0/0
+vu_step.json                 -10/3 +18/1
+c13top.json                  -1/0 +0/0
+south1.json                  -9/4 +17/6
+north1.json                  -7/3 +26/7
+rE.json                      -0/0 +222/78
+fix_e1.json                  -0/0 +2/0
+net: remove 114 tracks 51 vias; add 377 tracks 94 vias
+connectors added: 44
+  FPGA-TCK Bottom Layer 19.8307,22.1307 -> 19.8000,22.1307
+  FPGA-TCK Bottom Layer 20.5481,22.8481 -> 20.5481,22.8750
+pass 1: 50 dead tracks (25 trimmed), 3 dead vias
+composed: remove 138 tracks + 54 vias, add 420 tracks + 94 vias, 0 moves; dead after: 0 tracks 0 vias; open 0 {}
+plan: 420 tracks, 94 vias, 138 removed; board then: 4928 tracks, 1960 vias
+violations: 0
+open connections after the plan: 0 on 0 nets
+PASS
+width violations 0 of 420 tracks; classes {'PWR_SWITCH': 6, 'PWR_RAILS': 10}
+kept/new copper vs moved lands: 0 violations
+through vias in SMD pads: 0 (new 0)
+microvias in SMD pads: 68 (new 0)
+dead copper: 0 tracks 0 vias
+open 0 {}
+USB {'USB_D_P': 15.9222, 'USB_D_N': 15.9224, 'coupled_P': 12.226, 'mismatch': 0.0002, 'vias': 0, 'layers': ['Top Layer'], 'widths': [0.15]}
+plan: +420 tracks (280.3 mm), -138 tracks; +94 vias, -54 vias

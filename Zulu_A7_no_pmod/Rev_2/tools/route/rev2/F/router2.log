@@ -1,0 +1,4 @@
+f_router: no via in SMD pads; GND Bottom ties by microvia column
+GND            
+VCC3V3         
+CLK-12M-FT     

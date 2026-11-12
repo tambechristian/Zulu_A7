@@ -1,0 +1,32 @@
+GND            
+VCC3V3         
+CHAN25         
+CHAN22         
+CHAN19         
+CAS#           
+WE#            
+RAS#           
+SD-CMD         
+FT-PWREN#      
+LED2           
+CHAN11         
+SD-DAT0        
+FPGA-TCK       
+SD-DAT1        
+EE-CS          
+EE-CLK         
+EE-DATA        
+EE-DATA-DO     
+FT-VCORE       
+TDO            
+TCK            
+CLK-12M-FT     ripped CHAN11 LED2
+N$BTN          
+N$LD2A         
+CHAN11         
+LED2           ripped CHAN11 N$BTN
+CHAN11         
+N$BTN          
+routed 41 connections, failed 1; 87 vias, 342 tracks -> route/rev2/G/r3a.json
+OPEN N$BTN 1
+FAIL N$BTN (budget)

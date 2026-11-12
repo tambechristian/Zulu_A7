@@ -1,0 +1,14 @@
+seeded 92 vias, 207 tracks
+GND            
+VCC3V3         
+CHAN13         
+CHAN19         
+CHAN20         
+CHAN22         
+CHAN25         
+CHAN7          
+CLK-12M-FT     ripped CHAN11 FT-PWREN# LED2 N$BTN
+EE-CLK         
+EE-CS          
+EE-DATA        
+EE-DATA-DO     

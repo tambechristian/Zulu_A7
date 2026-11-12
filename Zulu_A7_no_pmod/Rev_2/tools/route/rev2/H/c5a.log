@@ -1,0 +1,14 @@
+seeded 117 vias, 365 tracks
+LED0_R         
+LED2           
+N$BTN          
+SD-CMD         
+SD-DAT0        
+SD-DAT1        
+TDI            
+TDO            
+routed 8 connections, failed 2; 142 vias, 475 tracks -> c5a.json
+OPEN TDI 1
+OPEN TDO 1
+FAIL TDI (budget)
+FAIL TDO (budget)

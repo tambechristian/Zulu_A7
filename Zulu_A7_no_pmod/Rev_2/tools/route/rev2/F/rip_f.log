@@ -1,0 +1,315 @@
+T CHAN12       Bottom Layer (36.830,25.020)-(37.450,24.400) w0.0762  b -0.0381 from X2.10
+T CHAN12       Bottom Layer (29.120,25.020)-(36.830,25.020) w0.0762  b 0.0899 from X2.10
+T TDO          Bottom Layer (37.450,0.650)-(38.150,1.350) w0.0762  b 0.0767 from X2.30
+T TDO          Bottom Layer (32.100,0.650)-(37.450,0.650) w0.0762  b -0.0381 from X2.30
+T SD-DAT0      Bottom Layer (23.950,18.300)-(29.150,18.300) w0.0762  b 0.0519 from U10.8
+T SD-CMD       Bottom Layer (36.650,2.050)-(36.650,3.950) w0.0762  b 0.0004 from X2.30
+T SD-CMD       Bottom Layer (35.800,1.200)-(36.650,2.050) w0.0762  b -0.0381 from X2.30
+T N$BTN        Bottom Layer (33.200,21.450)-(34.100,21.450) w0.0762  b -0.0381 from X1.MH2
+T N$BTN        Bottom Layer (32.500,21.300)-(33.200,21.450) w0.0762  b -0.0381 from X1.MH2
+T LED2         Bottom Layer (32.350,20.700)-(32.550,20.700) w0.0762  b -0.0381 from X1.MH2
+T LED2         Bottom Layer (31.900,20.250)-(32.350,20.700) w0.0762  b 0.0788 from X1.MH2
+T FPGA-TCK     Bottom Layer (36.800,22.900)-(38.300,24.400) w0.0762  b 0.0484 from X2.10
+T FPGA-TCK     Bottom Layer (17.200,19.500)-(20.600,22.900) w0.0762  b -0.0381 from U10.4
+T EE-DATA-DO   Bottom Layer (18.600,20.550)-(22.100,22.500) w0.0762  b -0.0381 from U10.3
+T EE-DATA      Bottom Layer (25.300,20.400)-(26.500,19.200) w0.0762  b -0.0381 from U10.7
+T EE-CLK       Bottom Layer (19.950,18.750)-(21.165,19.965) w0.0762  b -0.0381 from U10.1
+T CHAN7        Bottom Layer (30.850,22.600)-(35.900,22.600) w0.0762  b 0.0621 from R86.2
+T CHAN12       Bottom Layer (16.250,23.150)-(27.950,23.150) w0.0762  b -0.0381 from X1.MS1
+T VCC3V3       Bottom Layer (27.215,18.695)-(27.220,19.220) w0.2000  e on old U10.8
+T VCC3V3       Bottom Layer (20.550,18.750)-(20.980,18.740) w0.2000  b -0.1000 from U10.1
+T VCC3V3       Bottom Layer (18.925,20.100)-(19.350,18.750) w0.2000  b -0.1000 from R96.1
+T VCC3V3       Bottom Layer (18.925,20.100)-(19.350,19.350) w0.2000  b -0.1000 from R96.1
+T VCC3V3       Bottom Layer (18.150,19.350)-(18.925,20.100) w0.2000  b -0.1000 from R96.1
+T GND          Bottom Layer (27.215,21.900)-(27.215,22.505) w0.4000  e on old U10.5
+T GND          Bottom Layer (30.520,21.259)-(31.900,21.450) w0.5000  b -0.0946 from R86.2
+T USB_D_P      Top Layer    (33.020,21.259)-(33.290,21.259) w0.1500  a usb
+T USB_D_P      Top Layer    (33.290,21.259)-(33.290,22.188) w0.1500  a usb
+T USB_D_P      Top Layer    (33.128,22.350)-(33.290,22.188) w0.1500  a usb
+T USB_D_P      Top Layer    (32.304,22.350)-(33.128,22.350) w0.1500  a usb
+T USB_D_P      Top Layer    (32.102,22.148)-(32.304,22.350) w0.1500  a usb
+T USB_D_P      Top Layer    (32.002,22.148)-(32.102,22.148) w0.1500  a usb
+T USB_D_P      Top Layer    (31.800,22.350)-(32.002,22.148) w0.1500  a usb
+T USB_D_P      Top Layer    (29.412,22.350)-(31.800,22.350) w0.1500  a usb
+T USB_D_P      Top Layer    (26.800,19.738)-(29.412,22.350) w0.1500  a usb
+T USB_D_P      Top Layer    (26.800,18.245)-(26.800,19.738) w0.1500  a usb
+T USB_D_P      Top Layer    (26.800,18.245)-(27.782,17.262) w0.1500  a usb
+T USB_D_P      Top Layer    (27.782,14.408)-(27.782,17.262) w0.1500  a usb
+T USB_D_P      Top Layer    (27.395,14.020)-(27.782,14.408) w0.1500  a usb
+T USB_D_P      Top Layer    (25.775,14.020)-(27.395,14.020) w0.1500  a usb
+T USB_D_P      Top Layer    (25.775,13.850)-(25.775,14.020) w0.1500  a usb
+T USB_D_N      Top Layer    (33.590,21.259)-(33.670,21.259) w0.1500  a usb
+T USB_D_N      Top Layer    (33.590,21.259)-(33.590,22.312) w0.1500  a usb
+T USB_D_N      Top Layer    (33.252,22.650)-(33.590,22.312) w0.1500  a usb
+T USB_D_N      Top Layer    (29.288,22.650)-(33.252,22.650) w0.1500  a usb
+T USB_D_N      Top Layer    (26.500,19.862)-(29.288,22.650) w0.1500  a usb
+T USB_D_N      Top Layer    (26.500,18.120)-(26.500,19.862) w0.1500  a usb
+T USB_D_N      Top Layer    (26.500,18.120)-(27.483,17.138) w0.1500  a usb
+T USB_D_N      Top Layer    (27.483,14.532)-(27.483,17.138) w0.1500  a usb
+T USB_D_N      Top Layer    (27.270,14.320)-(27.483,14.532) w0.1500  a usb
+T USB_D_N      Top Layer    (25.775,14.320)-(27.270,14.320) w0.1500  a usb
+T USB_D_N      Top Layer    (25.775,14.320)-(25.775,14.350) w0.1500  a usb
+T TDI          Top Layer    (32.200,4.300)-(32.600,4.000) w0.0762  b -0.0381 from X4.MP2
+T TCK          Top Layer    (25.600,6.000)-(26.000,7.100) w0.0762  b -0.0381 from X4.MP1
+T EE-CLK       Top Layer    (28.600,19.425)-(28.600,20.850) w0.0762  b -0.0205 from X1.MH1
+T CHAN19       Top Layer    (35.400,1.300)-(39.370,1.270) w0.0762  b -0.0381 from X2.30
+T CHAN13       Top Layer    (12.335,23.225)-(28.600,23.225) w0.0762  b -0.0381 from X1.MP1
+T GND          Top Layer    (34.020,23.959)-(36.520,23.959) w0.5000  b -0.2500 from X2.10
+T GND          Top Layer    (29.520,23.959)-(32.020,23.959) w0.5000  e on old X1.MP1
+T GND          Top Layer    (30.520,21.259)-(31.720,21.259) w0.4000  b -0.2000 from X1.1
+T GND          Top Layer    (34.700,20.320)-(35.520,21.259) w0.2450  e on old X1.MH2
+T GND          Top Layer    (32.550,2.250)-(33.400,3.050) w0.5000  e on old X4.2
+T VCC3V3       Top Layer    (29.225,6.963)-(34.725,6.963) w0.1450  b 0.0900 from X4.MP2
+T VU           Top Layer    (34.450,3.366)-(34.450,6.400) w0.7000  b 0.0401 from X4.MP2
+T VU           Top Layer    (30.350,6.400)-(34.450,6.400) w0.7000  b -0.3500 from X4.MP2
+T VU           Top Layer    (30.350,3.300)-(30.350,6.400) w0.7000  b -0.3400 from X4.2
+T VU           Top Layer    (27.600,3.300)-(30.350,3.300) w0.7000  b -0.3500 from X4.1
+T VU           Top Layer    (27.300,4.100)-(27.600,3.300) w0.7000  b -0.3099 from X4.MP1
+T VU           Top Layer    (25.600,4.949)-(27.300,4.100) w1.4000  b -0.7000 from X4.MP1
+T VU           Top Layer    (16.690,4.949)-(25.600,4.949) w1.5000  b -0.6899 from X4.MP1
+T VBATT        Top Layer    (30.950,1.550)-(31.400,3.050) w0.8000  b -0.4000 from X4.2
+T VBATT        Top Layer    (28.450,1.550)-(30.950,1.550) w1.2000  b -0.6000 from X4.2
+T TDI          L3-SIG       (35.100,4.000)-(37.700,1.400) w0.0762  b -0.0381 from X2.30
+T N$BTN        L3-SIG       (30.300,20.100)-(32.500,21.300) w0.0762  b -0.0381 from X1.MH2
+T LED2         L3-SIG       (33.400,21.000)-(33.800,21.000) w0.0762  b -0.0381 from X1.MH2
+T LED2         L3-SIG       (33.100,20.700)-(33.400,21.000) w0.0762  b -0.0381 from X1.MH2
+T LED0_R       L3-SIG       (36.800,22.900)-(38.300,24.400) w0.0762  b 0.0484 from X2.10
+T EE-CLK       L3-SIG       (27.250,20.850)-(28.600,20.850) w0.0762  b -0.0381 from X1.MH1
+T EE-CLK       L3-SIG       (26.800,20.400)-(27.250,20.850) w0.0762  b 0.0733 from X1.MH1
+T CLK-12M-FT   L3-SIG       (31.900,20.600)-(35.400,22.200) w0.0762  b -0.0381 from X1.MH2
+T CHAN25       L3-SIG       (35.300,1.000)-(38.200,1.000) w0.0762  b -0.0381 from X2.30
+T CHAN22       L3-SIG       (27.400,21.200)-(28.900,22.700) w0.0762  b -0.0381 from X1.MH1
+T CHAN22       L3-SIG       (25.000,21.200)-(27.400,21.200) w0.0762  b -0.0381 from X1.MH1
+T TDI          L4-SIG       (37.700,1.400)-(38.800,0.300) w0.0762  b 0.0796 from X2.30
+T SD-DAT1      L4-SIG       (15.300,21.150)-(29.400,21.150) w0.0762  b -0.0381 from X1.MH1
+T LED2         L4-SIG       (32.550,20.700)-(33.100,20.700) w0.0762  b -0.0381 from X1.MH2
+T CHAN7        L4-SIG       (26.670,24.130)-(27.850,22.950) w0.0762  b -0.0381 from X1.MS1
+T CHAN13       L4-SIG       (29.300,23.000)-(40.325,22.925) w0.0762  b 0.0435 from X1.MS2
+T CHAN12       L4-SIG       (37.450,23.150)-(37.450,24.400) w0.0762  b -0.0381 from X2.10
+T CHAN11       L4-SIG       (32.000,21.000)-(34.000,21.000) w0.0762  b -0.0381 from X1.MH2
+T CHAN11       L4-SIG       (27.850,22.100)-(29.350,22.100) w0.0762  b 0.0784 from X1.MH1
+T CHAN11       L4-SIG       (27.700,22.250)-(27.850,22.100) w0.0762  b 0.0884 from X1.MH1
+V TDI          (37.700,1.400) L3-SIG>L4-SIG  b -0.0173 from X2.30
+V TDI          (32.600,4.000) L2-GND>L3-SIG  f column
+V TDI          (32.600,4.000) Top Layer>L2-GND  b -0.1500 from X4.MP2
+V TCK          (25.600,6.000) L2-GND>L3-SIG  f column
+V TCK          (25.600,6.000) Top Layer>L2-GND  b -0.0900 from X4.MP1
+V N$BTN        (32.500,21.300) L5-VCC3V3>Bottom Layer  c hole X1.MH2
+V N$BTN        (32.500,21.300) L4-SIG>L5-VCC3V3  c hole X1.MH2
+V N$BTN        (32.500,21.300) L3-SIG>L4-SIG  c hole X1.MH2
+V LED2         (33.100,20.700) L3-SIG>L4-SIG  c hole X1.MH2
+V LED2         (32.550,20.700) L5-VCC3V3>Bottom Layer  c hole X1.MH2
+V LED2         (32.550,20.700) L4-SIG>L5-VCC3V3  c hole X1.MH2
+V FT-PWREN#    (33.700,20.700) L3-SIG>L4-SIG  b 0.0511 from X1.MH2
+V EE-CS        (28.225,20.400) L2-GND>L3-SIG  b 0.0178 from X1.MH1
+V EE-CS        (28.225,20.400) Top Layer>L2-GND  b 0.0178 from X1.MH1
+V EE-CS        (25.600,19.400) Top Layer>Bottom Layer  b 0.0850 from U10.7
+V EE-CLK       (28.600,20.850) L2-GND>L3-SIG  b -0.1324 from X1.MH1
+V EE-CLK       (28.600,20.850) Top Layer>L2-GND  b -0.1324 from X1.MH1
+V CHAN13       (28.600,23.225) L3-SIG>L4-SIG  f column
+V CHAN13       (28.600,23.225) L2-GND>L3-SIG  f column
+V CHAN13       (28.600,23.225) Top Layer>L2-GND  b -0.0201 from X1.MP2
+V CHAN12       (37.450,24.400) L5-VCC3V3>Bottom Layer  c hole X2.10
+V CHAN12       (37.450,24.400) L4-SIG>L5-VCC3V3  c hole X2.10
+V VCC3V3       (28.925,20.375) Top Layer>Bottom Layer  b 0.0406 from X1.5
+V VCC3V3       (25.700,20.675) Top Layer>Bottom Layer  b 0.0800 from U10.6
+V GND          (29.525,20.400) Top Layer>Bottom Layer  b 0.0364 from X1.4
+V GND          (26.300,20.675) Top Layer>Bottom Layer  b 0.0800 from U10.6
+V VCC3V3       (36.140,1.980) Top Layer>Bottom Layer  b 0.0531 from X2.30
+V VCC3V3       (20.980,18.740) Top Layer>Bottom Layer  b -0.1750 from U10.1
+V VCC3V3       (18.925,20.100) Top Layer>Bottom Layer  b -0.1750 from R96.1
+V GND          (28.520,2.430) Top Layer>Bottom Layer  b -0.1750 from X4.1
+V GND          (25.100,20.800) Top Layer>Bottom Layer  b -0.0450 from U10.6
+V FT-VCORE     (32.550,4.450) Top Layer>Bottom Layer  b -0.1750 from X4.MP2
+V WE#          (27.150,6.975) Top Layer>Bottom Layer  b -0.0000 from X4.MP1
+V RAS#         (25.550,6.975) Top Layer>Bottom Layer  b 0.0317 from X4.MP1
+V CAS#         (26.350,6.975) Top Layer>Bottom Layer  b -0.0000 from X4.MP1
+KEEP T VBATT        Bottom Layer (14.325,2.750)-(17.075,3.000)
+KEEP T N$LD2A       Bottom Layer (22.200,12.950)-(28.800,13.450)
+KEEP T N$LD2A       Bottom Layer (33.050,20.250)-(33.200,20.250)
+KEEP T N$LD2A       Bottom Layer (32.600,19.800)-(33.050,20.250)
+KEEP T N$BTN        Bottom Layer (35.300,20.250)-(36.900,20.250)
+KEEP T N$BTN        Bottom Layer (34.100,21.450)-(35.300,20.250)
+KEEP T FPGA-TCK     Bottom Layer (20.600,22.900)-(36.800,22.900)
+KEEP T EE-DATA-DO   Bottom Layer (22.100,22.500)-(22.285,22.505)
+KEEP T EE-DATA-DO   Bottom Layer (17.550,19.500)-(18.600,20.550)
+KEEP T EE-DATA-DO   Bottom Layer (17.550,19.350)-(17.550,19.500)
+KEEP T EE-DATA-DO   Bottom Layer (17.550,18.750)-(17.550,19.350)
+KEEP T EE-DATA      Bottom Layer (26.500,19.200)-(26.800,19.200)
+KEEP T EE-DATA      Bottom Layer (22.285,21.235)-(25.300,20.400)
+KEEP T EE-DATA      Bottom Layer (21.550,20.500)-(22.285,21.235)
+KEEP T EE-DATA      Bottom Layer (19.100,20.500)-(21.550,20.500)
+KEEP T EE-DATA      Bottom Layer (18.800,20.400)-(19.100,20.500)
+KEEP T EE-DATA      Bottom Layer (18.700,20.400)-(18.800,20.400)
+KEEP T EE-DATA      Bottom Layer (17.850,19.550)-(18.700,20.400)
+KEEP T EE-DATA      Bottom Layer (17.850,19.050)-(17.850,19.550)
+KEEP T EE-DATA      Bottom Layer (17.850,19.050)-(18.150,18.750)
+KEEP T EE-CS        Bottom Layer (22.285,18.695)-(25.600,19.400)
+KEEP T EE-CS        Bottom Layer (21.705,18.695)-(22.285,18.695)
+KEEP T EE-CS        Bottom Layer (21.200,19.200)-(21.705,18.695)
+KEEP T EE-CS        Bottom Layer (18.450,19.050)-(18.750,19.350)
+KEEP T EE-CS        Bottom Layer (18.450,18.550)-(18.450,19.050)
+KEEP T EE-CS        Bottom Layer (18.200,18.300)-(18.450,18.550)
+KEEP T EE-CS        Bottom Layer (17.500,18.300)-(18.200,18.300)
+KEEP T EE-CLK       Bottom Layer (22.285,19.965)-(24.400,20.000)
+KEEP T EE-CLK       Bottom Layer (21.165,19.965)-(22.285,19.965)
+KEEP T CHAN7        Bottom Layer (35.900,22.600)-(37.500,21.000)
+KEEP T ANALOG-IO1   Bottom Layer (37.550,0.350)-(38.450,1.250)
+KEEP T ANALOG-IO1   Bottom Layer (2.190,0.350)-(37.550,0.350)
+KEEP T GND          Bottom Layer (29.525,20.400)-(29.850,20.000)
+KEEP T VCC3V3       Bottom Layer (36.140,1.980)-(36.150,3.050)
+KEEP T USB5V0       Bottom Layer (32.100,11.000)-(32.100,13.200)
+KEEP T USB5V0       Bottom Layer (18.800,9.200)-(32.100,11.000)
+KEEP T USB5V0       Bottom Layer (16.900,7.800)-(18.800,9.200)
+KEEP T VBATT        Top Layer    (17.075,3.000)-(25.500,3.000)
+KEEP T N$LD2A       Top Layer    (21.750,12.925)-(22.200,12.950)
+KEEP T N$BTN        Top Layer    (19.300,11.250)-(19.300,11.825)
+KEEP T N$BTN        Top Layer    (19.300,12.650)-(19.300,14.575)
+KEEP T N$BTN        Top Layer    (19.325,15.175)-(21.925,15.175)
+KEEP T N$BTN        Top Layer    (21.925,15.175)-(22.000,15.250)
+KEEP T N$BTN        Top Layer    (22.000,15.250)-(22.000,15.900)
+KEEP T N$BTN        Top Layer    (22.000,15.900)-(22.275,16.175)
+KEEP T CHAN8        Top Layer    (37.450,25.050)-(38.750,22.950)
+KEEP T CHAN8        Top Layer    (36.650,25.050)-(37.450,25.050)
+KEEP T N$LD2A       Top Layer    (29.800,17.650)-(30.400,18.250)
+KEEP T N$LD2A       Top Layer    (29.800,14.850)-(29.800,17.650)
+KEEP T N$LD2A       Top Layer    (29.400,14.450)-(29.800,14.850)
+KEEP T LED2         Top Layer    (37.800,20.700)-(38.150,20.700)
+KEEP T LED2         Top Layer    (37.200,20.100)-(37.800,20.700)
+KEEP T EE-DATA      Top Layer    (29.000,18.300)-(29.225,19.300)
+KEEP T EE-CS        Top Layer    (28.225,19.300)-(28.225,20.400)
+KEEP T EE-CLK       Top Layer    (28.600,19.425)-(28.725,19.300)
+KEEP T CHAN8        Top Layer    (25.050,25.050)-(36.650,25.050)
+KEEP T CHAN7        Top Layer    (44.550,18.050)-(45.400,17.200)
+KEEP T CHAN7        Top Layer    (44.450,18.050)-(44.550,18.050)
+KEEP T CHAN20       Top Layer    (45.725,4.075)-(46.050,4.400)
+KEEP T CHAN20       Top Layer    (40.600,4.075)-(45.725,4.075)
+KEEP T CHAN20       Top Layer    (40.075,3.725)-(40.600,4.075)
+KEEP T VBATT        Top Layer    (27.700,2.500)-(28.450,1.550)
+KEEP T VBATT        Top Layer    (26.500,2.500)-(27.700,2.500)
+KEEP T VBATT        Top Layer    (25.500,3.000)-(26.500,2.500)
+KEEP T USB5V0       Top Layer    (34.320,21.259)-(34.320,22.500)
+KEEP T USB5V0       Top Layer    (34.320,22.500)-(36.680,22.500)
+KEEP T USB5V0       Top Layer    (36.680,20.000)-(36.680,22.500)
+KEEP T USB5V0       Top Layer    (35.900,18.000)-(36.680,20.000)
+KEEP T USB5V0       Top Layer    (34.800,16.650)-(35.900,18.000)
+KEEP T USB5V0       Top Layer    (32.100,13.200)-(34.800,16.650)
+KEEP T USB5V0       Top Layer    (32.100,11.000)-(32.100,13.200)
+KEEP T N$BTN        L3-SIG       (19.300,11.825)-(19.300,12.650)
+KEEP T N$BTN        L3-SIG       (22.275,16.175)-(22.325,16.225)
+KEEP T N$BTN        L3-SIG       (22.325,16.225)-(22.700,16.225)
+KEEP T N$BTN        L3-SIG       (22.700,16.225)-(23.325,16.850)
+KEEP T N$BTN        L3-SIG       (23.325,16.850)-(23.725,16.850)
+KEEP T N$LD2A       L3-SIG       (32.200,19.800)-(32.600,19.800)
+KEEP T N$LD2A       L3-SIG       (32.150,19.750)-(32.200,19.800)
+KEEP T N$LD2A       L3-SIG       (31.900,19.750)-(32.150,19.750)
+KEEP T N$LD2A       L3-SIG       (30.400,18.250)-(31.900,19.750)
+KEEP T N$BTN        L3-SIG       (27.000,18.600)-(30.300,20.100)
+KEEP T LED2         L3-SIG       (45.700,20.350)-(46.300,20.950)
+KEEP T LED2         L3-SIG       (37.150,20.150)-(37.200,20.100)
+KEEP T LED2         L3-SIG       (34.650,20.150)-(37.150,20.150)
+KEEP T LED2         L3-SIG       (33.800,21.000)-(34.650,20.150)
+KEEP T LED0_R       L3-SIG       (26.300,22.900)-(36.800,22.900)
+KEEP T FT-PWREN#    L3-SIG       (33.350,20.350)-(33.700,20.700)
+KEEP T EE-CS        L3-SIG       (27.775,19.950)-(28.225,20.400)
+KEEP T EE-CS        L3-SIG       (26.150,19.950)-(27.775,19.950)
+KEEP T EE-CS        L3-SIG       (25.600,19.400)-(26.150,19.950)
+KEEP T EE-CS        L3-SIG       (17.500,18.300)-(21.200,19.200)
+KEEP T EE-CLK       L3-SIG       (24.400,20.000)-(26.800,20.400)
+KEEP T CHAN7        L3-SIG       (45.950,17.200)-(47.550,15.600)
+KEEP T CHAN7        L3-SIG       (45.400,17.200)-(45.950,17.200)
+KEEP T CHAN7        L3-SIG       (39.950,19.000)-(39.950,19.300)
+KEEP T CHAN7        L3-SIG       (38.250,21.000)-(39.950,19.300)
+KEEP T CHAN7        L3-SIG       (37.500,21.000)-(38.250,21.000)
+KEEP T CHAN20       L3-SIG       (38.825,2.475)-(40.075,3.725)
+KEEP T CHAN20       L3-SIG       (37.000,2.475)-(38.825,2.475)
+KEEP T N$BTN        L4-SIG       (23.725,16.850)-(25.400,17.000)
+KEEP T N$LD2A       L4-SIG       (29.400,14.050)-(29.400,14.450)
+KEEP T N$LD2A       L4-SIG       (28.800,13.450)-(29.400,14.050)
+KEEP T N$BTN        L4-SIG       (25.400,17.000)-(27.000,18.600)
+KEEP T LED2         L4-SIG       (45.500,20.350)-(45.700,20.350)
+KEEP T LED2         L4-SIG       (45.250,20.600)-(45.500,20.350)
+KEEP T LED2         L4-SIG       (40.200,20.600)-(45.250,20.600)
+KEEP T LED2         L4-SIG       (39.650,21.150)-(40.200,20.600)
+KEEP T LED2         L4-SIG       (39.400,21.150)-(39.650,21.150)
+KEEP T LED2         L4-SIG       (38.950,20.700)-(39.400,21.150)
+KEEP T LED2         L4-SIG       (38.150,20.700)-(38.950,20.700)
+KEEP T FT-PWREN#    L4-SIG       (33.700,20.700)-(34.500,20.700)
+KEEP T EE-DATA      L4-SIG       (27.700,18.300)-(29.000,18.300)
+KEEP T EE-DATA      L4-SIG       (26.800,19.200)-(27.700,18.300)
+KEEP T CHAN7        L4-SIG       (44.400,18.100)-(44.450,18.050)
+KEEP T CHAN7        L4-SIG       (43.650,18.100)-(44.400,18.100)
+KEEP T CHAN7        L4-SIG       (43.300,18.450)-(43.650,18.100)
+KEEP T CHAN7        L4-SIG       (43.050,18.450)-(43.300,18.450)
+KEEP T CHAN7        L4-SIG       (42.950,18.350)-(43.050,18.450)
+KEEP T CHAN7        L4-SIG       (42.600,18.350)-(42.950,18.350)
+KEEP T CHAN7        L4-SIG       (41.950,19.000)-(42.600,18.350)
+KEEP T CHAN7        L4-SIG       (39.950,19.000)-(41.950,19.000)
+KEEP T CHAN7        L4-SIG       (29.450,22.600)-(30.850,22.600)
+KEEP T CHAN7        L4-SIG       (29.200,22.850)-(29.450,22.600)
+KEEP T CHAN7        L4-SIG       (29.150,22.850)-(29.200,22.850)
+KEEP T CHAN7        L4-SIG       (29.100,22.900)-(29.150,22.850)
+KEEP T CHAN7        L4-SIG       (28.600,22.900)-(29.100,22.900)
+KEEP T CHAN7        L4-SIG       (28.550,22.950)-(28.600,22.900)
+KEEP T CHAN7        L4-SIG       (27.850,22.950)-(28.550,22.950)
+KEEP T CHAN20       L4-SIG       (34.275,2.325)-(37.000,2.475)
+KEEP T CHAN20       L4-SIG       (32.375,1.900)-(34.275,2.325)
+KEEP T CHAN20       L4-SIG       (32.200,1.825)-(32.375,1.900)
+KEEP T CHAN20       L4-SIG       (31.645,1.270)-(32.200,1.825)
+KEEP T CHAN20       L4-SIG       (26.670,1.270)-(31.645,1.270)
+KEEP V VBATT        (17.075,3.000) Top Layer>Bottom Layer
+KEEP V N$LD2A       (22.200,12.950) Top Layer>Bottom Layer
+KEEP V N$BTN        (19.300,11.825) L2-GND>L3-SIG
+KEEP V N$BTN        (19.300,11.825) Top Layer>L2-GND
+KEEP V N$BTN        (19.300,12.650) L2-GND>L3-SIG
+KEEP V N$BTN        (19.300,12.650) Top Layer>L2-GND
+KEEP V N$BTN        (22.275,16.175) L2-GND>L3-SIG
+KEEP V N$BTN        (22.275,16.175) Top Layer>L2-GND
+KEEP V N$BTN        (23.725,16.850) L3-SIG>L4-SIG
+KEEP V TDI          (32.200,5.700) L2-GND>L3-SIG
+KEEP V TDI          (32.200,5.700) Top Layer>L2-GND
+KEEP V N$LD2A       (32.600,19.800) L5-VCC3V3>Bottom Layer
+KEEP V N$LD2A       (32.600,19.800) L4-SIG>L5-VCC3V3
+KEEP V N$LD2A       (32.600,19.800) L3-SIG>L4-SIG
+KEEP V N$LD2A       (30.400,18.250) L2-GND>L3-SIG
+KEEP V N$LD2A       (30.400,18.250) Top Layer>L2-GND
+KEEP V N$LD2A       (29.400,14.450) L3-SIG>L4-SIG
+KEEP V N$LD2A       (29.400,14.450) L2-GND>L3-SIG
+KEEP V N$LD2A       (29.400,14.450) Top Layer>L2-GND
+KEEP V N$LD2A       (28.800,13.450) L5-VCC3V3>Bottom Layer
+KEEP V N$LD2A       (28.800,13.450) L4-SIG>L5-VCC3V3
+KEEP V N$BTN        (27.000,18.600) L3-SIG>L4-SIG
+KEEP V LED2         (45.700,20.350) L3-SIG>L4-SIG
+KEEP V LED2         (38.150,20.700) L3-SIG>L4-SIG
+KEEP V LED2         (38.150,20.700) L2-GND>L3-SIG
+KEEP V LED2         (38.150,20.700) Top Layer>L2-GND
+KEEP V LED2         (37.200,20.100) L2-GND>L3-SIG
+KEEP V LED2         (37.200,20.100) Top Layer>L2-GND
+KEEP V FT-PWREN#    (33.350,20.350) L2-GND>L3-SIG
+KEEP V FT-PWREN#    (33.350,20.350) Top Layer>L2-GND
+KEEP V EE-DATA      (29.000,18.300) L3-SIG>L4-SIG
+KEEP V EE-DATA      (29.000,18.300) L2-GND>L3-SIG
+KEEP V EE-DATA      (29.000,18.300) Top Layer>L2-GND
+KEEP V EE-DATA      (26.800,19.200) L5-VCC3V3>Bottom Layer
+KEEP V EE-DATA      (26.800,19.200) L4-SIG>L5-VCC3V3
+KEEP V EE-CS        (21.200,19.200) L5-VCC3V3>Bottom Layer
+KEEP V EE-CS        (21.200,19.200) L4-SIG>L5-VCC3V3
+KEEP V EE-CS        (21.200,19.200) L3-SIG>L4-SIG
+KEEP V EE-CS        (17.500,18.300) Top Layer>Bottom Layer
+KEEP V EE-CLK       (24.400,20.000) Top Layer>Bottom Layer
+KEEP V CHAN7        (45.400,17.200) L2-GND>L3-SIG
+KEEP V CHAN7        (45.400,17.200) Top Layer>L2-GND
+KEEP V CHAN7        (44.450,18.050) L3-SIG>L4-SIG
+KEEP V CHAN7        (44.450,18.050) L2-GND>L3-SIG
+KEEP V CHAN7        (44.450,18.050) Top Layer>L2-GND
+KEEP V CHAN7        (39.950,19.000) L3-SIG>L4-SIG
+KEEP V CHAN7        (37.500,21.000) L5-VCC3V3>Bottom Layer
+KEEP V CHAN7        (37.500,21.000) L4-SIG>L5-VCC3V3
+KEEP V CHAN7        (37.500,21.000) L3-SIG>L4-SIG
+KEEP V CHAN7        (30.850,22.600) L5-VCC3V3>Bottom Layer
+KEEP V CHAN7        (30.850,22.600) L4-SIG>L5-VCC3V3
+KEEP V CHAN20       (40.075,3.725) L2-GND>L3-SIG
+KEEP V CHAN20       (40.075,3.725) Top Layer>L2-GND
+KEEP V CHAN20       (37.000,2.475) L3-SIG>L4-SIG
+KEEP V USB5V0       (32.100,13.200) Top Layer>Bottom Layer
+KEEP V USB5V0       (32.100,11.000) Top Layer>Bottom Layer

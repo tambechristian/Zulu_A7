@@ -1,0 +1,25 @@
+{
+"tracks": [
+{
+"net": "EE-DATA-DO",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 21.8,
+"y1": 22.3329,
+"x2": 20.9851,
+"y2": 22.455
+},
+{
+"net": "VCC3V3",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 19.3498,
+"y1": 19.35,
+"x2": 19.175,
+"y2": 19.05
+}
+],
+"vias": [],
+"remove": [],
+"remove_vias": []
+}
