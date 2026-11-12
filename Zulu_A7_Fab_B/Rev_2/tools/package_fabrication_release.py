@@ -6,8 +6,10 @@
 Adapted from Zulu_Altium_VS_Code_HDI_Optimized/tools/package_fabrication_release.py,
 then from Fab B Rev 1's copy (Rev_1/tools, export of 2026-11-11 08:46).
 Every expected number below was taken from the Rev 2 Altium export of
-2026-11-11: Gerbers 23:34, NC drill 23:35:44 (zulu_a7_fab_b.DRR / .LDP /
--SlotHoles.TXT), of the board saved 23:27:22 (MD5 e8715917), and cross-checked
+2026-11-11 (Gerbers 23:34, NC drill 23:35:44: zulu_a7_fab_b.DRR / .LDP /
+-SlotHoles.TXT), re-exported 2026-11-12 00:17 after the silkscreen title became
+ZULU A7 2.2 (only GTO changed), of the board saved 2026-11-12 00:16:55
+(MD5 33023787), and cross-checked
 against the PcbDoc by tools/fab_facts.py (tools/fab_facts.json: drill_vs_board
 0 missing / 0 extra in every drill file).  The script never regenerates outputs;
 it fails if any input is missing, empty, older than the PcbDoc, or does not match.
@@ -36,12 +38,13 @@ DEFAULT_ARCHIVE = os.path.join(
 )
 # order/quote numbers never go into a packaged file name or the note (public repo)
 ORDER_DENYLIST = ("W1150632AS3P6",)
-# Rev 2's final zulu_a7_fab_b.PcbDoc, saved 2026-11-11 23:27:22
+# Rev 2's final zulu_a7_fab_b.PcbDoc, saved 2026-11-12 00:16:55 (title ZULU A7 2.2;
+# the 2026-11-11 23:27:22 save with title 2.0 was SHA-256 A319195B..., MD5 e8715917)
 # (Rev 1: SHA-256 C439E0F5...0382, MD5 830b1744)
 EXPECTED_PCB_SHA256 = (
-    "A319195BA490AF08279EC831BFD4191F7F51B5010E1E6CF684FDEA426EE2E342"
+    "D77DE904DF044841C4E7B6727630BF219601B3013EDB0ED3DE31465C5D03B472"
 )
-EXPECTED_PCB_MD5 = "e8715917f9212cdbc7685ff786c11cc7"
+EXPECTED_PCB_MD5 = "330237878e325c882fca3f689b55ec0c"
 BASE = "zulu_a7_fab_b"
 OUTLINE = (0.0, 0.0, 69.85, 25.40)  # GM profile, mm
 GERBER_EXTENSIONS = [

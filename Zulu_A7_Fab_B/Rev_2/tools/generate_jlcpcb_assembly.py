@@ -26,7 +26,7 @@ assembly ZIP. Run it with no arguments:
     python tools/generate_jlcpcb_assembly.py
 
 FAB B REV 2 (2026-11-11): copied from Rev_1/tools (Rev 1's constants) and retargeted to the Rev 2 board,
-Rev_2/Imported zulu_a7.PrjPcb/zulu_a7_fab_b.PcbDoc (md5 e8715917, saved 2026-11-11 23:27; the layout
+Rev_2/Imported zulu_a7.PrjPcb/zulu_a7_fab_b.PcbDoc (md5 33023787, saved 2026-11-12 00:16 with the silkscreen title ZULU A7 2.2; the layout
 change is in docs/rev2_layout.md: X1 and X4 2.54 mm west, X2 pads 10 and 30 to x 36.83, U10/R96/R84/R86
 moved off X1's mounting holes). Changed from Rev 1:
 - the release names (RELEASE_PREFIX, RELEASE_NAME, FAB_ARCHIVE, FAB_NOTES, ASSEMBLY_ARCHIVE): the Rev 2

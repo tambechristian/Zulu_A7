@@ -32,7 +32,8 @@ edits of 2026-11-11 (USB5V0 wire, VBATT label, LTC3556 block diagram, LD3/LD4 no
   - The title 'ZULU A7 2.0' 0.2 mm east (37.5 -> 37.7), because its silk gap to the moved '30 C20' label was
     0.105 mm (rule 0.254). This block was added to the generated script BY HAND; it is not in delta_r96.json.
 - 73 new laser vias marked as microvias (`mark_microvias.py --expect 1204`, 1204 verified), polygons repoured, saved
-  ratsnest rebuilt (`FabB_RebuildConnR2.pas`: 0 connection objects; the save dropped 2 stale lines).
+  ratsnest rebuilt (`FabB_RebuildConnR2.pas`: 0 connection objects; the save dropped 2 stale lines). DRC 23:24 0/0,
+  saved 23:27 (md5 e8715917, title still 2.0; see Title below).
 
 ## Routing
 
@@ -54,10 +55,16 @@ Power copper is narrower than Rev 1 in places (all pass the width rules): VU 0.6
 0.4 mm over 9.6 mm (was 0.4-1.2); USB5V0 2.6 mm at 0.2 mm on Top near (32-34, 22.2); about 2.2 mm of 3 mil VCC3V3 on
 Top between U2.20, U2.31 and a stacked plane-tie via at (34.9, 6.775) (legal: the VCC3V3 Width rule allows 3 mil on Top).
 
+## Title (2026-11-12)
+
+The silkscreen title is now 'ZULU A7 2.2' (`tools/FabB_Title22.pas`; same 1.3 mm size, stroke and place), so Rev 2 can
+be told from Rev 1 ('ZULU A7 2.0') and from the no-PMOD board ('ZULU A7 2.1'). Only the top overlay changed: every
+other Gerber and every drill file is identical to the 2026-11-11 export.
+
 ## Result
 
-Altium DRC 2026-11-11 23:24: 0 violations, 0 waived (`docs/drc_rev2.drc`). The board was saved at 23:27 after the
-ratsnest rebuild only (copper, pads, components and texts identical to the DRC'd state). Board md5 e8715917.
+Altium DRC 2026-11-12 00:16 (after the title change): 0 violations, 0 warnings (`docs/drc_rev2.drc`). Board saved
+00:16:55, md5 33023787, SHA-256 D77DE904... (the 2026-11-11 23:27 save with title 2.0 was md5 e8715917).
 
 Library: the project's `zulu_a7.PcbLib` has no ZULU-DIP37 footprint (X2's footprint lives only on the board), so
 there is no library pad to update.
@@ -65,10 +72,10 @@ there is no library pad to update.
 The other files in `docs/` and the `tools/route/` stage folders other than `rev2/` are Rev 1 history copied with the
 project.
 
-## Release outputs (2026-11-11, PCBWay)
+## Release outputs (2026-11-11, title update 2026-11-12, PCBWay)
 
-- Altium exports of the final board (md5 e8715917, SHA-256 A319195B...): 13 Gerbers 23:34, NC drills 23:35 (G85
-  slots), schematic PDF `Imported zulu_a7.PrjPcb/zulu_a7_fab_b_schematic.pdf` 23:38 (8 pages).
+- Altium exports of the final board (md5 33023787, SHA-256 D77DE904...): 13 Gerbers and NC drills (G85 slots)
+  re-exported 2026-11-12 00:17 after the title change, schematic PDF `Imported zulu_a7.PrjPcb/zulu_a7_fab_b_schematic.pdf` 23:38 (8 pages).
 - Drills: 354 through (0.20), 403 buried L3-L4, microvias 321 / 307 / 281 / 295 (Top-L2 / L2-L3 / L4-L5 /
   L5-Bottom) = 1204; X1's plated slots now centred at (26.98, 23.96) and (33.98, 23.96).
 - `fabrication/Zulu_A7_Fab_B_Rev_2_PCBWay_FAB_NOTES.txt` + `..._Fabrication_2026-11-11.zip` (23 entries) from
@@ -81,5 +88,5 @@ project.
   parts; the CPL differs from Rev 1 only in X1, X4, U10, R96, R84 and R86.
 - Both packages were rebuilt and checked against the board by an independent verifier (drill hits per span, slot
   coordinates, X2 pad flashes in GTL, CPL positions, BOM against the schematics, no order number).
-- Known leftovers: the silkscreen title is still 'ZULU A7 2.0' as on Rev 1; the assembly notes' source line says the
-  board was untracked when they were generated; `tools/bom_audit.py` still lists Rev 1's X2 strips.
+- Known leftovers: the assembly notes' source line says the board was untracked when they were generated (the PCB
+  SHA-256 line identifies it); `tools/bom_audit.py` still lists Rev 1's X2 strips.

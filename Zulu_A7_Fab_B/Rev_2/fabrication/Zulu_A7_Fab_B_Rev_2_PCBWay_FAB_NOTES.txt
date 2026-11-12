@@ -1,8 +1,8 @@
 ZULU A7 FAB B REV 2 - PCBWAY FABRICATION NOTES
-Revision: Zulu A7 Fab B Rev 2  (silkscreen title "ZULU A7 2.0", as on Rev 1)
+Revision: Zulu A7 Fab B Rev 2  (silkscreen title "ZULU A7 2.2"; Rev 1 reads "ZULU A7 2.0")
 Release date: 2026-11-11
-PCB SHA-256: A319195BA490AF08279EC831BFD4191F7F51B5010E1E6CF684FDEA426EE2E342
-Source: zulu_a7_fab_b.PcbDoc (MD5 e8715917f9212cdbc7685ff786c11cc7)
+PCB SHA-256: D77DE904DF044841C4E7B6727630BF219601B3013EDB0ED3DE31465C5D03B472
+Source: zulu_a7_fab_b.PcbDoc (MD5 330237878e325c882fca3f689b55ec0c)
 
 ORDER AND CAM GATE
 This is a bare-board, six-layer, two-step sequential HDI release. It is a
@@ -11,7 +11,7 @@ outline, same layer use, same via types and the same agreed stack. What
 changed against that board: the power block (one LTC3556 PMIC plus one SC189A
 buck replace the bq24232 charger and three bucks), the LED/button row was
 re-spread and moved, the USB and battery connectors and the header holes were
-re-arranged (see CHANGES FROM FAB B REV 1), and the title is now ZULU A7 2.0.
+re-arranged (see CHANGES FROM FAB B REV 1), and the title is now ZULU A7 2.2.
 The drill and via counts below are new, and this revision has many more
 via-in-pad sites, all of them microvias; no through via sits in any SMD pad
 (see VIA-IN-PAD).
@@ -28,8 +28,9 @@ now form four 1 x 10 rows with a 12.70 mm gap around X1/X4. Four Bottom parts
 (U10, R96, R84, R86) moved clear of X1's mounting holes and the copper around
 the moved parts was rerouted: via objects 1,921 -> 1,961 (through vias
 369 -> 354, laser microvias 1,161 -> 1,204, L3-L4 buried vias 391 -> 403).
-Outline, stack, layer use, via and hole sizes, the 68 via-in-pad sites and
-every design rule are unchanged from Rev 1.
+The silkscreen title reads ZULU A7 2.2 (Rev 1: ZULU A7 2.0; top overlay
+only). Outline, stack, layer use, via and hole sizes, the 68 via-in-pad sites
+and every design rule are unchanged from Rev 1.
 
 BOARD
 Finished outline: 69.85 mm x 25.40 mm (rectangle, from the GM profile)
@@ -304,12 +305,12 @@ FILE MAP
   zulu_a7_fab_b.DRR   Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-11-11 23:24: 0 warnings, 0 rule violations. The board was
-saved at 23:25 and once more at 23:27 (MD5 e8715917) after only its saved
-ratsnest was rebuilt; every copper, pad, via, polygon and text record of the
-released file is identical to the 23:25 save.
-Gerbers (exported 23:34): metric RS-274X, 0.0001 mm coordinate resolution
-NC Drill (exported 23:35): metric Excellon 4:4, separate round/slot files,
+Altium DRC 2026-11-12 00:16, after the title change: 0 warnings, 0 rule
+violations. The board was saved at 00:16:55 (MD5 33023787) with no further
+edit.
+Gerbers (exported 2026-11-12 00:17): metric RS-274X, 0.0001 mm coordinate
+resolution
+NC Drill (exported 2026-11-12 00:17): metric Excellon 4:4, separate round/slot files,
 G85 plated slots
 Every drill hit was matched one-to-one against the PcbDoc via and pad
 positions (0 missing, 0 extra in every drill file).
