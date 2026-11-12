@@ -1,0 +1,667 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 29.325,
+"y": 20.625,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 26.2,
+"y": 20.15,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 30.475,
+"y": 2.25,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 29.025,
+"y": 20.925,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.9,
+"y": 23.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 30.9,
+"y": 23.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 21.9,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 34.15,
+"y": 18.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.175,
+"y": 17.275,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 29.325,
+"y": 21.65,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 27.675,
+"y": 2.65,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 29.15,
+"y": 19.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 25.1,
+"y": 18.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 34.9,
+"y": 6.775,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 34.9,
+"y": 6.775,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 34.9,
+"y": 6.775,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 34.9,
+"y": 6.775,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 19.25,
+"y": 19.25,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 18.05,
+"y": 19.25,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 19.55,
+"y": 19.85,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 19.3,
+"y": 18.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 35.875,
+"y": 2.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CAS#",
+"x": 26.35,
+"y": 6.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CAS#",
+"x": 26.35,
+"y": 6.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CHAN11",
+"x": 32.125,
+"y": 20.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CHAN11",
+"x": 32.125,
+"y": 20.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CHAN12",
+"x": 37.45,
+"y": 23.15,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CHAN12",
+"x": 37.45,
+"y": 23.15,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 29.75,
+"y1": 20.1,
+"x2": 29.325,
+"y2": 20.625
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 25.775,
+"y1": 22.275,
+"x2": 25.775,
+"y2": 21.9
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 29.925,
+"y1": 21.7,
+"x2": 29.325,
+"y2": 21.65
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 27.675,
+"y1": 2.7,
+"x2": 27.675,
+"y2": 2.65
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 34.725,
+"y1": 6.95,
+"x2": 34.9,
+"y2": 6.775
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 27.7,
+"y1": 22.25,
+"x2": 29.325,
+"y2": 22.175
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 29.325,
+"y1": 22.175,
+"x2": 29.35,
+"y2": 22.175
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 29.35,
+"y1": 22.175,
+"x2": 29.375,
+"y2": 22.15
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 29.375,
+"y1": 22.15,
+"x2": 30.6,
+"y2": 22.15
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 30.6,
+"y1": 22.15,
+"x2": 30.725,
+"y2": 22.025
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 30.725,
+"y1": 22.025,
+"x2": 30.75,
+"y2": 22.025
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 30.75,
+"y1": 22.025,
+"x2": 30.775,
+"y2": 22.0
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 30.775,
+"y1": 22.0,
+"x2": 32.125,
+"y2": 20.725
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.125,
+"y1": 20.725,
+"x2": 32.25,
+"y2": 20.725
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.25,
+"y1": 20.725,
+"x2": 32.45,
+"y2": 20.525
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.45,
+"y1": 20.525,
+"x2": 32.475,
+"y2": 20.525
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.475,
+"y1": 20.525,
+"x2": 32.525,
+"y2": 20.475
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.525,
+"y1": 20.475,
+"x2": 32.55,
+"y2": 20.475
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.55,
+"y1": 20.475,
+"x2": 32.575,
+"y2": 20.45
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.575,
+"y1": 20.45,
+"x2": 32.6,
+"y2": 20.45
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.6,
+"y1": 20.45,
+"x2": 32.625,
+"y2": 20.425
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.625,
+"y1": 20.425,
+"x2": 32.675,
+"y2": 20.425
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.675,
+"y1": 20.425,
+"x2": 32.7,
+"y2": 20.4
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.7,
+"y1": 20.4,
+"x2": 32.775,
+"y2": 20.4
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.775,
+"y1": 20.4,
+"x2": 32.8,
+"y2": 20.375
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 32.8,
+"y1": 20.375,
+"x2": 33.15,
+"y2": 20.375
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.15,
+"y1": 20.375,
+"x2": 33.175,
+"y2": 20.4
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.175,
+"y1": 20.4,
+"x2": 33.275,
+"y2": 20.4
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.275,
+"y1": 20.4,
+"x2": 33.3,
+"y2": 20.425
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.3,
+"y1": 20.425,
+"x2": 33.325,
+"y2": 20.425
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.325,
+"y1": 20.425,
+"x2": 33.35,
+"y2": 20.45
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.35,
+"y1": 20.45,
+"x2": 33.375,
+"y2": 20.45
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.375,
+"y1": 20.45,
+"x2": 33.4,
+"y2": 20.475
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.4,
+"y1": 20.475,
+"x2": 33.425,
+"y2": 20.475
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.425,
+"y1": 20.475,
+"x2": 33.45,
+"y2": 20.5
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.45,
+"y1": 20.5,
+"x2": 33.475,
+"y2": 20.5
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.475,
+"y1": 20.5,
+"x2": 33.975,
+"y2": 21.0
+},
+{
+"net": "CHAN11",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 33.975,
+"y1": 21.0,
+"x2": 34.0,
+"y2": 21.0
+},
+{
+"net": "CHAN12",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 16.25,
+"y1": 23.15,
+"x2": 24.15,
+"y2": 22.9
+},
+{
+"net": "CHAN12",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 24.15,
+"y1": 22.9,
+"x2": 36.925,
+"y2": 22.9
+},
+{
+"net": "CHAN12",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 36.925,
+"y1": 22.9,
+"x2": 37.45,
+"y2": 23.15
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 30 queued nets remain"
+]
+}

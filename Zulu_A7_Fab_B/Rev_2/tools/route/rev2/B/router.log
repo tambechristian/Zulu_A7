@@ -1,0 +1,15 @@
+VCC3V3         
+GND            
+EE-CLK         
+EE-CS          
+WE#            
+CAS#           
+USB_D_N        
+USB_D_P        
+FT-VCORE       
+RAS#           
+CHAN19         
+CHAN20         
+N$BTN          
+LED2           
+FT-PWREN#      

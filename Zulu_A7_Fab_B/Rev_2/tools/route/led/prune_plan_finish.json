@@ -1,0 +1,167 @@
+{
+ "remove": [],
+ "remove_vias": [
+  {
+   "net": "N$LD1A",
+   "x": 26.7,
+   "y": 11.8,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "LED0_R",
+   "x": 20.8,
+   "y": 11.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "LED0_R",
+   "x": 20.8,
+   "y": 11.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "SD-DAT0",
+   "x": 23.85,
+   "y": 18.4,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "SD-DAT0",
+   "x": 23.85,
+   "y": 18.4,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "N$LD0G",
+   "x": 29.05,
+   "y": 10.9,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "N$LD0G",
+   "x": 29.05,
+   "y": 10.9,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "LED0_R",
+   "x": 18.9,
+   "y": 13.1,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "SD-DAT0",
+   "x": 23.85,
+   "y": 18.4,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "LED0_R",
+   "x": 18.9,
+   "y": 13.1,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "SD-DAT0",
+   "x": 23.85,
+   "y": 18.4,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "N$LD0G",
+   "x": 30.85,
+   "y": 16.1,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "CHAN19",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 23.3,
+   "y1": 7.3,
+   "x2": 23.3,
+   "y2": 7.825
+  },
+  {
+   "net": "NetLD4_A",
+   "layer": "Top Layer",
+   "w": 0.1,
+   "x1": 15.6,
+   "y1": 16.7,
+   "x2": 15.6,
+   "y2": 17.25
+  },
+  {
+   "net": "NetLD3_K",
+   "layer": "Top Layer",
+   "w": 0.1,
+   "x1": 10.575,
+   "y1": 19.4,
+   "x2": 24.75,
+   "y2": 19.4
+  }
+ ],
+ "vias": []
+}

@@ -1,0 +1,287 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 29.6,
+"y": 20.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 29.6,
+"y": 20.325,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 29.6,
+"y": 20.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 29.6,
+"y": 20.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 26.3,
+"y": 20.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 30.2,
+"y": 2.25,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.825,
+"y": 20.875,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 28.575,
+"y": 23.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 30.575,
+"y": 23.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.75,
+"y": 21.925,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 25.75,
+"y": 21.925,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 25.75,
+"y": 21.925,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 25.75,
+"y": 21.925,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 34.225,
+"y": 20.25,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.1,
+"y": 17.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 29.675,
+"y": 21.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 29.675,
+"y": 21.7,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 29.675,
+"y": 21.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 29.675,
+"y": 21.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 28.525,
+"y": 2.425,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 28.525,
+"y": 2.425,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 28.525,
+"y": 2.425,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 28.525,
+"y": 2.425,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 30.475,
+"y1": 2.25,
+"x2": 30.2,
+"y2": 2.25
+},
+{
+"net": "GND",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 29.025,
+"y1": 20.875,
+"x2": 28.825,
+"y2": 20.875
+},
+{
+"net": "GND",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 28.9,
+"y1": 23.2,
+"x2": 28.575,
+"y2": 23.2
+},
+{
+"net": "GND",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 30.9,
+"y1": 23.2,
+"x2": 30.575,
+"y2": 23.2
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 25.75,
+"y1": 22.275,
+"x2": 25.75,
+"y2": 21.925
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 29.925,
+"y1": 21.7,
+"x2": 29.675,
+"y2": 21.7
+},
+{
+"net": "CHAN20",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 36.775,
+"y1": 1.875,
+"x2": 36.75,
+"y2": 2.45
+},
+{
+"net": "CHAN7",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 36.65,
+"y1": 23.55,
+"x2": 35.9,
+"y2": 22.6
+}
+],
+"remove": [],
+"log": []
+}

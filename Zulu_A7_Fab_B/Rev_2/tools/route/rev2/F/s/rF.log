@@ -1,0 +1,36 @@
+f2_router: 9 orphan keys
+GND            
+VCC3V3         
+CAS#           
+CHAN11         
+CHAN19         
+CHAN20         
+CHAN22         
+CLK-12M-FT     
+EE-CLK         
+EE-CS          
+EE-DATA        
+EE-DATA-DO     
+FPGA-TCK       
+FT-PWREN#      
+FT-VCORE       
+LED2           
+N$BTN          ripped CLK-12M-FT LED2
+N$LD2A         
+RAS#           
+SD-DAT0        
+SD-DAT1        
+TCK            
+TDI            
+USB5V0         
+WE#            
+CLK-12M-FT     
+LED2           ripped CHAN11 CLK-12M-FT FT-PWREN# N$BTN
+CHAN11         
+CLK-12M-FT     
+FT-PWREN#      
+N$BTN          
+routed 42 connections, failed 2; 81 vias, 201 tracks -> s/rF.json
+OPEN N$BTN 2
+FAIL N$BTN (nopath)
+FAIL N$BTN (nopath)

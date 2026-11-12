@@ -1,0 +1,5 @@
+seeded 110 vias, 516 tracks; open 4: {'SD-DAT1': 1, 'CHAN13': 1, 'CHAN12': 1, 'TDI': 1}
+== TDI focus 34,0.3,44,4.5 (2 islands)
+TDI: no probe path (budget)
+== TDI: not closed (open 4 -> 4), 137 s
+ffocus: open 4 {'SD-DAT1': 1, 'CHAN13': 1, 'CHAN12': 1, 'TDI': 1}; 110 vias 516 tracks -> ft1.json (139 s)

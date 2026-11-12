@@ -1,0 +1,50 @@
+VCC3V3         
+GND            
+EE-CLK         
+EE-CS          
+WE#            
+CAS#           
+FT-VCORE       
+RAS#           
+CHAN19         
+CHAN20         
+N$BTN          
+LED2           
+FT-PWREN#      
+CHAN7          
+TCK            
+VBATT          
+CHAN25         
+FPGA-TCK       
+SD-CMD         
+CLK-12M-FT     
+TDI            
+TDO            
+CHAN11         
+CHAN8          
+CHAN22         
+USB5V0         
+LED0_R         
+SD-DAT1        
+CHAN12         ripped CHAN11 CHAN22 CHAN8 LED0_R
+CHAN13         
+VU             
+ANALOG-IO1     
+CHAN11         
+CHAN22         
+CHAN8          
+LED0_R         
+routed 35 connections, failed 7; 69 vias, 460 tracks -> route/rev2/B/route2.json
+OPEN ANALOG-IO1 1
+OPEN CHAN20 1
+OPEN CHAN7 1
+OPEN N$BTN 2
+OPEN TDI 1
+OPEN VU 1
+FAIL CHAN20 (budget)
+FAIL N$BTN (nopath)
+FAIL N$BTN (nopath)
+FAIL CHAN7 (budget)
+FAIL TDI (budget)
+FAIL VU (budget)
+FAIL ANALOG-IO1 (budget)

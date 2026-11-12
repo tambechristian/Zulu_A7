@@ -1,0 +1,12 @@
+seeded 140 vias, 475 tracks
+TDI            
+TDO            ripped ANALOG-IO1 CHAN20 CHAN25 SD-CMD
+ANALOG-IO1     
+CHAN20         
+CHAN25         
+SD-CMD         
+routed 0 connections, failed 2; 161 vias, 556 tracks -> c7a.json
+OPEN CHAN20 1
+OPEN TDI 1
+FAIL TDI (budget)
+FAIL CHAN20 (budget)

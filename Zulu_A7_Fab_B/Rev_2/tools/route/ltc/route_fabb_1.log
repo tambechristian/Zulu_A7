@@ -1,0 +1,22 @@
+GND            
+VCC3V3         
+PWR_VC3_RC     
+PWR_FB3_FF     
+PWR_SW1        
+PWR_PROG       
+PWR_VC3        
+PWR_SW         
+PWR_SWCD3      
+PWR_SWAB3      
+PWR_FB3        
+PWR_CLPROG     
+PWR_FB1        
+PWR_SW2        
+PWR_FB2        
+PWR_PGOODALL   
+LD4_A          
+PWR_CHRG       
+VBATT          
+USB5V0         
+VU             ripped PWR_SW USB5V0 VBATT
+VCC1V8         

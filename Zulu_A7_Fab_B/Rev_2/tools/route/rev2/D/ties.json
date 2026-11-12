@@ -1,0 +1,41 @@
+{
+ "tracks": [
+  {
+   "net": "GND",
+   "layer": "Bottom Layer",
+   "w": 0.3,
+   "x1": 26.0,
+   "y1": 21.9,
+   "x2": 26.4,
+   "y2": 22.4
+  }
+ ],
+ "vias": [
+  {
+   "net": "GND",
+   "x": 26.0,
+   "y": 21.9,
+   "size": 0.35,
+   "hole": 0.2,
+   "span": [
+    "Top Layer",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "VCC3V3",
+   "x": 27.22,
+   "y": 19.22,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  }
+ ]
+}

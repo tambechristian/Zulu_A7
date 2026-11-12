@@ -1,0 +1,6 @@
+seeded 0 vias, 2 tracks
+VCC1V8         
+routed 3 connections, failed 1; 5 vias, 37 tracks -> route/ltc/f2_D.json
+OPEN VCC1V8 1
+FAIL VCC1V8 (budget)
+EXIT 0

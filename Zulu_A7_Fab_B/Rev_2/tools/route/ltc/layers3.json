@@ -1,0 +1,1 @@
+{"cost": {"PWR_SW": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40}, "PWR_SW2": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40}, "PWR_SWAB3": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40}, "PWR_SWCD3": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40}, "VCC3V3": {"Top Layer": 4, "L3-SIG": 4, "L4-SIG": 4}, "NetL3_1": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40}}}
