@@ -1,0 +1,9 @@
+VU: routed 3 connections, failed 0; 1 vias, 18 tracks -> route/jtag2/c_1.json
+GND: routed 1 connections, failed 0; 2 vias, 19 tracks -> route/jtag2/c_2.json
+LD4_A: routed 1 connections, failed 0; 3 vias, 21 tracks -> route/jtag2/c_3.json
+TCK: routed 1 connections, failed 0; 9 vias, 45 tracks -> route/jtag2/c_4.json
+TMS: routed 1 connections, failed 0; 27 vias, 137 tracks -> route/jtag2/c_5.json
+TDI: routed 1 connections, failed 0; 37 vias, 185 tracks -> route/jtag2/c_6.json
+TDO: routed 0 connections, failed 1; 37 vias, 185 tracks -> route/jtag2/c_7.json
+TDO: FAIL TDO (nopath)
+DONE c

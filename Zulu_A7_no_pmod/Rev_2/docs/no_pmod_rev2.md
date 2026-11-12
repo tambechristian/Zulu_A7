@@ -36,3 +36,25 @@ values above; a TMS L4 stub re-joins the moved pad); JP4's designator hidden (it
 AI1/AI0/C28 restacked above JP4 at 0.6 mm text (the only room before the microSD pads); '1V0' at 85 % height.
 Final: DRC 0 warnings / 0 violations, 0 open, 0 dead copper, ratsnest empty, md5 3e191e8d. Sheet 4 JP3/JP4 notes reworded.
 Title changed to 'ZULU A7 2.3' (tools/NoPmod_Title23.pas; DRC 0/0, copper unchanged, md5 50552912). Not done: fabrication/ and assembly/ outputs are Fab B Rev 2's.
+
+## JTAG in one west-edge column (2026-11-12)
+User request: put TDI/TDO/VCC3V3 on the west edge with the other JTAG holes, centre all six on that edge, and give X2's
+40/39/38 and AI1/AI0/C28 labels back their normal row. The user approved moving C78 to clear the column.
+- Column at x 1.10, pitch 2.54, centred on the 25.40 mm edge (6.35 to 19.05). From north to south: GND, TMS, TCK
+  (JP3, pad 1 at 13.97, rotation 90) and VCC3V3, TDO, TDI (JP4, rotation 90, origin 8.89).
+- The column covered C78, the VU trunk, R108 and a GND tie. A joint site scan (`route/jtag2/sites.py`) moved C78 to
+  (2.825, 15.65) and R108 to (6.00, 13.475), between L9's pads. Those values include the DRC mask-sliver nudge.
+- `tools/no_pmod_jtag3_prep.py` ripped the stage-2 JTAG copper, the Bottom VU feed west of x 3.7 and the C78 GND tie.
+- The router (`route/jtag2/seq.sh`, order VU at 0.4 mm, LD4_A, GND, TDI, TDO, TCK, TMS) closed every connection. Two
+  hand stubs join square-modelled ends to the round pad centres.
+- Plan `route/jtag2/final.json`: removes 221 tracks and 36 vias, adds 210 tracks and 40 vias, moves 4 parts.
+  route_check PASS.
+- Applied with FabBCopper_NoPmodColumn, NoPmod_TurnJP4 and NoPmod_Repour. 28 new lasers marked (1185 verified).
+- NoPmod_Silk8 restored the labels: 40/39/38 at 37's size and row, AI1/AI0/C28 at C27's, and 1V0 at 1V8's.
+- FabB_RebuildConnR2 removed 0 stale connection objects.
+- The first DRC found 4 Bottom mask slivers (C78 vs JP3 at 0.088 mm; R108 vs L9-1 at 0.075 mm).
+  NoPmod_Sliver moved C78 east by 0.025 mm and R108 north by 0.025 mm.
+- JP3 designator hidden (user request; `tools/NoPmod_HideJP3.pas`). JP4's was already hidden.
+- Final result: DRC 0 warnings / 0 violations (`docs/drc_jtag_column.drc`), 0 open, 0 dead copper, md5 a47bc63d.
+- Sheet 4 JP3/JP4 notes reworded (`tools/no_pmod_sheet4_column.py`).
+- Backups: `backups/Zulu_a7_no_pmod_before_jtag_column.PcbDoc`, `backups/zulu_a7_4_before_jtag_column.SchDoc`.
