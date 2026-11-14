@@ -38,6 +38,33 @@ moved off X1's mounting holes). Changed from Rev 1:
 - x2_housing_neighbours() takes the strips from the board's pad runs instead of splitting at x 33.0;
 - source_line() says when the PCB is untracked (Rev_2 was not in git when this release was made).
 Every check Rev 1 made is still made.
+
+NO-PMOD REV 2 (2026-11-13): copied from Zulu_A7_Fab_B/Rev_2/tools and retargeted to Zulu_a7_no_pmod Rev 2,
+Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc (md5 c88d7ac6: Pmod removed, board cut to 2.4 x 1.0 in, JTAG
+holes JP3/JP4 in one west-edge column, title ZULU A7 2.3, and the 16 SDRAM DQ series resistors R119-R134 of
+docs/dq_series_resistors.md). Changed from Fab B Rev 2:
+- release names: RELEASE_NAME "Zulu A7 no-PMOD Rev 2", RELEASE_DATE 2026-11-13 and the dated FAB_ARCHIVE /
+  ASSEMBLY_ARCHIVE names (RELEASE_PREFIX and FAB_NOTES were already the no-PMOD names in the copy);
+- BOARD_WIDTH 69.85 -> 60.96 mm, now checked against the PcbDoc's Board6 outline (check_outline), and the
+  CPL text's outline corner and the drawings' west/east detail windows are computed from it;
+- the panel: Fab B's basis (1x4, 5 mm V-cut rails at the short ends) is kept but written everywhere as a
+  proposal to confirm with PCBWay, since no panel has been agreed for this 60.96 mm board;
+- J1 (Sullins PPTC062LFBN-RC Pmod header) and its R26-R33 (RC0201FR-07200RL) left the design: they are in
+  STALE_REFS / STALE_MPNS, their LCSC, package and per-line note entries are gone, and every notes line that
+  named J1 (through-hole count, reflow and depanel order, CPL scope, the J1 paragraph) now names X2 only;
+- R119-R134 (Yageo RC0201FR-0722RL, 22 ohm 0201): a PCBWay line note, a notes paragraph saying they are
+  SI-critical and must be placed exactly per the CPL, the via-in-pad pads read from the plan's 'vippo', and
+  check_series_r(), which holds the BOM line and every CPL row (side, rotation, centre within 5 um) to
+  si/series_r/dq_series_r_plan.json (md5 7c2b8ae6);
+- the JTAG holes: JP3/JP4 (DNS) now sit in one column at the west short edge, so the panel section reports
+  their pad copper distance to that edge (from the board) next to the fitted parts';
+- check_footprints(): every schematic footprint must equal the PcbDoc PATTERN. The first no-PMOD run printed
+  U1 as 'ARTIX7_ZULU_NOPMOD' and U10 as '93LC46B_I_SN_3V3' in Package/Footprint: those are the SI (IBIS)
+  model names added to the schematics on 2026-11-12, which bom_audit.load_components() took for footprints
+  (fixed there: PCBLIB models only);
+- short_edge_parts() breaks distance ties by designator, and the drawings are saved without PyMuPDF's random
+  /ID, so a rerun writes byte-identical notes, drawings and ZIP (write_zip already fixed the timestamps).
+Every check Fab B Rev 2 made is still made.
 """
 
 import argparse
@@ -54,21 +81,26 @@ from collections import defaultdict
 import olefile
 import pymupdf as fitz
 
-# ---- Fab B Rev 2 board-specific constants (2026-11-11) ----
-# Names: the Rev 2 release names (Rev 1: "Zulu_A7_Fab_B" / "Zulu A7 Fab B" / Zulu_A7_Fab_B_PCBWay_*).
-# FAB_ARCHIVE and FAB_NOTES are the names the Rev 2 fabrication release (tools/package_fabrication_release.py)
+# ---- No-PMOD Rev 2 board-specific constants (2026-11-13) ----
+# Names: the no-PMOD Rev 2 release names (Fab B Rev 2: "Zulu A7 Fab B Rev 2", 2026-11-11).
+# FAB_ARCHIVE and FAB_NOTES are the names the no-PMOD fabrication release (tools/package_fabrication_release.py)
 # writes into Rev_2/fabrication/; these notes point PCBWay at them.
 RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_2"
-RELEASE_NAME = "Zulu A7 Fab B Rev 2"
-RELEASE_DATE = "2026-11-11"
-BOARD_WIDTH = 69.85            # Board6 VX/VY outline 2750 x 1000 mil (unchanged in Rev 2)
+RELEASE_NAME = "Zulu A7 no-PMOD Rev 2"
+RELEASE_DATE = "2026-11-13"
+BOARD_WIDTH = 60.96            # Board6 VX/VY outline 2400 x 1000 mil (2.4 x 1.0 in); check_outline() holds it to the PcbDoc
 BOARD_HEIGHT = 25.40
-FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Fabrication_2026-11-11.zip"
+FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Fabrication_2026-11-13.zip"
 FAB_NOTES = "Zulu_A7_no_pmod_Rev_2_PCBWay_FAB_NOTES.txt"
-ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Assembly_2026-11-11.zip"
+ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Assembly_2026-11-13.zip"
 FINISHED_THICKNESS = "1.60 +/- 0.16 mm"   # PCBWay's agreed stack (Shengyi S1000-2M), see FAB_NOTES
-PANEL = "1x4"                              # agreed with PCBWay: 5 mm V-cut rails at the two short ends
+PANEL = "1x4"                              # PROPOSAL only, to confirm with PCBWay: Fab B's basis, 5 mm V-cut rails at the two short ends
 RAIL_MM = 5.0
+# The SDRAM DQ series resistors (docs/dq_series_resistors.md): the plan they were placed from, and its md5.
+SERIES_R_PLAN = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                             "si", "series_r", "dq_series_r_plan.json")
+SERIES_R_PLAN_MD5 = "7c2b8ae6e5c5b4636c4712125a04db31"
+SERIES_R_MPN = "RC0201FR-0722RL"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -108,7 +140,8 @@ LCSC_CODES = {
     "CL10A226MP8NUNE": "C86295",
     "GRM188R61C475KE11D": "C77045",
     "GRM033R60J474KE90D": "C85926",
-    "PPTC062LFBN-RC": "C3321957",
+    # No-PMOD: PPTC062LFBN-RC (J1) and RC0201FR-07200RL (R26-R33) left with the Pmod. RC0201FR-0722RL
+    # (R119-R134) has no verified LCSC code and none is invented here.
     "BLM18KG601SN1D": "C85833",
     "LTST-C191KRKT": "C125099",
     "LTST-C191KGKT": "C125098",
@@ -120,7 +153,6 @@ LCSC_CODES = {
     "RC0201FR-0710KL": "C106225",
     "RC0402FR-071KL": "C106235",
     "RC0201FR-0733RL": "C295794",
-    "RC0201FR-07200RL": "C274337",
     "742C083472JP": "C2961927",
     "RC0402FR-074K7L": "C105871",
     "RC0402FR-07680RL": "C137948",
@@ -164,8 +196,11 @@ STALE_MPNS = {
     "BQ24232RGTR", "TPS63802DLAR", "SC189ZSKTRT", "SC189LSKTRT", "DFE252010F-R47M=P2",
     "DFE201610E-2R2M=P2", "RC0201FR-07511KL", "RC0201FR-0791KL", "RC0402FR-0756K2L",
     "RC0402FR-074K32L", "RC0402FR-073K01L", "RC0201FR-07100KL", "RC0201FR-07402KL", "RC0201FR-07105KL",
+    # No-PMOD: the Pmod header J1 and its eight 200 ohm series resistors R26-R33 (their only use of this MPN).
+    "PPTC062LFBN-RC", "RC0201FR-07200RL",
 }
-STALE_REFS = {"U5", "U6", "LD5", "R78", "R104", "R105", "R106", "R109", "R110", "R111", "R112", "C162"}
+STALE_REFS = {"U5", "U6", "LD5", "R78", "R104", "R105", "R106", "R109", "R110", "R111", "R112", "C162",
+              "J1", "R26", "R27", "R28", "R29", "R30", "R31", "R32", "R33"}
 
 # LD0 parts whose datasheet numbers the pins differently from the footprint
 # (anodes 1/3/5, cathodes 2/4/6 on the board).
@@ -489,7 +524,6 @@ PACKAGE_NAMES = {
     "MOLEX-105017-0001": "Molex 105017 micro-USB-B, SMT with plated slots and holes",
     "JST-B2B-PH-SM4-TB": "JST PH 2-pin top-entry SMT header",
     "DM3D-SF": "Hirose DM3D microSD socket, SMT",
-    "2X06": "2x6 2.54 mm female header, through-hole",
     "PTS810": "C&K PTS810 SMT tactile switch, 4.2 x 3.2 mm",
 }
 
@@ -528,8 +562,12 @@ PCBWAY_LINE_NOTES = {
         "Rated for ONE reflow: place in the last (top) reflow. Shell stakes in plated "
         "slots MS1/MS2: hand-solder from the bottom after reflow (see notes)."
     ),
-    "PPTC062LFBN-RC": "Top-side through-hole: hand or selective solder after both reflows. Pin 1 = square pad.",
     "B2B-PH-SM4-TB(LF)(SN)": "Polarity: pin 1 (west contact) is battery +, pin 2 is GND.",
+    SERIES_R_MPN: (
+        "SI-critical 22 ohm series resistors on the SDRAM data bus (11 bottom, 5 top). Place each exactly at its "
+        "CPL position, side and rotation; no other value, size or position. R127, R129-R132 sit in a tight "
+        "column beside U1 on top. Some pads carry filled and capped vias (see notes)."
+    ),
 }
 
 # Buyer-facing descriptions where the schematic SPEC is mostly design commentary.
@@ -638,6 +676,85 @@ def check_x2(parts, geometry):
     pins = sum(b - a + 1 for a, b in board)
     if pins != len(geometry["X2"]["pads"]) or pins != 40:
         raise ValueError(f"X2 strips cover {pins} pins, board X2 has {len(geometry['X2']['pads'])} pads")
+
+
+def check_outline():
+    """No-PMOD: fail unless the PcbDoc's Board6 outline is the BOARD_WIDTH x BOARD_HEIGHT rectangle at 0,0."""
+    board_file = olefile.OleFileIO(PCB)
+    record = next(iter(kvs(board_file, "Board6/Data", "VX0=").values()))
+    board_file.close()
+    xs, ys, k = [], [], 0
+    while f"VX{k}" in record:
+        xs.append(float(record[f"VX{k}"].removesuffix("mil")) * 0.0254)
+        ys.append(float(record[f"VY{k}"].removesuffix("mil")) * 0.0254)
+        k += 1
+    got = (min(xs), min(ys), max(xs), max(ys))
+    want = (0.0, 0.0, BOARD_WIDTH, BOARD_HEIGHT)
+    if k < 4 or any(abs(a - b) > 0.001 for a, b in zip(got, want)) \
+            or any(round(x, 3) not in (0.0, round(BOARD_WIDTH, 3)) for x in xs) \
+            or any(round(y, 3) not in (0.0, round(BOARD_HEIGHT, 3)) for y in ys):
+        raise ValueError(f"PcbDoc outline {got} ({k} vertices) is not the {BOARD_WIDTH} x {BOARD_HEIGHT} mm rectangle")
+
+
+def check_footprints(parts, geometry):
+    """No-PMOD: every schematic footprint (the BOM's Package/Footprint source) is the PcbDoc component's PATTERN.
+    It caught U1/U10 SI model names standing in for their footprints (fixed in bom_audit.load_components)."""
+    bad = [(ref, c["fp"], geometry[ref]["footprint"]) for ref, c in parts.items()
+           if (c["fp"] or "") != geometry[ref]["footprint"]]
+    if bad:
+        raise ValueError(f"schematic footprint != PcbDoc pattern: {bad}")
+
+
+SERIES_R_TOP = {"R127", "R129", "R130", "R131", "R132"}   # named in the BOM line note; check_series_r holds it to the plan
+
+
+def series_r_plan():
+    """The DQ series-resistor plan (parts and via-in-pad sites), md5-checked."""
+    import json
+    with open(SERIES_R_PLAN, "rb") as handle:
+        raw = handle.read()
+    if hashlib.md5(raw).hexdigest() != SERIES_R_PLAN_MD5:
+        raise ValueError(f"{SERIES_R_PLAN} md5 {hashlib.md5(raw).hexdigest()} != {SERIES_R_PLAN_MD5}")
+    return json.loads(raw)
+
+
+def check_series_r(parts, geometry):
+    """No-PMOD: R119-R134 are exactly the plan's 16 parts, all one RC0201FR-0722RL / Yageo / R0201 group, and each
+    sits on the board on the plan's side and rotation with its pad-extent centre within 5 um of the plan centre."""
+    plan = {p["ref"]: p for p in series_r_plan()["parts"]}
+    refs = {ref for ref, c in parts.items() if clean(c["params"].get("MANF#")) == SERIES_R_MPN}
+    if refs != set(plan) or len(plan) != 16:
+        raise ValueError(f"{SERIES_R_MPN} parts {sorted(refs, key=bom_audit.natkey)} != plan {sorted(plan)}")
+    for ref, p in plan.items():
+        params, item = parts[ref]["params"], geometry[ref]
+        if clean(params.get("MANF")) != "Yageo" or parts[ref]["fp"] != "R0201" or params.get("DNS") == "Yes":
+            raise ValueError(f"{ref}: MANF {params.get('MANF')!r}, footprint {parts[ref]['fp']!r}, DNS {params.get('DNS')!r}")
+        if item["layer"] != p["side"] or item["rotation"] != p["rot"] % 360 \
+                or abs(item["x"] - p["x"]) > 0.005 or abs(item["y"] - p["y"]) > 0.005:
+            raise ValueError(f"{ref} on the board ({item['layer']}, {item['rotation']}, {item['x']:.4f}, "
+                             f"{item['y']:.4f}) != plan ({p['side']}, {p['rot']}, {p['x']}, {p['y']})")
+    top = {ref for ref, p in plan.items() if p["side"] == "Top"}
+    if top != SERIES_R_TOP or len(plan) - len(top) != 11:
+        raise ValueError(f"series R top side {sorted(top)} != SERIES_R_TOP {sorted(SERIES_R_TOP)}")
+
+
+def series_r_vippo():
+    """Pads of R119-R134 that carry a via (the plan's 'vippo' list), e.g. ['R128-1', ...]."""
+    return [site["pad"] for site in series_r_plan()["vippo"]]
+
+
+def jtag_edge_text(geometry):
+    """No-PMOD: the DNS JTAG holes JP3/JP4 in their west-edge column: 'JP3, JP4 (DNS, bare plated holes) at X 1.10 mm,
+    pad copper 0.34 mm from the left edge', from the board."""
+    refs = [ref for ref in ("JP3", "JP4") if ref in geometry]
+    pads = [pad for ref in refs for pad in geometry[ref]["pads"]]
+    xs = sorted({round(pad["x"], 2) for pad in pads})
+    gap = min(pad["x"] - pad["sx"] / 2 for pad in pads)
+    edge = "left" if gap < BOARD_WIDTH / 2 else "right"
+    if edge == "right":
+        gap = min(BOARD_WIDTH - pad["x"] - pad["sx"] / 2 for pad in pads)
+    where = f"X {xs[0]:.2f} mm" if len(xs) == 1 else f"X {xs[0]:.2f}-{xs[-1]:.2f} mm"
+    return f"{', '.join(refs)} (DNS, bare plated holes) in one column at {where}, pad copper {gap:.2f} mm from the {edge} edge"
 
 
 def led_k_text(leds, refs):
@@ -866,13 +983,29 @@ def short_edge_parts(geometry, fitted, limit=1.5):
                                ("right", BOARD_WIDTH - pad["x"] - pad["sx"] / 2)):
                 if dist < limit and dist < best.get((ref, edge), 99.0):
                     best[(ref, edge)] = dist
-    return sorted(((r, e, d) for (r, e), d in best.items()), key=lambda t: t[2])
+    # No-PMOD: ties (R92/R93/R99 at 0.31 mm) are broken by designator, so reruns write the same notes
+    # (`fitted` is a set, whose order changes with the string hash seed).
+    return sorted(((r, e, d) for (r, e), d in best.items()), key=lambda t: (round(t[2], 4), bom_audit.natkey(t[0]), t[1]))
 
 
 def pin_one_parts(parts, geometry, fitted):
     """Fab B: the polarised multi-pin parts the drawings mark with a red dot (pad 1 / A1): ICs, Q1, X4."""
     return [ref for ref in sorted(fitted, key=bom_audit.natkey)
             if re.match(r"(U|Q)[0-9]", ref) or ref == "X4"]
+
+
+def board_vippo():
+    """Via-in-pad sites of the whole board from tools/fab_facts.json, which must have measured this PcbDoc."""
+    import json
+    facts = json.load(open(os.path.join(HERE, "fab_facts.json"), encoding="utf-8"))
+    md5 = hashlib.md5(open(PCB, "rb").read()).hexdigest()
+    if facts["source"]["md5"] != md5:
+        raise ValueError(f"fab_facts.json measured {facts['source']['md5']}, the board is {md5}: run tools/fab_facts.py")
+    if facts["through_vias_in_smd_pads"]:
+        raise ValueError("through vias in SMD pads: " + str(facts["through_vias_in_smd_pads"]))
+    parts = sorted({e["ref"] for e in facts["via_in_pad"]},
+                   key=lambda r: (re.sub(r"\d+", "", r), int(re.sub(r"\D", "", r) or 0)))
+    return facts["via_in_pad_summary"]["via_sites"], len({(e["ref"], e["pad"]) for e in facts["via_in_pad"]}), parts
 
 
 def write_notes_pcbway(parts, geometry, bom_rows):
@@ -883,6 +1016,17 @@ def write_notes_pcbway(parts, geometry, bom_rows):
     buy_rows = [row for row in rows if row["Type"] != "DNS"]
     smd = sorted((ref for ref in fitted if geometry[ref]["has_smd"]), key=bom_audit.natkey)
     tht_parts = sum(row["_qty"] for row in buy_rows if row["Type"] == "thru-hole")
+    # No-PMOD: J1 is gone, so X2's strips are the only through-hole parts; the text below assumes that.
+    tht_refs = {ref for row in buy_rows if row["Type"] == "thru-hole" for ref in row["_refs"]}
+    if tht_refs != {"X2"}:
+        raise ValueError(f"through-hole parts {sorted(tht_refs)}: the notes are written for X2 alone")
+    tht_text = f"{NUMBER_WORDS[x2_strip_count()]} X2 strips"
+    series_refs = next(row["_refs"] for row in bom_rows if row["Manufacturer Part Number"] == SERIES_R_MPN)
+    series_top = [ref for ref in series_refs if geometry[ref]["layer"] == "Top"]
+    series_bottom = [ref for ref in series_refs if geometry[ref]["layer"] == "Bottom"]
+    vippo = series_r_vippo()
+    vip_sites, vip_pads, vip_parts = board_vippo()
+    jtag_text = jtag_edge_text(geometry)
     tht_joints = sum(len(geometry[ref]["pads"]) for ref in fitted if not geometry[ref]["has_smd"])
     n0201 = sum(len(row["_refs"]) for row in bom_rows if row["Footprint"] in ("C0201", "R0201"))
     top0201 = sum(1 for row in bom_rows if row["Footprint"] in ("C0201", "R0201")
@@ -937,7 +1081,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"- Number of Unique Parts = {len({row['Mfg Part #'] for row in buy_rows})}; "
         f"Number of SMD Parts = {len(smd)};",
         f"  Number of BGA/QFP Parts = 2 (U1 BGA, U2 LQFP); Number of Through-Hole",
-        f"  Parts = {tht_parts} (J1 and four X2 strips, {tht_joints} joints).",
+        f"  Parts = {tht_parts} ({tht_text}, {tht_joints} joints).",
         "- Contains sensitive components/parts = Yes. Paste into its box:",
         f"  \"{u1_mpn}, FT2232HL-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,",
         f"  {u8_mpn}: moisture sensitive, follow the MSL label, bake if floor life",
@@ -948,11 +1092,12 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  board); please confirm what this field counts.",
         f"- PCB: surface finish ENIG recommended ({u1_land:.3f} mm BGA lands, 0201 pads).",
         f"- Panel (the board is only {BOARD_WIDTH:.2f} x {BOARD_HEIGHT:.2f} mm): PCB Board type = Panel by",
-        f"  Supplier; {PANEL} panel; Break-away rail = Yes, {RAIL_MM:.0f} mm V-cut rails at the two",
-        "  short ends, the panel already approved for this board family;",
-        "  X-out Allowance = Accept (as on the previous build; mark every X-out and",
-        "  skip its placement). Assembly Board type = Panelized PCBs;",
-        "  Depanel the boards to delivery = Yes.",
+        f"  Supplier; proposed {PANEL} panel; Break-away rail = Yes, {RAIL_MM:.0f} mm V-cut rails at the two",
+        "  short ends. This panel is a PROPOSAL to confirm with PCBWay: it is the",
+        "  basis used for the earlier, longer board of this family, and no panel",
+        f"  has been agreed yet for this {BOARD_WIDTH:.2f} mm board.",
+        "  X-out Allowance = Accept (mark every X-out and skip its placement).",
+        "  Assembly Board type = Panelized PCBs; Depanel the boards to delivery = Yes.",
         "",
         "ASSEMBLY SCOPE",
         f"Fitted PCB designators: {len(fitted)}",
@@ -982,27 +1127,30 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         + " and " + via_phrase(vias, "laser", "Top-L2 laser microvias") + ". "
         + ("No via is in a land." if vias[('through', 'land')] + vias[('laser', 'land')] == 0
            else f"{vias[('through', 'land')] + vias[('laser', 'land')]} vias are in lands."),
-        "  The through vias are tented but not filled. Per your BGA rule (tent and",
-        "  fill vias near BGA pads), please plug or fill them and quote the method.",
-        "PANEL: please send the panel drawing for approval before production.",
-        f"- {PANEL} panel with {RAIL_MM:.0f} mm V-cut rails at the two short ends (left and right).",
+        "  The fabrication notes ask for ALL through vias to be plugged (IPC-4761",
+        "  type VI or VII); please confirm the method covers the vias in U1's field.",
+        "PANEL (proposal, to confirm with PCBWay): please send the panel drawing for",
+        "approval before production.",
+        f"- Proposed: {PANEL} panel with {RAIL_MM:.0f} mm V-cut rails at the two short ends (left and",
+        "  right). Please confirm or propose a panel for this board size.",
         f"  Parts nearest the short edges (pad copper): {edge_text}.",
+        f"  JTAG: {jtag_text}.",
         "  Confirm the depanelizer and support fixture cannot touch them.",
         f"- X1 sits at the top long edge (X {x1[0]:.1f}-{x1[2]:.1f} mm) and X4 at the bottom",
         f"  long edge (X {x4[0]:.1f}-{x4[2]:.1f} mm). X2's housings seat along both long",
         "  edges: no separation residue where a housing seats.",
         "- Depanel with a supported cutter, not by hand-snapping. Depanel before",
-        "  fitting J1 and X2.",
+        "  fitting X2.",
         "- The board has no fiducials. Please put global fiducials on the rails",
         "  (top and bottom) and confirm that they suffice for U1 and the 0201s,",
         "  or propose another alignment method.",
         "",
         "CPL AND ORIENTATION",
         f"{CPL_FILENAME}: Designator, Mid X, Mid Y, Layer (Top/Bottom), Rotation.",
-        "It lists the SMT parts only; J1 and X2 are hand-soldered and are not in it.",
+        "It lists the SMT parts only; X2 is hand-soldered and is not in it.",
         "If your line needs one file per side, please split it by the Layer column.",
         "- Units are millimetres (\"mm\" suffix). Origin: the board's lower-left",
-        "  corner; the outline runs from 0,0 to 69.85,25.40.",
+        f"  corner; the outline runs from 0,0 to {BOARD_WIDTH:.2f},{BOARD_HEIGHT:.2f}.",
         "- Coordinates on both sides are as viewed from the top. Bottom-side X",
         "  values are NOT mirrored.",
         "- Mid X/Y is the centre of each part's pad extents, not the footprint",
@@ -1018,7 +1166,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "",
         "SPECIAL COMPONENT INSTRUCTIONS",
         "- Reflow order: bottom side FIRST, top side LAST. X1 is rated for one",
-        "  reflow cycle and U1 should see only one. Then hand-solder J1, X2 and",
+        "  reflow cycle and U1 should see only one. Then hand-solder X2 and",
         "  X1's shell stakes.",
         *wrap_x2(
             f"- X2 is not one 40-pin part: {NUMBER_WORDS[x2_strip_count()]} single-row 2.54 mm THT strips "
@@ -1042,10 +1190,26 @@ def write_notes_pcbway(parts, geometry, bom_rows):
     lines += [
         "  If you cannot quote X2, leave it unpopulated, do not buy the strips,",
         "  and say so in the quotation.",
-        "- J1 (Sullins PPTC062LFBN-RC): vertical 2x6 female Pmod header, top side.",
-        "  Pin 1 is the square pad. Hand or selective solder after both reflows.",
         "- JP3 and JP4 are intentional DNS flying-lead/pogo positions (DNS rows in",
-        "  the BOM): bare plated holes, no paste, leave empty.",
+        "  the BOM): bare plated holes, no paste, leave empty. They form the JTAG",
+        "  column along the left (west) board edge.",
+        *textwrap.wrap(
+            f"- {series_refs[0]}-{series_refs[-1]} "
+            f"({SERIES_R_MPN}, 22 ohm 0201, {len(series_bottom)} bottom: {', '.join(series_bottom)}; "
+            f"{len(series_top)} top: {', '.join(series_top)}) are SI-critical series resistors on the "
+            "SDRAM data lines. Place each one exactly per the CPL (position, side and rotation); do not "
+            f"move, substitute or omit any of them. The {len(series_top)} top ones sit in a tight column beside U1 "
+            "(0.10-0.16 mm solder-mask webs). Pads "
+            f"{', '.join(vippo)} carry vias that the fabrication notes ask to be filled and capped "
+            "(via-in-pad): if they are not, please tell us before assembly (solder wicking and "
+            "tombstoning risk).",
+            78, subsequent_indent="  "),
+        *textwrap.wrap(
+            f"- Via-in-pad, whole board: {vip_sites} microvia sites on {vip_pads} pads of {len(vip_parts)} parts "
+            "(U8 pad 7 carries two) "
+            f"({', '.join(vip_parts)}); the fabrication notes (VIA-IN-PAD table) ask for every one to be "
+            "copper-filled and capped flat. If any arrive unfilled, please tell us before assembly.",
+            78, subsequent_indent="  "),
         "- X1 (Molex 105017-0001 micro-USB-B, top side) opens toward the upper",
         "  board edge. Its shell stakes go into the plated 0.60 x 1.30 mm slots",
         "  MS1/MS2 at the mating-face end, beside the board edge. The MP1/MP4",
@@ -1105,12 +1269,14 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "Before releasing the order, please confirm in writing:",
         "- the HDI fabrication quote, with turnkey assembly on the same order;",
         "- U1 land acceptance, and the plugging or filling of the vias near U1;",
-        f"- the panel drawing ({PANEL}, V-cut rails at the short ends) and rail",
-        "  fiducials (and that rail fiducials alone suffice);",
+        f"- the panel (our proposal: {PANEL}, V-cut rails at the short ends; not yet",
+        "  agreed) with its drawing, and rail fiducials (and that they alone suffice);",
         "- your bottom-side CPL rotation convention;",
         "- authorized sourcing for U1 and U2, and any lines with no stock;",
         "- hand soldering of X2's four strips and X1's stakes, or X2 left",
         "  unpopulated;",
+        f"- placement of {series_refs[0]}-{series_refs[-1]} exactly per the CPL, and that all {vip_sites}",
+        "  via-in-pad sites (FAB NOTES table) arrive filled and capped;",
         "- the stencil apertures for U1, U2 and U8, and X-ray of U1 (and what the",
         "  Number of X-ray test field counts);",
         "- polarity and pin 1 against both drawings, then first-article approval.",
@@ -1237,8 +1403,10 @@ def write_notes(parts, geometry, bom_rows):
             76),
         f"  Quote this as manual THT work. If {x2_provider} cannot process that exception,",
         "  leave X2 unpopulated for post-assembly installation.",
-        "- J1 is a vertical 2x6 female through-hole Pmod header on the top side.",
-        "- JP3 and JP4 are intentional DNP flying-lead/pogo positions.",
+        "- JP3 and JP4 are intentional DNP flying-lead/pogo positions (the JTAG",
+        "  column on the left board edge).",
+        f"- R119-R134 ({SERIES_R_MPN}) are SI-critical SDRAM series resistors: place",
+        "  each exactly per the CPL.",
         "- X4 pin 1 is battery positive.",
         "- X3's microSD card opening faces the left board edge.",
         "- X1's micro-USB opening faces the upper board edge.",
@@ -1514,10 +1682,13 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
 def write_drawing(side, parts, geometry):
     output = os.path.join(ASSEMBLY, DRAWING_FILENAME.format(side=side))
     document = fitz.open()
+    # No-PMOD: the detail windows are the two halves with 1.575 mm overlap each side of the centre line
+    # (Fab B's fixed 36.5 / 33.35 were that rule on its 69.85 mm board).
+    half = BOARD_WIDTH / 2
     regions = [
         ((0.0, 0.0, BOARD_WIDTH, BOARD_HEIGHT), "Overview"),
-        ((0.0, 0.0, 36.5, BOARD_HEIGHT), "West Detail"),
-        ((33.35, 0.0, BOARD_WIDTH, BOARD_HEIGHT), "East Detail"),
+        ((0.0, 0.0, round(half + 1.575, 2), BOARD_HEIGHT), "West Detail"),
+        ((round(half - 1.575, 2), 0.0, BOARD_WIDTH, BOARD_HEIGHT), "East Detail"),
     ]
     shown = set()
     for region, label in regions:
@@ -1540,7 +1711,7 @@ def write_drawing(side, parts, geometry):
             "creationDate": f"D:{RELEASE_DATE.replace('-', '')}000000-07'00'",
         }
     )
-    document.save(output, garbage=4, deflate=True)
+    document.save(output, garbage=4, deflate=True, no_new_id=True)   # no random /ID: reruns give the same bytes
     document.close()
     return output, shown
 
@@ -1653,6 +1824,19 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
             ref = row["Designator"]
             if row["Layer"] != geometry[ref]["layer"] or int(row["Rotation"]) != geometry[ref]["rotation"]:
                 raise ValueError(f"CPL row differs from the PcbDoc: {row}")
+        # No-PMOD: R119-R134 are one BOM line and their CPL rows are the plan's poses (side, rotation, centre).
+        plan = {p["ref"]: p for p in series_r_plan()["parts"]}
+        lines = [row for row in bom_csv if row["Mfg Part #"] == SERIES_R_MPN]
+        if len(lines) != 1 or set(lines[0]["Designator"].split(",")) != set(plan) or int(lines[0]["Qty"]) != 16 \
+                or lines[0]["Manufacturer"] != "Yageo":
+            raise ValueError(f"{SERIES_R_MPN} BOM lines {lines} != one Yageo line for {sorted(plan)}")
+        rows = {row["Designator"]: row for row in cpl_rows if row["Designator"] in plan}
+        for ref, p in plan.items():
+            row = rows.get(ref)
+            if row is None or row["Layer"] != p["side"] or int(row["Rotation"]) != p["rot"] % 360 \
+                    or abs(float(row["Mid X"].removesuffix("mm")) - p["x"]) > 0.005 \
+                    or abs(float(row["Mid Y"].removesuffix("mm")) - p["y"]) > 0.005:
+                raise ValueError(f"CPL row for {ref} {row} != plan {p['side']} {p['rot']} ({p['x']}, {p['y']})")
 
     expected_rows = len(pcbway_rows(bom_rows, parts, geometry)) if ASSEMBLER == "pcbway" else len(bom_rows)
     if expected_rows != len(read_csv(outputs["bom"])):
@@ -1695,7 +1879,10 @@ def main():
             f"extra PCB={sorted(board_refs - set(parts))}"
         )
     geometry = component_geometry(board_components, pads)
+    check_outline()
+    check_footprints(parts, geometry)
     check_x2(parts, geometry)
+    check_series_r(parts, geometry)
     bom_rows = make_bom(parts, geometry)
 
     outputs = {

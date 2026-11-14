@@ -1,18 +1,10 @@
-Output: NC Drill Files
-Type  : NC Drill
-From  : Project [zulu_a7_fab_b.PrjPcb]
-   Generated File[zulu_a7_fab_b-RoundHoles.TXT]
-   Generated File[zulu_a7_fab_b-SlotHoles.TXT]
-   Generated File[zulu_a7_fab_b-RoundHoles.TX3]
-   Generated File[zulu_a7_fab_b-RoundHoles.TX6]
-   Generated File[zulu_a7_fab_b-RoundHoles.TX7]
-   Generated File[zulu_a7_fab_b-RoundHoles.TX9]
-   Generated File[zulu_a7_fab_b-RoundHoles.TX10]
-   Generated File[zulu_a7_fab_b.LDP]
-   Generated File[zulu_a7_fab_b.DRR]
+Output: Protel
+Type  : ProtelNetlist
+From  : Project [Zulu_a7_no_pmod.PrjPcb]
+   Generated File[Zulu_a7_no_pmod.NET]
 
 
-Files Generated   : 9
+Files Generated   : 1
 Documents Printed : 0
 
-Finished Output Generation At 12:17:58 AM On 11/12/2026
+Finished Output Generation At 9:39:08 PM On 11/13/2026

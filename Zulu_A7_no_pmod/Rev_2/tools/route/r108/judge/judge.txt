@@ -1,0 +1,96 @@
+{
+ "plan": "route/r108/plan.json",
+ "emit_problems": [],
+ "open_exact": 0,
+ "open_nets_exact": [],
+ "dup_tracks_result": 25,
+ "dup_vias_result": 0,
+ "zero_len_tracks_plan": 0,
+ "short_tracks_plan_lt_0.01": 0,
+ "drc_counts": {
+  "unmoved_base": 37,
+  "base_moved": 37,
+  "result": 37,
+  "new_vs_unmoved": 0,
+  "fixed_vs_unmoved": 0
+ },
+ "drc_new": [],
+ "through_via_in_smd_pad_result": [],
+ "uvia_in_smd_pad_result_total": 84,
+ "uvia_in_smd_pad_unmoved_base": 83,
+ "uvia_in_smd_pad_new": [
+  [
+   "LD4_A 3.000,17.425 L5->Bot 0.30/0.15",
+   [
+    [
+     "R108-2(LD4_A)",
+     0.15
+    ]
+   ]
+  ]
+ ],
+ "new_through_vias": [],
+ "counts": {
+  "tracks_added": 2,
+  "tracks_removed": 7,
+  "vias_added": 2,
+  "vias_removed": 2,
+  "tracks_readded_identical": 0,
+  "vias_readded_identical": 0,
+  "vias_added_by_type": {
+   "laser L4-L5": 1,
+   "laser L5-Bottom": 1
+  },
+  "vias_removed_by_type": {
+   "through": 2
+  },
+  "net_via_change_by_type": {
+   "laser L4-L5": 1,
+   "laser L5-Bottom": 1,
+   "through": -2
+  },
+  "added_track_mm": 3.69,
+  "removed_track_mm": 5.11,
+  "added_track_mm_excl_readded": 3.69,
+  "board_tracks": 5160,
+  "board_vias": 1948,
+  "board_vias_unmoved": 1948,
+  "board_tracks_unmoved": 5165,
+  "board_via_types": {
+   "through": 339,
+   "buried L3-L4": 403,
+   "laser L2-L3": 304,
+   "laser Top-L2": 319,
+   "laser L5-Bottom": 301,
+   "laser L4-L5": 282
+  },
+  "unmoved_via_types": {
+   "through": 341,
+   "buried L3-L4": 403,
+   "laser L2-L3": 304,
+   "laser Top-L2": 319,
+   "laser L5-Bottom": 300,
+   "laser L4-L5": 281
+  }
+ },
+ "usb": {
+  "P_mm": 15.9222,
+  "N_mm": 15.9224,
+  "mismatch_mm": 0.0002,
+  "layers": [
+   "Top Layer"
+  ],
+  "widths": [
+   0.15
+  ],
+  "vias": 0,
+  "segments": [
+   26,
+   14
+  ],
+  "coupled_mm_tol0.005": 11.95,
+  "coupled_mm_tol0.010": 12.226,
+  "coupled_mm_tol0.030": 12.835,
+  "min_gap_mm": 0.15
+ }
+}

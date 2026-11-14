@@ -18,6 +18,22 @@ the nets each part sits on.  Supply-chain and second-source data are static
 snapshots and carry their date.
 
     python tools/bom_audit.py > docs/component_validation.md
+
+NO-PMOD REV 2 (2026-11-13): this copy now runs end to end on Zulu_a7_no_pmod Rev 2 (the Fab B copy was only
+ever imported for load_components() and could not run main()). Changed:
+- SCH and PINOUT point at the repository root (zulu_a7.sch, Datasheet/), two levels above Rev_2; NET is the
+  no-PMOD Protel netlist (Project Outputs for Zulu_a7_no_pmod/Zulu_a7_no_pmod.NET);
+- the U8 check is the LTC3556 (29 pin names and nets from docs/ltc3556.md, which is the datasheet Rev A pin
+  table with the Fab B ENALL = VU tie) instead of the bq24232 that left on 2026-11-10;
+- the X2 check expects pins 17-20 = GND / VCC3V3 / VCC1V8 / VCC1V0 (the 2026-10-07 power-pin change) and its
+  text describes the Rev 2 10 + 10 rows;
+- the static Q2 2N7002 row is printed only when Q2 exists (it left with the bq24232);
+- load_components() takes the footprint only from a ModelType=PCBLIB model record: U1, U3 and U10 now
+  also carry SI (IBIS) models, and U1's ARTIX7_ZULU_NOPMOD and U10's 93LC46B_I_SN_3V3 had replaced their
+  footprint names in the BOM footprint column (and in the assembly BOM's Package/Footprint).
+sdram_ok() is unchanged: it already accepts the SDRAM-Dn names the 2026-11-13 DQ series resistors (R119-R134)
+put on U3's 16 DQ pads. The narrative tables (supply, second source, derating, findings) are still the
+2026-09 snapshot and are not checks.
 """
 import sys, re, json, os
 import xml.etree.ElementTree as ET
@@ -28,8 +44,11 @@ from fix_text_orientation import read_stream, split, field
 ROOT = os.path.dirname(HERE)
 PRJ = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb')
 NET = os.path.join(PRJ, 'Project Outputs for Zulu_a7_no_pmod', 'Zulu_a7_no_pmod.NET')   # Fab B copy (2026-11-11); the assembly generator uses load_components() only
-SCH = os.path.join(ROOT, 'zulu_a7.sch')
-PINOUT = os.path.join(ROOT, '..', 'Datasheet', 'xc7a35tcpg236pkg_pinout.txt')
+# No-PMOD Rev 2: ROOT is Zulu_A7_no_pmod/Rev_2, two levels below the repository root that holds the EAGLE
+# zulu_a7.sch and Datasheet/ (the Fab B copy pointed at Rev_2/zulu_a7.sch and Zulu_A7_no_pmod/Datasheet, neither exists).
+REPO = os.path.normpath(os.path.join(ROOT, '..', '..'))
+SCH = os.path.join(REPO, 'zulu_a7.sch')
+PINOUT = os.path.join(REPO, 'Datasheet', 'xc7a35tcpg236pkg_pinout.txt')
 DATE = '2026-09-07'
 
 # ---------------------------------------------------------------- inputs --
@@ -50,7 +69,10 @@ def load_components():
             elif b.startswith(b'|RECORD=2|'): pins[o].append((field(b, 'Designator'), field(b, 'Name'), field(b, 'OwnerPartId')))
             elif b.startswith(b'|RECORD=44|'):
                 for k, (h3, b3) in enumerate(recs):
-                    if b3.startswith(b'|RECORD=45|') and field(b3, 'OwnerIndex') == str(i - 1): fp[o] = field(b3, 'ModelName')
+                    # No-PMOD Rev 2: only the footprint model. U1/U3/U10 also carry SI (IBIS) models since 2026-11-12,
+                    # and an SI ModelName (ARTIX7_ZULU_NOPMOD, 93LC46B_I_SN_3V3) must not stand in for the footprint.
+                    if b3.startswith(b'|RECORD=45|') and field(b3, 'OwnerIndex') == str(i - 1) \
+                            and field(b3, 'ModelType') == 'PCBLIB': fp[o] = field(b3, 'ModelName')
         for i, (h, b) in enumerate(recs):
             if not b.startswith(b'|RECORD=1|'): continue
             d = desig.get(i)
@@ -323,17 +345,29 @@ def main():
         bad = {p: (got.get(p), n) for p, n in want.items() if got.get(p) != n}
         extra = {p: n for p, n in got.items() if p not in want}
         w(f'| {ref} {fp} | {txt} | {"all match" if not bad and not extra else f"{bad} {extra}"} |')
-    w('| Q2 2N7002LT1G | G on PGOOD, S on GND, D on the LED; SOT-23 1 G 2 S 3 D | matches (standard 2N7002 pinout, onsemi sheet not fetchable) |')
-    X2 = {'X2-1': 'GND', 'X2-2': 'CHAN-CLK', 'X2-3': 'CHAN0', 'X2-9': 'CHAN6', 'X2-10': 'CHAN7', 'X2-16': 'CHAN13', 'X2-17': 'VCC3V3', 'X2-18': 'VCC1V8', 'X2-19': 'VCC1V0', 'X2-20': 'GND',
+    if 'Q2' in comps:   # No-PMOD Rev 2: Q2 (2N7002) left with the bq24232; this row is only a claim, so print it only when Q2 exists
+        w('| Q2 2N7002LT1G | G on PGOOD, S on GND, D on the LED; SOT-23 1 G 2 S 3 D | matches (standard 2N7002 pinout, onsemi sheet not fetchable) |')
+    # No-PMOD Rev 2: pins 17-20 are GND / VCC3V3 / VCC1V8 / VCC1V0 since the 2026-10-07 X2 power-pin change (the
+    # Fab B copy still expected the 2026-09-09 order 17 3V3, 18 1V8, 19 1V0, 20 GND).
+    X2 = {'X2-1': 'GND', 'X2-2': 'CHAN-CLK', 'X2-3': 'CHAN0', 'X2-9': 'CHAN6', 'X2-10': 'CHAN7', 'X2-16': 'CHAN13', 'X2-17': 'GND', 'X2-18': 'VCC3V3', 'X2-19': 'VCC1V8', 'X2-20': 'VCC1V0',
           'X2-21': 'GND', 'X2-22': 'VU', 'X2-23': 'RST#', 'X2-24': 'CHAN14', 'X2-26': 'CHAN16', 'X2-27': 'CHAN17', 'X2-38': 'CHAN28', 'X2-39': 'ANALOG-IO0', 'X2-40': 'ANALOG-IO1'}
     bad = [(pad, padnet.get(pad), exp) for pad, exp in X2.items() if padnet.get(pad) != exp]
     bad += [pad for pad in ('X2-41', 'X2-42', 'X2-43', 'X2-44', 'D2-A', 'D2-K', 'D3-A', 'D3-K') if pad in padnet] + [n for n in set(padnet.values()) if n == 'VEXT']
-    w(f'| X2 pin field | 40 pins numbered 1-40 (2026-09-09); mirrored rows, 1-9 + USB landing + 10-20 above, 21-29 + LiPo landing + 30-40 below. Top row 1 GND, 2 CHAN-CLK, 3-9 CHAN0-6, 10-16 CHAN7-13, 17 +3.3V, 18 +1.8V, 19 +1.0V, 20 GND; bottom row 21 GND, 22 VU, 23 RST#, 24-29 CHAN14-19, 30-38 CHAN20-28, 39-40 ANALOG-IO0/1 | {"all match" if not bad else bad} |')
-    BQ = {1: 'TS', 2: 'BAT', 3: 'BAT', 4: 'CE', 5: 'EN2', 6: 'EN1', 7: 'PGOOD', 8: 'VSS', 9: 'CHG', 10: 'OUT', 11: 'OUT', 12: 'ILIM', 13: 'IN', 14: 'TMR', 15: 'ITERM', 16: 'ISET', 17: 'PAD'}
+    w(f'| X2 pin field | 40 pins numbered 1-40; Rev 2 rows split 10 + landing + 10 (top 1-10, USB landing, 11-20; bottom 21-30, LiPo landing, 31-40). Top row 1 GND, 2 CHAN-CLK, 3-9 CHAN0-6, 10-16 CHAN7-13, 17 GND, 18 +3.3V, 19 +1.8V, 20 +1.0V (2026-10-07); bottom row 21 GND, 22 VU, 23 RST#, 24-29 CHAN14-19, 30-38 CHAN20-28, 39-40 ANALOG-IO0/1 | {"all match" if not bad else bad} |')
+    # No-PMOD Rev 2: U8 is the LTC3556 since 2026-11-10 (docs/ltc3556.md 'LTC3556 pins', from datasheet Rev A,
+    # Fab B column: ENALL tied to VU). Pin -> (symbol name, net); GATE (22) has no net. The old bq24232 table is gone.
+    LTC = {1: ('LDO3V3', 'VU'), 2: ('CLPROG', 'PWR_CLPROG'), 3: ('NTC', 'GND'), 4: ('SW1', 'PWR_SW1'), 5: ('VIN1', 'VU'),
+           6: ('FB1', 'PWR_FB1'), 7: ('FB3', 'PWR_FB3'), 8: ('VC3', 'PWR_VC3'), 9: ('SWAB3', 'PWR_SWAB3'), 10: ('DVCC', 'GND'),
+           11: ('VIN3', 'VU'), 12: ('VOUT3', 'VCC3V3'), 13: ('SCL', 'GND'), 14: ('SWCD3', 'PWR_SWCD3'),
+           15: ('PGOODALL', 'PWR_PGOODALL'), 16: ('SDA', 'GND'), 17: ('FB2', 'PWR_FB2'), 18: ('VIN2', 'VU'), 19: ('SW2', 'PWR_SW2'),
+           20: ('PROG', 'PWR_PROG'), 21: ('CHRG', 'PWR_CHRG'), 22: ('GATE', None), 23: ('BAT', 'VBATT'), 24: ('VOUT', 'VU'),
+           25: ('VBUS', 'USB5V0'), 26: ('SW', 'PWR_SW'), 27: ('SEQ', 'GND'), 28: ('ENALL', 'VU'), 29: ('GND', 'GND')}
     u8 = comps['U8']['pins']
-    bad = [(n, u8.get(str(n)), exp) for n, exp in BQ.items() if u8.get(str(n)) != exp]
-    bad += [(pad, padnet.get(pad), exp) for pad, exp in (('U8-13', 'USB5V0'), ('U8-10', 'VU'), ('U8-11', 'VU'), ('U8-2', 'VBATT'), ('U8-3', 'VBATT'), ('U8-4', 'GND'), ('U8-6', 'GND'), ('U8-5', 'VU'), ('U8-8', 'GND'), ('U8-17', 'GND'), ('X4-1', 'VBATT'), ('X4-2', 'GND')) if padnet.get(pad) != exp]
-    w(f'| U8 bq24232 | 17 pin names vs SLUS821J Pin Functions; IN on USB5V0, OUT on VU, BAT on VBATT with X4-1, CE/EN1 low, EN2 high | {"all match" if not bad else bad} |')
+    bad = [(n, u8.get(str(n)), name) for n, (name, _) in LTC.items() if u8.get(str(n)) != name]
+    bad += [n for n in u8 if int(n) not in LTC]
+    bad += [(f'U8-{n}', padnet.get(f'U8-{n}'), net) for n, (_, net) in LTC.items() if padnet.get(f'U8-{n}') != net]
+    bad += [(pad, padnet.get(pad), exp) for pad, exp in (('X4-1', 'VBATT'), ('X4-2', 'GND')) if padnet.get(pad) != exp]
+    w(f'| U8 {comps["U8"]["params"].get("MANF#")} | 29 pin names and nets vs docs/ltc3556.md (LTC3556 datasheet Rev A Pin Functions): VBUS on USB5V0, VOUT/VIN1-3/LDO3V3/ENALL on VU, BAT on VBATT with X4-1, VOUT3 on VCC3V3, DVCC/SCL/SDA/SEQ/NTC/EP on GND, GATE open | {"all match" if not bad else bad} |')
     w('| BTN PTS810SJM250SMTR LFS | pins 1,2 = 3.3 V, pins 3,4 = BTN net | PTS810 sheet schematic joins 1-2 and 3-4: matches |')
     # --- geometry
     w('\n### 2.3 EAGLE package geometry against the datasheet land patterns\n')

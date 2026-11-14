@@ -40,7 +40,11 @@ def apply(base, plan):
         M['pads'] = [dict(p) for p in base['pads']]
         for m in plan['moves']:
             for p in M['pads']:
-                if p['ref'] == m['ref']:
+                if p['ref'] == m['ref'] and 'pad_xy' in m:      # a move with a turn (R108, 2026-11-13): exact pads
+                    p['x'], p['y'] = m['pad_xy'][p['pad']]
+                    if m.get('swap_wh'):
+                        p['w'], p['h'] = p['h'], p['w']
+                elif p['ref'] == m['ref']:
                     p['x'] = round(p['x'] + m.get('dx', 0), 4)
                     p['y'] = round(p['y'] + m.get('dy', 0), 4)
     return M

@@ -131,11 +131,20 @@ def main():
                                  ([] if rm else ['    i : Integer;', '    nm : String;', '    x, y, x2, y2, tw : Double;']))
     if mv:
         mi = [k for k, l in enumerate(L) if l.startswith('    Missing : String;')][0]
-        L[mi] = L[mi] + chr(10) + '    Cm : IPCB_Component;'
+        L[mi] = L[mi] + chr(10) + '    Cm : IPCB_Component;' + chr(10) + '    PIt : IPCB_GroupIterator;' + chr(10) + '    Pd : IPCB_Pad;'
     for m in mv:
         L += ["    Cm := Brd.GetPcbComponentByRefDes('%s');" % m['ref'], '    Cm.BeginModify;',
-              '    Cm.X := Cm.X + MMsToCoord(%.4f);' % m.get('dx', 0), '    Cm.Y := Cm.Y + MMsToCoord(%.4f);' % m.get('dy', 0),
-              '    Cm.EndModify;']
+              '    Cm.X := Cm.X + MMsToCoord(%.4f);' % m.get('dx', 0), '    Cm.Y := Cm.Y + MMsToCoord(%.4f);' % m.get('dy', 0)]
+        if 'rotation' in m:          # a turn about the part origin (R108, 2026-11-13); pad 1 is checked right after
+            L += ['    Cm.Rotation := %.1f;' % m['rotation']]
+        L += ['    Cm.EndModify;']
+        if 'pad1' in m:
+            L += ['    PIt := Cm.GroupIterator_Create;', '    PIt.AddFilter_ObjectSet(MkSet(ePadObject));',
+                  '    Pd := PIt.FirstPCBObject;', '    While Pd <> Nil Do', '    Begin',
+                  "        If Pd.Name = '1' Then",
+                  '            If (Abs(CoordToMMs(Pd.X - Brd.XOrigin) - %.4f) > 0.005) Or (Abs(CoordToMMs(Pd.Y - Brd.YOrigin) - %.4f) > 0.005) Then' % tuple(m['pad1']),
+                  "                Missing := Missing + ' [%s pad 1 is at ' + FormatFloat('0.000', CoordToMMs(Pd.X - Brd.XOrigin)) + ',' + FormatFloat('0.000', CoordToMMs(Pd.Y - Brd.YOrigin)) + ', expected %.3f,%.3f: UNDO]';" % (m['ref'], m['pad1'][0], m['pad1'][1]),
+                  '        Pd := PIt.NextPCBObject;', '    End;', '    Cm.GroupIterator_Destroy(PIt);']
     for net in sorted(by):
         vs, ts = by[net]
         L.append("    N := NetByName('%s');" % net.replace("'", "''"))

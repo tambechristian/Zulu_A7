@@ -1,10 +1,21 @@
 # -*- coding: utf-8 -*-
-"""Measure the fabrication facts of the Fab B board straight from the saved PcbDoc
-and the exported NC drill files, for the PCBWay fab notes.  Read-only.
+"""Measure the fabrication facts of the Zulu_a7_no_pmod Rev 2 board straight from the
+saved PcbDoc and the exported NC drill files, for the PCBWay fab notes.  Read-only.
 
     python tools/fab_facts.py            # prints a report, writes tools/fab_facts.json
     python tools/fab_facts.py --pcb OTHER.PcbDoc --outputs "OTHER/Project Outputs for Zulu_a7_no_pmod"
                                          # cross-check another board; prints only, writes nothing
+
+NO-PMOD REV 2 (2026-11-13): copied from Zulu_A7_Fab_B/Rev_2 (whose report is kept,
+byte for byte, as tools/fab_facts_fabb_rev2.json).  No measurement changed; the
+module had no Fab B board size or count hard-coded.  Added keys only, so the Fab B
+file still diffs against this one:
+  source                     MD5 / SHA-256 / size of the PcbDoc measured, so a
+                             packager can refuse a report taken from another board
+  board_outline              the Board6 outline vertices (mm) and their bounding box,
+                             compared with the exported GM profile's bounding box
+  through_vias_in_smd_pads   every Top-Bottom via whose land overlaps an SMD pad
+                             (the 2026-11-11 Fab B release rule allows none)
 
 Rev 2 (2026-11-11) added, so that every board-derived number in the fab notes comes
 from this report: via_stacks (microvias stacked on buried vias), via_in_pad_columns
@@ -20,6 +31,7 @@ Record offsets (as tools/route_inputs.py in Zulu_Altium_VS_Code):
   Arcs6   body: layer@0 net@3 polygon@5 x@13 y@17 r@21 a0(double)@25 a1@33 width@41
 Units 1/10000 mil (2.54e-6 mm), board origin, y up.
 """
+import hashlib
 import json
 import math
 import os
@@ -337,6 +349,23 @@ def opening_dist(flash, x, y):
     return max(point_rect_dist(x - fx, y - fy, hx, hy) - r, 0.0)
 
 
+def gm_bbox(path):
+    """Bounding box (mm) of every D01/D02 point of the metric 4.4 GM profile."""
+    with open(path, encoding="ascii") as handle:
+        text = handle.read()
+    if "%MOMM*%" not in text or "%FSLAX44Y44*%" not in text:
+        raise ValueError("%s is not metric 4.4 RS-274X" % os.path.basename(path))
+    x = y = 0
+    pts = []
+    for xs, ys in re.findall(r"(?:X(-?\d+))?(?:Y(-?\d+))?D0[12]\*", text):
+        if xs:
+            x = int(xs)
+        if ys:
+            y = int(ys)
+        pts.append((x / 10000.0, y / 10000.0))
+    return [min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts)]
+
+
 def tol_diff(a, b, tol=0.002):
     """Points of list a with no partner in list b within tol (one-to-one)."""
     left = list(b)
@@ -357,6 +386,30 @@ def main():
     B = read_board(pcb)
     pads, vias, tracks, arcs = B["pads"], B["vias"], B["tracks"], B["arcs"]
     rep = {}
+
+    # NO-PMOD REV 2: which board this report measured
+    with open(pcb, "rb") as handle:
+        raw = handle.read()
+    rep["source"] = dict(pcb=os.path.basename(pcb), md5=hashlib.md5(raw).hexdigest(),
+                         sha256=hashlib.sha256(raw).hexdigest().upper(), size=len(raw))
+
+    # NO-PMOD REV 2: board outline from the PcbDoc vertices vs the exported GM profile
+    verts = []
+    k = 0
+    while True:
+        mx = re.search(r"\|VX%d=([-\d.]+)mil" % k, B["board"])
+        my = re.search(r"\|VY%d=([-\d.]+)mil" % k, B["board"])
+        kind = re.search(r"\|KIND%d=(\d+)" % k, B["board"])
+        if not (mx and my):
+            break
+        if kind and kind.group(1) != "0":
+            raise ValueError("board outline vertex %d is an arc; the bounding box would be wrong" % k)
+        verts.append((round(float(mx.group(1)) * 0.0254, 4), round(float(my.group(1)) * 0.0254, 4)))
+        k += 1
+    box = [min(v[0] for v in verts), min(v[1] for v in verts), max(v[0] for v in verts), max(v[1] for v in verts)]
+    rep["board_outline"] = dict(vertices_mm=verts, bbox_mm=box, size_mm=[round(box[2] - box[0], 4), round(box[3] - box[1], 4)],
+                                gm_bbox_mm=gm_bbox(os.path.join(outputs, "%s.GM" % BASE)))
+    rep["board_outline"]["gm_matches_pcb"] = all(abs(a - b) < 0.0002 for a, b in zip(box, rep["board_outline"]["gm_bbox_mm"]))
 
     # layer names in stack order
     names = {}
@@ -547,6 +600,11 @@ def main():
                                     hole_touches_pad=d < v["hole"] / 2 - 1e-4,
                                     overlap=round(r - d, 4)))
     rep["via_in_pad"] = sorted(vip, key=lambda e: (str(e["ref"]), e["pad"], e["span"]))
+    # NO-PMOD REV 2: the 2026-11-11 Fab B release rule is "no through via in an SMD pad"
+    rep["through_vias_in_smd_pads"] = [
+        dict(pad="%s-%s" % (e["ref"], e["pad"]), side=e["layer"], net=e["via_net"], via_x=e["via_x"], via_y=e["via_y"],
+             hole_centre_in_pad=e["hole_centre_in_pad"], hole_inside_pad=e["hole_inside_pad"])
+        for e in rep["via_in_pad"] if e["span"] == "Top-Bottom"]
 
     # pad shape census for SMD pads that carry vias (non rect/round would be measured as rect)
     rep["smd_pad_shapes"] = dict(Counter(p["shape"] for p in pads if p["hole"] == 0))
@@ -619,23 +677,24 @@ def main():
             near = [f for f in fl if abs(f[0] - v["x"]) < 3 and abs(f[1] - v["y"]) < 3]
             if not near:
                 continue
-            f = min(near, key=lambda f: opening_dist(f, v["x"], v["y"]))
-            d = opening_dist(f, v["x"], v["y"])
-            if d < v["hole"] / 2 - 1e-4:
+            # second pass (2026-11-13): EVERY opening that reaches the land, not only the nearest, and the copper gap
+            # to that opening's own pad (an independent review found two vias reached by two openings each)
+            if min(opening_dist(f, v["x"], v["y"]) for f in near) < v["hole"] / 2 - 1e-4:
                 hole_reached += 1
-            if d > v["size"] / 2 + 1e-4:
-                continue
-            owner = [p for p in pads if pad_on_layer(p, side) and abs(p["x"] - f[0]) < 0.005 and abs(p["y"] - f[1]) < 0.005]
-            gap, cp = min(((pad_point_dist(pad_view(p, side), v["x"], v["y"]) - v["size"] / 2, p)
-                           for p in smd if p["layer"] == side and abs(p["x"] - v["x"]) < 3 and abs(p["y"] - v["y"]) < 3),
-                          key=lambda t: t[0])
-            over.append(dict(x=round(v["x"], 4), y=round(v["y"], 4), via_net=v["net"],
-                             opening_pad="%s-%s" % (owner[0]["ref"], owner[0]["pad"]) if owner else None,
-                             opening_pad_net=owner[0]["net"] if owner else None,
-                             contact="tangent" if abs(d - v["size"] / 2) <= 1e-4 else "overlap",
-                             opening_edge_to_centre=round(d, 4), hole_margin=round(d - v["hole"] / 2, 4),
-                             nearest_smd_pad="%s-%s" % (cp["ref"], cp["pad"]), copper_gap=round(max(gap, 0.0), 4),
-                             opening_modelled_exactly=f[3]))
+            for f in sorted(near, key=lambda f: opening_dist(f, v["x"], v["y"])):
+                d = opening_dist(f, v["x"], v["y"])
+                if d > v["size"] / 2 + 1e-4:
+                    continue
+                owner = [p for p in pads if pad_on_layer(p, side) and abs(p["x"] - f[0]) < 0.005 and abs(p["y"] - f[1]) < 0.005]
+                gap = (pad_point_dist(pad_view(owner[0], side), v["x"], v["y"]) - v["size"] / 2) if owner else None
+                over.append(dict(x=round(v["x"], 4), y=round(v["y"], 4), via_net=v["net"],
+                                 opening_pad="%s-%s" % (owner[0]["ref"], owner[0]["pad"]) if owner else None,
+                                 opening_pad_net=owner[0]["net"] if owner else None,
+                                 contact="tangent" if abs(d - v["size"] / 2) <= 1e-4 else "overlap",
+                                 opening_edge_to_centre=round(d, 4), hole_margin=round(d - v["hole"] / 2, 4),
+                                 nearest_smd_pad="%s-%s" % (owner[0]["ref"], owner[0]["pad"]) if owner else None,
+                                 copper_gap=round(max(gap, 0.0), 4) if gap is not None else None,
+                                 opening_modelled_exactly=f[3]))
         tent[side] = dict(openings=len(fl), openings_not_exact=sum(1 for f in fl if not f[3]),
                           openings_centred_on_non_vip_vias=dict(centred),
                           through_via_holes_reached=hole_reached,
@@ -646,6 +705,223 @@ def main():
     tent["all_same_net"] = all(e["opening_pad_net"] == e["via_net"] for s in ("Top", "Bottom")
                                for e in tent[s]["through_via_lands_reached"])
     rep["mask_over_through_vias"] = tent
+
+    # ---- NO-PMOD REV 2, second pass (2026-11-13, after an independent review of the first note) ----------------
+    # Through-via lands that END ON an SMD pad edge: signed land-to-pad gap < 0.005 mm (pads modelled as above:
+    # a rounded rectangle as its rectangle, so a gap can only be under-stated). via_in_pad ignores contacts within
+    # 0.1 um, so a land that is numerically tangent (or overlaps by nanometres) shows up here and not there.
+    abut = []
+    for v in vias:
+        if v["span"] != ("Top", "Bottom"):
+            continue
+        r = v["size"] / 2
+        for p0 in smd:
+            if abs(p0["x"] - v["x"]) > 3 or abs(p0["y"] - v["y"]) > 3:
+                continue
+            p = pad_view(p0, p0["layer"])
+            hx, hy, pr = pad_core(p)
+            px, py = pad_frame(p, v["x"], v["y"])
+            depth = pad_inner_depth(p, v["x"], v["y"])
+            signed = (point_rect_dist(px, py, hx, hy) - pr) if depth <= 0 else -depth
+            gap = signed - r
+            if gap < 0.005:
+                abut.append(dict(x=round(v["x"], 4), y=round(v["y"], 4), via_net=v["net"], pad="%s-%s" % (p["ref"], p["pad"]),
+                                 pad_net=p["net"], side=p["layer"], land_to_pad_gap=round(gap, 5),
+                                 hole_to_pad_gap=round(signed - v["hole"] / 2, 4)))
+    rep["through_via_lands_abutting_smd_pads"] = sorted(abut, key=lambda e: (e["land_to_pad_gap"], e["x"], e["y"]))
+
+    # Microvias NOT in a pad whose land a same-net SMD pad's mask opening reaches (the through-via list above
+    # covers Top-Bottom vias only), and microvias that sit on nothing (no adjacent drill at their XY).
+    mtent = {}
+    for side, ext, span, below in (("Top", "GTS", ("Top", "L2-GND"), s23), ("Bottom", "GBS", ("L5-VCC3V3", "Bottom"), s45)):
+        fl = gerber_flashes(os.path.join(outputs, "%s.%s" % (BASE, ext)))
+        rows = []
+        for v in vias:
+            if v["span"] != span or id(v) in vip_vias:
+                continue
+            near = [f for f in fl if abs(f[0] - v["x"]) < 3 and abs(f[1] - v["y"]) < 3]
+            if not near:
+                continue
+            for f in sorted(near, key=lambda f: opening_dist(f, v["x"], v["y"])):
+                d = opening_dist(f, v["x"], v["y"])
+                if d > v["size"] / 2 + 1e-4:
+                    continue
+                owner = [p for p in pads if pad_on_layer(p, side) and abs(p["x"] - f[0]) < 0.005 and abs(p["y"] - f[1]) < 0.005]
+                rows.append(dict(x=round(v["x"], 4), y=round(v["y"], 4), via_net=v["net"], span="%s-%s" % span,
+                                 opening_pad="%s-%s" % (owner[0]["ref"], owner[0]["pad"]) if owner else None,
+                                 opening_pad_net=owner[0]["net"] if owner else None,
+                                 hole_margin=round(d - v["hole"] / 2, 4), hole_reached=d < v["hole"] / 2 - 1e-4,
+                                 copper_gap=round(max(pad_point_dist(pad_view(owner[0], side), v["x"], v["y"]) - v["size"] / 2, 0.0), 4)
+                                 if owner else None,
+                                 stacked=key(v) in below))
+        mtent[side] = sorted(rows, key=lambda e: (e["hole_margin"], e["x"], e["y"]))
+    mtent["all_same_net"] = all(e["opening_pad_net"] == e["via_net"] for s in ("Top", "Bottom") for e in mtent[s])
+    rep["mask_over_microvias"] = mtent
+    unstacked_t2 = [v for v in vias if v["span"] == ("Top", "L2-GND") and key(v) not in s23]
+    unstacked_5b = [v for v in vias if v["span"] == ("L5-VCC3V3", "Bottom") and key(v) not in s45]
+    unstacked_23 = [v for v in vias if v["span"] == ("L2-GND", "L3-SIG") and key(v) not in s12 and key(v) not in s34]
+    unstacked_45 = [v for v in vias if v["span"] == ("L4-SIG", "L5-VCC3V3") and key(v) not in s34 and key(v) not in s56]
+    rep["unstacked_outer_microvias"] = dict(
+        top_l2=len(unstacked_t2), l5_bottom=len(unstacked_5b), l2_l3=len(unstacked_23), l4_l5=len(unstacked_45),
+        inner_xy=[[v["net"], "%s-%s" % v["span"], round(v["x"], 4), round(v["y"], 4)] for v in unstacked_23 + unstacked_45],
+        not_in_pads=sum(1 for v in unstacked_t2 + unstacked_5b + unstacked_23 + unstacked_45 if id(v) not in vip_vias))
+
+    # Different-net vias that share no copper layer but whose holes overlap in plan view (separate laminations).
+    proj = []
+    hv = sorted(vias, key=lambda v: v["x"])
+    for i, a in enumerate(hv):
+        for b in hv[i + 1:]:
+            if b["x"] - a["x"] > 0.5:
+                break
+            if a["net"] == b["net"] or abs(b["y"] - a["y"]) > 0.5:
+                continue
+            ia = (STACK.index(a["span"][0]), STACK.index(a["span"][1]))
+            ib = (STACK.index(b["span"][0]), STACK.index(b["span"][1]))
+            if ia[0] <= ib[1] and ib[0] <= ia[1]:
+                continue          # they share a layer: an ordinary clearance case, DRC's job
+            d = math.hypot(a["x"] - b["x"], a["y"] - b["y"])
+            ov = (a["hole"] + b["hole"]) / 2 - d
+            if ov > 0:
+                proj.append(dict(a_net=a["net"], a_span="%s-%s" % a["span"], a_xy=[round(a["x"], 4), round(a["y"], 4)],
+                                 b_net=b["net"], b_span="%s-%s" % b["span"], b_xy=[round(b["x"], 4), round(b["y"], 4)],
+                                 centre_distance=round(d, 4), hole_overlap=round(ov, 4)))
+    # one row per pair of nets at one place (a stack contributes several vias)
+    seen, rows = set(), []
+    for e in sorted(proj, key=lambda e: -e["hole_overlap"]):
+        k = (tuple(sorted((e["a_net"], e["b_net"]))), round((e["a_xy"][0] + e["b_xy"][0]) / 2, 1), round((e["a_xy"][1] + e["b_xy"][1]) / 2, 1))
+        if k not in seen:
+            seen.add(k)
+            rows.append(e)
+    rep["different_net_projected_hole_overlaps"] = rows
+
+    # Solder-mask cover between a track and a DIFFERENT net's mask opening (Top/GTS, Bottom/GBS): the distance from
+    # the track's copper edge to the opening's edge. Registration eats into it; the note asks PCBWay about the minimum.
+    cover = []
+    for side, ext in (("Top", "GTS"), ("Bottom", "GBS")):
+        fl = gerber_flashes(os.path.join(outputs, "%s.%s" % (BASE, ext)))
+        own = {}
+        for f in fl:
+            o = [p for p in pads if pad_on_layer(p, side) and abs(p["x"] - f[0]) < 0.005 and abs(p["y"] - f[1]) < 0.005]
+            own[(f[0], f[1])] = o[0] if o else None
+        for t in routed:
+            if t["layer"] != side:
+                continue
+            L = math.hypot(t["x2"] - t["x1"], t["y2"] - t["y1"])
+            n = max(2, int(L / 0.005) + 1)
+            for f in fl:
+                p = own[(f[0], f[1])]
+                if p is None or p["net"] == t["net"]:
+                    continue
+                hx, hy, r = f[2]
+                reach = math.hypot(hx, hy) + r + t["width"] / 2 + 0.06      # the opening's corner, not its half-size
+                if seg_point_dist(t["x1"], t["y1"], t["x2"], t["y2"], f[0], f[1]) > reach:
+                    continue
+                d = min(opening_dist(f, t["x1"] + (t["x2"] - t["x1"]) * k / (n - 1), t["y1"] + (t["y2"] - t["y1"]) * k / (n - 1))
+                        for k in range(n)) - t["width"] / 2
+                if d < 0.05:
+                    cover.append(dict(side=side, track_net=t["net"], opening_pad="%s-%s" % (p["ref"], p["pad"]),
+                                      opening_net=p["net"], cover=round(d, 4)))
+    best = {}
+    for c in cover:
+        k = (c["side"], c["track_net"], c["opening_pad"])
+        if k not in best or c["cover"] < best[k]["cover"]:
+            best[k] = c
+    cover = sorted(best.values(), key=lambda c: c["cover"])
+    rep["mask_cover_different_net"] = dict(min=cover[0]["cover"] if cover else None,
+                                           under_0p044=sum(1 for c in cover if c["cover"] < 0.044),
+                                           under_0p05=len(cover), worst=cover[:12],
+                                           u2_48=[c for c in cover if c["opening_pad"] == "U2-48"])
+
+    # USB: true parallel overlap per gap (the projection of one segment on the other), next to the older
+    # min-length sum in usb_coupled_length_by_gap, which over-states partly offset segments.
+    ov = defaultdict(float)
+    for a in usb:
+        if a["net"] != "USB_D_P":
+            continue
+        for b in usb:
+            if b["net"] != "USB_D_N" or b["layer"] != a["layer"]:
+                continue
+            va = (a["x2"] - a["x1"], a["y2"] - a["y1"])
+            la = math.hypot(*va)
+            lb = math.hypot(b["x2"] - b["x1"], b["y2"] - b["y1"])
+            if la < 1e-6 or lb < 1e-6:
+                continue
+            ux, uy = va[0] / la, va[1] / la
+            if abs(ux * (b["y2"] - b["y1"]) - uy * (b["x2"] - b["x1"])) / lb > 0.01:
+                continue
+            t1 = (b["x1"] - a["x1"]) * ux + (b["y1"] - a["y1"]) * uy
+            t2 = (b["x2"] - a["x1"]) * ux + (b["y2"] - a["y1"]) * uy
+            lo, hi = max(0.0, min(t1, t2)), min(la, max(t1, t2))
+            if hi <= lo:
+                continue
+            gap = abs(-(b["x1"] - a["x1"]) * uy + (b["y1"] - a["y1"]) * ux) - a["width"] / 2 - b["width"] / 2
+            if gap < 1.0:
+                ov["%s %.4f" % (a["layer"], round(gap, 4))] += hi - lo
+    rep["usb_coupled_overlap_by_gap"] = {k: round(v, 3) for k, v in sorted(ov.items())}
+
+    # Copper to the board edges, per exported copper Gerber (what the fab receives): the extent of every draw
+    # and flash (aperture radius / half-size added) and every region vertex.
+    def copper_extent(path):
+        text = open(path, encoding="ascii").read()
+        if "%MOMM*%" not in text or "%FSLAX44Y44*%" not in text:
+            raise ValueError("%s is not metric 4.4 RS-274X" % os.path.basename(path))
+        macro = {}
+        for m in re.finditer(r"G04:AMPARAMS\|DCode=(\d+)\|XSize=([\d.]+)mm\|YSize=([\d.]+)mm\|", text):
+            macro[int(m.group(1))] = (float(m.group(2)) / 2, float(m.group(3)) / 2)
+        half = {}
+        for m in re.finditer(r"%ADD(\d+)([A-Z][A-Z0-9_]*?)(?:,([\d.X]+))?\*%", text):
+            code, kind = int(m.group(1)), m.group(2)
+            par = [float(v) for v in (m.group(3) or "").split("X") if v]
+            if kind == "C":
+                half[code] = (par[0] / 2, par[0] / 2)
+            elif kind in ("R", "O"):
+                half[code] = (par[0] / 2, par[1] / 2)
+            elif code in macro:
+                h = max(macro[code])
+                half[code] = (h, h)       # any rotation: the larger half-size both ways (conservative)
+            else:
+                raise ValueError("%s: aperture D%d (%s) is not modelled" % (os.path.basename(path), code, kind))
+        x = y = 0.0
+        cur, region = None, False
+        ext = [9e9, 9e9, -9e9, -9e9]
+        prev = None
+        for line in text.splitlines():
+            line = line.strip()
+            if line.startswith("G36"):
+                region = True
+                continue
+            if line.startswith("G37"):
+                region = False
+                continue
+            sel = re.fullmatch(r"(?:G54)?D(\d+)\*", line)
+            if sel and int(sel.group(1)) >= 10:
+                cur = int(sel.group(1))
+                continue
+            op = re.fullmatch(r"(?:G0?[123])?(?:X(-?\d+))?(?:Y(-?\d+))?(?:I-?\d+)?(?:J-?\d+)?D0?([123])\*", line)
+            if not op:
+                continue
+            prev = (x, y)
+            if op.group(1):
+                x = int(op.group(1)) / 10000.0
+            if op.group(2):
+                y = int(op.group(2)) / 10000.0
+            d = op.group(3)
+            if region:
+                pts = [(x, y, 0.0, 0.0)]
+            elif d == "2":
+                continue
+            else:
+                hx, hy = half[cur]
+                pts = [(x, y, hx, hy)] + ([(prev[0], prev[1], hx, hy)] if d == "1" else [])
+            for px, py, hx, hy in pts:
+                ext = [min(ext[0], px - hx), min(ext[1], py - hy), max(ext[2], px + hx), max(ext[3], py + hy)]
+        return ext
+    bx0, by0, bx1, by1 = box
+    cte = {}
+    for ext_name, layer in (("GTL", "Top"), ("G1", "L2-GND"), ("G2", "L3-SIG"), ("G3", "L4-SIG"), ("G4", "L5-VCC3V3"), ("GBL", "Bottom")):
+        e = copper_extent(os.path.join(outputs, "%s.%s" % (BASE, ext_name)))
+        cte[layer] = dict(west=round(e[0] - bx0, 4), south=round(e[1] - by0, 4), east=round(bx1 - e[2], 4), north=round(by1 - e[3], 4))
+    rep["copper_to_edge"] = cte
 
     write = pcb == PCB and outputs == OUTPUTS
     out = os.path.join(HERE, "fab_facts.json") if write else os.devnull

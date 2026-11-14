@@ -26,6 +26,10 @@ OUTER = ('Top Layer', 'Bottom Layer')
 CLEAR = 0.09
 LAYKEY = {'Top Layer': 'TOPLAYER', 'L3-SIG': 'MIDLAYER1', 'L4-SIG': 'MIDLAYER2', 'Bottom Layer': 'BOTTOMLAYER'}
 
+# VIP_PAD_GAP (mm, default 0.0 as Fab B used): minimum land-to-SMD-pad gap for a new site. 0.0 lets a land end
+# exactly on a pad edge (tangent); the no-PMOD Rev 2 re-plan (2026-11-13, tools/route/vip2/) uses 0.025.
+import os
+PAD_GAP = float(os.environ.get('VIP_PAD_GAP', '0.0'))
 M = json.load(open(sys.argv[1]))
 o = olefile.OleFileIO(sys.argv[2])
 
@@ -148,8 +152,8 @@ def fits(net, P, size, hole, skip_via):
     for p in pads:
         on = p['layers'] if not p['drill'] else STACK
         g = rect_circle_gap(p, x, y, r)
-        if not p['drill'] and p['layers'][0] in OUTER and g < 0.0:
-            return False                      # no via land in any SMD pad, whatever the net
+        if not p['drill'] and p['layers'][0] in OUTER and g < PAD_GAP:
+            return False                      # no via land in (or, with PAD_GAP > 0, touching) any SMD pad
         if p['net'] != net and g < max(clr(p['net'], L) for L in on):
             return False
         if p['drill'] and math.hypot(p['x'] - x, p['y'] - y) - p['drill'] / 2 - hole / 2 < 0.24:
