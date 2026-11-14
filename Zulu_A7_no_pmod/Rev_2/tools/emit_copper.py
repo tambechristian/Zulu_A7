@@ -17,7 +17,8 @@ from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LAYER = {'Top Layer': 'eTopLayer', 'L2-GND': 'eMidLayer3', 'L3-SIG': 'eMidLayer1', 'L4-SIG': 'eMidLayer2',
-         'L5-VCC3V3': 'eMidLayer4', 'Bottom Layer': 'eBottomLayer'}
+         'L5-VCC3V3': 'eMidLayer4', 'Bottom Layer': 'eBottomLayer',
+         'Top': 'eTopLayer', 'Bottom': 'eBottomLayer'}   # extract-style via spans (si/series_r plans) use the short names
 
 
 def main():
