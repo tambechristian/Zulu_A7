@@ -41,8 +41,12 @@ TEXT_DX = -95                            # ball/bank text right end, from the pi
 HEAD_FONT, SUB_FONT = 2, 4               # Courier New 11 / 8
 GREY = 8421504
 
-GATE_FIX = {'K17': 'UART_RXD', 'K18': 'CHAN11', 'H19': 'CHAN13', 'G17': 'CHAN7', 'E19': 'CHAN12', 'T17': 'CHAN28',
-            'N19': 'BTN', 'N17': 'LED0_B', 'P17': 'LED0_R', 'P19': 'FT_PWREN#'}
+XDC = os.path.join(os.path.dirname(HERE), 'si', 'vivado', 'zulu_a7_no_pmod.xdc')
+# Pin names (the visible GATE text), one rule (review 2026-11-14): a user-I/O ball shows its XDC port, the name the FPGA
+# design uses (the XDC names every port after its net); dedicated pins keep their function name; the XADC auxiliary
+# inputs show AMD's channel names; balls with no net show IO_<ball>.
+GATE_DEDICATED = {'C11': 'CCLK', 'G3': 'AD4P', 'G2': 'AD4N', 'H2': 'AD12P', 'J2': 'AD12N'}
+BALL_TEXT_FIX = {'C13': 'VCCADC_0'}      # AMD's name; the old text dropped the _0
 
 
 def num(b, k):
@@ -92,7 +96,7 @@ def category(ball, net, gate):
     if n in ('VCCADC', 'GNDADC') and ball in ('C13', 'C12'):
         return 'ANALOG (XADC)', 'XADC supply (ferrite + decoupling)', 10 + ['C13', 'C12'].index(ball)
     if n == 'GNDADC':
-        return 'ANALOG (XADC)', 'XADC dedicated pins, unused: tied to GNDADC', 20 + ['A12', 'B13', 'B12', 'A13'].index(ball)
+        return 'ANALOG (XADC)', 'XADC VP/VN unused, VREFP/VREFN = on-chip reference: all tied to GNDADC', 20 + ['A12', 'B13', 'B12', 'A13'].index(ball)
     if n == 'CHAN-CLK' or n.startswith('CHAN'):
         return 'PROTOTYPING HEADER', None, -1 if n == 'CHAN-CLK' else int(n[4:])
     if n in ('A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'BS0', 'BS1', 'CAS#', 'RAS#',
@@ -115,9 +119,104 @@ def category(ball, net, gate):
 COLUMNS = {'A': ['CONFIG', 'CLOCK', 'JTAG', 'FLASH / microSD', 'FT2232H', 'LED / BUTTON', 'ANALOG (XADC)'],
            'B': ['PROTOTYPING HEADER', 'SDRAM', 'UNCONNECTED BALLS']}
 SUB_ORDER = {'FLASH / microSD': ['SPI flash U4 (master SPI x4 configuration)', 'microSD X3 (native 4-bit SD bus)'],
-             'ANALOG (XADC)': ['XADC inputs', 'XADC supply (ferrite + decoupling)', 'XADC dedicated pins, unused: tied to GNDADC'],
+             'ANALOG (XADC)': ['XADC inputs', 'XADC supply (ferrite + decoupling)',
+                               'XADC VP/VN unused, VREFP/VREFN = on-chip reference: all tied to GNDADC'],
              'UNCONNECTED BALLS': ['Spare user I/O: no net', 'GTP TX / REFCLK: left floating (UG482 table 5-4)',
                                    'GTP RX: tied to GND (UG482 table 5-4)', 'Thermal diode DXP/DXN, unused: tied to GND']}
+
+
+def pretouch(R):
+    """Second review (2026-11-14), drawing quirks the old sheet already had, fixed in the original coordinates:
+    - E18 PUDC_B: the R23 branch ran back along the pin through its name -> R23 sits under the label side and drops
+      from a junction on the label wire;
+    - C13 VCCADC: the C123/C124 branch ran along the pin through its name -> the caps drop 16 lower and take a tap
+      from a junction on the label wire;
+    - A12/B13/B12/A13 (GNDADC) and A11/B11 (GND): the tie wire lay over the pin and the label sat on the pin-name side
+      -> a stub and label left of the pin end, like every other row;
+    - GTP RX B4/B6/A6: GND ports (one drawing its bars through A4's label) -> GND net labels, as A4 already had.
+    Returns (records to delete, new record bodies); nets are unchanged (checked by the caller)."""
+    def num(b, k):
+        v = field(b, k)
+        try:
+            return int(v)
+        except (TypeError, ValueError):
+            return None
+
+    def find_wire(a, c):
+        hits = [i for i, (h, b) in enumerate(R) if field(b, 'RECORD') == '27' and num(b, 'LocationCount') == 2 and
+                {(num(b, 'X1'), num(b, 'Y1')), (num(b, 'X2'), num(b, 'Y2'))} == {a, c}]
+        assert len(hits) == 1, (a, c, hits)
+        return hits[0]
+
+    def find_obj(rec, xy, text=None):
+        hits = [i for i, (h, b) in enumerate(R) if field(b, 'RECORD') == rec and owner(b) is None and
+                (num(b, 'Location.X'), num(b, 'Location.Y')) == xy and (text is None or field(b, 'Text') == text)]
+        assert len(hits) == 1, (rec, xy, text, hits)
+        return hits[0]
+
+    def shift(i, dx, dy):
+        b = R[i][1]
+        for kx, ky in (('Location.X', 'Location.Y'), ('Corner.X', 'Corner.Y')):
+            if fval(b, kx) is not None and fval(b, ky) is not None:
+                b = set_f(set_f(b, kx, fval(b, kx) + dx), ky, fval(b, ky) + dy)
+        n = num(b, 'LocationCount')
+        if n:
+            for j in range(1, n + 1):
+                b = set_f(set_f(b, 'X%d' % j, fval(b, 'X%d' % j) + dx), 'Y%d' % j, fval(b, 'Y%d' % j) + dy)
+        R[i][1] = b
+    des = {owner(b): field(b, 'Text') for h, b in R if field(b, 'RECORD') == '34'}
+    kids = defaultdict(list)
+    for i, (h, b) in enumerate(R):
+        if owner(b) is not None:
+            kids[owner(b)].append(i)
+
+    def part(ref):
+        root = [i for i, (h, b) in enumerate(R) if field(b, 'RECORD') == '1' and des.get(i) == ref]
+        assert len(root) == 1, ref
+        out, todo = [], list(root)
+        while todo:
+            k = todo.pop()
+            out.append(k)
+            todo += kids.get(k, [])
+        return out
+    drop, new = set(), []
+
+    def wire(a, c):
+        new.append('|RECORD=27|OwnerPartId=-1|LineWidth=1|Color=32768|UniqueID=%s|LocationCount=2|X1=%d|Y1=%d|X2=%d|Y2=%d'
+                   % (uid(), a[0], a[1], c[0], c[1]))
+
+    def junction(xy):
+        new.append('|RECORD=29|OwnerPartId=-1|Location.X=%d|Location.Y=%d|Color=128|Locked=T|UniqueID=%s' % (xy[0], xy[1], uid()))
+
+    def label(xy, text):
+        new.append('|RECORD=25|OwnerPartId=-1|Location.X=%d|Location.Y=%d|Justification=2|Color=128|FontID=4|Text=%s|'
+                   'UniqueID=%s' % (xy[0], xy[1], text, uid()))
+    # E18 / R23
+    drop |= {find_wire((285, 1222), (315, 1222)), find_wire((315, 1212), (315, 1222)), find_obj('29', (285, 1222))}
+    for i in part('R23') + [find_wire((315, 1182), (315, 1192)), find_obj('25', (315, 1185), 'VCC3V3')]:
+        shift(i, -35, 0)
+    wire((280, 1222), (280, 1212))
+    junction((280, 1222))
+    # C13 / C123, C124
+    drop |= {find_wire((485, 267), (510, 267)), find_wire((510, 267), (535, 267)), find_obj('29', (485, 267)),
+             find_obj('29', (510, 267))}
+    for i in part('C123') + part('C124') + [find_wire((510, 227), (510, 237)), find_wire((535, 222), (535, 237)),
+                                            find_obj('25', (510, 227), 'GNDADC'), find_obj('17', (535, 222), 'GNDADC')]:
+        shift(i, 0, -16)
+    wire((480, 267), (480, 251))
+    wire((480, 251), (535, 251))
+    junction((480, 267))
+    junction((510, 251))
+    # XADC / thermal tie rows: stub + label left of the pin end
+    for y, net in ((597, 'GNDADC'), (587, 'GNDADC'), (577, 'GNDADC'), (567, 'GNDADC'), (547, 'GND'), (537, 'GND')):
+        drop |= {find_wire((935, y), (960, y)), find_obj('25', (960, y), net)}
+        wire((925, y), (935, y))
+        label((925, y), net)
+    # GTP RX: GND labels instead of ports
+    for y in (442, 422, 412):
+        drop.add(find_obj('17', (225, y), 'GND'))
+        label((225, y), 'GND')
+    return drop, new
 
 
 def main(src, dst):
@@ -127,6 +226,17 @@ def main(src, dst):
     R = split(raw)
     assert join(R) == raw and int(field(R[0][1], 'Weight')) == len(R) - 1
     before = net_map(R)
+    pre_drop, pre_new = pretouch(R)
+    for body in pre_new:
+        R.append([bytes(4), body.encode('latin-1') + b'\x00'])
+    R = delete(R, pre_drop)
+    R[0][1] = set_field(R[0][1], 'Weight', str(len(R) - 1))
+    report(before, net_map(R))                    # the pre-touch changes no net
+    xdc = {}
+    for line in open(XDC):
+        m = re.search(r'PACKAGE_PIN\s+(\w+).*get_ports \{?([^}\]]+)\}?\]', line)
+        if m:
+            xdc[m.group(1)] = m.group(2).strip()
     pkg = {}
     for line in open(PKG):
         m = re.match(r'^([A-W]\d+)\s+\|\s+\d+\s+(\S+)\s+\1\s*$', line)
@@ -165,16 +275,18 @@ def main(src, dst):
         pts, ws, grew = {p0}, set(), True
         while grew:
             grew = False
+            segs = [sg for k in ws for sg in zip(wires[k], wires[k][1:])]
             for i, w in wires.items():
                 if i in ws:
                     continue
-                if any(q in pts for q in w) or any(onseg(q, a, c) for q in list(pts) for a, c in zip(w, w[1:])):
+                if any(q in pts for q in w) or any(onseg(q, a, c) for q in list(pts) for a, c in zip(w, w[1:])) or                         any(onseg(q, a, c) for q in w for a, c in segs):      # a T: this wire ends mid-segment
                     ws.add(i)
                     pts |= set(w)
                     grew = True
         segs = [s for i in ws for s in zip(wires[i], wires[i][1:])]
         objs = {i for i, (r, p, t) in free.items() if p in pts or any(onseg(p, a, c) for a, c in segs)}
         comps = {c for q in pts for c in pinpts.get((round(q[0], 3), round(q[1], 3)), ())}
+        comps |= {c for q, cs in pinpts.items() if any(onseg(q, a, d) for a, d in segs) for c in cs}   # pin on a wire's middle
         return ws, objs, comps
 
     # ---- clusters: U1 rows plus the parts wired to them ------------------------------------------------------
@@ -262,7 +374,18 @@ def main(src, dst):
         for w in cl['wires']:
             ys += [p[1] for p in wires[w]]
         for o in cl['objs']:
-            ys.append(free[o][1][1])
+            r, (x, y), t = free[o]
+            ys.append(y)
+            if len(cl['comps']) == 1 and r != '17':   # a plain row's pitch covers its label, not a port symbol
+                continue
+            if r == '17':                         # power port: stem + bars (19) + text, in its direction
+                ori = num(R[o][1], 'Orientation') or 0
+                ys.append(y - 32 if ori == 3 else y + 32 if ori == 1 else y)
+                if ori in (0, 2):
+                    ys += [y - 6, y + 6]
+            elif r == '25':                       # net label text: above its anchor, or along it when vertical
+                ori = num(R[o][1], 'Orientation') or 0
+                ys += [y - 14, y + 8] if ori in (1, 3) else [y + 8]   # R23's VCC3V3 drop reached RST# (2026-11-14)
         return min(ys), max(ys)
 
     notes = []
@@ -271,14 +394,14 @@ def main(src, dst):
         for cat in cats:
             its = sorted(items[cat], key=lambda cl: (SUB_ORDER.get(cat, [None]).index(cl['sub']) if cl['sub'] else 0,
                                                      (0, cl['key'], '') if isinstance(cl['key'], int) else (1, 0, cl['key'])))
-            headings.append((x0 + TEXT_DX - 150, y, cat))
-            rules.append(((x0 + TEXT_DX - 150, y - 4), (x0 + 110, y - 4)))
-            y -= 18
+            rules.append(((x0 + TEXT_DX - 150, y), (x0 + (85 if col == 'A' else 110), y)))
+            headings.append((x0 + TEXT_DX - 150, y - 12, cat))
+            y -= 24
             last_sub = None
             for cl in its:
                 if cl['sub'] != last_sub:
                     if last_sub is not None:
-                        y -= 4
+                        y -= 8
                     subheads.append((x0 + TEXT_DX - 150, y, cl['sub']))
                     y -= 12
                     last_sub = cl['sub']
@@ -292,12 +415,14 @@ def main(src, dst):
                     y -= 6
                 if cat == 'FLASH / microSD' and cl['key'] in (5, 15):
                     notes.append((cl['key'], x0, y))
-                    y -= 46
+                    y -= 42
             if cat == 'CONFIG':
                 cfg_top = TOP - 18
-            y -= 14
+            y -= 8
         print('column %s ends at y %.0f' % (col, y))
-        assert y > (175 if col == 'A' else 175), 'column %s overflows' % col
+        # column A's lowest blocks (ANALOG) have short pin names and may pass the title block's top (y 170) as long as
+        # nothing reaches x 378; column B lies over the title block, so it stops above it
+        assert y > (100 if col == 'A' else 175), 'column %s overflows' % col
 
     # straps beside CONFIG: one rigid group, top at the CONFIG heading
     ys = [p[1] for cl in straps for c in cl['comps'] for p in comp_pins[c]] + \
@@ -320,6 +445,7 @@ def main(src, dst):
                 b = set_f(set_f(b, 'X%d' % j, fval(b, 'X%d' % j) + dx), 'Y%d' % j, fval(b, 'Y%d' % j) + dy)
         R[i][1] = b
     done = set()
+    renamed = []
     for cl in clusters:
         dx, dy = moves[id(cl)]
         recs = set(cl['wires']) | set(cl['objs'])
@@ -337,6 +463,9 @@ def main(src, dst):
                 assert len(ts) == 1, (ball, ts)
                 t = ts[0]
                 txt = field(R[t][1], 'Text').split()[1]
+                if ball in BALL_TEXT_FIX:
+                    txt = BALL_TEXT_FIX[ball]
+                    R[t][1] = set_field(R[t][1], 'Text', '%s  %s' % (ball, txt))
                 assert pkg.get(ball) in (txt, txt[:-2] if txt.endswith('_0') else None) or ball in ('C12', 'C13'), (ball, txt, pkg.get(ball))
                 b = set_f(set_f(R[t][1], 'Location.X', hx + TEXT_DX), 'Location.Y', hy + 1)
                 b = set_field(b, 'Justification', '8')
@@ -347,10 +476,25 @@ def main(src, dst):
                 R.append([bytes(4), ('|RECORD=4|OwnerPartId=-1|Location.X=%d|Location.Y=%d|Justification=8|Color=%d|FontID=7|'
                                      'Text=%s  %s|UniqueID=%s' % (hx + TEXT_DX, hy + 1, GREY, ball, pkg[ball], uid())).encode() + b'\x00'])
             g = rows[c]['gate']
-            want = GATE_FIX.get(ball) or (('IO_' + ball) if cl['names'][c] is None and cl['cat'] == 'UNCONNECTED BALLS'
-                                          and cl['sub'].startswith('Spare') else None)
+            if ball in xdc:
+                want = xdc[ball]
+                assert want.replace('_N', '#').replace('_', '-') == (cl['names'][c] or '').replace('_', '-') or \
+                    want.replace('_N', '') == (cl['names'][c] or '').replace('#', '').replace('-', '_'), (ball, want, cl['names'][c])
+            elif ball in GATE_DEDICATED:
+                want = GATE_DEDICATED[ball]
+            elif cl['names'][c] is None and cl['cat'] == 'UNCONNECTED BALLS' and cl['sub'].startswith('Spare'):
+                want = 'IO_' + ball
+            else:
+                want = None
+            if want:
+                renamed.append((ball, field(R[g][1], 'Text'), want)) if field(R[g][1], 'Text') != want else None
             if want and field(R[g][1], 'Text') != want:
                 R[g][1] = set_field(R[g][1], 'Text', want)
+            if want:                              # the hidden GateName_<part id> carries the same name
+                pid = cur[c]
+                for k in kids[c]:
+                    if field(R[k][1], 'RECORD') == '41' and field(R[k][1], 'Name') == 'GateName_%d' % pid:
+                        R[k][1] = set_field(R[k][1], 'Text', want)
 
     # ---- old headings, sub-headings and notes go; new ones come -----------------------------------------------
     drop = set()
@@ -375,8 +519,9 @@ def main(src, dst):
                    % (x, y, GREY, SUB_FONT, t, uid()))
     ball_of = {rows[c]['ball']: cl['names'][c] for cl in clusters for c in cl.get('rows', [])}
     sd = ', '.join('%s %s' % (n[3:], b) for b, n in sorted(ball_of.items(), key=lambda kv: kv[1] or '') if n and n.startswith('SD-'))
-    note_text = {5: 'The six balls above (CCLK, FCS_B, D00-D03) are the only ones master-SPI configuration can use '
-                    '(UG470); they are ordinary user I/O once DONE goes high.',
+    note_text = {5: 'The six balls above are the only ones master-SPI configuration can use (UG470). FCS_B and '
+                    'D00-D03 become ordinary user I/O once DONE goes high; CCLK is a dedicated pin (user access only '
+                    'through STARTUPE2).',
                  15: 'microSD runs the native 4-bit SD bus on its own pins (%s), so a card cannot fight the '
                      'configuration bus.' % sd}
     for key, x0, y in notes:
@@ -393,8 +538,10 @@ def main(src, dst):
         shutil.copyfile(src, dst)
     write_stream(dst, blob)
     assert read_stream(dst) == blob
-    print('%s: %d -> %d records; %d clusters moved, %d gate names fixed' % (
-        os.path.basename(dst), len(split(raw)), len(R), len(clusters), len(GATE_FIX)))
+    print('%s: %d -> %d records; %d clusters moved, %d pin names changed' % (
+        os.path.basename(dst), len(split(raw)), len(R), len(clusters), len(renamed)))
+    for b, old, new in sorted(renamed):
+        print('   %-4s %-16s -> %s' % (b, old, new))
     report(before, net_map(split(read_stream(dst))))
 
 
