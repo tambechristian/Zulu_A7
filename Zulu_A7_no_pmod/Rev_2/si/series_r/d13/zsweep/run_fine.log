@@ -1,0 +1,7 @@
+D13  read  max fabZ45.25 base   r0    parts pin -0.550/3.838 die -0.468/3.906 ball budget 61.7% die 28.9% t_end 32.00 conn True
+D13  read  max fabZ45.5 base   r0    parts pin -0.552/3.834 die -0.469/3.907 ball budget 131.0% die 28.8% t_end 32.00 conn True
+D13  read  max fabZ45.75 base   r0    parts pin -0.554/3.829 die -0.469/3.909 ball budget 117.2% die 28.8% t_end 32.00 conn True
+D13  read  max fabZ47.8 base   r0    parts pin -0.563/3.804 die -0.476/3.918 ball budget 123.2% die 28.9% t_end 32.00 conn True
+D13  read  max fabZ39.1 base   r0    parts pin -0.548/3.835 die -0.449/3.868 ball budget 153.0% die 12.0% t_end 32.00 conn True
+D13  read  max fabZ41 base   r0    parts pin -0.581/3.866 die -0.458/3.884 ball budget 249.8% die 29.1% t_end 32.00 conn True
+done: 6 cases, 0 errors

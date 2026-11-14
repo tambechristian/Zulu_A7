@@ -1,0 +1,43 @@
+==== d10/relocate/design.py  (PcbDoc md5 2a616c1c74f8788a4a1c837c7d76c3b0) ====
+12-resistor plan: R127 D8 at (39.200,13.600), R130 D11 at (39.200,14.900)
+
+-- A. design_top.py's 20 D10 sites vs the 12-resistor plan (R127 + R130 in place) --
+  (38.800,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.0000  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-2
+  (38.900,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.0000  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-1
+  (38.950,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.0000  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-1
+  (39.100,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.0000  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-1
+  (39.050,14.450) worst -0.0500 cu +0.0043 mask -0.0500 land 0.0000  body gap R127 0.454 R130 0.054   pad R130-1 vs pad R129-1
+  (39.050,14.550) worst -0.1000 cu -0.0400 mask -0.1000 land 0.0000  body gap R127 0.554 R130 0.000   pad R130-1 vs pad R129-1
+  (39.100,14.450) worst -0.0500 cu +0.0265 mask -0.0500 land 0.0000  body gap R127 0.454 R130 0.054   pad R130-1 vs pad R129-1
+  (39.100,14.550) worst -0.1000 cu -0.0400 mask -0.1000 land 0.0000  body gap R127 0.554 R130 0.000   pad R130-1 vs pad R129-1
+  (39.200,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.0250  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-1
+  (39.200,14.450) worst -0.0500 cu +0.0600 mask -0.0500 land 0.0250  body gap R127 0.454 R130 0.054   pad R130-1 vs pad R129-1
+  (39.200,14.550) worst -0.1000 cu -0.0400 mask -0.1000 land 0.0250  body gap R127 0.554 R130 0.000   pad R130-1 vs pad R129-1
+  (39.300,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.1250  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-1
+  (39.350,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.1750  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-1
+  (39.300,14.450) worst -0.0500 cu +0.0600 mask -0.0500 land 0.1250  body gap R127 0.454 R130 0.054   pad R130-1 vs pad R129-1
+  (39.300,14.550) worst -0.1000 cu -0.0400 mask -0.1000 land 0.1250  body gap R127 0.554 R130 0.000   pad R130-1 vs pad R129-1
+  (39.350,14.450) worst -0.0500 cu +0.0600 mask -0.0500 land 0.1750  body gap R127 0.454 R130 0.054   pad R130-1 vs pad R129-1
+  (39.350,14.550) worst -0.1000 cu -0.0400 mask -0.1000 land 0.1750  body gap R127 0.554 R130 0.000   pad R130-1 vs pad R129-1
+  (39.500,14.500) worst -0.1000 cu +0.0100 mask -0.1000 land 0.2750  body gap R127 0.504 R130 0.004   pad R130-1 vs pad R129-1
+  (39.500,14.450) worst -0.0500 cu +0.0600 mask -0.0500 land 0.2750  body gap R127 0.454 R130 0.054   pad R130-1 vs pad R129-1
+  (39.500,14.550) worst -0.1000 cu -0.0400 mask -0.1000 land 0.2750  body gap R127 0.554 R130 0.000   pad R130-1 vs pad R129-1
+
+-- B. D10 grid x 38.80..39.70 y 14.30..14.60 step 0.01 (2506 sites) --
+  no move (R127 + R130 in place): 306 legal (copper/mask/land >= 0), best (39.210,14.360) worst +0.0319 [cu +0.0319 mask +0.0400 land 0.0350] {'cu': 'track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1', 'land': 'via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1', 'mask': 'pad R130-1 vs pad R129-1'}
+     of them with ComponentClearance >= 0.254 to R127 and R130: 0
+  move D8 (R127 gone, D8 run restored): 306 legal, best (39.210,14.360) worst +0.0319 [cu +0.0319 mask +0.0400 land 0.0350] {'cu': 'track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1', 'land': 'via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1', 'mask': 'pad R130-1 vs pad R129-1'}
+     of them with ComponentClearance >= 0.254 to R130: 0
+  legal D10 rows (y): no move [14.33, 14.34, 14.35, 14.36, 14.37, 14.38, 14.39, 14.4] ; move D8 [14.33, 14.34, 14.35, 14.36, 14.37, 14.38, 14.39, 14.4]
+
+-- C. move D11: R130 re-sited on D11's own Top run (x 38.90..39.85, y 14.80..15.05): 808 legal sites alone
+  best R130 alone: (39.330,14.800) worst +0.1190 [cu +0.1190 mask +9.0000 land 0.1550] {'cu': 'via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30 vs pad R130-2', 'land': 'via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35 vs pad R130-1'}
+  R130 as planned (39.2,14.9) alone: (39.200,14.900) worst +0.0100 [cu +0.0100 mask +9.0000 land 0.0250] {'cu': 'via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30 vs pad R130-2', 'land': 'via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35 vs pad R130-1'}
+  any joint (D10, D11) pair with ComponentClearance >= 0.254 to each other and to R127: -0.0081
+  best D10 with R130 NOT moved: worst +0.0100  D10 (39.240,14.390) worst +0.0619 [cu +0.0619 mask +0.2900 land 0.0650] {'cu': 'track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1', 'land': 'via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1', 'mask': 'pad R127-1 vs pad R129-1'} | {'pair_cu': 0.12, 'pair_mask': 0.01, 'body_gap': 0.114, 'why': [('pad R129-1', 'pad R130-1'), ('pad R129-1', 'pad R130-1')]}
+  CHOSEN: R129 D10 at (39.210,14.360), R130 D11 moved (39.200,14.900) -> (39.400,14.920); worst copper/mask/land +0.0319; body gap R129-R130 0.164, R129-R127 0.364 (ComponentClearance 0.254, advisory)
+    R129 (39.210,14.360) worst +0.0319 [cu +0.0319 mask +0.2600 land 0.0350] {'cu': 'track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1', 'land': 'via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1', 'mask': 'pad R127-1 vs pad R129-1'}
+    R130 (39.400,14.920) worst +0.0346 [cu +0.0346 mask +9.0000 land 0.2250] {'cu': 'via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30 vs pad R130-1', 'land': 'via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35 vs pad R130-1'}
+    pair {'pair_cu': 0.1419, 'pair_mask': 0.06, 'why': [('track Top D10 (39.510,14.360)-(39.650,14.500)', 'pad R130-2'), ('pad R129-1', 'pad R130-1')]}
+
+plan.json: remove 58 tracks / 11 vias, add 87 tracks / 22 vias, 13 parts; D10 renames 3 tracks + 2 vias

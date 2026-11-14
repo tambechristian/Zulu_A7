@@ -1,0 +1,117 @@
+[
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/fallback15/plan15.json",
+  "plan_md5": "187b8703833e9d785fd62c91d044bdf8",
+  "ref": "R129",
+  "r_side": "Top",
+  "r_xy": [
+   39.21,
+   14.36
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.08879798236637554,
+   "vmax": 3.5040615786863434,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.5987903632692196,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.1842611070992162,
+     "last": 1.1842611070992162,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.091548055817389,
+     "last": 1.091548055817389,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.184267215934187,
+     "last": 1.184267215934187,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.27173908876551556,
+   "vmax": 3.6038479422949554,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.6334424599999956,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.3312501200303877,
+     "last": 1.3312501200303877,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.162402594652724,
+     "last": 1.162402594652724,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.3312955589777464,
+     "last": 1.3312955589777464,
+     "n": 1
+    }
+   },
+   "budget": 0.011846425115252095,
+   "budget_detail": {
+    "kind": "under",
+    "peak_v": 0.2715,
+    "dur_ns": 0.0888,
+    "used_pct_ui": 1.185,
+    "allowed_pct_ui": 100.0
+   }
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 0.7326380468350352,
+    "last": 1.0069642423727774,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.6795364401063991,
+    "last": 0.6795364401063991,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 0.7326422276928546,
+    "last": 1.0069575914305577,
+    "n": 2
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "K2",
+  "u3_pin": "45",
+  "len_mm": 13.997,
+  "flight_ps": 91.6,
+  "vias": 2,
+  "tlines": 2,
+  "lumped": 12,
+  "connected": true,
+  "feed_mm": 8.647,
+  "feed_ps": 57.91,
+  "feed_vias": 2,
+  "line_mm": 5.35,
+  "line_ps": 33.668,
+  "line_vias": 0,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D10_read_max_fab_placed_r22_parts_extract_187b8703.npz"
+ }
+]

@@ -1,0 +1,8 @@
+candidates from design_top_candidates.json (delete it or pass --fresh to search again)
+selected 10 of 16: D0 D1 D2 D3 D5 D6 D8 D11 D12 D15
+plan: 36 tracks, 26 vias, 12 removed; board then: 5144 tracks, 1954 vias
+violations: 0
+open connections after the plan: 0 on 0 nets
+PASS
+
+placed 10 / 16; exact violations 0; route_check rc 0; opens {}; moved silk [('U1', 'R134'), ('ZULU A7 2.3', 'R119'), ('ZULU A7 2.3', 'R120'), ('ZULU A7 2.3', 'R121'), ('ZULU A7 2.3', 'R124')]; 13 s

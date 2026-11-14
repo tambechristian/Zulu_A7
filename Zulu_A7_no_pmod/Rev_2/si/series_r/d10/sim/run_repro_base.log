@@ -1,0 +1,5 @@
+D10  read  max fab    base   r0    parts pin -0.716/3.906 die -0.502/3.947 ball budget 3059.2% die 68.7% t_end 32.00 conn True
+D13  read  max fab    base   r0    parts pin -0.529/3.864 die -0.465/3.898 ball budget 93.8% die 29.1% t_end 32.00 conn True
+D10  read  typ fab    base   r0    parts pin -0.704/3.659 die -0.507/3.742 ball budget 2608.8% die 53.2% t_end 32.00 conn True
+D13  read  typ fab    base   r0    parts pin -0.438/3.566 die -0.457/3.669 ball budget 8.6% die 21.4% t_end 32.00 conn True
+done: 4 cases, 0 errors

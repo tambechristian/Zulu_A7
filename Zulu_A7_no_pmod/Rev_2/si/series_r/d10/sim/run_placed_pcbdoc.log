@@ -1,0 +1,25 @@
+D14  read  typ pcbdoc placed r22   parts pin -0.572/3.799 die -0.441/3.681 ball budget 168.9% die 14.9% t_end 32.00 conn True
+D15  read  typ pcbdoc placed r22   parts pin -0.469/3.597 die -0.445/3.650 ball budget 21.5% die 12.8% t_end 32.00 conn True
+D13  read  typ pcbdoc placed r22   parts pin -0.516/3.569 die -0.481/3.711 ball budget 76.2% die 20.7% t_end 32.00 conn True
+D10  read  typ pcbdoc placed r22   parts pin -0.224/3.408 die -0.084/3.332 ball budget 0.7% die 0.0% t_end 32.00 conn True
+D0   read  typ pcbdoc placed r22   parts pin -0.193/3.417 die -0.099/3.360 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D5   read  typ pcbdoc placed r22   parts pin -0.152/3.437 die -0.033/3.319 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D13  write typ pcbdoc placed r22   parts pin -0.257/3.326 die -0.386/3.392 absmax pin True die True t_end 32.00 conn True
+D14  write typ pcbdoc placed r22   parts pin -0.301/3.360 die -0.407/3.442 absmax pin True die True t_end 32.00 conn True
+D15  write typ pcbdoc placed r22   parts pin -0.259/3.341 die -0.390/3.418 absmax pin True die True t_end 32.00 conn True
+D10  write typ pcbdoc placed r22   parts pin -0.134/3.305 die -0.165/3.306 absmax pin True die True t_end 32.00 conn True
+D0   write typ pcbdoc placed r22   parts pin -0.225/3.331 die -0.296/3.341 absmax pin True die True t_end 32.00 conn True
+D5   write typ pcbdoc placed r22   parts pin -0.231/3.317 die -0.281/3.320 absmax pin True die True t_end 32.00 conn True
+D13  read  max pcbdoc placed r22   parts pin -0.618/3.862 die -0.486/3.928 ball budget 507.5% die 27.6% t_end 32.00 conn True
+D14  read  max pcbdoc placed r22   parts pin -0.836/4.143 die -0.450/3.886 ball budget 31238.7% die 42.6% t_end 32.00 conn True
+D15  read  max pcbdoc placed r22   parts pin -0.560/3.898 die -0.439/3.866 ball budget 368.0% die 17.0% t_end 32.00 conn True
+D10  read  max pcbdoc placed r22   parts pin -0.292/3.637 die -0.123/3.511 ball budget 1.3% die 0.0% t_end 32.00 conn True
+D0   read  max pcbdoc placed r22   parts pin -0.244/3.634 die -0.140/3.555 ball budget 1.3% die 0.0% t_end 32.00 conn True
+D5   read  max pcbdoc placed r22   parts pin -0.191/3.602 die -0.048/3.494 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D13  write max pcbdoc placed r22   parts pin -0.302/3.620 die -0.454/3.660 absmax pin True die True t_end 32.00 conn True
+D14  write max pcbdoc placed r22   parts pin -0.323/3.599 die -0.517/3.659 absmax pin True die True t_end 32.00 conn True
+D15  write max pcbdoc placed r22   parts pin -0.283/3.599 die -0.482/3.663 absmax pin True die True t_end 32.00 conn True
+D10  write max pcbdoc placed r22   parts pin -0.234/3.508 die -0.271/3.495 absmax pin True die True t_end 32.00 conn True
+D0   write max pcbdoc placed r22   parts pin -0.331/3.554 die -0.455/3.541 absmax pin True die True t_end 32.00 conn True
+D5   write max pcbdoc placed r22   parts pin -0.356/3.537 die -0.419/3.557 absmax pin True die True t_end 32.00 conn True
+done: 24 cases, 0 errors

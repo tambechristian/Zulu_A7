@@ -1,0 +1,13 @@
+D13 504 body/compclear ok 0 proved 81 proof fail 0
+D14 572 body/compclear ok 572 proved 572 proof fail 0
+   #17 Bottom rot0 (44.300,17.150) newmargin [0.0619, 'col L4-SIG vs track L4-SIG UART_FT_RXD (43.550,17.500)-(48.000,17.500) w0.0762'] conn 0.039/0.033 cc [0.3521, 'C117']
+   #22 Bottom rot0 (44.325,17.150) newmargin [0.0619, 'col L4-SIG vs track L4-SIG UART_FT_RXD (43.550,17.500)-(48.000,17.500) w0.0762'] conn 0.039/0.033 cc [0.3521, 'C117']
+   #27 Bottom rot0 (44.350,17.150) newmargin [0.0619, 'col L4-SIG vs track L4-SIG UART_FT_RXD (43.550,17.500)-(48.000,17.500) w0.0762'] conn 0.039/0.033 cc [0.3521, 'C117']
+   #32 Bottom rot0 (44.375,17.150) newmargin [0.0619, 'col L4-SIG vs track L4-SIG UART_FT_RXD (43.550,17.500)-(48.000,17.500) w0.0762'] conn 0.039/0.033 cc [0.3521, 'C117']
+   #37 Bottom rot0 (44.400,17.150) newmargin [0.0619, 'col L4-SIG vs track L4-SIG UART_FT_RXD (43.550,17.500)-(48.000,17.500) w0.0762'] conn 0.038/0.032 cc [0.3521, 'C117']
+D15 323 body/compclear ok 323 proved 323 proof fail 0
+   #31 Bottom rot0 (45.000,16.825) newmargin [0.0387, 'col L4-SIG vs track L4-SIG D14 (38.000,17.250)-(47.900,17.150) w0.1250'] conn 0.055/0.051 cc [0.6771, 'C117']
+   #57 Bottom rot0 (45.400,16.825) newmargin [0.0347, 'col L4-SIG vs track L4-SIG D14 (38.000,17.250)-(47.900,17.150) w0.1250'] conn 0.052/0.048 cc [0.6771, 'C117']
+   #61 Bottom rot0 (45.425,16.825) newmargin [0.0345, 'col L4-SIG vs track L4-SIG D14 (38.000,17.250)-(47.900,17.150) w0.1250'] conn 0.052/0.048 cc [0.6771, 'C117']
+   #65 Bottom rot0 (45.450,16.825) newmargin [0.0342, 'col L4-SIG vs track L4-SIG D14 (38.000,17.250)-(47.900,17.150) w0.1250'] conn 0.052/0.047 cc [0.6771, 'C117']
+   #69 Bottom rot0 (45.475,16.825) newmargin [0.0339, 'col L4-SIG vs track L4-SIG D14 (38.000,17.250)-(47.900,17.150) w0.1250'] conn 0.051/0.047 cc [0.6771, 'C117']

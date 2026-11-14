@@ -1,0 +1,2404 @@
+                                                                            AS4C32M16SB
+
+Revision History
+54pin TSOPII PACKAGE - Dual Die Package (DDP)
+AS4C32M16SB-7TCN/AS4C32M16SB-7TIN/AS4C32M16SB-6TIN
+
+54-ball FBGA
+AS4C32M16SB-7BIN
+
+Revision      Details                                                       Date
+Rev 1.0       Preliminary datasheet                                         Jun 2016
+Rev 1.1       Page 20 -Adjust the values of IDD2P, IDD2PS and IDD6 to 8mA.  Sept 2019
+Rev 1.2                                                                     Mar.2020
+              Added BGA Package
+
+Alliance Memory Inc. 12815 NE 124th Street Suite D,Kirkland WA 98034 USA
+Alliance Memory Inc. reserves the right to change products or specification without notice
+
+Confidential  - 1 of 57 -                                                                   Rev.1.2. March 2020
+                                                             AS4C32M16SB
+
+Features                                     Overview
+
+� Fast access time from clock: 4.5/5/5.4 ns      The 512Mb SDRAM is a high-speed CMOS
+� Fast clock rate: 200/166/143 MHz           synchronous DRAM containing 512 Mbits. It is
+� Fully synchronous operation                internally configured as 4 Banks of 8M word x 16
+� Internal pipelined architecture            DRAM with a synchronous interface (all signals are
+� 8M word x 16-bit x 4-bank                  registered on the positive edge of the clock signal,
+� Programmable Mode registers                CLK). Read and write accesses to the SDRAM are
+                                             burst oriented; accesses start at a selected location
+  - CAS Latency: 2 or 3                      and continue for a programmed number of locations
+  - Burst Length: 1, 2, 4, 8, or full page   in a programmed sequence. Accesses begin with the
+  - Burst Type: Sequential or Interleaved    registration of a Bank Activate command which is
+  - Burst stop function                      then followed by a Read or Write command. The
+� Auto Refresh and Self Refresh              SDRAM provides for programmable Read or Write
+� 8192 refresh cycles/64ms                   burst lengths of 1, 2, 4, 8, or full page, with a burst
+� CKE power down mode                        termination option. An auto precharge function may
+� Single +3.3V �0.3V power supply            be enabled to provide a self-timed row precharge that
+� Operating Temperature Range:               is initiated at the end of the burst sequence. The
+  - Commercial: TA = 0~70캜                  refresh functions, either Auto or Self Refresh are
+  - Industrial: TA = -40~85캜                easy to use. By having a programmable mode
+� Interface: LVTTL                           register, the system can choose the most suitable
+� 54-pin 400 mil plastic TSOP II package     modes to maximize its performance. These devices
+  - Pb free and Halogen free                 are well suited for applications requiring high memory
+� 54-ball 8x8x1.2mm(MAX) FBGA                bandwidth and particularly well suited to high
+  - Pb free and Halogen free                 performance PC applications.
+
+Table 1. Key Specifications  AS4C32M16SB                                   -6/7
+                                 Clock Cycle time (min.)                   6/7 ns
+    tCK3                                                                  5/5.4 ns
+    tAC3                     Access time from CLK (max.)                  42/42 ns
+    tRAS                         Row Active time (min.)                   60/63 ns
+     tRC                         Row Cycle time (min.)
+
+Table 2. Ordering Information
+
+              Part Number  Frequency            Package      Temperature  Temp Range
+                                             54 Pin TSOP II  Commercial    0캜 to 70캜
+AS4C32M16SB-7TCN           143MHz            54 Pin TSOP II   Industrial  -40캜 to 85캜
+                                             54 Pin TSOP II   Industrial  -40캜 to 85캜
+AS4C32M16SB-7TIN           143MHz            54 ball FBGA     Industrial  -40캜 to 85캜
+
+AS4C32M16SB-6TIN           166MHz
+
+AS4C32M16SB-7BIN           143MHz
+
+Confidential                                 - 2 of 57 -                  Rev.1.2. March 2020
+Figure 1. Pin Assignment (Top View)                     AS4C32M16SB
+
+              VDD  1                 54           VSS
+                                                  DQ15
+              DQ0  2                 53           VSSQ
+                                                  DQ14
+VDDQ               3                 52           DQ13
+                                                  VDDQ
+              DQ1  4                 51           DQ12
+                                                  DQ11
+              DQ2  5                 50           VSSQ
+                                                  DQ10
+VSSQ               6                 49           DQ9
+                                                  VDDQ
+              DQ3  7                 48           DQ8
+                                                  VSS
+              DQ4  8                 47           NC
+                                                  UDQM
+VDDQ               9                 46           CLK
+                                                  CKE
+              DQ5  10                45           A12
+                                                  A11
+              DQ6  11                44           A9
+                                                  A8
+VSSQ               12                43           A7
+                                                  A6
+              DQ7  13                42           A5
+                                                  A4
+              VDD  14                41           VSS
+
+LDQM               15                40
+
+              WE#  16                39
+
+CAS#               17                38
+
+RAS#               18                37
+
+              CS#  19                36
+
+              BA0  20                35
+
+              BA1  21                34
+
+A10/AP             22                33
+
+              A0   23                32
+
+              A1   24                31
+
+              A2   25                30
+
+              A3   26                29
+
+              VDD  27                28
+
+Confidential                         - 3 of 57 -  Rev.1.2. March 2020
+                                                 AS4C32M16SB
+
+Figure 1.1. Ball Assignment (Top View)
+
+              1  2   3...7              8   9
+
+A VSS DQ15 VSSQ           VDDQ DQ0 VDD
+
+B DQ14 DQ13 VDDQ          VSSQ DQ2 DQ1
+
+C DQ12 DQ11 VSSQ          VDDQ DQ4 DQ3
+
+D DQ10 DQ9 VDDQ           VSSQ DQ6 DQ5
+
+E DQ8            NC  VSS  VDD LDQM DQ7
+
+F UDQM CLK CKE            CAS# RAS# WE#
+
+G A12 A11            A9   BA0 BA1 CS#
+
+H A8             A7  A6   A0            A1  A10
+
+J VSS            A5  A4   A3            A2  VDD
+
+Confidential                  - 4 of 57 -        Rev.1.2. March 2020
+                                       AS4C32M16SB
+
+Figure 2. Block Diagram
+
+CLK              CLOCK                 Row               8M x 16
+CKE              BUFFER                   Decoder    CELL ARRAY
+
+                                                       (BANK #A)
+
+                                                   Column Decoder
+
+  CS#            COMMAND                       Buffer               DQ0~
+RAS#             DECODER                                            DQ15
+CAS#                        CONTROL    LDQM, UDQM
+                             SIGNAL
+ WE#
+                          GENERATOR
+
+A10/AP           COLUMN                Row                8M x 16
+                 COUNTER                  Decoder     CELL ARRAY
+      A0
+      A9         ADDRESS                                (BANK #B)
+    A11           BUFFER
+    A12                                            Column Decoder
+    BA0          REFRESH
+    BA1          COUNTER     MODE
+                          REGISTER
+
+              ~
+
+                                       Row                8M x 16
+                                          Decoder    CELL ARRAY
+
+                                                       (BANK #C)
+
+                                                   Column Decoder
+
+                                       Row                 8M x 16
+                                          Decoder     CELL ARRAY
+
+                                                         (BANK #D)
+
+                                                   Column Decoder
+
+Confidential              - 5 of 57 -              Rev.1.2. March 2020
+                                                    AS4C32M16SB
+
+Pin Descriptions
+
+                          Table 3. Pin Details
+
+Symbol        Type                     Description
+  CLK         Input
+                     Clock: CLK is driven by the system clock. All SDRAM input signals are sampled on
+                     the positive edge of CLK. CLK also increments the internal burst counter and
+                     controls the output registers.
+
+CKE           Input  Clock Enable: CKE activates (HIGH) and deactivates (LOW) the CLK signal. If
+                     CKE goes low synchronously with clock (set-up and hold time same as other
+                     inputs), the internal clock is suspended from the next clock cycle and the state of
+                     output and burst address is frozen as long as the CKE remains low. When all banks
+                     are in the idle state, deactivating the clock controls the entry to the Power Down and
+                     Self Refresh modes. CKE is synchronous except after the device enters Power
+                     Down and Self Refresh modes, where CKE becomes asynchronous until exiting the
+                     same mode. The input buffers, including CLK, are disabled during Power Down and
+                     Self Refresh modes, providing low standby power.
+
+BA0,BA1       Input  Bank Activate: BA0, BA1 input select the bank for operation.
+
+                     BA1               BA0                                         Select Bank
+
+                     0                 0                                           BANK #A
+
+                     0                 1                                           BANK #B
+
+                     1                 0                                           BANK #C
+
+                     1                 1                                           BANK #D
+
+A0-A12        Input  Address Inputs: A0-A12 are sampled during the BankActivate command (row
+                     address A0-A12) and Read/Write command (column address A0-A9 with A10
+                     defining Auto Precharge) to select one location out of the 8M available in the
+                     respective bank. During a Precharge command, A10 is sampled to determine if all
+                     banks are to be precharged (A10 = HIGH). The address inputs also provide the
+                     op-code during a Mode Register Set command.
+
+CS#           Input  Chip Select: CS# enables (sampled LOW) and disables (sampled HIGH) the
+                     command decoder. All commands are masked when CS# is sampled HIGH. CS#
+                     provides for external bank selection on systems with multiple banks. It is considered
+                     part of the command code.
+
+RAS#          Input  Row Address Strobe: The RAS# signal defines the operation commands in
+                     conjunction with the CAS# and WE# signals and is latched at the positive edges of
+                     CLK. When RAS# and CS# are asserted "LOW" and CAS# is asserted "HIGH"
+                     either the BankActivate command or the Precharge command is selected by the
+                     WE# signal. When the WE# is asserted "HIGH" the BankActivate command is
+                     selected and the bank designated by BA is turned on to the active state. When the
+                     WE# is asserted "LOW" the Precharge command is selected and the bank
+                     designated by BA is switched to the idle state after the precharge operation.
+
+CAS#          Input  Column Address Strobe: The CAS# signal defines the operation commands in
+                     conjunction with the RAS# and WE# signals and is latched at the positive edges of
+                     CLK. When RAS# is held "HIGH" and CS# is asserted "LOW" the column access is
+                     started by asserting CAS# "LOW". Then, the Read or Write command is selected by
+                     asserting WE# "LOW" or "HIGH".
+
+WE#           Input  Write Enable: The WE# signal defines the operation commands in conjunction with
+                     the RAS# and CAS# signals and is latched at the positive edges of CLK. The WE#
+                     input is used to select the BankActivate or Precharge command and Read or Write
+                     command.
+
+LDQM,         Input  Data Input/Output Mask: Controls output buffers in read mode and masks Input
+UDQM                 data in write mode.
+
+Confidential              - 6 of 57 -                                              Rev.1.2. March 2020
+                                    AS4C32M16SB
+
+DQ0-DQ15      Input /  Data I/O: The DQ0-15 input and output data are synchronized with the
+              Output   positive edges of CLK. The I/Os are maskabled during Reads and Writes.
+     NC                No Connect: These pins should be left unconnected.
+    VDDQ          -    DQ Power: Provide isolated power to DQs for improved noise immunity. (+3.3V �0.3V)
+    VSSQ      Suply    DQ Ground: Provide isolated ground to DQs for improved noise immunity. (0 V)
+     VDD      Supply   Power Supply: +3.3V �0.3V
+     VSS      Supply   Ground
+              Supply
+
+Confidential           - 7 of 57 -  Rev.1.2. March 2020
+                                                                             AS4C32M16SB
+
+Operation Mode
+
+      Fully synchronous operations are performed to latch the commands at the positive edges of CLK. Table 4
+shows the truth table for the operation commands.
+
+                                     Table 4. Truth Table (Note (1), (2))
+
+              Command  State CKEn-1 CKEn DQM BA0,1 A10 A0-9,11-12 CS# RAS# CAS# WE#
+
+BankActivate           Idle(3)      H  X X V Row address L                                    L HH
+
+BankPrecharge          Any          H  X X VL                                         X  L LHL
+
+PrechargeAll           Any          H  X X XH                                         X  L LHL
+
+Write                  Active(3) H     X  V                         V L Column           L H L          L
+                                                                             address
+Write and AutoPrecharge Active(3) H
+                                       X  V                         V H (A0 ~ A9) L           H      L  L
+
+Read                   Active(3) H     X  V                         V L Column           L    H      L  H
+                                                                             address
+Read and Autoprecharge Active(3) H
+                                       X  V                         V H (A0 ~ A9) L           H      L  H
+
+Mode Register Set      Idle         H  X X                                   OP code     L L L L
+
+No-Operation           Any          H  X X XX                                         X  L HHH
+
+Burst Stop             Active(4) H     X X XX                                         X  L HH L
+
+Device Deselect        Any          H  X X XX                                         X  H X X X
+
+AutoRefresh            Idle         H  H X XX                                         X  L L LH
+
+SelfRefresh Entry      Idle         H  L X XX                                         X  L L LH
+
+SelfRefresh Exit          Idle                                                           H X X X
+                       (SelfRefresh) L H X X X X                                         L HHH
+
+Clock Suspend Mode Entry Active H      L X XX                                         X  H X X X
+
+                                                                                         L V V V
+
+Power Down Mode Entry  Any(5)       H  L X XX                                         X  H X X X
+                                                                                         L HHH
+
+Clock Suspend Mode Exit Active L       H X XX                                         X  X X X X
+
+Power Down Mode Exit   Any          L  H X XX                                         X  H X X X
+
+                       (PowerDown)                                                       L HHH
+
+Data Write/Output Enable Active H      X L                          X X               X  X X X X
+
+Data Mask/Output Disable Active H      X H XX                                         X  X X X X
+
+Note: 1. V=Valid, X=Don't Care, L=Low level, H=High level
+
+              2. CKEn signal is input level when commands are provided.
+
+              CKEn-1 signal is input level one clock cycle before the commands are provided.
+
+              3. These are states of bank designated by BA signal.
+
+              4. Device state is 1, 2, 4, 8, and full page burst operation.
+
+              5. Power Down Mode can not enter in the burst operation.
+
+              When this command is asserted in the burst cycle, device state is clock suspend mode.
+
+Confidential                           - 8 of 57 -                                            Rev.1.2. March 2020
+                                                                                               AS4C32M16SB
+
+Commands
+
+1 BankActivate
+
+      (RAS# = "L", CAS# = "H", WE# = "H", BAs = Bank, A0-A12 = Row Address)
+             The BankActivate command activates the idle bank designated by the BA0, 1 signals. By latching
+
+      the row address on A0 to A12 at the time of this command, the selected row access is initiated. The
+      read or write operation in the same bank can occur after a time delay of tRCD(min.) from the time of
+      bank activation. A subsequent BankActivate command to a different row in the same bank can only be
+      issued after the previous active row has been precharged (refer to the following figure). The minimum
+      time interval between successive BankActivate commands to the same bank is defined by tRC(min.).
+      The SDRAM has four internal banks on the same chip and shares part of the internal circuitry to reduce
+      chip area; therefore it restricts the back-to-back activation of the two banks. tRRD(min.) specifies the
+      minimum time required between activating different banks. After this command is used, the Write
+      command and the Block Write command perform the no mask write operation.
+
+                       T0        T1   T2                 T3             Tn+3 Tn+4 Tn+5 Tn+6
+
+              CLK
+
+              ADDRESS    Bank A                           Bank A          Bank B                                     Bank A
+              COMMAND  Row Addr.                         Col Addr.      Row Addr.                                  Row Addr.
+
+                                RAS# - CAS# delay(tRCD)                              RAS# - RAS# delay time(tRRD)
+
+                       Bank A    NOP  NOP                  R/W A with                Bank B    NOP  NOP            Bank A
+                       Activate                          AutoPrecharge               Activate                      Activate
+
+                                                             RAS# - Cycle time(tRC)
+
+                                                                        AutoPrecharge               Don't Care
+                                                                              Begin
+
+                       Figure 3. BankActivate Command Cycle (Burst Length = n)
+
+2 BankPrecharge command
+
+      (RAS# = "L", CAS# = "H", WE# = "L", BAs = Bank, A10 = "L", A0-A9, A11 and A12 = Don't care)
+             The BankPrecharge command precharges the bank disignated by BA signal. The precharged
+
+      bank is switched from the active state to the idle state. This command can be asserted anytime after
+      tRAS(min.) is satisfied from the BankActivate command in the desired bank. The maximum time any
+      bank can be active is specified by tRAS(max.). Therefore, the precharge function must be performed in
+      any active bank within tRAS(max.). At the end of precharge, the precharged bank is still in the idle state
+      and is ready to be activated again.
+
+3 PrechargeAll command
+
+      (RAS# = "L", CAS# = "H", WE# = "L", BAs = Don't care, A10 = "H", A0-A9, A11 and A12 = Don't care)
+             The PrechargeAll command precharges all banks simultaneously and can be issued even if all
+
+      banks are not in the active state. All banks are then switched to the idle state.
+
+4 Read command
+
+      (RAS# = "H", CAS# = "L", WE# = "H", BAs = Bank, A10 = "L", A0-A9 = Column Address)
+             The Read command is used to read a burst of data on consecutive clock cycles from an active row
+
+      in an active bank. The bank must be active for at least tRCD(min.) before the Read command is issued.
+      During read bursts, the valid data-out element from the starting column address will be available
+      following the CAS latency after the issue of the Read command. Each subsequent data-out element
+      will be valid by the next positive clock edge (refer to the following figure). The DQs go into
+      high-impedance at the end of the burst unless other command is initiated. The burst length, burst
+      sequence, and CAS latency are determined by the mode register, which is already programmed. A
+      full-page burst will continue until terminated (at the end of the page it will wrap to column 0 and
+      continue).
+
+Confidential                                             - 9 of 57 -                                               Rev.1.2. March 2020
+                                                                                       AS4C32M16SB
+
+                                  T0       T1       T2    T3 T4                   T5       T6       T7     T8
+
+              CLK
+
+              COMMAND         READ A       NOP      NOP        NOP       NOP      NOP      NOP       NOP        NOP
+
+              CAS# Latency=2                        DOUT A0 DOUT A1 DOUT A2 DOUT A3
+              tCK2, DQ
+
+              CAS# Latency=3                              DOUT A0 DOUT A1 DOUT A2 DOUT A3
+              tCK3, DQ
+
+                       Figure 4. Burst Read Operation (Burst Length = 4, CAS# Latency = 2, 3)
+
+                    The read data appears on the DQs subject to the values on the DQM inputs two clocks earlier (i.e.
+              DQM latency is two clocks for output buffers). A read burst without the auto precharge function may be
+              interrupted by a subsequent Read or Write command to the same bank or the other active bank before
+              the end of the burst length. It may be interrupted by a BankPrecharge/ PrechargeAll command to the
+              same bank too. The interrupt coming from the Read command can occur on any clock cycle following a
+              previous Read command (refer to the following figure).
+
+                              T0      T1        T2        T3 T4               T5       T6       T7         T8
+
+              CLK
+
+              COMMAND         READ A READ B     NOP       NOP           NOP   NOP          NOP  NOP        NOP
+
+              CAS# Latency=2                    DOUT A0 DOUT B0 DOUT B1 DOUT B2 DOUT B3
+              tCK2, DQ                                            DOUT A0 DOUT B0 DOUT B1 DOUT B2 DOUT B3
+
+              CAS# Latency=3
+              tCK3, DQ
+
+                       Figure 5. Read Interrupted by a Read (Burst Length = 4, CAS# Latency = 2, 3)
+
+                    The DQM inputs are used to avoid I/O contention on the DQ pins when the interrupt comes from a
+              Write command. The DQMs must be asserted (HIGH) at least two clocks prior to the Write command to
+              suppress data-out on the DQ pins. To guarantee the DQ pins against I/O contention, a single cycle with
+              high-impedance on the DQ pins must occur between the last read data and the Write command (refer
+              to the following three figures). If the data output of the burst read occurs at the second clock of the burst
+              write, the DQMs must be asserted (HIGH) at least one clock prior to the Write command to avoid
+              internal bus contention.
+
+                              T0      T1        T2        T3 T4               T5       T6       T7         T8 T9
+
+              CLK             NOP     NOP       Bank A    NOP       NOP       READ A WRITE A    NOP        NOP       NOP
+              DQM                               Activate
+              COMMAND
+
+              CAS# Latency=2                                                           DIN A0   DIN A1     DIN A2    DIN A3
+              tCK2, DQ
+
+                       Figure 6. Read to Write Interval (Burst Length  4, CAS# Latency = 2)
+
+Confidential                                              - 10 of 57 -                                     Rev.1.2. March 2020
+                                                                                                 AS4C32M16SB
+
+                              T0      T1      T2      T3 T4                T5                    T6       T7        T8
+
+              CLK             NOP     NOP     READ A  NOP       NOP        WRITE B               NOP      NOP       NOP
+              DQM
+              COMMAND
+
+              CAS# Latency=2                                                             DIN B0  DIN B1   DIN B2    DIN B3
+              tCK2, DQ
+                                                      Must be Hi-Z before
+                                                      the Write Command                                   Don't Care
+
+              Figure 7. Read to Write Interval (Burst Length  4, CAS# Latency = 2)
+
+                              T0      T1      T2      T3 T4                T5                    T6       T7        T8
+
+              CLK             NOP     READ A  NOP     NOP       NOP            NOP               WRITE B      NOP       NOP
+              DQM
+              COMMAND
+
+              CAS# Latency=3                                    DOUT A0                          DIN B0   DIN B1    DIN B2
+              tCK3, DQ
+
+                                                                Must be Hi-Z before                           Don't Care
+                                                                the Write Command
+
+              Figure 8. Read to Write Interval (Burst Length  4, CAS# Latency = 3)
+
+                    A read burst without the auto precharge function may be interrupted by a BankPrecharge/
+              PrechargeAll command to the same bank. The following figure shows the optimum time that Bank
+              Precharge/ PrechargeAll command is issued in different CAS latency.
+
+                              T0      T1      T2      T3 T4                T5                    T6       T7        T8
+
+              CLK             Bank,                             Bank (s)                                      Bank
+              ADDRESS         Col A                             Precharge                                     Row
+              COMMAND
+                              READ A  NOP     NOP     NOP                      tRP                   NOP  Activate      NOP
+
+                                                                               NOP
+
+              CAS# Latency=2                  DOUT A0 DOUT A1 DOUT A2 DOUT A3
+              tCK2, DQ                                          DOUT A0 DOUT A1 DOUT A2 DOUT A3
+
+              CAS# Latency=3
+              tCK3, DQ
+
+                       Figure 9. Read to Precharge (CAS# Latency = 2, 3)
+
+Confidential                                      - 11 of 57 -                                                      Rev.1.2. March 2020
+                                                                               AS4C32M16SB
+
+5 Read and AutoPrecharge command
+
+      (RAS# = "H", CAS# = "L", WE# = "H", BAs = Bank, A10 = "H", A0-A9 = Column Address)
+             The Read and AutoPrecharge command automatically performs the precharge operation after the
+
+      read operation. Once this command is given, any subsequent command cannot occur within a time
+      delay of {tRP(min.) + burst length}. At full-page burst, only the read operation is performed in this
+      command and the auto precharge function is ignored.
+
+6 Write command
+
+      (RAS# = "H", CAS# = "L", WE# = "L", BAs = Bank, A10 = "L", A0-A9 = Column Address)
+             The Write command is used to write a burst of data on consecutive clock cycles from an active row
+
+      in an active bank. The bank must be active for at least tRCD(min.) before the Write command is issued.
+      During write bursts, the first valid data-in element will be registered coincident with the Write command.
+      Subsequent data elements will be registered on each successive positive clock edge (refer to the
+      following figure). The DQs remain with high-impedance at the end of the burst unless another
+      command is initiated. The burst length and burst sequence are determined by the mode register, which
+      is already programmed. A full-page burst will continue until terminated (at the end of the page it will
+      wrap to column 0 and continue).
+
+                       T0   T1       T2      T3 T4                 T5          T6       T7       T8
+
+              CLK      NOP  WRITE A  NOP     NOP           NOP     NOP         NOP      NOP      NOP
+              COMMAND
+              DQ            DIN A0   DIN A1  DIN A2        DIN A3  don't care
+
+                          The first data element and the write
+                          are registered on the same clock edge
+
+                       Figure 10. Burst Write Operation (Burst Length = 4)
+
+                    A write burst without the auto precharge function may be interrupted by a subsequent Write,
+              BankPrecharge/PrechargeAll, or Read command before the end of the burst length. An interrupt
+              coming from Write command can occur on any clock cycle following the previous Write command (refer
+              to the following figure).
+
+                       T0   T1       T2      T3 T4                 T5          T6       T7       T8
+
+              CLK      NOP  WRITE A WRITE B  NOP           NOP         NOP         NOP      NOP      NOP
+              COMMAND
+
+              DQ            DIN A0   DIN B0  DIN B1        DIN B2      DIN B3
+
+                       Figure 11. Write Interrupted by a Write (Burst Length = 4)
+
+                    The Read command that interrupts a write burst without auto precharge function should be issued
+              one cycle after the clock edge in which the last data-in element is registered. In order to avoid data
+              contention, input data must be removed from the DQs at least one clock cycle before the first read data
+              appears on the outputs (refer to the following figure). Once the Read command is registered, the data
+              inputs will be ignored and writes will not be executed.
+
+Confidential                                 - 12 of 57 -                                        Rev.1.2. March 2020
+                                                                                              AS4C32M16SB
+
+                                  T0           T1         T2      T3 T4                   T5        T6        T7    T8
+
+              CLK                    NOP  WRITE A READ B          NOP         NOP          NOP       NOP       NOP  NOP
+              COMMAND
+
+              CAS# Latency=2                  DIN A0  don't care              DOUT B0 DOUT B1 DOUT B2 DOUT B3
+              tCK2, DQ
+
+              CAS# Latency=3                  DIN A0  don't care  don't care              DOUT B0 DOUT B1 DOUT B2 DOUT B3
+              tCK3, DQ
+                                                                            Input data must be removed from the DQ at
+                                                                            least one clock cycle before the Read data
+                                                                            appears on the outputs to avoid data contention
+
+              Figure 12. Write Interrupted by a Read (Burst Length = 4, CAS# Latency = 2, 3)
+
+                    The BankPrecharge/PrechargeAll command that interrupts a write burst without the auto
+              precharge function should be issued m cycles after the clock edge in which the last data-in element is
+              registered, where m equals tWR/tCK rounded up to the next whole number. In addition, the DQM signals
+              must be used to mask input data, starting with the clock edge following the last data-in element and
+              ending with the clock edge on which the BankPrecharge/PrechargeAll command is entered (refer to the
+              following figure).
+
+                              T0          T1          T2          T3 T4               T5        T6        T7
+
+              CLK             WRITE       NOP         NOP     Precharge          tRP  NOP       Activate  NOP
+              DQM
+              COMMAND                                                         NOP
+
+              ADDRESS         Bank                                Bank (s)                      ROW
+              DQ              Col n
+                                               tWR
+                               DIN
+                                n         DIN
+                                          N+1
+
+                                                                                                       Don't Care
+              Note: The DQMs can remain low in this example if the length of the write burst is 1 or 2.
+
+                                       Figure 13. Write to Precharge
+
+7 Write and AutoPrecharge command
+      (RAS# = "H", CAS# = "L", WE# = "L", BAs = Bank, A10 = "H", A0-A9 = Column Address)
+             The Write and AutoPrecharge command performs the precharge operation automatically after the
+      write operation. Once this command is given, any subsequent command can not occur within a time
+      delay of {(burst length -1) + tWR + tRP(min.)}. At full-page burst, only the write operation is performed in
+      this command and the auto precharge function is ignored.
+
+Confidential                                               - 13 of 57 -                                           Rev.1.2. March 2020
+                                                                               AS4C32M16SB
+
+                              T0       T1     T2   T3 T4                   T5           T6   T7    T8 T9
+
+              CLK
+
+              COMMAND     Bank A       NOP    NOP      WRITE A     NOP     NOP          NOP  NOP      NOP           Bank A
+                          Activate                 Auto Precharge                 tDAL                              Activate
+
+              DQ                                   DIN A0          DIN A1
+
+                       tDAL=tWR+tRP                                                     Begin AutoPrecharge
+                                                                                        Bank can be reactivated at
+                                                                                        completion of tDAL
+
+                      Figure 14. Burst Write with Auto-Precharge (Burst Length = 2)
+
+8 Mode Register Set command (RAS# = "L", CAS# = "L", WE# = "L", A0-A12 = Register Data)
+
+            The mode register stores the data for controlling the various operating modes of SDRAM. The
+      Mode Register Set command programs the values of CAS latency, Addressing Mode and Burst Length
+      in the Mode register to make SDRAM useful for a variety of different applications. The default values of
+      the Mode Register after power-up are undefined; therefore this command must be issued at the
+      power-up sequence. The state of pins A0~ A12 in the same cycle is the data written to the mode
+      register. Two clock cycles are required to complete the write in the mode register (refer to the following
+      figure). The contents of the mode register can be changed using the same command and the clock
+      cycle requirements during operation as long as all banks are in the idle state.
+
+Table 5. Mode Register Bitmap
+
+              BA1 BA0 A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
+
+              RFU* 0      RFU*              WBL Test Mode CAS Latency BT Burst Length
+
+              A9 Write Burst Length A8 A7          Test Mode                                 A3 Burst Type
+                                                                                              0 Sequential
+              0        Burst           0 0         Normal                                     1 Interleave
+
+              1       Single Bit       1 0 Vendor Use Only
+
+                                       0 1 Vendor Use Only
+
+              A6 A5 A4 CAS Latency                                 A2 A1 A0                  Burst Length
+
+              0    0   0          Reserved                         0       0            0          1
+
+              0    0   1          Reserved                         0       0            1          2
+
+              0    1   0            2 clocks                       0       1            0          4
+
+              0    1   1            3 clocks                       0       1            1          8
+
+              1    0   0          Reserved                         1       1            1 Full Page (Sequential)
+
+                   All other Reserved                                          All other Reserved
+
+              *Note: RFU (Reserved for future use) should stay "0" during MRS cycle.
+
+Confidential                                       - 14 of 57 -                                       Rev.1.2. March 2020
+                                                                           AS4C32M16SB
+
+                   T0  T1 T2         T3 T4 T5 T6                       T7       T8  T9 T10
+CLK
+CKE                                                              tMRD
+CS#
+                                                   Address Key
+RAS#
+CAS#                                      tRP
+
+WE#                    PrechargeAll
+
+BA0,1
+
+A10
+A0-A9,
+A11-A12
+DQM
+DQ Hi-Z
+
+                                                   Mode Register       Any          Don't Care
+                                                   Set Command         Command
+
+                                     Figure 15. Mode Register Set Cycle
+
+              � Burst Length Field (A2~A0)
+                This field specifies the data length of column access using the A2~A0 pins and selects the Burst
+                Length to be 2, 4, 8, or full page.
+
+                 Table 6. Burst Length Field
+
+              A2       A1                      A0  Burst Length
+
+              0        0                       0                 1
+
+              0        0                       1                 2
+
+              0        1                       0                 4
+
+              0        1                       1                 8
+
+              1        0                       0   Reserved
+
+              1        0                       1   Reserved
+
+              1        1                       0   Reserved
+
+              1        1                       1   Full Page
+
+              Full Page Length: 512
+
+Confidential                                       - 15 of 57 -                     Rev.1.2. March 2020
+                                                                          AS4C32M16SB
+
+              � Burst Type Field (A3)
+                  The Addressing Mode can be one of two modes, Interleave Mode or Sequential Mode. Sequential
+                  Mode supports burst length of 1, 2, 4, 8, or full page, but Interleave Mode only supports burst length
+                  of 4 and 8.
+
+               Table 7. Addressing Mode Select Field
+
+              A3                            Burst Type
+
+              0                             Sequential
+
+              1                             Interleave
+
+              � Burst Definition, Addressing Sequence of Sequential and Interleave Mode
+
+              Table 8. Burst Definition
+
+              Burst Length   Start Address             Sequential               Interleave
+                     2      A2 A1 A0
+                     4      X X 0                           0, 1                    0, 1
+                            X X 1                           1, 0                    1, 0
+                     8      X 0 0                       0, 1, 2, 3              0, 1, 2, 3
+                            X 0 1                       1, 2, 3, 0              1, 0, 3, 2
+                            X 1 0                       2, 3, 0, 1              2, 3, 0, 1
+                            X 1 1                       3, 0, 1, 2              3, 2, 1, 0
+                             0 0 0                0, 1, 2, 3, 4, 5, 6, 7  0, 1, 2, 3, 4, 5, 6, 7
+                             0 0 1                1, 2, 3, 4, 5, 6, 7, 0  1, 0, 3, 2, 5, 4, 7, 6
+                             0 1 0                2, 3, 4, 5, 6, 7, 0, 1  2, 3, 0, 1, 6, 7, 4, 5
+                             0 1 1                3, 4, 5, 6, 7, 0, 1, 2  3, 2, 1, 0, 7, 6, 5, 4
+                             1 0 0                4, 5, 6, 7, 0, 1, 2, 3  4, 5, 6, 7, 0, 1, 2, 3
+                             1 0 1                5, 6, 7, 0, 1, 2, 3, 4  5, 4, 7, 6, 1, 0, 3, 2
+                             1 1 0                6, 7, 0, 1, 2, 3, 4, 5  6, 7, 4, 5, 2, 3, 0, 1
+                             1 1 1                7, 0, 1, 2, 3, 4, 5, 6  7, 6, 5, 4, 3, 2, 1, 0
+                                            n, n+1, n+2, n+3, ...511, 0,
+              Full page location = 0-511    1, 2, ... n-1, n, ...            Not Support
+
+              � CAS Latency Field (A6~A4)
+                  This field specifies the number of clock cycles from the assertion of the Read command to the first
+                  read data. The minimum whole value of CAS Latency depends on the frequency of CLK. The
+                  minimum whole value satisfying the following formula must be programmed into this field.
+
+                  tCAC(min)  CAS Latency X tCK
+
+               Table 9. CAS Latency
+
+              A6            A5              A4          CAS Latency
+
+              0             0               0             Reserved
+
+              0             0               1             Reserved
+
+              0             1               0             2 clocks
+
+              0             1               1             3 clocks
+
+              1             X               X             Reserved
+
+Confidential                                - 16 of 57 -                                 Rev.1.2. March 2020
+                                                                                AS4C32M16SB
+
+              � Test Mode field (A8~A7)
+                 These two bits are used to enter the test mode and must be programmed to "00" in normal operation.
+
+              Table 10. Test Mode
+
+                   A8             A7                Test Mode
+                                                  normal mode
+                   0              0             Vendor Use Only
+                                                Vendor Use Only
+                   0              1
+
+                   1              X
+
+              � Write Burst Length (A9)
+                 This bit is used to select the write burst length. When the A9 bit is "0", the Burst-Read-Burst-Write
+                 mode is selected. When the A9 bit is "1", the Burst-Read-Single-Write mode is selected.
+
+              Table 11. Write Burst Length
+
+                   A9                      Write Burst Length
+
+                   0                  Burst-Read-Burst-Write
+
+                   1                  Burst-Read-Single-Write
+
+              Note: A10 and BA0, 1 should stay "L" during mode set cycle.
+
+9 No-Operation command
+      (RAS# = "H", CAS# = "H", WE# = "H")
+
+                    The No-Operation command is used to perform a NOP to the SDRAM which is selected (CS# is
+              Low). This prevents unwanted commands from being registered during idle or wait states.
+
+10 Burst Stop command
+
+       (RAS# = "H", CAS# = "H", WE# = "L")
+             The Burst Stop command is used to terminate either fixed-length or full-page bursts. This
+
+       command is only effective in a read/write burst without the auto precharge function. The terminated
+       read burst ends after a delay equal to the CAS latency (refer to the following figure). The termination of
+       a write burst is shown in the following figure.
+
+                              T0      T1   T2       T3 T4                  T5   T6   T7   T8
+
+              CLK
+
+              COMMAND         READ A  NOP  NOP      NOP        Burst       NOP  NOP  NOP  NOP
+                                                               Stop
+
+              CAS# Latency=2               DOUT A0  DOUT A1      The burst ends after a delay equal to the CAS# Latency
+              tCK2, DQ                                         DOUT A2 DOUT A3
+
+              CAS# Latency=3                        DOUT A0 DOUT A1 DOUT A2 DOUT A3
+              tCK3, DQ
+
+              Figure 16. Termination of a Burst Read Operation (Burst Length4, CAS# Latency = 2, 3)
+
+Confidential                                    - 17 of 57 -                              Rev.1.2. March 2020
+                                                                            AS4C32M16SB
+
+                       T0   T1       T2      T3 T4                     T5   T6   T7   T8
+
+              CLK      NOP  WRITE A  NOP     NOP           Burst       NOP  NOP  NOP  NOP
+              COMMAND                                      Stop
+
+              DQ            DIN A0   DIN A1  DIN A2        don't care
+
+          Figure 17. Termination of a Burst Write Operation (Burst Length = X)
+
+11 Device Deselect command (CS# = "H")
+
+             The Device Deselect command disables the command decoder so that the RAS#, CAS#, WE#
+      and Address inputs are ignored, regardless of whether the CLK is enabled. This command is similar to
+      the No Operation command.
+
+12 AutoRefresh command
+
+      (RAS# = "L", CAS# = "L", WE# = "H", CKE = "H", A0-A12 = Don't care)
+             The AutoRefresh command is used during normal operation of the SDRAM and is analogous to
+
+      CAS#-before-RAS# (CBR) Refresh in conventional DRAMs. This command is non-persistent, so it
+      must be issued each time a refresh is required. The addressing is generated by the internal refresh
+      controller. This makes the address bits a "don't care" during an AutoRefresh command. The internal
+      refresh counter increments automatically on every auto refresh cycle to all of the rows. The refresh
+      operation must be performed 8192 times within 64ms. The time required to complete the auto refresh
+      operation is specified by tRC(min.). To provide the AutoRefresh command, all banks need to be in the
+      idle state and the device must not be in power down mode (CKE is high in the previous cycle). This
+      command must be followed by NOPs until the auto refresh operation is completed. The precharge time
+      requirement, tRP(min), must be met before successive auto refresh operations are performed.
+
+13 SelfRefresh Entry command
+
+      (RAS# = "L", CAS# = "L", WE# = "H", CKE = "L", A0-A12 = Don't care)
+             The SelfRefresh is another refresh mode available in the SDRAM. It is the preferred refresh mode
+
+      for data retention and low power operation. Once the SelfRefresh command is registered, all the inputs
+      to the SDRAM become "don't care" with the exception of CKE, which must remain LOW. The refresh
+      addressing and timing is internally generated to reduce power consumption. The SDRAM may remain
+      in SelfRefresh mode for an indefinite period. The SelfRefresh mode is exited by restarting the external
+      clock and then asserting HIGH on CKE (SelfRefresh Exit command).
+
+14 SelfRefresh Exit command
+
+             This command is used to exit from the SelfRefresh mode. Once this command is registered, NOP
+      or Device Deselect commands must be issued for tXSR(min.) because time is required for the
+      completion of any bank currently being internally refreshed. If auto refresh cycles in bursts are
+      performed during normal operation, a burst of 8192 auto refresh cycles should be completed just prior
+      to entering and just after exiting the SelfRefresh mode.
+
+15 Clock Suspend Mode Entry / PowerDown Mode Entry command (CKE = "L")
+
+             When the SDRAM is operating the burst cycle, the internal CLK is suspended (masked) from the
+      subsequent cycle by issuing this command (asserting CKE "LOW"). The device operation is held intact
+      while CLK is suspended. On the other hand, when all banks are in the idle state, this command
+      performs entry into the PowerDown mode. All input and output buffers (except the CKE buffer) are
+      turned off in the PowerDown mode. The device may not remain in the Clock Suspend or PowerDown
+      state longer than the refresh period (64ms) since the command does not perform any refresh
+      operations.
+
+Confidential                                 - 18 of 57 -                             Rev.1.2. March 2020
+                                           AS4C32M16SB
+
+16 Clock Suspend Mode Exit / PowerDown Mode Exit command (CKE= "H")
+             When the internal CLK has been suspended, the operation of the internal CLK is reinitiated from
+
+      the subsequent cycle by providing this command (asserting CKE "HIGH", the command should be
+      NOP or deselect). When the device is in the PowerDown mode, the device exits this mode and all
+      disabled buffers are turned on to the active state. tPDE (min.) is required when the device exits from the
+      PowerDown mode. Any subsequent commands can be issued after one clock cycle from the end of this
+      command.
+
+17 Data Write / Output Enable, Data Mask / Output Disable command (DQM = "L", "H")
+             During a write cycle, the DQM signal functions as a Data Mask and can control every word of the
+
+      input data. During a read cycle, the DQM functions as the controller of output buffers. DQM is also used
+      for device selection, byte selection and bus control in a memory system.
+
+Confidential  - 19 of 57 -  Rev.1.2. March 2020
+                                                                          AS4C32M16SB
+
+Table 12. Absolute Maximum Rating
+
+ Symbol                                    Item                            Values                Unit Note
+VIN, VOUT     Input, Output Voltage                                       -1.0 ~ 4.6              V 1
+VDD, VDDQ     Power Supply Voltage                                        -1.0 ~ 4.6              V 1
+                                                                                                  캜 1
+TA            Ambient Temperature                Commercial                 0 ~ 70                캜 1
+                                                  Industrial              -40 ~ 85                캜 1
+                                                                          -55 ~ 150               캜 1
+  TSTG        Storage Temperature                                                                 W 1
+TSOLDER       Soldering Temperature (10 seconds)                             260                 mA 1
+              Power Dissipation                                                1
+   PD         Short Circuit Output Current                                    50
+   IOS
+
+Table 13. Recommended D.C. Operating Conditions (VDD = 3.3V � 0.3V, TA = -40~85캜)
+
+Symbol                                Parameter                     Min.  Typ.           Max.    Unit  Note
+  VDD                                                               3.0    3.3            3.6     V      2
+  VDDQ        Power Supply Voltage                                  3.0    3.3            3.6     V      2
+   VIH                                                              2.0               VDDQ +0.3   V      2
+   VIL        Power Supply Voltage(for I/O Buffer)                  -0.3    -             0.8     V      2
+    IIL                                                             -10     -
+              LVTTL Input High Voltage                                      -            10      킕
+   IOZ                                                              -10
+              LVTTL Input Low Voltage                                       -            10      킕
+  VOH                                                               2.4
+              Input Leakage Current                                         -              -     V
+   VOL        ( 0V  VIN  VDD, All other pins not under test = 0V )    -
+              Output Leakage Current                                        -            0.4     V
+              Output disable, 0V  VOUT  VDDQ)
+              LVTTL Output "H" Level Voltage
+              ( IOUT = -2mA )
+
+              LVTTL Output "L" Level Voltage
+              ( IOUT = 2mA )
+
+Table 14. Capacitance (VDD = 3.3V, TA = 25캜)
+
+Symbol                                Parameter                     Min.              Max.       Unit
+    CI        Input Capacitance                                     3.5
+   CI/O       Input/Output Capacitance                                4               5.5        pF
+
+                                                                                      6          pF
+
+Note: These parameters are periodically sampled and are not 100% tested.
+
+Confidential                                     - 20 of 57 -                                 Rev.1.2. March 2020
+                                                                          AS4C32M16SB
+
+Table 15. D.C. Characteristics (VDD = 3.3V � 0.3V, TA = -40~85캜)
+
+              Description/Test condition                          Symbol  -6        -7  Unit Note
+                                                                                                   3
+                                                                              Max.
+
+Operating Current                                                 IDD1    120 110
+tRC  tRC(min), Outputs Open, One bank active
+
+Precharge Standby Current in non-power down mode                  IDD2N   50        40
+
+tCK = 15ns, CS#  VIH(min), CKE  VIH
+Input signals are changed every 2clks
+
+Precharge Standby Current in non-power down mode                  IDD2NS  36        36
+tCK = , CLK  VIL(max), CKE  VIH
+
+Precharge Standby Current in power down mode                      IDD2P   8         8
+tCK = 15ns, CKE  VIL(max)
+
+Precharge Standby Current in power down mode                      IDD2PS 8          8
+tCK = , CKE  VIL(max)                                                                        mA
+                                                                  IDD3N   70
+Active Standby Current in non-power down mode                                       60
+tCK = 15ns, CKE  VIH(min), CS#  VIH(min)                          IDD3NS  70
+Input signals are changed every 2clks                                               60
+
+Active Standby Current in non-power down mode
+CKE  VIH(min), CLK  VIL(max), tCK = 
+
+Operating Current (Burst mode)                                    IDD4    124 120                3, 4
+tCK =tCK(min), Outputs Open, Multi-bank interleave
+
+Refresh Current                                                   IDD5    160 150                3
+tRC  tRC(min)
+
+Self Refresh Current                                                      8         8
+
+CKE  0.2V ; for other inputs VIHVDD - 0.2V, VIL  0.2V             IDD6
+
+Confidential                                        - 21 of 57 -                                 Rev.1.2. March 2020
+                                                                           AS4C32M16SB
+
+Table 16. Electrical Characteristics and Recommended A.C. Operating Conditions
+
+(VDD = 3.3V � 0.3V, TA = -40~85캜) (Note: 5, 6, 7, 8)
+
+Symbol                     A.C. Parameter                      -6            -7
+                                                         Min. Max.     Min. Max. Unit Note
+
+tRC           Row cycle time (same bank)                 60         -  63  -
+
+tRFC Refresh cycle time                                  60         -  63  -
+
+tRCD RAS# to CAS# delay (same bank)                      18         -  21  -
+
+tRP           Precharge to refresh/row activate command  18         -  21  -
+
+              (same bank)
+
+tRRD Row activate to row activate delay                  12         -  14  -
+            (different banks)
+
+tMRD Mode register set cycle time                        12         -  14  -
+
+tRAS Row activate to precharge time (same bank) 42 120K 42 120K
+
+tWR           Write recovery time                        12         -  14  -
+
+tCK           Clock cycle time             CL* = 2 10 - 10 - ns 9
+                                           CL* = 3 6                -  7   -
+
+tCH           Clock high time                            2          - 2.5 -       10
+
+tCL           Clock low time                             2          - 2.5 -       10
+
+tAC Access time from CLK                   CL* = 2 -                6  -   6      10
+            (positive edge)
+                                           CL* = 3 -                5  - 5.4
+
+tOH           Data output hold time                      2.5 - 2.5 -              9
+
+tLZ           Data output low impedance                  0          -  0   -
+
+tHZ           Data output high impedance                 -          5  - 5.4      8
+
+tIS           Data/Address/Control Input set-up time     1.5 - 1.5 -              10
+
+tIH           Data/Address/Control Input hold time       0.8 - 0.8 -              10
+
+tPDE Power Down Exit set-up time                         tIS+tCK - tIS+tCK -
+
+tREFI Average Refresh interval time                      - 7.8 - 7.8 s
+
+tXSR Exit Self-Refresh to any Command                    tRC+tIS - tRC+tIS -  ns
+
+* CL is CAS Latency.
+
+Note:
+
+1. Stress greater than those listed under "Absolute Maximum Ratings" may cause permanent damage to the
+     device. Absolute maximum DC requirements contain stress ratings only. Functional operation at the
+     absolute maximum limits is not implied or guaranteed. Extended exposure to maximum ratings may affect
+     device reliability.
+
+2. All voltages are referenced to VSS. Overshoot VIH (Max) = 4.6V for pulse width  3ns. Undershoot VIL (Min) = -1.0V
+     for pulse width  3ns.
+
+3. These parameters depend on the cycle rate and these values are measured by the cycle rate under the
+     minimum value of tCK and tRC. Input signals are changed one time during every 2 tCK.
+
+4. These parameters depend on the output loading. Specified values are obtained with the output open.
+5. Power-up sequence is described in Note 11.
+
+6. A.C. Test Conditions
+
+Confidential                                          - 22 of 57 -                   Rev.1.2. March 2020
+                                                              AS4C32M16SB
+
+Table 17. LVTTL Interface                                                1.4V / 1.4V
+                                                      Reference to the Under Output Load (B)
+             Reference Level of Output Signals
+                            Output Load                                  2.4V / 0.4V
+                                                                              1ns
+                       Input Signal Levels                                    1.4V
+    Transition Time (Rise and Fall) of Input Signals
+
+              Reference Level of Input Signals
+
+                    3.3V                                             1.4V
+
+                    1.2K                                             50
+
+Output                                                Output
+
+              30pF  870                                       Z0=50        30pF
+
+Figure 18.1 LVTTL D.C. Test Load (A)                  Figure 18.2 LVTTL A.C. Test Load (B)
+
+7. Transition times are measured between VIH and VIL. Transition (rise and fall) of input signals are in a fixed
+     slope (1 ns).
+
+8. tHZ defines the time in which the outputs achieve the open circuit condition and are not at reference levels.
+
+9. If clock rising time is longer than 1 ns, (tR / 2 -0.5) ns should be added to the parameter.
+
+10. Assumed input rise and fall time tT (tR & tF) = 1 ns
+
+     If tR or tF is longer than 1 ns, transient time compensation should be considered, i.e., [(tr + tf)/2 - 1] ns
+     should be added to the parameter.
+
+11. Power up Sequence
+      Power up must be performed in the following sequence.
+      1) Power must be applied to VDD and VDDQ (simultaneously) when CKE= "LOW", DQM= "HIGH" and all
+          input signals are held "NOP" state.
+      2) Start clock and maintain stable condition for minimum 200 탎, then bring CKE "HIGH" and, it is
+          recommended that DQM is held "HIGH" (VDD levels) to ensure DQ output is in high impedance.
+      3) All banks must be precharged.
+      4) Mode Register Set command must be asserted to initialize the Mode register.
+      5) A minimum of 2 Auto-Refresh dummy cycles must be required to stabilize the internal circuitry of the
+          device.
+          * The Auto Refresh command can be issue before or after Mode Register Set command
+
+Confidential              - 23 of 57 -                               Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Timing Waveforms
+Figure 19. AC Parameters for Write Timing (Burst Length=4)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK           tCH        tIS                                                       Begin Auto                  Begin Auto
+CKE                 tCL       tIH                                                  Precharge Bank A            Precharge Bank B
+CS#
+                   tIS
+
+RAS#
+CAS#
+WE#
+
+BA0,1                        tIH                   RBx                                               RAy
+                         RAx                                                                         RAy
+A10                                CAx             RBx                             CBx                         CAy
+A0-A9,                   tIS
+A11-A12                  RAx
+DQM
+                                   tRCD                                            tDAL                        tIS
+DQ Hi-Z                                                                       tRC                                   tIH
+                                                                                   Bx0 Bx1 Bx2 Bx3                               Ay1  Ay2        tWR
+                                                    Ax0 Ax1 Ax2 Ax3                                             Ay0                        Ay3
+
+                         Activate  Write with      Activate                        Write with        Activate  Write                                     Precharge
+                         Command   Auto Precharge  Command                         Auto Precharge    Command   Command                                   Command
+                         Bank A    Command         Bank B                          Command           Bank A    Bank A                                    Bank A
+                                   Bank A                                          Bank B
+                                                                                                                                                      Don't Care
+
+Confidential                                                                       - 24 of 57 -                                            Rev.1.2. March 2020
+                                                                                                         AS4C32M16SB
+
+Figure 20. AC Parameters for Read Timing (Burst Length=2, CAS# Latency=2)
+
+                    T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16
+
+CLK                    tCH tCL                                                                Begin Auto            tIH
+CKE                 tIS tIS
+CS#                                                                                           Precharge Bank B
+                                             tIH
+
+RAS#
+CAS#
+
+WE#                       tIH                              RBx                                                           RAy
+                     RAx
+BA0,1                tIS                          CAx             RBx                    CBx                                             RAy
+                     RAx                             tRRD
+A10                                                                    tRAS                                           tRP
+A0-A9,                        tRCD                                                  tRC                  Bx0 Bx1
+A11-A12
+DQM                 Activate                               tAC
+                    Command                                tLZ tHZ
+DQ            Hi-Z  Bank A
+                                                                  Ax0 Ax1
+
+                                                  Read             tOH                   Read with       Precharge  tHZ
+                                                  Command                                Auto Precharge  Command               Activate
+                                                  Bank A   Activate                      Command         Bank A                Command
+                                                           Command                       Bank B                                Bank A
+                                                           Bank B
+                                                                                                                        Don't Care
+
+Confidential                                               - 25 of 57 -                                                                       Rev.1.2. March 2020
+                                                                        AS4C32M16SB
+
+Figure 21. Auto Refresh (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10                                                                     RAx
+
+A0-A9,                                                                  RAx             CAx
+
+A11-A12
+
+                             tRP                tRC                tRC            tRCD
+
+DQM
+
+DQ                                                                                                             Ax0 Ax1
+
+              Precharge All       Auto Refresh       Auto Refresh       Activate        Read
+              Command             Command            Command            Command         Command
+                                                                        Bank A          Bank A
+
+                                                                                                  Don't Care
+
+Confidential                                         - 26 of 57 -                            Rev.1.2. March 2020
+                                                                                                        AS4C32M16SB
+
+Figure 22. Power on Sequence and Auto Refresh
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK                 High Level                                                            Minimum for 2 Refresh Cycles are required
+CKE                 Is reguired
+CS#
+
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10                                               Address Key
+
+A0-A9                            tRP                           tMRD
+A11-A12
+
+DQM
+
+DQ            Hi-Z
+
+                                   Precharge All                     1st Auto Refresh(*)                2nd Auto Refresh(*)          Any
+                                   Command                           Command                            Command                      Command
+
+                    Inputs must be                Mode Register                                                                         Don't Care
+                    Stable for                    Set Command
+                    200s
+
+              Note(*): The Auto Refresh command can be issue before or after Mode Register Set command
+
+Confidential                                                         - 27 of 57 -                                                    Rev.1.2. March 2020
+                                                         AS4C32M16SB
+
+Figure 23. Self Refresh Entry & Exit Cycle
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19
+
+CLK                    *Note 2                  *Note 5  tXSR *Note 8
+CKE
+CS#           *Note 1
+
+                                  *Note 3,4                                                             tPDE
+                                                         tIS tIH
+              tIS                                        *Note 6
+
+                                                         *Note 7
+
+RAS#                                                                                                          *Note 9
+CAS#
+WE#
+
+BA0,1
+
+A10               Hi-Z                          Hi-Z
+A0-A9,
+A11-A12       Self Refresh Entry                                Self Refresh Exit
+DQM
+
+DQ
+
+                                                                                   Auto Refresh
+
+                                                                                          Don't Care
+
+Note: To Enter SelfRefresh Mode
+1. CS#, RAS# & CAS# with CKE should be low at the same clock cycle.
+2. After 1 clock cycle, all the inputs including the system clock can be don't care except for CKE.
+3. The device remains in SelfRefresh mode as long as CKE stays "low".
+4. Once the device enters SelfRefresh mode, minimum tRAS is required before exit from SelfRefresh.
+
+    To Exit SelfRefresh Mode
+5. System clock restart and be stable before returning CKE high.
+6. Enable CKE and CKE should be set high for valid setup time and hold time.
+7. CS# starts from high.
+8. Minimum tXSR is required after CKE going high to complete SelfRefresh exit.
+9. 8192 cycles of burst AutoRefresh is required before SelfRefresh entry and after SelfRefresh exit if the
+
+    system uses burst refresh.
+
+Confidential                      - 28 of 57 -                                                                Rev.1.2. March 2020
+                                                                           AS4C32M16SB
+
+Figure 24.1. Clock Suspension During Burst Read (Using CKE)
+
+                     (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+
+RAS#
+CAS#
+
+WE#
+
+BA0,1
+
+A10                  RAx
+
+A0-A9,               RAx       CAx
+
+A11-A12
+
+DQM
+
+               Hi-Z                     Ax0  Ax1            Ax2                                  tHZ
+                                                                              Ax3
+DQ
+                                                                           Clock Suspend
+                     Activate  Read          Clock Suspend  Clock Suspend  3 Cycles
+                     Command   Command       1 Cycle        2 Cycles
+                     Bank A    Bank A
+
+                                                                                                      Don't Care
+
+Confidential                                      - 29 of 57 -                                        Rev.1.2. March 2020
+                                                                           AS4C32M16SB
+
+Figure 24.2. Clock Suspension During Burst Read (Using CKE)
+
+                      (Burst Length=4, CAS# Latency=3)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+
+RAS#
+CAS#
+
+WE#
+
+BA0,1
+
+A10                  RAx
+
+A0-A9,               RAx         CAx
+
+A11-A12                        Read
+                               Command
+DQM                            Bank A
+
+               Hi-Z                     Ax0  Ax1            Ax2                                  tHZ
+                                                                              Ax3
+DQ
+                                                                           Clock Suspend
+                     Activate                Clock Suspend  Clock Suspend  3 Cycles
+                     Command                 1 Cycle        2 Cycles
+                     Bank A
+
+                                                                                                      Don't Care
+
+Confidential                                 - 30 of 57 -                                             Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 25. Clock Suspension During Burst Write (Using CKE)
+
+                  (Burst Length=4)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+
+RAS#
+CAS#
+
+WE#
+
+BA0,1
+
+A10                  RAx
+
+A0-A9,               RAx       CAx
+
+A11-A12
+
+DQM
+
+               Hi-Z            DAx0  DAx1               DAx2                                 DAx3
+
+DQ                                                                     Clock Suspend
+                                                                       3 Cycles
+                     Activate            Clock Suspend  Clock Suspend
+                     Command             1 Cycle        2 Cycles
+                     Bank A    Write
+                               Command
+                               Bank A                                                              Don't Care
+
+Confidential                                            - 31 of 57 -                               Rev.1.2. March 2020
+                                                                                                       AS4C32M16SB
+
+Figure 26. Power Down Mode and Clock Suspension (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK                                     tIH tIS                                                                             tPDE
+CKE
+CS#                                                                                             Valid
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10                 RAx
+
+A0-A9,              RAx                            CAx
+
+A11-A12
+
+DQM
+
+              Hi-Z                                                                              tHZ
+
+DQ                                                          Ax0 Ax1           Ax2  Ax3
+
+                              ACTIVE                                                                 Precharge   PRECHARGE
+                                                                                                     Command     STANDBY
+                    Activate  STANDBY              Read     Clock Suspension  Clock Suspension       Bank A                 Power Down
+                                                            Start             End                                           Mode Exit
+                    Command                        Command                                           Power Down
+                                                                                                     Mode Entry                          Any
+                    Bank A                         Bank A                                                                                Command
+
+                            Power Down  Power Down                                                                          Don't Care
+
+                            Mode Entry  Mode Exit
+
+Confidential                                                - 32 of 57 -                                                    Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 27.1. Random Column Read (Page within same Bank)
+
+                      (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAw                                                                     RAz
+
+A0-A9,        RAw                   CAw      CAx      CAy                             RAz        CAz
+
+A11-A12                                                                                                                Az0
+                                                                                                Read
+DQM                                                                                             Command
+                                                                                                Bank A
+DQ            Hi-Z                           Aw0 Aw1 Aw2 Aw3 Ax0 Ax1 Ay0 Ay1 Ay2 Ay3
+                                                                                                   Don't Care
+                          Activate  Read     Read     Read      Precharge             Activate
+                          Command   Command  Command  Command   Command               Command
+                          Bank A    Bank A   Bank A   Bank A    Bank A                Bank A
+
+Confidential                                      - 33 of 57 -                                  Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 27.2. Random Column Read (Page within same Bank)
+
+                      (Burst Length=4, CAS# Latency=3)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAw                                                                     RAz
+
+A0-A9,        RAw                   CAw      CAx      CAy                             RAz        CAz
+
+A11-A12                                                                                         Read
+                                                                                                Command
+DQM                                                                                             Bank A
+
+DQ            Hi-Z                           Aw0 Aw1 Aw2 Aw3 Ax0 Ax1 Ay0 Ay1 Ay2 Ay3             Don't Care
+
+                          Activate  Read     Read     Read      Precharge             Activate
+                          Command   Command  Command  Command   Command               Command
+                          Bank A    Bank A   Bank A   Bank A    Bank A                Bank A
+
+Confidential                                      - 34 of 57 -                                  Rev.1.2. March 2020
+                                                                                       AS4C32M16SB
+
+Figure 28. Random Column Write (Page within same Bank)
+
+                  (Burst Length=4)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RBw                                                                                 RBz
+
+A0-A9,        RBw                   CBw      CBx      CBy                                         RBz       CBz
+
+A11-A12
+
+DQM
+
+DQ            Hi-Z                  DBw0 DBw1 DBw2 DBw3 DBx0 DBx1 DBy0 DBy1 DBy2 DBy3                            DBz0 DBz1
+
+                          Activate  Write    Write    Write                            Precharge  Activate       Write
+                          Command   Command  Command  Command                          Command    Command        Command
+                          Bank B    Bank B   Bank B   Bank B                           Bank B     Bank B         Bank B
+
+                                                                                                            Don't Care
+
+Confidential                                      - 35 of 57 -                                              Rev.1.2. March 2020
+                                                                                  AS4C32M16SB
+
+Figure 29.1. Random Row Read (Interleaving Banks)
+
+                      (Burst Length=8, CAS# Latency=2)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+              High
+
+CS#
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RBx                              RAx                                                  RBy
+                                               RAx                                                  RBy
+A0-A9,        RBx           CBx                              CAx                  tRP                            CBy
+A11-A12               tRCD                tAC
+
+DQM
+
+DQ            Hi-Z                             Bx0 Bx1 Bx2 Bx3 Bx4 Bx5 Bx6 Bx7  Ax0 Ax1 Ax2 Ax3 Ax4 Ax5 Ax6 Ax7
+
+               Activate     Read               Activate      Read                 Activate                           Read
+               Command      Command            Command       Command              Command                            Command
+               Bank B       Bank B             Bank A        Bank A               Bank B                             Bank B
+
+                                                                       Precharge                         Don't Care
+                                                                       Command
+                                                                       Bank B
+
+Confidential                                   - 36 of 57 -                                              Rev.1.2. March 2020
+                                                                                        AS4C32M16SB
+
+Figure 29.2. Random Row Read (Interleaving Banks)
+
+                      (Burst Length=8, CAS# Latency=3)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+              High
+
+CS#
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RBx                                         RAx                                             RBy
+                                                          RAx                                             RBy
+A0-A9,        RBx           CBx                                     CAx                 tRP                    CBy
+A11-A12               tRCD                           tAC
+
+DQM
+
+DQ            Hi-Z                                        Bx0 Bx1 Bx2 Bx3 Bx4 Bx5 Bx6 Bx7 Ax0 Ax1 Ax2 Ax3 Ax4 Ax5 Ax6 Ax7 By0
+
+               Activate     Read                          Activate  Read     Precharge  Activate               Read     Precharge
+               Command      Command                       Command   Command  Command    Command                Command  Command
+               Bank B       Bank B                        Bank A    Bank A   Bank B     Bank B                 Bank B   Bank A
+
+                                                                                                                        Don't Care
+
+Confidential                                                   - 37 of 57 -                                         Rev.1.2. March 2020
+                                                                               AS4C32M16SB
+
+Figure 30. Random Row Write (Interleaving Banks)
+
+                  (Burst Length=8)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+CS#           High
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx                                RBx                                             RAy
+                                                 RBx                                             RAy
+A0-A9, RAx                              CAx                CBx                 tRP                    CAy
+                                                              tWR*                                       tWR*
+A11-A12
+
+                                  tRCD
+
+DQM
+
+DQ            Hi-Z                      DAx0 DAx1 DAx2 DAx3 DAx4 DAx5 DAx6 DAx7 DBx0 DBx1 DBx2 DBx3 DBx4 DBx5 DBx6 DBx7 DAy0 DAy1 DAy2 DAy3
+
+              Activate                  Write    Activate  Write    Precharge  Activate               Write    Precharge
+              Command                   Command  Command   Command  Command    Command                Command  Command
+              Bank A                    Bank A   Bank B    Bank B   Bank A     Bank A                 Bank A   Bank B
+
+              *tWR>tWR (min.)                                                                                  Don't Care
+
+Confidential                                          - 38 of 57 -                                             Rev.1.2. March 2020
+                                                                                                         AS4C32M16SB
+
+Figure 31.1. Read and Write Cycle (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx
+
+A0-A9,        RAx                   CAx                                     CAy                          CAz
+
+A11-A12
+
+DQM
+
+DQ            Hi-Z                                         Ax0 Ax1 Ax2 Ax3  DAy0 DAy1  DAy3                       Az0 Az1  Az3
+
+                          Activate  Read                                    Write      The Write Data    Read     The Read Data
+                          Command   Command                                 Command    is Masked with a  Command  is Masked with a
+                          Bank A    Bank A                                  Bank A     Zero Clock        Bank A   Two Clock
+                                                                                       Latency                    Latency
+
+                                                                                                                   Don't Care
+
+Confidential                             - 39 of 57 -                                                             Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 31.2. Read and Write Cycle (Burst Length=4, CAS# Latency=3)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx
+
+A0-A9,        RAx       CAx                       CAy                        CAz
+
+A11-A12
+
+DQM
+
+DQ Hi-Z                          Ax0 Ax1 Ax2 Ax3  DAy0 DAy1  DAy3                 Az0 Az1  Az3
+
+              Activate  Read                      Write      The Write Data       The Read Data
+              Command   Command                   Command                         is Masked with a
+              Bank A    Bank A                    Bank A     is Masked with a     Two Clock
+                                                                                  Latency
+                                                             Zero Clock  Read
+                                                             Latency     Command  Don't Care
+
+                                                                         Bank A
+
+Confidential                     - 40 of 57 -                                     Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 32.1. Interleaving Column Read Cycle (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx                   CAy      RBx       CBw           CBx      CBy      CAy      CBz
+                                             RBx
+A0-A9,        RAx
+A11-A12               tRCD
+
+DQM
+
+DQ            Hi-Z                           tAC                     Bw0 Bw1 Bx0 Bx1 By0 By1 Ay0 Ay1 Bz0 Bz1 Bz2 Bz3
+                                                    Ax0 Ax1 Ax2 Ax3
+                          Activate
+                          Command   Read     Activate  Read          Read     Read     Read     Read     Precharge  Precharge
+                          Bank A    Command  Command   Command       Command  Command  Command  Command  Command    Command
+                                    Bank A   Bank B    Bank B        Bank B   Bank B   Bank A   Bank B   Bank A     Bank B
+
+                                                                                                                    Don't Care
+
+Confidential                                           - 41 of 57 -                                      Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 32.2. Interleaved Column Read Cycle (Burst Length=4, CAS# Latency=3)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx                             RBx       CBx      CBy       CBz      CAy
+                                    CAx RBx
+A0-A9,        RAx
+A11-A12               tRCD
+
+DQM
+
+DQ            Hi-Z                                      tAC
+                                                               Ax0 Ax1 Ax2 Ax3 Bx0 Bx1 By0 By1 Bz0 Bz1 Ay0 Ay1 Ay2 Ay3
+                          Activate
+                          Command   Read                Read     Read      Read     Read     Precharge  Precharge
+                          Bank A    Command             Command  Command   Command  Command  Command    Command
+                                    Bank A              Bank B   Bank B    Bank B   Bank A   Bank B     Bank A
+
+                                              Activate                                                             Don't Care
+                                              Command
+                                              Bank B
+
+Confidential                                                 - 42 of 57 -                                          Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 33. Interleaved Column Write Cycle (Burst Length=4)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx           RBw
+
+A0-A9,        RAx           CAx RBw             CBw      CBx       CBy      CAy      CBz
+A11-A12               tRCD
+DQM                                                                                  tWR                   tWR
+
+DQ Hi-Z                     tRRD>tRRD (min)
+                                      DAx0 DAx1 DAx2 DAx3 DBw0 DBw1 DBx0 DBx1 DBy0 DBy1 DAy0 DAy1 DBz0 DBz1 DBz2 DBz3
+
+              Activate      Write               Write    Write     Write    Write    Write                                Precharge
+              Command       Command             Command  Command   Command  Command  Command                              Command
+              Bank A        Bank A              Bank B   Bank B    Bank B   Bank A   Bank B                               Bank B
+
+                                      Activate                                                  Precharge              Don't Care
+                                      Command                                                   Command
+                                      Bank B                                                    Bank A
+
+Confidential                                         - 43 of 57 -                                                      Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 34.1. Auto Precharge after Read Burst (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK           High                                          Begin Auto                   Begin Auto
+CKE                                                         Precharge                    Precharge
+CS#                                                         Bank B                       Bank A
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx                 RBx                                               RBy                              RAz
+                                  RBx                                               RBy
+A0-A9, RAx               CAx                CBx                  CAy                                 CBy             RAz
+A11-A12                                                                        tRP
+
+DQM
+
+DQ            Hi-Z                Ax0 Ax1 Ax2 Ax3           Bx0 Bx1 Bx2 Bx3 Ay0 Ay1 Ay2 Ay3                          By0 By1 By2
+
+               Activate  Read     Activate  Read with            Read with          Activate         Read with       Activate
+               Command   Command  Command   Auto Precharge       Auto precharge     Command          Auto Precharge  Command
+               Bank A    Bank A   Bank B    Command              Command            Bank B           Command         Bank A
+                                            Bank B               Bank A                              Bank B
+                                                                                                                        Don't Care
+
+Confidential                                       - 44 of 57 -                                                      Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 34.2. Auto Precharge after Read Burst (Burst Length=4, CAS# Latency=3)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK           High                                             Begin Auto           Begin Auto
+CKE                                                            Precharge            Precharge
+CS#                                                            Bank B               Bank A
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx        RBx                                                   RBy
+                                                                               RBy
+A0-A9, RAx               CAx RBx               CBx             CAy                              CBy
+A11-A12                                                              tRP
+
+DQM
+
+DQ            Hi-Z                             Ax0 Ax1 Ax2 Ax3 Bx0 Bx1 Bx2 Bx3 Ay0 Ay1 Ay2 Ay3                  By0 By1 By2
+
+               Activate  Read                  Read with       Read with       Activate         Read with         Don't Care
+               Command   Command               Auto Precharge  Auto Precharge  Command          Auto Precharge
+               Bank A    Bank A                Command         Command         Bank B           Command
+                                               Bank B          Bank A                           Bank B
+                                     Activate
+                                     Command
+                                     Bank B
+
+Confidential                                                   - 45 of 57 -                                     Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 35. Auto Precharge after Write Burst (Burst Length=4)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK           High                                             Begin Auto                  Begin Auto
+CKE                                                            Precharge                   Precharge
+CS#                                                            Bank B                      Bank A
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx        RBx                                                          RBy
+
+A0-A9, RAx               CAx RBx               CBx             CAy                    RBy              CBy
+A11-A12                                                              tDAL
+
+DQM
+
+DQ            Hi-Z       DAx0 DAx1 DAx2 DAx3 DBx0 DBx1 DBx2 DBx3 DAy0 DAy1 DAy2 DAy3                   DBy0 DBy1 DBy2 DBy3
+
+               Activate  Write                 Write with      Write with             Activate         Write with
+               Command   Command               Auto Precharge  Auto Precharge         Command          Auto Precharge
+               Bank A    Bank A                Command         Command                Bank B           Command
+                                               Bank B          Bank A                                  Bank B
+                                     Activate
+                                     Command                                                                           Don't Care
+                                     Bank B
+
+Confidential                                                   - 46 of 57 -                                            Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 36.1. Full Page Read Cycle (Burst Length=Full Page, CAS# Latency=2)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+CS#           High
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx                 RBx                                                                                          RBy
+
+A0-A9, RAx               CAx      RBx                                  CBx                                                     RBy
+A11-A12                                                                                                       tRP
+
+DQM
+
+DQ            Hi-Z                Ax Ax+1 Ax+2 Ax-2 Ax-1 Ax Ax+1 Bx Bx+1 Bx+2 Bx+3 Bx+4 Bx+5 Bx+6
+
+               Activate  Read     Activate  The burst counter wraps    Read                        Precharge     Activate
+               Command   Command  Command   from the highest order     Command                     Command       Command
+               Bank A    Bank A   Bank B    page address back to zero  Bank B                      Bank B        Bank B
+                                            during this time interval
+                                                                                           Burst Stop         Don't Care
+                                            Full Page burst operation does not             Command
+                                            terminate when the burst length is satisfied;
+                                            the burst counter increments and continues
+                                            Bursting beginning with the starting address
+
+Confidential                                - 47 of 57 -                                                      Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 36.2. Full Page Read Cycle (Burst Length=Full Page, CAS# Latency=3)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+CS#           High
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx                 RBx                                                                                                                       RBy
+
+A0-A9, RAx               CAx      RBx       CBx                                                                                                             RBy
+A11-A12                                                                                                                                    tRP
+
+DQM
+
+DQ            Hi-Z                          Ax Ax+1 Ax+2 Ax-2 Ax-1 Ax Ax+1 Bx Bx+1 Bx+2 Bx+3 Bx+4 Bx+5
+
+               Activate  Read     Activate                                      Read                                            Precharge  Activate
+               Command   Command  Command                                       Command                                         Command    Command
+               Bank A    Bank A   Bank B                                        Bank B                                          Bank B     Bank B
+                                            The burst counter wraps
+                                            from the highest order                                                      Burst Stop             Don't Care
+                                            page address back to zero                                                   Command
+                                            during this time interval
+
+                                                                         Full Page burst operation does not
+                                                                         terminate when the burst length is satisfied;
+                                                                         the burst counter increments and continues
+                                                                         Bursting beginning with the starting address
+
+Confidential                                - 48 of 57 -                                                                                   Rev.1.2. March 2020
+                                                                                                            AS4C32M16SB
+
+Figure 37. Full Page Write Cycle (Burst Length=Full Page)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+CS#           High
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx                 RBx                                                                                                   RBy
+                                  RBx                                                                                                   RBy
+A0-A9, RAx               CAx                                            CBx
+A11-A12
+
+DQM
+
+                                                                                                                       Data is ignored
+
+DQ            Hi-Z       DAx DAx+1 DAx+2 DAx+3 DAx-1 DAx DAx+1 DBx DBx+1 DBx+2 DBx+3 DBx+4 DBx+5
+
+               Activate  Write    Activate                              Write                                          Precharge        Activate
+               Command   Command  Command                               Command                                        Command          Command
+               Bank A    Bank A   Bank B                                Bank B                                         Bank B           Bank B
+
+                                             The burst counter wraps                                                   Burst Stop           Don't Care
+                                             from the highest order
+                                             page address back to zero  Full Page burst operation does not             Command
+                                             during this time interval
+                                                                        terminate when the burst length is satisfied;
+
+                                                                        the burst counter increments and continues
+
+                                                                        bursting beginning with the starting address
+
+Confidential                           - 49 of 57 -                                                                                     Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 38. Byte Read and Write Operation (Burst Length=4, CAS# Latency=2)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+CS#           High
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx
+
+A0-A9,        RAx                      CAx                              CAy                       CAz
+
+A11-A12
+
+LDQM
+
+UDQM                                            Ax0 Ax1 Ax2                  DAy1 Day2                     Az1 Az2
+
+DQ0-DQ7                                         Ax1 Ax2 Ax3             DAy0 DAy1       DAy3               Az0 Az1 Az2 Az3
+
+DQ8-DQ15                               Read     Upper Byte  Lower Byte  Write         Upper Byte  Read            Lower Byte  Lower Byte
+                                       Command  is masked   is masked   Command       is masked   Command         is masked   is masked
+                             Activate  Bank A                           Bank A                    Bank A
+                             Command                                                                                          Don't Care
+                             Bank A
+
+Confidential                                                            - 50 of 57 -                                          Rev.1.2. March 2020
+                                                                                                       AS4C32M16SB
+
+Figure 39. Random Row Read (Interleaving Banks)
+
+                 (Burst Length=4, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK           High                             Begin Auto         Begin Auto                           Begin Auto              Begin Auto
+CKE                                            Precharge          Precharge                            Precharge               Precharge
+CS#                                            Bank B             Bank A                               Bank B                  Bank A
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RBu                 RAu                        RBv                                  RAv                     RBw
+                        CBu RAu                              RBv                                                          RBw
+A0-A9, RBu                                     CAu                                     CBv RAv         CAv
+A11-A12                                                 tRP                tRP                                       tRP
+
+DQM
+
+DQ                                     Bu0 Bu1 Bu2 Bu3 Au0 Au1 Au2 Au3                                 Bv0 Bv1 Bv2 Bv3 Av0 Av1 Av2 Av3
+
+              Activate               Activate  Read          Activate                    Activate      Read               Activate
+              Command                Command   Bank A        Command                     Command       Bank A             Command
+              Bank B    Read Bank A            with Auto     Bank B                      Bank A        with Auto          Bank B
+                        Bank B                 Precharge                      Read                     Precharge
+                        with Auto                                             Bank B                                         Don't Care
+                        Precharge                                             with Auto
+                                                                              Precharge
+
+Confidential                                                 - 51 of 57 -                                                 Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 40. Full Page Random Column Read (Burst Length=Full Page, CAS# Latency=2)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx         RBx                                                                                     RBw
+
+A0-A9,        RAx         RBx CAx              CBx CAy                 CBy      CAz      CBz                      RBw
+A11-A12             tRRD         tRCD
+DQM                                                                                               tRP
+
+DQ Hi-Z                                        Ax0 Ax1 Bx0 Ay0 Ay1 By0 By1 Az0 Az1 Az2 Bz0 Bz1 Bz2
+
+              Activate    Activate             Read                    Read     Read     Read     Precharge       Activate
+              Command     Command              Command                 Command  Command  Command
+              Bank A      Bank B               Bank B                  Bank B   Bank A   Bank B   Command Bank B  Command
+
+                                      Read                    Read                                (Precharge Temination) Bank B
+                                      Command                 Command
+                                      Bank A                  Bank A                                              Don't Care
+
+Confidential                                                           - 52 of 57 -                               Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 41. Full Page Random Column Write (Burst Length=Full Page)
+
+              T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+
+CLK
+CKE
+CS#
+RAS#
+CAS#
+WE#
+
+BA0,1
+
+A10           RAx                                RBx                                                                                           RBw
+
+A0-A9,        RAx                                RBx CAx              CBx CAy             CBy      CAz      CBz                                RBw
+A11-A12
+                                                                                                                          tWR         tRP
+DQM
+
+                                           tRRD       tRCD
+                                                        DAx0 DAx1 DBx0 DAy0 DAy1 DBy0 DBy1 DAz0 DAz1 DAz2 DBz0 DBz1 DBz2
+DQ Hi-Z
+
+              Activate                           Activate             Write               Write    Write    Write              Precharge       Activate
+              Command                            Command              Command             Command  Command  Command
+              Bank A                             Bank B               Bank B              Bank B   Bank A   Bank B             Command Bank B  Command
+
+                                                             Write               Write                                         (Precharge Temination) Bank B
+                                                             Command             Command
+                                                             Bank A              Bank A                                   Write Data           Don't Care
+                                                                                                                          are masked
+
+Confidential                                                                              - 53 of 57 -                                     Rev.1.2. March 2020
+                                                                              AS4C32M16SB
+
+Figure 42. Precharge Termination of a Burst
+
+                  (Burst Length=4, 8 or Full Page, CAS# Latency=3)
+
+CLK               T0 T1 T2 T3 T4 T5 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22
+CKE
+              High
+
+CS#
+
+RAS#
+
+CAS#
+
+WE#
+
+BA0,1
+
+A10           RAx                                      RAy                                                RAz
+
+A0-A9, RAx              CAx                            RAy           CAy                                  RAz
+                                                                                         tRP
+A11-A12
+
+                                 tWR              tRP
+
+DQM
+
+DQ                      DAx0 DAx1                                             Ay0 Ay1 Ay2
+
+              Activate  Write         Precharge        Activate      Read     Precharge    Activate            Precharge Termination
+              Command                                  Command       Command  Command      Command             of a Read Burst
+              Bank B    Command       Command          Bank A        Bank A   Bank A       Bank A
+                                                                                                                  Don't Care
+                        Bank A        Bank A
+
+                                Precharge Termination
+
+                                of a Write Burst
+
+                                Write Data are masked
+
+Confidential                                           - 54 of 57 -                                            Rev.1.2. March 2020
+                                             AS4C32M16SB
+
+Figure 43. 54 Pin TSOP II Package Outline Drawing Information
+
+Symbol             Dimension in inch            Dimension in mm
+
+    A         Min    Nom    Max            Min           Nom    Max
+   A1
+   A2         ---    ---    0.047          ---           ---     1.2
+    B
+    C         0.002  ---    0.008          0.05          ---     0.2
+    D
+    E         0.035  0.039  0.043          0.9           1.0     1.1
+    e
+   HE         0.01   0.014  0.018          0.25          0.35   0.45
+    L
+   L1         0.004  0.006  0.008          0.12          0.165  0.21
+    S
+    y         0.87   0.875  0.88           22.09         22.22  22.35
+    
+              0.395  0.400  0.405          10.03         10.16  10.29
+
+              ---    0.031            ---  ---           0.8     ---
+
+              0.455  0.463  0.471          11.56         11.76  11.96
+
+              0.016  0.02   0.024          0.4           0.5     0.6
+
+                     0.032            ---  ---           0.84    ---
+
+              ---    0.028            ---  ---           0.71    ---
+
+              ---    ---    0.004          ---           ---     0.1
+
+              0�     ---              8�   0�            ---     8�
+
+Confidential                               - 55 of 57 -                Rev.1.2. March 2020
+                                              AS4C32M16SB
+
+Figure 44. 54 Ball FBGA Package 8 x 8 x 1.2mm (max) Outline Drawing Information
+
+              Symbol      Dimension in inch          Dimension in mm
+
+                  A   Min  Nom    Max            Min   Nom   Max
+                 A1
+                 A2   --   --     0.047          --    --    1.20
+                  D
+                  E   0.010 0.012 0.014          0.25  0.30  0.35
+                 D1
+                 E1   --   0.033             --  --    0.85           --
+                  e
+                  b   0.311 0.315 0.319          7.90  8.00  8.10
+                  F
+                      0.311 0.315 0.319          7.90  8.00  8.10
+
+                      --   0.252             --  --    6.40           --
+
+                      --   0.252             --  --    6.40           --
+
+                      --   0.031             --  --    0.80           --
+
+                      0.016 0.018 0.020          0.40  0.45  0.50
+
+                      --   0.126             --  --    3.20           --
+
+Confidential                      - 56 of 57 -                            Rev.1.2. March 2020
+                                                    AS4C32M16SB
+
+PART NUMBERING SYSTEM
+
+AS4C          32M16SB           6/7        T/B            C / I               N
+
+DRAM          32M16=32Mx16  6=166MHz  T = TSOPII    C=Commercial     Indicates Pb and
+                 S = SDRAM  7=143MHz  B= FBGA        (0� C~+70� C)    Halogen Free
+                   B=B die                           I = Industrial
+                                                    (-40� C~+85� C)
+
+Alliance Memory, Inc.
+12815 NE 124th st. STE#D,
+Kirkland, WA 98034
+Tel: 425-898-4456
+Fax: 425-896-8628
+www.alliancememory.com
+
+Copyright � Alliance Memory
+All Rights Reserved
+
+� Copyright 2007 Alliance Memory, Inc. All rights reserved. Our three-point logo, our name and
+Intelliwatt are trademarks or registered trademarks of Alliance. All other brand and product names
+may be the trademarks of their respective companies. Alliance reserves the right to make changes
+to this document and its products at any time without notice. Alliance assumes no responsibility for
+any errors that may appear in this document. The data contained herein represents Alliance's best
+data and/or estimates at the time of issuance. Alliance reserves the right to change or correct this
+data at any time, without notice. If the product described herein is under development, significant
+changes to these specifications are possible. The information in this product data sheet is intended
+to be general descriptive information for potential customers and users, and is not intended to
+operate as, or provide, any guarantee or warrantee to any user or customer. Alliance does not
+assume any responsibility or liability arising out of the application or use of any product described
+herein, and disclaims any express or implied warranties related to the sale and/or use of Alliance
+products including liability or warranties related to fitness for a particular purpose, merchantability,
+or infringement of any intellectual property rights, except as express agreed to in Alliance's Terms
+and Conditions of Sale (which are available from Alliance). All sales of Alliance products are made
+exclusively according to Alliance's Terms and Conditions of Sale. The purchase of products from
+Alliance does not convey a license under any patent rights, copyrights; mask works rights,
+trademarks, or any other intellectual property rights of Alliance or third parties. Alliance does not
+authorize its products for use as critical components in life-supporting systems where a
+malfunction or failure may reasonably be expected to result in significant injury to the user, and the
+inclusion of Alliance products in such life-supporting systems implies that the manufacturer
+assumes all risk of such use and agrees to indemnify Alliance against all claims arising from such
+use.
+
+Confidential                          - 57 of 57 -                   Rev.1.2. March 2020
+

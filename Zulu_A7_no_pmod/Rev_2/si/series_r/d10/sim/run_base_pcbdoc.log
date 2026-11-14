@@ -1,0 +1,25 @@
+D13  read  typ pcbdoc base   r0    parts pin -0.516/3.569 die -0.481/3.711 ball budget 76.2% die 20.7% t_end 32.00 conn True
+D15  read  typ pcbdoc base   r0    parts pin -0.469/3.597 die -0.445/3.650 ball budget 21.5% die 12.8% t_end 32.00 conn True
+D14  read  typ pcbdoc base   r0    parts pin -0.572/3.799 die -0.441/3.681 ball budget 168.9% die 14.9% t_end 32.00 conn True
+D10  read  typ pcbdoc base   r0    parts pin -0.775/3.670 die -0.534/3.779 ball budget 4605.3% die 52.3% t_end 32.00 conn True
+D0   read  typ pcbdoc base   r0    parts pin -0.678/3.943 die -0.453/3.715 ball budget 1055.3% die 37.5% t_end 32.00 conn True
+D5   read  typ pcbdoc base   r0    parts pin -0.851/3.798 die -0.522/3.764 ball budget 31269.3% die 60.9% t_end 32.00 conn True
+D14  write typ pcbdoc base   r0    parts pin -0.301/3.360 die -0.407/3.442 absmax pin True die True t_end 32.00 conn True
+D15  write typ pcbdoc base   r0    parts pin -0.259/3.341 die -0.390/3.418 absmax pin True die True t_end 32.00 conn True
+D13  write typ pcbdoc base   r0    parts pin -0.257/3.326 die -0.386/3.392 absmax pin True die True t_end 32.00 conn True
+D10  write typ pcbdoc base   r0    parts pin -0.316/3.377 die -0.405/3.423 absmax pin True die True t_end 32.00 conn True
+D0   write typ pcbdoc base   r0    parts pin -0.306/3.384 die -0.430/3.456 absmax pin True die True t_end 32.00 conn True
+D5   write typ pcbdoc base   r0    parts pin -0.326/3.388 die -0.400/3.438 absmax pin True die True t_end 32.00 conn True
+D14  read  max pcbdoc base   r0    parts pin -0.836/4.143 die -0.450/3.886 ball budget 31238.7% die 42.6% t_end 32.00 conn True
+D15  read  max pcbdoc base   r0    parts pin -0.560/3.898 die -0.439/3.866 ball budget 368.0% die 17.0% t_end 32.00 conn True
+D13  read  max pcbdoc base   r0    parts pin -0.618/3.862 die -0.486/3.928 ball budget 507.5% die 27.6% t_end 32.00 conn True
+D10  read  max pcbdoc base   r0    parts pin -0.809/3.981 die -0.521/3.978 ball budget 12844.5% die 54.6% t_end 32.00 conn True
+D0   read  max pcbdoc base   r0    parts pin -0.889/4.230 die -0.464/3.899 ball budget 73534.3% die 46.2% t_end 32.00 conn True
+D5   read  max pcbdoc base   r0    parts pin -0.956/4.124 die -0.515/3.964 ball budget 100000000000.0% die 78.7% t_end 32.00 conn True
+D14  write max pcbdoc base   r0    parts pin -0.323/3.599 die -0.517/3.659 absmax pin True die True t_end 32.00 conn True
+D15  write max pcbdoc base   r0    parts pin -0.283/3.599 die -0.482/3.663 absmax pin True die True t_end 32.00 conn True
+D13  write max pcbdoc base   r0    parts pin -0.302/3.620 die -0.454/3.660 absmax pin True die True t_end 32.00 conn True
+D10  write max pcbdoc base   r0    parts pin -0.393/3.625 die -0.485/3.637 absmax pin True die True t_end 32.00 conn True
+D0   write max pcbdoc base   r0    parts pin -0.382/3.611 die -0.562/3.621 absmax pin True die True t_end 32.00 conn True
+D5   write max pcbdoc base   r0    parts pin -0.376/3.623 die -0.498/3.668 absmax pin True die True t_end 32.00 conn True
+done: 24 cases, 0 errors

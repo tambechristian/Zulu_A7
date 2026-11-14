@@ -1,0 +1,19 @@
++0.0003  track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762                        vs track Top UDQM (39.812,11.590)-(39.812,14.050) w0.0762
++0.0003  track Top D10 (39.650,14.500)-(39.978,14.500) w0.0762                       vs track Top D11 (40.145,12.380)-(40.145,14.950) w0.0762
++0.0100  via SDRAM-D8 (38.500,13.600) Top>Bottom d0.35                               vs via CKE (38.500,13.150) Top>Bottom d0.35
++0.0100  via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35                              vs via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
++0.0100  via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35                              vs via UDQM (38.500,14.050) Top>Bottom d0.35
++0.0319  pad R129-1                                                                  vs track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762
++0.0319  pad R129-2                                                                  vs track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762
++0.0339  pad R127-2                                                                  vs track Top UDQM (39.812,11.590)-(39.812,14.050) w0.0762
++0.0346  pad R130-1                                                                  vs via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30
++0.0346  pad R130-2                                                                  vs via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30
++0.1255  pad R127-1                                                                  vs via CKE (38.500,13.150) Top>Bottom d0.35
++0.1419  track Top D10 (39.510,14.360)-(39.650,14.500) w0.0762                       vs pad R130-2
++0.1438  track Top SDRAM-D10 (38.770,14.500)-(38.910,14.360) w0.0762                 vs track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762
++0.1469  track Top SDRAM-D8 (38.500,13.600)-(38.900,13.600) w0.0762                  vs via CKE (38.500,13.150) Top>Bottom d0.35
++0.1469  track Top SDRAM-D11 (38.500,14.950)-(39.100,14.950) w0.0762                 vs via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
++0.1469  track Top SDRAM-D10 (38.500,14.500)-(38.770,14.500) w0.0762                 vs via UDQM (38.500,14.050) Top>Bottom d0.35
++0.1611  track Top D11 (39.700,14.950)-(40.145,14.950) w0.0762                       vs via PROG# (40.450,14.600) Top>Bottom d0.35
++0.1829  track Top SDRAM-D11 (39.100,14.950)-(39.100,14.920) w0.0762                 vs via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30
++0.1829  track Top D11 (39.700,14.920)-(39.700,14.950) w0.0762                       vs via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30

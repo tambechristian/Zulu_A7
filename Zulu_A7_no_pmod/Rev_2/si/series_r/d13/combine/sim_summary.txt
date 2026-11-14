@@ -1,0 +1,25 @@
+net scen corner stack | U1 ball %DS181 / die % | ball Vmin/Vmax (reads) or U3 pin Vmin/Vmax (writes) | ringback into 0.8-2.0 V | receiver-die 1.4 V delay vs no-R (ns) | no-R ball%/die%/Vmin
+D13 read  max fab    | ball   0.0% die  0.0% | -0.166/3.606 V | rb 0.000 | +0.083..+0.097 | noR 93.8%/29.1%/-0.529
+D13 read  typ fab    | ball   0.0% die  0.0% | -0.133/3.410 V | rb 0.000 | +0.085..+0.097 | noR 8.6%/21.4%/-0.438
+D13 read  max pcbdoc | ball   0.0% die  0.0% | -0.175/3.618 V | rb 0.000 | +0.083..+0.097 | noR 507.5%/27.6%/-0.618
+D13 read  typ pcbdoc | ball   0.0% die  0.0% | -0.144/3.398 V | rb 0.000 | +0.084..+0.096 | noR 76.2%/20.7%/-0.516
+D13 write max fab    | abs-max -1.0/4.6 V pass pin True die True | -0.272/3.531 V | rb 0.000 | +0.153..+0.166 | noR pin -0.299/3.617
+D13 write typ fab    | abs-max -1.0/4.6 V pass pin True die True | -0.142/3.306 V | rb 0.000 | +0.146..+0.183 | noR pin -0.248/3.321
+D13 write max pcbdoc | abs-max -1.0/4.6 V pass pin True die True | -0.290/3.534 V | rb 0.000 | +0.151..+0.165 | noR pin -0.302/3.620
+D13 write typ pcbdoc | abs-max -1.0/4.6 V pass pin True die True | -0.155/3.306 V | rb 0.000 | +0.149..+0.183 | noR pin -0.257/3.326
+D14 read  max fab    | ball   0.0% die  0.0% | -0.072/3.523 V | rb 0.000 | +0.044..+0.062 | noR 62.9%/18.0%/-0.529
+D14 read  typ fab    | ball   0.0% die  0.0% | -0.067/3.338 V | rb 0.000 | +0.047..+0.059 | noR 18.1%/8.3%/-0.473
+D14 read  max pcbdoc | ball   0.0% die  0.0% | -0.164/3.544 V | rb 0.000 | +0.044..+0.061 | noR 31238.7%/42.6%/-0.836
+D14 read  typ pcbdoc | ball   0.0% die  0.0% | -0.145/3.357 V | rb 0.000 | +0.045..+0.056 | noR 168.9%/14.9%/-0.572
+D14 write max fab    | abs-max -1.0/4.6 V pass pin True die True | -0.234/3.500 V | rb 0.000 | +0.096..+0.129 | noR pin -0.298/3.620
+D14 write typ fab    | abs-max -1.0/4.6 V pass pin True die True | -0.114/3.305 V | rb 0.000 | +0.123..+0.141 | noR pin -0.281/3.343
+D14 write max pcbdoc | abs-max -1.0/4.6 V pass pin True die True | -0.259/3.505 V | rb 0.000 | +0.091..+0.125 | noR pin -0.323/3.599
+D14 write typ pcbdoc | abs-max -1.0/4.6 V pass pin True die True | -0.131/3.305 V | rb 0.000 | +0.128..+0.134 | noR pin -0.301/3.360
+D15 read  max fab    | ball   0.0% die  0.0% | -0.039/3.490 V | rb 0.000 | +0.048..+0.065 | noR 42.9%/16.4%/-0.544
+D15 read  typ fab    | ball   0.0% die  0.0% | -0.032/3.319 V | rb 0.000 | +0.051..+0.064 | noR 6.3%/8.2%/-0.439
+D15 read  max pcbdoc | ball   0.0% die  0.0% | -0.052/3.502 V | rb 0.000 | +0.048..+0.063 | noR 368.0%/17.0%/-0.560
+D15 read  typ pcbdoc | ball   0.0% die  0.0% | -0.042/3.325 V | rb 0.000 | +0.049..+0.061 | noR 21.5%/12.8%/-0.469
+D15 write max fab    | abs-max -1.0/4.6 V pass pin True die True | -0.197/3.484 V | rb 0.000 | +0.103..+0.132 | noR pin -0.292/3.593
+D15 write typ fab    | abs-max -1.0/4.6 V pass pin True die True | -0.084/3.306 V | rb 0.000 | +0.114..+0.147 | noR pin -0.254/3.328
+D15 write max pcbdoc | abs-max -1.0/4.6 V pass pin True die True | -0.211/3.491 V | rb 0.000 | +0.098..+0.130 | noR pin -0.283/3.599
+D15 write typ pcbdoc | abs-max -1.0/4.6 V pass pin True die True | -0.099/3.306 V | rb 0.000 | +0.121..+0.142 | noR pin -0.259/3.341

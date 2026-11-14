@@ -1,0 +1,1730 @@
+[
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.0683818049421388,
+   "vmax": 3.333110059829348,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.6356599999999939,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.5837769196170128,
+     "last": 1.5837769196170128,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.4456893221623826,
+     "last": 1.4456893221623826,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.5837768035020423,
+     "last": 1.5837768035020423,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.07935991691444276,
+   "vmax": 3.329495257716343,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.7264359999999974,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.694523831455199,
+     "last": 1.694523831455199,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.4669712271100703,
+     "last": 1.4669712271100703,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.6945240984392675,
+     "last": 1.6945240984392675,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 1.080229785181151,
+    "last": 1.4696823662227139,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.9776184827496741,
+    "last": 0.9776184827496741,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 1.0802297604148623,
+    "last": 1.4696814181960414,
+    "n": 2
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 89.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 73.737,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.456,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_read_typ_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.04296342850174817,
+   "vmax": 3.331081302264681,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.7088155559999818,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.5758045081176024,
+     "last": 1.5758045081176024,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.4362366108134805,
+     "last": 1.4362366108134805,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.575803197522343,
+     "last": 1.575803197522343,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.03331976522888144,
+   "vmax": 3.3250844978743617,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.739625,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.6691670393833364,
+     "last": 1.6691670393833364,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.451436078946734,
+     "last": 1.451436078946734,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.6691665300227436,
+     "last": 1.6691665300227436,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 1.0788387360854985,
+    "last": 1.4642058740303174,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.9767978353006352,
+    "last": 0.9767978353006352,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 1.0788373056484015,
+    "last": 1.4642075554592877,
+    "n": 2
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 76.3,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 49.039,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 27.234,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_read_typ_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.15111707420776993,
+   "vmax": 3.3060726569184755,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.4303429726287507,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.058496175143859,
+     "last": 3.058496175143859,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.170650933645005,
+     "last": 2.170650933645005,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.0584937931525844,
+     "last": 3.0584937931525844,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.1062859677886266,
+   "vmax": 3.3055002091011594,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.6022196159094078,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.036149065163526,
+     "last": 3.036149065163526,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.1778120078517316,
+     "last": 2.1778120078517316,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.036160124047303,
+     "last": 3.036160124047303,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.837297728364645,
+    "last": 2.837297728364645,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 1.9901546275065243,
+    "last": 1.9901546275065243,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.837297311603238,
+    "last": 2.837297311603238,
+    "n": 1
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 89.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 73.737,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.456,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_write_typ_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.1317948584997317,
+   "vmax": 3.3055988512907377,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.4309767941254603,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.054745503601288,
+     "last": 3.054745503601288,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.1618230586767413,
+     "last": 2.1618230586767413,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.054746719408526,
+     "last": 3.054746719408526,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.08570167235000466,
+   "vmax": 3.3056729021958478,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.6243421550891979,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.0274794944374257,
+     "last": 3.0274794944374257,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.1737713727184653,
+     "last": 2.1737713727184653,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.027476465896332,
+     "last": 3.027476465896332,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.8447522610275398,
+    "last": 2.8447522610275398,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 2.0060974818636064,
+    "last": 2.0060974818636064,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.8447508799709613,
+    "last": 2.8447508799709613,
+    "n": 1
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 76.3,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 49.039,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 27.234,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_write_typ_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.09588997689695575,
+   "vmax": 3.513101437340768,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.5753602659556737,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.23925811321987,
+     "last": 1.23925811321987,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.145279231854948,
+     "last": 1.145279231854948,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.2392582052912808,
+     "last": 1.2392582052912808,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.08265985439835383,
+   "vmax": 3.509240250948269,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.7175629159999843,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.3718419951092615,
+     "last": 1.3718419951092615,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.1386023079128842,
+     "last": 1.1386023079128842,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.3718455780763235,
+     "last": 1.3718455780763235,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 0.7254218329640593,
+    "last": 1.1455257264912202,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.6768727694562923,
+    "last": 0.6768727694562923,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 0.7254207874623374,
+    "last": 1.145528017601908,
+    "n": 2
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 89.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 73.737,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.456,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_read_max_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.054274979069741214,
+   "vmax": 3.5073464428143555,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.686395478327427,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.2312891483078068,
+     "last": 1.2312891483078068,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.135689285710792,
+     "last": 1.135689285710792,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.2312948282539793,
+     "last": 1.2312948282539793,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.04536008378165034,
+   "vmax": 3.4994080524828073,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.7229937159999821,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.3370425860331507,
+     "last": 1.3370425860331507,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.1337601850380183,
+     "last": 1.1337601850380183,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.3370461393249709,
+     "last": 1.3370461393249709,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 0.7244228081629718,
+    "last": 1.1483083941568926,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.6765124312323614,
+    "last": 0.6765124312323614,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 0.7244306583624911,
+    "last": 1.1483164774451982,
+    "n": 2
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 76.3,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 49.039,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 27.234,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_read_max_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.26537337281300183,
+   "vmax": 3.5017410688741624,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.1900115015052553,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.514483398432025,
+     "last": 2.514483398432025,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.7118774904293894,
+     "last": 1.7118774904293894,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.514480459213419,
+     "last": 2.514480459213419,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.22326946115110513,
+   "vmax": 3.4969421630620006,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.3696345002562147,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.5232138395830384,
+     "last": 2.5232138395830384,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.7477045133778633,
+     "last": 1.7477045133778633,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.523221764477,
+     "last": 2.523221764477,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.25513808864088,
+    "last": 2.25513808864088,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 1.3603819271698436,
+    "last": 1.3603819271698436,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.2551372261720077,
+    "last": 2.2551372261720077,
+    "n": 1
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 89.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 73.737,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.456,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_write_max_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.24215507358132166,
+   "vmax": 3.4911482366911564,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.1971529224309099,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.505772132647179,
+     "last": 2.505772132647179,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.7018933822754188,
+     "last": 1.7018933822754188,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.5057733254937014,
+     "last": 2.5057733254937014,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.2003342073018047,
+   "vmax": 3.4914231275280785,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.4213799256430182,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.515045266479595,
+     "last": 2.515045266479595,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.7426200743183358,
+     "last": 1.7426200743183358,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.515042028245369,
+     "last": 2.515042028245369,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.2731399778022956,
+    "last": 2.2731399778022956,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 1.388112140267086,
+    "last": 1.388112140267086,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.2731395179550002,
+    "last": 2.2731395179550002,
+    "n": 1
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 76.3,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 49.039,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 27.234,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_write_max_fab_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.1051316901053827,
+   "vmax": 3.332559147050466,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.6058989999999963,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.5878078149682806,
+     "last": 1.5878078149682806,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.449675124875773,
+     "last": 1.449675124875773,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.5878076423393312,
+     "last": 1.5878076423393312,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.14029997794829824,
+   "vmax": 3.3562995742124526,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.7246107441971122,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.6836903277381527,
+     "last": 1.6836903277381527,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.4874641793003125,
+     "last": 1.4874641793003125,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.6836930414900413,
+     "last": 1.6836930414900413,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 1.0802383540797833,
+    "last": 1.436611262808982,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.9776080723292631,
+    "last": 0.9776080723292631,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 1.0802386127824621,
+    "last": 1.4366093335620869,
+    "n": 2
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 93.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 77.288,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.89,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_read_typ_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.06743935812408912,
+   "vmax": 3.3339479717811344,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.6852665097999971,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.5805399891602827,
+     "last": 1.5805399891602827,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.440663317069775,
+     "last": 1.440663317069775,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.5805418429850218,
+     "last": 1.5805418429850218,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.03509655756046168,
+   "vmax": 3.32548792944469,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.7248460000000045,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.6633695903942758,
+     "last": 1.6633695903942758,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.4595602172929418,
+     "last": 1.4595602172929418,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.663372037988335,
+     "last": 1.663372037988335,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 1.078866007618715,
+    "last": 1.4091549188543901,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.9767629952307478,
+    "last": 0.9767629952307478,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 1.0788665595415405,
+    "last": 1.4091834520531907,
+    "n": 2
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 79.8,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 51.275,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 28.52,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_read_typ_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.17207041409933543,
+   "vmax": 3.306108445757859,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.413898838730267,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.05155005002184,
+     "last": 3.05155005002184,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.16863611036487,
+     "last": 2.16863611036487,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.051548911421088,
+     "last": 3.051548911421088,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.12686950657617632,
+   "vmax": 3.3051466385006423,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.5830921196445114,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.032197107604159,
+     "last": 3.032197107604159,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.1734218888786554,
+     "last": 2.1734218888786554,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.032205023170609,
+     "last": 3.032205023170609,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.8331262965353226,
+    "last": 2.8331262965353226,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 1.9784441103135861,
+    "last": 1.9784441103135861,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.8331224222549096,
+    "last": 2.8331224222549096,
+    "n": 1
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 93.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 77.288,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.89,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_write_typ_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.15116652434454958,
+   "vmax": 3.305630962036374,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.4184279999999987,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.049105336223859,
+     "last": 3.049105336223859,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.159779011984239,
+     "last": 2.159779011984239,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.0491073051598594,
+     "last": 3.0491073051598594,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.1014633453607873,
+   "vmax": 3.3054874772671097,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.6122810847582074,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 3.023968589717881,
+     "last": 3.023968589717881,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 2.1710637960613006,
+     "last": 2.1710637960613006,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 3.023964206690349,
+     "last": 3.023964206690349,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.8410468650956324,
+    "last": 2.8410468650956324,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 1.996892908920387,
+    "last": 1.996892908920387,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.8410446787679526,
+    "last": 2.8410446787679526,
+    "n": 1
+   }
+  },
+  "rail": 3.3,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 79.8,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 51.275,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 28.52,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_write_typ_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.13790077476257095,
+   "vmax": 3.5298813433947167,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.5671103138310282,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.2434603877951182,
+     "last": 1.2434603877951182,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.1492739933371203,
+     "last": 1.1492739933371203,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.243460266107336,
+     "last": 1.243460266107336,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.16266520211831412,
+   "vmax": 3.545033794035553,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.716947355999982,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.3509689116862473,
+     "last": 1.3509689116862473,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.1666179421138316,
+     "last": 1.1666179421138316,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.3509767485057596,
+     "last": 1.3509767485057596,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 0.7254002618541558,
+    "last": 1.1177092876987627,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.6768465508826215,
+    "last": 0.6768465508826215,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 0.7253999254224548,
+    "last": 1.1177114851253167,
+    "n": 2
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 93.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 77.288,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.89,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_read_max_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.09429125535758466,
+   "vmax": 3.510991770447908,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.6636378121020763,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.2362144393680292,
+     "last": 1.2362144393680292,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.1400763837785053,
+     "last": 1.1400763837785053,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.2362167262500372,
+     "last": 1.2362167262500372,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "pin": {
+   "vmin": -0.04471716394584783,
+   "vmax": 3.4996272323454285,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.7104937159999845,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.3327710219056046,
+     "last": 1.3327710219056046,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.1446105763445498,
+     "last": 1.1446105763445498,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.3327686718033553,
+     "last": 1.3327686718033553,
+     "n": 1
+    }
+   },
+   "budget": 0.0,
+   "budget_detail": null
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 0.7244164952612684,
+    "last": 1.112679260990882,
+    "n": 2
+   },
+   "rise@16.0": {
+    "first": 0.6764766815433344,
+    "last": 0.6764766815433344,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 0.7244179022048793,
+    "last": 1.11268375505892,
+    "n": 2
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 79.8,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 51.275,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 28.52,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_read_max_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R133",
+  "r_side": "Bottom",
+  "r_xy": [
+   46.2,
+   17.15
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.2961234840286871,
+   "vmax": 3.5097043099598526,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.1650753068871862,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.512973287642981,
+     "last": 2.512973287642981,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.716754250097829,
+     "last": 1.716754250097829,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.5129762374642737,
+     "last": 2.5129762374642737,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.2522537896047663,
+   "vmax": 3.5039452019884663,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.3361454483823512,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.5233184094858023,
+     "last": 2.5233184094858023,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.7464598105261568,
+     "last": 1.7464598105261568,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.5233135713105073,
+     "last": 2.5233135713105073,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.246090411079386,
+    "last": 2.246090411079386,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 1.3499161073977313,
+    "last": 1.3499161073977313,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.246084320742157,
+    "last": 2.246084320742157,
+    "n": 1
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.301,
+  "flight_ps": 93.2,
+  "vias": 6,
+  "tlines": 1,
+  "lumped": 8,
+  "connected": true,
+  "feed_mm": 10.953,
+  "feed_ps": 77.288,
+  "feed_vias": 3,
+  "line_mm": 2.349,
+  "line_ps": 15.89,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D14_write_max_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "mode": "placed",
+  "r": 22.0,
+  "pkg": "parts",
+  "src": "extract",
+  "plan": "d13/inner_run/sim/plan_d14d15.json",
+  "plan_md5": "89189a6ef994f9ee86661456cb868c5e",
+  "ref": "R134",
+  "r_side": "Bottom",
+  "r_xy": [
+   45.0,
+   16.825
+  ],
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.2684071146729464,
+   "vmax": 3.4993285935262293,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.1806363049535775,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.504679220803025,
+     "last": 2.504679220803025,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.7060483435165288,
+     "last": 1.7060483435165288,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.5046811112576512,
+     "last": 2.5046811112576512,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "pin": {
+   "vmin": -0.21890303372658532,
+   "vmax": 3.4974652575267746,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 1.3935594794479904,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 2.513140678194883,
+     "last": 2.513140678194883,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.7415260571884297,
+     "last": 1.7415260571884297,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 2.5131353523676228,
+     "last": 2.5131353523676228,
+     "n": 1
+    }
+   },
+   "abs_max_pass": true
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 2.2644325147169364,
+    "last": 2.2644325147169364,
+    "n": 1
+   },
+   "rise@16.0": {
+    "first": 1.3778398234806228,
+    "last": 1.3778398234806228,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 2.2644320130174522,
+    "last": 2.2644320130174522,
+    "n": 1
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "LVCMOS33_S_8_HR",
+  "receiver_model": "DQ_100%",
+  "u1_pin": "A15",
+  "u3_pin": "53",
+  "len_mm": 11.355,
+  "flight_ps": 79.8,
+  "vias": 6,
+  "tlines": 2,
+  "lumped": 4,
+  "connected": true,
+  "feed_mm": 7.304,
+  "feed_ps": 51.275,
+  "feed_vias": 3,
+  "line_mm": 4.05,
+  "line_ps": 28.52,
+  "line_vias": 3,
+  "connected_halves": [
+   true,
+   true
+  ],
+  "wave": "wave_final/D15_write_max_pcbdoc_placed_r22_parts_extract_89189a6e.npz"
+ }
+]

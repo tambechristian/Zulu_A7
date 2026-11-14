@@ -1,0 +1,449 @@
+{
+ "margin": 0.0025,
+ "d14": {
+  "remove": [
+   {
+    "net": "GND",
+    "layer": "Top Layer",
+    "w": 0.21,
+    "x1": 38.175,
+    "y1": 17.125,
+    "x2": 38.175,
+    "y2": 18.2
+   },
+   {
+    "net": "GND",
+    "layer": "Top Layer",
+    "w": 0.28,
+    "x1": 38.175,
+    "y1": 18.2,
+    "x2": 38.35,
+    "y2": 18.4
+   },
+   {
+    "net": "D14",
+    "layer": "Bottom Layer",
+    "w": 0.125,
+    "x1": 36.125,
+    "y1": 16.65,
+    "x2": 36.35,
+    "y2": 17.53,
+    "why": "rename"
+   },
+   {
+    "net": "D14",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 36.125,
+    "y1": 16.65,
+    "x2": 36.725,
+    "y2": 17.25
+   },
+   {
+    "net": "D14",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 36.725,
+    "y1": 17.25,
+    "x2": 38.0,
+    "y2": 17.25
+   },
+   {
+    "net": "D14",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 38.0,
+    "y1": 17.25,
+    "x2": 47.9,
+    "y2": 17.15
+   }
+  ],
+  "remove_vias": [
+   {
+    "net": "D14",
+    "x": 36.125,
+    "y": 16.65,
+    "hole": 0.2,
+    "span": [
+     "Top",
+     "Bottom"
+    ],
+    "why": "rename"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "GND",
+    "layer": "Top Layer",
+    "w": 0.18,
+    "x1": 38.175,
+    "y1": 17.125,
+    "x2": 38.22,
+    "y2": 17.16
+   },
+   {
+    "net": "SDRAM-D14",
+    "layer": "Bottom Layer",
+    "w": 0.125,
+    "x1": 36.125,
+    "y1": 16.65,
+    "x2": 36.35,
+    "y2": 17.53,
+    "why": "rename"
+   },
+   {
+    "net": "D14",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 39.8799,
+    "y1": 17.231,
+    "x2": 47.9,
+    "y2": 17.15
+   },
+   {
+    "net": "D14",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 39.9,
+    "y1": 17.2,
+    "x2": 39.8799,
+    "y2": 17.231
+   },
+   {
+    "net": "SDRAM-D14",
+    "layer": "Top Layer",
+    "w": 0.0762,
+    "x1": 36.125,
+    "y1": 16.65,
+    "x2": 36.28,
+    "y2": 17.59
+   },
+   {
+    "net": "SDRAM-D14",
+    "layer": "Top Layer",
+    "w": 0.0762,
+    "x1": 36.28,
+    "y1": 17.59,
+    "x2": 36.46,
+    "y2": 17.65
+   },
+   {
+    "net": "SDRAM-D14",
+    "layer": "Top Layer",
+    "w": 0.0762,
+    "x1": 36.46,
+    "y1": 17.65,
+    "x2": 38.9,
+    "y2": 17.61
+   },
+   {
+    "net": "SDRAM-D14",
+    "layer": "Top Layer",
+    "w": 0.0762,
+    "x1": 38.9,
+    "y1": 17.61,
+    "x2": 39.3,
+    "y2": 17.2
+   }
+  ],
+  "vias": [
+   {
+    "net": "GND",
+    "x": 38.22,
+    "y": 17.16,
+    "size": 0.3,
+    "hole": 0.15,
+    "to": "L2-GND",
+    "from": "Top Layer"
+   },
+   {
+    "net": "SDRAM-D14",
+    "x": 36.125,
+    "y": 16.65,
+    "size": 0.35,
+    "hole": 0.2,
+    "to": "Bottom Layer",
+    "from": "Top Layer",
+    "why": "rename"
+   },
+   {
+    "net": "D14",
+    "x": 39.9,
+    "y": 17.2,
+    "size": 0.3,
+    "hole": 0.15,
+    "to": "L2-GND",
+    "from": "Top Layer"
+   },
+   {
+    "net": "D14",
+    "x": 39.9,
+    "y": 17.2,
+    "size": 0.3,
+    "hole": 0.15,
+    "to": "L3-SIG",
+    "from": "L2-GND"
+   },
+   {
+    "net": "D14",
+    "x": 39.9,
+    "y": 17.2,
+    "size": 0.27,
+    "hole": 0.15,
+    "to": "L4-SIG",
+    "from": "L3-SIG"
+   }
+  ],
+  "parts": [
+   {
+    "ref": "R133",
+    "net_bit": 14,
+    "side": "Top",
+    "footprint": "R0201",
+    "comment": "22",
+    "x": 39.6,
+    "y": 17.2,
+    "rot": 0,
+    "pad1": {
+     "net": "SDRAM-D14",
+     "x": 39.3,
+     "y": 17.2
+    },
+    "pad2": {
+     "net": "D14",
+     "x": 39.9,
+     "y": 17.2
+    },
+    "designator_hidden": true
+   }
+  ],
+  "renet_pads": [
+   {
+    "ref": "U3",
+    "pad": "51",
+    "net": "SDRAM-D14"
+   }
+  ],
+  "microvias": [
+   {
+    "net": "GND",
+    "x": 38.22,
+    "y": 17.16,
+    "size": 0.3,
+    "hole": 0.15,
+    "from": "Top Layer",
+    "to": "L2-GND",
+    "type": "microvia 0.30/0.15"
+   },
+   {
+    "net": "D14",
+    "x": 39.9,
+    "y": 17.2,
+    "size": 0.3,
+    "hole": 0.15,
+    "from": "Top Layer",
+    "to": "L2-GND",
+    "type": "microvia 0.30/0.15"
+   },
+   {
+    "net": "D14",
+    "x": 39.9,
+    "y": 17.2,
+    "size": 0.3,
+    "hole": 0.15,
+    "from": "L2-GND",
+    "to": "L3-SIG",
+    "type": "microvia 0.30/0.15"
+   },
+   {
+    "net": "D14",
+    "x": 39.9,
+    "y": 17.2,
+    "size": 0.27,
+    "hole": 0.15,
+    "from": "L3-SIG",
+    "to": "L4-SIG",
+    "type": "buried 0.27/0.15"
+   }
+  ]
+ },
+ "d15": {
+  "remove": [
+   {
+    "net": "D15",
+    "layer": "Bottom Layer",
+    "w": 0.125,
+    "x1": 37.9499,
+    "y1": 17.53,
+    "x2": 38.35,
+    "y2": 16.725,
+    "why": "rename"
+   },
+   {
+    "net": "D15",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 38.35,
+    "y1": 16.725,
+    "x2": 48.9,
+    "y2": 16.8
+   }
+  ],
+  "remove_vias": [
+   {
+    "net": "D15",
+    "x": 38.35,
+    "y": 16.725,
+    "hole": 0.2,
+    "span": [
+     "Top",
+     "Bottom"
+    ],
+    "why": "rename"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "SDRAM-D15",
+    "layer": "Bottom Layer",
+    "w": 0.125,
+    "x1": 37.9499,
+    "y1": 17.53,
+    "x2": 38.35,
+    "y2": 16.725,
+    "why": "rename"
+   },
+   {
+    "net": "D15",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 39.0599,
+    "y1": 16.73,
+    "x2": 48.9,
+    "y2": 16.8
+   },
+   {
+    "net": "D15",
+    "layer": "L4-SIG",
+    "w": 0.125,
+    "x1": 39.1,
+    "y1": 16.6,
+    "x2": 39.0599,
+    "y2": 16.73
+   },
+   {
+    "net": "SDRAM-D15",
+    "layer": "Top Layer",
+    "w": 0.0762,
+    "x1": 38.35,
+    "y1": 16.725,
+    "x2": 38.5,
+    "y2": 16.6
+   }
+  ],
+  "vias": [
+   {
+    "net": "SDRAM-D15",
+    "x": 38.35,
+    "y": 16.725,
+    "size": 0.35,
+    "hole": 0.2,
+    "to": "Bottom Layer",
+    "from": "Top Layer",
+    "why": "rename"
+   },
+   {
+    "net": "D15",
+    "x": 39.1,
+    "y": 16.6,
+    "size": 0.3,
+    "hole": 0.15,
+    "to": "L2-GND",
+    "from": "Top Layer"
+   },
+   {
+    "net": "D15",
+    "x": 39.1,
+    "y": 16.6,
+    "size": 0.3,
+    "hole": 0.15,
+    "to": "L3-SIG",
+    "from": "L2-GND"
+   },
+   {
+    "net": "D15",
+    "x": 39.1,
+    "y": 16.6,
+    "size": 0.27,
+    "hole": 0.15,
+    "to": "L4-SIG",
+    "from": "L3-SIG"
+   }
+  ],
+  "parts": [
+   {
+    "ref": "R134",
+    "net_bit": 15,
+    "side": "Top",
+    "footprint": "R0201",
+    "comment": "22",
+    "x": 38.8,
+    "y": 16.6,
+    "rot": 0.0,
+    "pad1": {
+     "net": "SDRAM-D15",
+     "x": 38.5,
+     "y": 16.6
+    },
+    "pad2": {
+     "net": "D15",
+     "x": 39.1,
+     "y": 16.6
+    },
+    "designator_hidden": true
+   }
+  ],
+  "renet_pads": [
+   {
+    "ref": "U3",
+    "pad": "53",
+    "net": "SDRAM-D15"
+   }
+  ],
+  "microvias": [
+   {
+    "net": "D15",
+    "x": 39.1,
+    "y": 16.6,
+    "size": 0.3,
+    "hole": 0.15,
+    "from": "Top Layer",
+    "to": "L2-GND",
+    "type": "microvia 0.30/0.15"
+   },
+   {
+    "net": "D15",
+    "x": 39.1,
+    "y": 16.6,
+    "size": 0.3,
+    "hole": 0.15,
+    "from": "L2-GND",
+    "to": "L3-SIG",
+    "type": "microvia 0.30/0.15"
+   },
+   {
+    "net": "D15",
+    "x": 39.1,
+    "y": 16.6,
+    "size": 0.27,
+    "hole": 0.15,
+    "from": "L3-SIG",
+    "to": "L4-SIG",
+    "type": "buried 0.27/0.15"
+   }
+  ]
+ },
+ "notes": [
+  "unlock GND47: U2-47 Top GND run (38.175,17.125)-(38.175,18.2)-(38.35,18.4) removed; Top>L2 GND microvia at (38.220,17.160)"
+ ]
+}

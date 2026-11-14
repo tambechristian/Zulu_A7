@@ -1,0 +1,9 @@
+{"net": "D0", "scen": "read", "corner": "typ", "flags": ["fab"], "ovs": 0.3111, "uns": 0.4056, "t1090": 0.3363419208400095, "vcc": 3.3, "tend_ns": 32.0, "vmax": 3.6111, "settle_hi": 3.3055}
+{"net": "SDRAM-CLK", "scen": "write", "corner": "typ", "flags": ["fab"], "ovs": 0.1244, "uns": 0.2339, "t1090": 0.9871280135293963, "vcc": 3.3, "tend_ns": 32.0, "vmax": 3.4244, "settle_hi": 3.2979}
+{"net": "A9", "scen": "write", "corner": "typ", "flags": ["fab"], "ovs": 0.1374, "uns": 0.3871, "t1090": 1.427942941176468, "vcc": 3.3, "tend_ns": 32.0, "vmax": 3.4374, "settle_hi": 3.2958}
+{"net": "D0", "scen": "write", "corner": "typ", "flags": ["fab"], "ovs": 0.1137, "uns": 0.3872, "t1090": 1.3616972941176486, "vcc": 3.3, "tend_ns": 32.0, "vmax": 3.4137, "settle_hi": 3.2972}
+{"net": "D1", "scen": "write", "corner": "max", "flags": [], "ovs": 0.0407, "uns": 0.5582, "t1090": 1.192651411764706, "vcc": 3.6, "tend_ns": 32.0, "vmax": 3.6407, "settle_hi": 3.4516}
+{"net": "D1", "scen": "write", "corner": "max", "flags": ["rail=3.465"], "ovs": 0.1757, "uns": 0.5582, "t1090": 1.1083088235294078, "vcc": 3.465, "tend_ns": 32.0, "vmax": 3.6407, "settle_hi": 3.4516}
+{"net": "D0", "scen": "write", "corner": "typ", "flags": ["pkgball"], "ovs": 0.153, "uns": 0.4215, "t1090": 1.3759405882352937, "vcc": 3.3, "tend_ns": 32.0, "vmax": 3.453, "settle_hi": 3.2938}
+{"net": "D1", "scen": "write", "corner": "typ", "flags": [], "ovs": 0.124, "uns": 0.3918, "t1090": 1.354638470588236, "vcc": 3.3, "tend_ns": 32.0, "vmax": 3.424, "settle_hi": 3.2996}
+{"net": "D1", "scen": "write", "corner": "typ", "flags": ["pkgball"], "ovs": 0.0997, "uns": 0.3725, "t1090": 1.3656208235294145, "vcc": 3.3, "tend_ns": 32.0, "vmax": 3.3997, "settle_hi": 3.2976}

@@ -1,0 +1,13 @@
+13_XF-Bottom_none: 44036 placements tried, 0 legal (quick exact check), 59 s
+     2497  pad: clearance track Bottom VCC1V0 (37.850,15.850)-(39.600,15.85
+     2111  pad: clearance pad R85-2
+     2108  pad: clearance pad U3-52
+     2084  pad: clearance pad U3-51
+     1908  pad: clearance track Bottom VCC1V0 (36.600,14.490)-(37.850,15.85
+     1836  pad: clearance pad U3-53
+     1813  pad: clearance track Bottom GND (38.350,18.400)-(38.750,17.530) 
+     1582  pad: clearance pad R82-2
+     1558  pad: clearance pad R85-1
+     1555  pad: clearance track Bottom N$BTN (35.300,20.250)-(36.900,20.250
+     1553  pad: clearance pad R83-1
+     1378  route: route outside window

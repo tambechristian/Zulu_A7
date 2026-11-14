@@ -1,0 +1,4 @@
+HJ embedded-microstrip limit: 49.261 ohm
+FV h2=1.136: 49.011
+FV h2=3.000: 49.288
+FV h2=6.000: 49.328

@@ -1,0 +1,30 @@
+D0     read  typ base         ovs +0.3564  uns 0.4395  ringback +0.0000  t10-90 0.343  | rx pin max 3.635 min -0.475
+D0     read  typ dq_ccomp0    ovs +0.4804  uns 0.5099  ringback +0.0000  t10-90 0.361  | rx pin max 3.774 min -0.558
+D0     read  typ dq_ccomp2p   ovs +0.3815  uns 0.4526  ringback +0.0000  t10-90 0.343  | rx pin max 3.648 min -0.450
+D0     read  max base         ovs +0.5139  uns 0.4950  ringback +0.0000  t10-90 0.323  | rx pin max 4.218 min -0.894
+D0     read  max dq_ccomp0    ovs +0.4827  uns 0.4682  ringback +0.0000  t10-90 0.340  | rx pin max 4.180 min -0.785
+D0     write typ base         ovs +0.1283  uns 0.3960  ringback +0.0000  t10-90 1.404  | rx pin max 3.349 min -0.263
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_2\si\spice\verify\ibis2spice\cases.py", line 49, in run
+    tt, vr, vd, vrp, vcc, rm, dm, rep = B.simulate(M, net, scen, corner, U1, U3)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_2\si\spice\bus_sim.py", line 222, in simulate
+    raise RuntimeError('%s %s %s: no result\n%s' % (net, scenario, corner, ngs.log()[-2000:]))
+RuntimeError: D0 write typ: no result
+                            0stdout n0                                           0stdout n1                                           0stdout n2                                           0stdout n3                                           0stdout n4                                           0stdout n5                                           0stdout n7                                           0stdout n8                                           0stdout n9                                           0stdout n10                                          0stdout n11                                          0stdout n12                                          0stdout n13                                          0stdout n14                                          0stdout n15                                          0stdout n16                                          0stdout n17                                          0stdout n18                                          0stdout n19                                          0stdout lv1_4#branch                                 0stdout lv1_3#branch                                 0stdout lv1_2#branch                                 0stdout lv1_1#branch                                 0stdout lv1_0#branch                                 0stdout lv0_4#branch                                 0stdout lv0_3#branch                                 0stdout lv0_2#branch                                 0stdout lv0_1#branch                                 0stdout lv0_0#branch                                 0stdout lpr#branch                                   0stdout lpd#branch                                   0stdout vkd#branch                                   0stdout vku#branch                                   0stderr Error: memory required (4004616 Bytes)stderr is more than memory available (3883008 Bytes)!stderr Setting the output memory is not possible.stderr Error: ngspice.dll cannot recover and awaits to be reset or detached
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_2\si\spice\verify\ibis2spice\cases.py", line 60, in <module>
+    for case, m in p.imap(run, cases):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\pool.py", line 873, in next
+    raise value
+RuntimeError: D0 write typ: no result
+                            0stdout n0                                           0stdout n1                                           0stdout n2                                           0stdout n3                                           0stdout n4                                           0stdout n5                                           0stdout n7                                           0stdout n8                                           0stdout n9                                           0stdout n10                                          0stdout n11                                          0stdout n12                                          0stdout n13                                          0stdout n14                                          0stdout n15                                          0stdout n16                                          0stdout n17                                          0stdout n18                                          0stdout n19                                          0stdout lv1_4#branch                                 0stdout lv1_3#branch                                 0stdout lv1_2#branch                                 0stdout lv1_1#branch                                 0stdout lv1_0#branch                                 0stdout lv0_4#branch                                 0stdout lv0_3#branch                                 0stdout lv0_2#branch                                 0stdout lv0_1#branch                                 0stdout lv0_0#branch                                 0stdout lpr#branch                                   0stdout lpd#branch                                   0stdout vkd#branch                                   0stdout vku#branch                                   0stderr Error: memory required (4004616 Bytes)stderr is more than memory available (3883008 Bytes)!stderr Setting the output memory is not possible.stderr Error: ngspice.dll cannot recover and awaits to be reset or detached

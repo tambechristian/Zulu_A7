@@ -1,0 +1,27 @@
+IBIS corner columns: typ / min (slow) / max (fast); vcc per [Voltage Range]
+DQ_100%  typ Vcc 3.30 | pulldown R_lin  35.1  V/I@Vcc/2  35.8 | pullup R_lin  37.0  V/I@Vcc/2  38.1 ohm | launch into 43.4: rise 1.76 V (Reff 37.9) fall to 1.49 V (Reff 35.7)
+DQ_100%  min Vcc 3.00 | pulldown R_lin  37.0  V/I@Vcc/2  38.3 | pullup R_lin  39.5  V/I@Vcc/2  41.4 ohm | launch into 43.4: rise 1.54 V (Reff 41.3) fall to 1.40 V (Reff 38.1)
+DQ_100%  max Vcc 3.60 | pulldown R_lin  34.0  V/I@Vcc/2  34.5 | pullup R_lin  35.6  V/I@Vcc/2  36.3 ohm | launch into 43.4: rise 1.96 V (Reff 36.2) fall to 1.59 V (Reff 34.5)
+DQ_72%   typ Vcc 3.30 | pulldown R_lin  44.0  V/I@Vcc/2  45.1 | pullup R_lin  46.8  V/I@Vcc/2  48.3 ohm | launch into 43.4: rise 1.56 V (Reff 48.5) fall to 1.68 V (Reff 45.2)
+DQ_72%   min Vcc 3.00 | pulldown R_lin  46.5  V/I@Vcc/2  48.5 | pullup R_lin  50.1  V/I@Vcc/2  52.9 ohm | launch into 43.4: rise 1.34 V (Reff 53.5) fall to 1.59 V (Reff 48.7)
+DQ_72%   max Vcc 3.60 | pulldown R_lin  42.6  V/I@Vcc/2  43.4 | pullup R_lin  44.9  V/I@Vcc/2  45.9 ohm | launch into 43.4: rise 1.75 V (Reff 45.9) fall to 1.80 V (Reff 43.4)
+DQ_39%   typ Vcc 3.30 | pulldown R_lin  87.0  V/I@Vcc/2  88.9 | pullup R_lin  91.0  V/I@Vcc/2  93.3 ohm | launch into 43.4: rise 1.04 V (Reff 94.9) fall to 2.23 V (Reff 90.2)
+DQ_39%   min Vcc 3.00 | pulldown R_lin  91.4  V/I@Vcc/2  94.5 | pullup R_lin  96.6  V/I@Vcc/2 101.0 ohm | launch into 43.4: rise 0.88 V (Reff 104.7) fall to 2.07 V (Reff 97.3)
+DQ_39%   max Vcc 3.60 | pulldown R_lin  84.7  V/I@Vcc/2  85.9 | pullup R_lin  87.7  V/I@Vcc/2  89.2 ohm | launch into 43.4: rise 1.17 V (Reff 90.1) fall to 2.40 V (Reff 86.7)
+
+U1 LVCMOS33_S_8_HR receiver clamps (IBIS from Vivado write_ibis), C_comp [5.23e-12, 5.19e-12, 5.3600000000000006e-12]
+  GND clamp at die -0.2 V: typ   -0.01 mA  min   -0.04  max   -0.00
+  GND clamp at die -0.3 V: typ   -0.06 mA  min   -0.11  max   -0.19
+  GND clamp at die -0.4 V: typ   -0.85 mA  min   -0.69  max   -2.44
+  GND clamp at die -0.5 V: typ   -6.52 mA  min   -3.82  max  -11.33
+  GND clamp at die -0.6 V: typ  -16.84 mA  min  -14.53  max  -25.12
+  GND clamp at die -0.8 V: typ  -49.98 mA  min -107.38  max  -64.81
+  GND clamp at die -1.0 V: typ -180.80 mA  min -235.31  max -176.59
+  GND clamp at die -1.2 V: typ -420.90 mA  min -503.70  max -396.20
+  power clamp table rows (x = Vcc - Vpin):
+  Power clamp at Vcc+0.2 V: typ    0.01 mA
+  Power clamp at Vcc+0.4 V: typ    1.18 mA
+  Power clamp at Vcc+0.5 V: typ    6.02 mA
+  Power clamp at Vcc+0.6 V: typ   10.99 mA
+  Power clamp at Vcc+0.8 V: typ   28.05 mA
+keys ['pulldown', 'pullup', 'gnd clamp', 'power clamp'] ['model_type', 'vinl', 'vinh', 'vmeas', 'cref', 'rref', 'vref', 'c_comp', 'temperature range', 'voltage range']

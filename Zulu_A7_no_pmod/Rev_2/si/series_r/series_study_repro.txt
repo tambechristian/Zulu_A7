@@ -1,0 +1,16 @@
+r0    read  typ | die Vmin -0.51 Vmax 3.74 budget    53% fails  0/16 | pin Vmin -0.90 Vmax 3.95 budget 37641% fails  9/16 | t10-90 0.32-0.34 ns
+r0    read  max | die Vmin -0.50 Vmax 3.95 budget    69% fails  0/16 | pin Vmin -0.98 Vmax 4.28 budget 99999% fails 12/16 | t10-90 0.31-0.34 ns
+r0    write typ | die Vmin -0.42 Vmax 3.46 | pin Vmin -0.34 Vmax 3.39 | t10-90 1.31-1.40 ns
+r0    write max | die Vmin -0.55 Vmax 3.69 | pin Vmin -0.38 Vmax 3.64 | t10-90 1.10-1.19 ns
+r15   read  typ | die Vmin -0.15 Vmax 3.40 budget     0% fails  0/16 | pin Vmin -0.32 Vmax 3.46 budget     7% fails  0/16 | t10-90 0.42-0.68 ns
+r15   read  max | die Vmin -0.20 Vmax 3.60 budget     0% fails  0/16 | pin Vmin -0.42 Vmax 3.73 budget    30% fails  0/16 | t10-90 0.41-0.63 ns
+r15   write typ | die Vmin -0.33 Vmax 3.36 | pin Vmin -0.26 Vmax 3.33 | t10-90 1.33-1.40 ns
+r15   write max | die Vmin -0.48 Vmax 3.58 | pin Vmin -0.36 Vmax 3.56 | t10-90 1.09-1.18 ns
+r22   read  typ | die Vmin -0.12 Vmax 3.39 budget     0% fails  0/16 | pin Vmin -0.25 Vmax 3.44 budget     5% fails  0/16 | t10-90 0.65-0.97 ns
+r22   read  max | die Vmin -0.13 Vmax 3.58 budget     0% fails  0/16 | pin Vmin -0.35 Vmax 3.69 budget    17% fails  0/16 | t10-90 0.62-0.97 ns
+r22   write typ | die Vmin -0.29 Vmax 3.33 | pin Vmin -0.23 Vmax 3.32 | t10-90 1.35-1.42 ns
+r22   write max | die Vmin -0.43 Vmax 3.56 | pin Vmin -0.34 Vmax 3.54 | t10-90 1.11-1.19 ns
+r33   read  typ | die Vmin -0.10 Vmax 3.37 budget     0% fails  0/16 | pin Vmin -0.22 Vmax 3.42 budget     3% fails  0/16 | t10-90 0.87-1.30 ns
+r33   read  max | die Vmin -0.11 Vmax 3.56 budget     0% fails  0/16 | pin Vmin -0.31 Vmax 3.67 budget    15% fails  0/16 | t10-90 0.78-1.32 ns
+r33   write typ | die Vmin -0.22 Vmax 3.31 | pin Vmin -0.18 Vmax 3.31 | t10-90 1.38-1.46 ns
+r33   write max | die Vmin -0.34 Vmax 3.52 | pin Vmin -0.28 Vmax 3.51 | t10-90 1.16-1.23 ns

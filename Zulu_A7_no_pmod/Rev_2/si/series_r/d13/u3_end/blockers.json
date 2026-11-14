@@ -1,0 +1,1019 @@
+[
+ {
+  "title": "D13 BF feed: SDRAM-D13 Bottom w0.10 from U3-50 (stub removed)",
+  "layer": "Bottom",
+  "net": "SDRAM-D13",
+  "width": 0.1,
+  "seed": [
+   35.5501,
+   17.53
+  ],
+  "reach_area_mm2": 1.073,
+  "reach_bbox": [
+   35.12,
+   16.8,
+   36.0,
+   18.2
+  ],
+  "boundary_objects": [
+   [
+    "pad U3-51 [D14]",
+    1.32
+   ],
+   [
+    "pad U3-49 [VCC3V3]",
+    0.9
+   ],
+   [
+    "via D13 (35.625,16.650) Top>Bottom d0.35 [D13]",
+    0.82
+   ],
+   [
+    "track Bottom VCC3V3 (34.750,17.530)-(35.260,16.380) w0.2000 [VCC3V3]",
+    0.76
+   ],
+   [
+    "via N$LD1A (35.300,18.400) L5-VCC3V3>Bottom d0.30 [N$LD1A]",
+    0.58
+   ],
+   [
+    "track Bottom N$LD1A (35.300,18.400)-(36.450,18.400) w0.0762 [N$LD1A]",
+    0.48
+   ],
+   [
+    "via D14 (36.125,16.650) Top>Bottom d0.35 [D14]",
+    0.22
+   ]
+  ]
+ },
+ {
+  "title": "D13 BF return: D13 Bottom w0.10 into the first via (stub removed, U3 pad = SDRAM-D13)",
+  "layer": "Bottom",
+  "net": "D13",
+  "width": 0.1,
+  "seed": [
+   35.625,
+   16.65
+  ],
+  "reach_area_mm2": 0.358,
+  "reach_bbox": [
+   35.36,
+   16.24,
+   36.76,
+   16.8
+  ],
+  "boundary_objects": [
+   [
+    "via D14 (36.125,16.650) Top>Bottom d0.35 [D14]",
+    1.62
+   ],
+   [
+    "track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762 [UART_FT_TXD]",
+    0.9
+   ],
+   [
+    "via VCC3V3 (35.260,16.380) Top>Bottom d0.35 [VCC3V3]",
+    0.62
+   ],
+   [
+    "via UART_FT_TXD (36.800,16.350) L5-VCC3V3>Bottom d0.30 [UART_FT_TXD]",
+    0.6
+   ],
+   [
+    "pad U3-50 [SDRAM-D13]",
+    0.56
+   ],
+   [
+    "pad U3-51 [D14]",
+    0.22
+   ],
+   [
+    "track Bottom UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762 [UART_FT_TXD]",
+    0.18
+   ],
+   [
+    "track Bottom VCC3V3 (34.750,17.530)-(35.260,16.380) w0.2000 [VCC3V3]",
+    0.18
+   ],
+   [
+    "track Bottom SD-DAT2 (36.800,16.850)-(37.200,16.550) w0.0762 [SD-DAT2]",
+    0.18
+   ],
+   [
+    "track Bottom SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 [SD-DAT2]",
+    0.14
+   ]
+  ]
+ },
+ {
+  "title": "D13 XF-Bottom: SDRAM-D13 Bottom w0.10 from the (renamed) first via",
+  "layer": "Bottom",
+  "net": "SDRAM-D13",
+  "width": 0.1,
+  "seed": [
+   35.625,
+   16.65
+  ],
+  "reach_area_mm2": 1.502,
+  "reach_bbox": [
+   35.12,
+   16.24,
+   36.76,
+   18.2
+  ],
+  "boundary_objects": [
+   [
+    "via D14 (36.125,16.650) Top>Bottom d0.35 [D14]",
+    1.88
+   ],
+   [
+    "pad U3-51 [D14]",
+    1.54
+   ],
+   [
+    "track Bottom VCC3V3 (34.750,17.530)-(35.260,16.380) w0.2000 [VCC3V3]",
+    0.92
+   ],
+   [
+    "track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762 [UART_FT_TXD]",
+    0.9
+   ],
+   [
+    "pad U3-49 [VCC3V3]",
+    0.9
+   ],
+   [
+    "via VCC3V3 (35.260,16.380) Top>Bottom d0.35 [VCC3V3]",
+    0.62
+   ],
+   [
+    "via UART_FT_TXD (36.800,16.350) L5-VCC3V3>Bottom d0.30 [UART_FT_TXD]",
+    0.6
+   ],
+   [
+    "via N$LD1A (35.300,18.400) L5-VCC3V3>Bottom d0.30 [N$LD1A]",
+    0.58
+   ],
+   [
+    "track Bottom N$LD1A (35.300,18.400)-(36.450,18.400) w0.0762 [N$LD1A]",
+    0.48
+   ],
+   [
+    "track Bottom UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762 [UART_FT_TXD]",
+    0.18
+   ],
+   [
+    "track Bottom SD-DAT2 (36.800,16.850)-(37.200,16.550) w0.0762 [SD-DAT2]",
+    0.18
+   ],
+   [
+    "track Bottom SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 [SD-DAT2]",
+    0.14
+   ]
+  ]
+ },
+ {
+  "title": "D13 XF-Top: SDRAM-D13 Top w0.0762 from the first via land, no unlock",
+  "layer": "Top",
+  "net": "SDRAM-D13",
+  "width": 0.0762,
+  "seed": [
+   35.625,
+   16.65
+  ],
+  "reach_area_mm2": 7.425,
+  "reach_bbox": [
+   35.32,
+   15.0,
+   41.42,
+   21.58
+  ],
+  "boundary_objects": [
+   [
+    "pad Q1-1 [VCC3V3]",
+    3.64
+   ],
+   [
+    "track Top USB5V0 (35.900,18.000)-(36.680,20.000) w0.4500 [USB5V0]",
+    2.64
+   ],
+   [
+    "track Top USB5V0 (34.800,16.650)-(35.900,18.000) w0.5000 [USB5V0]",
+    2.3
+   ],
+   [
+    "pad U2-48 [None]",
+    2.24
+   ],
+   [
+    "track Top UART_FT_RTS# (37.650,18.800)-(39.450,18.800) w0.0762 [UART_FT_RTS#]",
+    1.96
+   ],
+   [
+    "pad Q1-2 [GND]",
+    1.76
+   ],
+   [
+    "via UART_FT_RTS# (37.200,18.200) Top>L2-GND d0.30 [UART_FT_RTS#]",
+    1.64
+   ],
+   [
+    "via D14 (36.125,16.650) Top>Bottom d0.35 [D14]",
+    1.52
+   ],
+   [
+    "pad Q1-4 [VCC3V3]",
+    1.46
+   ],
+   [
+    "via UART_FT_DTR# (38.450,20.000) Top>L2-GND d0.30 [UART_FT_DTR#]",
+    1.42
+   ],
+   [
+    "track Top GND (40.450,18.650)-(41.500,19.850) w0.3650 [GND]",
+    1.32
+   ],
+   [
+    "track Top UART_FT_RTS# (37.200,18.350)-(37.650,18.800) w0.0762 [UART_FT_RTS#]",
+    1.2
+   ],
+   [
+    "via UART_FT_TXD (35.450,16.000) Top>L2-GND d0.30 [UART_FT_TXD]",
+    1.06
+   ],
+   [
+    "via LED2 (37.200,20.100) Top>L2-GND d0.30 [LED2]",
+    0.86
+   ]
+  ]
+ },
+ {
+  "title": "D13 XF-Top: SDRAM-D13 Top w0.0762 from the first via land, GND47 unlocked",
+  "layer": "Top",
+  "net": "SDRAM-D13",
+  "width": 0.0762,
+  "seed": [
+   35.625,
+   16.65
+  ],
+  "reach_area_mm2": 10.979,
+  "reach_bbox": [
+   35.32,
+   15.0,
+   41.42,
+   21.58
+  ],
+  "boundary_objects": [
+   [
+    "pad Q1-1 [VCC3V3]",
+    3.64
+   ],
+   [
+    "track Top USB5V0 (35.900,18.000)-(36.680,20.000) w0.4500 [USB5V0]",
+    2.64
+   ],
+   [
+    "pad U2-48 [None]",
+    2.58
+   ],
+   [
+    "track Top USB5V0 (34.800,16.650)-(35.900,18.000) w0.5000 [USB5V0]",
+    2.3
+   ],
+   [
+    "pad R131-1 [SDRAM-D12]",
+    2.22
+   ],
+   [
+    "track Top UART_FT_RTS# (37.650,18.800)-(39.450,18.800) w0.0762 [UART_FT_RTS#]",
+    1.96
+   ],
+   [
+    "pad Q1-2 [GND]",
+    1.76
+   ],
+   [
+    "via UART_FT_RTS# (37.200,18.200) Top>L2-GND d0.30 [UART_FT_RTS#]",
+    1.64
+   ],
+   [
+    "via D15 (38.350,16.725) Top>Bottom d0.35 [D15]",
+    1.58
+   ],
+   [
+    "via D14 (36.125,16.650) Top>Bottom d0.35 [D14]",
+    1.52
+   ],
+   [
+    "pad Q1-4 [VCC3V3]",
+    1.46
+   ],
+   [
+    "track Top UART_FT_RTS# (39.700,17.900)-(40.350,17.250) w0.0762 [UART_FT_RTS#]",
+    1.44
+   ],
+   [
+    "via UART_FT_DTR# (38.450,20.000) Top>L2-GND d0.30 [UART_FT_DTR#]",
+    1.42
+   ],
+   [
+    "track Top GND (40.450,18.650)-(41.500,19.850) w0.3650 [GND]",
+    1.32
+   ]
+  ]
+ },
+ {
+  "title": "D14 BF feed: SDRAM-D14 Bottom w0.10 from U3-51 (stub removed)",
+  "layer": "Bottom",
+  "net": "SDRAM-D14",
+  "width": 0.1,
+  "seed": [
+   36.35,
+   17.53
+  ],
+  "reach_area_mm2": 1.067,
+  "reach_bbox": [
+   35.56,
+   16.24,
+   36.76,
+   18.2
+  ],
+  "boundary_objects": [
+   [
+    "via D14 (36.125,16.650) Top>Bottom d0.35 [D14]",
+    1.92
+   ],
+   [
+    "pad U3-50 [D13]",
+    1.38
+   ],
+   [
+    "track Bottom SD-DAT2 (36.750,16.900)-(36.750,18.300) w0.0762 [SD-DAT2]",
+    1.16
+   ],
+   [
+    "track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762 [UART_FT_TXD]",
+    0.9
+   ],
+   [
+    "via UART_FT_TXD (36.800,16.350) L5-VCC3V3>Bottom d0.30 [UART_FT_TXD]",
+    0.6
+   ],
+   [
+    "track Bottom N$LD1A (35.300,18.400)-(36.450,18.400) w0.0762 [N$LD1A]",
+    0.58
+   ],
+   [
+    "via D13 (35.625,16.650) Top>Bottom d0.35 [D13]",
+    0.42
+   ],
+   [
+    "track Bottom SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 [SD-DAT2]",
+    0.28
+   ],
+   [
+    "via SD-DAT2 (36.750,18.300) L5-VCC3V3>Bottom d0.30 [SD-DAT2]",
+    0.26
+   ],
+   [
+    "track Bottom UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762 [UART_FT_TXD]",
+    0.18
+   ],
+   [
+    "track Bottom SD-DAT2 (36.800,16.850)-(37.200,16.550) w0.0762 [SD-DAT2]",
+    0.18
+   ],
+   [
+    "via VCC3V3 (35.260,16.380) Top>Bottom d0.35 [VCC3V3]",
+    0.14
+   ]
+  ]
+ },
+ {
+  "title": "D14 BF return: D14 Bottom w0.10 into the first via (stub removed, U3 pad = SDRAM-D14)",
+  "layer": "Bottom",
+  "net": "D14",
+  "width": 0.1,
+  "seed": [
+   36.125,
+   16.65
+  ],
+  "reach_area_mm2": 0.537,
+  "reach_bbox": [
+   35.56,
+   16.24,
+   36.76,
+   18.2
+  ],
+  "boundary_objects": [
+   [
+    "pad U3-51 [SDRAM-D14]",
+    2.06
+   ],
+   [
+    "pad U3-50 [D13]",
+    1.44
+   ],
+   [
+    "via D13 (35.625,16.650) Top>Bottom d0.35 [D13]",
+    0.92
+   ],
+   [
+    "track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762 [UART_FT_TXD]",
+    0.9
+   ],
+   [
+    "via UART_FT_TXD (36.800,16.350) L5-VCC3V3>Bottom d0.30 [UART_FT_TXD]",
+    0.6
+   ],
+   [
+    "track Bottom UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762 [UART_FT_TXD]",
+    0.18
+   ],
+   [
+    "track Bottom SD-DAT2 (36.800,16.850)-(37.200,16.550) w0.0762 [SD-DAT2]",
+    0.18
+   ],
+   [
+    "via VCC3V3 (35.260,16.380) Top>Bottom d0.35 [VCC3V3]",
+    0.14
+   ],
+   [
+    "track Bottom SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 [SD-DAT2]",
+    0.14
+   ],
+   [
+    "track Bottom N$LD1A (35.300,18.400)-(36.450,18.400) w0.0762 [N$LD1A]",
+    0.12
+   ]
+  ]
+ },
+ {
+  "title": "D14 XF-Bottom: SDRAM-D14 Bottom w0.10 from the (renamed) first via",
+  "layer": "Bottom",
+  "net": "SDRAM-D14",
+  "width": 0.1,
+  "seed": [
+   36.125,
+   16.65
+  ],
+  "reach_area_mm2": 1.349,
+  "reach_bbox": [
+   35.56,
+   16.24,
+   36.76,
+   18.2
+  ],
+  "boundary_objects": [
+   [
+    "pad U3-50 [D13]",
+    1.44
+   ],
+   [
+    "track Bottom SD-DAT2 (36.750,16.900)-(36.750,18.300) w0.0762 [SD-DAT2]",
+    1.16
+   ],
+   [
+    "via D13 (35.625,16.650) Top>Bottom d0.35 [D13]",
+    0.92
+   ],
+   [
+    "track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762 [UART_FT_TXD]",
+    0.9
+   ],
+   [
+    "via UART_FT_TXD (36.800,16.350) L5-VCC3V3>Bottom d0.30 [UART_FT_TXD]",
+    0.6
+   ],
+   [
+    "track Bottom N$LD1A (35.300,18.400)-(36.450,18.400) w0.0762 [N$LD1A]",
+    0.58
+   ],
+   [
+    "track Bottom SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 [SD-DAT2]",
+    0.28
+   ],
+   [
+    "via SD-DAT2 (36.750,18.300) L5-VCC3V3>Bottom d0.30 [SD-DAT2]",
+    0.26
+   ],
+   [
+    "track Bottom UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762 [UART_FT_TXD]",
+    0.18
+   ],
+   [
+    "track Bottom SD-DAT2 (36.800,16.850)-(37.200,16.550) w0.0762 [SD-DAT2]",
+    0.18
+   ],
+   [
+    "via VCC3V3 (35.260,16.380) Top>Bottom d0.35 [VCC3V3]",
+    0.14
+   ]
+  ]
+ },
+ {
+  "title": "D14 XF-Top: SDRAM-D14 Top w0.0762 from the first via land, no unlock",
+  "layer": "Top",
+  "net": "SDRAM-D14",
+  "width": 0.0762,
+  "seed": [
+   36.125,
+   16.65
+  ],
+  "reach_area_mm2": 7.421,
+  "reach_bbox": [
+   35.38,
+   15.0,
+   41.42,
+   21.58
+  ],
+  "boundary_objects": [
+   [
+    "pad Q1-1 [VCC3V3]",
+    3.64
+   ],
+   [
+    "track Top USB5V0 (35.900,18.000)-(36.680,20.000) w0.4500 [USB5V0]",
+    2.64
+   ],
+   [
+    "pad U2-48 [None]",
+    2.24
+   ],
+   [
+    "track Top UART_FT_RTS# (37.650,18.800)-(39.450,18.800) w0.0762 [UART_FT_RTS#]",
+    1.96
+   ],
+   [
+    "track Top USB5V0 (34.800,16.650)-(35.900,18.000) w0.5000 [USB5V0]",
+    1.78
+   ],
+   [
+    "pad Q1-2 [GND]",
+    1.76
+   ],
+   [
+    "via UART_FT_RTS# (37.200,18.200) Top>L2-GND d0.30 [UART_FT_RTS#]",
+    1.64
+   ],
+   [
+    "pad Q1-4 [VCC3V3]",
+    1.46
+   ],
+   [
+    "via UART_FT_DTR# (38.450,20.000) Top>L2-GND d0.30 [UART_FT_DTR#]",
+    1.42
+   ],
+   [
+    "via D13 (35.625,16.650) Top>Bottom d0.35 [D13]",
+    1.34
+   ],
+   [
+    "track Top GND (40.450,18.650)-(41.500,19.850) w0.3650 [GND]",
+    1.32
+   ],
+   [
+    "track Top UART_FT_RTS# (37.200,18.350)-(37.650,18.800) w0.0762 [UART_FT_RTS#]",
+    1.2
+   ],
+   [
+    "via UART_FT_TXD (35.450,16.000) Top>L2-GND d0.30 [UART_FT_TXD]",
+    1.06
+   ],
+   [
+    "via LED2 (37.200,20.100) Top>L2-GND d0.30 [LED2]",
+    0.86
+   ]
+  ]
+ },
+ {
+  "title": "D14 XF-Top: SDRAM-D14 Top w0.0762 from the first via land, GND47 unlocked",
+  "layer": "Top",
+  "net": "SDRAM-D14",
+  "width": 0.0762,
+  "seed": [
+   36.125,
+   16.65
+  ],
+  "reach_area_mm2": 10.974,
+  "reach_bbox": [
+   35.38,
+   15.0,
+   41.42,
+   21.58
+  ],
+  "boundary_objects": [
+   [
+    "pad Q1-1 [VCC3V3]",
+    3.64
+   ],
+   [
+    "track Top USB5V0 (35.900,18.000)-(36.680,20.000) w0.4500 [USB5V0]",
+    2.64
+   ],
+   [
+    "pad U2-48 [None]",
+    2.58
+   ],
+   [
+    "pad R131-1 [SDRAM-D12]",
+    2.22
+   ],
+   [
+    "track Top UART_FT_RTS# (37.650,18.800)-(39.450,18.800) w0.0762 [UART_FT_RTS#]",
+    1.96
+   ],
+   [
+    "track Top USB5V0 (34.800,16.650)-(35.900,18.000) w0.5000 [USB5V0]",
+    1.78
+   ],
+   [
+    "pad Q1-2 [GND]",
+    1.76
+   ],
+   [
+    "via UART_FT_RTS# (37.200,18.200) Top>L2-GND d0.30 [UART_FT_RTS#]",
+    1.64
+   ],
+   [
+    "via D15 (38.350,16.725) Top>Bottom d0.35 [D15]",
+    1.58
+   ],
+   [
+    "pad Q1-4 [VCC3V3]",
+    1.46
+   ],
+   [
+    "track Top UART_FT_RTS# (39.700,17.900)-(40.350,17.250) w0.0762 [UART_FT_RTS#]",
+    1.44
+   ],
+   [
+    "via UART_FT_DTR# (38.450,20.000) Top>L2-GND d0.30 [UART_FT_DTR#]",
+    1.42
+   ],
+   [
+    "via D13 (35.625,16.650) Top>Bottom d0.35 [D13]",
+    1.34
+   ],
+   [
+    "track Top GND (40.450,18.650)-(41.500,19.850) w0.3650 [GND]",
+    1.32
+   ]
+  ]
+ },
+ {
+  "title": "D15 BF feed: SDRAM-D15 Bottom w0.10 from U3-53 (stub removed)",
+  "layer": "Bottom",
+  "net": "SDRAM-D15",
+  "width": 0.1,
+  "seed": [
+   37.9499,
+   17.53
+  ],
+  "reach_area_mm2": 1.15,
+  "reach_bbox": [
+   37.4,
+   16.64,
+   38.38,
+   18.3
+  ],
+  "boundary_objects": [
+   [
+    "pad U3-52 [GND]",
+    1.46
+   ],
+   [
+    "track Bottom GND (38.350,18.400)-(38.750,17.530) w0.3000 [GND]",
+    0.8
+   ],
+   [
+    "via D15 (38.350,16.725) Top>Bottom d0.35 [D15]",
+    0.72
+   ],
+   [
+    "track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250 [VCC1V0]",
+    0.64
+   ],
+   [
+    "pad U3-54 [GND]",
+    0.6
+   ],
+   [
+    "via GND (37.775,18.475) Top>Bottom d0.35 [GND]",
+    0.56
+   ],
+   [
+    "via SD-DAT2 (37.200,16.550) L5-VCC3V3>Bottom d0.30 [SD-DAT2]",
+    0.28
+   ],
+   [
+    "via GND (38.350,18.400) Top>Bottom d0.35 [GND]",
+    0.24
+   ],
+   [
+    "track Bottom GND (37.150,18.260)-(37.775,18.475) w0.2050 [GND]",
+    0.22
+   ]
+  ]
+ },
+ {
+  "title": "D15 BF return: D15 Bottom w0.10 into the first via (stub removed, U3 pad = SDRAM-D15)",
+  "layer": "Bottom",
+  "net": "D15",
+  "width": 0.1,
+  "seed": [
+   38.35,
+   16.725
+  ],
+  "reach_area_mm2": 5.554,
+  "reach_bbox": [
+   37.4,
+   16.58,
+   41.9,
+   20.06
+  ],
+  "boundary_objects": [
+   [
+    "track Bottom VCC1V0 (39.600,15.850)-(40.900,17.300) w1.3550 [VCC1V0]",
+    3.92
+   ],
+   [
+    "pad U3-53 [SDRAM-D15]",
+    3.06
+   ],
+   [
+    "pad U3-54 [GND]",
+    2.98
+   ],
+   [
+    "track Bottom CHAN4 (39.950,19.800)-(41.400,18.350) w0.0762 [CHAN4]",
+    2.76
+   ],
+   [
+    "via GND (39.350,18.425) Top>Bottom d0.35 [GND]",
+    2.02
+   ],
+   [
+    "pad U3-52 [GND]",
+    1.46
+   ],
+   [
+    "pad R85-2 [BTN]",
+    1.36
+   ],
+   [
+    "track Bottom BTN (38.200,20.250)-(41.900,20.250) w0.0762 [BTN]",
+    1.14
+   ],
+   [
+    "track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250 [VCC1V0]",
+    1.04
+   ],
+   [
+    "via CHAN4 (39.950,19.800) L5-VCC3V3>Bottom d0.30 [CHAN4]",
+    1.04
+   ],
+   [
+    "track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600 [VCC1V0]",
+    0.84
+   ],
+   [
+    "pad R83-2 [N$LD1A]",
+    0.82
+   ],
+   [
+    "via VCC3V3 (38.825,18.425) Top>Bottom d0.35 [VCC3V3]",
+    0.8
+   ],
+   [
+    "via GND (37.775,18.475) Top>Bottom d0.35 [GND]",
+    0.76
+   ]
+  ]
+ },
+ {
+  "title": "D15 XF-Bottom: SDRAM-D15 Bottom w0.10 from the (renamed) first via",
+  "layer": "Bottom",
+  "net": "SDRAM-D15",
+  "width": 0.1,
+  "seed": [
+   38.35,
+   16.725
+  ],
+  "reach_area_mm2": 6.52,
+  "reach_bbox": [
+   37.4,
+   16.58,
+   41.9,
+   20.06
+  ],
+  "boundary_objects": [
+   [
+    "track Bottom VCC1V0 (39.600,15.850)-(40.900,17.300) w1.3550 [VCC1V0]",
+    3.92
+   ],
+   [
+    "pad U3-54 [GND]",
+    2.98
+   ],
+   [
+    "track Bottom CHAN4 (39.950,19.800)-(41.400,18.350) w0.0762 [CHAN4]",
+    2.76
+   ],
+   [
+    "via GND (39.350,18.425) Top>Bottom d0.35 [GND]",
+    2.02
+   ],
+   [
+    "pad U3-52 [GND]",
+    1.46
+   ],
+   [
+    "pad R85-2 [BTN]",
+    1.36
+   ],
+   [
+    "via GND (37.775,18.475) Top>Bottom d0.35 [GND]",
+    1.32
+   ],
+   [
+    "track Bottom BTN (38.200,20.250)-(41.900,20.250) w0.0762 [BTN]",
+    1.14
+   ],
+   [
+    "track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250 [VCC1V0]",
+    1.04
+   ],
+   [
+    "via CHAN4 (39.950,19.800) L5-VCC3V3>Bottom d0.30 [CHAN4]",
+    1.04
+   ],
+   [
+    "via GND (38.350,18.400) Top>Bottom d0.35 [GND]",
+    0.96
+   ],
+   [
+    "track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600 [VCC1V0]",
+    0.84
+   ],
+   [
+    "pad R83-2 [N$LD1A]",
+    0.82
+   ],
+   [
+    "track Bottom GND (38.350,18.400)-(38.750,17.530) w0.3000 [GND]",
+    0.8
+   ]
+  ]
+ },
+ {
+  "title": "D15 XF-Top: SDRAM-D15 Top w0.0762 from the first via land, no unlock",
+  "layer": "Top",
+  "net": "SDRAM-D15",
+  "width": 0.0762,
+  "seed": [
+   38.35,
+   16.725
+  ],
+  "reach_area_mm2": 3.493,
+  "reach_bbox": [
+   38.04,
+   15.24,
+   40.68,
+   18.14
+  ],
+  "boundary_objects": [
+   [
+    "pad R131-1 [SDRAM-D12]",
+    2.22
+   ],
+   [
+    "track Top UART_FT_RTS# (39.700,17.900)-(40.350,17.250) w0.0762 [UART_FT_RTS#]",
+    1.44
+   ],
+   [
+    "track Top GND (38.175,17.125)-(38.175,18.200) w0.2100 [GND]",
+    1.3
+   ],
+   [
+    "via UART_FT_TXD (39.600,16.200) Top>L2-GND d0.30 [UART_FT_TXD]",
+    1.26
+   ],
+   [
+    "pad C157-2 [VCC3V3]",
+    1.18
+   ],
+   [
+    "pad C157-1 [GND]",
+    0.98
+   ],
+   [
+    "track Top UART_FT_CTS# (38.400,15.300)-(39.400,15.300) w0.0762 [UART_FT_CTS#]",
+    0.96
+   ],
+   [
+    "track Top TMS (40.300,16.300)-(40.850,16.850) w0.0762 [TMS]",
+    0.78
+   ],
+   [
+    "pad U2-45 [None]",
+    0.62
+   ],
+   [
+    "pad U2-46 [None]",
+    0.62
+   ],
+   [
+    "pad R131-2 [D12]",
+    0.54
+   ],
+   [
+    "pad U2-44 [None]",
+    0.46
+   ],
+   [
+    "via TMS (40.850,16.850) Top>L2-GND d0.30 [TMS]",
+    0.4
+   ],
+   [
+    "track Top UART_FT_CTS# (38.150,15.050)-(38.400,15.300) w0.0762 [UART_FT_CTS#]",
+    0.38
+   ]
+  ]
+ },
+ {
+  "title": "D15 XF-Top: SDRAM-D15 Top w0.0762 from the first via land, GND47 unlocked",
+  "layer": "Top",
+  "net": "SDRAM-D15",
+  "width": 0.0762,
+  "seed": [
+   38.35,
+   16.725
+  ],
+  "reach_area_mm2": 9.945,
+  "reach_bbox": [
+   35.56,
+   15.24,
+   41.42,
+   21.58
+  ],
+  "boundary_objects": [
+   [
+    "pad Q1-1 [VCC3V3]",
+    3.64
+   ],
+   [
+    "track Top USB5V0 (35.900,18.000)-(36.680,20.000) w0.4500 [USB5V0]",
+    2.64
+   ],
+   [
+    "pad U2-48 [None]",
+    2.58
+   ],
+   [
+    "pad R131-1 [SDRAM-D12]",
+    2.22
+   ],
+   [
+    "track Top UART_FT_RTS# (37.650,18.800)-(39.450,18.800) w0.0762 [UART_FT_RTS#]",
+    1.96
+   ],
+   [
+    "track Top USB5V0 (34.800,16.650)-(35.900,18.000) w0.5000 [USB5V0]",
+    1.78
+   ],
+   [
+    "pad Q1-2 [GND]",
+    1.76
+   ],
+   [
+    "via UART_FT_RTS# (37.200,18.200) Top>L2-GND d0.30 [UART_FT_RTS#]",
+    1.64
+   ],
+   [
+    "pad Q1-4 [VCC3V3]",
+    1.46
+   ],
+   [
+    "track Top UART_FT_RTS# (39.700,17.900)-(40.350,17.250) w0.0762 [UART_FT_RTS#]",
+    1.44
+   ],
+   [
+    "via UART_FT_DTR# (38.450,20.000) Top>L2-GND d0.30 [UART_FT_DTR#]",
+    1.42
+   ],
+   [
+    "track Top GND (40.450,18.650)-(41.500,19.850) w0.3650 [GND]",
+    1.32
+   ],
+   [
+    "via UART_FT_TXD (39.600,16.200) Top>L2-GND d0.30 [UART_FT_TXD]",
+    1.26
+   ],
+   [
+    "new via GND (38.220,17.160) Top>L2-GND d0.30",
+    1.26
+   ]
+  ]
+ }
+]

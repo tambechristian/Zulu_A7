@@ -1,0 +1,625 @@
+{
+ "base12 (dq_series_r_plan.json)": {
+  "errors": [],
+  "violations": [],
+  "worst": {
+   "clearance Bottom": [
+    0.0093,
+    0.0993,
+    "NEW pad R119-1",
+    "track Bottom CHAN18 (37.550,5.550)-(37.850,4.100)"
+   ],
+   "clearance Top": [
+    0.0003,
+    0.0903,
+    "NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762",
+    "track Top UDQM (39.812,11.590)-(39.812,14.050)"
+   ],
+   "clearance L4-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "clearance L3-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "clearance L2-GND": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "clearance L5-VCC3V3": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "mask sliver Bottom": [
+    0.01,
+    0.11,
+    "pad U3-5",
+    "NEW pad R121-1"
+   ],
+   "mask sliver Top": [
+    0.1,
+    0.2,
+    "NEW pad R127-1",
+    "NEW pad R127-2"
+   ],
+   "hole to hole": [
+    0.01,
+    0.25,
+    "via TMS (33.450,8.150) L4-SIG>L5-VCC3V3",
+    "via TMS (33.850,8.150) L3-SIG>L4-SIG"
+   ]
+  },
+  "bad_connectivity": {},
+  "n_nets": 29,
+  "component": [
+   [
+    "R119",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R120",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R121",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R122",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R123",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R124",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R125",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R126",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R127",
+    "Top",
+    0.8001,
+    "U2"
+   ],
+   [
+    "R128",
+    "Bottom",
+    1.1521,
+    "C112"
+   ],
+   [
+    "R130",
+    "Top",
+    0.6,
+    "R131"
+   ],
+   [
+    "R131",
+    "Top",
+    0.6,
+    "R130"
+   ]
+  ],
+  "other_nets": [
+   "FT-VCORE",
+   "GND",
+   "TDO",
+   "TMS",
+   "VCC3V3"
+  ],
+  "counts": {
+   "rm_tracks": 54,
+   "add_tracks": 80,
+   "rm_vias": 9,
+   "add_vias": 20,
+   "renamed_pads": 12,
+   "new_pads": 24
+  }
+ },
+ "stagger": {
+  "errors": [],
+  "violations": [],
+  "worst": {
+   "clearance Bottom": [
+    0.0093,
+    0.0993,
+    "NEW pad R119-1",
+    "track Bottom CHAN18 (37.550,5.550)-(37.850,4.100)"
+   ],
+   "clearance Top": [
+    0.0003,
+    0.0903,
+    "NEW track Top UDQM (39.812,11.590)-(39.812,13.880) w0.0762",
+    "NEW track Top D10 (39.978,12.210)-(39.978,14.250) w0.0762"
+   ],
+   "clearance L4-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L3-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L2-GND": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L5-VCC3V3": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "mask sliver Bottom": [
+    0.01,
+    0.11,
+    "pad U3-5",
+    "NEW pad R121-1"
+   ],
+   "mask sliver Top": [
+    0.1,
+    0.2,
+    "NEW pad R127-1",
+    "NEW pad R127-2"
+   ],
+   "hole to hole": [
+    0.01,
+    0.25,
+    "via TMS (33.450,8.150) L4-SIG>L5-VCC3V3",
+    "via TMS (33.850,8.150) L3-SIG>L4-SIG"
+   ]
+  },
+  "bad_connectivity": {},
+  "n_nets": 32,
+  "component": [
+   [
+    "R119",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R120",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R121",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R122",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R123",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R124",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R125",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R126",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R127",
+    "Top",
+    0.38,
+    "R129"
+   ],
+   [
+    "R128",
+    "Bottom",
+    1.1521,
+    "C112"
+   ],
+   [
+    "R129",
+    "Top",
+    0.38,
+    "R127"
+   ],
+   [
+    "R130",
+    "Top",
+    0.38,
+    "R129"
+   ],
+   [
+    "R131",
+    "Top",
+    0.57,
+    "R130"
+   ]
+  ],
+  "other_nets": [
+   "FT-VCORE",
+   "GND",
+   "TDO",
+   "TMS",
+   "UDQM",
+   "VCC3V3"
+  ],
+  "counts": {
+   "rm_tracks": 63,
+   "add_tracks": 93,
+   "rm_vias": 11,
+   "add_vias": 22,
+   "renamed_pads": 13,
+   "new_pads": 26
+  }
+ },
+ "relocate": {
+  "errors": [],
+  "violations": [],
+  "worst": {
+   "clearance Bottom": [
+    0.0093,
+    0.0993,
+    "NEW pad R119-1",
+    "track Bottom CHAN18 (37.550,5.550)-(37.850,4.100)"
+   ],
+   "clearance Top": [
+    0.0003,
+    0.0903,
+    "NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762",
+    "track Top UDQM (39.812,11.590)-(39.812,14.050)"
+   ],
+   "clearance L4-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L3-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L2-GND": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L5-VCC3V3": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "mask sliver Bottom": [
+    0.01,
+    0.11,
+    "pad U3-5",
+    "NEW pad R121-1"
+   ],
+   "mask sliver Top": [
+    0.06,
+    0.16,
+    "NEW pad R130-2",
+    "NEW pad R129-2"
+   ],
+   "hole to hole": [
+    0.01,
+    0.25,
+    "via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ]
+  },
+  "bad_connectivity": {},
+  "n_nets": 31,
+  "component": [
+   [
+    "R119",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R120",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R121",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R122",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R123",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R124",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R125",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R126",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R127",
+    "Top",
+    0.46,
+    "R129"
+   ],
+   [
+    "R128",
+    "Bottom",
+    1.1521,
+    "C112"
+   ],
+   [
+    "R129",
+    "Top",
+    0.26,
+    "R130"
+   ],
+   [
+    "R130",
+    "Top",
+    0.26,
+    "R129"
+   ],
+   [
+    "R131",
+    "Top",
+    0.58,
+    "R130"
+   ]
+  ],
+  "other_nets": [
+   "FT-VCORE",
+   "GND",
+   "TDO",
+   "TMS",
+   "VCC3V3"
+  ],
+  "counts": {
+   "rm_tracks": 58,
+   "add_tracks": 87,
+   "rm_vias": 11,
+   "add_vias": 22,
+   "renamed_pads": 13,
+   "new_pads": 26
+  }
+ },
+ "d10_elsewhere": {
+  "errors": [],
+  "violations": [],
+  "worst": {
+   "clearance Bottom": [
+    0.0075,
+    0.0975,
+    "NEW pad R129-1",
+    "track Bottom VCC1V0 (39.600,15.850)-(40.900,17.300)"
+   ],
+   "clearance Top": [
+    0.0003,
+    0.0903,
+    "NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762",
+    "track Top UDQM (39.812,11.590)-(39.812,14.050)"
+   ],
+   "clearance L4-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L3-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L2-GND": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L5-VCC3V3": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "mask sliver Bottom": [
+    0.01,
+    0.11,
+    "pad U3-5",
+    "NEW pad R121-1"
+   ],
+   "mask sliver Top": [
+    0.1,
+    0.2,
+    "NEW pad R127-1",
+    "NEW pad R127-2"
+   ],
+   "hole to hole": [
+    0.01,
+    0.25,
+    "via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ]
+  },
+  "bad_connectivity": {},
+  "n_nets": 31,
+  "component": [
+   [
+    "R119",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R120",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R121",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R122",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R123",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R124",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R125",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R126",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R127",
+    "Top",
+    0.8001,
+    "U2"
+   ],
+   [
+    "R128",
+    "Bottom",
+    1.1521,
+    "C112"
+   ],
+   [
+    "R129",
+    "Bottom",
+    0.0075,
+    "U3"
+   ],
+   [
+    "R130",
+    "Top",
+    0.6,
+    "R131"
+   ],
+   [
+    "R131",
+    "Top",
+    0.6,
+    "R130"
+   ]
+  ],
+  "other_nets": [
+   "FT-VCORE",
+   "GND",
+   "TDO",
+   "TMS",
+   "VCC3V3"
+  ],
+  "counts": {
+   "rm_tracks": 60,
+   "add_tracks": 94,
+   "rm_vias": 11,
+   "add_vias": 27,
+   "renamed_pads": 13,
+   "new_pads": 26
+  }
+ }
+}

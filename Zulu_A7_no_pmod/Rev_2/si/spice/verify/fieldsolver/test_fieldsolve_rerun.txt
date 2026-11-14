@@ -1,0 +1,4 @@
+stripline w=0.125 b=0.40: solver 60.65  Cohn 61.26  (0.4s)
+stripline w=0.200 b=0.50: solver 53.87  Cohn 54.46  (0.4s)
+microstrip w=0.2000 h=0.10: solver Z0 49.62 eeff 3.141 | HJ 50.29 3.139 (0.7s)
+microstrip w=0.0762 h=0.10: solver Z0 82.17 eeff 2.933 | HJ 83.04 2.929 (1.5s)

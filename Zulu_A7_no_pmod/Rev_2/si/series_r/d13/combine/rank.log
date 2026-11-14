@@ -1,0 +1,57 @@
+== step 1: per-net candidate pools (all strategies, proven-alone only) ==
+D13 candidates 2
+   src u3_end    family XF-Top    new_vias 2 vippo 1 silk_U1 True  unlock gnd47 : 2
+D14 candidates 939
+   src u1_end    family F4        new_vias 2 vippo 1 silk_U1 False unlock -     : 181
+   src u3_end    family XF-Top    new_vias 3 vippo 1 silk_U1 True  unlock gnd47 : 19
+   src inner_run family inner     new_vias 4 vippo 2 silk_U1 False unlock -     : 572
+   src u1_end    family F3B       new_vias 4 vippo 2 silk_U1 False unlock -     : 167
+D15 candidates 1083
+   src u1_end    family F4        new_vias 2 vippo 1 silk_U1 False unlock -     : 31
+   src u1_end    family F5        new_vias 3 vippo 1 silk_U1 True  unlock -     : 102
+   src u1_end    family judgeR134 new_vias 3 vippo 1 silk_U1 True  unlock -     : 1
+   src u3_end    family XF-Top    new_vias 3 vippo 1 silk_U1 True  unlock -     : 403
+   src inner_run family inner     new_vias 4 vippo 2 silk_U1 False unlock -     : 323
+   src u1_end    family F3B       new_vias 4 vippo 2 silk_U1 False unlock -     : 79
+   src u1_end    family F3T       new_vias 6 vippo 2 silk_U1 True  unlock -     : 114
+   src u1_end    family F3T2      new_vias 6 vippo 2 silk_U1 True  unlock -     : 30
+D13 exists only as u3_end R132 (2 poses, gnd47 required) -> full coverage = gnd47 + R132 + D14 + D15.
+Per-net minimum new vias: D14 2, D15 2 (u1_end F4: pad-1 L4>L5>Bottom column only).
+
+== step 2a: R132 pose (13-R + gnd47 + R132) ==
+u3_end:D13_XF-Top_gnd47_38.7_16.3_r180 apply errors [] own smallest:
+      (-0.0, 'mask web Top', 'pad R131-1', 'pad R132-1')
+      (-0.0, 'mask web Top', 'pad R132-1', 'pad R131-1')
+      (0.0029, 'clr L3-SIG', 'via D13 (38.400,16.300) L2-GND>L3-SIG d0.30', 'via D15 (38.350,16.725) Top>Bottom d0.35')
+      (0.0035, 'clr L3-SIG', 'track L3-SIG D13 (38.400,16.300)-(38.060,16.500) w0.1250', 'via D15 (38.350,16.725) Top>Bottom d0.35')
+      (0.0043, 'clr L3-SIG', 'track L3-SIG D13 (37.080,16.880)-(36.900,16.660) w0.1250', 'via SD-DAT2 (37.200,16.550) L3-SIG>L4-SIG d0.27')
+      (0.0044, 'clr Top', 'track Top SDRAM-D13 (36.345,17.640)-(38.185,17.620) w0.0762', 'pad U2-48')
+u3_end:D13_XF-Top_gnd47_38.75_16.3_r180 apply errors [] own smallest:
+      (-0.0, 'mask web Top', 'pad R131-1', 'pad R132-1')
+      (-0.0, 'mask web Top', 'pad R132-1', 'pad R131-1')
+      (0.0032, 'clr L3-SIG', 'track L3-SIG D13 (38.110,16.460)-(37.770,16.760) w0.1250', 'track L3-SIG SD-DAT2 (37.200,16.550)-(37.700,16.550) w0.0762')
+      (0.0032, 'clr L3-SIG', 'track L3-SIG D13 (38.110,16.460)-(37.770,16.760) w0.1250', 'track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762')
+      (0.0044, 'clr Top', 'track Top SDRAM-D13 (36.345,17.640)-(38.185,17.620) w0.0762', 'pad U2-48')
+      (0.0045, 'clr L3-SIG', 'track L3-SIG D13 (37.070,16.880)-(36.890,16.640) w0.1250', 'via SD-DAT2 (37.200,16.550) L3-SIG>L4-SIG d0.27')
+chosen R132: u3_end:D13_XF-Top_gnd47_38.75_16.3_r180 min -0.0 next 0.0032
+
+== step 2b: D14 x D15 at 2+2 new vias ==
+D14 2-via candidates 181 (min copper changes 5: 62), D15 2-via candidates 31 (min 5: 14)
+triples to measure: 868
+merge/apply errors in 0 triples
+top 15 by score = min(own new-geometry copper/h2h/mask margin, ComponentClearance - 0.254):
+  score +0.0156 copper +0.0156 CC (0.3041, 'R133', 'R134')  D14_F4_45p600_17p150_0__D15_F4_46p800_16p800_0 [(0.0156, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.500,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.025, 'clr Bottom', 'pad R134-1', 'track Bottom VCC1V0 (43.600,15.935)-(48.300,15.935) w1.2000')]
+  score +0.0154 copper +0.0154 CC (0.3534, 'R133', 'C117')  D14_F4_45p600_17p150_0__D15_F4_46p850_16p800_0 [(0.0154, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.550,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.025, 'clr Bottom', 'pad R134-1', 'track Bottom VCC1V0 (43.600,15.935)-(48.300,15.935) w1.2000')]
+  score +0.0154 copper +0.0154 CC (0.3041, 'R133', 'R134')  D14_F4_45p650_17p150_0__D15_F4_46p850_16p800_0 [(0.0154, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.550,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.025, 'clr Bottom', 'pad R134-1', 'track Bottom VCC1V0 (43.600,15.935)-(48.300,15.935) w1.2000')]
+  score +0.0152 copper +0.0152 CC (0.3534, 'R133', 'C117')  D14_F4_45p600_17p150_0__D15_F4_46p900_16p800_0 [(0.0152, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.600,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0248, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.600,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0152 copper +0.0152 CC (0.3536, 'R134', 'R133')  D14_F4_45p650_17p150_0__D15_F4_46p900_16p800_0 [(0.0152, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.600,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0248, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.600,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0152 copper +0.0152 CC (0.3041, 'R133', 'R134')  D14_F4_45p700_17p150_0__D15_F4_46p900_16p800_0 [(0.0152, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.600,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0248, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.600,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0150 copper +0.0150 CC (0.3534, 'R133', 'C117')  D14_F4_45p600_17p150_0__D15_F4_46p950_16p800_0 [(0.015, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0245, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0150 copper +0.0150 CC (0.3611, 'R133', 'C117')  D14_F4_45p650_17p150_0__D15_F4_46p950_16p800_0 [(0.015, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0245, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0150 copper +0.0150 CC (0.3536, 'R134', 'R133')  D14_F4_45p700_17p150_0__D15_F4_46p950_16p800_0 [(0.015, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0245, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0150 copper +0.0150 CC (0.3041, 'R133', 'R134')  D14_F4_45p750_17p150_0__D15_F4_46p950_16p800_0 [(0.015, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0245, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.650,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0149 copper +0.0149 CC (0.3534, 'R133', 'C117')  D14_F4_45p600_17p150_0__D15_F4_47p000_16p800_0 [(0.0149, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0242, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0149 copper +0.0149 CC (0.3611, 'R133', 'C117')  D14_F4_45p650_17p150_0__D15_F4_47p000_16p800_0 [(0.0149, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0242, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0149 copper +0.0149 CC (0.3754, 'R133', 'C117')  D14_F4_45p700_17p150_0__D15_F4_47p000_16p800_0 [(0.0149, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0242, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0149 copper +0.0149 CC (0.3536, 'R134', 'R133')  D14_F4_45p750_17p150_0__D15_F4_47p000_16p800_0 [(0.0149, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0242, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]
+  score +0.0149 copper +0.0149 CC (0.3041, 'R133', 'R134')  D14_F4_45p800_17p150_0__D15_F4_47p000_16p800_0 [(0.0149, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via GND (41.400,16.400) Top>Bottom d0.35'), (0.0242, 'clr L4-SIG', 'track L4-SIG SDRAM-D15 (38.350,16.725)-(46.700,16.800) w0.1250', 'via UART_FT_RTS# (43.550,16.450) L3-SIG>L4-SIG d0.27')]

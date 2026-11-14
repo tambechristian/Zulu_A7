@@ -1,0 +1,11 @@
+write D1   max plan   0201  ball -0.304/3.536 V budget   5.2% | die -0.351 budget  9.5% | t10-90 1.15 ns conn True {'at': [36.95, 6.05]}
+write D2   max plan   0201  ball -0.175/3.480 V budget   0.0% | die -0.199 budget  0.0% | t10-90 1.19 ns conn True {'at': [44.9, 5.3]}
+write D0   max plan   0201  ball -0.334/3.558 V budget   8.6% | die -0.446 budget 18.6% | t10-90 1.11 ns conn True {'at': [38.95, 6.4]}
+write D5   max plan   0201  ball -0.215/3.485 V budget   1.9% | die -0.224 budget  5.6% | t10-90 1.21 ns conn True {'at': [43.65, 5.3]}
+write D3   max plan   0201  ball -0.331/3.533 V budget   8.2% | die -0.404 budget 17.4% | t10-90 1.17 ns conn True {'at': [34.9, 6.4]}
+write D6   max plan   0201  ball -0.262/3.520 V budget   4.5% | die -0.278 budget  8.1% | t10-90 1.19 ns conn True {'at': [35.05, 5.7]}
+write D8   max plan   0201  ball -0.208/3.495 V budget   1.6% | die -0.244 budget  5.4% | t10-90 1.19 ns conn True {'at': [39.2, 13.6]}
+write D12  max plan   0201  ball -0.292/3.533 V budget   5.3% | die -0.311 budget  9.2% | t10-90 1.17 ns conn True {'at': [39.2, 15.8]}
+write D15  max plan   0201  ball -0.290/3.529 V budget   4.9% | die -0.355 budget  9.3% | t10-90 1.15 ns conn True {'at': [39.1, 16.75]}
+write D11  max plan   0201  ball -0.166/3.480 V budget   0.0% | die -0.212 budget  3.1% | t10-90 1.16 ns conn True {'at': [39.2, 14.9]}
+done 10 cases, 0 errors

@@ -1,0 +1,13 @@
+15_XF-Top_none: 17388 placements tried, 403 legal (quick exact check), 67 s
+     1705  pad: clearance pad Q1-2
+     1465  pad: clearance track Top UART_FT_RTS# (39.700,17.900)-(40.350,17
+      978  pad: clearance pad R131-1
+      876  pad: clearance track Top UART_FT_TXD (39.600,16.200)-(40.600,15.
+      813  pad: clearance track Top TMS (40.300,16.300)-(40.850,16.850) w0.
+      796  pad: clearance track Top GND (38.175,17.125)-(38.175,18.200) w0.
+      785  pad: clearance pad C157-1
+      719  pad: clearance pad C157-2
+      689  pad: clearance via UART_FT_TXD (39.600,16.200) Top>L2-GND d0.30
+      606  route: column or route cells blocked on L4-SIG
+      594  pad: clearance track Top GND (37.850,16.850)-(38.175,17.125) w0.
+      579  pad: clearance pad R131-2

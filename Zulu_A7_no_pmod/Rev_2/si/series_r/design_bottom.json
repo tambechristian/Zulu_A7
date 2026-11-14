@@ -1,0 +1,919 @@
+{
+ "source": {
+  "extract": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\si\\series_r\\board_extract.json",
+  "pcbdoc_md5": "2a616c1c74f8788a4a1c837c7d76c3b0",
+  "script": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\si\\series_r\\design_bottom.py"
+ },
+ "approach": "bottom: R0201 on Bottom outboard of U3 pad row; neck pad->R, return R->gap between U3 pads->existing first via",
+ "variant": [
+  "CH18"
+ ],
+ "order": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15
+ ],
+ "rules_used": {
+  "copper_clearance": 0.09,
+  "component_clearance": 0.254,
+  "mask_expansion": 0.05,
+  "mask_sliver": 0.1,
+  "width_bottom": [
+   0.1,
+   0.125,
+   0.15
+  ],
+  "inner_SDRAM_clearance": 0.1,
+  "plane_clearance_micro": 0.165,
+  "plane_thruvia": 0.175,
+  "component_proxy": "bbox(pads + Mech3/Mech4) per Bottom part; U3 also datasheet max body; new R0201 = pads 0.9 x Mech3 0.396"
+ },
+ "placed": [
+  "D0",
+  "D1",
+  "D3",
+  "D5"
+ ],
+ "failed": {
+  "D2": {
+   "legal_R_positions": 0,
+   "nearest_legal_pad1_from_pad_edge_mm": null,
+   "adjacent_gaps": [
+    {
+     "x": 35.1501,
+     "between": "U3-6(GND) / U3-5(SDRAM-D2)",
+     "blocked_by": [
+      "track#1285 FT-VPHY",
+      "track#1286 FT-VPHY",
+      "track#1287 FT-VPHY"
+     ]
+    },
+    {
+     "x": 35.9501,
+     "between": "U3-5(SDRAM-D2) / U3-4(SDRAM-D1)",
+     "blocked_by": "free"
+    }
+   ]
+  },
+  "D4": {
+   "legal_R_positions": 0,
+   "nearest_legal_pad1_from_pad_edge_mm": null,
+   "adjacent_gaps": [
+    {
+     "x": 32.7501,
+     "between": "U3-9(VCC3V3) / U3-8(SDRAM-D4)",
+     "blocked_by": [
+      "track#1155 VCC3V3",
+      "track#1156 VCC3V3"
+     ]
+    },
+    {
+     "x": 33.55,
+     "between": "U3-8(SDRAM-D4) / U3-7(SDRAM-D3)",
+     "blocked_by": [
+      "new return of D3",
+      "track#1154 VCC3V3",
+      "track#1155 VCC3V3"
+     ]
+    }
+   ]
+  },
+  "D6": {
+   "legal_R_positions": 0,
+   "nearest_legal_pad1_from_pad_edge_mm": null,
+   "adjacent_gaps": [
+    {
+     "x": 30.3499,
+     "between": "U3-12(GND) / U3-11(SDRAM-D6)",
+     "blocked_by": [
+      "track#1301 FT-VCORE",
+      "track#1302 FT-VCORE",
+      "track#1303 FT-VCORE"
+     ]
+    },
+    {
+     "x": 31.1501,
+     "between": "U3-11(SDRAM-D6) / U3-10(SDRAM-D5)",
+     "blocked_by": [
+      "new R pad B of D5",
+      "new return of D5"
+     ]
+    }
+   ]
+  },
+  "D7": {
+   "legal_R_positions": 0,
+   "nearest_legal_pad1_from_pad_edge_mm": null,
+   "adjacent_gaps": [
+    {
+     "x": 28.7501,
+     "between": "U3-14(VCC3V3) / U3-13(SDRAM-D7)",
+     "blocked_by": [
+      "track#1272 VCC3V3",
+      "track#716 TDO",
+      "track#717 TDO",
+      "track#718 TDO"
+     ]
+    },
+    {
+     "x": 29.55,
+     "between": "U3-13(SDRAM-D7) / U3-12(GND)",
+     "blocked_by": [
+      "track#1226 GND",
+      "track#1227 GND"
+     ]
+    }
+   ]
+  },
+  "D8": {
+   "legal_R_positions": 588,
+   "nearest_legal_pad1_from_pad_edge_mm": 1.495,
+   "adjacent_gaps": [
+    {
+     "x": 28.7501,
+     "between": "U3-41(GND) / U3-42(SDRAM-D8)",
+     "blocked_by": [
+      "pad R80-1",
+      "track#265 SD-DAT0",
+      "track#267 SD-DAT0",
+      "track#268 SD-DAT0",
+      "track#269 SD-DAT0",
+      "via#1481 CHAN19 micro"
+     ]
+    },
+    {
+     "x": 29.55,
+     "between": "U3-42(SDRAM-D8) / U3-43(VCC3V3)",
+     "blocked_by": [
+      "track#734 SD-DAT0",
+      "track#735 SD-DAT0",
+      "track#801 N$LD0B",
+      "track#802 N$LD0B",
+      "via#714 SD-DAT0 micro"
+     ]
+    }
+   ]
+  },
+  "D9": {
+   "legal_R_positions": 0,
+   "nearest_legal_pad1_from_pad_edge_mm": null,
+   "adjacent_gaps": [
+    {
+     "x": 30.3499,
+     "between": "U3-43(VCC3V3) / U3-44(SDRAM-D9)",
+     "blocked_by": [
+      "pad R80-2",
+      "track#1151 VCC3V3",
+      "track#1277 VCC3V3",
+      "via#1760 VCC3V3 through"
+     ]
+    },
+    {
+     "x": 31.1501,
+     "between": "U3-44(SDRAM-D9) / U3-45(SDRAM-D10)",
+     "blocked_by": [
+      "pad R81-1",
+      "track#1276 VCC3V3",
+      "track#1277 VCC3V3"
+     ]
+    }
+   ]
+  },
+  "D10": {
+   "legal_R_positions": 236,
+   "nearest_legal_pad1_from_pad_edge_mm": 3.295,
+   "adjacent_gaps": [
+    {
+     "x": 31.1501,
+     "between": "U3-44(SDRAM-D9) / U3-45(SDRAM-D10)",
+     "blocked_by": [
+      "pad R81-1",
+      "track#1276 VCC3V3",
+      "track#1277 VCC3V3"
+     ]
+    },
+    {
+     "x": 31.95,
+     "between": "U3-45(SDRAM-D10) / U3-46(GND)",
+     "blocked_by": "free"
+    }
+   ]
+  },
+  "D11": {
+   "legal_R_positions": 770,
+   "nearest_legal_pad1_from_pad_edge_mm": 1.845,
+   "adjacent_gaps": [
+    {
+     "x": 32.7501,
+     "between": "U3-46(GND) / U3-47(SDRAM-D11)",
+     "blocked_by": [
+      "pad R81-2"
+     ]
+    },
+    {
+     "x": 33.55,
+     "between": "U3-47(SDRAM-D11) / U3-48(SDRAM-D12)",
+     "blocked_by": [
+      "pad R82-1",
+      "track#1274 VCC3V3",
+      "track#1275 VCC3V3"
+     ]
+    }
+   ]
+  },
+  "D12": {
+   "legal_R_positions": 2858,
+   "nearest_legal_pad1_from_pad_edge_mm": 1.795,
+   "adjacent_gaps": [
+    {
+     "x": 33.55,
+     "between": "U3-47(SDRAM-D11) / U3-48(SDRAM-D12)",
+     "blocked_by": [
+      "pad R82-1",
+      "track#1274 VCC3V3",
+      "track#1275 VCC3V3"
+     ]
+    },
+    {
+     "x": 34.3499,
+     "between": "U3-48(SDRAM-D12) / U3-49(VCC3V3)",
+     "blocked_by": [
+      "pad R82-2",
+      "track#1274 VCC3V3",
+      "track#673 UART_FT_RXD",
+      "via#499 UART_FT_RXD micro"
+     ]
+    }
+   ]
+  },
+  "D13": {
+   "legal_R_positions": 3792,
+   "nearest_legal_pad1_from_pad_edge_mm": 1.82,
+   "adjacent_gaps": [
+    {
+     "x": 35.1501,
+     "between": "U3-49(VCC3V3) / U3-50(SDRAM-D13)",
+     "blocked_by": [
+      "pad R82-2",
+      "track#1147 VCC3V3",
+      "track#792 N$LD1A",
+      "via#1688 VCC3V3 through",
+      "via#824 N$LD1A micro"
+     ]
+    },
+    {
+     "x": 35.9501,
+     "between": "U3-50(SDRAM-D13) / U3-51(SDRAM-D14)",
+     "blocked_by": [
+      "pad R83-1",
+      "track#792 N$LD1A"
+     ]
+    }
+   ]
+  },
+  "D14": {
+   "legal_R_positions": 3530,
+   "nearest_legal_pad1_from_pad_edge_mm": 2.095,
+   "adjacent_gaps": [
+    {
+     "x": 35.9501,
+     "between": "U3-50(SDRAM-D13) / U3-51(SDRAM-D14)",
+     "blocked_by": [
+      "pad R83-1",
+      "track#792 N$LD1A"
+     ]
+    },
+    {
+     "x": 36.7501,
+     "between": "U3-51(SDRAM-D14) / U3-52(GND)",
+     "blocked_by": [
+      "pad R83-2",
+      "track#722 SD-DAT2",
+      "track#723 SD-DAT2",
+      "track#724 SD-DAT2",
+      "track#791 N$LD1A",
+      "via#689 SD-DAT2 micro"
+     ]
+    }
+   ]
+  },
+  "D15": {
+   "legal_R_positions": 5282,
+   "nearest_legal_pad1_from_pad_edge_mm": 0.77,
+   "adjacent_gaps": [
+    {
+     "x": 37.55,
+     "between": "U3-52(GND) / U3-53(SDRAM-D15)",
+     "blocked_by": [
+      "pad R83-2",
+      "track#1166 GND",
+      "via#1702 GND through"
+     ]
+    },
+    {
+     "x": 38.3499,
+     "between": "U3-53(SDRAM-D15) / U3-54(GND)",
+     "blocked_by": [
+      "track#1165 GND",
+      "via#1701 GND through"
+     ]
+    }
+   ]
+  }
+ },
+ "placements": [
+  {
+   "ref": "R119",
+   "nets": "pad1 SDRAM-D0 (U3 side) / pad2 D0 (line side)",
+   "part": "Yageo RC0201FR-0722RL",
+   "footprint": "R0201 (zulu_a7.PcbLib)",
+   "side": "Bottom",
+   "x": 38.25,
+   "y": 5.1,
+   "rot": 0,
+   "pad1_xy": [
+    37.95,
+    5.1
+   ],
+   "dist_from_u3_pin_mm": 1.075,
+   "dist_from_u3_pad_edge_mm": 0.475,
+   "neck_ps_from_pad_centre": 6.8,
+   "neck_ps_from_pad_edge": 3.0,
+   "neck_width": 0.125,
+   "return_width": 0.125,
+   "neck_len": 0.625,
+   "return_len": 2.226,
+   "old_stub_len": 0.883,
+   "first_via": [
+    38.025,
+    7.05
+   ],
+   "neck_pts": [
+    [
+     37.95,
+     5.1
+    ],
+    [
+     37.95,
+     5.725
+    ]
+   ],
+   "return_pts": [
+    [
+     38.55,
+     5.1
+    ],
+    [
+     38.35,
+     5.3
+    ],
+    [
+     38.35,
+     6.825
+    ],
+    [
+     38.125,
+     7.05
+    ],
+    [
+     38.025,
+     7.05
+    ]
+   ]
+  },
+  {
+   "ref": "R120",
+   "nets": "pad1 SDRAM-D1 (U3 side) / pad2 D1 (line side)",
+   "part": "Yageo RC0201FR-0722RL",
+   "footprint": "R0201 (zulu_a7.PcbLib)",
+   "side": "Bottom",
+   "x": 36.65,
+   "y": 5.1,
+   "rot": 0,
+   "pad1_xy": [
+    36.35,
+    5.1
+   ],
+   "dist_from_u3_pin_mm": 1.075,
+   "dist_from_u3_pad_edge_mm": 0.475,
+   "neck_ps_from_pad_centre": 6.8,
+   "neck_ps_from_pad_edge": 3.0,
+   "neck_width": 0.125,
+   "return_width": 0.125,
+   "neck_len": 0.625,
+   "return_len": 2.008,
+   "old_stub_len": 0.944,
+   "first_via": [
+    36.75,
+    7.025
+   ],
+   "neck_pts": [
+    [
+     36.35,
+     5.1
+    ],
+    [
+     36.35,
+     5.725
+    ]
+   ],
+   "return_pts": [
+    [
+     36.95,
+     5.1
+    ],
+    [
+     36.75,
+     5.3
+    ],
+    [
+     36.75,
+     7.025
+    ]
+   ]
+  },
+  {
+   "ref": "R122",
+   "nets": "pad1 SDRAM-D3 (U3 side) / pad2 D3 (line side)",
+   "part": "Yageo RC0201FR-0722RL",
+   "footprint": "R0201 (zulu_a7.PcbLib)",
+   "side": "Bottom",
+   "x": 34.2,
+   "y": 5.1,
+   "rot": 180,
+   "pad1_xy": [
+    34.5,
+    5.1
+   ],
+   "dist_from_u3_pin_mm": 1.303,
+   "dist_from_u3_pad_edge_mm": 0.703,
+   "neck_ps_from_pad_centre": 8.2,
+   "neck_ps_from_pad_edge": 4.4,
+   "neck_width": 0.125,
+   "return_width": 0.125,
+   "neck_len": 0.853,
+   "return_len": 4.146,
+   "old_stub_len": 2.755,
+   "first_via": [
+    33.975,
+    8.925
+   ],
+   "neck_pts": [
+    [
+     34.5,
+     5.1
+    ],
+    [
+     33.95,
+     5.65
+    ],
+    [
+     33.95,
+     5.725
+    ]
+   ],
+   "return_pts": [
+    [
+     33.9,
+     5.1
+    ],
+    [
+     33.9,
+     5.15
+    ],
+    [
+     33.55,
+     5.5
+    ],
+    [
+     33.55,
+     8.5
+    ],
+    [
+     33.975,
+     8.925
+    ]
+   ]
+  },
+  {
+   "ref": "R124",
+   "nets": "pad1 SDRAM-D5 (U3 side) / pad2 D5 (line side)",
+   "part": "Yageo RC0201FR-0722RL",
+   "footprint": "R0201 (zulu_a7.PcbLib)",
+   "side": "Bottom",
+   "x": 31.25,
+   "y": 5.1,
+   "rot": 180,
+   "pad1_xy": [
+    31.55,
+    5.1
+   ],
+   "dist_from_u3_pin_mm": 1.075,
+   "dist_from_u3_pad_edge_mm": 0.475,
+   "neck_ps_from_pad_centre": 6.8,
+   "neck_ps_from_pad_edge": 3.0,
+   "neck_width": 0.125,
+   "return_width": 0.125,
+   "neck_len": 0.625,
+   "return_len": 4.099,
+   "old_stub_len": 2.78,
+   "first_via": [
+    31.55,
+    8.95
+   ],
+   "neck_pts": [
+    [
+     31.55,
+     5.1
+    ],
+    [
+     31.55,
+     5.725
+    ]
+   ],
+   "return_pts": [
+    [
+     30.95,
+     5.1
+    ],
+    [
+     31.15,
+     5.3
+    ],
+    [
+     31.15,
+     8.55
+    ],
+    [
+     31.55,
+     8.95
+    ]
+   ]
+  }
+ ],
+ "copper": {
+  "D0": {
+   "removed": [
+    "Bottom track D0 (37.9499,6.1701)-(38.0250,7.0500) w0.125 (old stub U3-2 -> first via)"
+   ],
+   "net_change": "U3-2 pad: D0 -> SDRAM-D0 (via the schematic; add SDRAM-D0 to class SDRAM_DATA)",
+   "added_SDRAM_side": [
+    "Bottom w0.125 SDRAM-D0 (37.950,5.100) -> (37.950,5.725)"
+   ],
+   "added_line_side": [
+    "Bottom w0.125 D0 (38.550,5.100) -> (38.350,5.300) -> (38.350,6.825) -> (38.125,7.050) -> (38.025,7.050)"
+   ],
+   "unchanged": "first through via (38.025,7.050) and all of D0 beyond it (L3/L4/Top) stay as they are"
+  },
+  "D1": {
+   "removed": [
+    "Bottom track D1 (36.3500,6.1701)-(36.7500,7.0250) w0.125 (old stub U3-4 -> first via)"
+   ],
+   "net_change": "U3-4 pad: D1 -> SDRAM-D1 (via the schematic; add SDRAM-D1 to class SDRAM_DATA)",
+   "added_SDRAM_side": [
+    "Bottom w0.125 SDRAM-D1 (36.350,5.100) -> (36.350,5.725)"
+   ],
+   "added_line_side": [
+    "Bottom w0.125 D1 (36.950,5.100) -> (36.750,5.300) -> (36.750,7.025)"
+   ],
+   "unchanged": "first through via (36.750,7.025) and all of D1 beyond it (L3/L4/Top) stay as they are"
+  },
+  "D3": {
+   "removed": [
+    "Bottom track D3 (33.9499,6.1701)-(33.9750,8.9250) w0.125 (old stub U3-7 -> first via)"
+   ],
+   "net_change": "U3-7 pad: D3 -> SDRAM-D3 (via the schematic; add SDRAM-D3 to class SDRAM_DATA)",
+   "added_SDRAM_side": [
+    "Bottom w0.125 SDRAM-D3 (34.500,5.100) -> (33.950,5.650) -> (33.950,5.725)"
+   ],
+   "added_line_side": [
+    "Bottom w0.125 D3 (33.900,5.100) -> (33.900,5.150) -> (33.550,5.500) -> (33.550,8.500) -> (33.975,8.925)"
+   ],
+   "unchanged": "first through via (33.975,8.925) and all of D3 beyond it (L3/L4/Top) stay as they are"
+  },
+  "D5": {
+   "removed": [
+    "Bottom track D5 (31.5501,6.1701)-(31.5500,8.9500) w0.125 (old stub U3-10 -> first via)"
+   ],
+   "net_change": "U3-10 pad: D5 -> SDRAM-D5 (via the schematic; add SDRAM-D5 to class SDRAM_DATA)",
+   "added_SDRAM_side": [
+    "Bottom w0.125 SDRAM-D5 (31.550,5.100) -> (31.550,5.725)"
+   ],
+   "added_line_side": [
+    "Bottom w0.125 D5 (30.950,5.100) -> (31.150,5.300) -> (31.150,8.550) -> (31.550,8.950)"
+   ],
+   "unchanged": "first through via (31.550,8.950) and all of D5 beyond it (L3/L4/Top) stay as they are"
+  }
+ },
+ "rework": [
+  {
+   "name": "CH18",
+   "why": "CHAN18 Bottom jumper runs diagonally (37.85,4.10)->(37.55,5.55) through the only room south of U3-2 (D0); re-shape it to drop vertically at x 37.55 so D0's R fits. Same endpoints, same layer, +0.06 mm length.",
+   "removed": [
+    "track#1021 CHAN18"
+   ],
+   "added": [
+    "Bottom: CHAN18 track (37.85,4.1)-(37.85,4.45) w0.0762",
+    "Bottom: CHAN18 track (37.85,4.45)-(37.55,4.75) w0.0762",
+    "Bottom: CHAN18 track (37.55,4.75)-(37.55,5.55) w0.0762"
+   ]
+  }
+ ],
+ "verify": {
+  "violations": [],
+  "worst": {
+   "Bottom copper clearance": {
+    "value": 0.1001,
+    "limit": 0.09,
+    "margin": 0.0101,
+    "a": "return",
+    "b": "pad U3-2"
+   },
+   "solder-mask sliver (Bottom)": {
+    "value": 0.2,
+    "limit": 0.1,
+    "margin": 0.1,
+    "a": "R pad A",
+    "b": "R pad B"
+   },
+   "component clearance (Bottom bodies)": {
+    "value": 0.2722,
+    "limit": 0.254,
+    "margin": 0.0182,
+    "a": "R124",
+    "b": "U3"
+   }
+  }
+ },
+ "gap_audit": [
+  {
+   "row": "south",
+   "x": 28.7501,
+   "between": "U3-14(VCC3V3) / U3-13(SDRAM-D7)",
+   "blocked_by": [
+    "track#1272 VCC3V3",
+    "track#716 TDO",
+    "track#717 TDO",
+    "track#718 TDO"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 29.55,
+   "between": "U3-13(SDRAM-D7) / U3-12(GND)",
+   "blocked_by": [
+    "track#1226 GND",
+    "track#1227 GND"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 30.3499,
+   "between": "U3-12(GND) / U3-11(SDRAM-D6)",
+   "blocked_by": [
+    "track#1301 FT-VCORE",
+    "track#1302 FT-VCORE",
+    "track#1303 FT-VCORE"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 31.1501,
+   "between": "U3-11(SDRAM-D6) / U3-10(SDRAM-D5)",
+   "blocked_by": [
+    "new R pad B of D5",
+    "new return of D5"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 31.95,
+   "between": "U3-10(SDRAM-D5) / U3-9(VCC3V3)",
+   "blocked_by": [
+    "track#134 TMS",
+    "track#135 TMS"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 32.7501,
+   "between": "U3-9(VCC3V3) / U3-8(SDRAM-D4)",
+   "blocked_by": [
+    "track#1155 VCC3V3",
+    "track#1156 VCC3V3"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 33.55,
+   "between": "U3-8(SDRAM-D4) / U3-7(SDRAM-D3)",
+   "blocked_by": [
+    "new return of D3",
+    "track#1154 VCC3V3",
+    "track#1155 VCC3V3"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 34.3499,
+   "between": "U3-7(SDRAM-D3) / U3-6(GND)",
+   "blocked_by": [
+    "new R pad A of SDRAM-D3",
+    "new neck of SDRAM-D3",
+    "track#1228 GND",
+    "track#1229 GND"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 35.1501,
+   "between": "U3-6(GND) / U3-5(SDRAM-D2)",
+   "blocked_by": [
+    "track#1285 FT-VPHY",
+    "track#1286 FT-VPHY",
+    "track#1287 FT-VPHY"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 35.9501,
+   "between": "U3-5(SDRAM-D2) / U3-4(SDRAM-D1)",
+   "blocked_by": []
+  },
+  {
+   "row": "south",
+   "x": 36.7501,
+   "between": "U3-4(SDRAM-D1) / U3-3(VCC3V3)",
+   "blocked_by": [
+    "new R pad B of D1",
+    "new return of D1"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 37.55,
+   "between": "U3-3(VCC3V3) / U3-2(SDRAM-D0)",
+   "blocked_by": [
+    "rework CH18: CHAN18 track (37.55,4.75)-(37.55,5.55) w0.0762",
+    "track#1022 CHAN18",
+    "via#1509 CHAN18 micro"
+   ]
+  },
+  {
+   "row": "south",
+   "x": 38.3499,
+   "between": "U3-2(SDRAM-D0) / U3-1(VCC3V3)",
+   "blocked_by": [
+    "new R pad B of D0",
+    "new return of D0"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 28.7501,
+   "between": "U3-41(GND) / U3-42(SDRAM-D8)",
+   "blocked_by": [
+    "pad R80-1",
+    "track#265 SD-DAT0",
+    "track#267 SD-DAT0",
+    "track#268 SD-DAT0",
+    "track#269 SD-DAT0",
+    "via#1481 CHAN19 micro"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 29.55,
+   "between": "U3-42(SDRAM-D8) / U3-43(VCC3V3)",
+   "blocked_by": [
+    "track#734 SD-DAT0",
+    "track#735 SD-DAT0",
+    "track#801 N$LD0B",
+    "track#802 N$LD0B",
+    "via#714 SD-DAT0 micro"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 30.3499,
+   "between": "U3-43(VCC3V3) / U3-44(SDRAM-D9)",
+   "blocked_by": [
+    "pad R80-2",
+    "track#1151 VCC3V3",
+    "track#1277 VCC3V3",
+    "via#1760 VCC3V3 through"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 31.1501,
+   "between": "U3-44(SDRAM-D9) / U3-45(SDRAM-D10)",
+   "blocked_by": [
+    "pad R81-1",
+    "track#1276 VCC3V3",
+    "track#1277 VCC3V3"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 31.95,
+   "between": "U3-45(SDRAM-D10) / U3-46(GND)",
+   "blocked_by": []
+  },
+  {
+   "row": "north",
+   "x": 32.7501,
+   "between": "U3-46(GND) / U3-47(SDRAM-D11)",
+   "blocked_by": [
+    "pad R81-2"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 33.55,
+   "between": "U3-47(SDRAM-D11) / U3-48(SDRAM-D12)",
+   "blocked_by": [
+    "pad R82-1",
+    "track#1274 VCC3V3",
+    "track#1275 VCC3V3"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 34.3499,
+   "between": "U3-48(SDRAM-D12) / U3-49(VCC3V3)",
+   "blocked_by": [
+    "pad R82-2",
+    "track#1274 VCC3V3",
+    "track#673 UART_FT_RXD",
+    "via#499 UART_FT_RXD micro"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 35.1501,
+   "between": "U3-49(VCC3V3) / U3-50(SDRAM-D13)",
+   "blocked_by": [
+    "pad R82-2",
+    "track#1147 VCC3V3",
+    "track#792 N$LD1A",
+    "via#1688 VCC3V3 through",
+    "via#824 N$LD1A micro"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 35.9501,
+   "between": "U3-50(SDRAM-D13) / U3-51(SDRAM-D14)",
+   "blocked_by": [
+    "pad R83-1",
+    "track#792 N$LD1A"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 36.7501,
+   "between": "U3-51(SDRAM-D14) / U3-52(GND)",
+   "blocked_by": [
+    "pad R83-2",
+    "track#722 SD-DAT2",
+    "track#723 SD-DAT2",
+    "track#724 SD-DAT2",
+    "track#791 N$LD1A",
+    "via#689 SD-DAT2 micro"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 37.55,
+   "between": "U3-52(GND) / U3-53(SDRAM-D15)",
+   "blocked_by": [
+    "pad R83-2",
+    "track#1166 GND",
+    "via#1702 GND through"
+   ]
+  },
+  {
+   "row": "north",
+   "x": 38.3499,
+   "between": "U3-53(SDRAM-D15) / U3-54(GND)",
+   "blocked_by": [
+    "track#1165 GND",
+    "via#1701 GND through"
+   ]
+  }
+ ]
+}

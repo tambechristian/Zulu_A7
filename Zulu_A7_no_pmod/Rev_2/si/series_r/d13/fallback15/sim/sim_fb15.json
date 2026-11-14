@@ -1,0 +1,1124 @@
+{
+ "plan": "d13/fallback15/plan15.json",
+ "plan_md5": "187b8703833e9d785fd62c91d044bdf8",
+ "simulator": "d13/fallback15/sim/bus_sim_final.py (copy of d13/sim/bus_sim_final.py md5 3a9ba636, SR path only)",
+ "simulator_md5": "750efe6cf77e15cd1fed9bc1c4c59ad5",
+ "r_ohm": 22.0,
+ "pkg": "parts: ESL 0.5 nH, 0.05 pF across, 0.08 pF per pad to ground",
+ "ui_ns": 7.5,
+ "cases": 26,
+ "errors": 0,
+ "identity_all_zero": true,
+ "identity": [
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_read_typ_fab_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_read_typ_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "read",
+   "corner": "typ",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 11263,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 11263,
+    "n_ref": 11232,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_write_typ_fab_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_write_typ_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "write",
+   "corner": "typ",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 13382,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 13382,
+    "n_ref": 12850,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_read_typ_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_read_typ_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "read",
+   "corner": "typ",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 10011,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_read_typ_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_read_typ_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "read",
+   "corner": "typ",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 10365,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_write_typ_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_write_typ_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "write",
+   "corner": "typ",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 11502,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_write_typ_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_write_typ_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "write",
+   "corner": "typ",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 11728,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_read_max_fab_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_read_max_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 11125,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 11125,
+    "n_ref": 10944,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_write_max_fab_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_write_max_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "write",
+   "corner": "max",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 12699,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 12699,
+    "n_ref": 13209,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_read_max_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_read_max_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 9775,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_read_max_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_read_max_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 10182,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_write_max_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_write_max_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "write",
+   "corner": "max",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 11612,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_write_max_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_write_max_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "write",
+   "corner": "max",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 11790,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_read_typ_pcbdoc_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_read_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "read",
+   "corner": "typ",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 11200,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 11200,
+    "n_ref": 11181,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_read_typ_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_read_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "read",
+   "corner": "typ",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 10196,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_write_typ_pcbdoc_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_write_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "write",
+   "corner": "typ",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 12706,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 12706,
+    "n_ref": 12699,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_read_typ_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_read_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "read",
+   "corner": "typ",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 10754,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_write_typ_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_write_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "write",
+   "corner": "typ",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 11575,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_write_typ_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_write_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "write",
+   "corner": "typ",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 11643,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_read_max_pcbdoc_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_read_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 11082,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 11082,
+    "n_ref": 11168,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study BASE (no R, today copper)",
+   "ref_wave": "d13/sim/wave_final/D13_write_max_pcbdoc_base_r0_parts_extract.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D13_write_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D13",
+   "scenario": "write",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 12317,
+   "max_abs_dv": 0.0,
+   "bit_identical": true,
+   "vs_16R_placed22_with_R132": {
+    "same_timebase": false,
+    "n": 12317,
+    "n_ref": 13344,
+    "max_abs_dv": null
+   }
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_read_max_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_read_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 9963,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_read_max_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_read_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 10491,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D14_write_max_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D14_write_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D14",
+   "scenario": "write",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 11622,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D15_write_max_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D15_write_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D15",
+   "scenario": "write",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 11717,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D8_read_max_pcbdoc_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D8_read_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D8",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "same_timebase": true,
+   "n": 10524,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  },
+  {
+   "src": "16-R study placed22",
+   "ref_wave": "d13/sim/wave_final/D10_read_max_fab_placed_r22_parts_extract_6bd34bd7.npz",
+   "new_wave": "d13/fallback15/sim/wave_final/D10_read_max_fab_placed_r22_parts_extract_187b8703.npz",
+   "metric_keys_differing": [],
+   "net": "D10",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "fab",
+   "same_timebase": true,
+   "n": 10699,
+   "max_abs_dv": 0.0,
+   "bit_identical": true
+  }
+ ],
+ "rows": [
+  {
+   "net": "D13",
+   "stack": "fab",
+   "corner": "typ",
+   "ref": null,
+   "r_ohm": 0.0,
+   "r_side": null,
+   "r_xy": null,
+   "len_mm": 8.971,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 8.56,
+    "die_budget_pct": 21.36,
+    "ball_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.4154,
+     "dur_ns": 0.3959,
+     "used_pct_ui": 5.279,
+     "allowed_pct_ui": 61.7
+    },
+    "die_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.4524,
+     "dur_ns": 0.4134,
+     "used_pct_ui": 5.512,
+     "allowed_pct_ui": 25.8
+    },
+    "ball_vmin": -0.4379,
+    "ball_vmax": 3.5658,
+    "die_vmin": -0.4565,
+    "die_vmax": 3.669,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.5343,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ],
+    "delay_ball_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.2475,
+    "u3pin_vmax": 3.3209,
+    "u3die_vmin": -0.375,
+    "u3die_vmax": 3.375,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D13_read_typ_fab_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D13_write_typ_fab_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D14",
+   "stack": "fab",
+   "corner": "typ",
+   "ref": "R133",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    45.6,
+    17.15
+   ],
+   "len_mm": 13.267,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.0674,
+    "ball_vmax": 3.3381,
+    "die_vmin": -0.0913,
+    "die_vmax": 3.3318,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.6844,
+    "delay_die_ns": [
+     0.0471,
+     0.0592
+    ],
+    "delay_ball_ns": [
+     0.1416,
+     0.2027
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.1144,
+    "u3pin_vmax": 3.3047,
+    "u3die_vmin": -0.1625,
+    "u3die_vmax": 3.3058,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.1228,
+     0.1411
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D14_read_typ_fab_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D14_write_typ_fab_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D15",
+   "stack": "fab",
+   "corner": "typ",
+   "ref": "R134",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    46.8,
+    16.8
+   ],
+   "len_mm": 11.249,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.0323,
+    "ball_vmax": 3.3195,
+    "die_vmin": -0.0554,
+    "die_vmax": 3.3187,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.6843,
+    "delay_die_ns": [
+     0.0508,
+     0.0639
+    ],
+    "delay_ball_ns": [
+     0.1035,
+     0.1302
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.0838,
+    "u3pin_vmax": 3.3058,
+    "u3die_vmin": -0.1293,
+    "u3die_vmax": 3.3055,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.114,
+     0.1472
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D15_read_typ_fab_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D15_write_typ_fab_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D13",
+   "stack": "fab",
+   "corner": "max",
+   "ref": null,
+   "r_ohm": 0.0,
+   "r_side": null,
+   "r_xy": null,
+   "len_mm": 8.971,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 93.76,
+    "die_budget_pct": 29.12,
+    "ball_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.5288,
+     "dur_ns": 0.7735,
+     "used_pct_ui": 10.313,
+     "allowed_pct_ui": 11.0
+    },
+    "die_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.4617,
+     "dur_ns": 0.5635,
+     "used_pct_ui": 7.514,
+     "allowed_pct_ui": 25.8
+    },
+    "ball_vmin": -0.5288,
+    "ball_vmax": 3.8642,
+    "die_vmin": -0.4646,
+    "die_vmax": 3.8984,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.185,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ],
+    "delay_ball_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.2995,
+    "u3pin_vmax": 3.6166,
+    "u3die_vmin": -0.4437,
+    "u3die_vmax": 3.6689,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D13_read_max_fab_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D13_write_max_fab_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D14",
+   "stack": "fab",
+   "corner": "max",
+   "ref": "R133",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    45.6,
+    17.15
+   ],
+   "len_mm": 13.267,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.0717,
+    "ball_vmax": 3.523,
+    "die_vmin": -0.1218,
+    "die_vmax": 3.511,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.3325,
+    "delay_die_ns": [
+     0.0443,
+     0.062
+    ],
+    "delay_ball_ns": [
+     0.1711,
+     0.1853
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.234,
+    "u3pin_vmax": 3.4998,
+    "u3die_vmin": -0.2795,
+    "u3die_vmax": 3.5051,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.0958,
+     0.1286
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D14_read_max_fab_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D14_write_max_fab_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D15",
+   "stack": "fab",
+   "corner": "max",
+   "ref": "R134",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    46.8,
+    16.8
+   ],
+   "len_mm": 11.249,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.0387,
+    "ball_vmax": 3.4902,
+    "die_vmin": -0.078,
+    "die_vmax": 3.4926,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.3325,
+    "delay_die_ns": [
+     0.0477,
+     0.0647
+    ],
+    "delay_ball_ns": [
+     0.0923,
+     0.1648
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.1967,
+    "u3pin_vmax": 3.4844,
+    "u3die_vmin": -0.2389,
+    "u3die_vmax": 3.487,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.103,
+     0.1321
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D15_read_max_fab_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D15_write_max_fab_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D13",
+   "stack": "pcbdoc",
+   "corner": "typ",
+   "ref": null,
+   "r_ohm": 0.0,
+   "r_side": null,
+   "r_xy": null,
+   "len_mm": 8.971,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 76.15,
+    "die_budget_pct": 20.71,
+    "ball_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.5156,
+     "dur_ns": 0.6283,
+     "used_pct_ui": 8.377,
+     "allowed_pct_ui": 11.0
+    },
+    "die_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.4807,
+     "dur_ns": 0.4008,
+     "used_pct_ui": 5.344,
+     "allowed_pct_ui": 25.8
+    },
+    "ball_vmin": -0.5156,
+    "ball_vmax": 3.5692,
+    "die_vmin": -0.4807,
+    "die_vmax": 3.7108,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.5407,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ],
+    "delay_ball_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.2566,
+    "u3pin_vmax": 3.3262,
+    "u3die_vmin": -0.3858,
+    "u3die_vmax": 3.3919,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D13_read_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D13_write_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D14",
+   "stack": "pcbdoc",
+   "corner": "typ",
+   "ref": "R133",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    45.6,
+    17.15
+   ],
+   "len_mm": 13.267,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.1454,
+    "ball_vmax": 3.3567,
+    "die_vmin": -0.1229,
+    "die_vmax": 3.3392,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.6908,
+    "delay_die_ns": [
+     0.0448,
+     0.0563
+    ],
+    "delay_ball_ns": [
+     0.1233,
+     0.2216
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.1314,
+    "u3pin_vmax": 3.3046,
+    "u3die_vmin": -0.1807,
+    "u3die_vmax": 3.3056,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.1279,
+     0.1337
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D14_read_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D14_write_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D15",
+   "stack": "pcbdoc",
+   "corner": "typ",
+   "ref": "R134",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    46.8,
+    16.8
+   ],
+   "len_mm": 11.249,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.0421,
+    "ball_vmax": 3.3251,
+    "die_vmin": -0.0896,
+    "die_vmax": 3.3209,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.6896,
+    "delay_die_ns": [
+     0.0491,
+     0.0611
+    ],
+    "delay_ball_ns": [
+     0.1201,
+     0.1275
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.099,
+    "u3pin_vmax": 3.3058,
+    "u3die_vmin": -0.1467,
+    "u3die_vmax": 3.3055,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.1211,
+     0.142
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D15_read_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D15_write_typ_pcbdoc_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D13",
+   "stack": "pcbdoc",
+   "corner": "max",
+   "ref": null,
+   "r_ohm": 0.0,
+   "r_side": null,
+   "r_xy": null,
+   "len_mm": 8.971,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 507.53,
+    "die_budget_pct": 27.57,
+    "ball_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.6176,
+     "dur_ns": 0.7994,
+     "used_pct_ui": 10.658,
+     "allowed_pct_ui": 2.1
+    },
+    "die_budget_detail": {
+     "kind": "under",
+     "peak_v": 0.482,
+     "dur_ns": 0.5335,
+     "used_pct_ui": 7.114,
+     "allowed_pct_ui": 25.8
+    },
+    "ball_vmin": -0.6176,
+    "ball_vmax": 3.8619,
+    "die_vmin": -0.4862,
+    "die_vmax": 3.9278,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.1918,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ],
+    "delay_ball_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.3021,
+    "u3pin_vmax": 3.6199,
+    "u3die_vmin": -0.4539,
+    "u3die_vmax": 3.6601,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.0,
+     0.0
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D13_read_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D13_write_max_pcbdoc_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D14",
+   "stack": "pcbdoc",
+   "corner": "max",
+   "ref": "R133",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    45.6,
+    17.15
+   ],
+   "len_mm": 13.267,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.164,
+    "ball_vmax": 3.5439,
+    "die_vmin": -0.158,
+    "die_vmax": 3.5493,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.3425,
+    "delay_die_ns": [
+     0.0445,
+     0.0607
+    ],
+    "delay_ball_ns": [
+     0.1398,
+     0.2279
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.2586,
+    "u3pin_vmax": 3.5049,
+    "u3die_vmin": -0.3064,
+    "u3die_vmax": 3.5116,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.0911,
+     0.1255
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D14_read_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D14_write_max_pcbdoc_placed_r22_parts_extract_187b8703.npz"
+   }
+  },
+  {
+   "net": "D15",
+   "stack": "pcbdoc",
+   "corner": "max",
+   "ref": "R134",
+   "r_ohm": 22.0,
+   "r_side": "Bottom",
+   "r_xy": [
+    46.8,
+    16.8
+   ],
+   "len_mm": 11.249,
+   "connected": true,
+   "reached_t_end": true,
+   "read": {
+    "ball_budget_pct": 0.0,
+    "die_budget_pct": 0.0,
+    "ball_budget_detail": null,
+    "die_budget_detail": null,
+    "ball_vmin": -0.0516,
+    "ball_vmax": 3.5018,
+    "die_vmin": -0.1171,
+    "die_vmax": 3.5049,
+    "ringback_ball_v": 0.0,
+    "ringback_die_v": 0.0,
+    "settle_die_ns": 1.3375,
+    "delay_die_ns": [
+     0.0483,
+     0.0629
+    ],
+    "delay_ball_ns": [
+     0.0701,
+     0.149
+    ]
+   },
+   "write": {
+    "u3pin_vmin": -0.211,
+    "u3pin_vmax": 3.4906,
+    "u3die_vmin": -0.2621,
+    "u3die_vmax": 3.4938,
+    "absmax_pass": true,
+    "ringback_pin_v": 0.0,
+    "ringback_die_v": 0.0,
+    "delay_die_ns": [
+     0.0975,
+     0.1301
+    ]
+   },
+   "waves": {
+    "read": "wave_final/D15_read_max_pcbdoc_placed_r22_parts_extract_187b8703.npz",
+    "write": "wave_final/D15_write_max_pcbdoc_placed_r22_parts_extract_187b8703.npz"
+   }
+  }
+ ],
+ "spot": [
+  {
+   "net": "D8",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "pcbdoc",
+   "ref": "R127",
+   "ball_budget_pct": 1.35,
+   "die_budget_pct": 0.0,
+   "ball_vmin": -0.2859,
+   "len_mm": 15.771
+  },
+  {
+   "net": "D10",
+   "scenario": "read",
+   "corner": "max",
+   "stack": "fab",
+   "ref": "R129",
+   "ball_budget_pct": 1.18,
+   "die_budget_pct": 0.0,
+   "ball_vmin": -0.2717,
+   "len_mm": 13.997
+  }
+ ]
+}

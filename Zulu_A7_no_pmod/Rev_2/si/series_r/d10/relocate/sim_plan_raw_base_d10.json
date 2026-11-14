@@ -1,0 +1,105 @@
+[
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "mode": "base",
+  "r": 0.0,
+  "pkg": "parts",
+  "src": "extract",
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.5017706397824025,
+   "vmax": 3.9471571119043216,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.32423400129680324,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.1309323629210304,
+     "last": 1.1309323629210304,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.0564661733445144,
+     "last": 1.0564661733445144,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.1305856682635422,
+     "last": 1.1305856682635422,
+     "n": 1
+    }
+   },
+   "budget": 0.6871975665235144,
+   "budget_detail": {
+    "kind": "under",
+    "peak_v": 0.5018,
+    "dur_ns": 0.5669,
+    "used_pct_ui": 7.559,
+    "allowed_pct_ui": 11.0
+   }
+  },
+  "pin": {
+   "vmin": -0.7161200364515079,
+   "vmax": 3.905706603638737,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.576249642431869,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.2201406822993643,
+     "last": 1.2201406822993643,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 0.8879414635202338,
+     "last": 0.8879414635202338,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.2085699132991299,
+     "last": 1.2085699132991299,
+     "n": 1
+    }
+   },
+   "budget": 30.591891434669364,
+   "budget_detail": {
+    "kind": "under",
+    "peak_v": 0.7161,
+    "dur_ns": 0.9866,
+    "used_pct_ui": 13.155,
+    "allowed_pct_ui": 0.43
+   }
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 0.7337578156271614,
+    "last": 1.5176156995206065,
+    "n": 3
+   },
+   "rise@16.0": {
+    "first": 0.6815544649236718,
+    "last": 0.6815544649236718,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 0.7333326669291529,
+    "last": 1.5168806822065009,
+    "n": 3
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "K2",
+  "u3_pin": "45",
+  "len_mm": 14.481,
+  "flight_ps": 94.6,
+  "vias": 2,
+  "tlines": 2,
+  "lumped": 9,
+  "connected": true,
+  "wave": "wave_plan/D10_read_max_fab_base_r0_parts_extract.npz"
+ }
+]

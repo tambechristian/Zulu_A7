@@ -9,3 +9,35 @@ Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7_hdi_optimized/
 backups/
 # Rev 2 reroute: debug renders written by the routing agents (the plans and scripts beside them are kept).
 tools/route/rev2/**/*.png
+si/ibis/
+si/vivado/run/
+si/altium_si/History/
+si/altium_si/Project Logs*/
+si/altium_si/Project Outputs*/
+si/spice/wave/
+si/spice/**/*.npz
+si/spice/**/__pycache__/
+# SI / DQ series-R study (2026-11-13): regenerable bulk outputs. Scripts, plans, logs and summaries are kept.
+si/**/*.npz
+si/**/__pycache__/
+si/series_r/d13/u3_end/rejects_*.json
+si/series_r/d13/u3_end/cands_*.json
+si/series_r/d13/u3_end/candidates.json
+si/series_r/d13/u1_end/candidates.json
+si/series_r/d13/u1_end/search/
+si/series_r/d13/inner_run/candidates.json
+si/series_r/d13/inner_run/prefilter_*.json
+si/series_r/d13/inner_run/ranked_*.json
+si/series_r/d13/inner_run/d13_blockers.json
+si/series_r/d13/inner_run/tmp/
+si/series_r/d10/stagger/design.json
+si/series_r/d10/d10_elsewhere/maze_candidates_*.json
+# Altium SI run outputs in the project folder
+Imported zulu_a7.PrjPcb/IbisErrors.txt
+Imported zulu_a7.PrjPcb/IbisReport*.txt
+Imported zulu_a7.PrjPcb/Signal Integrity Tests Report.txt
+Imported zulu_a7.PrjPcb/*.sdf
+si/altium_si/*.sdf
+si/series_r/d13/u1_end/fc/
+si/series_r/d13/u3_end/check_fc/
+si/series_r/d13/u3_end/fcplans/

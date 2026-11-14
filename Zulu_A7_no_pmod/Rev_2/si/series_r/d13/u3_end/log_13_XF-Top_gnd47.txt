@@ -1,0 +1,13 @@
+13_XF-Top_gnd47: 55660 placements tried, 2 legal (quick exact check), 142 s
+     4068  pad: clearance track Top USB5V0 (35.900,18.000)-(36.680,20.000) 
+     3745  pad: clearance pad Q1-2
+     2924  pad: clearance pad Q1-1
+     2303  pad: clearance track Top USB5V0 (34.800,16.650)-(35.900,18.000) 
+     2237  route: route outside window
+     2041  pad: clearance track Top USB5V0 (36.680,20.000)-(36.680,22.500) 
+     2034  pad: clearance track Top UART_FT_DTR# (38.450,20.000)-(39.125,20
+     1740  pad: clearance pad U2-45
+     1581  pad: clearance track Top UART_FT_RTS# (37.200,18.350)-(37.650,18
+     1502  pad: clearance track Top UART_FT_RTS# (37.650,18.800)-(39.450,18
+     1465  pad: clearance track Top UART_FT_RTS# (39.700,17.900)-(40.350,17
+     1417  pad: clearance pad U2-48

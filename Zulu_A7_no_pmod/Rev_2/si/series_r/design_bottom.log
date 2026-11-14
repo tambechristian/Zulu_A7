@@ -1,0 +1,20 @@
+D0  R at (38.250, 5.100) rot   0  neck 0.625  return 2.226  w 0.125  [cand 1/1440, 32.3s]
+D1  R at (36.650, 5.100) rot   0  neck 0.625  return 2.008  w 0.125  [cand 1/1688, 20.4s]
+D2  FAILED (344 legal R positions, none routable)
+D3  R at (34.200, 5.100) rot 180  neck 0.853  return 4.146  w 0.125  [cand 96/344, 24.4s]
+D4  FAILED (62 legal R positions, none routable)
+D5  R at (31.250, 5.100) rot 180  neck 0.625  return 4.099  w 0.125  [cand 1/86, 10.8s]
+D6  FAILED (0 legal R positions, none routable)
+D7  FAILED (0 legal R positions, none routable)
+D8  FAILED (588 legal R positions, none routable)
+D9  FAILED (0 legal R positions, none routable)
+D10 FAILED (236 legal R positions, none routable)
+D11 FAILED (770 legal R positions, none routable)
+D12 FAILED (2858 legal R positions, none routable)
+D13 FAILED (3792 legal R positions, none routable)
+D14 FAILED (3530 legal R positions, none routable)
+D15 FAILED (5282 legal R positions, none routable)
+variant ['CH18'] order [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: placed 4/16 ['D0', 'D1', 'D3', 'D5'], violations 0
+  worst Bottom copper clearance                  0.1001 (limit 0.090, margin +0.0101)  return | pad U3-2
+  worst solder-mask sliver (Bottom)              0.2000 (limit 0.100, margin +0.1000)  R pad A | R pad B
+  worst component clearance (Bottom bodies)      0.2722 (limit 0.254, margin +0.0182)  R124 | U3

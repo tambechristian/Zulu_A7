@@ -1,0 +1,13 @@
+15_XF-Top_gnd47: 17388 placements tried, 402 legal (quick exact check), 60 s
+     1705  pad: clearance pad Q1-2
+     1465  pad: clearance track Top UART_FT_RTS# (39.700,17.900)-(40.350,17
+      978  pad: clearance pad R131-1
+      876  pad: clearance track Top UART_FT_TXD (39.600,16.200)-(40.600,15.
+      825  pad: clearance pad C157-2
+      813  pad: clearance track Top TMS (40.300,16.300)-(40.850,16.850) w0.
+      807  pad: clearance new pad R134-1 SDRAM-D15
+      785  pad: clearance pad C157-1
+      689  pad: clearance via UART_FT_TXD (39.600,16.200) Top>L2-GND d0.30
+      627  pad: clearance new pad R134-2 D15
+      579  pad: clearance pad R131-2
+      567  pad: clearance via GND (38.350,18.400) Top>Bottom d0.35

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_2\si\series_r\d13\inner_run\cand_check.py", line 97, in <module>
+    json.dump(P, open(pp, 'w'))
+                 ^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\si\\series_r\\d13\\inner_run\\tmp\\cc0_cp978iqe\\plan.json'

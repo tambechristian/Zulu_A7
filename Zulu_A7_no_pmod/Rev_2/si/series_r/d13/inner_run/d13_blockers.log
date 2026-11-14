@@ -1,0 +1,198 @@
+== Top
+ s 0.0-0.5 sites 1222 rules-legal 10 free 0 []
+      1222 component clearance/body: U2
+       522 h2h: drill D13 (35.625,16.650)
+       449 cl_pad: via D14 (36.125,16.650) Top>Bottom d0.35
+       396 cl_Top: via D14 (36.125,16.650) Top>Bottom d0.35
+       396 cl_L2-GND: via D14 (36.125,16.650) Top>Bottom d0.35
+       387 cl_L3-SIG: via D14 (36.125,16.650) Top>Bottom d0.35
+ s 0.5-1.0 sites 720 rules-legal 128 free 0 []
+       720 component clearance/body: U2
+       243 mask: pad U2-45
+       192 mask: pad U2-46
+       179 cl_L3-SIG: via D14 (36.125,16.650) Top>Bottom d0.35
+       174 cl_L2-GND: via D14 (36.125,16.650) Top>Bottom d0.35
+       174 h2h: drill D14 (36.125,16.650)
+ s 1.0-1.5 sites 719 rules-legal 0 free 0 []
+       719 component clearance/body: U2
+       420 cl_Top: pad U2-45
+       417 cl_pad: pad U2-45
+       417 mask: pad U2-45
+       205 mask: pad U2-44
+       194 cl_L3-SIG: track L3-SIG SDRAM-D11 (33.875,16.025)-(38.500,14.950) w0.1250
+ s 1.5-2.0 sites 719 rules-legal 0 free 0 []
+       719 component clearance/body: U2
+       418 cl_Top: pad U2-45
+       418 cl_pad: pad U2-45
+       388 mask: pad U2-45
+       326 mask: pad U2-44
+       243 cl_Top: pad U2-44
+ s 2.0-2.5 sites 720 rules-legal 0 free 0 []
+       720 component clearance/body: U2
+       415 mask: pad U2-44
+       365 cl_Top: pad U2-44
+       365 cl_pad: pad U2-44
+       355 cl_Top: pad U2-45
+       355 cl_pad: pad U2-45
+ s 2.5-3.0 sites 721 rules-legal 0 free 0 []
+       714 component clearance/body: U2
+       396 mask: pad U2-44
+       307 cl_Top: pad U2-44
+       300 cl_pad: pad U2-44
+       276 cl_L3-SIG: track L3-SIG SDRAM-D11 (33.875,16.025)-(38.500,14.950) w0.1250
+       163 cl_Top: pad U2-45
+ s 3.0-3.5 sites 718 rules-legal 0 free 0 []
+       399 cl_L3-SIG: track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762
+       368 mask: pad R131-1
+       285 cl_Top: track Top UART_FT_CTS# (38.400,15.300)-(39.400,15.300) w0.0762
+       282 cl_L2-GND: via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35
+       282 h2h: drill SDRAM-D11 (38.500,14.950)
+       261 cl_pad: track Top UART_FT_CTS# (38.400,15.300)-(39.400,15.300) w0.0762
+ s 3.5-4.0 sites 715 rules-legal 0 free 0 []
+       586 mask: pad R130-1
+       432 cl_L3-SIG: track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762
+       271 h2h: drill SDRAM-D11 (38.500,14.950)
+       266 cl_Top: track Top SDRAM-D11 (38.500,14.950)-(39.100,14.950) w0.0762
+       258 cl_pad: track Top SDRAM-D11 (38.500,14.950)-(39.100,14.950) w0.0762
+       253 cl_L2-GND: via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35
+ s 4.0-4.5 sites 710 rules-legal 0 free 0 []
+       709 mask: pad R129-1
+       341 h2h: drill SDRAM-D10 (38.500,14.500)
+       328 cl_L2-GND: via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
+       301 cl_pad: track Top SDRAM-D10 (38.500,14.500)-(38.770,14.500) w0.0762
+       288 cl_Top: track Top SDRAM-D10 (38.500,14.500)-(38.770,14.500) w0.0762
+       178 cl_L3-SIG: via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
+ s 4.5-5.0 sites 714 rules-legal 0 free 0 []
+       324 mask: pad R129-1
+       273 cl_Top: track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762
+       263 h2h: drill SD-DAT2 (39.600,14.200)
+       253 cl_pad: track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762
+       238 cl_L3-SIG: via SD-DAT2 (39.600,14.200) L3-SIG>L4-SIG d0.27
+       221 cl_Top: pad R129-2
+ s 5.0-5.5 sites 739 rules-legal 0 free 0 []
+       460 mask: pad R127-2
+       391 cl_pad: pad R127-2
+       383 cl_Top: pad R127-2
+       271 h2h: drill SD-DAT2 (39.600,14.200)
+       268 cl_L3-SIG: via SD-DAT2 (39.600,14.200) L3-SIG>L4-SIG d0.27
+       197 cl_Top: track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762
+ s 5.5-6.0 sites 714 rules-legal 0 free 0 []
+       406 mask: pad R127-2
+       371 h2h: drill SD-DAT2 (39.600,13.300)
+       310 cl_L3-SIG: via SD-DAT2 (39.600,13.300) L3-SIG>L4-SIG d0.27
+       307 cl_Top: track Top UDQM (39.812,11.590)-(39.812,14.050) w0.0762
+       284 cl_pad: track Top UDQM (39.812,11.590)-(39.812,14.050) w0.0762
+       151 cl_L3-SIG: via AIN16_P (40.450,13.400) Top>Bottom d0.35
+ s 6.0-6.5 sites 714 rules-legal 0 free 0 []
+       377 cl_L2-GND: via AIN16_P (40.450,13.400) Top>Bottom d0.35
+       374 cl_L3-SIG: via AIN16_P (40.450,13.400) Top>Bottom d0.35
+       347 h2h: drill AIN16_P (40.450,13.400)
+       327 cl_L3-SIG: track L3-SIG SD-DAT2 (39.600,13.300)-(40.450,12.450) w0.0762
+       257 cl_pad: track Top AIN16_P (40.450,13.400)-(40.600,13.090) w0.0762
+       242 cl_Top: track Top AIN16_P (40.450,13.400)-(40.600,13.090) w0.0762
+ s 6.5-7.0 sites 849 rules-legal 0 free 0 []
+       678 h2h: drill D13 (40.600,12.750)
+       302 cl_Top: track Top D11 (40.145,12.380)-(40.950,12.380) w0.0762
+       301 cl_pad: track Top D11 (40.145,12.380)-(40.950,12.380) w0.0762
+       225 cl_L3-SIG: track L3-SIG SD-DAT2 (40.450,12.450)-(41.200,12.150) w0.0762
+       217 cl_L3-SIG: track L3-SIG SD-DAT2 (39.600,13.300)-(40.450,12.450) w0.0762
+       161 cl_pad: track Top AIN16_P (40.450,13.400)-(40.600,13.090) w0.0762
+== Bottom
+ s 0.0-0.5 sites 1222 rules-legal 0 free 0 []
+      1222 component clearance/body: U3
+       522 h2h: drill D13 (35.625,16.650)
+       441 cl_pad: via D14 (36.125,16.650) Top>Bottom d0.35
+       400 cl_L4-SIG: via D14 (36.125,16.650) Top>Bottom d0.35
+       396 cl_L5-VCC3V3: via D14 (36.125,16.650) Top>Bottom d0.35
+       392 cl_Bottom: via D14 (36.125,16.650) Top>Bottom d0.35
+ s 0.5-1.0 sites 720 rules-legal 0 free 0 []
+       720 component clearance/body: U3
+       491 cl_L4-SIG: track L4-SIG SDRAM-D12 (34.650,16.025)-(37.250,16.025) w0.1250
+       479 cl_Bottom: track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762
+       468 cl_pad: track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762
+       170 cl_L5-VCC3V3: via D14 (36.125,16.650) Top>Bottom d0.35
+       170 h2h: drill D14 (36.125,16.650)
+ s 1.0-1.5 sites 719 rules-legal 0 free 0 []
+       719 component clearance/body: U3
+       420 cl_L4-SIG: track L4-SIG SDRAM-D12 (34.650,16.025)-(37.250,16.025) w0.1250
+       346 cl_pad: track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250
+       293 cl_pad: track Bottom UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762
+       291 cl_Bottom: track Bottom UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762
+       281 cl_Bottom: track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250
+ s 1.5-2.0 sites 719 rules-legal 0 free 0 []
+       719 cl_pad: track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250
+       719 component clearance/body: U3
+       709 cl_Bottom: track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250
+       384 cl_L4-SIG: track L4-SIG SDRAM-D12 (34.650,16.025)-(37.250,16.025) w0.1250
+       305 cl_L4-SIG: track L4-SIG SDRAM-D9 (31.875,15.775)-(38.600,15.300) w0.1250
+       209 cl_L3-SIG: track L3-SIG SDRAM-D11 (33.875,16.025)-(38.500,14.950) w0.1250
+ s 2.0-2.5 sites 720 rules-legal 0 free 0 []
+       720 component clearance/body: U3
+       396 cl_Bottom: track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600
+       396 cl_pad: track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600
+       379 cl_L4-SIG: track L4-SIG SDRAM-D9 (31.875,15.775)-(38.600,15.300) w0.1250
+       326 cl_L4-SIG: track L4-SIG SDRAM-D12 (37.250,16.025)-(38.854,15.618) w0.1250
+       324 cl_Bottom: track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250
+ s 2.5-3.0 sites 721 rules-legal 0 free 0 []
+       721 component clearance/body: U3
+       423 cl_L4-SIG: track L4-SIG SDRAM-D9 (31.875,15.775)-(38.600,15.300) w0.1250
+       401 cl_Bottom: track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600
+       401 cl_pad: track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600
+       320 cl_Bottom: track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250
+       320 cl_pad: track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250
+ s 3.0-3.5 sites 718 rules-legal 0 free 0 []
+       718 component clearance/body: U3
+       425 cl_Bottom: track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600
+       389 cl_pad: track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600
+       383 cl_L3-SIG: track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762
+       282 cl_L5-VCC3V3: via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35
+       282 h2h: drill SDRAM-D11 (38.500,14.950)
+ s 3.5-4.0 sites 715 rules-legal 27 free 0 []
+       715 component clearance/body: U3
+       419 cl_L3-SIG: track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762
+       384 cl_L4-SIG: track L4-SIG SDRAM-D9 (38.600,15.300)-(41.500,14.750) w0.1250
+       271 h2h: drill SDRAM-D11 (38.500,14.950)
+       253 cl_L5-VCC3V3: via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35
+       233 cl_pad: via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35
+ s 4.0-4.5 sites 710 rules-legal 182 free 0 []
+       710 component clearance/body: U3
+       341 h2h: drill SDRAM-D10 (38.500,14.500)
+       333 cl_pad: via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
+       331 cl_L4-SIG: via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
+       328 cl_L5-VCC3V3: via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
+       328 cl_Bottom: via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35
+ s 4.5-5.0 sites 714 rules-legal 360 free 0 []
+       714 component clearance/body: U3
+       263 h2h: drill SD-DAT2 (39.600,14.200)
+       260 cl_L4-SIG: via SD-DAT2 (39.600,14.200) L3-SIG>L4-SIG d0.27
+       219 cl_L3-SIG: via SD-DAT2 (39.600,14.200) L3-SIG>L4-SIG d0.27
+        72 cl_pad: via UDQM (38.500,14.050) Top>Bottom d0.35
+        66 cl_L4-SIG: via UDQM (38.500,14.050) Top>Bottom d0.35
+ s 5.0-5.5 sites 739 rules-legal 102 free 0 []
+       719 component clearance/body: U3
+       290 cl_L4-SIG: track L4-SIG SD-DAT2 (39.600,13.300)-(39.600,14.200) w0.0762
+       271 h2h: drill SD-DAT2 (39.600,14.200)
+       249 cl_L3-SIG: via SD-DAT2 (39.600,14.200) L3-SIG>L4-SIG d0.27
+       228 cl_Bottom: track Bottom PROG# (39.800,13.200)-(39.800,13.950) w0.0762
+       228 cl_pad: track Bottom PROG# (39.800,13.200)-(39.800,13.950) w0.0762
+ s 5.5-6.0 sites 714 rules-legal 0 free 0 []
+       392 component clearance/body: U3
+       373 cl_L4-SIG: track L4-SIG TMS (39.650,11.950)-(40.100,14.300) w0.0762
+       371 h2h: drill SD-DAT2 (39.600,13.300)
+       292 cl_L3-SIG: via SD-DAT2 (39.600,13.300) L3-SIG>L4-SIG d0.27
+       258 cl_pad: track Bottom PROG# (38.900,12.300)-(39.800,13.200) w0.0762
+       245 cl_L4-SIG: via SD-DAT2 (39.600,13.300) L3-SIG>L4-SIG d0.27
+ s 6.0-6.5 sites 714 rules-legal 0 free 0 []
+       377 cl_L5-VCC3V3: via AIN16_P (40.450,13.400) Top>Bottom d0.35
+       369 cl_L4-SIG: via AIN16_P (40.450,13.400) Top>Bottom d0.35
+       368 cl_L3-SIG: via AIN16_P (40.450,13.400) Top>Bottom d0.35
+       347 h2h: drill AIN16_P (40.450,13.400)
+       326 cl_pad: track Bottom AIN16_P (40.306,12.824)-(40.450,13.400) w0.0762
+       322 cl_L3-SIG: track L3-SIG SD-DAT2 (39.600,13.300)-(40.450,12.450) w0.0762
+ s 6.5-7.0 sites 849 rules-legal 0 free 0 []
+       678 h2h: drill D13 (40.600,12.750)
+       386 cl_L4-SIG: track L4-SIG DONE (39.850,11.550)-(40.950,12.650) w0.0762
+       266 cl_Bottom: track Bottom AIN16_P (40.297,12.735)-(40.430,10.126) w0.0762
+       259 cl_pad: track Bottom AIN16_P (40.297,12.735)-(40.430,10.126) w0.0762
+       225 cl_L3-SIG: track L3-SIG SD-DAT2 (40.450,12.450)-(41.200,12.150) w0.0762
+       201 cl_pad: track Bottom AIN16_N (40.698,12.126)-(41.300,12.665) w0.0762

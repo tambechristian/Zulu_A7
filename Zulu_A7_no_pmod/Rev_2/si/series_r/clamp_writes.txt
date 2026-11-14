@@ -1,0 +1,19 @@
+(a) U1 die clamp current during reads (peak per line; sum of 16 peaks = all-lines-same-edge bound)
+  R 0   typ GND clamp peak   7.1 mA worst line,   58.0 mA sum | power clamp peak   3.2 mA worst,   18.1 sum
+  R 0   max GND clamp peak  11.7 mA worst line,  126.6 mA sum | power clamp peak   7.3 mA worst,   69.9 sum
+  R 15  typ GND clamp peak   0.0 mA worst line,    0.0 mA sum | power clamp peak   0.0 mA worst,    0.0 sum
+  R 15  max GND clamp peak   0.0 mA worst line,    0.0 mA sum | power clamp peak   0.0 mA worst,    0.0 sum
+  R 22  typ GND clamp peak   0.0 mA worst line,    0.0 mA sum | power clamp peak   0.0 mA worst,    0.0 sum
+  R 22  max GND clamp peak   0.0 mA worst line,    0.0 mA sum | power clamp peak   0.0 mA worst,    0.0 sum
+  R 33  typ GND clamp peak   0.0 mA worst line,    0.0 mA sum | power clamp peak   0.0 mA worst,    0.0 sum
+  R 33  max GND clamp peak   0.0 mA worst line,    0.0 mA sum | power clamp peak   0.0 mA worst,    0.0 sum
+
+(b) WRITE direction (U1 drives, U3 receives), R = 0, fab stack, from results_all.json + wave/*.npz
+  data D0-D15            typ n=16  die -0.42..3.46 V  pin over +0.09 under -0.34 V  t10-90 1.31-1.40 ns  ringback 0.00 V
+  data D0-D15            max n=16  die -0.55..3.69 V  pin over +0.18 under -0.38 V  t10-90 1.10-1.19 ns  ringback 0.00 V
+  address A0-A12 BS0/1   typ n=15  die -0.42..3.46 V  pin over +0.12 under -0.35 V  t10-90 1.38-1.51 ns  ringback 0.00 V
+  address A0-A12 BS0/1   max n=15  die -0.61..3.69 V  pin over +0.22 under -0.46 V  t10-90 1.12-1.24 ns  ringback 0.00 V
+  control                typ n= 7  die -0.43..3.46 V  pin over +0.09 under -0.36 V  t10-90 1.36-1.39 ns  ringback 0.00 V
+  control                max n= 7  die -0.62..3.69 V  pin over +0.17 under -0.46 V  t10-90 1.12-1.15 ns  ringback 0.00 V
+  SDRAM-CLK              typ n= 1  die -0.27..3.40 V  pin over +0.08 under -0.24 V  t10-90 0.92-0.92 ns  ringback 0.00 V
+  SDRAM-CLK              max n= 1  die -0.62..3.59 V  pin over +0.11 under -0.59 V  t10-90 0.63-0.63 ns  ringback 0.00 V

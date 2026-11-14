@@ -1,0 +1,3393 @@
+{
+ "source": {
+  "pcbdoc": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc",
+  "pcbdoc_mtime": 1794535986.526,
+  "pcbdoc_md5": "2a616c1c74f8788a4a1c837c7d76c3b0",
+  "pcblib": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/Imported zulu_a7.PrjPcb/zulu_a7.PcbLib",
+  "script": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/si/series_r/extract.py",
+  "units": "mm, board origin bottom-left (Board6 ORIGINX/Y = 0), y up",
+  "board_outline": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    60.96,
+    0.0
+   ],
+   [
+    60.96,
+    25.4
+   ],
+   [
+    0.0,
+    25.4
+   ],
+   [
+    0.0,
+    0.0
+   ]
+  ],
+  "body_source": "PcbDoc ComponentBodies6 and ShapeBasedComponentBodies6 are EMPTY (0 bytes) and the project PcbLib has no TSOPII-54 footprint (it holds ['C0201', 'C0402', 'C0603', 'C0805', 'IND2520', 'PCBComponent_1', 'QFN28-UFD-4X5', 'R0201', 'R0402', 'SOT23-5', 'VSON10-DLA0010A']) -- so component outlines here are the PcbDoc primitives each component owns (pads + overlay/mech per layer); U3 body is the datasheet outline centred on the measured pad field"
+ },
+ "rules_used": {
+  "clearance": 0.09,
+  "sdram_inner": 0.1,
+  "hole_to_hole": 0.24,
+  "mask_expansion": 0.05,
+  "sliver": 0.1,
+  "component_clearance_advisory": 0.254,
+  "toe_web": 0.21
+ },
+ "gap_survey": {
+  "1|2": {
+   "row": "south",
+   "x": 38.3499,
+   "pads": [
+    "VCC3V3",
+    "D0"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": []
+  },
+  "2|3": {
+   "row": "south",
+   "x": 37.55,
+   "pads": [
+    "D0",
+    "VCC3V3"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track CHAN18 (37.550,5.550)-(37.600,7.200) w0.0762 (-0.076)",
+    "Bottom track CHAN18 (37.550,5.550)-(37.850,4.100) w0.0762 (-0.056)"
+   ],
+   "outward": [
+    "Bottom track CHAN18 (37.550,5.550)-(37.600,7.200) w0.0762 (-0.076)",
+    "Bottom track CHAN18 (37.550,5.550)-(37.850,4.100) w0.0762 (-0.076)"
+   ],
+   "inward": [
+    "via CHAN18 (37.600,7.200) 0.30/0.15 L5-VCC3V3>Bottom (-0.138)",
+    "Bottom track CHAN18 (37.550,5.550)-(37.600,7.200) w0.0762 (-0.039)"
+   ]
+  },
+  "3|4": {
+   "row": "south",
+   "x": 36.7501,
+   "pads": [
+    "VCC3V3",
+    "D1"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": []
+  },
+  "4|5": {
+   "row": "south",
+   "x": 35.9501,
+   "pads": [
+    "D1",
+    "D2"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": [
+    "Bottom track CHAN23 (35.500,7.900)-(36.300,7.100) w0.0762 (0.051)"
+   ]
+  },
+  "5|6": {
+   "row": "south",
+   "x": 35.1501,
+   "pads": [
+    "D2",
+    "GND"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track FT-VPHY (35.150,5.300)-(35.150,7.050) w0.15 (-0.113)",
+    "Bottom track FT-VPHY (35.150,4.550)-(35.150,5.300) w0.3 (0.082)"
+   ],
+   "outward": [
+    "Bottom track FT-VPHY (35.150,4.550)-(35.150,5.300) w0.3 (-0.188)",
+    "Bottom track FT-VPHY (35.150,5.300)-(35.150,7.050) w0.15 (-0.113)"
+   ],
+   "inward": [
+    "Bottom track FT-VPHY (35.150,7.050)-(35.150,9.550) w0.3 (-0.188)",
+    "Bottom track FT-VPHY (35.150,5.300)-(35.150,7.050) w0.15 (-0.113)"
+   ]
+  },
+  "6|7": {
+   "row": "south",
+   "x": 34.3499,
+   "pads": [
+    "GND",
+    "D3"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track GND (34.475,7.000)-(34.750,6.170) w0.41 (-0.052)",
+    "Bottom track GND (34.475,7.000)-(34.475,9.000) w0.41 (0.019)"
+   ],
+   "outward": [],
+   "inward": [
+    "Bottom track GND (34.475,7.000)-(34.475,9.000) w0.41 (-0.118)",
+    "Bottom track GND (34.475,7.000)-(34.750,6.170) w0.41 (-0.118)"
+   ]
+  },
+  "7|8": {
+   "row": "south",
+   "x": 33.55,
+   "pads": [
+    "D3",
+    "D4"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom track VCC3V3 (32.500,5.100)-(33.549,5.100) w0.2 (-0.137)",
+    "Bottom track VCC3V3 (33.549,3.950)-(33.549,5.100) w0.2 (-0.137)"
+   ],
+   "inward": []
+  },
+  "8|9": {
+   "row": "south",
+   "x": 32.7501,
+   "pads": [
+    "D4",
+    "VCC3V3"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom track VCC3V3 (32.500,5.100)-(33.549,5.100) w0.2 (-0.138)"
+   ],
+   "inward": []
+  },
+  "9|10": {
+   "row": "south",
+   "x": 31.9501,
+   "pads": [
+    "VCC3V3",
+    "D5"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track TMS (31.975,5.250)-(31.975,7.575) w0.0762 (-0.051)"
+   ],
+   "outward": [
+    "Bottom track TMS (31.975,5.250)-(31.975,7.575) w0.0762 (-0.051)",
+    "Bottom track TMS (31.975,5.250)-(32.375,4.850) w0.0762 (-0.051)"
+   ],
+   "inward": [
+    "Bottom track TMS (31.975,5.250)-(31.975,7.575) w0.0762 (-0.051)"
+   ]
+  },
+  "10|11": {
+   "row": "south",
+   "x": 31.1501,
+   "pads": [
+    "D5",
+    "D6"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": []
+  },
+  "11|12": {
+   "row": "south",
+   "x": 30.3499,
+   "pads": [
+    "D6",
+    "GND"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track FT-VCORE (30.350,5.300)-(30.350,7.050) w0.15 (-0.113)",
+    "Bottom track FT-VCORE (30.350,4.550)-(30.350,5.300) w0.3 (0.082)"
+   ],
+   "outward": [
+    "Bottom track FT-VCORE (30.350,4.550)-(30.350,5.300) w0.3 (-0.188)",
+    "Bottom track FT-VCORE (30.350,5.300)-(30.350,7.050) w0.15 (-0.113)"
+   ],
+   "inward": [
+    "Bottom track FT-VCORE (30.350,7.050)-(30.375,9.050) w0.3 (-0.188)",
+    "Bottom track FT-VCORE (30.350,5.300)-(30.350,7.050) w0.15 (-0.113)"
+   ]
+  },
+  "12|13": {
+   "row": "south",
+   "x": 29.55,
+   "pads": [
+    "GND",
+    "D7"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track GND (29.540,5.550)-(29.950,6.170) w0.13 (-0.100)",
+    "Bottom track GND (29.540,4.300)-(29.540,5.550) w0.115 (-0.073)"
+   ],
+   "outward": [
+    "Bottom track GND (29.540,5.550)-(29.950,6.170) w0.13 (-0.103)",
+    "Bottom track GND (29.540,4.300)-(29.540,5.550) w0.115 (-0.086)"
+   ],
+   "inward": []
+  },
+  "13|14": {
+   "row": "south",
+   "x": 28.7501,
+   "pads": [
+    "D7",
+    "VCC3V3"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track TDO (28.750,5.550)-(28.750,6.900) w0.0762 (-0.076)",
+    "Bottom track TDO (28.750,5.550)-(29.150,4.800) w0.0762 (-0.056)",
+    "Bottom track TDO (27.450,8.200)-(28.750,6.900) w0.0762 (0.054)"
+   ],
+   "outward": [
+    "Bottom track TDO (28.750,5.550)-(28.750,6.900) w0.0762 (-0.076)",
+    "Bottom track TDO (28.750,5.550)-(29.150,4.800) w0.0762 (-0.076)",
+    "Bottom track VCC3V3 (28.750,3.950)-(28.750,4.850) w0.3 (0.032)",
+    "Bottom track VCC3V3 (27.930,4.850)-(28.750,4.850) w0.2 (0.082)"
+   ],
+   "inward": [
+    "Bottom track TDO (27.450,8.200)-(28.750,6.900) w0.0762 (-0.076)",
+    "Bottom track TDO (28.750,5.550)-(28.750,6.900) w0.0762 (-0.076)"
+   ]
+  },
+  "14|15": {
+   "row": "south",
+   "x": 27.9501,
+   "pads": [
+    "VCC3V3",
+    "LDQM"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track VCC3V3 (27.930,4.850)-(28.350,6.170) w0.2 (0.061)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (27.930,4.850)-(28.350,6.170) w0.2 (-0.090)",
+    "via VCC3V3 (27.930,4.850) 0.30/0.15 L5-VCC3V3>Bottom (0.033)",
+    "Bottom track VCC3V3 (27.930,4.850)-(28.750,4.850) w0.2 (0.082)",
+    "Bottom track VCC3V3 (26.350,4.850)-(27.930,4.850) w0.2 (0.083)",
+    "Bottom track VCC3V3 (26.950,3.050)-(27.930,4.850) w0.2 (0.083)",
+    "Bottom track VCC3V3 (27.550,3.950)-(27.930,4.850) w0.2 (0.083)"
+   ],
+   "inward": [
+    "via CHAN26 (27.800,7.450) 0.30/0.15 L5-VCC3V3>Bottom (0.046)"
+   ]
+  },
+  "15|16": {
+   "row": "south",
+   "x": 27.1501,
+   "pads": [
+    "LDQM",
+    "WE#"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track WE# (26.750,6.170)-(27.150,6.975) w0.125 (-0.009)",
+    "via WE# (27.125,6.950) 0.30/0.15 L5-VCC3V3>Bottom (-0.006)",
+    "Bottom track WE# (27.125,6.950)-(27.135,6.945) w0.1 (0.087)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (26.350,4.850)-(27.930,4.850) w0.2 (0.082)"
+   ],
+   "inward": [
+    "via WE# (27.125,6.950) 0.30/0.15 L5-VCC3V3>Bottom (-0.163)",
+    "Bottom track WE# (26.750,6.170)-(27.150,6.975) w0.125 (-0.101)",
+    "Bottom track WE# (27.125,6.950)-(27.150,6.950) w0.1 (-0.088)",
+    "Bottom track WE# (27.140,6.955)-(27.150,6.950) w0.1 (-0.088)",
+    "Bottom track WE# (27.125,6.950)-(27.135,6.945) w0.1 (-0.073)",
+    "via LDQM (27.300,7.400) 0.35/0.20 Top>Bottom (-0.015)"
+   ]
+  },
+  "16|17": {
+   "row": "south",
+   "x": 26.3499,
+   "pads": [
+    "WE#",
+    "CAS#"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track CAS# (25.950,6.170)-(26.350,6.975) w0.125 (-0.009)",
+    "via CAS# (26.350,6.975) 0.30/0.15 L5-VCC3V3>Bottom (0.017)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (25.150,4.850)-(26.350,4.850) w0.2 (0.082)",
+    "Bottom track VCC3V3 (26.350,3.950)-(26.350,4.850) w0.2 (0.082)",
+    "Bottom track VCC3V3 (26.350,4.850)-(27.930,4.850) w0.2 (0.082)"
+   ],
+   "inward": [
+    "via CAS# (26.350,6.975) 0.30/0.15 L5-VCC3V3>Bottom (-0.188)",
+    "Bottom track CAS# (25.950,6.170)-(26.350,6.975) w0.125 (-0.101)"
+   ]
+  },
+  "17|18": {
+   "row": "south",
+   "x": 25.55,
+   "pads": [
+    "CAS#",
+    "RAS#"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track RAS# (25.150,6.170)-(25.550,6.975) w0.125 (-0.009)",
+    "via RAS# (25.550,6.975) 0.30/0.15 L5-VCC3V3>Bottom (0.017)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (25.150,4.850)-(26.350,4.850) w0.2 (0.082)"
+   ],
+   "inward": [
+    "via RAS# (25.550,6.975) 0.30/0.15 L5-VCC3V3>Bottom (-0.188)",
+    "Bottom track RAS# (25.150,6.170)-(25.550,6.975) w0.125 (-0.101)"
+   ]
+  },
+  "18|19": {
+   "row": "south",
+   "x": 24.7501,
+   "pads": [
+    "RAS#",
+    "SDRAM-CS#"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track SDRAM-CS# (24.350,6.170)-(24.750,6.975) w0.125 (-0.009)",
+    "via SDRAM-CS# (24.750,6.975) 0.35/0.20 Top>Bottom (-0.008)"
+   ],
+   "outward": [],
+   "inward": [
+    "via SDRAM-CS# (24.750,6.975) 0.35/0.20 Top>Bottom (-0.213)",
+    "Bottom track SDRAM-CS# (24.350,6.170)-(24.750,6.975) w0.125 (-0.101)"
+   ]
+  },
+  "19|20": {
+   "row": "south",
+   "x": 23.95,
+   "pads": [
+    "SDRAM-CS#",
+    "BS0"
+   ],
+   "free": false,
+   "in_gap": [
+    "via N$LD0G (24.025,7.050) 0.35/0.20 Top>Bottom (0.077)"
+   ],
+   "outward": [
+    "Bottom track TMS (23.675,5.425)-(24.125,4.975) w0.0762 (-0.076)",
+    "via TMS (24.125,4.975) 0.30/0.15 L5-VCC3V3>Bottom (0.011)"
+   ],
+   "inward": [
+    "via N$LD0G (24.025,7.050) 0.35/0.20 Top>Bottom (-0.138)"
+   ]
+  },
+  "20|21": {
+   "row": "south",
+   "x": 23.15,
+   "pads": [
+    "BS0",
+    "BS1"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track TMS (21.650,5.425)-(23.675,5.425) w0.0762 (0.069)"
+   ],
+   "outward": [
+    "Bottom track TMS (21.650,5.425)-(23.675,5.425) w0.0762 (-0.076)"
+   ],
+   "inward": []
+  },
+  "21|22": {
+   "row": "south",
+   "x": 22.3499,
+   "pads": [
+    "BS1",
+    "A10"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track TMS (21.650,5.425)-(23.675,5.425) w0.0762 (0.069)"
+   ],
+   "outward": [
+    "Bottom track TMS (21.650,5.425)-(23.675,5.425) w0.0762 (-0.076)"
+   ],
+   "inward": []
+  },
+  "22|23": {
+   "row": "south",
+   "x": 21.55,
+   "pads": [
+    "A10",
+    "A0"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track TMS (21.525,5.550)-(21.525,6.850) w0.0762 (-0.051)",
+    "Bottom track TMS (21.525,5.550)-(21.650,5.425) w0.0762 (-0.044)",
+    "Bottom track TMS (21.475,6.900)-(21.525,6.850) w0.0762 (0.008)",
+    "Bottom track TMS (21.475,6.900)-(21.475,7.200) w0.0762 (0.074)"
+   ],
+   "outward": [
+    "Bottom track TMS (21.525,5.550)-(21.650,5.425) w0.0762 (-0.076)",
+    "Bottom track TMS (21.525,5.550)-(21.525,6.850) w0.0762 (-0.051)",
+    "Bottom track TMS (21.650,5.425)-(23.675,5.425) w0.0762 (0.024)"
+   ],
+   "inward": [
+    "Bottom track TMS (21.475,6.900)-(21.525,6.850) w0.0762 (-0.051)",
+    "Bottom track TMS (21.525,5.550)-(21.525,6.850) w0.0762 (-0.051)",
+    "Bottom track TMS (21.300,7.375)-(21.475,7.200) w0.0762 (-0.001)",
+    "Bottom track TMS (21.475,6.900)-(21.475,7.200) w0.0762 (-0.001)"
+   ]
+  },
+  "23|24": {
+   "row": "south",
+   "x": 20.7501,
+   "pads": [
+    "A0",
+    "A1"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom track FT-REF (20.300,5.300)-(21.350,4.250) w0.0762 (0.080)"
+   ],
+   "inward": [
+    "Bottom track TMS (18.875,7.525)-(21.100,7.400) w0.0762 (0.073)"
+   ]
+  },
+  "24|25": {
+   "row": "south",
+   "x": 19.95,
+   "pads": [
+    "A1",
+    "A2"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": []
+  },
+  "25|26": {
+   "row": "south",
+   "x": 19.15,
+   "pads": [
+    "A2",
+    "A3"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": []
+  },
+  "26|27": {
+   "row": "south",
+   "x": 18.3499,
+   "pads": [
+    "A3",
+    "VCC3V3"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom track VCC3V3 (16.950,6.000)-(19.050,4.250) w0.2 (0.044)"
+   ],
+   "inward": []
+  },
+  "28|29": {
+   "row": "north",
+   "x": 18.3499,
+   "pads": [
+    "GND",
+    "A4"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom track EE-CS (18.200,18.300)-(18.450,18.550) w0.0762 (-0.076)",
+    "Bottom pad R101-2 (EE-DATA) (0.012)",
+    "Bottom track EE-CS (18.450,18.550)-(18.450,19.050) w0.0762 (0.024)",
+    "Bottom track EE-CS (17.500,18.300)-(18.200,18.300) w0.0762 (0.074)"
+   ],
+   "inward": [
+    "Bottom track GND (17.950,16.700)-(18.560,16.180) w0.37 (-0.169)"
+   ]
+  },
+  "29|30": {
+   "row": "north",
+   "x": 19.15,
+   "pads": [
+    "A4",
+    "A5"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track FT-RESETN (19.125,16.175)-(19.125,18.375) w0.0762 (-0.051)"
+   ],
+   "outward": [
+    "Bottom track FT-RESETN (18.750,18.750)-(19.125,18.375) w0.0762 (-0.051)",
+    "Bottom track FT-RESETN (19.125,16.175)-(19.125,18.375) w0.0762 (-0.051)",
+    "Bottom pad R19-2 (VCC3V3) (0.012)"
+   ],
+   "inward": [
+    "Bottom track FT-RESETN (19.125,16.175)-(19.125,18.375) w0.0762 (-0.051)"
+   ]
+  },
+  "30|31": {
+   "row": "north",
+   "x": 19.95,
+   "pads": [
+    "A5",
+    "A6"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom pad U10-1 (EE-CS) (-0.038)"
+   ],
+   "inward": []
+  },
+  "31|32": {
+   "row": "north",
+   "x": 20.7501,
+   "pads": [
+    "A6",
+    "A7"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom pad U10-1 (EE-CS) (-0.038)"
+   ],
+   "inward": []
+  },
+  "32|33": {
+   "row": "north",
+   "x": 21.55,
+   "pads": [
+    "A7",
+    "A8"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track A8 (21.625,16.675)-(21.950,17.530) w0.125 (0.060)",
+    "via A8 (21.625,16.675) 0.30/0.15 L5-VCC3V3>Bottom (0.078)"
+   ],
+   "outward": [
+    "Bottom pad U10-1 (EE-CS) (-0.038)",
+    "Bottom track EE-CS (21.200,19.200)-(21.705,18.695) w0.0762 (0.079)"
+   ],
+   "inward": [
+    "via A8 (21.625,16.675) 0.30/0.15 L5-VCC3V3>Bottom (-0.113)",
+    "Bottom track A8 (21.625,16.675)-(21.950,17.530) w0.125 (-0.026)"
+   ]
+  },
+  "33|34": {
+   "row": "north",
+   "x": 22.3499,
+   "pads": [
+    "A8",
+    "A9"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track A9 (22.350,16.900)-(22.750,17.530) w0.125 (-0.084)",
+    "Bottom track A9 (21.825,16.250)-(22.350,16.900) w0.125 (-0.071)"
+   ],
+   "outward": [
+    "Bottom track EE-CS (22.285,18.695)-(25.284,19.333) w0.0762 (0.001)",
+    "Bottom track EE-CS (21.705,18.695)-(22.285,18.695) w0.0762 (0.016)"
+   ],
+   "inward": [
+    "Bottom track A9 (21.825,16.250)-(22.350,16.900) w0.125 (-0.101)",
+    "Bottom track A9 (22.350,16.900)-(22.750,17.530) w0.125 (-0.101)",
+    "via SD-DAT0 (22.550,16.550) 0.35/0.20 Top>Bottom (-0.013)"
+   ]
+  },
+  "34|35": {
+   "row": "north",
+   "x": 23.15,
+   "pads": [
+    "A9",
+    "A11"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": [
+    "via A11 (23.350,16.650) 0.30/0.15 L5-VCC3V3>Bottom (0.012)"
+   ]
+  },
+  "35|36": {
+   "row": "north",
+   "x": 23.95,
+   "pads": [
+    "A11",
+    "A12"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track A12 (23.950,16.900)-(24.350,17.530) w0.125 (-0.084)",
+    "Bottom track A12 (23.650,16.475)-(23.950,16.900) w0.125 (-0.071)"
+   ],
+   "outward": [
+    "via SD-DAT0 (23.850,18.400) 0.30/0.15 L5-VCC3V3>Bottom (-0.088)",
+    "Bottom track SD-DAT0 (23.850,18.400)-(23.950,18.300) w0.0762 (-0.076)",
+    "Bottom track SD-DAT0 (23.950,18.300)-(24.725,18.300) w0.0762 (-0.076)"
+   ],
+   "inward": [
+    "Bottom track A12 (23.650,16.475)-(23.950,16.900) w0.125 (-0.101)",
+    "Bottom track A12 (23.950,16.900)-(24.350,17.530) w0.125 (-0.101)",
+    "Bottom track SD-DAT0 (23.500,15.850)-(24.425,16.775) w0.0762 (0.016)"
+   ]
+  },
+  "36|37": {
+   "row": "north",
+   "x": 24.7501,
+   "pads": [
+    "A12",
+    "CKE"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track SD-DAT0 (24.725,16.850)-(24.725,18.300) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (24.650,16.775)-(24.725,16.850) w0.0762 (0.008)",
+    "Bottom track SD-DAT0 (24.725,16.850)-(25.075,16.500) w0.0762 (0.008)"
+   ],
+   "outward": [
+    "Bottom track SD-DAT0 (23.950,18.300)-(24.725,18.300) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (24.725,16.850)-(24.725,18.300) w0.0762 (-0.051)"
+   ],
+   "inward": [
+    "Bottom track SD-DAT0 (24.725,16.850)-(25.075,16.500) w0.0762 (-0.076)",
+    "Bottom track SD-DAT0 (24.650,16.775)-(24.725,16.850) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (24.725,16.850)-(24.725,18.300) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (24.425,16.775)-(24.650,16.775) w0.0762 (0.024)"
+   ]
+  },
+  "37|38": {
+   "row": "north",
+   "x": 25.55,
+   "pads": [
+    "CKE",
+    "SDRAM-CLK"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track CKE (25.150,17.530)-(25.575,16.850) w0.125 (-0.079)",
+    "Bottom track CKE (25.575,16.850)-(26.850,15.600) w0.125 (-0.017)"
+   ],
+   "outward": [
+    "Bottom pad U10-8 (VCC3V3) (-0.038)",
+    "Bottom track VCC3V3 (25.575,18.825)-(25.575,19.075) w0.2 (0.059)"
+   ],
+   "inward": [
+    "Bottom track CKE (25.150,17.530)-(25.575,16.850) w0.125 (-0.101)",
+    "Bottom track CKE (25.575,16.850)-(26.850,15.600) w0.125 (-0.076)",
+    "Bottom track SD-DAT0 (25.475,16.500)-(26.700,15.275) w0.0762 (-0.073)",
+    "Bottom track SD-DAT0 (25.075,16.500)-(25.475,16.500) w0.0762 (-0.001)"
+   ]
+  },
+  "38|39": {
+   "row": "north",
+   "x": 26.3499,
+   "pads": [
+    "SDRAM-CLK",
+    "UDQM"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track SDRAM-CLK (25.950,17.530)-(26.375,16.850) w0.125 (-0.079)",
+    "Bottom track SDRAM-CLK (26.375,16.850)-(27.125,16.100) w0.125 (-0.017)"
+   ],
+   "outward": [
+    "Bottom pad U10-8 (VCC3V3) (-0.038)"
+   ],
+   "inward": [
+    "Bottom track SDRAM-CLK (25.950,17.530)-(26.375,16.850) w0.125 (-0.101)",
+    "Bottom track SDRAM-CLK (26.375,16.850)-(27.125,16.100) w0.125 (-0.076)"
+   ]
+  },
+  "39|40": {
+   "row": "north",
+   "x": 27.1501,
+   "pads": [
+    "UDQM",
+    null
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track UDQM (26.750,17.530)-(27.050,16.650) w0.125 (0.084)",
+    "via UDQM (27.050,16.650) 0.35/0.20 Top>Bottom (0.084)"
+   ],
+   "outward": [],
+   "inward": [
+    "via UDQM (27.050,16.650) 0.35/0.20 Top>Bottom (-0.113)",
+    "Bottom track UDQM (26.750,17.530)-(27.050,16.650) w0.125 (-0.001)"
+   ]
+  },
+  "40|41": {
+   "row": "north",
+   "x": 27.9501,
+   "pads": [
+    null,
+    "GND"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track GND (28.140,16.660)-(28.350,17.530) w0.45 (-0.015)"
+   ],
+   "outward": [],
+   "inward": [
+    "Bottom track GND (28.140,16.660)-(28.350,17.530) w0.45 (-0.073)",
+    "via GND (28.140,16.660) 0.35/0.20 Top>Bottom (-0.023)"
+   ]
+  },
+  "41|42": {
+   "row": "north",
+   "x": 28.7501,
+   "pads": [
+    "GND",
+    "D8"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track SD-DAT0 (28.775,16.850)-(28.775,18.300) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (28.775,16.850)-(28.900,16.725) w0.0762 (0.008)"
+   ],
+   "outward": [
+    "Bottom track SD-DAT0 (28.775,16.850)-(28.775,18.300) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (28.775,18.300)-(29.150,18.300) w0.0762 (-0.051)",
+    "Bottom pad R80-1 (VCC3V3) (-0.038)"
+   ],
+   "inward": [
+    "Bottom track SD-DAT0 (28.775,16.850)-(28.775,18.300) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (28.775,16.850)-(28.900,16.725) w0.0762 (-0.051)",
+    "via CHAN19 (28.600,16.500) 0.30/0.15 L5-VCC3V3>Bottom (-0.038)",
+    "Bottom track CHAN19 (27.400,15.500)-(28.600,16.500) w0.0762 (0.074)",
+    "Bottom track SD-DAT0 (28.900,16.350)-(28.900,16.725) w0.0762 (0.074)",
+    "Bottom track SD-DAT0 (28.750,16.200)-(28.900,16.350) w0.0762 (0.086)"
+   ]
+  },
+  "42|43": {
+   "row": "north",
+   "x": 29.55,
+   "pads": [
+    "D8",
+    "VCC3V3"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track N$LD0B (29.575,15.875)-(29.575,18.350) w0.0762 (-0.051)"
+   ],
+   "outward": [
+    "via SD-DAT0 (29.500,18.700) 0.30/0.15 L5-VCC3V3>Bottom (-0.102)",
+    "Bottom track N$LD0B (29.575,15.875)-(29.575,18.350) w0.0762 (-0.051)",
+    "Bottom track N$LD0B (29.575,18.350)-(30.200,18.975) w0.0762 (-0.051)",
+    "Bottom track SD-DAT0 (29.150,18.300)-(29.500,18.650) w0.0762 (-0.022)",
+    "Bottom track SD-DAT0 (29.500,18.650)-(29.500,18.700) w0.0762 (-0.022)"
+   ],
+   "inward": [
+    "Bottom track N$LD0B (29.575,15.875)-(29.575,18.350) w0.0762 (-0.051)"
+   ]
+  },
+  "43|44": {
+   "row": "north",
+   "x": 30.3499,
+   "pads": [
+    "VCC3V3",
+    "D9"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track VCC3V3 (29.950,17.530)-(30.300,16.400) w0.2 (0.066)",
+    "Bottom track VCC3V3 (29.950,18.365)-(31.200,18.365) w0.23 (0.082)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (29.950,18.365)-(31.200,18.365) w0.23 (-0.153)",
+    "Bottom pad R80-2 (N$LD0B) (-0.038)"
+   ],
+   "inward": [
+    "via VCC3V3 (30.300,16.400) 0.35/0.20 Top>Bottom (-0.155)",
+    "Bottom track VCC3V3 (29.950,17.530)-(30.300,16.400) w0.2 (-0.081)"
+   ]
+  },
+  "44|45": {
+   "row": "north",
+   "x": 31.1501,
+   "pads": [
+    "D9",
+    "D10"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track VCC3V3 (31.200,18.365)-(31.200,19.050) w0.29 (0.057)",
+    "Bottom track VCC3V3 (29.950,18.365)-(31.200,18.365) w0.23 (0.082)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (29.950,18.365)-(31.200,18.365) w0.23 (-0.153)",
+    "Bottom track VCC3V3 (31.200,18.365)-(31.200,19.050) w0.29 (-0.133)",
+    "Bottom pad R81-1 (VCC3V3) (-0.038)"
+   ],
+   "inward": []
+  },
+  "45|46": {
+   "row": "north",
+   "x": 31.9501,
+   "pads": [
+    "D10",
+    "GND"
+   ],
+   "free": true,
+   "in_gap": [],
+   "outward": [],
+   "inward": [
+    "via N$LD0G (31.800,16.250) 0.30/0.15 L5-VCC3V3>Bottom (0.046)"
+   ]
+  },
+  "46|47": {
+   "row": "north",
+   "x": 32.7501,
+   "pads": [
+    "GND",
+    "D11"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom pad R81-2 (N$LD0R) (-0.038)"
+   ],
+   "inward": [
+    "via UART_FT_RXD (32.900,16.300) 0.35/0.20 Top>Bottom (-0.015)"
+   ]
+  },
+  "47|48": {
+   "row": "north",
+   "x": 33.55,
+   "pads": [
+    "D11",
+    "D12"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track VCC3V3 (33.500,18.365)-(33.500,19.050) w0.29 (0.057)",
+    "Bottom track VCC3V3 (33.500,18.365)-(34.750,18.365) w0.23 (0.082)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (33.500,18.365)-(34.750,18.365) w0.23 (-0.153)",
+    "Bottom track VCC3V3 (33.500,18.365)-(33.500,19.050) w0.29 (-0.133)",
+    "Bottom pad R82-1 (VCC3V3) (-0.038)"
+   ],
+   "inward": [
+    "Bottom track UART_FT_RXD (32.900,16.300)-(34.150,16.300) w0.0762 (0.054)"
+   ]
+  },
+  "48|49": {
+   "row": "north",
+   "x": 34.3499,
+   "pads": [
+    "D12",
+    "VCC3V3"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track VCC3V3 (33.500,18.365)-(34.750,18.365) w0.23 (0.082)"
+   ],
+   "outward": [
+    "Bottom track VCC3V3 (33.500,18.365)-(34.750,18.365) w0.23 (-0.153)",
+    "Bottom pad R82-2 (N$LD0G) (0.062)"
+   ],
+   "inward": [
+    "Bottom track UART_FT_RXD (34.150,16.300)-(34.500,16.650) w0.0762 (-0.076)",
+    "via UART_FT_RXD (34.500,16.650) 0.30/0.15 L5-VCC3V3>Bottom (-0.038)"
+   ]
+  },
+  "49|50": {
+   "row": "north",
+   "x": 35.1501,
+   "pads": [
+    "VCC3V3",
+    "D13"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track VCC3V3 (34.750,17.530)-(35.260,16.380) w0.2 (-0.016)"
+   ],
+   "outward": [
+    "Bottom pad R82-2 (N$LD0G) (-0.038)",
+    "via N$LD1A (35.300,18.400) 0.30/0.15 L5-VCC3V3>Bottom (-0.038)",
+    "Bottom track N$LD1A (35.300,18.400)-(36.450,18.400) w0.0762 (0.074)"
+   ],
+   "inward": [
+    "Bottom track VCC3V3 (34.750,17.530)-(35.260,16.380) w0.2 (-0.138)",
+    "via VCC3V3 (35.260,16.380) 0.35/0.20 Top>Bottom (-0.092)"
+   ]
+  },
+  "50|51": {
+   "row": "north",
+   "x": 35.9501,
+   "pads": [
+    "D13",
+    "D14"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom track N$LD1A (35.300,18.400)-(36.450,18.400) w0.0762 (-0.076)",
+    "Bottom pad R83-1 (LED1) (-0.038)"
+   ],
+   "inward": []
+  },
+  "51|52": {
+   "row": "north",
+   "x": 36.7501,
+   "pads": [
+    "D14",
+    "GND"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track SD-DAT2 (36.750,16.900)-(36.750,18.300) w0.0762 (-0.076)",
+    "Bottom track SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 (-0.046)",
+    "via SD-DAT2 (36.750,18.300) 0.30/0.15 L5-VCC3V3>Bottom (-0.018)",
+    "Bottom track SD-DAT2 (36.800,16.850)-(37.200,16.550) w0.0762 (0.018)"
+   ],
+   "outward": [
+    "via SD-DAT2 (36.750,18.300) 0.30/0.15 L5-VCC3V3>Bottom (-0.188)",
+    "Bottom track SD-DAT2 (36.750,16.900)-(36.750,18.300) w0.0762 (-0.076)",
+    "Bottom pad R83-2 (N$LD1A) (-0.038)",
+    "Bottom track N$LD1A (36.450,18.400)-(37.100,19.050) w0.0762 (-0.027)"
+   ],
+   "inward": [
+    "via UART_FT_TXD (36.800,16.350) 0.30/0.15 L5-VCC3V3>Bottom (-0.094)",
+    "Bottom track SD-DAT2 (36.750,16.900)-(36.750,18.300) w0.0762 (-0.076)",
+    "Bottom track SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 (-0.076)",
+    "Bottom track SD-DAT2 (36.800,16.850)-(37.200,16.550) w0.0762 (-0.026)",
+    "Bottom track UART_FT_TXD (36.500,16.050)-(36.800,16.350) w0.0762 (0.018)"
+   ]
+  },
+  "52|53": {
+   "row": "north",
+   "x": 37.55,
+   "pads": [
+    "GND",
+    "D15"
+   ],
+   "free": false,
+   "in_gap": [],
+   "outward": [
+    "Bottom track GND (37.150,18.260)-(37.775,18.475) w0.205 (-0.141)",
+    "via GND (37.775,18.475) 0.35/0.20 Top>Bottom (0.012)",
+    "Bottom pad R83-2 (N$LD1A) (0.062)"
+   ],
+   "inward": [
+    "Bottom track VCC1V0 (36.600,14.490)-(37.850,15.850) w1.425 (-0.098)",
+    "Bottom track VCC1V0 (37.850,15.850)-(39.600,15.850) w1.16 (0.035)"
+   ]
+  },
+  "53|54": {
+   "row": "north",
+   "x": 38.3499,
+   "pads": [
+    "D15",
+    "GND"
+   ],
+   "free": false,
+   "in_gap": [
+    "Bottom track GND (38.350,18.400)-(38.750,17.530) w0.3 (-0.075)",
+    "via GND (38.350,18.400) 0.35/0.20 Top>Bottom (0.057)"
+   ],
+   "outward": [
+    "via GND (38.350,18.400) 0.35/0.20 Top>Bottom (-0.213)",
+    "Bottom track GND (38.350,18.400)-(38.750,17.530) w0.3 (-0.188)"
+   ],
+   "inward": [
+    "Bottom track VCC1V0 (37.850,15.850)-(39.600,15.850) w1.16 (-0.038)",
+    "Bottom track VCC1V0 (36.600,14.490)-(37.850,15.850) w1.425 (0.015)"
+   ]
+  }
+ },
+ "outward_depth": {
+  "D0": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C8-2 (VCC3V3)",
+   "depth_mm": 2.07
+  },
+  "D1": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C41-2 (FT-VPLL)",
+   "depth_mm": 1.47
+  },
+  "D2": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C41-2 (FT-VPLL)",
+   "depth_mm": 1.47
+  },
+  "D3": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C40-2 (FT-VPHY)",
+   "depth_mm": 1.47
+  },
+  "D4": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C38-2 (VCC3V3)",
+   "depth_mm": 1.47
+  },
+  "D5": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C154-2 (FT-VCORE)",
+   "depth_mm": 1.47
+  },
+  "D6": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C153-2 (FT-VCORE)",
+   "depth_mm": 1.47
+  },
+  "D7": {
+   "toe_y": 5.5701,
+   "nearest_part_pad": "C152-2 (FT-VCORE)",
+   "depth_mm": 1.47
+  },
+  "D8": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R80-2 (N$LD0B)",
+   "depth_mm": 0.47
+  },
+  "D9": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R81-1 (VCC3V3)",
+   "depth_mm": 0.47
+  },
+  "D10": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R81-2 (N$LD0R)",
+   "depth_mm": 0.47
+  },
+  "D11": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R82-1 (VCC3V3)",
+   "depth_mm": 0.47
+  },
+  "D12": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R82-2 (N$LD0G)",
+   "depth_mm": 0.47
+  },
+  "D13": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R83-1 (LED1)",
+   "depth_mm": 0.47
+  },
+  "D14": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R83-2 (N$LD1A)",
+   "depth_mm": 0.47
+  },
+  "D15": {
+   "toe_y": 18.13,
+   "nearest_part_pad": "R83-2 (N$LD1A)",
+   "depth_mm": 0.47
+  }
+ },
+ "arrays": [
+  {
+   "part": "CTS 742C083 (4 x R, 0.8 mm pitch)",
+   "land": "measured: board R34, pads 0.50 x 0.90, rows 1.80 apart",
+   "elements": 4,
+   "element_pad_gap_mm": 0.3,
+   "return_between_elements": true,
+   "depth_needed_mm": 3.11,
+   "nets_per_part_on_bottom": 4,
+   "depth_available_south_mm": 1.47,
+   "fits_depth_south": false,
+   "depth_available_north_mm": 0.47,
+   "fits_depth_north": false
+  },
+  {
+   "part": "CTS 742C043 (2 x R, 0.8 mm pitch)",
+   "land": "measured: board R1, pads 0.45 x 0.90, rows 1.70 apart",
+   "elements": 2,
+   "element_pad_gap_mm": 0.35,
+   "return_between_elements": true,
+   "depth_needed_mm": 3.01,
+   "nets_per_part_on_bottom": 2,
+   "depth_available_south_mm": 1.47,
+   "fits_depth_south": false,
+   "depth_available_north_mm": 0.47,
+   "fits_depth_north": false
+  },
+  {
+   "part": "Panasonic EXB-18V / Yageo YC104 (4 x 0201, 0.4 mm pitch)",
+   "land": "ASSUMED: pads 0.20 x 0.30, rows 0.60 apart (not from a vendor drawing)",
+   "elements": 4,
+   "element_pad_gap_mm": 0.2,
+   "return_between_elements": false,
+   "depth_needed_mm": 1.31,
+   "nets_per_part_on_bottom": 2,
+   "depth_available_south_mm": 1.47,
+   "fits_depth_south": true,
+   "depth_available_north_mm": 0.47,
+   "fits_depth_north": false
+  },
+  {
+   "part": "Panasonic EXB-14V / Bourns CAY06 (2 x 0201, 0.5 mm pitch)",
+   "land": "ASSUMED: pads 0.25 x 0.30, rows 0.60 apart (not from a vendor drawing)",
+   "elements": 2,
+   "element_pad_gap_mm": 0.25,
+   "return_between_elements": false,
+   "depth_needed_mm": 1.31,
+   "nets_per_part_on_bottom": 2,
+   "depth_available_south_mm": 1.47,
+   "fits_depth_south": true,
+   "depth_available_north_mm": 0.47,
+   "fits_depth_north": false,
+   "pairs": [
+    {
+     "pair": "D1/D2",
+     "flank_gaps": [
+      "3|4",
+      "5|6"
+     ],
+     "blocked": {
+      "5|6": [
+       "Bottom track FT-VPHY (35.150,5.300)-(35.150,7.050) w0.15 (-0.113)",
+       "Bottom track FT-VPHY (35.150,4.550)-(35.150,5.300) w0.3 (0.082)"
+      ]
+     }
+    },
+    {
+     "pair": "D3/D4",
+     "flank_gaps": [
+      "6|7",
+      "8|9"
+     ],
+     "blocked": {}
+    },
+    {
+     "pair": "D5/D6",
+     "flank_gaps": [
+      "9|10",
+      "11|12"
+     ],
+     "blocked": {
+      "11|12": [
+       "Bottom track FT-VCORE (30.350,5.300)-(30.350,7.050) w0.15 (-0.113)",
+       "Bottom track FT-VCORE (30.350,4.550)-(30.350,5.300) w0.3 (0.082)"
+      ]
+     }
+    },
+    {
+     "pair": "D9/D10",
+     "flank_gaps": [
+      "43|44",
+      "45|46"
+     ],
+     "blocked": {
+      "43|44": [
+       "Bottom track VCC3V3 (29.950,17.530)-(30.300,16.400) w0.2 (0.066)",
+       "Bottom track VCC3V3 (29.950,18.365)-(31.200,18.365) w0.23 (0.082)"
+      ]
+     }
+    },
+    {
+     "pair": "D11/D12",
+     "flank_gaps": [
+      "46|47",
+      "48|49"
+     ],
+     "blocked": {
+      "46|47": [
+       "Bottom pad R81-2 (N$LD0R) (-0.038)"
+      ],
+      "48|49": [
+       "Bottom track VCC3V3 (33.500,18.365)-(34.750,18.365) w0.23 (0.082)",
+       "Bottom track VCC3V3 (33.500,18.365)-(34.750,18.365) w0.23 (-0.153)"
+      ]
+     }
+    },
+    {
+     "pair": "D13/D14",
+     "flank_gaps": [
+      "49|50",
+      "51|52"
+     ],
+     "blocked": {
+      "49|50": [
+       "Bottom track VCC3V3 (34.750,17.530)-(35.260,16.380) w0.2 (-0.016)",
+       "Bottom pad R82-2 (N$LD0G) (-0.038)"
+      ],
+      "51|52": [
+       "Bottom track SD-DAT2 (36.750,16.900)-(36.750,18.300) w0.0762 (-0.076)",
+       "Bottom track SD-DAT2 (36.750,16.900)-(36.800,16.850) w0.0762 (-0.046)"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "part": "Yageo RC0201FR-0722RL (discrete 0201)",
+   "land": "measured: zulu_a7.PcbLib R0201, pads 0.30 x 0.30 at 0.60 mm",
+   "elements": 1,
+   "element_pad_gap_mm": null,
+   "return_between_elements": "n/a",
+   "depth_needed_mm": 0.71,
+   "nets_per_part_on_bottom": 1,
+   "depth_available_south_mm": 1.47,
+   "fits_depth_south": true,
+   "depth_available_north_mm": 0.47,
+   "fits_depth_north": false
+  }
+ ],
+ "south_plan": {
+  "placements": [
+   {
+    "ref": "R119",
+    "nets": "D0 / SDRAM-D0",
+    "side": "Bottom",
+    "x": 38.2499,
+    "y": 5.2101,
+    "rot": 0,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D0",
+     "x": 37.9499,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D0",
+     "x": 38.5499,
+     "y": 5.21015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   },
+   {
+    "ref": "R120",
+    "nets": "D1 / SDRAM-D1",
+    "side": "Bottom",
+    "x": 36.65,
+    "y": 5.2101,
+    "rot": 0,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D1",
+     "x": 36.35,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D1",
+     "x": 36.95,
+     "y": 5.21015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   },
+   {
+    "ref": "R121",
+    "nets": "D2 / SDRAM-D2",
+    "side": "Bottom",
+    "x": 35.5501,
+    "y": 4.9101,
+    "rot": 270,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D2",
+     "x": 35.5501,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D2",
+     "x": 35.5501,
+     "y": 4.61015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   },
+   {
+    "ref": "R122",
+    "nets": "D3 / SDRAM-D3",
+    "side": "Bottom",
+    "x": 34.2499,
+    "y": 5.2101,
+    "rot": 0,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D3",
+     "x": 33.9499,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D3",
+     "x": 34.5499,
+     "y": 5.21015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   },
+   {
+    "ref": "R123",
+    "nets": "D4 / SDRAM-D4",
+    "side": "Bottom",
+    "x": 32.8501,
+    "y": 5.2101,
+    "rot": 180,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D4",
+     "x": 33.1501,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D4",
+     "x": 32.5501,
+     "y": 5.21015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   },
+   {
+    "ref": "R124",
+    "nets": "D5 / SDRAM-D5",
+    "side": "Bottom",
+    "x": 31.5501,
+    "y": 4.9101,
+    "rot": 270,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D5",
+     "x": 31.5501,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D5",
+     "x": 31.5501,
+     "y": 4.61015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   },
+   {
+    "ref": "R125",
+    "nets": "D6 / SDRAM-D6",
+    "side": "Bottom",
+    "x": 30.75,
+    "y": 4.9101,
+    "rot": 270,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D6",
+     "x": 30.75,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D6",
+     "x": 30.75,
+     "y": 4.61015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   },
+   {
+    "ref": "R126",
+    "nets": "D7 / SDRAM-D7",
+    "side": "Bottom",
+    "x": 29.4501,
+    "y": 5.2101,
+    "rot": 0,
+    "pad1": {
+     "pad": "1",
+     "net": "SDRAM-D7",
+     "x": 29.1501,
+     "y": 5.21015
+    },
+    "pad2": {
+     "pad": "2",
+     "net": "D7",
+     "x": 29.7501,
+     "y": 5.21015
+    },
+    "dist_from_u3_pin_mm": 0.96,
+    "footprint": "R0201 (zulu_a7.PcbLib)",
+    "part": "Yageo RC0201FR-0722RL"
+   }
+  ],
+  "notes": [
+   "U3-9 VDDQ: toe track to C38-2 removed (C38-2 keeps its own feed from the via at (32.625,1.000) and C6-2); a heel track and a Bottom>L5 microvia onto the VCC3V3 plane are added",
+   "U3-6 VSSQ heel: the 0.41 mm GND dog-leg that crossed gap 6|7 becomes a 0.25 mm run straight up the pin column to the same GND via (34.475,9.000)",
+   "U3-12 VSSQ toe: GND path to C152-1 re-run down x 30.05 and across y 4.90 (it ran down x 29.54, in front of gap 12|13)",
+   "FT-VCORE (U2 core decoupling C152-C154): Bottom trunk y 4.55 (0.5/0.3 mm) -> y 4.28, 0.16 mm (PWR_RAILS min 0.15), so D5/D6 can stand vertical; the 0.15 mm neck through gap 11|12 is unchanged",
+   "TMS (JTAG, 0.0762 mm): its Bottom crossing of the U3 row moves from gap 9|10 to gap 7|8; it drops to Bottom through a new L4>L5>Bottom microvia stack at (33.450,8.150) on a 0.40 mm L4 extension of the existing L4 TMS line, and reuses the existing stack at (33.025,4.475) outside the row",
+   "C138-2 (VCC3V3 decap): its 0.3 mm stub to the VCC3V3 hub microvia (27.930,4.850) is replaced by its own Bottom>L5 microvia at (28.800,4.400); TDO (JTAG) re-shaped from one diagonal to down-then-across (28.750,5.550)-(28.750,4.950)-(29.150,4.800)"
+  ],
+  "copper": {
+   "remove_tracks": [
+    {
+     "layer": "Bottom",
+     "net": "VCC3V3",
+     "x1": 32.35,
+     "y1": 6.17,
+     "x2": 32.5,
+     "y2": 5.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "VCC3V3",
+     "x1": 32.5,
+     "y1": 5.1,
+     "x2": 33.549,
+     "y2": 5.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "VCC3V3",
+     "x1": 33.549,
+     "y1": 3.95,
+     "x2": 33.549,
+     "y2": 5.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 34.475,
+     "y1": 7.0,
+     "x2": 34.475,
+     "y2": 9.0
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 34.475,
+     "y1": 7.0,
+     "x2": 34.75,
+     "y2": 6.17
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 29.54,
+     "y1": 4.3,
+     "x2": 29.54,
+     "y2": 5.55
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 29.54,
+     "y1": 5.55,
+     "x2": 29.95,
+     "y2": 6.17
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 29.949,
+     "y1": 3.95,
+     "x2": 29.949,
+     "y2": 4.55
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 29.949,
+     "y1": 4.55,
+     "x2": 30.35,
+     "y2": 4.55
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 30.35,
+     "y1": 4.55,
+     "x2": 31.149,
+     "y2": 4.55
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 31.149,
+     "y1": 3.95,
+     "x2": 31.149,
+     "y2": 4.55
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 31.149,
+     "y1": 4.55,
+     "x2": 32.349,
+     "y2": 4.55
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 32.349,
+     "y1": 3.95,
+     "x2": 32.349,
+     "y2": 4.55
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 32.349,
+     "y1": 4.55,
+     "x2": 32.55,
+     "y2": 4.45
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 32.349,
+     "y1": 4.45,
+     "x2": 32.55,
+     "y2": 4.45
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 30.35,
+     "y1": 4.55,
+     "x2": 30.35,
+     "y2": 5.3
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 31.975,
+     "y1": 5.25,
+     "x2": 32.375,
+     "y2": 4.85
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 32.375,
+     "y1": 4.85,
+     "x2": 32.65,
+     "y2": 4.85
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 32.65,
+     "y1": 4.85,
+     "x2": 33.025,
+     "y2": 4.475
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 31.975,
+     "y1": 5.25,
+     "x2": 31.975,
+     "y2": 7.575
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 31.975,
+     "y1": 7.575,
+     "x2": 32.15,
+     "y2": 8.125
+    },
+    {
+     "layer": "L3-SIG",
+     "net": "TMS",
+     "x1": 32.15,
+     "y1": 8.125,
+     "x2": 32.15,
+     "y2": 8.15
+    },
+    {
+     "layer": "Bottom",
+     "net": "VCC3V3",
+     "x1": 28.75,
+     "y1": 3.95,
+     "x2": 28.75,
+     "y2": 4.85
+    },
+    {
+     "layer": "Bottom",
+     "net": "VCC3V3",
+     "x1": 27.93,
+     "y1": 4.85,
+     "x2": 28.75,
+     "y2": 4.85
+    },
+    {
+     "layer": "Bottom",
+     "net": "TDO",
+     "x1": 28.75,
+     "y1": 5.55,
+     "x2": 29.15,
+     "y2": 4.8
+    },
+    {
+     "layer": "Bottom",
+     "net": "D0",
+     "x1": 37.9499,
+     "y1": 6.1701,
+     "x2": 38.025,
+     "y2": 7.05
+    },
+    {
+     "layer": "Bottom",
+     "net": "D1",
+     "x1": 36.35,
+     "y1": 6.1701,
+     "x2": 36.75,
+     "y2": 7.025
+    },
+    {
+     "layer": "Bottom",
+     "net": "D2",
+     "x1": 35.5501,
+     "y1": 6.1701,
+     "x2": 35.65,
+     "y2": 7.075
+    },
+    {
+     "layer": "Bottom",
+     "net": "D3",
+     "x1": 33.9499,
+     "y1": 6.1701,
+     "x2": 33.975,
+     "y2": 8.925
+    },
+    {
+     "layer": "Bottom",
+     "net": "D4",
+     "x1": 33.1501,
+     "y1": 6.1701,
+     "x2": 33.325,
+     "y2": 8.95
+    },
+    {
+     "layer": "Bottom",
+     "net": "D5",
+     "x1": 31.5501,
+     "y1": 6.1701,
+     "x2": 31.55,
+     "y2": 8.95
+    },
+    {
+     "layer": "Bottom",
+     "net": "D6",
+     "x1": 30.75,
+     "y1": 6.1701,
+     "x2": 30.975,
+     "y2": 8.925
+    },
+    {
+     "layer": "Bottom",
+     "net": "D7",
+     "x1": 29.1501,
+     "y1": 6.1701,
+     "x2": 29.325,
+     "y2": 8.95
+    }
+   ],
+   "add_tracks": [
+    {
+     "layer": "Bottom",
+     "net": "VCC3V3",
+     "x1": 32.35,
+     "y1": 6.17,
+     "x2": 32.35,
+     "y2": 7.0,
+     "w": 0.2
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 34.75,
+     "y1": 6.17,
+     "x2": 34.75,
+     "y2": 8.6,
+     "w": 0.25
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 34.75,
+     "y1": 8.6,
+     "x2": 34.475,
+     "y2": 9.0,
+     "w": 0.25
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 30.05,
+     "y1": 6.0,
+     "x2": 30.05,
+     "y2": 4.9,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 30.05,
+     "y1": 4.9,
+     "x2": 29.54,
+     "y2": 4.9,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "GND",
+     "x1": 29.54,
+     "y1": 4.9,
+     "x2": 29.54,
+     "y2": 4.3,
+     "w": 0.115
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 29.949,
+     "y1": 3.95,
+     "x2": 29.949,
+     "y2": 4.28,
+     "w": 0.2
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 31.149,
+     "y1": 3.95,
+     "x2": 31.149,
+     "y2": 4.28,
+     "w": 0.2
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 32.349,
+     "y1": 3.95,
+     "x2": 32.349,
+     "y2": 4.28,
+     "w": 0.2
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 29.949,
+     "y1": 4.28,
+     "x2": 32.349,
+     "y2": 4.28,
+     "w": 0.16
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 32.349,
+     "y1": 4.28,
+     "x2": 32.55,
+     "y2": 4.45,
+     "w": 0.2
+    },
+    {
+     "layer": "Bottom",
+     "net": "FT-VCORE",
+     "x1": 30.35,
+     "y1": 4.28,
+     "x2": 30.35,
+     "y2": 5.3,
+     "w": 0.15
+    },
+    {
+     "layer": "L4-SIG",
+     "net": "TMS",
+     "x1": 33.45,
+     "y1": 8.15,
+     "x2": 33.85,
+     "y2": 8.15,
+     "w": 0.0762
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 33.45,
+     "y1": 8.15,
+     "x2": 33.55,
+     "y2": 8.05,
+     "w": 0.0762
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 33.55,
+     "y1": 8.05,
+     "x2": 33.55,
+     "y2": 4.85,
+     "w": 0.0762
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 33.55,
+     "y1": 4.85,
+     "x2": 33.175,
+     "y2": 4.475,
+     "w": 0.0762
+    },
+    {
+     "layer": "Bottom",
+     "net": "TMS",
+     "x1": 33.175,
+     "y1": 4.475,
+     "x2": 33.025,
+     "y2": 4.475,
+     "w": 0.0762
+    },
+    {
+     "layer": "Bottom",
+     "net": "VCC3V3",
+     "x1": 28.75,
+     "y1": 3.95,
+     "x2": 28.8,
+     "y2": 4.4,
+     "w": 0.2
+    },
+    {
+     "layer": "Bottom",
+     "net": "TDO",
+     "x1": 28.75,
+     "y1": 5.55,
+     "x2": 28.75,
+     "y2": 4.95,
+     "w": 0.0762
+    },
+    {
+     "layer": "Bottom",
+     "net": "TDO",
+     "x1": 28.75,
+     "y1": 4.95,
+     "x2": 29.15,
+     "y2": 4.8,
+     "w": 0.0762
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D0",
+     "x1": 37.9499,
+     "y1": 6.1701,
+     "x2": 37.9499,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D0",
+     "x1": 38.5499,
+     "y1": 5.21015,
+     "x2": 38.3499,
+     "y2": 5.41015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D0",
+     "x1": 38.3499,
+     "y1": 5.41015,
+     "x2": 38.3499,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D0",
+     "x1": 38.3499,
+     "y1": 6.97005,
+     "x2": 38.025,
+     "y2": 7.05,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D1",
+     "x1": 36.35,
+     "y1": 6.1701,
+     "x2": 36.35,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D1",
+     "x1": 36.95,
+     "y1": 5.21015,
+     "x2": 36.75,
+     "y2": 5.41015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D1",
+     "x1": 36.75,
+     "y1": 5.41015,
+     "x2": 36.75,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D1",
+     "x1": 36.75,
+     "y1": 6.97005,
+     "x2": 36.75,
+     "y2": 7.025,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D2",
+     "x1": 35.5501,
+     "y1": 6.1701,
+     "x2": 35.5501,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D2",
+     "x1": 35.5501,
+     "y1": 4.61015,
+     "x2": 35.9501,
+     "y2": 5.01015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D2",
+     "x1": 35.9501,
+     "y1": 5.01015,
+     "x2": 35.9501,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D2",
+     "x1": 35.9501,
+     "y1": 6.97005,
+     "x2": 35.65,
+     "y2": 7.075,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D3",
+     "x1": 33.9499,
+     "y1": 6.1701,
+     "x2": 33.9499,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D3",
+     "x1": 34.5499,
+     "y1": 5.21015,
+     "x2": 34.3499,
+     "y2": 5.41015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D3",
+     "x1": 34.3499,
+     "y1": 5.41015,
+     "x2": 34.3499,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D3",
+     "x1": 34.3499,
+     "y1": 6.97005,
+     "x2": 33.975,
+     "y2": 8.925,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D4",
+     "x1": 33.1501,
+     "y1": 6.1701,
+     "x2": 33.1501,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D4",
+     "x1": 32.5501,
+     "y1": 5.21015,
+     "x2": 32.7501,
+     "y2": 5.41015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D4",
+     "x1": 32.7501,
+     "y1": 5.41015,
+     "x2": 32.7501,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D4",
+     "x1": 32.7501,
+     "y1": 6.97005,
+     "x2": 33.325,
+     "y2": 8.95,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D5",
+     "x1": 31.5501,
+     "y1": 6.1701,
+     "x2": 31.5501,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D5",
+     "x1": 31.5501,
+     "y1": 4.61015,
+     "x2": 31.9501,
+     "y2": 5.01015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D5",
+     "x1": 31.9501,
+     "y1": 5.01015,
+     "x2": 31.9501,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D5",
+     "x1": 31.9501,
+     "y1": 6.97005,
+     "x2": 31.55,
+     "y2": 8.95,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D6",
+     "x1": 30.75,
+     "y1": 6.1701,
+     "x2": 30.75,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D6",
+     "x1": 30.75,
+     "y1": 4.61015,
+     "x2": 31.15,
+     "y2": 5.01015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D6",
+     "x1": 31.15,
+     "y1": 5.01015,
+     "x2": 31.15,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D6",
+     "x1": 31.15,
+     "y1": 6.97005,
+     "x2": 30.975,
+     "y2": 8.925,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "SDRAM-D7",
+     "x1": 29.1501,
+     "y1": 6.1701,
+     "x2": 29.1501,
+     "y2": 5.21015,
+     "w": 0.125
+    },
+    {
+     "layer": "Bottom",
+     "net": "D7",
+     "x1": 29.7501,
+     "y1": 5.21015,
+     "x2": 29.550099999999997,
+     "y2": 5.41015,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D7",
+     "x1": 29.550099999999997,
+     "y1": 5.41015,
+     "x2": 29.550099999999997,
+     "y2": 6.97005,
+     "w": 0.1
+    },
+    {
+     "layer": "Bottom",
+     "net": "D7",
+     "x1": 29.550099999999997,
+     "y1": 6.97005,
+     "x2": 29.325,
+     "y2": 8.95,
+     "w": 0.1
+    }
+   ],
+   "remove_vias": [
+    {
+     "net": "TMS",
+     "x": 32.15,
+     "y": 8.125,
+     "span": [
+      "L5-VCC3V3",
+      "Bottom"
+     ]
+    },
+    {
+     "net": "TMS",
+     "x": 32.15,
+     "y": 8.125,
+     "span": [
+      "L4-SIG",
+      "L5-VCC3V3"
+     ]
+    },
+    {
+     "net": "TMS",
+     "x": 32.15,
+     "y": 8.125,
+     "span": [
+      "L3-SIG",
+      "L4-SIG"
+     ]
+    }
+   ],
+   "add_vias": [
+    {
+     "net": "VCC3V3",
+     "x": 32.35,
+     "y": 7.0,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L5-VCC3V3",
+      "Bottom"
+     ],
+     "kind": "micro"
+    },
+    {
+     "net": "TMS",
+     "x": 33.45,
+     "y": 8.15,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L4-SIG",
+      "L5-VCC3V3"
+     ],
+     "kind": "micro"
+    },
+    {
+     "net": "TMS",
+     "x": 33.45,
+     "y": 8.15,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L5-VCC3V3",
+      "Bottom"
+     ],
+     "kind": "micro"
+    },
+    {
+     "net": "VCC3V3",
+     "x": 28.8,
+     "y": 4.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L5-VCC3V3",
+      "Bottom"
+     ],
+     "kind": "micro"
+    }
+   ],
+   "renet_pads": [
+    {
+     "ref": "U3",
+     "pad": "2",
+     "net": "SDRAM-D0"
+    },
+    {
+     "ref": "U3",
+     "pad": "4",
+     "net": "SDRAM-D1"
+    },
+    {
+     "ref": "U3",
+     "pad": "5",
+     "net": "SDRAM-D2"
+    },
+    {
+     "ref": "U3",
+     "pad": "7",
+     "net": "SDRAM-D3"
+    },
+    {
+     "ref": "U3",
+     "pad": "8",
+     "net": "SDRAM-D4"
+    },
+    {
+     "ref": "U3",
+     "pad": "10",
+     "net": "SDRAM-D5"
+    },
+    {
+     "ref": "U3",
+     "pad": "11",
+     "net": "SDRAM-D6"
+    },
+    {
+     "ref": "U3",
+     "pad": "13",
+     "net": "SDRAM-D7"
+    }
+   ],
+   "add_pads": [
+    {
+     "ref": "R119",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D0",
+     "x": 37.9499,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R119",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D0",
+     "x": 38.5499,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R120",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D1",
+     "x": 36.35,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R120",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D1",
+     "x": 36.95,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R121",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D2",
+     "x": 35.5501,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R121",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D2",
+     "x": 35.5501,
+     "y": 4.61015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R122",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D3",
+     "x": 33.9499,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R122",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D3",
+     "x": 34.5499,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R123",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D4",
+     "x": 33.1501,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R123",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D4",
+     "x": 32.5501,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R124",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D5",
+     "x": 31.5501,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R124",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D5",
+     "x": 31.5501,
+     "y": 4.61015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R125",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D6",
+     "x": 30.75,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R125",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D6",
+     "x": 30.75,
+     "y": 4.61015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R126",
+     "pad": "1",
+     "layer": "Bottom",
+     "net": "SDRAM-D7",
+     "x": 29.1501,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    },
+    {
+     "ref": "R126",
+     "pad": "2",
+     "layer": "Bottom",
+     "net": "D7",
+     "x": 29.7501,
+     "y": 5.21015,
+     "w": 0.3,
+     "h": 0.3,
+     "shape": "rect",
+     "hole": 0.0
+    }
+   ]
+  },
+  "check": {
+   "violations": [],
+   "worst": {
+    "clearance": [
+     0.0097,
+     "Bottom pad U3-2 (SDRAM-D0)",
+     "Bottom track CHAN18 (37.550,5.550)-(37.600,7.200) w0.0762"
+    ],
+    "hole_to_hole": [
+     0.0628,
+     "via VCC3V3 (28.800,4.400) 0.30/0.15 L5-VCC3V3>Bottom",
+     "via TDO (28.350,4.350) 0.30/0.15 L5-VCC3V3>Bottom"
+    ],
+    "mask_sliver": [
+     0.01,
+     "Bottom pad R126-2 (D7)",
+     "Bottom pad U3-12 (GND)"
+    ]
+   },
+   "component_advisory": [
+    [
+     "R123",
+     "U3",
+     0.21
+    ],
+    [
+     "R125",
+     "U3",
+     0.21
+    ],
+    [
+     "R124",
+     "U3",
+     0.21
+    ],
+    [
+     "R126",
+     "U3",
+     0.21
+    ],
+    [
+     "R121",
+     "U3",
+     0.21
+    ],
+    [
+     "R120",
+     "U3",
+     0.21
+    ],
+    [
+     "R119",
+     "U3",
+     0.21
+    ],
+    [
+     "R122",
+     "U3",
+     0.21
+    ]
+   ],
+   "connectivity": {
+    "D0": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "D1": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "D2": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "D3": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "D4": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "D5": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "D6": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "D7": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "FT-VCORE": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 8
+    },
+    "GND": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 217
+    },
+    "SDRAM-D0": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "SDRAM-D1": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "SDRAM-D2": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "SDRAM-D3": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "SDRAM-D4": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "SDRAM-D5": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "SDRAM-D6": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "SDRAM-D7": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 2
+    },
+    "TDO": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 4
+    },
+    "TMS": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 4
+    },
+    "VCC3V3": {
+     "ok": true,
+     "islands": 1,
+     "island_pads": [],
+     "antennae": [],
+     "orphan_objects": 0,
+     "pads": 132
+    }
+   },
+   "missing_removals": []
+  }
+ },
+ "electrical": {
+  "D0": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 2.177,
+   "fold_back_return_ps": 13.7,
+   "old_stub_mm": 0.883,
+   "added_bottom_length_mm": 2.254,
+   "sim_r22_typ": {
+    "ball_vmin": -0.165,
+    "ball_vmax": 3.407,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.078,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.65
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.206,
+    "ball_vmax": 3.613,
+    "ball_budget_pct": 0.5,
+    "die_vmin": -0.114,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.63
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.098,
+    "ball_vmax": 3.368,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.053,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.94
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.136,
+    "ball_vmax": 3.571,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.075,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.93
+   }
+  },
+  "D1": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 1.898,
+   "fold_back_return_ps": 12.0,
+   "old_stub_mm": 0.944,
+   "added_bottom_length_mm": 1.914,
+   "sim_r22_typ": {
+    "ball_vmin": -0.063,
+    "ball_vmax": 3.347,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.092,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.75
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.091,
+    "ball_vmax": 3.537,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.129,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.73
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.045,
+    "ball_vmax": 3.334,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.067,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.85
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.069,
+    "ball_vmax": 3.52,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.099,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.83
+   }
+  },
+  "D2": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 2.844,
+   "fold_back_return_ps": 17.9,
+   "old_stub_mm": 0.91,
+   "added_bottom_length_mm": 2.893,
+   "sim_r22_typ": {
+    "ball_vmin": -0.102,
+    "ball_vmax": 3.377,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.085,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.74
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.14,
+    "ball_vmax": 3.577,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.117,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.73
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.064,
+    "ball_vmax": 3.345,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.056,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.85
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.094,
+    "ball_vmax": 3.536,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.081,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.83
+   }
+  },
+  "D3": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 3.833,
+   "fold_back_return_ps": 24.2,
+   "old_stub_mm": 2.755,
+   "added_bottom_length_mm": 2.038,
+   "sim_r22_typ": {
+    "ball_vmin": -0.146,
+    "ball_vmax": 3.391,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.036,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.83
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.198,
+    "ball_vmax": 3.586,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.052,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.81
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.069,
+    "ball_vmax": 3.33,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.005,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.01
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.09,
+    "ball_vmax": 3.511,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.009,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.98
+   }
+  },
+  "D4": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 3.904,
+   "fold_back_return_ps": 24.6,
+   "old_stub_mm": 2.785,
+   "added_bottom_length_mm": 2.079,
+   "sim_r22_typ": {
+    "ball_vmin": -0.106,
+    "ball_vmax": 3.356,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.014,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.78
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.136,
+    "ball_vmax": 3.546,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.027,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.75
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.021,
+    "ball_vmax": 3.305,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.001,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.03
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.031,
+    "ball_vmax": 3.476,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.002,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.99
+   }
+  },
+  "D5": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 4.546,
+   "fold_back_return_ps": 28.6,
+   "old_stub_mm": 2.78,
+   "added_bottom_length_mm": 2.726,
+   "sim_r22_typ": {
+    "ball_vmin": -0.142,
+    "ball_vmax": 3.392,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.019,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.78
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.218,
+    "ball_vmax": 3.612,
+    "ball_budget_pct": 0.8,
+    "die_vmin": -0.028,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.76
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.091,
+    "ball_vmax": 3.358,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.008,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.23
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.133,
+    "ball_vmax": 3.549,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.012,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.23
+   }
+  },
+  "D6": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 4.488,
+   "fold_back_return_ps": 28.3,
+   "old_stub_mm": 2.764,
+   "added_bottom_length_mm": 2.684,
+   "sim_r22_typ": {
+    "ball_vmin": -0.121,
+    "ball_vmax": 3.395,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.035,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.75
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.186,
+    "ball_vmax": 3.604,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.056,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.74
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.084,
+    "ball_vmax": 3.361,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.01,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.33
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.128,
+    "ball_vmax": 3.554,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.018,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.35
+   }
+  },
+  "D7": {
+   "feed_mm": 0.96,
+   "feed_ps": 6.1,
+   "r_body_centre_mm": 1.26,
+   "r_body_centre_ps": 7.9,
+   "fold_back_return_mm": 3.835,
+   "fold_back_return_ps": 24.2,
+   "old_stub_mm": 2.785,
+   "added_bottom_length_mm": 2.01,
+   "sim_r22_typ": {
+    "ball_vmin": -0.123,
+    "ball_vmax": 3.363,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.023,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.79
+   },
+   "sim_r22_max": {
+    "ball_vmin": -0.181,
+    "ball_vmax": 3.577,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.034,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 0.74
+   },
+   "sim_r33_typ": {
+    "ball_vmin": -0.09,
+    "ball_vmax": 3.344,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.011,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.3
+   },
+   "sim_r33_max": {
+    "ball_vmin": -0.13,
+    "ball_vmax": 3.542,
+    "ball_budget_pct": 0.0,
+    "die_vmin": -0.016,
+    "die_budget_pct": 0.0,
+    "t10_90_ns": 1.31
+   }
+  }
+ },
+ "north": {
+  "led_resistor_row": [
+   {
+    "ref": "R83",
+    "pad": "2",
+    "net": "N$LD1A",
+    "x": 37.1,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   },
+   {
+    "ref": "R83",
+    "pad": "1",
+    "net": "LED1",
+    "x": 35.8,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   },
+   {
+    "ref": "R82",
+    "pad": "2",
+    "net": "N$LD0G",
+    "x": 34.8,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   },
+   {
+    "ref": "R82",
+    "pad": "1",
+    "net": "VCC3V3",
+    "x": 33.5,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   },
+   {
+    "ref": "R81",
+    "pad": "2",
+    "net": "N$LD0R",
+    "x": 32.5,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   },
+   {
+    "ref": "R81",
+    "pad": "1",
+    "net": "VCC3V3",
+    "x": 31.2,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   },
+   {
+    "ref": "R80",
+    "pad": "2",
+    "net": "N$LD0B",
+    "x": 30.2,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   },
+   {
+    "ref": "R80",
+    "pad": "1",
+    "net": "VCC3V3",
+    "x": 28.9,
+    "y": 19.05,
+    "pad_edge_from_toe_mm": 0.47
+   }
+  ],
+  "row_needed": "a 0201 row needs pads at y 18.340..18.640 (0.21 mm toe web) and >= 0.20 mm copper (0.10 mm mask web) to the next part, so the next pads must start at y >= 18.840; R80-R83 start at y 18.600",
+  "vcc3v3_fingers_in_row": [
+   {
+    "layer": "Bottom",
+    "keepout": false,
+    "net": "VCC3V3",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 34.75,
+    "y1": 17.53,
+    "x2": 34.75,
+    "y2": 18.365,
+    "w": 0.23
+   },
+   {
+    "layer": "Bottom",
+    "keepout": false,
+    "net": "VCC3V3",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 33.5,
+    "y1": 18.365,
+    "x2": 34.75,
+    "y2": 18.365,
+    "w": 0.23
+   },
+   {
+    "layer": "Bottom",
+    "keepout": false,
+    "net": "VCC3V3",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 33.5,
+    "y1": 18.365,
+    "x2": 33.5,
+    "y2": 19.05,
+    "w": 0.29
+   },
+   {
+    "layer": "Bottom",
+    "keepout": false,
+    "net": "VCC3V3",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 31.2,
+    "y1": 18.365,
+    "x2": 31.2,
+    "y2": 19.05,
+    "w": 0.29
+   },
+   {
+    "layer": "Bottom",
+    "keepout": false,
+    "net": "VCC3V3",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 29.95,
+    "y1": 18.365,
+    "x2": 31.2,
+    "y2": 18.365,
+    "w": 0.23
+   },
+   {
+    "layer": "Bottom",
+    "keepout": false,
+    "net": "VCC3V3",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 29.95,
+    "y1": 17.53,
+    "x2": 29.95,
+    "y2": 18.365,
+    "w": 0.23
+   }
+  ],
+  "l3_vcc1v0_bar_under_toes": [],
+  "l4_lines_just_north": [
+   {
+    "layer": "L4-SIG",
+    "keepout": false,
+    "net": "SD-DAT2",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 28.05,
+    "y1": 19.7,
+    "x2": 32.25,
+    "y2": 19.5,
+    "w": 0.0762
+   },
+   {
+    "layer": "L4-SIG",
+    "keepout": false,
+    "net": "SD-DAT2",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 26.7,
+    "y1": 19.5,
+    "x2": 28.05,
+    "y2": 19.7,
+    "w": 0.0762
+   },
+   {
+    "layer": "L4-SIG",
+    "keepout": false,
+    "net": "SD-DAT0",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 35.75,
+    "y1": 19.2,
+    "x2": 36.3,
+    "y2": 18.65,
+    "w": 0.0762
+   },
+   {
+    "layer": "L4-SIG",
+    "keepout": false,
+    "net": "SD-DAT0",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 30.0,
+    "y1": 19.2,
+    "x2": 35.75,
+    "y2": 19.2,
+    "w": 0.0762
+   },
+   {
+    "layer": "L4-SIG",
+    "keepout": false,
+    "net": "SD-DAT0",
+    "polygon": 65535,
+    "comp": null,
+    "x1": 29.5,
+    "y1": 18.7,
+    "x2": 30.0,
+    "y2": 19.2,
+    "w": 0.0762
+   }
+  ],
+  "led_microvias_in_row_band": [
+   {
+    "net": "SD-DAT2",
+    "x": 36.75,
+    "y": 18.3,
+    "size": 0.3,
+    "hole": 0.15,
+    "span": [
+     "L5-VCC3V3",
+     "Bottom"
+    ],
+    "kind": "micro"
+   },
+   {
+    "net": "SD-DAT0",
+    "x": 29.5,
+    "y": 18.7,
+    "size": 0.3,
+    "hole": 0.15,
+    "span": [
+     "L5-VCC3V3",
+     "Bottom"
+    ],
+    "kind": "micro"
+   },
+   {
+    "net": "N$LD1A",
+    "x": 35.3,
+    "y": 18.4,
+    "size": 0.3,
+    "hole": 0.15,
+    "span": [
+     "L5-VCC3V3",
+     "Bottom"
+    ],
+    "kind": "micro"
+   },
+   {
+    "net": "N$LD0R",
+    "x": 31.8,
+    "y": 18.9,
+    "size": 0.3,
+    "hole": 0.15,
+    "span": [
+     "L5-VCC3V3",
+     "Bottom"
+    ],
+    "kind": "micro"
+   },
+   {
+    "net": "N$LD0G",
+    "x": 34.1,
+    "y": 18.8,
+    "size": 0.3,
+    "hole": 0.15,
+    "span": [
+     "L5-VCC3V3",
+     "Bottom"
+    ],
+    "kind": "micro"
+   },
+   {
+    "net": "LED1",
+    "x": 36.4,
+    "y": 18.95,
+    "size": 0.3,
+    "hole": 0.15,
+    "span": [
+     "L5-VCC3V3",
+     "Bottom"
+    ],
+    "kind": "micro"
+   }
+  ],
+  "foreign_row_crossings": {
+   "41|42": "SD-DAT0: Bottom from its L4 stack (29.500,18.700) down the gap to under U3 (west)",
+   "42|43": "N$LD0B: Bottom from R80-2 down the gap to the Top..Bottom stack (29.300,15.600)",
+   "51|52": "SD-DAT2: Bottom between its L3 stacks (36.750,18.300) and (37.200,16.550); L3 is blocked by the VCC1V0 bar, L4 by D14 (y 17.25)"
+  },
+  "gap_exits_needing_local_edits": {
+   "43|44": "U3-43 VCC3V3 heel track to through via (30.300,16.400) (the via also feeds U2 on Top)",
+   "48|49": "UART_FT_RXD Bottom track + microvia (34.500,16.650)",
+   "49|50": "U3-49 VCC3V3 heel track to via (35.260,16.380) and UART_FT_TXD microvia (34.850,16.450)",
+   "53|54": "U3-54 GND toe track + GND via (38.350,18.400)"
+  },
+  "ball_budget_pct_at_R0": {
+   "max D0": 999.9,
+   "max D1": 15.0,
+   "max D2": 999.9,
+   "max D3": 999.9,
+   "max D4": 999.9,
+   "max D5": 999.9,
+   "max D6": 999.9,
+   "max D7": 338.9,
+   "max D8": 999.9,
+   "max D9": 999.9,
+   "max D10": 999.9,
+   "max D11": 499.1,
+   "max D12": 155.1,
+   "max D13": 93.8,
+   "max D14": 62.9,
+   "max D15": 42.9,
+   "typ D0": 843.3,
+   "typ D1": 4.7,
+   "typ D2": 312.9,
+   "typ D3": 999.9,
+   "typ D4": 999.9,
+   "typ D5": 999.9,
+   "typ D6": 745.8,
+   "typ D7": 79.3,
+   "typ D8": 268.1,
+   "typ D9": 49.7,
+   "typ D10": 999.9,
+   "typ D11": 28.1,
+   "typ D12": 218.7,
+   "typ D13": 8.6,
+   "typ D14": 18.1,
+   "typ D15": 6.3
+  }
+ },
+ "arrays_verdict": "Arrays lose on every count measured here. (1) The 0.8 mm-pitch CTS 742C043/742C083 match the TSOP pitch but their lands are 2.6/2.7 mm deep (measured on R1/R34): 3.0/3.1 mm needed vs 1.47 mm south (toe to the C135-C41 0201 decoupling row) and 0.47 mm north (toe to R80-R83). (2) The 0201-element arrays fit the south depth (1.31 mm needed, assumed lands) but their 0.20/0.25 mm element gaps are < 0.28 mm, so only the two END elements can return on Bottom: a 4-element array serves 2 nets, and a 2-element array only a DQ pair whose BOTH flank gaps are usable. (3) Of the six 0.8 mm DQ pairs only D3/D4 has both flank gaps usable (D1/D2: 5|6 is the FT-VPHY neck; D5/D6: 11|12 is the FT-VCORE neck; north pairs: blocked as listed) and an array on D3/D4 would cover gap 7|8, which the south pocket needs for TMS (7 gaps for 7 users). (4) Discrete 0201s use the board's existing R0201 footprint and process, keep >= 0.3 mm between Rs (vs ~0.1 mm element spacing), and close all eight south nets with 0 rule violations."
+}

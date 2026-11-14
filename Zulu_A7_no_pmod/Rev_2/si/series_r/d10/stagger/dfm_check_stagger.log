@@ -1,0 +1,200 @@
+==== dfm_check_stagger.py  plan C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_2\si\series_r\d10\stagger\plan.json  (PcbDoc md5 2a616c1c74f8788a4a1c837c7d76c3b0) ====
+apply: -63 tracks +93 tracks, -11 vias +22 vias, 13 pads renet, 26 new pads; errors: 0
+
+-- 1. SDRAM-Dn / Dn split derived from connectivity --
+  D0   R119  islands 2 ok=True U3-side copper 1.000 mm  derived renames 0  
+  D1   R120  islands 2 ok=True U3-side copper 1.000 mm  derived renames 0  
+  D2   R121  islands 2 ok=True U3-side copper 0.960 mm  derived renames 0  
+  D3   R122  islands 2 ok=True U3-side copper 1.000 mm  derived renames 0  
+  D4   R123  islands 2 ok=True U3-side copper 1.000 mm  derived renames 0  
+  D5   R124  islands 2 ok=True U3-side copper 0.960 mm  derived renames 0  
+  D6   R125  islands 2 ok=True U3-side copper 0.960 mm  derived renames 0  
+  D7   R126  islands 2 ok=True U3-side copper 0.960 mm  derived renames 0  
+  D8   R127  islands 2 ok=True U3-side copper 11.141 mm  derived renames 0  
+  D9   R128  islands 2 ok=True U3-side copper 13.865 mm  derived renames 0  
+  D10  R129  islands 2 ok=True U3-side copper 8.722 mm  derived renames 0  
+  D11  R130  islands 2 ok=True U3-side copper 7.126 mm  derived renames 0  
+  D12  R131  islands 2 ok=True U3-side copper 6.209 mm  derived renames 0  
+
+-- 2. physical shorts (any copper touching across nets): before 0, after 0, NEW 0
+
+-- 3. L2/L5 pours re-poured from Rules6 clearances (0.01 mm raster) --
+  L2-GND: live islands 1 -> 1; plane-net objects off the main island 0 -> 0; only-through-<0.10mm-necks 0 -> 0; copper -0.3479/+0.0000 mm2; new <0.10 mm slivers: 3
+    new sliver <0.10 mm wide at (39.45,15.55) 0.0081 mm2
+    new sliver <0.10 mm wide at (39.69,15.96) 0.0011 mm2
+    new sliver <0.10 mm wide at (39.40,16.05) 0.0011 mm2
+  L5-VCC3V3: live islands 1 -> 1; plane-net objects off the main island 0 -> 0; only-through-<0.10mm-necks 0 -> 0; copper -0.5320/+0.1808 mm2; new <0.10 mm slivers: 2
+    new sliver <0.10 mm wide at (41.67,12.70) 0.0018 mm2
+    new sliver <0.10 mm wide at (41.48,12.97) 0.0012 mm2
+  tracks on layers adjacent to L2/L5 now running over NEW pour voids: 5
+     {'plane': 'L5-VCC3V3', 'track': 'track L4-SIG TMS (33.450,8.150)-(33.850,8.150) w0.0762', 'over_new_void_mm': 0.243}
+     {'plane': 'L5-VCC3V3', 'track': 'track Bottom TMS (33.450,8.150)-(33.550,8.050) w0.0762', 'over_new_void_mm': 0.146}
+     {'plane': 'L5-VCC3V3', 'track': 'track Bottom TMS (33.550,8.050)-(33.550,4.850) w0.0762', 'over_new_void_mm': 0.125}
+     {'plane': 'L5-VCC3V3', 'track': 'track L4-SIG SDRAM-D9 (41.750,13.275)-(41.750,12.950) w0.1250', 'over_new_void_mm': 0.24}
+     {'plane': 'L5-VCC3V3', 'track': 'track L4-SIG D9 (42.350,12.950)-(42.425,12.600) w0.1250', 'over_new_void_mm': 0.242}
+
+-- 4. per-net pad islands, all 178 nets: nets with more islands after than before: none
+     SDRAM-Dn nets (new): {'SDRAM-D0': 1, 'SDRAM-D1': 1, 'SDRAM-D2': 1, 'SDRAM-D3': 1, 'SDRAM-D4': 1, 'SDRAM-D5': 1, 'SDRAM-D6': 1, 'SDRAM-D7': 1, 'SDRAM-D8': 1, 'SDRAM-D9': 1, 'SDRAM-D10': 1, 'SDRAM-D11': 1, 'SDRAM-D12': 1}
+     nets already >1 island BEFORE (extract-level, unchanged by the plan unless listed above): {}
+     dangling track ends on touched nets: 0 []
+
+-- 5. copper clearance on new/renamed objects: 0 violations
+  worst clearance Bottom     margin +0.0093 (gap 0.0993, rule 0.090)  pad R119-1  vs  track Bottom CHAN18 (37.550,5.550)-(37.850,4.100) w0.0762
+  worst clearance L2-GND     margin +0.0100 (gap 0.1000, rule 0.090)  via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35  vs  via UDQM (38.500,14.050) Top>Bottom d0.35
+  worst clearance L3-SIG     margin -0.0000 (gap 0.1000, rule 0.100)  via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35  vs  via UDQM (38.500,14.050) Top>Bottom d0.35
+  worst clearance L4-SIG     margin -0.0000 (gap 0.1000, rule 0.100)  via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35  vs  via UDQM (38.500,14.050) Top>Bottom d0.35
+  worst clearance L5-VCC3V3  margin +0.0100 (gap 0.1000, rule 0.090)  via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35  vs  via UDQM (38.500,14.050) Top>Bottom d0.35
+  worst clearance Top        margin +0.0003 (gap 0.0903, rule 0.090)  track Top UDQM (39.812,11.590)-(39.812,13.880) w0.0762  vs  track Top D10 (39.978,12.210)-(39.978,14.250) w0.0762
+
+-- 6. hole-to-hole (0.24, shared span): 0 violations; worst {'value': 0.25, 'shared_layer': True, 'a': 'via TMS (33.450,8.150) L4-SIG>L5-VCC3V3 d0.30', 'b': 'via TMS (33.850,8.150) L3-SIG>L4-SIG d0.27'}
+
+-- 7. width rules on new/renamed tracks: 0 violations []
+
+-- 8. mask: 0 violations []; worst {'mask sliver Top': (0.2, 'pad R131-2', 'pad R131-1'), 'mask sliver Bottom': (0.11, 'pad U3-5', 'pad R121-1')}
+   vias within 0.2 mm of a new R pad (copper):
+     {'pad': 'pad R127-1', 'via': 'via CKE (38.500,13.150) Top>Bottom d0.35', 'same_net': False, 'copper_gap': 0.193, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.1973, 'hole_fully_inside_pad': False, 'via_kind': 'through'}
+     {'pad': 'pad R127-1', 'via': 'via SDRAM-D8 (38.500,13.600) Top>Bottom d0.35', 'same_net': True, 'copper_gap': 0.075, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.1, 'hole_fully_inside_pad': False, 'via_kind': 'through'}
+     {'pad': 'pad R129-1', 'via': 'via UDQM (38.500,14.050) Top>Bottom d0.35', 'same_net': False, 'copper_gap': 0.1193, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.14, 'hole_fully_inside_pad': False, 'via_kind': 'through'}
+     {'pad': 'pad R129-1', 'via': 'via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35', 'same_net': True, 'copper_gap': 0.1318, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.1452, 'hole_fully_inside_pad': False, 'via_kind': 'through'}
+     {'pad': 'pad R130-1', 'via': 'via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30', 'same_net': False, 'copper_gap': 0.1163, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.1222, 'hole_fully_inside_pad': False, 'via_kind': 'micro'}
+     {'pad': 'pad R130-2', 'via': 'via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30', 'same_net': False, 'copper_gap': 0.1163, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.1222, 'hole_fully_inside_pad': False, 'via_kind': 'micro'}
+     {'pad': 'pad R131-1', 'via': 'via SDRAM-D12 (38.900,15.800) Top>L2-GND d0.30', 'same_net': True, 'copper_gap': 0.0, 'land_exposed_in_opening': True, 'hole_edge_to_opening': 0.0, 'hole_fully_inside_pad': True, 'via_kind': 'micro'}
+     {'pad': 'pad R131-2', 'via': 'via UART_FT_TXD (39.600,16.200) Top>L2-GND d0.30', 'same_net': False, 'copper_gap': 0.1, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.125, 'hole_fully_inside_pad': False, 'via_kind': 'micro'}
+     {'pad': 'pad R131-2', 'via': 'via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30', 'same_net': False, 'copper_gap': 0.2, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.225, 'hole_fully_inside_pad': False, 'via_kind': 'micro'}
+     {'pad': 'pad R131-2', 'via': 'via D12 (39.490,15.810) Top>L2-GND d0.30', 'same_net': True, 'copper_gap': 0.0, 'land_exposed_in_opening': True, 'hole_edge_to_opening': 0.0, 'hole_fully_inside_pad': True, 'via_kind': 'micro'}
+     {'pad': 'pad R126-1', 'via': 'via TDO (29.150,4.800) L5-VCC3V3>Bottom d0.30', 'same_net': False, 'copper_gap': 0.1101, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.1351, 'hole_fully_inside_pad': False, 'via_kind': 'micro'}
+     {'pad': 'pad R128-1', 'via': 'via AIN16_N (41.300,12.665) Top>Bottom d0.35', 'same_net': False, 'copper_gap': 0.154, 'land_exposed_in_opening': False, 'hole_edge_to_opening': 0.1641, 'hole_fully_inside_pad': False, 'via_kind': 'through'}
+     {'pad': 'pad R128-1', 'via': 'via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom d0.30', 'same_net': True, 'copper_gap': 0.0, 'land_exposed_in_opening': True, 'hole_edge_to_opening': 0.0, 'hole_fully_inside_pad': True, 'via_kind': 'micro'}
+     {'pad': 'pad R128-2', 'via': 'via D9 (42.350,12.950) L5-VCC3V3>Bottom d0.30', 'same_net': True, 'copper_gap': 0.0, 'land_exposed_in_opening': True, 'hole_edge_to_opening': 0.0, 'hole_fully_inside_pad': True, 'via_kind': 'micro'}
+   8b. new R pad -> nearest other-part pad (mask web / copper gap):
+     pad R127-1 SDRAM-D8  vs pad R129-1 SDRAM-D10 web 0.280 cu 0.380 DIFFERENT NETS
+     pad R127-2 D8        vs pad R129-2 D10       web 0.280 cu 0.380 DIFFERENT NETS
+     pad R129-1 SDRAM-D10 vs pad R127-1 SDRAM-D8  web 0.280 cu 0.380 DIFFERENT NETS
+     pad R129-2 D10       vs pad R127-2 D8        web 0.280 cu 0.380 DIFFERENT NETS
+     pad R130-1 SDRAM-D11 vs pad R129-1 SDRAM-D10 web 0.280 cu 0.380 DIFFERENT NETS
+     pad R130-2 D11       vs pad R129-2 D10       web 0.280 cu 0.380 DIFFERENT NETS
+     pad R119-1 SDRAM-D0  vs pad U3-2  SDRAM-D0  web 0.150 cu 0.250 
+     pad R119-2 D0        vs pad U3-1  VCC3V3    web 0.150 cu 0.250 DIFFERENT NETS
+     pad R120-1 SDRAM-D1  vs pad U3-4  SDRAM-D1  web 0.150 cu 0.250 
+     pad R120-2 D1        vs pad U3-3  VCC3V3    web 0.150 cu 0.250 DIFFERENT NETS
+     pad R121-1 SDRAM-D2  vs pad U3-5  SDRAM-D2  web 0.110 cu 0.210 
+     pad R121-2 D2        vs pad C41-2 FT-VPLL   web 0.260 cu 0.374 DIFFERENT NETS
+     pad R122-1 SDRAM-D3  vs pad U3-7  SDRAM-D3  web 0.150 cu 0.250 
+     pad R122-2 D3        vs pad U3-6  GND       web 0.150 cu 0.250 DIFFERENT NETS
+     pad R123-1 SDRAM-D4  vs pad U3-8  SDRAM-D4  web 0.150 cu 0.250 
+     pad R123-2 D4        vs pad U3-9  VCC3V3    web 0.150 cu 0.250 DIFFERENT NETS
+     pad R124-1 SDRAM-D5  vs pad U3-10 SDRAM-D5  web 0.110 cu 0.210 
+     pad R124-2 D5        vs pad C154-1 GND       web 0.260 cu 0.360 DIFFERENT NETS
+     pad R125-1 SDRAM-D6  vs pad U3-11 SDRAM-D6  web 0.110 cu 0.210 
+     pad R125-2 D6        vs pad C153-2 FT-VCORE  web 0.260 cu 0.374 DIFFERENT NETS
+     pad R126-1 SDRAM-D7  vs pad U3-13 SDRAM-D7  web 0.110 cu 0.210 
+     pad R126-2 D7        vs pad U3-12 GND       web 0.110 cu 0.210 DIFFERENT NETS
+   8c. new tracks whose edge is < 0.10 mm from an other-net pad opening: 22
+      {'track': 'track Bottom GND (30.050,6.000)-(30.050,4.900) w0.1000', 'mask_cover_to_opening': 0.0499, 'opening': 'pad R126-2', 'opening_net': 'D7'}
+      {'track': 'track Bottom FT-VCORE (29.949,4.280)-(32.349,4.280) w0.1600', 'mask_cover_to_opening': 0.0501, 'opening': 'pad C154-1', 'opening_net': 'GND'}
+      {'track': 'track Bottom GND (29.540,4.900)-(29.540,4.300) w0.1150', 'mask_cover_to_opening': 0.0531, 'opening': 'pad R126-2', 'opening_net': 'D7'}
+      {'track': 'track Bottom FT-VCORE (30.350,4.280)-(30.350,5.300) w0.1500', 'mask_cover_to_opening': 0.0551, 'opening': 'pad C153-1', 'opening_net': 'GND'}
+      {'track': 'track Bottom GND (30.050,4.900)-(29.540,4.900) w0.1000', 'mask_cover_to_opening': 0.0601, 'opening': 'pad R126-2', 'opening_net': 'D7'}
+      {'track': 'track Top UDQM (38.550,14.050)-(38.720,13.880) w0.0762', 'mask_cover_to_opening': 0.0719, 'opening': 'pad R127-1', 'opening_net': 'SDRAM-D8'}
+      {'track': 'track Top UDQM (38.720,13.880)-(39.812,13.880) w0.0762', 'mask_cover_to_opening': 0.0719, 'opening': 'pad R127-1', 'opening_net': 'SDRAM-D8'}
+      {'track': 'track Top UDQM (39.812,11.590)-(39.812,13.880) w0.0762', 'mask_cover_to_opening': 0.0739, 'opening': 'pad R127-2', 'opening_net': 'D8'}
+      {'track': 'track Bottom D7 (29.550,5.410)-(29.550,6.970) w0.1000', 'mask_cover_to_opening': 0.0748, 'opening': 'pad U3-12', 'opening_net': 'GND'}
+      {'track': 'track Bottom D0 (38.350,5.370)-(38.350,6.970) w0.1000', 'mask_cover_to_opening': 0.0749, 'opening': 'pad U3-2', 'opening_net': 'SDRAM-D0'}
+      {'track': 'track Bottom D1 (36.750,5.370)-(36.750,6.970) w0.1000', 'mask_cover_to_opening': 0.0749, 'opening': 'pad U3-4', 'opening_net': 'SDRAM-D1'}
+      {'track': 'track Bottom D2 (35.950,5.010)-(35.950,6.970) w0.1000', 'mask_cover_to_opening': 0.0749, 'opening': 'pad U3-4', 'opening_net': 'SDRAM-D1'}
+      {'track': 'track Bottom D3 (34.350,5.370)-(34.350,6.970) w0.1000', 'mask_cover_to_opening': 0.0749, 'opening': 'pad U3-7', 'opening_net': 'SDRAM-D3'}
+      {'track': 'track Bottom D4 (32.750,5.370)-(32.750,6.970) w0.1000', 'mask_cover_to_opening': 0.0749, 'opening': 'pad U3-8', 'opening_net': 'SDRAM-D4'}
+      {'track': 'track Bottom D5 (31.950,5.010)-(31.950,6.970) w0.1000', 'mask_cover_to_opening': 0.0749, 'opening': 'pad U3-9', 'opening_net': 'VCC3V3'}
+      {'track': 'track Bottom D6 (31.150,5.010)-(31.150,6.970) w0.1000', 'mask_cover_to_opening': 0.0749, 'opening': 'pad U3-11', 'opening_net': 'SDRAM-D6'}
+      {'track': 'track Bottom TMS (33.550,8.050)-(33.550,4.850) w0.0762', 'mask_cover_to_opening': 0.0867, 'opening': 'pad U3-8', 'opening_net': 'SDRAM-D4'}
+      {'track': 'track Bottom TDO (28.750,5.550)-(28.750,4.950) w0.0762', 'mask_cover_to_opening': 0.0868, 'opening': 'pad U3-14', 'opening_net': 'VCC3V3'}
+      {'track': 'track Bottom TDO (28.750,4.950)-(29.150,4.800) w0.0762', 'mask_cover_to_opening': 0.0885, 'opening': 'pad R126-1', 'opening_net': 'SDRAM-D7'}
+      {'track': 'track Bottom D2 (35.550,4.610)-(35.950,5.010) w0.1000', 'mask_cover_to_opening': 0.0914, 'opening': 'pad R121-1', 'opening_net': 'SDRAM-D2'}
+
+-- 9. visible silk within 0.6 mm of a new pad opening: []
+
+-- 10. component clearance (0.254) / IPC-7351B nominal courtyards / TSOP toe:
+  R119 D0   Bottom [('U3', 0.235, '<0.254', 'CY-OVERLAP')]  toe={'pad_to_U3_pad_toe': 0.25, 'body_to_lead_tip': 0.5348}
+  R120 D1   Bottom [('U3', 0.235, '<0.254', 'CY-OVERLAP'), ('R121', 0.4849, 'OK', '')]  toe={'pad_to_U3_pad_toe': 0.25, 'body_to_lead_tip': 0.5348}
+  R121 D2   Bottom [('U3', 0.21, '<0.254', 'CY-OVERLAP'), ('C41', 0.3123, 'OK', ''), ('R120', 0.4849, 'OK', '')]  toe={'pad_to_U3_pad_toe': 0.21, 'body_to_lead_tip': 0.6448}
+  R122 D3   Bottom [('U3', 0.235, '<0.254', 'CY-OVERLAP'), ('R123', 0.4998, 'OK', '')]  toe={'pad_to_U3_pad_toe': 0.25, 'body_to_lead_tip': 0.5348}
+  R123 D4   Bottom [('U3', 0.235, '<0.254', 'CY-OVERLAP'), ('R122', 0.4998, 'OK', '')]  toe={'pad_to_U3_pad_toe': 0.25, 'body_to_lead_tip': 0.5348}
+  R124 D5   Bottom [('U3', 0.21, '<0.254', 'CY-OVERLAP'), ('C154', 0.3458, 'OK', ''), ('C153', 0.3741, 'OK', '')]  toe={'pad_to_U3_pad_toe': 0.21, 'body_to_lead_tip': 0.6448}
+  R125 D6   Bottom [('U3', 0.21, '<0.254', 'CY-OVERLAP'), ('C153', 0.3123, 'OK', ''), ('R124', 0.4701, 'OK', '')]  toe={'pad_to_U3_pad_toe': 0.21, 'body_to_lead_tip': 0.6448}
+  R126 D7   Bottom [('U3', 0.195, '<0.254', 'CY-OVERLAP')]  toe={'pad_to_U3_pad_toe': 0.21, 'body_to_lead_tip': 0.4948}
+  R127 D8   Top    [('R129', 0.35, 'OK', '')]  toe=None
+  R128 D9   Bottom []  toe=None
+  R129 D10  Top    [('R127', 0.35, 'OK', ''), ('R130', 0.35, 'OK', '')]  toe=None
+  R130 D11  Top    [('R129', 0.35, 'OK', ''), ('R131', 0.54, 'OK', '')]  toe=None
+  R131 D12  Top    [('R130', 0.54, 'OK', '')]  toe=None
+
+-- 11. tombstone / wetting balance per new 0201:
+  R119 D0   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1), ('track', 0.1)]
+  R120 D1   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1), ('track', 0.1)]
+  R121 D2   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1)]
+  R122 D3   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1), ('track', 0.1)]
+  R123 D4   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1), ('track', 0.1)]
+  R124 D5   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1)]
+  R125 D6   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1)]
+  R126 D7   pad1 0.0963 mm2 (hole 0.0000) | pad2 0.0971 mm2 (hole 0.0000)  asym 0.9 %  []
+        attached: p1 [('track', 0.125)] | p2 [('track', 0.1), ('track', 0.1)]
+  R127 D8   pad1 0.0938 mm2 (hole 0.0000) | pad2 0.0996 mm2 (hole 0.0000)  asym 5.9 %  []
+        attached: p1 [('track', 0.0762), ('track', 0.0762)] | p2 [('track', 0.0762), ('track', 0.0762)]
+  R128 D9   pad1 0.0900 mm2 (hole 0.0177) | pad2 0.0900 mm2 (hole 0.0177)  asym 0.0 %  ['via-in-pad (needs VIPPO listing)']
+        attached: p1 [('via', 'micro', 'via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom d0.30')] | p2 [('via', 'micro', 'via D9 (42.350,12.950) L5-VCC3V3>Bottom d0.30')]
+  R129 D10  pad1 0.0954 mm2 (hole 0.0000) | pad2 0.0938 mm2 (hole 0.0000)  asym 1.7 %  []
+        attached: p1 [('track', 0.0762)] | p2 [('track', 0.0762)]
+  R130 D11  pad1 0.0938 mm2 (hole 0.0000) | pad2 0.0938 mm2 (hole 0.0000)  asym 0.0 %  []
+        attached: p1 [('track', 0.0762), ('track', 0.0762)] | p2 [('track', 0.0762)]
+  R131 D12  pad1 0.0900 mm2 (hole 0.0177) | pad2 0.0915 mm2 (hole 0.0177)  asym 1.6 %  ['via-in-pad (needs VIPPO listing)']
+        attached: p1 [('via', 'micro', 'via SDRAM-D12 (38.900,15.800) Top>L2-GND d0.30')] | p2 [('via', 'micro', 'via D12 (39.490,15.810) Top>L2-GND d0.30')]
+
+-- 12. acid traps (< 90 deg copper joints outside pads/vias): 0
+
+-- 13. decoupling-path changes (track mm, pads x24..44 y0..10, nets ['VCC3V3', 'GND', 'FT-VCORE']):
+   pad C113-1   before {'to_plane_mm': 6.308, 'nearest_caps': [(6.958, 'pad C7-2'), (7.038, 'pad C8-2')]}  ->  after {'to_plane_mm': 6.308, 'nearest_caps': [(6.761, 'pad C138-2'), (6.958, 'pad C7-2')]}
+   pad C135-2   before {'to_plane_mm': 3.68, 'nearest_caps': [(3.0, 'pad C136-2'), (4.33, 'pad C7-2')]}  ->  after {'to_plane_mm': 3.68, 'nearest_caps': [(3.0, 'pad C136-2'), (4.133, 'pad C138-2')]}
+   pad C136-2   before {'to_plane_mm': 2.481, 'nearest_caps': [(3.0, 'pad C135-2'), (3.131, 'pad C7-2')]}  ->  after {'to_plane_mm': 2.481, 'nearest_caps': [(2.933, 'pad C138-2'), (3.0, 'pad C135-2')]}
+   pad C137-2   before {'to_plane_mm': 0.977, 'nearest_caps': [(1.081, 'pad C3-2'), (1.627, 'pad C7-2')]}  ->  after {'to_plane_mm': 0.977, 'nearest_caps': [(1.081, 'pad C3-2'), (1.43, 'pad C138-2')]}
+   pad C138-2   before {'to_plane_mm': 1.72, 'nearest_caps': [(1.03, 'pad C4-2'), (2.37, 'pad C7-2')]}  ->  after {'to_plane_mm': 0.453, 'nearest_caps': [(1.03, 'pad C4-2'), (1.103, 'pad C7-2')]}
+   pad C139-2   before {'nearest_caps': [(11.14, 'pad C154-2'), (12.605, 'pad C153-2')]}  ->  after {'nearest_caps': [(11.194, 'pad C154-2'), (12.394, 'pad C153-2')]}
+   pad C152-2   before {'nearest_caps': [(2.401, 'pad C153-2'), (3.505, 'pad C154-2')]}  ->  after {'nearest_caps': [(1.861, 'pad C153-2'), (3.061, 'pad C154-2')]}
+   pad C153-2   before {'nearest_caps': [(2.305, 'pad C154-2'), (2.401, 'pad C152-2')]}  ->  after {'nearest_caps': [(1.861, 'pad C152-2'), (1.861, 'pad C154-2')]}
+   pad C154-2   before {'nearest_caps': [(2.305, 'pad C153-2'), (3.505, 'pad C152-2')]}  ->  after {'nearest_caps': [(1.861, 'pad C153-2'), (3.061, 'pad C152-2')]}
+   pad C3-2     before {'to_plane_mm': 2.049, 'nearest_caps': [(1.081, 'pad C137-2'), (2.699, 'pad C7-2')]}  ->  after {'to_plane_mm': 2.049, 'nearest_caps': [(1.081, 'pad C137-2'), (2.502, 'pad C138-2')]}
+   pad C38-2    before {'to_plane_mm': 3.091, 'nearest_caps': [(3.741, 'pad C7-2'), (3.821, 'pad C8-2')]}  ->  after {'to_plane_mm': 3.091, 'nearest_caps': [(3.544, 'pad C138-2'), (3.741, 'pad C7-2')]}
+   pad C4-2     before {'to_plane_mm': 2.749, 'nearest_caps': [(1.03, 'pad C138-2'), (3.399, 'pad C7-2')]}  ->  after {'to_plane_mm': 1.482, 'nearest_caps': [(1.03, 'pad C138-2'), (2.132, 'pad C7-2')]}
+   pad C5-2     before {'to_plane_mm': 2.119, 'nearest_caps': [(2.769, 'pad C7-2'), (2.849, 'pad C8-2')]}  ->  after {'to_plane_mm': 2.119, 'nearest_caps': [(2.572, 'pad C138-2'), (2.769, 'pad C7-2')]}
+   pad C6-2     before {'to_plane_mm': 1.84, 'nearest_caps': [(2.49, 'pad C7-2'), (2.57, 'pad C8-2')]}  ->  after {'to_plane_mm': 1.84, 'nearest_caps': [(2.293, 'pad C138-2'), (2.49, 'pad C7-2')]}
+   pad C7-2     before {'to_plane_mm': 0.65, 'nearest_caps': [(1.38, 'pad C8-2'), (1.627, 'pad C137-2')]}  ->  after {'to_plane_mm': 0.65, 'nearest_caps': [(1.103, 'pad C138-2'), (1.38, 'pad C8-2')]}
+   pad C8-2     before {'to_plane_mm': 0.73, 'nearest_caps': [(1.38, 'pad C7-2'), (1.707, 'pad C137-2')]}  ->  after {'to_plane_mm': 0.73, 'nearest_caps': [(1.183, 'pad C138-2'), (1.38, 'pad C7-2')]}
+   pad U1-R1    before {'to_plane_mm': 1.5, 'nearest_caps': [(2.15, 'pad C7-2'), (2.23, 'pad C8-2')]}  ->  after {'to_plane_mm': 1.5, 'nearest_caps': [(1.953, 'pad C138-2'), (2.15, 'pad C7-2')]}
+   pad U1-V1    before {'to_plane_mm': 1.0, 'nearest_caps': [(1.65, 'pad C7-2'), (1.73, 'pad C8-2')]}  ->  after {'to_plane_mm': 1.0, 'nearest_caps': [(1.453, 'pad C138-2'), (1.65, 'pad C7-2')]}
+   pad U2-12    before {'nearest_caps': [(12.64, 'pad C152-2'), (13.038, 'pad C153-2')]}  ->  after {'nearest_caps': [(12.64, 'pad C152-2'), (13.84, 'pad C153-2')]}
+   pad U2-20    before {'to_plane_mm': 6.685, 'nearest_caps': [(7.335, 'pad C7-2'), (7.415, 'pad C8-2')]}  ->  after {'to_plane_mm': 6.685, 'nearest_caps': [(7.138, 'pad C138-2'), (7.335, 'pad C7-2')]}
+   pad U2-31    before {'to_plane_mm': 1.194, 'nearest_caps': [(1.844, 'pad C7-2'), (1.924, 'pad C8-2')]}  ->  after {'to_plane_mm': 1.194, 'nearest_caps': [(1.647, 'pad C138-2'), (1.844, 'pad C7-2')]}
+   pad U2-37    before {'nearest_caps': [(15.102, 'pad C152-2'), (15.499, 'pad C153-2')]}  ->  after {'nearest_caps': [(15.102, 'pad C152-2'), (16.301, 'pad C153-2')]}
+   pad U2-49    before {'nearest_caps': [(20.193, 'pad C152-2'), (20.591, 'pad C153-2')]}  ->  after {'nearest_caps': [(20.193, 'pad C152-2'), (21.393, 'pad C153-2')]}
+   pad U2-64    before {'nearest_caps': [(18.402, 'pad C152-2'), (18.8, 'pad C153-2')]}  ->  after {'nearest_caps': [(18.402, 'pad C152-2'), (19.602, 'pad C153-2')]}
+   pad U3-1     before {'to_plane_mm': 1.038, 'nearest_caps': [(1.688, 'pad C7-2'), (1.769, 'pad C8-2')]}  ->  after {'to_plane_mm': 1.038, 'nearest_caps': [(1.491, 'pad C138-2'), (1.688, 'pad C7-2')]}
+   pad U3-12    before {'to_plane_mm': 7.396, 'nearest_caps': [(2.392, 'pad C152-1'), (4.146, 'pad C153-1')]}  ->  after {'to_plane_mm': 7.81, 'nearest_caps': [(2.806, 'pad C152-1'), (4.56, 'pad C153-1')]}
+   pad U3-14    before {'to_plane_mm': 1.385, 'nearest_caps': [(2.035, 'pad C7-2'), (2.115, 'pad C8-2')]}  ->  after {'to_plane_mm': 1.385, 'nearest_caps': [(1.838, 'pad C138-2'), (2.035, 'pad C7-2')]}
+   pad U3-3     before {'to_plane_mm': 0.871, 'nearest_caps': [(1.521, 'pad C7-2'), (1.601, 'pad C8-2')]}  ->  after {'to_plane_mm': 0.871, 'nearest_caps': [(1.324, 'pad C138-2'), (1.521, 'pad C7-2')]}
+   pad U3-6     before {'to_plane_mm': 2.874, 'nearest_caps': [(3.674, 'pad C6-1'), (3.723, 'pad C4-1')]}  ->  after {'to_plane_mm': 2.916, 'nearest_caps': [(3.716, 'pad C6-1'), (3.765, 'pad C4-1')]}
+   pad U3-9     before {'to_plane_mm': 6.371, 'nearest_caps': [(3.28, 'pad C38-2'), (7.021, 'pad C7-2')]}  ->  after {'to_plane_mm': 0.83, 'nearest_caps': [(1.283, 'pad C138-2'), (1.48, 'pad C7-2')]}
+
+
+-- 14. new Top parts: ComponentClearance 0.254 with the 0.90 x 0.396 R0201 body proxy, vs every Top part --
+   R127 nearest R129     body gap 0.2840 (margin +0.0300)
+   R129 nearest R127     body gap 0.2840 (margin +0.0300)
+   R130 nearest R129     body gap 0.2840 (margin +0.0300)
+   R131 nearest R130     body gap 0.4740 (margin +0.2200)
+
+== SUMMARY {'apply_errors': 0, 'split_ok': True, 'further_renames': 0, 'new_shorts': 0, 'clearance': 0, 'hole_to_hole': 0, 'width': 0, 'mask': 0, 'worse_nets': 0, 'pours_single_island': True, 'plane_objects_newly_off_main': 0, 'antennae': 0, 'acid_traps': 0, 'top_component_clearance': 0, 'net_class_missing': [], 'silk_under_0p254': 0, 'PASS': True}

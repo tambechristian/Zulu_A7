@@ -1,0 +1,922 @@
+[
+ {
+  "net": "D2",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    44.9,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.222,
+  "vias": 2,
+  "die_vmin": -0.01951503605193684,
+  "die_vmax": 3.3155616621418815,
+  "ball_vmin": -0.10090902094227766,
+  "ball_vmax": 3.3957211527142492,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6143034208400098
+ },
+ {
+  "net": "D1",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    36.95,
+    6.05
+   ]
+  },
+  "connected": true,
+  "len_mm": 14.336,
+  "vias": 5,
+  "die_vmin": -0.09640142284781984,
+  "die_vmax": 3.378977619411034,
+  "ball_vmin": -0.07486621191033015,
+  "ball_vmax": 3.3600113977372685,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7046760792500055
+ },
+ {
+  "net": "D0",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    38.95,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.125,
+  "vias": 8,
+  "die_vmin": -0.16701139595001582,
+  "die_vmax": 3.382297624653062,
+  "ball_vmin": -0.2129720862030871,
+  "ball_vmax": 3.4471880216521082,
+  "die_budget": 0.0,
+  "ball_budget": 0.00919893333333372,
+  "t10_90_ns": 0.6252431000000027
+ },
+ {
+  "net": "D3",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    34.9,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 17.52,
+  "vias": 6,
+  "die_vmin": -0.07341350217150175,
+  "die_vmax": 3.358557233431304,
+  "ball_vmin": -0.1761119306177224,
+  "ball_vmax": 3.4353737862907607,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.784862659400005
+ },
+ {
+  "net": "D5",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    43.65,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 19.479,
+  "vias": 2,
+  "die_vmin": -0.043978693217858925,
+  "die_vmax": 3.317439920564161,
+  "ball_vmin": -0.22372947428171855,
+  "ball_vmax": 3.394473733922893,
+  "die_budget": 0.0,
+  "ball_budget": 0.00567677109519231,
+  "t10_90_ns": 0.6197114249480156
+ },
+ {
+  "net": "D6",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    35.05,
+    5.7
+   ]
+  },
+  "connected": true,
+  "len_mm": 20.617,
+  "vias": 6,
+  "die_vmin": -0.08909363100482831,
+  "die_vmax": 3.36700759555377,
+  "ball_vmin": -0.11299063909974441,
+  "ball_vmax": 3.3809519287149,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7024756357807247
+ },
+ {
+  "net": "D8",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.2,
+    13.6
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.771,
+  "vias": 2,
+  "die_vmin": -0.0432670922216023,
+  "die_vmax": 3.328324308450013,
+  "ball_vmin": -0.13755280537699777,
+  "ball_vmax": 3.3960323656266747,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6239859801468216
+ },
+ {
+  "net": "D0",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    38.95,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.125,
+  "vias": 8,
+  "die_vmin": -0.21657468254097945,
+  "die_vmax": 3.6043982675648967,
+  "ball_vmin": -0.27385424082064685,
+  "ball_vmax": 3.672922340832414,
+  "die_budget": 0.011392920986708983,
+  "ball_budget": 0.039230469333339145,
+  "t10_90_ns": 0.6015926500000024
+ },
+ {
+  "net": "D15",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.1,
+    16.75
+   ]
+  },
+  "connected": true,
+  "len_mm": 11.267,
+  "vias": 5,
+  "die_vmin": -0.10561614045008899,
+  "die_vmax": 3.385451959503265,
+  "ball_vmin": -0.0936804266411005,
+  "ball_vmax": 3.3780397692012043,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7274062242972672
+ },
+ {
+  "net": "D11",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.2,
+    14.9
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.001,
+  "vias": 2,
+  "die_vmin": -0.019546460464176657,
+  "die_vmax": 3.309981543243282,
+  "ball_vmin": -0.08441232913766589,
+  "ball_vmax": 3.3456348739841233,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.5978557075856847
+ },
+ {
+  "net": "D12",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.2,
+    15.8
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.372,
+  "vias": 8,
+  "die_vmin": -0.07114522790883304,
+  "die_vmax": 3.353869239935657,
+  "ball_vmin": -0.12025699771953069,
+  "ball_vmax": 3.3952008296494154,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6882613839544693
+ },
+ {
+  "net": "D1",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    36.95,
+    6.05
+   ]
+  },
+  "connected": true,
+  "len_mm": 14.336,
+  "vias": 5,
+  "die_vmin": -0.1410555678017941,
+  "die_vmax": 3.576933181066405,
+  "ball_vmin": -0.10439864065810175,
+  "ball_vmax": 3.5521028200455356,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6952007398301437
+ },
+ {
+  "net": "D2",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    44.9,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.222,
+  "vias": 2,
+  "die_vmin": -0.03306644086868283,
+  "die_vmax": 3.490142161797089,
+  "ball_vmin": -0.21723494569416074,
+  "ball_vmax": 3.653623381040166,
+  "die_budget": 0.0,
+  "ball_budget": 0.008133333333331967,
+  "t10_90_ns": 0.5990746094895942
+ },
+ {
+  "net": "D5",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    43.65,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 19.479,
+  "vias": 2,
+  "die_vmin": -0.08297497378626546,
+  "die_vmax": 3.489355877033975,
+  "ball_vmin": -0.2469650379865249,
+  "ball_vmax": 3.6017416096021533,
+  "die_budget": 0.0,
+  "ball_budget": 0.024458199212658068,
+  "t10_90_ns": 0.6008684576570243
+ },
+ {
+  "net": "D3",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    34.9,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 17.52,
+  "vias": 6,
+  "die_vmin": -0.10357911549510496,
+  "die_vmax": 3.5528939807192783,
+  "ball_vmin": -0.23805130754188125,
+  "ball_vmax": 3.6584420138130063,
+  "die_budget": 0.0,
+  "ball_budget": 0.028164833333334357,
+  "t10_90_ns": 0.7736953867340658
+ },
+ {
+  "net": "D6",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    35.05,
+    5.7
+   ]
+  },
+  "connected": true,
+  "len_mm": 20.617,
+  "vias": 6,
+  "die_vmin": -0.11594122288141126,
+  "die_vmax": 3.5595893822475073,
+  "ball_vmin": -0.13384645971247608,
+  "ball_vmax": 3.586639386186715,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6891444004121144
+ },
+ {
+  "net": "D8",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.2,
+    13.6
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.771,
+  "vias": 2,
+  "die_vmin": -0.0616249862545996,
+  "die_vmax": 3.509854571313545,
+  "ball_vmin": -0.18679465413226234,
+  "ball_vmax": 3.606770575823656,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6190529730357078
+ },
+ {
+  "net": "D11",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.2,
+    14.9
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.001,
+  "vias": 2,
+  "die_vmin": -0.02561168228891434,
+  "die_vmax": 3.4814618870614717,
+  "ball_vmin": -0.1168012452779159,
+  "ball_vmax": 3.530327557365524,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.5878803889639982
+ },
+ {
+  "net": "D12",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.2,
+    15.8
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.372,
+  "vias": 8,
+  "die_vmin": -0.11770141102983105,
+  "die_vmax": 3.545467686960998,
+  "ball_vmin": -0.1861398324914736,
+  "ball_vmax": 3.5934876319829447,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6836705348483058
+ },
+ {
+  "net": "D15",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    39.1,
+    16.75
+   ]
+  },
+  "connected": true,
+  "len_mm": 11.267,
+  "vias": 5,
+  "die_vmin": -0.1295171753469213,
+  "die_vmax": 3.5744039002180688,
+  "ball_vmin": -0.11444910930988669,
+  "ball_vmax": 3.568639282992629,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7166038827218519
+ },
+ {
+  "net": "D0",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    38.95,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.125,
+  "vias": 8,
+  "die_vmin": -0.1771344423979263,
+  "die_vmax": 3.385873233362563,
+  "ball_vmin": -0.19761054017303453,
+  "ball_vmax": 3.4309362455071857,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6267366833
+ },
+ {
+  "net": "D1",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    36.95,
+    6.05
+   ]
+  },
+  "connected": true,
+  "len_mm": 14.336,
+  "vias": 5,
+  "die_vmin": -0.10193277518984979,
+  "die_vmax": 3.3744804693108295,
+  "ball_vmin": -0.07371796915466998,
+  "ball_vmax": 3.351782498288912,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7136938134390002
+ },
+ {
+  "net": "D3",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    34.9,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 17.52,
+  "vias": 6,
+  "die_vmin": -0.07605833315011361,
+  "die_vmax": 3.3624660959256536,
+  "ball_vmin": -0.1655778455906347,
+  "ball_vmax": 3.425761529389134,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7939913585000031
+ },
+ {
+  "net": "D2",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    44.9,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.222,
+  "vias": 2,
+  "die_vmin": -0.02990084069476832,
+  "die_vmax": 3.318135841958777,
+  "ball_vmin": -0.14684973810807675,
+  "ball_vmax": 3.4163885910316214,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6230616906300043
+ },
+ {
+  "net": "D5",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    43.65,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 19.479,
+  "vias": 2,
+  "die_vmin": -0.060182030874698214,
+  "die_vmax": 3.326132590298851,
+  "ball_vmin": -0.187929186374479,
+  "ball_vmax": 3.418771314325431,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.623429997306952
+ },
+ {
+  "net": "D6",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    35.05,
+    5.7
+   ]
+  },
+  "connected": true,
+  "len_mm": 20.617,
+  "vias": 6,
+  "die_vmin": -0.0915196825389275,
+  "die_vmax": 3.3727459605614403,
+  "ball_vmin": -0.12950050171181712,
+  "ball_vmax": 3.3898114149710126,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7071931691999954
+ },
+ {
+  "net": "D8",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    13.6
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.771,
+  "vias": 2,
+  "die_vmin": -0.04499877228716748,
+  "die_vmax": 3.330530582752306,
+  "ball_vmin": -0.15236856689921674,
+  "ball_vmax": 3.3865362347498325,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6289655228402571
+ },
+ {
+  "net": "D11",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    14.9
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.001,
+  "vias": 2,
+  "die_vmin": -0.022698492501504092,
+  "die_vmax": 3.3127024810945724,
+  "ball_vmin": -0.0830023730967132,
+  "ball_vmax": 3.3452725333905966,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6068042908400157
+ },
+ {
+  "net": "D15",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.1,
+    16.75
+   ]
+  },
+  "connected": true,
+  "len_mm": 11.267,
+  "vias": 5,
+  "die_vmin": -0.11204566643554426,
+  "die_vmax": 3.3866639236347083,
+  "ball_vmin": -0.08177424065651603,
+  "ball_vmax": 3.3736983753884315,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7320219667043517
+ },
+ {
+  "net": "D12",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    15.8
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.372,
+  "vias": 8,
+  "die_vmin": -0.08286309123824329,
+  "die_vmax": 3.35320967950744,
+  "ball_vmin": -0.11108203433630136,
+  "ball_vmax": 3.382999590593164,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6957126506249945
+ },
+ {
+  "net": "D0",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    38.95,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.125,
+  "vias": 8,
+  "die_vmin": -0.21935743303499777,
+  "die_vmax": 3.604455293128156,
+  "ball_vmin": -0.24581563884682764,
+  "ball_vmax": 3.6470645831308968,
+  "die_budget": 0.012980666666667305,
+  "ball_budget": 0.025709200000000754,
+  "t10_90_ns": 0.5548859999999953
+ },
+ {
+  "net": "D1",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    36.95,
+    6.05
+   ]
+  },
+  "connected": true,
+  "len_mm": 14.336,
+  "vias": 5,
+  "die_vmin": -0.14542283923478574,
+  "die_vmax": 3.5651235699970467,
+  "ball_vmin": -0.09029690026875314,
+  "ball_vmax": 3.5371737702739963,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7107778409974923
+ },
+ {
+  "net": "D2",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    44.9,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.222,
+  "vias": 2,
+  "die_vmin": -0.04863073612201735,
+  "die_vmax": 3.481716327953823,
+  "ball_vmin": -0.12721079153323311,
+  "ball_vmax": 3.558080499104194,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6046582308393189
+ },
+ {
+  "net": "D3",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    34.9,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 17.52,
+  "vias": 6,
+  "die_vmin": -0.10963116429089134,
+  "die_vmax": 3.5590759601808224,
+  "ball_vmin": -0.21999851702524434,
+  "ball_vmax": 3.6513131063623723,
+  "die_budget": 0.0,
+  "ball_budget": 0.026232067999996677,
+  "t10_90_ns": 0.781673404751989
+ },
+ {
+  "net": "D5",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    43.65,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 19.479,
+  "vias": 2,
+  "die_vmin": -0.1032424211749913,
+  "die_vmax": 3.5057711614981786,
+  "ball_vmin": -0.30062197631768045,
+  "ball_vmax": 3.6549753189361454,
+  "die_budget": 0.0,
+  "ball_budget": 0.07012522167824013,
+  "t10_90_ns": 0.6094554747454856
+ },
+ {
+  "net": "D6",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    35.05,
+    5.7
+   ]
+  },
+  "connected": true,
+  "len_mm": 20.617,
+  "vias": 6,
+  "die_vmin": -0.13023651568355687,
+  "die_vmax": 3.572355614893649,
+  "ball_vmin": -0.16087232579722804,
+  "ball_vmax": 3.5788379688208907,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6971616776602599
+ },
+ {
+  "net": "D8",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    13.6
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.771,
+  "vias": 2,
+  "die_vmin": -0.063617320520037,
+  "die_vmax": 3.513159361140966,
+  "ball_vmin": -0.18520780028759853,
+  "ball_vmax": 3.596325945955645,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6210965823752876
+ },
+ {
+  "net": "D11",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    14.9
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.001,
+  "vias": 2,
+  "die_vmin": -0.029221065715940638,
+  "die_vmax": 3.484574086299951,
+  "ball_vmin": -0.11794048715408269,
+  "ball_vmax": 3.531335887256896,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.5972698573824373
+ },
+ {
+  "net": "D12",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    15.8
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.372,
+  "vias": 8,
+  "die_vmin": -0.12458552639006362,
+  "die_vmax": 3.5441733540596028,
+  "ball_vmin": -0.14121251056412631,
+  "ball_vmax": 3.5903343805570143,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.689046733679573
+ },
+ {
+  "net": "D15",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.1,
+    16.75
+   ]
+  },
+  "connected": true,
+  "len_mm": 11.267,
+  "vias": 5,
+  "die_vmin": -0.15736116645986523,
+  "die_vmax": 3.57583720532156,
+  "ball_vmin": -0.11048944482594479,
+  "ball_vmax": 3.562913936780247,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.7198128706365567
+ }
+]

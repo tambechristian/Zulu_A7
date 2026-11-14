@@ -1,0 +1,13 @@
+15_XF-Bottom_none: 37060 placements tried, 0 legal (quick exact check), 57 s
+     6995  pad: clearance track Bottom VCC1V0 (39.600,15.850)-(40.900,17.30
+     3490  pad: clearance track Bottom CHAN4 (39.950,19.800)-(41.400,18.350
+     2618  pad: clearance track Bottom VCC1V0 (37.850,15.850)-(39.600,15.85
+     2388  pad: clearance track Bottom GND (38.350,18.400)-(38.750,17.530) 
+     2111  pad: clearance pad R85-2
+     1675  route: route outside window
+     1485  pad: clearance track Bottom VCC1V0 (40.900,17.300)-(41.500,17.30
+     1419  pad: clearance track Bottom UART_FT_DTR# (39.400,20.450)-(40.950
+     1251  pad: clearance track Bottom BTN (38.200,20.250)-(41.900,20.250) 
+     1195  pad: clearance pad U3-52
+     1177  pad: clearance pad U3-54
+     1108  pad: clearance via GND (39.350,18.425) Top>Bottom d0.35

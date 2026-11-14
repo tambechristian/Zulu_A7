@@ -1,0 +1,3 @@
+D13  read  max fabZ39.1 placed r22   parts pin -0.189/3.623 die -0.133/3.574 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D13  read  max fabZ41 placed r22   parts pin -0.174/3.622 die -0.138/3.569 ball budget 0.0% die 0.0% t_end 32.00 conn True
+done: 2 cases, 0 errors

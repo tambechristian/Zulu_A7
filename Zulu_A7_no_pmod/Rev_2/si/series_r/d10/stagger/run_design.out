@@ -1,0 +1,33 @@
+==== d10/stagger design.py  (PcbDoc md5 2a616c1c74f8788a4a1c837c7d76c3b0, base plan dq_series_r_plan.json) ====
+grid 0.050 mm, window (38.55, 40.75, 12.75, 15.6), feed/return variants kept per placement 2/3
+pipeline self-check (re-export the 12-R plan from its own edit list): {'remove': 'identical', 'remove_vias': 'identical', 'tracks': 'identical', 'vias': 'identical', 'parts': 'identical', 'microvias': 'identical'}
+static Top copper near the staircase: 121 capsules, 18 rects; 20 through-via lands; 42 pad openings; 77 proxies
+
+-- candidates (each legal alone, exact geometry, margin 0.005) --
+  CKE  original + 1335 legal jogs
+  D8   placements tried 10440, pad-legal 2131, with a legal feed+return 1225, candidates 6924  [25 s]
+  UDQM original + 2633 legal jogs
+  D10  placements tried 10440, pad-legal 2131, with a legal feed+return 1561, candidates 8755  [25 s]
+  D11  placements tried 10440, pad-legal 2127, with a legal feed+return 1589, candidates 8353  [24 s]
+
+-- joint exact-cover search: REUSED from coarse_cache.json (written by the full run of 2026-11-13 12:26:22) --
+  compatibility matrices [831 s]: {'D10-D11': 0.0426, 'D10-D8': 0.0403, 'D11-D8': 0.087, 'D10-UDQM': 0.1258, 'D10-CKE': 0.6973, 'D11-UDQM': 0.155, 'D11-CKE': 0.7278, 'D8-UDQM': 0.0458, 'D8-CKE': 0.5663, 'UDQM-CKE': 0.9434}
+  pass 0 (UDQM+CKE original): 0 feasible candidate triples, 0 distinct placement triples, best worst margin None um [0 s]
+  pass 1 (UDQM may jog): 80712 feasible candidate triples, 416 distinct placement triples, best worst margin 34 um [2 s]
+
+-- refinement: grid 0.010 mm, +-0.08 mm around {'D8': (39.2, 13.55, 0), 'D10': (39.25, 14.25, 0), 'D11': (39.4, 14.95, 0)} (same rotations) --
+  D8   placements tried 289, pad-legal 187, with a legal feed+return 187, candidates 1089  [3 s]
+  D10  placements tried 289, pad-legal 214, with a legal feed+return 214, candidates 1284  [5 s]
+  D11  placements tried 289, pad-legal 113, with a legal feed+return 113, candidates 675  [3 s]
+  compatibility matrices [24 s]: {'D10-D11': 0.4441, 'D10-D8': 0.7499, 'D11-D8': 1.0, 'D10-UDQM': 0.0907, 'D10-CKE': 1.0, 'D11-UDQM': 0.9764, 'D11-CKE': 1.0, 'D8-UDQM': 0.3261, 'D8-CKE': 0.5239, 'UDQM-CKE': 0.9434}
+  pass 0 (UDQM+CKE original): 0 feasible candidate triples, 0 distinct placement triples, best worst margin None um [0 s]
+  pass 1 (UDQM may jog): 100508580 feasible candidate triples, 471145 distinct placement triples, best worst margin 25 um [187 s]
+
+-- chosen --
+  CKE  orig place=None A=[(38.5, 13.15), (39.479, 13.15)] B=None attach y=13.1500 new copper 0.000 mm static margin +0.0000
+  D8   R    place=(39.2, 13.57, 0) A=[(38.5, 13.6), (38.87, 13.6), (38.9, 13.57)] B=[(39.5, 13.57), (39.6455, 13.57)] attach y=13.5700 new copper 0.558 mm static margin +0.0250
+  UDQM jog  place=None A=[(38.5, 14.05), (38.55, 14.05), (38.72, 13.88), (39.812, 13.88)] B=None attach y=13.8800 new copper 1.382 mm static margin +0.0530
+  D10  R    place=(39.24, 14.25, 0) A=[(38.5, 14.5), (38.69, 14.5), (38.94, 14.25)] B=[(39.54, 14.25), (39.9785, 14.25)] attach y=14.2500 new copper 0.982 mm static margin +0.0293
+  D11  R    place=(39.4, 14.93, 0) A=[(38.5, 14.95), (39.08, 14.95), (39.1, 14.93)] B=[(39.7, 14.93), (40.145, 14.93)] attach y=14.9300 new copper 1.053 mm static margin +0.0263
+
+plan.json: remove 63 tracks (20 renames), remove 11 vias (8 renames), add 93 tracks, add 22 vias (14 new), 13 parts

@@ -1,0 +1,19 @@
+(1) fieldsolve with ER_MASK=1 (geometry otherwise identical) vs HJ thick uncoated
+  w=0.0762 fieldsolve Z0 72.370 eeff 2.6776 | HJ 72.538 2.6756 | dZ -0.23 %
+  w=0.1250 fieldsolve Z0 59.009 eeff 2.8188 | HJ 59.097 2.8172 | dZ -0.15 %
+(2) FV vs Cohn (zero-thickness ~ 0.1 um strip, centred, er 4.3)
+  w=0.125 b=0.40 FV 61.347 Cohn 61.262 (0.14 %)
+  w=0.125 b=2.40 FV 112.632 Cohn 112.561 (0.06 %)
+(3) closed-form stripline formulas vs FV on the Zulu offset geometry, homogeneous er 4.6
+  FV offset homogeneous: 49.054 | Wheeler-offset parallel combo 55.174 | IPC-2141 46.376
+  symmetric b=0.2152: FV 37.623 | Wheeler thick 37.534
+  symmetric b=2.4872: FV 104.167 | Wheeler thick 104.097
+  parallel combo of the two FV symmetric results: 55.280  (vs FV offset 49.054)
+(4) sensitivities (FV, same grid)
+  L3 base                    Z0 49.201 td 7.1327
+  L3 inner Cu 0.035          Z0 46.329 (-5.84 %) td 7.1314
+  L3 trapezoid (-1 mil)      Z0 50.497 (+2.63 %)
+  Top w=0.0762 planar base Z0 63.736; trapezoid top 1 mil narrower Z0 65.891 (+3.38 %)
+  Top w=0.0762 conformal, 0.5 mil on top: Z0 65.967 (+3.50 % vs planar) td 5.9997 (-3.38 %)
+  Top w=0.1250 planar base Z0 53.276; trapezoid top 1 mil narrower Z0 54.641 (+2.56 %)
+  Top w=0.1250 conformal, 0.5 mil on top: Z0 54.834 (+2.92 % vs planar) td 6.0376 (-2.84 %)

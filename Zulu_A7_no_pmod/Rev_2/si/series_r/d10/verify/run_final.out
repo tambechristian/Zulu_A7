@@ -1,0 +1,251 @@
+dfm_adversary.py  plan=C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/si/series_r/d10/final_plan.json  tag=final
+board_extract md5 source: 2a616c1c74f8788a4a1c837c7d76c3b0  plan source: 2a616c1c74f8788a4a1c837c7d76c3b0
+
+== 0. apply: 0 errors
+
+== 1. CALIBRATION on the unmodified board (DRC 0 => a correct interpretation reports 0)
+   clearance, vias OnLayer=TRUE    violations 0, shorts 0
+   clearance, vias OnLayer=FALSE   violations 0, shorts 0
+   width map A(L3=MID1,L4=MID2,L2=MID3,L5=MID4)       violations 0
+   width map B(stack order L2..L5=MID1..4)            violations 0
+   hole-to-hole 0.2400 (stacked microvias exempt): any-span 465, sharing a copper layer 0, sharing a drilled dielectric 0
+     -> DRC 0 on the board means Altium checks hole pairs whose spans SHARE A DIELECTRIC (any-span and shared-layer would fire)
+   mask slivers < 0.1000: 0 ; other-net copper exposed in an opening: 0
+   HoleSize with typed vias (thru / micro / L3-L4 buried): 0 violations
+   -> using via OnLayer=True (both are reported for the plan anyway), width map ['A(L3=MID1,L4=MID2,L2=MID3,L5=MID4)', 'B(stack order L2..L5=MID1..4)']
+
+== 2. plan bookkeeping
+   new U3-side nets: ['SDRAM-D0', 'SDRAM-D1', 'SDRAM-D10', 'SDRAM-D11', 'SDRAM-D12', 'SDRAM-D2', 'SDRAM-D3', 'SDRAM-D4', 'SDRAM-D5', 'SDRAM-D6', 'SDRAM-D7', 'SDRAM-D8', 'SDRAM-D9']
+   SDRAM-D10 in SDRAM_DATA add-list: True
+   R119  Bottom rot   0  pad1 (-0.3, 0.0) exp (-0.3, 0.0)  pad1 net SDRAM-D0   pad2 net D0   hidden=True
+   R120  Bottom rot   0  pad1 (-0.3, 0.0) exp (-0.3, 0.0)  pad1 net SDRAM-D1   pad2 net D1   hidden=True
+   R121  Bottom rot 270  pad1 (0.0, 0.3) exp (0.0, 0.3)  pad1 net SDRAM-D2   pad2 net D2   hidden=True
+   R122  Bottom rot   0  pad1 (-0.3, 0.0) exp (-0.3, 0.0)  pad1 net SDRAM-D3   pad2 net D3   hidden=True
+   R123  Bottom rot 180  pad1 (0.3, 0.0) exp (0.3, 0.0)  pad1 net SDRAM-D4   pad2 net D4   hidden=True
+   R124  Bottom rot 270  pad1 (0.0, 0.3) exp (0.0, 0.3)  pad1 net SDRAM-D5   pad2 net D5   hidden=True
+   R125  Bottom rot 270  pad1 (0.0, 0.3) exp (0.0, 0.3)  pad1 net SDRAM-D6   pad2 net D6   hidden=True
+   R126  Bottom rot   0  pad1 (-0.3, 0.0) exp (-0.3, 0.0)  pad1 net SDRAM-D7   pad2 net D7   hidden=True
+   R127  Top    rot   0  pad1 (-0.3, 0.0) exp (-0.3, -0.0)  pad1 net SDRAM-D8   pad2 net D8   hidden=True
+   R128  Bottom rot   0  pad1 (-0.3, 0.0) exp (-0.3, 0.0)  pad1 net SDRAM-D9   pad2 net D9   hidden=True
+   R129  Top    rot   0  pad1 (-0.3, 0.0) exp (-0.3, -0.0)  pad1 net SDRAM-D10  pad2 net D10  hidden=True
+   R130  Top    rot   0  pad1 (-0.3, 0.0) exp (-0.3, -0.0)  pad1 net SDRAM-D11  pad2 net D11  hidden=True
+   R131  Top    rot   0  pad1 (-0.3, 0.0) exp (-0.3, -0.0)  pad1 net SDRAM-D12  pad2 net D12  hidden=True
+   info: 28 plan tracks are any-angle (13 of them renames of existing copper); the unmodified board already has 1282 any-angle copper tracks
+       any-angle D10/D11 track: {'net': 'SDRAM-D11', 'layer': 'Bottom Layer', 'w': 0.125, 'x1': 33.1501, 'y1': 17.53, 'x2': 33.25, 'y2': 16.65, 'why': 'rename'}
+       any-angle D10/D11 track: {'net': 'SDRAM-D11', 'layer': 'L3-SIG', 'w': 0.125, 'x1': 33.875, 'y1': 16.025, 'x2': 38.5, 'y2': 14.95, 'why': 'rename'}
+       any-angle D10/D11 track: {'net': 'SDRAM-D10', 'layer': 'Bottom Layer', 'w': 0.125, 'x1': 31.5501, 'y1': 17.53, 'x2': 31.65, 'y2': 16.65, 'why': 'rename'}
+       any-angle D10/D11 track: {'net': 'SDRAM-D10', 'layer': 'L3-SIG', 'w': 0.125, 'x1': 32.275, 'y1': 16.025, 'x2': 38.5, 'y2': 14.5, 'why': 'rename'}
+   bookkeeping problems: 0
+
+== 3. copper clearance + shorts, ALL PAIRS on the after-board (baseline subtracted)
+   classes updated, via OnLayer=TRUE        violations 0 (on new/changed objects 0), shorts 0
+   classes updated, via OnLayer=FALSE       violations 0 (on new/changed objects 0), shorts 0
+   class add FORGOTTEN, via OnLayer=TRUE    violations 0 (on new/changed objects 0), shorts 0
+   tightest margins on new/changed objects (gap - rule < 0.04 mm), classes updated, via OnLayer=TRUE:
+       +0.0000  L4-SIG    via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0000  L4-SIG    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0000  L4-SIG    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0000  L4-SIG    via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0000  L3-SIG    via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0000  L3-SIG    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0000  L3-SIG    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0000  L3-SIG    via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance_SDRAM_INNER 0.1000)
+       +0.0003  Top       track D11 Top (40.1450,12.3800)-(40.1450,14.9500) w0.0762  <->  track D10 Top (39.6500,14.5000)-(39.9785,14.5000) w0.0762  gap 0.0903 (Clearance 0.0900)
+       +0.0003  Top       track UDQM Top (39.8120,11.5900)-(39.8120,14.0500) w0.0762  <->  track D8 Top (39.5000,13.6000)-(39.6455,13.6000) w0.0762  gap 0.0903 (Clearance 0.0900)
+       +0.0011  L3-SIG    via UART_FT_RXD (33.1000,15.5000) L2-GND>L3-SIG 0.30/0.15  <->  track SDRAM-D10 L3-SIG (32.2750,16.0250)-(38.5000,14.5000) w0.1250  gap 0.1011 (Clearance_SDRAM_INNER 0.1000)
+       +0.0022  L4-SIG    via N$LD0G (31.8000,16.2500) L4-SIG>L5-VCC3V3 0.30/0.15  <->  via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20  gap 0.1022 (Clearance_SDRAM_INNER 0.1000)
+       +0.0025  L4-SIG    via DONE (41.4500,13.2500) L3-SIG>L4-SIG 0.27/0.15  <->  track SDRAM-D9 L4-SIG (41.7500,13.2750)-(41.7500,12.9500) w0.1250  gap 0.1025 (Clearance_SDRAM_INNER 0.1000)
+       +0.0025  L4-SIG    via GND (41.4000,14.4000) Top>Bottom 0.35/0.20  <->  track SDRAM-D9 L4-SIG (41.6000,14.7000)-(41.7500,14.5000) w0.1250  gap 0.1025 (Clearance_SDRAM_INNER 0.1000)
+       +0.0032  L4-SIG    track N$LD1A L4-SIG (33.3000,16.1000)-(33.7000,16.8000) w0.0762  <->  via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20  gap 0.1032 (Clearance_SDRAM_INNER 0.1000)
+       +0.0035  L4-SIG    via DONE (41.4500,13.2500) L3-SIG>L4-SIG 0.27/0.15  <->  track SDRAM-D9 L4-SIG (41.7500,13.2750)-(41.7500,14.5000) w0.1250  gap 0.1035 (Clearance_SDRAM_INNER 0.1000)
+       +0.0042  L3-SIG    via N$LD1A (33.3000,16.1000) L2-GND>L3-SIG 0.30/0.15  <->  track SDRAM-D10 L3-SIG (32.2750,16.0250)-(38.5000,14.5000) w0.1250  gap 0.1042 (Clearance_SDRAM_INNER 0.1000)
+       +0.0052  L3-SIG    via UART_FT_TXD (39.6000,16.2000) L2-GND>L3-SIG 0.30/0.15  <->  via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15  gap 0.1052 (Clearance_SDRAM_INNER 0.1000)
+       +0.0055  L4-SIG    via PROG# (40.4500,14.6000) Top>Bottom 0.35/0.20  <->  track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250  gap 0.1055 (Clearance_SDRAM_INNER 0.1000)
+       +0.0071  L4-SIG    track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250  <->  track D12 L4-SIG (39.4900,15.8100)-(40.9000,15.1000) w0.1250  gap 0.1071 (Clearance_SDRAM_INNER 0.1000)
+       +0.0071  L4-SIG    track D12 L4-SIG (40.9000,15.1000)-(42.5750,14.9500) w0.1250  <->  track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250  gap 0.1071 (Clearance_SDRAM_INNER 0.1000)
+       +0.0089  L3-SIG    track UART_FT_CTS# L3-SIG (39.4000,15.3000)-(40.0000,15.9000) w0.0762  <->  via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15  gap 0.1089 (Clearance_SDRAM_INNER 0.1000)
+       +0.0093  Bottom    track CHAN18 Bottom (37.5500,5.5500)-(37.8500,4.1000) w0.0762  <->  pad R119-1 [SDRAM-D0]  gap 0.0993 (Clearance 0.0900)
+       +0.0097  Bottom    pad U3-2 [SDRAM-D0]  <->  track CHAN18 Bottom (37.5500,5.5500)-(37.6000,7.2000) w0.0762  gap 0.0997 (Clearance 0.0900)
+       +0.0099  Bottom    track GND Bottom (30.0500,6.0000)-(30.0500,4.9000) w0.1000  <->  pad R126-2 [D7]  gap 0.0999 (Clearance 0.0900)
+       +0.0100  Bottom    pad U3-11 [SDRAM-D6]  <->  track FT-VCORE Bottom (30.3500,5.3000)-(30.3500,7.0500) w0.1500  gap 0.0999 (Clearance 0.0900)
+       +0.0100  Top       via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Top       via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Top       via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Top       via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Bottom    via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Bottom    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Bottom    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Bottom    via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  Top       via UART_FT_TXD (39.6000,16.2000) Top>L2-GND 0.30/0.15  <->  pad R131-2 [D12]  gap 0.1000 (Clearance 0.0900)
+       +0.0100  L2-GND    via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  L2-GND    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  L2-GND    via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  L2-GND    via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+       +0.0100  L5-VCC3V3 via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  <->  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  gap 0.1000 (Clearance 0.0900)
+
+== 4. hole-to-hole 0.2400 mm (new holes vs every hole)
+   CALIBRATED (shared dielectric) violations 0 ; any-span (info) 3
+       info (no shared dielectric, DRC-legal): {'a': 'via TMS (28.7500,4.2000) L3-SIG>L4-SIG 0.27/0.15', 'b': 'via VCC3V3 (28.8000,4.4000) L5-VCC3V3>Bottom 0.30/0.15', 'gap': 0.05616, 'stacked': False, 'shared_dielectric': False, 'shared_layer': False, 'new': True}
+       info (no shared dielectric, DRC-legal): {'a': 'via SDRAM-D12 (38.9000,15.8000) Top>L2-GND 0.30/0.15', 'b': 'via SDRAM-D12 (38.9000,15.8000) L3-SIG>L4-SIG 0.27/0.15', 'gap': -0.15, 'stacked': False, 'shared_dielectric': False, 'shared_layer': False, 'new': True}
+       info (no shared dielectric, DRC-legal): {'a': 'via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15', 'b': 'via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15', 'gap': -0.15, 'stacked': False, 'shared_dielectric': False, 'shared_layer': False, 'new': True}
+       closest: 0.0562  via VCC3V3 (28.8000,4.4000) L5-VCC3V3>Bottom 0.30/0.15  <->  via TMS (28.7500,4.2000) L3-SIG>L4-SIG 0.27/0.15  shared-dielectric=False
+       closest: 0.2500  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  <->  via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  shared-dielectric=True
+       closest: 0.2500  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  <->  via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  shared-dielectric=True
+       closest: 0.2500  via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  <->  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  shared-dielectric=True
+       closest: 0.2500  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  <->  via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20  shared-dielectric=True
+       closest: 0.2500  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  <->  via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  shared-dielectric=True
+       closest: 0.2500  via TMS (33.4500,8.1500) L4-SIG>L5-VCC3V3 0.30/0.15  <->  via TMS (33.8500,8.1500) L3-SIG>L4-SIG 0.27/0.15  shared-dielectric=False
+       closest: 0.2500  via TMS (33.4500,8.1500) L5-VCC3V3>Bottom 0.30/0.15  <->  via TMS (33.8500,8.1500) L3-SIG>L4-SIG 0.27/0.15  shared-dielectric=False
+
+== 5. via typing / HoleSize / RoutingVias on new vias
+   via SDRAM-D9 (30.8250,16.6500) Top>Bottom 0.35/0.20          type thru   HoleSize OK | RoutingVias OK | untyped would pass
+   via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20          type thru   HoleSize OK | RoutingVias OK | untyped would pass
+   via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20          type thru   HoleSize OK | RoutingVias OK | untyped would pass
+   via SDRAM-D12 (34.0250,16.6500) Top>Bottom 0.35/0.20         type thru   HoleSize OK | RoutingVias OK | untyped would pass
+   via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20         type thru   HoleSize OK | RoutingVias OK | untyped would pass
+   via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20         type thru   HoleSize OK | RoutingVias OK | untyped would pass
+   via VCC3V3 (32.3500,7.0000) L5-VCC3V3>Bottom 0.30/0.15       type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via TMS (33.4500,8.1500) L4-SIG>L5-VCC3V3 0.30/0.15          type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via TMS (33.4500,8.1500) L5-VCC3V3>Bottom 0.30/0.15          type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via VCC3V3 (28.8000,4.4000) L5-VCC3V3>Bottom 0.30/0.15       type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via SDRAM-D12 (38.9000,15.8000) Top>L2-GND 0.30/0.15         type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via SDRAM-D12 (38.9000,15.8000) L2-GND>L3-SIG 0.30/0.15      type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via SDRAM-D12 (38.9000,15.8000) L3-SIG>L4-SIG 0.27/0.15      type buried HoleSize_Buried OK | RoutingVias_Buried OK | untyped would FAIL
+   via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15               type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15            type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15            type buried HoleSize_Buried OK | RoutingVias_Buried OK | untyped would FAIL
+   via SDRAM-D9 (41.7500,12.9500) L4-SIG>L5-VCC3V3 0.30/0.15    type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via SDRAM-D9 (41.7500,12.9500) L5-VCC3V3>Bottom 0.30/0.15    type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via D9 (42.3500,12.9500) L4-SIG>L5-VCC3V3 0.30/0.15          type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via D9 (42.3500,12.9500) L5-VCC3V3>Bottom 0.30/0.15          type micro  HoleSize_uVia OK | RoutingVias_uVia OK | untyped would FAIL
+   via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20         type thru   HoleSize OK | RoutingVias OK | untyped would pass
+   via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20         type thru   HoleSize OK | RoutingVias OK | untyped would pass
+
+== 6. width rules (Width map ['A(L3=MID1,L4=MID2,L2=MID3,L5=MID4)', 'B(stack order L2..L5=MID1..4)']) on new/renamed tracks
+   classes updated: 0 violations ; class add forgotten: 0
+       D10        Top     w 0.0762  Width_SDRAM    [0.0762, 0.1500]  (without class add: Width_SDRAM)  x2
+       D11        Top     w 0.0762  Width_SDRAM    [0.0762, 0.1500]  (without class add: Width_SDRAM)  x2
+       SDRAM-D10  Bottom  w 0.1250  Width_SDRAM    [0.1000, 0.1500]  (without class add: Width)  x1
+       SDRAM-D10  L3-SIG  w 0.1250  Width_SDRAM    [0.1000, 0.1500]  (without class add: Width)  x2
+       SDRAM-D10  Top     w 0.0762  Width_SDRAM    [0.0762, 0.1500]  (without class add: Width)  x2
+       SDRAM-D11  Bottom  w 0.1250  Width_SDRAM    [0.1000, 0.1500]  (without class add: Width)  x1
+       SDRAM-D11  L3-SIG  w 0.1250  Width_SDRAM    [0.1000, 0.1500]  (without class add: Width)  x2
+       SDRAM-D11  Top     w 0.0762  Width_SDRAM    [0.0762, 0.1500]  (without class add: Width)  x2
+
+== 7. solder mask (expansion from Rules6, vias tented) on new/changed pads
+   slivers < 0.1000: 0
+   other-net copper EXPOSED in a new/changed opening: 0
+   other-net copper under < 0.05 mm of mask next to an opening (registration watch-list):
+       cover 0.0326  pad R131-2 [D12] | track UART_FT_TXD Top (39.6000,16.2000)-(40.6000,15.2000) w0.0762
+       cover 0.0402  pad R119-1 [SDRAM-D0] | track CHAN18 Bottom (37.5500,5.5500)-(37.8500,4.1000) w0.0762
+       cover 0.0482  pad U3-2 [SDRAM-D0] | track CHAN18 Bottom (37.5500,5.5500)-(37.6000,7.2000) w0.0762
+       cover 0.0499  pad R126-2 [D7] | track GND Bottom (30.0500,6.0000)-(30.0500,4.9000) w0.1000
+       cover 0.0500  pad U3-11 [SDRAM-D6] | track FT-VCORE Bottom (30.3500,5.3000)-(30.3500,7.0500) w0.1500
+       narrowest other-net web from pad R129-1 [SDRAM-D10]: (0.16, 'pad R130-1 [SDRAM-D11]')
+       narrowest other-net web from pad R129-2 [D10]: (0.16, 'pad R130-2 [D11]')
+       narrowest other-net web from pad R130-1 [SDRAM-D11]: (0.16, 'pad R129-1 [SDRAM-D10]')
+       narrowest other-net web from pad R130-2 [D11]: (0.16, 'pad R129-2 [D10]')
+
+== 8. silk (visible overlay text, conservative box) vs new openings, need 0.2540
+   violations 0
+
+== 9. component clearance (0.2540) and IPC-7351B courtyards
+   R121  vs U3     pad-box 0.2100 full-box 0.2100 body(max) 0.3449 courtyard overlap 0.1901  VIOL(pad box)
+   R124  vs U3     pad-box 0.2100 full-box 0.2100 body(max) 0.3449 courtyard overlap 0.1901  VIOL(pad box)
+   R125  vs U3     pad-box 0.2100 full-box 0.2100 body(max) 0.3449 courtyard overlap 0.1901  VIOL(pad box)
+   R126  vs U3     pad-box 0.2100 full-box 0.2100 body(max) 0.1950 courtyard overlap 0.2050  VIOL(pad box)
+   R119  vs U3     pad-box 0.2500 full-box 0.2500 body(max) 0.2350 courtyard overlap 0.1650  VIOL(pad box)
+   R120  vs U3     pad-box 0.2500 full-box 0.2500 body(max) 0.2350 courtyard overlap 0.1650  VIOL(pad box)
+   R122  vs U3     pad-box 0.2500 full-box 0.2500 body(max) 0.2350 courtyard overlap 0.1650  VIOL(pad box)
+   R123  vs U3     pad-box 0.2500 full-box 0.2500 body(max) 0.2350 courtyard overlap 0.1650  VIOL(pad box)
+   R129  vs R130   pad-box 0.2600 full-box 0.2600 body(max) 0.2300 courtyard overlap 0.0700  courtyard only
+   R130  vs R129   pad-box 0.2600 full-box 0.2600 body(max) 0.2300 courtyard overlap 0.0700  courtyard only
+   R127  to U1: pad box 2.1375, full box (pads+mech) 1.1999
+   R127  to U2: pad box 0.8001, full box (pads+mech) 0.8001
+   R129  to U1: pad box 2.1275, full box (pads+mech) 1.1899
+   R129  to U2: pad box 0.8101, full box (pads+mech) 0.8101
+   R130  to U1: pad box 1.9375, full box (pads+mech) 0.9999
+   R130  to U2: pad box 1.0001, full box (pads+mech) 1.0001
+   R131  to U1: pad box 2.1375, full box (pads+mech) 1.1999
+   R131  to U2: pad box 0.8001, full box (pads+mech) 0.8001
+
+== 10. tombstoning: per-pad solderable area (pad + same-net copper inside the opening) and attached copper
+   R119  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R120  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R121  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R122  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R123  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R124  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R125  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R126  Bottom pad1 area 0.0962 tracks [0.125]            vip []                                 | pad2 area 0.0971 tracks [0.1]              vip []                                 | asym  0.9 % ok
+   R127  Top    pad1 area 0.0938 tracks [0.0762]           vip []                                 | pad2 area 0.0999 tracks [0.0762, 0.0762]   vip []                                 | asym  6.1 % ok
+   R128  Bottom pad1 area 0.0900 tracks []                 vip ['L5-VCC3V3>Bottom']               | pad2 area 0.0900 tracks []                 vip ['L5-VCC3V3>Bottom']               | asym  0.0 % ok
+   R129  Top    pad1 area 0.0949 tracks [0.0762, 0.0762]   vip []                                 | pad2 area 0.0949 tracks [0.0762, 0.0762]   vip []                                 | asym  0.0 % ok
+   R130  Top    pad1 area 0.0938 tracks [0.0762, 0.0762]   vip []                                 | pad2 area 0.0938 tracks [0.0762, 0.0762]   vip []                                 | asym  0.0 % ok
+   R131  Top    pad1 area 0.0900 tracks []                 vip ['Top>L2-GND']                     | pad2 area 0.0915 tracks []                 vip ['Top>L2-GND']                     | asym  1.6 % ok
+
+== 11. pours L2-GND / L5-VCC3V3 re-poured (raster 0.010 mm, Rules6 clearances via the polygon scope)
+   L2-GND     live islands 1 -> 1 ; dead islands removed 36 -> 36 ; plane-net objects off the main island 0 -> 0 ; copper 1271.108 -> 1270.760 mm2 (-0.3479)
+   L5-VCC3V3  live islands 1 -> 1 ; dead islands removed 42 -> 42 ; plane-net objects off the main island 0 -> 0 ; copper 1247.741 -> 1247.389 mm2 (-0.3512)
+   fine windows (0.0025 mm) round each changed L2/L5 object: new necks/slivers narrower than 0.10 mm
+      L2-GND     (29.250,16.650) D8         removed new narrow regions 0 [] ; dead islands in window after 0
+      L2-GND     (30.825,16.650) D9         removed new narrow regions 0 [] ; dead islands in window after 0
+      L2-GND     (31.650,16.650) D10        removed new narrow regions 0 [] ; dead islands in window after 0
+      L2-GND     (33.250,16.650) D11        removed new narrow regions 0 [] ; dead islands in window after 0
+      L2-GND     (34.025,16.650) D12        removed new narrow regions 0 [] ; dead islands in window after 0
+      L2-GND     (38.500,13.600) D8         removed new narrow regions 0 [] ; dead islands in window after 0
+      L2-GND     (38.500,14.500) D10        removed new narrow regions 0 [] ; dead islands in window after 0
+      L2-GND     (38.500,14.950) D11        removed new narrow regions 2 [{'area_mm2': 0.00032, 'at': (np.float64(38.656), np.float64(15.743))}, {'area_mm2': 0.00032, 'at': (np.float64(39.144), np.float64(15.743))}] ; dead islands in window after 0
+      L2-GND     (38.900,15.800) SDRAM-D12  added   new narrow regions 3 [{'area_mm2': 0.00866, 'at': (np.float64(39.445), np.float64(15.555))}, {'area_mm2': 0.00288, 'at': (np.float64(39.681), np.float64(15.632))}, {'area_mm2': 0.00076, 'at': (np.float64(39.4), np.float64(16.047))}] ; dead islands in window after 0
+      L2-GND     (39.490,15.810) D12        added   new narrow regions 5 [{'area_mm2': 0.00866, 'at': (np.float64(39.445), np.float64(15.555))}, {'area_mm2': 0.00288, 'at': (np.float64(38.709), np.float64(15.622))}, {'area_mm2': 0.00288, 'at': (np.float64(38.709), np.float64(15.978))}] ; dead islands in window after 0
+      L5-VCC3V3  (28.800,4.400) VCC3V3     added   new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (29.250,16.650) D8         removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (30.825,16.650) D9         removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (31.650,16.650) D10        removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (32.150,8.125) TMS        removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (32.350,7.000) VCC3V3     added   new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (33.250,16.650) D11        removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (33.450,8.150) TMS        added   new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (34.025,16.650) D12        removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (38.500,13.600) D8         removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (38.500,14.500) D10        removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (38.500,14.950) D11        removed new narrow regions 0 [] ; dead islands in window after 0
+      L5-VCC3V3  (41.750,12.950) SDRAM-D9   added   new narrow regions 4 [{'area_mm2': 0.00119, 'at': (np.float64(41.662), np.float64(12.71))}, {'area_mm2': 0.00249, 'at': (np.float64(42.532), np.float64(12.764))}, {'area_mm2': 0.00122, 'at': (np.float64(41.495), np.float64(12.973))}] ; dead islands in window after 0
+      L5-VCC3V3  (42.350,12.950) D9         added   new narrow regions 2 [{'area_mm2': 0.00119, 'at': (np.float64(41.662), np.float64(12.71))}, {'area_mm2': 0.00249, 'at': (np.float64(41.568), np.float64(13.136))}] ; dead islands in window after 0
+   signal tracks newly over a plane void (Top/L3 -> L2, L4/Bottom -> L5), length > 0.01 mm:
+        {'track': 'track TMS L4-SIG (33.4500,8.1500)-(33.8500,8.1500) w0.0762', 'ref': 'L5-VCC3V3', 'over_void_after': 0.24, 'newly_voided': 0.24}
+        {'track': 'track TMS Bottom (33.4500,8.1500)-(33.5500,8.0500) w0.0762', 'ref': 'L5-VCC3V3', 'over_void_after': 0.141, 'newly_voided': 0.141}
+        {'track': 'track TMS Bottom (33.5500,8.0500)-(33.5500,4.8500) w0.0762', 'ref': 'L5-VCC3V3', 'over_void_after': 0.125, 'newly_voided': 0.125}
+        {'track': 'track SDRAM-D9 L4-SIG (41.7500,13.2750)-(41.7500,12.9500) w0.1250', 'ref': 'L5-VCC3V3', 'over_void_after': 0.236, 'newly_voided': 0.236}
+        {'track': 'track D9 L4-SIG (42.3500,12.9500)-(42.4250,12.6000) w0.1250', 'ref': 'L5-VCC3V3', 'over_void_after': 0.239, 'newly_voided': 0.239}
+   -> 5 tracks
+   Top / Bottom pours: 0 polygons on Top/Bottom in the extract (only ['L2_GND_PLANE', 'L5_VCC3V3_PLANE'] exist)
+
+== 12. connectivity: net islands over ALL nets (pours included), shorts, R bypass, antennae
+   nets on the board before 165, after 178
+   nets whose PADS sit on >1 island before (baseline): []
+   nets with more pad islands after than before (or a new net not in 1 island): []
+   D0  R119  SDRAM-D0   islands 1 pads ['R119-1', 'U3-2']     | D0   islands 1 pads ['R119-2', 'U1-V8']    | bypass contacts 0 | U3-side track 1.000 mm
+   D1  R120  SDRAM-D1   islands 1 pads ['R120-1', 'U3-4']     | D1   islands 1 pads ['R120-2', 'U1-V7']    | bypass contacts 0 | U3-side track 1.000 mm
+   D2  R121  SDRAM-D2   islands 1 pads ['R121-1', 'U3-5']     | D2   islands 1 pads ['R121-2', 'U1-W7']    | bypass contacts 0 | U3-side track 0.960 mm
+   D3  R122  SDRAM-D3   islands 1 pads ['R122-1', 'U3-7']     | D3   islands 1 pads ['R122-2', 'U1-W6']    | bypass contacts 0 | U3-side track 1.000 mm
+   D4  R123  SDRAM-D4   islands 1 pads ['R123-1', 'U3-8']     | D4   islands 1 pads ['R123-2', 'U1-U5']    | bypass contacts 0 | U3-side track 1.000 mm
+   D5  R124  SDRAM-D5   islands 1 pads ['R124-1', 'U3-10']    | D5   islands 1 pads ['R124-2', 'U1-W5']    | bypass contacts 0 | U3-side track 0.960 mm
+   D6  R125  SDRAM-D6   islands 1 pads ['R125-1', 'U3-11']    | D6   islands 1 pads ['R125-2', 'U1-V5']    | bypass contacts 0 | U3-side track 0.960 mm
+   D7  R126  SDRAM-D7   islands 1 pads ['R126-1', 'U3-13']    | D7   islands 1 pads ['R126-2', 'U1-U4']    | bypass contacts 0 | U3-side track 0.960 mm
+   D8  R127  SDRAM-D8   islands 1 pads ['R127-1', 'U3-42']    | D8   islands 1 pads ['R127-2', 'U1-L1']    | bypass contacts 0 | U3-side track 11.129 mm
+   D9  R128  SDRAM-D9   islands 1 pads ['R128-1', 'U3-44']    | D9   islands 1 pads ['R128-2', 'U1-K3']    | bypass contacts 0 | U3-side track 13.865 mm
+   D10 R129  SDRAM-D10  islands 1 pads ['R129-1', 'U3-45']    | D10  islands 1 pads ['R129-2', 'U1-K2']    | bypass contacts 0 | U3-side track 8.647 mm
+   D11 R130  SDRAM-D11  islands 1 pads ['R130-1', 'U3-47']    | D11  islands 1 pads ['R130-2', 'U1-J1']    | bypass contacts 0 | U3-side track 7.148 mm
+   D12 R131  SDRAM-D12  islands 1 pads ['R131-1', 'U3-48']    | D12  islands 1 pads ['R131-2', 'U1-J3']    | bypass contacts 0 | U3-side track 6.209 mm
+   dangling new-track ends (NetAntennae tol 0.0000): 0 []
+
+== 13. acid traps: same-net track corners on new tracks with an interior angle < 90 deg outside a pad
+   corner D11       Top     (40.1450,14.9500) 90.0 deg OUTSIDE a pad
+   corner D10       Top     (39.9785,14.5000) 90.0 deg OUTSIDE a pad
+   corner SDRAM-D11 Top     (39.1000,14.9500) 90.0 deg inside a pad
+   corner D11       Top     (39.7000,14.9500) 90.0 deg inside a pad
+   acute corners outside pads on new copper: 0 []
+
+== VERDICT inputs: hard failures none ; ComponentClearance pad-box violations 8 (batch DRC does not run it) ; tombstone flags [] ; elapsed 52 s
+EXIT 0

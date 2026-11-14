@@ -1,0 +1,534 @@
+[
+ {
+  "tag": "repro12",
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   15.771,
+   15.771
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   11.129,
+   11.129
+  ],
+  "pin_vmin": [
+   -0.1852,
+   -0.1852
+  ],
+  "pin_vmax": [
+   3.5963,
+   3.5963
+  ],
+  "budget": [
+   0.0,
+   0.0
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro12",
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   15.926,
+   15.926
+  ],
+  "vias": [
+   6,
+   6
+  ],
+  "feed_mm": [
+   13.865,
+   13.865
+  ],
+  "pin_vmin": [
+   -0.1595,
+   -0.1595
+  ],
+  "pin_vmax": [
+   3.5476,
+   3.5476
+  ],
+  "budget": [
+   0.0,
+   0.0
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro12",
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   12.597,
+   13.372
+  ],
+  "vias": [
+   8,
+   8
+  ],
+  "feed_mm": [
+   6.209,
+   6.209
+  ],
+  "pin_vmin": [
+   -0.1565,
+   -0.1412
+  ],
+  "pin_vmax": [
+   3.5922,
+   3.5903
+  ],
+  "budget": [
+   0.0,
+   0.0
+  ],
+  "max_abs_dv": {
+   "rx_pin": null,
+   "rx_die": null,
+   "tx_die": null
+  },
+  "same_timebase": false
+ },
+ {
+  "tag": "repro12",
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   14.775,
+   14.695
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   1.0,
+   0.96
+  ],
+  "pin_vmin": [
+   -0.2058,
+   -0.2058
+  ],
+  "pin_vmax": [
+   3.6128,
+   3.6129
+  ],
+  "budget": [
+   0.005036933333333571,
+   0.005036933333333571
+  ],
+  "max_abs_dv": {
+   "rx_pin": null,
+   "rx_die": null,
+   "tx_die": null
+  },
+  "same_timebase": false
+ },
+ {
+  "tag": "repro12",
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   22.564,
+   22.564
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   0.96,
+   0.96
+  ],
+  "pin_vmin": [
+   -0.2179,
+   -0.2179
+  ],
+  "pin_vmax": [
+   3.612,
+   3.612
+  ],
+  "budget": [
+   0.008482000000000371,
+   0.008482000000000371
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro12",
+  "net": "D0",
+  "scenario": "write",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   14.775,
+   14.695
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   1.0,
+   0.96
+  ],
+  "pin_vmin": [
+   -0.3196,
+   -0.3193
+  ],
+  "pin_vmax": [
+   3.5478,
+   3.5476
+  ],
+  "budget": [
+   null,
+   null
+  ],
+  "max_abs_dv": {
+   "rx_pin": null,
+   "rx_die": null,
+   "tx_die": null
+  },
+  "same_timebase": false
+ },
+ {
+  "tag": "repro12",
+  "net": "D8",
+  "scenario": "write",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   15.771,
+   15.771
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   11.129,
+   11.129
+  ],
+  "pin_vmin": [
+   -0.2081,
+   -0.2081
+  ],
+  "pin_vmax": [
+   3.4949,
+   3.4949
+  ],
+  "budget": [
+   null,
+   null
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro12",
+  "net": "D9",
+  "scenario": "write",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   15.926,
+   15.926
+  ],
+  "vias": [
+   6,
+   6
+  ],
+  "feed_mm": [
+   13.865,
+   13.865
+  ],
+  "pin_vmin": [
+   -0.2062,
+   -0.2062
+  ],
+  "pin_vmax": [
+   3.497,
+   3.497
+  ],
+  "budget": [
+   null,
+   null
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro12",
+  "net": "D12",
+  "scenario": "write",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   12.597,
+   13.372
+  ],
+  "vias": [
+   8,
+   8
+  ],
+  "feed_mm": [
+   6.209,
+   6.209
+  ],
+  "pin_vmin": [
+   -0.2837,
+   -0.2922
+  ],
+  "pin_vmax": [
+   3.5338,
+   3.5335
+  ],
+  "budget": [
+   null,
+   null
+  ],
+  "max_abs_dv": {
+   "rx_pin": null,
+   "rx_die": null,
+   "tx_die": null
+  },
+  "same_timebase": false
+ },
+ {
+  "tag": "repro12",
+  "net": "D5",
+  "scenario": "write",
+  "corner": "max",
+  "mode": "placed",
+  "plan": "dq_series_r_plan.json",
+  "len_mm": [
+   22.564,
+   22.564
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   0.96,
+   0.96
+  ],
+  "pin_vmin": [
+   -0.3332,
+   -0.3332
+  ],
+  "pin_vmax": [
+   3.5302,
+   3.5302
+  ],
+  "budget": [
+   null,
+   null
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro_base",
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "mode": "base",
+  "plan": null,
+  "len_mm": [
+   14.481,
+   14.481
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   null,
+   null
+  ],
+  "pin_vmin": [
+   -0.7161,
+   -0.7161
+  ],
+  "pin_vmax": [
+   3.9057,
+   3.9057
+  ],
+  "budget": [
+   30.591891434669364,
+   30.591891434669364
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro_base",
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "mode": "base",
+  "plan": null,
+  "len_mm": [
+   8.971,
+   8.971
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   null,
+   null
+  ],
+  "pin_vmin": [
+   -0.5288,
+   -0.5288
+  ],
+  "pin_vmax": [
+   3.8642,
+   3.8642
+  ],
+  "budget": [
+   0.9375592808411757,
+   0.9375592808411757
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro_base",
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "mode": "base",
+  "plan": null,
+  "len_mm": [
+   14.481,
+   14.481
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   null,
+   null
+  ],
+  "pin_vmin": [
+   -0.7038,
+   -0.7038
+  ],
+  "pin_vmax": [
+   3.6594,
+   3.6594
+  ],
+  "budget": [
+   26.088188671276658,
+   26.088188671276658
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ },
+ {
+  "tag": "repro_base",
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "mode": "base",
+  "plan": null,
+  "len_mm": [
+   8.971,
+   8.971
+  ],
+  "vias": [
+   2,
+   2
+  ],
+  "feed_mm": [
+   null,
+   null
+  ],
+  "pin_vmin": [
+   -0.4379,
+   -0.4379
+  ],
+  "pin_vmax": [
+   3.5658,
+   3.5658
+  ],
+  "budget": [
+   0.08556183589565149,
+   0.08556183589565149
+  ],
+  "max_abs_dv": {
+   "rx_pin": 0.0,
+   "rx_die": 0.0,
+   "tx_die": 0.0
+  },
+  "same_timebase": true
+ }
+]

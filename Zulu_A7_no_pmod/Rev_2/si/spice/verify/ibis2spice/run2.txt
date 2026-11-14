@@ -1,0 +1,3 @@
+D0     write typ base         ovs +0.1283  uns 0.3960  ringback +0.0000  t10-90 1.358  | rx pin max 3.349 min -0.264
+D0     write typ u1_ccomp0    ovs +0.2365  uns 0.5537  ringback +0.0000  t10-90 1.025  | rx pin max 3.474 min -0.436
+D0     write typ u1_pkgdiag   ovs +0.1532  uns 0.4217  ringback +0.0000  t10-90 1.375  | rx pin max 3.392 min -0.312
