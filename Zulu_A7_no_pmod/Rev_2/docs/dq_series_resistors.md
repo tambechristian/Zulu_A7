@@ -1,7 +1,9 @@
 # SDRAM DQ series resistors: implementation plan (Zulu_a7_no_pmod Rev 2)
 
-Status: **PLAN ONLY, 16 resistors (R119-R134, one on every data bit D0-D15).** Nothing on the board, the
-schematics or the library has changed. Every measurement here comes from the PcbDoc on disk, md5
+Status: **16 resistors (R119-R134, one on every data bit D0-D15). SCHEMATIC APPLIED 2026-11-13** (sheet 3, by
+`tools/dq_series_r_sch.py`; backup `backups/zulu_a7_3.SchDoc.pre-series-r`; Altium compile 0 errors, Protel netlist:
+16 bits split exactly as planned, every other pad on its PcbDoc net). **The board is not changed yet** (ECO and
+layout are next); the library has not changed. Every measurement here comes from the PcbDoc on disk, md5
 `2a616c1c74f8788a4a1c837c7d76c3b0`, saved 2026-11-12 18:13. Altium had the file open when it was read, so edits that
 were not saved yet are not included. Supporting work is in `si/series_r/`. The plan in machine form is
 `si/series_r/dq_series_r_plan.json` (md5 `7c2b8ae6`). **User decision 2026-11-13: R132 is accepted with its
