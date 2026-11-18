@@ -5,10 +5,10 @@ Asar A7 Feather PCBWay fabrication ZIP.
     python tools/package_fabrication_release.py
 
 Adapted from Zulu_A7_Fab_B/tools/package_fabrication_release.py.  The expected
-drill counts below are the Altium export of 2026-11-17 13:56:32
-(asar_feather.DRR / .LDP, after the X1 USB-C -> micro-B conversion: the four
-0.60 mm USB-C slots and two 0.65 mm pegs became two 0.50 mm micro-B slots, one
-through via, one buried via and nineteen laser vias fewer than 2026-11-16 15:34);
+drill counts below are the Altium export of 2026-11-17 19:15:12
+(asar_feather.DRR / .LDP, after C11 moved beside U4 pin 8: one through via and
+one L5-Bottom laser fewer, one Top-L2 laser more than the 13:56:32 export after
+the X1 USB-C -> micro-B conversion);
 every other figure in the notes is measured from the
 PcbDoc, the drill files and the mask Gerbers by tools/fab_facts.py at run time.
 The script never regenerates CAM outputs and never touches Altium; it fails if
@@ -41,12 +41,13 @@ PCB = os.path.join(PROJECT, "asar_feather.PcbDoc")
 DRC = os.path.join(OUTPUTS, "Design Rule Check - asar_feather.drc")
 DEFAULT_NOTE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_FAB_NOTES.txt")
 DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
-# asar_feather.PcbDoc after the X1 USB-C -> micro-B conversion (Amphenol 10118193-0001LF, Q1 moved, review fixes), saved 2026-11-17 13:53:43
-# (X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
+# asar_feather.PcbDoc after C11 moved to the top beside U4 pin 8 (docs/c11_move.md), saved 2026-11-17 19:07:18, microvias marked
+# (X1 micro-B conversion 2026-11-17 13:53:43: SHA-256 2B762CD8...76FB, MD5 295cdfc5;
+#  X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
 #  NPTH clearance fix 2026-11-16 09:32:36: SHA-256 0B547312...98D3, MD5 f8dba4ec;
 #  2026-11-11 release: SHA-256 4A9A9714...BBA1D, MD5 d22906e1; 2026-11-11 15:16 save: MD5 e214e57b)
-EXPECTED_PCB_SHA256 = "2B762CD838F323F519243371809E58EFFF568F79130E4E6BB46ED3312E9576FB"
-EXPECTED_PCB_MD5 = "295cdfc5ca320eb5b5b22b1378366655"
+EXPECTED_PCB_SHA256 = "E356AB950EE7FCC720EF8039CA1662A24F08AF7B4C9195895A9E6092A4785BEB"
+EXPECTED_PCB_MD5 = "c4bf0b71cc7362c33762083bf29810b1"
 REVISION = "Asar A7 Feather"
 RELEASE_DATE = "2026-11-17"
 DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_%s_PROVISIONAL.zip" % RELEASE_DATE)
@@ -73,16 +74,16 @@ BASE = "asar_feather"
 OUTLINE = (0.0, 0.0, 50.80, 22.86)  # GM profile, mm
 CORNER_R = 2.54
 GERBER_EXTENSIONS = ["GTL", "G1", "G2", "G3", "G4", "GBL", "GTS", "GBS", "GTO", "GBO", "GTP", "GBP", "GM"]
-# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-16 15:34:24 (X4 side-entry board)
+# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-17 19:15:12 (C11 move board)
 EXPECTED_DRILLS = {
-    "RoundHoles-Plated.TXT": {"03": (0.20, 156), "05": (1.00, 28)},
+    "RoundHoles-Plated.TXT": {"03": (0.20, 155), "05": (1.00, 28)},
     "RoundHoles-NonPlated.TXT": {"06": (2.50, 4)},
     "SlotHoles-Plated.TXT": {"04": (0.50, 2)},
     "RoundHoles-Plated.TX3": {"02": (0.15, 252)},
-    "RoundHoles-Plated.TX6": {"01": (0.10, 173), "02": (0.15, 208)},
+    "RoundHoles-Plated.TX6": {"01": (0.10, 173), "02": (0.15, 209)},
     "RoundHoles-Plated.TX7": {"01": (0.10, 105), "02": (0.15, 173)},
     "RoundHoles-Plated.TX9": {"01": (0.10, 47), "02": (0.15, 197)},
-    "RoundHoles-Plated.TX10": {"01": (0.10, 23), "02": (0.15, 242)},
+    "RoundHoles-Plated.TX10": {"01": (0.10, 23), "02": (0.15, 241)},
 }
 FILE_TYPE = {"RoundHoles-NonPlated.TXT": "NON_PLATED"}
 MICROVIA_FILES = ("RoundHoles-Plated.TX6", "RoundHoles-Plated.TX7", "RoundHoles-Plated.TX9", "RoundHoles-Plated.TX10")
@@ -713,7 +714,9 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
          "so the boards must be routed out (tabs/mouse bites), not V-cut through the "
          "corners. The micro-USB receptacle X1 overhangs the left (x = 0) edge by "
          "0.70 mm (body) and 1.30 mm (flange) between y 7.3 and 15.6 mm: keep that "
-         "stretch of edge free of tabs and rails (routed gap, at least 2 mm)." % CORNER_R)
+         "stretch of edge free of tabs and rails (routed gap, at least 2 mm). No tab or "
+         "V-cut on the right short edge between y 15.5 and 20.3 mm either: the 0402 "
+         "ceramic capacitor C11 sits 0.85 mm inside it, perpendicular to the edge." % CORNER_R)
     P("")
     P("FILE MAP")
     fm = [("GTL", "L1 Top copper"), ("G1", "L2 GND"), ("G2", "L3 signal"), ("G3", "L4 signal"), ("G4", "L5 VCC3V3"),

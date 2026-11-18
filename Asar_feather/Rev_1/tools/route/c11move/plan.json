@@ -1,0 +1,72 @@
+{
+ "remove": [
+  {
+   "net": "GND",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 32.675,
+   "y1": 6.85,
+   "x2": 32.675,
+   "y2": 6.875
+  }
+ ],
+ "remove_vias": [
+  {
+   "net": "VCC3V3",
+   "x": 33.95,
+   "y": 6.875,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "GND",
+   "x": 32.675,
+   "y": 6.85,
+   "size": 0.35,
+   "hole": 0.2,
+   "span": [
+    "Top Layer",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "VCC3V3",
+   "layer": "Top Layer",
+   "w": 0.4,
+   "x1": 47.15,
+   "y1": 17.505,
+   "x2": 48.3,
+   "y2": 17.505
+  },
+  {
+   "net": "GND",
+   "layer": "Top Layer",
+   "w": 0.4,
+   "x1": 49.6,
+   "y1": 17.505,
+   "x2": 49.6,
+   "y2": 18.35
+  }
+ ],
+ "vias": [
+  {
+   "net": "GND",
+   "x": 49.6,
+   "y": 18.35,
+   "size": 0.3,
+   "hole": 0.15,
+   "from": "Top Layer",
+   "to": "L2-GND"
+  }
+ ]
+}

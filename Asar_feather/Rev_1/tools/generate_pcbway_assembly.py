@@ -869,6 +869,9 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "  between y 7.3 and 15.6 mm, and X5 (STEMMA QT) faces the right short edge:",
         "  keep both connector mouths clear of rails, tabs and break-off residue (a",
         "  routed gap of at least 2 mm along X1).",
+        "- No tab or V-cut on the right short edge between y 15.5 and 20.3 mm: C11, an",
+        "  0402 ceramic capacitor, sits 0.85 mm inside it with its long axis perpendicular",
+        "  to the edge (flex-crack risk at a break-off point).",
         f"- Parts whose pad copper is within 1.0 mm of a straight edge: {edge_text}. Confirm the "
         "depanelizer and support fixture cannot touch them.",
         "- X2's 28 header holes run along both long edges: no tab residue over them.",

@@ -1,8 +1,8 @@
 {
  "counts": {
   "pads": 840,
-  "vias": 1576,
-  "tracks": 4787,
+  "vias": 1575,
+  "tracks": 4788,
   "arcs": 0
  },
  "layer_order": [
@@ -18,7 +18,7 @@
    "span": "Top-Bot",
    "land": 0.35,
    "hole": 0.2,
-   "count": 156
+   "count": 155
   },
   {
    "span": "Top-L2",
@@ -30,7 +30,7 @@
    "span": "Top-L2",
    "land": 0.3,
    "hole": 0.15,
-   "count": 208
+   "count": 209
   },
   {
    "span": "L2-L3",
@@ -78,17 +78,17 @@
    "span": "L5-Bot",
    "land": 0.3,
    "hole": 0.15,
-   "count": 242
+   "count": 241
   }
  ],
- "via_total": 1576,
+ "via_total": 1575,
  "laser_total": 1168,
  "laser_by_hole": {
   "0.1": 348,
   "0.15": 820
  },
  "buried_total": 252,
- "through_total": 156,
+ "through_total": 155,
  "stacked": {
   "L2_L5_sites": 64,
   "L2_L5_full_top_bottom": 5,
@@ -176,8 +176,8 @@
    },
    "T02": {
     "size": 0.15,
-    "file": 208,
-    "board": 208,
+    "file": 209,
+    "board": 209,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -224,8 +224,8 @@
    },
    "T02": {
     "size": 0.15,
-    "file": 242,
-    "board": 242,
+    "file": 241,
+    "board": 241,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -233,8 +233,8 @@
   "RoundHoles-Plated.TXT": {
    "T03": {
     "size": 0.2,
-    "file": 156,
-    "board": 156,
+    "file": 155,
+    "board": 155,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    },
@@ -279,7 +279,7 @@
    },
    "02": {
     "size": 0.15,
-    "hits": 208
+    "hits": 209
    }
   },
   "RoundHoles-Plated.TX7": {
@@ -309,13 +309,13 @@
    },
    "02": {
     "size": 0.15,
-    "hits": 242
+    "hits": 241
    }
   },
   "RoundHoles-Plated.TXT": {
    "03": {
     "size": 0.2,
-    "hits": 156
+    "hits": 155
    },
    "05": {
     "size": 1.0,
@@ -407,14 +407,14 @@
  ],
  "track_min_width_routed": 0.0762,
  "track_width_hist": {
-  "0.0762": 3426,
+  "0.0762": 3425,
   "0.1": 687,
   "0.15": 323,
   "0.2": 9,
   "0.25": 31,
   "0.3": 67,
   "0.35": 11,
-  "0.4": 177
+  "0.4": 179
  },
  "track_min_width_by_layer": {
   "Top": 0.0762,
@@ -3672,40 +3672,6 @@
    "centred": false,
    "position": "hole in pad",
    "overlap": 0.125
-  },
-  {
-   "ref": "C11",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 32.675,
-   "via_y": 6.85,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.700 x 0.900",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
-  },
-  {
-   "ref": "C11",
-   "pad": "2",
-   "pad_net": "VCC3V3",
-   "via_net": "VCC3V3",
-   "side": "Bottom",
-   "span": "L5-Bot",
-   "via_x": 33.95,
-   "via_y": 6.875,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.700 x 0.900",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
   },
   {
    "ref": "C110",
@@ -9914,20 +9880,20 @@
   }
  ],
  "via_in_pad_summary": {
-  "entries": 548,
-  "vias": 540,
+  "entries": 546,
+  "vias": 538,
   "vias_touching_two_pads": 8,
   "by_type": {
    "L5-Bot 0.10/0.25": 9,
-   "L5-Bot 0.15/0.30": 148,
-   "Top-Bot 0.20/0.35": 107,
+   "L5-Bot 0.15/0.30": 147,
+   "Top-Bot 0.20/0.35": 106,
    "Top-L2 0.10/0.25": 156,
    "Top-L2 0.15/0.30": 120
   },
   "by_position": {
    "centred": 151,
    "land only": 17,
-   "hole on pad edge": 268,
+   "hole on pad edge": 266,
    "hole in pad": 112
   },
   "u1": {
@@ -9937,8 +9903,8 @@
   },
   "non_u1": {
    "L5-Bot 0.10/0.25": 9,
-   "L5-Bot 0.15/0.30": 148,
-   "Top-Bot 0.20/0.35": 105,
+   "L5-Bot 0.15/0.30": 147,
+   "Top-Bot 0.20/0.35": 104,
    "Top-L2 0.10/0.25": 5,
    "Top-L2 0.15/0.30": 113
   },
@@ -9954,7 +9920,6 @@
    "C107": 1,
    "C108": 1,
    "C109": 1,
-   "C11": 2,
    "C110": 1,
    "C111": 2,
    "C112": 1,
@@ -10278,23 +10243,6 @@
    "pad_size": "1.100 x 1.000",
    "centred": false,
    "position": "hole in pad",
-   "overlap": 0.175
-  },
-  {
-   "ref": "C11",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 32.675,
-   "via_y": 6.85,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.700 x 0.900",
-   "centred": false,
-   "position": "hole on pad edge",
    "overlap": 0.175
   },
   {
@@ -12067,22 +12015,22 @@
   }
  ],
  "through_vias_in_smd_pads_count": {
-  "entries": 115,
-  "vias": 107,
+  "entries": 114,
+  "vias": 106,
   "by_position": {
    "land only": 10,
-   "hole on pad edge": 83,
+   "hole on pad edge": 82,
    "hole in pad": 22
   },
   "by_side": {
    "Top": 17,
-   "Bottom": 98
+   "Bottom": 97
   }
  },
  "lasers_in_non_u1_smd_pads": {
-  "total": 275,
+  "total": 274,
   "by_hole": {
-   "0.15": 261,
+   "0.15": 260,
    "0.1": 14
   }
  },
@@ -12249,8 +12197,8 @@
  ],
  "tenting": {
   "Top": {
-   "openings": 512,
-   "openings_on_pads": 512,
+   "openings": 514,
+   "openings_on_pads": 514,
    "unmatched_openings": [],
    "u1_openings": {
     "0.250 x 0.250 r0.125": 238
@@ -12296,12 +12244,12 @@
    "vip_vias_not_exposed": 0
   },
   "Bottom": {
-   "openings": 362,
-   "openings_on_pads": 362,
+   "openings": 360,
+   "openings_on_pads": 360,
    "unmatched_openings": [],
    "u1_openings": {},
-   "vias_with_land_in_opening": 259,
-   "of_which_in_vip_list": 255,
+   "vias_with_land_in_opening": 257,
+   "of_which_in_vip_list": 253,
    "not_in_vip_list": [
     {
      "span": "L5-Bot",
@@ -12366,12 +12314,12 @@
    ],
    "exposed_by_span": {
     "L5-Bot": {
-     "vias": 159,
-     "hole_reached": 155
+     "vias": 158,
+     "hole_reached": 154
     },
     "Top-Bot": {
-     "vias": 100,
-     "hole_reached": 94
+     "vias": 99,
+     "hole_reached": 93
     }
    },
    "vip_vias_not_exposed": 0
