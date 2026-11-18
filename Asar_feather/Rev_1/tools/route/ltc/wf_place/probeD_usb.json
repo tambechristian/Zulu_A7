@@ -1,0 +1,12 @@
+{
+"vias": [],
+"tracks": [],
+"remove": [],
+"log": [
+"OPEN USB5V0 4",
+"FAIL USB5V0 (nopath)",
+"FAIL USB5V0 (nopath)",
+"FAIL USB5V0 (nopath)",
+"FAIL USB5V0 (nopath)"
+]
+}

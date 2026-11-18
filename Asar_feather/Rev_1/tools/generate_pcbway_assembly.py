@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Generate and validate the Asar Feather PCBWay assembly release (PROVISIONAL, 2026-11-11).
+"""Generate and validate the Asar Feather PCBWay assembly release (PROVISIONAL; date in RELEASE_DATE).
 
 The BOM is read from the Asar schematics (asar_a7_0..6.SchDoc). Component locations, rotations, layers and
 pad geometry are read from asar_feather.PcbDoc. Via-in-pad counts come from tools/fab_facts.json (the
@@ -9,11 +9,17 @@ fabrication release's own census of the same PcbDoc), cross-checked here against
 
 Writes into assembly/: Asar_Feather_PCBWay_BOM.csv (PCBWay BOM template columns), _CPL.csv (SMT parts
 only, both sides), _Assembly_Notes.txt, _Assembly_Drawing_Top.pdf / _Bottom.pdf and
-Asar_Feather_PCBWay_Assembly_2026-11-11_PROVISIONAL.zip, then validates them and prints every MPN problem.
+Asar_Feather_PCBWay_Assembly_<RELEASE_DATE>_PROVISIONAL.zip, then validates them and prints every MPN problem.
+2026-11-16: re-issued for the NPTH clearance fix (board MD5 f8dba4ec); BOM, CPL and drawings do not depend on
+the moved tracks. 2026-11-16 15:31: re-issued again for the X4 side-entry conversion (board MD5 5a39625c):
+X4 is now JST S2B-PH-SM4-TB at the Adafruit Feather position and U10 moved to (5.45, 19.0).
+2026-11-17: re-issued for the X1 USB-C -> micro-B conversion (board MD5 295cdfc5): X1 is now an Amphenol ICC
+10118193-0001LF micro-USB B (LCSC C132562, two shell legs in plated 0.50 x 1.20 mm slots, no pegs), R27/R28 (the
+USB-C CC pull-downs) are gone, Q1 moved 1.46 mm east (clear of X4's rear leg).
 
 ORIGIN: copied 2026-11-11 from Zulu_A7_Fab_B/tools/generate_jlcpcb_assembly.py (PCBWay mode only) and
-retargeted to the Asar Feather. Changes from Fab B: the board constants; the Asar parts (USB-C X1 with plated
-shell slots, FT2232HQ QFN-64, AS4C32M16SB-7BIN FBGA, W25Q128JVPIQ WSON, 93LC46BT-I/MNY TDFN, STEMMA QT X5,
+retargeted to the Asar Feather. Changes from Fab B: the board constants; the Asar parts (micro-USB B X1 with
+plated shell slots, FT2232HQ QFN-64, AS4C32M16SB-7BIN FBGA, W25Q128JVPIQ WSON, 93LC46BT-I/MNY TDFN, STEMMA QT X5,
 RESET button, SMD test pads JP3/JP4); X2 (the Feather 1x16 + 1x12 headers) is bought by PCBWay and SHIPPED
 LOOSE, not soldered (LOOSE_PARTS, user decision 2026-11-11: two BOM purchase lines, X2 not in the CPL, its
 holes left empty); LED polarity per LED (LD1/LD2 and LD3/LD4 face opposite ways here);
@@ -48,13 +54,13 @@ from pcbway_inputs import LAYER, U, kvs
 # ---- Asar Feather board-specific constants (2026-11-11) ----
 RELEASE_PREFIX = "Asar_Feather"
 RELEASE_NAME = "Asar Feather"
-RELEASE_DATE = "2026-11-11"
+RELEASE_DATE = "2026-11-17"
 BOARD_WIDTH = 50.80            # Feather outline 2000 x 900 mil, 2.54 mm corner radius
 BOARD_HEIGHT = 22.86
 CORNER_RADIUS = 2.54
-FAB_ARCHIVE = "Asar_Feather_PCBWay_Fabrication_2026-11-11_PROVISIONAL.zip"
+FAB_ARCHIVE = f"Asar_Feather_PCBWay_Fabrication_{RELEASE_DATE}_PROVISIONAL.zip"
 FAB_NOTES = "Asar_Feather_PCBWay_FAB_NOTES.txt"
-ASSEMBLY_ARCHIVE = "Asar_Feather_PCBWay_Assembly_2026-11-11_PROVISIONAL.zip"
+ASSEMBLY_ARCHIVE = f"Asar_Feather_PCBWay_Assembly_{RELEASE_DATE}_PROVISIONAL.zip"
 FINISHED_THICKNESS = "1.60 +/- 0.16 mm"   # the stack PCBWay agreed for the earlier Zulu A7 HDI order
 ENQUIRY = "docs/pcbway_vip_enquiry.md"
 
@@ -67,7 +73,24 @@ BOM_FILENAME = f"{RELEASE_PREFIX}_PCBWay_BOM.csv"
 CPL_FILENAME = f"{RELEASE_PREFIX}_PCBWay_CPL.csv"
 NOTES_FILENAME = f"{RELEASE_PREFIX}_PCBWay_Assembly_Notes.txt"
 DRAWING_FILENAME = f"{RELEASE_PREFIX}_PCBWay_Assembly_Drawing_{{side}}.pdf"
-FORBIDDEN_TEXT = ("W1150632AS3P6", "JLCPCB", "LCSC")   # never in a deliverable
+FORBIDDEN_TEXT = ("JLCPCB", "LCSC")   # never in a deliverable
+# The earlier PCBWay order number must never be in a deliverable either (public repo). The number itself stays out
+# of this file: SHA-256 of each order number, matched against every token that looks like a PCBWay order number.
+ORDER_SHA256 = {"4b77802bdde723a747a12d3526f308f0a84011df15acdd400fb8eeb3018f1674"}
+# Overlapping lookahead, and every 12-14 character prefix of each candidate is hashed, so the number is still found
+# when letters or digits run straight into it (a greedy, non-overlapping findall missed those cases).
+ORDER_TOKEN = re.compile(rb"(?=(W\d{7}[A-Z0-9]{4,6}))", re.I)
+
+
+def names_order(data):
+    if isinstance(data, str):
+        data = data.encode("latin-1", "replace")
+    for m in ORDER_TOKEN.finditer(data):
+        t = m.group(1).upper()
+        if any(hashlib.sha256(t[:n]).hexdigest() in ORDER_SHA256 for n in range(12, len(t) + 1)):
+            return True
+    return False
+
 
 ARTWORK_REFS = {"U$2", "U$3", "U$4", "U$5"}
 NON_PART_LIBS = {"DOCFIELD", "CC_BY", "CC_CC", "CC_SA", "CC_COPYRIGHT"}
@@ -122,8 +145,9 @@ FOOTPRINT_MPN_PREFIX = {
 STALE_MPNS = {
     "105017-0001", "PPTC062LFBN-RC", "FT2232HL-REEL", "AS4C32M16SB-7TCN", "W25Q128JVSIQ", "93LC46BT-I/SN",
     "BQ24232RGTR", "TPS63802DLAR", "SC189ZSKTRT", "SC189LSKTRT", "PRPC009SAAN-RC", "PRPC011SAAN-RC",
+    "TYPE-C-31-M-12",
 }
-STALE_REFS = {"J1", "R29", "R30", "R31", "R32", "R33", "U5", "U6", "LD5", "R78", "C162"}
+STALE_REFS = {"J1", "R29", "R30", "R31", "R32", "R33", "U5", "U6", "LD5", "R78", "C162", "R27", "R28"}
 
 LD0_NUMBERING = {
     "19-337/R6GHBHC-A01/2T": [
@@ -159,6 +183,12 @@ def git(*args):
 
 
 def source_line():
+    tracked = subprocess.run(
+        ["git", "-C", os.path.dirname(PCB), "ls-files", "--error-unmatch", "--", os.path.basename(PCB)],
+        capture_output=True, text=True,
+    ).returncode == 0
+    if not tracked:
+        return "Source: untracked working copy (the PCB SHA-256 below identifies it)"
     dirty = subprocess.run(
         ["git", "-C", os.path.dirname(PCB), "status", "--porcelain", "--", os.path.basename(PCB)],
         check=True, capture_output=True, text=True,
@@ -446,8 +476,8 @@ PACKAGE_NAMES = {
     "TDFN-8-2X3-P0.5": "TDFN-8 (Microchip MN), 2 x 3 mm, 0.5 mm pitch, exposed pad",
     "QFN28-UFD-4X5": "QFN-28 (ADI UFD), 4 x 5 mm, 0.5 mm pitch, exposed pad (pin 29)",
     "SOT23-5": "SOT-23-5",
-    "USB-C-HRO-TYPE-C-31-M-12": "USB Type-C receptacle, SMT contacts + 4 shell legs in plated slots + 2 pegs",
-    "JST-B2B-PH-SM4-TB": "JST PH 2-pin top-entry SMT header",
+    "AMPHENOL-10118193-0001LF": "micro-USB B receptacle, flanged: 5 SMT contacts, 4 SMT shell pads, 2 shell legs in plated slots",
+    "JST-S2B-PH-SM4-TB": "JST PH 2-pin side-entry SMT header",
     "JST-SM04B-SRSS-TB": "JST SH 1.0 mm 4-pin side-entry SMT header",
     "DM3D-SF": "Hirose DM3D microSD socket, SMT",
     "PTS810": "C&K PTS810 SMT tactile switch, 4.2 x 3.2 mm",
@@ -490,13 +520,13 @@ PCBWAY_LINE_NOTES = {
         "datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint). The drawing's red dot marks "
         "footprint pad 1, an anode."
     ),
-    "TYPE-C-31-M-12": (
-        "Top side, mouth flush with the left (USB) board edge. Place in the LAST (top) reflow. Four shell legs "
-        "in plated 0.6 mm slots (MP1-MP4) have no paste: hand/selective solder them after reflow to full "
-        "barrel fill (see notes). Two 0.65 mm non-plated holes take the locating pegs."
+    "10118193-0001LF": (
+        "Top side, mouth overhanging the left (USB) board edge by 0.70 mm (flange 1.30 mm). "
+        "Place in the LAST (top) reflow. The two shell legs in plated 0.50 x 1.20 mm slots (MH1, MH2) have no "
+        "paste: hand-solder them with an iron after reflow to full barrel fill, no selective mini-wave (see notes)."
     ),
     "SM04B-SRSS-TB(LF)(SN)": "STEMMA QT. Top side, mouth toward the right board edge. Pin 1 = GND.",
-    "B2B-PH-SM4-TB(LF)(SN)": "Polarity: pin 1 is battery +, pin 2 is GND (see notes for its position).",
+    "S2B-PH-SM4-TB(LF)(SN)": "Side entry, top side, mouth toward the top board edge. Pin 1 = battery + (see notes).",
     "PTS810SJM250SMTR LFS": "BTN (user) and RESET (FPGA reload): same part, top side.",
     "DM3D-SF": "Bottom side; it sees the second (top-side) reflow upside down: support or glue if your process needs it.",
 }
@@ -510,7 +540,7 @@ DESCRIPTION_OVERRIDES = {
     "LTST-C191KRKT": "red 0603 SMD indicator LED",
     "742C163101JP": "8 x 100 ohm +-5% isolated concave resistor array, 6.4 x 1.6 mm, 0.8 mm pitch",
     "MSASJ105BB5475MFNA01": "4.7uF X5R 6.3V +-20% 0402 MLCC, 0.65 mm max",
-    "TYPE-C-31-M-12": "USB Type-C receptacle, USB 2.0, SMT, 4 through-hole shell legs",
+    "10118193-0001LF": "Micro-USB 2.0 type B receptacle, right angle, SMT, flanged, 2 through-hole shell legs",
     "FT2232HQ-REEL": "FTDI FT2232HQ dual high-speed USB to UART/FIFO/JTAG bridge, QFN-64 9 x 9 mm",
     "AS4C32M16SB-7BIN": "512 Mbit SDRAM (32M x 16), 143 MHz, industrial, 54-ball FBGA 8 x 8 mm",
     "W25Q128JVPIQ": "128 Mbit SPI/QSPI NOR flash, industrial, WSON-8 6 x 5 mm",
@@ -718,8 +748,9 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         f"PCB SHA-256: {sha256(PCB)}",
         "",
         "PROVISIONAL STATUS",
-        "This release is provisional. We are waiting for your answers to our enquiry",
-        "about laser via-in-pad under a 0.5 mm BGA and 3/3 mil design rules. Please quote",
+        "This release is provisional. You answered our enquiry about laser via-in-pad",
+        "under a 0.5 mm BGA and 3/3 mil design rules on 2026-11-16; we are waiting for",
+        "your answers to our follow-up questions of the same date. Please quote",
         "it and raise engineering queries, but do not start production until we have",
         "confirmed the points below in writing. The fabrication notes",
         f"({FAB_NOTES}) restate the full list; the counts below are",
@@ -781,8 +812,8 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "  Number of BGA/QFP Parts = 2 BGA (U1 CPG236, U3 FBGA-54); also 4 leadless",
         "  parts with exposed pads (U2 QFN-64, U8 QFN-28, U4 WSON-8, U10 TDFN-8);",
         "  Number of Through-Hole Parts = 0 (the X2 headers are shipped loose, not",
-        "  soldered; X1's four shell legs in plated slots need hand/selective",
-        "  soldering, see below).",
+        "  soldered; X1's two shell legs in plated slots need hand soldering",
+        "  with an iron, see below).",
         f"- Loose parts (bought, NOT soldered, packed with each board): {len(loose_rows)} BOM lines, "
         f"X2 = {loose_text}. Put \"X2 headers {loose_text}: buy, do not solder, pack one set with each "
         "board\" in \"Detailed information of assembly\"; they are counted in Number of Unique Parts above.",
@@ -834,9 +865,10 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "approval before production. Constraints for your proposal:",
         f"- The outline has {CORNER_RADIUS:.2f} mm corner radii and four 2.50 mm non-plated holes (X2's corner",
         "  holes), so the board edge needs routing; tabs or V-cut where you advise.",
-        "- X1 (USB-C) is flush with the left short edge and X5 (STEMMA QT) faces the",
-        "  right short edge: keep both connector mouths clear of rails, tabs and",
-        "  break-off residue.",
+        "- X1 (micro-USB B) overhangs the left short edge by 0.70 mm (flange 1.30 mm)",
+        "  between y 7.3 and 15.6 mm, and X5 (STEMMA QT) faces the right short edge:",
+        "  keep both connector mouths clear of rails, tabs and break-off residue (a",
+        "  routed gap of at least 2 mm along X1).",
         f"- Parts whose pad copper is within 1.0 mm of a straight edge: {edge_text}. Confirm the "
         "depanelizer and support fixture cannot touch them.",
         "- X2's 28 header holes run along both long edges: no tab residue over them.",
@@ -871,23 +903,26 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "  see one reflow. The bottom side then rides the second reflow upside down:",
         f"  its heaviest parts are X3 (microSD socket), U8 and the 2520 inductors; support",
         "  or glue them if your process needs it.",
-        f"- X1 ({parts['X1']['params'].get('MANF')} {mpn['X1']}, USB-C receptacle, top side): the mouth",
-        "  is flush with the left (USB) board edge. We have no HRO datasheet on file",
-        "  and give no reflow-cycle limit: please apply HRO's published profile and",
-        "  tell us if it limits the number of reflows. The four shell legs go into",
-        "  plated 0.60 mm slots MP1-MP4 (two 1.70 mm and two 1.20 mm long); the top",
-        "  stencil has no paste on them, so hand- or selective-solder them after",
-        "  reflow to full barrel fill (paste-in-hole is acceptable if you prefer).",
-        "  The two locating pegs go into 0.65 mm non-plated holes and are not",
-        "  soldered.",
+        f"- X1 ({parts['X1']['params'].get('MANF')} {mpn['X1']}, micro-USB B receptacle, top side): the",
+        "  mouth overhangs the left (USB) board edge by 0.70 mm and the",
+        "  flange by 1.30 mm; the maker's PCB-end line is on the board edge. Please",
+        "  apply Amphenol's published reflow profile (customer drawing 10118193). The",
+        "  five contacts and the four SMT shell tabs MP1-MP4 are reflowed. The two",
+        "  shell legs go into plated 0.50 x 1.20 mm slots MH1/MH2; the top stencil",
+        "  has no paste on them, so hand-solder them with an iron after reflow to",
+        "  full barrel fill (paste-in-hole is acceptable if you prefer). No selective",
+        "  mini-wave: bottom-side C149 (0805, GND and VU pads 0.40 mm apart) sits",
+        "  0.23 mm from MH1's land and would re-melt and bridge.",
         f"- X2 (Feather headers, 1x16 + 1x12, 2.54 mm): SHIPPED LOOSE. Buy {loose_text} (Sullins, "
         "straight male, gold) per the BOM, do NOT solder them, and pack one set with each finished board. "
         "Leave X2's 28 plated holes empty (no paste, no solder, no masking residue in the holes): we solder "
         "the headers ourselves.",
         f"- X5 ({mpn['X5']}, STEMMA QT, top side): the mouth faces the right board",
         "  edge. Pin 1 (GND) is the south contact; check against the top drawing.",
-        f"- X4 (JST {mpn['X4']}, top side): pin 1 (the {x4_pin1_side} contact) is battery",
-        "  positive, pin 2 is GND.",
+        f"- X4 (JST {mpn['X4']}, side entry, top side): it lies flat with the mouth",
+        "  facing the top board edge (the edge with the BAT / EN / USB header",
+        f"  pins); the two fixing tabs sit at that edge. Pin 1 (the {x4_pin1_side} contact) is",
+        "  battery positive, pin 2 is GND.",
         f"- X3 (Hirose {mpn['X3']} microSD, {side_of['X3']} side): per our placement record the card "
         "opening faces the right board edge; please check it against the bottom drawing.",
         f"- U2 ({mpn['U2']}, QFN-64), U4 ({mpn['U4']}, WSON-8) and U10",
@@ -950,7 +985,7 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "- the panel drawing and rail fiducials;",
         "- your bottom-side CPL rotation convention;",
         "- authorized sourcing for U1 and U2, and any lines with no stock;",
-        "- hand soldering of X1's four shell legs; X2 holes left empty, X2 headers",
+        "- hand soldering of X1's two shell legs; X2 holes left empty, X2 headers",
         "  bought and shipped loose with each board;",
         "- the stencil apertures for U1, U3 and the exposed pads, and X-ray of U1 and",
         "  U3 (and what the Number of X-ray test field counts);",
@@ -1220,6 +1255,17 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
         raise ValueError("a notes line is over 88 characters")
     if "PROVISIONAL" not in notes.splitlines()[1]:
         raise ValueError("the notes do not open with the PROVISIONAL banner")
+    # the notes name the fabrication ZIP: it must exist, carry the current FAB notes, and describe this PcbDoc
+    fab_zip = os.path.join(ROOT, "fabrication", FAB_ARCHIVE)
+    fab_notes = os.path.join(ROOT, "fabrication", FAB_NOTES)
+    if not os.path.isfile(fab_zip) or not os.path.isfile(fab_notes):
+        raise ValueError(f"the notes name {FAB_ARCHIVE} / {FAB_NOTES}, which do not exist; run the packager first")
+    with zipfile.ZipFile(fab_zip) as archive, open(fab_notes, "rb") as handle:
+        if archive.read(FAB_NOTES) != handle.read():
+            raise ValueError(f"{FAB_ARCHIVE} does not carry the current {FAB_NOTES}")
+    m = re.search(r"PCB SHA-256: ([0-9A-F]{64})", open(fab_notes, encoding="ascii").read())
+    if not m or m.group(1) != sha256(PCB):
+        raise ValueError(f"{FAB_NOTES} describes a different PcbDoc")
     for path in outputs.values():
         if not os.path.isfile(path) or os.path.getsize(path) == 0:
             raise ValueError(f"missing or empty output: {path}")
@@ -1232,6 +1278,8 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
         for word in FORBIDDEN_TEXT:
             if word.encode() in blob:
                 raise ValueError(f"{os.path.basename(path)} contains '{word}'")
+        if names_order(blob) or names_order(os.path.basename(path)):
+            raise ValueError(f"{os.path.basename(path)} names the earlier order number")
 
 
 def write_zip(outputs):
@@ -1245,7 +1293,8 @@ def write_zip(outputs):
                 archive.writestr(info, handle.read())
     with zipfile.ZipFile(path) as archive:
         names = archive.namelist()
-        if archive.testzip() is not None or len(names) != 5 or any(w in n for n in names for w in FORBIDDEN_TEXT):
+        if (archive.testzip() is not None or len(names) != 5 or any(w in n for n in names for w in FORBIDDEN_TEXT)
+                or any(names_order(n) for n in names + [os.path.basename(path)])):
             raise ValueError(f"bad assembly ZIP: {path}")
     return path
 

@@ -1,0 +1,14 @@
+VU             
+VBATT          
+PWR_PGOODALL   
+USB5V0         
+routed 1 connections, failed 5; 2 vias, 8 tracks -> route/ltc/wf_vip/r2a.json
+OPEN USB5V0 3
+OPEN VBATT 1
+OPEN VU 1
+FAIL VU (budget)
+FAIL VBATT (budget)
+FAIL USB5V0 (budget)
+FAIL USB5V0 (budget)
+FAIL USB5V0 (budget)
+EXIT 0

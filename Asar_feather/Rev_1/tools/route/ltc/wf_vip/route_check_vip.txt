@@ -1,0 +1,5 @@
+width rules overridden: {'VU': [0.2, 0.2], 'VBATT': [0.2, 0.2], 'USB5V0': [0.2, 0.2], 'PWR_SW': [0.3, 0.3]}
+plan: 55 tracks, 29 vias, 24 removed; board then: 4872 tracks, 1595 vias
+violations: 0
+open connections after the plan: 0 on 0 nets
+PASS

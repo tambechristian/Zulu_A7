@@ -5,13 +5,17 @@ Asar A7 Feather PCBWay fabrication ZIP.
     python tools/package_fabrication_release.py
 
 Adapted from Zulu_A7_Fab_B/tools/package_fabrication_release.py.  The expected
-drill counts below are the Altium export of 2026-11-11 09:13:43
-(asar_feather.DRR / .LDP); every other figure in the notes is measured from the
+drill counts below are the Altium export of 2026-11-17 13:56:32
+(asar_feather.DRR / .LDP, after the X1 USB-C -> micro-B conversion: the four
+0.60 mm USB-C slots and two 0.65 mm pegs became two 0.50 mm micro-B slots, one
+through via, one buried via and nineteen laser vias fewer than 2026-11-16 15:34);
+every other figure in the notes is measured from the
 PcbDoc, the drill files and the mask Gerbers by tools/fab_facts.py at run time.
 The script never regenerates CAM outputs and never touches Altium; it fails if
 any input is missing, empty, older than the PcbDoc, or does not match.
 
-The release is PROVISIONAL until PCBWay answers docs/pcbway_vip_enquiry.md.
+The release is PROVISIONAL until PCBWay answers docs/pcbway_vip_enquiry.md and
+the follow-up in docs/pcbway_vip_reply_2026-11-16.md.
 """
 
 import argparse
@@ -37,30 +41,52 @@ PCB = os.path.join(PROJECT, "asar_feather.PcbDoc")
 DRC = os.path.join(OUTPUTS, "Design Rule Check - asar_feather.drc")
 DEFAULT_NOTE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_FAB_NOTES.txt")
 DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
-DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_2026-11-11_PROVISIONAL.zip")
-EXPECTED_PCB_SHA256 = "4A9A971430CF72848D477669B824418F1333AD07DC8490B8F9253F96095BBA1D"
-EXPECTED_PCB_MD5 = "d22906e17ffc2d908914f34efcd5acd0"
+# asar_feather.PcbDoc after the X1 USB-C -> micro-B conversion (Amphenol 10118193-0001LF, Q1 moved, review fixes), saved 2026-11-17 13:53:43
+# (X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
+#  NPTH clearance fix 2026-11-16 09:32:36: SHA-256 0B547312...98D3, MD5 f8dba4ec;
+#  2026-11-11 release: SHA-256 4A9A9714...BBA1D, MD5 d22906e1; 2026-11-11 15:16 save: MD5 e214e57b)
+EXPECTED_PCB_SHA256 = "2B762CD838F323F519243371809E58EFFF568F79130E4E6BB46ED3312E9576FB"
+EXPECTED_PCB_MD5 = "295cdfc5ca320eb5b5b22b1378366655"
 REVISION = "Asar A7 Feather"
-RELEASE_DATE = "2026-11-11"
-FORBIDDEN = "W1150632AS3P6"
+RELEASE_DATE = "2026-11-17"
+DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_%s_PROVISIONAL.zip" % RELEASE_DATE)
+# order/quote numbers never go into a packaged file name or the note (public repo). The number itself stays out of
+# this file: SHA-256 of each order number, matched against every token that looks like a PCBWay order number
+# (W + 7 digits + 4-6 letters/digits), as in Zulu_A7_no_pmod/Rev_2/tools/package_fabrication_release.py.
+ORDER_SHA256 = {"4b77802bdde723a747a12d3526f308f0a84011df15acdd400fb8eeb3018f1674"}
+# Overlapping lookahead, and every 12-14 character prefix of each candidate is hashed, so the number is still found
+# when letters or digits run straight into it (a greedy, non-overlapping findall missed those cases).
+ORDER_TOKEN = re.compile(rb"(?=(W\d{7}[A-Z0-9]{4,6}))", re.I)
+
+
+def names_order(data):
+    if isinstance(data, str):
+        data = data.encode("latin-1", "replace")
+    for m in ORDER_TOKEN.finditer(data):
+        t = m.group(1).upper()
+        if any(hashlib.sha256(t[:n]).hexdigest() in ORDER_SHA256 for n in range(12, len(t) + 1)):
+            return True
+    return False
+
+
 BASE = "asar_feather"
 OUTLINE = (0.0, 0.0, 50.80, 22.86)  # GM profile, mm
 CORNER_R = 2.54
 GERBER_EXTENSIONS = ["GTL", "G1", "G2", "G3", "G4", "GBL", "GTS", "GBS", "GTO", "GBO", "GTP", "GBP", "GM"]
-# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-11 09:13:43
+# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-16 15:34:24 (X4 side-entry board)
 EXPECTED_DRILLS = {
-    "RoundHoles-Plated.TXT": {"03": (0.20, 160), "05": (1.00, 28)},
-    "RoundHoles-NonPlated.TXT": {"06": (0.65, 2), "07": (2.50, 4)},
-    "SlotHoles-Plated.TXT": {"04": (0.60, 4)},
-    "RoundHoles-Plated.TX3": {"02": (0.15, 249)},
-    "RoundHoles-Plated.TX6": {"01": (0.10, 173), "02": (0.15, 214)},
-    "RoundHoles-Plated.TX7": {"01": (0.10, 105), "02": (0.15, 178)},
-    "RoundHoles-Plated.TX9": {"01": (0.10, 47), "02": (0.15, 196)},
-    "RoundHoles-Plated.TX10": {"01": (0.10, 23), "02": (0.15, 240)},
+    "RoundHoles-Plated.TXT": {"03": (0.20, 156), "05": (1.00, 28)},
+    "RoundHoles-NonPlated.TXT": {"06": (2.50, 4)},
+    "SlotHoles-Plated.TXT": {"04": (0.50, 2)},
+    "RoundHoles-Plated.TX3": {"02": (0.15, 252)},
+    "RoundHoles-Plated.TX6": {"01": (0.10, 173), "02": (0.15, 208)},
+    "RoundHoles-Plated.TX7": {"01": (0.10, 105), "02": (0.15, 173)},
+    "RoundHoles-Plated.TX9": {"01": (0.10, 47), "02": (0.15, 197)},
+    "RoundHoles-Plated.TX10": {"01": (0.10, 23), "02": (0.15, 242)},
 }
 FILE_TYPE = {"RoundHoles-NonPlated.TXT": "NON_PLATED"}
 MICROVIA_FILES = ("RoundHoles-Plated.TX6", "RoundHoles-Plated.TX7", "RoundHoles-Plated.TX9", "RoundHoles-Plated.TX10")
-EXPECTED_MICROVIA_TOTAL = 1176
+EXPECTED_MICROVIA_TOTAL = 1168  # 1187 before the X1 micro-B conversion, 1176 before the X4 side-entry conversion
 EXPECTED_LAYER_MAP = {
     "RoundHoles-Plated.TXT": "gtl,g1,g2,g3,g4,gbl",
     "SlotHoles-Plated.TXT": "gtl,g1,g2,g3,g4,gbl",
@@ -172,12 +198,12 @@ def validate_drills():
     total = sum(len(h) for s in MICROVIA_FILES for h in found[s][1].values())
     if total != EXPECTED_MICROVIA_TOTAL:
         raise ValueError("microvia total %d != %d" % (total, EXPECTED_MICROVIA_TOTAL))
-    # slots: X1 shell legs, horizontal, 0.60 tool
+    # slots: X1 micro-B shell legs, horizontal, 0.50 tool (0.70 route + 0.50 tool = 1.20 mm slot)
     slots = found["SlotHoles-Plated.TXT"][1]["04"]
     for x1, y1, x2, y2 in slots:
         if abs(y1 - y2) > 1e-4:
             raise ValueError("slot is not horizontal")
-        if round(abs(x2 - x1), 4) not in (0.6, 1.1):
+        if round(abs(x2 - x1), 4) != 0.7:
             raise ValueError("slot route length changed: %s" % abs(x2 - x1))
     return found
 
@@ -349,7 +375,9 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     para("This data set is released for quotation and CAM/engineering review only. It "
          "depends on PCBWay's answers to our engineering enquiry about 0.10 mm laser "
          "via-in-pad on the 0.5 mm-pitch BGA lands, 3/3 mil, resin-plugged through vias "
-         "in SMD pads, stacking and hole spacing, which are still outstanding. Every "
+         "in SMD pads, stacking and hole spacing. PCBWay answered it on 2026-11-16; "
+         "the points that answer left open are in our follow-up of the same date and "
+         "are still outstanding. Every "
          "assumption that enquiry asks about is restated in the next section with the "
          "counts of THIS board. The enquiry quoted counts of an older layout (before "
          "the LTC3556 power-block change); where they differ, the enquiry's figure is "
@@ -448,9 +476,10 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
          "governed by the rules (planes to through vias 0.175 mm, everything else "
          "0.0762 mm, both pass DRC); the enquiry quoted 0.15 / 0.136 / 0.151 mm "
          "(laser / buried / through) from the earlier layout and the solid pours were "
-         "not re-measured here. Non-plated holes: %.3f mm to the nearest track, %.3f mm "
-         "to the nearest via land, 0.25 mm to the plane pours (rule Clearance_Plane_NPTH, "
-         "passes DRC) [enquiry: 0.086 / 0.25]."
+         "not re-measured here. Non-plated holes: %.3f mm to the nearest track (rule "
+         "Clearance_NPTH_Track 0.127 mm = your 5 mil through hole to trace; tracks were "
+         "pulled back on 2026-11-16), %.3f mm to the nearest via land, 0.25 mm to the "
+         "plane pours (rule Clearance_Plane_NPTH); all pass DRC [enquiry: 0.086 / 0.25]."
          % (hw["laser"]["gap"], hw["buried"]["gap"], hw["through_via"]["gap"], F["npth_to_track"]["gap"], F["npth_to_via_land"]), "    ")
     P("")
     P("Q6  Plane copper between clearance holes.")
@@ -574,19 +603,22 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     for ph in F["pad_holes"]:
         P("  %.2f mm plated round x%-3d %s Feather header pins (0.1 in), %.2f mm lands"
           % (ph["hole"], ph["count"], ph["ref"], ph["land"]))
-    P("  0.60 mm plated slots x%d    X1 USB-C receptacle (HRO TYPE-C-31-M-12) shell legs:"
+    P("  0.50 mm plated slots x%d    X1 micro-USB B receptacle (Amphenol 10118193-0001LF) shell legs:"
       % len(F["plated_slots"]))
     for s in F["plated_slots"]:
         P("    X1-%s  %.2f x %.2f mm, %s, centre (%.4f, %.4f), land %s mm, net %s"
           % (s["pad"], s["tool"], s["length"], s["orientation"], s["x"], s["y"], s["land_top"], s["net"]))
-    para("The slots are in %s as G85 routes of a 0.60 mm tool (route length + tool = "
+    para("The slots are in %s as G85 routes of a 0.50 mm tool (route length + tool = "
          "overall length). Do not convert them to round holes or make them non-plated."
          % drill_name("SlotHoles-Plated.TXT"), "    ")
     P("  Non-plated holes (%s):" % drill_name("RoundHoles-NonPlated.TXT"))
     for n in F["npth"]:
-        what = "Feather mounting hole" if n["hole"] > 2 else "X1 USB-C locating peg"
+        what = "Feather mounting hole" if n["hole"] > 2 else "non-plated hole"
         P("    %.2f mm  (%7.3f, %7.3f)  %s" % (n["hole"], n["x"], n["y"], what))
-    para("The plane pours are pulled back 0.25 mm from all six non-plated holes.", "    ")
+    para("The plane pours are pulled back 0.25 mm from all %d non-plated holes. In "
+         "the Gerbers each non-plated hole is also a copper flash of exactly the hole "
+         "size on all six copper layers (no annular ring); drilling the hole non-plated "
+         "removes it." % len(F["npth"]), "    ")
     P("")
     P("TRACK AND SPACE")
     P("  Minimum designed track: %.4f mm (3 mil), used on Top, L3, L4 and Bottom." % F["track_min_width_routed"])
@@ -595,7 +627,8 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
             "Clearance_SDRAM_INNER": "0.10 mm    SDRAM data/address/control nets on L3/L4",
             "Clearance_SDRAM_CLK": "0.20 mm    SDRAM-CLK on L3/L4",
             "Clearance_Plane_ThruVia": "0.175 mm   L2/L5 plane pours to through vias",
-            "Clearance_Plane_NPTH": "0.25 mm    L2/L5 plane pours to the X1/X2 holes"}
+            "Clearance_Plane_NPTH": "0.25 mm    L2/L5 plane pours to the non-plated holes",
+            "Clearance_NPTH_Track": "0.127 mm   tracks and vias to the non-plated holes (5 mil)"}
     for r in F["clearance_rules"]:
         P("    " + gaps.get(r["name"], "%s %s" % (r["name"], r["gap"])))
     P("  Measured minimum track to other-net copper: %.4f mm (%s, %s to %s %s-%s)."
@@ -668,16 +701,19 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     P("")
     P("CONTROLLED IMPEDANCE")
     para("None requested. The only high-speed pair, USB 2.0 D+/D- between the "
-         "USB-C receptacle X1 (HRO TYPE-C-31-M-12) and the FT2232HQ U2, is not "
-         "routed as a coupled pair: USB_D_P runs %.2f mm on L3 (0.15 mm wide, with "
-         "%d stacked Top-L2 + L2-L3 0.15 mm laser sites, %d vias), USB_D_N runs %.2f mm on Top "
-         "(0.15 mm wide). It is electrically short; do not adjust it."
-         % (usb["usb_track_length"]["USB_D_P"], len(usb["usb_vias"]) // 2, len(usb["usb_vias"]), usb["usb_track_length"]["USB_D_N"]))
+         "micro-USB B receptacle X1 (Amphenol 10118193-0001LF) and the FT2232HQ U2, "
+         "runs on Top over the L2 GND plane, 0.15 mm wide, %d vias: USB_D_P %.2f mm, "
+         "USB_D_N %.2f mm, coupled at a 0.15 mm gap for %.2f mm of it. It is "
+         "electrically short; do not adjust it."
+         % (len(usb["usb_vias"]), usb["usb_track_length"]["USB_D_P"], usb["usb_track_length"]["USB_D_N"],
+            usb["usb_coupled_length_by_gap"].get("Top 0.1500", 0.0)))
     P("")
     P("PANEL")
     para("Please propose a panel for approval. The outline has %.2f mm corner radii, "
          "so the boards must be routed out (tabs/mouse bites), not V-cut through the "
-         "corners." % CORNER_R)
+         "corners. The micro-USB receptacle X1 overhangs the left (x = 0) edge by "
+         "0.70 mm (body) and 1.30 mm (flange) between y 7.3 and 15.6 mm: keep that "
+         "stretch of edge free of tabs and rails (routed gap, at least 2 mm)." % CORNER_R)
     P("")
     P("FILE MAP")
     fm = [("GTL", "L1 Top copper"), ("G1", "L2 GND"), ("G2", "L3 signal"), ("G3", "L4 signal"), ("G4", "L5 VCC3V3"),
@@ -739,7 +775,7 @@ def validate_note(path, sha):
     text = raw.decode("ascii")
     if "\n" in text.replace("\r\n", "") or not text.endswith("\r\n"):
         raise ValueError("notes are not CRLF throughout")
-    if FORBIDDEN.lower() in text.lower():
+    if names_order(text):
         raise ValueError("notes name the earlier order number")
     m = re.search(r"PCB SHA-256: ([0-9A-F]{64})", text)
     if not m or m.group(1) != sha:
@@ -817,7 +853,7 @@ def main():
     validate_note(note, sha)
 
     sources = sources + [note, csv_path]
-    if any(FORBIDDEN.lower() in os.path.basename(p).lower() for p in sources + [archive_path]):
+    if any(names_order(os.path.basename(p)) for p in sources + [archive_path]):
         raise ValueError("an order file must never be packaged")
     with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for p in sources:
@@ -831,7 +867,7 @@ def main():
         for p in sources:
             if archive.read(os.path.basename(p)) != open(p, "rb").read():
                 raise ValueError("archive entry differs from source: %s" % p)
-            if FORBIDDEN.encode() in open(p, "rb").read():
+            if names_order(open(p, "rb").read()):
                 raise ValueError("%s contains the earlier order number" % p)
     print("ASAR_FEATHER_PCBWAY_FABRICATION_RELEASE_PROVISIONAL PASS")
     print("%d flat entries; notes %d lines; via-in-pad CSV %d rows" % (len(sources), len(lines), n_csv))

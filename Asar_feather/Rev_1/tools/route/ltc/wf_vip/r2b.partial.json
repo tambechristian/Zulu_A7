@@ -1,0 +1,100 @@
+{
+"vias": [
+{
+"net": "PWR_PGOODALL",
+"x": 10.325,
+"y": 14.9,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "PWR_PGOODALL",
+"x": 11.775,
+"y": 16.35,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+}
+],
+"tracks": [
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 8.75,
+"y1": 11.2,
+"x2": 9.85,
+"y2": 12.3
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 9.85,
+"y1": 12.3,
+"x2": 9.85,
+"y2": 13.95
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 9.85,
+"y1": 13.95,
+"x2": 10.175,
+"y2": 14.275
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 10.175,
+"y1": 14.275,
+"x2": 10.175,
+"y2": 14.7
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 10.175,
+"y1": 14.7,
+"x2": 10.325,
+"y2": 14.9
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 10.325,
+"y1": 14.9,
+"x2": 11.775,
+"y2": 16.35
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 11.775,
+"y1": 16.35,
+"x2": 11.775,
+"y2": 18.625
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 11.775,
+"y1": 18.625,
+"x2": 12.125,
+"y2": 18.975
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 0 queued nets remain"
+]
+}

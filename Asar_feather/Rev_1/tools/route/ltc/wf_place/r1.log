@@ -1,0 +1,13 @@
+GND            
+VBATT          
+PWR_PROG       
+PWR_FB2        
+USB5V0         
+routed 6 connections, failed 4; 9 vias, 13 tracks -> route/ltc/wf_place/r1.json
+OPEN USB5V0 3
+OPEN VBATT 1
+FAIL VBATT (budget)
+FAIL USB5V0 (budget)
+FAIL USB5V0 (budget)
+FAIL USB5V0 (budget)
+EXIT 0

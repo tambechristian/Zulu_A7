@@ -1,12 +1,13 @@
 ASAR FEATHER - PCBWAY ASSEMBLY NOTES
 *** PROVISIONAL RELEASE - NOT FOR PRODUCTION UNTIL CONFIRMED ***
-Release date: 2026-11-11
-Source: working copy after commit 3058c12 (the PCB SHA-256 below identifies it)
-PCB SHA-256: 4A9A971430CF72848D477669B824418F1333AD07DC8490B8F9253F96095BBA1D
+Release date: 2026-11-17
+Source: untracked working copy (the PCB SHA-256 below identifies it)
+PCB SHA-256: 2B762CD838F323F519243371809E58EFFF568F79130E4E6BB46ED3312E9576FB
 
 PROVISIONAL STATUS
-This release is provisional. We are waiting for your answers to our enquiry
-about laser via-in-pad under a 0.5 mm BGA and 3/3 mil design rules. Please quote
+This release is provisional. You answered our enquiry about laser via-in-pad
+under a 0.5 mm BGA and 3/3 mil design rules on 2026-11-16; we are waiting for
+your answers to our follow-up questions of the same date. Please quote
 it and raise engineering queries, but do not start production until we have
 confirmed the points below in writing. The fabrication notes
 (Asar_Feather_PCBWay_FAB_NOTES.txt) restate the full list; the counts below are
@@ -20,24 +21,24 @@ A. Via-in-pad on U1 (0.5 mm BGA, 238 round lands of 0.25 mm): 258 laser microvia
    and capped flat.
 B. 0.10 mm laser microvias (0.25 mm land), lasered at 0.10 mm through the 0.1016 mm
    outer and 0.071 mm inner prepregs: 348 in all, 90 not on a U1 ball (37 of them
-   under U1). Other lasers 0.15 / 0.30 mm: 828. Totals: 1176 lasers, 249 buried L3-L4,
-   160 through vias (0.20 / 0.35 mm).
-C. 3/3 mil on all six layers: 0.0762 mm tracks; smallest track-to-copper gap 0.0763
+   under U1). Other lasers 0.15 / 0.30 mm: 820. Totals: 1168 lasers, 252 buried L3-L4,
+   156 through vias (0.20 / 0.35 mm).
+C. 3/3 mil on all six layers: 0.0762 mm tracks; smallest track-to-copper gap 0.0784
    mm; one 0.0762 mm track passes between two U1 lands on Top, with the mask opening
    1:1 on the lands.
-D. Via-in-pad on other parts: 286 laser via-to-pad contacts on SMD pads of other parts
-   (272 0.15 mm, 14 0.1 mm hole), filled and capped; 108 through vias (0.20 / 0.35 mm)
-   in or on the edge of SMD pads, 116 via-to-pad contacts (22 with the hole inside the
-   pad, 83 with the hole on the pad edge, 11 touching with the land only; 17 on the
-   top side, 99 on the bottom), to be resin-plugged and plated over (POFV). This
+D. Via-in-pad on other parts: 275 laser via-to-pad contacts on SMD pads of other parts
+   (261 0.15 mm, 14 0.1 mm hole), filled and capped; 107 through vias (0.20 / 0.35 mm)
+   in or on the edge of SMD pads, 115 via-to-pad contacts (22 with the hole inside the
+   pad, 83 with the hole on the pad edge, 10 touching with the land only; 17 on the
+   top side, 98 on the bottom), to be resin-plugged and plated over (POFV). This
    includes U1-W8 and U3 balls G9 and H2.
-E. Stacking: 278 Top-L2 lasers stacked on L2-L3, 110 L2-L3 and 86 L4-L5 lasers on
-   buried vias, 65 L2-to-L5 columns (5 running Top to Bottom); no mechanical L2-L5
+E. Stacking: 273 Top-L2 lasers stacked on L2-L3, 108 L2-L3 and 85 L4-L5 lasers on
+   buried vias, 64 L2-to-L5 columns (5 running Top to Bottom); no mechanical L2-L5
    drill.
 F. Mechanical vias as drawn (buried 0.15 / 0.27 mm, through 0.20 / 0.35 mm), not
    enlarged; smallest hole-to-hole edge gap 0.241 mm; hole wall to other-net copper
-   0.157 mm (laser), 0.142 mm (buried), 0.161 mm (through); non-plated hole to track
-   0.086 mm.
+   0.157 mm (laser), 0.142 mm (buried), 0.157 mm (through); non-plated hole to track
+   9.000 mm.
 G. Plane webs: the L2 ground plane keeps copper strips of about 0.09 mm between
    adjacent via-in-pad balls under U1 (measured for the enquiry, none under 0.0762 mm;
    not re-measured on this board). No connection depends on them: you may clear any
@@ -46,7 +47,7 @@ If any of A-G changes, this assembly release is re-issued.
 
 UPLOAD SET
 PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
-- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-11_PROVISIONAL.zip
+- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-17_PROVISIONAL.zip
   (Gerbers incl. the GTP/GBP paste layers, drill files and
   Asar_Feather_PCBWay_FAB_NOTES.txt),
   ordered as "HDI (Buried/blind vias)" per Asar_Feather_PCBWay_FAB_NOTES.txt.
@@ -60,12 +61,12 @@ email this file to Service@pcbway.com with the quote number.
 
 RECOMMENDED FORM SETTINGS (adjust if you decide otherwise)
 - Assembly: Service = Turnkey; Assembly side(s) = Both sides.
-- Number of Unique Parts = 69; Number of SMD Parts = 176;
+- Number of Unique Parts = 69; Number of SMD Parts = 174;
   Number of BGA/QFP Parts = 2 BGA (U1 CPG236, U3 FBGA-54); also 4 leadless
   parts with exposed pads (U2 QFN-64, U8 QFN-28, U4 WSON-8, U10 TDFN-8);
   Number of Through-Hole Parts = 0 (the X2 headers are shipped loose, not
-  soldered; X1's four shell legs in plated slots need hand/selective
-  soldering, see below).
+  soldered; X1's two shell legs in plated slots need hand soldering
+  with an iron, see below).
 - Loose parts (bought, NOT soldered, packed with each board): 2 BOM lines, X2 =
   PRPC016SAAN-RC x1, PRPC012SAAN-RC x1. Put "X2 headers PRPC016SAAN-RC x1,
   PRPC012SAAN-RC x1: buy, do not solder, pack one set with each board" in "Detailed
@@ -84,10 +85,10 @@ RECOMMENDED FORM SETTINGS (adjust if you decide otherwise)
   Assembly Board type = Panelized PCBs; Depanel the boards to delivery = Yes.
 
 ASSEMBLY SCOPE
-Fitted PCB designators: 176
-Top-side fitted designators: 47
+Fitted PCB designators: 174
+Top-side fitted designators: 45
 Bottom-side fitted designators: 129
-Physical parts placed per board: 176; plus 2 shipped loose (X2 headers)
+Physical parts placed per board: 174; plus 2 shipped loose (X2 headers)
 BOM purchase lines: 69 (67 placed + 2 ship-loose); DNS lines: 2 (JP3, JP4)
 Assembly is required on both sides: SMT bottom, SMT top, then hand soldering of X1's
 shell legs.
@@ -95,22 +96,22 @@ BGAs (top side): U1 XC7A35T-2CPG236I, 0.5 mm pitch, 238 round lands of 0.25 mm; 
 AS4C32M16SB-7BIN, 0.8 mm pitch, 54 round lands of 0.40 mm.
 Other 0.5 mm pitch: U2 FT2232HQ-REEL QFN-64 (top), U8 LTC3556EUFD#PBF QFN-28 (bottom),
 U10 93LC46BT-I/MNY TDFN-8 (top).
-Smallest package 0201: 81 parts (18 on top).
+Smallest package 0201: 79 parts (16 on top).
 Board: 50.80 x 22.86 mm (Adafruit Feather outline), six-layer two-step sequential HDI,
 finished 1.60 +/- 0.16 mm on the stack you agreed for the earlier Zulu A7 HDI order
 (Asar_Feather_PCBWay_FAB_NOTES.txt).
 
 VIA-IN-PAD AND ASSEMBLY
 Via-in-pad is used throughout this board, by design (see PROVISIONAL STATUS A and D):
-- Mask openings on pads expose 304 via lands on the top side and 260 on the bottom
+- Mask openings on pads expose 295 via lands on the top side and 259 on the bottom
   (fabrication census). Every laser microvia in a pad must be copper-filled and capped
   flat, and every through via in a pad resin-plugged and plated over, so that no via
   wicks solder or traps flux. Please confirm the dimple/planarity you guarantee on the
   capped lands.
-- 166 parts carry a via in or on a pad; through vias in pads touch 91 parts, among
+- 164 parts carry a via in or on a pad; through vias in pads touch 90 parts, among
   them U1-A13, U1-W8, U2-1, U2-17, U2-6, U3-G9, U3-H2, U3-H8, U4-3, U7-2, U8-1, U8-13,
-  U8-16, U8-17, U8-18, U8-20, U8-27, U8-3, U8-5, U10-5, X3-3, X3-6, X3-G1, X3-G2,
-  X3-G3, X3-G4, X4-2.
+  U8-16, U8-17, U8-18, U8-20, U8-27, U8-3, U8-5, X1-MP3, X1-MP4, X3-3, X3-6, X3-G1,
+  X3-G2, X3-G3, X3-G4, X4-2.
 - If you cannot plug and cap a via in a pad, send an engineering query before
   building; do not tent, mask or leave it open.
 
@@ -119,14 +120,15 @@ Panel per PCBWay proposal, to be approved: please send the panel drawing for
 approval before production. Constraints for your proposal:
 - The outline has 2.54 mm corner radii and four 2.50 mm non-plated holes (X2's corner
   holes), so the board edge needs routing; tabs or V-cut where you advise.
-- X1 (USB-C) is flush with the left short edge and X5 (STEMMA QT) faces the
-  right short edge: keep both connector mouths clear of rails, tabs and
-  break-off residue.
+- X1 (micro-USB B) overhangs the left short edge by 0.70 mm (flange 1.30 mm)
+  between y 7.3 and 15.6 mm, and X5 (STEMMA QT) faces the right short edge:
+  keep both connector mouths clear of rails, tabs and break-off residue (a
+  routed gap of at least 2 mm along X1).
 - Parts whose pad copper is within 1.0 mm of a straight edge: X5 0.30 mm from the
-  right edge; L1 0.31 mm from the top edge; R115 0.49 mm from the top edge; C165 0.59
-  mm from the top edge; C80 0.66 mm from the top edge; X3 0.78 mm from the right edge;
-  R82 0.80 mm from the right edge. Confirm the depanelizer and support fixture cannot
-  touch them.
+  right edge; L1 0.31 mm from the top edge; X4 0.36 mm from the top edge; R115 0.49 mm
+  from the top edge; X1 0.50 mm from the left edge; C165 0.59 mm from the top edge;
+  C80 0.66 mm from the top edge; X3 0.78 mm from the right edge; R82 0.80 mm from the
+  right edge. Confirm the depanelizer and support fixture cannot touch them.
 - X2's 28 header holes run along both long edges: no tab residue over them.
 - Depanel with a supported cutter, not by hand-snapping.
 - The board has no fiducials. Please put global fiducials on the rails (top
@@ -159,23 +161,26 @@ SPECIAL COMPONENT INSTRUCTIONS
   see one reflow. The bottom side then rides the second reflow upside down:
   its heaviest parts are X3 (microSD socket), U8 and the 2520 inductors; support
   or glue them if your process needs it.
-- X1 (HRO (Korean Hroparts) TYPE-C-31-M-12, USB-C receptacle, top side): the mouth
-  is flush with the left (USB) board edge. We have no HRO datasheet on file
-  and give no reflow-cycle limit: please apply HRO's published profile and
-  tell us if it limits the number of reflows. The four shell legs go into
-  plated 0.60 mm slots MP1-MP4 (two 1.70 mm and two 1.20 mm long); the top
-  stencil has no paste on them, so hand- or selective-solder them after
-  reflow to full barrel fill (paste-in-hole is acceptable if you prefer).
-  The two locating pegs go into 0.65 mm non-plated holes and are not
-  soldered.
+- X1 (Amphenol ICC 10118193-0001LF, micro-USB B receptacle, top side): the
+  mouth overhangs the left (USB) board edge by 0.70 mm and the
+  flange by 1.30 mm; the maker's PCB-end line is on the board edge. Please
+  apply Amphenol's published reflow profile (customer drawing 10118193). The
+  five contacts and the four SMT shell tabs MP1-MP4 are reflowed. The two
+  shell legs go into plated 0.50 x 1.20 mm slots MH1/MH2; the top stencil
+  has no paste on them, so hand-solder them with an iron after reflow to
+  full barrel fill (paste-in-hole is acceptable if you prefer). No selective
+  mini-wave: bottom-side C149 (0805, GND and VU pads 0.40 mm apart) sits
+  0.23 mm from MH1's land and would re-melt and bridge.
 - X2 (Feather headers, 1x16 + 1x12, 2.54 mm): SHIPPED LOOSE. Buy PRPC016SAAN-RC x1,
   PRPC012SAAN-RC x1 (Sullins, straight male, gold) per the BOM, do NOT solder them,
   and pack one set with each finished board. Leave X2's 28 plated holes empty (no
   paste, no solder, no masking residue in the holes): we solder the headers ourselves.
 - X5 (SM04B-SRSS-TB(LF)(SN), STEMMA QT, top side): the mouth faces the right board
   edge. Pin 1 (GND) is the south contact; check against the top drawing.
-- X4 (JST B2B-PH-SM4-TB(LF)(SN), top side): pin 1 (the west contact) is battery
-  positive, pin 2 is GND.
+- X4 (JST S2B-PH-SM4-TB(LF)(SN), side entry, top side): it lies flat with the mouth
+  facing the top board edge (the edge with the BAT / EN / USB header
+  pins); the two fixing tabs sit at that edge. Pin 1 (the east contact) is
+  battery positive, pin 2 is GND.
 - X3 (Hirose DM3D-SF microSD, bottom side): per our placement record the card opening
   faces the right board edge; please check it against the bottom drawing.
 - U2 (FT2232HQ-REEL, QFN-64), U4 (W25Q128JVPIQ, WSON-8) and U10
@@ -241,7 +246,7 @@ Before releasing the order, please confirm in writing:
 - the panel drawing and rail fiducials;
 - your bottom-side CPL rotation convention;
 - authorized sourcing for U1 and U2, and any lines with no stock;
-- hand soldering of X1's four shell legs; X2 holes left empty, X2 headers
+- hand soldering of X1's two shell legs; X2 holes left empty, X2 headers
   bought and shipped loose with each board;
 - the stencil apertures for U1, U3 and the exposed pads, and X-ray of U1 and
   U3 (and what the Number of X-ray test field counts);

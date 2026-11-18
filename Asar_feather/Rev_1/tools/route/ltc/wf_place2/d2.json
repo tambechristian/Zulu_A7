@@ -1,0 +1,197 @@
+{
+"tracks": [
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.25,
+"x1": 12.8,
+"y1": 9.65,
+"x2": 12.3,
+"y2": 9.65
+},
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.25,
+"x1": 12.3,
+"y1": 9.65,
+"x2": 12.3,
+"y2": 9.8
+},
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.25,
+"x1": 12.3,
+"y1": 9.8,
+"x2": 8.1,
+"y2": 9.8
+},
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.25,
+"x1": 7.2,
+"y1": 8.9,
+"x2": 8.1,
+"y2": 8.9
+},
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.3,
+"x1": 8.1,
+"y1": 8.9,
+"x2": 8.1,
+"y2": 9.8
+},
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.3,
+"x1": 8.1,
+"y1": 9.8,
+"x2": 7.5,
+"y2": 10.4
+},
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.3,
+"x1": 7.5,
+"y1": 10.4,
+"x2": 7.5,
+"y2": 13.88
+},
+{
+"net": "USB5V0",
+"layer": "L4-SIG",
+"w": 0.3,
+"x1": 7.25,
+"y1": 13.88,
+"x2": 7.8,
+"y2": 13.88
+}
+],
+"vias": [
+{
+"net": "USB5V0",
+"x": 12.3,
+"y": 9.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "USB5V0",
+"x": 12.3,
+"y": 9.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "USB5V0",
+"x": 12.8,
+"y": 9.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "USB5V0",
+"x": 12.8,
+"y": 9.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "USB5V0",
+"x": 7.25,
+"y": 13.88,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "USB5V0",
+"x": 7.25,
+"y": 13.88,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "USB5V0",
+"x": 7.25,
+"y": 13.88,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "USB5V0",
+"x": 7.8,
+"y": 13.88,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "USB5V0",
+"x": 7.8,
+"y": 13.88,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "USB5V0",
+"x": 7.8,
+"y": 13.88,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "USB5V0",
+"x": 7.2,
+"y": 8.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "USB5V0",
+"x": 7.2,
+"y": 8.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "USB5V0",
+"x": 7.2,
+"y": 8.9,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+}
+],
+"remove": [],
+"remove_vias": []
+}

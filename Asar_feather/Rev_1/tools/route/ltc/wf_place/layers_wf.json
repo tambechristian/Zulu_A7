@@ -1,0 +1,1 @@
+{"cost": {"PWR_SW": {"Top Layer": 40, "L3-SIG": 40, "L4-SIG": 40}, "USB5V0": {"L3-SIG": 30, "L4-SIG": 30}, "VBATT": {"L3-SIG": 30, "L4-SIG": 30}, "VU": {"L3-SIG": 30, "L4-SIG": 30}, "PWR_FB2": {"Top Layer": 3, "Bottom Layer": 3}}}

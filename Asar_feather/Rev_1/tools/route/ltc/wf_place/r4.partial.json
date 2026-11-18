@@ -1,0 +1,64 @@
+{
+"vias": [
+{
+"net": "PWR_PGOODALL",
+"x": 11.325,
+"y": 14.125,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "PWR_PGOODALL",
+"x": 11.85,
+"y": 15.5,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+}
+],
+"tracks": [
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 11.325,
+"y1": 14.1,
+"x2": 11.325,
+"y2": 14.125
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 11.325,
+"y1": 14.125,
+"x2": 11.45,
+"y2": 15.0
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 11.45,
+"y1": 15.0,
+"x2": 11.85,
+"y2": 15.5
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 11.85,
+"y1": 15.5,
+"x2": 11.825,
+"y2": 15.8
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 0 queued nets remain"
+]
+}

@@ -1,0 +1,8 @@
+USB5V0         
+routed 0 connections, failed 4; 0 vias, 0 tracks -> route/ltc/wf_place/probeD_usb.json
+OPEN USB5V0 4
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)
+EXIT

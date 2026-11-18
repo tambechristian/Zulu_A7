@@ -1,8 +1,8 @@
 {
  "counts": {
-  "pads": 851,
-  "vias": 1585,
-  "tracks": 4870,
+  "pads": 840,
+  "vias": 1576,
+  "tracks": 4787,
   "arcs": 0
  },
  "layer_order": [
@@ -18,7 +18,7 @@
    "span": "Top-Bot",
    "land": 0.35,
    "hole": 0.2,
-   "count": 160
+   "count": 156
   },
   {
    "span": "Top-L2",
@@ -30,7 +30,7 @@
    "span": "Top-L2",
    "land": 0.3,
    "hole": 0.15,
-   "count": 214
+   "count": 208
   },
   {
    "span": "L2-L3",
@@ -42,13 +42,13 @@
    "span": "L2-L3",
    "land": 0.3,
    "hole": 0.15,
-   "count": 178
+   "count": 173
   },
   {
    "span": "L3-L4",
    "land": 0.27,
    "hole": 0.15,
-   "count": 245
+   "count": 248
   },
   {
    "span": "L3-L4",
@@ -66,7 +66,7 @@
    "span": "L4-L5",
    "land": 0.3,
    "hole": 0.15,
-   "count": 196
+   "count": 197
   },
   {
    "span": "L5-Bot",
@@ -78,50 +78,50 @@
    "span": "L5-Bot",
    "land": 0.3,
    "hole": 0.15,
-   "count": 240
+   "count": 242
   }
  ],
- "via_total": 1585,
- "laser_total": 1176,
+ "via_total": 1576,
+ "laser_total": 1168,
  "laser_by_hole": {
   "0.1": 348,
-  "0.15": 828
+  "0.15": 820
  },
- "buried_total": 249,
- "through_total": 160,
+ "buried_total": 252,
+ "through_total": 156,
  "stacked": {
-  "L2_L5_sites": 65,
+  "L2_L5_sites": 64,
   "L2_L5_full_top_bottom": 5,
-  "L2_L5_plus_top": 56,
+  "L2_L5_plus_top": 55,
   "L2_L5_plus_bottom": 4,
-  "top_l2_on_l2_l3": 278,
-  "l2_l3_on_buried": 110,
-  "l4_l5_on_buried": 86,
-  "l5_bot_on_l4_l5": 187,
-  "top_l3_on_buried": 105,
-  "hdi_sites": 764,
+  "top_l2_on_l2_l3": 273,
+  "l2_l3_on_buried": 108,
+  "l4_l5_on_buried": 85,
+  "l5_bot_on_l4_l5": 189,
+  "top_l3_on_buried": 103,
+  "hdi_sites": 765,
   "hdi_sites_on_through": 0,
   "l2_l3_on_buried_by_laser_hole": {
    "0.1": 61,
-   "0.15": 49
+   "0.15": 47
   },
   "l4_l5_on_buried_by_laser_hole": {
-   "0.15": 55,
+   "0.15": 54,
    "0.1": 31
   },
   "top_l2_on_l2_l3_by_holes": {
    "0.1/0.1": 102,
-   "0.15/0.15": 176
+   "0.15/0.15": 171
   },
   "l4_l5_on_l5_bot_by_holes": {
-   "0.15/0.15": 168,
+   "0.15/0.15": 170,
    "0.1/0.1": 19
   },
   "max_stack_depth_sites": {
-   "1": 303,
-   "4": 60,
-   "2": 331,
-   "3": 65,
+   "1": 307,
+   "4": 59,
+   "2": 330,
+   "3": 64,
    "5": 5
   },
   "full_columns_mixed_laser_sizes": 3
@@ -160,8 +160,8 @@
   "RoundHoles-Plated.TX3": {
    "T02": {
     "size": 0.15,
-    "file": 249,
-    "board": 249,
+    "file": 252,
+    "board": 252,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -176,8 +176,8 @@
    },
    "T02": {
     "size": 0.15,
-    "file": 214,
-    "board": 214,
+    "file": 208,
+    "board": 208,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -192,8 +192,8 @@
    },
    "T02": {
     "size": 0.15,
-    "file": 178,
-    "board": 178,
+    "file": 173,
+    "board": 173,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -208,8 +208,8 @@
    },
    "T02": {
     "size": 0.15,
-    "file": 196,
-    "board": 196,
+    "file": 197,
+    "board": 197,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -224,8 +224,8 @@
    },
    "T02": {
     "size": 0.15,
-    "file": 240,
-    "board": 240,
+    "file": 242,
+    "board": 242,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -233,8 +233,8 @@
   "RoundHoles-Plated.TXT": {
    "T03": {
     "size": 0.2,
-    "file": 160,
-    "board": 160,
+    "file": 156,
+    "board": 156,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    },
@@ -248,13 +248,6 @@
   },
   "RoundHoles-NonPlated.TXT": {
    "T06": {
-    "size": 0.65,
-    "file": 2,
-    "board": 2,
-    "board_not_in_file": 0,
-    "file_not_on_board": 0
-   },
-   "T07": {
     "size": 2.5,
     "file": 4,
     "board": 4,
@@ -264,9 +257,9 @@
   },
   "SlotHoles-Plated.TXT": {
    "T04": {
-    "size": 0.6,
-    "file": 4,
-    "board": 4,
+    "size": 0.5,
+    "file": 2,
+    "board": 2,
     "board_not_in_file": 0,
     "file_not_on_board": 0
    }
@@ -276,7 +269,7 @@
   "RoundHoles-Plated.TX3": {
    "02": {
     "size": 0.15,
-    "hits": 249
+    "hits": 252
    }
   },
   "RoundHoles-Plated.TX6": {
@@ -286,7 +279,7 @@
    },
    "02": {
     "size": 0.15,
-    "hits": 214
+    "hits": 208
    }
   },
   "RoundHoles-Plated.TX7": {
@@ -296,7 +289,7 @@
    },
    "02": {
     "size": 0.15,
-    "hits": 178
+    "hits": 173
    }
   },
   "RoundHoles-Plated.TX9": {
@@ -306,7 +299,7 @@
    },
    "02": {
     "size": 0.15,
-    "hits": 196
+    "hits": 197
    }
   },
   "RoundHoles-Plated.TX10": {
@@ -316,13 +309,13 @@
    },
    "02": {
     "size": 0.15,
-    "hits": 240
+    "hits": 242
    }
   },
   "RoundHoles-Plated.TXT": {
    "03": {
     "size": 0.2,
-    "hits": 160
+    "hits": 156
    },
    "05": {
     "size": 1.0,
@@ -331,92 +324,46 @@
   },
   "RoundHoles-NonPlated.TXT": {
    "06": {
-    "size": 0.65,
-    "hits": 2
-   },
-   "07": {
     "size": 2.5,
     "hits": 4
    }
   },
   "SlotHoles-Plated.TXT": {
    "04": {
-    "size": 0.6,
-    "hits": 4
+    "size": 0.5,
+    "hits": 2
    }
   }
  },
  "plated_slots": [
   {
    "ref": "X1",
-   "pad": "MP1",
+   "pad": "MH1",
    "net": "GND",
-   "x": 6.7795,
-   "y": 15.75,
-   "tool": 0.6,
-   "route": 1.1,
-   "length": 1.7,
-   "orientation": "horizontal",
-   "land_top": "1.10 x 2.20",
-   "land_inner": "1.10 x 2.20"
-  },
-  {
-   "ref": "X1",
-   "pad": "MP2",
-   "net": "GND",
-   "x": 6.7795,
-   "y": 7.11,
-   "tool": 0.6,
-   "route": 1.1,
-   "length": 1.7,
-   "orientation": "horizontal",
-   "land_top": "1.10 x 2.20",
-   "land_inner": "1.10 x 2.20"
-  },
-  {
-   "ref": "X1",
-   "pad": "MP3",
-   "net": "GND",
-   "x": 2.5995,
-   "y": 15.75,
-   "tool": 0.6,
-   "route": 0.6,
+   "x": 1.45,
+   "y": 14.73,
+   "tool": 0.5,
+   "route": 0.7,
    "length": 1.2,
    "orientation": "horizontal",
-   "land_top": "1.10 x 1.70",
-   "land_inner": "1.10 x 1.70"
+   "land_top": "1.01 x 1.71",
+   "land_inner": "1.01 x 1.71"
   },
   {
    "ref": "X1",
-   "pad": "MP4",
+   "pad": "MH2",
    "net": "GND",
-   "x": 2.5995,
-   "y": 7.11,
-   "tool": 0.6,
-   "route": 0.6,
+   "x": 1.45,
+   "y": 8.13,
+   "tool": 0.5,
+   "route": 0.7,
    "length": 1.2,
    "orientation": "horizontal",
-   "land_top": "1.10 x 1.70",
-   "land_inner": "1.10 x 1.70"
+   "land_top": "1.01 x 1.71",
+   "land_inner": "1.01 x 1.71"
   }
  ],
  "npth": [
-  {
-   "ref": "X1",
-   "pad": "",
-   "hole": 0.65,
-   "x": 6.2495,
-   "y": 8.54,
-   "land_top": 0.65
-  },
-  {
-   "ref": "X1",
-   "pad": "",
-   "hole": 0.65,
-   "x": 6.2495,
-   "y": 14.32,
-   "land_top": 0.65
-  },
   {
    "ref": "X2",
    "pad": "",
@@ -460,14 +407,14 @@
  ],
  "track_min_width_routed": 0.0762,
  "track_width_hist": {
-  "0.0762": 3375,
+  "0.0762": 3426,
   "0.1": 687,
-  "0.15": 339,
-  "0.2": 8,
-  "0.25": 32,
-  "0.3": 56,
+  "0.15": 323,
+  "0.2": 9,
+  "0.25": 31,
+  "0.3": 67,
   "0.35": 11,
-  "0.4": 306
+  "0.4": 177
  },
  "track_min_width_by_layer": {
   "Top": 0.0762,
@@ -480,17 +427,17 @@
  "polygon_tracks": 0,
  "arcs_on_copper": 0,
  "min_spacing_track_to_other_copper": {
-  "gap": 0.0763,
+  "gap": 0.0784,
   "where": {
-   "layer": "Top",
-   "a": "USB_D_N",
-   "b": "USB_D_P",
+   "layer": "Bottom",
+   "a": "VCC1V0",
+   "b": "GND",
    "kind": "pad",
-   "ref": "X1",
-   "pad": "3"
+   "ref": "C108",
+   "pad": "2"
   },
   "by_layer": {
-   "Top": 0.0763,
+   "Top": 0.0786,
    "L2-GND": 9.0,
    "L3-SIG": 0.0818,
    "L4-SIG": 0.0819,
@@ -505,6 +452,13 @@
   "L4-SIG": 0.0869
  },
  "clearance_rules": [
+  {
+   "name": "Clearance_NPTH_Track",
+   "gap": "5mil",
+   "scope1": "(IsTrack Or IsVia Or IsArc)",
+   "scope2": "IsPad And ((Name = 'X2-') Or (Name = 'X1-'))",
+   "enabled": "TRUE"
+  },
   {
    "name": "Clearance_Plane_NPTH",
    "gap": "9.8425mil",
@@ -558,19 +512,19 @@
    "L3-L4 / L3-L4": 0.241,
    "L3-L4 / L4-L5": 0.2412,
    "L3-L4 / Top-Bot": 0.2411,
-   "L3-L4 / pad hole": 0.4272,
+   "L3-L4 / pad hole": 0.5006,
    "L4-L5 / L4-L5": 0.2453,
    "L4-L5 / L5-Bot": 0.2435,
    "L4-L5 / Top-Bot": 0.2493,
    "L4-L5 / pad hole": 0.5006,
    "L5-Bot / L5-Bot": 0.2453,
    "L5-Bot / Top-Bot": 0.2493,
-   "L5-Bot / pad hole": 0.5778,
+   "L5-Bot / pad hole": 0.7785,
    "Top-Bot / Top-Bot": 0.2776,
    "Top-Bot / Top-L2": 0.2429,
    "Top-Bot / pad hole": 0.5265,
    "Top-L2 / Top-L2": 0.2449,
-   "Top-L2 / pad hole": 0.4851,
+   "Top-L2 / pad hole": 0.5006,
    "pad hole / pad hole": 1.54
   }
  },
@@ -596,112 +550,49 @@
    }
   },
   "through_via": {
-   "gap": 0.1609,
+   "gap": 0.1569,
    "where": {
-    "layer": "L4-SIG",
+    "layer": "Bottom",
     "hole": "Top-Bot",
-    "net": "FT-VCORE",
-    "x": 16.175,
-    "y": 2.35
+    "net": "PWR_FB3",
+    "x": 5.95,
+    "y": 21.13
    }
   }
  },
  "npth_to_track": {
-  "gap": 0.0864,
-  "where": {
-   "layer": "Top",
-   "hole": "NPTH 0.65",
-   "net": "USB-CC1",
-   "x": 6.249,
-   "y": 8.54
-  }
+  "gap": 9.0,
+  "where": null
  },
- "npth_to_via_land": 0.3672,
+ "npth_to_via_land": 0.4256,
  "usb_widths": {
   "Top": [
    0.15
-  ],
-  "L3-SIG": [
-   0.15
   ]
  },
- "usb_coupled_length_by_gap": {},
+ "usb_coupled_length_by_gap": {
+  "Top 0.1498": 0.424,
+  "Top 0.1500": 5.23,
+  "Top 0.3096": 0.46,
+  "Top 0.3500": 0.725
+ },
  "usb_track_length": {
-  "USB_D_P": 3.723,
-  "USB_D_N": 4.394
+  "USB_D_P": 7.713,
+  "USB_D_N": 7.99
  },
  "usb_track_length_by_layer": {
   "USB_D_P": {
-   "L3-SIG": 3.723
+   "Top": 7.713
   },
   "USB_D_N": {
-   "Top": 4.394
+   "Top": 7.99
   }
  },
- "usb_vias": [
-  {
-   "net": "USB_D_P",
-   "span": "L2-L3",
-   "hole": 0.15,
-   "x": 9.0,
-   "y": 7.75
-  },
-  {
-   "net": "USB_D_P",
-   "span": "Top-L2",
-   "hole": 0.15,
-   "x": 9.0,
-   "y": 7.75
-  },
-  {
-   "net": "USB_D_P",
-   "span": "L2-L3",
-   "hole": 0.15,
-   "x": 8.25,
-   "y": 10.575
-  },
-  {
-   "net": "USB_D_P",
-   "span": "Top-L2",
-   "hole": 0.15,
-   "x": 8.25,
-   "y": 10.575
-  },
-  {
-   "net": "USB_D_P",
-   "span": "L2-L3",
-   "hole": 0.15,
-   "x": 7.25,
-   "y": 11.575
-  },
-  {
-   "net": "USB_D_P",
-   "span": "Top-L2",
-   "hole": 0.15,
-   "x": 7.25,
-   "y": 11.575
-  },
-  {
-   "net": "USB_D_P",
-   "span": "L2-L3",
-   "hole": 0.15,
-   "x": 7.25,
-   "y": 10.775
-  },
-  {
-   "net": "USB_D_P",
-   "span": "Top-L2",
-   "hole": 0.15,
-   "x": 7.25,
-   "y": 10.775
-  }
- ],
+ "usb_vias": [],
  "usb_pads": [
   "U2-7",
   "U2-8",
   "X1-2",
-  "X1-2",
-  "X1-3",
   "X1-3"
  ],
  "via_in_pad": [
@@ -4622,15 +4513,15 @@
    "via_net": "GND",
    "side": "Bottom",
    "span": "Top-Bot",
-   "via_x": 17.875,
-   "via_y": 14.925,
+   "via_x": 18.2,
+   "via_y": 16.175,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
    "pad_size": "1.300 x 1.500",
    "centred": false,
-   "position": "hole in pad",
-   "overlap": 0.175
+   "position": "hole on pad edge",
+   "overlap": 0.0999
   },
   {
    "ref": "C145",
@@ -4724,14 +4615,14 @@
    "via_net": "GND",
    "side": "Bottom",
    "span": "Top-Bot",
-   "via_x": 5.65,
-   "via_y": 20.35,
+   "via_x": 5.95,
+   "via_y": 21.13,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
    "pad_size": "1.100 x 1.000",
    "centred": false,
-   "position": "hole on pad edge",
+   "position": "hole in pad",
    "overlap": 0.175
   },
   {
@@ -5925,23 +5816,6 @@
    "overlap": 0.0216
   },
   {
-   "ref": "C93",
-   "pad": "2",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 16.75,
-   "via_y": 14.925,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "1.300 x 1.500",
-   "centred": false,
-   "position": "hole in pad",
-   "overlap": 0.175
-  },
-  {
    "ref": "C94",
    "pad": "2",
    "pad_net": "GND",
@@ -6475,7 +6349,7 @@
    "via_net": "VCC3V3",
    "side": "Top",
    "span": "Top-L2",
-   "via_x": 13.675,
+   "via_x": 15.375,
    "via_y": 14.85,
    "land": 0.3,
    "hole": 0.15,
@@ -6492,7 +6366,7 @@
    "via_net": "GND",
    "side": "Top",
    "span": "Top-L2",
-   "via_x": 13.675,
+   "via_x": 15.15,
    "via_y": 12.65,
    "land": 0.3,
    "hole": 0.15,
@@ -6509,25 +6383,8 @@
    "via_net": "CLK-12M-SHARED",
    "side": "Top",
    "span": "Top-L2",
-   "via_x": 15.375,
+   "via_x": 16.825,
    "via_y": 12.65,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "1.200 x 1.400",
-   "centred": false,
-   "position": "hole in pad",
-   "overlap": 0.15
-  },
-  {
-   "ref": "Q1",
-   "pad": "4",
-   "pad_net": "VCC3V3",
-   "via_net": "VCC3V3",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 15.375,
-   "via_y": 14.85,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
@@ -7225,57 +7082,6 @@
    "span": "L5-Bot",
    "via_x": 8.25,
    "via_y": 4.15,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "R27",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.15,
-   "via_y": 2.55,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "R28",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.15,
-   "via_y": 3.15,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "R28",
-   "pad": "2",
-   "pad_net": "USB-CC2",
-   "via_net": "USB-CC2",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.975,
-   "via_y": 3.375,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
@@ -8170,20 +7976,20 @@
   },
   {
    "ref": "U10",
-   "pad": "1",
-   "pad_net": "EE-CS",
-   "via_net": "EE-CS",
+   "pad": "2",
+   "pad_net": "EE-CLK",
+   "via_net": "EE-CLK",
    "side": "Top",
    "span": "Top-L2",
-   "via_x": 12.05,
-   "via_y": 12.825,
+   "via_x": 5.275,
+   "via_y": 17.225,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
    "pad_size": "0.250 x 0.850",
    "centred": false,
    "position": "hole on pad edge",
-   "overlap": 0.1
+   "overlap": 0.15
   },
   {
    "ref": "U10",
@@ -8192,25 +7998,8 @@
    "via_net": "EE-DATA",
    "side": "Top",
    "span": "Top-L2",
-   "via_x": 12.325,
-   "via_y": 13.875,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.250 x 0.850",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "U10",
-   "pad": "4",
-   "pad_net": "EE-DATA-DO",
-   "via_net": "EE-DATA-DO",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 12.6,
-   "via_y": 14.375,
+   "via_x": 5.8,
+   "via_y": 17.3,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
@@ -8225,26 +8014,9 @@
    "pad_net": "GND",
    "via_net": "GND",
    "side": "Top",
-   "span": "Top-Bot",
-   "via_x": 9.85,
-   "via_y": 14.425,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.250 x 0.850",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
-  },
-  {
-   "ref": "U10",
-   "pad": "5",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Top",
    "span": "Top-L2",
-   "via_x": 9.225,
-   "via_y": 14.4,
+   "via_x": 6.1,
+   "via_y": 20.125,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
@@ -8260,8 +8032,8 @@
    "via_net": "VCC3V3",
    "side": "Top",
    "span": "Top-L2",
-   "via_x": 9.225,
-   "via_y": 12.9,
+   "via_x": 4.6,
+   "via_y": 20.125,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
@@ -8731,23 +8503,6 @@
   },
   {
    "ref": "U2",
-   "pad": "63",
-   "pad_net": "EE-CS",
-   "via_net": "EE-CS",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 10.55,
-   "via_y": 12.0,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.280 x 0.750",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "U2",
    "pad": "64",
    "pad_net": "FT-VCORE",
    "via_net": "FT-VCORE",
@@ -8759,23 +8514,6 @@
    "hole": 0.15,
    "pad_shape": "rect",
    "pad_size": "0.280 x 0.750",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "U2",
-   "pad": "8",
-   "pad_net": "USB_D_P",
-   "via_net": "USB_D_P",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 9.0,
-   "via_y": 7.75,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.750 x 0.280",
    "centred": false,
    "position": "hole on pad edge",
    "overlap": 0.15
@@ -9785,139 +9523,37 @@
   },
   {
    "ref": "X1",
-   "pad": "1",
-   "pad_net": "USB5V0",
-   "via_net": "USB5V0",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.9,
-   "via_y": 13.88,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.600 x 1.450",
-   "centred": false,
-   "position": "hole in pad",
-   "overlap": 0.15
-  },
-  {
-   "ref": "X1",
-   "pad": "1",
-   "pad_net": "USB5V0",
-   "via_net": "USB5V0",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 8.29,
-   "via_y": 8.98,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.600 x 1.450",
-   "centred": false,
-   "position": "hole in pad",
-   "overlap": 0.15
-  },
-  {
-   "ref": "X1",
-   "pad": "3",
-   "pad_net": "USB_D_P",
-   "via_net": "USB_D_P",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.25,
-   "via_y": 10.775,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 1.450",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "X1",
-   "pad": "3",
-   "pad_net": "USB_D_P",
-   "via_net": "USB_D_P",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.25,
-   "via_y": 11.575,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 1.450",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "X1",
-   "pad": "3",
-   "pad_net": "USB_D_P",
-   "via_net": "USB_D_P",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 8.25,
-   "via_y": 10.575,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 1.450",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "X1",
-   "pad": "5",
+   "pad": "MP3",
    "pad_net": "GND",
    "via_net": "GND",
    "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.125,
-   "via_y": 14.45,
-   "land": 0.3,
-   "hole": 0.15,
+   "span": "Top-Bot",
+   "via_x": 1.25,
+   "via_y": 12.625,
+   "land": 0.35,
+   "hole": 0.2,
    "pad_shape": "rect",
-   "pad_size": "0.600 x 1.450",
+   "pad_size": "1.900 x 1.900",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "hole in pad",
+   "overlap": 0.175
   },
   {
    "ref": "X1",
-   "pad": "MH1",
-   "pad_net": "USB-CC2",
-   "via_net": "USB-CC2",
-   "side": "Top",
-   "span": "Top-L2",
-   "via_x": 8.0,
-   "via_y": 9.55,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 1.450",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
-   "ref": "X1",
-   "pad": "MH2",
+   "pad": "MP4",
    "pad_net": "GND",
    "via_net": "GND",
    "side": "Top",
-   "span": "Top-L2",
-   "via_x": 7.6,
-   "via_y": 7.95,
-   "land": 0.3,
-   "hole": 0.15,
+   "span": "Top-Bot",
+   "via_x": 1.8,
+   "via_y": 9.3,
+   "land": 0.35,
+   "hole": 0.2,
    "pad_shape": "rect",
-   "pad_size": "0.600 x 1.450",
+   "pad_size": "1.900 x 1.900",
    "centred": false,
    "position": "hole on pad edge",
-   "overlap": 0.15
+   "overlap": 0.175
   },
   {
    "ref": "X3",
@@ -10091,20 +9727,20 @@
   },
   {
    "ref": "X4",
-   "pad": "2",
-   "pad_net": "GND",
-   "via_net": "GND",
+   "pad": "1",
+   "pad_net": "VBATT",
+   "via_net": "VBATT",
    "side": "Top",
-   "span": "Top-Bot",
-   "via_x": 11.175,
-   "via_y": 19.4,
-   "land": 0.35,
-   "hole": 0.2,
+   "span": "Top-L2",
+   "via_x": 11.6,
+   "via_y": 14.725,
+   "land": 0.3,
+   "hole": 0.15,
    "pad_shape": "rect",
-   "pad_size": "1.000 x 5.500",
+   "pad_size": "1.000 x 3.500",
    "centred": false,
-   "position": "land only",
-   "overlap": 0.05
+   "position": "hole in pad",
+   "overlap": 0.15
   },
   {
    "ref": "X4",
@@ -10113,12 +9749,12 @@
    "via_net": "GND",
    "side": "Top",
    "span": "Top-Bot",
-   "via_x": 12.1,
-   "via_y": 18.475,
+   "via_x": 9.85,
+   "via_y": 14.425,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
-   "pad_size": "1.000 x 5.500",
+   "pad_size": "1.000 x 3.500",
    "centred": false,
    "position": "hole in pad",
    "overlap": 0.175
@@ -10130,12 +9766,63 @@
    "via_net": "GND",
    "side": "Top",
    "span": "Top-L2",
-   "via_x": 11.425,
-   "via_y": 16.925,
+   "via_x": 9.225,
+   "via_y": 14.4,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
-   "pad_size": "1.000 x 5.500",
+   "pad_size": "1.000 x 3.500",
+   "centred": false,
+   "position": "land only",
+   "overlap": 0.075
+  },
+  {
+   "ref": "X4",
+   "pad": "2",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "side": "Top",
+   "span": "Top-L2",
+   "via_x": 9.8,
+   "via_y": 14.0,
+   "land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.000 x 3.500",
+   "centred": false,
+   "position": "hole in pad",
+   "overlap": 0.15
+  },
+  {
+   "ref": "X4",
+   "pad": "2",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "side": "Top",
+   "span": "Top-L2",
+   "via_x": 9.8,
+   "via_y": 15.05,
+   "land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.000 x 3.500",
+   "centred": true,
+   "position": "centred",
+   "overlap": 0.15
+  },
+  {
+   "ref": "X4",
+   "pad": "2",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "side": "Top",
+   "span": "Top-L2",
+   "via_x": 9.8,
+   "via_y": 16.1,
+   "land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.000 x 3.500",
    "centred": false,
    "position": "hole in pad",
    "overlap": 0.15
@@ -10227,21 +9914,21 @@
   }
  ],
  "via_in_pad_summary": {
-  "entries": 560,
-  "vias": 552,
+  "entries": 548,
+  "vias": 540,
   "vias_touching_two_pads": 8,
   "by_type": {
    "L5-Bot 0.10/0.25": 9,
    "L5-Bot 0.15/0.30": 148,
-   "Top-Bot 0.20/0.35": 108,
+   "Top-Bot 0.20/0.35": 107,
    "Top-L2 0.10/0.25": 156,
-   "Top-L2 0.15/0.30": 131
+   "Top-L2 0.15/0.30": 120
   },
   "by_position": {
-   "centred": 150,
+   "centred": 151,
    "land only": 17,
-   "hole on pad edge": 280,
-   "hole in pad": 113
+   "hole on pad edge": 268,
+   "hole in pad": 112
   },
   "u1": {
    "Top-Bot 0.20/0.35": 2,
@@ -10251,9 +9938,9 @@
   "non_u1": {
    "L5-Bot 0.10/0.25": 9,
    "L5-Bot 0.15/0.30": 148,
-   "Top-Bot 0.20/0.35": 106,
+   "Top-Bot 0.20/0.35": 105,
    "Top-L2 0.10/0.25": 5,
-   "Top-L2 0.15/0.30": 124
+   "Top-L2 0.15/0.30": 113
   },
   "by_ref": {
    "BTN": 3,
@@ -10340,7 +10027,7 @@
    "C9": 1,
    "C91": 2,
    "C92": 2,
-   "C93": 2,
+   "C93": 1,
    "C94": 1,
    "C95": 2,
    "C96": 2,
@@ -10360,7 +10047,7 @@
    "LD2": 1,
    "LD3": 2,
    "LD4": 1,
-   "Q1": 4,
+   "Q1": 3,
    "R1": 3,
    "R101": 2,
    "R102": 2,
@@ -10388,8 +10075,6 @@
    "R24": 1,
    "R25": 1,
    "R26": 2,
-   "R27": 1,
-   "R28": 2,
    "R34": 6,
    "R35": 1,
    "R4": 14,
@@ -10412,15 +10097,15 @@
    "R99": 2,
    "RESET": 4,
    "U1": 160,
-   "U10": 6,
-   "U2": 31,
+   "U10": 4,
+   "U2": 29,
    "U3": 29,
    "U4": 5,
    "U7": 3,
    "U8": 21,
-   "X1": 8,
+   "X1": 2,
    "X3": 10,
-   "X4": 3,
+   "X4": 6,
    "X5": 5
   }
  },
@@ -10908,15 +10593,15 @@
    "via_net": "GND",
    "side": "Bottom",
    "span": "Top-Bot",
-   "via_x": 17.875,
-   "via_y": 14.925,
+   "via_x": 18.2,
+   "via_y": 16.175,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
    "pad_size": "1.300 x 1.500",
    "centred": false,
-   "position": "hole in pad",
-   "overlap": 0.175
+   "position": "hole on pad edge",
+   "overlap": 0.0999
   },
   {
    "ref": "C145",
@@ -10959,14 +10644,14 @@
    "via_net": "GND",
    "side": "Bottom",
    "span": "Top-Bot",
-   "via_x": 5.65,
-   "via_y": 20.35,
+   "via_x": 5.95,
+   "via_y": 21.13,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
    "pad_size": "1.100 x 1.000",
    "centred": false,
-   "position": "hole on pad edge",
+   "position": "hole in pad",
    "overlap": 0.175
   },
   {
@@ -11514,23 +11199,6 @@
    "overlap": 0.175
   },
   {
-   "ref": "C93",
-   "pad": "2",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 16.75,
-   "via_y": 14.925,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "1.300 x 1.500",
-   "centred": false,
-   "position": "hole in pad",
-   "overlap": 0.175
-  },
-  {
    "ref": "C94",
    "pad": "2",
    "pad_net": "GND",
@@ -11939,23 +11607,6 @@
    "overlap": 0.175
   },
   {
-   "ref": "U10",
-   "pad": "5",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Top",
-   "span": "Top-Bot",
-   "via_x": 9.85,
-   "via_y": 14.425,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.250 x 0.850",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
-  },
-  {
    "ref": "U2",
    "pad": "1",
    "pad_net": "GND",
@@ -12262,6 +11913,40 @@
    "overlap": 0.175
   },
   {
+   "ref": "X1",
+   "pad": "MP3",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "side": "Top",
+   "span": "Top-Bot",
+   "via_x": 1.25,
+   "via_y": 12.625,
+   "land": 0.35,
+   "hole": 0.2,
+   "pad_shape": "rect",
+   "pad_size": "1.900 x 1.900",
+   "centred": false,
+   "position": "hole in pad",
+   "overlap": 0.175
+  },
+  {
+   "ref": "X1",
+   "pad": "MP4",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "side": "Top",
+   "span": "Top-Bot",
+   "via_x": 1.8,
+   "via_y": 9.3,
+   "land": 0.35,
+   "hole": 0.2,
+   "pad_shape": "rect",
+   "pad_size": "1.900 x 1.900",
+   "centred": false,
+   "position": "hole on pad edge",
+   "overlap": 0.175
+  },
+  {
    "ref": "X3",
    "pad": "3",
    "pad_net": "SD-CMD",
@@ -12370,51 +12055,34 @@
    "via_net": "GND",
    "side": "Top",
    "span": "Top-Bot",
-   "via_x": 11.175,
-   "via_y": 19.4,
+   "via_x": 9.85,
+   "via_y": 14.425,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
-   "pad_size": "1.000 x 5.500",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.05
-  },
-  {
-   "ref": "X4",
-   "pad": "2",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Top",
-   "span": "Top-Bot",
-   "via_x": 12.1,
-   "via_y": 18.475,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "1.000 x 5.500",
+   "pad_size": "1.000 x 3.500",
    "centred": false,
    "position": "hole in pad",
    "overlap": 0.175
   }
  ],
  "through_vias_in_smd_pads_count": {
-  "entries": 116,
-  "vias": 108,
+  "entries": 115,
+  "vias": 107,
   "by_position": {
-   "land only": 11,
+   "land only": 10,
    "hole on pad edge": 83,
    "hole in pad": 22
   },
   "by_side": {
    "Top": 17,
-   "Bottom": 99
+   "Bottom": 98
   }
  },
  "lasers_in_non_u1_smd_pads": {
-  "total": 286,
+  "total": 275,
   "by_hole": {
-   "0.15": 272,
+   "0.15": 261,
    "0.1": 14
   }
  },
@@ -12502,7 +12170,7 @@
    "Top-L2": 24
   }
  },
- "lasers_015": 828,
+ "lasers_015": 820,
  "lasers_015_on_u1_ball": 0,
  "vias_under_u1_box": {
   "L5-Bot": 55,
@@ -12581,34 +12249,59 @@
  ],
  "tenting": {
   "Top": {
-   "openings": 523,
-   "openings_on_pads": 523,
+   "openings": 512,
+   "openings_on_pads": 512,
    "unmatched_openings": [],
    "u1_openings": {
     "0.250 x 0.250 r0.125": 238
    },
-   "vias_with_land_in_opening": 304,
-   "of_which_in_vip_list": 304,
-   "not_in_vip_list": [],
+   "vias_with_land_in_opening": 295,
+   "of_which_in_vip_list": 293,
+   "not_in_vip_list": [
+    {
+     "span": "Top-Bot",
+     "net": "FLASH-D02",
+     "x": 17.35,
+     "y": 16.55,
+     "opening": "R2-1",
+     "opening_net": "FLASH-D02",
+     "in_vip_list": false,
+     "hole_reached": false,
+     "hole_margin": 0.0697,
+     "land_overlap": 0.0053
+    },
+    {
+     "span": "Top-L2",
+     "net": "VBATT",
+     "x": 11.15,
+     "y": 14.725,
+     "opening": "X4-1",
+     "opening_net": "VBATT",
+     "in_vip_list": false,
+     "hole_reached": false,
+     "hole_margin": 0.025,
+     "land_overlap": 0.05
+    }
+   ],
    "exposed_by_span": {
     "Top-Bot": {
-     "vias": 17,
+     "vias": 18,
      "hole_reached": 16
     },
     "Top-L2": {
-     "vias": 287,
-     "hole_reached": 287
+     "vias": 277,
+     "hole_reached": 276
     }
    },
    "vip_vias_not_exposed": 0
   },
   "Bottom": {
-   "openings": 366,
-   "openings_on_pads": 366,
+   "openings": 362,
+   "openings_on_pads": 362,
    "unmatched_openings": [],
    "u1_openings": {},
-   "vias_with_land_in_opening": 260,
-   "of_which_in_vip_list": 256,
+   "vias_with_land_in_opening": 259,
+   "of_which_in_vip_list": 255,
    "not_in_vip_list": [
     {
      "span": "L5-Bot",
@@ -12677,8 +12370,8 @@
      "hole_reached": 155
     },
     "Top-Bot": {
-     "vias": 101,
-     "hole_reached": 95
+     "vias": 100,
+     "hole_reached": 94
     }
    },
    "vip_vias_not_exposed": 0
