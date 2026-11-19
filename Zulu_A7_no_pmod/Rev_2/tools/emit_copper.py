@@ -133,8 +133,10 @@ def main():
         mi = [k for k, l in enumerate(L) if l.startswith('    Missing : String;')][0]
         L[mi] = L[mi] + chr(10) + '    Cm : IPCB_Component;' + chr(10) + '    PIt : IPCB_GroupIterator;' + chr(10) + '    Pd : IPCB_Pad;'
     for m in mv:
-        L += ["    Cm := Brd.GetPcbComponentByRefDes('%s');" % m['ref'], '    Cm.BeginModify;',
-              '    Cm.X := Cm.X + MMsToCoord(%.4f);' % m.get('dx', 0), '    Cm.Y := Cm.Y + MMsToCoord(%.4f);' % m.get('dy', 0)]
+        L += ["    Cm := Brd.GetPcbComponentByRefDes('%s');" % m['ref'], '    Cm.BeginModify;']
+        if 'layer' in m:             # a side change (U10, 2026-11-14): Altium mirrors the part about its origin
+            L += ['    Cm.Layer := %s;' % LAYER[m['layer']]]
+        L += ['    Cm.X := Cm.X + MMsToCoord(%.4f);' % m.get('dx', 0), '    Cm.Y := Cm.Y + MMsToCoord(%.4f);' % m.get('dy', 0)]
         if 'rotation' in m:          # a turn about the part origin (R108, 2026-11-13); pad 1 is checked right after
             L += ['    Cm.Rotation := %.1f;' % m['rotation']]
         L += ['    Cm.EndModify;']

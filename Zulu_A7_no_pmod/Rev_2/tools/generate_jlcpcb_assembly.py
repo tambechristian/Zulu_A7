@@ -65,6 +65,15 @@ docs/dq_series_resistors.md). Changed from Fab B Rev 2:
 - short_edge_parts() breaks distance ties by designator, and the drawings are saved without PyMuPDF's random
   /ID, so a rerun writes byte-identical notes, drawings and ZIP (write_zip already fixed the timestamps).
 Every check Fab B Rev 2 made is still made.
+
+NO-PMOD REV 2, NOTCHLESS (2026-11-19): retargeted to the accepted board (docs/x4_feather_handoff.md, "Final solution").
+Changed from the 2026-11-13 release:
+- U2 is the FT2232HQ-REEL (QFN-64, exposed pad, via-in-pad) instead of the FT2232HL-REEL (LQFP-64): the LCSC code,
+  package name, line note and every notes paragraph that named the LQFP;
+- X4 is the SMD side-entry S2B-PH-SM4-TB(LF)(SN) (LCSC C295747, top side, in the CPL) instead of the through-hole
+  B2B/S2B-PH-K-S, so X2 is the only through-hole part and the notes no longer ask for X4 to be hand-soldered;
+- U10 sits 2.50 mm east and 1.60 mm north of its 2026-11-13 position (the CPL is read from the board);
+- the release date, FAB_ARCHIVE and ASSEMBLY_ARCHIVE are dated 2026-11-19.
 """
 
 import argparse
@@ -87,12 +96,12 @@ import pymupdf as fitz
 # writes into Rev_2/fabrication/; these notes point PCBWay at them.
 RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_2"
 RELEASE_NAME = "Zulu A7 no-PMOD Rev 2"
-RELEASE_DATE = "2026-11-13"
+RELEASE_DATE = "2026-11-19"
 BOARD_WIDTH = 60.96            # Board6 VX/VY outline 2400 x 1000 mil (2.4 x 1.0 in); check_outline() holds it to the PcbDoc
 BOARD_HEIGHT = 25.40
-FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Fabrication_2026-11-13.zip"
+FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Fabrication_2026-11-19.zip"
 FAB_NOTES = "Zulu_A7_no_pmod_Rev_2_PCBWay_FAB_NOTES.txt"
-ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Assembly_2026-11-13.zip"
+ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Assembly_2026-11-19.zip"
 FINISHED_THICKNESS = "1.60 +/- 0.16 mm"   # PCBWay's agreed stack (Shengyi S1000-2M), see FAB_NOTES
 PANEL = "1x4"                              # PROPOSAL only, to confirm with PCBWay: Fab B's basis, 5 mm V-cut rails at the two short ends
 RAIL_MM = 5.0
@@ -161,17 +170,19 @@ LCSC_CODES = {
     "RC0402FR-0710KL": "C60490",
     "19-337/R6GHBHC-A01/2T": "C264519",
     "XC7A35T-2CPG236I": "C1552335",
-    "FT2232HL-REEL": "C27882",
     "W25Q128JVSIQ": "C97521",
     "93LC46BT-I/SN": "C16253",
     "105017-0001": "C136000",
     "DM3D-SF": "C719027",
-    "B2B-PH-SM4-TB(LF)(SN)": "C160352",
+    "S2B-PH-SM4-TB(LF)(SN)": "C295747",
 }
+# U2 is the FT2232HQ-REEL: FTDI-authorized distributors only, so no LCSC code is claimed for it (the FT2232HL's
+# C27882 is gone with the LQFP). X4 is the side-entry S2B-PH-SM4-TB again (2026-11-19, notchless board).
 
 # Where an LCSC code was checked, for codes added after the September 2026 audit.
 LCSC_SOURCES = {
     "19-337/R6GHBHC-A01/2T": "checked 2026-10-23 on its LCSC part page",
+    "S2B-PH-SM4-TB(LF)(SN)": "checked 2026-11-19 on its LCSC part page (MPN, 2 mm pitch, SMD right angle)",
 }
 
 # Fab B: the maker each MPN prefix belongs to. The LTC3556-block edit (2026-11-10) wrote MANF=Samsung on
@@ -198,6 +209,8 @@ STALE_MPNS = {
     "RC0402FR-074K32L", "RC0402FR-073K01L", "RC0201FR-07100KL", "RC0201FR-07402KL", "RC0201FR-07105KL",
     # No-PMOD: the Pmod header J1 and its eight 200 ohm series resistors R26-R33 (their only use of this MPN).
     "PPTC062LFBN-RC", "RC0201FR-07200RL",
+    # Notchless board (2026-11-19): U2 is the FT2232HQ-REEL, X4 the side-entry SMD S2B-PH-SM4-TB.
+    "FT2232HL-REEL", "B2B-PH-SM4-TB(LF)(SN)", "B2B-PH-K-S(LF)(SN)", "S2B-PH-K-S(LF)(SN)",
 }
 STALE_REFS = {"U5", "U6", "LD5", "R78", "R104", "R105", "R106", "R109", "R110", "R111", "R112", "C162",
               "J1", "R26", "R27", "R28", "R29", "R30", "R31", "R32", "R33"}
@@ -515,14 +528,15 @@ PACKAGE_NAMES = {
     "LED0603": "0603 SMD LED",
     "EVERLIGHT-19-337": "1.6 x 1.6 mm SMD RGB LED (Everlight 19-337 land)",
     "XC7A35T-CPG236": "CPG236 BGA, 10 x 10 mm, 0.5 mm pitch",
-    "FT2232HL-LQFP64": "LQFP-64, 10 x 10 mm body, 0.5 mm pitch",
+    "FT2232HQ-QFN64": "QFN-64, 9 x 9 mm body, 0.5 mm pitch, 4.20 mm exposed pad (pad EP)",
     "TSOPII-54": "TSOP-II-54, 400 mil, 0.8 mm pitch",
     "SOIC-8_208MIL": "SOIC-8, 208 mil (5.3 mm) body",
     "SPI-8_SOIC_150": "SOIC-8, 150 mil (3.9 mm) body",
+    "MSOP-8_3X3_P0.65": "MSOP-8, 3 x 3 mm body, 0.65 mm pitch",
     "QFN28-UFD-4X5": "QFN-28 (ADI UFD), 4 x 5 mm, 0.5 mm pitch, exposed pad (pin 29)",
     "SOT23-5": "SOT-23-5",
     "MOLEX-105017-0001": "Molex 105017 micro-USB-B, SMT with plated slots and holes",
-    "JST-B2B-PH-SM4-TB": "JST PH 2-pin top-entry SMT header",
+    "JST-S2B-PH-SM4-TB": "JST PH 2-pin side-entry SMT header, 2.0 mm pitch",
     "DM3D-SF": "Hirose DM3D microSD socket, SMT",
     "PTS810": "C&K PTS810 SMT tactile switch, 4.2 x 3.2 mm",
 }
@@ -535,9 +549,10 @@ PCBWAY_LINE_NOTES = {
         "no local, broker or open-market stock. 0.5 mm BGA: X-ray every board. "
         "Moisture sensitive: follow the MSL label."
     ),
-    "FT2232HL-REEL": (
+    "FT2232HQ-REEL": (
         "Buy only from an FTDI-authorized distributor (FTDI clones exist); no broker "
-        "stock. Moisture sensitive: follow the MSL label."
+        "stock. QFN-64: exposed pad EP is GND with filled and capped vias (via-in-pad, see notes): "
+        "use a windowpane paste aperture on EP. Moisture sensitive: follow the MSL label."
     ),
     "AS4C32M16SB-7TCN": "Moisture sensitive: follow the MSL label.",
     "W25Q128JVSIQ": "Moisture sensitive: follow the MSL label.",
@@ -562,7 +577,10 @@ PCBWAY_LINE_NOTES = {
         "Rated for ONE reflow: place in the last (top) reflow. Shell stakes in plated "
         "slots MS1/MS2: hand-solder from the bottom after reflow (see notes)."
     ),
-    "B2B-PH-SM4-TB(LF)(SN)": "Polarity: pin 1 (west contact) is battery +, pin 2 is GND.",
+    "S2B-PH-SM4-TB(LF)(SN)": (
+        "Side-entry SMT, top side: the plug opening faces the bottom board edge, no hand soldering. "
+        "Polarity: pin 1 (the WEST contact, red dot on the drawing) is battery +, pin 2 is GND."
+    ),
     SERIES_R_MPN: (
         "SI-critical 22 ohm series resistors on the SDRAM data bus (11 bottom, 5 top). Place each exactly at its "
         "CPL position, side and rotation; no other value, size or position. R127, R129-R132 sit in a tight "
@@ -997,15 +1015,23 @@ def pin_one_parts(parts, geometry, fitted):
 def board_vippo():
     """Via-in-pad sites of the whole board from tools/fab_facts.json, which must have measured this PcbDoc."""
     import json
+    import fab_notes
     facts = json.load(open(os.path.join(HERE, "fab_facts.json"), encoding="utf-8"))
     md5 = hashlib.md5(open(PCB, "rb").read()).hexdigest()
     if facts["source"]["md5"] != md5:
         raise ValueError(f"fab_facts.json measured {facts['source']['md5']}, the board is {md5}: run tools/fab_facts.py")
-    if facts["through_vias_in_smd_pads"]:
-        raise ValueError("through vias in SMD pads: " + str(facts["through_vias_in_smd_pads"]))
+    # only the two accepted GND through vias (U2 exposed pad, X4 pad 2) may sit in an SMD pad
+    problem = fab_notes.through_in_pad_problem(facts)
+    if problem:
+        raise ValueError(problem)
     parts = sorted({e["ref"] for e in facts["via_in_pad"]},
                    key=lambda r: (re.sub(r"\d+", "", r), int(re.sub(r"\D", "", r) or 0)))
-    return facts["via_in_pad_summary"]["via_sites"], len({(e["ref"], e["pad"]) for e in facts["via_in_pad"]}), parts
+    per_pad = defaultdict(int)
+    for e in facts["via_in_pad"]:
+        per_pad[(e["ref"], e["pad"])] += 1
+    multi = sorted((ref, pad, n) for (ref, pad), n in per_pad.items() if n > 1)
+    return (facts["via_in_pad_summary"]["via_sites"], len(per_pad), parts,
+            len(facts["through_vias_in_smd_pads"]), multi)
 
 
 def write_notes_pcbway(parts, geometry, bom_rows):
@@ -1016,7 +1042,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
     buy_rows = [row for row in rows if row["Type"] != "DNS"]
     smd = sorted((ref for ref in fitted if geometry[ref]["has_smd"]), key=bom_audit.natkey)
     tht_parts = sum(row["_qty"] for row in buy_rows if row["Type"] == "thru-hole")
-    # No-PMOD: J1 is gone, so X2's strips are the only through-hole parts; the text below assumes that.
+    # No-PMOD: J1 is gone; X2's strips are the only through-hole parts (X4 is the SMD S2B-PH-SM4-TB again, 2026-11-19).
     tht_refs = {ref for row in buy_rows if row["Type"] == "thru-hole" for ref in row["_refs"]}
     if tht_refs != {"X2"}:
         raise ValueError(f"through-hole parts {sorted(tht_refs)}: the notes are written for X2 alone")
@@ -1025,7 +1051,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
     series_top = [ref for ref in series_refs if geometry[ref]["layer"] == "Top"]
     series_bottom = [ref for ref in series_refs if geometry[ref]["layer"] == "Bottom"]
     vippo = series_r_vippo()
-    vip_sites, vip_pads, vip_parts = board_vippo()
+    vip_sites, vip_pads, vip_parts, vip_thru, vip_multi = board_vippo()
     jtag_text = jtag_edge_text(geometry)
     tht_joints = sum(len(geometry[ref]["pads"]) for ref in fitted if not geometry[ref]["has_smd"])
     n0201 = sum(len(row["_refs"]) for row in bom_rows if row["Footprint"] in ("C0201", "R0201"))
@@ -1080,10 +1106,10 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "- Assembly: Service = Turnkey; Assembly side(s) = Both sides.",
         f"- Number of Unique Parts = {len({row['Mfg Part #'] for row in buy_rows})}; "
         f"Number of SMD Parts = {len(smd)};",
-        f"  Number of BGA/QFP Parts = 2 (U1 BGA, U2 LQFP); Number of Through-Hole",
+        f"  Number of BGA/QFP Parts = 2 (U1 BGA, U2 QFN-64); Number of Through-Hole",
         f"  Parts = {tht_parts} ({tht_text}, {tht_joints} joints).",
         "- Contains sensitive components/parts = Yes. Paste into its box:",
-        f"  \"{u1_mpn}, FT2232HL-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,",
+        f"  \"{u1_mpn}, FT2232HQ-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,",
         f"  {u8_mpn}: moisture sensitive, follow the MSL label, bake if floor life",
         f"  is exceeded. {u1_mpn}: 0.5 mm BGA, X-ray every board. 105017-0001:",
         "  one reflow cycle maximum.\"",
@@ -1109,7 +1135,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"({', '.join(dnp)})",
         "Assembly is required on both sides: SMT bottom, SMT top, then hand soldering.",
         f"BGA: U1 only, {u1_mpn}, 0.5 mm pitch, {len(u1)} round lands of",
-        f"{u1_land:.3f} mm. Other 0.5 mm pitch: U2 LQFP-64 (top), U8 {u8_mpn}",
+        f"{u1_land:.3f} mm. Other 0.5 mm pitch: U2 QFN-64 (top, 4.20 mm exposed pad), U8 {u8_mpn}",
         "QFN-28 4 x 5 mm with exposed pad (bottom).",
         f"Smallest package 0201: {n0201} parts ({top0201} on top).",
         f"Board: {BOARD_WIDTH:.2f} x {BOARD_HEIGHT:.2f} mm, six-layer two-step sequential HDI,",
@@ -1136,8 +1162,9 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"  Parts nearest the short edges (pad copper): {edge_text}.",
         f"  JTAG: {jtag_text}.",
         "  Confirm the depanelizer and support fixture cannot touch them.",
-        f"- X1 sits at the top long edge (X {x1[0]:.1f}-{x1[2]:.1f} mm) and X4 at the bottom",
-        f"  long edge (X {x4[0]:.1f}-{x4[2]:.1f} mm). X2's housings seat along both long",
+        f"- X1 sits at the top long edge (X {x1[0]:.1f}-{x1[2]:.1f} mm) and X4 near the bottom",
+        f"  long edge (X {x4[0]:.1f}-{x4[2]:.1f} mm; its pad copper is {x4[1]:.2f} mm from the edge and its plug",
+        "  opening faces it, so the battery cable leaves the board there). X2's housings seat along both long",
         "  edges: no separation residue where a housing seats.",
         "- Depanel with a supported cutter, not by hand-snapping. Depanel before",
         "  fitting X2.",
@@ -1147,7 +1174,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "",
         "CPL AND ORIENTATION",
         f"{CPL_FILENAME}: Designator, Mid X, Mid Y, Layer (Top/Bottom), Rotation.",
-        "It lists the SMT parts only; X2 is hand-soldered and is not in it.",
+        "It lists the SMT parts only (X4 included); X2 is hand-soldered and is not in it.",
         "If your line needs one file per side, please split it by the Layer column.",
         "- Units are millimetres (\"mm\" suffix). Origin: the board's lower-left",
         f"  corner; the outline runs from 0,0 to {BOARD_WIDTH:.2f},{BOARD_HEIGHT:.2f}.",
@@ -1205,8 +1232,10 @@ def write_notes_pcbway(parts, geometry, bom_rows):
             "tombstoning risk).",
             78, subsequent_indent="  "),
         *textwrap.wrap(
-            f"- Via-in-pad, whole board: {vip_sites} microvia sites on {vip_pads} pads of {len(vip_parts)} parts "
-            "(U8 pad 7 carries two) "
+            f"- Via-in-pad, whole board: {vip_sites} sites on {vip_pads} pads of {len(vip_parts)} parts "
+            f"({vip_sites - vip_thru} microvias and {vip_thru} GND through vias, the through vias in the U2 "
+            "exposed pad and in X4 pad 2; pads with more than one: "
+            f"{', '.join(f'{ref} pad {pad} x{n}' for ref, pad, n in vip_multi)}) "
             f"({', '.join(vip_parts)}); the fabrication notes (VIA-IN-PAD table) ask for every one to be "
             "copper-filled and capped flat. If any arrive unfilled, please tell us before assembly.",
             78, subsequent_indent="  "),
@@ -1219,8 +1248,11 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  MH1/MH2 locating pegs are to be soldered.",
         "- X3 (Hirose DM3D-SF microSD, top side): the card opening faces the left",
         "  board edge.",
-        "- X4 (JST B2B-PH-SM4-TB, top side): pin 1 (the west contact) is battery",
-        "  positive, pin 2 is GND.",
+        "- X4 (JST S2B-PH-SM4-TB, side-entry SMT, top side, in the CPL and reflowed with",
+        "  the top side): its plug opening faces the bottom long edge and the housing",
+        "  stays inside the board outline. Pin 1 (the WEST contact, red dot) is battery",
+        "  positive, pin 2 is GND. Nothing is hand-soldered; the mounting pads MP1/MP2 are",
+        "  paste lands too.",
         f"- U8 ({u8_mpn}, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm",
         "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot.",
         "- U7 (Semtech SC189ASKTRT, SOT-23-5, bottom side): 1.0 V FPGA core buck.",
@@ -1238,8 +1270,10 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         *ld0_numbering_lines(ld0_mpn),
         f"- Verify pin 1/A1 against the drawings on {pin1_text}.",
         "- Stencil from the GTP/GBP layers, whose apertures are 1:1 with copper.",
-        "  Please apply your house reductions, in particular: U2 LQFP-64 0.5 mm",
-        f"  pitch; U8 exposed pad (about 85 % area, windowpane); U1 {u1_land:.3f} mm round",
+        "  Please apply your house reductions, in particular: U2 QFN-64 0.5 mm",
+        "  pitch with a windowpane aperture on its 4.20 mm exposed pad EP (its vias",
+        "  are filled and capped); U8 exposed pad (about 85 % area, windowpane);",
+        f"  U1 {u1_land:.3f} mm round",
         "  apertures need a thin stencil (0.08 mm or thinner suggested) and a",
         "  paste that releases them reliably.",
         "",
@@ -1251,7 +1285,7 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"- U1 {u1_mpn}: AMD-authorized distributors only (e.g. Digi-Key,",
         "  Mouser, Avnet); no local, broker or open-market stock. Ask us first if",
         "  none can supply it.",
-        "- U2 FT2232HL-REEL: FTDI-authorized distributors only (FTDI clones exist).",
+        "- U2 FT2232HQ-REEL: FTDI-authorized distributors only (FTDI clones exist).",
         "- The BOM's last column carries per-line instructions; please follow them.",
         "",
         "QUALITY AND TEST",

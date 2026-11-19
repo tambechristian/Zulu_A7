@@ -1,0 +1,323 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 17.425,
+"y": 22.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 50.8,
+"y": 23.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 50.8,
+"y": 23.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 50.8,
+"y": 23.6,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 50.8,
+"y": 23.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 50.8,
+"y": 23.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 17.8,
+"y": 18.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 17.8,
+"y": 18.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 17.8,
+"y": 18.7,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 17.8,
+"y": 18.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 49.65,
+"y": 20.3,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 49.65,
+"y": 20.3,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 49.65,
+"y": 20.3,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 49.65,
+"y": 20.3,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 10.825,
+"y": 18.05,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 11.625,
+"y": 18.05,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 12.425,
+"y": 18.05,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 13.225,
+"y": 18.05,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.925,
+"y1": 21.5,
+"x2": 50.8,
+"y2": 23.6
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 50.55,
+"y1": 21.85,
+"x2": 50.175,
+"y2": 21.85
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 50.175,
+"y1": 21.85,
+"x2": 50.05,
+"y2": 21.725
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 50.05,
+"y1": 21.725,
+"x2": 50.05,
+"y2": 20.7
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 50.05,
+"y1": 20.7,
+"x2": 49.65,
+"y2": 20.3
+},
+{
+"net": "SD-DAT0",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 11.0,
+"y1": 16.05,
+"x2": 10.525,
+"y2": 17.9
+},
+{
+"net": "SD-DAT0",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 10.525,
+"y1": 17.9,
+"x2": 10.525,
+"y2": 19.2
+},
+{
+"net": "SD-DAT0",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 10.525,
+"y1": 19.2,
+"x2": 10.825,
+"y2": 19.85
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 13.4,
+"y1": 16.75,
+"x2": 13.525,
+"y2": 17.55
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 13.525,
+"y1": 17.55,
+"x2": 13.825,
+"y2": 17.85
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 13.825,
+"y1": 17.85,
+"x2": 13.825,
+"y2": 18.925
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 13.825,
+"y1": 18.925,
+"x2": 13.6,
+"y2": 19.15
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 13.6,
+"y1": 19.15,
+"x2": 13.1,
+"y2": 19.15
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 13.1,
+"y1": 19.15,
+"x2": 12.95,
+"y2": 19.3
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 12.95,
+"y1": 19.3,
+"x2": 12.95,
+"y2": 19.525
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 12.95,
+"y1": 19.525,
+"x2": 12.925,
+"y2": 19.55
+},
+{
+"net": "SD-DAT2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 12.925,
+"y1": 19.55,
+"x2": 12.8,
+"y2": 19.85
+}
+],
+"remove": [],
+"log": []
+}

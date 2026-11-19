@@ -1,0 +1,117 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_2\Imported zulu_a7.PrjPcb\Zulu_a7_no_pmod.PcbDoc
+Date     : 11/14/2026
+Time     : 5:17:04 PM
+
+Processing Rule : Clearance Constraint (Gap=0.09mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.2mm) (InNet('SDRAM-CLK') And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.1mm) ((InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG'))),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.175mm) ((InNamedPolygon('L2_GND_PLANE') Or InNamedPolygon('L5_VCC3V3_PLANE'))),(IsThruVia)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.1mm) (InComponent('X1')),(InNamedPolygon('L5_VCC3V3_PLANE'))
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1.5mm) (Preferred=0.5mm) (InNet('VCC1V0'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=0.5mm) (InNetClass('PWR_SWITCH'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.076mm) (Max=0.5mm) (Preferred=0.076mm) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.15mm) (Max=1mm) (Preferred=0.2mm) (InNetClass('PWR_RAILS'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.076mm) (Max=0.15mm) (Preferred=0.125mm) (InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.076mm) (Max=1.5mm) (Preferred=1.05mm) (InNet('VCC3V3'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.2mm) (Max=1.5mm) (Preferred=1.1mm) (InNet('VU') Or InNet('USB5V0') Or InNet('VBATT'))
+Rule Violations :0
+
+Processing Rule : Routing Topology Rule(Topology=Shortest) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.25mm) (Air Gap=0.25mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (IsVia)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.14mm) (InComponent('X1'))
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.02mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.55mm) (IsBuriedVia)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=1.3mm) (InComponent('X1'))
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.15mm) (Max=0.15mm) (IsMicroVia)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.24mm) (All),(All)
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (49.65mm,20.3mm) from L2-GND to L3-SIG And Via (49.65mm,20.3mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (49.65mm,20.3mm) from L3-SIG to L4-SIG And Via (49.65mm,20.3mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (49.65mm,20.3mm) from L4-SIG to L5-VCC3V3 And Via (49.65mm,20.3mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (49.65mm,20.3mm) from Top Layer to Bottom Layer And Via (49.65mm,20.3mm) from Top Layer to L2-GND Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (50.8mm,23.6mm) from L2-GND to L3-SIG And Via (50.8mm,23.6mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (50.8mm,23.6mm) from L3-SIG to L4-SIG And Via (50.8mm,23.6mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (50.8mm,23.6mm) from L4-SIG to L5-VCC3V3 And Via (50.8mm,23.6mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (50.8mm,23.6mm) from L5-VCC3V3 to Bottom Layer And Via (50.8mm,23.6mm) from Top Layer to Bottom Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.24mm) Between Via (50.8mm,23.6mm) from Top Layer to Bottom Layer And Via (50.8mm,23.6mm) from Top Layer to L2-GND Pad/Via Touching Holes
+Rule Violations :9
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.1mm) Between Pad C4-2(29.25mm,3.05mm) on Bottom Layer And Pad X4-2(28.86mm,1.8mm) on Multi-Layer [Bottom Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.079mm < 0.1mm) Between Pad C5-1(30.25mm,3.05mm) on Bottom Layer And Pad X4-1(30.86mm,1.8mm) on Multi-Layer [Bottom Solder] Mask Sliver [0.079mm]
+Rule Violations :2
+
+Processing Rule : Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-2(23.165mm,20.165mm) on Top Layer And Text "U2" (23.509mm,19.639mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-3(23.165mm,21.435mm) on Top Layer And Text "C8" (23.59mm,20.939mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-3(23.165mm,21.435mm) on Top Layer And Text "C9" (21.05mm,20.939mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-4(23.165mm,22.705mm) on Top Layer And Text "11" (23.59mm,22.189mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-4(23.165mm,22.705mm) on Top Layer And Text "12" (21.05mm,22.189mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-5(18.235mm,22.705mm) on Top Layer And Text "13" (18.51mm,22.189mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-5(18.235mm,22.705mm) on Top Layer And Text "14" (15.97mm,22.189mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-6(18.235mm,21.435mm) on Top Layer And Text "C10" (18.11mm,20.939mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad U10-6(18.235mm,21.435mm) on Top Layer And Text "C11" (15.57mm,20.939mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+Rule Violations :9
+
+Processing Rule : Silk to Silk (Clearance=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+   Violation between Net Antennae: Via (28.35mm,4.35mm) from L5-VCC3V3 to Bottom Layer 
+Rule Violations :1
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 21
+Waived Violations : 0
+Time Elapsed        : 00:00:01

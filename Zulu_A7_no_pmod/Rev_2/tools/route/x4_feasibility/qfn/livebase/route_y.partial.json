@@ -1,0 +1,145 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 26.2,
+"y": 20.15,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 22.425,
+"y": 19.65,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 34.45,
+"y": 4.35,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 33.175,
+"y": 18.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 34.625,
+"y": 17.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 34.625,
+"y": 11.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 30.675,
+"y": 9.825,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 11.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 12.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 13.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 13.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 16.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 18.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 22.45,
+"y1": 19.65,
+"x2": 22.425,
+"y2": 19.65
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 34.25,
+"y1": 4.05,
+"x2": 34.45,
+"y2": 4.35
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 38 queued nets remain"
+]
+}

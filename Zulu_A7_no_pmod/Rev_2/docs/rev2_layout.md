@@ -48,8 +48,8 @@ Gates, re-run independently before Altium and again after the R96 fix (all in th
 violations / 0 open, width check 0, dead copper 0, route_conn 0 open, through vias on SMD pads 0, new microvias in
 pads 0, full-board exact DRC 0 new findings against the unmoved board.
 
-USB pair: Top only, 0.15/0.15, no vias, P 15.9223 / N 15.9224 mm on the board (mismatch 0.0002 mm), coupled 12.2 mm
-at 0.01 mm tolerance (11.4 mm by strict parallel-segment overlap).
+USB pair (updated 2026-11-19 for the FT2232HQ re-route; see `docs/x4_feather_handoff.md`): Top only, 0.15/0.15, no
+vias, P = N = 12.1863 mm. (The Rev 2 first-release pair was P 15.9223 / N 15.9224 mm, coupled 12.2 mm.)
 
 Power copper is narrower than Rev 1 in places (all pass the width rules): VU 0.6 mm through X4; VBATT's west run
 0.4 mm over 9.6 mm (was 0.4-1.2); USB5V0 2.6 mm at 0.2 mm on Top near (32-34, 22.2); about 2.2 mm of 3 mil VCC3V3 on
@@ -71,6 +71,20 @@ there is no library pad to update.
 
 The other files in `docs/` and the `tools/route/` stage folders other than `rev2/` are Rev 1 history copied with the
 project.
+
+## Update 2026-11-19: U2 is now the FT2232HQ (QFN-64) and X4 is the SMD side-entry JST
+
+Everything above describes the 2026-11-12 release (U2 = FT2232HL, X4 = the B2B top-entry housing). The board has
+since changed: U2 = FT2232HQ-QFN64 at (30.50, 14.55), X4 = S2B-PH-SM4-TB at (31.39, 4.90), U10 shifted by
+(+2.50, +1.60), no PCB notch, and the affected copper re-routed. The user accepted this board (SHA-256 `62312183A342...`,
+saved 2026-11-19 09:01:27, DRC: 22 non-electrical items), and the release data was regenerated from it on 2026-11-19:
+13 Gerbers (09:31) and NC drills with G85 slots (09:44), `fabrication/Zulu_A7_no_pmod_Rev_2_PCBWay_FAB_NOTES.txt` +
+`..._Fabrication_2026-11-19.zip` (23 entries), and the `assembly/` BOM, CPL, notes, drawings and
+`..._Assembly_2026-11-19.zip` (67 BOM lines, 188 fitted designators). The drill counts are 322 through (0.20) and
+1,260 microvias (Top-L2 336, L2-L3 302, L4-L5 301, L5-Bottom 321) plus 400 buried L3-L4; plug all 322 through vias;
+138 via-in-pad sites, of which 2 are GND through vias (U2-EP, X4-2) that need resin fill and capping. The 2026-11-11
+figures under "Release outputs" below are Rev 2's first release and are kept for history. Details and open items
+are in `docs/x4_feather_handoff.md`.
 
 ## Release outputs (2026-11-11, title update 2026-11-12, PCBWay)
 

@@ -1,0 +1,23 @@
+GND            
+VCC3V3         
+CHAN10         
+CHAN19         
+CHAN21         
+CHAN22         
+CLK-12M-FT     
+D5             
+D6             
+D7             
+DONE           
+EE-CLK         
+EE-CS          
+EE-DATA        
+FPGA-INIT#     
+FPGA-TDI       
+FPGA-TDO       
+FPGA-TMS       
+FT-PWREN#      
+FT-REF         
+FT-RESETN      
+FT-VCORE       
+FT-VPHY        ripped FT-REF FT-RESETN

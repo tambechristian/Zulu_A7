@@ -2,10 +2,10 @@
 FileName = Zulu_a7_no_pmod.GBR
 AutoAperture = True
 *************************************************************
-Generating : Bottom Solder
-      File : Zulu_a7_no_pmod.GBS
+Generating : Bottom Paste
+      File : Zulu_a7_no_pmod.GBP
 
-    Adding Layer      : Bottom Solder
+    Adding Layer      : Bottom Paste
 
     Adding Layer      : Bottom Layer
 
@@ -13,35 +13,31 @@ Generating : Bottom Solder
 
 
 Used DCodes :
-    D38
-    D49
-    D59
-    D62
-    D63
-    D64
-    D65
-    D66
-    D157
-    D158
-    D159
-    D160
-    D161
-    D162
-    D163
-    D164
-    D165
-    D166
-    D167
-    D168
-    D169
-    D170
-    D171
-    D172
-    D173
-    D174
-    D175
-    D176
-    D177
+    D19
+    D21
+    D25
+    D39
+    D98
+    D99
+    D100
+    D101
+    D102
+    D103
+    D104
+    D105
+    D106
+    D107
+    D108
+    D109
+    D110
+    D111
+    D112
+    D113
+    D114
+    D115
+    D116
+    D117
+    D118
 *************************************************************
 
 *************************************************************
@@ -56,7 +52,6 @@ Generating : Top Paste
 
 
 Used DCodes :
-    D13
     D14
     D15
     D16
@@ -81,48 +76,51 @@ Used DCodes :
     D35
     D36
     D37
+    D38
+    D39
 *************************************************************
 
 *************************************************************
-Generating : Bottom Overlay
-      File : Zulu_a7_no_pmod.GBO
+Generating : Bottom Solder
+      File : Zulu_a7_no_pmod.GBS
 
-    Adding Layer      : Bottom Overlay
+    Adding Layer      : Bottom Solder
 
-
-Used DCodes :
-    D12
-*************************************************************
-
-*************************************************************
-Generating : L2-GND
-      File : Zulu_a7_no_pmod.G1
-
-    Adding Layer      : L2-GND
+    Adding Layer      : Bottom Layer
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D97
-    D99
-    D101
-    D102
-    D103
-    D104
-*************************************************************
-
-*************************************************************
-Generating : Top Overlay
-      File : Zulu_a7_no_pmod.GTO
-
-    Adding Layer      : Top Overlay
-
-
-Used DCodes :
-    D10
-    D11
-    D12
+    D45
+    D47
+    D64
+    D65
+    D66
+    D67
+    D68
+    D69
+    D149
+    D150
+    D151
+    D152
+    D153
+    D154
+    D155
+    D156
+    D157
+    D158
+    D159
+    D160
+    D161
+    D162
+    D163
+    D164
+    D165
+    D166
+    D167
+    D168
+    D169
 *************************************************************
 
 *************************************************************
@@ -137,9 +135,7 @@ Generating : Top Solder
 
 
 Used DCodes :
-    D21
-    D38
-    D39
+    D29
     D40
     D41
     D42
@@ -167,53 +163,35 @@ Used DCodes :
     D64
     D65
     D66
+    D67
+    D68
+    D69
 *************************************************************
 
 *************************************************************
-Generating : L4-SIG
-      File : Zulu_a7_no_pmod.G3
+Generating : Bottom Overlay
+      File : Zulu_a7_no_pmod.GBO
 
-    Adding Layer      : L4-SIG
-
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Bottom Overlay
 
 
 Used DCodes :
     D10
-    D67
-    D72
-    D73
-    D75
-    D76
-    D91
-    D97
-    D99
-    D101
-    D102
-    D103
-    D104
-    D105
-    D106
-    D108
-    D109
+    D13
 *************************************************************
 
 *************************************************************
-Generating : L5-VCC3V3
-      File : Zulu_a7_no_pmod.G4
+Generating : Top Overlay
+      File : Zulu_a7_no_pmod.GTO
 
-    Adding Layer      : L5-VCC3V3
-
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Top Overlay
 
 
 Used DCodes :
-    D97
-    D99
-    D101
-    D102
-    D103
-    D104
+    D10
+    D11
+    D12
+    D13
 *************************************************************
 
 *************************************************************
@@ -227,38 +205,39 @@ Generating : Bottom Layer
 
 Used DCodes :
     D10
-    D11
-    D13
-    D17
+    D12
+    D19
+    D21
     D25
-    D37
-    D67
-    D68
-    D70
+    D39
     D71
     D72
     D73
     D74
     D75
-    D76
-    D78
+    D77
+    D82
     D83
     D84
+    D85
     D86
     D87
-    D89
+    D90
     D91
+    D92
     D93
-    D94
-    D96
     D97
     D98
     D99
     D100
     D101
     D102
+    D103
+    D104
     D105
     D106
+    D107
+    D108
     D109
     D110
     D111
@@ -299,14 +278,103 @@ Used DCodes :
     D146
     D147
     D148
-    D149
-    D150
-    D151
-    D152
-    D153
-    D154
-    D155
-    D156
+*************************************************************
+
+*************************************************************
+Generating : L5-VCC3V3
+      File : Zulu_a7_no_pmod.G4
+
+    Adding Layer      : L5-VCC3V3
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D82
+    D84
+    D86
+    D87
+    D88
+    D89
+*************************************************************
+
+*************************************************************
+Generating : L4-SIG
+      File : Zulu_a7_no_pmod.G3
+
+    Adding Layer      : L4-SIG
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D71
+    D72
+    D73
+    D74
+    D75
+    D82
+    D84
+    D86
+    D87
+    D88
+    D89
+    D91
+    D92
+    D93
+    D96
+    D97
+*************************************************************
+
+*************************************************************
+Generating : L3-SIG
+      File : Zulu_a7_no_pmod.G2
+
+    Adding Layer      : L3-SIG
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D71
+    D72
+    D73
+    D74
+    D75
+    D82
+    D84
+    D86
+    D87
+    D88
+    D89
+    D90
+    D91
+    D92
+    D93
+    D94
+    D95
+    D96
+*************************************************************
+
+*************************************************************
+Generating : L2-GND
+      File : Zulu_a7_no_pmod.G1
+
+    Adding Layer      : L2-GND
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D82
+    D84
+    D86
+    D87
+    D88
+    D89
 *************************************************************
 
 *************************************************************
@@ -320,9 +388,6 @@ Generating : Top Layer
 
 Used DCodes :
     D10
-    D11
-    D13
-    D14
     D15
     D16
     D17
@@ -346,9 +411,8 @@ Used DCodes :
     D35
     D36
     D37
-    D67
-    D68
-    D69
+    D38
+    D39
     D70
     D71
     D72
@@ -367,91 +431,6 @@ Used DCodes :
     D85
     D86
     D87
-    D88
-    D89
-    D90
-    D91
-    D92
-    D93
-    D94
-    D95
-    D96
-    D97
-    D98
-    D99
-    D100
-    D101
-    D102
-*************************************************************
-
-*************************************************************
-Generating : L3-SIG
-      File : Zulu_a7_no_pmod.G2
-
-    Adding Layer      : L3-SIG
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D10
-    D67
-    D69
-    D72
-    D73
-    D75
-    D76
-    D87
-    D91
-    D97
-    D99
-    D101
-    D102
-    D103
-    D104
-    D105
-    D106
-    D107
-    D108
-*************************************************************
-
-*************************************************************
-Generating : Bottom Paste
-      File : Zulu_a7_no_pmod.GBP
-
-    Adding Layer      : Bottom Paste
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D13
-    D17
-    D25
-    D37
-    D110
-    D111
-    D112
-    D113
-    D114
-    D115
-    D116
-    D117
-    D118
-    D119
-    D120
-    D121
-    D122
-    D123
-    D124
-    D125
-    D126
-    D127
-    D128
-    D129
-    D130
 *************************************************************
 
 *************************************************************
@@ -460,6 +439,6 @@ Generating : Profile
 
 
 Used DCodes :
-    D178
+    D170
 *************************************************************
 

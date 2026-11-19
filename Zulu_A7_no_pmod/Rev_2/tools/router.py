@@ -46,7 +46,9 @@ EDGE = 0.30
 HOLE_HOLE = 0.24
 ROUTE = ['Top Layer', 'L3-SIG', 'L4-SIG', 'Bottom Layer']
 STACK = ['Top Layer', 'L2-GND', 'L3-SIG', 'L4-SIG', 'L5-VCC3V3', 'Bottom Layer']
-SDRAM = set(['D%d' % i for i in range(16)] + ['A%d' % i for i in range(13)] +
+# the SDRAM_DATA / SDRAM_ADDR / SDRAM_CTRL net classes of the PcbDoc. Since the 2026-11-13 DQ series resistors
+# (R119-R134) every data bit is two nets: SDRAM-Dn on U3's side and Dn on U1's, and both are in SDRAM_DATA.
+SDRAM = set(['D%d' % i for i in range(16)] + ['SDRAM-D%d' % i for i in range(16)] + ['A%d' % i for i in range(13)] +
             ['BS0', 'BS1', 'CAS#', 'RAS#', 'WE#', 'CKE', 'LDQM', 'UDQM', 'SDRAM-CS#', 'SDRAM-CLK'])
 INNER = ('L3-SIG', 'L4-SIG')
 # via types: name -> (list of (from, to, size, hole) objects, layers the stack occupies, routing layers it joins)
@@ -131,6 +133,28 @@ class Board:
         self.holes = [(p['x'], p['y'], p['drill']) for p in M['pads'] if p['drill'] > 0]
         self.base = {l: a.copy() for l, a in self.r.items()}       # the board before this router added copper
         self.base_vias = list(self.vias)
+        self.thr_block = self._through_in_pad_mask()
+
+    def _through_in_pad_mask(self):
+        """cells where a through via's land would overlap an SMD pad (the judge's via-in-pad rule); microvias may sit in pads"""
+        r = max(o[2] for o in VIAS['through'][0]) / 2 - 1e-4
+        mask = np.zeros((self.H, self.W), bool)
+        for p in self.M['pads']:
+            if p['drill'] or not p['layers']:
+                continue
+            ext = max(p['w'], p['h']) / 2 + r
+            i0, j0 = max(0, int(math.floor((p['y'] - ext) / G))), max(0, int(math.floor((p['x'] - ext) / G)))
+            i1, j1 = min(self.H - 1, int(math.ceil((p['y'] + ext) / G))), min(self.W - 1, int(math.ceil((p['x'] + ext) / G)))
+            if i1 < i0 or j1 < j0:
+                continue
+            yy, xx = np.mgrid[i0:i1 + 1, j0:j1 + 1]
+            X, Y = xx * G, yy * G
+            if C.pad_round(p):
+                d = np.hypot(X - p['x'], Y - p['y']) - min(p['w'], p['h']) / 2
+            else:
+                d = np.hypot(np.maximum(np.abs(X - p['x']) - p['w'] / 2, 0), np.maximum(np.abs(Y - p['y']) - p['h'] / 2, 0))
+            mask[i0:i1 + 1, j0:j1 + 1] |= d < r
+        return mask
 
     def ij(self, x, y):
         return int(round(y / G)), int(round(x / G))
@@ -220,6 +244,8 @@ class Router:
         i, j = int(round(y / G)) - i0, int(round(x / G)) - j0
         objs, occ, _ = VIAS[kind]
         land = max(o[2] for o in objs) / 2
+        if kind == 'through' and self.B.thr_block[int(round(y / G)), int(round(x / G))]:
+            return False
         for l in occ:
             a = D[l]
             if not (0 <= i < a.shape[0] and 0 <= j < a.shape[1]) or a[i, j] < land + MARGIN:
@@ -428,6 +454,13 @@ class Router:
                 cur, base = self.B.r[ll][sl], self.B.base[ll][sl]
                 ids = np.unique(cur[(cur != base) & (cur > 0) & (cur != n)])
                 out |= {inv[int(v)] for v in ids}
+            if kind:                                 # a router via inside the hole-to-hole spacing blocks this one too
+                objs, occ, _ = VIAS[kind]
+                hole = max(o[3] for o in objs) / 2
+                for vx, vy, vh, vspan, vnet in self.B.vias[len(self.B.base_vias):]:
+                    if (vnet != net and vnet in self.B.nid and vspan & set(occ) and
+                            math.hypot(vx - x, vy - y) < HOLE_HOLE + hole + vh / 2 + 0.001):
+                        out.add(vnet)
         return out
 
     def rip(self, nets):
@@ -720,6 +753,12 @@ def main():
                                     log.append('plane tie %s at %.2f,%.2f ripped %s' % (net, cx, cy, ' '.join(sorted(victims))))
                     if not r:
                         log.append('FAIL plane tie %s at %.2f,%.2f' % (net, cx, cy))
+                if a.checkpoint:
+                    json.dump({'vias': Rt.out_v, 'tracks': Rt.out_t, 'remove': removed,
+                               'log': ['CHECKPOINT: plane %s group %d/%d' %
+                                       (net, len(tied), len(groups))]},
+                              open(a.checkpoint, 'w'), indent=0)
+                print('  %s plane groups tied %d/%d' % (net, len(tied), len(groups)), flush=True)
             return torn
         main_g, rest = groups[0], groups[1:]
         torn = set()

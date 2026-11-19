@@ -1,0 +1,320 @@
+{
+ "TAG": "14.55_30.5_31.39_4.2",
+ "BASE": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\tools\\route\\x4_feasibility\\qfn\\pretab_base.json",
+ "COMPS": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\tools\\route\\x4_feasibility\\qfn\\pretab_comps.json",
+ "prune_enabled": false,
+ "XC": 30.5,
+ "EP": 4.2,
+ "YC": 14.55,
+ "CX": 31.39,
+ "CY": 4.9,
+ "U10_DX": 2.5,
+ "U10_DY": 1.6,
+ "ep_ground_vias": 9,
+ "ground_pad_vias": 11,
+ "ripped_tracks": 253,
+ "ripped_vias": 132,
+ "ripped_len_mm": 244.18,
+ "pruned_tracks": 0,
+ "pruned_vias": 0,
+ "pruned_len_mm": 0.0,
+ "why": {
+  "t:u10-fanout": 31,
+  "t:u10-pad-conflict": 7,
+  "t:u2-fanout": 185,
+  "t:pad-conflict": 25,
+  "t:x4-fanout": 5,
+  "v:pad-conflict": 20,
+  "v:u2-via": 42,
+  "v:u10-pad-conflict": 1,
+  "v:stack-mate": 69
+ },
+ "per_net": {
+  "CHAN19": [
+   0.99,
+   3
+  ],
+  "CLK-12M-FT": [
+   2.33,
+   2
+  ],
+  "D6": [
+   0.0,
+   1
+  ],
+  "DONE": [
+   3.51,
+   8
+  ],
+  "EE-CLK": [
+   5.58,
+   4
+  ],
+  "EE-CS": [
+   7.61,
+   5
+  ],
+  "EE-DATA": [
+   11.98,
+   3
+  ],
+  "FT-PWREN#": [
+   6.37,
+   4
+  ],
+  "FT-REF": [
+   1.09,
+   3
+  ],
+  "FT-RESETN": [
+   3.49,
+   2
+  ],
+  "FT-VCORE": [
+   37.64,
+   1
+  ],
+  "FT-VPHY": [
+   9.58,
+   2
+  ],
+  "FT-VPLL": [
+   3.11,
+   2
+  ],
+  "GND": [
+   21.32,
+   1
+  ],
+  "N$LD0B": [
+   3.87,
+   5
+  ],
+  "N$LD0G": [
+   0.59,
+   2
+  ],
+  "N$LD0R": [
+   1.0,
+   6
+  ],
+  "N$LD1A": [
+   4.14,
+   6
+  ],
+  "N$LD2A": [
+   3.37,
+   3
+  ],
+  "PROG#": [
+   5.22,
+   9
+  ],
+  "SDRAM-D10": [
+   0.0,
+   1
+  ],
+  "SDRAM-D8": [
+   0.0,
+   1
+  ],
+  "SDRAM-D9": [
+   0.0,
+   1
+  ],
+  "TCK": [
+   4.45,
+   2
+  ],
+  "TDI": [
+   2.28,
+   4
+  ],
+  "TDO": [
+   2.1,
+   5
+  ],
+  "TMS": [
+   1.06,
+   1
+  ],
+  "UART_FT_CTS#": [
+   3.34,
+   0
+  ],
+  "UART_FT_DTR#": [
+   9.64,
+   16
+  ],
+  "UART_FT_RTS#": [
+   6.4,
+   11
+  ],
+  "UART_FT_RXD": [
+   3.44,
+   11
+  ],
+  "UART_FT_TXD": [
+   5.17,
+   2
+  ],
+  "USB5V0": [
+   8.32,
+   1
+  ],
+  "USB_D_N": [
+   8.99,
+   0
+  ],
+  "USB_D_P": [
+   10.43,
+   0
+  ],
+  "VBATT": [
+   4.53,
+   0
+  ],
+  "VCC3V3": [
+   19.62,
+   4
+  ],
+  "VU": [
+   21.61,
+   0
+  ]
+ },
+ "open": {
+  "SDRAM-D10": 1,
+  "SDRAM-D9": 1,
+  "SDRAM-D8": 1,
+  "D6": 1,
+  "VU": 1,
+  "GND": 4,
+  "VCC3V3": 13,
+  "CHAN19": 1,
+  "USB5V0": 1,
+  "USB_D_N": 1,
+  "USB_D_P": 1,
+  "VBATT": 1,
+  "FT-PWREN#": 1,
+  "UART_FT_DTR#": 1,
+  "UART_FT_RTS#": 1,
+  "UART_FT_TXD": 1,
+  "UART_FT_RXD": 1,
+  "UART_FT_CTS#": 1,
+  "EE-DATA": 2,
+  "EE-DATA-DO": 1,
+  "PROG#": 1,
+  "EE-CS": 2,
+  "EE-CLK": 2,
+  "TMS": 1,
+  "TDO": 1,
+  "TDI": 2,
+  "N$LD2A": 1,
+  "N$LD1A": 1,
+  "N$LD0G": 1,
+  "N$LD0R": 1,
+  "N$LD0B": 1,
+  "CLK-12M-FT": 1,
+  "FT-RESETN": 1,
+  "FT-REF": 1,
+  "DONE": 1,
+  "TCK": 1,
+  "FT-VPLL": 2,
+  "FT-VPHY": 2,
+  "FT-VCORE": 4
+ },
+ "open_total": 63,
+ "body_check_U2_X4": [],
+ "body_check_all_new": null,
+ "body_check_all_base": null,
+ "body_check_all_new_list": [],
+ "body_check_all_base_list": [],
+ "U2_body": [
+  [
+   26.0,
+   10.05,
+   35.0,
+   19.05
+  ]
+ ],
+ "X4_body": [
+  [
+   27.44,
+   0.49999999999999933,
+   35.34,
+   8.100000000000001
+  ]
+ ],
+ "U10_body": [
+  [
+   21.9851,
+   18.744999999999997,
+   24.9851,
+   21.744999999999997
+  ]
+ ],
+ "pad_pad_nearest": [
+  [
+   "U2-29",
+   "X4-2",
+   0.25
+  ],
+  [
+   "U2-28",
+   "X4-2",
+   0.25
+  ],
+  [
+   "U2-27",
+   "X4-2",
+   0.25
+  ],
+  [
+   "U2-25",
+   "X4-1",
+   0.25
+  ],
+  [
+   "U2-24",
+   "X4-1",
+   0.25
+  ],
+  [
+   "U2-23",
+   "X4-1",
+   0.25
+  ],
+  [
+   "X4-1",
+   "U2-25",
+   0.25
+  ],
+  [
+   "X4-1",
+   "U2-24",
+   0.25
+  ],
+  [
+   "X4-1",
+   "U2-23",
+   0.25
+  ],
+  [
+   "X4-2",
+   "U2-29",
+   0.25
+  ],
+  [
+   "X4-2",
+   "U2-28",
+   0.25
+  ],
+  [
+   "X4-2",
+   "U2-27",
+   0.25
+  ]
+ ],
+ "edge_min": 0.3
+}

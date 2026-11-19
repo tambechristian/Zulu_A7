@@ -1,0 +1,492 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 55.175,
+"y": 10.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 55.175,
+"y": 10.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 55.175,
+"y": 10.975,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 55.175,
+"y": 10.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 55.175,
+"y": 10.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 51.725,
+"y": 7.55,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 51.725,
+"y": 7.55,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 52.05,
+"y": 7.225,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 52.05,
+"y": 7.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 52.05,
+"y": 7.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 30.35,
+"y": 4.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 29.025,
+"y": 2.55,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.15,
+"y": 21.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 22.95,
+"y": 18.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 22.15,
+"y": 13.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 57.625,
+"y": 2.5,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 51.425,
+"y": 6.55,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 20.45,
+"y": 13.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 20.45,
+"y": 13.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.45,
+"y": 13.4,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 20.45,
+"y": 13.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "FPGA-TDI",
+"x": 58.425,
+"y": 11.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-TDI",
+"x": 58.425,
+"y": 11.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "PROG#",
+"x": 58.7,
+"y": 11.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "PROG#",
+"x": 58.7,
+"y": 11.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "PROG#",
+"x": 59.0,
+"y": 11.7,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "PROG#",
+"x": 59.0,
+"y": 11.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "PROG#",
+"x": 59.0,
+"y": 11.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "TDI",
+"x": 58.075,
+"y": 2.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "TDI",
+"x": 58.075,
+"y": 2.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V0",
+"x": 24.7,
+"y": 16.375,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC1V8",
+"x": 21.25,
+"y": 18.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V8",
+"x": 21.25,
+"y": 18.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.95,
+"y1": 10.975,
+"x2": 55.175,
+"y2": 10.975
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.725,
+"y1": 7.55,
+"x2": 52.05,
+"y2": 7.225
+},
+{
+"net": "FPGA-TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 58.2,
+"y1": 11.35,
+"x2": 58.425,
+"y2": 11.7
+},
+{
+"net": "FPGA-TDI",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.425,
+"y1": 11.7,
+"x2": 58.475,
+"y2": 11.625
+},
+{
+"net": "LED0_R",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 60.4,
+"y1": 10.2,
+"x2": 60.4,
+"y2": 13.1
+},
+{
+"net": "PROG#",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 58.7,
+"y1": 11.35,
+"x2": 59.0,
+"y2": 11.7
+},
+{
+"net": "PROG#",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 59.0,
+"y1": 11.7,
+"x2": 58.925,
+"y2": 11.775
+},
+{
+"net": "TDI",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 57.7,
+"y1": 0.5,
+"x2": 58.05,
+"y2": 0.85
+},
+{
+"net": "TDI",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.05,
+"y1": 0.85,
+"x2": 58.075,
+"y2": 1.125
+},
+{
+"net": "TDI",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.075,
+"y1": 1.125,
+"x2": 58.075,
+"y2": 2.725
+},
+{
+"net": "TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 58.075,
+"y1": 2.725,
+"x2": 60.25,
+"y2": 7.65
+},
+{
+"net": "VCC1V0",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 24.8,
+"y1": 14.6,
+"x2": 24.8,
+"y2": 16.275
+},
+{
+"net": "VCC1V0",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 24.8,
+"y1": 16.275,
+"x2": 24.7,
+"y2": 16.375
+},
+{
+"net": "VCC1V0",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 24.7,
+"y1": 16.375,
+"x2": 24.75,
+"y2": 19.825
+},
+{
+"net": "VCC1V0",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 24.75,
+"y1": 19.825,
+"x2": 24.75,
+"y2": 19.85
+},
+{
+"net": "VCC1V0",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 24.75,
+"y1": 19.85,
+"x2": 24.775,
+"y2": 19.875
+},
+{
+"net": "VCC1V0",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 24.775,
+"y1": 19.875,
+"x2": 24.75,
+"y2": 20.55
+},
+{
+"net": "VCC1V0",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 24.75,
+"y1": 20.55,
+"x2": 24.45,
+"y2": 21.2
+},
+{
+"net": "VCC1V8",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 21.25,
+"y1": 17.5,
+"x2": 21.25,
+"y2": 18.575
+},
+{
+"net": "VCC1V8",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 21.25,
+"y1": 18.575,
+"x2": 21.25,
+"y2": 18.6
+}
+],
+"remove": [],
+"log": [
+"OPEN VBATT 1",
+"OPEN VCC1V0 3",
+"FAIL VBATT (budget)",
+"FAIL VCC1V0 (budget)",
+"FAIL VCC1V0 (budget)",
+"FAIL VCC1V0 (budget)"
+]
+}

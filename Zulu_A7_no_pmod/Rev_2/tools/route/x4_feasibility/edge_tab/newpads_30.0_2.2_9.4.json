@@ -1,0 +1,64 @@
+{
+"x4": [
+{
+"ref": "X4",
+"pad": "1",
+"net": "VBATT",
+"x": 31.0,
+"y": 5.05,
+"shape": "rect",
+"w": 1.0,
+"h": 3.5,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "X4",
+"pad": "2",
+"net": "GND",
+"x": 29.0,
+"y": 5.05,
+"shape": "rect",
+"w": 1.0,
+"h": 3.5,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "X4",
+"pad": "MP1",
+"net": "",
+"x": 33.35,
+"y": -0.7,
+"shape": "rect",
+"w": 1.5,
+"h": 3.4,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "X4",
+"pad": "MP2",
+"net": "",
+"x": 26.65,
+"y": -0.7,
+"shape": "rect",
+"w": 1.5,
+"h": 3.4,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+}
+]
+}

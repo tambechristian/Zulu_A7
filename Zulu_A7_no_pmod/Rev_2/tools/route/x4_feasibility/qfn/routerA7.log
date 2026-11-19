@@ -1,0 +1,9 @@
+seeded 135 vias, 596 tracks
+GND            
+CHAN19         
+FT-VPHY        
+UART_FT_RXD    ripped UART_FT_CTS# UART_FT_DTR# UART_FT_RTS#
+PROG#          
+VBATT          
+TDI            
+exit 124

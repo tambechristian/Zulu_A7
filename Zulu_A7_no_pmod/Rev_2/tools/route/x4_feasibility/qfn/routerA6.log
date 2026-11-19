@@ -1,0 +1,8 @@
+seeded 171 vias, 784 tracks
+PROG#          ripped FT-VCORE UART_FT_CTS# UART_FT_RTS#
+TDI            
+FT-VCORE       
+UART_FT_CTS#   
+UART_FT_RTS#   ripped UART_FT_CTS# UART_FT_DTR# UART_FT_TXD
+UART_FT_CTS#   
+exit 124

@@ -1,0 +1,4 @@
+VBATT          
+routed 0 connections, failed 1; 0 vias, 0 tracks -> routeVB6.json
+OPEN VBATT 1
+FAIL VBATT (nopath)

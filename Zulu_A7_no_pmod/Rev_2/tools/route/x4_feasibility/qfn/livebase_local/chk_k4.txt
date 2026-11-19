@@ -1,0 +1,8 @@
+plan: 1345 tracks, 347 vias, 0 removed; board then: 5807 tracks, 1999 vias
+violations: 4
+  hole-hole via GND at 25.375,21.500 -0.1250 from via GND
+  hole-hole via GND at 25.375,21.525 -0.1250 from via GND
+  hole-hole via GND at 51.525,10.725 0.0500 from via GND
+  hole-hole via GND at 51.525,10.925 0.0500 from via GND
+open connections after the plan: 7 on 7 nets
+FAIL

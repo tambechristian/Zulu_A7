@@ -14,13 +14,15 @@ against the PcbDoc by tools/fab_facts.py (tools/fab_facts.json: drill_vs_board
 0 missing / 0 extra in every drill file).  The script never regenerates outputs;
 it fails if any input is missing, empty, older than the PcbDoc, or does not match.
 
-NO-PMOD REV 2 (2026-11-13): retargeted to Zulu_a7_no_pmod Rev 2 after the five through vias were
-moved out of SMD pads (tools/route/vip2/, docs/dq_series_resistors.md): board saved 2026-11-13
-21:12:43 (MD5 24de4472: the 0.025 mm via-clearance pass, 00989c86, then R108 moved out from under L9),
-DRC 21:12:52 0/0 (docs/drc_r108_move.drc), Gerbers 21:13:50, NC drill 21:14:32 (G85 slots). Earlier boards
-of the day: 36f559b4 (first via pass, lands tangent), 00989c86. Every expected number below was re-read from that export and equals tools/fab_facts.json
-(drill_vs_board 0 missing / 0 extra). The outline is 60.96 x 25.40 mm; J1's twelve 1.016 mm holes are
-gone (T05 58 -> 46). The note is written by tools/fab_notes.py from fab_facts.json.
+NO-PMOD REV 2 (2026-11-19): retargeted to the accepted notchless board: U2 is the FT2232HQ QFN-64, X4 the
+side-entry S2B-PH-SM4-TB, saved 2026-11-19 09:01:27 (MD5 79a68932, SHA-256 62312183...), Altium DRC 09:00:50
+(22 violations, none electrical: 4 mask slivers at U2's corners, 13 legend items, 5 net antennae), Gerbers
+09:31:23, NC drill 09:32:48 (G85 slots). Every expected number below was re-read from that export and equals
+tools/fab_facts.json (drill_vs_board 0 missing / 0 extra). The outline is still 60.96 x 25.40 mm. The note is
+written by tools/fab_notes.py from fab_facts.json.
+
+Earlier no-PMOD Rev 2 release (2026-11-13): board 24de4472, LQFP U2, top-entry X4, TXT T02 339, TX6 319,
+TX7 304, TX3 403, TX9 282, TX10 301, 1,206 microvias.
 """
 
 import argparse
@@ -39,7 +41,7 @@ FABRICATION = os.path.join(ROOT, "fabrication")
 PCB = os.path.join(PROJECT, "Zulu_a7_no_pmod.PcbDoc")
 RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_2"
 RELEASE_NAME = "Zulu A7 no-PMOD Rev 2"
-RELEASE_DATE = "2026-11-13"
+RELEASE_DATE = "2026-11-19"
 DEFAULT_NOTE = os.path.join(FABRICATION, f"{RELEASE_PREFIX}_PCBWay_FAB_NOTES.txt")
 DEFAULT_ARCHIVE = os.path.join(
     FABRICATION, f"{RELEASE_PREFIX}_PCBWay_Fabrication_{RELEASE_DATE}.zip"
@@ -55,13 +57,13 @@ def names_order(data):
     if isinstance(data, str):
         data = data.encode("latin-1", "replace")
     return any(hashlib.sha256(t.upper()).hexdigest() in ORDER_SHA256 for t in ORDER_TOKEN.findall(data))
-# no-PMOD Rev 2 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-13 21:12:43 (Fab B Rev 2: 2026-11-12 00:16:55, title ZULU A7 2.2;
-# the 2026-11-11 23:27:22 save with title 2.0 was SHA-256 A319195B..., MD5 e8715917)
+# no-PMOD Rev 2 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-19 09:01:27 (earlier: 2026-11-13 21:12:43, SHA-256
+# CD502C40..., MD5 24de4472; Fab B Rev 2: 2026-11-12 00:16:55, title ZULU A7 2.2)
 # (Rev 1: SHA-256 C439E0F5...0382, MD5 830b1744)
 EXPECTED_PCB_SHA256 = (
-    "CD502C403DA4756C2F89E63321C82DE614DAEF53CCEF3D9C7F96FC9674E75B12"
+    "62312183A3427541FC16C2162C95B306FEC834AD28C4CDBF342B557E814A4A4E"
 )
-EXPECTED_PCB_MD5 = "24de4472b67b2cb5a592e9dee2bd7e1a"
+EXPECTED_PCB_MD5 = "79a68932c7e06e9e5b52864f41029fae"
 BASE = "Zulu_a7_no_pmod"
 OUTLINE = (0.0, 0.0, 60.96, 25.40)  # GM profile, mm
 GERBER_EXTENSIONS = [
@@ -80,16 +82,16 @@ GERBER_EXTENSIONS = [
     "GM",
 ]
 ROUND_DRILL_EXTENSIONS = ["TXT", "TX3", "TX6", "TX7", "TX9", "TX10"]
-# hits per tool, from the no-PMOD Rev 2 Zulu_a7_no_pmod.DRR (2026-11-13 21:14:32), equal to
+# hits per tool, from the no-PMOD Rev 2 Zulu_a7_no_pmod.DRR (2026-11-19 09:32:48), equal to
 # fab_facts.json drill_hits_per_tool and to the PcbDoc via counts per span
-# (Fab B Rev 2: TXT T02 354 / T05 58, TX6 321, TX7 307, TX9 281, TX10 295)
+# (2026-11-13: TXT T02 339 / T05 46, TX3 403, TX6 319, TX7 304, TX9 282, TX10 301)
 EXPECTED_ROUND_DRILLS = {
-    "TXT": {"02": 339, "04": 2, "05": 46},
-    "TX3": {"01": 403},
-    "TX6": {"01": 319},
-    "TX7": {"01": 304},
-    "TX9": {"01": 282},
-    "TX10": {"01": 301},
+    "TXT": {"02": 322, "04": 2, "05": 46},
+    "TX3": {"01": 400},
+    "TX6": {"01": 336},
+    "TX7": {"01": 302},
+    "TX9": {"01": 301},
+    "TX10": {"01": 321},
 }
 EXPECTED_TOOL_SIZES = {
     "TXT": {"02": 0.20, "04": 0.85, "05": 1.016},
@@ -99,10 +101,10 @@ EXPECTED_TOOL_SIZES = {
     "TX9": {"01": 0.15},
     "TX10": {"01": 0.15},
 }
-# no-PMOD Rev 2: TX6 + TX7 + TX9 + TX10 = 319 + 304 + 281 + 300 = 1204 (Fab B Rev 2: 321 + 307 + 281 + 295); the DRR's "MicroVia Totals" and
-# docs/rev2_layout.md (mark_microvias.py --expect 1204) agree.  Rev 1: 1161.
-EXPECTED_MICROVIA_TOTAL = 1206
-# The .LDP (2026-11-13 21:14:32) maps the same seven drill files to the same layers as
+# no-PMOD Rev 2: TX6 + TX7 + TX9 + TX10 = 336 + 302 + 301 + 321 = 1260 (2026-11-13: 1206; Fab B Rev 2: 321 + 307 + 281 + 295);
+# the DRR's "MicroVia Totals" agrees.  Rev 1: 1161.
+EXPECTED_MICROVIA_TOTAL = 1260
+# The .LDP (2026-11-19 09:32:48) maps the same seven drill files to the same layers as
 # Fab B's; only its header path changed.  So do EXPECTED_ENTRIES and the extensions.
 EXPECTED_LAYER_MAP = {
     f"{BASE}-RoundHoles.TXT": "gtl,g1,g2,g3,g4,gbl",
@@ -114,7 +116,7 @@ EXPECTED_LAYER_MAP = {
     f"{BASE}-RoundHoles.TX10": "g4,gbl",
 }
 SLOT_DRILL_FILENAME = f"{BASE}-SlotHoles.TXT"
-# X1-MS1 / X1-MS2 from the -SlotHoles.TXT (2026-11-13 21:14:32, G85), equal to the PcbDoc pad
+# X1-MS1 / X1-MS2 from the -SlotHoles.TXT (2026-11-19 09:32:48, G85), equal to the PcbDoc pad
 # records (fab_facts.json x1_hole_pads): Rev 1's (29.5199, 23.9585) and
 # (36.5201, 23.9585) moved 2.54 mm west with X1.  Tool, route and length unchanged.
 EXPECTED_SLOT_CENTERS = [(26.9799, 23.9585), (33.9801, 23.9585)]

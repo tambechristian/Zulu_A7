@@ -1,0 +1,25 @@
+VCC3V3         
+GND            
+FT-RESETN      
+N$LD2A         
+EE-CLK         
+EE-DATA        
+N$LD0B         
+EE-CS          
+USB_D_P        
+N$LD0R         
+USB_D_N        
+N$LD0G         
+N$LD1A         
+N$BTN          
+FT-VPHY        
+TMS            
+CHAN19         
+TCK            
+SD-DAT2        
+FT-REF         
+PWR_PGOODALL   ripped CHAN19 N$LD0B N$LD1A
+TDO            
+TDI            
+CHAN21         
+EXIT 124

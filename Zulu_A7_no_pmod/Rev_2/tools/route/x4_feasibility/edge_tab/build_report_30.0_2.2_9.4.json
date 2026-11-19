@@ -1,0 +1,117 @@
+{
+ "CX": 30.0,
+ "CY": 2.2,
+ "tab_depth": 2.7,
+ "tab_neck_width": 9.4,
+ "tab_outer_width": 8.8,
+ "tab_outline": [
+  [
+   25.3,
+   0.0
+  ],
+  [
+   25.6,
+   -2.7
+  ],
+  [
+   34.4,
+   -2.7
+  ],
+  [
+   34.7,
+   0.0
+  ]
+ ],
+ "ripped_tracks": 14,
+ "ripped_vias": 1,
+ "ripped_len_mm": 17.65,
+ "pruned_tracks": 79,
+ "pruned_vias": 11,
+ "why": {
+  "t:pad-conflict": 7,
+  "t:x4-fanout": 7,
+  "v:pad-conflict": 1
+ },
+ "open": {
+  "VU": 1,
+  "GND": 1,
+  "VCC3V3": 2,
+  "CHAN19": 1,
+  "VBATT": 1
+ },
+ "open_total": 6,
+ "body_check_X4": [],
+ "body_check_all_new": 55,
+ "body_check_all_base": 68,
+ "X4_body": [
+  26.05,
+  -2.2,
+  33.95,
+  5.4
+ ],
+ "pad_pad_nearest": [
+  [
+   "1",
+   "U2-24",
+   0.325
+  ],
+  [
+   "1",
+   "U2-23",
+   0.325
+  ],
+  [
+   "2",
+   "U2-20",
+   0.325
+  ],
+  [
+   "2",
+   "U2-19",
+   0.325
+  ],
+  [
+   "1",
+   "U2-25",
+   0.336
+  ],
+  [
+   "2",
+   "U2-21",
+   0.336
+  ],
+  [
+   "1",
+   "U2-22",
+   0.352
+  ],
+  [
+   "2",
+   "U2-18",
+   0.352
+  ],
+  [
+   "1",
+   "U2-26",
+   0.669
+  ],
+  [
+   "2",
+   "U2-22",
+   0.669
+  ],
+  [
+   "1",
+   "U2-21",
+   0.713
+  ],
+  [
+   "2",
+   "U2-17",
+   0.713
+  ]
+ ],
+ "mount_pad_bottom_edge_clearance": 0.3,
+ "mount_pad_side_clearance_near_bottom": 0.333,
+ "u2_south_pad_clearance": 0.325
+}
