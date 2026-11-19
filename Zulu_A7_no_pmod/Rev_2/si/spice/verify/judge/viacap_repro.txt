@@ -1,0 +1,13 @@
+through via 0.35/0.20, Johnson (antipad 0.70): 0.408 pF
+  R=0.75 antipad_r=0.350 nfp=False  C=0.278 pF
+  R=0.75 antipad_r=0.350 nfp=True  C=0.299 pF
+  R=1.00 antipad_r=0.350 nfp=False  C=0.270 pF
+  R=1.00 antipad_r=0.350 nfp=True  C=0.291 pF
+  R=1.50 antipad_r=0.350 nfp=False  C=0.267 pF
+  R=1.50 antipad_r=0.350 nfp=True  C=0.288 pF
+  R=2.50 antipad_r=0.350 nfp=False  C=0.267 pF
+  R=2.50 antipad_r=0.350 nfp=True  C=0.288 pF
+buried L3-L4 0.27/0.15, Johnson: 0.219 pF
+  R=0.75 C=0.204 pF
+  R=1.50 C=0.197 pF
+  R=2.50 C=0.196 pF

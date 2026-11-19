@@ -1,0 +1,25 @@
+D13  read  typ fab    base   r0    parts pin -0.438/3.566 die -0.457/3.669 ball budget 8.6% die 21.4% t_end 32.00 conn True
+D13  read  max fab    base   r0    parts pin -0.529/3.864 die -0.465/3.898 ball budget 93.8% die 29.1% t_end 32.00 conn True
+D13  read  typ fabZ43.43 base   r0    parts pin -0.438/3.566 die -0.457/3.669 ball budget 8.6% die 21.4% t_end 32.00 conn True
+D13  read  max fabZ43.0 base   r0    parts pin -0.529/3.868 die -0.464/3.896 ball budget 94.9% die 29.1% t_end 32.00 conn True
+D13  read  max fabZ43.43 base   r0    parts pin -0.529/3.864 die -0.465/3.898 ball budget 93.8% die 29.1% t_end 32.00 conn True
+D13  read  typ fabZ43.0 base   r0    parts pin -0.445/3.567 die -0.454/3.666 ball budget 8.3% die 21.4% t_end 32.00 conn True
+D13  read  typ fabZ44 base   r0    parts pin -0.427/3.563 die -0.460/3.672 ball budget 8.7% die 21.2% t_end 32.00 conn True
+D13  read  max fabZ44 base   r0    parts pin -0.536/3.858 die -0.465/3.901 ball budget 88.8% die 28.9% t_end 32.00 conn True
+D13  read  typ fabZ45 base   r0    parts pin -0.449/3.554 die -0.464/3.678 ball budget 8.1% die 20.7% t_end 32.00 conn True
+D13  read  max fabZ45 base   r0    parts pin -0.548/3.842 die -0.467/3.905 ball budget 69.7% die 28.9% t_end 32.00 conn True
+D13  read  typ fabZ46 base   r0    parts pin -0.468/3.541 die -0.466/3.685 ball budget 19.7% die 20.0% t_end 32.00 conn True
+D13  read  max fabZ46 base   r0    parts pin -0.556/3.824 die -0.470/3.910 ball budget 112.5% die 28.8% t_end 32.00 conn True
+D13  read  max fabZ48 base   r0    parts pin -0.564/3.805 die -0.476/3.919 ball budget 119.8% die 28.7% t_end 32.00 conn True
+D13  read  max fabZ47 base   r0    parts pin -0.562/3.804 die -0.473/3.915 ball budget 112.3% die 29.0% t_end 32.00 conn True
+D13  read  typ fabZ47 base   r0    parts pin -0.486/3.533 die -0.470/3.693 ball budget 20.9% die 19.9% t_end 32.00 conn True
+D13  read  typ fabZ48 base   r0    parts pin -0.501/3.536 die -0.476/3.700 ball budget 51.8% die 19.9% t_end 32.00 conn True
+D13  read  typ fabZ49 base   r0    parts pin -0.538/3.539 die -0.481/3.706 ball budget 78.3% die 19.9% t_end 32.00 conn True
+D13  read  max fabZ49 base   r0    parts pin -0.585/3.809 die -0.480/3.923 ball budget 127.5% die 28.3% t_end 32.00 conn True
+D13  read  typ fabZ49.08 base   r0    parts pin -0.542/3.541 die -0.481/3.706 ball budget 79.3% die 20.0% t_end 32.00 conn True
+D13  read  typ fabZ49.08T7.133 base   r0    parts pin -0.462/3.581 die -0.480/3.707 ball budget 20.8% die 20.5% t_end 32.00 conn True
+D13  read  max fabZ49.08 base   r0    parts pin -0.586/3.809 die -0.480/3.923 ball budget 127.7% die 28.3% t_end 32.00 conn True
+D13  read  max fabZ49.08T7.133 base   r0    parts pin -0.511/3.827 die -0.476/3.924 ball budget 54.4% die 28.2% t_end 32.00 conn True
+D13  read  typ pcbdoc base   r0    parts pin -0.516/3.569 die -0.481/3.711 ball budget 76.2% die 20.7% t_end 32.00 conn True
+D13  read  max pcbdoc base   r0    parts pin -0.618/3.862 die -0.486/3.928 ball budget 507.5% die 27.6% t_end 32.00 conn True
+done: 24 cases, 0 errors

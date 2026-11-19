@@ -1,0 +1,6 @@
+seeded 129 vias, 398 tracks
+TDI            
+TDO            
+routed 1 connections, failed 1; 131 vias, 429 tracks -> c8a.json
+OPEN TDI 1
+FAIL TDI (budget)

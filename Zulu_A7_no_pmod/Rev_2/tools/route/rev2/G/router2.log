@@ -1,0 +1,13 @@
+seeded 66 vias, 157 tracks
+GND            
+VCC3V3         
+SD-DAT0        
+FPGA-TCK       
+SD-DAT1        
+EE-CS          
+EE-CLK         
+EE-DATA        
+EE-DATA-DO     
+FT-VCORE       
+TDO            
+TCK            

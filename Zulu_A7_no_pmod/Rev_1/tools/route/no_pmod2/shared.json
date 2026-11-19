@@ -1,0 +1,9 @@
+{
+"vias": [],
+"tracks": [],
+"remove": [],
+"log": [
+"OPEN CLK-12M-SHARED 1",
+"FAIL CLK-12M-SHARED (nopath)"
+]
+}

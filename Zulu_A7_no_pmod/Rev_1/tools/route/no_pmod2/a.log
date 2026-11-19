@@ -1,0 +1,5 @@
+TCK: routed 1 connections, failed 0; 6 vias, 34 tracks -> route/no_pmod2/a_1.json
+TMS: routed 1 connections, failed 0; 11 vias, 76 tracks -> route/no_pmod2/a_2.json
+TDO: routed 1 connections, failed 0; 19 vias, 167 tracks -> route/no_pmod2/a_3.json
+TDI: routed 1 connections, failed 0; 27 vias, 248 tracks -> route/no_pmod2/a_4.json
+DONE a

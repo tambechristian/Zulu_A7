@@ -1,0 +1,85 @@
+{
+ "counts": {
+  "cases": 306,
+  "errors": 0,
+  "not_reaching_t_end": 0,
+  "not_connected": 0,
+  "t_end_ns": 32.0,
+  "max_workers": 6,
+  "per_tag": {
+   "placed22": 128,
+   "base": 128,
+   "sweep": 48,
+   "repro_d10": 1,
+   "repro_d14base": 1
+  }
+ },
+ "repro": [
+  {
+   "case": "D10 read max fab placed",
+   "plan": "d10/final_plan.json",
+   "plan_md5": "f2949630ce86fb4640eb860d481d579a",
+   "new": {
+    "ball": 1.18,
+    "die": 0.0,
+    "vmin": -0.2717,
+    "len": 13.997
+   },
+   "d10": {
+    "ball": 1.18,
+    "die": 0.0,
+    "vmin": -0.2717,
+    "len": 13.997
+   },
+   "d10_wave": "d10/sim/wave_final/D10_read_max_fab_placed_r22_parts_extract_f2949630.npz",
+   "same_timebase": true,
+   "max_abs_dv": 0.0,
+   "agree": true
+  },
+  {
+   "case": "D14 read max pcbdoc base",
+   "plan": null,
+   "plan_md5": null,
+   "new": {
+    "ball": 31238.75,
+    "die": 42.55,
+    "vmin": -0.8356
+   },
+   "d10": {
+    "ball": 31238.75,
+    "die": 42.55,
+    "vmin": -0.8356
+   },
+   "d10_wave": "d10/sim/wave_final/D14_read_max_pcbdoc_base_r0_parts_extract.npz",
+   "same_timebase": true,
+   "max_abs_dv": 0.0,
+   "agree": true
+  }
+ ],
+ "ident": {
+  "d10 placed (13-R plan)": {
+   "n": 64,
+   "identical": 64,
+   "max_dv": 0.0,
+   "timebase_differs": 0
+  },
+  "d13/combine": {
+   "n": 24,
+   "identical": 24,
+   "max_dv": 0.0,
+   "timebase_differs": 0
+  },
+  "d10 base": {
+   "n": 88,
+   "identical": 88,
+   "max_dv": 0.0,
+   "timebase_differs": 0
+  }
+ },
+ "worst4": [
+  "D8",
+  "D10",
+  "D0",
+  "D3"
+ ]
+}

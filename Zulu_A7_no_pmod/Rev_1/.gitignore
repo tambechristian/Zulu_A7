@@ -1,0 +1,17 @@
+# Altium writes these beside the project on every save/compile; git history replaces them.
+Imported zulu_a7.PrjPcb/History/
+Imported zulu_a7.PrjPcb/__Previews/
+Imported zulu_a7.PrjPcb/Project Logs for */
+# Outputs copied over from earlier projects: they describe those boards, not this one.
+Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7_hdi_optimized/
+Imported zulu_a7.PrjPcb/Project Outputs for Zulu_a7_no_pmod/Design Rule Check - zulu_a7_fab_b.*
+# Pre-edit copies written by mark_microvias.py and by hand before each scripted edit; git history replaces them.
+*.pre-microvia*
+*.before-jtag
+backups/
+# Router intermediates: each step of a net-by-net run, and in-progress checkpoints.
+tools/route/**/*.partial.json
+tools/route/no_pmod/seq_*
+tools/route/no_pmod/s2_*
+tools/route/no_pmod/s3_*
+tools/route/no_pmod2/[abc]_*.json

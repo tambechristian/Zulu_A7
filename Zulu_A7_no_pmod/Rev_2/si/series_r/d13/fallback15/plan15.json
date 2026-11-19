@@ -1,0 +1,2562 @@
+{
+ "designator_moves": [],
+ "microvias": [
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "VCC3V3",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "type": "microvia 0.30/0.15",
+   "x": 32.35,
+   "y": 7.0
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "TMS",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "type": "microvia 0.30/0.15",
+   "x": 33.45,
+   "y": 8.15
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "TMS",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "type": "microvia 0.30/0.15",
+   "x": 33.45,
+   "y": 8.15
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "VCC3V3",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "type": "microvia 0.30/0.15",
+   "x": 28.8,
+   "y": 4.4
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.15,
+   "net": "SDRAM-D12",
+   "size": 0.3,
+   "to": "L2-GND",
+   "type": "microvia 0.30/0.15",
+   "x": 38.9,
+   "y": 15.8
+  },
+  {
+   "from": "L2-GND",
+   "hole": 0.15,
+   "net": "SDRAM-D12",
+   "size": 0.3,
+   "to": "L3-SIG",
+   "type": "microvia 0.30/0.15",
+   "x": 38.9,
+   "y": 15.8
+  },
+  {
+   "from": "L3-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D12",
+   "size": 0.27,
+   "to": "L4-SIG",
+   "type": "buried 0.27/0.15",
+   "x": 38.9,
+   "y": 15.8
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.15,
+   "net": "D12",
+   "size": 0.3,
+   "to": "L2-GND",
+   "type": "microvia 0.30/0.15",
+   "x": 39.49,
+   "y": 15.81
+  },
+  {
+   "from": "L2-GND",
+   "hole": 0.15,
+   "net": "D12",
+   "size": 0.3,
+   "to": "L3-SIG",
+   "type": "microvia 0.30/0.15",
+   "x": 39.49,
+   "y": 15.81
+  },
+  {
+   "from": "L3-SIG",
+   "hole": 0.15,
+   "net": "D12",
+   "size": 0.27,
+   "to": "L4-SIG",
+   "type": "buried 0.27/0.15",
+   "x": 39.49,
+   "y": 15.81
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D9",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "type": "microvia 0.30/0.15",
+   "x": 41.75,
+   "y": 12.95
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "SDRAM-D9",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "type": "microvia 0.30/0.15",
+   "x": 41.75,
+   "y": 12.95
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "D9",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "type": "microvia 0.30/0.15",
+   "x": 42.35,
+   "y": 12.95
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "D9",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "type": "microvia 0.30/0.15",
+   "x": 42.35,
+   "y": 12.95
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "SDRAM-D14",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "type": "microvia 0.30/0.15",
+   "x": 45.3,
+   "y": 17.15
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D14",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "type": "microvia 0.30/0.15",
+   "x": 45.3,
+   "y": 17.15
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "SDRAM-D15",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "type": "microvia 0.30/0.15",
+   "x": 46.5,
+   "y": 16.8
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D15",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "type": "microvia 0.30/0.15",
+   "x": 46.5,
+   "y": 16.8
+  }
+ ],
+ "net_class_add": {
+  "SDRAM_DATA": [
+   "SDRAM-D0",
+   "SDRAM-D1",
+   "SDRAM-D2",
+   "SDRAM-D3",
+   "SDRAM-D4",
+   "SDRAM-D5",
+   "SDRAM-D6",
+   "SDRAM-D7",
+   "SDRAM-D8",
+   "SDRAM-D9",
+   "SDRAM-D10",
+   "SDRAM-D11",
+   "SDRAM-D12",
+   "SDRAM-D14",
+   "SDRAM-D15"
+  ]
+ },
+ "parts": [
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 0,
+   "pad1": {
+    "net": "SDRAM-D0",
+    "x": 37.9499,
+    "y": 5.17015
+   },
+   "pad2": {
+    "net": "D0",
+    "x": 38.5499,
+    "y": 5.17015
+   },
+   "ref": "R119",
+   "rot": 0,
+   "side": "Bottom",
+   "x": 38.2499,
+   "y": 5.17015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 1,
+   "pad1": {
+    "net": "SDRAM-D1",
+    "x": 36.35,
+    "y": 5.17015
+   },
+   "pad2": {
+    "net": "D1",
+    "x": 36.95,
+    "y": 5.17015
+   },
+   "ref": "R120",
+   "rot": 0,
+   "side": "Bottom",
+   "x": 36.65,
+   "y": 5.17015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 2,
+   "pad1": {
+    "net": "SDRAM-D2",
+    "x": 35.5501,
+    "y": 5.21015
+   },
+   "pad2": {
+    "net": "D2",
+    "x": 35.5501,
+    "y": 4.61015
+   },
+   "ref": "R121",
+   "rot": 270,
+   "side": "Bottom",
+   "x": 35.5501,
+   "y": 4.91015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 3,
+   "pad1": {
+    "net": "SDRAM-D3",
+    "x": 33.9499,
+    "y": 5.17015
+   },
+   "pad2": {
+    "net": "D3",
+    "x": 34.5499,
+    "y": 5.17015
+   },
+   "ref": "R122",
+   "rot": 0,
+   "side": "Bottom",
+   "x": 34.2499,
+   "y": 5.17015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 4,
+   "pad1": {
+    "net": "SDRAM-D4",
+    "x": 33.1501,
+    "y": 5.17015
+   },
+   "pad2": {
+    "net": "D4",
+    "x": 32.5501,
+    "y": 5.17015
+   },
+   "ref": "R123",
+   "rot": 180,
+   "side": "Bottom",
+   "x": 32.8501,
+   "y": 5.17015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 5,
+   "pad1": {
+    "net": "SDRAM-D5",
+    "x": 31.5501,
+    "y": 5.21015
+   },
+   "pad2": {
+    "net": "D5",
+    "x": 31.5501,
+    "y": 4.61015
+   },
+   "ref": "R124",
+   "rot": 270,
+   "side": "Bottom",
+   "x": 31.5501,
+   "y": 4.91015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 6,
+   "pad1": {
+    "net": "SDRAM-D6",
+    "x": 30.75,
+    "y": 5.21015
+   },
+   "pad2": {
+    "net": "D6",
+    "x": 30.75,
+    "y": 4.61015
+   },
+   "ref": "R125",
+   "rot": 270,
+   "side": "Bottom",
+   "x": 30.75,
+   "y": 4.91015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 7,
+   "pad1": {
+    "net": "SDRAM-D7",
+    "x": 29.1501,
+    "y": 5.21015
+   },
+   "pad2": {
+    "net": "D7",
+    "x": 29.7501,
+    "y": 5.21015
+   },
+   "ref": "R126",
+   "rot": 0,
+   "side": "Bottom",
+   "x": 29.4501,
+   "y": 5.21015
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 8,
+   "pad1": {
+    "net": "SDRAM-D8",
+    "x": 38.900000000000006,
+    "y": 13.6
+   },
+   "pad2": {
+    "net": "D8",
+    "x": 39.5,
+    "y": 13.6
+   },
+   "ref": "R127",
+   "rot": 0,
+   "side": "Top",
+   "x": 39.2,
+   "y": 13.6
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 9,
+   "pad1": {
+    "net": "SDRAM-D9",
+    "x": 41.75,
+    "y": 12.95
+   },
+   "pad2": {
+    "net": "D9",
+    "x": 42.35,
+    "y": 12.95
+   },
+   "ref": "R128",
+   "rot": 0,
+   "side": "Bottom",
+   "x": 42.05,
+   "y": 12.95
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 10,
+   "pad1": {
+    "net": "SDRAM-D10",
+    "x": 38.91,
+    "y": 14.36
+   },
+   "pad2": {
+    "net": "D10",
+    "x": 39.51,
+    "y": 14.36
+   },
+   "ref": "R129",
+   "rot": 0,
+   "side": "Top",
+   "x": 39.21,
+   "y": 14.36
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 11,
+   "pad1": {
+    "net": "SDRAM-D11",
+    "x": 39.1,
+    "y": 14.92
+   },
+   "pad2": {
+    "net": "D11",
+    "x": 39.7,
+    "y": 14.92
+   },
+   "ref": "R130",
+   "rot": 0,
+   "side": "Top",
+   "x": 39.4,
+   "y": 14.92
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 12,
+   "pad1": {
+    "net": "SDRAM-D12",
+    "x": 38.900000000000006,
+    "y": 15.8
+   },
+   "pad2": {
+    "net": "D12",
+    "x": 39.5,
+    "y": 15.8
+   },
+   "ref": "R131",
+   "rot": 0,
+   "side": "Top",
+   "x": 39.2,
+   "y": 15.8
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 14,
+   "pad1": {
+    "net": "SDRAM-D14",
+    "x": 45.3,
+    "y": 17.15
+   },
+   "pad2": {
+    "net": "D14",
+    "x": 45.9,
+    "y": 17.15
+   },
+   "ref": "R133",
+   "rot": 0,
+   "side": "Bottom",
+   "x": 45.6,
+   "y": 17.15
+  },
+  {
+   "comment": "22",
+   "designator_hidden": true,
+   "footprint": "R0201",
+   "net_bit": 15,
+   "pad1": {
+    "net": "SDRAM-D15",
+    "x": 46.5,
+    "y": 16.8
+   },
+   "pad2": {
+    "net": "D15",
+    "x": 47.1,
+    "y": 16.8
+   },
+   "ref": "R134",
+   "rot": 0,
+   "side": "Bottom",
+   "x": 46.8,
+   "y": 16.8
+  }
+ ],
+ "remove": [
+  {
+   "layer": "Bottom Layer",
+   "net": "VCC3V3",
+   "w": 0.2,
+   "x1": 32.35,
+   "x2": 32.5,
+   "y1": 6.1701,
+   "y2": 5.1
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "VCC3V3",
+   "w": 0.2,
+   "x1": 32.5,
+   "x2": 33.5492,
+   "y1": 5.1,
+   "y2": 5.1
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "VCC3V3",
+   "w": 0.2,
+   "x1": 33.5492,
+   "x2": 33.5492,
+   "y1": 3.9499,
+   "y2": 5.1
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.41,
+   "x1": 34.475,
+   "x2": 34.475,
+   "y1": 7.0,
+   "y2": 9.0
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.41,
+   "x1": 34.475,
+   "x2": 34.75,
+   "y1": 7.0,
+   "y2": 6.1701
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.115,
+   "x1": 29.54,
+   "x2": 29.54,
+   "y1": 4.3,
+   "y2": 5.55
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.13,
+   "x1": 29.54,
+   "x2": 29.9499,
+   "y1": 5.55,
+   "y2": 6.1701
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.3,
+   "x1": 29.949,
+   "x2": 29.949,
+   "y1": 3.95,
+   "y2": 4.55
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.5,
+   "x1": 29.949,
+   "x2": 30.35,
+   "y1": 4.55,
+   "y2": 4.55
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.5,
+   "x1": 30.35,
+   "x2": 31.149,
+   "y1": 4.55,
+   "y2": 4.55
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.3,
+   "x1": 31.149,
+   "x2": 31.149,
+   "y1": 3.95,
+   "y2": 4.55
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.3,
+   "x1": 31.149,
+   "x2": 32.349,
+   "y1": 4.55,
+   "y2": 4.55
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.3,
+   "x1": 32.349,
+   "x2": 32.349,
+   "y1": 3.95,
+   "y2": 4.55
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.3,
+   "x1": 32.349,
+   "x2": 32.55,
+   "y1": 4.55,
+   "y2": 4.45
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.3,
+   "x1": 32.349,
+   "x2": 32.55,
+   "y1": 4.45,
+   "y2": 4.45
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.3,
+   "x1": 30.35,
+   "x2": 30.35,
+   "y1": 4.55,
+   "y2": 5.3
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 31.975,
+   "x2": 32.375,
+   "y1": 5.25,
+   "y2": 4.85
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 32.375,
+   "x2": 32.65,
+   "y1": 4.85,
+   "y2": 4.85
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 32.65,
+   "x2": 33.025,
+   "y1": 4.85,
+   "y2": 4.475
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 31.975,
+   "x2": 31.975,
+   "y1": 5.25,
+   "y2": 7.575
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 31.975,
+   "x2": 32.15,
+   "y1": 7.575,
+   "y2": 8.125
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 32.15,
+   "x2": 32.15,
+   "y1": 8.125,
+   "y2": 8.15
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "VCC3V3",
+   "w": 0.3,
+   "x1": 28.7495,
+   "x2": 28.7495,
+   "y1": 3.9499,
+   "y2": 4.85
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "VCC3V3",
+   "w": 0.2,
+   "x1": 27.93,
+   "x2": 28.7495,
+   "y1": 4.85,
+   "y2": 4.85
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TDO",
+   "w": 0.0762,
+   "x1": 28.75,
+   "x2": 29.15,
+   "y1": 5.55,
+   "y2": 4.8
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D0",
+   "w": 0.125,
+   "x1": 37.9499,
+   "x2": 38.025,
+   "y1": 6.1701,
+   "y2": 7.05
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D1",
+   "w": 0.125,
+   "x1": 36.35,
+   "x2": 36.75,
+   "y1": 6.1701,
+   "y2": 7.025
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D2",
+   "w": 0.125,
+   "x1": 35.5501,
+   "x2": 35.65,
+   "y1": 6.1701,
+   "y2": 7.075
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D3",
+   "w": 0.125,
+   "x1": 33.9499,
+   "x2": 33.975,
+   "y1": 6.1701,
+   "y2": 8.925
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D4",
+   "w": 0.125,
+   "x1": 33.1501,
+   "x2": 33.325,
+   "y1": 6.1701,
+   "y2": 8.95
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D5",
+   "w": 0.125,
+   "x1": 31.55,
+   "x2": 31.5501,
+   "y1": 8.95,
+   "y2": 6.1701
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D6",
+   "w": 0.125,
+   "x1": 30.75,
+   "x2": 30.975,
+   "y1": 6.1701,
+   "y2": 8.925
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D7",
+   "w": 0.125,
+   "x1": 29.1501,
+   "x2": 29.325,
+   "y1": 6.1701,
+   "y2": 8.95
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D8",
+   "w": 0.0762,
+   "x1": 38.5,
+   "x2": 39.6455,
+   "y1": 13.6,
+   "y2": 13.6
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D11",
+   "w": 0.0762,
+   "x1": 38.5,
+   "x2": 40.145,
+   "y1": 14.95,
+   "y2": 14.95
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D12",
+   "w": 0.125,
+   "x1": 37.25,
+   "x2": 40.9,
+   "y1": 16.025,
+   "y2": 15.1
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "x1": 41.75,
+   "x2": 42.425,
+   "y1": 13.275,
+   "y2": 12.6
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 30.75,
+   "x2": 30.825,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D8",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 29.1501,
+   "x2": 29.25,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D12",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.9499,
+   "x2": 34.025,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D11",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.1501,
+   "x2": 33.25,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 30.825,
+   "x2": 31.45,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.45,
+   "x2": 31.875,
+   "y1": 16.025,
+   "y2": 15.775
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.875,
+   "x2": 38.6,
+   "y1": 15.775,
+   "y2": 15.3
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 38.6,
+   "x2": 41.5,
+   "y1": 15.3,
+   "y2": 14.75
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 41.5,
+   "x2": 41.6,
+   "y1": 14.75,
+   "y2": 14.7
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 41.6,
+   "x2": 41.75,
+   "y1": 14.7,
+   "y2": 14.5
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 41.75,
+   "x2": 41.75,
+   "y1": 13.275,
+   "y2": 14.5
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D8",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 29.25,
+   "x2": 29.875,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D8",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 29.875,
+   "x2": 38.5,
+   "y1": 16.025,
+   "y2": 13.6
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D12",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 34.025,
+   "x2": 34.65,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D12",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 34.65,
+   "x2": 37.25,
+   "y1": 16.025,
+   "y2": 16.025
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "D11",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.25,
+   "x2": 33.875,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "D11",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.875,
+   "x2": 38.5,
+   "y1": 16.025,
+   "y2": 14.95
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D10",
+   "w": 0.0762,
+   "x1": 38.5,
+   "x2": 39.9785,
+   "y1": 14.5,
+   "y2": 14.5
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D10",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.5501,
+   "x2": 31.65,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "D10",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.65,
+   "x2": 32.275,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "D10",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 32.275,
+   "x2": 38.5,
+   "y1": 16.025,
+   "y2": 14.5
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D14",
+   "w": 0.125,
+   "x1": 38.0,
+   "x2": 47.9,
+   "y1": 17.25,
+   "y2": 17.15
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D14",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 36.125,
+   "x2": 36.35,
+   "y1": 16.65,
+   "y2": 17.53
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D14",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 36.125,
+   "x2": 36.725,
+   "y1": 16.65,
+   "y2": 17.25
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D14",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 36.725,
+   "x2": 38.0,
+   "y1": 17.25,
+   "y2": 17.25
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D15",
+   "w": 0.125,
+   "x1": 38.35,
+   "x2": 48.9,
+   "y1": 16.725,
+   "y2": 16.8
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D15",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 37.9499,
+   "x2": 38.35,
+   "y1": 17.53,
+   "y2": 16.725
+  }
+ ],
+ "remove_vias": [
+  {
+   "hole": 0.15,
+   "net": "TMS",
+   "span": [
+    "L5-VCC3V3",
+    "Bottom"
+   ],
+   "x": 32.15,
+   "y": 8.125
+  },
+  {
+   "hole": 0.15,
+   "net": "TMS",
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ],
+   "x": 32.15,
+   "y": 8.125
+  },
+  {
+   "hole": 0.15,
+   "net": "TMS",
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ],
+   "x": 32.15,
+   "y": 8.125
+  },
+  {
+   "hole": 0.2,
+   "net": "D9",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 30.825,
+   "y": 16.65
+  },
+  {
+   "hole": 0.2,
+   "net": "D8",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 29.25,
+   "y": 16.65
+  },
+  {
+   "hole": 0.2,
+   "net": "D8",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 38.5,
+   "y": 13.6
+  },
+  {
+   "hole": 0.2,
+   "net": "D12",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 34.025,
+   "y": 16.65
+  },
+  {
+   "hole": 0.2,
+   "net": "D11",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 33.25,
+   "y": 16.65
+  },
+  {
+   "hole": 0.2,
+   "net": "D11",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 38.5,
+   "y": 14.95
+  },
+  {
+   "hole": 0.2,
+   "net": "D10",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 31.65,
+   "y": 16.65
+  },
+  {
+   "hole": 0.2,
+   "net": "D10",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 38.5,
+   "y": 14.5
+  },
+  {
+   "hole": 0.2,
+   "net": "D14",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 36.125,
+   "y": 16.65
+  },
+  {
+   "hole": 0.2,
+   "net": "D15",
+   "span": [
+    "Top",
+    "Bottom"
+   ],
+   "why": "rename",
+   "x": 38.35,
+   "y": 16.725
+  }
+ ],
+ "renamed_existing": {
+  "tracks": 24,
+  "vias": 10
+ },
+ "renet_pads": [
+  {
+   "net": "SDRAM-D0",
+   "pad": "2",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D1",
+   "pad": "4",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D2",
+   "pad": "5",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D3",
+   "pad": "7",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D4",
+   "pad": "8",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D5",
+   "pad": "10",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D6",
+   "pad": "11",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D7",
+   "pad": "13",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D8",
+   "pad": "42",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D11",
+   "pad": "47",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D12",
+   "pad": "48",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D9",
+   "pad": "44",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D10",
+   "pad": "45",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D14",
+   "pad": "51",
+   "ref": "U3"
+  },
+  {
+   "net": "SDRAM-D15",
+   "pad": "53",
+   "ref": "U3"
+  }
+ ],
+ "source": "fallback15: 16-R plan (md5 7c2b8ae6) minus R132/D13/gnd47; D13 has no resistor (user decision 2026-11-13)",
+ "tracks": [
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 30.75,
+   "x2": 30.825,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D8",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 29.1501,
+   "x2": 29.25,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D12",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.9499,
+   "x2": 34.025,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D11",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.1501,
+   "x2": 33.25,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 30.825,
+   "x2": 31.45,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.45,
+   "x2": 31.875,
+   "y1": 16.025,
+   "y2": 15.775
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.875,
+   "x2": 38.6,
+   "y1": 15.775,
+   "y2": 15.3
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 38.6,
+   "x2": 41.5,
+   "y1": 15.3,
+   "y2": 14.75
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 41.5,
+   "x2": 41.6,
+   "y1": 14.75,
+   "y2": 14.7
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 41.6,
+   "x2": 41.75,
+   "y1": 14.7,
+   "y2": 14.5
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 41.75,
+   "x2": 41.75,
+   "y1": 13.275,
+   "y2": 14.5
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D8",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 29.25,
+   "x2": 29.875,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D8",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 29.875,
+   "x2": 38.5,
+   "y1": 16.025,
+   "y2": 13.6
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D12",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 34.025,
+   "x2": 34.65,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D12",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 34.65,
+   "x2": 37.25,
+   "y1": 16.025,
+   "y2": 16.025
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "SDRAM-D11",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.25,
+   "x2": 33.875,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "SDRAM-D11",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 33.875,
+   "x2": 38.5,
+   "y1": 16.025,
+   "y2": 14.95
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "VCC3V3",
+   "w": 0.2,
+   "x1": 32.35,
+   "x2": 32.35,
+   "y1": 6.17,
+   "y2": 7.0
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.25,
+   "x1": 34.75,
+   "x2": 34.75,
+   "y1": 6.17,
+   "y2": 8.6
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.25,
+   "x1": 34.75,
+   "x2": 34.475,
+   "y1": 8.6,
+   "y2": 9.0
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.1,
+   "x1": 30.05,
+   "x2": 30.05,
+   "y1": 6.0,
+   "y2": 4.9
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.1,
+   "x1": 30.05,
+   "x2": 29.54,
+   "y1": 4.9,
+   "y2": 4.9
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "GND",
+   "w": 0.115,
+   "x1": 29.54,
+   "x2": 29.54,
+   "y1": 4.9,
+   "y2": 4.3
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.2,
+   "x1": 29.949,
+   "x2": 29.949,
+   "y1": 3.95,
+   "y2": 4.28
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.2,
+   "x1": 31.149,
+   "x2": 31.149,
+   "y1": 3.95,
+   "y2": 4.28
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.2,
+   "x1": 32.349,
+   "x2": 32.349,
+   "y1": 3.95,
+   "y2": 4.28
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.16,
+   "x1": 29.949,
+   "x2": 32.349,
+   "y1": 4.28,
+   "y2": 4.28
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.2,
+   "x1": 32.349,
+   "x2": 32.55,
+   "y1": 4.28,
+   "y2": 4.45
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "FT-VCORE",
+   "w": 0.15,
+   "x1": 30.35,
+   "x2": 30.35,
+   "y1": 4.28,
+   "y2": 5.3
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 33.45,
+   "x2": 33.85,
+   "y1": 8.15,
+   "y2": 8.15
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 33.45,
+   "x2": 33.55,
+   "y1": 8.15,
+   "y2": 8.05
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 33.55,
+   "x2": 33.55,
+   "y1": 8.05,
+   "y2": 4.85
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 33.55,
+   "x2": 33.175,
+   "y1": 4.85,
+   "y2": 4.475
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TMS",
+   "w": 0.0762,
+   "x1": 33.175,
+   "x2": 33.025,
+   "y1": 4.475,
+   "y2": 4.475
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "VCC3V3",
+   "w": 0.2,
+   "x1": 28.75,
+   "x2": 28.8,
+   "y1": 3.95,
+   "y2": 4.4
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TDO",
+   "w": 0.0762,
+   "x1": 28.75,
+   "x2": 28.75,
+   "y1": 5.55,
+   "y2": 4.95
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "TDO",
+   "w": 0.0762,
+   "x1": 28.75,
+   "x2": 29.15,
+   "y1": 4.95,
+   "y2": 4.8
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D0",
+   "w": 0.125,
+   "x1": 37.9499,
+   "x2": 37.9499,
+   "y1": 6.1701,
+   "y2": 5.17015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D0",
+   "w": 0.1,
+   "x1": 38.5499,
+   "x2": 38.3499,
+   "y1": 5.17015,
+   "y2": 5.37015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D0",
+   "w": 0.1,
+   "x1": 38.3499,
+   "x2": 38.3499,
+   "y1": 5.37015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D0",
+   "w": 0.1,
+   "x1": 38.3499,
+   "x2": 38.025,
+   "y1": 6.97005,
+   "y2": 7.05
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D1",
+   "w": 0.125,
+   "x1": 36.35,
+   "x2": 36.35,
+   "y1": 6.1701,
+   "y2": 5.17015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D1",
+   "w": 0.1,
+   "x1": 36.95,
+   "x2": 36.75,
+   "y1": 5.17015,
+   "y2": 5.37015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D1",
+   "w": 0.1,
+   "x1": 36.75,
+   "x2": 36.75,
+   "y1": 5.37015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D1",
+   "w": 0.1,
+   "x1": 36.75,
+   "x2": 36.75,
+   "y1": 6.97005,
+   "y2": 7.025
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D2",
+   "w": 0.125,
+   "x1": 35.5501,
+   "x2": 35.5501,
+   "y1": 6.1701,
+   "y2": 5.21015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D2",
+   "w": 0.1,
+   "x1": 35.5501,
+   "x2": 35.9501,
+   "y1": 4.61015,
+   "y2": 5.01015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D2",
+   "w": 0.1,
+   "x1": 35.9501,
+   "x2": 35.9501,
+   "y1": 5.01015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D2",
+   "w": 0.1,
+   "x1": 35.9501,
+   "x2": 35.65,
+   "y1": 6.97005,
+   "y2": 7.075
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D3",
+   "w": 0.125,
+   "x1": 33.9499,
+   "x2": 33.9499,
+   "y1": 6.1701,
+   "y2": 5.17015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D3",
+   "w": 0.1,
+   "x1": 34.5499,
+   "x2": 34.3499,
+   "y1": 5.17015,
+   "y2": 5.37015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D3",
+   "w": 0.1,
+   "x1": 34.3499,
+   "x2": 34.3499,
+   "y1": 5.37015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D3",
+   "w": 0.1,
+   "x1": 34.3499,
+   "x2": 33.975,
+   "y1": 6.97005,
+   "y2": 8.925
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D4",
+   "w": 0.125,
+   "x1": 33.1501,
+   "x2": 33.1501,
+   "y1": 6.1701,
+   "y2": 5.17015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D4",
+   "w": 0.1,
+   "x1": 32.5501,
+   "x2": 32.7501,
+   "y1": 5.17015,
+   "y2": 5.37015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D4",
+   "w": 0.1,
+   "x1": 32.7501,
+   "x2": 32.7501,
+   "y1": 5.37015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D4",
+   "w": 0.1,
+   "x1": 32.7501,
+   "x2": 33.325,
+   "y1": 6.97005,
+   "y2": 8.95
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D5",
+   "w": 0.125,
+   "x1": 31.5501,
+   "x2": 31.5501,
+   "y1": 6.1701,
+   "y2": 5.21015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D5",
+   "w": 0.1,
+   "x1": 31.5501,
+   "x2": 31.9501,
+   "y1": 4.61015,
+   "y2": 5.01015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D5",
+   "w": 0.1,
+   "x1": 31.9501,
+   "x2": 31.9501,
+   "y1": 5.01015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D5",
+   "w": 0.1,
+   "x1": 31.9501,
+   "x2": 31.55,
+   "y1": 6.97005,
+   "y2": 8.95
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D6",
+   "w": 0.125,
+   "x1": 30.75,
+   "x2": 30.75,
+   "y1": 6.1701,
+   "y2": 5.21015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D6",
+   "w": 0.1,
+   "x1": 30.75,
+   "x2": 31.15,
+   "y1": 4.61015,
+   "y2": 5.01015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D6",
+   "w": 0.1,
+   "x1": 31.15,
+   "x2": 31.15,
+   "y1": 5.01015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D6",
+   "w": 0.1,
+   "x1": 31.15,
+   "x2": 30.975,
+   "y1": 6.97005,
+   "y2": 8.925
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D7",
+   "w": 0.125,
+   "x1": 29.1501,
+   "x2": 29.1501,
+   "y1": 6.1701,
+   "y2": 5.21015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D7",
+   "w": 0.1,
+   "x1": 29.7501,
+   "x2": 29.550099999999997,
+   "y1": 5.21015,
+   "y2": 5.41015
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D7",
+   "w": 0.1,
+   "x1": 29.550099999999997,
+   "x2": 29.550099999999997,
+   "y1": 5.41015,
+   "y2": 6.97005
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D7",
+   "w": 0.1,
+   "x1": 29.550099999999997,
+   "x2": 29.325,
+   "y1": 6.97005,
+   "y2": 8.95
+  },
+  {
+   "layer": "Top Layer",
+   "net": "SDRAM-D8",
+   "w": 0.0762,
+   "x1": 38.5,
+   "x2": 38.9,
+   "y1": 13.6,
+   "y2": 13.6
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D8",
+   "w": 0.0762,
+   "x1": 39.5,
+   "x2": 39.6455,
+   "y1": 13.6,
+   "y2": 13.6
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D12",
+   "w": 0.125,
+   "x1": 38.9,
+   "x2": 38.854,
+   "y1": 15.8,
+   "y2": 15.6185
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D12",
+   "w": 0.125,
+   "x1": 37.25,
+   "x2": 38.854,
+   "y1": 16.025,
+   "y2": 15.6185
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D9",
+   "w": 0.125,
+   "x1": 41.75,
+   "x2": 41.75,
+   "y1": 13.275,
+   "y2": 12.95
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D9",
+   "w": 0.125,
+   "x1": 42.35,
+   "x2": 42.425,
+   "y1": 12.95,
+   "y2": 12.6
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "D12",
+   "w": 0.125,
+   "x1": 39.49,
+   "x2": 40.9,
+   "y1": 15.81,
+   "y2": 15.1
+  },
+  {
+   "layer": "Top Layer",
+   "net": "SDRAM-D11",
+   "w": 0.0762,
+   "x1": 38.5,
+   "x2": 39.1,
+   "y1": 14.95,
+   "y2": 14.95
+  },
+  {
+   "layer": "Top Layer",
+   "net": "SDRAM-D11",
+   "w": 0.0762,
+   "x1": 39.1,
+   "x2": 39.1,
+   "y1": 14.95,
+   "y2": 14.92
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D11",
+   "w": 0.0762,
+   "x1": 39.7,
+   "x2": 39.7,
+   "y1": 14.92,
+   "y2": 14.95
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D11",
+   "w": 0.0762,
+   "x1": 39.7,
+   "x2": 40.145,
+   "y1": 14.95,
+   "y2": 14.95
+  },
+  {
+   "layer": "Top Layer",
+   "net": "SDRAM-D10",
+   "w": 0.0762,
+   "x1": 38.5,
+   "x2": 38.77,
+   "y1": 14.5,
+   "y2": 14.5
+  },
+  {
+   "layer": "Top Layer",
+   "net": "SDRAM-D10",
+   "w": 0.0762,
+   "x1": 38.77,
+   "x2": 38.91,
+   "y1": 14.5,
+   "y2": 14.36
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D10",
+   "w": 0.0762,
+   "x1": 39.51,
+   "x2": 39.65,
+   "y1": 14.36,
+   "y2": 14.5
+  },
+  {
+   "layer": "Top Layer",
+   "net": "D10",
+   "w": 0.0762,
+   "x1": 39.65,
+   "x2": 39.9785,
+   "y1": 14.5,
+   "y2": 14.5
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D10",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.5501,
+   "x2": 31.65,
+   "y1": 17.53,
+   "y2": 16.65
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "SDRAM-D10",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 31.65,
+   "x2": 32.275,
+   "y1": 16.65,
+   "y2": 16.025
+  },
+  {
+   "layer": "L3-SIG",
+   "net": "SDRAM-D10",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 32.275,
+   "x2": 38.5,
+   "y1": 16.025,
+   "y2": 14.5
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D14",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 36.125,
+   "x2": 36.35,
+   "y1": 16.65,
+   "y2": 17.53
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D14",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 36.125,
+   "x2": 36.725,
+   "y1": 16.65,
+   "y2": 17.25
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D14",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 36.725,
+   "x2": 38.0,
+   "y1": 17.25,
+   "y2": 17.25
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D14",
+   "w": 0.125,
+   "x1": 38.0,
+   "x2": 45.3,
+   "y1": 17.25,
+   "y2": 17.15
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D14",
+   "w": 0.1,
+   "x1": 45.9,
+   "x2": 47.9,
+   "y1": 17.15,
+   "y2": 17.15
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "SDRAM-D15",
+   "w": 0.125,
+   "why": "rename",
+   "x1": 37.9499,
+   "x2": 38.35,
+   "y1": 17.53,
+   "y2": 16.725
+  },
+  {
+   "layer": "L4-SIG",
+   "net": "SDRAM-D15",
+   "w": 0.125,
+   "x1": 38.35,
+   "x2": 46.5,
+   "y1": 16.725,
+   "y2": 16.8
+  },
+  {
+   "layer": "Bottom Layer",
+   "net": "D15",
+   "w": 0.1,
+   "x1": 47.1,
+   "x2": 48.9,
+   "y1": 16.8,
+   "y2": 16.8
+  }
+ ],
+ "vias": [
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D9",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 30.825,
+   "y": 16.65
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D8",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 29.25,
+   "y": 16.65
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D8",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 38.5,
+   "y": 13.6
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D12",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 34.025,
+   "y": 16.65
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D11",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 33.25,
+   "y": 16.65
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D11",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 38.5,
+   "y": 14.95
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "VCC3V3",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "x": 32.35,
+   "y": 7.0
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "TMS",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "x": 33.45,
+   "y": 8.15
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "TMS",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "x": 33.45,
+   "y": 8.15
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "VCC3V3",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "x": 28.8,
+   "y": 4.4
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.15,
+   "net": "SDRAM-D12",
+   "size": 0.3,
+   "to": "L2-GND",
+   "x": 38.9,
+   "y": 15.8
+  },
+  {
+   "from": "L2-GND",
+   "hole": 0.15,
+   "net": "SDRAM-D12",
+   "size": 0.3,
+   "to": "L3-SIG",
+   "x": 38.9,
+   "y": 15.8
+  },
+  {
+   "from": "L3-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D12",
+   "size": 0.27,
+   "to": "L4-SIG",
+   "x": 38.9,
+   "y": 15.8
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.15,
+   "net": "D12",
+   "size": 0.3,
+   "to": "L2-GND",
+   "x": 39.49,
+   "y": 15.81
+  },
+  {
+   "from": "L2-GND",
+   "hole": 0.15,
+   "net": "D12",
+   "size": 0.3,
+   "to": "L3-SIG",
+   "x": 39.49,
+   "y": 15.81
+  },
+  {
+   "from": "L3-SIG",
+   "hole": 0.15,
+   "net": "D12",
+   "size": 0.27,
+   "to": "L4-SIG",
+   "x": 39.49,
+   "y": 15.81
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D9",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "x": 41.75,
+   "y": 12.95
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "SDRAM-D9",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "x": 41.75,
+   "y": 12.95
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "D9",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "x": 42.35,
+   "y": 12.95
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "D9",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "x": 42.35,
+   "y": 12.95
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D10",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 31.65,
+   "y": 16.65
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D10",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 38.5,
+   "y": 14.5
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D14",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 36.125,
+   "y": 16.65
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "SDRAM-D14",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "x": 45.3,
+   "y": 17.15
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D14",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "x": 45.3,
+   "y": 17.15
+  },
+  {
+   "from": "Top Layer",
+   "hole": 0.2,
+   "net": "SDRAM-D15",
+   "size": 0.35,
+   "to": "Bottom Layer",
+   "why": "rename",
+   "x": 38.35,
+   "y": 16.725
+  },
+  {
+   "from": "L5-VCC3V3",
+   "hole": 0.15,
+   "net": "SDRAM-D15",
+   "size": 0.3,
+   "to": "Bottom Layer",
+   "x": 46.5,
+   "y": 16.8
+  },
+  {
+   "from": "L4-SIG",
+   "hole": 0.15,
+   "net": "SDRAM-D15",
+   "size": 0.3,
+   "to": "L5-VCC3V3",
+   "x": 46.5,
+   "y": 16.8
+  }
+ ],
+ "vippo": [
+  {
+   "fill": "filled and capped (VIPPO)",
+   "net": "SDRAM-D9",
+   "pad": "R128-1",
+   "vias": [
+    "L4-SIG>L5-VCC3V3 0.30/0.15",
+    "L5-VCC3V3>Bottom 0.30/0.15"
+   ],
+   "x": 41.75,
+   "y": 12.95
+  },
+  {
+   "fill": "filled and capped (VIPPO)",
+   "net": "D9",
+   "pad": "R128-2",
+   "vias": [
+    "L4-SIG>L5-VCC3V3 0.30/0.15",
+    "L5-VCC3V3>Bottom 0.30/0.15"
+   ],
+   "x": 42.35,
+   "y": 12.95
+  },
+  {
+   "fill": "filled and capped (VIPPO)",
+   "net": "SDRAM-D12",
+   "pad": "R131-1",
+   "vias": [
+    "Top>L2-GND 0.30/0.15",
+    "L2-GND>L3-SIG 0.30/0.15",
+    "L3-SIG>L4-SIG 0.27/0.15"
+   ],
+   "x": 38.9,
+   "y": 15.8
+  },
+  {
+   "fill": "filled and capped (VIPPO)",
+   "net": "D12",
+   "pad": "R131-2",
+   "vias": [
+    "Top>L2-GND 0.30/0.15",
+    "L2-GND>L3-SIG 0.30/0.15",
+    "L3-SIG>L4-SIG 0.27/0.15"
+   ],
+   "x": 39.49,
+   "y": 15.81
+  },
+  {
+   "fill": "filled and capped (VIPPO)",
+   "net": "SDRAM-D14",
+   "pad": "R133-1",
+   "vias": [
+    "L5-VCC3V3>Bottom 0.30/0.15",
+    "L4-SIG>L5-VCC3V3 0.30/0.15"
+   ],
+   "x": 45.3,
+   "y": 17.15
+  },
+  {
+   "fill": "filled and capped (VIPPO)",
+   "net": "SDRAM-D15",
+   "pad": "R134-1",
+   "vias": [
+    "L5-VCC3V3>Bottom 0.30/0.15",
+    "L4-SIG>L5-VCC3V3 0.30/0.15"
+   ],
+   "x": 46.5,
+   "y": 16.8
+  }
+ ]
+}

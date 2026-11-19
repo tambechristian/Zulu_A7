@@ -1,0 +1,22 @@
+GND            
+VCC3V3         
+CLK-12M-FPGA   
+UART_FT_CTS#   
+CHAN22         
+CLK-12M-SHARED 
+TMS            
+PROG#          ripped CHAN22 UART_FT_CTS#
+TDI            
+TDO            
+CLK-12M-FT     
+TCK            ripped CLK-12M-FPGA CLK-12M-FT PROG# TDO TMS
+FPGA-TCK       
+CHAN22         
+UART_FT_CTS#   
+CLK-12M-FPGA   
+CLK-12M-FT     
+PROG#          ripped CHAN22 CLK-12M-FT TCK UART_FT_CTS#
+TDO            
+TMS            
+CHAN22         
+CLK-12M-FT     

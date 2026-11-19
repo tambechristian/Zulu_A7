@@ -1,0 +1,16 @@
+seeded 117 vias, 398 tracks
+D6             
+DONE           
+FT-VCORE       
+PROG#          ripped DONE FT-VCORE UART_FT_RTS# UART_FT_RXD
+TDI            
+UART_FT_CTS#   
+UART_FT_DTR#   
+VU             ripped CHAN19 FT-REF FT-VPHY FT-VPLL VBATT
+DONE           
+FT-VCORE       
+UART_FT_RTS#   ripped PROG# UART_FT_CTS# UART_FT_DTR#
+UART_FT_RXD    
+CHAN19         
+FT-REF         
+exit 124

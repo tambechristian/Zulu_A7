@@ -1,0 +1,21 @@
+f2_router: 22 orphan keys
+GND            
+VCC3V3         
+EE-DATA-DO     
+CHAN20         
+N$LD2A         
+EE-DATA        
+EE-CS          
+CHAN7          
+WE#            
+CAS#           
+FT-VCORE       
+RAS#           
+EE-CLK         
+N$BTN          
+CHAN19         
+USB5V0         
+FT-PWREN#      
+LED2           
+TCK            
+CHAN25         ripped CHAN20

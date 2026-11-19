@@ -1,0 +1,17 @@
+net  scen  corner stack  | with R (this plan)                       | no R (d10/sim, same copper otherwise)    | delay die 1.4V
+D14  read  max    fab    | ball    0.0 % (Vmin -0.083) die   0.0 % ring 0.000 | ball   62.9 % (Vmin -0.529) die  18.0 % ring 0.000 | +0.047..+0.064 ns
+D15  read  max    fab    | ball    0.0 % (Vmin -0.045) die   0.0 % ring 0.000 | ball   42.9 % (Vmin -0.544) die  16.4 % ring 0.000 | +0.050..+0.065 ns
+D14  write max    fab    | U3 pin -0.223/3.497 die -0.265/3.502 ring 0.000 | U3 pin -0.298/3.620 die -0.495/3.665 ring 0.000 | +0.099..+0.136 ns
+D15  write max    fab    | U3 pin -0.200/3.491 die -0.242/3.491 ring 0.000 | U3 pin -0.292/3.593 die -0.466/3.663 ring 0.000 | +0.107..+0.140 ns
+D14  read  typ    fab    | ball    0.0 % (Vmin -0.079) die   0.0 % ring 0.000 | ball   18.1 % (Vmin -0.473) die   8.3 % ring 0.000 | +0.050..+0.062 ns
+D15  read  typ    fab    | ball    0.0 % (Vmin -0.033) die   0.0 % ring 0.000 | ball    6.3 % (Vmin -0.439) die   8.2 % ring 0.000 | +0.053..+0.065 ns
+D14  write typ    fab    | U3 pin -0.106/3.306 die -0.151/3.306 ring 0.000 | U3 pin -0.281/3.343 die -0.393/3.421 ring 0.000 | +0.135..+0.150 ns
+D15  write typ    fab    | U3 pin -0.086/3.306 die -0.132/3.306 ring 0.000 | U3 pin -0.254/3.328 die -0.377/3.395 ring 0.000 | +0.126..+0.157 ns
+D14  read  max    pcbdoc | ball    0.0 % (Vmin -0.163) die   0.0 % ring 0.000 | ball 31238.7 % (Vmin -0.836) die  42.6 % ring 0.000 | +0.048..+0.063 ns
+D15  read  max    pcbdoc | ball    0.0 % (Vmin -0.045) die   0.0 % ring 0.000 | ball  368.0 % (Vmin -0.560) die  17.0 % ring 0.000 | +0.051..+0.064 ns
+D14  write max    pcbdoc | U3 pin -0.252/3.504 die -0.296/3.510 ring 0.000 | U3 pin -0.323/3.599 die -0.517/3.659 ring 0.000 | +0.095..+0.132 ns
+D15  write max    pcbdoc | U3 pin -0.219/3.497 die -0.268/3.499 ring 0.000 | U3 pin -0.283/3.599 die -0.482/3.663 ring 0.000 | +0.102..+0.137 ns
+D14  read  typ    pcbdoc | ball    0.0 % (Vmin -0.140) die   0.0 % ring 0.000 | ball  168.9 % (Vmin -0.572) die  14.9 % ring 0.000 | +0.048..+0.059 ns
+D15  read  typ    pcbdoc | ball    0.0 % (Vmin -0.035) die   0.0 % ring 0.000 | ball   21.5 % (Vmin -0.469) die  12.8 % ring 0.000 | +0.052..+0.062 ns
+D14  write typ    pcbdoc | U3 pin -0.127/3.305 die -0.172/3.306 ring 0.000 | U3 pin -0.301/3.360 die -0.407/3.442 ring 0.000 | +0.139..+0.142 ns
+D15  write typ    pcbdoc | U3 pin -0.101/3.305 die -0.151/3.306 ring 0.000 | U3 pin -0.259/3.341 die -0.390/3.418 ring 0.000 | +0.132..+0.151 ns

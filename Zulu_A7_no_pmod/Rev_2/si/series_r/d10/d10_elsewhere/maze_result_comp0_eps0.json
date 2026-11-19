@@ -1,0 +1,593 @@
+{
+ "window": [
+  36.5,
+  44.75,
+  10.0,
+  17.5
+ ],
+ "grid": 0.025,
+ "eps": 0.0005,
+ "via_cost": 0.7,
+ "n_sites": 2549,
+ "sites_by_side": {
+  "Bottom": 1412,
+  "Top": 1137
+ },
+ "results": [
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.55,
+    "y": 14.975,
+    "rot": 0,
+    "cu_margin": 0.0148,
+    "comp_gap": 0.1621,
+    "p1": [
+     42.25,
+     14.975
+    ],
+    "p2": [
+     42.849999999999994,
+     14.975
+    ],
+    "cost": 16.988,
+    "cU": 8.865,
+    "cS": 8.123
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.075,
+    "y": 13.5,
+    "rot": 0,
+    "cu_margin": 0.0036,
+    "comp_gap": 0.235,
+    "p1": [
+     41.775000000000006,
+     13.5
+    ],
+    "p2": [
+     42.375,
+     13.5
+    ],
+    "cost": 19.047,
+    "cU": 9.757,
+    "cS": 9.289
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.125,
+    "y": 13.5,
+    "rot": 0,
+    "cu_margin": 0.0069,
+    "comp_gap": 0.235,
+    "p1": [
+     41.825,
+     13.5
+    ],
+    "p2": [
+     42.425,
+     13.5
+    ],
+    "cost": 19.047,
+    "cU": 9.807,
+    "cS": 9.239
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.325,
+    "y": 13.5,
+    "rot": 0,
+    "cu_margin": 0.0202,
+    "comp_gap": 0.235,
+    "p1": [
+     42.025000000000006,
+     13.5
+    ],
+    "p2": [
+     42.625,
+     13.5
+    ],
+    "cost": 19.047,
+    "cU": 10.007,
+    "cS": 9.039
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.05,
+    "y": 13.475,
+    "rot": 0,
+    "cu_margin": 0.0269,
+    "comp_gap": 0.21,
+    "p1": [
+     41.75,
+     13.475
+    ],
+    "p2": [
+     42.349999999999994,
+     13.475
+    ],
+    "cost": 19.067,
+    "cU": 9.743,
+    "cS": 9.325
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.125,
+    "y": 13.475,
+    "rot": 0,
+    "cu_margin": 0.0319,
+    "comp_gap": 0.21,
+    "p1": [
+     41.825,
+     13.475
+    ],
+    "p2": [
+     42.425,
+     13.475
+    ],
+    "cost": 19.067,
+    "cU": 9.818,
+    "cS": 9.25
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.325,
+    "y": 13.475,
+    "rot": 0,
+    "cu_margin": 0.0451,
+    "comp_gap": 0.21,
+    "p1": [
+     42.025000000000006,
+     13.475
+    ],
+    "p2": [
+     42.625,
+     13.475
+    ],
+    "cost": 19.067,
+    "cU": 10.018,
+    "cS": 9.05
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 41.9,
+    "y": 13.475,
+    "rot": 0,
+    "cu_margin": 0.0169,
+    "comp_gap": 0.21,
+    "p1": [
+     41.6,
+     13.475
+    ],
+    "p2": [
+     42.199999999999996,
+     13.475
+    ],
+    "cost": 19.155,
+    "cU": 9.681,
+    "cS": 9.475
+   },
+   "ok": false,
+   "why": "SD side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.525,
+    "y": 13.525,
+    "rot": 0,
+    "cu_margin": 0.0085,
+    "comp_gap": 0.26,
+    "p1": [
+     42.225,
+     13.525
+    ],
+    "p2": [
+     42.824999999999996,
+     13.525
+    ],
+    "cost": 19.238,
+    "cU": 10.197,
+    "cS": 9.041
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.525,
+    "y": 13.475,
+    "rot": 0,
+    "cu_margin": 0.0584,
+    "comp_gap": 0.21,
+    "p1": [
+     42.225,
+     13.475
+    ],
+    "p2": [
+     42.824999999999996,
+     13.475
+    ],
+    "cost": 19.309,
+    "cU": 10.218,
+    "cS": 9.091
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 41.7,
+    "y": 13.475,
+    "rot": 0,
+    "cu_margin": 0.0037,
+    "comp_gap": 0.21,
+    "p1": [
+     41.400000000000006,
+     13.475
+    ],
+    "p2": [
+     42.0,
+     13.475
+    ],
+    "cost": 19.349,
+    "cU": 9.675,
+    "cS": 9.675
+   },
+   "ok": false,
+   "why": "SD side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.875,
+    "y": 13.25,
+    "rot": 90,
+    "cu_margin": 0.0266,
+    "comp_gap": 0.21,
+    "p1": [
+     42.875,
+     12.95
+    ],
+    "p2": [
+     42.875,
+     13.55
+    ],
+    "cost": 20.143,
+    "cU": 10.257,
+    "cS": 9.885
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.925,
+    "y": 13.225,
+    "rot": 90,
+    "cu_margin": 0.0549,
+    "comp_gap": 0.26,
+    "p1": [
+     42.925,
+     12.924999999999999
+    ],
+    "p2": [
+     42.925,
+     13.525
+    ],
+    "cost": 20.243,
+    "cU": 10.297,
+    "cS": 9.946
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.875,
+    "y": 13.075,
+    "rot": 90,
+    "cu_margin": 0.1101,
+    "comp_gap": 0.21,
+    "p1": [
+     42.875,
+     12.774999999999999
+    ],
+    "p2": [
+     42.875,
+     13.375
+    ],
+    "cost": 20.369,
+    "cU": 10.309,
+    "cS": 10.06
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.925,
+    "y": 13.075,
+    "rot": 90,
+    "cu_margin": 0.0601,
+    "comp_gap": 0.26,
+    "p1": [
+     42.925,
+     12.774999999999999
+    ],
+    "p2": [
+     42.925,
+     13.375
+    ],
+    "cost": 20.44,
+    "cU": 10.359,
+    "cS": 10.081
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.875,
+    "y": 12.9,
+    "rot": 90,
+    "cu_margin": 0.1134,
+    "comp_gap": 0.21,
+    "p1": [
+     42.875,
+     12.6
+    ],
+    "p2": [
+     42.875,
+     13.200000000000001
+    ],
+    "cost": 20.617,
+    "cU": 10.382,
+    "cS": 10.235
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.925,
+    "y": 12.9,
+    "rot": 90,
+    "cu_margin": 0.0639,
+    "comp_gap": 0.26,
+    "p1": [
+     42.925,
+     12.6
+    ],
+    "p2": [
+     42.925,
+     13.200000000000001
+    ],
+    "cost": 20.688,
+    "cU": 10.432,
+    "cS": 10.256
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.875,
+    "y": 12.7,
+    "rot": 90,
+    "cu_margin": 0.1101,
+    "comp_gap": 0.21,
+    "p1": [
+     42.875,
+     12.399999999999999
+    ],
+    "p2": [
+     42.875,
+     13.0
+    ],
+    "cost": 20.9,
+    "cU": 10.465,
+    "cS": 10.435
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.925,
+    "y": 12.7,
+    "rot": 90,
+    "cu_margin": 0.0601,
+    "comp_gap": 0.26,
+    "p1": [
+     42.925,
+     12.399999999999999
+    ],
+    "p2": [
+     42.925,
+     13.0
+    ],
+    "cost": 20.97,
+    "cU": 10.515,
+    "cS": 10.456
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.35,
+    "y": 12.425,
+    "rot": 0,
+    "cu_margin": 0.135,
+    "comp_gap": 0.21,
+    "p1": [
+     42.050000000000004,
+     12.425
+    ],
+    "p2": [
+     42.65,
+     12.425
+    ],
+    "cost": 21.006,
+    "cU": 10.917,
+    "cS": 10.089
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.05,
+    "y": 12.425,
+    "rot": 0,
+    "cu_margin": 0.0482,
+    "comp_gap": 0.21,
+    "p1": [
+     41.75,
+     12.425
+    ],
+    "p2": [
+     42.349999999999994,
+     12.425
+    ],
+    "cost": 21.027,
+    "cU": 10.813,
+    "cS": 10.213
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.3,
+    "y": 12.425,
+    "rot": 0,
+    "cu_margin": 0.135,
+    "comp_gap": 0.21,
+    "p1": [
+     42.0,
+     12.425
+    ],
+    "p2": [
+     42.599999999999994,
+     12.425
+    ],
+    "cost": 21.048,
+    "cU": 10.938,
+    "cS": 10.11
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.525,
+    "y": 12.425,
+    "rot": 0,
+    "cu_margin": 0.135,
+    "comp_gap": 0.21,
+    "p1": [
+     42.225,
+     12.425
+    ],
+    "p2": [
+     42.824999999999996,
+     12.425
+    ],
+    "cost": 21.151,
+    "cU": 10.99,
+    "cS": 10.162
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.875,
+    "y": 12.5,
+    "rot": 90,
+    "cu_margin": 0.1101,
+    "comp_gap": 0.21,
+    "p1": [
+     42.875,
+     12.2
+    ],
+    "p2": [
+     42.875,
+     12.8
+    ],
+    "cost": 21.27,
+    "cU": 10.635,
+    "cS": 10.635
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  },
+  {
+   "site": {
+    "side": "Bottom",
+    "x": 42.35,
+    "y": 12.275,
+    "rot": 0,
+    "cu_margin": 0.1469,
+    "comp_gap": 0.36,
+    "p1": [
+     42.050000000000004,
+     12.275
+    ],
+    "p2": [
+     42.65,
+     12.275
+    ],
+    "cost": 21.306,
+    "cU": 11.067,
+    "cS": 10.239
+   },
+   "ok": false,
+   "why": "U1 side unroutable (SDfirst)"
+  }
+ ]
+}

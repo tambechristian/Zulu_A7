@@ -1,0 +1,2241 @@
+{
+ "script": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\si\\series_r\\design_top.py",
+ "source": {
+  "pcbdoc": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc",
+  "pcbdoc_mtime": 1794535986.526,
+  "pcbdoc_md5": "2a616c1c74f8788a4a1c837c7d76c3b0",
+  "pcblib": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/Imported zulu_a7.PrjPcb/zulu_a7.PcbLib",
+  "script": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/si/series_r/extract.py",
+  "units": "mm, board origin bottom-left (Board6 ORIGINX/Y = 0), y up",
+  "board_outline": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    60.96,
+    0.0
+   ],
+   [
+    60.96,
+    25.4
+   ],
+   [
+    0.0,
+    25.4
+   ],
+   [
+    0.0,
+    0.0
+   ]
+  ],
+  "body_source": "PcbDoc ComponentBodies6 and ShapeBasedComponentBodies6 are EMPTY (0 bytes) and the project PcbLib has no TSOPII-54 footprint (it holds ['C0201', 'C0402', 'C0603', 'C0805', 'IND2520', 'PCBComponent_1', 'QFN28-UFD-4X5', 'R0201', 'R0402', 'SOT23-5', 'VSON10-DLA0010A']) -- so component outlines here are the PcbDoc primitives each component owns (pads + overlay/mech per layer); U3 body is the datasheet outline centred on the measured pad field"
+ },
+ "model": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\tools\\route\\model.json",
+ "runtime_s": 4.6,
+ "approach": "TOP side 0201 resistors (R0201 footprint), via-in-pad stacked microvias where the R sits on the inner route; see the docstring for the variants",
+ "feasible": false,
+ "placed": 10,
+ "unplaced": [
+  "D4",
+  "D7",
+  "D9",
+  "D10",
+  "D13",
+  "D14"
+ ],
+ "unplaced_reason": {
+  "D4": "no legal Top placement alone",
+  "D7": "no legal Top placement alone",
+  "D9": "no legal Top placement alone",
+  "D10": "20 legal placements alone, none compatible with the selected set",
+  "D13": "no legal Top placement alone",
+  "D14": "no legal Top placement alone"
+ },
+ "selection_timeouts": {
+  "D0..D7": false,
+  "D8..D15": false
+ },
+ "placements": {
+  "D0": {
+   "ref": "R119",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 38.95,
+   "y": 6.4,
+   "rot": 0,
+   "variant": "I",
+   "center": [
+    38.95,
+    6.4
+   ],
+   "pad_A": [
+    38.650000000000006,
+    6.4
+   ],
+   "pad_B": [
+    39.25,
+    6.4
+   ],
+   "pad1_net": "SDRAM-D0",
+   "pad2_net": "D0",
+   "section": "L4-SIG",
+   "remove_tracks": [
+    {
+     "layer": "L4-SIG",
+     "net": "D0",
+     "w": 0.125,
+     "x1": 38.025,
+     "y1": 7.05,
+     "x2": 39.0,
+     "y2": 6.075
+    },
+    {
+     "layer": "L4-SIG",
+     "net": "D0",
+     "w": 0.125,
+     "x1": 39.0,
+     "y1": 6.075,
+     "x2": 41.7,
+     "y2": 5.75
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D0",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 38.025,
+     "y1": 7.05,
+     "x2": 38.6625,
+     "y2": 6.4125,
+     "keep": true
+    },
+    {
+     "net": "D0",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 39.2079,
+     "y1": 6.05,
+     "x2": 41.7,
+     "y2": 5.75,
+     "keep": true
+    },
+    {
+     "net": "SDRAM-D0",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 38.65,
+     "y1": 6.4,
+     "x2": 38.6625,
+     "y2": 6.4125
+    },
+    {
+     "net": "D0",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 39.25,
+     "y1": 6.4,
+     "x2": 39.2079,
+     "y2": 6.05
+    }
+   ],
+   "add_vias": [
+    {
+     "net": "SDRAM-D0",
+     "x": 38.65,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "SDRAM-D0",
+     "x": 38.65,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "SDRAM-D0",
+     "x": 38.65,
+     "y": 6.4,
+     "size": 0.27,
+     "hole": 0.15,
+     "span": [
+      "L3-SIG",
+      "L4-SIG"
+     ]
+    },
+    {
+     "net": "D0",
+     "x": 39.25,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "D0",
+     "x": 39.25,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "D0",
+     "x": 39.25,
+     "y": 6.4,
+     "size": 0.27,
+     "hole": 0.15,
+     "span": [
+      "L3-SIG",
+      "L4-SIG"
+     ]
+    }
+   ],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 37.9499,
+      "y1": 6.1701,
+      "x2": 38.025,
+      "y2": 7.05
+     }
+    ],
+    "vias": [
+     {
+      "x": 38.025,
+      "y": 7.05,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-2"
+    ]
+   },
+   "electrical": {
+    "mm": 3.314,
+    "ps": 22.0,
+    "parts": {
+     "Bottom": 0.883,
+     "L4-SIG": 0.902,
+     "via F barrel Bottom->L4-SIG": 0.206,
+     "inner jog": 0.018,
+     "microvia stack L4-SIG->Top": 1.306
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.5078,
+     "U2"
+    ],
+    "edge": [
+     5.902,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.0133,
+     "rpad SDRAM-D0 vs track CHAN18 "
+    ],
+    "thru_via_in_pad": [
+     0.125,
+     "through via VCC3V3 at 39.750,6.450"
+    ],
+    "silk_to_mask": [
+     1.41,
+     "silk 'C19'"
+    ],
+    "hole_to_hole": [
+     0.0628,
+     "SDRAM-D0 vs via CHAN18"
+    ],
+    "clearance_L2-GND": [
+     0.0628,
+     "via SDRAM-D0 vs via CHAN18 "
+    ],
+    "clearance_L3-SIG": [
+     0.0394,
+     "via SDRAM-D0 vs track D2 "
+    ],
+    "clearance_L4-SIG": [
+     0.003,
+     "track SDRAM-D0 vs via CHAN18 "
+    ]
+   }
+  },
+  "D1": {
+   "ref": "R120",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 36.95,
+   "y": 6.05,
+   "rot": 0,
+   "variant": "FC",
+   "center": [
+    36.95,
+    6.05
+   ],
+   "pad_A": [
+    36.650000000000006,
+    6.05
+   ],
+   "pad_B": [
+    37.25,
+    6.05
+   ],
+   "pad1_net": "SDRAM-D1",
+   "pad2_net": "D1",
+   "section": "L4-SIG",
+   "remove_tracks": [
+    {
+     "layer": "L4-SIG",
+     "net": "D1",
+     "w": 0.125,
+     "x1": 36.75,
+     "y1": 6.75,
+     "x2": 36.75,
+     "y2": 7.025
+    },
+    {
+     "layer": "L4-SIG",
+     "net": "D1",
+     "w": 0.125,
+     "x1": 36.75,
+     "y1": 6.75,
+     "x2": 37.475,
+     "y2": 6.025
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D1",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 36.75,
+     "y1": 7.025,
+     "x2": 36.65,
+     "y2": 6.05
+    },
+    {
+     "net": "D1",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 37.5,
+     "y1": 6.7,
+     "x2": 37.25,
+     "y2": 6.05
+    },
+    {
+     "net": "D1",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 37.5,
+     "y1": 6.7,
+     "x2": 37.15,
+     "y2": 6.35
+    },
+    {
+     "net": "D1",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 37.15,
+     "y1": 6.35,
+     "x2": 37.475,
+     "y2": 6.025,
+     "keep": true
+    }
+   ],
+   "add_vias": [
+    {
+     "net": "D1",
+     "x": 37.5,
+     "y": 6.7,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "D1",
+     "x": 37.5,
+     "y": 6.7,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "D1",
+     "x": 37.5,
+     "y": 6.7,
+     "size": 0.27,
+     "hole": 0.15,
+     "span": [
+      "L3-SIG",
+      "L4-SIG"
+     ]
+    }
+   ],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 36.35,
+      "y1": 6.1701,
+      "x2": 36.75,
+      "y2": 7.025
+     }
+    ],
+    "vias": [
+     {
+      "x": 36.75,
+      "y": 7.025,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-4"
+    ]
+   },
+   "electrical": {
+    "mm": 3.436,
+    "ps": 22.4,
+    "parts": {
+     "Bottom": 0.944,
+     "via F barrel Bottom->Top": 1.512,
+     "Top track F->R": 0.98
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.623,
+     "U2"
+    ],
+    "edge": [
+     5.552,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.0055,
+     "rpad D1 vs track CHAN23 "
+    ],
+    "thru_via_in_pad": [
+     0.6,
+     "through via SDRAM-D1 at 36.750,7.025"
+    ],
+    "silk_to_mask": [
+     0.818,
+     "silk 'C20'"
+    ],
+    "hole_to_hole": [
+     0.0384,
+     "D1 vs via VCC3V3"
+    ],
+    "clearance_L2-GND": [
+     0.0384,
+     "via D1 vs via VCC3V3 "
+    ],
+    "clearance_L3-SIG": [
+     0.0284,
+     "via D1 vs via VCC3V3 "
+    ],
+    "clearance_L4-SIG": [
+     0.0151,
+     "track D1 vs track D5 "
+    ]
+   }
+  },
+  "D2": {
+   "ref": "R121",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 44.9,
+   "y": 5.3,
+   "rot": 90,
+   "variant": "T",
+   "center": [
+    44.9,
+    5.3
+   ],
+   "pad_A": [
+    44.9,
+    5.0
+   ],
+   "pad_B": [
+    44.9,
+    5.6
+   ],
+   "pad1_net": "SDRAM-D2",
+   "pad2_net": "D2",
+   "section": "Top",
+   "remove_tracks": [
+    {
+     "layer": "Top",
+     "net": "D2",
+     "w": 0.0762,
+     "x1": 44.775,
+     "y1": 4.4,
+     "x2": 44.9,
+     "y2": 6.55
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D2",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 44.775,
+     "y1": 4.4,
+     "x2": 44.8102,
+     "y2": 5.0052,
+     "keep": true
+    },
+    {
+     "net": "D2",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 44.845,
+     "y1": 5.6032,
+     "x2": 44.9,
+     "y2": 6.55,
+     "keep": true
+    },
+    {
+     "net": "SDRAM-D2",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 44.9,
+     "y1": 5.0,
+     "x2": 44.8102,
+     "y2": 5.0052
+    },
+    {
+     "net": "D2",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 44.9,
+     "y1": 5.6,
+     "x2": 44.845,
+     "y2": 5.6032
+    }
+   ],
+   "add_vias": [],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 35.5501,
+      "y1": 6.1701,
+      "x2": 35.65,
+      "y2": 7.075
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 35.65,
+      "y1": 7.075,
+      "x2": 36.275,
+      "y2": 6.425
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 36.275,
+      "y1": 6.425,
+      "x2": 43.125,
+      "y2": 5.325
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 43.125,
+      "y1": 5.325,
+      "x2": 44.45,
+      "y2": 4.75
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 44.45,
+      "y1": 4.75,
+      "x2": 44.775,
+      "y2": 4.4
+     }
+    ],
+    "vias": [
+     {
+      "x": 35.65,
+      "y": 7.075,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     },
+     {
+      "x": 44.775,
+      "y": 4.4,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-5"
+    ]
+   },
+   "electrical": {
+    "mm": 12.88,
+    "ps": 86.5,
+    "parts": {
+     "Bottom": 0.91,
+     "L3-SIG": 9.762,
+     "Top": 0.606,
+     "via F barrel Bottom->L3-SIG": 1.286,
+     "via S barrel L3-SIG->Top": 0.226,
+     "Top jog": 0.09
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.896,
+     "U1"
+    ],
+    "edge": [
+     4.55,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.009,
+     "rpad D2 vs track D0 "
+    ],
+    "thru_via_in_pad": [
+     0.225,
+     "through via SDRAM-D2 at 44.775,4.400"
+    ],
+    "silk_to_mask": [
+     0.01,
+     "silk 'C17'"
+    ]
+   }
+  },
+  "D3": {
+   "ref": "R122",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 34.9,
+   "y": 6.4,
+   "rot": 0,
+   "variant": "I",
+   "center": [
+    34.9,
+    6.4
+   ],
+   "pad_A": [
+    34.6,
+    6.4
+   ],
+   "pad_B": [
+    35.199999999999996,
+    6.4
+   ],
+   "pad1_net": "SDRAM-D3",
+   "pad2_net": "D3",
+   "section": "L3-SIG",
+   "remove_tracks": [
+    {
+     "layer": "L3-SIG",
+     "net": "D3",
+     "w": 0.125,
+     "x1": 34.625,
+     "y1": 6.45,
+     "x2": 43.1,
+     "y2": 5.075
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "D3",
+     "layer": "L3-SIG",
+     "w": 0.125,
+     "x1": 35.1932,
+     "y1": 6.3578,
+     "x2": 43.1,
+     "y2": 5.075,
+     "keep": true
+    },
+    {
+     "net": "SDRAM-D3",
+     "layer": "L3-SIG",
+     "w": 0.125,
+     "x1": 34.6,
+     "y1": 6.4,
+     "x2": 34.625,
+     "y2": 6.45
+    },
+    {
+     "net": "D3",
+     "layer": "L3-SIG",
+     "w": 0.125,
+     "x1": 35.2,
+     "y1": 6.4,
+     "x2": 35.1932,
+     "y2": 6.3578
+    }
+   ],
+   "add_vias": [
+    {
+     "net": "SDRAM-D3",
+     "x": 34.6,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "SDRAM-D3",
+     "x": 34.6,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "D3",
+     "x": 35.2,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "D3",
+     "x": 35.2,
+     "y": 6.4,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    }
+   ],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 33.9499,
+      "y1": 6.1701,
+      "x2": 33.975,
+      "y2": 8.925
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 33.975,
+      "y1": 8.925,
+      "x2": 34.625,
+      "y2": 6.45
+     }
+    ],
+    "vias": [
+     {
+      "x": 33.975,
+      "y": 8.925,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-7"
+    ]
+   },
+   "electrical": {
+    "mm": 6.882,
+    "ps": 45.3,
+    "parts": {
+     "Bottom": 2.755,
+     "L3-SIG": 2.559,
+     "via F barrel Bottom->L3-SIG": 1.286,
+     "inner jog": 0.056,
+     "microvia stack L3-SIG->Top": 0.226
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.136,
+     "X4"
+    ],
+    "edge": [
+     5.902,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.0304,
+     "rpad SDRAM-D3 vs via VCC3V3 "
+    ],
+    "mask_sliver": [
+     0.1901,
+     "vs X4-MP2"
+    ],
+    "thru_via_in_pad": [
+     0.3618,
+     "through via D2 at 35.650,7.075"
+    ],
+    "silk_to_mask": [
+     1.4589,
+     "silk 'C20'"
+    ],
+    "hole_to_hole": [
+     0.0902,
+     "SDRAM-D3 vs via VCC3V3"
+    ],
+    "clearance_L2-GND": [
+     0.0902,
+     "via SDRAM-D3 vs via VCC3V3 "
+    ],
+    "clearance_L3-SIG": [
+     0.0143,
+     "track D3 vs track D2 "
+    ]
+   }
+  },
+  "D5": {
+   "ref": "R124",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 43.65,
+   "y": 5.3,
+   "rot": 90,
+   "variant": "T",
+   "center": [
+    43.65,
+    5.3
+   ],
+   "pad_A": [
+    43.65,
+    5.0
+   ],
+   "pad_B": [
+    43.65,
+    5.6
+   ],
+   "pad1_net": "SDRAM-D5",
+   "pad2_net": "D5",
+   "section": "Top",
+   "remove_tracks": [
+    {
+     "layer": "Top",
+     "net": "D5",
+     "w": 0.0762,
+     "x1": 43.325,
+     "y1": 4.4,
+     "x2": 43.825,
+     "y2": 6.55
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D5",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 43.325,
+     "y1": 4.4,
+     "x2": 43.4741,
+     "y2": 5.0409,
+     "keep": true
+    },
+    {
+     "net": "D5",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 43.6064,
+     "y1": 5.6101,
+     "x2": 43.825,
+     "y2": 6.55,
+     "keep": true
+    },
+    {
+     "net": "SDRAM-D5",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 43.65,
+     "y1": 5.0,
+     "x2": 43.4741,
+     "y2": 5.0409
+    },
+    {
+     "net": "D5",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 43.65,
+     "y1": 5.6,
+     "x2": 43.6064,
+     "y2": 5.6101
+    }
+   ],
+   "add_vias": [],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 31.55,
+      "y1": 8.95,
+      "x2": 31.5501,
+      "y2": 6.1701
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 31.55,
+      "y1": 8.95,
+      "x2": 32.25,
+      "y2": 6.45
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 32.25,
+      "y1": 6.45,
+      "x2": 41.65,
+      "y2": 5.25
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 41.65,
+      "y1": 5.25,
+      "x2": 43.0,
+      "y2": 4.75
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 43.0,
+      "y1": 4.75,
+      "x2": 43.325,
+      "y2": 4.4
+     }
+    ],
+    "vias": [
+     {
+      "x": 31.55,
+      "y": 8.95,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     },
+     {
+      "x": 43.325,
+      "y": 4.4,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-10"
+    ]
+   },
+   "electrical": {
+    "mm": 19.12,
+    "ps": 127.8,
+    "parts": {
+     "Bottom": 2.78,
+     "L4-SIG": 13.99,
+     "Top": 0.658,
+     "via F barrel Bottom->L4-SIG": 0.206,
+     "via S barrel L4-SIG->Top": 1.306,
+     "Top jog": 0.181
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.896,
+     "U1"
+    ],
+    "edge": [
+     4.55,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.0043,
+     "track D5 vs track D6 "
+    ],
+    "thru_via_in_pad": [
+     0.225,
+     "through via D3 at 43.825,4.400"
+    ],
+    "silk_to_mask": [
+     0.01,
+     "silk 'C17'"
+    ]
+   }
+  },
+  "D6": {
+   "ref": "R125",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 35.05,
+   "y": 5.7,
+   "rot": 0,
+   "variant": "I",
+   "center": [
+    35.05,
+    5.7
+   ],
+   "pad_A": [
+    34.75,
+    5.7
+   ],
+   "pad_B": [
+    35.349999999999994,
+    5.7
+   ],
+   "pad1_net": "SDRAM-D6",
+   "pad2_net": "D6",
+   "section": "L3-SIG",
+   "remove_tracks": [
+    {
+     "layer": "L3-SIG",
+     "net": "D6",
+     "w": 0.125,
+     "x1": 31.425,
+     "y1": 6.45,
+     "x2": 41.5,
+     "y2": 5.025
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D6",
+     "layer": "L3-SIG",
+     "w": 0.125,
+     "x1": 31.425,
+     "y1": 6.45,
+     "x2": 34.7888,
+     "y2": 5.9742,
+     "keep": true
+    },
+    {
+     "net": "D6",
+     "layer": "L3-SIG",
+     "w": 0.125,
+     "x1": 35.377,
+     "y1": 5.891,
+     "x2": 41.5,
+     "y2": 5.025,
+     "keep": true
+    },
+    {
+     "net": "SDRAM-D6",
+     "layer": "L3-SIG",
+     "w": 0.125,
+     "x1": 34.75,
+     "y1": 5.7,
+     "x2": 34.7888,
+     "y2": 5.9742
+    },
+    {
+     "net": "D6",
+     "layer": "L3-SIG",
+     "w": 0.125,
+     "x1": 35.35,
+     "y1": 5.7,
+     "x2": 35.377,
+     "y2": 5.891
+    }
+   ],
+   "add_vias": [
+    {
+     "net": "SDRAM-D6",
+     "x": 34.75,
+     "y": 5.7,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "SDRAM-D6",
+     "x": 34.75,
+     "y": 5.7,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "D6",
+     "x": 35.35,
+     "y": 5.7,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "D6",
+     "x": 35.35,
+     "y": 5.7,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    }
+   ],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 30.75,
+      "y1": 6.1701,
+      "x2": 30.975,
+      "y2": 8.925
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 30.975,
+      "y1": 8.925,
+      "x2": 31.425,
+      "y2": 6.45
+     }
+    ],
+    "vias": [
+     {
+      "x": 30.975,
+      "y": 8.925,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-11"
+    ]
+   },
+   "electrical": {
+    "mm": 10.466,
+    "ps": 69.6,
+    "parts": {
+     "Bottom": 2.764,
+     "L3-SIG": 5.913,
+     "via F barrel Bottom->L3-SIG": 1.286,
+     "inner jog": 0.277,
+     "microvia stack L3-SIG->Top": 0.226
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.286,
+     "X4"
+    ],
+    "edge": [
+     5.202,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.01,
+     "rpad SDRAM-D6 vs via TDI "
+    ],
+    "mask_sliver": [
+     0.3401,
+     "vs X4-MP2"
+    ],
+    "silk_to_mask": [
+     0.8273,
+     "silk 'C20'"
+    ],
+    "hole_to_hole": [
+     0.0291,
+     "SDRAM-D6 vs via TDI"
+    ],
+    "clearance_L2-GND": [
+     0.0291,
+     "via SDRAM-D6 vs via TDI "
+    ],
+    "clearance_L3-SIG": [
+     0.0191,
+     "via SDRAM-D6 vs via TDI "
+    ]
+   }
+  },
+  "D8": {
+   "ref": "R127",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 39.2,
+   "y": 13.6,
+   "rot": 0,
+   "variant": "T",
+   "center": [
+    39.2,
+    13.6
+   ],
+   "pad_A": [
+    38.900000000000006,
+    13.6
+   ],
+   "pad_B": [
+    39.5,
+    13.6
+   ],
+   "pad1_net": "SDRAM-D8",
+   "pad2_net": "D8",
+   "section": "Top",
+   "remove_tracks": [
+    {
+     "layer": "Top",
+     "net": "D8",
+     "w": 0.0762,
+     "x1": 38.5,
+     "y1": 13.6,
+     "x2": 39.6455,
+     "y2": 13.6
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D8",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 38.5,
+     "y1": 13.6,
+     "x2": 38.9,
+     "y2": 13.6,
+     "keep": true
+    },
+    {
+     "net": "D8",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 39.5,
+     "y1": 13.6,
+     "x2": 39.6455,
+     "y2": 13.6,
+     "keep": true
+    }
+   ],
+   "add_vias": [],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 29.1501,
+      "y1": 17.53,
+      "x2": 29.25,
+      "y2": 16.65
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 29.25,
+      "y1": 16.65,
+      "x2": 29.875,
+      "y2": 16.025
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 29.875,
+      "y1": 16.025,
+      "x2": 38.5,
+      "y2": 13.6
+     }
+    ],
+    "vias": [
+     {
+      "x": 29.25,
+      "y": 16.65,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     },
+     {
+      "x": 38.5,
+      "y": 13.6,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-42"
+    ]
+   },
+   "electrical": {
+    "mm": 12.641,
+    "ps": 85.0,
+    "parts": {
+     "Bottom": 0.886,
+     "L4-SIG": 9.843,
+     "Top": 0.4,
+     "via F barrel Bottom->L4-SIG": 0.206,
+     "via S barrel L4-SIG->Top": 1.306,
+     "Top jog": 0.0
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.5461,
+     "U2"
+    ],
+    "edge": [
+     11.302,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.0003,
+     "track D8 vs track UDQM "
+    ],
+    "thru_via_in_pad": [
+     0.025,
+     "through via SDRAM-D8 at 38.500,13.600"
+    ],
+    "silk_to_mask": [
+     6.8559,
+     "silk 'C7'"
+    ]
+   }
+  },
+  "D11": {
+   "ref": "R130",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 39.2,
+   "y": 14.9,
+   "rot": 0,
+   "variant": "T",
+   "center": [
+    39.2,
+    14.9
+   ],
+   "pad_A": [
+    38.900000000000006,
+    14.9
+   ],
+   "pad_B": [
+    39.5,
+    14.9
+   ],
+   "pad1_net": "SDRAM-D11",
+   "pad2_net": "D11",
+   "section": "Top",
+   "remove_tracks": [
+    {
+     "layer": "Top",
+     "net": "D11",
+     "w": 0.0762,
+     "x1": 38.5,
+     "y1": 14.95,
+     "x2": 40.145,
+     "y2": 14.95
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D11",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 38.5,
+     "y1": 14.95,
+     "x2": 38.9,
+     "y2": 14.95,
+     "keep": true
+    },
+    {
+     "net": "D11",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 39.5,
+     "y1": 14.95,
+     "x2": 40.145,
+     "y2": 14.95,
+     "keep": true
+    },
+    {
+     "net": "SDRAM-D11",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 38.9,
+     "y1": 14.9,
+     "x2": 38.9,
+     "y2": 14.95
+    },
+    {
+     "net": "D11",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 39.5,
+     "y1": 14.9,
+     "x2": 39.5,
+     "y2": 14.95
+    }
+   ],
+   "add_vias": [],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 33.1501,
+      "y1": 17.53,
+      "x2": 33.25,
+      "y2": 16.65
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 33.25,
+      "y1": 16.65,
+      "x2": 33.875,
+      "y2": 16.025
+     },
+     {
+      "layer": "L3-SIG",
+      "x1": 33.875,
+      "y1": 16.025,
+      "x2": 38.5,
+      "y2": 14.95
+     }
+    ],
+    "vias": [
+     {
+      "x": 33.25,
+      "y": 16.65,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     },
+     {
+      "x": 38.5,
+      "y": 14.95,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-47"
+    ]
+   },
+   "electrical": {
+    "mm": 8.48,
+    "ps": 56.8,
+    "parts": {
+     "Bottom": 0.886,
+     "L3-SIG": 5.632,
+     "Top": 0.4,
+     "via F barrel Bottom->L3-SIG": 1.286,
+     "via S barrel L3-SIG->Top": 0.226,
+     "Top jog": 0.05
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.5461,
+     "U2"
+    ],
+    "edge": [
+     10.002,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.01,
+     "rpad D11 vs via UART_FT_CTS# "
+    ],
+    "thru_via_in_pad": [
+     0.025,
+     "through via SDRAM-D11 at 38.500,14.950"
+    ],
+    "silk_to_mask": [
+     5.5662,
+     "silk 'C7'"
+    ]
+   }
+  },
+  "D12": {
+   "ref": "R131",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 39.2,
+   "y": 15.8,
+   "rot": 0,
+   "variant": "C",
+   "center": [
+    39.2,
+    15.8
+   ],
+   "pad_A": [
+    38.900000000000006,
+    15.8
+   ],
+   "pad_B": [
+    39.5,
+    15.8
+   ],
+   "pad1_net": "SDRAM-D12",
+   "pad2_net": "D12",
+   "section": "L4-SIG",
+   "remove_tracks": [
+    {
+     "layer": "L4-SIG",
+     "net": "D12",
+     "w": 0.125,
+     "x1": 37.25,
+     "y1": 16.025,
+     "x2": 40.9,
+     "y2": 15.1
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "D12",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 39.3,
+     "y1": 15.9,
+     "x2": 39.5,
+     "y2": 15.8
+    },
+    {
+     "net": "SDRAM-D12",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 38.9,
+     "y1": 15.8,
+     "x2": 38.854,
+     "y2": 15.6185
+    },
+    {
+     "net": "D12",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 39.3,
+     "y1": 15.9,
+     "x2": 39.2061,
+     "y2": 15.5293
+    },
+    {
+     "net": "SDRAM-D12",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 37.25,
+     "y1": 16.025,
+     "x2": 38.854,
+     "y2": 15.6185,
+     "keep": true
+    },
+    {
+     "net": "D12",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 39.2061,
+     "y1": 15.5293,
+     "x2": 40.9,
+     "y2": 15.1,
+     "keep": true
+    }
+   ],
+   "add_vias": [
+    {
+     "net": "SDRAM-D12",
+     "x": 38.9,
+     "y": 15.8,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "SDRAM-D12",
+     "x": 38.9,
+     "y": 15.8,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "SDRAM-D12",
+     "x": 38.9,
+     "y": 15.8,
+     "size": 0.27,
+     "hole": 0.15,
+     "span": [
+      "L3-SIG",
+      "L4-SIG"
+     ]
+    },
+    {
+     "net": "D12",
+     "x": 39.3,
+     "y": 15.9,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "D12",
+     "x": 39.3,
+     "y": 15.9,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "D12",
+     "x": 39.3,
+     "y": 15.9,
+     "size": 0.27,
+     "hole": 0.15,
+     "span": [
+      "L3-SIG",
+      "L4-SIG"
+     ]
+    }
+   ],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 33.9499,
+      "y1": 17.53,
+      "x2": 34.025,
+      "y2": 16.65
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 34.025,
+      "y1": 16.65,
+      "x2": 34.65,
+      "y2": 16.025
+     },
+     {
+      "layer": "L4-SIG",
+      "x1": 34.65,
+      "y1": 16.025,
+      "x2": 37.25,
+      "y2": 16.025
+     }
+    ],
+    "vias": [
+     {
+      "x": 34.025,
+      "y": 16.65,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-48"
+    ]
+   },
+   "electrical": {
+    "mm": 7.721,
+    "ps": 51.9,
+    "parts": {
+     "Bottom": 0.883,
+     "L4-SIG": 5.139,
+     "via F barrel Bottom->L4-SIG": 0.206,
+     "inner jog": 0.187,
+     "microvia stack L4-SIG->Top": 1.306,
+     "Top track column->R": 0.0
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.5461,
+     "U2"
+    ],
+    "edge": [
+     9.102,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.01,
+     "own A/B rpad via"
+    ],
+    "thru_via_in_pad": [
+     0.5051,
+     "through via D11 at 38.500,14.950"
+    ],
+    "silk_to_mask": [
+     4.6765,
+     "silk 'C7'"
+    ],
+    "hole_to_hole": [
+     0.0223,
+     "own vias"
+    ],
+    "clearance_L2-GND": [
+     0.0223,
+     "own A/B via via"
+    ],
+    "clearance_L3-SIG": [
+     0.0123,
+     "own A/B via via"
+    ],
+    "clearance_L4-SIG": [
+     0.0071,
+     "track D12 vs track D9 "
+    ]
+   }
+  },
+  "D15": {
+   "ref": "R134",
+   "part": "Yageo RC0201FR-0722RL (22 ohm 1 % 0201), footprint R0201",
+   "side": "Top",
+   "x": 39.1,
+   "y": 16.75,
+   "rot": 0,
+   "variant": "F",
+   "center": [
+    39.1,
+    16.75
+   ],
+   "pad_A": [
+    38.800000000000004,
+    16.75
+   ],
+   "pad_B": [
+    39.4,
+    16.75
+   ],
+   "pad1_net": "SDRAM-D15",
+   "pad2_net": "D15",
+   "section": "L4-SIG",
+   "remove_tracks": [
+    {
+     "layer": "L4-SIG",
+     "net": "D15",
+     "w": 0.125,
+     "x1": 38.35,
+     "y1": 16.725,
+     "x2": 48.9,
+     "y2": 16.8
+    }
+   ],
+   "add_tracks": [
+    {
+     "net": "SDRAM-D15",
+     "layer": "Top",
+     "w": 0.0762,
+     "x1": 38.35,
+     "y1": 16.725,
+     "x2": 38.8,
+     "y2": 16.75
+    },
+    {
+     "net": "D15",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 39.4001,
+     "y1": 16.7325,
+     "x2": 48.9,
+     "y2": 16.8,
+     "keep": true
+    },
+    {
+     "net": "D15",
+     "layer": "L4-SIG",
+     "w": 0.125,
+     "x1": 39.4,
+     "y1": 16.75,
+     "x2": 39.4001,
+     "y2": 16.7325
+    }
+   ],
+   "add_vias": [
+    {
+     "net": "D15",
+     "x": 39.4,
+     "y": 16.75,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "Top",
+      "L2-GND"
+     ]
+    },
+    {
+     "net": "D15",
+     "x": 39.4,
+     "y": 16.75,
+     "size": 0.3,
+     "hole": 0.15,
+     "span": [
+      "L2-GND",
+      "L3-SIG"
+     ]
+    },
+    {
+     "net": "D15",
+     "x": 39.4,
+     "y": 16.75,
+     "size": 0.27,
+     "hole": 0.15,
+     "span": [
+      "L3-SIG",
+      "L4-SIG"
+     ]
+    }
+   ],
+   "renamed_to_SDRAM": {
+    "tracks": [
+     {
+      "layer": "Bottom",
+      "x1": 37.9499,
+      "y1": 17.53,
+      "x2": 38.35,
+      "y2": 16.725
+     }
+    ],
+    "vias": [
+     {
+      "x": 38.35,
+      "y": 16.725,
+      "span": [
+       "Top",
+       "L2-GND",
+       "L3-SIG",
+       "L4-SIG",
+       "L5-VCC3V3",
+       "Bottom"
+      ]
+     }
+    ],
+    "pads": [
+     "U3-53"
+    ]
+   },
+   "electrical": {
+    "mm": 2.861,
+    "ps": 18.7,
+    "parts": {
+     "Bottom": 0.899,
+     "via F barrel Bottom->Top": 1.512,
+     "Top track F->R": 0.451
+    }
+   },
+   "search_worst_margin": {
+    "component_clearance": [
+     0.4461,
+     "U2"
+    ],
+    "edge": [
+     8.152,
+     "board edge"
+    ],
+    "clearance_Top": [
+     0.1631,
+     "rpad D15 vs via UART_FT_TXD "
+    ],
+    "thru_via_in_pad": [
+     0.075,
+     "through via SDRAM-D15 at 38.350,16.725"
+    ],
+    "mask_sliver": [
+     0.75,
+     "vs C157-2"
+    ],
+    "silk_to_mask": [
+     3.7233,
+     "silk 'C7'"
+    ],
+    "hole_to_hole": [
+     0.1952,
+     "D15 vs via UART_FT_TXD"
+    ],
+    "clearance_L2-GND": [
+     0.1952,
+     "via D15 vs via UART_FT_TXD "
+    ],
+    "clearance_L3-SIG": [
+     0.1066,
+     "via D15 vs track VCC1V8 "
+    ],
+    "clearance_L4-SIG": [
+     0.0092,
+     "track D15 vs via GND "
+    ]
+   }
+  }
+ },
+ "verification": {
+  "exact_violations": [],
+  "exact_worst": {
+   "clearance L2-GND": [
+    0.0223,
+    "new via SDRAM-D12 vs new via D12"
+   ],
+   "clearance L3-SIG": [
+    0.0123,
+    "new via SDRAM-D12 vs new via D12"
+   ],
+   "clearance L4-SIG": [
+    0.003,
+    "track SDRAM-D0 vs via CHAN18 "
+   ],
+   "clearance Top Layer": [
+    0.0003,
+    "track D8 vs track UDQM "
+   ],
+   "component clearance": [
+    0.05,
+    "R122 vs R125"
+   ],
+   "edge": [
+    4.55,
+    "R121 board edge"
+   ],
+   "hole to hole": [
+    0.0223,
+    "new vias SDRAM-D12 D12"
+   ],
+   "mask sliver": [
+    0.1,
+    "R124-1 vs R124-2"
+   ],
+   "silk to mask": [
+    0.01,
+    "R124-1 vs silk 'C17'"
+   ],
+   "through via in SMD pad": [
+    0.025,
+    "R127-1 vs through via SDRAM-D8"
+   ]
+  },
+  "courtyard_mech7_margin": {
+   "X3": 18.621,
+   "U1": 0.346,
+   "X1": 4.448,
+   "BTN": 14.8689,
+   "LD0": 13.1167,
+   "Q1": 0.5542,
+   "R4": 16.1768,
+   "X4": 0.2974,
+   "U2": 1.6846,
+   "X2": -0.254
+  },
+  "route_check_rc": 0,
+  "route_check_output": "plan: 37 tracks, 26 vias, 12 removed; board then: 5145 tracks, 1954 vias\nviolations: 0\nopen connections after the plan: 0 on 0 nets\nPASS\n",
+  "open_connections_after": {},
+  "movable_silk_conflicts": [
+   [
+    "U1",
+    "R134"
+   ],
+   [
+    "ZULU A7 2.3",
+    "R119"
+   ],
+   [
+    "ZULU A7 2.3",
+    "R120"
+   ],
+   [
+    "ZULU A7 2.3",
+    "R121"
+   ],
+   [
+    "ZULU A7 2.3",
+    "R124"
+   ]
+  ]
+ },
+ "plane_webs": [
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D0",
+   "x": 38.65,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": -0.027
+  },
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D0",
+   "x": 38.65,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": -0.027
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D0",
+   "x": 39.25,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": -0.088
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D0",
+   "x": 39.25,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": -0.088
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D1",
+   "x": 37.5,
+   "y": 6.7,
+   "opening_d": 0.48,
+   "min_web": -0.137
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D1",
+   "x": 37.5,
+   "y": 6.7,
+   "opening_d": 0.48,
+   "min_web": -0.137
+  },
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D3",
+   "x": 34.6,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": 0.0
+  },
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D3",
+   "x": 34.6,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": 0.0
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D3",
+   "x": 35.2,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": 0.0
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D3",
+   "x": 35.2,
+   "y": 6.4,
+   "opening_d": 0.48,
+   "min_web": 0.0
+  },
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D6",
+   "x": 34.75,
+   "y": 5.7,
+   "opening_d": 0.48,
+   "min_web": -0.061
+  },
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D6",
+   "x": 34.75,
+   "y": 5.7,
+   "opening_d": 0.48,
+   "min_web": -0.061
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D6",
+   "x": 35.35,
+   "y": 5.7,
+   "opening_d": 0.48,
+   "min_web": 0.12
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D6",
+   "x": 35.35,
+   "y": 5.7,
+   "opening_d": 0.48,
+   "min_web": 0.12
+  },
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D12",
+   "x": 38.9,
+   "y": 15.8,
+   "opening_d": 0.48,
+   "min_web": -0.068
+  },
+  {
+   "layer": "L2-GND",
+   "net": "SDRAM-D12",
+   "x": 38.9,
+   "y": 15.8,
+   "opening_d": 0.48,
+   "min_web": -0.068
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D12",
+   "x": 39.3,
+   "y": 15.9,
+   "opening_d": 0.48,
+   "min_web": -0.068
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D12",
+   "x": 39.3,
+   "y": 15.9,
+   "opening_d": 0.48,
+   "min_web": -0.068
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D15",
+   "x": 39.4,
+   "y": 16.75,
+   "opening_d": 0.48,
+   "min_web": 0.105
+  },
+  {
+   "layer": "L2-GND",
+   "net": "D15",
+   "x": 39.4,
+   "y": 16.75,
+   "opening_d": 0.48,
+   "min_web": 0.105
+  }
+ ],
+ "title_new_anchor": {
+  "1.3 mm": null,
+  "1.0 mm": {
+   "anchor": [
+    12.5,
+    19.3
+   ],
+   "move_mm": 28.97,
+   "box": [
+    12.5,
+    19.3,
+    23.0,
+    20.3
+   ]
+  },
+  "0.8 mm": {
+   "anchor": [
+    16.8,
+    5.0
+   ],
+   "move_mm": 20.9,
+   "box": [
+    16.8,
+    5.0,
+    25.2,
+    5.8
+   ]
+  }
+ }
+}

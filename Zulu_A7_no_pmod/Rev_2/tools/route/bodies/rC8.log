@@ -1,0 +1,5 @@
+CHAN8          
+routed 0 connections, failed 1; 0 vias, 0 tracks -> tools/route/bodies/rC8.json
+OPEN CHAN8 1
+FAIL CHAN8 (budget)
+exit 0

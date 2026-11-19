@@ -1,0 +1,5 @@
+seeded 131 vias, 429 tracks
+TDI            
+routed 0 connections, failed 1; 131 vias, 429 tracks -> c9a.json
+OPEN TDI 1
+FAIL TDI (nopath)

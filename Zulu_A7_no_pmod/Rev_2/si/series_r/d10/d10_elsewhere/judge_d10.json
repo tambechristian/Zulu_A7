@@ -1,0 +1,1305 @@
+{
+ "base12 (dq_series_r_plan.json)": {
+  "errors": [],
+  "violations": [],
+  "worst": {
+   "clearance Bottom": [
+    0.0093,
+    0.0993,
+    "NEW pad R119-1",
+    "track Bottom CHAN18 (37.550,5.550)-(37.850,4.100)"
+   ],
+   "clearance Top": [
+    0.0003,
+    0.0903,
+    "NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762",
+    "track Top UDQM (39.812,11.590)-(39.812,14.050)"
+   ],
+   "clearance L4-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "clearance L3-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "clearance L2-GND": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "clearance L5-VCC3V3": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "via D10 (38.500,14.500) Top>Bottom"
+   ],
+   "mask sliver Bottom": [
+    0.01,
+    0.11,
+    "pad U3-5",
+    "NEW pad R121-1"
+   ],
+   "mask sliver Top": [
+    0.1,
+    0.2,
+    "NEW pad R127-1",
+    "NEW pad R127-2"
+   ],
+   "hole to hole": [
+    0.01,
+    0.25,
+    "via TMS (33.450,8.150) L4-SIG>L5-VCC3V3",
+    "via TMS (33.850,8.150) L3-SIG>L4-SIG"
+   ]
+  },
+  "connectivity": {
+   "D0": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D1": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D11": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D12": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D2": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D3": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D4": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D5": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D6": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D7": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D8": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D9": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "FT-VCORE": {
+    "pads": 8,
+    "islands": 1,
+    "antennae": []
+   },
+   "GND": {
+    "pads": 257,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D0": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D1": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D11": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D12": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D2": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D3": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D4": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D5": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D6": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D7": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D8": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D9": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "TDO": {
+    "pads": 9,
+    "islands": 1,
+    "antennae": []
+   },
+   "TMS": {
+    "pads": 9,
+    "islands": 1,
+    "antennae": []
+   },
+   "VCC3V3": {
+    "pads": 142,
+    "islands": 1,
+    "antennae": []
+   }
+  },
+  "component": [
+   [
+    "R119",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R120",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R121",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R122",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R123",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R124",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R125",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R126",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R127",
+    "Top",
+    0.8001,
+    "U2"
+   ],
+   [
+    "R128",
+    "Bottom",
+    1.1521,
+    "C112"
+   ],
+   [
+    "R130",
+    "Top",
+    0.6,
+    "R131"
+   ],
+   [
+    "R131",
+    "Top",
+    0.6,
+    "R130"
+   ]
+  ],
+  "plane_webs": [
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D9 (30.825,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.119
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D8 (29.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.131
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D8 (38.500,13.600) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D12 (34.025,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": 0.075
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D11 (33.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.205
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D12 (38.900,15.800) Top>L2-GND",
+    "opening_d": 0.48,
+    "min_web": 0.11
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D12 (38.900,15.800) L2-GND>L3-SIG",
+    "opening_d": 0.48,
+    "min_web": 0.11
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via D12 (39.490,15.810) Top>L2-GND",
+    "opening_d": 0.48,
+    "min_web": -0.075
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via D12 (39.490,15.810) L2-GND>L3-SIG",
+    "opening_d": 0.48,
+    "min_web": -0.075
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D9 (30.825,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.039
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D8 (29.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": 0.077
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D8 (38.500,13.600) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D12 (34.025,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.115
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D11 (33.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.205
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via TMS (33.450,8.150) L4-SIG>L5-VCC3V3",
+    "opening_d": 0.48,
+    "min_web": 0.22
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via TMS (33.450,8.150) L5-VCC3V3>Bottom",
+    "opening_d": 0.48,
+    "min_web": 0.22
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D9 (41.750,12.950) L4-SIG>L5-VCC3V3",
+    "opening_d": 0.48,
+    "min_web": -0.057
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom",
+    "opening_d": 0.48,
+    "min_web": -0.057
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via D9 (42.350,12.950) L4-SIG>L5-VCC3V3",
+    "opening_d": 0.48,
+    "min_web": 0.12
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via D9 (42.350,12.950) L5-VCC3V3>Bottom",
+    "opening_d": 0.48,
+    "min_web": 0.12
+   }
+  ],
+  "parts": {
+   "D0": {
+    "ref": "R119",
+    "side": "Bottom",
+    "x": 38.2499,
+    "y": 5.17015,
+    "rot": 0,
+    "p1": [
+     37.9499,
+     5.17015
+    ],
+    "p2": [
+     38.5499,
+     5.17015
+    ]
+   },
+   "D1": {
+    "ref": "R120",
+    "side": "Bottom",
+    "x": 36.65,
+    "y": 5.17015,
+    "rot": 0,
+    "p1": [
+     36.35,
+     5.17015
+    ],
+    "p2": [
+     36.95,
+     5.17015
+    ]
+   },
+   "D2": {
+    "ref": "R121",
+    "side": "Bottom",
+    "x": 35.5501,
+    "y": 4.91015,
+    "rot": 270,
+    "p1": [
+     35.5501,
+     5.21015
+    ],
+    "p2": [
+     35.5501,
+     4.61015
+    ]
+   },
+   "D3": {
+    "ref": "R122",
+    "side": "Bottom",
+    "x": 34.2499,
+    "y": 5.17015,
+    "rot": 0,
+    "p1": [
+     33.9499,
+     5.17015
+    ],
+    "p2": [
+     34.5499,
+     5.17015
+    ]
+   },
+   "D4": {
+    "ref": "R123",
+    "side": "Bottom",
+    "x": 32.8501,
+    "y": 5.17015,
+    "rot": 180,
+    "p1": [
+     33.1501,
+     5.17015
+    ],
+    "p2": [
+     32.5501,
+     5.17015
+    ]
+   },
+   "D5": {
+    "ref": "R124",
+    "side": "Bottom",
+    "x": 31.5501,
+    "y": 4.91015,
+    "rot": 270,
+    "p1": [
+     31.5501,
+     5.21015
+    ],
+    "p2": [
+     31.5501,
+     4.61015
+    ]
+   },
+   "D6": {
+    "ref": "R125",
+    "side": "Bottom",
+    "x": 30.75,
+    "y": 4.91015,
+    "rot": 270,
+    "p1": [
+     30.75,
+     5.21015
+    ],
+    "p2": [
+     30.75,
+     4.61015
+    ]
+   },
+   "D7": {
+    "ref": "R126",
+    "side": "Bottom",
+    "x": 29.4501,
+    "y": 5.21015,
+    "rot": 0,
+    "p1": [
+     29.1501,
+     5.21015
+    ],
+    "p2": [
+     29.7501,
+     5.21015
+    ]
+   },
+   "D8": {
+    "ref": "R127",
+    "side": "Top",
+    "x": 39.2,
+    "y": 13.6,
+    "rot": 0,
+    "p1": [
+     38.900000000000006,
+     13.6
+    ],
+    "p2": [
+     39.5,
+     13.6
+    ]
+   },
+   "D9": {
+    "ref": "R128",
+    "side": "Bottom",
+    "x": 42.05,
+    "y": 12.95,
+    "rot": 0,
+    "p1": [
+     41.75,
+     12.95
+    ],
+    "p2": [
+     42.35,
+     12.95
+    ]
+   },
+   "D11": {
+    "ref": "R130",
+    "side": "Top",
+    "x": 39.2,
+    "y": 14.9,
+    "rot": 0,
+    "p1": [
+     38.900000000000006,
+     14.9
+    ],
+    "p2": [
+     39.5,
+     14.9
+    ]
+   },
+   "D12": {
+    "ref": "R131",
+    "side": "Top",
+    "x": 39.2,
+    "y": 15.8,
+    "rot": 0,
+    "p1": [
+     38.900000000000006,
+     15.8
+    ],
+    "p2": [
+     39.5,
+     15.8
+    ]
+   }
+  },
+  "other_nets": [
+   "FT-VCORE",
+   "GND",
+   "TDO",
+   "TMS",
+   "VCC3V3"
+  ],
+  "counts": {
+   "rm_tracks": 54,
+   "add_tracks": 80,
+   "rm_vias": 9,
+   "add_vias": 20,
+   "renamed_pads": 12,
+   "new_pads": 24
+  }
+ },
+ "d10_elsewhere plan.json": {
+  "errors": [],
+  "violations": [],
+  "worst": {
+   "clearance Bottom": [
+    0.0075,
+    0.0975,
+    "NEW pad R129-1",
+    "track Bottom VCC1V0 (39.600,15.850)-(40.900,17.300)"
+   ],
+   "clearance Top": [
+    0.0003,
+    0.0903,
+    "NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762",
+    "track Top UDQM (39.812,11.590)-(39.812,14.050)"
+   ],
+   "clearance L4-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L3-SIG": [
+    -0.0,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L2-GND": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "clearance L5-VCC3V3": [
+    0.01,
+    0.1,
+    "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ],
+   "mask sliver Bottom": [
+    0.01,
+    0.11,
+    "pad U3-5",
+    "NEW pad R121-1"
+   ],
+   "mask sliver Top": [
+    0.1,
+    0.2,
+    "NEW pad R127-1",
+    "NEW pad R127-2"
+   ],
+   "hole to hole": [
+    0.01,
+    0.25,
+    "via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "via UDQM (38.500,14.050) Top>Bottom"
+   ]
+  },
+  "connectivity": {
+   "D0": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D1": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D10": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D11": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D12": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D2": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D3": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D4": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D5": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D6": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D7": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D8": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "D9": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "FT-VCORE": {
+    "pads": 8,
+    "islands": 1,
+    "antennae": []
+   },
+   "GND": {
+    "pads": 257,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D0": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D1": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D10": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D11": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D12": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D2": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D3": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D4": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D5": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D6": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D7": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D8": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "SDRAM-D9": {
+    "pads": 2,
+    "islands": 1,
+    "antennae": []
+   },
+   "TDO": {
+    "pads": 9,
+    "islands": 1,
+    "antennae": []
+   },
+   "TMS": {
+    "pads": 9,
+    "islands": 1,
+    "antennae": []
+   },
+   "VCC3V3": {
+    "pads": 142,
+    "islands": 1,
+    "antennae": []
+   }
+  },
+  "component": [
+   [
+    "R119",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R120",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R121",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R122",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R123",
+    "Bottom",
+    0.25,
+    "U3"
+   ],
+   [
+    "R124",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R125",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R126",
+    "Bottom",
+    0.21,
+    "U3"
+   ],
+   [
+    "R127",
+    "Top",
+    0.8001,
+    "U2"
+   ],
+   [
+    "R128",
+    "Bottom",
+    1.1521,
+    "C112"
+   ],
+   [
+    "R129",
+    "Bottom",
+    0.0075,
+    "U3"
+   ],
+   [
+    "R130",
+    "Top",
+    0.6,
+    "R131"
+   ],
+   [
+    "R131",
+    "Top",
+    0.6,
+    "R130"
+   ]
+  ],
+  "plane_webs": [
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D9 (30.825,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.119
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D8 (29.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.131
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D8 (38.500,13.600) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D12 (34.025,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": 0.075
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D11 (33.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.205
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D12 (38.900,15.800) Top>L2-GND",
+    "opening_d": 0.48,
+    "min_web": 0.11
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D12 (38.900,15.800) L2-GND>L3-SIG",
+    "opening_d": 0.48,
+    "min_web": 0.11
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via D12 (39.490,15.810) Top>L2-GND",
+    "opening_d": 0.48,
+    "min_web": -0.075
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via D12 (39.490,15.810) L2-GND>L3-SIG",
+    "opening_d": 0.48,
+    "min_web": -0.075
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D10 (31.650,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": 0.125
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via D10 (40.100,12.075) Top>L2-GND",
+    "opening_d": 0.48,
+    "min_web": 0.229
+   },
+   {
+    "layer": "L2-GND",
+    "at": "NEW via D10 (40.100,12.075) L2-GND>L3-SIG",
+    "opening_d": 0.48,
+    "min_web": 0.229
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D9 (30.825,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.039
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D8 (29.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": 0.077
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D8 (38.500,13.600) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D12 (34.025,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.115
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D11 (33.250,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.205
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D11 (38.500,14.950) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via TMS (33.450,8.150) L4-SIG>L5-VCC3V3",
+    "opening_d": 0.48,
+    "min_web": 0.22
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via TMS (33.450,8.150) L5-VCC3V3>Bottom",
+    "opening_d": 0.48,
+    "min_web": 0.22
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D9 (41.750,12.950) L4-SIG>L5-VCC3V3",
+    "opening_d": 0.48,
+    "min_web": -0.057
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom",
+    "opening_d": 0.48,
+    "min_web": -0.057
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via D9 (42.350,12.950) L4-SIG>L5-VCC3V3",
+    "opening_d": 0.48,
+    "min_web": 0.12
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via D9 (42.350,12.950) L5-VCC3V3>Bottom",
+    "opening_d": 0.48,
+    "min_web": 0.12
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D10 (31.650,16.650) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.163
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+    "opening_d": 0.7,
+    "min_web": -0.25
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via D10 (39.282,13.925) L4-SIG>L5-VCC3V3",
+    "opening_d": 0.48,
+    "min_web": 0.202
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": "NEW via D10 (39.282,13.925) L5-VCC3V3>Bottom",
+    "opening_d": 0.48,
+    "min_web": 0.202
+   }
+  ],
+  "parts": {
+   "D0": {
+    "ref": "R119",
+    "side": "Bottom",
+    "x": 38.2499,
+    "y": 5.17015,
+    "rot": 0,
+    "p1": [
+     37.9499,
+     5.17015
+    ],
+    "p2": [
+     38.5499,
+     5.17015
+    ]
+   },
+   "D1": {
+    "ref": "R120",
+    "side": "Bottom",
+    "x": 36.65,
+    "y": 5.17015,
+    "rot": 0,
+    "p1": [
+     36.35,
+     5.17015
+    ],
+    "p2": [
+     36.95,
+     5.17015
+    ]
+   },
+   "D2": {
+    "ref": "R121",
+    "side": "Bottom",
+    "x": 35.5501,
+    "y": 4.91015,
+    "rot": 270,
+    "p1": [
+     35.5501,
+     5.21015
+    ],
+    "p2": [
+     35.5501,
+     4.61015
+    ]
+   },
+   "D3": {
+    "ref": "R122",
+    "side": "Bottom",
+    "x": 34.2499,
+    "y": 5.17015,
+    "rot": 0,
+    "p1": [
+     33.9499,
+     5.17015
+    ],
+    "p2": [
+     34.5499,
+     5.17015
+    ]
+   },
+   "D4": {
+    "ref": "R123",
+    "side": "Bottom",
+    "x": 32.8501,
+    "y": 5.17015,
+    "rot": 180,
+    "p1": [
+     33.1501,
+     5.17015
+    ],
+    "p2": [
+     32.5501,
+     5.17015
+    ]
+   },
+   "D5": {
+    "ref": "R124",
+    "side": "Bottom",
+    "x": 31.5501,
+    "y": 4.91015,
+    "rot": 270,
+    "p1": [
+     31.5501,
+     5.21015
+    ],
+    "p2": [
+     31.5501,
+     4.61015
+    ]
+   },
+   "D6": {
+    "ref": "R125",
+    "side": "Bottom",
+    "x": 30.75,
+    "y": 4.91015,
+    "rot": 270,
+    "p1": [
+     30.75,
+     5.21015
+    ],
+    "p2": [
+     30.75,
+     4.61015
+    ]
+   },
+   "D7": {
+    "ref": "R126",
+    "side": "Bottom",
+    "x": 29.4501,
+    "y": 5.21015,
+    "rot": 0,
+    "p1": [
+     29.1501,
+     5.21015
+    ],
+    "p2": [
+     29.7501,
+     5.21015
+    ]
+   },
+   "D8": {
+    "ref": "R127",
+    "side": "Top",
+    "x": 39.2,
+    "y": 13.6,
+    "rot": 0,
+    "p1": [
+     38.900000000000006,
+     13.6
+    ],
+    "p2": [
+     39.5,
+     13.6
+    ]
+   },
+   "D9": {
+    "ref": "R128",
+    "side": "Bottom",
+    "x": 42.05,
+    "y": 12.95,
+    "rot": 0,
+    "p1": [
+     41.75,
+     12.95
+    ],
+    "p2": [
+     42.35,
+     12.95
+    ]
+   },
+   "D10": {
+    "ref": "R129",
+    "side": "Bottom",
+    "x": 39.6825,
+    "y": 14.625,
+    "rot": 270,
+    "p1": [
+     39.6825,
+     14.925
+    ],
+    "p2": [
+     39.6825,
+     14.325
+    ]
+   },
+   "D11": {
+    "ref": "R130",
+    "side": "Top",
+    "x": 39.2,
+    "y": 14.9,
+    "rot": 0,
+    "p1": [
+     38.900000000000006,
+     14.9
+    ],
+    "p2": [
+     39.5,
+     14.9
+    ]
+   },
+   "D12": {
+    "ref": "R131",
+    "side": "Top",
+    "x": 39.2,
+    "y": 15.8,
+    "rot": 0,
+    "p1": [
+     38.900000000000006,
+     15.8
+    ],
+    "p2": [
+     39.5,
+     15.8
+    ]
+   }
+  },
+  "other_nets": [
+   "FT-VCORE",
+   "GND",
+   "TDO",
+   "TMS",
+   "VCC3V3"
+  ],
+  "counts": {
+   "rm_tracks": 60,
+   "add_tracks": 94,
+   "rm_vias": 11,
+   "add_vias": 27,
+   "renamed_pads": 13,
+   "new_pads": 26
+  }
+ }
+}

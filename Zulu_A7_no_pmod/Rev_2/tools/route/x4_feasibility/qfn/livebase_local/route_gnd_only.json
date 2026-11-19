@@ -1,0 +1,80 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 22.4,
+"y": 19.625,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 34.275,
+"y": 2.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 34.275,
+"y": 2.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 33.45,
+"y": 2.0,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 26.2999,
+"y1": 20.25,
+"x2": 26.3,
+"y2": 20.575
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 22.45,
+"y1": 19.625,
+"x2": 22.4,
+"y2": 19.625
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 34.3,
+"y1": 2.0,
+"x2": 34.275,
+"y2": 2.0
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 34.275,
+"y1": 2.0,
+"x2": 33.45,
+"y2": 2.0
+}
+],
+"remove": [],
+"log": []
+}

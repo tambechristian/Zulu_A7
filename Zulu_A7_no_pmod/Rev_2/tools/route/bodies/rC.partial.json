@@ -1,0 +1,199 @@
+{
+"vias": [
+{
+"net": "EE-CS",
+"x": 22.325,
+"y": 18.7,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "EE-DATA",
+"x": 22.325,
+"y": 21.5,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "EE-DATA-DO",
+"x": 22.35,
+"y": 22.625,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "EE-DATA-DO",
+"x": 22.35,
+"y": 22.625,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "EE-DATA-DO",
+"x": 21.9,
+"y": 22.575,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "EE-DATA-DO",
+"x": 21.9,
+"y": 22.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "EE-DATA-DO",
+"x": 21.9,
+"y": 22.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "CHAN10",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 21.7,
+"y1": 22.45,
+"x2": 21.9,
+"y2": 22.45
+},
+{
+"net": "CHAN10",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 21.9,
+"y1": 22.45,
+"x2": 22.05,
+"y2": 22.3
+},
+{
+"net": "CHAN10",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 22.05,
+"y1": 22.3,
+"x2": 26.35,
+"y2": 22.3
+},
+{
+"net": "CHAN10",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 26.35,
+"y1": 22.3,
+"x2": 26.875,
+"y2": 22.825
+},
+{
+"net": "CHAN10",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 26.875,
+"y1": 22.825,
+"x2": 31.3,
+"y2": 22.825
+},
+{
+"net": "CHAN10",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 31.3,
+"y1": 22.825,
+"x2": 31.325,
+"y2": 22.85
+},
+{
+"net": "CHAN10",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 31.325,
+"y1": 22.85,
+"x2": 31.35,
+"y2": 22.85
+},
+{
+"net": "EE-CLK",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 23.975,
+"y1": 20.0,
+"x2": 24.4,
+"y2": 20.0
+},
+{
+"net": "EE-CLK",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 21.175,
+"y1": 19.975,
+"x2": 20.175,
+"y2": 20.1
+},
+{
+"net": "EE-CS",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 22.35,
+"y1": 18.7,
+"x2": 22.325,
+"y2": 18.7
+},
+{
+"net": "EE-DATA",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 22.35,
+"y1": 21.5,
+"x2": 22.325,
+"y2": 21.5
+},
+{
+"net": "EE-DATA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 22.325,
+"y1": 21.5,
+"x2": 22.325,
+"y2": 21.225
+},
+{
+"net": "EE-DATA-DO",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 22.35,
+"y1": 22.625,
+"x2": 21.9,
+"y2": 22.575
+},
+{
+"net": "EE-DATA-DO",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 21.9,
+"y1": 22.575,
+"x2": 21.75,
+"y2": 22.35
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 0 queued nets remain"
+]
+}

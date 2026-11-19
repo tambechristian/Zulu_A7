@@ -1,0 +1,77 @@
+YC 7.75 DY 2.6 CX 30.48
+body_check (moved refs, gap 0.10): 0
+board-wide body_check findings: before 36 after 34; new: []
+pad-pad <0.15: []
+edge <0.30: []
+copper conflicts left after rip: 0
+POS X1    TOP    rot 270.0  pad-extent centre (58.281, 7.750)  extent x 56.093..60.468 y 3.650..11.850
+POS X4    TOP    rot 180.0  pad-extent centre (30.480, 4.900)  extent x 26.380..34.580 y 0.300..9.500
+POS U2    TOP    rot   0.0  pad-extent centre (31.475, 16.200)  extent x 25.000..37.950 y 9.725..22.675
+POS C155  TOP    rot 180.0  pad-extent centre (25.900, 20.600)  extent x 25.450..26.350 y 20.450..20.750
+POS C142  BOTTOM rot   0.0  pad-extent centre (46.250, 12.500)  extent x 44.750..47.750 y 11.750..13.250
+POS C145  BOTTOM rot  90.0  pad-extent centre (59.750, 8.000)  extent x 59.000..60.500 y 6.500..9.500
+POS R1    BOTTOM rot  90.0  pad-extent centre (57.000, 3.500)  extent x 55.700..58.300 y 2.875..4.125
+    X1 1 USB5V0 56.819 6.45 1.35 0.4 
+    X1 2 USB_D_N 56.819 7.1 1.35 0.4 
+    X1 3 USB_D_P 56.819 7.75 1.35 0.4001 
+    X1 4  56.819 8.4 1.35 0.4001 
+    X1 5 GND 56.819 9.05 1.35 0.4001 
+    X1 MP1 GND 59.519 10.95 1.8999 1.8001 
+    X1 MP2 GND 59.519 8.75 1.8999 1.5001 
+    X1 MP3 GND 59.519 6.75 1.8999 1.5001 
+    X1 MP4 GND 59.519 4.55 1.8999 1.8001 
+    X1 MH1 GND 56.819 10.25 1.45 1.4501 THT
+    X1 MH2 GND 56.819 5.25 1.45 1.4501 THT
+    X1 MS1 GND 59.519 11.25 1.81 1.11 THT
+    X1 MS2 GND 59.519 4.25 1.81 1.1101 THT
+    X4 1 VBATT 31.48 7.75 1.0 3.5 
+    X4 2 GND 29.48 7.75 1.0 3.5 
+    X4 MP1  33.83 2.0 1.5 3.4 
+    X4 MP2  27.13 2.0 1.5 3.4 
+RIPPED total track 1339.3 mm, 1359 tracks, 543 vias, 45 nets
+  TMS                88.24 mm  143 trk  44 via  blocks new X4.2; net of moved U2
+  TCK                85.63 mm   70 trk  23 via  blocks new X1.MH2; blocks new X1.MS1; net of moved U2
+  TDO                83.42 mm   65 trk  41 via  blocks new X1.MH2; net of moved U2
+  CHAN19             83.21 mm   58 trk  29 via  blocks new X1.MH2; blocks new X1.MS1; blocks new X4.MP2
+  TDI                82.53 mm   83 trk  20 via  blocks new C145.1; blocks new C145.2; blocks new X1.MP3; blocks new X1.MP4; blocks new X1.MS1; blocks new X1.MS2; net of moved U2
+  UART_FT_DTR#       75.30 mm   76 trk  46 via  blocks new U2.38; blocks new X1.MH1; blocks new X1.MS1; net of moved U2
+  PROG#              72.12 mm   90 trk  38 via  blocks new U2.18; blocks new U2.25; blocks new U2.26; blocks new U2.27; blocks new U2.28; blocks new X1.MH1; blocks new X1.MP1; blocks new X1.MS1; blocks new X4.2; net of moved U2
+  USB5V0             60.95 mm   61 trk  13 via  blocks new U2.25; blocks new U2.26; blocks new U2.45; blocks new U2.46; blocks new U2.47; blocks new U2.48; blocks new U2.49; blocks new U2.50; blocks new U2.51; blocks new U2.52; blocks new U2.53; blocks new U2.54; blocks new U2.55; blocks new U2.56; net of moved X1
+  FT-VCORE           56.77 mm   31 trk   4 via  blocks new U2.17; blocks new U2.18; blocks new U2.19; blocks new U2.20; blocks new U2.21; blocks new U2.22; blocks new U2.23; blocks new U2.24; blocks new U2.25; blocks new U2.26; blocks new U2.27; blocks new U2.28; blocks new U2.29; blocks new U2.30; blocks new U2.31; blocks new U2.32; net of moved U2
+  FT-VPLL            43.80 mm   16 trk   3 via  blocks new U2.14; net of moved U2
+  UART_FT_RXD        42.24 mm   42 trk  37 via  blocks new U2.34; net of moved U2
+  FT-PWREN#          41.28 mm   41 trk  18 via  net of moved U2
+  FT-VPHY            41.11 mm   26 trk   3 via  blocks new U2.9; net of moved U2
+  CLK-12M-FT         40.06 mm   66 trk  25 via  blocks new U2.4; blocks new U2.5; blocks new U2.6; blocks new U2.7; net of moved U2
+  DONE               39.31 mm   49 trk  34 via  blocks new X4.2; net of moved U2
+  UART_FT_RTS#       36.18 mm   39 trk  20 via  blocks new U2.34; blocks new U2.35; blocks new U2.44; blocks new U2.45; blocks new U2.46; net of moved U2
+  RST#               29.57 mm   26 trk  13 via  blocks new R1.1; blocks new R1.3; blocks new R1.4; blocks new X1.MS1; blocks new X1.MS2; net of moved R1
+  VBATT              29.56 mm   49 trk   5 via  blocks new X4.MP2; net of moved X4
+  UART_FT_CTS#       29.17 mm   42 trk  17 via  blocks new U2.36; net of moved U2
+  GND                27.88 mm   39 trk  13 via  attached to moved C142.2; attached to moved C145.2; attached to moved C155.1; attached to moved U2.1; attached to moved U2.10; attached to moved U2.11; attached to moved U2.13; attached to moved U2.15; attached to moved U2.25; attached to moved U2.35; attached to moved U2.47; attached to moved U2.5; attached to moved U2.51; attached to moved X1.5; attached to moved X1.MP2; attached to moved X1.MP3; attached to moved X4.2; blocks new U2.16; blocks new U2.17; blocks new U2.42; blocks new U2.45; blocks new U2.6; blocks new X1.2; blocks new X1.3; blocks new X4.1; blocks new X4.MP1
+  UART_FT_TXD        27.33 mm   41 trk  16 via  blocks new U2.33; net of moved U2
+  FT-RESETN          24.32 mm   25 trk  17 via  net of moved U2
+  VU                 22.46 mm   12 trk   0 via  blocks new X4.1; blocks new X4.2; blocks new X4.MP1; blocks new X4.MP2
+  FT-REF             22.41 mm   14 trk  13 via  blocks new U2.11; blocks new U2.12; net of moved U2
+  VCC3V3             20.40 mm   20 trk   5 via  attached to moved C145.1; attached to moved C155.2; attached to moved R1.3; attached to moved R1.4; attached to moved U2.20; attached to moved U2.31; attached to moved U2.42; attached to moved U2.50; attached to moved U2.56; blocks new U2.1; blocks new U2.37; blocks new X1.5; blocks new X4.1; blocks new X4.2; blocks new X4.MP1
+  USB_D_N            15.92 mm   14 trk   0 via  blocks new U2.1; blocks new U2.12; blocks new U2.2; blocks new U2.3; blocks new U2.4; blocks new U2.5; blocks new U2.57; blocks new U2.58; blocks new U2.59; blocks new U2.60; blocks new U2.61; blocks new U2.62; blocks new U2.63; blocks new U2.64; net of moved U2; net of moved X1
+  USB_D_P            15.92 mm   26 trk   0 via  blocks new U2.13; blocks new U2.58; blocks new U2.59; blocks new U2.60; blocks new U2.61; blocks new U2.62; blocks new U2.63; blocks new U2.64; net of moved U2; net of moved X1
+  EE-DATA            15.82 mm   18 trk   5 via  net of moved U2
+  EE-CS              14.82 mm   18 trk   9 via  net of moved U2
+  FPGA-INIT#         12.79 mm    6 trk   5 via  blocks new X1.MH2; net of moved R1
+  LED0_R             11.24 mm    7 trk   6 via  blocks new X1.MH2; blocks new X1.MP1; blocks new X1.MP2; blocks new X1.MP3; blocks new X1.MS1
+  EE-CLK             10.12 mm   14 trk   5 via  net of moved U2
+  FPGA-TDO            6.55 mm    3 trk   3 via  blocks new X1.2; blocks new X1.MP2; blocks new X1.MS1
+  VCC1V8              6.10 mm    2 trk   1 via  blocks new X1.MH1; blocks new X1.MP1
+  CHAN21              5.72 mm    2 trk   1 via  blocks new X1.MH1
+  LED2                5.28 mm    6 trk   3 via  blocks new U2.48; blocks new U2.49; blocks new U2.50
+  FPGA-TMS            4.54 mm    3 trk   2 via  blocks new X1.MH1
+  SDRAM-D13           3.06 mm    2 trk   0 via  blocks new U2.43
+  CHAN22              2.92 mm   10 trk   2 via  blocks new X1.MS1
+  VCC1V0              1.80 mm    1 trk   0 via  attached to moved C142.1; blocks new X1.MH2
+  FPGA-TDI            0.92 mm    1 trk   0 via  blocks new X1.MP1; blocks new X1.MS1
+  CHAN10              0.51 mm    2 trk   1 via  blocks new U2.56; blocks new U2.57
+  D6                  0.00 mm    0 trk   1 via  blocks new X4.1
+  D5                  0.00 mm    0 trk   1 via  blocks new X4.1
+  D7                  0.00 mm    0 trk   1 via  blocks new X4.2
+open connections after rip: 92 {'SDRAM-D13': 1, 'D7': 1, 'D6': 1, 'D5': 1, 'VU': 1, 'GND': 18, 'VCC3V3': 7, 'VCC1V8': 1, 'RST#': 3, 'CHAN22': 1, 'CHAN21': 1, 'CHAN19': 1, 'CHAN10': 1, 'EE-CS': 2, 'EE-CLK': 2, 'EE-DATA': 2, 'USB5V0': 2, 'VBATT': 2, 'FT-VCORE': 7, 'FT-PWREN#': 1, 'UART_FT_DTR#': 1, 'UART_FT_CTS#': 2, 'UART_FT_RTS#': 1, 'UART_FT_RXD': 2, 'UART_FT_TXD': 1, 'DONE': 1, 'PROG#': 2, 'TMS': 3, 'TDO': 3, 'TDI': 3, 'TCK': 2, 'FT-RESETN': 1, 'FT-VPLL': 2, 'USB_D_P': 1, 'USB_D_N': 1, 'FT-REF': 1, 'FT-VPHY': 2, 'CLK-12M-FT': 1, 'FPGA-TMS': 1, 'FPGA-TDO': 1, 'FPGA-TDI': 1, 'FPGA-INIT#': 1, 'LED0_R': 1, 'LED2': 1}

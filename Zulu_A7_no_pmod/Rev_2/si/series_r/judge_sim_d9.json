@@ -1,0 +1,186 @@
+[
+ {
+  "net": "D9",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.03518190105078547,
+  "die_vmax": 3.3178905769814695,
+  "ball_vmin": -0.12651885692820145,
+  "ball_vmax": 3.359332845907021,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6351724208400115
+ },
+ {
+  "net": "D9",
+  "corner": "typ",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.03999169771594584,
+  "die_vmax": 3.322254164922513,
+  "ball_vmin": -0.10756471992853235,
+  "ball_vmax": 3.3475399603945237,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6431828541700056
+ },
+ {
+  "net": "D9",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.04864148611399016,
+  "die_vmax": 3.4966325938596565,
+  "ball_vmin": -0.1897200254981789,
+  "ball_vmax": 3.564430422351664,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6266101797447945
+ },
+ {
+  "net": "D9",
+  "corner": "max",
+  "scenario": "read",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.05451368421757159,
+  "die_vmax": 3.5020122655522234,
+  "ball_vmin": -0.15950804613542413,
+  "ball_vmax": 3.547555912407931,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 0.6372391377749026
+ },
+ {
+  "net": "D9",
+  "corner": "typ",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.12385169169473487,
+  "die_vmax": 3.3067996236546415,
+  "ball_vmin": -0.09994882545096608,
+  "ball_vmax": 3.3064227447342383,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 1.441736452270972
+ },
+ {
+  "net": "D9",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "ideal",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.21826302828009272,
+  "die_vmax": 3.4868557960508797,
+  "ball_vmin": -0.18870640314485565,
+  "ball_vmax": 3.492247180544906,
+  "die_budget": 0.0403960086666686,
+  "ball_budget": 0.0,
+  "t10_90_ns": 1.1930500000000006
+ },
+ {
+  "net": "D9",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.22829864120982463,
+  "die_vmax": 3.488970025232675,
+  "ball_vmin": -0.20616489177611,
+  "ball_vmax": 3.497020422365346,
+  "die_budget": 0.051668400000002904,
+  "ball_budget": 0.012000000000001697,
+  "t10_90_ns": 1.1969541355082685
+ },
+ {
+  "net": "D9",
+  "corner": "typ",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    42.05,
+    12.95
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.926,
+  "vias": 6,
+  "die_vmin": -0.13096067291063096,
+  "die_vmax": 3.306413004126885,
+  "ball_vmin": -0.10633516580822523,
+  "ball_vmax": 3.3066922782427683,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 1.4479869264450211
+ }
+]

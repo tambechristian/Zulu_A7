@@ -1,0 +1,15 @@
+L3/L4 w=0.125 on the fab construction (fieldsolve on the PcbDoc stack: 49.08 ohm, 7.133 ps/mm)
+  1080 Dk 3.9: Z0 43.90 ohm (-10.5 %)  td 6.716 ps/mm (-5.8 %)
+  1080 Dk 4.1: Z0 43.12 ohm (-12.1 %)  td 6.838 ps/mm (-4.1 %)
+  1080 Dk 4.3: Z0 42.37 ohm (-13.7 %)  td 6.958 ps/mm (-2.4 %)
+  1080 Dk 4.6: Z0 41.33 ohm (-15.8 %)  td 7.134 ps/mm (+0.0 %)
+  1080 Dk 4.1, L3 Cu 0.0178: Z0 42.73
+Top w=0.0762 / Bottom w=0.125 on 3313 0.1015 (fieldsolve: 63.61 / 53.18 ohm)
+  Dk 4.0 t=0.035 w=0.0762 planar mask: Z0 64.90 (+2.0 %) td 6.153
+  Dk 4.0 t=0.035 w=0.1250 planar mask: Z0 54.35 (+2.2 %) td 6.154
+  Dk 4.0 t=0.045 w=0.0762 planar mask: Z0 62.89 (-1.1 %) td 6.161
+  Dk 4.0 t=0.045 w=0.1250 planar mask: Z0 52.99 (-0.4 %) td 6.163
+  Dk 4.1 t=0.035 w=0.0762 planar mask: Z0 64.35 (+1.2 %) td 6.205
+  Dk 4.1 t=0.035 w=0.1250 planar mask: Z0 53.87 (+1.3 %) td 6.209
+  Dk 4.1 t=0.045 w=0.0762 planar mask: Z0 62.37 (-2.0 %) td 6.212
+  Dk 4.1 t=0.045 w=0.1250 planar mask: Z0 52.53 (-1.2 %) td 6.218

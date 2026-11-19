@@ -1,0 +1,1086 @@
+{
+ "Top": [
+  {
+   "arc": [
+    0.0,
+    0.5
+   ],
+   "pad1": [
+    35.825,
+    16.25
+   ],
+   "pad2": [
+    35.825,
+    16.85
+   ],
+   "rot": 90,
+   "shortfall": -0.254,
+   "blocker": "R box vs U2 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U2 body",
+     "R box vs U2 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U2 box",
+     "ComponentClearance 0.254 R box vs U2 box"
+    ],
+    [
+     -0.1322,
+     "drill D13 (35.625,16.650)",
+     "pad2 h2h"
+    ],
+    [
+     -0.09,
+     "via D14 (36.125,16.650) Top>Bottom d0.35",
+     "pad2 cl_pad"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    0.5,
+    1.0
+   ],
+   "pad1": [
+    35.825,
+    16.25
+   ],
+   "pad2": [
+    36.425,
+    16.25
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad2 mask pad U2-46",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad U2-46",
+     "pad2 mask"
+    ],
+    [
+     -0.254,
+     "U2 body",
+     "R box vs U2 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U2 box",
+     "ComponentClearance 0.254 R box vs U2 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    1.0,
+    1.5
+   ],
+   "pad1": [
+    36.025,
+    15.85
+   ],
+   "pad2": [
+    36.625,
+    15.85
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad2 mask pad U2-45",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad U2-45",
+     "pad2 mask"
+    ],
+    [
+     -0.254,
+     "U2 body",
+     "R box vs U2 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U2 box",
+     "ComponentClearance 0.254 R box vs U2 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    1.5,
+    2.0
+   ],
+   "pad1": [
+    36.525,
+    15.75
+   ],
+   "pad2": [
+    37.125,
+    15.75
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad1 mask pad U2-45",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad U2-45",
+     "pad1 mask"
+    ],
+    [
+     -0.254,
+     "U2 body",
+     "R box vs U2 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U2 box",
+     "ComponentClearance 0.254 R box vs U2 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    2.0,
+    2.5
+   ],
+   "pad1": [
+    37.025,
+    15.625
+   ],
+   "pad2": [
+    37.625,
+    15.625
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad1 mask pad U2-44",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad U2-44",
+     "pad1 mask"
+    ],
+    [
+     -0.254,
+     "U2 body",
+     "R box vs U2 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U2 box",
+     "ComponentClearance 0.254 R box vs U2 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    2.5,
+    3.0
+   ],
+   "pad1": [
+    37.5,
+    15.525
+   ],
+   "pad2": [
+    38.1,
+    15.525
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad1 mask pad U2-44",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad U2-44",
+     "pad1 mask"
+    ],
+    [
+     -0.254,
+     "U2 body",
+     "R box vs U2 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U2 box",
+     "ComponentClearance 0.254 R box vs U2 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    3.0,
+    3.5
+   ],
+   "pad1": [
+    38.375,
+    15.225
+   ],
+   "pad2": [
+    38.375,
+    15.825
+   ],
+   "rot": 90,
+   "shortfall": -0.1129,
+   "blocker": "pad1 h2h drill SDRAM-D11 (38.500,14.950)",
+   "n_blockers": 5,
+   "all_blockers": [
+    [
+     -0.1129,
+     "drill SDRAM-D11 (38.500,14.950)",
+     "pad1 h2h"
+    ],
+    [
+     -0.1,
+     "track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762",
+     "pad2 cl_L3-SIG"
+    ],
+    [
+     -0.1,
+     "via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35",
+     "pad1 cl_L3-SIG"
+    ],
+    [
+     -0.029,
+     "R131 body",
+     "R box vs R131 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.029,
+     "R131 box",
+     "ComponentClearance 0.254 R box vs R131 box (plan R)"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    3.5,
+    4.0
+   ],
+   "pad1": [
+    38.375,
+    15.15
+   ],
+   "pad2": [
+    38.975,
+    15.15
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad2 mask pad R130-1",
+   "n_blockers": 7,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad R130-1",
+     "pad2 mask"
+    ],
+    [
+     -0.254,
+     "R130 body",
+     "R box vs R130 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "R130 box",
+     "ComponentClearance 0.254 R box vs R130 box (plan R)"
+    ],
+    [
+     -0.1792,
+     "drill SDRAM-D11 (38.500,14.950)",
+     "pad1 h2h"
+    ],
+    [
+     -0.1,
+     "track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762",
+     "pad2 cl_L3-SIG"
+    ],
+    [
+     -0.1,
+     "track L3-SIG SDRAM-D11 (33.875,16.025)-(38.500,14.950) w0.1250",
+     "pad1 cl_L3-SIG"
+    ],
+    [
+     -0.09,
+     "via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35",
+     "pad1 cl_Top"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    4.0,
+    4.5
+   ],
+   "pad1": [
+    38.475,
+    14.275
+   ],
+   "pad2": [
+    39.075,
+    14.275
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad2 mask pad R129-1",
+   "n_blockers": 5,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad R129-1",
+     "pad2 mask"
+    ],
+    [
+     -0.254,
+     "R129 body",
+     "R box vs R129 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "R129 box",
+     "ComponentClearance 0.254 R box vs R129 box (plan R)"
+    ],
+    [
+     -0.1886,
+     "drill SDRAM-D10 (38.500,14.500)",
+     "pad1 h2h"
+    ],
+    [
+     -0.1,
+     "via UDQM (38.500,14.050) Top>Bottom d0.35",
+     "pad1 cl_L3-SIG"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    4.5,
+    5.0
+   ],
+   "pad1": [
+    38.575,
+    14.175
+   ],
+   "pad2": [
+    39.175,
+    14.175
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad1 mask pad R129-1",
+   "n_blockers": 6,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad R129-1",
+     "pad1 mask"
+    ],
+    [
+     -0.2692,
+     "drill UDQM (38.500,14.050)",
+     "pad1 h2h"
+    ],
+    [
+     -0.254,
+     "R129 body",
+     "R box vs R129 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "R129 box",
+     "ComponentClearance 0.254 R box vs R129 box (plan R)"
+    ],
+    [
+     -0.1,
+     "track L3-SIG UDQM (28.850,16.025)-(38.500,14.050) w0.1250",
+     "pad1 cl_L3-SIG"
+    ],
+    [
+     -0.09,
+     "via UDQM (38.500,14.050) Top>Bottom d0.35",
+     "pad1 cl_Top"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    5.0,
+    5.5
+   ],
+   "pad1": [
+    38.925,
+    13.8
+   ],
+   "pad2": [
+    39.525,
+    13.8
+   ],
+   "rot": 0,
+   "shortfall": -1.0,
+   "blocker": "pad1 mask pad R127-1",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -1.0,
+     "pad R127-1",
+     "pad1 mask"
+    ],
+    [
+     -1.0,
+     "pad R127-2",
+     "pad2 mask"
+    ],
+    [
+     -0.254,
+     "R127 body",
+     "R box vs R127 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "R127 box",
+     "ComponentClearance 0.254 R box vs R127 box (plan R)"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    5.5,
+    6.0
+   ],
+   "pad1": [
+    40.075,
+    13.125
+   ],
+   "pad2": [
+    40.075,
+    13.725
+   ],
+   "rot": 90,
+   "shortfall": -0.09,
+   "blocker": "pad1 cl_Top track Top D10 (39.978,12.210)-(39.978,14.500) w0.0762",
+   "n_blockers": 2,
+   "all_blockers": [
+    [
+     -0.09,
+     "track Top D10 (39.978,12.210)-(39.978,14.500) w0.0762",
+     "pad1 cl_Top"
+    ],
+    [
+     -0.076,
+     "track L3-SIG SD-DAT2 (39.600,13.300)-(40.450,12.450) w0.0762",
+     "pad1 cl_L3-SIG"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    6.0,
+    6.5
+   ],
+   "pad1": [
+    40.225,
+    13.075
+   ],
+   "pad2": [
+    40.225,
+    13.675
+   ],
+   "rot": 90,
+   "shortfall": -0.09,
+   "blocker": "pad1 cl_Top track Top D11 (40.145,12.380)-(40.145,14.950) w0.0762",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -0.09,
+     "track Top D11 (40.145,12.380)-(40.145,14.950) w0.0762",
+     "pad1 cl_Top"
+    ],
+    [
+     -0.0697,
+     "via AIN16_P (40.450,13.400) Top>Bottom d0.35",
+     "pad2 cl_L3-SIG"
+    ],
+    [
+     -0.0597,
+     "drill AIN16_P (40.450,13.400)",
+     "pad2 h2h"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    6.5,
+    7.0
+   ],
+   "pad1": [
+    40.35,
+    12.975
+   ],
+   "pad2": [
+    40.95,
+    12.975
+   ],
+   "rot": 0,
+   "shortfall": -0.09,
+   "blocker": "pad2 cl_Top track Top AIN16_P (40.600,13.090)-(40.900,13.090) w0.0762",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -0.09,
+     "track Top AIN16_P (40.600,13.090)-(40.900,13.090) w0.0762",
+     "pad2 cl_Top"
+    ],
+    [
+     -0.0787,
+     "drill D13 (40.600,12.750)",
+     "pad1 h2h"
+    ],
+    [
+     -0.0731,
+     "track Top D11 (40.145,12.380)-(40.145,14.950) w0.0762",
+     "pad1 cl_Top"
+    ]
+   ]
+  }
+ ],
+ "Bottom": [
+  {
+   "arc": [
+    0.0,
+    0.5
+   ],
+   "pad1": [
+    35.675,
+    16.475
+   ],
+   "pad2": [
+    35.675,
+    17.075
+   ],
+   "rot": 90,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.233,
+     "drill D13 (35.625,16.650)",
+     "pad1 h2h"
+    ],
+    [
+     -0.1,
+     "track L3-SIG VCC1V8 (15.300,17.500)-(39.300,17.500) w0.8000",
+     "pad2 cl_L3-SIG"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    0.5,
+    1.0
+   ],
+   "pad1": [
+    35.775,
+    16.225
+   ],
+   "pad2": [
+    36.375,
+    16.225
+   ],
+   "rot": 0,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.1,
+     "track L4-SIG SDRAM-D12 (34.650,16.025)-(37.250,16.025) w0.1250",
+     "pad1 cl_L4-SIG"
+    ],
+    [
+     -0.09,
+     "track Bottom UART_FT_TXD (35.150,16.050)-(36.500,16.050) w0.0762",
+     "pad1 cl_Bottom"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    1.0,
+    1.5
+   ],
+   "pad1": [
+    36.375,
+    15.75
+   ],
+   "pad2": [
+    36.975,
+    15.75
+   ],
+   "rot": 0,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.09,
+     "track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250",
+     "pad2 cl_Bottom"
+    ],
+    [
+     -0.0375,
+     "track L4-SIG SDRAM-D12 (34.650,16.025)-(37.250,16.025) w0.1250",
+     "pad1 cl_L4-SIG"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    1.5,
+    2.0
+   ],
+   "pad1": [
+    36.525,
+    15.75
+   ],
+   "pad2": [
+    37.125,
+    15.75
+   ],
+   "rot": 0,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.09,
+     "track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250",
+     "pad1 cl_pad"
+    ],
+    [
+     -0.0375,
+     "track L4-SIG SDRAM-D12 (34.650,16.025)-(37.250,16.025) w0.1250",
+     "pad1 cl_L4-SIG"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    2.0,
+    2.5
+   ],
+   "pad1": [
+    37.475,
+    15.5
+   ],
+   "pad2": [
+    38.075,
+    15.5
+   ],
+   "rot": 0,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.1,
+     "track L4-SIG SDRAM-D9 (31.875,15.775)-(38.600,15.300) w0.1250",
+     "pad1 cl_L4-SIG"
+    ],
+    [
+     -0.09,
+     "track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600",
+     "pad1 cl_Bottom"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    2.5,
+    3.0
+   ],
+   "pad1": [
+    37.5,
+    15.5
+   ],
+   "pad2": [
+    38.1,
+    15.5
+   ],
+   "rot": 0,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.1,
+     "track L4-SIG SDRAM-D9 (31.875,15.775)-(38.600,15.300) w0.1250",
+     "pad1 cl_L4-SIG"
+    ],
+    [
+     -0.09,
+     "track Bottom VCC1V0 (37.850,15.850)-(39.600,15.850) w1.1600",
+     "pad1 cl_Bottom"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    3.0,
+    3.5
+   ],
+   "pad1": [
+    38.0,
+    15.425
+   ],
+   "pad2": [
+    38.6,
+    15.425
+   ],
+   "rot": 0,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 5,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.1,
+     "track L3-SIG SD-DAT2 (37.700,16.550)-(39.600,14.650) w0.0762",
+     "pad2 cl_L3-SIG"
+    ],
+    [
+     -0.1,
+     "track L4-SIG SDRAM-D9 (31.875,15.775)-(38.600,15.300) w0.1250",
+     "pad1 cl_L4-SIG"
+    ],
+    [
+     -0.09,
+     "track Bottom VCC1V0 (36.600,14.490)-(37.850,15.850) w1.4250",
+     "pad1 cl_Bottom"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    3.5,
+    4.0
+   ],
+   "pad1": [
+    38.45,
+    14.775
+   ],
+   "pad2": [
+    39.05,
+    14.775
+   ],
+   "rot": 0,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.233,
+     "drill SDRAM-D11 (38.500,14.950)",
+     "pad1 h2h"
+    ],
+    [
+     -0.1,
+     "via SDRAM-D10 (38.500,14.500) Top>Bottom d0.35",
+     "pad1 cl_L4-SIG"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    4.0,
+    4.5
+   ],
+   "pad1": [
+    38.925,
+    13.95
+   ],
+   "pad2": [
+    38.925,
+    14.55
+   ],
+   "rot": 90,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 2,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    4.5,
+    5.0
+   ],
+   "pad1": [
+    38.925,
+    13.8
+   ],
+   "pad2": [
+    38.925,
+    14.4
+   ],
+   "rot": 90,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 2,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    5.0,
+    5.5
+   ],
+   "pad1": [
+    39.225,
+    13.5
+   ],
+   "pad2": [
+    39.225,
+    14.1
+   ],
+   "rot": 90,
+   "shortfall": -0.254,
+   "blocker": "R box vs U3 box (ComponentClearance 0.254)",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -0.254,
+     "U3 body",
+     "R box vs U3 body (section-10 box, 0.254)"
+    ],
+    [
+     -0.254,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ],
+    [
+     -0.0019,
+     "drill SD-DAT2 (39.600,14.200)",
+     "pad2 h2h"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    5.5,
+    6.0
+   ],
+   "pad1": [
+    40.0,
+    12.975
+   ],
+   "pad2": [
+    40.0,
+    13.575
+   ],
+   "rot": 90,
+   "shortfall": -0.1,
+   "blocker": "pad1 cl_L4-SIG track L4-SIG TMS (39.650,11.950)-(40.100,14.300) w0.0762",
+   "n_blockers": 4,
+   "all_blockers": [
+    [
+     -0.1,
+     "track L3-SIG SD-DAT2 (39.600,13.300)-(40.450,12.450) w0.0762",
+     "pad1 cl_L3-SIG"
+    ],
+    [
+     -0.1,
+     "track L4-SIG TMS (39.650,11.950)-(40.100,14.300) w0.0762",
+     "pad1 cl_L4-SIG"
+    ],
+    [
+     -0.09,
+     "track Bottom AIN15_N (39.961,12.768)-(39.979,13.413) w0.0762",
+     "pad1 cl_Bottom"
+    ],
+    [
+     -0.0814,
+     "U3 box",
+     "ComponentClearance 0.254 R box vs U3 box"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    6.0,
+    6.5
+   ],
+   "pad1": [
+    40.15,
+    12.975
+   ],
+   "pad2": [
+    40.75,
+    12.975
+   ],
+   "rot": 0,
+   "shortfall": -0.1446,
+   "blocker": "pad2 h2h drill D13 (40.600,12.750)",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -0.1446,
+     "drill D13 (40.600,12.750)",
+     "pad2 h2h"
+    ],
+    [
+     -0.1,
+     "track L3-SIG SD-DAT2 (39.600,13.300)-(40.450,12.450) w0.0762",
+     "pad1 cl_L3-SIG"
+    ],
+    [
+     -0.09,
+     "track Bottom AIN15_N (39.961,12.768)-(39.979,13.413) w0.0762",
+     "pad1 cl_Bottom"
+    ]
+   ]
+  },
+  {
+   "arc": [
+    6.5,
+    7.0
+   ],
+   "pad1": [
+    40.325,
+    12.975
+   ],
+   "pad2": [
+    40.925,
+    12.975
+   ],
+   "rot": 0,
+   "shortfall": -0.1,
+   "blocker": "pad2 cl_L4-SIG track L4-SIG DONE (40.950,12.750)-(41.450,13.250) w0.0762",
+   "n_blockers": 3,
+   "all_blockers": [
+    [
+     -0.1,
+     "track L4-SIG DONE (40.950,12.750)-(41.450,13.250) w0.0762",
+     "pad2 cl_L4-SIG"
+    ],
+    [
+     -0.09,
+     "track Bottom AIN16_P (40.296,12.757)-(40.300,12.802) w0.0762",
+     "pad1 cl_Bottom"
+    ],
+    [
+     -0.0597,
+     "drill D13 (40.600,12.750)",
+     "pad1 h2h"
+    ]
+   ]
+  }
+ ]
+}

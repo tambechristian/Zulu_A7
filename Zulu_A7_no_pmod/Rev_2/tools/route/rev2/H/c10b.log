@@ -1,0 +1,8 @@
+seeded 131 vias, 417 tracks
+CHAN20         
+CHAN19         
+CHAN25         
+SD-CMD         
+routed 3 connections, failed 1; 147 vias, 486 tracks -> c10b.json
+OPEN CHAN20 1
+FAIL CHAN20 (budget)

@@ -1,0 +1,26 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 28.2,
+"y": 2.1,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 28.2,
+"y1": 2.7,
+"x2": 28.2,
+"y2": 2.1
+}
+],
+"remove": [],
+"log": []
+}

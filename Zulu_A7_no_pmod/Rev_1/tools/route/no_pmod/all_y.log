@@ -1,0 +1,36 @@
+seeded 6 vias, 13 tracks
+GND            
+VCC3V3         
+CHAN22         
+CLK-12M-FPGA   
+FPGA-TCK       
+UART_FT_CTS#   
+PROG#          
+TMS            
+TDO            
+TCK            ripped CLK-12M-FPGA PROG# TDI TMS UART_FT_CTS#
+CLK-12M-FT     
+CLK-12M-SHARED 
+CLK-12M-FPGA   
+PROG#          ripped CHAN22 TCK TDO
+TDI            ripped CLK-12M-FPGA CLK-12M-FT
+TMS            
+UART_FT_CTS#   
+CHAN22         
+TCK            ripped CHAN22 CLK-12M-SHARED PROG# TDI TMS UART_FT_CTS#
+TDO            
+CLK-12M-FPGA   
+CLK-12M-FT     
+CHAN22         ripped CLK-12M-FT TDO
+CLK-12M-SHARED 
+PROG#          
+TDI            
+TMS            
+UART_FT_CTS#   
+CLK-12M-FT     
+TDO            
+routed 18 connections, failed 2; 52 vias, 265 tracks -> route/no_pmod/all_y.json
+OPEN CLK-12M-FT 1
+OPEN UART_FT_CTS# 1
+FAIL UART_FT_CTS# (budget)
+FAIL CLK-12M-FT (budget)

@@ -1,0 +1,51 @@
+GND            
+VCC3V3         
+CAS#           
+CHAN24         
+CHAN27         
+CHAN28         
+D7             
+FT-VCORE       
+RAS#           ripped CAS# CHAN24 FT-VCORE
+SD-DAT0        
+SD-DAT2        
+SDRAM-CS#      
+SDRAM-D7       
+TDO            ripped CHAN28 RAS#
+TMS            
+VBATT          
+VU             
+CAS#           ripped SDRAM-CS# TMS
+CHAN24         
+FT-VCORE       
+CHAN28         
+RAS#           ripped CAS# CHAN24 FT-VCORE
+SDRAM-CS#      
+TMS            ripped CHAN28 RAS# SDRAM-CS#
+CAS#           
+CHAN24         ripped CAS# TMS
+FT-VCORE       
+CHAN28         
+RAS#           ripped CHAN24 CHAN28 FT-VCORE
+SDRAM-CS#      
+CAS#           ripped RAS# SDRAM-CS#
+TMS            
+CHAN24         
+CHAN28         
+FT-VCORE       
+RAS#           
+SDRAM-CS#      
+routed 27 connections, failed 7; 39 vias, 144 tracks -> tools/route/bodies5/rA.json
+OPEN CHAN24 1
+OPEN D7 1
+OPEN RAS# 1
+OPEN SDRAM-CS# 1
+OPEN SDRAM-D7 1
+OPEN TDO 2
+FAIL D7 (nopath)
+FAIL SDRAM-D7 (nopath)
+FAIL TDO (nopath)
+FAIL TDO (nopath)
+FAIL CHAN24 (budget)
+FAIL RAS# (budget)
+FAIL SDRAM-CS# (budget)

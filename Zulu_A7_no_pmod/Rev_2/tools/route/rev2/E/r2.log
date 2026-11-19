@@ -1,0 +1,31 @@
+router_e: via-in-SMD-pad ban (all vias), plane-tie columns on
+seeded 60 vias, 140 tracks
+GND            
+VCC3V3         
+CHAN20         
+EE-DATA-DO     
+N$LD2A         
+EE-DATA        
+EE-CS          
+WE#            
+CAS#           
+CHAN7          
+FT-VCORE       
+RAS#           
+EE-CLK         
+CHAN19         
+N$BTN          
+USB5V0         
+FT-PWREN#      
+LED2           
+TCK            
+CHAN25         
+FPGA-TCK       ripped CHAN8 USB5V0
+SD-CMD         
+CLK-12M-FT     
+LED0_R         
+TDI            
+SD-DAT0        
+TDO            
+CHAN11         ripped CHAN7 LED2 N$BTN N$LD2A
+CHAN22         
