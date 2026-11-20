@@ -157,14 +157,12 @@ def main():
         m = re.match(r'\s*Rule Violations :(\d+)', line)
         if m and int(m.group(1)):
             drc_hits[rule] = int(m.group(1))
-    if set(drc_hits) != {'Minimum Solder Mask Sliver', 'Silk To Solder Mask', 'Silk to Silk', 'Net Antennae'} \
-            or sum(drc_hits.values()) != int(drc_v):
-        raise SystemExit('the DRC reports rule types the notes do not describe: %s' % dict(drc_hits))
-    slivers = re.findall(r'Between Pad (U2-\d+)\([^)]*\) on Top Layer And Pad (U2-\d+)\([^)]*\) on Top Layer \[Top Solder\] '
-                         r'Mask Sliver \[([\d.]+)mm\]', drc)
-    if len(slivers) != drc_hits['Minimum Solder Mask Sliver']:
-        raise SystemExit('a mask sliver in the DRC is not between two U2 pads: %s' % slivers)
-    sliver_w = sorted({float(s[2]) for s in slivers})
+    # 2026-11-19 evening: the board is DRC-clean (the 22 non-electrical items were fixed and Component Clearance
+    # now runs on 3D bodies); a release with any DRC item stops here
+    if drc_hits or int(drc_v) != 0:
+        raise SystemExit('the DRC is not clean: %s violations %s' % (drc_v, dict(drc_hits)))
+    if 'Processing Rule : Component Clearance' not in drc:
+        raise SystemExit('the DRC did not run Component Clearance (tick it under Rules To Check > Placement > Batch)')
     gerb_t, drill_t = mtime(os.path.join(OUT, BASE + '.GTL')), mtime(os.path.join(OUT, BASE + '-RoundHoles.TXT'))
     pcb_t = mtime(PCB)
 
@@ -449,12 +447,10 @@ def main():
         'tightest are listed below). Does your mask registration hold these, or may openings be reduced or '
         'corner-clipped there? Please do not change them without approval.'
         % (mc['min'], mc['under_0p044']),
-        'Solder-mask web at the U2 corner pads: the Altium DRC reports %d mask slivers of %s mm against the 0.10 '
-        'mm rule, between U2 pads %s (the end pads of adjacent sides at each QFN corner). Can the web '
-        'be held at that width, or may each pair of openings be merged or reduced? Please do not change them '
-        'without approval.'
-        % (len(slivers), '/'.join('%.3f' % s for s in sliver_w),
-           ', '.join('%s/%s' % (a.replace('U2-', ''), b.replace('U2-', '')) for a, b, _ in slivers)),
+        'Solder-mask openings on U2 (FT2232HQ, QFN-64): its pads use a 0.035 mm mask expansion instead of the '
+        'board\'s 0.05 mm, so the web between the end pads of adjacent sides at each QFN corner (pads 1/64, '
+        '16/17, 32/33, 48/49) is 0.115 mm against a 0.10 mm minimum. Can this be held? Please do not enlarge '
+        'the U2 openings without approval.',
         'Projected hole overlaps: at %d places, vias of two different nets that share no copper layer overlap '
         'in plan view (%d of them exactly coaxial). Each pair is listed below by the two drills that overlap, '
         'net span (x, y) / net span (x, y), hole overlap; the other drills of each column sit at the same XY. '
@@ -486,13 +482,11 @@ def main():
         A('  %-34s %s' % (BASE + f, what))
     A('')
     A('FINAL VERIFICATION')
-    L += wrap('Altium DRC %s: %s warnings, %s rule violations, none of them electrical: %s. Un-routed nets, '
-              'short circuits and every clearance rule report 0. The board was saved at %s with no edit between '
-              'the DRC run and the save. The silk-to-mask and silk-to-silk items are legend only and cosmetic; the '
-              'mask slivers are raised in ENGINEERING QUESTIONS; a net antenna is copper connected at one end '
-              'only and does not change connectivity.'
-              % (drc_when, drc_w.group(1) if drc_w else '0', drc_v,
-                 ', '.join('%d %s' % (v, k.lower()) for k, v in drc_hits.items()), pcb_t))
+    L += wrap('Altium DRC %s: %s warnings, %s rule violations. Un-routed nets, short circuits, every clearance '
+              'rule, silkscreen, solder-mask sliver, net-antenna and component-body clearance checks report 0 '
+              '(every part carries a 3D body at its datasheet maximum height). The board was saved at %s with no '
+              'edit between the DRC run and the save.'
+              % (drc_when, drc_w.group(1) if drc_w else '0', drc_v, pcb_t))
     A('Source MD5 %s.' % md5[:8])
     A('Gerbers (exported %s): metric RS-274X, 0.0001 mm coordinate resolution' % gerb_t)
     A('NC Drill (exported %s): metric Excellon 4:4, separate round/slot files,' % drill_t)

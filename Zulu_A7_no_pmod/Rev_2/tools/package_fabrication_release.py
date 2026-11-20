@@ -57,13 +57,14 @@ def names_order(data):
     if isinstance(data, str):
         data = data.encode("latin-1", "replace")
     return any(hashlib.sha256(t.upper()).hexdigest() in ORDER_SHA256 for t in ORDER_TOKEN.findall(data))
-# no-PMOD Rev 2 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-19 09:01:27 (earlier: 2026-11-13 21:12:43, SHA-256
+# no-PMOD Rev 2 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-19 20:18:57, DRC 0 with 3D bodies (09:01:27 board: SHA-256
+# 62312183..., MD5 79a68932; earlier: 2026-11-13 21:12:43, SHA-256
 # CD502C40..., MD5 24de4472; Fab B Rev 2: 2026-11-12 00:16:55, title ZULU A7 2.2)
 # (Rev 1: SHA-256 C439E0F5...0382, MD5 830b1744)
 EXPECTED_PCB_SHA256 = (
-    "62312183A3427541FC16C2162C95B306FEC834AD28C4CDBF342B557E814A4A4E"
+    "B2BA5E19EF5C10C01E31FACDEDE9D0EA055A86440C867BC5A22E277A4F5376B9"
 )
-EXPECTED_PCB_MD5 = "79a68932c7e06e9e5b52864f41029fae"
+EXPECTED_PCB_MD5 = "9b0341ba09f3aec84459e361271cd9b0"
 BASE = "Zulu_a7_no_pmod"
 OUTLINE = (0.0, 0.0, 60.96, 25.40)  # GM profile, mm
 GERBER_EXTENSIONS = [
@@ -82,15 +83,16 @@ GERBER_EXTENSIONS = [
     "GM",
 ]
 ROUND_DRILL_EXTENSIONS = ["TXT", "TX3", "TX6", "TX7", "TX9", "TX10"]
-# hits per tool, from the no-PMOD Rev 2 Zulu_a7_no_pmod.DRR (2026-11-19 09:32:48), equal to
+# hits per tool, from the no-PMOD Rev 2 Zulu_a7_no_pmod.DRR (2026-11-19 20:21:29; 09:32:48 export: TXT T02 322, TX3 400,
+# TX6 336, TX9 301), equal to
 # fab_facts.json drill_hits_per_tool and to the PcbDoc via counts per span
 # (2026-11-13: TXT T02 339 / T05 46, TX3 403, TX6 319, TX7 304, TX9 282, TX10 301)
 EXPECTED_ROUND_DRILLS = {
-    "TXT": {"02": 322, "04": 2, "05": 46},
-    "TX3": {"01": 400},
-    "TX6": {"01": 336},
+    "TXT": {"02": 318, "04": 2, "05": 46},
+    "TX3": {"01": 398},
+    "TX6": {"01": 337},
     "TX7": {"01": 302},
-    "TX9": {"01": 301},
+    "TX9": {"01": 300},
     "TX10": {"01": 321},
 }
 EXPECTED_TOOL_SIZES = {
@@ -101,7 +103,7 @@ EXPECTED_TOOL_SIZES = {
     "TX9": {"01": 0.15},
     "TX10": {"01": 0.15},
 }
-# no-PMOD Rev 2: TX6 + TX7 + TX9 + TX10 = 336 + 302 + 301 + 321 = 1260 (2026-11-13: 1206; Fab B Rev 2: 321 + 307 + 281 + 295);
+# no-PMOD Rev 2: TX6 + TX7 + TX9 + TX10 = 337 + 302 + 300 + 321 = 1260 (2026-11-13: 1206; Fab B Rev 2: 321 + 307 + 281 + 295);
 # the DRR's "MicroVia Totals" agrees.  Rev 1: 1161.
 EXPECTED_MICROVIA_TOTAL = 1260
 # The .LDP (2026-11-19 09:32:48) maps the same seven drill files to the same layers as

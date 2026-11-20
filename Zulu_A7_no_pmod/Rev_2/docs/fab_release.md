@@ -134,3 +134,19 @@ against 0.09; R108's courtyard touches C78's (pad to pad 0.20 mm). Fixed from th
 R108-2), CHANGES (two surviving moved vias, C78-1 and R24-1; the R108 vias went with R108), the assembly notes (84 sites
 on 83 pads), a copper-gap column for the microvia tenting rows, and the packager now holds the order number only as a
 SHA-256 (the literal was in the public repo's history since 31df8a8; that history is not rewritten).
+
+## 2026-11-19 evening: release rebuilt on the DRC-clean board with 3D bodies
+
+Board `Zulu_a7_no_pmod.PcbDoc` saved 20:18:57, **MD5 9b0341ba**, SHA-256 B2BA5E19...; batch DRC 20:19:07 **0/0** with
+Component Clearance running on 191 3D bodies (rules ComponentClearance_X2 0.05 mm and ComponentClearance_R131R132 0).
+Since the 09:01 release: U2 designator moved, the 22 DRC items cleared (antennae, silk ends, SolderMaskExpansion_U2
+0.035 mm), U4 +0.40 mm N, R34 +0.40 mm E, C87/C88/C94/C99/C106 -0.20 mm, R1 +0.30 mm. U4's move had left a GND
+through via inside U4-4 (a release-blocking via-in-pad); it was replaced by a Top-L2 microvia in U4-4 and a stacked
+microvia column for C120-2 (`tools/route/u4_via`, `FabBCopper_U4Via.pas`, 1260 microvias marked).
+
+Exports: Gerbers 20:20:31, NC drill 20:21:29 (G85). `fab_facts.py`: every drill file 0 missing / 0 extra; through vias
+in SMD pads = the two accepted (U2-EP, X4-2). `fab_notes.py` now requires DRC 0 with Component Clearance run, and its
+U2 corner-web question describes the 0.035 mm U2 mask expansion (webs 0.115 mm). Counts: 318 through, 398 buried,
+microvias 337 / 302 / 300 / 321 = 1260, 143 via-in-pad sites. `package_fabrication_release.py` retargeted (hashes,
+counts): **NO_PMOD_REV_2_PCBWAY_FABRICATION_RELEASE PASS** (23 entries, body gate 0 fail). `generate_jlcpcb_assembly.py
+--assembler pcbway`: **ASSEMBLY_RELEASE PASS**, 67 BOM lines, 188 fitted; the CPL changes are exactly the 8 moved parts.

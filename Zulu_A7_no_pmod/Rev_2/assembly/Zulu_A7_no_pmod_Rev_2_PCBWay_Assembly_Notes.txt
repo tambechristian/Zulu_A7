@@ -1,7 +1,7 @@
 ZULU A7 NO-PMOD REV 2 - PCBWAY ASSEMBLY NOTES
 Release date: 2026-11-19
-Source: working copy after commit 5e0eed9 (the PCB SHA-256 below identifies it)
-PCB SHA-256: 62312183A3427541FC16C2162C95B306FEC834AD28C4CDBF342B557E814A4A4E
+Source: working copy after commit 3e4ee8c (the PCB SHA-256 below identifies it)
+PCB SHA-256: B2BA5E19EF5C10C01E31FACDEDE9D0EA055A86440C867BC5A22E277A4F5376B9
 
 UPLOAD SET
 PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
@@ -123,11 +123,10 @@ SPECIAL COMPONENT INSTRUCTIONS
   BOTTOM side; insert the SHORT post end (about 3 mm) up through the board so
   about 1.4 mm stands on top for soldering; the LONG mating end points down.
   Solder on top by hand or selectively, after both reflows and depanel.
-  Fit check: in plan view the housings overlap the pads of C87, C88, C94, C99,
-  C106, R1 (worst 0.14 mm) and come within 0.1 mm of C3, C7, C8, C36, C37,
-  C139, L4, L5, L6, L7, R10, R11. Seat each strip without force, check that it
-  sits flush on the first article, and report any interference rather than
-  forcing it.
+  Fit check: in plan view the housings overlap the pads of none (worst 0.00
+  mm) and come within 0.1 mm of C3, C7, C8, C36, C37, C139, L4, L5, L6, L7,
+  R10, R11. Seat each strip without force, check that it sits flush on the
+  first article, and report any interference rather than forcing it.
   If you cannot quote X2, leave it unpopulated, do not buy the strips,
   and say so in the quotation.
 - JP3 and JP4 are intentional DNS flying-lead/pogo positions (DNS rows in
@@ -142,15 +141,16 @@ SPECIAL COMPONENT INSTRUCTIONS
   R132-2, R133-1, R134-1 carry vias that the fabrication notes ask to be
   filled and capped (via-in-pad): if they are not, please tell us before
   assembly (solder wicking and tombstoning risk).
-- Via-in-pad, whole board: 138 sites on 127 pads of 54 parts (136 microvias
+- Via-in-pad, whole board: 143 sites on 131 pads of 58 parts (141 microvias
   and 2 GND through vias, the through vias in the U2 exposed pad and in X4 pad
-  2; pads with more than one: U2 pad EP x10, U8 pad 7 x2, X4 pad 2 x2) (BTN,
-  C11, C13, C80, C82, C84, C111, C148, C150, C155, C158, C159, C160, C163,
-  C164, C166, C167, L9, LD0, LD1, LD2, LD3, R4, R19, R24, R34, R80, R90, R92,
-  R96, R97, R98, R99, R101, R103, R107, R108, R113, R114, R115, R116, R118,
-  R128, R131, R132, R133, R134, U1, U2, U3, U8, U10, X3, X4); the fabrication
-  notes (VIA-IN-PAD table) ask for every one to be copper-filled and capped
-  flat. If any arrive unfilled, please tell us before assembly.
+  2; pads with more than one: U2 pad EP x10, U4 pad 4 x2, U8 pad 7 x2, X4 pad
+  2 x2) (BTN, C11, C13, C80, C82, C84, C94, C111, C148, C150, C155, C158,
+  C159, C160, C163, C164, C166, C167, L9, LD0, LD1, LD2, LD3, Q1, R1, R4, R19,
+  R24, R34, R80, R90, R92, R96, R97, R98, R99, R101, R103, R107, R108, R113,
+  R114, R115, R116, R118, R128, R131, R132, R133, R134, U1, U2, U3, U4, U8,
+  U10, X3, X4); the fabrication notes (VIA-IN-PAD table) ask for every one to
+  be copper-filled and capped flat. If any arrive unfilled, please tell us
+  before assembly.
 - X1 (Molex 105017-0001 micro-USB-B, top side) opens toward the upper
   board edge. Its shell stakes go into the plated 0.60 x 1.30 mm slots
   MS1/MS2 at the mating-face end, beside the board edge. The MP1/MP4
@@ -223,7 +223,7 @@ Before releasing the order, please confirm in writing:
 - authorized sourcing for U1 and U2, and any lines with no stock;
 - hand soldering of X2's four strips and X1's stakes, or X2 left
   unpopulated;
-- placement of R119-R134 exactly per the CPL, and that all 138
+- placement of R119-R134 exactly per the CPL, and that all 143
   via-in-pad sites (FAB NOTES table) arrive filled and capped;
 - the stencil apertures for U1, U2 and U8, and X-ray of U1 (and what the
   Number of X-ray test field counts);
