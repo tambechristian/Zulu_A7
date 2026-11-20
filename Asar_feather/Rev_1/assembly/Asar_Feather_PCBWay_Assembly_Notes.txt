@@ -1,8 +1,8 @@
 ASAR FEATHER - PCBWAY ASSEMBLY NOTES
 *** PROVISIONAL RELEASE - NOT FOR PRODUCTION UNTIL CONFIRMED ***
-Release date: 2026-11-19
+Release date: 2026-11-20
 Source: untracked working copy (the PCB SHA-256 below identifies it)
-PCB SHA-256: EF32A48891CACD5D0386D4749B5E76356758F6D79905472E12DB66A009E802BD
+PCB SHA-256: 11C361CCC8F2B6B94283536FABC60DF5CF87AB1CC68D1208FF59EFB87FB0E91E
 
 PROVISIONAL STATUS
 This release is provisional. You answered our enquiry about laser via-in-pad
@@ -47,7 +47,7 @@ If any of A-G changes, this assembly release is re-issued.
 
 UPLOAD SET
 PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
-- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-19_PROVISIONAL.zip
+- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-20_PROVISIONAL.zip
   (Gerbers incl. the GTP/GBP paste layers, drill files and
   Asar_Feather_PCBWay_FAB_NOTES.txt),
   ordered as "HDI (Buried/blind vias)" per Asar_Feather_PCBWay_FAB_NOTES.txt.
@@ -156,7 +156,7 @@ If your line needs one file per side, please split it by the Layer column.
 - The top drawing is viewed from the top; the bottom drawing is mirrored,
   viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);
   dashed red label = DNP. Most designators are hidden on the silkscreen and
-  U10 and the 0603 LEDs have no silkscreen polarity mark, so the drawings
+  the 0603 LEDs have no silkscreen polarity mark, so the drawings
   and this file are the orientation reference.
 If the CPL and a drawing disagree, please send an engineering query.
 

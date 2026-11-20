@@ -43,6 +43,7 @@ import json
 import os
 import re
 import struct
+import time
 
 import matplotlib
 matplotlib.use('Agg')
@@ -507,8 +508,9 @@ def main():
     top = top_labels(texts, names)
     fig, ax, ppm = figure((-1.6, W + 0.9), (-1.5, H + 0.9))
     miss_top = draw_side(ax, D, parts, names, 'top', top, ppm)
-    ax.set_title('Asar A7 top side, to scale (board %s, 2026-11-18). White: silk as placed. Red rings: pins with no '
-                 'label (red names are notes). Grey: notes, not silk.' % md5, fontsize=9.5, loc='left')
+    saved = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(a.pcb)))   # was a fixed 2026-11-18 until 11-20
+    ax.set_title('Asar A7 top side, to scale (board %s, saved %s). White: silk as placed. Red rings: pins with no '
+                 'label (red names are notes). Grey: notes, not silk.' % (md5, saved), fontsize=9.5, loc='left')
     fig.savefig(OUT_TOP, facecolor='white')
     plt.close(fig)
 

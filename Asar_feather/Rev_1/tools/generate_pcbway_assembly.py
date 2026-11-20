@@ -54,7 +54,7 @@ from pcbway_inputs import LAYER, U, kvs
 # ---- Asar Feather board-specific constants (2026-11-11) ----
 RELEASE_PREFIX = "Asar_Feather"
 RELEASE_NAME = "Asar Feather"
-RELEASE_DATE = "2026-11-19"
+RELEASE_DATE = "2026-11-20"
 BOARD_WIDTH = 50.80            # Feather outline 2000 x 900 mil, 2.54 mm corner radius
 BOARD_HEIGHT = 22.86
 CORNER_RADIUS = 2.54
@@ -897,7 +897,7 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "- The top drawing is viewed from the top; the bottom drawing is mirrored,",
         "  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);",
         "  dashed red label = DNP. Most designators are hidden on the silkscreen and",
-        "  U10 and the 0603 LEDs have no silkscreen polarity mark, so the drawings",
+        "  the 0603 LEDs have no silkscreen polarity mark, so the drawings",
         "  and this file are the orientation reference.",
         "If the CPL and a drawing disagree, please send an engineering query.",
         "",

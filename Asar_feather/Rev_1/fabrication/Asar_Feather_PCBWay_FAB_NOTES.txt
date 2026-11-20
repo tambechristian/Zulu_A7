@@ -1,8 +1,8 @@
 ASAR A7 FEATHER - PCBWAY FABRICATION NOTES - *** PROVISIONAL ***
 Revision: Asar A7 Feather  (silkscreen "ASAR A7")
-Release date: 2026-11-19
-PCB SHA-256: EF32A48891CACD5D0386D4749B5E76356758F6D79905472E12DB66A009E802BD
-Source: asar_feather.PcbDoc (MD5 091a3b6e509edbf72ec42e6fadcd7a2d)
+Release date: 2026-11-20
+PCB SHA-256: 11C361CCC8F2B6B94283536FABC60DF5CF87AB1CC68D1208FF59EFB87FB0E91E
+Source: asar_feather.PcbDoc (MD5 c304041a1984b9034f27d4055a241c9c)
 
 *** PROVISIONAL RELEASE - DO NOT START PRODUCTION ***
 This data set is released for quotation and CAM/engineering review only. It
@@ -471,7 +471,7 @@ FILE MAP
   Asar_Feather_VIA_IN_PAD.csv            Complete via-in-pad table
 
 FINAL VERIFICATION
-Altium DRC 11/19/2026 10:05:09 PM on asar_feather.PcbDoc:
+Altium DRC 11/20/2026 7:15:27 AM on asar_feather.PcbDoc:
 0 warnings, 0 rule violations, 0 waived (35 rules checked).
 Component Clearance was checked against 3D bodies on every part, and the component-body
 gate passed (no body over another body, or over another part's pad at nominal size).

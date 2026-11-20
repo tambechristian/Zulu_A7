@@ -41,16 +41,18 @@ PCB = os.path.join(PROJECT, "asar_feather.PcbDoc")
 DRC = os.path.join(OUTPUTS, "Design Rule Check - asar_feather.drc")
 DEFAULT_NOTE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_FAB_NOTES.txt")
 DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
-# asar_feather.PcbDoc after the body-collision fixes, 3D bodies and Component Clearance rules (docs/body_fixes.md), saved
-# 2026-11-19 21:51:49, microvias marked (C11 move 2026-11-17 19:07:18: SHA-256 E356AB95...785BEB, MD5 c4bf0b71;
+# asar_feather.PcbDoc with U2's pin-1 silk mark restored (docs/u2_pin1_mark.md), saved 2026-11-20 07:07:20, 1168
+# microvias verified (body-collision fixes, 3D bodies and Component Clearance rules (docs/body_fixes.md) 2026-11-19
+# 21:51:49: SHA-256 EF32A488...E802BD, MD5 091a3b6e;
+#  C11 move 2026-11-17 19:07:18: SHA-256 E356AB95...785BEB, MD5 c4bf0b71;
 #  X1 micro-B conversion 2026-11-17 13:53:43: SHA-256 2B762CD8...76FB, MD5 295cdfc5;
 #  X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
 #  NPTH clearance fix 2026-11-16 09:32:36: SHA-256 0B547312...98D3, MD5 f8dba4ec;
 #  2026-11-11 release: SHA-256 4A9A9714...BBA1D, MD5 d22906e1; 2026-11-11 15:16 save: MD5 e214e57b)
-EXPECTED_PCB_SHA256 = "EF32A48891CACD5D0386D4749B5E76356758F6D79905472E12DB66A009E802BD"
-EXPECTED_PCB_MD5 = "091a3b6e509edbf72ec42e6fadcd7a2d"
+EXPECTED_PCB_SHA256 = "11C361CCC8F2B6B94283536FABC60DF5CF87AB1CC68D1208FF59EFB87FB0E91E"
+EXPECTED_PCB_MD5 = "c304041a1984b9034f27d4055a241c9c"
 REVISION = "Asar A7 Feather"
-RELEASE_DATE = "2026-11-19"
+RELEASE_DATE = "2026-11-20"
 DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_%s_PROVISIONAL.zip" % RELEASE_DATE)
 # order/quote numbers never go into a packaged file name or the note (public repo). The number itself stays out of
 # this file: SHA-256 of each order number, matched against every token that looks like a PCBWay order number
@@ -76,7 +78,8 @@ OUTLINE = (0.0, 0.0, 50.80, 22.86)  # GM profile, mm
 CORNER_R = 2.54
 GERBER_EXTENSIONS = ["GTL", "G1", "G2", "G3", "G4", "GBL", "GTS", "GBS", "GTO", "GBO", "GTP", "GBP", "GM"]
 # file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-19 22:02:59 (body-fix board; unchanged since
-# the 2026-11-17 C11 move: every removed via was replaced by one of the same span and hole)
+# the 2026-11-17 C11 move: every removed via was replaced by one of the same span and hole; the 2026-11-20 07:16:27
+# export for the U2 pin-1 mark is identical)
 EXPECTED_DRILLS = {
     "RoundHoles-Plated.TXT": {"03": (0.20, 155), "05": (1.00, 28)},
     "RoundHoles-NonPlated.TXT": {"06": (2.50, 4)},

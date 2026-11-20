@@ -102,9 +102,10 @@ Fixed after the review:
 - The board's U7 3D body stays 2.90 mm long (the nominal when the bodies were placed); the gate now uses 2.95.
 
 Open, not changed (pre-existing):
-- **U2 (FT2232HQ, QFN-64) has no pin-1 silk mark on the board.** `FeatherSilkFix4.pas` deleted it in the silk
-  clean-up (logged as an "X1 mark"); restored, it would be 0.325 mm from U2's pad mask, above the rule. Make PCB
-  Library copied the board's trimmed silk into four library footprints: QFN-64 (no pin-1 mark, shorter corner ticks),
+- ~~**U2 (FT2232HQ, QFN-64) has no pin-1 silk mark on the board.**~~ RESTORED 2026-11-20 on the board and in the
+  library (docs/u2_pin1_mark.md). `FeatherSilkFix4.pas` had deleted it in the silk clean-up (logged as an "X1 mark").
+  Make PCB Library copied the board's trimmed silk into four library footprints: QFN-64 (pin-1 mark lost -- back on
+  2026-11-20 -- and shorter corner ticks),
   TDFN-8 (side lines gone, pin-1 tick moved), WSON-8 (pin-1 tick moved, south line shortened), FBGA-54 (two edges
   shortened). The old library's silk is in `backups/asar_feather.PcbLib.pre-bodies3d` and git.
 - X2's Sullins insulator is 2.54 +-0.20: at its 2.74 extreme it would overhang the C101, C102 and C139 pads by
