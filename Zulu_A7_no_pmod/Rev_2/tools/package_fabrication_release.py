@@ -489,6 +489,13 @@ def validate_archive(sources, archive_path):
 
 def main():
     args = parse_args()
+    # release gate (2026-11-19): no component body may sit on another part or its pads; the DRC does not check this
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import release_body_gate
+    try:
+        release_body_gate.gate(PCB)
+    except RuntimeError as exc:
+        raise ValueError(str(exc)) from None
     note = os.path.abspath(args.note)
     archive_path = os.path.abspath(args.archive)
     sources = validate_sources(note)

@@ -27,7 +27,7 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-COMPS = os.path.join(HERE, 'route', 'bodies', 'comps.json')
+COMPS = os.path.join(HERE, 'route', 'illustration', 'comps.json')   # regenerate: route/illustration/comps_from_board.py
 # pattern: nominal length along the footprint's x, width along its y, then the maximum-tolerance pair (mm)
 BODY = {
     'R0201': (0.60, 0.30, 0.63, 0.33), 'C0201': (0.60, 0.30, 0.63, 0.33),

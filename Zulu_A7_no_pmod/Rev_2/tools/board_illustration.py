@@ -10,13 +10,13 @@ grey switch, coloured LED bodies, a faint green trace pattern, white bold silk t
 Inputs
   tools/route/illustration/base.json
                                  pads (board mm, origin lower-left) and Top Layer tracks of the board, from
-                                 route_model.py (FABB_MODEL=...) on the 2026-11-19 PcbDoc (md5 79a68932:
+                                 route_model.py (FABB_MODEL=...) on the 2026-11-19 PcbDoc (md5 63bf7978:
                                  U2 = FT2232HQ QFN-64, X4 = side-entry S2B-PH-SM4-TB, U10 = MSOP-8)
   tools/route/illustration/comps.json
                                  side / pattern / rotation per part, fed to body_check.build() for the body boxes,
                                  from tools/route/illustration/comps_from_board.py on the same PcbDoc
   Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc
-                                 the board (md5 79a68932); its Texts6 stream gives the Top Overlay
+                                 the board (md5 63bf7978); its Texts6 stream gives the Top Overlay
                                  free texts (pin labels, pin numbers, board title) and the visible designators.
                                  Without olefile or the PcbDoc the labels fall back to short names derived from
                                  the X2 nets and the title 'ZULU A7 2.3'.
@@ -59,7 +59,7 @@ COMPS = os.path.join(HERE, 'route', 'illustration', 'comps.json')
 PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
 OUT = os.path.join(ROOT, 'docs', 'board_illustration_top.png')
 OUT_BOTTOM = os.path.join(ROOT, 'docs', 'board_illustration_bottom.png')
-RELEASED_MD5 = '79a68932c7e06e9e5b52864f41029fae'
+RELEASED_MD5 = '63bf7978bd632b2f37df446ca4ab1c01'
 
 # colours as the Asar picture
 BOARD, COPPER, PAD, SILK, DRILL = '#14361f', '#2c6b3e', '#c9a94a', '#ffffff', '#0a0a0a'

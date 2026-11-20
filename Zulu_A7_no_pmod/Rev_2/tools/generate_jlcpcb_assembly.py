@@ -1903,6 +1903,12 @@ def write_zip(outputs):
 
 def main():
     configure()
+    # release gate (2026-11-19): no component body may sit on another part or its pads; the DRC does not check this
+    import release_body_gate
+    try:
+        release_body_gate.gate(PCB)
+    except RuntimeError as exc:
+        raise ValueError(str(exc)) from None
     os.makedirs(ASSEMBLY, exist_ok=True)
     board_components, pads = read_board()
     board_refs = set(board_components) - ARTWORK_REFS

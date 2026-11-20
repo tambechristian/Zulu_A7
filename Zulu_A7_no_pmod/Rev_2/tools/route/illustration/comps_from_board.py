@@ -3,7 +3,7 @@
     "C:/Program Files/KiCad/10.0/bin/python.exe" tools/route/illustration/comps_from_board.py OUT.json [MECH_FROM.json]
 
 ref, layer (TOP/BOTTOM), rot (degrees), pattern, height 0. 'mech' (connector body offsets from their pad extent)
-is copied from MECH_FROM (default tools/route/x4_feasibility/qfn/comps_final.json, which holds the S2B-PH-SM4-TB X4).
+is copied from MECH_FROM (default tools/body_mech.json).
 """
 import json
 import os
@@ -23,6 +23,9 @@ for fp in b.GetFootprints():
     comps.append({'ref': fp.GetReference(), 'layer': 'BOTTOM' if fp.GetLayer() == pcbnew.B_Cu else 'TOP',
                   'rot': round(fp.GetOrientationDegrees() % 360, 3), 'pattern': str(fp.GetFPID().GetLibItemName()),
                   'height': 0.0})
-src = sys.argv[2] if len(sys.argv) > 2 else os.path.join(TOOLS, 'route', 'x4_feasibility', 'qfn', 'comps_final.json')
-json.dump({'comps': comps, 'mech': json.load(open(src))['mech']}, open(sys.argv[1], 'w'), indent=0)
+src = sys.argv[2] if len(sys.argv) > 2 else os.path.join(TOOLS, 'body_mech.json')
+mech = json.load(open(src))
+mech = mech.get('mech', mech)
+mech.pop('_note', None)
+json.dump({'comps': comps, 'mech': mech}, open(sys.argv[1], 'w'), indent=0)
 print(len(comps), 'parts from', BOARD)

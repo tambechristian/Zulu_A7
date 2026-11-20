@@ -41,3 +41,6 @@ si/altium_si/*.sdf
 si/series_r/d13/u1_end/fc/
 si/series_r/d13/u3_end/check_fc/
 si/series_r/d13/u3_end/fcplans/
+
+# Written by tools/release_body_gate.py on every release run (models re-read from the PcbDoc).
+tools/route/release_gate/
