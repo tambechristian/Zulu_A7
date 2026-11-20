@@ -41,15 +41,16 @@ PCB = os.path.join(PROJECT, "asar_feather.PcbDoc")
 DRC = os.path.join(OUTPUTS, "Design Rule Check - asar_feather.drc")
 DEFAULT_NOTE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_FAB_NOTES.txt")
 DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
-# asar_feather.PcbDoc after C11 moved to the top beside U4 pin 8 (docs/c11_move.md), saved 2026-11-17 19:07:18, microvias marked
-# (X1 micro-B conversion 2026-11-17 13:53:43: SHA-256 2B762CD8...76FB, MD5 295cdfc5;
+# asar_feather.PcbDoc after the body-collision fixes, 3D bodies and Component Clearance rules (docs/body_fixes.md), saved
+# 2026-11-19 21:51:49, microvias marked (C11 move 2026-11-17 19:07:18: SHA-256 E356AB95...785BEB, MD5 c4bf0b71;
+#  X1 micro-B conversion 2026-11-17 13:53:43: SHA-256 2B762CD8...76FB, MD5 295cdfc5;
 #  X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
 #  NPTH clearance fix 2026-11-16 09:32:36: SHA-256 0B547312...98D3, MD5 f8dba4ec;
 #  2026-11-11 release: SHA-256 4A9A9714...BBA1D, MD5 d22906e1; 2026-11-11 15:16 save: MD5 e214e57b)
-EXPECTED_PCB_SHA256 = "E356AB950EE7FCC720EF8039CA1662A24F08AF7B4C9195895A9E6092A4785BEB"
-EXPECTED_PCB_MD5 = "c4bf0b71cc7362c33762083bf29810b1"
+EXPECTED_PCB_SHA256 = "EF32A48891CACD5D0386D4749B5E76356758F6D79905472E12DB66A009E802BD"
+EXPECTED_PCB_MD5 = "091a3b6e509edbf72ec42e6fadcd7a2d"
 REVISION = "Asar A7 Feather"
-RELEASE_DATE = "2026-11-17"
+RELEASE_DATE = "2026-11-19"
 DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_%s_PROVISIONAL.zip" % RELEASE_DATE)
 # order/quote numbers never go into a packaged file name or the note (public repo). The number itself stays out of
 # this file: SHA-256 of each order number, matched against every token that looks like a PCBWay order number
@@ -74,7 +75,8 @@ BASE = "asar_feather"
 OUTLINE = (0.0, 0.0, 50.80, 22.86)  # GM profile, mm
 CORNER_R = 2.54
 GERBER_EXTENSIONS = ["GTL", "G1", "G2", "G3", "G4", "GBL", "GTS", "GBS", "GTO", "GBO", "GTP", "GBP", "GM"]
-# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-17 19:15:12 (C11 move board)
+# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-19 22:02:59 (body-fix board; unchanged since
+# the 2026-11-17 C11 move: every removed via was replaced by one of the same span and hole)
 EXPECTED_DRILLS = {
     "RoundHoles-Plated.TXT": {"03": (0.20, 155), "05": (1.00, 28)},
     "RoundHoles-NonPlated.TXT": {"06": (2.50, 4)},
@@ -309,12 +311,25 @@ def read_drc():
     rules = len(re.findall(r"Processing Rule :", text))
     if not re.search(r"PCB File : .*asar_feather\.PcbDoc", text):
         raise ValueError("DRC report is not for asar_feather.PcbDoc")
+    # 2026-11-19: the board carries 3D bodies; a release DRC must have run Component Clearance (ticked for batch)
+    if not re.search(r"Processing Rule : Component Clearance Constraint .*\(All\),\(All\)", text):
+        raise ValueError("DRC report did not run Component Clearance: tick it for batch DRC and re-run")
     html = re.sub(r"<[^>]+>", " ", open(DRC[:-4] + ".html", encoding="utf-8", errors="replace").read())
     warn = re.search(r"Warnings:\s*(\d+)", html)
     return dict(date=date, time=time, violations=viol, waived=waived, rules=rules, warnings=int(warn.group(1)) if warn else None)
 
 
 # ---- notes ---------------------------------------------------------------------
+def centred_where(F):
+    """Which pads hold the centred vias, counted from the measured via-in-pad table (the phrase used to be fixed text,
+    'U1 balls and one resistor pad', and went stale when R19-1 got a laser stack on 2026-11-19)."""
+    c = [e for e in F["via_in_pad"] if e["position"] == "centred"]
+    u1 = sum(1 for e in c if e["ref"] == "U1")
+    rest = sorted("%s-%s" % (e["ref"], e["pad"]) for e in c if e["ref"] != "U1")
+    return "%d U1 balls" % u1 + ("" if not rest else ", " + ", ".join(rest))
+
+
+
 def natural(s):
     return [int(t) if t.isdigit() else t for t in re.split(r"(\d+)", str(s))]
 
@@ -647,14 +662,14 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     P("VIA-IN-PAD (FILL AND CAP REQUIRED)")
     para("%d vias have a land that overlaps an SMD pad (%d pad contacts; %d vias touch "
          "two pads of the same net). By via type: %s. Position of the hole: centred in "
-         "the pad %d (U1 balls and one resistor pad), inside the pad %d, on the pad edge %d, land only %d (counted per "
+         "the pad %d (%s), inside the pad %d, on the pad edge %d, land only %d (counted per "
          "pad contact). Every microvia in a pad is copper-filled and capped flat; every "
          "through via in a pad is resin-plugged and plated over (Q8). The complete "
          "table (ref, pad, net, side, via type, hole, land, XY, position) is in %s, "
          "which is part of this package."
          % (vs["vias"], vs["entries"], vs["vias_touching_two_pads"],
             ", ".join("%s %d" % (k, v) for k, v in vs["by_type"].items()),
-            vs["by_position"].get("centred", 0), vs["by_position"].get("hole in pad", 0),
+            vs["by_position"].get("centred", 0), centred_where(F), vs["by_position"].get("hole in pad", 0),
             vs["by_position"].get("hole on pad edge", 0), vs["by_position"].get("land only", 0), csv_name))
     P("  Pad contacts per part (type: L=laser 0.15/0.30, l=laser 0.10/0.25, T=through):")
     per = defaultdict(Counter)
@@ -743,6 +758,8 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     P("Altium DRC %s %s on asar_feather.PcbDoc:" % (drc["date"], drc["time"]))
     P("%s warnings, %d rule violations, %d waived (%d rules checked)."
       % (drc["warnings"], drc["violations"], drc["waived"], drc["rules"]))
+    P("Component Clearance was checked against 3D bodies on every part, and the component-body")
+    P("gate passed (no body over another body, or over another part's pad at nominal size).")
     P("Gerbers: metric RS-274X, 0.0001 mm coordinate resolution")
     P("NC drill: metric Excellon 4:4, separate plated / non-plated / slot files")
     per_file = ", ".join("%s %s" % (s.split(".")[-1] if s.startswith("RoundHoles-Plated") else s.split("-")[0] + ("-NP" if "Non" in s else ""),
@@ -809,6 +826,13 @@ def main():
     sha = sha256(PCB)
     if sha != EXPECTED_PCB_SHA256 or md5(PCB) != EXPECTED_PCB_MD5:
         raise ValueError("PcbDoc changed: %s" % sha)
+    # release gate (2026-11-19): no component body may sit on another part or its pads; the DRC does not check this
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import release_body_gate
+    try:
+        release_body_gate.gate(PCB)
+    except RuntimeError as exc:
+        raise ValueError(str(exc)) from None
     filenames = (["%s.%s" % (BASE, e) for e in GERBER_EXTENSIONS] + [drill_name(s) for s in DRILL_ORDER]
                  + [BASE + ".LDP", BASE + ".DRR"])
     sources = [out(f) for f in filenames]

@@ -54,7 +54,7 @@ from pcbway_inputs import LAYER, U, kvs
 # ---- Asar Feather board-specific constants (2026-11-11) ----
 RELEASE_PREFIX = "Asar_Feather"
 RELEASE_NAME = "Asar Feather"
-RELEASE_DATE = "2026-11-17"
+RELEASE_DATE = "2026-11-19"
 BOARD_WIDTH = 50.80            # Feather outline 2000 x 900 mil, 2.54 mm corner radius
 BOARD_HEIGHT = 22.86
 CORNER_RADIUS = 2.54
@@ -1304,6 +1304,13 @@ def write_zip(outputs):
 
 def main():
     configure()
+    # release gate (2026-11-19): no component body may sit on another part or its pads; the DRC does not check this
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import release_body_gate
+    try:
+        release_body_gate.gate(PCB)
+    except RuntimeError as exc:
+        raise ValueError(str(exc)) from None
     os.makedirs(ASSEMBLY, exist_ok=True)
     board_components, pads = read_board()
     board_refs = set(board_components) - ARTWORK_REFS

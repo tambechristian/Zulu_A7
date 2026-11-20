@@ -1,5 +1,5 @@
 ﻿Designator,Mid X,Mid Y,Layer,Rotation
-BTN,43.6000mm,5.2000mm,Top,0
+BTN,43.1000mm,5.2000mm,Top,0
 C3,36.9500mm,11.4300mm,Bottom,90
 C4,35.8000mm,11.4300mm,Bottom,90
 C5,34.6500mm,11.4300mm,Bottom,90
@@ -12,9 +12,9 @@ C12,35.9800mm,7.2300mm,Bottom,0
 C13,31.5800mm,8.5800mm,Bottom,0
 C36,23.3800mm,17.3300mm,Top,0
 C37,25.7800mm,17.3300mm,Top,0
-C38,25.7700mm,2.6700mm,Bottom,0
-C40,9.1700mm,2.6700mm,Bottom,0
-C41,10.3700mm,2.6700mm,Bottom,0
+C38,25.7700mm,2.7950mm,Bottom,0
+C40,9.1700mm,2.7950mm,Bottom,0
+C41,10.3700mm,2.7950mm,Bottom,0
 C78,2.4000mm,10.6749mm,Bottom,90
 C80,13.7100mm,20.7001mm,Bottom,270
 C82,14.3524mm,15.6500mm,Bottom,0
@@ -77,15 +77,15 @@ C147,14.9000mm,12.3499mm,Bottom,90
 C148,6.9249mm,20.7750mm,Bottom,0
 C149,2.5999mm,13.2500mm,Bottom,0
 C150,10.2999mm,13.5500mm,Bottom,0
-C151,13.6001mm,14.4500mm,Bottom,180
-C152,13.9700mm,2.6700mm,Bottom,0
-C153,15.1700mm,2.6700mm,Bottom,0
-C154,16.3700mm,2.6700mm,Bottom,0
-C155,19.7700mm,2.6700mm,Bottom,0
-C156,20.9700mm,2.6700mm,Bottom,0
-C157,22.1700mm,2.6700mm,Bottom,0
-C158,23.3700mm,2.6700mm,Bottom,0
-C159,24.5700mm,2.6700mm,Bottom,0
+C151,14.1001mm,14.4500mm,Bottom,180
+C152,13.9700mm,2.7950mm,Bottom,0
+C153,15.1700mm,2.7950mm,Bottom,0
+C154,16.3700mm,2.7950mm,Bottom,0
+C155,19.7700mm,2.7950mm,Bottom,0
+C156,20.9700mm,2.7950mm,Bottom,0
+C157,22.1700mm,2.7950mm,Bottom,0
+C158,23.3700mm,2.7950mm,Bottom,0
+C159,24.5700mm,2.7950mm,Bottom,0
 C160,15.9250mm,19.3250mm,Bottom,180
 C161,3.3500mm,17.0500mm,Bottom,0
 C163,14.8200mm,20.5750mm,Bottom,270
@@ -123,8 +123,8 @@ R14,39.7700mm,16.8700mm,Top,0
 R15,19.1700mm,16.9700mm,Top,0
 R16,20.3700mm,16.9700mm,Top,0
 R17,21.5700mm,16.9700mm,Top,0
-R18,9.7800mm,3.6300mm,Bottom,0
-R19,17.5700mm,2.6700mm,Bottom,0
+R18,9.8000mm,3.6800mm,Bottom,0
+R19,17.5700mm,2.7950mm,Bottom,0
 R20,27.5700mm,16.9700mm,Top,0
 R21,29.3800mm,17.8300mm,Top,0
 R22,17.9700mm,17.4700mm,Top,0

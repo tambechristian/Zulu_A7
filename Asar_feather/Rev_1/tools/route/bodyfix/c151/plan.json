@@ -1,0 +1,86 @@
+{
+ "moves": [
+  {
+   "ref": "C151",
+   "dx": 0.5,
+   "dy": 0.0
+  }
+ ],
+ "remove": [
+  {
+   "net": "VU",
+   "layer": "Bottom Layer",
+   "w": 0.4,
+   "x1": 15.2,
+   "y1": 13.5,
+   "x2": 15.55,
+   "y2": 14.225
+  },
+  {
+   "net": "VU",
+   "layer": "Bottom Layer",
+   "w": 0.4,
+   "x1": 15.525,
+   "y1": 14.225,
+   "x2": 15.55,
+   "y2": 14.225
+  },
+  {
+   "net": "VU",
+   "layer": "Top Layer",
+   "w": 0.4,
+   "x1": 14.475,
+   "y1": 14.55,
+   "x2": 15.55,
+   "y2": 14.225
+  }
+ ],
+ "remove_vias": [
+  {
+   "net": "VU",
+   "x": 15.55,
+   "y": 14.225,
+   "size": 0.35,
+   "hole": 0.2,
+   "span": [
+    "Top Layer",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "VU",
+   "layer": "Top Layer",
+   "w": 0.4,
+   "x1": 14.6,
+   "y1": 13.45,
+   "x2": 14.475,
+   "y2": 14.55
+  },
+  {
+   "net": "VBATT",
+   "layer": "Bottom Layer",
+   "w": 0.4,
+   "x1": 12.75,
+   "y1": 14.9,
+   "x2": 13.2502,
+   "y2": 14.45
+  }
+ ],
+ "vias": [
+  {
+   "net": "VU",
+   "x": 14.6,
+   "y": 13.45,
+   "size": 0.35,
+   "hole": 0.2,
+   "from": "Top Layer",
+   "to": "Bottom Layer"
+  }
+ ]
+}

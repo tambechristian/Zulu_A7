@@ -2,7 +2,7 @@
  "counts": {
   "pads": 840,
   "vias": 1575,
-  "tracks": 4788,
+  "tracks": 4805,
   "arcs": 0
  },
  "layer_order": [
@@ -407,14 +407,14 @@
  ],
  "track_min_width_routed": 0.0762,
  "track_width_hist": {
-  "0.0762": 3425,
+  "0.0762": 3422,
   "0.1": 687,
-  "0.15": 323,
-  "0.2": 9,
+  "0.15": 325,
+  "0.2": 28,
   "0.25": 31,
   "0.3": 67,
   "0.35": 11,
-  "0.4": 179
+  "0.4": 178
  },
  "track_min_width_by_layer": {
   "Top": 0.0762,
@@ -561,8 +561,14 @@
   }
  },
  "npth_to_track": {
-  "gap": 9.0,
-  "where": null
+  "gap": 0.2399,
+  "where": {
+   "layer": "Top",
+   "hole": "NPTH 2.50",
+   "net": "N$LD0G",
+   "x": 48.26,
+   "y": 2.54
+  }
  },
  "npth_to_via_land": 0.4256,
  "usb_widths": {
@@ -4575,6 +4581,23 @@
    "overlap": 0.15
   },
   {
+   "ref": "C147",
+   "pad": "2",
+   "pad_net": "VU",
+   "via_net": "VU",
+   "side": "Bottom",
+   "span": "Top-Bot",
+   "via_x": 14.6,
+   "via_y": 13.45,
+   "land": 0.35,
+   "hole": 0.2,
+   "pad_shape": "rect",
+   "pad_size": "1.100 x 1.000",
+   "centred": false,
+   "position": "hole in pad",
+   "overlap": 0.175
+  },
+  {
    "ref": "C148",
    "pad": "1",
    "pad_net": "GND",
@@ -4660,23 +4683,6 @@
    "overlap": 0.15
   },
   {
-   "ref": "C151",
-   "pad": "2",
-   "pad_net": "VBATT",
-   "via_net": "VBATT",
-   "side": "Bottom",
-   "span": "L5-Bot",
-   "via_x": 12.45,
-   "via_y": 14.9,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "1.100 x 1.000",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
-  },
-  {
    "ref": "C152",
    "pad": "2",
    "pad_net": "FT-VCORE",
@@ -4700,32 +4706,15 @@
    "via_net": "FT-VCORE",
    "side": "Bottom",
    "span": "L5-Bot",
-   "via_x": 14.5,
-   "via_y": 2.9,
+   "via_x": 14.47,
+   "via_y": 2.92,
    "land": 0.3,
    "hole": 0.15,
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "land only",
-   "overlap": 0.0368
-  },
-  {
-   "ref": "C153",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 14.725,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.005
+   "position": "hole on pad edge",
+   "overlap": 0.1
   },
   {
    "ref": "C153",
@@ -4743,40 +4732,6 @@
    "centred": false,
    "position": "hole on pad edge",
    "overlap": 0.15
-  },
-  {
-   "ref": "C153",
-   "pad": "2",
-   "pad_net": "FT-VCORE",
-   "via_net": "FT-VCORE",
-   "side": "Bottom",
-   "span": "L5-Bot",
-   "via_x": 15.675,
-   "via_y": 2.475,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.0789
-  },
-  {
-   "ref": "C154",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 16.175,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.005
   },
   {
    "ref": "C154",
@@ -4809,8 +4764,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C155",
@@ -4826,8 +4781,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C156",
@@ -4843,8 +4798,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C157",
@@ -4860,8 +4815,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C157",
@@ -4877,8 +4832,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C158",
@@ -4894,8 +4849,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C158",
@@ -4911,8 +4866,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C159",
@@ -4928,8 +4883,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C159",
@@ -4945,8 +4900,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C160",
@@ -5183,8 +5138,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C38",
@@ -5200,8 +5155,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C4",
@@ -5251,8 +5206,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C40",
@@ -5270,57 +5225,6 @@
    "centred": false,
    "position": "hole on pad edge",
    "overlap": 0.15
-  },
-  {
-   "ref": "C40",
-   "pad": "2",
-   "pad_net": "FT-VPHY",
-   "via_net": "FT-VPHY",
-   "side": "Bottom",
-   "span": "L5-Bot",
-   "via_x": 9.675,
-   "via_y": 2.5,
-   "land": 0.3,
-   "hole": 0.15,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.0914
-  },
-  {
-   "ref": "C41",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 10.175,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.005
-  },
-  {
-   "ref": "C41",
-   "pad": "2",
-   "pad_net": "FT-VPLL",
-   "via_net": "FT-VPLL",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 10.675,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.005
   },
   {
    "ref": "C5",
@@ -6816,7 +6720,24 @@
    "pad_size": "0.700 x 0.900",
    "centred": false,
    "position": "hole on pad edge",
-   "overlap": 0.175
+   "overlap": 0.17
+  },
+  {
+   "ref": "R19",
+   "pad": "1",
+   "pad_net": "FT-RESETN",
+   "via_net": "FT-RESETN",
+   "side": "Bottom",
+   "span": "L5-Bot",
+   "via_x": 17.27,
+   "via_y": 2.795,
+   "land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "0.300 x 0.300",
+   "centred": true,
+   "position": "centred",
+   "overlap": 0.15
   },
   {
    "ref": "R19",
@@ -6832,8 +6753,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.15
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "R2",
@@ -8135,7 +8056,7 @@
    "side": "Top",
    "span": "Top-Bot",
    "via_x": 9.825,
-   "via_y": 3.075,
+   "via_y": 3.2,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
@@ -9880,21 +9801,21 @@
   }
  ],
  "via_in_pad_summary": {
-  "entries": 546,
-  "vias": 538,
+  "entries": 541,
+  "vias": 533,
   "vias_touching_two_pads": 8,
   "by_type": {
    "L5-Bot 0.10/0.25": 9,
-   "L5-Bot 0.15/0.30": 147,
-   "Top-Bot 0.20/0.35": 106,
+   "L5-Bot 0.15/0.30": 145,
+   "Top-Bot 0.20/0.35": 103,
    "Top-L2 0.10/0.25": 156,
    "Top-L2 0.15/0.30": 120
   },
   "by_position": {
-   "centred": 151,
-   "land only": 17,
-   "hole on pad edge": 266,
-   "hole in pad": 112
+   "centred": 152,
+   "land only": 25,
+   "hole on pad edge": 251,
+   "hole in pad": 113
   },
   "u1": {
    "Top-Bot 0.20/0.35": 2,
@@ -9903,8 +9824,8 @@
   },
   "non_u1": {
    "L5-Bot 0.10/0.25": 9,
-   "L5-Bot 0.15/0.30": 147,
-   "Top-Bot 0.20/0.35": 104,
+   "L5-Bot 0.15/0.30": 145,
+   "Top-Bot 0.20/0.35": 101,
    "Top-L2 0.10/0.25": 5,
    "Top-L2 0.15/0.30": 113
   },
@@ -9951,14 +9872,14 @@
    "C144": 1,
    "C145": 2,
    "C146": 2,
-   "C147": 1,
+   "C147": 2,
    "C148": 1,
    "C149": 1,
    "C150": 2,
-   "C151": 2,
+   "C151": 1,
    "C152": 2,
-   "C153": 3,
-   "C154": 2,
+   "C153": 1,
+   "C154": 1,
    "C155": 2,
    "C156": 1,
    "C157": 2,
@@ -9974,8 +9895,7 @@
    "C37": 2,
    "C38": 2,
    "C4": 2,
-   "C40": 3,
-   "C41": 2,
+   "C40": 2,
    "C5": 2,
    "C6": 2,
    "C7": 2,
@@ -10031,7 +9951,7 @@
    "R16": 1,
    "R17": 1,
    "R18": 1,
-   "R19": 1,
+   "R19": 2,
    "R2": 1,
    "R20": 1,
    "R21": 3,
@@ -10586,6 +10506,23 @@
    "overlap": 0.175
   },
   {
+   "ref": "C147",
+   "pad": "2",
+   "pad_net": "VU",
+   "via_net": "VU",
+   "side": "Bottom",
+   "span": "Top-Bot",
+   "via_x": 14.6,
+   "via_y": 13.45,
+   "land": 0.35,
+   "hole": 0.2,
+   "pad_shape": "rect",
+   "pad_size": "1.100 x 1.000",
+   "centred": false,
+   "position": "hole in pad",
+   "overlap": 0.175
+  },
+  {
    "ref": "C148",
    "pad": "1",
    "pad_net": "GND",
@@ -10620,40 +10557,6 @@
    "overlap": 0.175
   },
   {
-   "ref": "C153",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 14.725,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.005
-  },
-  {
-   "ref": "C154",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 16.175,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.005
-  },
-  {
    "ref": "C155",
    "pad": "1",
    "pad_net": "GND",
@@ -10667,8 +10570,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C157",
@@ -10684,8 +10587,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C158",
@@ -10701,8 +10604,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C159",
@@ -10718,8 +10621,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C160",
@@ -10820,8 +10723,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
+   "position": "land only",
+   "overlap": 0.055
   },
   {
    "ref": "C4",
@@ -10854,42 +10757,8 @@
    "pad_shape": "rect",
    "pad_size": "0.300 x 0.300",
    "centred": false,
-   "position": "hole on pad edge",
-   "overlap": 0.175
-  },
-  {
-   "ref": "C41",
-   "pad": "1",
-   "pad_net": "GND",
-   "via_net": "GND",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 10.175,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
    "position": "land only",
-   "overlap": 0.005
-  },
-  {
-   "ref": "C41",
-   "pad": "2",
-   "pad_net": "FT-VPLL",
-   "via_net": "FT-VPLL",
-   "side": "Bottom",
-   "span": "Top-Bot",
-   "via_x": 10.675,
-   "via_y": 2.35,
-   "land": 0.35,
-   "hole": 0.2,
-   "pad_shape": "rect",
-   "pad_size": "0.300 x 0.300",
-   "centred": false,
-   "position": "land only",
-   "overlap": 0.005
+   "overlap": 0.055
   },
   {
    "ref": "C5",
@@ -11365,7 +11234,7 @@
    "pad_size": "0.700 x 0.900",
    "centred": false,
    "position": "hole on pad edge",
-   "overlap": 0.175
+   "overlap": 0.17
   },
   {
    "ref": "R21",
@@ -11579,7 +11448,7 @@
    "side": "Top",
    "span": "Top-Bot",
    "via_x": 9.825,
-   "via_y": 3.075,
+   "via_y": 3.2,
    "land": 0.35,
    "hole": 0.2,
    "pad_shape": "rect",
@@ -12015,22 +11884,22 @@
   }
  ],
  "through_vias_in_smd_pads_count": {
-  "entries": 114,
-  "vias": 106,
+  "entries": 111,
+  "vias": 103,
   "by_position": {
-   "land only": 10,
-   "hole on pad edge": 82,
-   "hole in pad": 22
+   "land only": 12,
+   "hole on pad edge": 76,
+   "hole in pad": 23
   },
   "by_side": {
    "Top": 17,
-   "Bottom": 97
+   "Bottom": 94
   }
  },
  "lasers_in_non_u1_smd_pads": {
-  "total": 274,
+  "total": 272,
   "by_hole": {
-   "0.15": 260,
+   "0.15": 258,
    "0.1": 14
   }
  },
@@ -12248,8 +12117,8 @@
    "openings_on_pads": 360,
    "unmatched_openings": [],
    "u1_openings": {},
-   "vias_with_land_in_opening": 257,
-   "of_which_in_vip_list": 253,
+   "vias_with_land_in_opening": 252,
+   "of_which_in_vip_list": 248,
    "not_in_vip_list": [
     {
      "span": "L5-Bot",
@@ -12265,15 +12134,15 @@
     },
     {
      "span": "L5-Bot",
-     "net": "VBATT",
-     "x": 12.05,
-     "y": 14.9,
-     "opening": "C151-2",
-     "opening_net": "VBATT",
+     "net": "FT-VPHY",
+     "x": 9.675,
+     "y": 2.5,
+     "opening": "C40-2",
+     "opening_net": "FT-VPHY",
      "in_vip_list": false,
      "hole_reached": false,
-     "hole_margin": 0.0252,
-     "land_overlap": 0.0498
+     "hole_margin": 0.0201,
+     "land_overlap": 0.0549
     },
     {
      "span": "L5-Bot",
@@ -12288,38 +12157,26 @@
      "land_overlap": 0.025
     },
     {
-     "span": "Top-Bot",
-     "net": "GND",
-     "x": 13.55,
-     "y": 2.325,
-     "opening": "C152-1",
-     "opening_net": "GND",
+     "span": "L5-Bot",
+     "net": "FT-VCORE",
+     "x": 15.675,
+     "y": 2.475,
+     "opening": "C153-2",
+     "opening_net": "FT-VCORE",
      "in_vip_list": false,
      "hole_reached": false,
-     "hole_margin": 0.045,
-     "land_overlap": 0.03
-    },
-    {
-     "span": "Top-Bot",
-     "net": "GND",
-     "x": 20.575,
-     "y": 2.3,
-     "opening": "C156-1",
-     "opening_net": "GND",
-     "in_vip_list": false,
-     "hole_reached": false,
-     "hole_margin": 0.07,
-     "land_overlap": 0.005
+     "hole_margin": 0.0451,
+     "land_overlap": 0.0299
     }
    ],
    "exposed_by_span": {
     "L5-Bot": {
      "vias": 158,
-     "hole_reached": 154
+     "hole_reached": 152
     },
     "Top-Bot": {
-     "vias": 99,
-     "hole_reached": 93
+     "vias": 94,
+     "hole_reached": 94
     }
    },
    "vip_vias_not_exposed": 0

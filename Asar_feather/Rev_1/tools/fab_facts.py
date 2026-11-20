@@ -612,8 +612,11 @@ def measure(pcb=PCB):
             for h in sel:
                 if not span_has(h["span"], L):
                     continue
+                # every cell the hole covers: tracks are indexed 0.4 mm past their edges, so a hole wall within 0.4 mm
+                # of a track is found whatever the hole size (2026-11-19: looking in the centre cell only missed every
+                # track near the 2.5 mm NPTH holes and left the 9.0 start value in the fab notes since 2026-11-17)
                 seen = set()
-                for m in idx[(int(h["x"] // grid), int(h["y"] // grid))]:
+                for m in [m for c in cells(h["x"], h["y"], h["x"], h["y"], h["r"]) for m in idx[c]]:
                     if m in seen:
                         continue
                     seen.add(m)

@@ -1,6 +1,7 @@
 """Router stage 3 (2026-10-24): the board as the router sees it, read from the saved asar_feather.PcbDoc.
 
     "C:/Program Files/KiCad/10.0/bin/python.exe" tools/route_model.py        -> tools/route/model.json
+    (ASAR_PCB / ASAR_MODEL override the board read and the output path; the release body gate uses them)
 
 Coordinates are board-relative mm (origin at the board's lower-left corner, from the board-edge box centre; the
 board is 50.8 x 22.86 mm), y up. Layer names are the Altium ones (Top Layer, L2-GND, L3-SIG, L4-SIG, L5-VCC3V3,
@@ -21,7 +22,7 @@ import pcbnew
 import wx
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BOARD = os.path.join(os.path.dirname(HERE), 'Asar_feather.PrjPcb', 'asar_feather.PcbDoc')
+BOARD = os.environ.get('ASAR_PCB', os.path.join(os.path.dirname(HERE), 'Asar_feather.PrjPcb', 'asar_feather.PcbDoc'))
 STACK = ['Top Layer', 'L2-GND', 'L3-SIG', 'L4-SIG', 'L5-VCC3V3', 'Bottom Layer']
 
 
@@ -63,8 +64,9 @@ def main():
                            'x1': x1, 'y1': y1, 'x2': x2, 'y2': y2})
     planes = {b.GetLayerName(z.GetLayer()): z.GetNetname() for z in b.Zones() if z.IsOnCopperLayer()}
     out = {'board': {'w': 50.8, 'h': 22.86}, 'planes': planes, 'pads': pads, 'tracks': tracks, 'vias': vias}
-    os.makedirs(os.path.join(HERE, 'route'), exist_ok=True)
-    json.dump(out, open(os.path.join(HERE, 'route', 'model.json'), 'w'))
+    dst = os.environ.get('ASAR_MODEL', os.path.join(HERE, 'route', 'model.json'))
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    json.dump(out, open(dst, 'w'))
     print('pads %d, tracks %d, vias %d, planes %s' % (len(pads), len(tracks), len(vias), planes))
 
 

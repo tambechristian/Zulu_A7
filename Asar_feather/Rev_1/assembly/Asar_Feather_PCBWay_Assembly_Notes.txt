@@ -1,8 +1,8 @@
 ASAR FEATHER - PCBWAY ASSEMBLY NOTES
 *** PROVISIONAL RELEASE - NOT FOR PRODUCTION UNTIL CONFIRMED ***
-Release date: 2026-11-17
+Release date: 2026-11-19
 Source: untracked working copy (the PCB SHA-256 below identifies it)
-PCB SHA-256: E356AB950EE7FCC720EF8039CA1662A24F08AF7B4C9195895A9E6092A4785BEB
+PCB SHA-256: EF32A48891CACD5D0386D4749B5E76356758F6D79905472E12DB66A009E802BD
 
 PROVISIONAL STATUS
 This release is provisional. You answered our enquiry about laser via-in-pad
@@ -26,11 +26,11 @@ B. 0.10 mm laser microvias (0.25 mm land), lasered at 0.10 mm through the 0.1016
 C. 3/3 mil on all six layers: 0.0762 mm tracks; smallest track-to-copper gap 0.0784
    mm; one 0.0762 mm track passes between two U1 lands on Top, with the mask opening
    1:1 on the lands.
-D. Via-in-pad on other parts: 274 laser via-to-pad contacts on SMD pads of other parts
-   (260 0.15 mm, 14 0.1 mm hole), filled and capped; 106 through vias (0.20 / 0.35 mm)
-   in or on the edge of SMD pads, 114 via-to-pad contacts (22 with the hole inside the
-   pad, 82 with the hole on the pad edge, 10 touching with the land only; 17 on the
-   top side, 97 on the bottom), to be resin-plugged and plated over (POFV). This
+D. Via-in-pad on other parts: 272 laser via-to-pad contacts on SMD pads of other parts
+   (258 0.15 mm, 14 0.1 mm hole), filled and capped; 103 through vias (0.20 / 0.35 mm)
+   in or on the edge of SMD pads, 111 via-to-pad contacts (23 with the hole inside the
+   pad, 76 with the hole on the pad edge, 12 touching with the land only; 17 on the
+   top side, 94 on the bottom), to be resin-plugged and plated over (POFV). This
    includes U1-W8 and U3 balls G9 and H2.
 E. Stacking: 273 Top-L2 lasers stacked on L2-L3, 108 L2-L3 and 85 L4-L5 lasers on
    buried vias, 64 L2-to-L5 columns (5 running Top to Bottom); no mechanical L2-L5
@@ -38,7 +38,7 @@ E. Stacking: 273 Top-L2 lasers stacked on L2-L3, 108 L2-L3 and 85 L4-L5 lasers o
 F. Mechanical vias as drawn (buried 0.15 / 0.27 mm, through 0.20 / 0.35 mm), not
    enlarged; smallest hole-to-hole edge gap 0.241 mm; hole wall to other-net copper
    0.157 mm (laser), 0.142 mm (buried), 0.157 mm (through); non-plated hole to track
-   9.000 mm.
+   0.240 mm.
 G. Plane webs: the L2 ground plane keeps copper strips of about 0.09 mm between
    adjacent via-in-pad balls under U1 (measured for the enquiry, none under 0.0762 mm;
    not re-measured on this board). No connection depends on them: you may clear any
@@ -47,7 +47,7 @@ If any of A-G changes, this assembly release is re-issued.
 
 UPLOAD SET
 PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
-- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-17_PROVISIONAL.zip
+- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-19_PROVISIONAL.zip
   (Gerbers incl. the GTP/GBP paste layers, drill files and
   Asar_Feather_PCBWay_FAB_NOTES.txt),
   ordered as "HDI (Buried/blind vias)" per Asar_Feather_PCBWay_FAB_NOTES.txt.
@@ -103,12 +103,12 @@ finished 1.60 +/- 0.16 mm on the stack you agreed for the earlier Zulu A7 HDI or
 
 VIA-IN-PAD AND ASSEMBLY
 Via-in-pad is used throughout this board, by design (see PROVISIONAL STATUS A and D):
-- Mask openings on pads expose 295 via lands on the top side and 257 on the bottom
+- Mask openings on pads expose 295 via lands on the top side and 252 on the bottom
   (fabrication census). Every laser microvia in a pad must be copper-filled and capped
   flat, and every through via in a pad resin-plugged and plated over, so that no via
   wicks solder or traps flux. Please confirm the dimple/planarity you guarantee on the
   capped lands.
-- 163 parts carry a via in or on a pad; through vias in pads touch 89 parts, among
+- 162 parts carry a via in or on a pad; through vias in pads touch 87 parts, among
   them U1-A13, U1-W8, U2-1, U2-17, U2-6, U3-G9, U3-H2, U3-H8, U4-3, U7-2, U8-1, U8-13,
   U8-16, U8-17, U8-18, U8-20, U8-27, U8-3, U8-5, X1-MP3, X1-MP4, X3-3, X3-6, X3-G1,
   X3-G2, X3-G3, X3-G4, X4-2.

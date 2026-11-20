@@ -1,0 +1,179 @@
+{
+ "_note": "Connector body outlines for body_check.py, as offsets from the part pad extent on its own side (x0, y0, x1, y1 added to the pad extent), board frame, as placed on board c4bf0b71 (2026-11-19): X1 Amphenol 10118193-0001LF rot 0 (shell from drawing 10118193 Rev D: front face 0.70 outside the PCB END line on the board edge, rear 4.35 inside (5.05 +-0.30 deep, so 4.65 at maximum), 7.50 wide (scaled; +-0.20 general tolerance) -- the footprint's Mechanical 3 outline uses the 6.90 mouth opening and is too narrow; the flange is off the board), X3 DM3D-SF bottom rot 90 (Mechanical 3), X4 S2B-PH-SM4-TB rot 0 (Mechanical 3: housing plus the two legs either side of the signal-pad notch), X5 SM04B-SRSS-TB rot 90 (its silk side lines y 6.70/12.70 and front line x 50.30; 4.25 mm deep per the JST drawing). Re-derive if any of these parts rotates or flips. The gate fails if a part's layer / rot / pattern here no longer match the board (body_check.mech_mismatch).",
+ "X1": {
+  "side": "Top",
+  "pad_ext": [
+   0.5,
+   7.43,
+   4.8,
+   15.43
+  ],
+  "bodies": [
+   [
+    -0.7,
+    7.68,
+    4.35,
+    15.18
+   ]
+  ],
+  "offs": [
+   [
+    -1.2,
+    0.25,
+    -0.45,
+    -0.25
+   ]
+  ],
+  "off": [
+   -1.2,
+   0.25,
+   -0.45,
+   -0.25
+  ],
+  "bodies_max": [
+   [
+    -0.7,
+    7.58,
+    4.65,
+    15.28
+   ]
+  ],
+  "offs_max": [
+   [
+    -1.2,
+    0.15,
+    -0.15,
+    -0.15
+   ]
+  ],
+  "layer": "TOP",
+  "rot": 0,
+  "pattern": "AMPHENOL-10118193-0001LF"
+ },
+ "X3": {
+  "side": "Bottom",
+  "pad_ext": [
+   37.575,
+   5.0549,
+   50.0249,
+   17.8051
+  ],
+  "bodies": [
+   [
+    38.075,
+    5.43,
+    49.525,
+    17.38
+   ]
+  ],
+  "offs": [
+   [
+    0.5001,
+    0.3751,
+    -0.4999,
+    -0.4251
+   ]
+  ],
+  "off": [
+   0.5001,
+   0.3751,
+   -0.4999,
+   -0.4251
+  ],
+  "layer": "BOTTOM",
+  "rot": 90,
+  "pattern": "DM3D-SF"
+ },
+ "X4": {
+  "side": "Top",
+  "pad_ext": [
+   6.7,
+   13.3,
+   14.9,
+   22.5
+  ],
+  "bodies": [
+   [
+    6.85,
+    16.3,
+    14.75,
+    22.3
+   ],
+   [
+    6.85,
+    14.7,
+    7.65,
+    16.3
+   ],
+   [
+    13.95,
+    14.7,
+    14.75,
+    16.3
+   ]
+  ],
+  "offs": [
+   [
+    0.15,
+    3.0,
+    -0.15,
+    -0.2
+   ],
+   [
+    0.15,
+    1.4,
+    -7.25,
+    -6.2
+   ],
+   [
+    7.25,
+    1.4,
+    -0.15,
+    -6.2
+   ]
+  ],
+  "off": [
+   0.15,
+   3.0,
+   -0.15,
+   -0.2
+  ],
+  "layer": "TOP",
+  "rot": 0,
+  "pattern": "JST-S2B-PH-SM4-TB"
+ },
+ "X5": {
+  "side": "Top",
+  "pad_ext": [
+   44.95,
+   6.3,
+   50.5,
+   13.1
+  ],
+  "bodies": [
+   [
+    46.05,
+    6.7,
+    50.3,
+    12.7
+   ]
+  ],
+  "offs": [
+   [
+    1.1,
+    0.4,
+    -0.2,
+    -0.4
+   ]
+  ],
+  "off": [
+   1.1,
+   0.4,
+   -0.2,
+   -0.4
+  ],
+  "layer": "TOP",
+  "rot": 90,
+  "pattern": "JST-SM04B-SRSS-TB"
+ }
+}
