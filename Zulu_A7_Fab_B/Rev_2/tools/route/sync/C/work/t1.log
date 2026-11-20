@@ -1,0 +1,27 @@
+   0.0 start: 10 open on 10 nets: FLASH-D02:1 JA1:1 JA10:1 JA2:1 JA3:1 JA4:1 JA7:1 JA8:1 JA9:1 PROG#:1
+   0.0 round 1 FLASH-D02      CLOSED  open 10 -> 9
+   0.1 round 1 JA2            CLOSED  open 9 -> 8
+   0.1 round 1 JA7            CLOSED  open 8 -> 7
+   0.1   JA3: victims CHAN14 CHAN15 CHAN21 FPGA-TDO FPGA-TMS LED0_R PMOD-2 (frozen or too many) - give up
+   0.1 round 1 JA3            open  open 7 -> 7
+   0.2   JA10: victims CFG-M2 CHAN17 CHAN21 CHAN27 CHAN28 FLASH-D02 FPGA-INIT# FPGA-TDI FPGA-TMS LED0_R PMOD-7 PUDC_B (frozen or too many) - give up
+   0.2 round 1 JA10           open  open 7 -> 7
+   2.4   JA8: victim CHAN21 not restored
+   2.4 round 1 JA8            open  open 7 -> 7
+   2.6   JA1: victims CFG-M2 CHAN15 CHAN19 CHAN21 CHAN27 CLK-12M-FPGA CLK-12M-SHARED FPGA-INIT# FPGA-TDO JA2 LED0_R PROG# (frozen or too many) - give up
+   2.6 round 1 JA1            open  open 7 -> 7
+   2.6 round 1 JA9            CLOSED  open 7 -> 6
+   3.0   JA4: victims CFG-M2 CHAN19 CHAN2 CHAN5 CHAN6 CHAN7 CLK-12M-FT CLK-12M-SHARED FLASH-D03 FPGA-DONE FPGA-TDO FPGA-TMS LED1 PROG# UART_FT_TXD (frozen or too many) - give up
+   3.0 round 1 JA4            open  open 6 -> 6
+   3.0 round 1 PROG#          CLOSED  open 6 -> 5
+   3.2   JA3: victims CFG-M2 CHAN19 CHAN22 CHAN27 CLK-12M-SHARED FPGA-TDO PMOD-2 PROG# UART_FT_TXD (frozen or too many) - give up
+   3.2 round 2 JA3            open  open 5 -> 5
+   3.5   JA10: victims CFG-M2 CHAN19 CHAN28 FPGA-DONE FPGA-INIT# FPGA-TDI FPGA-TDO JA7 LED0_G PROG# RST# (frozen or too many) - give up
+   3.5 round 2 JA10           open  open 5 -> 5
+   3.6   JA8: victims CFG-M2 CHAN19 CHAN21 FPGA-TDO JA7 PROG# UART_FT_TXD (frozen or too many) - give up
+   3.6 round 2 JA8            open  open 5 -> 5
+   3.7   JA1: victims CFG-M2 CHAN19 CHAN21 CHAN27 CLK-12M-FPGA CLK-12M-SHARED FPGA-INIT# FPGA-TDO FPGA-TMS JA2 JA9 LED0_R PROG# (frozen or too many) - give up
+   3.7 round 2 JA1            open  open 5 -> 5
+   4.0   JA4: victims CFG-M2 CHAN19 CHAN2 CHAN5 CHAN6 CHAN7 CLK-12M-FT CLK-12M-SHARED FLASH-D03 FPGA-DONE FPGA-TDO FPGA-TMS LED1 PROG# UART_FT_TXD (frozen or too many) - give up
+   4.0 round 2 JA4            open  open 5 -> 5
+   4.1 end: 5 open on 5 nets: JA1:1 JA10:1 JA3:1 JA4:1 JA8:1

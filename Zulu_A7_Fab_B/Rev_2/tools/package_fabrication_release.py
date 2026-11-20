@@ -4,15 +4,32 @@
     python tools/package_fabrication_release.py
 
 Adapted from Zulu_Altium_VS_Code_HDI_Optimized/tools/package_fabrication_release.py,
-then from Fab B Rev 1's copy (Rev_1/tools, export of 2026-11-11 08:46).
-Every expected number below was taken from the Rev 2 Altium export of
-2026-11-11 (Gerbers 23:34, NC drill 23:35:44: zulu_a7_fab_b.DRR / .LDP /
--SlotHoles.TXT), re-exported 2026-11-12 00:17 after the silkscreen title became
-ZULU A7 2.2 (only GTO changed), of the board saved 2026-11-12 00:16:55
-(MD5 33023787), and cross-checked
-against the PcbDoc by tools/fab_facts.py (tools/fab_facts.json: drill_vs_board
-0 missing / 0 extra in every drill file).  The script never regenerates outputs;
-it fails if any input is missing, empty, older than the PcbDoc, or does not match.
+then from Fab B Rev 1's copy (Rev_1/tools, export of 2026-11-11 08:46), then Fab B Rev 2's
+2026-11-11 release. The script never regenerates outputs; it fails if any input is missing,
+empty, older than the PcbDoc, or does not match.
+
+FAB B REV 2 SYNC (2026-11-20): the no-PMOD Rev 2 version of this script
+(Zulu_A7_no_pmod/Rev_2/tools/package_fabrication_release.py at 427960e) brought back to Fab B for
+the release of the board synced from no-PMOD Rev 2 (FT2232HQ QFN-64 U2, S2B-PH-SM4-TB X4,
+MSOP-8 U10, DQ series resistors R119-R134, body moves, 3D bodies; the Pmod J1 + R26-R33 and the
+69.85 x 25.40 mm outline stay). Kept from the no-PMOD copy: the release body gate
+(tools/release_body_gate.py) before anything is written, the order-number check on file names,
+on the note and on every archived file, and the note written by tools/fab_notes.py. Fab B values:
+names (zulu_a7_fab_b, Zulu_A7_Fab_B_Rev_2_PCBWay_*), the outline, the X1 slot centres (X1 does
+not move) and the component-hole tools TXT T04 = 2 (X1 MH1/MH2) and T05 = 58 (J1 12, JP3 3, JP4 3,
+X2 40; the no-PMOD board has 46). The order-number guard: the 2026-11-11 copy listed the number
+itself in ORDER_DENYLIST; this copy keeps the same case-insensitive substring test without the
+number in the (public) file -- every 'W' + 7 digits is tried with every 4-6 character tail against
+the SHA-256 set, so trailing characters cannot hide it (the no-PMOD copy matched whole tokens only).
+
+Release constants, filled 2026-11-20 from the synced board (md5 5fea1304), its export and
+tools/fab_facts.json: EXPECTED_PCB_SHA256, EXPECTED_PCB_MD5, the through-via count TXT T02 and
+TX3/TX6/TX7/TX9/TX10 in EXPECTED_ROUND_DRILLS, EXPECTED_MICROVIA_TOTAL and RELEASE_DATE (also in
+tools/fab_notes.py and tools/generate_jlcpcb_assembly.py). The script refuses if any is set back to None.
+
+The 2026-11-11 Fab B Rev 2 release (board saved 2026-11-12 00:16:55, MD5 33023787, SHA-256
+D77DE904...B472): TXT T02 354 / T04 2 / T05 58, TX3 403, TX6 321, TX7 307, TX9 281, TX10 295,
+1,204 microvias.
 """
 
 import argparse
@@ -31,20 +48,35 @@ FABRICATION = os.path.join(ROOT, "fabrication")
 PCB = os.path.join(PROJECT, "zulu_a7_fab_b.PcbDoc")
 RELEASE_PREFIX = "Zulu_A7_Fab_B_Rev_2"
 RELEASE_NAME = "Zulu A7 Fab B Rev 2"
-RELEASE_DATE = "2026-11-11"
+RELEASE_DATE = "2026-11-20"   # as in tools/fab_notes.py and tools/generate_jlcpcb_assembly.py
 DEFAULT_NOTE = os.path.join(FABRICATION, f"{RELEASE_PREFIX}_PCBWay_FAB_NOTES.txt")
 DEFAULT_ARCHIVE = os.path.join(
     FABRICATION, f"{RELEASE_PREFIX}_PCBWay_Fabrication_{RELEASE_DATE}.zip"
 )
-# order/quote numbers never go into a packaged file name or the note (public repo)
-ORDER_DENYLIST = ("W1150632AS3P6",)
-# Rev 2's final zulu_a7_fab_b.PcbDoc, saved 2026-11-12 00:16:55 (title ZULU A7 2.2;
-# the 2026-11-11 23:27:22 save with title 2.0 was SHA-256 A319195B..., MD5 e8715917)
-# (Rev 1: SHA-256 C439E0F5...0382, MD5 830b1744)
-EXPECTED_PCB_SHA256 = (
-    "D77DE904DF044841C4E7B6727630BF219601B3013EDB0ED3DE31465C5D03B472"
-)
-EXPECTED_PCB_MD5 = "330237878e325c882fca3f689b55ec0c"
+# order/quote numbers never go into a packaged file name, the note or an archived file (public repo).
+# ORDER_DENYLIST of the 2026-11-11 copy, kept as SHA-256 so the number stays out of this public file:
+# a case-insensitive substring test, every 'W' + 7 digits tried with every 4-6 character tail.
+ORDER_DENYLIST_SHA256 = {"4b77802bdde723a747a12d3526f308f0a84011df15acdd400fb8eeb3018f1674"}
+ORDER_HEAD = re.compile(rb"W[0-9]{7}", re.I)
+
+
+def names_order(data):
+    if isinstance(data, str):
+        data = data.encode("latin-1", "replace")
+    up = data.upper()
+    for m in ORDER_HEAD.finditer(up):
+        for n in range(4, 7):
+            tail = up[m.end():m.end() + n]
+            if len(tail) == n and tail.isalnum() and \
+                    hashlib.sha256(m.group(0) + tail).hexdigest() in ORDER_DENYLIST_SHA256:
+                return True
+    return False
+
+
+# the 2026-11-20 synced zulu_a7_fab_b.PcbDoc (2026-11-11 release board: SHA-256
+# D77DE904DF044841C4E7B6727630BF219601B3013EDB0ED3DE31465C5D03B472, MD5 330237878e325c882fca3f689b55ec0c)
+EXPECTED_PCB_SHA256 = "0E5D64CE9B6596E442BBEAF72FC2C6AA30F55D9187B764ED43418729873FA074"
+EXPECTED_PCB_MD5 = "5fea13046ef71090519f5d357c1d96e5"
 BASE = "zulu_a7_fab_b"
 OUTLINE = (0.0, 0.0, 69.85, 25.40)  # GM profile, mm
 GERBER_EXTENSIONS = [
@@ -63,17 +95,17 @@ GERBER_EXTENSIONS = [
     "GM",
 ]
 ROUND_DRILL_EXTENSIONS = ["TXT", "TX3", "TX6", "TX7", "TX9", "TX10"]
-# hits per tool, from Rev 2's zulu_a7_fab_b.DRR (2026-11-11 23:35:44), equal to
-# fab_facts.json drill_hits_per_tool and to the PcbDoc via counts per span
-# (Rev 1, DRR 08:46: TXT T02 369, TX3 391, TX6 313, TX7 301, TX9 269, TX10 278;
-# T04 2 and T05 58 are unchanged)
+# hits per tool, to be read from the release's zulu_a7_fab_b.DRR and checked equal to fab_facts.json
+# drill_hits_per_tool and to the PcbDoc via counts per span. T04 (X1 MH1/MH2) and T05 (J1, JP3, JP4, X2) are fixed
+# by parts the sync does not touch. 2026-11-20 values from the synced board's DRR and tools/fab_facts.json.
+# (2026-11-11 release: TXT T02 354 / T04 2 / T05 58, TX3 403, TX6 321, TX7 307, TX9 281, TX10 295)
 EXPECTED_ROUND_DRILLS = {
-    "TXT": {"02": 354, "04": 2, "05": 58},
+    "TXT": {"02": 329, "04": 2, "05": 58},
     "TX3": {"01": 403},
-    "TX6": {"01": 321},
+    "TX6": {"01": 344},
     "TX7": {"01": 307},
-    "TX9": {"01": 281},
-    "TX10": {"01": 295},
+    "TX9": {"01": 312},
+    "TX10": {"01": 330},
 }
 EXPECTED_TOOL_SIZES = {
     "TXT": {"02": 0.20, "04": 0.85, "05": 1.016},
@@ -83,11 +115,11 @@ EXPECTED_TOOL_SIZES = {
     "TX9": {"01": 0.15},
     "TX10": {"01": 0.15},
 }
-# TX6 + TX7 + TX9 + TX10 = 321 + 307 + 281 + 295; the DRR's "MicroVia Totals" and
-# docs/rev2_layout.md (mark_microvias.py --expect 1204) agree.  Rev 1: 1161.
-EXPECTED_MICROVIA_TOTAL = 1204
-# Rev 2's .LDP (23:35:44) maps the same seven drill files to the same layers as
-# Rev 1's; only its header path changed.  So do EXPECTED_ENTRIES and the extensions.
+# TX6 + TX7 + TX9 + TX10; the DRR's "MicroVia Totals" must agree (2026-11-20: 344 + 307 + 312 + 330).
+# (2026-11-11 release: 321 + 307 + 281 + 295 = 1204; Rev 1: 1161)
+EXPECTED_MICROVIA_TOTAL = 1293
+# The .LDP maps the same seven drill files to the same layers on every Fab B and no-PMOD export,
+# so do EXPECTED_ENTRIES and the extensions.
 EXPECTED_LAYER_MAP = {
     f"{BASE}-RoundHoles.TXT": "gtl,g1,g2,g3,g4,gbl",
     f"{BASE}-SlotHoles.TXT": "gtl,g1,g2,g3,g4,gbl",
@@ -98,11 +130,27 @@ EXPECTED_LAYER_MAP = {
     f"{BASE}-RoundHoles.TX10": "g4,gbl",
 }
 SLOT_DRILL_FILENAME = f"{BASE}-SlotHoles.TXT"
-# X1-MS1 / X1-MS2 from Rev 2's -SlotHoles.TXT (23:35:44), equal to the PcbDoc pad
+# X1-MS1 / X1-MS2 from Rev 2's -SlotHoles.TXT (2026-11-11 23:35:44), equal to the PcbDoc pad
 # records (fab_facts.json x1_hole_pads): Rev 1's (29.5199, 23.9585) and
-# (36.5201, 23.9585) moved 2.54 mm west with X1.  Tool, route and length unchanged.
+# (36.5201, 23.9585) moved 2.54 mm west with X1.  Tool, route and length unchanged; the sync
+# does not move X1.
 EXPECTED_SLOT_CENTERS = [(26.9799, 23.9585), (33.9801, 23.9585)]
 EXPECTED_ENTRIES = 23
+
+
+def require_release_constants():
+    """TODO(release) guard: refuse while any board-dependent constant is still None."""
+    todo = [name for name, value in (("RELEASE_DATE", RELEASE_DATE), ("EXPECTED_PCB_SHA256", EXPECTED_PCB_SHA256),
+                                     ("EXPECTED_PCB_MD5", EXPECTED_PCB_MD5),
+                                     ("EXPECTED_MICROVIA_TOTAL", EXPECTED_MICROVIA_TOTAL)) if value is None]
+    todo += [f"EXPECTED_ROUND_DRILLS[{ext!r}][{tool!r}]" for ext, tools in EXPECTED_ROUND_DRILLS.items()
+             for tool, count in tools.items() if count is None]
+    if todo:
+        raise ValueError("TODO(release): fill " + ", ".join(todo) + " from the final board's export and tools/fab_facts.json")
+    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", RELEASE_DATE):
+        raise ValueError(f"RELEASE_DATE {RELEASE_DATE!r} is not YYYY-MM-DD")
+    if names_order(DEFAULT_ARCHIVE) or names_order(DEFAULT_NOTE):
+        raise ValueError("a default file name names an order number")
 
 
 def sha256(path):
@@ -327,7 +375,7 @@ def validate_note(note):
         raise ValueError("fab note does not name the revision")
     if f"Release date: {RELEASE_DATE}" not in text:
         raise ValueError("fab note does not carry the release date")
-    if any(order.upper() in text.upper() for order in ORDER_DENYLIST):
+    if names_order(text):
         raise ValueError("fab note names an order number")
     # the note's drill table, plug request and slot centres must match the files
     stated = {
@@ -394,11 +442,7 @@ def validate_sources(note):
         + [SLOT_DRILL_FILENAME, f"{BASE}.LDP", f"{BASE}.DRR"]
     )
     sources = [output_path(filename) for filename in filenames] + [note]
-    if any(
-        order.upper() in os.path.basename(path).upper()
-        for order in ORDER_DENYLIST
-        for path in sources
-    ):
+    if any(names_order(os.path.basename(path)) for path in sources):
         raise ValueError("an order file must never be packaged")
     missing = [path for path in sources if not os.path.isfile(path)]
     if missing:
@@ -464,6 +508,8 @@ def validate_archive(sources, archive_path):
             )
         for source in sources:
             archived = archive.read(os.path.basename(source))
+            if names_order(archived):
+                raise ValueError(f"archive entry names an order number: {os.path.basename(source)}")
             with open(source, "rb") as handle:
                 if archived != handle.read():
                     raise ValueError(
@@ -472,7 +518,15 @@ def validate_archive(sources, archive_path):
 
 
 def main():
+    require_release_constants()
     args = parse_args()
+    # release gate (2026-11-19): no component body may sit on another part or its pads; the DRC does not check this
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import release_body_gate
+    try:
+        release_body_gate.gate(PCB)
+    except RuntimeError as exc:
+        raise ValueError(str(exc)) from None
     note = os.path.abspath(args.note)
     archive_path = os.path.abspath(args.archive)
     sources = validate_sources(note)

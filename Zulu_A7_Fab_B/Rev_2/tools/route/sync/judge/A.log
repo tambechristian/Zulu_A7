@@ -1,0 +1,718 @@
+{
+ "plan": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_Fab_B/Rev_2/tools/route/sync/A/plan_A.json",
+ "md5": "19f80aa8877db45fa76450e7a38792fc",
+ "moves": 0,
+ "G2_route_check_official": {
+  "rc": 0,
+  "tail": [
+   "plan: 1576 tracks, 404 vias, 839 removed; board then: 5654 tracks, 2022 vias",
+   "violations: 0",
+   "open connections after the plan: 0 on 0 nets",
+   "PASS"
+  ]
+ },
+ "G3_widthcheck": {
+  "rc": 0,
+  "tail": [
+   "width violations 0 of 1576 tracks; classes {'PWR_SWITCH': 6, 'PWR_RAILS': 10}"
+  ]
+ },
+ "G1_native_keys": {
+  "rc": 0,
+  "out": [
+   "plan_A.json: 839 track + 340 via removals; native-key misses: 0 tracks, 0 vias; duplicate keys in plan: 0"
+  ]
+ },
+ "G1_emit": {
+  "judge_base_cur": [],
+  "judge_base_new": [],
+  "indep_base_cur": [],
+  "indep_base_new": [],
+  "kill_tracks": 839,
+  "kill_vias": 340,
+  "same_kill_sets_cur_new": true
+ },
+ "G1_plan_dup": {
+  "remove_tracks_dup3": 0,
+  "remove_vias_dup3": 0,
+  "add_tracks_dup3": 0,
+  "add_vias_dup3": 0,
+  "zero_len_add": 0,
+  "short_add_lt_0.01": 0
+ },
+ "G4_prune_official": [
+  "0 tracks, 0 vias dead; open after prune: 0 {}"
+ ],
+ "G4_route_conn_official": [
+  "open connections 0 on 0 nets"
+ ],
+ "G5_judge_official": {
+  "emit_problems": 0,
+  "open_exact": 0,
+  "drc_counts": {
+   "unmoved_base": 37,
+   "base_moved": 275,
+   "result": 34,
+   "new_vs_unmoved": 0,
+   "fixed_vs_unmoved": 3
+  },
+  "drc_new": [],
+  "through_via_in_smd_pad": [],
+  "uvia_in_smd_pad_total": 133,
+  "uvia_in_smd_pad_new": 68,
+  "dup_tracks_result": 23,
+  "dup_vias_result": 0
+ },
+ "G2_route_check_sdram": {
+  "rc": 0,
+  "tail": [
+   "plan: 1576 tracks, 404 vias, 839 removed; board then: 5654 tracks, 2022 vias",
+   "violations: 0",
+   "open connections after the plan: 0 on 0 nets",
+   "PASS"
+  ]
+ },
+ "G4_dead": {
+  "tracks": 0,
+  "vias": 0
+ },
+ "G4_open": {
+  "total": 0,
+  "by_net": {}
+ },
+ "G5_drc_sdram": {
+  "base_cur": 37,
+  "result": 34,
+  "new": 0,
+  "new_list": [],
+  "fixed": 3
+ },
+ "dup_new_vs_base": {
+  "tracks": 0,
+  "vias": 0
+ },
+ "G6_via_in_pad": {
+  "through_overlap": [],
+  "through_touch_within_1um": [
+   [
+    "LD4_A 3.700,13.825 Top>Bot 0.35/0.20",
+    "R108-2(LD4_A)",
+    -0.0
+   ],
+   [
+    "GND 2.325,9.825 Top>Bot 0.35/0.20",
+    "C147-1(GND)",
+    -0.0
+   ],
+   [
+    "GND 4.600,18.425 Top>Bot 0.35/0.20",
+    "C149-1(GND)",
+    -0.0
+   ],
+   [
+    "GND 3.725,5.475 Top>Bot 0.35/0.20",
+    "C151-1(GND)",
+    -0.0
+   ],
+   [
+    "GND 7.300,4.675 Top>Bot 0.35/0.20",
+    "C160-1(GND)",
+    0.0
+   ],
+   [
+    "GND 4.800,16.600 Top>Bot 0.35/0.20",
+    "C161-1(GND)",
+    0.0
+   ],
+   [
+    "GND 4.750,4.600 Top>Bot 0.35/0.20",
+    "R102-2(GND)",
+    -0.0
+   ],
+   [
+    "GND 2.725,11.725 Top>Bot 0.35/0.20",
+    "R103-2(GND)",
+    0.0
+   ],
+   [
+    "GND 6.775,5.950 Top>Bot 0.35/0.20",
+    "R114-2(GND)",
+    -0.0
+   ],
+   [
+    "GND 6.775,5.950 Top>Bot 0.35/0.20",
+    "X3-G2(GND)",
+    -0.0
+   ],
+   [
+    "VCC3V3 58.200,3.500 Top>Bot 0.35/0.20",
+    "R1-3(VCC3V3)",
+    -0.0001
+   ],
+   [
+    "VCC3V3 58.200,3.500 Top>Bot 0.35/0.20",
+    "R1-4(VCC3V3)",
+    -0.0
+   ],
+   [
+    "EE-CLK 27.625,18.425 Top>Bot 0.35/0.20",
+    "U2-62(EE-CLK)",
+    -0.0
+   ]
+  ],
+  "through_judge_hits": [],
+  "uvia_in_smd_total": 133,
+  "uvia_in_smd_new": 68,
+  "uvia_in_smd_new_list": [
+   [
+    "VCC3V3 25.575,19.075 L5->Bot 0.30/0.15",
+    [
+     "U10-8(VCC3V3)"
+    ]
+   ],
+   [
+    "RST# 58.650,5.250 L5->Bot 0.30/0.15",
+    [
+     "R1-2(RST#)"
+    ]
+   ],
+   [
+    "EE-CS 21.200,19.200 L5->Bot 0.30/0.15",
+    [
+     "U10-1(EE-CS)"
+    ]
+   ],
+   [
+    "GND 43.175,18.125 Top>L2- 0.30/0.15",
+    [
+     "U4-4(GND)"
+    ]
+   ],
+   [
+    "GND 43.850,17.500 Top>L2- 0.30/0.15",
+    [
+     "U4-4(GND)"
+    ]
+   ],
+   [
+    "VCC3V3 10.825,18.050 L5->Bot 0.30/0.15",
+    [
+     "R34-8(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 13.225,18.050 L5->Bot 0.30/0.15",
+    [
+     "R34-5(VCC3V3)"
+    ]
+   ],
+   [
+    "GND 51.350,22.100 L5->Bot 0.30/0.15",
+    [
+     "C94-2(GND)"
+    ]
+   ],
+   [
+    "CLK-12M-SHARED 42.725,18.025 Top>L2- 0.30/0.15",
+    [
+     "Q1-3(CLK-12M-SHARED)"
+    ]
+   ],
+   [
+    "VCC3V3 30.825,18.675 Top>L2- 0.30/0.15",
+    [
+     "U2-56(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 19.300,18.650 L5->Bot 0.30/0.15",
+    [
+     "R19-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 28.625,18.700 L5->Bot 0.30/0.15",
+    [
+     "R80-1(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 19.475,20.000 L5->Bot 0.30/0.15",
+    [
+     "R96-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 18.050,19.250 L5->Bot 0.30/0.15",
+    [
+     "R97-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 19.250,19.450 L5->Bot 0.30/0.15",
+    [
+     "R98-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 35.075,16.825 L5->Bot 0.30/0.15",
+    [
+     "U3-49(VCC3V3)"
+    ]
+   ],
+   [
+    "UART_FT_RTS# 34.625,14.375 Top>L2- 0.30/0.15",
+    [
+     "U2-40(UART_FT_RTS#)"
+    ]
+   ],
+   [
+    "PROG# 59.875,15.550 Top>L2- 0.30/0.15",
+    [
+     "R4-1(PROG#)"
+    ]
+   ],
+   [
+    "N$LD0B 29.950,18.725 L5->Bot 0.30/0.15",
+    [
+     "R80-2(N$LD0B)"
+    ]
+   ],
+   [
+    "LED1 50.475,10.525 Top>L2- 0.30/0.15",
+    [
+     "U1-N18(LED1)"
+    ]
+   ],
+   [
+    "LED0_R 50.025,9.825 Top>L2- 0.30/0.15",
+    [
+     "U1-P17(LED0_R)"
+    ]
+   ],
+   [
+    "LED0_G 50.300,9.375 Top>L2- 0.30/0.15",
+    [
+     "U1-R18(LED0_G)"
+    ]
+   ],
+   [
+    "LED0_B 49.875,10.500 Top>L2- 0.30/0.15",
+    [
+     "U1-N17(LED0_B)"
+    ]
+   ],
+   [
+    "GND 25.375,21.500 L5->Bot 0.30/0.15",
+    [
+     "U10-5(GND)"
+    ]
+   ],
+   [
+    "GND 51.525,10.925 L5->Bot 0.30/0.15",
+    [
+     "C111-2(GND)"
+    ]
+   ],
+   [
+    "GND 17.950,16.750 Top>L2- 0.30/0.15",
+    [
+     "C158-1(GND)"
+    ]
+   ],
+   [
+    "GND 26.200,20.150 Top>L2- 0.30/0.15",
+    [
+     "C155-1(GND)"
+    ]
+   ],
+   [
+    "GND 32.390,7.750 Top>L2- 0.30/0.15",
+    [
+     "X4-2(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,18.300 Top>L2- 0.30/0.15",
+    [
+     "U2-1(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,16.300 Top>L2- 0.30/0.15",
+    [
+     "U2-5(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,13.800 Top>L2- 0.30/0.15",
+    [
+     "U2-10(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,13.300 Top>L2- 0.30/0.15",
+    [
+     "U2-11(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,12.300 Top>L2- 0.30/0.15",
+    [
+     "U2-13(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,11.300 Top>L2- 0.30/0.15",
+    [
+     "U2-15(GND)"
+    ]
+   ],
+   [
+    "GND 30.750,10.125 Top>L2- 0.30/0.15",
+    [
+     "U2-25(GND)"
+    ]
+   ],
+   [
+    "GND 34.925,11.800 Top>L2- 0.30/0.15",
+    [
+     "U2-35(GND)"
+    ]
+   ],
+   [
+    "GND 34.925,17.800 Top>L2- 0.30/0.15",
+    [
+     "U2-47(GND)"
+    ]
+   ],
+   [
+    "GND 33.250,18.975 Top>L2- 0.30/0.15",
+    [
+     "U2-51(GND)"
+    ]
+   ],
+   [
+    "GND 31.500,15.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 31.500,14.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 31.500,13.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 30.500,15.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 30.500,14.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 30.500,13.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 29.500,15.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 29.500,14.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 29.500,13.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "FT-VPHY 25.850,16.700 Top>L2- 0.30/0.15",
+    [
+     "U2-4(FT-VPHY)"
+    ]
+   ],
+   [
+    "FT-REF 25.775,15.725 Top>L2- 0.30/0.15",
+    [
+     "U2-6(FT-REF)"
+    ]
+   ],
+   [
+    "FT-PWREN# 50.950,9.850 Top>L2- 0.30/0.15",
+    [
+     "U1-P19(FT-PWREN#)"
+    ]
+   ],
+   [
+    "FPGA-DONE 47.500,8.425 Top>L2- 0.30/0.15",
+    [
+     "U1-U12(FPGA-DONE)"
+    ]
+   ],
+   [
+    "EE-DATA 28.250,18.825 Top>L2- 0.30/0.15",
+    [
+     "U2-61(EE-DATA)"
+    ]
+   ],
+   [
+    "EE-DATA 20.725,20.425 L5->Bot 0.30/0.15",
+    [
+     "U10-3(EE-DATA)"
+    ]
+   ],
+   [
+    "EE-DATA 18.125,18.825 L5->Bot 0.30/0.15",
+    [
+     "R101-2(EE-DATA)"
+    ]
+   ],
+   [
+    "EE-CS 27.175,19.025 Top>L2- 0.30/0.15",
+    [
+     "U2-63(EE-CS)"
+    ]
+   ],
+   [
+    "CHAN28 49.750,8.750 Top>L2- 0.30/0.15",
+    [
+     "U1-T17(CHAN28)"
+    ]
+   ],
+   [
+    "CHAN26 47.775,7.950 Top>L2- 0.30/0.15",
+    [
+     "U1-V13(CHAN26)"
+    ]
+   ],
+   [
+    "CHAN21 48.975,8.375 Top>L2- 0.30/0.15",
+    [
+     "U1-U15(CHAN21)"
+    ]
+   ],
+   [
+    "SDRAM-D9 41.750,12.950 L5->Bot 0.30/0.15",
+    [
+     "R128-1(SDRAM-D9)"
+    ]
+   ],
+   [
+    "SDRAM-D15 46.500,16.800 L5->Bot 0.30/0.15",
+    [
+     "R134-1(SDRAM-D15)"
+    ]
+   ],
+   [
+    "SDRAM-D14 45.300,17.150 L5->Bot 0.30/0.15",
+    [
+     "R133-1(SDRAM-D14)"
+    ]
+   ],
+   [
+    "SDRAM-D12 38.900,15.800 Top>L2- 0.30/0.15",
+    [
+     "R131-1(SDRAM-D12)"
+    ]
+   ],
+   [
+    "D9 42.350,12.950 L5->Bot 0.30/0.15",
+    [
+     "R128-2(D9)"
+    ]
+   ],
+   [
+    "D13 38.450,16.303 Top>L2- 0.30/0.15",
+    [
+     "R132-2(D13)"
+    ]
+   ],
+   [
+    "D12 39.490,15.810 Top>L2- 0.30/0.15",
+    [
+     "R131-2(D12)"
+    ]
+   ],
+   [
+    "GND 32.350,16.575 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 32.475,9.025 Top>L2- 0.30/0.15",
+    [
+     "X4-2(GND)"
+    ]
+   ],
+   [
+    "GND 50.975,11.370 Top>L2- 0.30/0.15",
+    [
+     "U1-L19(GND)"
+    ]
+   ]
+  ]
+ },
+ "G8_usb": {
+  "P_mm": 12.1863,
+  "N_mm": 12.1863,
+  "mismatch_mm": 0.0,
+  "layers": [
+   "Top Layer"
+  ],
+  "widths": [
+   0.15
+  ],
+  "vias": 0,
+  "segments": [
+   11,
+   23
+  ],
+  "coupled_mm_tol0.005": 9.151,
+  "coupled_mm_tol0.010": 9.552,
+  "coupled_mm_tol0.030": 10.389,
+  "min_gap_mm": 0.15,
+  "geom_equals_source_head": true
+ },
+ "pmod": {
+  "nets_touched": [],
+  "removed_tracks": 0,
+  "removed_vias": 0,
+  "added_tracks": 0,
+  "added_vias": 0,
+  "result_copper_equals_base_cur": true,
+  "J1_R26_R33_pads_unchanged": true,
+  "JP3_JP4_pads_unchanged": true
+ },
+ "counts": {
+  "remove_tracks": 839,
+  "remove_vias": 340,
+  "add_tracks": 1576,
+  "add_vias": 404,
+  "add_track_mm": 802.32,
+  "remove_track_mm": 920.62,
+  "vias_added_by_type": {
+   "buried L3-L4": 68,
+   "laser L2-L3": 79,
+   "laser L4-L5": 62,
+   "laser L5-Bottom": 69,
+   "laser Top-L2": 103,
+   "through": 23
+  },
+  "vias_removed_by_type": {
+   "buried L3-L4": 68,
+   "laser L2-L3": 79,
+   "laser L4-L5": 31,
+   "laser L5-Bottom": 34,
+   "laser Top-L2": 80,
+   "through": 48
+  },
+  "added_tracks_by_layer": {
+   "Bottom Layer": 255,
+   "Top Layer": 591,
+   "L4-SIG": 364,
+   "L3-SIG": 366
+  },
+  "removed_tracks_by_layer": {
+   "Bottom Layer": 179,
+   "Top Layer": 356,
+   "L4-SIG": 161,
+   "L3-SIG": 143
+  },
+  "vs_clean_transplant": {
+   "extra_removals_beyond_transplant": 4,
+   "extra_removal_track_mm": 0.04,
+   "transplant_removals_kept_on_board": 84,
+   "adds_not_in_transplant": 223,
+   "transplant_adds_not_in_plan": 86,
+   "add_vias_beyond_transplant": 50,
+   "add_mm_beyond_transplant": 61.99
+  },
+  "extra_removal_nets": {
+   "N$LD0G": 4
+  },
+  "result": {
+   "tracks": 5654,
+   "vias": 2025,
+   "track_mm": 5137.29
+  },
+  "base_cur": {
+   "tracks": 4917,
+   "vias": 1961,
+   "track_mm": 5255.58
+  }
+ },
+ "nets_differing_from_clean_after_transplant": [
+  "CHAN2",
+  "CHAN5",
+  "CHAN9",
+  "CLK-12M-FPGA",
+  "FLASH-D02",
+  "FPGA-INIT#",
+  "FPGA-TMS",
+  "GND",
+  "N$LD0G",
+  "PROG#",
+  "TMS",
+  "UART_FT_TXD"
+ ],
+ "G9_dq": {
+  "ok": true,
+  "copper_identical_all": true
+ },
+ "G7_planeweb": {
+  "L2-GND": {
+   "raw": {
+    "components": 5,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1442.28,
+    "objects": 171,
+    "objects_off_main": 0
+   },
+   "open0.125": {
+    "components": 9,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1428.22,
+    "objects": 171,
+    "objects_off_main": 0
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1415.1,
+    "objects": 98,
+    "objects_off_main": 0
+   },
+   "open0.125": {
+    "components": 13,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1393.25,
+    "objects": 98,
+    "objects_off_main": 0
+   }
+  }
+ }
+}

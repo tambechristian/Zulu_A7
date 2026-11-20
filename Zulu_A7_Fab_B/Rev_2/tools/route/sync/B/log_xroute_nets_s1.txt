@@ -1,0 +1,30 @@
+seeded 40 vias, 174 tracks
+FLASH-D02      
+JA2            
+JA3            ripped UART_FT_TXD
+JA10           
+JA8            
+JA1            
+JA9            ripped FLASH-D02 JA1 JA2 JA8 PROG#
+JA4            
+PROG#          
+UART_FT_TXD    
+FLASH-D02      
+JA1            ripped JA3 JA4 JA9
+JA2            ripped FPGA-INIT# JA10 UART_FT_TXD
+JA8            
+JA3            
+JA4            
+JA9            
+FPGA-INIT#     
+JA10           
+UART_FT_TXD    ripped CLK-12M-FPGA FPGA-TMS JA1 JA10 JA2 JA3 JA8 JA9 LED0_R
+CLK-12M-FPGA   ripped JA4 UART_FT_TXD
+FPGA-TMS       
+JA1            
+JA10           
+JA2            
+JA3            
+JA8            
+JA9            
+LED0_R         

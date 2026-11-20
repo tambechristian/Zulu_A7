@@ -1,0 +1,103 @@
+trim  CLK-12M-FPGA Bottom Layer now (57.350,12.850)-(56.700,12.850)
+track CLK-12M-FPGA Bottom Layer (55.650,12.850)-(57.350,12.850) w0.0762
+track PROG#      L3-SIG     (57.050,18.750)-(58.900,16.900) w0.0762
+track TMS        Bottom Layer (33.550,4.850)-(33.550,8.050) w0.0762
+track FLASH-D02  Top Layer  (57.500,13.400)-(57.575,13.325) w0.0762
+track FLASH-D02  L4-SIG     (57.175,11.000)-(57.200,11.050) w0.0762
+track PROG#      L3-SIG     (58.900,16.900)-(59.450,16.900) w0.0762
+track FLASH-D02  Top Layer  (57.500,13.400)-(57.500,13.450) w0.0762
+track PROG#      L4-SIG     (54.600,8.725)-(54.725,6.750) w0.0762
+track FLASH-D02  L4-SIG     (56.625,10.450)-(57.175,11.000) w0.0762
+track PROG#      L3-SIG     (59.450,16.900)-(59.650,16.700) w0.0762
+track FLASH-D02  Top Layer  (57.500,13.450)-(58.050,14.000) w0.0762
+track FLASH-D02  Top Layer  (58.050,14.000)-(58.050,14.900) w0.0762
+track PROG#      L3-SIG     (59.650,15.950)-(59.650,16.700) w0.0762
+track PROG#      L3-SIG     (54.725,6.750)-(54.750,6.500) w0.0762
+track FLASH-D02  L3-SIG     (55.225,9.050)-(56.625,10.450) w0.0762
+track FLASH-D02  Top Layer  (57.650,15.300)-(58.050,14.900) w0.0762
+track PROG#      L3-SIG     (59.500,15.800)-(59.650,15.950) w0.0762
+track PROG#      L3-SIG     (54.750,6.500)-(55.025,4.950) w0.0762
+track FLASH-D02  Bottom Layer (54.900,8.575)-(55.225,9.050) w0.0762
+track FLASH-D02  Bottom Layer (56.800,16.150)-(57.650,15.300) w0.0762
+track PROG#      Top Layer  (59.500,15.800)-(60.150,15.378) w0.0762
+track FLASH-D02  Bottom Layer (54.750,8.425)-(54.900,8.575) w0.0762
+track PROG#      Top Layer  (55.025,4.950)-(55.050,4.750) w0.0762
+track FLASH-D02  Bottom Layer (56.800,16.150)-(56.800,17.300) w0.0762
+track FLASH-D02  Bottom Layer (54.450,8.425)-(54.750,8.425) w0.0762
+track PROG#      Top Layer  (55.050,4.700)-(55.050,4.750) w0.0762
+track FLASH-D02  Bottom Layer (54.200,8.675)-(54.450,8.425) w0.0762
+track PROG#      Top Layer  (55.050,4.700)-(55.075,4.675) w0.0762
+track FLASH-D02  L4-SIG     (56.800,17.300)-(56.800,17.750) w0.0762
+track FLASH-D02  Bottom Layer (54.175,8.675)-(54.200,8.675) w0.0762
+track PROG#      Top Layer  (55.075,4.550)-(55.075,4.675) w0.0762
+track FLASH-D02  L4-SIG     (56.250,18.300)-(56.800,17.750) w0.0762
+track FLASH-D02  Bottom Layer (53.925,8.925)-(54.175,8.675) w0.0762
+track PROG#      Top Layer  (55.050,4.525)-(55.075,4.550) w0.0762
+track FLASH-D02  L4-SIG     (56.250,18.300)-(56.250,18.700) w0.0762
+track FLASH-D02  Bottom Layer (51.675,8.925)-(53.925,8.925) w0.0762
+track PROG#      Top Layer  (55.050,4.500)-(55.050,4.525) w0.0762
+track FLASH-D02  Bottom Layer (51.650,8.950)-(51.675,8.925) w0.0762
+track PROG#      Top Layer  (55.025,4.450)-(55.050,4.500) w0.0762
+track FLASH-D02  Bottom Layer (55.600,18.700)-(56.250,18.700) w0.0762
+track FLASH-D02  Bottom Layer (51.625,8.950)-(51.650,8.950) w0.0762
+track PROG#      Top Layer  (54.325,3.750)-(55.025,4.450) w0.0762
+track FLASH-D02  Bottom Layer (55.000,19.300)-(55.600,18.700) w0.0762
+track FLASH-D02  Bottom Layer (51.600,8.975)-(51.625,8.950) w0.0762
+track PROG#      Top Layer  (52.375,3.300)-(54.325,3.750) w0.0762
+track FLASH-D02  Bottom Layer (55.000,19.300)-(55.000,20.400) w0.0762
+track FLASH-D02  Bottom Layer (51.575,8.975)-(51.600,8.975) w0.0762
+track FLASH-D02  Bottom Layer (55.000,20.400)-(55.150,20.550) w0.0762
+track FLASH-D02  Bottom Layer (50.800,9.750)-(51.575,8.975) w0.0762
+track PROG#      L3-SIG     (51.550,2.475)-(52.375,3.300) w0.0762
+track FLASH-D02  Bottom Layer (55.150,20.550)-(55.150,21.751) w0.0762
+track FLASH-D02  Bottom Layer (50.775,9.750)-(50.800,9.750) w0.0762
+track FLASH-D02  Bottom Layer (55.150,21.751)-(55.449,22.050) w0.0762
+track FLASH-D02  Bottom Layer (50.725,9.800)-(50.775,9.750) w0.0762
+track PROG#      L4-SIG     (51.000,2.000)-(51.550,2.475) w0.0762
+track FLASH-D02  Bottom Layer (50.700,9.800)-(50.725,9.800) w0.0762
+track PROG#      L4-SIG     (50.975,2.000)-(51.000,2.000) w0.0762
+track FLASH-D02  Bottom Layer (50.675,9.825)-(50.700,9.800) w0.0762
+track PROG#      L4-SIG     (50.950,1.975)-(50.975,2.000) w0.0762
+track FLASH-D02  Bottom Layer (50.650,9.825)-(50.675,9.825) w0.0762
+track PROG#      L4-SIG     (50.900,1.950)-(50.950,1.975) w0.0762
+track FLASH-D02  Bottom Layer (50.625,9.850)-(50.650,9.825) w0.0762
+track PROG#      L4-SIG     (50.125,1.975)-(50.900,1.950) w0.0762
+track FLASH-D02  Bottom Layer (50.600,9.850)-(50.625,9.850) w0.0762
+track PROG#      L4-SIG     (50.025,2.050)-(50.125,1.975) w0.0762
+track FLASH-D02  Bottom Layer (50.550,9.875)-(50.600,9.850) w0.0762
+track PROG#      L4-SIG     (50.000,2.050)-(50.025,2.050) w0.0762
+track FLASH-D02  Bottom Layer (50.500,9.900)-(50.550,9.875) w0.0762
+track PROG#      L4-SIG     (49.975,2.075)-(50.000,2.050) w0.0762
+track FLASH-D02  Bottom Layer (50.475,9.925)-(50.500,9.900) w0.0762
+track PROG#      L4-SIG     (49.925,2.100)-(49.975,2.075) w0.0762
+track FLASH-D02  Bottom Layer (49.600,9.925)-(50.475,9.925) w0.0762
+track PROG#      L4-SIG     (49.900,2.100)-(49.925,2.100) w0.0762
+track FLASH-D02  Bottom Layer (49.575,9.950)-(49.600,9.925) w0.0762
+track PROG#      L4-SIG     (49.875,2.125)-(49.900,2.100) w0.0762
+track FLASH-D02  Bottom Layer (49.550,9.950)-(49.575,9.950) w0.0762
+track PROG#      L4-SIG     (49.850,2.125)-(49.875,2.125) w0.0762
+track FLASH-D02  Bottom Layer (49.450,10.050)-(49.550,9.950) w0.0762
+track PROG#      L4-SIG     (49.825,2.150)-(49.850,2.125) w0.0762
+track PROG#      L4-SIG     (49.725,2.175)-(49.825,2.150) w0.0762
+track PROG#      L4-SIG     (49.475,2.250)-(49.725,2.175) w0.0762
+via   PROG#      (54.600,8.725) L4-SIG>L5-VCC3V3
+via   PROG#      (59.875,15.550) L2-GND>L3-SIG
+via   PROG#      (54.725,6.750) L3-SIG>L4-SIG
+via   FLASH-D02  (56.625,10.450) L3-SIG>L4-SIG
+via   FLASH-D02  (55.225,9.050) L5-VCC3V3>Bottom Layer
+via   FLASH-D02  (55.225,9.050) L4-SIG>L5-VCC3V3
+via   FLASH-D02  (55.225,9.050) L3-SIG>L4-SIG
+via   PROG#      (59.500,15.800) L2-GND>L3-SIG
+via   PROG#      (59.500,15.800) Top Layer>L2-GND
+via   FLASH-D02  (57.650,15.300) Top Layer>Bottom Layer
+via   PROG#      (55.025,4.950) L2-GND>L3-SIG
+via   PROG#      (55.025,4.950) Top Layer>L2-GND
+via   PROG#      (59.875,15.550) Top Layer>L2-GND
+via   FLASH-D02  (56.800,17.300) L5-VCC3V3>Bottom Layer
+via   FLASH-D02  (56.800,17.300) L4-SIG>L5-VCC3V3
+via   FLASH-D02  (56.250,18.700) L5-VCC3V3>Bottom Layer
+via   FLASH-D02  (56.250,18.700) L4-SIG>L5-VCC3V3
+via   PROG#      (52.375,3.300) L2-GND>L3-SIG
+via   PROG#      (52.375,3.300) Top Layer>L2-GND
+via   PROG#      (51.550,2.475) L3-SIG>L4-SIG
+81 tracks, 20 vias dead; open after prune: 10 {'JA1': 1, 'JA10': 1, 'JA7': 1, 'JA3': 1, 'JA8': 1, 'JA9': 1, 'JA2': 1, 'FLASH-D02': 1, 'JA4': 1, 'PROG#': 1}

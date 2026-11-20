@@ -1,0 +1,33 @@
+{
+ "report": [
+  "U3-2 net D0 -> SDRAM-D0",
+  "U3-4 net D1 -> SDRAM-D1",
+  "U3-5 net D2 -> SDRAM-D2",
+  "U3-7 net D3 -> SDRAM-D3",
+  "U3-8 net D4 -> SDRAM-D4",
+  "U3-10 net D5 -> SDRAM-D5",
+  "U3-11 net D6 -> SDRAM-D6",
+  "U3-13 net D7 -> SDRAM-D7",
+  "U3-42 net D8 -> SDRAM-D8",
+  "U3-44 net D9 -> SDRAM-D9",
+  "U3-45 net D10 -> SDRAM-D10",
+  "U3-47 net D11 -> SDRAM-D11",
+  "U3-48 net D12 -> SDRAM-D12",
+  "U3-50 net D13 -> SDRAM-D13",
+  "U3-51 net D14 -> SDRAM-D14",
+  "U3-53 net D15 -> SDRAM-D15",
+  "U4 moved rigidly by (+0.0000, +0.4000) mm, 8 pads, nets unchanged",
+  "R34 moved rigidly by (+0.4000, +0.0000) mm, 8 pads, nets unchanged",
+  "C87 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged",
+  "C88 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged",
+  "C94 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged",
+  "C99 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged",
+  "C106 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged",
+  "R1 moved rigidly by (+0.0000, +0.3000) mm, 4 pads, nets unchanged",
+  "U2 swapped: 64 pads -> 65 pads; pad/net changes: [('EP', 'GND')]",
+  "X4 swapped: 4 pads -> 4 pads; pad/net changes: []",
+  "U10 swapped: 8 pads -> 8 pads; pad/net changes: []"
+ ],
+ "netlist_mismatch": [],
+ "netlist_pins_without_pad": []
+}

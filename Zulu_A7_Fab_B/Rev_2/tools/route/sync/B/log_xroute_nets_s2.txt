@@ -1,0 +1,14 @@
+seeded 40 vias, 174 tracks
+JA8            ripped FLASH-D02 PROG# UART_FT_TXD
+JA9            
+JA3            
+JA2            
+JA1            
+JA10           
+JA4            
+FLASH-D02      
+PROG#          
+UART_FT_TXD    
+routed 8 connections, failed 1; 93 vias, 425 tracks -> xroute_nets_s2.json
+OPEN PROG# 1
+FAIL PROG# (budget)

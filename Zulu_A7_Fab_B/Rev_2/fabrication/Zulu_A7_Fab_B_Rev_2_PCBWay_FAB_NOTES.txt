@@ -1,36 +1,53 @@
 ZULU A7 FAB B REV 2 - PCBWAY FABRICATION NOTES
 Revision: Zulu A7 Fab B Rev 2  (silkscreen title "ZULU A7 2.2"; Rev 1 reads "ZULU A7 2.0")
-Release date: 2026-11-11
-PCB SHA-256: D77DE904DF044841C4E7B6727630BF219601B3013EDB0ED3DE31465C5D03B472
-Source: zulu_a7_fab_b.PcbDoc (MD5 330237878e325c882fca3f689b55ec0c)
+Release date: 2026-11-20
+PCB SHA-256: 0E5D64CE9B6596E442BBEAF72FC2C6AA30F55D9187B764ED43418729873FA074
+Source: zulu_a7_fab_b.PcbDoc (MD5 5fea13046ef71090519f5d357c1d96e5)
 
 ORDER AND CAM GATE
-This is a bare-board, six-layer, two-step sequential HDI release. It is a
-revision of the six-layer HDI Zulu A7 board PCBWay has already reviewed: same
-outline, same layer use, same via types and the same agreed stack. What
-changed against that board: the power block (one LTC3556 PMIC plus one SC189A
-buck replace the bq24232 charger and three bucks), the LED/button row was
-re-spread and moved, the USB and battery connectors and the header holes were
-re-arranged (see CHANGES FROM FAB B REV 1), and the title is now ZULU A7 2.2.
-The drill and via counts below are new, and this revision has many more
-via-in-pad sites, all of them microvias; no through via sits in any SMD pad
-(see VIA-IN-PAD).
+This is a bare-board, six-layer, two-step sequential HDI release of the Zulu
+A7 Fab B Rev 2 board, 69.85 x 25.40 mm: same outline, stack, layer use and
+via types and sizes as the 2026-11-11 Fab B Rev 2 data, and the same
+fabrication design rules except one new solder-mask rule (U2's pads use a
+0.035 mm mask expansion instead of the board's 0.05 mm, see ENGINEERING
+QUESTIONS); two new component-clearance rules (R131/R132 and X2) concern
+assembly only. It SUPERSEDES the 2026-11-11 Fab B Rev 2 data package; do not
+mix files of the two. What changed (see CHANGES FROM THE 2026-11-11
+RELEASE): U2 is now an FT2232HQ in a QFN-64 package with a grounded exposed
+pad, X4 is now a side-entry SMT header at the south edge, U10 is now an
+MSOP-8, 16 SDRAM series resistors were added, 11 parts were placed
+differently, and the area around them was re-routed. The drill and via
+counts below are new. Microvias sit in SMD pads; NO through via sits in any
+SMD pad (see VIA-IN-PAD).
 Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as
 a standard six-layer prototype without confirming every blind/buried drill
-pair and the via-in-pad list below.
+pair, the via-in-pad list and the ENGINEERING QUESTIONS below.
 
-CHANGES FROM FAB B REV 1
-Rev 2 is the Fab B Rev 1 layout with the connectors re-arranged. The
-micro-USB connector X1 and the LiPo connector X4 moved 2.54 mm west; X1's
-plated slots and mounting holes moved with it (see X1 PLATED SLOTS). Header
-X2 pads 10 and 30 moved 10.16 mm east to x 36.83 mm, so the 40 header holes
-now form four 1 x 10 rows with a 12.70 mm gap around X1/X4. Four Bottom parts
-(U10, R96, R84, R86) moved clear of X1's mounting holes and the copper around
-the moved parts was rerouted: via objects 1,921 -> 1,961 (through vias
-369 -> 354, laser microvias 1,161 -> 1,204, L3-L4 buried vias 391 -> 403).
-The silkscreen title reads ZULU A7 2.2 (Rev 1: ZULU A7 2.0; top overlay
-only). Outline, stack, layer use, via and hole sizes, the 68 via-in-pad sites
-and every design rule are unchanged from Rev 1.
+CHANGES FROM THE 2026-11-11 RELEASE
+U2 is the FT2232HQ in a QFN-64 (9 x 9 mm body, 0.5 mm pitch, 4.20 x 4.20 mm
+exposed pad EP, which is GND and carries 10 in-pad laser microvias) instead
+of the LQFP-64. X4 is the JST S2B-PH-SM4-TB 2 mm side-entry SMT battery
+header at the south edge (the plug opening faces south, the housing is
+inside the outline, no board notch) instead of the top-entry B2B-PH-SM4-TB;
+its pad 2 (GND) carries 2 in-pad laser microvias. U10 is the 93LC46B in an
+MSOP-8 instead of a SOIC-8. The 0201 SDRAM data series resistors R119-R134
+were placed and routed. No through via is in any SMD pad (the in-pad GND
+ties are laser microvias). Outline, stack, layer use, via and hole sizes, X1
+and its slots, J1 and the X2 holes are unchanged. The fabrication design
+rules are unchanged except the new 0.035 mm solder-mask expansion on U2's
+pads and two component-clearance rules that concern assembly only (R131/R132
+and X2). Via objects 1,961 -> 2,025: through vias 354 -> 329, Top-L2 321 ->
+344, L2-L3 307 -> 307, L3-L4 buried 403 -> 403, L4-L5 281 -> 312, L5-Bottom
+295 -> 330 (laser microvias 1,204 -> 1,293). Parts added: R119, R120, R121,
+R122, R123, R124, R125, R126, R127, R128, R129, R130, R131, R132, R133,
+R134. Parts placed differently from the 2026-11-11 release (same origin):
+C87 (44.30, 22.40) -> (44.30, 22.20), C88 (47.40, 22.40) -> (47.40, 22.20),
+C94 (50.50, 22.40) -> (50.50, 22.20), C99 (53.60, 22.40) -> (53.60, 22.20),
+C106 (41.20, 22.40) -> (41.20, 22.20), R1 (58.20, 3.70) -> (58.20, 4.00),
+R34 (11.02, 19.29) -> (11.42, 19.29), U2 (31.48, 13.60) -> (30.50, 14.55)
+(FT2232HL-LQFP64 -> FT2232HQ-QFN64), U4 (43.55, 21.30) -> (43.55, 21.70),
+U10 (20.99, 18.64) -> (23.49, 20.24) (SPI-8_SOIC_150 -> MSOP-8_3X3_P0.65),
+X4 (29.86, 5.30) -> (31.39, 4.90) (JST-B2B-PH-SM4-TB -> JST-S2B-PH-SM4-TB).
 
 BOARD
 Finished outline: 69.85 mm x 25.40 mm (rectangle, from the GM profile)
@@ -49,11 +66,11 @@ Layer order (PcbDoc layer names):
 
 The L2 and L5 Gerbers are positive signal-layer polygon plots, not negative
 plane files. Minimum designed trace width is 0.0762 mm (3 mil), used on Top,
-L3, L4 and Bottom. Minimum designed copper spacing is 0.09 mm (global
-clearance rule; the measured minimum on the board is also 0.09 mm).
-Rule-specific clearances: SDRAM nets on L3/L4 0.10 mm, SDRAM-CLK on L3/L4
-0.20 mm, L2/L5 planes to through vias 0.175 mm, X1 to the L5 plane 0.10 mm.
-Do not globally resize copper without approval.
+L3-SIG, L4-SIG, Bottom. Minimum designed copper spacing is 0.09 mm (global
+clearance rule; the measured minimum on the board is 0.09 mm). Rule-specific
+clearances: SDRAM nets on L3/L4 0.10 mm, SDRAM-CLK on L3/L4 0.20 mm, L2/L5
+planes to through vias 0.175 mm, X1 to the L5 plane 0.10 mm. Do not globally
+resize copper without approval.
 
 STACK (AS AGREED WITH PCBWAY ENGINEERING FOR THE PREVIOUS HDI ZULU A7 BOARD)
 Please build the same construction:
@@ -89,228 +106,401 @@ planarize the receiving microvias and buried vias before the next buildup
 step. Confirm the complete lamination and fill/cap process in the CAM
 response.
 
-There is NO L2-L5 drill in this data. At 47 XY sites an L2-L3 microvia, an
-L3-L4 buried via and an L4-L5 microvia coincide (28 of them also carry
+There is NO L2-L5 drill in this data. At 53 XY sites an L2-L3 microvia, an
+L3-L4 buried via and an L4-L5 microvia coincide (32 of them also carry
 Top-L2 and L5-Bottom microvias, i.e. full Top-to-Bottom stacks). These are
 three separate drills (TX7, TX3, TX9) stacked on filled vias, exactly as
 drawn. Please keep them as separate drills; do not merge them into an L2-L5
 drill.
 
 VIA GEOMETRY AND DRILL COUNTS (PcbDoc and drill files agree)
+All hole sizes in this note and in the drill files are FINISHED (plated) sizes.
 Laser microvias: 0.15 mm hole / 0.30 mm land
 L3-L4 buried vias: 0.15 mm hole / 0.27 mm land
 Signal through vias: 0.20 mm hole / 0.35 mm land
 
-  Top -> Bottom signal through vias:   354   (RoundHoles.TXT, T02)
-  Top -> L2 microvias:                 321   (RoundHoles.TX6)
+  Top -> Bottom signal through vias:   329   (RoundHoles.TXT, T02)
+  Top -> L2 microvias:                 344   (RoundHoles.TX6)
   L2 -> L3 microvias:                  307   (RoundHoles.TX7)
   L3 -> L4 buried vias:                403   (RoundHoles.TX3)
-  L4 -> L5 microvias:                  281   (RoundHoles.TX9)
-  L5 -> Bottom microvias:              295   (RoundHoles.TX10)
-  Total laser-microvia records:      1,204
-  Total via objects:                 1,961
-  Physical blind/buried XY sites:      803
+  L4 -> L5 microvias:                  312   (RoundHoles.TX9)
+  L5 -> Bottom microvias:              330   (RoundHoles.TX10)
+  Total laser-microvia records:      1,293
+  Total via objects:                 2,025
+  Physical blind/buried XY sites:      864
 
 Plated component holes, all in RoundHoles.TXT (Top-Bottom):
-  0.85 mm  x2   X1 MH1/MH2 (USB connector shell pegs, 1.45 mm round lands)
-  1.016 mm x58  J1 (12), JP3 (3), JP4 (3), X2 (40)
+  0.85   mm x2   X1 MH1/MH2 (USB connector shell pegs, 1.45 mm round lands)
+  1.016  mm x58  J1 (12), JP3 (3), JP4 (3), X2 (40)
 There are no non-plated holes.
 
 X1 MOLEX 105017-0001 PLATED SLOTS
 X1-MS1 and X1-MS2 are two plated, vertical 0.60 mm x 1.30 mm full-radius
 front shell slots (mating-face end). Their centres are (26.9799, 23.9585) mm
-and (33.9801, 23.9585) mm (2.54 mm west of Rev 1, with X1). The dedicated
-SlotHoles file uses a 0.60 mm tool over a 0.70 mm G85 centreline route to
-produce the 1.30 mm overall length.
+and (33.9801, 23.9585) mm (unchanged from the 2026-11-11 release). The
+dedicated SlotHoles file uses a 0.60 mm tool over a 0.70 mm G85 centreline
+route to produce the 1.30 mm overall length.
 Do not convert these slots to round holes or treat them as non-plated.
 Slot lands: 1.11 x 1.81 mm oblong on Top and Bottom (0.255 mm ring),
 0.90 x 1.60 mm oblong on L2-L5.
 
 VIA-IN-PAD (VIPPO REQUIRED)
-NO THROUGH VIA SITS IN ANY SMD PAD. None of the 354 Top-Bottom 0.20 mm
-through vias has its land overlapping an SMD pad on either side; all of them
-are outside the pads and tented (see VIA TENTING). Only microvias are in pads.
-This board has 68 via sites whose land overlaps an SMD pad (68 pad contacts;
-no via touches two pads). At 65 sites the drilled hole is inside the pad or
-crosses its edge; at 3 only the land touches the pad. By via type:
-53 L5-Bottom microvias, 15 Top-L2 microvias, 0 through vias. These are the
-same 68 sites as on Rev 1.
-20 of these pad sites sit on a STACKED COLUMN: separate drills at one XY,
-exactly as drawn, with an L2-L3 microvia, an L3-L4 buried via and an L4-L5
-microvia under the in-pad microvia:
-  L5-Bottom microvia in the pad, full Top-to-Bottom stack
-  (Top-L2 + L2-L3 + L3-L4 buried + L4-L5 + L5-Bottom), 8 sites:
-    U8-5, U8-11, U8-18, C160-2 (VU); U8-25, C150-2 (USB5V0);
-    U8-21 (PWR_CHRG); U8-29 (GND)
-  L5-Bottom microvia in the pad, L2-L3 + L3-L4 buried + L4-L5 + L5-Bottom,
-  9 sites (GND):
-    U8-3, U8-10, U8-13, U8-16, U8-27, C80-1, C84-1, C148-1, C167-1
-  Top-L2 microvia in the pad, Top-L2 + L2-L3 + L3-L4 buried + L4-L5,
-  3 sites (VCC3V3):
-    BTN-1, BTN-2, X3-4
-Every microvia and buried via of these 20 columns must be copper-filled and
-the in-pad microvia capped flat; do not replace a column with a through via.
-Every one of the 68 sites must be copper-filled and capped flat by plating
+NO THROUGH VIA SITS IN ANY SMD PAD. None of the 329 Top-Bottom 0.20 mm
+through vias has its land overlapping an SMD pad on either side, and every
+one of their drilled holes is at least 0.075 mm outside every pad. 12
+through vias (14 pad contacts) have a land that ENDS ON the edge of a
+same-net SMD pad (gap within 0.0018 mm of zero in the design data, i.e.
+tangent; listed below); they are not via-in-pad sites and are plugged with
+the other through vias. Only microvias are in pads. This board has 133 via
+sites whose land overlaps an SMD pad (133 pad contacts). At 126 sites the
+drilled hole is inside the pad or crosses its edge; at 7 only the land
+touches the pad. By via type: 72 L5-Bottom microvias, 61 Top-L2 microvias, 0
+through vias. The U2 exposed pad carries 10 of the sites. The 2026-11-11
+release had 68 such sites; new pads with a site: C94-2, C111-2, C155-1,
+C158-1, Q1-3, R1-2, R4-1, R19-2, R80-1, R80-2, R96-2, R97-2, R98-2, R101-2,
+R128-1, R128-2, R131-1, R131-2, R132-2, R133-1, R134-1, U1-L19, U1-N17,
+U1-N18, U1-P17, U1-P19, U1-R18, U1-T17, U1-U12, U1-U15, U1-V13, U2-1, U2-10,
+U2-11, U2-13, U2-15, U2-25, U2-35, U2-4, U2-40, U2-47, U2-5, U2-51, U2-56,
+U2-6, U2-61, U2-63, U2-EP, U3-49, U4-4, U10-1, U10-3, U10-5, U10-8, X4-2;
+pads that no longer have one: LD0-1.
+Through-via lands tangent to a same-net SMD pad (not in the pad):
+  Bottom C147-1  GND      via (  2.325,   9.825), hole 0.075 mm outside the pad
+  Bottom C149-1  GND      via (  4.600,  18.425), hole 0.075 mm outside the pad
+  Bottom C151-1  GND      via (  3.725,   5.475), hole 0.075 mm outside the pad
+  Bottom C160-1  GND      via (  7.300,   4.675), hole 0.075 mm outside the pad
+  Bottom C161-1  GND      via (  4.800,  16.600), hole 0.075 mm outside the pad
+  Bottom R1-3    VCC3V3   via ( 58.200,   3.500), hole 0.075 mm outside the pad
+  Bottom R1-4    VCC3V3   via ( 58.200,   3.500), hole 0.075 mm outside the pad
+  Bottom R102-2  GND      via (  4.750,   4.600), hole 0.075 mm outside the pad
+  Bottom R103-2  GND      via (  2.725,  11.725), hole 0.075 mm outside the pad
+  Bottom R108-2  LD4_A    via (  3.700,  13.825), hole 0.075 mm outside the pad
+  Bottom R114-2  GND      via (  6.775,   5.950), hole 0.075 mm outside the pad
+  Bottom U7-2    GND      via (  8.575,  18.650), hole 0.077 mm outside the pad
+  Top    U2-62   EE-CLK   via ( 27.625,  18.425), hole 0.075 mm outside the pad
+  Top    X3-G2   GND      via (  6.775,   5.950), hole 0.075 mm outside the pad
+81 of these pad sites sit on a STACKED COLUMN: separate drills at one XY,
+exactly as drawn (the "Stack at XY" column below lists every drill at the
+site; 26 of them are L2-L5 columns, 13 full Top-to-Bottom stacks). Every
+microvia and buried via of these columns must be copper-filled and the
+in-pad microvia capped flat; do not replace a column with a through via.
+Every one of the 133 sites must be copper-filled and capped flat by plating
 (VIPPO / POFV), so the pads take paste normally and no solder wicks into a
-hole. Please confirm in the CAM response that all 68 sites are filled and
+hole. Please confirm in the CAM response that all 133 sites are filled and
 capped.
+Stack key: T-2 Top-L2, 2-3 L2-L3, 3-4b L3-L4 buried, 4-5 L4-L5, 5-B L5-Bottom.
 
-  Ref   Pad  Side   Via          Net           Hole vs pad  Via centre (mm)
-  BTN   1    Top    Top-L2 uvia  VCC3V3        hole on edge ( 17.275,  10.675)
-  BTN   2    Top    Top-L2 uvia  VCC3V3        hole on edge ( 16.675,  14.575)
-  C11   2    Bottom L5-Bot uvia  VCC3V3        hole in pad  (  5.675,  21.050)
-  C13   2    Bottom L5-Bot uvia  VCC3V3        hole in pad  (  3.025,  21.050)
-  C80   1    Bottom L5-Bot uvia  GND           hole in pad  ( 12.800,  12.375)
-  C80   2    Bottom L5-Bot uvia  VCC3V3        hole in pad  ( 12.800,  10.700)
-  C82   2    Bottom L5-Bot uvia  VCC1V8        hole in pad  ( 13.500,   5.700)
-  C84   1    Bottom L5-Bot uvia  GND           hole in pad  ( 11.800,  16.400)
-  C148  1    Bottom L5-Bot uvia  GND           hole in pad  (  9.775,  11.650)
-  C150  2    Bottom L5-Bot uvia  USB5V0        hole in pad  (  5.900,   7.250)
-  C159  1    Top    Top-L2 uvia  GND           hole on edge ( 23.700,   7.475)
-  C160  2    Bottom L5-Bot uvia  VU            hole on edge (  9.200,   5.750)
-  C163  1    Bottom L5-Bot uvia  VCC1V8        hole in pad  (  8.000,   6.450)
-  C163  2    Bottom L5-Bot uvia  PWR_FB2       hole in pad  (  8.625,   6.500)
-  C164  1    Bottom L5-Bot uvia  PWR_FB3       hole on edge ( 10.300,  12.825)
-  C164  2    Bottom L5-Bot uvia  PWR_VC3       hole on edge ( 10.750,  12.825)
-  C166  2    Bottom L5-Bot uvia  PWR_FB3       hole on edge (  4.475,  13.350)
-  C167  1    Bottom L5-Bot uvia  GND           hole in pad  (  7.525,  11.675)
-  L9    1    Bottom L5-Bot uvia  PWR_SW1       hole in pad  (  6.900,  12.100)
-  L9    2    Bottom L5-Bot uvia  PWR_FB1       hole in pad  (  6.900,  14.250)
-  LD0   1    Top    Top-L2 uvia  N$LD0B        hole on edge ( 23.200,   9.825)
-  LD0   2    Top    Top-L2 uvia  LED0_B        hole in pad  ( 21.700,   9.600)
-  LD1   A    Top    Top-L2 uvia  N$LD1A        land only    ( 21.950,  10.575)
-  LD1   K    Top    Top-L2 uvia  GND           hole in pad  ( 22.650,  10.625)
-  LD2   K    Top    Top-L2 uvia  GND           hole in pad  ( 22.650,  12.225)
-  LD3   K    Top    Top-L2 uvia  GND           hole in pad  ( 22.650,  15.425)
-  R34   5    Bottom L5-Bot uvia  VCC3V3        hole on edge ( 12.825,  18.050)
-  R34   6    Bottom L5-Bot uvia  VCC3V3        hole on edge ( 12.025,  18.050)
-  R34   7    Bottom L5-Bot uvia  VCC3V3        hole in pad  ( 11.375,  18.050)
-  R34   8    Bottom L5-Bot uvia  VCC3V3        hole on edge ( 10.425,  18.050)
-  R103  1    Bottom L5-Bot uvia  PWR_CLPROG    hole on edge (  4.575,  12.000)
-  R107  1    Bottom L5-Bot uvia  VCC3V3        hole in pad  ( 15.025,  12.700)
-  R107  2    Bottom L5-Bot uvia  PWR_PGOODALL  hole on edge ( 15.025,  11.375)
-  R113  2    Bottom L5-Bot uvia  PWR_FB2       hole on edge ( 10.100,   3.875)
-  R114  1    Bottom L5-Bot uvia  PWR_FB2       hole on edge (  7.575,   6.375)
-  R115  1    Bottom L5-Bot uvia  VCC3V3        hole on edge (  8.900,  12.850)
-  R115  2    Bottom L5-Bot uvia  PWR_FB3       hole on edge (  9.475,  13.050)
-  R116  1    Bottom L5-Bot uvia  PWR_FB3       hole on edge ( 12.400,   9.325)
-  R118  1    Bottom L5-Bot uvia  VCC3V3        hole on edge (  4.250,  14.275)
-  U8    2    Bottom L5-Bot uvia  PWR_CLPROG    hole on edge (  7.750,  10.850)
-  U8    3    Bottom L5-Bot uvia  GND           hole on edge (  8.275,  10.700)
-  U8    4    Bottom L5-Bot uvia  PWR_SW1       hole on edge (  8.750,  11.200)
-  U8    5    Bottom L5-Bot uvia  VU            hole in pad  (  9.400,  11.150)
-  U8    6    Bottom L5-Bot uvia  PWR_FB1       hole on edge (  9.925,  11.225)
-  U8    7    Bottom L5-Bot uvia  PWR_FB3       hole on edge ( 10.425,  10.725)
-  U8    7    Bottom L5-Bot uvia  PWR_FB3       hole in pad  ( 10.350,  11.125)
-  U8    8    Bottom L5-Bot uvia  PWR_VC3       hole on edge ( 10.750,  11.275)
-  U8    10   Bottom L5-Bot uvia  GND           hole on edge ( 11.200,   9.775)
-  U8    11   Bottom L5-Bot uvia  VU            land only    ( 11.925,   9.300)
-  U8    12   Bottom L5-Bot uvia  VCC3V3        hole in pad  ( 11.250,   8.800)
-  U8    13   Bottom L5-Bot uvia  GND           hole on edge ( 11.200,   8.275)
-  U8    14   Bottom L5-Bot uvia  PWR_SWCD3     hole on edge ( 11.850,   7.875)
-  U8    15   Bottom L5-Bot uvia  PWR_PGOODALL  hole on edge ( 10.975,   7.500)
-  U8    16   Bottom L5-Bot uvia  GND           hole on edge ( 10.275,   6.900)
-  U8    17   Bottom L5-Bot uvia  PWR_FB2       hole on edge (  9.750,   7.050)
-  U8    18   Bottom L5-Bot uvia  VU            hole in pad  (  9.400,   7.450)
-  U8    19   Bottom L5-Bot uvia  PWR_SW2       land only    (  8.975,   6.750)
-  U8    21   Bottom L5-Bot uvia  PWR_CHRG      hole on edge (  7.925,   7.475)
-  U8    25   Bottom L5-Bot uvia  USB5V0        hole in pad  (  6.950,   8.800)
-  U8    26   Bottom L5-Bot uvia  PWR_SW        hole in pad  (  6.575,   9.300)
-  U8    27   Bottom L5-Bot uvia  GND           hole on edge (  6.400,   9.775)
-  U8    29   Bottom L5-Bot uvia  GND           hole in pad  (  8.275,   8.275)
-  X3    4    Top    Top-L2 uvia  VCC3V3        hole in pad  ( 13.450,  12.100)
-  X3    6    Top    Top-L2 uvia  GND           hole in pad  ( 13.450,   9.900)
-  X3    G1   Top    Top-L2 uvia  GND           hole in pad  ( 13.425,   6.275)
-  X3    G2   Top    Top-L2 uvia  GND           hole in pad  (  5.850,   6.225)
-  X3    G3   Top    Top-L2 uvia  GND           hole in pad  (  5.225,  18.175)
-  X3    G4   Top    Top-L2 uvia  GND           hole in pad  ( 13.425,  17.525)
+  Ref   Pad  Side   Via          Net            Hole vs pad  Via centre (mm)   Stack at XY
+  BTN   1    Top    Top-L2 uvia  VCC3V3         hole on edge ( 17.275,  10.675) T-2+2-3+3-4b+4-5
+  BTN   2    Top    Top-L2 uvia  VCC3V3         hole on edge ( 16.675,  14.575) T-2+2-3+3-4b+4-5
+  C11   2    Bottom L5-Bot uvia  VCC3V3         hole in pad  (  5.675,  21.050) 5-B
+  C13   2    Bottom L5-Bot uvia  VCC3V3         hole in pad  (  3.025,  21.050) 5-B
+  C80   1    Bottom L5-Bot uvia  GND            hole in pad  ( 12.800,  12.375) 2-3+3-4b+4-5+5-B
+  C80   2    Bottom L5-Bot uvia  VCC3V3         hole in pad  ( 12.800,  10.700) 5-B
+  C82   2    Bottom L5-Bot uvia  VCC1V8         hole in pad  ( 13.500,   5.700) 3-4b+4-5+5-B
+  C84   1    Bottom L5-Bot uvia  GND            hole in pad  ( 11.800,  16.400) 2-3+3-4b+4-5+5-B
+  C94   2    Bottom L5-Bot uvia  GND            hole in pad  ( 51.350,  22.100) 4-5+5-B
+  C111  2    Bottom L5-Bot uvia  GND            hole on edge ( 51.525,  10.925) 4-5+5-B
+  C148  1    Bottom L5-Bot uvia  GND            hole in pad  (  9.775,  11.650) 2-3+3-4b+4-5+5-B
+  C150  2    Bottom L5-Bot uvia  USB5V0         hole in pad  (  5.900,   7.250) T-2+2-3+3-4b+4-5+5-B
+  C155  1    Top    Top-L2 uvia  GND            hole on edge ( 26.200,  20.150) T-2
+  C158  1    Top    Top-L2 uvia  GND            hole on edge ( 17.950,  16.750) T-2+2-3+3-4b+4-5+5-B
+  C159  1    Top    Top-L2 uvia  GND            hole on edge ( 23.700,   7.475) T-2
+  C160  2    Bottom L5-Bot uvia  VU             hole on edge (  9.200,   5.750) T-2+2-3+3-4b+4-5+5-B
+  C163  1    Bottom L5-Bot uvia  VCC1V8         hole in pad  (  8.000,   6.450) 3-4b+4-5+5-B
+  C163  2    Bottom L5-Bot uvia  PWR_FB2        hole in pad  (  8.625,   6.500) 4-5+5-B
+  C164  1    Bottom L5-Bot uvia  PWR_FB3        hole on edge ( 10.300,  12.825) 4-5+5-B
+  C164  2    Bottom L5-Bot uvia  PWR_VC3        hole on edge ( 10.750,  12.825) 4-5+5-B
+  C166  2    Bottom L5-Bot uvia  PWR_FB3        hole on edge (  4.475,  13.350) 4-5+5-B
+  C167  1    Bottom L5-Bot uvia  GND            hole in pad  (  7.525,  11.675) 2-3+3-4b+4-5+5-B
+  L9    1    Bottom L5-Bot uvia  PWR_SW1        hole in pad  (  6.900,  12.100) 4-5+5-B
+  L9    2    Bottom L5-Bot uvia  PWR_FB1        hole in pad  (  6.900,  14.250) 4-5+5-B
+  LD0   2    Top    Top-L2 uvia  LED0_B         hole in pad  ( 21.700,   9.600) T-2+2-3
+  LD1   A    Top    Top-L2 uvia  N$LD1A         land only    ( 21.950,  10.575) T-2+2-3
+  LD1   K    Top    Top-L2 uvia  GND            hole in pad  ( 22.650,  10.625) T-2
+  LD2   K    Top    Top-L2 uvia  GND            hole in pad  ( 22.650,  12.225) T-2
+  LD3   K    Top    Top-L2 uvia  GND            hole in pad  ( 22.650,  15.425) T-2
+  Q1    3    Top    Top-L2 uvia  CLK-12M-SHARED hole on edge ( 42.725,  18.025) T-2+2-3+3-4b
+  R1    2    Bottom L5-Bot uvia  RST#           hole on edge ( 58.650,   5.250) 3-4b+4-5+5-B
+  R4    1    Top    Top-L2 uvia  PROG#          hole on edge ( 59.875,  15.550) T-2
+  R19   2    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 19.300,  18.650) 5-B
+  R34   5    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 13.225,  18.050) 5-B
+  R34   6    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 12.825,  18.050) 5-B
+  R34   7    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 12.025,  18.050) 5-B
+  R34   8    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 10.825,  18.050) 5-B
+  R80   1    Bottom L5-Bot uvia  VCC3V3         hole in pad  ( 28.625,  18.700) 5-B
+  R80   2    Bottom L5-Bot uvia  N$LD0B         hole in pad  ( 29.950,  18.725) 4-5+5-B
+  R96   2    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 19.475,  20.000) 5-B
+  R97   2    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 18.050,  19.250) 5-B
+  R98   2    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 19.250,  19.450) 5-B
+  R101  2    Bottom L5-Bot uvia  EE-DATA        hole in pad  ( 18.125,  18.825) 4-5+5-B
+  R103  1    Bottom L5-Bot uvia  PWR_CLPROG     hole on edge (  4.575,  12.000) 4-5+5-B
+  R107  1    Bottom L5-Bot uvia  VCC3V3         hole in pad  ( 15.025,  12.700) 5-B
+  R107  2    Bottom L5-Bot uvia  PWR_PGOODALL   hole on edge ( 15.025,  11.375) 4-5+5-B
+  R113  2    Bottom L5-Bot uvia  PWR_FB2        hole on edge ( 10.100,   3.875) 4-5+5-B
+  R114  1    Bottom L5-Bot uvia  PWR_FB2        hole on edge (  7.575,   6.375) 4-5+5-B
+  R115  1    Bottom L5-Bot uvia  VCC3V3         hole on edge (  8.900,  12.850) 5-B
+  R115  2    Bottom L5-Bot uvia  PWR_FB3        hole on edge (  9.475,  13.050) 4-5+5-B
+  R116  1    Bottom L5-Bot uvia  PWR_FB3        hole on edge ( 12.400,   9.325) 4-5+5-B
+  R118  1    Bottom L5-Bot uvia  VCC3V3         hole on edge (  4.250,  14.275) 5-B
+  R128  1    Bottom L5-Bot uvia  SDRAM-D9       hole in pad  ( 41.750,  12.950) 4-5+5-B
+  R128  2    Bottom L5-Bot uvia  D9             hole in pad  ( 42.350,  12.950) 4-5+5-B
+  R131  1    Top    Top-L2 uvia  SDRAM-D12      hole in pad  ( 38.900,  15.800) T-2+2-3+3-4b
+  R131  2    Top    Top-L2 uvia  D12            hole in pad  ( 39.490,  15.810) T-2+2-3+3-4b
+  R132  2    Top    Top-L2 uvia  D13            hole in pad  ( 38.450,  16.303) T-2+2-3
+  R133  1    Bottom L5-Bot uvia  SDRAM-D14      hole in pad  ( 45.300,  17.150) 4-5+5-B
+  R134  1    Bottom L5-Bot uvia  SDRAM-D15      hole in pad  ( 46.500,  16.800) 4-5+5-B
+  U1    L19  Top    Top-L2 uvia  GND            hole on edge ( 50.975,  11.370) T-2
+  U1    N17  Top    Top-L2 uvia  LED0_B         hole on edge ( 49.875,  10.500) T-2+2-3+3-4b
+  U1    N18  Top    Top-L2 uvia  LED1           hole on edge ( 50.475,  10.525) T-2+2-3
+  U1    P17  Top    Top-L2 uvia  LED0_R         hole on edge ( 50.025,   9.825) T-2+2-3
+  U1    P19  Top    Top-L2 uvia  FT-PWREN#      hole on edge ( 50.950,   9.850) T-2+2-3+3-4b
+  U1    R18  Top    Top-L2 uvia  LED0_G         hole on edge ( 50.300,   9.375) T-2+2-3
+  U1    T17  Top    Top-L2 uvia  CHAN28         land only    ( 49.750,   8.750) T-2+2-3
+  U1    U12  Top    Top-L2 uvia  FPGA-DONE      hole on edge ( 47.500,   8.425) T-2+2-3
+  U1    U15  Top    Top-L2 uvia  CHAN21         hole on edge ( 48.975,   8.375) T-2+2-3+3-4b+4-5+5-B
+  U1    V13  Top    Top-L2 uvia  CHAN26         hole on edge ( 47.775,   7.950) T-2+2-3
+  U2    1    Top    Top-L2 uvia  GND            hole in pad  ( 26.075,  18.300) T-2
+  U2    4    Top    Top-L2 uvia  FT-VPHY        hole on edge ( 25.850,  16.700) T-2+2-3
+  U2    5    Top    Top-L2 uvia  GND            hole in pad  ( 26.075,  16.300) T-2
+  U2    6    Top    Top-L2 uvia  FT-REF         hole on edge ( 25.775,  15.725) T-2+2-3
+  U2    10   Top    Top-L2 uvia  GND            hole in pad  ( 26.075,  13.800) T-2
+  U2    11   Top    Top-L2 uvia  GND            hole in pad  ( 26.075,  13.300) T-2
+  U2    13   Top    Top-L2 uvia  GND            hole in pad  ( 26.075,  12.300) T-2
+  U2    15   Top    Top-L2 uvia  GND            hole in pad  ( 26.075,  11.300) T-2
+  U2    25   Top    Top-L2 uvia  GND            hole in pad  ( 30.750,  10.125) T-2
+  U2    35   Top    Top-L2 uvia  GND            hole in pad  ( 34.925,  11.800) T-2
+  U2    40   Top    Top-L2 uvia  UART_FT_RTS#   hole on edge ( 34.625,  14.375) T-2+2-3+3-4b
+  U2    47   Top    Top-L2 uvia  GND            hole in pad  ( 34.925,  17.800) T-2
+  U2    51   Top    Top-L2 uvia  GND            hole in pad  ( 33.250,  18.975) T-2
+  U2    56   Top    Top-L2 uvia  VCC3V3         hole on edge ( 30.825,  18.675) T-2+2-3+3-4b+4-5
+  U2    61   Top    Top-L2 uvia  EE-DATA        hole in pad  ( 28.250,  18.825) T-2+2-3+3-4b
+  U2    63   Top    Top-L2 uvia  EE-CS          hole on edge ( 27.175,  19.025) T-2+2-3
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 29.500,  13.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 29.500,  14.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 29.500,  15.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 30.500,  13.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 30.500,  14.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 30.500,  15.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 31.500,  13.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 31.500,  14.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 31.500,  15.550) T-2
+  U2    EP   Top    Top-L2 uvia  GND            hole in pad  ( 32.350,  16.575) T-2+2-3+3-4b+4-5+5-B
+  U3    49   Bottom L5-Bot uvia  VCC3V3         land only    ( 35.075,  16.825) 5-B
+  U4    4    Top    Top-L2 uvia  GND            hole on edge ( 43.175,  18.125) T-2+2-3+3-4b+4-5+5-B
+  U4    4    Top    Top-L2 uvia  GND            land only    ( 43.850,  17.500) T-2
+  U8    2    Bottom L5-Bot uvia  PWR_CLPROG     hole on edge (  7.750,  10.850) 4-5+5-B
+  U8    3    Bottom L5-Bot uvia  GND            hole on edge (  8.275,  10.700) 2-3+3-4b+4-5+5-B
+  U8    4    Bottom L5-Bot uvia  PWR_SW1        hole on edge (  8.750,  11.200) 4-5+5-B
+  U8    5    Bottom L5-Bot uvia  VU             hole in pad  (  9.400,  11.150) T-2+2-3+3-4b+4-5+5-B
+  U8    6    Bottom L5-Bot uvia  PWR_FB1        hole on edge (  9.925,  11.225) 4-5+5-B
+  U8    7    Bottom L5-Bot uvia  PWR_FB3        hole in pad  ( 10.350,  11.125) 4-5+5-B
+  U8    7    Bottom L5-Bot uvia  PWR_FB3        hole on edge ( 10.425,  10.725) 4-5+5-B
+  U8    8    Bottom L5-Bot uvia  PWR_VC3        hole on edge ( 10.750,  11.275) 4-5+5-B
+  U8    10   Bottom L5-Bot uvia  GND            hole on edge ( 11.200,   9.775) 2-3+3-4b+4-5+5-B
+  U8    11   Bottom L5-Bot uvia  VU             land only    ( 11.925,   9.300) T-2+2-3+3-4b+4-5+5-B
+  U8    12   Bottom L5-Bot uvia  VCC3V3         hole in pad  ( 11.250,   8.800) 5-B
+  U8    13   Bottom L5-Bot uvia  GND            hole on edge ( 11.200,   8.275) 2-3+3-4b+4-5+5-B
+  U8    14   Bottom L5-Bot uvia  PWR_SWCD3      hole on edge ( 11.850,   7.875) 4-5+5-B
+  U8    15   Bottom L5-Bot uvia  PWR_PGOODALL   hole on edge ( 10.975,   7.500) 4-5+5-B
+  U8    16   Bottom L5-Bot uvia  GND            hole on edge ( 10.275,   6.900) 2-3+3-4b+4-5+5-B
+  U8    17   Bottom L5-Bot uvia  PWR_FB2        hole on edge (  9.750,   7.050) 4-5+5-B
+  U8    18   Bottom L5-Bot uvia  VU             hole in pad  (  9.400,   7.450) T-2+2-3+3-4b+4-5+5-B
+  U8    19   Bottom L5-Bot uvia  PWR_SW2        land only    (  8.975,   6.750) 4-5+5-B
+  U8    21   Bottom L5-Bot uvia  PWR_CHRG       hole on edge (  7.925,   7.475) T-2+2-3+3-4b+4-5+5-B
+  U8    25   Bottom L5-Bot uvia  USB5V0         hole in pad  (  6.950,   8.800) T-2+2-3+3-4b+4-5+5-B
+  U8    26   Bottom L5-Bot uvia  PWR_SW         hole in pad  (  6.575,   9.300) 4-5+5-B
+  U8    27   Bottom L5-Bot uvia  GND            hole on edge (  6.400,   9.775) 2-3+3-4b+4-5+5-B
+  U8    29   Bottom L5-Bot uvia  GND            hole in pad  (  8.275,   8.275) T-2+2-3+3-4b+4-5+5-B
+  U10   1    Bottom L5-Bot uvia  EE-CS          hole in pad  ( 21.200,  19.200) 3-4b+4-5+5-B
+  U10   3    Bottom L5-Bot uvia  EE-DATA        hole on edge ( 20.725,  20.425) 4-5+5-B
+  U10   5    Bottom L5-Bot uvia  GND            land only    ( 25.375,  21.500) T-2+2-3+3-4b+4-5+5-B
+  U10   8    Bottom L5-Bot uvia  VCC3V3         hole on edge ( 25.575,  19.075) 5-B
+  X3    4    Top    Top-L2 uvia  VCC3V3         hole in pad  ( 13.450,  12.100) T-2+2-3+3-4b+4-5
+  X3    6    Top    Top-L2 uvia  GND            hole in pad  ( 13.450,   9.900) T-2
+  X3    G1   Top    Top-L2 uvia  GND            hole in pad  ( 13.425,   6.275) T-2
+  X3    G2   Top    Top-L2 uvia  GND            hole in pad  (  5.850,   6.225) T-2
+  X3    G3   Top    Top-L2 uvia  GND            hole in pad  (  5.225,  18.175) T-2
+  X3    G4   Top    Top-L2 uvia  GND            hole in pad  ( 13.425,  17.525) T-2
+  X4    2    Top    Top-L2 uvia  GND            hole in pad  ( 32.390,   7.750) T-2
+  X4    2    Top    Top-L2 uvia  GND            hole in pad  ( 32.475,   9.025) T-2
 
 VIA TENTING, RINGS AND SPACING
 Every via that is not listed under VIA-IN-PAD is tented on both sides: no
-GTS/GBS opening is centred on a via and no mask opening reaches any
-through-via hole. However, at 20 through vias the mask opening of a
-neighbouring same-net SMD pad overlaps part of the via land:
-  Hole edge 0.025 mm from the opening (land abuts the pad), Bottom side:
-    next to C147-1, C149-1, C151-1, C160-1, C161-1, R102-2, R103-2, R108-2,
-    U7-2 (0.002 mm copper gap), and the via at (6.775, 5.950) between
-    R114-2 (Bottom) and X3-G2 (Top; 0.035 mm hole margin on Top).
-  Hole edge about 0.05 mm from the opening (0.025 mm copper gap), Bottom:
-    vias at (0.575, 6.200) C78-1, (3.425, 6.775) C150-1/C151-1,
-    (5.925, 5.450) C151-2, (12.050, 8.500) R116-2/U8-13, (7.025, 11.175) U8-1,
-    (6.050, 16.875) C168-1, (14.350, 3.225) C82-1, (5.325, 9.425) L8-2,
-    (51.400, 11.400) C111-2, and (6.125, 10.200) U8-28 (opening tangent
-    to the land).
-These are the same 20 vias, at the same positions and with the same
-margins, as on Rev 1.
-PLEASE PLUG ALL 354 THROUGH VIAS (resin- or copper-filled, IPC-4761 type VI
+GTS/GBS opening is centred on a via and no mask opening reaches any via
+hole. However, the mask opening of a neighbouring same-net SMD pad overlaps
+or touches part of the land of 22 through vias (26 via/opening contacts) and
+of 12 microvias not in pads, so those lands are partly bare:
+Through vias:
+  Top    via ( 23.300,   9.950) N$LD0B          opening LD0-1   hole margin 0.019 mm, copper gap to it 0.014 mm
+  Bottom via (  2.325,   9.825) GND             opening C147-1  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  2.725,  11.725) GND             opening R103-2  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  3.700,  13.825) LD4_A           opening R108-2  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  3.725,   5.475) GND             opening C151-1  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  4.600,  18.425) GND             opening C149-1  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  4.750,   4.600) GND             opening R102-2  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  4.800,  16.600) GND             opening C161-1  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  6.775,   5.950) GND             opening R114-2  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  7.300,   4.675) GND             opening C160-1  hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via (  8.575,  18.650) GND             opening U7-2    hole margin 0.025 mm, copper gap to it 0.002 mm
+  Bottom via ( 58.200,   3.500) VCC3V3          opening R1-4    hole margin 0.025 mm, copper gap to it 0.000 mm
+  Bottom via ( 58.200,   3.500) VCC3V3          opening R1-3    hole margin 0.025 mm, copper gap to it 0.000 mm
+  Top    via (  6.775,   5.950) GND             opening X3-G2   hole margin 0.035 mm, copper gap to it 0.000 mm
+  Top    via ( 27.625,  18.425) EE-CLK          opening U2-62   hole margin 0.040 mm, copper gap to it 0.000 mm
+  Bottom via (  3.425,   6.775) GND             opening C151-1  hole margin 0.046 mm, copper gap to it 0.040 mm
+  Bottom via (  0.575,   6.200) GND             opening C78-1   hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via (  3.425,   6.775) GND             opening C150-1  hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via (  5.325,   9.425) VU              opening L8-2    hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via (  5.925,   5.450) VBATT           opening C151-2  hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via (  6.050,  16.875) GND             opening C168-1  hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via (  7.025,  11.175) VU              opening U8-1    hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via ( 12.050,   8.500) GND             opening U8-13   hole margin 0.050 mm, copper gap to it 0.027 mm
+  Bottom via ( 12.050,   8.500) GND             opening R116-2  hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via ( 14.350,   3.225) GND             opening C82-1   hole margin 0.050 mm, copper gap to it 0.025 mm
+  Bottom via (  6.125,  10.200) VU              opening U8-28   hole margin 0.075 mm, copper gap to it 0.051 mm (tangent)
+Microvias (not in a pad; "stacked" = an adjacent drill sits under it):
+  Top    Top-L2 uvia ( 28.825,  20.875) GND       opening X1-5    hole margin 0.030 mm, copper gap to it 0.005 mm
+  Top    Top-L2 uvia ( 30.400,  23.950) GND       opening X1-MP2  hole margin 0.045 mm, copper gap to it 0.020 mm
+  Top    Top-L2 uvia ( 25.700,  20.575) VCC3V3    opening C155-2  hole margin 0.050 mm, copper gap to it 0.025 mm, stacked
+  Top    Top-L2 uvia ( 33.650,  19.525) VCC3V3    opening U2-50   hole margin 0.065 mm, copper gap to it 0.025 mm
+  Top    Top-L2 uvia ( 21.950,   7.825) LED0_G    opening LD0-6   hole margin 0.074 mm, copper gap to it 0.069 mm, stacked
+  Bottom L5-Bot uvia ( 29.000,  20.275) VCC3V3    opening C156-2  hole margin 0.015 mm, copper gap to it 0.010 mm
+  Bottom L5-Bot uvia ( 31.000,  21.525) N$BTN     opening R86-2   hole margin 0.028 mm, copper gap to it 0.018 mm, stacked
+  Bottom L5-Bot uvia (  8.875,   6.150) PWR_FB2   opening C163-2  hole margin 0.050 mm, copper gap to it 0.045 mm, stacked
+  Bottom L5-Bot uvia ( 29.675,  21.700) GND       opening R86-1   hole margin 0.050 mm, copper gap to it 0.025 mm, stacked
+  Bottom L5-Bot uvia ( 17.950,  16.750) GND       opening U3-28   hole margin 0.055 mm, copper gap to it 0.030 mm, stacked
+  Bottom L5-Bot uvia ( 29.600,  20.325) GND       opening C156-1  hole margin 0.060 mm, copper gap to it 0.051 mm, stacked
+  Bottom L5-Bot uvia ( 36.143,   2.400) VCC3V3    opening C7-2    hole margin 0.075 mm, copper gap to it 0.050 mm
+PLEASE PLUG ALL 329 THROUGH VIAS (resin- or copper-filled, IPC-4761 type VI
 or VII), so that mask registration cannot expose an open hole beside a pad,
-and state the method in the CAM response. All microvias and buried vias are
-filled anyway for the stacking.
+and state the method in the CAM response. PLEASE FILL AND CAP ALL 1,293
+MICROVIAS AND ALL 403 BURIED VIAS. That includes the 85 microvias that carry
+no stack (53 Top-L2, 29 L5-Bottom, 2 L2-L3, 1 L4-L5; 33 of them are not in a
+pad), which the stacking alone would not require to be filled.
 Annular rings as drawn: laser microvias 0.075 mm (0.15/0.30), L3-L4 buried
 vias 0.06 mm (0.15/0.27), through vias 0.075 mm (0.20/0.35).
 Minimum hole-to-hole spacing (DRC rule): 0.24 mm.
 The L3-L4 buried via is a 0.15 mm mechanical drill through the 1.065 mm
-core, aspect ratio about 7.1:1. Please confirm this is acceptable, as on
-the previous HDI Zulu A7 board.
-Stacks on buried vias: 122 L2-L3 microvias sit directly on L3-L4 buried
-vias and 113 buried vias carry an L4-L5 microvia, so the buried vias must be
+core, aspect ratio about 7.1:1. Please confirm this is acceptable, as on the
+previous HDI Zulu A7 board.
+Stacks on buried vias: 117 L2-L3 microvias sit directly on L3-L4 buried vias
+and 122 buried vias carry an L4-L5 microvia, so the buried vias must be
 filled and capped before the L2/L5 lamination.
 
 BGA
 U1 is an XC7A35T in CPG236 (0.5 mm pitch, 0.225 mm round lands) on the Top
 side. It is the finest-pitch feature on the board. The mask is as drawn in
 GTS; the minimum mask web (DRC mask-sliver rule) is 0.10 mm. Do not enlarge
-the mask openings at U1 without approval.
+the mask openings at U1 without approval. 10 U1 lands carry a 0.30/0.15 mm
+Top-L2 laser microvia (L19, N17, N18, P17, P19, R18, T17, U12, U15, V13; the
+2026-11-11 release had none in U1 lands); at 9 of them the hole touches the
+land. They are listed under VIA-IN-PAD and must be copper-filled and capped
+flat like every via-in-pad site.
 
 CONTROLLED IMPEDANCE
 USB_D_P / USB_D_N: 90 ohm differential, +/-10 percent, on the agreed stack
 above, with PCBWay's etch compensation.
 Layer/reference: L1 Top, referenced to L2 GND
 Drawn geometry: 0.15 mm trace / 0.15 mm pair gap (measured on the board:
-both nets 0.15 mm wide and 15.92 mm long, 11.79 mm of parallel run at a
-0.15 mm gap; the rest is the breakout at X1 and U2 and a small
-length-matching jog on USB_D_P; no vias on the pair).
-This is the ONLY impedance-controlled structure. The SDRAM nets on L3/L4
-are not impedance controlled; do not adjust them.
-If the target cannot be met by etch compensation alone, stop and request
-approval before changing the drawn geometry. Provide the final impedance
-calculation and, if included in the quotation, coupon results.
+both nets 0.15 mm wide and 12.19 / 12.19 mm long, 8.28 mm of parallel run at
+a 0.15 mm gap; the rest is the breakout at X1 and U2, where the other
+coupled gaps are 0.2255-0.4752 mm; no vias on the pair; the parallel run is
+the overlap of facing segments at exactly 0.15 mm). The pair was rebuilt on
+Top only for the QFN U2 in this release, so the 2026-11-11 pair length and
+coupled length do not apply.
+This is the ONLY impedance-controlled structure. The SDRAM nets on L3/L4 are
+not impedance controlled; do not adjust them. If the target cannot be met by
+etch compensation alone, stop and request approval before changing the drawn
+geometry. Provide the final impedance calculation and, if included in the
+quotation, coupon results.
 
 PANEL
 1 x 4 panel with 5 mm V-cut rails on the two short ends, as approved for the
-previous HDI Zulu A7 board, unless PCBWay proposes otherwise for approval.
+previous HDI Zulu A7 board (the same 69.85 mm outline), unless PCBWay
+proposes otherwise for approval. Copper to the board edge, measured on the
+copper Gerbers: the L2 and L5 plane polygons 0.250 mm from every edge;
+Top/L3/L4/Bottom copper 0.262 mm from the long (north and south) edges,
+0.390 mm from the west short edge and 1.240 mm from the east short edge.
+
+ENGINEERING QUESTIONS (PLEASE ANSWER IN THE EQ)
+1. Component spacing below the 0.254 mm design target, all 0201 22 ohm
+   resistors next to the TSOP-II-54 SDRAM U3 and the FPGA U1: (a) the south
+   resistors R119-R126 sit 0.195-0.25 mm from U3's leads and overlap its
+   IPC-7351B nominal courtyard by about 0.19 mm; (b) R129 and R130 (Top) are
+   0.26 mm pad to pad, mask web 0.16 mm, nominal courtyards overlapping by
+   0.04-0.07 mm; (c) R131 and R132 (Top) are 0.2035 mm pad to pad, mask web
+   0.1035 mm, nominal courtyards overlapping by 0.127 mm. Can these be built
+   and placed as drawn?
+2. Solder-mask cover over different-net copper: measured on GTS/GBS, the
+   smallest mask cover between a track and another net's pad opening is
+   0.020 mm, and 44 track/opening pairs have under 0.044 mm (the tightest
+   are listed below). Does your mask registration hold these, or may
+   openings be reduced or corner-clipped there? Please do not change them
+   without approval.
+     Bottom AIN16_N        track vs C113-1  (VCC3V3) opening: 0.020 mm
+     Bottom A9             track vs U3-33   (A8) opening: 0.022 mm
+     Top    UART_FT_TXD    track vs R131-2  (D12) opening: 0.022 mm
+     Top    VCC3V3         track vs R4-7    (FPGA-DONE) opening: 0.026 mm
+     Bottom A12            track vs U3-35   (A11) opening: 0.028 mm
+     Bottom CKE            track vs U3-38   (SDRAM-CLK) opening: 0.029 mm
+     Bottom SDRAM-CLK      track vs U3-39   (UDQM) opening: 0.029 mm
+     Bottom GND            track vs R11-2   (NODE_P0) opening: 0.030 mm
+     Top    FPGA-TCK       track vs R4-12   (FPGA-TMS) opening: 0.030 mm
+     Top    FPGA-DONE      track vs R4-6    (TCK) opening: 0.030 mm
+     Top    FPGA-DONE      track vs R4-16   (RST#) opening: 0.030 mm
+     Top    FPGA-TMS       track vs R4-13   (FPGA-TDO) opening: 0.031 mm
+3. Solder-mask openings on U2 (FT2232HQ, QFN-64): its pads use a 0.035 mm
+   mask expansion instead of the board's 0.05 mm, so the web between the end
+   pads of adjacent sides at each QFN corner (pads 1/64, 16/17, 32/33,
+   48/49) is 0.127 mm against a 0.10 mm minimum. Can this be held? Please do
+   not enlarge the U2 openings without approval.
+4. Projected hole overlaps: at 6 places, vias of two different nets that
+   share no copper layer overlap in plan view (1 of them exactly coaxial).
+   Each pair is listed below by the two drills that overlap, net span (x, y)
+   / net span (x, y), hole overlap; the other drills of each column sit at
+   the same XY. Please confirm the sequential build accepts these as drawn.
+     LED0_R 2-3 (38.300, 24.400) / FPGA-TCK 5-B (38.300, 24.400), 0.150 mm
+     FLASH-CS# 3-4b (50.950, 11.450) / GND T-2 (50.975, 11.370), 0.066 mm
+     SDRAM-D14 5-B (45.300, 17.150) / CHAN7 2-3 (45.400, 17.200), 0.038 mm
+     GND T-2 (26.075, 18.300) / EE-CLK 3-4b (26.075, 18.425), 0.025 mm
+     N$LD0R 3-4b (29.375, 15.575) / GND T-2 (29.500, 15.550), 0.022 mm
+     VCC3V3 5-B (36.143, 2.400) / CHAN20 3-4b (36.275, 2.400), 0.018 mm
+5. Confirm the via plugging method (see VIA TENTING) and the panel (see
+   PANEL).
 
 FILE MAP
-  zulu_a7_fab_b.GTL   L1 Top copper
-  zulu_a7_fab_b.G1    L2 GND
-  zulu_a7_fab_b.G2    L3 signal
-  zulu_a7_fab_b.G3    L4 signal
-  zulu_a7_fab_b.G4    L5 VCC3V3
-  zulu_a7_fab_b.GBL   L6 Bottom copper
-  zulu_a7_fab_b.GTS   Top solder mask
-  zulu_a7_fab_b.GBS   Bottom solder mask
-  zulu_a7_fab_b.GTO   Top silkscreen
-  zulu_a7_fab_b.GBO   Bottom silkscreen
-  zulu_a7_fab_b.GTP   Top paste
-  zulu_a7_fab_b.GBP   Bottom paste
-  zulu_a7_fab_b.GM    Board profile
-  zulu_a7_fab_b-RoundHoles.TXT   Top-Bottom plated round holes
-  zulu_a7_fab_b-SlotHoles.TXT    Top-Bottom plated X1 slots
-  zulu_a7_fab_b-RoundHoles.TX3   L3-L4 buried vias
-  zulu_a7_fab_b-RoundHoles.TX6   Top-L2 microvias
-  zulu_a7_fab_b-RoundHoles.TX7   L2-L3 microvias
-  zulu_a7_fab_b-RoundHoles.TX9   L4-L5 microvias
-  zulu_a7_fab_b-RoundHoles.TX10  L5-Bottom microvias
-  zulu_a7_fab_b.LDP   Drill-pair layer map
-  zulu_a7_fab_b.DRR   Drill sizes and counts
+  zulu_a7_fab_b.GTL                  L1 Top copper
+  zulu_a7_fab_b.G1                   L2 GND
+  zulu_a7_fab_b.G2                   L3 signal
+  zulu_a7_fab_b.G3                   L4 signal
+  zulu_a7_fab_b.G4                   L5 VCC3V3
+  zulu_a7_fab_b.GBL                  L6 Bottom copper
+  zulu_a7_fab_b.GTS                  Top solder mask
+  zulu_a7_fab_b.GBS                  Bottom solder mask
+  zulu_a7_fab_b.GTO                  Top silkscreen
+  zulu_a7_fab_b.GBO                  Bottom silkscreen
+  zulu_a7_fab_b.GTP                  Top paste
+  zulu_a7_fab_b.GBP                  Bottom paste
+  zulu_a7_fab_b.GM                   Board profile
+  zulu_a7_fab_b-RoundHoles.TXT       Top-Bottom plated round holes
+  zulu_a7_fab_b-SlotHoles.TXT        Top-Bottom plated X1 slots
+  zulu_a7_fab_b-RoundHoles.TX3       L3-L4 buried vias
+  zulu_a7_fab_b-RoundHoles.TX6       Top-L2 microvias
+  zulu_a7_fab_b-RoundHoles.TX7       L2-L3 microvias
+  zulu_a7_fab_b-RoundHoles.TX9       L4-L5 microvias
+  zulu_a7_fab_b-RoundHoles.TX10      L5-Bottom microvias
+  zulu_a7_fab_b.LDP                  Drill-pair layer map
+  zulu_a7_fab_b.DRR                  Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-11-12 00:16, after the title change: 0 warnings, 0 rule
-violations. The board was saved at 00:16:55 (MD5 33023787) with no further
-edit.
-Gerbers (exported 2026-11-12 00:17): metric RS-274X, 0.0001 mm coordinate
-resolution
-NC Drill (exported 2026-11-12 00:17): metric Excellon 4:4, separate round/slot files,
+Altium DRC 2026-11-20 14:04:48: 0 warnings, 0 rule violations. Un-routed
+nets, short circuits, every clearance rule, silkscreen, solder-mask sliver,
+net-antenna and component-body clearance checks report 0 (every part carries
+a 3D body at its datasheet maximum height; J1's 8.51 mm is the insulator
+height from DigiKey's parametric data). The board was saved at 2026-11-20
+14:04:18 with no edit between the DRC run and the save.
+Source MD5 5fea1304.
+Gerbers (exported 2026-11-20 14:09:21): metric RS-274X, 0.0001 mm coordinate resolution
+NC Drill (exported 2026-11-20 14:10:07): metric Excellon 4:4, separate round/slot files,
 G85 plated slots
 Every drill hit was matched one-to-one against the PcbDoc via and pad
 positions (0 missing, 0 extra in every drill file).

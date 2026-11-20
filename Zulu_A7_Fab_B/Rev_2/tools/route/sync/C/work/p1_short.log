@@ -1,0 +1,218 @@
+DONE-PU        
+FLASH-D00      
+PMOD-8         
+CFG-M1         
+CHAN3          
+FPGA-CCLK      
+CFG-M0         
+PMOD-2         
+CHAN4          
+CHAN14         
+CHAN15         
+CHAN16         
+PMOD-10        
+PMOD-7         
+CHAN18         
+FLASH-D01      
+JA2            
+CHAN1          
+CHAN2          
+JA7            
+CHAN17         
+UART_FT_DTR#   
+CFG-M2         
+UART_FT_TXD    
+CHAN0          
+CHAN5          
+CHAN6          
+CHAN7          
+FLASH-D02      
+FLASH-D03      ripped CHAN2 CHAN5 CHAN7 FLASH-D02 FPGA-CCLK
+JA3            
+JA10           
+FPGA-INIT#     
+JA8            
+PUDC_B         ripped FLASH-D03 JA3 JA8
+LED1           
+UART_FT_RTS#   ripped CHAN6 UART_FT_TXD
+FLASH-CS#      
+JA1            
+CLK-12M-FPGA   
+JA9            
+BTN            
+FT-PWREN#      
+JA4            
+LED0_B         
+RST#           
+LED0_G         
+CHAN-CLK       
+LED2           
+FPGA-TDO       
+FPGA-TDI       
+FPGA-TMS       
+FPGA-DONE      
+CHAN9          
+CHAN25         
+LED0_R         
+CHAN19         
+UART_FT_RXD    ripped FLASH-CS# FPGA-DONE
+SD-DAT3        
+CHAN8          
+SD-DAT0        
+CLK-12M-SHARED 
+CHAN11         
+UART_FT_CTS#   ripped BTN UART_FT_RTS#
+CHAN22         
+CHAN10         ripped CHAN1 CHAN8 LED2 PUDC_B UART_FT_RXD
+DONE           
+CHAN12         
+CHAN27         ripped CFG-M1 CHAN15 FPGA-TDO JA1 JA10 JA2 JA9
+CHAN28         
+CHAN13         
+TDO            
+TMS            
+TDI            
+PROG#          
+CHAN21         
+CLK-12M-FT     
+FPGA-TCK       
+TCK            
+CHAN2          
+CHAN5          ripped CHAN12 CHAN13 FLASH-D01 FPGA-TCK LED1 SD-DAT0 UART_FT_CTS#
+CHAN7          
+FLASH-D02      
+FPGA-CCLK      
+FLASH-D03      ripped CHAN10 FLASH-D00 FLASH-D02 FPGA-CCLK
+JA3            
+JA8            
+CHAN6          
+UART_FT_TXD    
+FLASH-CS#      
+FPGA-DONE      
+BTN            
+UART_FT_RTS#   ripped CHAN7 CLK-12M-FPGA LED0_R UART_FT_TXD
+CHAN1          
+CHAN8          
+LED2           
+PUDC_B         
+UART_FT_RXD    
+CFG-M1         ripped CHAN27
+CHAN15         
+FPGA-TDO       
+JA1            
+JA10           
+JA2            ripped FPGA-INIT# JA1 JA3
+JA9            
+CHAN12         
+CHAN13         
+FLASH-D01      ripped CHAN1 CHAN5 CHAN9 DONE LED2 PUDC_B UART_FT_RXD
+FPGA-TCK       ripped CHAN12 CHAN13 CHAN4 CHAN6 LED0_B TMS UART_FT_RTS#
+LED1           
+SD-DAT0        
+UART_FT_CTS#   
+CHAN10         
+FLASH-D00      ripped CHAN2 FLASH-CS# FLASH-D01 FLASH-D03
+FLASH-D02      ripped FLASH-D00 FPGA-TCK
+FPGA-CCLK      
+CHAN7          
+CLK-12M-FPGA   
+LED0_R         
+UART_FT_TXD    
+CHAN27         ripped CFG-M1 CHAN15 FPGA-TDO FPGA-TMS JA10 JA8 JA9
+FPGA-INIT#     
+JA1            
+JA3            
+CHAN1          
+CHAN5          
+CHAN9          
+DONE           
+LED2           
+PUDC_B         
+UART_FT_RXD    
+CHAN12         
+CHAN13         
+CHAN4          
+CHAN6          
+LED0_B         
+TMS            
+UART_FT_RTS#   
+CHAN2          
+FLASH-CS#      
+FLASH-D01      
+FLASH-D03      
+FLASH-D00      
+FPGA-TCK       
+CFG-M1         
+CHAN15         
+FPGA-TDO       
+FPGA-TMS       
+JA10           
+JA8            
+JA9            
+routed 62 connections, failed 34; 189 vias, 942 tracks -> work/p1_short.json
+OPEN CFG-M1 1
+OPEN CHAN-CLK 1
+OPEN CHAN0 1
+OPEN CHAN11 1
+OPEN CHAN15 1
+OPEN CHAN17 1
+OPEN CHAN19 1
+OPEN CHAN2 1
+OPEN CHAN21 1
+OPEN CHAN22 1
+OPEN CHAN5 1
+OPEN CHAN6 1
+OPEN CHAN8 1
+OPEN CLK-12M-FT 1
+OPEN CLK-12M-SHARED 1
+OPEN DONE 1
+OPEN FLASH-D00 1
+OPEN FLASH-D01 1
+OPEN FLASH-D03 2
+OPEN FPGA-TCK 2
+OPEN JA3 1
+OPEN JA4 1
+OPEN LED0_B 1
+OPEN LED2 1
+OPEN PROG# 1
+OPEN PUDC_B 1
+OPEN TCK 1
+OPEN TDI 1
+OPEN TDO 1
+OPEN TMS 1
+OPEN UART_FT_RTS# 1
+OPEN UART_FT_RXD 1
+FAIL CHAN17 (nopath)
+FAIL CHAN0 (budget)
+FAIL JA4 (budget)
+FAIL CHAN-CLK (budget)
+FAIL CHAN19 (budget)
+FAIL CLK-12M-SHARED (budget)
+FAIL CHAN11 (budget)
+FAIL CHAN22 (budget)
+FAIL TDO (budget)
+FAIL TDI (budget)
+FAIL PROG# (budget)
+FAIL CHAN21 (budget)
+FAIL CLK-12M-FT (budget)
+FAIL TCK (budget)
+FAIL CHAN8 (budget)
+FAIL JA3 (nopath)
+FAIL CHAN5 (budget)
+FAIL DONE (budget)
+FAIL LED2 (budget)
+FAIL PUDC_B (nopath)
+FAIL UART_FT_RXD (budget)
+FAIL CHAN6 (nopath)
+FAIL LED0_B (budget)
+FAIL TMS (budget)
+FAIL UART_FT_RTS# (nopath)
+FAIL CHAN2 (budget)
+FAIL FLASH-D01 (budget)
+FAIL FLASH-D03 (nopath)
+FAIL FLASH-D03 (nopath)
+FAIL FLASH-D00 (nopath)
+FAIL FPGA-TCK (budget)
+FAIL FPGA-TCK (budget)
+FAIL CFG-M1 (nopath)
+FAIL CHAN15 (budget)

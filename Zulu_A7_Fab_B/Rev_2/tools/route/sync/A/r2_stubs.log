@@ -1,0 +1,22 @@
+GND            
+FLASH-D02      
+CHAN2          
+CHAN5          
+FPGA-INIT#     
+CLK-12M-FPGA   ripped FLASH-D02
+UART_FT_TXD    ripped FPGA-INIT#
+FPGA-TMS       
+CHAN9          
+PROG#          
+FLASH-D02      
+FPGA-INIT#     ripped UART_FT_TXD
+UART_FT_TXD    ripped FPGA-INIT#
+FPGA-INIT#     ripped UART_FT_TXD
+UART_FT_TXD    
+routed 7 connections, failed 3; 32 vias, 178 tracks -> r2_stubs.json
+OPEN CHAN5 1
+OPEN GND 1
+OPEN UART_FT_TXD 1
+FAIL plane tie GND at 50.90,11.40
+FAIL CHAN5 (budget)
+FAIL UART_FT_TXD (nopath)

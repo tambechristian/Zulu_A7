@@ -1,0 +1,4 @@
+plan: 1613 tracks, 383 vias, 948 removed; board then: 5582 tracks, 1942 vias
+violations: 0
+open connections after the plan: 10 on 10 nets
+PASS

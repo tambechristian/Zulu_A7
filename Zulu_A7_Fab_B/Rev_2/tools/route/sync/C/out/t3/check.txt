@@ -1,0 +1,128 @@
+{
+ "plan": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_Fab_B/Rev_2/tools/route/sync/C/work/plan_t3.json",
+ "emit_problems_base_cur": [],
+ "emit_problems_base_new": [],
+ "route_check": [
+  "plan: 1786 tracks, 417 vias, 884 removed; board then: 5819 tracks, 2013 vias",
+  "violations: 0",
+  "open connections after the plan: 2 on 2 nets",
+  "PASS"
+ ],
+ "route_check_pass": true,
+ "open_total": 2,
+ "open_by_net": {
+  "CHAN5": 1,
+  "GND": 1
+ },
+ "drc_counts": {
+  "base_cur": 37,
+  "result": 34,
+  "new_vs_base_cur": 0
+ },
+ "drc_new": [],
+ "through_via_in_smd_pad": [],
+ "uvia_in_smd_pad_total": 133,
+ "uvia_in_smd_pad_new": 68,
+ "new_through_vias": [
+  "BTN 39.000,19.750 Top>Bot 0.35/0.20",
+  "VBATT 17.000,5.425 Top>Bot 0.35/0.20",
+  "USB5V0 25.875,21.725 Top>Bot 0.35/0.20",
+  "UART_FT_TXD 48.325,1.625 Top>Bot 0.35/0.20",
+  "UART_FT_RXD 32.900,16.325 Top>Bot 0.35/0.20",
+  "UART_FT_DTR# 37.300,13.800 Top>Bot 0.35/0.20",
+  "UART_FT_DTR# 44.025,11.650 Top>Bot 0.35/0.20",
+  "TMS 28.850,8.900 Top>Bot 0.35/0.20",
+  "TDO 27.450,8.225 Top>Bot 0.35/0.20",
+  "PROG# 33.700,2.325 Top>Bot 0.35/0.20",
+  "PROG# 38.500,2.150 Top>Bot 0.35/0.20",
+  "N$LD0B 23.300,9.950 Top>Bot 0.35/0.20",
+  "FT-VPHY 24.675,11.750 Top>Bot 0.35/0.20",
+  "FT-PWREN# 43.725,12.075 Top>Bot 0.35/0.20",
+  "EE-CLK 27.625,18.425 Top>Bot 0.35/0.20",
+  "EE-CLK 24.400,19.900 Top>Bot 0.35/0.20",
+  "SDRAM-D8 38.500,13.600 Top>Bot 0.35/0.20",
+  "SDRAM-D15 38.350,16.725 Top>Bot 0.35/0.20",
+  "SDRAM-D14 36.125,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D13 35.625,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D12 34.025,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D11 38.500,14.950 Top>Bot 0.35/0.20",
+  "SDRAM-D11 33.250,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D10 38.500,14.500 Top>Bot 0.35/0.20",
+  "FLASH-D02 55.475,22.375 Top>Bot 0.35/0.20"
+ ],
+ "counts": {
+  "remove_tracks": 884,
+  "remove_vias": 362,
+  "add_tracks": 1786,
+  "add_vias": 417,
+  "vias_added_by_type": {
+   "buried L3-L4": 71,
+   "laser L2-L3": 81,
+   "laser L4-L5": 64,
+   "laser L5-Bottom": 72,
+   "laser Top-L2": 104,
+   "through": 25
+  },
+  "vias_removed_by_type": {
+   "buried L3-L4": 72,
+   "laser L2-L3": 83,
+   "laser L4-L5": 34,
+   "laser L5-Bottom": 38,
+   "laser Top-L2": 86,
+   "through": 49
+  },
+  "tracks_added_by_layer": {
+   "Bottom Layer": 362,
+   "L3-SIG": 396,
+   "L4-SIG": 385,
+   "Top Layer": 643
+  },
+  "tracks_removed_by_layer": {
+   "Bottom Layer": 191,
+   "L3-SIG": 151,
+   "L4-SIG": 172,
+   "Top Layer": 370
+  },
+  "added_track_mm": 863.6,
+  "removed_track_mm": 957.98,
+  "board_track_mm_base_cur": 5255.58,
+  "board_track_mm_result": 5161.2,
+  "result_tracks": 5819,
+  "result_vias": 2016,
+  "result_pads": 896,
+  "net_via_change_by_type": {
+   "buried L3-L4": -1,
+   "laser L2-L3": -2,
+   "laser L4-L5": 30,
+   "laser L5-Bottom": 34,
+   "laser Top-L2": 18,
+   "through": -24
+  }
+ },
+ "pmod_nets_touched": {},
+ "nets_touched": 102,
+ "dead_after": {
+  "tracks": 0,
+  "vias": 0
+ },
+ "usb": {
+  "P_mm": 12.1863,
+  "N_mm": 12.1863,
+  "mismatch_mm": 0.0,
+  "layers": [
+   "Top Layer"
+  ],
+  "widths": [
+   0.15
+  ],
+  "vias": 0,
+  "segments": [
+   11,
+   23
+  ],
+  "coupled_mm_tol0.005": 9.151,
+  "coupled_mm_tol0.010": 9.552,
+  "coupled_mm_tol0.030": 10.389,
+  "min_gap_mm": 0.15
+ }
+}

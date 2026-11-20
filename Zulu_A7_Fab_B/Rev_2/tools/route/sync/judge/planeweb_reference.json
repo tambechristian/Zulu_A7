@@ -1,0 +1,138 @@
+{
+ "base_cur": {
+  "L2-GND": {
+   "raw": {
+    "components": 3,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1436.93,
+    "objects": 153,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 9,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1422.82,
+    "objects": 153,
+    "objects_off_main": []
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1413.21,
+    "objects": 94,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 15,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1391.32,
+    "objects": 94,
+    "objects_off_main": []
+   }
+  }
+ },
+ "base_new": {
+  "L2-GND": {
+   "raw": {
+    "components": 3,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1436.93,
+    "objects": 153,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 9,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1422.82,
+    "objects": 153,
+    "objects_off_main": []
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1413.21,
+    "objects": 94,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 15,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1391.32,
+    "objects": 94,
+    "objects_off_main": []
+   }
+  }
+ },
+ "clean_after": {
+  "L2-GND": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1444.27,
+    "objects": 170,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 10,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1429.06,
+    "objects": 170,
+    "objects_off_main": []
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1418.13,
+    "objects": 98,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 14,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1395.17,
+    "objects": 98,
+    "objects_off_main": []
+   }
+  }
+ },
+ "stubs_after": {
+  "L2-GND": {
+   "raw": {
+    "components": 5,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1442.26,
+    "objects": 170,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 10,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1426.92,
+    "objects": 170,
+    "objects_off_main": []
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1416.0,
+    "objects": 98,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 14,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1392.89,
+    "objects": 98,
+    "objects_off_main": []
+   }
+  }
+ }
+}

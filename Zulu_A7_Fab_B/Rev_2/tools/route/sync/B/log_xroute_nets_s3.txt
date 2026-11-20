@@ -1,0 +1,3 @@
+seeded 93 vias, 425 tracks
+PROG#          
+routed 1 connections, failed 0; 101 vias, 470 tracks -> xroute_nets_s3.json

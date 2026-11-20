@@ -1,0 +1,559 @@
+{
+ "plan": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_Fab_B/Rev_2/tools/route/sync/B/plan_B.json",
+ "counts": {
+  "remove_tracks": 930,
+  "remove_vias": 391,
+  "add_tracks": 1967,
+  "add_vias": 457,
+  "vias_added_by_span": {
+   "buried L3-L4": 77,
+   "laser L2-L3": 85,
+   "laser L4-L5": 75,
+   "laser L5-Bottom": 83,
+   "laser Top-L2": 109,
+   "through": 28
+  },
+  "vias_removed_by_span": {
+   "buried L3-L4": 78,
+   "laser L2-L3": 84,
+   "laser L4-L5": 43,
+   "laser L5-Bottom": 47,
+   "laser Top-L2": 86,
+   "through": 53
+  },
+  "tracks_added_by_layer": {
+   "Bottom Layer": 392,
+   "L3-SIG": 432,
+   "L4-SIG": 447,
+   "Top Layer": 696
+  },
+  "tracks_removed_by_layer": {
+   "Bottom Layer": 203,
+   "L3-SIG": 153,
+   "L4-SIG": 183,
+   "Top Layer": 391
+  },
+  "added_track_mm": 929.82,
+  "removed_track_mm": 1019.54,
+  "net_via_change_by_span": {
+   "buried L3-L4": -1,
+   "laser L2-L3": 1,
+   "laser L4-L5": 32,
+   "laser L5-Bottom": 36,
+   "laser Top-L2": 23,
+   "through": -25
+  }
+ },
+ "vs_prep_transplant": {
+  "remove": {
+   "in_plan_not_transplant": 90,
+   "in_transplant_not_plan": 57,
+   "by_net_plan_only": {
+    "JA1": 13,
+    "JA10": 13,
+    "JA2": 4,
+    "JA3": 9,
+    "JA4": 33,
+    "JA8": 11,
+    "JA9": 7
+   },
+   "by_net_transplant_only": {
+    "CHAN5": 7,
+    "CHAN9": 32,
+    "FLASH-D02": 10,
+    "FPGA-INIT#": 1,
+    "FPGA-TMS": 7
+   }
+  },
+  "remove_vias": {
+   "in_plan_not_transplant": 53,
+   "in_transplant_not_plan": 24,
+   "by_net_plan_only": {
+    "JA1": 8,
+    "JA10": 7,
+    "JA2": 5,
+    "JA3": 11,
+    "JA4": 6,
+    "JA8": 11,
+    "JA9": 5
+   },
+   "by_net_transplant_only": {
+    "CHAN2": 1,
+    "CHAN5": 3,
+    "CHAN9": 9,
+    "FLASH-D02": 6,
+    "FPGA-INIT#": 2,
+    "FPGA-TMS": 3
+   }
+  },
+  "tracks": {
+   "in_plan_not_transplant": 485,
+   "in_transplant_not_plan": 7,
+   "by_net_plan_only": {
+    "CHAN2": 45,
+    "CHAN5": 5,
+    "CHAN9": 2,
+    "CLK-12M-FPGA": 22,
+    "FLASH-D02": 21,
+    "FPGA-INIT#": 16,
+    "FPGA-TMS": 12,
+    "JA1": 54,
+    "JA10": 34,
+    "JA2": 22,
+    "JA3": 19,
+    "JA4": 93,
+    "JA8": 22,
+    "JA9": 25,
+    "PROG#": 45,
+    "UART_FT_TXD": 48
+   },
+   "by_net_transplant_only": {
+    "PROG#": 2,
+    "UART_FT_TXD": 5
+   }
+  },
+  "vias": {
+   "in_plan_not_transplant": 107,
+   "in_transplant_not_plan": 4,
+   "by_net_plan_only": {
+    "CHAN2": 9,
+    "CHAN5": 2,
+    "CHAN9": 2,
+    "CLK-12M-FPGA": 5,
+    "FLASH-D02": 7,
+    "FPGA-INIT#": 3,
+    "FPGA-TMS": 3,
+    "GND": 2,
+    "JA1": 5,
+    "JA10": 11,
+    "JA2": 9,
+    "JA3": 5,
+    "JA4": 7,
+    "JA8": 5,
+    "JA9": 5,
+    "PROG#": 8,
+    "UART_FT_TXD": 19
+   },
+   "by_net_transplant_only": {
+    "PROG#": 1,
+    "UART_FT_TXD": 3
+   }
+  }
+ },
+ "pmod_nets_touched": {
+  "JA1": {
+   "tracks_removed": 13,
+   "vias_removed": 8,
+   "tracks_added": 54,
+   "mm_added": 15.484100000000005,
+   "vias_added": 5,
+   "via_through": 1,
+   "via_laser L4-L5": 2,
+   "via_laser L5-Bottom": 2
+  },
+  "JA10": {
+   "tracks_removed": 13,
+   "vias_removed": 7,
+   "tracks_added": 34,
+   "mm_added": 13.606399999999999,
+   "vias_added": 11,
+   "via_laser Top-L2": 1,
+   "via_laser L2-L3": 1,
+   "via_buried L3-L4": 3,
+   "via_laser L4-L5": 3,
+   "via_laser L5-Bottom": 3
+  },
+  "JA2": {
+   "tracks_removed": 4,
+   "vias_removed": 5,
+   "tracks_added": 22,
+   "mm_added": 9.889300000000002,
+   "vias_added": 9,
+   "via_laser Top-L2": 1,
+   "via_laser L2-L3": 1,
+   "via_buried L3-L4": 1,
+   "via_laser L4-L5": 3,
+   "via_laser L5-Bottom": 3
+  },
+  "JA3": {
+   "tracks_removed": 9,
+   "vias_removed": 11,
+   "tracks_added": 19,
+   "mm_added": 12.6553,
+   "vias_added": 5,
+   "via_laser Top-L2": 1,
+   "via_laser L2-L3": 1,
+   "via_buried L3-L4": 1,
+   "via_laser L4-L5": 1,
+   "via_laser L5-Bottom": 1
+  },
+  "JA4": {
+   "tracks_removed": 33,
+   "vias_removed": 6,
+   "tracks_added": 93,
+   "mm_added": 21.23989999999999,
+   "vias_added": 7,
+   "via_laser Top-L2": 1,
+   "via_laser L2-L3": 1,
+   "via_buried L3-L4": 1,
+   "via_laser L4-L5": 1,
+   "via_laser L5-Bottom": 1,
+   "via_through": 2
+  },
+  "JA8": {
+   "tracks_removed": 11,
+   "vias_removed": 11,
+   "tracks_added": 22,
+   "mm_added": 11.749300000000002,
+   "vias_added": 5,
+   "via_laser Top-L2": 1,
+   "via_laser L2-L3": 1,
+   "via_buried L3-L4": 1,
+   "via_laser L4-L5": 1,
+   "via_laser L5-Bottom": 1
+  },
+  "JA9": {
+   "tracks_removed": 7,
+   "vias_removed": 5,
+   "tracks_added": 25,
+   "mm_added": 14.3674,
+   "vias_added": 5,
+   "via_laser Top-L2": 1,
+   "via_laser L2-L3": 1,
+   "via_buried L3-L4": 1,
+   "via_laser L4-L5": 1,
+   "via_laser L5-Bottom": 1
+  }
+ },
+ "pmod_nets_mm_added_total": 98.992,
+ "router_copper_in_plan": {
+  "tracks": 470,
+  "vias": 101,
+  "mm": 184.23,
+  "vias_by_span": {
+   "laser L2-L3": 13,
+   "laser Top-L2": 13,
+   "buried L3-L4": 19,
+   "laser L5-Bottom": 27,
+   "laser L4-L5": 25,
+   "through": 4
+  },
+  "by_net": {
+   "CLK-12M-FPGA": {
+    "tracks": 41,
+    "mm": 12.801900000000003,
+    "layer Bottom Layer": 11,
+    "layer Top Layer": 3,
+    "layer L4-SIG": 15,
+    "layer L3-SIG": 12,
+    "vias": 13,
+    "via laser L5-Bottom": 5,
+    "via laser L4-L5": 3,
+    "via buried L3-L4": 3,
+    "via laser L2-L3": 1,
+    "via laser Top-L2": 1
+   },
+   "FLASH-D02": {
+    "tracks": 21,
+    "mm": 9.096400000000001,
+    "layer L4-SIG": 9,
+    "layer Bottom Layer": 12,
+    "vias": 7,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 3,
+    "via laser L5-Bottom": 3
+   },
+   "FPGA-INIT#": {
+    "tracks": 15,
+    "mm": 7.380000000000002,
+    "layer Bottom Layer": 4,
+    "layer L4-SIG": 11,
+    "vias": 2,
+    "via laser L5-Bottom": 1,
+    "via laser L4-L5": 1
+   },
+   "FPGA-TMS": {
+    "tracks": 18,
+    "mm": 5.495800000000002,
+    "layer Bottom Layer": 1,
+    "layer L4-SIG": 3,
+    "layer L3-SIG": 14,
+    "vias": 3,
+    "via buried L3-L4": 1,
+    "via laser L5-Bottom": 1,
+    "via laser L4-L5": 1
+   },
+   "JA1": {
+    "tracks": 54,
+    "mm": 15.484100000000005,
+    "layer Top Layer": 9,
+    "layer Bottom Layer": 26,
+    "layer L4-SIG": 19,
+    "vias": 5,
+    "via through": 1,
+    "via laser L4-L5": 2,
+    "via laser L5-Bottom": 2
+   },
+   "JA10": {
+    "tracks": 34,
+    "mm": 13.606399999999999,
+    "layer L4-SIG": 10,
+    "layer L3-SIG": 13,
+    "layer Bottom Layer": 11,
+    "vias": 11,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 3,
+    "via laser L4-L5": 3,
+    "via laser L5-Bottom": 3
+   },
+   "JA2": {
+    "tracks": 22,
+    "mm": 9.889300000000002,
+    "layer L3-SIG": 5,
+    "layer Bottom Layer": 15,
+    "layer L4-SIG": 2,
+    "vias": 9,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 3,
+    "via laser L5-Bottom": 3
+   },
+   "JA3": {
+    "tracks": 19,
+    "mm": 12.6553,
+    "layer Top Layer": 6,
+    "layer L3-SIG": 2,
+    "layer L4-SIG": 4,
+    "layer Bottom Layer": 7,
+    "vias": 5,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1
+   },
+   "JA4": {
+    "tracks": 93,
+    "mm": 21.23989999999999,
+    "layer Top Layer": 51,
+    "layer L3-SIG": 2,
+    "layer L4-SIG": 19,
+    "layer Bottom Layer": 21,
+    "vias": 7,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1,
+    "via through": 2
+   },
+   "JA8": {
+    "tracks": 22,
+    "mm": 11.749300000000002,
+    "layer Top Layer": 1,
+    "layer L4-SIG": 2,
+    "layer Bottom Layer": 19,
+    "vias": 5,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1
+   },
+   "JA9": {
+    "tracks": 25,
+    "mm": 14.3674,
+    "layer L3-SIG": 1,
+    "layer L4-SIG": 14,
+    "layer Bottom Layer": 10,
+    "vias": 5,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1
+   },
+   "LED0_R": {
+    "tracks": 13,
+    "mm": 2.644,
+    "layer Top Layer": 1,
+    "layer L3-SIG": 12,
+    "vias": 2,
+    "via laser L2-L3": 1,
+    "via laser Top-L2": 1
+   },
+   "PROG#": {
+    "tracks": 45,
+    "mm": 20.93289999999999,
+    "layer Top Layer": 20,
+    "layer L3-SIG": 18,
+    "layer L4-SIG": 7,
+    "vias": 8,
+    "via laser Top-L2": 3,
+    "via laser L2-L3": 3,
+    "via buried L3-L4": 2
+   },
+   "UART_FT_TXD": {
+    "tracks": 48,
+    "mm": 26.89209999999999,
+    "layer Top Layer": 15,
+    "layer Bottom Layer": 11,
+    "layer L4-SIG": 16,
+    "layer L3-SIG": 6,
+    "vias": 19,
+    "via through": 1,
+    "via laser L4-L5": 5,
+    "via laser L5-Bottom": 5,
+    "via buried L3-L4": 4,
+    "via laser Top-L2": 2,
+    "via laser L2-L3": 2
+   }
+  }
+ },
+ "additions_by_origin": {
+  "tracks": {
+   "prep_transplant": 1482,
+   "source_restored": 102,
+   "new_routing": 383
+  },
+  "vias": {
+   "prep_transplant": 350,
+   "source_restored": 26,
+   "new_routing": 81
+  },
+  "tracks_mm": {
+   "prep_transplant": 737.79,
+   "source_restored": 36.13,
+   "new_routing": 155.91
+  }
+ },
+ "removals_by_origin": {
+  "tracks": {
+   "prep_transplant": 840,
+   "ja_rip": 90
+  },
+  "vias": {
+   "prep_transplant": 338,
+   "ja_rip": 53
+  }
+ },
+ "new_routing": {
+  "tracks": 383,
+  "vias": 81,
+  "mm": 155.91,
+  "vias_by_span": {
+   "buried L3-L4": 15,
+   "laser L2-L3": 11,
+   "laser L4-L5": 20,
+   "laser L5-Bottom": 20,
+   "laser Top-L2": 11,
+   "through": 4
+  },
+  "tracks_by_layer": {
+   "Bottom Layer": 132,
+   "L3-SIG": 47,
+   "L4-SIG": 102,
+   "Top Layer": 102
+  },
+  "by_net": {
+   "FLASH-D02": {
+    "tracks": 21,
+    "mm": 9.096,
+    "vias": 7,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 3,
+    "via laser L5-Bottom": 3
+   },
+   "JA1": {
+    "tracks": 54,
+    "mm": 15.483,
+    "vias": 5,
+    "via through": 1,
+    "via laser L4-L5": 2,
+    "via laser L5-Bottom": 2
+   },
+   "JA10": {
+    "tracks": 34,
+    "mm": 13.606,
+    "vias": 11,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 3,
+    "via laser L4-L5": 3,
+    "via laser L5-Bottom": 3
+   },
+   "JA2": {
+    "tracks": 22,
+    "mm": 9.889,
+    "vias": 9,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 3,
+    "via laser L5-Bottom": 3
+   },
+   "JA3": {
+    "tracks": 19,
+    "mm": 12.655,
+    "vias": 5,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1
+   },
+   "JA4": {
+    "tracks": 93,
+    "mm": 21.238,
+    "vias": 7,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1,
+    "via through": 2
+   },
+   "JA8": {
+    "tracks": 22,
+    "mm": 11.749,
+    "vias": 5,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1
+   },
+   "JA9": {
+    "tracks": 25,
+    "mm": 14.367,
+    "vias": 5,
+    "via laser Top-L2": 1,
+    "via laser L2-L3": 1,
+    "via buried L3-L4": 1,
+    "via laser L4-L5": 1,
+    "via laser L5-Bottom": 1
+   },
+   "PROG#": {
+    "tracks": 45,
+    "mm": 20.932,
+    "vias": 8,
+    "via laser Top-L2": 3,
+    "via laser L2-L3": 3,
+    "via buried L3-L4": 2
+   },
+   "UART_FT_TXD": {
+    "tracks": 48,
+    "mm": 26.891,
+    "vias": 19,
+    "via through": 1,
+    "via laser L4-L5": 5,
+    "via laser L5-Bottom": 5,
+    "via buried L3-L4": 4,
+    "via laser Top-L2": 2,
+    "via laser L2-L3": 2
+   }
+  }
+ }
+}

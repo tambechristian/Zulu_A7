@@ -1,0 +1,8 @@
+base_cur L2-GND raw comps 3 comps w/ net objs 1 main mm2 1436.93 objs 153 off-main 0 []
+base_cur L2-GND open0.125 comps 9 comps w/ net objs 1 main mm2 1422.82 objs 153 off-main 0 []
+base_cur L5-VCC3V3 raw comps 4 comps w/ net objs 1 main mm2 1413.21 objs 94 off-main 0 []
+base_cur L5-VCC3V3 open0.125 comps 15 comps w/ net objs 1 main mm2 1391.32 objs 94 off-main 0 []
+t3 L2-GND raw comps 5 comps w/ net objs 1 main mm2 1442.13 objs 170 off-main 0 []
+t3 L2-GND open0.125 comps 10 comps w/ net objs 1 main mm2 1426.82 objs 170 off-main 0 []
+t3 L5-VCC3V3 raw comps 4 comps w/ net objs 1 main mm2 1414.85 objs 98 off-main 0 []
+t3 L5-VCC3V3 open0.125 comps 14 comps w/ net objs 1 main mm2 1391.74 objs 98 off-main 0 []

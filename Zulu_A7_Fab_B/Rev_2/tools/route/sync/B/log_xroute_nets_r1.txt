@@ -1,0 +1,23 @@
+FLASH-D02      
+JA2            
+JA3            
+JA10           
+JA8            
+JA1            
+JA9            ripped JA1 JA10 JA2
+JA4            
+PROG#          
+JA1            
+JA10           
+JA2            ripped JA1 JA10 JA4 JA9
+JA1            
+JA10           
+JA4            
+JA9            
+routed 6 connections, failed 3; 40 vias, 143 tracks -> xroute_nets_r1.json
+OPEN JA3 1
+OPEN JA8 1
+OPEN JA9 1
+FAIL JA3 (nopath)
+FAIL JA8 (nopath)
+FAIL JA9 (nopath)

@@ -1,0 +1,11 @@
+transplant_ripja: remove 948 tracks + 400 vias, add 1613 tracks + 383 vias
+  dropped    1  ('addition', 'SOURCE-only JTAG/TMS trunk piece (dead once its SOURCE-only end is out)', 'outside_pmod_zone')
+  dropped    3  ('addition', 'SOURCE-only JTAG/TMS trunk piece (ends on SOURCE-only copper)', 'outside_pmod_zone')
+  dropped   12  ('addition', 'commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted', '')
+  dropped    7  ('addition', 'conflict with TARGET copper/pad that stays', 'pmod_zone')
+  dropped    3  ('addition', 'dangling after another drop (dead on TARGET)', 'outside_pmod_zone')
+  dropped   75  ('addition', 'dangling after another drop (dead on TARGET)', 'pmod_zone')
+  dropped    4  ('addition', 'ends on SOURCE-only copper', 'pmod_zone')
+  dropped   66  ('removal', 'SOURCE-only object (absent on TARGET): nothing to remove', '')
+  dropped    8  ('removal', 'commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted', '')
+log: {'mode': 'clean', 'rip_ja': True, 'through_in_pad_replaced': 2, 'conflict_drops': 7, 'dead_pass_1': 106, 'dead_pass_2': 0, 'pruned_additions': 79, 'pruned_target_objects_added_to_removals': 27, 'trimmed_tracks_added': 1, 'duplicate_additions_placed_once': 1, 'removals_by_reason': {'delta:3b1817d': 978, 'delta:06d9f27': 74, 'delta:3e4ee8c': 107, 'delta:427960e': 3, 'rip_ja': 157, 'through_in_new_smd_pad': 2, 'dead_after_transplant': 27}}

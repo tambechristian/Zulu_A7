@@ -1,0 +1,479 @@
+[
+ {
+  "ref": "U2",
+  "source_head": {
+   "ref": "U2",
+   "x": 30.5,
+   "y": 14.55,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "FT2232HQ-QFN64",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.9000007400000001
+  },
+  "target_now": {
+   "ref": "U2",
+   "x": 31.475,
+   "y": 13.6,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "FT2232HL-LQFP64",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "X4",
+  "source_head": {
+   "ref": "X4",
+   "x": 31.39,
+   "y": 4.9,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "JST-S2B-PH-SM4-TB",
+   "lib": "zulu_a7.PcbLib",
+   "height": 4.50000116
+  },
+  "target_now": {
+   "ref": "X4",
+   "x": 29.86,
+   "y": 5.3,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "JST-B2B-PH-SM4-TB",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "U10",
+  "source_head": {
+   "ref": "U10",
+   "x": 23.4851,
+   "y": 20.245,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "MSOP-8_3X3_P0.65",
+   "lib": "zulu_a7.PcbLib",
+   "height": 1.10000034
+  },
+  "target_now": {
+   "ref": "U10",
+   "x": 20.9851,
+   "y": 18.645,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "SPI-8_SOIC_150",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "U4",
+  "source_head": {
+   "ref": "U4",
+   "x": 43.5505,
+   "y": 21.705,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "SOIC-8_208MIL",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "U4",
+   "x": 43.5505,
+   "y": 21.305,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "SOIC-8_208MIL",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "R34",
+  "source_head": {
+   "ref": "R34",
+   "x": 11.42,
+   "y": 19.29,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "742C083",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "R34",
+   "x": 11.02,
+   "y": 19.29,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "742C083",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "C87",
+  "source_head": {
+   "ref": "C87",
+   "x": 44.2998,
+   "y": 22.2,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "C87",
+   "x": 44.2998,
+   "y": 22.4,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "C88",
+  "source_head": {
+   "ref": "C88",
+   "x": 47.3996,
+   "y": 22.2,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "C88",
+   "x": 47.3996,
+   "y": 22.4,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "C94",
+  "source_head": {
+   "ref": "C94",
+   "x": 50.4995,
+   "y": 22.2,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "C94",
+   "x": 50.4995,
+   "y": 22.4,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "C99",
+  "source_head": {
+   "ref": "C99",
+   "x": 53.5993,
+   "y": 22.2,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "C99",
+   "x": 53.5993,
+   "y": 22.4,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "C106",
+  "source_head": {
+   "ref": "C106",
+   "x": 41.1999,
+   "y": 22.2,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "C106",
+   "x": 41.1999,
+   "y": 22.4,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "C0603",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "R1",
+  "source_head": {
+   "ref": "R1",
+   "x": 58.2001,
+   "y": 4.0,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "742C043",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  },
+  "target_now": {
+   "ref": "R1",
+   "x": 58.2001,
+   "y": 3.7,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "742C043",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.0
+  }
+ },
+ {
+  "ref": "R119",
+  "source_head": {
+   "ref": "R119",
+   "x": 38.2499,
+   "y": 5.1701,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R120",
+  "source_head": {
+   "ref": "R120",
+   "x": 36.65,
+   "y": 5.1701,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R121",
+  "source_head": {
+   "ref": "R121",
+   "x": 35.5501,
+   "y": 4.9101,
+   "rot": 270.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R122",
+  "source_head": {
+   "ref": "R122",
+   "x": 34.2499,
+   "y": 5.1701,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R123",
+  "source_head": {
+   "ref": "R123",
+   "x": 32.8501,
+   "y": 5.1701,
+   "rot": 180.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R124",
+  "source_head": {
+   "ref": "R124",
+   "x": 31.5501,
+   "y": 4.9101,
+   "rot": 270.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R125",
+  "source_head": {
+   "ref": "R125",
+   "x": 30.75,
+   "y": 4.9101,
+   "rot": 270.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R126",
+  "source_head": {
+   "ref": "R126",
+   "x": 29.4501,
+   "y": 5.2101,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R127",
+  "source_head": {
+   "ref": "R127",
+   "x": 39.2,
+   "y": 13.6,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R128",
+  "source_head": {
+   "ref": "R128",
+   "x": 42.05,
+   "y": 12.95,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R129",
+  "source_head": {
+   "ref": "R129",
+   "x": 39.21,
+   "y": 14.36,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R130",
+  "source_head": {
+   "ref": "R130",
+   "x": 39.4,
+   "y": 14.92,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R131",
+  "source_head": {
+   "ref": "R131",
+   "x": 39.2,
+   "y": 15.8,
+   "rot": 0.0,
+   "side": "Top",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R132",
+  "source_head": {
+   "ref": "R132",
+   "x": 38.75,
+   "y": 16.3035,
+   "rot": 180.0,
+   "side": "Top",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R133",
+  "source_head": {
+   "ref": "R133",
+   "x": 45.6,
+   "y": 17.15,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ },
+ {
+  "ref": "R134",
+  "source_head": {
+   "ref": "R134",
+   "x": 46.8,
+   "y": 16.8,
+   "rot": 0.0,
+   "side": "Bottom",
+   "footprint": "R0201",
+   "lib": "zulu_a7.PcbLib",
+   "height": 0.25999948
+  },
+  "target_now": null
+ }
+]

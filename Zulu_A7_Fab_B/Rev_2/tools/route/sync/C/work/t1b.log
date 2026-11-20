@@ -1,0 +1,12 @@
+   0.0 start: 5 open on 5 nets: JA1:1 JA10:1 JA3:1 JA4:1 JA8:1
+   0.1   JA3: victims CFG-M2 CHAN14 CHAN15 CHAN19 CHAN21 CHAN27 CLK-12M-SHARED FPGA-INIT# FPGA-TDO FPGA-TMS JA9 LED0_R PMOD-2 PROG# (frozen or too many) - give up
+   0.1 round 1 JA3            open  open 5 -> 5
+   0.3   JA10: victims CFG-M2 CHAN19 CHAN28 FPGA-DONE FPGA-INIT# FPGA-TDI FPGA-TDO JA7 LED0_G PROG# RST# (frozen or too many) - give up
+   0.3 round 1 JA10           open  open 5 -> 5
+   2.2   JA8: victim CHAN19 not restored
+   2.2 round 1 JA8            open  open 5 -> 5
+   2.3   JA1: victims CFG-M2 CHAN19 CHAN27 CHAN28 CLK-12M-FPGA CLK-12M-SHARED FPGA-DONE FPGA-INIT# FPGA-TDO JA9 LED0_R PROG# (frozen or too many) - give up
+   2.3 round 1 JA1            open  open 5 -> 5
+   2.5   JA4: victims CFG-M2 CHAN19 CHAN2 CHAN5 CHAN6 CHAN7 CLK-12M-FT CLK-12M-SHARED FLASH-D03 FPGA-DONE FPGA-TDO FPGA-TMS LED1 PROG# UART_FT_TXD (frozen or too many) - give up
+   2.6 round 1 JA4            open  open 5 -> 5
+   2.6 end: 5 open on 5 nets: JA1:1 JA10:1 JA3:1 JA4:1 JA8:1

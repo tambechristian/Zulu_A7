@@ -1,0 +1,1 @@
+plan_B.json: 930 track + 391 via removals; native-key misses: 0 tracks, 0 vias; duplicate keys in plan: 0

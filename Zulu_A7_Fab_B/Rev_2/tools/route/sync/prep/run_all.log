@@ -1,0 +1,39 @@
+U3-2 net D0 -> SDRAM-D0
+U3-4 net D1 -> SDRAM-D1
+U3-5 net D2 -> SDRAM-D2
+U3-7 net D3 -> SDRAM-D3
+U3-8 net D4 -> SDRAM-D4
+U3-10 net D5 -> SDRAM-D5
+U3-11 net D6 -> SDRAM-D6
+U3-13 net D7 -> SDRAM-D7
+U3-42 net D8 -> SDRAM-D8
+U3-44 net D9 -> SDRAM-D9
+U3-45 net D10 -> SDRAM-D10
+U3-47 net D11 -> SDRAM-D11
+U3-48 net D12 -> SDRAM-D12
+U3-50 net D13 -> SDRAM-D13
+U3-51 net D14 -> SDRAM-D14
+U3-53 net D15 -> SDRAM-D15
+U4 moved rigidly by (+0.0000, +0.4000) mm, 8 pads, nets unchanged
+R34 moved rigidly by (+0.4000, +0.0000) mm, 8 pads, nets unchanged
+C87 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged
+C88 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged
+C94 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged
+C99 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged
+C106 moved rigidly by (+0.0000, -0.2000) mm, 2 pads, nets unchanged
+R1 moved rigidly by (+0.0000, +0.3000) mm, 4 pads, nets unchanged
+U2 swapped: 64 pads -> 65 pads; pad/net changes: [('EP', 'GND')]
+X4 swapped: 4 pads -> 4 pads; pad/net changes: []
+U10 swapped: 8 pads -> 8 pads; pad/net changes: []
+base_cur: 863 pads, 4917 tracks, 1961 vias
+base_new: 896 pads (-106 +139)
+netlist mismatches: 0 []
+netlist pins with no board pad: 0 []
+removed 1236 Counter({('3b1817d', 'T'): 720, ('3b1817d', 'V'): 288, ('3e4ee8c', 'T'): 90, ('06d9f27', 'T'): 69, ('3e4ee8c', 'V'): 44, ('06d9f27', 'V'): 14, ('04819de', 'V'): 5, ('04819de', 'T'): 3, ('427960e', 'T'): 2, ('427960e', 'V'): 1})
+added 2095 Counter({('3b1817d', 'T'): 1440, ('3b1817d', 'V'): 326, ('3e4ee8c', 'T'): 146, ('06d9f27', 'T'): 103, ('3e4ee8c', 'V'): 33, ('06d9f27', 'V'): 28, ('04819de', 'V'): 7, ('427960e', 'V'): 6, ('04819de', 'T'): 5, ('427960e', 'T'): 1})
+removals by target hits Counter({('hq_s2b_msop', 1): 978, ('body_u4', 1): 92, ('dq_series_r', 1): 74, ('hq_s2b_msop', 0): 30, ('body_u4', 0): 27, ('dq_series_r', 0): 9, ('vip_r108_04819de', 0): 8, ('antenna_usb5v0', 1): 8, ('body_r34', 1): 6, ('u4_via', 1): 3, ('body_r1', 1): 1})
+adds already on target Counter()
+clean        plan {'remove_tracks': 897, 'remove_vias': 362, 'add_tracks': 1489, 'add_vias': 354} open 10 ['CHAN2', 'CHAN5', 'CHAN9', 'CLK-12M-FPGA', 'FLASH-D02', 'FPGA-INIT#', 'FPGA-TMS', 'GND', 'PROG#', 'UART_FT_TXD'] drc_new 0 thruVIP 0 dead {'tracks': 0, 'vias': 0} usb mismatch 0.0000
+stubs        plan {'remove_tracks': 829, 'remove_vias': 335, 'add_tracks': 1583, 'add_vias': 377} open 10 ['CHAN2', 'CHAN5', 'CHAN9', 'CLK-12M-FPGA', 'FLASH-D02', 'FPGA-INIT#', 'FPGA-TMS', 'GND', 'PROG#', 'UART_FT_TXD'] drc_new 0 thruVIP 0 dead {'tracks': 174, 'vias': 53} usb mismatch 0.0000
+ripja        plan {'remove_tracks': 948, 'remove_vias': 400, 'add_tracks': 1613, 'add_vias': 383} open 10 ['FLASH-D02', 'JA1', 'JA10', 'JA2', 'JA3', 'JA4', 'JA7', 'JA8', 'JA9', 'PROG#'] drc_new 0 thruVIP 0 dead {'tracks': 0, 'vias': 0} usb mismatch 0.0000
+stubs_ripja  plan {'remove_tracks': 928, 'remove_vias': 393, 'add_tracks': 1673, 'add_vias': 396} open 10 ['FLASH-D02', 'JA1', 'JA10', 'JA2', 'JA3', 'JA4', 'JA7', 'JA8', 'JA9', 'PROG#'] drc_new 0 thruVIP 0 dead {'tracks': 81, 'vias': 20} usb mismatch 0.0000

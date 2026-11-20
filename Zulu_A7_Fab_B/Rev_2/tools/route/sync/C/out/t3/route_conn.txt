@@ -1,0 +1,2 @@
+open connections 2 on 2 nets
+GND 1, CHAN5 1

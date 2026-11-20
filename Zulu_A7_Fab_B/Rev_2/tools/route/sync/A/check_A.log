@@ -1,0 +1,156 @@
+{
+ "plan": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_Fab_B\\Rev_2\\tools\\route\\sync\\A\\plan_A.json",
+ "emit_problems_base_cur": [],
+ "emit_problems_base_new": [],
+ "dup_tracks_result": 23,
+ "dup_vias_result": 0,
+ "zero_len_tracks_plan": 0,
+ "route_check_sdramdn": [
+  "plan: 1576 tracks, 404 vias, 839 removed; board then: 5654 tracks, 2022 vias",
+  "violations: 0",
+  "open connections after the plan: 0 on 0 nets",
+  "PASS"
+ ],
+ "route_check_sdramdn_pass": true,
+ "route_check_official": [
+  "plan: 1576 tracks, 404 vias, 839 removed; board then: 5654 tracks, 2022 vias",
+  "violations: 0",
+  "open connections after the plan: 0 on 0 nets",
+  "PASS"
+ ],
+ "prune_stubs": [
+  "0 tracks, 0 vias dead; open after prune: 0 {}"
+ ],
+ "route_conn": [
+  "open connections 0 on 0 nets",
+  ""
+ ],
+ "widthcheck": [
+  "width violations 0 of 1576 tracks; classes {'PWR_SWITCH': 6, 'PWR_RAILS': 10}"
+ ],
+ "dead_after": {
+  "tracks": 0,
+  "vias": 0
+ },
+ "open_total": 0,
+ "open_by_net": {},
+ "drc_counts": {
+  "base_cur": 37,
+  "result": 34,
+  "new_vs_base_cur": 0,
+  "fixed_vs_base_cur": 3
+ },
+ "drc_new": [],
+ "through_via_in_smd_pad": [],
+ "uvia_in_smd_pad_total": 133,
+ "uvia_in_smd_pad_new_count": 68,
+ "new_through_vias": [
+  "BTN 39.000,19.750 Top>Bot 0.35/0.20",
+  "VBATT 17.000,5.425 Top>Bot 0.35/0.20",
+  "USB5V0 25.875,21.725 Top>Bot 0.35/0.20",
+  "UART_FT_RXD 32.900,16.325 Top>Bot 0.35/0.20",
+  "UART_FT_DTR# 37.300,13.800 Top>Bot 0.35/0.20",
+  "UART_FT_DTR# 44.025,11.650 Top>Bot 0.35/0.20",
+  "TMS 28.850,8.900 Top>Bot 0.35/0.20",
+  "TDO 27.450,8.225 Top>Bot 0.35/0.20",
+  "PROG# 33.700,2.325 Top>Bot 0.35/0.20",
+  "PROG# 38.500,2.150 Top>Bot 0.35/0.20",
+  "N$LD0B 23.300,9.950 Top>Bot 0.35/0.20",
+  "FT-VPHY 24.675,11.750 Top>Bot 0.35/0.20",
+  "FT-PWREN# 43.725,12.075 Top>Bot 0.35/0.20",
+  "EE-CLK 27.625,18.425 Top>Bot 0.35/0.20",
+  "EE-CLK 24.400,19.900 Top>Bot 0.35/0.20",
+  "SDRAM-D8 38.500,13.600 Top>Bot 0.35/0.20",
+  "SDRAM-D15 38.350,16.725 Top>Bot 0.35/0.20",
+  "SDRAM-D14 36.125,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D13 35.625,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D12 34.025,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D11 38.500,14.950 Top>Bot 0.35/0.20",
+  "SDRAM-D11 33.250,16.650 Top>Bot 0.35/0.20",
+  "SDRAM-D10 38.500,14.500 Top>Bot 0.35/0.20"
+ ],
+ "usb": {
+  "P_mm": 12.1863,
+  "N_mm": 12.1863,
+  "mismatch_mm": 0.0,
+  "layers": [
+   "Top Layer"
+  ],
+  "widths": [
+   0.15
+  ],
+  "vias": 0,
+  "segments": [
+   11,
+   23
+  ],
+  "coupled_mm_tol0.005": 9.151,
+  "coupled_mm_tol0.010": 9.552,
+  "coupled_mm_tol0.030": 10.389,
+  "min_gap_mm": 0.15,
+  "identical_to_after_transplant": true
+ },
+ "pmod_touched": {
+  "removed_tracks": [],
+  "removed_vias": [],
+  "added_tracks": [],
+  "added_vias": [],
+  "n": 0
+ },
+ "counts": {
+  "remove_tracks": 839,
+  "remove_vias": 340,
+  "add_tracks": 1576,
+  "add_vias": 404,
+  "vias_added_by_type": {
+   "buried L3-L4": 68,
+   "laser L2-L3": 79,
+   "laser L4-L5": 62,
+   "laser L5-Bottom": 69,
+   "laser Top-L2": 103,
+   "through": 23
+  },
+  "vias_removed_by_type": {
+   "buried L3-L4": 68,
+   "laser L2-L3": 79,
+   "laser L4-L5": 31,
+   "laser L5-Bottom": 34,
+   "laser Top-L2": 80,
+   "through": 48
+  },
+  "tracks_added_by_layer": {
+   "Bottom Layer": 255,
+   "L3-SIG": 366,
+   "L4-SIG": 364,
+   "Top Layer": 591
+  },
+  "tracks_removed_by_layer": {
+   "Bottom Layer": 179,
+   "L3-SIG": 143,
+   "L4-SIG": 161,
+   "Top Layer": 356
+  },
+  "added_track_mm": 802.32,
+  "removed_track_mm": 920.62,
+  "added_track_mm_excl_readded": 802.32,
+  "result_tracks": 5654,
+  "result_vias": 2025,
+  "result_pads": 896,
+  "result_via_types": {
+   "buried L3-L4": 403,
+   "laser L2-L3": 307,
+   "laser L4-L5": 312,
+   "laser L5-Bottom": 330,
+   "laser Top-L2": 344,
+   "through": 329
+  }
+ }
+}
+planeweb_base_cur L2-GND raw comps 3 w/objs 1 main mm2 1436.93 objs 153 off-main []
+planeweb_base_cur L2-GND open0.125 comps 9 w/objs 1 main mm2 1422.82 objs 153 off-main []
+planeweb_base_cur L5-VCC3V3 raw comps 4 w/objs 1 main mm2 1413.21 objs 94 off-main []
+planeweb_base_cur L5-VCC3V3 open0.125 comps 15 w/objs 1 main mm2 1391.32 objs 94 off-main []
+planeweb_result L2-GND raw comps 5 w/objs 1 main mm2 1442.28 objs 171 off-main []
+planeweb_result L2-GND open0.125 comps 9 w/objs 1 main mm2 1428.22 objs 171 off-main []
+planeweb_result L5-VCC3V3 raw comps 4 w/objs 1 main mm2 1415.1 objs 98 off-main []
+planeweb_result L5-VCC3V3 open0.125 comps 13 w/objs 1 main mm2 1393.25 objs 98 off-main []

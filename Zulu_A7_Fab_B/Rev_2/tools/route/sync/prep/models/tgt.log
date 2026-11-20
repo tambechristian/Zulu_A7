@@ -1,0 +1,33 @@
+09:43:07: Warning: Layer 'Internal Plane 10' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 10' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 11' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 11' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 12' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 12' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 13' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 13' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 14' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 14' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 15' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 15' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 16' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 16' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 3' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 3' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 4' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 4' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 5' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 5' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 6' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 6' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 7' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 7' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 8' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 8' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 9' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'Internal Plane 9' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'L2-GND 2' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'L2-GND 2' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'L5-VCC3V3 2' could not be mapped and will be skipped.
+09:43:07: Warning: Layer 'L5-VCC3V3 2' could not be mapped and will be skipped.
+pads 863, tracks 4917, vias 1961, planes {'L2-GND': 'GND', 'L5-VCC3V3': 'VCC3V3'}

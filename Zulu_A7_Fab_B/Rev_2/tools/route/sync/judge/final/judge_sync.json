@@ -1,0 +1,1610 @@
+{
+ "plan": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_Fab_B/Rev_2/tools/route/sync/final_plan.json",
+ "md5": "19f80aa8877db45fa76450e7a38792fc",
+ "moves": 0,
+ "G2_route_check_official": {
+  "rc": 0,
+  "tail": [
+   "plan: 1576 tracks, 404 vias, 839 removed; board then: 5654 tracks, 2022 vias",
+   "violations: 0",
+   "open connections after the plan: 0 on 0 nets",
+   "PASS"
+  ]
+ },
+ "G3_widthcheck": {
+  "rc": 0,
+  "tail": [
+   "width violations 0 of 1576 tracks; classes {'PWR_SWITCH': 6, 'PWR_RAILS': 10}"
+  ]
+ },
+ "G1_native_keys": {
+  "rc": 0,
+  "out": [
+   "final_plan.json: 839 track + 340 via removals; native-key misses: 0 tracks, 0 vias; duplicate keys in plan: 0"
+  ]
+ },
+ "G1_emit": {
+  "judge_base_cur": [],
+  "judge_base_new": [],
+  "indep_base_cur": [],
+  "indep_base_new": [],
+  "kill_tracks": 839,
+  "kill_vias": 340,
+  "same_kill_sets_cur_new": true
+ },
+ "G1_plan_dup": {
+  "remove_tracks_dup3": 0,
+  "remove_vias_dup3": 0,
+  "add_tracks_dup3": 0,
+  "add_vias_dup3": 0,
+  "zero_len_add": 0,
+  "short_add_lt_0.01": 0
+ },
+ "G4_prune_official": [
+  "0 tracks, 0 vias dead; open after prune: 0 {}"
+ ],
+ "G4_route_conn_official": [
+  "open connections 0 on 0 nets"
+ ],
+ "G5_judge_official": {
+  "emit_problems": 0,
+  "open_exact": 0,
+  "drc_counts": {
+   "unmoved_base": 37,
+   "base_moved": 275,
+   "result": 34,
+   "new_vs_unmoved": 0,
+   "fixed_vs_unmoved": 3
+  },
+  "drc_new": [],
+  "through_via_in_smd_pad": [],
+  "uvia_in_smd_pad_total": 133,
+  "uvia_in_smd_pad_new": 68,
+  "dup_tracks_result": 23,
+  "dup_vias_result": 0
+ },
+ "G2_route_check_sdram": {
+  "rc": 0,
+  "tail": [
+   "plan: 1576 tracks, 404 vias, 839 removed; board then: 5654 tracks, 2022 vias",
+   "violations: 0",
+   "open connections after the plan: 0 on 0 nets",
+   "PASS"
+  ]
+ },
+ "G4_dead": {
+  "tracks": 0,
+  "vias": 0
+ },
+ "G4_open": {
+  "total": 0,
+  "by_net": {}
+ },
+ "G5_drc_sdram": {
+  "base_cur": 37,
+  "result": 34,
+  "new": 0,
+  "new_list": [],
+  "fixed": 3
+ },
+ "dup_new_vs_base": {
+  "tracks": 0,
+  "vias": 0
+ },
+ "G6_via_in_pad": {
+  "through_overlap": [],
+  "through_touch_within_1um": [
+   [
+    "LD4_A 3.700,13.825 Top>Bot 0.35/0.20",
+    "R108-2(LD4_A)",
+    -0.0
+   ],
+   [
+    "GND 2.325,9.825 Top>Bot 0.35/0.20",
+    "C147-1(GND)",
+    -0.0
+   ],
+   [
+    "GND 4.600,18.425 Top>Bot 0.35/0.20",
+    "C149-1(GND)",
+    -0.0
+   ],
+   [
+    "GND 3.725,5.475 Top>Bot 0.35/0.20",
+    "C151-1(GND)",
+    -0.0
+   ],
+   [
+    "GND 7.300,4.675 Top>Bot 0.35/0.20",
+    "C160-1(GND)",
+    0.0
+   ],
+   [
+    "GND 4.800,16.600 Top>Bot 0.35/0.20",
+    "C161-1(GND)",
+    0.0
+   ],
+   [
+    "GND 4.750,4.600 Top>Bot 0.35/0.20",
+    "R102-2(GND)",
+    -0.0
+   ],
+   [
+    "GND 2.725,11.725 Top>Bot 0.35/0.20",
+    "R103-2(GND)",
+    0.0
+   ],
+   [
+    "GND 6.775,5.950 Top>Bot 0.35/0.20",
+    "R114-2(GND)",
+    -0.0
+   ],
+   [
+    "GND 6.775,5.950 Top>Bot 0.35/0.20",
+    "X3-G2(GND)",
+    -0.0
+   ],
+   [
+    "VCC3V3 58.200,3.500 Top>Bot 0.35/0.20",
+    "R1-3(VCC3V3)",
+    -0.0001
+   ],
+   [
+    "VCC3V3 58.200,3.500 Top>Bot 0.35/0.20",
+    "R1-4(VCC3V3)",
+    -0.0
+   ],
+   [
+    "EE-CLK 27.625,18.425 Top>Bot 0.35/0.20",
+    "U2-62(EE-CLK)",
+    -0.0
+   ]
+  ],
+  "through_judge_hits": [],
+  "uvia_in_smd_total": 133,
+  "uvia_in_smd_new": 68,
+  "uvia_in_smd_new_list": [
+   [
+    "VCC3V3 25.575,19.075 L5->Bot 0.30/0.15",
+    [
+     "U10-8(VCC3V3)"
+    ]
+   ],
+   [
+    "RST# 58.650,5.250 L5->Bot 0.30/0.15",
+    [
+     "R1-2(RST#)"
+    ]
+   ],
+   [
+    "EE-CS 21.200,19.200 L5->Bot 0.30/0.15",
+    [
+     "U10-1(EE-CS)"
+    ]
+   ],
+   [
+    "GND 43.175,18.125 Top>L2- 0.30/0.15",
+    [
+     "U4-4(GND)"
+    ]
+   ],
+   [
+    "GND 43.850,17.500 Top>L2- 0.30/0.15",
+    [
+     "U4-4(GND)"
+    ]
+   ],
+   [
+    "VCC3V3 10.825,18.050 L5->Bot 0.30/0.15",
+    [
+     "R34-8(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 13.225,18.050 L5->Bot 0.30/0.15",
+    [
+     "R34-5(VCC3V3)"
+    ]
+   ],
+   [
+    "GND 51.350,22.100 L5->Bot 0.30/0.15",
+    [
+     "C94-2(GND)"
+    ]
+   ],
+   [
+    "CLK-12M-SHARED 42.725,18.025 Top>L2- 0.30/0.15",
+    [
+     "Q1-3(CLK-12M-SHARED)"
+    ]
+   ],
+   [
+    "VCC3V3 30.825,18.675 Top>L2- 0.30/0.15",
+    [
+     "U2-56(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 19.300,18.650 L5->Bot 0.30/0.15",
+    [
+     "R19-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 28.625,18.700 L5->Bot 0.30/0.15",
+    [
+     "R80-1(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 19.475,20.000 L5->Bot 0.30/0.15",
+    [
+     "R96-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 18.050,19.250 L5->Bot 0.30/0.15",
+    [
+     "R97-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 19.250,19.450 L5->Bot 0.30/0.15",
+    [
+     "R98-2(VCC3V3)"
+    ]
+   ],
+   [
+    "VCC3V3 35.075,16.825 L5->Bot 0.30/0.15",
+    [
+     "U3-49(VCC3V3)"
+    ]
+   ],
+   [
+    "UART_FT_RTS# 34.625,14.375 Top>L2- 0.30/0.15",
+    [
+     "U2-40(UART_FT_RTS#)"
+    ]
+   ],
+   [
+    "PROG# 59.875,15.550 Top>L2- 0.30/0.15",
+    [
+     "R4-1(PROG#)"
+    ]
+   ],
+   [
+    "N$LD0B 29.950,18.725 L5->Bot 0.30/0.15",
+    [
+     "R80-2(N$LD0B)"
+    ]
+   ],
+   [
+    "LED1 50.475,10.525 Top>L2- 0.30/0.15",
+    [
+     "U1-N18(LED1)"
+    ]
+   ],
+   [
+    "LED0_R 50.025,9.825 Top>L2- 0.30/0.15",
+    [
+     "U1-P17(LED0_R)"
+    ]
+   ],
+   [
+    "LED0_G 50.300,9.375 Top>L2- 0.30/0.15",
+    [
+     "U1-R18(LED0_G)"
+    ]
+   ],
+   [
+    "LED0_B 49.875,10.500 Top>L2- 0.30/0.15",
+    [
+     "U1-N17(LED0_B)"
+    ]
+   ],
+   [
+    "GND 25.375,21.500 L5->Bot 0.30/0.15",
+    [
+     "U10-5(GND)"
+    ]
+   ],
+   [
+    "GND 51.525,10.925 L5->Bot 0.30/0.15",
+    [
+     "C111-2(GND)"
+    ]
+   ],
+   [
+    "GND 17.950,16.750 Top>L2- 0.30/0.15",
+    [
+     "C158-1(GND)"
+    ]
+   ],
+   [
+    "GND 26.200,20.150 Top>L2- 0.30/0.15",
+    [
+     "C155-1(GND)"
+    ]
+   ],
+   [
+    "GND 32.390,7.750 Top>L2- 0.30/0.15",
+    [
+     "X4-2(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,18.300 Top>L2- 0.30/0.15",
+    [
+     "U2-1(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,16.300 Top>L2- 0.30/0.15",
+    [
+     "U2-5(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,13.800 Top>L2- 0.30/0.15",
+    [
+     "U2-10(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,13.300 Top>L2- 0.30/0.15",
+    [
+     "U2-11(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,12.300 Top>L2- 0.30/0.15",
+    [
+     "U2-13(GND)"
+    ]
+   ],
+   [
+    "GND 26.075,11.300 Top>L2- 0.30/0.15",
+    [
+     "U2-15(GND)"
+    ]
+   ],
+   [
+    "GND 30.750,10.125 Top>L2- 0.30/0.15",
+    [
+     "U2-25(GND)"
+    ]
+   ],
+   [
+    "GND 34.925,11.800 Top>L2- 0.30/0.15",
+    [
+     "U2-35(GND)"
+    ]
+   ],
+   [
+    "GND 34.925,17.800 Top>L2- 0.30/0.15",
+    [
+     "U2-47(GND)"
+    ]
+   ],
+   [
+    "GND 33.250,18.975 Top>L2- 0.30/0.15",
+    [
+     "U2-51(GND)"
+    ]
+   ],
+   [
+    "GND 31.500,15.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 31.500,14.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 31.500,13.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 30.500,15.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 30.500,14.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 30.500,13.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 29.500,15.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 29.500,14.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 29.500,13.550 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "FT-VPHY 25.850,16.700 Top>L2- 0.30/0.15",
+    [
+     "U2-4(FT-VPHY)"
+    ]
+   ],
+   [
+    "FT-REF 25.775,15.725 Top>L2- 0.30/0.15",
+    [
+     "U2-6(FT-REF)"
+    ]
+   ],
+   [
+    "FT-PWREN# 50.950,9.850 Top>L2- 0.30/0.15",
+    [
+     "U1-P19(FT-PWREN#)"
+    ]
+   ],
+   [
+    "FPGA-DONE 47.500,8.425 Top>L2- 0.30/0.15",
+    [
+     "U1-U12(FPGA-DONE)"
+    ]
+   ],
+   [
+    "EE-DATA 28.250,18.825 Top>L2- 0.30/0.15",
+    [
+     "U2-61(EE-DATA)"
+    ]
+   ],
+   [
+    "EE-DATA 20.725,20.425 L5->Bot 0.30/0.15",
+    [
+     "U10-3(EE-DATA)"
+    ]
+   ],
+   [
+    "EE-DATA 18.125,18.825 L5->Bot 0.30/0.15",
+    [
+     "R101-2(EE-DATA)"
+    ]
+   ],
+   [
+    "EE-CS 27.175,19.025 Top>L2- 0.30/0.15",
+    [
+     "U2-63(EE-CS)"
+    ]
+   ],
+   [
+    "CHAN28 49.750,8.750 Top>L2- 0.30/0.15",
+    [
+     "U1-T17(CHAN28)"
+    ]
+   ],
+   [
+    "CHAN26 47.775,7.950 Top>L2- 0.30/0.15",
+    [
+     "U1-V13(CHAN26)"
+    ]
+   ],
+   [
+    "CHAN21 48.975,8.375 Top>L2- 0.30/0.15",
+    [
+     "U1-U15(CHAN21)"
+    ]
+   ],
+   [
+    "SDRAM-D9 41.750,12.950 L5->Bot 0.30/0.15",
+    [
+     "R128-1(SDRAM-D9)"
+    ]
+   ],
+   [
+    "SDRAM-D15 46.500,16.800 L5->Bot 0.30/0.15",
+    [
+     "R134-1(SDRAM-D15)"
+    ]
+   ],
+   [
+    "SDRAM-D14 45.300,17.150 L5->Bot 0.30/0.15",
+    [
+     "R133-1(SDRAM-D14)"
+    ]
+   ],
+   [
+    "SDRAM-D12 38.900,15.800 Top>L2- 0.30/0.15",
+    [
+     "R131-1(SDRAM-D12)"
+    ]
+   ],
+   [
+    "D9 42.350,12.950 L5->Bot 0.30/0.15",
+    [
+     "R128-2(D9)"
+    ]
+   ],
+   [
+    "D13 38.450,16.303 Top>L2- 0.30/0.15",
+    [
+     "R132-2(D13)"
+    ]
+   ],
+   [
+    "D12 39.490,15.810 Top>L2- 0.30/0.15",
+    [
+     "R131-2(D12)"
+    ]
+   ],
+   [
+    "GND 32.350,16.575 Top>L2- 0.30/0.15",
+    [
+     "U2-EP(GND)"
+    ]
+   ],
+   [
+    "GND 32.475,9.025 Top>L2- 0.30/0.15",
+    [
+     "X4-2(GND)"
+    ]
+   ],
+   [
+    "GND 50.975,11.370 Top>L2- 0.30/0.15",
+    [
+     "U1-L19(GND)"
+    ]
+   ]
+  ]
+ },
+ "G7_planeweb": {
+  "L2-GND": {
+   "raw": {
+    "components": 5,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1442.28,
+    "objects": 171,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 9,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1428.22,
+    "objects": 171,
+    "objects_off_main": []
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1415.1,
+    "objects": 98,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 13,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1393.25,
+    "objects": 98,
+    "objects_off_main": []
+   }
+  }
+ },
+ "G8_usb": {
+  "P_mm": 12.1863,
+  "N_mm": 12.1863,
+  "mismatch_mm": 0.0,
+  "layers": [
+   "Top Layer"
+  ],
+  "widths": [
+   0.15
+  ],
+  "vias": 0,
+  "segments": [
+   11,
+   23
+  ],
+  "coupled_mm_tol0.005": 9.151,
+  "coupled_mm_tol0.010": 9.552,
+  "coupled_mm_tol0.030": 10.389,
+  "min_gap_mm": 0.15,
+  "geom_equals_source_head": true
+ },
+ "G9_dq": {
+  "ok": true,
+  "copper_identical_all": true,
+  "nets": {
+   "D0": {
+    "pads": [
+     "R119-2",
+     "U1-V8"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D0": {
+    "pads": [
+     "R119-1",
+     "U3-2"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D1": {
+    "pads": [
+     "R120-2",
+     "U1-V7"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D1": {
+    "pads": [
+     "R120-1",
+     "U3-4"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D2": {
+    "pads": [
+     "R121-2",
+     "U1-W7"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D2": {
+    "pads": [
+     "R121-1",
+     "U3-5"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D3": {
+    "pads": [
+     "R122-2",
+     "U1-W6"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D3": {
+    "pads": [
+     "R122-1",
+     "U3-7"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D4": {
+    "pads": [
+     "R123-2",
+     "U1-U5"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D4": {
+    "pads": [
+     "R123-1",
+     "U3-8"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D5": {
+    "pads": [
+     "R124-2",
+     "U1-W5"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D5": {
+    "pads": [
+     "R124-1",
+     "U3-10"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D6": {
+    "pads": [
+     "R125-2",
+     "U1-V5"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D6": {
+    "pads": [
+     "R125-1",
+     "U3-11"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D7": {
+    "pads": [
+     "R126-2",
+     "U1-U4"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D7": {
+    "pads": [
+     "R126-1",
+     "U3-13"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D8": {
+    "pads": [
+     "R127-2",
+     "U1-L1"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D8": {
+    "pads": [
+     "R127-1",
+     "U3-42"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D9": {
+    "pads": [
+     "R128-2",
+     "U1-K3"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D9": {
+    "pads": [
+     "R128-1",
+     "U3-44"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D10": {
+    "pads": [
+     "R129-2",
+     "U1-K2"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D10": {
+    "pads": [
+     "R129-1",
+     "U3-45"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D11": {
+    "pads": [
+     "R130-2",
+     "U1-J1"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D11": {
+    "pads": [
+     "R130-1",
+     "U3-47"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D12": {
+    "pads": [
+     "R131-2",
+     "U1-J3"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D12": {
+    "pads": [
+     "R131-1",
+     "U3-48"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D13": {
+    "pads": [
+     "R132-2",
+     "U1-H1"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D13": {
+    "pads": [
+     "R132-1",
+     "U3-50"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D14": {
+    "pads": [
+     "R133-2",
+     "U1-A14"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D14": {
+    "pads": [
+     "R133-1",
+     "U3-51"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "D15": {
+    "pads": [
+     "R134-2",
+     "U1-A15"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   },
+   "SDRAM-D15": {
+    "pads": [
+     "R134-1",
+     "U3-53"
+    ],
+    "islands": 1,
+    "pads_eq_source": true,
+    "pad_pos_eq_source": true,
+    "copper_eq_source": true,
+    "copper_only_result": 0,
+    "copper_only_source": 0,
+    "shape_ok": true
+   }
+  }
+ },
+ "pmod": {
+  "nets_touched": [],
+  "removed_tracks": 0,
+  "removed_vias": 0,
+  "added_tracks": 0,
+  "added_vias": 0,
+  "result_copper_equals_base_cur": true,
+  "J1_R26_R33_pads_unchanged": true,
+  "JP3_JP4_pads_unchanged": true
+ },
+ "counts": {
+  "remove_tracks": 839,
+  "remove_vias": 340,
+  "add_tracks": 1576,
+  "add_vias": 404,
+  "add_track_mm": 802.32,
+  "remove_track_mm": 920.62,
+  "vias_added_by_type": {
+   "buried L3-L4": 68,
+   "laser L2-L3": 79,
+   "laser L4-L5": 62,
+   "laser L5-Bottom": 69,
+   "laser Top-L2": 103,
+   "through": 23
+  },
+  "vias_removed_by_type": {
+   "buried L3-L4": 68,
+   "laser L2-L3": 79,
+   "laser L4-L5": 31,
+   "laser L5-Bottom": 34,
+   "laser Top-L2": 80,
+   "through": 48
+  },
+  "added_tracks_by_layer": {
+   "Bottom Layer": 255,
+   "Top Layer": 591,
+   "L4-SIG": 364,
+   "L3-SIG": 366
+  },
+  "removed_tracks_by_layer": {
+   "Bottom Layer": 179,
+   "Top Layer": 356,
+   "L4-SIG": 161,
+   "L3-SIG": 143
+  },
+  "vs_clean_transplant": {
+   "extra_removals_beyond_transplant": 4,
+   "extra_removal_track_mm": 0.04,
+   "transplant_removals_kept_on_board": 84,
+   "adds_not_in_transplant": 223,
+   "transplant_adds_not_in_plan": 86,
+   "add_vias_beyond_transplant": 50,
+   "add_mm_beyond_transplant": 61.99
+  },
+  "extra_removal_nets": {
+   "N$LD0G": 4
+  },
+  "result": {
+   "tracks": 5654,
+   "vias": 2025,
+   "track_mm": 5137.29
+  },
+  "base_cur": {
+   "tracks": 4917,
+   "vias": 1961,
+   "track_mm": 5255.58
+  }
+ },
+ "nets_differing_from_clean_after_transplant": [
+  "CHAN2",
+  "CHAN5",
+  "CHAN9",
+  "CLK-12M-FPGA",
+  "FLASH-D02",
+  "FPGA-INIT#",
+  "FPGA-TMS",
+  "GND",
+  "N$LD0G",
+  "PROG#",
+  "TMS",
+  "UART_FT_TXD"
+ ],
+ "altium": {
+  "plane_net_track_removals": {
+   "GND Bottom Layer": 10,
+   "GND Top Layer": 36,
+   "VCC3V3 Bottom Layer": 19,
+   "VCC3V3 Top Layer": 18
+  },
+  "plane_net_via_removals": {
+   "GND buried L3-L4": 1,
+   "GND laser L2-L3": 2,
+   "GND laser L4-L5": 1,
+   "GND laser L5-Bottom": 1,
+   "GND laser Top-L2": 5,
+   "GND through": 10,
+   "VCC3V3 buried L3-L4": 1,
+   "VCC3V3 laser L2-L3": 1,
+   "VCC3V3 laser L4-L5": 1,
+   "VCC3V3 laser L5-Bottom": 5,
+   "VCC3V3 laser Top-L2": 1,
+   "VCC3V3 through": 6
+  },
+  "plane_net_via_additions": {
+   "GND buried L3-L4": 6,
+   "GND laser L2-L3": 6,
+   "GND laser L4-L5": 6,
+   "GND laser L5-Bottom": 6,
+   "GND laser Top-L2": 29,
+   "VCC3V3 buried L3-L4": 5,
+   "VCC3V3 laser L2-L3": 5,
+   "VCC3V3 laser L4-L5": 5,
+   "VCC3V3 laser L5-Bottom": 11,
+   "VCC3V3 laser Top-L2": 6
+  },
+  "vias_through_L2_or_L5_removed": 272,
+  "vias_through_L2_or_L5_added": 336,
+  "laser_vias_added_to_mark": 313,
+  "laser_classes": {
+   "0.3/0.15 L2-GND>L3-SIG": 79,
+   "0.3/0.15 L4-SIG>L5-VCC3V3": 62,
+   "0.3/0.15 L5-VCC3V3>Bottom Layer": 69,
+   "0.3/0.15 Top Layer>L2-GND": 103
+  },
+  "laser_not_markable_by_mark_microvias": [],
+  "buried_added": {
+   "0.27/0.15": 68
+  },
+  "through_added": {
+   "0.35/0.2": 23
+  },
+  "new_vias_on_kept_via_points": [
+   [
+    "FLASH-D02 50.650,13.650 L3->L4- 0.27/0.15",
+    [
+     "FLASH-D02 50.650,13.650 L2->L3- 0.30/0.15",
+     "FLASH-D02 50.650,13.650 Top>L2- 0.30/0.15"
+    ]
+   ]
+  ],
+  "emit_copper_guard_via": "GND 43.850,17.500 Top>L2- 0.30/0.15",
+  "emit_copper_guard_blocked_by": [],
+  "transient_violations_after_placement_before_emit": 238,
+  "transient_by_part": {
+   "X4": 27,
+   "U4": 22,
+   "R130": 1,
+   "R129": 2,
+   "R127": 2,
+   "U2": 144,
+   "U3": 16,
+   "R123": 3,
+   "R126": 2,
+   "R125": 2,
+   "R124": 2,
+   "R34": 3,
+   "U10": 11,
+   "R1": 1
+  },
+  "transient_track_objects_not_removed": [],
+  "moved_part_hulls": {
+   "U2": {
+    "side": "Top Layer",
+    "hull": [
+     25.7,
+     9.75,
+     35.3,
+     19.35
+    ],
+    "kept_tracks": 4,
+    "kept_vias": 8,
+    "added_tracks": 186,
+    "added_vias": 42,
+    "transient_violations": 144
+   },
+   "X4": {
+    "side": "Top Layer",
+    "hull": [
+     27.29,
+     0.3,
+     35.49,
+     9.5
+    ],
+    "kept_tracks": 1,
+    "kept_vias": 12,
+    "added_tracks": 41,
+    "added_vias": 7,
+    "transient_violations": 27
+   },
+   "U10": {
+    "side": "Bottom Layer",
+    "hull": [
+     20.56,
+     19.07,
+     26.41,
+     21.42
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 2,
+    "added_tracks": 6,
+    "added_vias": 3,
+    "transient_violations": 11
+   },
+   "U4": {
+    "side": "Top Layer",
+    "hull": [
+     43.095,
+     17.615,
+     51.905,
+     21.985
+    ],
+    "kept_tracks": 55,
+    "kept_vias": 24,
+    "added_tracks": 17,
+    "added_vias": 2,
+    "transient_violations": 22
+   },
+   "R34": {
+    "side": "Bottom Layer",
+    "hull": [
+     10.77,
+     17.94,
+     13.67,
+     20.64
+    ],
+    "kept_tracks": 7,
+    "kept_vias": 4,
+    "added_tracks": 10,
+    "added_vias": 2,
+    "transient_violations": 3
+   },
+   "C87": {
+    "side": "Bottom Layer",
+    "hull": [
+     42.9,
+     21.7,
+     45.7,
+     22.7
+    ],
+    "kept_tracks": 3,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "C88": {
+    "side": "Bottom Layer",
+    "hull": [
+     46.0,
+     21.7,
+     48.8,
+     22.7
+    ],
+    "kept_tracks": 3,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "C94": {
+    "side": "Bottom Layer",
+    "hull": [
+     49.1,
+     21.7,
+     51.899,
+     22.7
+    ],
+    "kept_tracks": 3,
+    "kept_vias": 0,
+    "added_tracks": 3,
+    "added_vias": 1,
+    "transient_violations": 0
+   },
+   "C99": {
+    "side": "Bottom Layer",
+    "hull": [
+     52.199,
+     21.7,
+     54.999,
+     22.7
+    ],
+    "kept_tracks": 3,
+    "kept_vias": 1,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "C106": {
+    "side": "Bottom Layer",
+    "hull": [
+     39.8,
+     21.7,
+     42.6,
+     22.7
+    ],
+    "kept_tracks": 5,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "R1": {
+    "side": "Bottom Layer",
+    "hull": [
+     57.575,
+     2.7,
+     58.825,
+     5.3
+    ],
+    "kept_tracks": 6,
+    "kept_vias": 2,
+    "added_tracks": 7,
+    "added_vias": 0,
+    "transient_violations": 1
+   },
+   "R119": {
+    "side": "Bottom Layer",
+    "hull": [
+     37.8,
+     5.02,
+     38.7,
+     5.32
+    ],
+    "kept_tracks": 1,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "R120": {
+    "side": "Bottom Layer",
+    "hull": [
+     36.2,
+     5.02,
+     37.1,
+     5.32
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "R121": {
+    "side": "Bottom Layer",
+    "hull": [
+     35.4,
+     4.46,
+     35.7,
+     5.36
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "R122": {
+    "side": "Bottom Layer",
+    "hull": [
+     33.8,
+     5.02,
+     34.7,
+     5.32
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 0
+   },
+   "R123": {
+    "side": "Bottom Layer",
+    "hull": [
+     32.4,
+     5.02,
+     33.3,
+     5.32
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 3
+   },
+   "R124": {
+    "side": "Bottom Layer",
+    "hull": [
+     31.4,
+     4.46,
+     31.7,
+     5.36
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 2
+   },
+   "R125": {
+    "side": "Bottom Layer",
+    "hull": [
+     30.6,
+     4.46,
+     30.9,
+     5.36
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 2
+   },
+   "R126": {
+    "side": "Bottom Layer",
+    "hull": [
+     29.0,
+     5.06,
+     29.9,
+     5.36
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 2
+   },
+   "R127": {
+    "side": "Top Layer",
+    "hull": [
+     38.75,
+     13.45,
+     39.65,
+     13.75
+    ],
+    "kept_tracks": 1,
+    "kept_vias": 0,
+    "added_tracks": 2,
+    "added_vias": 0,
+    "transient_violations": 2
+   },
+   "R128": {
+    "side": "Bottom Layer",
+    "hull": [
+     41.6,
+     12.8,
+     42.5,
+     13.1
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 0,
+    "added_vias": 2,
+    "transient_violations": 0
+   },
+   "R129": {
+    "side": "Top Layer",
+    "hull": [
+     38.76,
+     14.21,
+     39.66,
+     14.51
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 4,
+    "added_vias": 0,
+    "transient_violations": 2
+   },
+   "R130": {
+    "side": "Top Layer",
+    "hull": [
+     38.95,
+     14.77,
+     39.85,
+     15.07
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 4,
+    "added_vias": 0,
+    "transient_violations": 1
+   },
+   "R131": {
+    "side": "Top Layer",
+    "hull": [
+     38.75,
+     15.65,
+     39.65,
+     15.95
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 0,
+    "added_vias": 2,
+    "transient_violations": 0
+   },
+   "R132": {
+    "side": "Top Layer",
+    "hull": [
+     38.3,
+     16.154,
+     39.2,
+     16.453
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 1,
+    "added_vias": 1,
+    "transient_violations": 0
+   },
+   "R133": {
+    "side": "Bottom Layer",
+    "hull": [
+     45.15,
+     17.0,
+     46.05,
+     17.3
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 1,
+    "added_vias": 1,
+    "transient_violations": 0
+   },
+   "R134": {
+    "side": "Bottom Layer",
+    "hull": [
+     46.35,
+     16.65,
+     47.25,
+     16.95
+    ],
+    "kept_tracks": 0,
+    "kept_vias": 0,
+    "added_tracks": 1,
+    "added_vias": 1,
+    "transient_violations": 0
+   },
+   "U3": {
+    "side": "Bottom Layer",
+    "hull": [
+     17.725,
+     5.57,
+     38.975,
+     18.13
+    ],
+    "kept_tracks": 123,
+    "kept_vias": 78,
+    "added_tracks": 91,
+    "added_vias": 33,
+    "transient_violations": 16
+   }
+  },
+  "through_vias_in_result": 329
+ }
+}

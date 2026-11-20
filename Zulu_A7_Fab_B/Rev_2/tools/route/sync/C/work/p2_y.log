@@ -1,0 +1,76 @@
+seeded 188 vias, 990 tracks
+FLASH-D01      ripped CHAN3 CHAN6 FLASH-CS# FPGA-CCLK LED2 TMS
+CHAN2          ripped FLASH-D00 FLASH-D01
+CHAN17         
+CHAN0          
+FLASH-D02      
+FLASH-D03      ripped BTN CHAN0 CHAN1 FLASH-D02 PUDC_B
+JA3            ripped CFG-M2 CHAN14 CHAN15 CLK-12M-FPGA FPGA-TDI UART_FT_TXD
+JA10           
+FT-PWREN#      
+JA4            
+CHAN-CLK       
+CHAN9          
+CHAN19         
+UART_FT_RXD    
+CHAN8          
+SD-DAT0        ripped CHAN4 LED0_B LED1 UART_FT_RTS#
+CLK-12M-SHARED 
+CHAN11         
+UART_FT_CTS#   ripped CHAN5 SD-DAT0
+CHAN22         
+CHAN10         ripped CHAN12 CHAN8 FPGA-DONE JA4 LED0_R UART_FT_CTS#
+DONE           
+CHAN27         ripped CFG-M1 CHAN16 FPGA-TDO FPGA-TMS JA1
+CHAN13         ripped CHAN10 CLK-12M-SHARED DONE UART_FT_RXD
+TDI            
+PROG#          
+CHAN21         
+TCK            
+CLK-12M-FT     
+FPGA-TCK       
+CHAN3          
+CHAN6          
+FLASH-CS#      
+FPGA-CCLK      
+LED2           
+TMS            
+FLASH-D00      ripped CHAN13 FLASH-D03
+FLASH-D01      
+BTN            
+CHAN0          ripped FLASH-CS# FLASH-D00 FLASH-D01 FPGA-TCK
+CHAN1          ripped CHAN3 FPGA-CCLK
+FLASH-D02      
+PUDC_B         ripped CHAN11 CHAN6 CHAN9 FLASH-D02 FPGA-INIT# FT-PWREN# JA10 JA3 PROG#
+CFG-M2         
+CHAN14         
+CHAN15         ripped CHAN27
+CLK-12M-FPGA   
+FPGA-TDI       
+UART_FT_TXD    
+CHAN4          
+LED0_B         
+LED1           
+UART_FT_RTS#   
+CHAN5          
+SD-DAT0        ripped CHAN5 LED1 UART_FT_RTS#
+CHAN12         
+CHAN8          
+FPGA-DONE      
+JA4            ripped CHAN12 CLK-12M-FT JA8 PMOD-2 TCK
+LED0_R         
+UART_FT_CTS#   
+CFG-M1         
+CHAN16         
+FPGA-TDO       
+FPGA-TMS       
+JA1            
+CHAN10         
+CLK-12M-SHARED 
+DONE           
+UART_FT_RXD    
+CHAN13         
+FLASH-D03      ripped BTN CHAN1 CHAN10 CLK-12M-SHARED PUDC_B UART_FT_RXD
+FLASH-CS#      
+FLASH-D00      ripped CHAN0 DONE FLASH-D03 JA4 LED0_R
+FLASH-D01      

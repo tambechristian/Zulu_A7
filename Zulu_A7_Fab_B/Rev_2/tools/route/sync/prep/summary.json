@@ -1,0 +1,589 @@
+{
+ "clean": {
+  "plan": {
+   "remove_tracks": 897,
+   "remove_vias": 362,
+   "add_tracks": 1489,
+   "add_vias": 354
+  },
+  "removals_by_reason": {
+   "delta:3b1817d": 978,
+   "delta:06d9f27": 74,
+   "delta:3e4ee8c": 107,
+   "delta:427960e": 3,
+   "through_in_new_smd_pad": 2,
+   "dead_after_transplant": 95
+  },
+  "features_added": {
+   "u4_via": 7,
+   "body_c_row": 10,
+   "body_r1": 9,
+   "body_r34": 18,
+   "body_u4": 79,
+   "hq_s2b_msop": 1584,
+   "dq_series_r": 128,
+   "through_in_pad_to_uvia": 6,
+   "trimmed_stub": 2
+  },
+  "dropped_by_reason": {
+   "removal | SOURCE-only object (absent on TARGET): nothing to remove | ": 66,
+   "removal | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 8,
+   "addition | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 12,
+   "addition | conflict with TARGET copper/pad that stays | pmod_zone": 69,
+   "addition | ends on SOURCE-only copper | pmod_zone": 2,
+   "addition | SOURCE-only JTAG/TMS trunk piece (ends on SOURCE-only copper) | outside_pmod_zone": 3,
+   "addition | dangling after another drop (dead on TARGET) | outside_pmod_zone": 14,
+   "addition | dangling after another drop (dead on TARGET) | pmod_zone": 158,
+   "addition | SOURCE-only JTAG/TMS trunk piece (dead once its SOURCE-only end is out) | outside_pmod_zone": 1
+  },
+  "dropped_additions_by_net": {
+   "CHAN2": {
+    "conflict with TARGET copper/pad that stays": 6,
+    "dangling after another drop": 48
+   },
+   "CHAN5": {
+    "conflict with TARGET copper/pad that stays": 6,
+    "dangling after another drop": 1
+   },
+   "CHAN9": {
+    "conflict with TARGET copper/pad that stays": 1,
+    "dangling after another drop": 3
+   },
+   "CLK-12M-FPGA": {
+    "conflict with TARGET copper/pad that stays": 5,
+    "ends on SOURCE-only copper": 1,
+    "dangling after another drop": 22
+   },
+   "FLASH-D02": {
+    "conflict with TARGET copper/pad that stays": 17,
+    "dangling after another drop": 26
+   },
+   "FPGA-INIT#": {
+    "conflict with TARGET copper/pad that stays": 5,
+    "dangling after another drop": 14
+   },
+   "FPGA-TMS": {
+    "conflict with TARGET copper/pad that stays": 10,
+    "dangling after another drop": 5
+   },
+   "GND": {
+    "conflict with TARGET copper/pad that stays": 2
+   },
+   "PROG#": {
+    "conflict with TARGET copper/pad that stays": 9,
+    "ends on SOURCE-only copper": 1,
+    "dangling after another drop": 39
+   },
+   "TDI": {
+    "SOURCE-only JTAG/TMS trunk piece": 1
+   },
+   "TMS": {
+    "SOURCE-only JTAG/TMS trunk piece": 3
+   },
+   "UART_FT_TXD": {
+    "conflict with TARGET copper/pad that stays": 8,
+    "dangling after another drop": 14
+   }
+  },
+  "emit_problems": [],
+  "route_check": [
+   "plan: 1489 tracks, 354 vias, 897 removed; board then: 5509 tracks, 1949 vias",
+   "violations: 0",
+   "open connections after the plan: 10 on 10 nets",
+   "PASS"
+  ],
+  "dead_copper_after": {
+   "tracks": 0,
+   "vias": 0
+  },
+  "open_total": 10,
+  "open_by_net": {
+   "CHAN2": 1,
+   "CHAN5": 1,
+   "CHAN9": 1,
+   "CLK-12M-FPGA": 1,
+   "FLASH-D02": 1,
+   "FPGA-INIT#": 1,
+   "FPGA-TMS": 1,
+   "GND": 1,
+   "PROG#": 1,
+   "UART_FT_TXD": 1
+  },
+  "drc_counts": {
+   "base_cur": 37,
+   "result": 34,
+   "new_vs_base_cur": 0
+  },
+  "through_via_in_smd_pad": [],
+  "uvia_in_smd_pad_new": 66,
+  "new_through_vias": 24,
+  "usb": {
+   "P_mm": 12.1863,
+   "N_mm": 12.1863,
+   "mismatch_mm": 0.0,
+   "layers": [
+    "Top Layer"
+   ],
+   "widths": [
+    0.15
+   ],
+   "vias": 0,
+   "segments": [
+    11,
+    23
+   ],
+   "coupled_mm_tol0.005": 9.151,
+   "coupled_mm_tol0.010": 9.552,
+   "coupled_mm_tol0.030": 10.389,
+   "min_gap_mm": 0.15
+  },
+  "counts": {
+   "remove_tracks": 897,
+   "remove_vias": 362,
+   "add_tracks": 1489,
+   "add_vias": 354,
+   "vias_added_by_type": {
+    "laser L2-L3": 70,
+    "laser Top-L2": 92,
+    "buried L3-L4": 60,
+    "laser L5-Bottom": 57,
+    "laser L4-L5": 51,
+    "through": 24
+   },
+   "vias_removed_by_type": {
+    "laser L5-Bottom": 40,
+    "laser L4-L5": 36,
+    "buried L3-L4": 73,
+    "laser L2-L3": 80,
+    "laser Top-L2": 84,
+    "through": 49
+   },
+   "result_tracks": 5509,
+   "result_vias": 1953,
+   "result_pads": 896
+  }
+ },
+ "stubs": {
+  "plan": {
+   "remove_tracks": 829,
+   "remove_vias": 335,
+   "add_tracks": 1583,
+   "add_vias": 377
+  },
+  "removals_by_reason": {
+   "delta:3b1817d": 978,
+   "delta:06d9f27": 74,
+   "delta:3e4ee8c": 107,
+   "delta:427960e": 3,
+   "through_in_new_smd_pad": 2
+  },
+  "features_added": {
+   "u4_via": 7,
+   "body_c_row": 10,
+   "body_r1": 9,
+   "body_r34": 18,
+   "body_u4": 129,
+   "hq_s2b_msop": 1652,
+   "dq_series_r": 129,
+   "through_in_pad_to_uvia": 6
+  },
+  "dropped_by_reason": {
+   "removal | SOURCE-only object (absent on TARGET): nothing to remove | ": 66,
+   "removal | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 8,
+   "addition | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 12,
+   "addition | conflict with TARGET copper/pad that stays | pmod_zone": 69,
+   "addition | ends on SOURCE-only copper | pmod_zone": 2,
+   "addition | SOURCE-only JTAG/TMS trunk piece (ends on SOURCE-only copper) | outside_pmod_zone": 3,
+   "addition | floating after another drop (no pad / plane island) | outside_pmod_zone": 18,
+   "addition | floating after another drop (no pad / plane island) | pmod_zone": 36
+  },
+  "dropped_additions_by_net": {
+   "CHAN2": {
+    "conflict with TARGET copper/pad that stays": 6
+   },
+   "CHAN5": {
+    "conflict with TARGET copper/pad that stays": 6
+   },
+   "CHAN9": {
+    "conflict with TARGET copper/pad that stays": 1
+   },
+   "CLK-12M-FPGA": {
+    "conflict with TARGET copper/pad that stays": 5,
+    "ends on SOURCE-only copper": 1,
+    "floating after another drop": 10
+   },
+   "FLASH-D02": {
+    "conflict with TARGET copper/pad that stays": 17,
+    "floating after another drop": 36
+   },
+   "FPGA-INIT#": {
+    "conflict with TARGET copper/pad that stays": 5
+   },
+   "FPGA-TMS": {
+    "conflict with TARGET copper/pad that stays": 10
+   },
+   "GND": {
+    "conflict with TARGET copper/pad that stays": 2
+   },
+   "PROG#": {
+    "conflict with TARGET copper/pad that stays": 9,
+    "ends on SOURCE-only copper": 1,
+    "floating after another drop": 7
+   },
+   "TDI": {
+    "SOURCE-only JTAG/TMS trunk piece": 1
+   },
+   "TMS": {
+    "SOURCE-only JTAG/TMS trunk piece": 2
+   },
+   "UART_FT_TXD": {
+    "conflict with TARGET copper/pad that stays": 8,
+    "floating after another drop": 1
+   }
+  },
+  "emit_problems": [],
+  "route_check": [
+   "plan: 1583 tracks, 377 vias, 829 removed; board then: 5671 tracks, 2001 vias",
+   "violations: 0",
+   "open connections after the plan: 10 on 10 nets",
+   "PASS"
+  ],
+  "dead_copper_after": {
+   "tracks": 174,
+   "vias": 53
+  },
+  "open_total": 10,
+  "open_by_net": {
+   "CHAN2": 1,
+   "CHAN5": 1,
+   "CHAN9": 1,
+   "CLK-12M-FPGA": 1,
+   "FLASH-D02": 1,
+   "FPGA-INIT#": 1,
+   "FPGA-TMS": 1,
+   "GND": 1,
+   "PROG#": 1,
+   "UART_FT_TXD": 1
+  },
+  "drc_counts": {
+   "base_cur": 37,
+   "result": 34,
+   "new_vs_base_cur": 0
+  },
+  "through_via_in_smd_pad": [],
+  "uvia_in_smd_pad_new": 67,
+  "new_through_vias": 24,
+  "usb": {
+   "P_mm": 12.1863,
+   "N_mm": 12.1863,
+   "mismatch_mm": 0.0,
+   "layers": [
+    "Top Layer"
+   ],
+   "widths": [
+    0.15
+   ],
+   "vias": 0,
+   "segments": [
+    11,
+    23
+   ],
+   "coupled_mm_tol0.005": 9.151,
+   "coupled_mm_tol0.010": 9.552,
+   "coupled_mm_tol0.030": 10.389,
+   "min_gap_mm": 0.15
+  },
+  "counts": {
+   "remove_tracks": 829,
+   "remove_vias": 335,
+   "add_tracks": 1583,
+   "add_vias": 377,
+   "vias_added_by_type": {
+    "laser L2-L3": 77,
+    "laser Top-L2": 98,
+    "buried L3-L4": 62,
+    "laser L5-Bottom": 62,
+    "laser L4-L5": 54,
+    "through": 24
+   },
+   "vias_removed_by_type": {
+    "laser L5-Bottom": 34,
+    "laser L4-L5": 30,
+    "buried L3-L4": 67,
+    "laser L2-L3": 77,
+    "laser Top-L2": 79,
+    "through": 48
+   },
+   "result_tracks": 5671,
+   "result_vias": 2003,
+   "result_pads": 896
+  }
+ },
+ "ripja": {
+  "plan": {
+   "remove_tracks": 948,
+   "remove_vias": 400,
+   "add_tracks": 1613,
+   "add_vias": 383
+  },
+  "removals_by_reason": {
+   "delta:3b1817d": 978,
+   "delta:06d9f27": 74,
+   "delta:3e4ee8c": 107,
+   "delta:427960e": 3,
+   "rip_ja": 157,
+   "through_in_new_smd_pad": 2,
+   "dead_after_transplant": 27
+  },
+  "features_added": {
+   "u4_via": 7,
+   "body_c_row": 10,
+   "body_r1": 9,
+   "body_r34": 18,
+   "body_u4": 140,
+   "hq_s2b_msop": 1677,
+   "dq_series_r": 128,
+   "through_in_pad_to_uvia": 6,
+   "trimmed_stub": 1
+  },
+  "dropped_by_reason": {
+   "removal | SOURCE-only object (absent on TARGET): nothing to remove | ": 66,
+   "removal | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 8,
+   "addition | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 12,
+   "addition | conflict with TARGET copper/pad that stays | pmod_zone": 7,
+   "addition | ends on SOURCE-only copper | pmod_zone": 4,
+   "addition | SOURCE-only JTAG/TMS trunk piece (ends on SOURCE-only copper) | outside_pmod_zone": 3,
+   "addition | dangling after another drop (dead on TARGET) | outside_pmod_zone": 3,
+   "addition | dangling after another drop (dead on TARGET) | pmod_zone": 75,
+   "addition | SOURCE-only JTAG/TMS trunk piece (dead once its SOURCE-only end is out) | outside_pmod_zone": 1
+  },
+  "dropped_additions_by_net": {
+   "CLK-12M-FPGA": {
+    "ends on SOURCE-only copper": 1
+   },
+   "FLASH-D02": {
+    "conflict with TARGET copper/pad that stays": 3,
+    "dangling after another drop": 36
+   },
+   "PROG#": {
+    "conflict with TARGET copper/pad that stays": 4,
+    "ends on SOURCE-only copper": 3,
+    "dangling after another drop": 42
+   },
+   "TDI": {
+    "SOURCE-only JTAG/TMS trunk piece": 1
+   },
+   "TMS": {
+    "SOURCE-only JTAG/TMS trunk piece": 3
+   }
+  },
+  "emit_problems": [],
+  "route_check": [
+   "plan: 1613 tracks, 383 vias, 948 removed; board then: 5582 tracks, 1942 vias",
+   "violations: 0",
+   "open connections after the plan: 10 on 10 nets",
+   "PASS"
+  ],
+  "dead_copper_after": {
+   "tracks": 0,
+   "vias": 0
+  },
+  "open_total": 10,
+  "open_by_net": {
+   "FLASH-D02": 1,
+   "JA1": 1,
+   "JA10": 1,
+   "JA2": 1,
+   "JA3": 1,
+   "JA4": 1,
+   "JA7": 1,
+   "JA8": 1,
+   "JA9": 1,
+   "PROG#": 1
+  },
+  "drc_counts": {
+   "base_cur": 37,
+   "result": 34,
+   "new_vs_base_cur": 0
+  },
+  "through_via_in_smd_pad": [],
+  "uvia_in_smd_pad_new": 68,
+  "new_through_vias": 24,
+  "usb": {
+   "P_mm": 12.1863,
+   "N_mm": 12.1863,
+   "mismatch_mm": 0.0,
+   "layers": [
+    "Top Layer"
+   ],
+   "widths": [
+    0.15
+   ],
+   "vias": 0,
+   "segments": [
+    11,
+    23
+   ],
+   "coupled_mm_tol0.005": 9.151,
+   "coupled_mm_tol0.010": 9.552,
+   "coupled_mm_tol0.030": 10.389,
+   "min_gap_mm": 0.15
+  },
+  "counts": {
+   "remove_tracks": 948,
+   "remove_vias": 400,
+   "add_tracks": 1613,
+   "add_vias": 383,
+   "vias_added_by_type": {
+    "laser L2-L3": 76,
+    "laser Top-L2": 100,
+    "buried L3-L4": 65,
+    "laser L5-Bottom": 63,
+    "laser L4-L5": 55,
+    "through": 24
+   },
+   "vias_removed_by_type": {
+    "laser L5-Bottom": 50,
+    "laser L4-L5": 46,
+    "buried L3-L4": 79,
+    "laser L2-L3": 85,
+    "laser Top-L2": 87,
+    "through": 53
+   },
+   "result_tracks": 5582,
+   "result_vias": 1944,
+   "result_pads": 896
+  }
+ },
+ "stubs_ripja": {
+  "plan": {
+   "remove_tracks": 928,
+   "remove_vias": 393,
+   "add_tracks": 1673,
+   "add_vias": 396
+  },
+  "removals_by_reason": {
+   "delta:3b1817d": 978,
+   "delta:06d9f27": 74,
+   "delta:3e4ee8c": 107,
+   "delta:427960e": 3,
+   "rip_ja": 157,
+   "through_in_new_smd_pad": 2
+  },
+  "features_added": {
+   "u4_via": 7,
+   "body_c_row": 10,
+   "body_r1": 9,
+   "body_r34": 18,
+   "body_u4": 141,
+   "hq_s2b_msop": 1749,
+   "dq_series_r": 129,
+   "through_in_pad_to_uvia": 6
+  },
+  "dropped_by_reason": {
+   "removal | SOURCE-only object (absent on TARGET): nothing to remove | ": 66,
+   "removal | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 8,
+   "addition | commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted | ": 12,
+   "addition | conflict with TARGET copper/pad that stays | pmod_zone": 7,
+   "addition | ends on SOURCE-only copper | pmod_zone": 4,
+   "addition | SOURCE-only JTAG/TMS trunk piece (ends on SOURCE-only copper) | outside_pmod_zone": 3,
+   "addition | floating after another drop (no pad / plane island) | pmod_zone": 5
+  },
+  "dropped_additions_by_net": {
+   "CLK-12M-FPGA": {
+    "ends on SOURCE-only copper": 1
+   },
+   "FLASH-D02": {
+    "conflict with TARGET copper/pad that stays": 3
+   },
+   "PROG#": {
+    "conflict with TARGET copper/pad that stays": 4,
+    "ends on SOURCE-only copper": 3,
+    "floating after another drop": 5
+   },
+   "TDI": {
+    "SOURCE-only JTAG/TMS trunk piece": 1
+   },
+   "TMS": {
+    "SOURCE-only JTAG/TMS trunk piece": 2
+   }
+  },
+  "emit_problems": [],
+  "route_check": [
+   "plan: 1673 tracks, 396 vias, 928 removed; board then: 5662 tracks, 1962 vias",
+   "violations: 0",
+   "open connections after the plan: 10 on 10 nets",
+   "PASS"
+  ],
+  "dead_copper_after": {
+   "tracks": 81,
+   "vias": 20
+  },
+  "open_total": 10,
+  "open_by_net": {
+   "FLASH-D02": 1,
+   "JA1": 1,
+   "JA10": 1,
+   "JA2": 1,
+   "JA3": 1,
+   "JA4": 1,
+   "JA7": 1,
+   "JA8": 1,
+   "JA9": 1,
+   "PROG#": 1
+  },
+  "drc_counts": {
+   "base_cur": 37,
+   "result": 34,
+   "new_vs_base_cur": 0
+  },
+  "through_via_in_smd_pad": [],
+  "uvia_in_smd_pad_new": 69,
+  "new_through_vias": 24,
+  "usb": {
+   "P_mm": 12.1863,
+   "N_mm": 12.1863,
+   "mismatch_mm": 0.0,
+   "layers": [
+    "Top Layer"
+   ],
+   "widths": [
+    0.15
+   ],
+   "vias": 0,
+   "segments": [
+    11,
+    23
+   ],
+   "coupled_mm_tol0.005": 9.151,
+   "coupled_mm_tol0.010": 9.552,
+   "coupled_mm_tol0.030": 10.389,
+   "min_gap_mm": 0.15
+  },
+  "counts": {
+   "remove_tracks": 928,
+   "remove_vias": 393,
+   "add_tracks": 1673,
+   "add_vias": 396,
+   "vias_added_by_type": {
+    "laser L2-L3": 79,
+    "laser Top-L2": 103,
+    "buried L3-L4": 69,
+    "laser L5-Bottom": 64,
+    "laser L4-L5": 57,
+    "through": 24
+   },
+   "vias_removed_by_type": {
+    "laser L5-Bottom": 48,
+    "laser L4-L5": 44,
+    "buried L3-L4": 79,
+    "laser L2-L3": 84,
+    "laser Top-L2": 86,
+    "through": 52
+   },
+   "result_tracks": 5662,
+   "result_vias": 1964,
+   "result_pads": 896
+  }
+ }
+}

@@ -1,0 +1,9 @@
+transplant_b_nets_stubs: remove 919 tracks + 388 vias, add 1673 tracks + 396 vias; opens 9 {'FLASH-D02': 1, 'JA1': 1, 'JA10': 1, 'JA2': 1, 'JA3': 1, 'JA4': 1, 'JA8': 1, 'JA9': 1, 'PROG#': 1}
+  dropped   12  ('addition', 'commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted', '')
+  dropped    7  ('addition', 'conflict with TARGET copper/pad that stays', 'pmod_zone')
+  dropped    3  ('addition', 'ends on SOURCE-only copper', 'outside_pmod_zone')
+  dropped    4  ('addition', 'ends on SOURCE-only copper', 'pmod_zone')
+  dropped    5  ('addition', 'floating after another drop (no pad / plane island)', 'pmod_zone')
+  dropped   66  ('removal', 'SOURCE-only object (absent on TARGET): nothing to remove', '')
+  dropped    8  ('removal', 'commit 04819de (Pmod-specific vias-out-of-pad / R108 move) is not transplanted', '')
+log: {'mode': 'stubs', 'rip': 'nets', 'through_in_pad_replaced': 2, 'ja_nets_with_clashes': 7, 'ja_ripped': {'JA9': 12, 'JA8': 22, 'JA4': 39, 'JA3': 20, 'JA2': 9, 'JA10': 20, 'JA1': 21}, 'ja_kept': {'JA7': 14}, 'conflict_drops': 7, 'dead_pass_1': 5, 'dead_pass_2': 0, 'pruned_additions': 5, 'pruned_target_objects_added_to_removals': 0, 'trimmed_tracks_added': 0, 'duplicate_additions_placed_once': 1, 'removals_by_reason': {'delta:3b1817d': 978, 'delta:06d9f27': 74, 'delta:3e4ee8c': 107, 'delta:427960e': 3, 'through_in_new_smd_pad': 2, 'rip_ja_nets': 143}}

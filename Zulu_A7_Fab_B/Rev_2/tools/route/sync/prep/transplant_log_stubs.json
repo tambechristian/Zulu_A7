@@ -1,0 +1,40 @@
+{
+ "mode": "stubs",
+ "rip_ja": false,
+ "through_in_pad_replaced": [
+  {
+   "pad": "U2-EP (+ U3-46 on Bottom)",
+   "removed": "V GND (32.3500,16.5750) 0.350/0.200 Top Layer>Bottom Layer",
+   "replaced_by": [
+    "Top Layer>L2-GND",
+    "L2-GND>L3-SIG",
+    "L3-SIG>L4-SIG",
+    "L4-SIG>L5-VCC3V3",
+    "L5-VCC3V3>Bottom Layer"
+   ]
+  },
+  {
+   "pad": "X4-2",
+   "removed": "V GND (32.4750,9.0250) 0.350/0.200 Top Layer>Bottom Layer",
+   "replaced_by": [
+    "Top Layer>L2-GND"
+   ]
+  }
+ ],
+ "conflict_drops": 69,
+ "dead_pass_1": 54,
+ "dead_pass_2": 0,
+ "pruned_additions": 54,
+ "pruned_target_objects_added_to_removals": [],
+ "trimmed_tracks_added": [],
+ "duplicate_additions_placed_once": [
+  "T L3-SIG TDI w0.0762 (27.6250,6.8000)-(27.6250,6.8250)"
+ ],
+ "removals_by_reason": {
+  "delta:3b1817d": 978,
+  "delta:06d9f27": 74,
+  "delta:3e4ee8c": 107,
+  "delta:427960e": 3,
+  "through_in_new_smd_pad": 2
+ }
+}

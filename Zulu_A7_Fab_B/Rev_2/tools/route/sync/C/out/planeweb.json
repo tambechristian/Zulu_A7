@@ -1,0 +1,70 @@
+{
+ "base_cur": {
+  "L2-GND": {
+   "raw": {
+    "components": 3,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1436.93,
+    "objects": 153,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 9,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1422.82,
+    "objects": 153,
+    "objects_off_main": []
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1413.21,
+    "objects": 94,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 15,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1391.32,
+    "objects": 94,
+    "objects_off_main": []
+   }
+  }
+ },
+ "t3g": {
+  "L2-GND": {
+   "raw": {
+    "components": 5,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1441.8,
+    "objects": 171,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 10,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1426.47,
+    "objects": 171,
+    "objects_off_main": []
+   }
+  },
+  "L5-VCC3V3": {
+   "raw": {
+    "components": 4,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1414.85,
+    "objects": 98,
+    "objects_off_main": []
+   },
+   "open0.125": {
+    "components": 14,
+    "components_with_net_objects": 1,
+    "main_area_mm2": 1391.74,
+    "objects": 98,
+    "objects_off_main": []
+   }
+  }
+ }
+}

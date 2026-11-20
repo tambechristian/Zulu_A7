@@ -1,0 +1,9 @@
+seeded 40 vias, 174 tracks
+FLASH-D02      
+JA2            
+JA3            ripped FPGA-INIT# PROG# UART_FT_TXD
+JA4            
+JA1            
+JA8            
+JA10           
+JA9            

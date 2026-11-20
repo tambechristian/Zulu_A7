@@ -1,0 +1,1 @@
+0 tracks, 0 vias dead; open after prune: 10 {'GND': 1, 'CHAN9': 1, 'CHAN5': 1, 'CHAN2': 1, 'FPGA-TMS': 1, 'FPGA-INIT#': 1, 'CLK-12M-FPGA': 1, 'UART_FT_TXD': 1, 'FLASH-D02': 1, 'PROG#': 1}

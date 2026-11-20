@@ -9,3 +9,6 @@ Imported zulu_a7.PrjPcb/Project Outputs for zulu_a7_hdi_optimized/
 backups/
 # Rev 2 reroute: debug renders written by the routing agents (the plans and scripts beside them are kept).
 tools/route/rev2/**/*.png
+
+# No-PMOD sync reroute (2026-11-20): debug renders written by the routing agents.
+tools/route/sync/**/*.png

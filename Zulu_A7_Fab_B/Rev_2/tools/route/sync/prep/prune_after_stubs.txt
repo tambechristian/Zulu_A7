@@ -1,0 +1,229 @@
+trim  CLK-12M-FPGA Bottom Layer now (57.350,12.850)-(56.700,12.850)
+track CLK-12M-FPGA Bottom Layer (55.650,12.850)-(57.350,12.850) w0.0762
+track CHAN5      Top Layer  (49.750,17.500)-(49.950,17.500) w0.0762
+track PROG#      L3-SIG     (57.050,18.750)-(58.900,16.900) w0.0762
+track FPGA-TMS   L3-SIG     (49.950,6.550)-(51.000,7.600) w0.0762
+track CHAN2      Bottom Layer (49.750,16.650)-(49.850,16.650) w0.0762
+track TMS        Bottom Layer (33.550,4.850)-(33.550,8.050) w0.0762
+track UART_FT_TXD Top Layer  (51.100,5.450)-(51.800,4.750) w0.0762
+track FLASH-D02  Top Layer  (57.500,13.400)-(57.575,13.325) w0.0762
+track FPGA-TMS   L4-SIG     (52.300,8.950)-(52.325,8.975) w0.0762
+track FPGA-INIT# L4-SIG     (51.700,6.700)-(51.700,6.725) w0.0762
+track CLK-12M-FPGA L4-SIG     (56.875,12.600)-(56.900,12.550) w0.0762
+track CHAN5      L3-SIG     (50.850,15.850)-(50.850,16.650) w0.0762
+track UART_FT_TXD L3-SIG     (51.000,10.250)-(51.250,10.000) w0.0762
+track CHAN5      Top Layer  (49.500,17.750)-(49.750,17.500) w0.0762
+track FLASH-D02  Top Layer  (50.400,13.400)-(50.650,13.650) w0.0762
+track PROG#      L3-SIG     (58.900,16.900)-(59.450,16.900) w0.0762
+track CHAN5      L3-SIG     (50.150,15.150)-(50.850,15.850) w0.0762
+track CHAN2      Bottom Layer (49.725,16.675)-(49.750,16.650) w0.0762
+track FPGA-INIT# Bottom Layer (49.550,9.700)-(50.500,8.825) w0.0762
+track CLK-12M-FPGA Bottom Layer (53.375,9.875)-(53.750,9.875) w0.0762
+track UART_FT_TXD Top Layer  (51.800,4.450)-(51.800,4.750) w0.0762
+track PROG#      Top Layer  (55.025,4.950)-(55.050,4.750) w0.0762
+track FLASH-D02  Top Layer  (57.500,13.400)-(57.500,13.450) w0.0762
+track CHAN2      L4-SIG     (50.875,16.375)-(51.925,16.825) w0.0762
+track FPGA-TMS   L4-SIG     (52.325,8.975)-(52.725,9.675) w0.0762
+track FPGA-INIT# L4-SIG     (51.700,6.700)-(51.725,6.675) w0.0762
+track CLK-12M-FPGA L4-SIG     (56.700,12.775)-(56.875,12.600) w0.0762
+track CHAN9      L3-SIG     (49.925,12.475)-(50.925,13.500) w0.0762
+track CHAN5      Top Layer  (49.500,17.750)-(49.500,17.900) w0.0762
+track PROG#      L3-SIG     (59.450,16.900)-(59.650,16.700) w0.0762
+track CHAN2      Bottom Layer (49.425,16.675)-(49.725,16.675) w0.0762
+track FPGA-INIT# Bottom Layer (49.500,9.725)-(49.550,9.700) w0.0762
+track CLK-12M-FPGA Bottom Layer (52.875,9.375)-(53.375,9.875) w0.0762
+track FLASH-D02  Top Layer  (57.500,13.450)-(58.050,14.000) w0.0762
+track UART_FT_TXD Top Layer  (51.650,4.300)-(51.800,4.450) w0.0762
+track PROG#      Top Layer  (55.050,4.700)-(55.050,4.750) w0.0762
+track CHAN2      L4-SIG     (51.925,16.825)-(51.975,16.825) w0.0762
+track FPGA-INIT# L4-SIG     (51.725,6.650)-(51.725,6.675) w0.0762
+track UART_FT_TXD L3-SIG     (50.625,10.225)-(51.000,10.250) w0.0762
+track CHAN9      L3-SIG     (50.925,13.500)-(50.950,13.550) w0.0762
+track FLASH-D02  Top Layer  (58.050,14.000)-(58.050,14.900) w0.0762
+track CHAN5      Top Layer  (49.900,14.900)-(50.150,15.150) w0.0762
+track CHAN5      Top Layer  (49.100,18.300)-(49.500,17.900) w0.0762
+track PROG#      L3-SIG     (59.650,15.950)-(59.650,16.700) w0.0762
+track CHAN9      L3-SIG     (50.950,13.550)-(50.950,13.900) w0.0762
+track FPGA-TMS   Bottom Layer (52.725,9.675)-(52.800,9.850) w0.0762
+track FPGA-INIT# Bottom Layer (49.300,9.725)-(49.500,9.725) w0.0762
+track CLK-12M-FPGA Bottom Layer (52.575,9.375)-(52.875,9.375) w0.0762
+track UART_FT_TXD Top Layer  (50.275,4.300)-(51.650,4.300) w0.0762
+track PROG#      Top Layer  (55.050,4.700)-(55.075,4.675) w0.0762
+track CHAN2      L4-SIG     (51.975,16.825)-(52.050,16.900) w0.0762
+track FPGA-INIT# L4-SIG     (51.725,6.650)-(51.750,6.625) w0.0762
+track UART_FT_TXD L3-SIG     (50.050,10.225)-(50.625,10.225) w0.0762
+track FPGA-TMS   Bottom Layer (52.800,9.850)-(53.600,10.650) w0.0762
+track FLASH-D02  Top Layer  (57.650,15.300)-(58.050,14.900) w0.0762
+track CHAN5      Top Layer  (49.100,18.300)-(49.100,18.950) w0.0762
+track PROG#      L3-SIG     (59.500,15.800)-(59.650,15.950) w0.0762
+track CHAN9      L3-SIG     (50.950,13.900)-(52.550,15.500) w0.0762
+track FPGA-INIT# Bottom Layer (49.250,9.700)-(49.300,9.725) w0.0762
+track CLK-12M-FPGA Bottom Layer (51.700,10.250)-(52.575,9.375) w0.0762
+track PROG#      Top Layer  (55.075,4.550)-(55.075,4.675) w0.0762
+track CHAN2      L4-SIG     (52.050,16.900)-(52.125,16.900) w0.0762
+track FPGA-INIT# L4-SIG     (51.750,6.000)-(51.750,6.625) w0.0762
+track UART_FT_TXD L3-SIG     (50.025,10.200)-(50.050,10.225) w0.0762
+track FPGA-TMS   Bottom Layer (53.600,10.650)-(56.150,10.650) w0.0762
+track CHAN9      L3-SIG     (52.550,15.500)-(52.550,16.200) w0.0762
+track FPGA-INIT# Bottom Layer (47.925,9.600)-(49.250,9.700) w0.0762
+track PROG#      Top Layer  (55.050,4.525)-(55.075,4.550) w0.0762
+track CHAN2      L4-SIG     (52.125,16.900)-(52.150,16.925) w0.0762
+track FPGA-INIT# L4-SIG     (51.750,6.000)-(54.100,6.000) w0.0762
+track UART_FT_TXD L3-SIG     (49.725,10.200)-(50.025,10.200) w0.0762
+track FLASH-D02  Bottom Layer (56.800,16.150)-(57.650,15.300) w0.0762
+track PROG#      Top Layer  (59.500,15.800)-(60.150,15.378) w0.0762
+track CLK-12M-FPGA Bottom Layer (51.200,10.750)-(51.700,10.250) w0.0762
+track PROG#      Top Layer  (55.050,4.500)-(55.050,4.525) w0.0762
+track CHAN2      L4-SIG     (52.150,16.925)-(52.300,16.975) w0.0762
+track UART_FT_TXD L3-SIG     (49.025,10.900)-(49.725,10.200) w0.0762
+track FPGA-INIT# Bottom Layer (54.100,6.000)-(57.800,4.550) w0.0762
+track FLASH-D02  Bottom Layer (56.800,16.150)-(56.800,17.300) w0.0762
+track CHAN9      Bottom Layer (52.550,16.200)-(52.550,16.700) w0.0762
+track FPGA-TMS   L4-SIG     (56.150,10.650)-(56.600,11.100) w0.0762
+track CLK-12M-FPGA Bottom Layer (50.800,10.750)-(51.200,10.750) w0.0762
+track PROG#      Top Layer  (55.025,4.450)-(55.050,4.500) w0.0762
+track CHAN2      L4-SIG     (52.300,16.975)-(52.325,17.000) w0.0762
+track UART_FT_TXD L3-SIG     (49.025,10.900)-(49.025,10.925) w0.0762
+track CHAN9      Bottom Layer (51.100,18.150)-(52.550,16.700) w0.0762
+track FPGA-TMS   L4-SIG     (56.600,11.100)-(56.600,12.450) w0.0762
+track CLK-12M-FPGA Bottom Layer (50.725,10.825)-(50.800,10.750) w0.0762
+track PROG#      Top Layer  (54.325,3.750)-(55.025,4.450) w0.0762
+track CHAN2      L4-SIG     (52.325,17.000)-(52.425,17.000) w0.0762
+track UART_FT_TXD L3-SIG     (49.000,10.950)-(49.025,10.925) w0.0762
+track FLASH-D02  L4-SIG     (56.800,17.300)-(56.800,17.750) w0.0762
+track PROG#      Top Layer  (52.375,3.300)-(54.325,3.750) w0.0762
+track CHAN2      L4-SIG     (52.425,17.000)-(52.450,17.025) w0.0762
+track FPGA-TMS   L3-SIG     (56.600,12.450)-(56.600,14.250) w0.0762
+track CHAN9      L3-SIG     (51.100,18.150)-(51.100,18.350) w0.0762
+track FLASH-D02  L4-SIG     (56.250,18.300)-(56.800,17.750) w0.0762
+track CHAN2      L4-SIG     (52.450,17.025)-(52.475,17.025) w0.0762
+track FPGA-TMS   L3-SIG     (56.350,14.500)-(56.600,14.250) w0.0762
+track CHAN9      L3-SIG     (50.400,19.050)-(51.100,18.350) w0.0762
+track FLASH-D02  L4-SIG     (56.250,18.300)-(56.250,18.700) w0.0762
+track CHAN2      L4-SIG     (52.475,17.025)-(52.925,17.475) w0.0762
+track PROG#      L3-SIG     (51.550,2.475)-(52.375,3.300) w0.0762
+track CHAN9      L3-SIG     (49.650,19.050)-(50.400,19.050) w0.0762
+track CHAN2      L4-SIG     (52.925,17.475)-(52.925,17.500) w0.0762
+track FLASH-D02  Bottom Layer (55.600,18.700)-(56.250,18.700) w0.0762
+track CHAN2      L4-SIG     (52.925,17.500)-(52.950,17.525) w0.0762
+track PROG#      L4-SIG     (51.000,2.000)-(51.550,2.475) w0.0762
+track FLASH-D02  Bottom Layer (55.000,19.300)-(55.600,18.700) w0.0762
+track CHAN9      L4-SIG     (49.150,19.050)-(49.650,19.050) w0.0762
+track CHAN2      L4-SIG     (52.950,17.525)-(52.950,18.125) w0.0762
+track PROG#      L4-SIG     (50.975,2.000)-(51.000,2.000) w0.0762
+track FLASH-D02  Bottom Layer (55.000,19.300)-(55.000,20.400) w0.0762
+track CHAN9      L4-SIG     (49.100,19.100)-(49.150,19.050) w0.0762
+track CHAN2      L4-SIG     (52.950,18.125)-(53.025,18.200) w0.0762
+track PROG#      L4-SIG     (50.950,1.975)-(50.975,2.000) w0.0762
+track FLASH-D02  Bottom Layer (55.000,20.400)-(55.150,20.550) w0.0762
+track CHAN9      L4-SIG     (49.000,19.100)-(49.100,19.100) w0.0762
+track CHAN2      L4-SIG     (53.025,18.200)-(53.175,18.375) w0.0762
+track PROG#      L4-SIG     (50.900,1.950)-(50.950,1.975) w0.0762
+track FLASH-D02  Bottom Layer (55.150,20.550)-(55.150,21.751) w0.0762
+track CHAN9      L4-SIG     (48.500,19.600)-(49.000,19.100) w0.0762
+track PROG#      L4-SIG     (50.125,1.975)-(50.900,1.950) w0.0762
+track FLASH-D02  Bottom Layer (55.150,21.751)-(55.449,22.050) w0.0762
+track CHAN9      L4-SIG     (47.650,19.600)-(48.500,19.600) w0.0762
+track CHAN2      Top Layer  (53.175,18.375)-(53.800,18.975) w0.0762
+track PROG#      L4-SIG     (50.025,2.050)-(50.125,1.975) w0.0762
+track CHAN9      L4-SIG     (46.450,20.800)-(47.650,19.600) w0.0762
+track CHAN2      Top Layer  (53.800,18.975)-(53.825,19.000) w0.0762
+track PROG#      L4-SIG     (50.000,2.050)-(50.025,2.050) w0.0762
+track CHAN9      L4-SIG     (43.650,20.800)-(46.450,20.800) w0.0762
+track CHAN2      Top Layer  (53.825,19.000)-(53.850,19.000) w0.0762
+track PROG#      L4-SIG     (49.975,2.075)-(50.000,2.050) w0.0762
+track CHAN9      L4-SIG     (43.550,20.900)-(43.650,20.800) w0.0762
+track CHAN2      Top Layer  (53.850,19.000)-(53.875,19.025) w0.0762
+track PROG#      L4-SIG     (49.925,2.100)-(49.975,2.075) w0.0762
+track CHAN2      Top Layer  (53.875,19.025)-(53.925,19.025) w0.0762
+track PROG#      L4-SIG     (49.900,2.100)-(49.925,2.100) w0.0762
+track CHAN9      L3-SIG     (43.200,20.900)-(43.550,20.900) w0.0762
+track CHAN2      Top Layer  (53.925,19.025)-(53.950,19.050) w0.0762
+track PROG#      L4-SIG     (49.875,2.125)-(49.900,2.100) w0.0762
+track CHAN9      L3-SIG     (42.900,21.200)-(43.200,20.900) w0.0762
+track CHAN2      Top Layer  (53.950,19.050)-(53.975,19.050) w0.0762
+track PROG#      L4-SIG     (49.850,2.125)-(49.875,2.125) w0.0762
+track CHAN2      Top Layer  (53.975,19.050)-(54.000,19.075) w0.0762
+track PROG#      L4-SIG     (49.825,2.150)-(49.850,2.125) w0.0762
+track CHAN9      L4-SIG     (40.400,21.200)-(42.900,21.200) w0.0762
+track CHAN2      Top Layer  (54.000,19.075)-(54.050,19.075) w0.0762
+track PROG#      L4-SIG     (49.725,2.175)-(49.825,2.150) w0.0762
+track CHAN9      L4-SIG     (39.400,22.200)-(40.400,21.200) w0.0762
+track CHAN2      Top Layer  (54.050,19.075)-(54.100,19.100) w0.0762
+track PROG#      L4-SIG     (49.475,2.250)-(49.725,2.175) w0.0762
+track CHAN9      L4-SIG     (30.850,22.200)-(39.400,22.200) w0.0762
+track CHAN2      Top Layer  (54.100,19.100)-(54.450,19.125) w0.0762
+track CHAN9      L4-SIG     (30.700,22.350)-(30.850,22.200) w0.0762
+track CHAN9      L4-SIG     (29.450,22.350)-(30.700,22.350) w0.0762
+track CHAN2      L3-SIG     (54.150,19.425)-(54.450,19.125) w0.0762
+track CHAN9      L4-SIG     (29.150,22.650)-(29.450,22.350) w0.0762
+track CHAN2      L3-SIG     (54.150,19.425)-(54.150,19.825) w0.0762
+track CHAN9      L4-SIG     (29.100,22.650)-(29.150,22.650) w0.0762
+track CHAN2      L3-SIG     (54.125,19.850)-(54.150,19.825) w0.0762
+track CHAN9      L4-SIG     (29.050,22.700)-(29.100,22.650) w0.0762
+track CHAN2      L3-SIG     (54.125,19.850)-(54.125,19.875) w0.0762
+track CHAN9      L4-SIG     (28.000,22.700)-(29.050,22.700) w0.0762
+track CHAN2      L3-SIG     (53.425,20.575)-(54.125,19.875) w0.0762
+track CHAN9      L4-SIG     (27.950,22.750)-(28.000,22.700) w0.0762
+track CHAN2      L3-SIG     (53.425,20.575)-(53.425,21.275) w0.0762
+track CHAN9      L4-SIG     (26.250,22.750)-(27.950,22.750) w0.0762
+track CHAN9      L4-SIG     (25.900,23.100)-(26.250,22.750) w0.0762
+track CHAN2      Top Layer  (53.200,21.500)-(53.425,21.275) w0.0762
+track CHAN9      L4-SIG     (22.620,23.100)-(25.900,23.100) w0.0762
+track CHAN2      Top Layer  (53.200,21.500)-(53.200,22.150) w0.0762
+track CHAN9      L4-SIG     (21.590,24.130)-(22.620,23.100) w0.0762
+track CHAN2      Top Layer  (53.200,22.150)-(53.400,22.150) w0.0762
+via   FLASH-D02  (50.650,13.650) L2-GND>L3-SIG
+via   FLASH-D02  (50.650,13.650) Top Layer>L2-GND
+via   CHAN2      (50.875,16.375) L5-VCC3V3>Bottom Layer
+via   CHAN2      (50.875,16.375) L4-SIG>L5-VCC3V3
+via   PROG#      (55.025,4.950) L2-GND>L3-SIG
+via   PROG#      (55.025,4.950) Top Layer>L2-GND
+via   PROG#      (59.875,15.550) L2-GND>L3-SIG
+via   FPGA-INIT# (50.500,8.825) L5-VCC3V3>Bottom Layer
+via   FPGA-INIT# (50.500,8.825) L4-SIG>L5-VCC3V3
+via   CLK-12M-FPGA (53.750,9.875) L5-VCC3V3>Bottom Layer
+via   CLK-12M-FPGA (53.750,9.875) L4-SIG>L5-VCC3V3
+via   CHAN9      (49.925,12.475) L2-GND>L3-SIG
+via   UART_FT_TXD (51.000,10.250) L3-SIG>L4-SIG
+via   CHAN5      (50.150,15.150) L2-GND>L3-SIG
+via   CHAN5      (50.150,15.150) Top Layer>L2-GND
+via   FPGA-TMS   (52.725,9.675) L5-VCC3V3>Bottom Layer
+via   FPGA-TMS   (52.725,9.675) L4-SIG>L5-VCC3V3
+via   PROG#      (59.500,15.800) L2-GND>L3-SIG
+via   PROG#      (59.500,15.800) Top Layer>L2-GND
+via   FLASH-D02  (57.650,15.300) Top Layer>Bottom Layer
+via   CHAN5      (49.100,18.950) Top Layer>L2-GND
+via   CLK-12M-FPGA (51.700,10.250) L5-VCC3V3>Bottom Layer
+via   FPGA-TMS   (56.150,10.650) L5-VCC3V3>Bottom Layer
+via   FPGA-TMS   (56.150,10.650) L4-SIG>L5-VCC3V3
+via   FPGA-INIT# (54.100,6.000) L5-VCC3V3>Bottom Layer
+via   FPGA-INIT# (54.100,6.000) L4-SIG>L5-VCC3V3
+via   CHAN9      (52.550,16.200) L5-VCC3V3>Bottom Layer
+via   CHAN9      (52.550,16.200) L4-SIG>L5-VCC3V3
+via   CHAN9      (52.550,16.200) L3-SIG>L4-SIG
+via   FPGA-INIT# (47.925,9.600) L5-VCC3V3>Bottom Layer
+via   PROG#      (59.875,15.550) Top Layer>L2-GND
+via   FLASH-D02  (56.800,17.300) L5-VCC3V3>Bottom Layer
+via   FLASH-D02  (56.800,17.300) L4-SIG>L5-VCC3V3
+via   FPGA-TMS   (56.600,12.450) L3-SIG>L4-SIG
+via   CHAN9      (51.100,18.150) L5-VCC3V3>Bottom Layer
+via   CHAN9      (51.100,18.150) L4-SIG>L5-VCC3V3
+via   CHAN9      (51.100,18.150) L3-SIG>L4-SIG
+via   PROG#      (52.375,3.300) L2-GND>L3-SIG
+via   PROG#      (52.375,3.300) Top Layer>L2-GND
+via   FLASH-D02  (56.250,18.700) L5-VCC3V3>Bottom Layer
+via   FLASH-D02  (56.250,18.700) L4-SIG>L5-VCC3V3
+via   PROG#      (51.550,2.475) L3-SIG>L4-SIG
+via   CHAN9      (49.650,19.050) L3-SIG>L4-SIG
+via   CHAN2      (53.175,18.375) L3-SIG>L4-SIG
+via   CHAN2      (53.175,18.375) L2-GND>L3-SIG
+via   CHAN2      (53.175,18.375) Top Layer>L2-GND
+via   CHAN9      (43.550,20.900) L3-SIG>L4-SIG
+via   CHAN9      (42.900,21.200) L3-SIG>L4-SIG
+via   CHAN2      (54.450,19.125) L2-GND>L3-SIG
+via   CHAN2      (54.450,19.125) Top Layer>L2-GND
+via   CHAN2      (53.425,21.275) L2-GND>L3-SIG
+via   CHAN2      (53.425,21.275) Top Layer>L2-GND
+via   CHAN2      (53.400,22.150) Top Layer>L2-GND
+174 tracks, 53 vias dead; open after prune: 10 {'GND': 1, 'CHAN9': 1, 'CHAN5': 1, 'CHAN2': 1, 'FPGA-TMS': 1, 'FPGA-INIT#': 1, 'CLK-12M-FPGA': 1, 'UART_FT_TXD': 1, 'FLASH-D02': 1, 'PROG#': 1}

@@ -1,0 +1,9 @@
+   0.0 start: 2 open on 2 nets: CHAN5:1 GND:1
+   0.8   CHAN0: victims CHAN5 (frozen or too many) - give up
+   0.8   CHAN5: victim CHAN0 not restored
+   0.8 round 1 CHAN5          open  open 2 -> 2
+   1.2   JA4: victims BTN CHAN11 LED2 (frozen or too many) - give up
+   1.2   LED2: victim JA4 not restored
+   1.2   GND: victim LED2 not restored
+   1.2 round 1 GND            open  open 2 -> 2
+   1.2 end: 2 open on 2 nets: CHAN5:1 GND:1

@@ -67,10 +67,13 @@ Altium DRC 2026-11-12 00:16 (after the title change): 0 violations, 0 warnings (
 00:16:55, md5 33023787, SHA-256 D77DE904... (the 2026-11-11 23:27 save with title 2.0 was md5 e8715917).
 
 Library: the project's `zulu_a7.PcbLib` has no ZULU-DIP37 footprint (X2's footprint lives only on the board), so
-there is no library pad to update.
+there is no library pad to update. (Superseded 2026-11-20: Design > Make PCB Library rebuilt `zulu_a7.PcbLib` from
+this board, 32 footprints with ZULU-DIP37 included; see `docs/sync_altium_steps.md`, "Result".)
 
-The other files in `docs/` and the `tools/route/` stage folders other than `rev2/` are Rev 1 history copied with the
-project.
+The other files in `docs/` (except the 2026-11-18 sheet edits `u3_sheet_layout.md`, `u4_schematic_tidy.md` and
+`sheet5_reorganize.md`, applied to both revisions, and the 2026-11-20 sync documents `sync_*.md`,
+`sync_schematics_records.txt`, `component_validation.md` and `drc_sync.drc`) and the `tools/route/` stage folders other than `rev2/`, `sync/`,
+`sync_altium/`, `release_gate/` and `illustration/` are Rev 1 history copied with the project.
 
 ## Release outputs (2026-11-11, title update 2026-11-12, PCBWay)
 
@@ -89,4 +92,26 @@ project.
 - Both packages were rebuilt and checked against the board by an independent verifier (drill hits per span, slot
   coordinates, X2 pad flashes in GTL, CPL positions, BOM against the schematics, no order number).
 - Known leftovers: the assembly notes' source line says the board was untracked when they were generated (the PCB
-  SHA-256 line identifies it); `tools/bom_audit.py` still lists Rev 1's X2 strips.
+  SHA-256 line identifies it); `tools/bom_audit.py` listed Rev 1's X2 strips until the 2026-11-20 sync (fixed then).
+
+## No-PMOD sync (2026-11-20)
+
+The no-PMOD Rev 2 schematic and board changes are now on this board, and the Pmod is kept:
+- U2 is the FT2232HQ (QFN-64) with its EP on GND;
+- X4 is the side-entry S2B-PH-SM4-TB;
+- U10 is in MSOP-8;
+- R119-R134 are the SDRAM DQ series resistors;
+- the notes, SI models, body-collision moves, CC rules and 3D bodies match the no-PMOD board.
+
+The Pmod-zone copper was rerouted and the 10 opens closed, without touching a Pmod net. The details are in three
+documents:
+- schematic side: `docs/sync_schematics.md`;
+- Altium steps and result: `docs/sync_altium_steps.md`;
+- copper plans and judge: `tools/route/sync/`.
+
+Result:
+- DRC 0, Component Clearance included;
+- board md5 `5fea1304`;
+- the PCBWay fabrication and assembly packages of 2026-11-20 pass the body gate.
+
+The title stays `ZULU A7 2.2`.

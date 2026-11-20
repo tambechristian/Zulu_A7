@@ -1,0 +1,20 @@
+{
+ "SDRAM_DATA": [
+  "SDRAM-D0",
+  "SDRAM-D1",
+  "SDRAM-D2",
+  "SDRAM-D3",
+  "SDRAM-D4",
+  "SDRAM-D5",
+  "SDRAM-D6",
+  "SDRAM-D7",
+  "SDRAM-D8",
+  "SDRAM-D9",
+  "SDRAM-D10",
+  "SDRAM-D11",
+  "SDRAM-D12",
+  "SDRAM-D13",
+  "SDRAM-D14",
+  "SDRAM-D15"
+ ]
+}

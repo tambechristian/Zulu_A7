@@ -1,0 +1,22 @@
+   0.0 start: 10 open on 10 nets: CHAN2:1 CHAN5:1 CHAN9:1 CLK-12M-FPGA:1 FLASH-D02:1 FPGA-INIT#:1 FPGA-TMS:1 GND:1 PROG#:1 UART_FT_TXD:1
+   0.1 round 1 FLASH-D02      CLOSED  open 10 -> 9
+   0.1 round 1 CHAN2          CLOSED  open 9 -> 8
+   1.1   CHAN0: victims BTN CHAN11 CHAN12 CHAN19 CHAN5 CHAN8 CLK-12M-FT FLASH-D03 JA4 (frozen or too many) - give up
+   1.1   CHAN5: victim CHAN0 not restored
+   1.2 round 1 CHAN5          open  open 8 -> 8
+   1.2 round 1 FPGA-INIT#     CLOSED  open 8 -> 7
+   1.6   CLK-12M-FPGA closed, re-routed FLASH-D02 FPGA-TMS
+   1.6 round 1 CLK-12M-FPGA   CLOSED  open 7 -> 5
+   1.8 round 1 UART_FT_TXD    CLOSED  open 5 -> 4
+   1.8 round 1 CHAN9          CLOSED  open 4 -> 3
+   2.1   JA4: victims BTN CHAN11 CHAN2 CHAN5 CHAN6 FLASH-CS# FLASH-D02 FLASH-D03 FPGA-TDI LED0_R LED1 PMOD-7 (frozen or too many) - give up
+   2.1   GND: victim JA4 not restored
+   2.1 round 1 GND            open  open 3 -> 3
+   2.2 round 1 PROG#          CLOSED  open 3 -> 2
+   3.2   CHAN0: victims BTN CHAN11 CHAN12 CHAN19 CHAN5 CHAN8 CLK-12M-FT FLASH-D03 JA4 (frozen or too many) - give up
+   3.2   CHAN5: victim CHAN0 not restored
+   3.2 round 2 CHAN5          open  open 2 -> 2
+   3.5   JA4: victims BTN CHAN11 CHAN2 CHAN5 CHAN6 FLASH-CS# FLASH-D02 FLASH-D03 FPGA-TDI LED0_R LED1 PMOD-7 (frozen or too many) - give up
+   3.5   GND: victim JA4 not restored
+   3.5 round 2 GND            open  open 2 -> 2
+   3.5 end: 2 open on 2 nets: CHAN5:1 GND:1

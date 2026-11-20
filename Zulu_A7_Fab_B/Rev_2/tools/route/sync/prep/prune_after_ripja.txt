@@ -1,0 +1,1 @@
+0 tracks, 0 vias dead; open after prune: 10 {'JA1': 1, 'JA10': 1, 'JA7': 1, 'JA3': 1, 'JA8': 1, 'JA9': 1, 'JA2': 1, 'FLASH-D02': 1, 'JA4': 1, 'PROG#': 1}

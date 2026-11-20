@@ -1,0 +1,20 @@
+FLASH-D02      
+JA2            
+JA3            
+JA10           
+JA8            
+JA1            
+JA9            
+JA4            
+PROG#          
+routed 4 connections, failed 5; 20 vias, 69 tracks -> route_nets_r1.json
+OPEN JA1 1
+OPEN JA10 1
+OPEN JA3 1
+OPEN JA4 1
+OPEN JA8 1
+FAIL JA3 (nopath)
+FAIL JA10 (nopath)
+FAIL JA8 (nopath)
+FAIL JA1 (nopath)
+FAIL JA4 (nopath)
