@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Stylized top-view illustration of the Zulu_a7_no_pmod Rev 2 board (2026-11-14).  READ-ONLY on every input.
+"""Stylized top-view illustration of the Zulu_a7_no_pmod Rev 2 board (2026-11-14, redrawn 2026-11-19).  READ-ONLY on every input.
 
     python tools/board_illustration.py [--pcb PCBDOC] [--out PNG]
 
@@ -8,16 +8,25 @@ the pic_labels2.py scratch script): dark-green board, gold pads and plated holes
 grey switch, coloured LED bodies, a faint green trace pattern, white bold silk text fitted into the silk's own boxes.
 
 Inputs
-  tools/route/bodies/base.json   pads (board mm, origin lower-left) and Top Layer tracks of the released board
-                                 (PcbDoc md5 24de4472)
-  tools/route/bodies/comps.json  side / pattern / rotation per part, fed to body_check.build() for the body boxes
-  backups/Zulu_a7_no_pmod.PcbDoc.pre-bodies
-                                 the released PcbDoc (md5 24de4472); its Texts6 stream gives the Top Overlay
+  tools/route/illustration/base.json
+                                 pads (board mm, origin lower-left) and Top Layer tracks of the board, from
+                                 route_model.py (FABB_MODEL=...) on the 2026-11-19 PcbDoc (md5 79a68932:
+                                 U2 = FT2232HQ QFN-64, X4 = side-entry S2B-PH-SM4-TB, U10 = MSOP-8)
+  tools/route/illustration/comps.json
+                                 side / pattern / rotation per part, fed to body_check.build() for the body boxes,
+                                 from tools/route/illustration/comps_from_board.py on the same PcbDoc
+  Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc
+                                 the board (md5 79a68932); its Texts6 stream gives the Top Overlay
                                  free texts (pin labels, pin numbers, board title) and the visible designators.
                                  Without olefile or the PcbDoc the labels fall back to short names derived from
                                  the X2 nets and the title 'ZULU A7 2.3'.
 Output
-  docs/board_illustration_top.png  (about 2000 px wide, white background)
+  docs/board_illustration_top.png     (about 2000 px wide, white background)
+  docs/board_illustration_bottom.png  the back, seen from below (mirrored left-right, so X2 pin 1 is on the left):
+                                      Bottom Layer tracks, the Bottom-side parts (SDRAM, regulators, inductors,
+                                      passives), X2's four 1x10 header housings (mounted from the underside) with
+                                      the square pins through them, and the printing Bottom Overlay designators.
+                                      Grey names on the ICs and the grey X2 pin numbers are notes, not silk.
 
 What is drawn: Top-side parts and the through-hole parts only (U3, U8, U10, the inductors and most passives are on
 the Bottom).  Stroke-font silk is drawn in DejaVu Sans Bold stretched into the stroke text's box (Altium's stroke
@@ -45,11 +54,12 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import body_check  # noqa: E402  (same folder: BODY table and build())
 
-BASE = os.path.join(HERE, 'route', 'bodies', 'base.json')
-COMPS = os.path.join(HERE, 'route', 'bodies', 'comps.json')
-PCB = os.path.join(ROOT, 'backups', 'Zulu_a7_no_pmod.PcbDoc.pre-bodies')
+BASE = os.path.join(HERE, 'route', 'illustration', 'base.json')
+COMPS = os.path.join(HERE, 'route', 'illustration', 'comps.json')
+PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
 OUT = os.path.join(ROOT, 'docs', 'board_illustration_top.png')
-RELEASED_MD5 = '24de4472b67b2cb5a592e9dee2bd7e1a'
+OUT_BOTTOM = os.path.join(ROOT, 'docs', 'board_illustration_bottom.png')
+RELEASED_MD5 = '79a68932c7e06e9e5b52864f41029fae'
 
 # colours as the Asar picture
 BOARD, COPPER, PAD, SILK, DRILL = '#14361f', '#2c6b3e', '#c9a94a', '#ffffff', '#0a0a0a'
@@ -62,8 +72,9 @@ TIGHT = 0.84                      # bold text run length as a fraction of the st
 
 
 # ----------------------------------------------------------------------------------------------- silk text
-def read_silk(path):
-    """Top Overlay texts that print: free texts plus the designators whose component shows its name."""
+def read_silk(path, layer=33):
+    """Overlay texts that print (layer 33 = Top, 34 = Bottom Overlay): free texts plus the designators whose
+    component shows its name."""
     import olefile
     f = olefile.OleFileIO(path)
     comps = []
@@ -81,7 +92,7 @@ def read_silk(path):
             subs.append(d[i + 4:i + 4 + n])
             i += 4 + n
         b, s = subs
-        if b[0] != 33:                                    # 33 = Top Overlay
+        if b[0] != layer:                                 # 33 = Top Overlay, 34 = Bottom Overlay
             continue
         txt = s[1:1 + s[0]].decode('latin-1', 'replace') if s else ''
         comp = struct.unpack('<H', b[7:9])[0]
@@ -246,11 +257,17 @@ def draw(ax, M, D, silk, pts_per_mm):
             if p['pad'].isdigit():
                 ax.add_patch(Rectangle((p['x'] - p['w'] / 2, p['y'] - p['h'] / 2), p['w'], p['h'], fc=PAD, lw=0,
                                        zorder=5))
-    # battery JST PH (cream housing, as the Asar STEMMA QT)
+    # battery JST PH S2B-PH-SM4-TB: flat side-entry housing, the cable opening faces the south board edge; the two
+    # metal hold-down tabs (MP1/MP2) show at the housing's sides and the signal pads' tails behind it
     if box('X4'):
-        rect(box('X4'), fc=CREAM, ec='#333333', lw=0.5)
         b = box('X4')
-        rect((b[0] + 0.8, b[1] + 0.6, b[2] - 0.8, b[3] - 1.4), z=4.5, fc='#e2dbc1', ec='#8a8470', lw=0.4)
+        rect(b, fc=CREAM, ec='#333333', lw=0.5)
+        rect((b[0] + 0.9, b[1], b[2] - 0.9, b[1] + 1.1), z=4.5, fc='#3b3626', ec='#333333', lw=0.4)   # opening
+        rect((b[0] + 0.9, b[1] + 2.0, b[2] - 0.9, b[3] - 0.7), z=4.5, fc='#e2dbc1', ec='#8a8470', lw=0.4)
+        for p in refs['X4']:
+            if p['pad'].startswith('MP'):
+                ax.add_patch(Rectangle((p['x'] - p['w'] / 2, p['y'] - p['h'] / 2), p['w'], p['h'], fc=METAL,
+                                       ec=METAL_EDGE, lw=0.4, zorder=4.6))
 
     # through-hole pads and plated holes on top of everything
     for p in M['pads']:
@@ -304,10 +321,115 @@ def draw(ax, M, D, silk, pts_per_mm):
     return notes
 
 
+# ----------------------------------------------------------------------------------------------- back side
+CERAMIC, INDUCTOR, HOUSING = '#b8976a', '#3a3a3a', '#161616'
+
+
+def draw_bottom(ax, M, D, silk, pts_per_mm):
+    """The back seen from below: every x is mirrored about the board centre (x' = W - x)."""
+    W, H = M['board']['w'], M['board']['h']
+
+    def X(x):
+        return W - x
+
+    def mb(b):
+        return (X(b[2]), b[1], X(b[0]), b[3])
+
+    def rect(b, z=4, **kw):
+        ax.add_patch(Rectangle((b[0], b[1]), b[2] - b[0], b[3] - b[1], zorder=z, **kw))
+
+    def padbox(p):
+        return (X(p['x']) - p['w'] / 2, p['y'] - p['h'] / 2, X(p['x']) + p['w'] / 2, p['y'] + p['h'] / 2)
+
+    ax.add_patch(FancyBboxPatch((0, 0), W, H, boxstyle='round,pad=0,rounding_size=%g' % CORNER, fc=BOARD, ec='k',
+                                lw=1.5, zorder=0))
+    for t in M['tracks']:
+        if t['layer'] == 'Bottom Layer':
+            ax.plot([X(t['x1']), X(t['x2'])], [t['y1'], t['y2']], color=COPPER,
+                    lw=max(0.5, t['w'] * pts_per_mm * 0.6), solid_capstyle='round', zorder=1)
+    side = {c['ref']: c['layer'] for c in D['comps']}
+    pat = {c['ref']: c['pattern'] for c in D['comps']}
+    bodies = body_check.build(M, D)['Bottom']
+    refs = {}
+    for p in M['pads']:
+        refs.setdefault(p['ref'], []).append(p)
+
+    # SMD pads of the Bottom-side parts
+    for p in M['pads']:
+        if p['drill'] or side.get(p['ref']) != 'BOTTOM' or (p['layers'] and 'Bottom Layer' not in p['layers']):
+            continue
+        rect(padbox(p), z=2, fc=PAD, lw=0)
+    # bodies
+    for ref, v in bodies.items():
+        if ref.startswith('X2[') or not v['body'] or side.get(ref) != 'BOTTOM':
+            continue
+        b = mb(v['body'][0])
+        if ref.startswith('U'):
+            rect(b, fc=IC, ec=IC_EDGE, lw=0.6)
+            p1 = [p for p in refs[ref] if p['pad'] == '1']
+            if p1:
+                m = min(0.9, (b[2] - b[0]) / 4, (b[3] - b[1]) / 4)
+                px = min(max(X(p1[0]['x']), b[0] + m), b[2] - m)
+                py = min(max(p1[0]['y'], b[1] + m), b[3] - m)
+                ax.add_patch(Circle((px, py), min(0.3, m * 0.6), fc='#3a3a3a', ec='none', zorder=5))
+            ax.text((b[0] + b[2]) / 2, (b[1] + b[3]) / 2, ref, ha='center', va='center', fontsize=12,
+                    color='#9a9a9a', zorder=6, rotation=90 if b[3] - b[1] > 2 * (b[2] - b[0]) else 0)
+        elif ref.startswith('L'):
+            rect(b, fc=INDUCTOR, ec='#111111', lw=0.4)
+        elif ref.startswith('C'):
+            rect(b, fc=CERAMIC, ec='#6d5636', lw=0.3)
+        elif ref.startswith('R'):
+            rect(b, fc='#111111', ec='#555555', lw=0.3)
+            if pat.get(ref, '').startswith('742C'):                    # resistor array: its terminations show
+                for p in refs[ref]:
+                    rect(padbox(p), z=4.5, fc=PAD, lw=0)
+        else:
+            rect(b, fc=IC, ec=IC_EDGE, lw=0.4)
+    # through-hole pads other than X2 (JTAG pads JP3/JP4, X1's shell legs)
+    for p in M['pads']:
+        if not p['drill'] or p['ref'] == 'X2':
+            continue
+        x = X(p['x'])
+        if p['shape'] == 'rect' and p['drill'] > min(p['w'], p['h']):         # slot (X1 MS1/MS2)
+            ax.add_patch(FancyBboxPatch((x - p['w'] / 2, p['y'] - p['h'] / 2), p['w'], p['h'],
+                                        boxstyle='round,pad=0,rounding_size=0.3', fc=PAD, lw=0, zorder=6))
+            ax.add_patch(FancyBboxPatch((x - 0.3, p['y'] - p['drill'] / 2), 0.6, p['drill'],
+                                        boxstyle='round,pad=0,rounding_size=0.29', fc=DRILL, lw=0, zorder=6.1))
+            continue
+        if p['shape'] == 'rect':
+            rect(padbox(p), z=6, fc=PAD, lw=0)
+        else:
+            ax.add_patch(Circle((x, p['y']), max(p['w'], p['h']) / 2, fc=PAD, lw=0, zorder=6))
+        ax.add_patch(Circle((x, p['y']), p['drill'] / 2, fc=DRILL, lw=0, zorder=6.1))
+    # X2: four 1x10 housings on the underside, square pins through them
+    for ref, v in bodies.items():
+        if ref.startswith('X2['):
+            b = mb(v['body'][0])
+            ax.add_patch(FancyBboxPatch((b[0] + 0.05, b[1] + 0.05), b[2] - b[0] - 0.1, b[3] - b[1] - 0.1,
+                                        boxstyle='round,pad=0,rounding_size=0.25', fc=HOUSING, ec='#3c3c3c', lw=0.6,
+                                        zorder=7))
+    for p in refs.get('X2', []):
+        x = X(p['x'])
+        ax.add_patch(Rectangle((x - 0.32, p['y'] - 0.32), 0.64, 0.64, fc=PAD, ec='#8a7030', lw=0.4, zorder=8))
+        ax.text(x, -0.75 if p['y'] < H / 2 else H + 0.75, p['pad'], ha='center', va='center', fontsize=10,
+                color='#777777', zorder=9)
+    # Bottom Overlay silk: Altium stores it mirrored (the ink runs -x from the anchor), so from below it reads
+    # left to right starting at the mirrored anchor
+    for t in silk:
+        if not t['text'].strip():
+            continue
+        assert t['rot'] == 0, ('Bottom Overlay text at %d deg: add support' % t['rot'], t['text'])
+        h, e = t['h'], t['stroke'] / 2
+        w = (len(t['text']) - 1) * h + 0.667 * h
+        x0 = X(t['x']) - e
+        text_in_box(ax, t['text'], (x0, x0 + w + 2 * e, t['y'] - e, t['y'] + h + e), 0, z=9)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--pcb', default=PCB)
     ap.add_argument('--out', default=OUT)
+    ap.add_argument('--out-bottom', default=OUT_BOTTOM)
     a = ap.parse_args()
     M = json.load(open(BASE))
     D = json.load(open(COMPS))
@@ -341,6 +463,25 @@ def main():
     print('silk from', src)
     print('unlabelled X2 pins:', ', '.join(notes) or 'none')
     print(a.out)
+
+    # the back, seen from below
+    try:
+        bsilk = read_silk(a.pcb, 34)
+    except Exception as e:                                # noqa: BLE001
+        bsilk = []
+        print('no Bottom Overlay silk (%s)' % e)
+    fig = plt.figure(figsize=(fig_w, fig_h), dpi=100, facecolor='white')
+    ax = fig.add_axes([0, 0, 1, 1])
+    draw_bottom(ax, M, D, bsilk, pts_per_mm)
+    ax.text(xr[0] + 0.3, yr[0] + 0.45, 'Bottom side seen from below (mirrored left-right). Grey names and X2 pin '
+            'numbers are notes, not silk.', ha='left', va='center', fontsize=10, color='#555555')
+    ax.set_xlim(*xr)
+    ax.set_ylim(*yr)
+    ax.set_aspect('equal')
+    ax.axis('off')
+    fig.savefig(a.out_bottom, facecolor='white')
+    print('bottom silk texts:', ' '.join(t['text'] for t in bsilk) or 'none')
+    print(a.out_bottom)
 
 
 if __name__ == '__main__':
