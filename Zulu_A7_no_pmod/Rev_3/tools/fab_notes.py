@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Write the Zulu A7 no-PMOD Rev 2 PCBWay FAB NOTES from tools/fab_facts.json (2026-11-19, notchless FT2232HQ board).
+"""Write the Zulu A7 no-PMOD Rev 3 PCBWay FAB NOTES from tools/fab_facts.json (2026-11-21: Rev 2 + STEMMA QT X5).
 
     python tools/fab_facts.py      # measure the saved PcbDoc and the exported drill files first
-    python tools/fab_notes.py      # -> fabrication/Zulu_A7_no_pmod_Rev_2_PCBWay_FAB_NOTES.txt
+    python tools/fab_notes.py      # -> fabrication/Zulu_A7_no_pmod_Rev_3_PCBWay_FAB_NOTES.txt
 
 Every board-derived number in the note (drill counts, via-in-pad sites and their stacks, mask reach over
 through vias, hole sizes, slot centres, USB geometry, trace and space minimums, outline) is read from
@@ -22,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 OUT = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Project Outputs for Zulu_a7_no_pmod')
 PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
-NOTE = os.path.join(ROOT, 'fabrication', 'Zulu_A7_no_pmod_Rev_2_PCBWay_FAB_NOTES.txt')
+NOTE = os.path.join(ROOT, 'fabrication', 'Zulu_A7_no_pmod_Rev_3_PCBWay_FAB_NOTES.txt')
 DRC = os.path.join(OUT, 'Design Rule Check - Zulu_a7_no_pmod.drc')
 # Fab B Rev 2 as released 2026-11-12 (title ZULU A7 2.2, MD5 33023787), out of git: the live Fab B board took the
 # no-PMOD sync on 2026-11-20, so comparing against it would hide the parts this board moved
@@ -31,8 +31,12 @@ FABB_GIT = ('eb0fbfe', 'Zulu_A7_Fab_B/Rev_2/Imported zulu_a7.PrjPcb/zulu_a7_fab_
 MOVES = os.path.join(HERE, 'route', 'vip2', 'plan1b.json')
 FABB_FACTS = os.path.join(HERE, 'fab_facts_fabb_rev2.json')
 BASE = 'Zulu_a7_no_pmod'
-RELEASE_NAME = 'Zulu A7 no-PMOD Rev 2'
-RELEASE_DATE = '2026-11-20'
+RELEASE_NAME = 'Zulu A7 no-PMOD Rev 3'
+RELEASE_DATE = '2026-11-21'
+# no-PMOD Rev 2 as released 2026-11-20 (title ZULU A7 2.3): its via counts per span, for CHANGES FROM REV 2
+REV2_VIAS = {'Top-Bottom': 318, 'Top-L2-GND': 337, 'L2-GND-L3-SIG': 302, 'L3-SIG-L4-SIG': 398,
+             'L4-SIG-L5-VCC3V3': 300, 'L5-VCC3V3-Bottom': 321}
+REV2_VIA_TOTAL, REV2_VIP_SITES = 1976, 143
 SPAN_SHORT = {'Top-L2-GND': 'T-2', 'L2-GND-L3-SIG': '2-3', 'L3-SIG-L4-SIG': '3-4b', 'L4-SIG-L5-VCC3V3': '4-5',
               'L5-VCC3V3-Bottom': '5-B', 'Top-Bottom': 'thru'}
 SPAN_ORDER = list(SPAN_SHORT)
@@ -175,8 +179,8 @@ def main():
 
     L = []
     A = L.append
-    A('ZULU A7 NO-PMOD REV 2 - PCBWAY FABRICATION NOTES')
-    A('Revision: %s  (silkscreen title "ZULU A7 2.3"; Fab B Rev 2 reads "ZULU A7 2.2")' % RELEASE_NAME)
+    A('ZULU A7 NO-PMOD REV 3 - PCBWAY FABRICATION NOTES')
+    A('Revision: %s  (silkscreen title "ZULU A7 2.4"; no-PMOD Rev 2 reads "ZULU A7 2.3")' % RELEASE_NAME)
     A('Release date: %s' % RELEASE_DATE)
     A('PCB SHA-256: %s' % sha)
     A('Source: %s.PcbDoc (MD5 %s)' % (BASE, md5))
@@ -186,10 +190,11 @@ def main():
               'the Zulu A7 Fab B Rev 2 board: same stack, same layer use, same via types and sizes, same design '
               'rules. What changed: the Pmod header and its parts were removed, the board was cut to %.2f x %.2f '
               'mm, the JTAG holes moved, 16 SDRAM series resistors were added, U2 is now an FT2232HQ in a QFN-64 '
-              'package, X4 is now a side-entry SMT header at the south edge, and the title is ZULU A7 2.3 (see '
-              'CHANGES FROM FAB B REV 2). The drill and via counts below are new. This release SUPERSEDES the '
-              '2026-11-13 no-PMOD Rev 2 data package (that one has an LQFP U2 and a different X4) and the 2026-11-19 one '
-              '(this one adds only the silkscreen pin-1 dots); do not mix files of different packages. Microvias sit in SMD pads, and TWO through vias also sit in SMD pads (GND, in '
+              'package, X4 is now a side-entry SMT header at the south edge (see CHANGES FROM FAB B REV 2). Rev 3 '
+              'adds a STEMMA QT I2C connector on Top at the east edge, moves four capacitors to the Bottom, and '
+              'the title is ZULU A7 2.4 (see CHANGES FROM NO-PMOD REV 2). The drill and via counts below are new. '
+              'This is a NEW REVISION, not a replacement file set for the no-PMOD Rev 2 package (title ZULU A7 2.3); '
+              'do not mix files of different packages. Microvias sit in SMD pads, and TWO through vias also sit in SMD pads (GND, in '
               'the U2 exposed pad and in X4 pad 2): both must be filled and capped (see VIA-IN-PAD).' % (w, h))
     L += wrap('Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as a standard six-layer '
               'prototype without confirming every blind/buried drill pair, the via-in-pad list and the '
@@ -215,12 +220,31 @@ def main():
               'L3-L4 buried 403 -> %d, L4-L5 281 -> %d, L5-Bottom 295 -> %d. Stack, finish, layer use, via and '
               'hole sizes, X1 and its slots, and every design rule are unchanged. Parts placed differently from '
               'Fab B Rev 2 (same origin): %s. Silkscreen (2026-11-20): a 0.40 mm dot beside pin 1 (A1 on U1) of '
-              'U1, U2, U3, U4, U8, Q1, BTN and X4 and beside each LED cathode (LD0-LD4), 0.30 mm beside U7 pin 1; '
-              'copper, solder mask, paste and drills are unchanged from the 2026-11-19 package.'
+              'U1, U2, U3, U4, U8, Q1, BTN and X4 and beside each LED cathode (LD0-LD4), 0.30 mm beside U7 pin 1 '
+              '(Rev 3 adds one beside X5 pin 1). '
+              'The via counts and part list in this paragraph are those of Rev 3 (they include the Rev 3 changes below).'
               % (w, h, ', '.join(r['pads'][0] for r in moved_rep), min(moves), max(moves), format(F['via_total'], ','), n['Top-Bottom'], n['Top-L2-GND'], n['L2-GND-L3-SIG'],
                  n['L3-SIG-L4-SIG'], n['L4-SIG-L5-VCC3V3'], n['L5-VCC3V3-Bottom'],
-                 ', '.join('%s (%.2f, %.2f) -> (%.2f, %.2f)%s' % (r, a[0], a[1], b[0], b[1],
-                           '' if a[2] == b[2] else ' rot %g -> %g' % (a[2], b[2])) for r, a, b in moved)))
+                 ', '.join('%s (%.2f, %.2f) -> (%.2f, %.2f)%s%s' % (r, a[0], a[1], b[0], b[1],
+                           '' if a[2] == b[2] else ' rot %g -> %g' % (a[2], b[2]),
+                           '' if a[3] == b[3] else ' %s -> %s side' % (a[3], b[3])) for r, a, b in moved)))
+    A('')
+    A('CHANGES FROM NO-PMOD REV 2')
+    L += wrap('A STEMMA QT / Qwiic I2C connector X5 (JST SM04B-SRSS-TB, 1.0 mm pitch, side entry, SMT) sits on Top '
+              'at the east short edge with its cable opening facing east: signal pads 1-4 at x 55.885 mm, the two '
+              'metal hold-down tabs 0.30 mm from the east edge. The 22 uF 0805 capacitors C141, C142, C144 and C145 '
+              'moved from Top to Bottom at the same XY, under and beside X5. 23 connections near the east edge were '
+              're-routed (the new I2C-SDA / I2C-SCL nets from U1 to X5, and the traces and cap feeds X5 displaced). '
+              'Via objects %s -> %s: through vias %d -> %d, Top-L2 %d -> %d, L2-L3 %d -> %d, L3-L4 buried %d -> %d, '
+              'L4-L5 %d -> %d, L5-Bottom %d -> %d; via-in-pad sites %d -> %d. Silkscreen: the board title reads '
+              'ZULU A7 2.4 (was 2.3), the X2 pin-21 label reads "21" (its "GND" sat under an X5 tab), and X5 '
+              'brings its outline and a pin-1 dot (its designator is not printed). Stack, '
+              'finish, layer use, via and hole sizes, outline, X1 and its slots, and every design rule are unchanged.'
+              % (format(REV2_VIA_TOTAL, ','), format(F['via_total'], ','),
+                 REV2_VIAS['Top-Bottom'], n['Top-Bottom'], REV2_VIAS['Top-L2-GND'], n['Top-L2-GND'],
+                 REV2_VIAS['L2-GND-L3-SIG'], n['L2-GND-L3-SIG'], REV2_VIAS['L3-SIG-L4-SIG'], n['L3-SIG-L4-SIG'],
+                 REV2_VIAS['L4-SIG-L5-VCC3V3'], n['L4-SIG-L5-VCC3V3'], REV2_VIAS['L5-VCC3V3-Bottom'], n['L5-VCC3V3-Bottom'],
+                 REV2_VIP_SITES, vs['via_sites']))
     A('')
     A('BOARD')
     A('Finished outline: %.2f mm x %.2f mm (rectangle, from the GM profile)' % (w, h))
@@ -437,11 +461,11 @@ def main():
               'propose one for approval. Copper to the board edge, measured on the copper Gerbers: the L2 and L5 '
               'plane polygons %.3f mm from every edge; Top/L3/L4/Bottom copper %.3f mm from the long (north and '
               'south) edges, %.3f mm from the west short edge (JP3/JP4 lands) and %.3f mm from the east short edge '
-              '(Bottom pads of R92, R93, R99). In a 1 x 4 array the long edges are V-cut or routed too, so please '
+              '(the metal hold-down tabs of the STEMMA QT connector X5 on Top; Bottom copper %.3f mm). In a 1 x 4 array the long edges are V-cut or routed too, so please '
               'confirm the V-cut keep-out, or propose a routed/tab panel, before CAM.'
               % (w, min(min(cte[l].values()) for l in ('L2-GND', 'L5-VCC3V3')),
                  min(min(cte[l]['north'], cte[l]['south']) for l in sig), min(cte[l]['west'] for l in sig),
-                 min(cte[l]['east'] for l in sig)))
+                 min(cte[l]['east'] for l in sig), cte['Bottom']['east']))
     A('')
     A('ENGINEERING QUESTIONS (PLEASE ANSWER IN THE EQ)')
     for i, q in enumerate([
@@ -464,7 +488,9 @@ def main():
         'in plan view (%d of them exactly coaxial). Each pair is listed below by the two drills that overlap, '
         'net span (x, y) / net span (x, y), hole overlap; the other drills of each column sit at the same XY. '
         'Please confirm the sequential build accepts these as drawn.' % (len(proj), sum(1 for e in proj if e['centre_distance'] == 0)),
-        'Confirm the panel (see PANEL) and the via plugging method (see VIA TENTING).']):
+        'Confirm the panel (see PANEL; new in Rev 3: the STEMMA QT connector X5 has its metal tabs 0.30 mm '
+        'from the east short edge and its housing ends about 0.5 mm from it, so a rail or V-cut there must not '
+        'touch it) and the via plugging method (see VIA TENTING).']):
         first = wrap('%d. %s' % (i + 1, q), 73)
         L += [first[0]] + ['   ' + x for x in first[1:]]
         if q.startswith('Solder-mask cover'):

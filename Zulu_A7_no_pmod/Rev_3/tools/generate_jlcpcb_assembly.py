@@ -90,18 +90,18 @@ from collections import defaultdict
 import olefile
 import pymupdf as fitz
 
-# ---- No-PMOD Rev 2 board-specific constants (2026-11-13) ----
+# ---- No-PMOD Rev 3 (2026-11-21: Rev 2 + STEMMA QT X5); constants first set for Rev 2 (2026-11-13) ----
 # Names: the no-PMOD Rev 2 release names (Fab B Rev 2: "Zulu A7 Fab B Rev 2", 2026-11-11).
 # FAB_ARCHIVE and FAB_NOTES are the names the no-PMOD fabrication release (tools/package_fabrication_release.py)
 # writes into Rev_2/fabrication/; these notes point PCBWay at them.
-RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_2"
-RELEASE_NAME = "Zulu A7 no-PMOD Rev 2"
-RELEASE_DATE = "2026-11-20"
+RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_3"
+RELEASE_NAME = "Zulu A7 no-PMOD Rev 3"
+RELEASE_DATE = "2026-11-21"
 BOARD_WIDTH = 60.96            # Board6 VX/VY outline 2400 x 1000 mil (2.4 x 1.0 in); check_outline() holds it to the PcbDoc
 BOARD_HEIGHT = 25.40
-FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Fabrication_2026-11-20.zip"
-FAB_NOTES = "Zulu_A7_no_pmod_Rev_2_PCBWay_FAB_NOTES.txt"
-ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_2_PCBWay_Assembly_2026-11-20.zip"
+FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_3_PCBWay_Fabrication_2026-11-21.zip"
+FAB_NOTES = "Zulu_A7_no_pmod_Rev_3_PCBWay_FAB_NOTES.txt"
+ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_3_PCBWay_Assembly_2026-11-21.zip"
 FINISHED_THICKNESS = "1.60 +/- 0.16 mm"   # PCBWay's agreed stack (Shengyi S1000-2M), see FAB_NOTES
 PANEL = "1x4"                              # PROPOSAL only, to confirm with PCBWay: Fab B's basis, 5 mm V-cut rails at the two short ends
 RAIL_MM = 5.0
@@ -931,6 +931,9 @@ def assembly_counts(parts, geometry):
     }
 
 
+U1_LAND_R, THROUGH_VIA_R, LASER_VIA_R = 0.1125, 0.175, 0.15   # mm: 0.225 lands, 0.35 / 0.30 via lands
+
+
 def u1_via_census(geometry):
     """Top-side vias in U1's land field: (through at ball sites, through other, laser interstitial,
     laser at ball sites, laser other, vias in a land). Read with altium_monkey from the same PcbDoc."""
@@ -956,7 +959,12 @@ def u1_via_census(geometry):
         on_grid = min(frac(fx), 1 - frac(fx)) < 0.04 and min(frac(fy), 1 - frac(fy)) < 0.04
         half = abs(frac(fx) - 0.5) < 0.04 and abs(frac(fy) - 0.5) < 0.04
         kind = "through" if via.layer_end == 32 else "laser"
-        if on_grid:   # a grid site: a land if U1 has a ball there, otherwise a depopulated ball site
+        # Rev 3 (2026-11-21): a via whose land overlaps a ball land counts as "land" wherever its centre is
+        # (the old on-grid test missed the 12 offset Top-L2 microvias in U1 lands that fab_facts lists)
+        d = min(math.hypot(x - lx, y - ly) for lx, ly in lands)
+        if d < U1_LAND_R + (THROUGH_VIA_R if kind == "through" else LASER_VIA_R) - 1e-4:
+            where = "land"
+        elif on_grid:   # a grid site with no ball: a depopulated ball site
             where = "land" if (round(fx), round(fy)) in land_cells else "ball site"
         else:
             where = "interstitial" if half else "other"
@@ -1020,7 +1028,7 @@ LED_CATHODE_PADS = {"EVERLIGHT-19-337": ("2", "4", "6")}
 def pin_one_parts(parts, geometry, fitted):
     """Fab B: the polarised multi-pin parts the drawings mark with a red dot (pad 1 / A1): ICs, Q1, X4."""
     return [ref for ref in sorted(fitted, key=bom_audit.natkey)
-            if re.match(r"(U|Q)[0-9]", ref) or ref == "X4"]
+            if re.match(r"(U|Q)[0-9]", ref) or ref in ("X4", "X5")]
 
 
 def board_vippo():
@@ -1163,7 +1171,8 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         + via_phrase(vias, "through", "plated 0.20 mm through vias")
         + " and " + via_phrase(vias, "laser", "Top-L2 laser microvias") + ". "
         + ("No via is in a land." if vias[('through', 'land')] + vias[('laser', 'land')] == 0
-           else f"{vias[('through', 'land')] + vias[('laser', 'land')]} vias are in lands."),
+           else f"{vias[('through', 'land')] + vias[('laser', 'land')]} of them overlap a ball land (via-in-pad:"
+           " listed in the fabrication notes' VIA-IN-PAD table, filled and capped flat)."),
         "  The fabrication notes ask for ALL through vias to be plugged (IPC-4761",
         "  type VI or VII); please confirm the method covers the vias in U1's field.",
         "PANEL (proposal, to confirm with PCBWay): please send the panel drawing for",
@@ -1192,14 +1201,14 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "- Coordinates on both sides are as viewed from the top. Bottom-side X",
         "  values are NOT mirrored.",
         "- Mid X/Y is the centre of each part's pad extents, not the footprint",
-        "  origin. For connectors (X1, X3, X4) align the part to its pads in CAM.",
+        "  origin. For connectors (X1, X3, X4, X5) align the part to its pads in CAM.",
         "- Rotations are the values stored in the final Altium PCB, in degrees",
         "  (0/90/180/270), not converted for bottom-side parts. Please confirm your",
         "  bottom-side convention against the bottom drawing before programming.",
         "- The top drawing is viewed from the top; the bottom drawing is mirrored,",
         "  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);",
         "  dashed red label = DNP. The silkscreen also marks polarity: a dot beside",
-        "  pin 1 (A1 on U1) of U1, U2, U3, U4, U7, U8, Q1, BTN and X4, a dot beside",
+        "  pin 1 (A1 on U1) of U1, U2, U3, U4, U7, U8, Q1, BTN, X4 and X5, a dot beside",
         "  each LED's cathode, and U10's tick beside pin 1 (X1 and X3 are keyed).",
         "  The drawings and this file remain the orientation reference.",
         "If the CPL and a drawing disagree, please send an engineering query.",
@@ -1266,6 +1275,11 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  stays inside the board outline. Pin 1 (the WEST contact, red dot) is battery",
         "  positive, pin 2 is GND. Nothing is hand-soldered; the mounting pads MP1/MP2 are",
         "  paste lands too.",
+        "- X5 (JST SM04B-SRSS-TB, STEMMA QT / Qwiic, 1.0 mm pitch side-entry SMT, top",
+        "  side, in the CPL): its cable opening faces the right (east) short board edge;",
+        "  the metal hold-down tabs MP1/MP2 end 0.30 mm from that edge. Pin 1 (GND, the",
+        "  SOUTH contact, red dot and silkscreen dot). Its CPL point is the pad-extent",
+        "  centre, 0.45 mm west of the housing centre: align it to its pads in CAM.",
         f"- U8 ({u8_mpn}, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm",
         "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot and",
         "  the silkscreen dot.",
@@ -1457,6 +1471,7 @@ def write_notes(parts, geometry, bom_rows):
         f"- R119-R134 ({SERIES_R_MPN}) are SI-critical SDRAM series resistors: place",
         "  each exactly per the CPL.",
         "- X4 pin 1 is battery positive.",
+        "- X5 (STEMMA QT) pin 1 is GND; its cable opening faces the right board edge.",
         "- X3's microSD card opening faces the left board edge.",
         "- X1's micro-USB opening faces the upper board edge.",
         "- X1-MS1/MS2 are plated 0.60 x 1.30 mm front shell-stake slots. Confirm",

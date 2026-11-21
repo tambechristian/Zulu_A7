@@ -1,9 +1,9 @@
 {
  "source": {
   "pcb": "Zulu_a7_no_pmod.PcbDoc",
-  "md5": "8741442752384bc0bc7adf49c4c16f5f",
-  "sha256": "B2E9716F2D69F32867CDEEC2F7ACAC85BB6835095EFC27667B859531D0424DB2",
-  "size": 4969472
+  "md5": "8ba5653344f3ae7673e169964a5182c5",
+  "sha256": "346D121CA6DBEFCBA5C26F334C4E9CEE3264245D96BC2736391C304199D7AF3F",
+  "size": 4990976
  },
  "board_outline": {
   "vertices_mm": [
@@ -59,103 +59,103 @@
    "span": "Top-L2-GND",
    "size": 0.3,
    "hole": 0.15,
-   "count": 337
+   "count": 351
   },
   {
    "span": "Top-Bottom",
    "size": 0.35,
    "hole": 0.2,
-   "count": 318
+   "count": 315
   },
   {
    "span": "L2-GND-L3-SIG",
    "size": 0.3,
    "hole": 0.15,
-   "count": 302
+   "count": 311
   },
   {
    "span": "L3-SIG-L4-SIG",
    "size": 0.27,
    "hole": 0.15,
-   "count": 398
+   "count": 402
   },
   {
    "span": "L4-SIG-L5-VCC3V3",
    "size": 0.3,
    "hole": 0.15,
-   "count": 300
+   "count": 296
   },
   {
    "span": "L5-VCC3V3-Bottom",
    "size": 0.3,
    "hole": 0.15,
-   "count": 321
+   "count": 317
   }
  ],
- "via_total": 1976,
- "stacked_L2_L5_sites": 48,
- "stacked_L2_L5_full_top_bottom": 26,
- "physical_hdi_sites": 858,
+ "via_total": 1992,
+ "stacked_L2_L5_sites": 47,
+ "stacked_L2_L5_full_top_bottom": 24,
+ "physical_hdi_sites": 876,
  "hdi_sites_on_through_vias": 0,
  "drill_vs_board": {
   "TXT": {
-   "file": 366,
-   "board_vias": 318,
+   "file": 363,
+   "board_vias": 315,
    "board_round_pad_holes": 48,
    "board_not_in_file": 0,
    "file_not_on_board": 0
   },
   "TX3": {
-   "file": 398,
-   "board": 398,
+   "file": 402,
+   "board": 402,
    "board_not_in_file": 0,
    "file_not_on_board": 0
   },
   "TX6": {
-   "file": 337,
-   "board": 337,
+   "file": 351,
+   "board": 351,
    "board_not_in_file": 0,
    "file_not_on_board": 0
   },
   "TX7": {
-   "file": 302,
-   "board": 302,
+   "file": 311,
+   "board": 311,
    "board_not_in_file": 0,
    "file_not_on_board": 0
   },
   "TX9": {
-   "file": 300,
-   "board": 300,
+   "file": 296,
+   "board": 296,
    "board_not_in_file": 0,
    "file_not_on_board": 0
   },
   "TX10": {
-   "file": 321,
-   "board": 321,
+   "file": 317,
+   "board": 317,
    "board_not_in_file": 0,
    "file_not_on_board": 0
   }
  },
  "drill_hits_per_tool": {
   "TXT": {
-   "02": 318,
+   "02": 315,
    "04": 2,
    "05": 46
   },
   "TX3": {
-   "01": 398
+   "01": 402
   },
   "TX6": {
-   "01": 337
+   "01": 351
   },
   "TX7": {
-   "01": 302
+   "01": 311
   },
   "TX9": {
-   "01": 300
+   "01": 296
   },
   "TX10": {
-   "01": 321
+   "01": 317
   }
  },
  "pad_holes": [
@@ -187,7 +187,7 @@
  ],
  "track_min_width_routed": 0.0762,
  "track_width_hist": {
-  "0.0762": 4326,
+  "0.0762": 4384,
   "0.08": 1,
   "0.1": 91,
   "0.105": 1,
@@ -290,13 +290,13 @@
   ]
  ],
  "usb_coupled_length_by_gap": {
+  "Top 0.2623": 0.763,
+  "Top 0.2255": 0.424,
+  "Top 0.3500": 1.325,
   "Top 0.4111": 0.424,
   "Top 0.2742": 0.35,
   "Top 0.4752": 0.35,
-  "Top 0.1500": 8.004,
-  "Top 0.2623": 0.763,
-  "Top 0.2255": 0.424,
-  "Top 0.3500": 1.325
+  "Top 0.1500": 8.004
  },
  "usb_track_length": {
   "USB_D_P": 12.186,
@@ -395,6 +395,63 @@
    "pad_size": "1.100 x 1.000",
    "hole_centre_in_pad": true,
    "land_inside_pad": false,
+   "hole_inside_pad": true,
+   "hole_touches_pad": true,
+   "overlap": 0.15
+  },
+  {
+   "ref": "C143",
+   "pad": "2",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 52.425,
+   "via_y": 10.35,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.300 x 1.500",
+   "hole_centre_in_pad": true,
+   "land_inside_pad": true,
+   "hole_inside_pad": true,
+   "hole_touches_pad": true,
+   "overlap": 0.15
+  },
+  {
+   "ref": "C144",
+   "pad": "1",
+   "pad_net": "VCC1V8",
+   "via_net": "VCC1V8",
+   "layer": "Bottom",
+   "span": "L5-VCC3V3-Bottom",
+   "via_x": 55.575,
+   "via_y": 8.65,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.300 x 1.500",
+   "hole_centre_in_pad": false,
+   "land_inside_pad": false,
+   "hole_inside_pad": false,
+   "hole_touches_pad": true,
+   "overlap": 0.1253
+  },
+  {
+   "ref": "C145",
+   "pad": "1",
+   "pad_net": "VCC3V3",
+   "via_net": "VCC3V3",
+   "layer": "Bottom",
+   "span": "L5-VCC3V3-Bottom",
+   "via_x": 56.025,
+   "via_y": 8.65,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.300 x 1.500",
+   "hole_centre_in_pad": true,
+   "land_inside_pad": true,
    "hole_inside_pad": true,
    "hole_touches_pad": true,
    "overlap": 0.15
@@ -1788,6 +1845,25 @@
   },
   {
    "ref": "U1",
+   "pad": "U19",
+   "pad_net": "I2C-SDA",
+   "via_net": "I2C-SDA",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 50.85,
+   "via_y": 8.5,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "round",
+   "pad_size": "0.225 x 0.225",
+   "hole_centre_in_pad": true,
+   "land_inside_pad": false,
+   "hole_inside_pad": false,
+   "hole_touches_pad": true,
+   "overlap": 0.15
+  },
+  {
+   "ref": "U1",
    "pad": "V13",
    "pad_net": "CHAN26",
    "via_net": "CHAN26",
@@ -3020,6 +3096,82 @@
    "hole_inside_pad": true,
    "hole_touches_pad": true,
    "overlap": 0.15
+  },
+  {
+   "ref": "X5",
+   "pad": "1",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 55.275,
+   "via_y": 6.425,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "0.600 x 1.550",
+   "hole_centre_in_pad": true,
+   "land_inside_pad": false,
+   "hole_inside_pad": true,
+   "hole_touches_pad": true,
+   "overlap": 0.15
+  },
+  {
+   "ref": "X5",
+   "pad": "2",
+   "pad_net": "VCC3V3",
+   "via_net": "VCC3V3",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 56.175,
+   "via_y": 7.675,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "0.600 x 1.550",
+   "hole_centre_in_pad": true,
+   "land_inside_pad": true,
+   "hole_inside_pad": true,
+   "hole_touches_pad": true,
+   "overlap": 0.15
+  },
+  {
+   "ref": "X5",
+   "pad": "MP1",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 59.05,
+   "via_y": 4.875,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.200 x 1.800",
+   "hole_centre_in_pad": true,
+   "land_inside_pad": false,
+   "hole_inside_pad": true,
+   "hole_touches_pad": true,
+   "overlap": 0.15
+  },
+  {
+   "ref": "X5",
+   "pad": "MP2",
+   "pad_net": "GND",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 59.05,
+   "via_y": 10.475,
+   "via_land": 0.3,
+   "hole": 0.15,
+   "pad_shape": "rect",
+   "pad_size": "1.200 x 1.800",
+   "hole_centre_in_pad": true,
+   "land_inside_pad": false,
+   "hole_inside_pad": true,
+   "hole_touches_pad": true,
+   "overlap": 0.15
   }
  ],
  "through_vias_in_smd_pads": [
@@ -3043,29 +3195,29 @@
   }
  ],
  "smd_pad_shapes": {
-  "2": 578,
+  "2": 584,
   "1": 240
  },
  "via_in_pad_summary": {
-  "entries": 143,
-  "via_sites": 143,
-  "hole_touches_pad": 136,
+  "entries": 151,
+  "via_sites": 151,
+  "hole_touches_pad": 144,
   "land_only": 7,
   "by_span": {
-   "Top-L2-GND": 63,
-   "L5-VCC3V3-Bottom": 78,
+   "Top-L2-GND": 69,
+   "L5-VCC3V3-Bottom": 80,
    "Top-Bottom": 2
   },
   "by_side": {
-   "Top": 65,
-   "Bottom": 78
+   "Top": 71,
+   "Bottom": 80
   }
  },
  "via_stacks": {
-  "top_l2_on_l2_l3": 287,
-  "l2_l3_on_l3_l4_buried": 108,
-  "l3_l4_buried_with_l4_l5": 115,
-  "l4_l5_under_l5_bottom": 289
+  "top_l2_on_l2_l3": 295,
+  "l2_l3_on_l3_l4_buried": 110,
+  "l3_l4_buried_with_l4_l5": 111,
+  "l4_l5_under_l5_bottom": 284
  },
  "via_in_pad_columns": [
   {
@@ -3139,6 +3291,49 @@
    "span": "L5-VCC3V3-Bottom",
    "via_x": 3.025,
    "via_y": 21.05,
+   "spans_at_xy": [
+    "L5-VCC3V3-Bottom"
+   ],
+   "l2_l5_column": false,
+   "full_top_bottom": false
+  },
+  {
+   "ref": "C143",
+   "pad": "2",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 52.425,
+   "via_y": 10.35,
+   "spans_at_xy": [
+    "Top-L2-GND"
+   ],
+   "l2_l5_column": false,
+   "full_top_bottom": false
+  },
+  {
+   "ref": "C144",
+   "pad": "1",
+   "via_net": "VCC1V8",
+   "layer": "Bottom",
+   "span": "L5-VCC3V3-Bottom",
+   "via_x": 55.575,
+   "via_y": 8.65,
+   "spans_at_xy": [
+    "L4-SIG-L5-VCC3V3",
+    "L5-VCC3V3-Bottom"
+   ],
+   "l2_l5_column": false,
+   "full_top_bottom": false
+  },
+  {
+   "ref": "C145",
+   "pad": "1",
+   "via_net": "VCC3V3",
+   "layer": "Bottom",
+   "span": "L5-VCC3V3-Bottom",
+   "via_x": 56.025,
+   "via_y": 8.65,
    "spans_at_xy": [
     "L5-VCC3V3-Bottom"
    ],
@@ -4252,6 +4447,21 @@
   },
   {
    "ref": "U1",
+   "pad": "U19",
+   "via_net": "I2C-SDA",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 50.85,
+   "via_y": 8.5,
+   "spans_at_xy": [
+    "Top-L2-GND",
+    "L2-GND-L3-SIG"
+   ],
+   "l2_l5_column": false,
+   "full_top_bottom": false
+  },
+  {
+   "ref": "U1",
    "pad": "V13",
    "via_net": "CHAN26",
    "layer": "Top",
@@ -5234,10 +5444,69 @@
    ],
    "l2_l5_column": false,
    "full_top_bottom": false
+  },
+  {
+   "ref": "X5",
+   "pad": "1",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 55.275,
+   "via_y": 6.425,
+   "spans_at_xy": [
+    "Top-L2-GND"
+   ],
+   "l2_l5_column": false,
+   "full_top_bottom": false
+  },
+  {
+   "ref": "X5",
+   "pad": "2",
+   "via_net": "VCC3V3",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 56.175,
+   "via_y": 7.675,
+   "spans_at_xy": [
+    "Top-L2-GND",
+    "L2-GND-L3-SIG",
+    "L3-SIG-L4-SIG",
+    "L4-SIG-L5-VCC3V3"
+   ],
+   "l2_l5_column": true,
+   "full_top_bottom": false
+  },
+  {
+   "ref": "X5",
+   "pad": "MP1",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 59.05,
+   "via_y": 4.875,
+   "spans_at_xy": [
+    "Top-L2-GND"
+   ],
+   "l2_l5_column": false,
+   "full_top_bottom": false
+  },
+  {
+   "ref": "X5",
+   "pad": "MP2",
+   "via_net": "GND",
+   "layer": "Top",
+   "span": "Top-L2-GND",
+   "via_x": 59.05,
+   "via_y": 10.475,
+   "spans_at_xy": [
+    "Top-L2-GND"
+   ],
+   "l2_l5_column": false,
+   "full_top_bottom": false
   }
  ],
  "via_in_pad_columns_summary": {
-  "l2_l5_column_sites": 25,
+  "l2_l5_column_sites": 26,
   "full_top_bottom_sites": 12,
   "through_vias_in_pads": 2
  },
@@ -5345,7 +5614,7 @@
  ],
  "mask_over_through_vias": {
   "Top": {
-   "openings": 468,
+   "openings": 466,
    "openings_not_exact": 0,
    "openings_centred_on_non_vip_vias": {},
    "through_via_holes_reached": 2,
@@ -5431,7 +5700,7 @@
    ]
   },
   "Bottom": {
-   "openings": 450,
+   "openings": 458,
    "openings_not_exact": 0,
    "openings_centred_on_non_vip_vias": {},
    "through_via_holes_reached": 0,
@@ -5551,6 +5820,19 @@
      "hole_margin": 0.025,
      "nearest_smd_pad": "U7-2",
      "copper_gap": 0.0018,
+     "opening_modelled_exactly": true
+    },
+    {
+     "x": 57.4,
+     "y": 4.7,
+     "via_net": "FPGA-INIT#",
+     "opening_pad": "R1-1",
+     "opening_pad_net": "FPGA-INIT#",
+     "contact": "overlap",
+     "opening_edge_to_centre": 0.125,
+     "hole_margin": 0.025,
+     "nearest_smd_pad": "R1-1",
+     "copper_gap": 0.0,
      "opening_modelled_exactly": true
     },
     {
@@ -5737,8 +6019,8 @@
     }
    ]
   },
-  "through_vias_with_land_reached": 25,
-  "through_vias_with_land_overlapped": 24,
+  "through_vias_with_land_reached": 26,
+  "through_vias_with_land_overlapped": 25,
   "all_same_net": true
  },
  "through_via_lands_abutting_smd_pads": [
@@ -5761,6 +6043,16 @@
    "side": "Top",
    "land_to_pad_gap": -0.25,
    "hole_to_pad_gap": -0.175
+  },
+  {
+   "x": 57.4,
+   "y": 4.7,
+   "via_net": "FPGA-INIT#",
+   "pad": "R1-1",
+   "pad_net": "FPGA-INIT#",
+   "side": "Bottom",
+   "land_to_pad_gap": -4e-05,
+   "hole_to_pad_gap": 0.075
   },
   {
    "x": 58.2,
@@ -6045,9 +6337,9 @@
   "all_same_net": true
  },
  "unstacked_outer_microvias": {
-  "top_l2": 50,
-  "l5_bottom": 32,
-  "l2_l3": 1,
+  "top_l2": 56,
+  "l5_bottom": 33,
+  "l2_l3": 2,
   "l4_l5": 1,
   "inner_xy": [
    [
@@ -6057,13 +6349,19 @@
     15.4
    ],
    [
+    "LED0_R",
+    "L2-GND-L3-SIG",
+    60.4,
+    13.1
+   ],
+   [
     "N$LD1A",
     "L4-SIG-L5-VCC3V3",
     26.7,
     11.8
    ]
   ],
-  "not_in_pads": 32
+  "not_in_pads": 35
  },
  "different_net_projected_hole_overlaps": [
   {
@@ -6181,8 +6479,8 @@
  ],
  "mask_cover_different_net": {
   "min": 0.0198,
-  "under_0p044": 36,
-  "under_0p05": 74,
+  "under_0p044": 35,
+  "under_0p05": 75,
   "worst": [
    {
     "side": "Bottom",
@@ -6279,7 +6577,7 @@
   "Top": {
    "west": 0.338,
    "south": 0.2619,
-   "east": 0.3601,
+   "east": 0.3,
    "north": 0.2619
   },
   "L2-GND": {

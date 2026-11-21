@@ -10,7 +10,7 @@ grey switch, coloured LED bodies, a faint green trace pattern, white bold silk t
 Inputs
   tools/route/illustration/base.json
                                  pads (board mm, origin lower-left) and Top Layer tracks of the board, from
-                                 route_model.py (FABB_MODEL=...) on the 2026-11-21 Rev 3 PcbDoc (md5 0e4ffdd2:
+                                 route_model.py (FABB_MODEL=...) on the 2026-11-21 Rev 3 PcbDoc (md5 8ba56533, title ZULU A7 2.4:
                                  U2 = FT2232HQ QFN-64, X4 = side-entry S2B-PH-SM4-TB, U10 = MSOP-8,
                                  X5 = STEMMA QT SM04B-SRSS-TB on the Top at the east edge; C141/C142/C144/C145 on
                                  the Bottom beside and under it)
@@ -18,10 +18,10 @@ Inputs
                                  side / pattern / rotation per part, fed to body_check.build() for the body boxes,
                                  from tools/route/illustration/comps_from_board.py on the same PcbDoc
   Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc
-                                 the board (md5 0e4ffdd2); its Texts6 stream gives the Top Overlay
+                                 the board (md5 8ba56533); its Texts6 stream gives the Top Overlay
                                  free texts (pin labels, pin numbers, board title) and the visible designators.
                                  Without olefile or the PcbDoc the labels fall back to short names derived from
-                                 the X2 nets and the title 'ZULU A7 2.3'.
+                                 the X2 nets and the title 'ZULU A7 2.4'.
 Output
   docs/board_illustration_top.png     (about 2000 px wide, white background)
   docs/board_illustration_bottom.png  the back, seen from below (mirrored left-right, so X2 pin 1 is on the left):
@@ -61,7 +61,7 @@ COMPS = os.path.join(HERE, 'route', 'illustration', 'comps.json')
 PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
 OUT = os.path.join(ROOT, 'docs', 'board_illustration_top.png')
 OUT_BOTTOM = os.path.join(ROOT, 'docs', 'board_illustration_bottom.png')
-RELEASED_MD5 = '0e4ffdd28400a86cf892e0ee2cdd5c06'
+RELEASED_MD5 = '8ba5653344f3ae7673e169964a5182c5'
 
 # colours as the Asar picture
 BOARD, COPPER, PAD, SILK, DRILL = '#14361f', '#2c6b3e', '#c9a94a', '#ffffff', '#0a0a0a'
@@ -134,7 +134,7 @@ def fallback_silk(pads):
         w = (len(s) - 1) * h + 0.667 * h
         out.append(dict(text=s, kind='free', x=p['x'] - w / 2, y=p['y'] - 3.19 if top else p['y'] + 2.39, h=h, rot=0,
                         stroke=0.15))
-    out.append(dict(text='ZULU A7 2.3', kind='free', x=37.7, y=5.0, h=1.3, rot=0, stroke=0.18))
+    out.append(dict(text='ZULU A7 2.4', kind='free', x=37.7, y=5.0, h=1.3, rot=0, stroke=0.18))
     return out
 
 
