@@ -150,3 +150,10 @@ U2 corner-web question describes the 0.035 mm U2 mask expansion (webs 0.115 mm).
 microvias 337 / 302 / 300 / 321 = 1260, 143 via-in-pad sites. `package_fabrication_release.py` retargeted (hashes,
 counts): **NO_PMOD_REV_2_PCBWAY_FABRICATION_RELEASE PASS** (23 entries, body gate 0 fail). `generate_jlcpcb_assembly.py
 --assembler pcbway`: **ASSEMBLY_RELEASE PASS**, 67 BOM lines, 188 fitted; the CPL changes are exactly the 8 moved parts.
+
+## 2026-11-20: pin-1 and cathode silkscreen dots
+
+A dot beside pin 1 of U1 (A1), U2, U3, U4, U7, U8, Q1, BTN and X4 and beside each LED cathode (LD0-LD4); silkscreen
+only. Board MD5 87414427, DRC 0/0 with Component Clearance, Gerbers differ from the 2026-11-19 export only by the
+14 dots, drills byte-identical. Releases rebuilt as `..._2026-11-20.zip` (both PASS); the 2026-11-19 packages are
+removed. Details: `docs/pin1_silk_dots.md`.

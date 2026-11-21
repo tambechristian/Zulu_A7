@@ -41,7 +41,7 @@ FABRICATION = os.path.join(ROOT, "fabrication")
 PCB = os.path.join(PROJECT, "Zulu_a7_no_pmod.PcbDoc")
 RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_2"
 RELEASE_NAME = "Zulu A7 no-PMOD Rev 2"
-RELEASE_DATE = "2026-11-19"
+RELEASE_DATE = "2026-11-20"
 DEFAULT_NOTE = os.path.join(FABRICATION, f"{RELEASE_PREFIX}_PCBWay_FAB_NOTES.txt")
 DEFAULT_ARCHIVE = os.path.join(
     FABRICATION, f"{RELEASE_PREFIX}_PCBWay_Fabrication_{RELEASE_DATE}.zip"
@@ -57,14 +57,15 @@ def names_order(data):
     if isinstance(data, str):
         data = data.encode("latin-1", "replace")
     return any(hashlib.sha256(t.upper()).hexdigest() in ORDER_SHA256 for t in ORDER_TOKEN.findall(data))
-# no-PMOD Rev 2 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-19 20:18:57, DRC 0 with 3D bodies (09:01:27 board: SHA-256
+# no-PMOD Rev 2 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-20 20:16:22 with the pin-1 silkscreen dots, DRC 0 with
+# 3D bodies (before the dots: saved 2026-11-19 20:18:57, SHA-256 B2BA5E19..., MD5 9b0341ba) (09:01:27 board: SHA-256
 # 62312183..., MD5 79a68932; earlier: 2026-11-13 21:12:43, SHA-256
 # CD502C40..., MD5 24de4472; Fab B Rev 2: 2026-11-12 00:16:55, title ZULU A7 2.2)
 # (Rev 1: SHA-256 C439E0F5...0382, MD5 830b1744)
 EXPECTED_PCB_SHA256 = (
-    "B2BA5E19EF5C10C01E31FACDEDE9D0EA055A86440C867BC5A22E277A4F5376B9"
+    "B2E9716F2D69F32867CDEEC2F7ACAC85BB6835095EFC27667B859531D0424DB2"
 )
-EXPECTED_PCB_MD5 = "9b0341ba09f3aec84459e361271cd9b0"
+EXPECTED_PCB_MD5 = "8741442752384bc0bc7adf49c4c16f5f"
 BASE = "Zulu_a7_no_pmod"
 OUTLINE = (0.0, 0.0, 60.96, 25.40)  # GM profile, mm
 GERBER_EXTENSIONS = [

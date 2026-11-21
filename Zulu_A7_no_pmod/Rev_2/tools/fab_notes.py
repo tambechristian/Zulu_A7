@@ -24,12 +24,15 @@ OUT = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Project Outputs for Zulu_a7
 PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
 NOTE = os.path.join(ROOT, 'fabrication', 'Zulu_A7_no_pmod_Rev_2_PCBWay_FAB_NOTES.txt')
 DRC = os.path.join(OUT, 'Design Rule Check - Zulu_a7_no_pmod.drc')
-FABB_PCB = os.path.join(ROOT, '..', '..', 'Zulu_A7_Fab_B', 'Rev_2', 'Imported zulu_a7.PrjPcb', 'zulu_a7_fab_b.PcbDoc')
+# Fab B Rev 2 as released 2026-11-12 (title ZULU A7 2.2, MD5 33023787), out of git: the live Fab B board took the
+# no-PMOD sync on 2026-11-20, so comparing against it would hide the parts this board moved
+FABB_GIT = ('eb0fbfe', 'Zulu_A7_Fab_B/Rev_2/Imported zulu_a7.PrjPcb/zulu_a7_fab_b.PcbDoc',
+            '330237878e325c882fca3f689b55ec0c')
 MOVES = os.path.join(HERE, 'route', 'vip2', 'plan1b.json')
 FABB_FACTS = os.path.join(HERE, 'fab_facts_fabb_rev2.json')
 BASE = 'Zulu_a7_no_pmod'
 RELEASE_NAME = 'Zulu A7 no-PMOD Rev 2'
-RELEASE_DATE = '2026-11-19'
+RELEASE_DATE = '2026-11-20'
 SPAN_SHORT = {'Top-L2-GND': 'T-2', 'L2-GND-L3-SIG': '2-3', 'L3-SIG-L4-SIG': '3-4b', 'L4-SIG-L5-VCC3V3': '4-5',
               'L5-VCC3V3-Bottom': '5-B', 'Top-Bottom': 'thru'}
 SPAN_ORDER = list(SPAN_SHORT)
@@ -81,7 +84,11 @@ def relocated_parts():
                 out[kv['SOURCEDESIGNATOR']] = (float(kv['X'].replace('mil', '')) * 0.0254, float(kv['Y'].replace('mil', '')) * 0.0254,
                                                round(float(kv.get('ROTATION', '0')), 1), kv.get('LAYER'))
         return out
-    a, b = comps(FABB_PCB), comps(PCB)
+    import io, subprocess
+    blob = subprocess.run(['git', 'show', '%s:%s' % FABB_GIT[:2]], cwd=ROOT, capture_output=True, check=True).stdout
+    if hashlib.md5(blob).hexdigest() != FABB_GIT[2]:
+        raise SystemExit('git %s:%s is not the Fab B Rev 2 release board' % FABB_GIT[:2])
+    a, b = comps(io.BytesIO(blob)), comps(PCB)
     # the no-PMOD board is the Fab B board cut at its east end: same origin, so positions compare directly
     return sorted((r, a[r], b[r]) for r in set(a) & set(b)
                   if abs(a[r][0] - b[r][0]) > 0.001 or abs(a[r][1] - b[r][1]) > 0.001 or a[r][2] != b[r][2] or a[r][3] != b[r][3])
@@ -181,8 +188,8 @@ def main():
               'mm, the JTAG holes moved, 16 SDRAM series resistors were added, U2 is now an FT2232HQ in a QFN-64 '
               'package, X4 is now a side-entry SMT header at the south edge, and the title is ZULU A7 2.3 (see '
               'CHANGES FROM FAB B REV 2). The drill and via counts below are new. This release SUPERSEDES the '
-              '2026-11-13 no-PMOD Rev 2 data package (that one has an LQFP U2 and a different X4); do not mix '
-              'files of the two. Microvias sit in SMD pads, and TWO through vias also sit in SMD pads (GND, in '
+              '2026-11-13 no-PMOD Rev 2 data package (that one has an LQFP U2 and a different X4) and the 2026-11-19 one '
+              '(this one adds only the silkscreen pin-1 dots); do not mix files of different packages. Microvias sit in SMD pads, and TWO through vias also sit in SMD pads (GND, in '
               'the U2 exposed pad and in X4 pad 2): both must be filled and capped (see VIA-IN-PAD).' % (w, h))
     L += wrap('Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as a standard six-layer '
               'prototype without confirming every blind/buried drill pair, the via-in-pad list and the '
@@ -207,7 +214,9 @@ def main():
               'Via objects 1,961 -> %s: through vias 354 -> %d, Top-L2 321 -> %d, L2-L3 307 -> %d, '
               'L3-L4 buried 403 -> %d, L4-L5 281 -> %d, L5-Bottom 295 -> %d. Stack, finish, layer use, via and '
               'hole sizes, X1 and its slots, and every design rule are unchanged. Parts placed differently from '
-              'Fab B Rev 2 (same origin): %s.'
+              'Fab B Rev 2 (same origin): %s. Silkscreen (2026-11-20): a 0.40 mm dot beside pin 1 (A1 on U1) of '
+              'U1, U2, U3, U4, U8, Q1, BTN and X4 and beside each LED cathode (LD0-LD4), 0.30 mm beside U7 pin 1; '
+              'copper, solder mask, paste and drills are unchanged from the 2026-11-19 package.'
               % (w, h, ', '.join(r['pads'][0] for r in moved_rep), min(moves), max(moves), format(F['via_total'], ','), n['Top-Bottom'], n['Top-L2-GND'], n['L2-GND-L3-SIG'],
                  n['L3-SIG-L4-SIG'], n['L4-SIG-L5-VCC3V3'], n['L5-VCC3V3-Bottom'],
                  ', '.join('%s (%.2f, %.2f) -> (%.2f, %.2f)%s' % (r, a[0], a[1], b[0], b[1],

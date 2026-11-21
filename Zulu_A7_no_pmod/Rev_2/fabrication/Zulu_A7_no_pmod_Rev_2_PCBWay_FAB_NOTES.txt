@@ -1,8 +1,8 @@
 ZULU A7 NO-PMOD REV 2 - PCBWAY FABRICATION NOTES
 Revision: Zulu A7 no-PMOD Rev 2  (silkscreen title "ZULU A7 2.3"; Fab B Rev 2 reads "ZULU A7 2.2")
-Release date: 2026-11-19
-PCB SHA-256: B2BA5E19EF5C10C01E31FACDEDE9D0EA055A86440C867BC5A22E277A4F5376B9
-Source: Zulu_a7_no_pmod.PcbDoc (MD5 9b0341ba09f3aec84459e361271cd9b0)
+Release date: 2026-11-20
+PCB SHA-256: B2E9716F2D69F32867CDEEC2F7ACAC85BB6835095EFC27667B859531D0424DB2
+Source: Zulu_a7_no_pmod.PcbDoc (MD5 8741442752384bc0bc7adf49c4c16f5f)
 
 ORDER AND CAM GATE
 This is a bare-board, six-layer, two-step sequential HDI release. It is a
@@ -13,10 +13,11 @@ the JTAG holes moved, 16 SDRAM series resistors were added, U2 is now an
 FT2232HQ in a QFN-64 package, X4 is now a side-entry SMT header at the south
 edge, and the title is ZULU A7 2.3 (see CHANGES FROM FAB B REV 2). The drill
 and via counts below are new. This release SUPERSEDES the 2026-11-13 no-PMOD
-Rev 2 data package (that one has an LQFP U2 and a different X4); do not mix
-files of the two. Microvias sit in SMD pads, and TWO through vias also sit
-in SMD pads (GND, in the U2 exposed pad and in X4 pad 2): both must be
-filled and capped (see VIA-IN-PAD).
+Rev 2 data package (that one has an LQFP U2 and a different X4) and the
+2026-11-19 one (this one adds only the silkscreen pin-1 dots); do not mix
+files of different packages. Microvias sit in SMD pads, and TWO through vias
+also sit in SMD pads (GND, in the U2 exposed pad and in X4 pad 2): both must
+be filled and capped (see VIA-IN-PAD).
 Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as
 a standard six-layer prototype without confirming every blind/buried drill
 pair, the via-in-pad list and the ENGINEERING QUESTIONS below.
@@ -57,7 +58,10 @@ placed differently from Fab B Rev 2 (same origin): C106 (41.20, 22.40) ->
 17.01) -> (60.20, 17.01), R93 (63.15, 17.01) -> (60.20, 17.80), R99 (61.10,
 19.85) -> (60.20, 19.85), U10 (20.99, 18.64) -> (23.49, 20.24), U2 (31.48,
 13.60) -> (30.50, 14.55), U4 (43.55, 21.30) -> (43.55, 21.70), X4 (29.86,
-5.30) -> (31.39, 4.90).
+5.30) -> (31.39, 4.90). Silkscreen (2026-11-20): a 0.40 mm dot beside pin 1
+(A1 on U1) of U1, U2, U3, U4, U8, Q1, BTN and X4 and beside each LED cathode
+(LD0-LD4), 0.30 mm beside U7 pin 1; copper, solder mask, paste and drills
+are unchanged from the 2026-11-19 package.
 
 BOARD
 Finished outline: 60.96 mm x 25.40 mm (rectangle, from the GM profile)
@@ -525,14 +529,14 @@ FILE MAP
   Zulu_a7_no_pmod.DRR                Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-11-19 20:19:07: 0 warnings, 0 rule violations. Un-routed
+Altium DRC 2026-11-20 20:16:52: 0 warnings, 0 rule violations. Un-routed
 nets, short circuits, every clearance rule, silkscreen, solder-mask sliver,
 net-antenna and component-body clearance checks report 0 (every part carries
 a 3D body at its datasheet maximum height). The board was saved at
-2026-11-19 20:18:57 with no edit between the DRC run and the save.
-Source MD5 9b0341ba.
-Gerbers (exported 2026-11-19 20:20:31): metric RS-274X, 0.0001 mm coordinate resolution
-NC Drill (exported 2026-11-19 20:21:29): metric Excellon 4:4, separate round/slot files,
+2026-11-20 20:16:22 with no edit between the DRC run and the save.
+Source MD5 87414427.
+Gerbers (exported 2026-11-20 20:17:37): metric RS-274X, 0.0001 mm coordinate resolution
+NC Drill (exported 2026-11-20 20:24:20): metric Excellon 4:4, separate round/slot files,
 G85 plated slots
 Every drill hit was matched one-to-one against the PcbDoc via and pad
 positions (0 missing, 0 extra in every drill file).
