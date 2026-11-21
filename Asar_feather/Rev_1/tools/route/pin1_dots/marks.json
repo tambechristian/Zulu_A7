@@ -301,8 +301,29 @@
    "footprint": "WSON-8-6X5-P1.27",
    "rotation": 0
   },
-  "U7": null,
-  "U8": null,
+  "U7": {
+   "check_pad": {
+    "name": "1",
+    "x": 4.85,
+    "y": 12.75
+   },
+   "side": "Bottom",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 5.925,
+   "y": 12.7,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.0,
+   "dot_centre_to_other_parts": 9.9,
+   "dot_edge_to_mask": 0.26,
+   "dot_edge_to_silk": 3.026,
+   "shared_footprint_with": [],
+   "footprint": "SOT23-5",
+   "rotation": 90
+  },
   "X4": {
    "check_pad": {
     "name": "1",

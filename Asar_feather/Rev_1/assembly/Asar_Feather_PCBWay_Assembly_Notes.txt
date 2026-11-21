@@ -1,8 +1,8 @@
 ASAR FEATHER - PCBWAY ASSEMBLY NOTES
 *** PROVISIONAL RELEASE - NOT FOR PRODUCTION UNTIL CONFIRMED ***
-Release date: 2026-11-20
+Release date: 2026-11-21
 Source: untracked working copy (the PCB SHA-256 below identifies it)
-PCB SHA-256: 64C179D155FBE2B10F9895FEB31CBE05D9E7E6CB9BA67D6E048808287F40BDA0
+PCB SHA-256: C7A5AB3213AE8FC813D055715B2E759654DC4A2305A4A9A3AAD04D0C6B5CC698
 
 PROVISIONAL STATUS
 This release is provisional. You answered our enquiry about laser via-in-pad
@@ -47,7 +47,7 @@ If any of A-G changes, this assembly release is re-issued.
 
 UPLOAD SET
 PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
-- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-20_PROVISIONAL.zip
+- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-21_PROVISIONAL.zip
   (Gerbers incl. the GTP/GBP paste layers, drill files and
   Asar_Feather_PCBWay_FAB_NOTES.txt),
   ordered as "HDI (Buried/blind vias)" per Asar_Feather_PCBWay_FAB_NOTES.txt.
@@ -157,9 +157,10 @@ If your line needs one file per side, please split it by the Layer column.
   viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);
   dashed red label = DNP. Most designators are hidden on the silkscreen.
   The silkscreen marks polarity with a dot beside pin 1 (A1 on U1 and U3)
-  of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside each LED cathode,
-  and U10 has a tick beside pin 1; U7 and U8 (bottom side) have no room for
-  a dot. The drawings and this file remain the orientation reference.
+  of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside each LED cathode;
+  U7's dot is under its body (bottom side), between its pad rows at the pin-1
+  end, so it is hidden once U7 is placed; U8 and U10 have a tick beside pin 1.
+  The drawings and this file remain the orientation reference.
 If the CPL and a drawing disagree, please send an engineering query.
 
 SPECIAL COMPONENT INSTRUCTIONS
@@ -193,9 +194,11 @@ SPECIAL COMPONENT INSTRUCTIONS
   (93LC46BT-I/MNY, TDFN-8): their exposed-pad lands have no net; the paste
   layer prints them 1:1. Please apply your windowpane reduction.
 - U8 (LTC3556EUFD#PBF, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm
-  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot (no
-  silkscreen dot: no room).
-- U7 (Semtech SC189ASKTRT, SOT-23-5, bottom side): 1.0 V FPGA core buck.
+  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot and
+  the silkscreen tick west of pad 1.
+- U7 (Semtech SC189ASKTRT, SOT-23-5, bottom side): 1.0 V FPGA core buck. Pin 1 per the
+  drawing's red dot and the silkscreen dot under the body, between the pad rows at the
+  pin-1 end.
 - Inductors L1, L2, L3, L8, L9 (bottom side) share one 2.5 x 2.0 mm body and
   are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =
   DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each

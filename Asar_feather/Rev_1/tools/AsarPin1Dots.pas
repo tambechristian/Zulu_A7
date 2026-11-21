@@ -123,6 +123,10 @@ Begin
     If Cm = Nil Then Begin ShowMessage('Refusing, nothing changed: ' + Msg); Exit; End;
     If DotAt(Cm, eTopOverlay, 40.9750, 18.2750, 0.1000, 0.2000) <> Nil Then Begin ShowMessage('Refusing, nothing changed: U4 already has a dot'); Exit; End;
     Cms.Add(Cm);
+    Cm := CheckPart('U7', '1', False, 4.8500, 12.7500, Msg);
+    If Cm = Nil Then Begin ShowMessage('Refusing, nothing changed: ' + Msg); Exit; End;
+    If DotAt(Cm, eBottomOverlay, 5.9250, 12.7000, 0.1000, 0.2000) <> Nil Then Begin ShowMessage('Refusing, nothing changed: U7 already has a dot'); Exit; End;
+    Cms.Add(Cm);
     Cm := CheckPart('X4', '1', True, 11.8000, 15.0500, Msg);
     If Cm = Nil Then Begin ShowMessage('Refusing, nothing changed: ' + Msg); Exit; End;
     If DotAt(Cm, eTopOverlay, 12.8250, 14.1000, 0.1000, 0.2000) <> Nil Then Begin ShowMessage('Refusing, nothing changed: X4 already has a dot'); Exit; End;
@@ -278,6 +282,18 @@ Begin
     n := n + 1; Done := Done + ' U4';
     Cm := Cms.Items[12];
     A := PCBServer.PCBObjectFactory(eArcObject, eNoDimension, eCreate_Default);
+    A.XCenter := Brd.XOrigin + MMsToCoord(5.9250);
+    A.YCenter := Brd.YOrigin + MMsToCoord(12.7000);
+    A.Radius := MMsToCoord(0.1000);
+    A.LineWidth := MMsToCoord(0.2000);
+    A.StartAngle := 0;
+    A.EndAngle := 360;
+    A.Layer := eBottomOverlay;
+    Cm.AddPCBObject(A);
+    Brd.AddPCBObject(A);
+    n := n + 1; Done := Done + ' U7';
+    Cm := Cms.Items[13];
+    A := PCBServer.PCBObjectFactory(eArcObject, eNoDimension, eCreate_Default);
     A.XCenter := Brd.XOrigin + MMsToCoord(12.8250);
     A.YCenter := Brd.YOrigin + MMsToCoord(14.1000);
     A.Radius := MMsToCoord(0.1000);
@@ -288,7 +304,7 @@ Begin
     Cm.AddPCBObject(A);
     Brd.AddPCBObject(A);
     n := n + 1; Done := Done + ' X4';
-    Cm := Cms.Items[13];
+    Cm := Cms.Items[14];
     A := PCBServer.PCBObjectFactory(eArcObject, eNoDimension, eCreate_Default);
     A.XCenter := Brd.XOrigin + MMsToCoord(44.4250);
     A.YCenter := Brd.YOrigin + MMsToCoord(8.3500);
@@ -302,7 +318,7 @@ Begin
     n := n + 1; Done := Done + ' X5';
     PCBServer.PostProcess;
     Brd.ViewManager_FullUpdate;
-    ShowMessage('Added ' + IntToStr(n) + ' of 14 pin-1 dots:' + Done + '. Run DRC, then File > Save.');
+    ShowMessage('Added ' + IntToStr(n) + ' of 15 pin-1 dots:' + Done + '. Run DRC, then File > Save.');
 End;
 
 Procedure RemovePin1Dots;
@@ -350,6 +366,9 @@ Begin
     If Cm = Nil Then Begin ShowMessage('Refusing, nothing changed: ' + Msg); Exit; End;
     Cms.Add(Cm);
     Cm := CheckPart('U4', '1', True, 41.4500, 17.5050, Msg);
+    If Cm = Nil Then Begin ShowMessage('Refusing, nothing changed: ' + Msg); Exit; End;
+    Cms.Add(Cm);
+    Cm := CheckPart('U7', '1', False, 4.8500, 12.7500, Msg);
     If Cm = Nil Then Begin ShowMessage('Refusing, nothing changed: ' + Msg); Exit; End;
     Cms.Add(Cm);
     Cm := CheckPart('X4', '1', True, 11.8000, 15.0500, Msg);
@@ -455,6 +474,14 @@ Begin
         n := n + 1; Done := Done + ' U4';
     End;
     Cm := Cms.Items[12];
+    A := DotAt(Cm, eBottomOverlay, 5.9250, 12.7000, 0.1000, 0.2000);
+    If (A <> Nil) And (Abs(CoordToMMs(A.Radius) - 0.1000) < 0.001) And (Abs(CoordToMMs(A.LineWidth) - 0.2000) < 0.001) Then
+    Begin
+        Cm.RemovePCBObject(A);
+        Brd.RemovePCBObject(A);
+        n := n + 1; Done := Done + ' U7';
+    End;
+    Cm := Cms.Items[13];
     A := DotAt(Cm, eTopOverlay, 12.8250, 14.1000, 0.1000, 0.2000);
     If (A <> Nil) And (Abs(CoordToMMs(A.Radius) - 0.1000) < 0.001) And (Abs(CoordToMMs(A.LineWidth) - 0.2000) < 0.001) Then
     Begin
@@ -462,7 +489,7 @@ Begin
         Brd.RemovePCBObject(A);
         n := n + 1; Done := Done + ' X4';
     End;
-    Cm := Cms.Items[13];
+    Cm := Cms.Items[14];
     A := DotAt(Cm, eTopOverlay, 44.4250, 8.3500, 0.1000, 0.2000);
     If (A <> Nil) And (Abs(CoordToMMs(A.Radius) - 0.1000) < 0.001) And (Abs(CoordToMMs(A.LineWidth) - 0.2000) < 0.001) Then
     Begin
@@ -471,6 +498,6 @@ Begin
         n := n + 1; Done := Done + ' X5';
     End;
     Brd.ViewManager_FullUpdate;
-    ShowMessage('Removed ' + IntToStr(n) + ' of 14 pin-1 dots:' + Done + '. Run DRC, then File > Save.');
+    ShowMessage('Removed ' + IntToStr(n) + ' of 15 pin-1 dots:' + Done + '. Run DRC, then File > Save.');
 End;
 

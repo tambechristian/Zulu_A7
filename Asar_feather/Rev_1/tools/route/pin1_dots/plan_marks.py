@@ -22,7 +22,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage
 
-CONFIG = {'reader': 'generate_pcbway_assembly', 'pcb': 'Asar_feather.PrjPcb/asar_feather.PcbDoc', 'git': ('257867d', 'Asar_feather/Rev_1/fabrication/Asar_Feather_PCBWay_Fabrication_2026-11-20_PROVISIONAL.zip'), 'gbr': 'asar_feather', 'keyed': ['X1', 'X2', 'X3'], 'skip': {'U10': 'keeps its pin-1 tick west of pad 1 (2026-11-16), as U10 does on the Zulu boards'}}
+CONFIG = {'reader': 'generate_pcbway_assembly', 'pcb': 'Asar_feather.PrjPcb/asar_feather.PcbDoc', 'git': ('257867d', 'Asar_feather/Rev_1/fabrication/Asar_Feather_PCBWay_Fabrication_2026-11-20_PROVISIONAL.zip'), 'gbr': 'asar_feather', 'keyed': ['X1', 'X2', 'X3'], 'skip': {'U10': 'keeps its pin-1 tick west of pad 1 (2026-11-16), as U10 does on the Zulu boards', 'U8': 'keeps its footprint pin-1 tick 0.4 mm west of pad 1'}, 'under_body': ['U7']}
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REV = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
@@ -197,7 +197,10 @@ def context(ref):
     return dict(ref=ref, kind=kind, tgt=tgt, g=g, side=side, own=own, others=others, body=body, corners=corners,
                 ax=(cx if SINGLE.get(ref, True) else g['x']), ay=(cy if SINGLE.get(ref, True) else g['y']),
                 use_corner=use_corner, cx=cx, cy=cy, maps=side_maps[side],
-                bx=[b_ for r_, v in bodies[side].items() for b_ in v['bodyt']],
+                # under_body parts (CONFIG): no legal spot outside the body points at pin 1, so the dot may sit under the
+                # part's own body, between its pad rows (user's choice 2026-11-21, docs/pin1_silk_dots.md)
+                bx=[b_ for r_, v in bodies[side].items() if not (ref in CONFIG.get('under_body', ()) and r_.split('[')[0] == ref)
+                    for b_ in v['bodyt']],
                 # exact pad openings near the target, grown by the largest mask expansion on the board, for the
                 # Silk To Solder Mask rule; the raster still screens via openings
                 near_pads=[q for q in pads if (q['hole'] > 1e-6 or q['layer'] == side) and

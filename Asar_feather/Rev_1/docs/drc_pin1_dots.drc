@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\tambe\Documents\Electronics\Zulu_A7\Asar_feather\Rev_1\Asar_feather.PrjPcb\asar_feather.PcbDoc
-Date     : 11/20/2026
-Time     : 9:15:18 PM
+Date     : 11/21/2026
+Time     : 8:38:20 AM
 
 Processing Rule : Clearance Constraint (Gap=0.25mm) ((InNamedPolygon('L2_GND_FEATHER') Or InNamedPolygon('L5_VCC3V3_FEATHER'))),(IsPad And ((Name = 'X2-') Or (Name = 'X1-')))
 Rule Violations :0
@@ -111,4 +111,4 @@ Rule Violations :0
 
 Violations Detected : 0
 Waived Violations : 0
-Time Elapsed        : 00:00:02
+Time Elapsed        : 00:00:01

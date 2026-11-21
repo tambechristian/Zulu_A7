@@ -54,7 +54,7 @@ from pcbway_inputs import LAYER, U, kvs
 # ---- Asar Feather board-specific constants (2026-11-11) ----
 RELEASE_PREFIX = "Asar_Feather"
 RELEASE_NAME = "Asar Feather"
-RELEASE_DATE = "2026-11-20"
+RELEASE_DATE = "2026-11-21"
 BOARD_WIDTH = 50.80            # Feather outline 2000 x 900 mil, 2.54 mm corner radius
 BOARD_HEIGHT = 22.86
 CORNER_RADIUS = 2.54
@@ -903,9 +903,10 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);",
         "  dashed red label = DNP. Most designators are hidden on the silkscreen.",
         "  The silkscreen marks polarity with a dot beside pin 1 (A1 on U1 and U3)",
-        "  of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside each LED cathode,",
-        "  and U10 has a tick beside pin 1; U7 and U8 (bottom side) have no room for",
-        "  a dot. The drawings and this file remain the orientation reference.",
+        "  of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside each LED cathode;",
+        "  U7's dot is under its body (bottom side), between its pad rows at the pin-1",
+        "  end, so it is hidden once U7 is placed; U8 and U10 have a tick beside pin 1.",
+        "  The drawings and this file remain the orientation reference.",
         "If the CPL and a drawing disagree, please send an engineering query.",
         "",
         "SPECIAL COMPONENT INSTRUCTIONS",
@@ -939,9 +940,10 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         f"  ({mpn['U10']}, TDFN-8): their exposed-pad lands have no net; the paste",
         "  layer prints them 1:1. Please apply your windowpane reduction.",
         f"- U8 ({mpn['U8']}, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm",
-        "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot (no",
-        "  silkscreen dot: no room).",
-        f"- U7 (Semtech {mpn['U7']}, SOT-23-5, bottom side): 1.0 V FPGA core buck.",
+        "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot and",
+        "  the silkscreen tick west of pad 1.",
+        f"- U7 (Semtech {mpn['U7']}, SOT-23-5, bottom side): 1.0 V FPGA core buck. Pin 1 per the drawing's "
+        "red dot and the silkscreen dot under the body, between the pad rows at the pin-1 end.",
         "- Inductors L1, L2, L3, L8, L9 (bottom side) share one 2.5 x 2.0 mm body and",
         "  are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =",
         "  DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each",
