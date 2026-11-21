@@ -2,7 +2,7 @@ ASAR FEATHER - PCBWAY ASSEMBLY NOTES
 *** PROVISIONAL RELEASE - NOT FOR PRODUCTION UNTIL CONFIRMED ***
 Release date: 2026-11-20
 Source: untracked working copy (the PCB SHA-256 below identifies it)
-PCB SHA-256: 11C361CCC8F2B6B94283536FABC60DF5CF87AB1CC68D1208FF59EFB87FB0E91E
+PCB SHA-256: 64C179D155FBE2B10F9895FEB31CBE05D9E7E6CB9BA67D6E048808287F40BDA0
 
 PROVISIONAL STATUS
 This release is provisional. You answered our enquiry about laser via-in-pad
@@ -155,9 +155,11 @@ If your line needs one file per side, please split it by the Layer column.
   bottom-side convention against the bottom drawing before programming.
 - The top drawing is viewed from the top; the bottom drawing is mirrored,
   viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);
-  dashed red label = DNP. Most designators are hidden on the silkscreen and
-  the 0603 LEDs have no silkscreen polarity mark, so the drawings
-  and this file are the orientation reference.
+  dashed red label = DNP. Most designators are hidden on the silkscreen.
+  The silkscreen marks polarity with a dot beside pin 1 (A1 on U1 and U3)
+  of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside each LED cathode,
+  and U10 has a tick beside pin 1; U7 and U8 (bottom side) have no room for
+  a dot. The drawings and this file remain the orientation reference.
 If the CPL and a drawing disagree, please send an engineering query.
 
 SPECIAL COMPONENT INSTRUCTIONS
@@ -191,7 +193,8 @@ SPECIAL COMPONENT INSTRUCTIONS
   (93LC46BT-I/MNY, TDFN-8): their exposed-pad lands have no net; the paste
   layer prints them 1:1. Please apply your windowpane reduction.
 - U8 (LTC3556EUFD#PBF, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm
-  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot.
+  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot (no
+  silkscreen dot: no room).
 - U7 (Semtech SC189ASKTRT, SOT-23-5, bottom side): 1.0 V FPGA core buck.
 - Inductors L1, L2, L3, L8, L9 (bottom side) share one 2.5 x 2.0 mm body and
   are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =
@@ -199,15 +202,16 @@ SPECIAL COMPONENT INSTRUCTIONS
   position from its own reel and check the reels on the first article.
 - 0603 LEDs: LD1, LD2: cathode (pad K) on the WEST side (X 31.20, 34.40 mm); LD3, LD4:
   cathode (pad K) on the EAST side (X 6.33 mm). The two pairs face opposite ways; the
-  drawings mark each cathode with a red bar.
+  drawings mark each cathode with a red bar, the silkscreen with a dot beside pad K.
 - LD0 (Everlight 19-337/R6GHBHC-A01/2T, 1.6 x 1.6 mm): cathodes are on the WEST side,
   the cathode-mark column (board footprint pads 2, 4, 6), anodes opposite (pads 1, 3,
-  5). The drawing's red dot marks footprint pad 1, an anode. The land is symmetric, so
-  a part turned 180 degrees fits but stays dark.
+  5). The drawing's red bar and the silkscreen dot mark that cathode column. The land
+  is symmetric, so a part turned 180 degrees fits but stays dark.
   Its datasheet's pin numbers depend on the revision: Rev.4 (DSE-0002657)
   numbers the cathodes 1-3 and the anodes 4-6, Rev.6 numbers them like the
   footprint. Follow the cathode mark, not the pad numbers.
-- BTN and RESET (PTS810SJM250SMTR LFS, top side): same part twice.
+- BTN and RESET (PTS810SJM250SMTR LFS, top side): same part twice; pin 1 per the
+  drawing's red dot and the silkscreen dot.
 - JP3 and JP4 are intentional DNS JTAG test-pad positions (three 1.0 mm SMD
   pads each, bottom side): no part. Please remove their six apertures from
   the bottom stencil (tinned pads are acceptable if you cannot).

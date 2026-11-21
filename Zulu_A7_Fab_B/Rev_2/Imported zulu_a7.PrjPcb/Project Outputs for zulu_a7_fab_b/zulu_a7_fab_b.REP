@@ -2,42 +2,16 @@
 FileName = zulu_a7_fab_b.GBR
 AutoAperture = True
 *************************************************************
-Generating : Bottom Paste
-      File : zulu_a7_fab_b.GBP
+Generating : Bottom Overlay
+      File : zulu_a7_fab_b.GBO
 
-    Adding Layer      : Bottom Paste
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Bottom Overlay
 
 
 Used DCodes :
-    D18
-    D31
-    D37
-    D38
-    D104
-    D105
-    D106
-    D107
-    D108
-    D109
-    D110
-    D111
-    D112
-    D113
-    D114
-    D115
-    D116
-    D117
-    D118
-    D119
-    D120
-    D121
-    D122
-    D123
-    D124
+    D10
+    D12
+    D14
 *************************************************************
 
 *************************************************************
@@ -52,7 +26,6 @@ Generating : Top Paste
 
 
 Used DCodes :
-    D14
     D15
     D16
     D17
@@ -78,52 +51,54 @@ Used DCodes :
     D37
     D38
     D39
+    D40
 *************************************************************
 
 *************************************************************
-Generating : Bottom Solder
-      File : zulu_a7_fab_b.GBS
+Generating : Top Overlay
+      File : zulu_a7_fab_b.GTO
 
-    Adding Layer      : Bottom Solder
+    Adding Layer      : Top Overlay
 
-    Adding Layer      : Bottom Layer
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+*************************************************************
+
+*************************************************************
+Generating : L3-SIG
+      File : zulu_a7_fab_b.G2
+
+    Adding Layer      : L3-SIG
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D43
-    D62
-    D63
-    D65
-    D66
-    D67
-    D68
-    D69
-    D70
-    D71
-    D72
-    D156
-    D157
-    D158
-    D159
-    D160
-    D161
-    D162
-    D163
-    D164
-    D165
-    D166
-    D167
-    D168
-    D169
-    D170
-    D171
-    D172
-    D173
-    D174
-    D175
-    D176
+    D10
+    D12
+    D75
+    D76
+    D77
+    D78
+    D84
+    D86
+    D91
+    D92
+    D93
+    D94
+    D95
+    D96
+    D97
+    D98
+    D99
+    D100
+    D101
+    D102
 *************************************************************
 
 *************************************************************
@@ -138,8 +113,7 @@ Generating : Top Solder
 
 
 Used DCodes :
-    D21
-    D40
+    D28
     D41
     D42
     D43
@@ -172,32 +146,26 @@ Used DCodes :
     D70
     D71
     D72
+    D73
 *************************************************************
 
 *************************************************************
-Generating : Bottom Overlay
-      File : zulu_a7_fab_b.GBO
+Generating : L2-GND
+      File : zulu_a7_fab_b.G1
 
-    Adding Layer      : Bottom Overlay
+    Adding Layer      : L2-GND
+
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D10
-    D12
-*************************************************************
-
-*************************************************************
-Generating : Top Overlay
-      File : zulu_a7_fab_b.GTO
-
-    Adding Layer      : Top Overlay
-
-
-Used DCodes :
-    D10
-    D11
-    D12
-    D13
+    D84
+    D86
+    D91
+    D92
+    D93
+    D94
+    D95
 *************************************************************
 
 *************************************************************
@@ -211,12 +179,12 @@ Generating : Bottom Layer
 
 Used DCodes :
     D10
+    D12
     D13
-    D18
-    D31
-    D37
-    D38
-    D74
+    D16
+    D24
+    D32
+    D40
     D75
     D76
     D77
@@ -299,8 +267,8 @@ Generating : L5-VCC3V3
 
 
 Used DCodes :
-    D87
-    D89
+    D84
+    D86
     D91
     D92
     D93
@@ -320,13 +288,13 @@ Generating : L4-SIG
 Used DCodes :
     D10
     D11
-    D74
+    D12
     D75
     D76
     D77
     D78
-    D87
-    D89
+    D84
+    D86
     D91
     D92
     D93
@@ -340,54 +308,42 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : L3-SIG
-      File : zulu_a7_fab_b.G2
+Generating : Bottom Paste
+      File : zulu_a7_fab_b.GBP
 
-    Adding Layer      : L3-SIG
+    Adding Layer      : Bottom Paste
 
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D10
-    D74
-    D75
-    D76
-    D77
-    D78
-    D87
-    D89
-    D91
-    D92
-    D93
-    D94
-    D95
-    D96
-    D97
-    D98
-    D99
-    D100
-    D101
-    D102
-*************************************************************
-
-*************************************************************
-Generating : L2-GND
-      File : zulu_a7_fab_b.G1
-
-    Adding Layer      : L2-GND
+    Adding Layer      : Bottom Layer
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D87
-    D89
-    D91
-    D92
-    D93
-    D94
-    D95
+    D16
+    D24
+    D32
+    D40
+    D104
+    D105
+    D106
+    D107
+    D108
+    D109
+    D110
+    D111
+    D112
+    D113
+    D114
+    D115
+    D116
+    D117
+    D118
+    D119
+    D120
+    D121
+    D122
+    D123
+    D124
 *************************************************************
 
 *************************************************************
@@ -401,7 +357,7 @@ Generating : Top Layer
 
 Used DCodes :
     D10
-    D15
+    D12
     D16
     D17
     D18
@@ -426,7 +382,7 @@ Used DCodes :
     D37
     D38
     D39
-    D73
+    D40
     D74
     D75
     D76
@@ -446,6 +402,52 @@ Used DCodes :
     D90
     D91
     D92
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : zulu_a7_fab_b.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D41
+    D57
+    D65
+    D66
+    D67
+    D68
+    D69
+    D70
+    D71
+    D72
+    D73
+    D156
+    D157
+    D158
+    D159
+    D160
+    D161
+    D162
+    D163
+    D164
+    D165
+    D166
+    D167
+    D168
+    D169
+    D170
+    D171
+    D172
+    D173
+    D174
+    D175
+    D176
 *************************************************************
 
 *************************************************************

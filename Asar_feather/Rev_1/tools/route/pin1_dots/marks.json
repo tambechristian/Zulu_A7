@@ -1,0 +1,353 @@
+{
+ "dot_diameter": "per mark",
+ "rules": {
+  "silk_mask": 0.254,
+  "silk_silk": 0.254,
+  "body_gap": 0.05,
+  "edge": 0.3
+ },
+ "board_mm": [
+  50.824600000000004,
+  22.8854
+ ],
+ "marks": {
+  "BTN": {
+   "check_pad": {
+    "name": "1",
+    "x": 41.0251,
+    "y": 6.2749
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 39.975,
+   "y": 5.95,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 0.716,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 1.298,
+   "shared_footprint_with": [
+    "RESET"
+   ],
+   "footprint": "PTS810",
+   "rotation": 0
+  },
+  "LD0": {
+   "check_pad": {
+    "name": "2",
+    "x": 37.7251,
+    "y": 5.3999
+   },
+   "side": "Top",
+   "kind": "cathode",
+   "pads": [
+    "2",
+    "4",
+    "6"
+   ],
+   "x": 37.925,
+   "y": 3.225,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 1.782,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 0.287,
+   "shared_footprint_with": [],
+   "footprint": "EVERLIGHT-19-337",
+   "rotation": 0
+  },
+  "LD1": {
+   "check_pad": {
+    "name": "K",
+    "x": 31.1998,
+    "y": 4.675
+   },
+   "side": "Top",
+   "kind": "cathode",
+   "pads": [
+    "K"
+   ],
+   "x": 30.55,
+   "y": 3.825,
+   "diameter": 0.25,
+   "gap_to_target_pad": 0.447,
+   "dot_centre_to_own_body": 0.447,
+   "dot_centre_to_other_parts": 2.848,
+   "dot_edge_to_mask": 0.256,
+   "dot_edge_to_silk": 0.31,
+   "shared_footprint_with": [
+    "LD2"
+   ],
+   "footprint": "LED0603",
+   "rotation": 180
+  },
+  "LD2": {
+   "check_pad": {
+    "name": "K",
+    "x": 34.3998,
+    "y": 4.675
+   },
+   "side": "Top",
+   "kind": "cathode",
+   "pads": [
+    "K"
+   ],
+   "x": 33.75,
+   "y": 3.825,
+   "diameter": 0.25,
+   "gap_to_target_pad": 0.447,
+   "dot_centre_to_own_body": 0.447,
+   "dot_centre_to_other_parts": 0.64,
+   "dot_edge_to_mask": 0.256,
+   "dot_edge_to_silk": 0.306,
+   "shared_footprint_with": [
+    "LD1"
+   ],
+   "footprint": "LED0603",
+   "rotation": 180
+  },
+  "LD3": {
+   "check_pad": {
+    "name": "K",
+    "x": 6.3301,
+    "y": 3.03
+   },
+   "side": "Top",
+   "kind": "cathode",
+   "pads": [
+    "K"
+   ],
+   "x": 7.305,
+   "y": 2.655,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 1.333,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 1.503,
+   "shared_footprint_with": [
+    "LD4"
+   ],
+   "footprint": "LED0603",
+   "rotation": 0
+  },
+  "LD4": {
+   "check_pad": {
+    "name": "K",
+    "x": 6.3301,
+    "y": 4.33
+   },
+   "side": "Top",
+   "kind": "cathode",
+   "pads": [
+    "K"
+   ],
+   "x": 7.305,
+   "y": 3.955,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 0.708,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 1.724,
+   "shared_footprint_with": [
+    "LD3"
+   ],
+   "footprint": "LED0603",
+   "rotation": 0
+  },
+  "Q1": {
+   "check_pad": {
+    "name": "1",
+    "x": 15.61,
+    "y": 15.3999
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 15.435,
+   "y": 16.625,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 0.685,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 2.625,
+   "shared_footprint_with": [],
+   "footprint": "32X25",
+   "rotation": 0
+  },
+  "RESET": {
+   "check_pad": {
+    "name": "1",
+    "x": 21.8751,
+    "y": 5.6249
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 20.825,
+   "y": 5.3,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 1.13,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 0.277,
+   "shared_footprint_with": [
+    "BTN"
+   ],
+   "footprint": "PTS810",
+   "rotation": 0
+  },
+  "U1": {
+   "check_pad": {
+    "name": "A1",
+    "x": 28.9,
+    "y": 6.93
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "A1"
+   ],
+   "x": 29.125,
+   "y": 6.13,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.682,
+   "dot_centre_to_own_body": 0.3,
+   "dot_centre_to_other_parts": 1.911,
+   "dot_edge_to_mask": 0.427,
+   "dot_edge_to_silk": 1.776,
+   "shared_footprint_with": [],
+   "footprint": "XC7A35T-CPG236",
+   "rotation": 180
+  },
+  "U2": {
+   "check_pad": {
+    "name": "1",
+    "x": 9.275,
+    "y": 11.15
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 8.525,
+   "y": 11.675,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.537,
+   "dot_centre_to_own_body": 0.537,
+   "dot_centre_to_other_parts": 1.8,
+   "dot_edge_to_mask": 0.267,
+   "dot_edge_to_silk": 0.276,
+   "shared_footprint_with": [],
+   "footprint": "QFN-64-9X9-P0.5-EP4.35",
+   "rotation": 0
+  },
+  "U3": {
+   "check_pad": {
+    "name": "A1",
+    "x": 31.8,
+    "y": 8.23
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "A1"
+   ],
+   "x": 31.425,
+   "y": 6.755,
+   "diameter": 0.4,
+   "gap_to_target_pad": 1.287,
+   "dot_centre_to_own_body": 0.675,
+   "dot_centre_to_other_parts": 1.63,
+   "dot_edge_to_mask": 1.031,
+   "dot_edge_to_silk": 0.275,
+   "shared_footprint_with": [],
+   "footprint": "FBGA-54-8X8-P0.8",
+   "rotation": 90
+  },
+  "U4": {
+   "check_pad": {
+    "name": "1",
+    "x": 41.45,
+    "y": 17.505
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 40.975,
+   "y": 18.275,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.52,
+   "dot_centre_to_own_body": 0.369,
+   "dot_centre_to_other_parts": 3.463,
+   "dot_edge_to_mask": 0.27,
+   "dot_edge_to_silk": 0.293,
+   "shared_footprint_with": [],
+   "footprint": "WSON-8-6X5-P1.27",
+   "rotation": 0
+  },
+  "U7": null,
+  "U8": null,
+  "X4": {
+   "check_pad": {
+    "name": "1",
+    "x": 11.8,
+    "y": 15.05
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 12.825,
+   "y": 14.1,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 1.9,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 0.271,
+   "shared_footprint_with": [],
+   "footprint": "JST-S2B-PH-SM4-TB",
+   "rotation": 0
+  },
+  "X5": {
+   "check_pad": {
+    "name": "1",
+    "x": 45.725,
+    "y": 8.2
+   },
+   "side": "Top",
+   "kind": "pin1",
+   "pads": [
+    "1"
+   ],
+   "x": 44.425,
+   "y": 8.35,
+   "diameter": 0.4,
+   "gap_to_target_pad": 0.525,
+   "dot_centre_to_own_body": 0.525,
+   "dot_centre_to_other_parts": 1.55,
+   "dot_edge_to_mask": 0.275,
+   "dot_edge_to_silk": 0.28,
+   "shared_footprint_with": [],
+   "footprint": "JST-SM04B-SRSS-TB",
+   "rotation": 90
+  }
+ }
+}

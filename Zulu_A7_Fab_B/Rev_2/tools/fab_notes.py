@@ -240,7 +240,8 @@ def main():
               '%.2f x %.2f mm: same outline, stack, layer use and via types and sizes as the %s Fab B Rev 2 data, and '
               'the same fabrication design rules except one new solder-mask rule (U2\'s pads use a 0.035 mm mask '
               'expansion instead of the board\'s 0.05 mm, see ENGINEERING QUESTIONS); two new component-clearance '
-              'rules (R131/R132 and X2) concern assembly only. It SUPERSEDES the %s Fab B Rev 2 data package; do not mix files of the two. What changed '
+              'rules (R131/R132 and X2) concern assembly only. It SUPERSEDES the %s Fab B Rev 2 data package and the earlier 2026-11-20 one (this one adds only the '
+              'silkscreen pin-1 dots); do not mix files of different packages. What changed '
               '(see CHANGES FROM THE %s RELEASE): U2 is now an FT2232HQ in a QFN-64 package with a grounded exposed '
               'pad, X4 is now a side-entry SMT header at the south edge, U10 is now an MSOP-8, %d SDRAM series '
               'resistors were added, %d parts were placed differently, and the area around them was re-routed. The '
@@ -274,6 +275,9 @@ def main():
                  ', '.join('%s (%.2f, %.2f) -> (%.2f, %.2f)%s%s' % (
                      r, a[3], a[4], b[3], b[4], '' if abs(a[2] - b[2]) < 0.001 else ' rot %g -> %g' % (a[2], b[2]),
                      '' if a[0] == b[0] else ' (%s -> %s)' % (a[0], b[0])) for r, a, b in moved)))
+    L += wrap('Silkscreen (2026-11-20): a 0.40 mm dot beside pin 1 (A1 on U1) of U1, U2, U3, U4, U8, Q1, BTN and X4 '
+              'and beside each LED cathode (LD0-LD4), 0.30 mm beside U7 pin 1. Copper, solder mask, paste and drills '
+              'are unchanged from the earlier 2026-11-20 package.')
     if removed:
         raise SystemExit('parts of the %s release are gone from the board: %s' % (PREV_RELEASE, removed))
     A('')

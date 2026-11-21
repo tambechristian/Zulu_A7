@@ -41,16 +41,17 @@ PCB = os.path.join(PROJECT, "asar_feather.PcbDoc")
 DRC = os.path.join(OUTPUTS, "Design Rule Check - asar_feather.drc")
 DEFAULT_NOTE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_FAB_NOTES.txt")
 DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
-# asar_feather.PcbDoc with U2's pin-1 silk mark restored (docs/u2_pin1_mark.md), saved 2026-11-20 07:07:20, 1168
-# microvias verified (body-collision fixes, 3D bodies and Component Clearance rules (docs/body_fixes.md) 2026-11-19
+# asar_feather.PcbDoc with the pin-1 / LED-cathode silkscreen dots (docs/pin1_silk_dots.md), saved 2026-11-20 21:15:10,
+# 1168 microvias verified (U2's pin-1 silk mark restored (docs/u2_pin1_mark.md) 2026-11-20 07:07:20: SHA-256
+# 11C361CC...0E91E, MD5 c304041a; body-collision fixes, 3D bodies and Component Clearance rules (docs/body_fixes.md) 2026-11-19
 # 21:51:49: SHA-256 EF32A488...E802BD, MD5 091a3b6e;
 #  C11 move 2026-11-17 19:07:18: SHA-256 E356AB95...785BEB, MD5 c4bf0b71;
 #  X1 micro-B conversion 2026-11-17 13:53:43: SHA-256 2B762CD8...76FB, MD5 295cdfc5;
 #  X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
 #  NPTH clearance fix 2026-11-16 09:32:36: SHA-256 0B547312...98D3, MD5 f8dba4ec;
 #  2026-11-11 release: SHA-256 4A9A9714...BBA1D, MD5 d22906e1; 2026-11-11 15:16 save: MD5 e214e57b)
-EXPECTED_PCB_SHA256 = "11C361CCC8F2B6B94283536FABC60DF5CF87AB1CC68D1208FF59EFB87FB0E91E"
-EXPECTED_PCB_MD5 = "c304041a1984b9034f27d4055a241c9c"
+EXPECTED_PCB_SHA256 = "64C179D155FBE2B10F9895FEB31CBE05D9E7E6CB9BA67D6E048808287F40BDA0"
+EXPECTED_PCB_MD5 = "35871b35350907565314831ca84ad389"
 REVISION = "Asar A7 Feather"
 RELEASE_DATE = "2026-11-20"
 DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_%s_PROVISIONAL.zip" % RELEASE_DATE)
@@ -79,7 +80,7 @@ CORNER_R = 2.54
 GERBER_EXTENSIONS = ["GTL", "G1", "G2", "G3", "G4", "GBL", "GTS", "GBS", "GTO", "GBO", "GTP", "GBP", "GM"]
 # file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-19 22:02:59 (body-fix board; unchanged since
 # the 2026-11-17 C11 move: every removed via was replaced by one of the same span and hole; the 2026-11-20 07:16:27
-# export for the U2 pin-1 mark is identical)
+# export for the U2 pin-1 mark and the 21:16 export for the pin-1 dots are identical)
 EXPECTED_DRILLS = {
     "RoundHoles-Plated.TXT": {"03": (0.20, 155), "05": (1.00, 28)},
     "RoundHoles-NonPlated.TXT": {"06": (2.50, 4)},
@@ -403,6 +404,13 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
          "shown in brackets and the figure in these notes is the one that applies. "
          "Please answer each numbered item, or confirm it, before fabrication is "
          "released.")
+    P("")
+    para("This data set replaces the earlier 2026-11-20 Asar package; do not mix files of "
+         "the two. It adds only silkscreen polarity dots on the top side: 0.40 mm beside pin 1 "
+         "(ball A1 on U1 and U3) of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside the "
+         "cathodes of LD0, LD3 and LD4, 0.25 mm beside the cathodes of LD1 and LD2. U7 and U8 "
+         "(bottom side) have no room for a dot; the assembly drawings mark their pin 1. Copper, "
+         "solder mask, paste and drills are unchanged.")
     P("")
     P("ASSUMPTIONS PENDING PCBWAY CONFIRMATION (one per enquiry question)")
     P("")

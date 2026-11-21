@@ -1,8 +1,8 @@
 ZULU A7 FAB B REV 2 - PCBWAY FABRICATION NOTES
 Revision: Zulu A7 Fab B Rev 2  (silkscreen title "ZULU A7 2.2"; Rev 1 reads "ZULU A7 2.0")
 Release date: 2026-11-20
-PCB SHA-256: 0E5D64CE9B6596E442BBEAF72FC2C6AA30F55D9187B764ED43418729873FA074
-Source: zulu_a7_fab_b.PcbDoc (MD5 5fea13046ef71090519f5d357c1d96e5)
+PCB SHA-256: FBD5FD5BE5FCCFDF17762FFB5037AD68CCE59EF0300E740EB6C8AAAFA938889B
+Source: zulu_a7_fab_b.PcbDoc (MD5 14a06f6db345784fc7db393c3387d243)
 
 ORDER AND CAM GATE
 This is a bare-board, six-layer, two-step sequential HDI release of the Zulu
@@ -11,14 +11,15 @@ via types and sizes as the 2026-11-11 Fab B Rev 2 data, and the same
 fabrication design rules except one new solder-mask rule (U2's pads use a
 0.035 mm mask expansion instead of the board's 0.05 mm, see ENGINEERING
 QUESTIONS); two new component-clearance rules (R131/R132 and X2) concern
-assembly only. It SUPERSEDES the 2026-11-11 Fab B Rev 2 data package; do not
-mix files of the two. What changed (see CHANGES FROM THE 2026-11-11
-RELEASE): U2 is now an FT2232HQ in a QFN-64 package with a grounded exposed
-pad, X4 is now a side-entry SMT header at the south edge, U10 is now an
-MSOP-8, 16 SDRAM series resistors were added, 11 parts were placed
-differently, and the area around them was re-routed. The drill and via
-counts below are new. Microvias sit in SMD pads; NO through via sits in any
-SMD pad (see VIA-IN-PAD).
+assembly only. It SUPERSEDES the 2026-11-11 Fab B Rev 2 data package and the
+earlier 2026-11-20 one (this one adds only the silkscreen pin-1 dots); do
+not mix files of different packages. What changed (see CHANGES FROM THE
+2026-11-11 RELEASE): U2 is now an FT2232HQ in a QFN-64 package with a
+grounded exposed pad, X4 is now a side-entry SMT header at the south edge,
+U10 is now an MSOP-8, 16 SDRAM series resistors were added, 11 parts were
+placed differently, and the area around them was re-routed. The drill and
+via counts below are new. Microvias sit in SMD pads; NO through via sits in
+any SMD pad (see VIA-IN-PAD).
 Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as
 a standard six-layer prototype without confirming every blind/buried drill
 pair, the via-in-pad list and the ENGINEERING QUESTIONS below.
@@ -48,6 +49,10 @@ R34 (11.02, 19.29) -> (11.42, 19.29), U2 (31.48, 13.60) -> (30.50, 14.55)
 (FT2232HL-LQFP64 -> FT2232HQ-QFN64), U4 (43.55, 21.30) -> (43.55, 21.70),
 U10 (20.99, 18.64) -> (23.49, 20.24) (SPI-8_SOIC_150 -> MSOP-8_3X3_P0.65),
 X4 (29.86, 5.30) -> (31.39, 4.90) (JST-B2B-PH-SM4-TB -> JST-S2B-PH-SM4-TB).
+Silkscreen (2026-11-20): a 0.40 mm dot beside pin 1 (A1 on U1) of U1, U2,
+U3, U4, U8, Q1, BTN and X4 and beside each LED cathode (LD0-LD4), 0.30 mm
+beside U7 pin 1. Copper, solder mask, paste and drills are unchanged from
+the earlier 2026-11-20 package.
 
 BOARD
 Finished outline: 69.85 mm x 25.40 mm (rectangle, from the GM profile)
@@ -492,15 +497,15 @@ FILE MAP
   zulu_a7_fab_b.DRR                  Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-11-20 14:04:48: 0 warnings, 0 rule violations. Un-routed
+Altium DRC 2026-11-20 20:44:33: 0 warnings, 0 rule violations. Un-routed
 nets, short circuits, every clearance rule, silkscreen, solder-mask sliver,
 net-antenna and component-body clearance checks report 0 (every part carries
 a 3D body at its datasheet maximum height; J1's 8.51 mm is the insulator
 height from DigiKey's parametric data). The board was saved at 2026-11-20
-14:04:18 with no edit between the DRC run and the save.
-Source MD5 5fea1304.
-Gerbers (exported 2026-11-20 14:09:21): metric RS-274X, 0.0001 mm coordinate resolution
-NC Drill (exported 2026-11-20 14:10:07): metric Excellon 4:4, separate round/slot files,
+20:44:07 with no edit between the DRC run and the save.
+Source MD5 14a06f6d.
+Gerbers (exported 2026-11-20 20:45:26): metric RS-274X, 0.0001 mm coordinate resolution
+NC Drill (exported 2026-11-20 20:46:04): metric Excellon 4:4, separate round/slot files,
 G85 plated slots
 Every drill hit was matched one-to-one against the PcbDoc via and pad
 positions (0 missing, 0 extra in every drill file).

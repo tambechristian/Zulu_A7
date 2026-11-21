@@ -1,7 +1,7 @@
 ZULU A7 FAB B REV 2 - PCBWAY ASSEMBLY NOTES
 Release date: 2026-11-20
 Source: untracked working copy, not yet in git (the PCB SHA-256 below identifies it)
-PCB SHA-256: 0E5D64CE9B6596E442BBEAF72FC2C6AA30F55D9187B764ED43418729873FA074
+PCB SHA-256: FBD5FD5BE5FCCFDF17762FFB5037AD68CCE59EF0300E740EB6C8AAAFA938889B
 
 UPLOAD SET
 PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
@@ -103,9 +103,14 @@ If your line needs one file per side, please split it by the Layer column.
   (0/90/180/270), not converted for bottom-side parts. Please confirm your
   bottom-side convention against the bottom drawing before programming.
 - The top drawing is viewed from the top; the bottom drawing is mirrored,
-  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);
-  dashed red label = DNP. The silkscreen has no polarity marks, so the
-  drawings and this file are the orientation reference.
+  viewed from the bottom. Red dots = pin 1/A1 of every multi-pin part (one
+  on the pad, a larger one just outside the outline beside it; 2-pin
+  R/C/L carry none); red bar = LED cathode (K, LD0's cathode column);
+  dashed red label = DNP. The silkscreen also marks polarity: a dot beside
+  pin 1 (A1 on U1) of U1, U2, U3, U4, U7, U8, Q1, BTN and X4, a dot beside
+  each LED's cathode, and U10's tick beside pin 1 (X1, X2, X3 and J1 are
+  keyed or hand-placed). The drawings and this file remain the orientation
+  reference.
 If the CPL and a drawing disagree, please send an engineering query.
 
 SPECIAL COMPONENT INSTRUCTIONS
@@ -161,19 +166,21 @@ SPECIAL COMPONENT INSTRUCTIONS
   positive, pin 2 is GND. Nothing is hand-soldered; the mounting pads MP1/MP2 are
   paste lands too.
 - U8 (LTC3556EUFD#PBF, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm
-  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot.
+  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot and
+  the silkscreen dot.
 - U7 (Semtech SC189ASKTRT, SOT-23-5, bottom side): 1.0 V FPGA core buck.
 - Inductors L1, L2, L3, L8, L9 (bottom side) share one 2.5 x 2.0 mm body and
   are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =
   DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each
   position from its own reel and check the reels on the first article.
 - LD1, LD2, LD3, LD4 (0603): cathode = pad K on the EAST side (X 23.00 mm);
-  all face the same way. The drawings mark it with a red bar.
+  all face the same way. The drawings mark it with a red bar, the
+  silkscreen with a dot beside pad K.
 - LD0 (Everlight 19-337/R6GHBHC-A01/2T, 1.6 x 1.6 mm): cathodes are on the WEST side,
   the cathode-mark column (board footprint pads 2, 4, 6), anodes on the east
-  side (pads 1, 3, 5), opposite to the 0603 LEDs. The drawing's red dot marks
-  footprint pad 1, an anode. The land is symmetric, so a part turned 180
-  degrees fits but stays dark.
+  side (pads 1, 3, 5), opposite to the 0603 LEDs. The drawing's red bar and
+  the silkscreen dot mark that cathode column. The land is symmetric, so a
+  part turned 180 degrees fits but stays dark.
   Its datasheet's pin numbers depend on the revision: Rev.4 (DSE-0002657)
   numbers the cathodes 1-3 and the anodes 4-6, Rev.6 numbers them like the
   footprint. Follow the cathode mark, not the pad numbers.

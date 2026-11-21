@@ -1,8 +1,8 @@
 ASAR A7 FEATHER - PCBWAY FABRICATION NOTES - *** PROVISIONAL ***
 Revision: Asar A7 Feather  (silkscreen "ASAR A7")
 Release date: 2026-11-20
-PCB SHA-256: 11C361CCC8F2B6B94283536FABC60DF5CF87AB1CC68D1208FF59EFB87FB0E91E
-Source: asar_feather.PcbDoc (MD5 c304041a1984b9034f27d4055a241c9c)
+PCB SHA-256: 64C179D155FBE2B10F9895FEB31CBE05D9E7E6CB9BA67D6E048808287F40BDA0
+Source: asar_feather.PcbDoc (MD5 35871b35350907565314831ca84ad389)
 
 *** PROVISIONAL RELEASE - DO NOT START PRODUCTION ***
 This data set is released for quotation and CAM/engineering review only. It
@@ -16,6 +16,14 @@ older layout (before the LTC3556 power-block change); where they differ, the
 enquiry's figure is shown in brackets and the figure in these notes is the one
 that applies. Please answer each numbered item, or confirm it, before
 fabrication is released.
+
+This data set replaces the earlier 2026-11-20 Asar package; do not mix files
+of the two. It adds only silkscreen polarity dots on the top side: 0.40 mm
+beside pin 1 (ball A1 on U1 and U3) of U1, U2, U3, U4, Q1, BTN, RESET, X4 and
+X5 and beside the cathodes of LD0, LD3 and LD4, 0.25 mm beside the cathodes of
+LD1 and LD2. U7 and U8 (bottom side) have no room for a dot; the assembly
+drawings mark their pin 1. Copper, solder mask, paste and drills are
+unchanged.
 
 ASSUMPTIONS PENDING PCBWAY CONFIRMATION (one per enquiry question)
 
@@ -471,7 +479,7 @@ FILE MAP
   Asar_Feather_VIA_IN_PAD.csv            Complete via-in-pad table
 
 FINAL VERIFICATION
-Altium DRC 11/20/2026 7:15:27 AM on asar_feather.PcbDoc:
+Altium DRC 11/20/2026 9:15:18 PM on asar_feather.PcbDoc:
 0 warnings, 0 rule violations, 0 waived (35 rules checked).
 Component Clearance was checked against 3D bodies on every part, and the component-body
 gate passed (no body over another body, or over another part's pad at nominal size).

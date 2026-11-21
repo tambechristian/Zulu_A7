@@ -567,7 +567,7 @@ PCBWAY_LINE_NOTES = {
         "Water-clear lens. Polarity: cathodes on the WEST side, the cathode-mark column (board footprint "
         "pads 2, 4, 6; datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint); anodes on the east "
         "side (opposite to "
-        "LD1-LD4). The drawing's red dot marks footprint pad 1, an anode."
+        "LD1-LD4). The drawing's red bar and the silkscreen dot mark the cathode column."
     ),
     "105017-0001": (
         "Rated for ONE reflow: place in the last (top) reflow. Shell stakes in plated "
@@ -576,7 +576,7 @@ PCBWAY_LINE_NOTES = {
     "PPTC062LFBN-RC": "Top-side through-hole: hand or selective solder after both reflows. Pin 1 = square pad.",
     "S2B-PH-SM4-TB(LF)(SN)": (
         "Side-entry SMT, top side: the plug opening faces the bottom board edge, no hand soldering. "
-        "Polarity: pin 1 (the WEST contact, red dot on the drawing) is battery +, pin 2 is GND."
+        "Polarity: pin 1 (the WEST contact, red dot on the drawing, silkscreen dot) is battery +, pin 2 is GND."
     ),
     SERIES_R_MPN: (
         "SI-critical 22 ohm series resistors on the SDRAM data bus (11 bottom, 5 top). Place each exactly at its "
@@ -1032,6 +1032,11 @@ def short_edge_parts(geometry, fitted, limit=1.5):
     return sorted(((r, e, d) for (r, e), d in best.items()), key=lambda t: (round(t[2], 4), bom_audit.natkey(t[0]), t[1]))
 
 
+# LEDs with several dies whose cathodes share one column: the drawings bar the column instead of dotting pad 1 (an
+# anode), matching the silkscreen dot (tools/route/pin1_dots, 2026-11-20).
+LED_CATHODE_PADS = {"EVERLIGHT-19-337": ("2", "4", "6")}
+
+
 def pin_one_parts(parts, geometry, fitted):
     """Fab B: the polarised multi-pin parts the drawings mark with a red dot (pad 1 / A1): ICs, Q1, X4."""
     return [ref for ref in sorted(fitted, key=bom_audit.natkey)
@@ -1190,9 +1195,14 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  (0/90/180/270), not converted for bottom-side parts. Please confirm your",
         "  bottom-side convention against the bottom drawing before programming.",
         "- The top drawing is viewed from the top; the bottom drawing is mirrored,",
-        "  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);",
-        "  dashed red label = DNP. The silkscreen has no polarity marks, so the",
-        "  drawings and this file are the orientation reference.",
+        "  viewed from the bottom. Red dots = pin 1/A1 of every multi-pin part (one",
+        "  on the pad, a larger one just outside the outline beside it; 2-pin",
+        "  R/C/L carry none); red bar = LED cathode (K, LD0's cathode column);",
+        "  dashed red label = DNP. The silkscreen also marks polarity: a dot beside",
+        "  pin 1 (A1 on U1) of U1, U2, U3, U4, U7, U8, Q1, BTN and X4, a dot beside",
+        "  each LED's cathode, and U10's tick beside pin 1 (X1, X2, X3 and J1 are",
+        "  keyed or hand-placed). The drawings and this file remain the orientation",
+        "  reference.",
         "If the CPL and a drawing disagree, please send an engineering query.",
         "",
         "SPECIAL COMPONENT INSTRUCTIONS",
@@ -1258,19 +1268,21 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  positive, pin 2 is GND. Nothing is hand-soldered; the mounting pads MP1/MP2 are",
         "  paste lands too.",
         f"- U8 ({u8_mpn}, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm",
-        "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot.",
+        "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot and",
+        "  the silkscreen dot.",
         "- U7 (Semtech SC189ASKTRT, SOT-23-5, bottom side): 1.0 V FPGA core buck.",
         "- Inductors L1, L2, L3, L8, L9 (bottom side) share one 2.5 x 2.0 mm body and",
         "  are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =",
         "  DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each",
         "  position from its own reel and check the reels on the first article.",
         f"- {led_refs} (0603): cathode = pad K on the {led_side} side ({led_x});",
-        "  all face the same way. The drawings mark it with a red bar.",
+        "  all face the same way. The drawings mark it with a red bar, the",
+        "  silkscreen with a dot beside pad K.",
         f"- LD0 ({ld0_manf} {ld0_mpn}, 1.6 x 1.6 mm): cathodes are on the WEST side,",
         "  the cathode-mark column (board footprint pads 2, 4, 6), anodes on the east",
-        "  side (pads 1, 3, 5), opposite to the 0603 LEDs. The drawing's red dot marks",
-        "  footprint pad 1, an anode. The land is symmetric, so a part turned 180",
-        "  degrees fits but stays dark.",
+        "  side (pads 1, 3, 5), opposite to the 0603 LEDs. The drawing's red bar and",
+        "  the silkscreen dot mark that cathode column. The land is symmetric, so a",
+        "  part turned 180 degrees fits but stays dark.",
         *ld0_numbering_lines(ld0_mpn),
         f"- Verify pin 1/A1 against the drawings on {pin1_text}.",
         "- Stencil from the GTP/GBP layers. Their apertures are 1:1 with copper",
@@ -1455,8 +1467,8 @@ def write_notes(parts, geometry, bom_rows):
         "  that both connector shell stakes seat fully before soldering.",
         "- Verify pin 1/A1 on U1, U2, U3, U4, U8, U10, Q1, and every polarized LED.",
         "- LD0 cathodes are pads 2, 4, and 6, on the WEST side under the part's",
-        "  cathode mark; its anodes are pads 1, 3, and 5. The drawings' red dot",
-        "  marks pad 1, an anode.",
+        "  cathode mark; its anodes are pads 1, 3, and 5. The drawings' red bar and",
+        "  the silkscreen dot mark the cathode column.",
         *ld0_numbering_lines(parts["LD0"]["params"].get("MANF#")),
         "",
         "SOURCING",
@@ -1610,6 +1622,8 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
 
     detail = (x1 - x0) < BOARD_WIDTH - 1
     font_size = 7.0 if detail else 4.6
+    # polarity marks are collected here and drawn after every part, so no later outline or label box covers them
+    marks = []
     for ref in sorted(side_refs, key=bom_audit.natkey):
         item = geometry[ref]
         bx0, by0, bx1, by1 = item["bbox"]
@@ -1680,30 +1694,61 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
                 color=(0.55, 0.12, 0.10) if dnp else (0.05, 0.07, 0.09),
             )
 
+        cathode_column = [pad for pad in item["pads"] if pad["pad"] in LED_CATHODE_PADS.get(item["footprint"], ())]
+        if cathode_column:
+            # multi-die LED (LD0): a red bar over the cathode column, where the silkscreen dot is (2026-11-20),
+            # instead of the pin-1 dots (its pad 1 is an anode)
+            corners = [board_to_page(pad["x"] + sx * pad["sx"] / 2, pad["y"] + sy * pad["sy"] / 2, region, plot, side)
+                       for pad in cathode_column for sx in (-1, 1) for sy in (-1, 1)]
+            xs, ys = [c[0] for c in corners], [c[1] for c in corners]
+            marks.append(("bar", sum(xs) / len(xs), (min(ys) + max(ys)) / 2,
+                          (1.0 if detail else 0.7, (max(ys) - min(ys)) / 2)))
+            continue
         pin_one = next(
             (pad for pad in item["pads"] if pad["pad"] == "1"),
             next((pad for pad in item["pads"] if pad["pad"] == "A1"), None),
         )
-        if pin_one is not None:
+        # 2026-11-20: pin 1 is marked only on multi-pin parts (ICs, Q1, connectors, arrays, BTN, J1, JP3/JP4; LD0 has the bar above);
+        # a dot on one end of a 2-pin resistor, capacitor or inductor implied a polarity it does not have and
+        # buried the marks that matter. Each multi-pin part gets the dot on pad 1/A1 AND a larger dot just
+        # outside its outline beside that pad, so the orientation reads at a glance on the overview pages.
+        multi_pin = len({pad["pad"] for pad in item["pads"]}) > 2
+        if pin_one is not None and multi_pin:
             marker = board_to_page(pin_one["x"], pin_one["y"], region, plot, side)
-            page.draw_circle(
-                (marker[0], marker[1]),
-                2.1 if detail else 1.35,
-                color=(0.78, 0.08, 0.08),
-                fill=(0.92, 0.15, 0.12),
-                width=0.4,
-            )
+            marks.append(("pad", marker[0], marker[1], 2.1 if detail else 1.35))
+            if ref != "X2":   # X2's outline is the whole header field; its strips are hand-placed, pin 1 is the pad dot
+                radius = 3.8 if detail else 2.9
+                gap = radius + (1.0 if detail else 0.7)
+                to_edge = {"west": marker[0] - box.x0, "east": box.x1 - marker[0],
+                           "north": marker[1] - box.y0, "south": box.y1 - marker[1]}
+                edge = min(to_edge, key=lambda k: (round(to_edge[k], 3), k))
+                outside = {"west": (box.x0 - gap, marker[1]), "east": (box.x1 + gap, marker[1]),
+                           "north": (marker[0], box.y0 - gap), "south": (marker[0], box.y1 + gap)}[edge]
+                marks.append(("body", outside[0], outside[1], radius))
         cathode = next((pad for pad in item["pads"] if pad["pad"] == "K"), None)
         if pin_one is None and cathode is not None:
             # two-pad LEDs (pads A/K): a red bar across the cathode pad
             marker = board_to_page(cathode["x"], cathode["y"], region, plot, side)
             half_w = (1.0 if detail else 0.7)
             half_h = max(cathode["sy"] * marker[2] / 2, 2.0 if detail else 1.3)
+            marks.append(("bar", marker[0], marker[1], (half_w, half_h)))
+
+    for kind, mx, my, size in marks:
+        if kind == "bar":
+            half_w, half_h = size
             page.draw_rect(
-                fitz.Rect(marker[0] - half_w, marker[1] - half_h, marker[0] + half_w, marker[1] + half_h),
+                fitz.Rect(mx - half_w, my - half_h, mx + half_w, my + half_h),
                 color=(0.78, 0.08, 0.08),
                 fill=(0.92, 0.15, 0.12),
                 width=0.3,
+            )
+        else:
+            page.draw_circle(
+                (mx, my),
+                size,
+                color=(0.78, 0.08, 0.08) if kind == "pad" else (0.55, 0.04, 0.04),
+                fill=(0.92, 0.15, 0.12),
+                width=0.4 if kind == "pad" else 0.6,
             )
 
     preview_text = {
@@ -1712,7 +1757,8 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
     }.get(ASSEMBLER, "JLCPCB's placement preview")
     page.insert_text(
         (52, page.rect.height - 28),
-        "Red dot = pin 1/A1. Red bar = LED cathode (pad K). Dashed red label = DNP. "
+        "Red dots = pin 1/A1 of every multi-pin part: one on the pad, a larger one just outside the outline "
+        "beside it (2-pin R/C/L carry none). Red bar = LED cathode (pad K; LD0's cathode column). Dashed red label = DNP. "
         f"Verify every rotation and polarity in {preview_text}.",
         fontsize=8,
         color=(0.24, 0.27, 0.31),

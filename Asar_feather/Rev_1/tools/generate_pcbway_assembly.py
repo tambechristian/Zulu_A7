@@ -517,8 +517,8 @@ PCBWAY_LINE_NOTES = {
     "DFE252012F-3R3M=P2": "L8 = 3.3 uH (U8 PowerPath). Look-alike of L1/L2/L3/L9: load from its own reel.",
     "19-337/R6GHBHC-A01/2T": (
         "Water-clear lens. Polarity: cathodes = the cathode-mark column (board footprint pads 2, 4, 6; "
-        "datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint). The drawing's red dot marks "
-        "footprint pad 1, an anode."
+        "datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint). The drawing's red bar and the "
+        "silkscreen dot mark the cathode column."
     ),
     "10118193-0001LF": (
         "Top side, mouth overhanging the left (USB) board edge by 0.70 mm (flange 1.30 mm). "
@@ -677,6 +677,11 @@ def edge_parts(geometry, fitted, limit=1.0):
                 if dist < limit and dist < best.get((ref, edge), 99.0):
                     best[(ref, edge)] = dist
     return sorted(((r, e, d) for (r, e), d in best.items()), key=lambda t: t[2])
+
+
+# LEDs with several dies whose cathodes share one column: the drawings bar the column instead of dotting pad 1 (an
+# anode), matching the silkscreen dot (tools/route/pin1_dots, 2026-11-20; as in the no-PMOD and Fab B generators).
+LED_CATHODE_PADS = {"EVERLIGHT-19-337": ("2", "4", "6")}
 
 
 def pin_one_parts(fitted):
@@ -896,9 +901,11 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "  bottom-side convention against the bottom drawing before programming.",
         "- The top drawing is viewed from the top; the bottom drawing is mirrored,",
         "  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);",
-        "  dashed red label = DNP. Most designators are hidden on the silkscreen and",
-        "  the 0603 LEDs have no silkscreen polarity mark, so the drawings",
-        "  and this file are the orientation reference.",
+        "  dashed red label = DNP. Most designators are hidden on the silkscreen.",
+        "  The silkscreen marks polarity with a dot beside pin 1 (A1 on U1 and U3)",
+        "  of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside each LED cathode,",
+        "  and U10 has a tick beside pin 1; U7 and U8 (bottom side) have no room for",
+        "  a dot. The drawings and this file remain the orientation reference.",
         "If the CPL and a drawing disagree, please send an engineering query.",
         "",
         "SPECIAL COMPONENT INSTRUCTIONS",
@@ -932,20 +939,22 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         f"  ({mpn['U10']}, TDFN-8): their exposed-pad lands have no net; the paste",
         "  layer prints them 1:1. Please apply your windowpane reduction.",
         f"- U8 ({mpn['U8']}, Analog Devices, bottom side): QFN-28 4 x 5 mm, 0.5 mm",
-        "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot.",
+        "  pitch, exposed pad (pin 29) to GND. Pin 1 per the drawing's red dot (no",
+        "  silkscreen dot: no room).",
         f"- U7 (Semtech {mpn['U7']}, SOT-23-5, bottom side): 1.0 V FPGA core buck.",
         "- Inductors L1, L2, L3, L8, L9 (bottom side) share one 2.5 x 2.0 mm body and",
         "  are usually unmarked: L1, L2, L9 = DFE252012F-2R2M=P2 (2.2 uH), L3 =",
         "  DFE252010P-1R5M=P2 (1.5 uH), L8 = DFE252012F-3R3M=P2 (3.3 uH). Load each",
         "  position from its own reel and check the reels on the first article.",
         "- 0603 LEDs: " + "; ".join(led_lines) + ". The two pairs face opposite ways; the drawings mark "
-        "each cathode with a red bar.",
+        "each cathode with a red bar, the silkscreen with a dot beside pad K.",
         f"- LD0 ({parts['LD0']['params'].get('MANF')} {mpn['LD0']}, 1.6 x 1.6 mm): cathodes are on the "
         f"{ld0_side} side, the cathode-mark column (board footprint pads 2, 4, 6), anodes opposite "
-        "(pads 1, 3, 5). The drawing's red dot marks footprint pad 1, an anode. The land is symmetric, so "
+        "(pads 1, 3, 5). The drawing's red bar and the silkscreen dot mark that cathode column. The land is symmetric, so "
         "a part turned 180 degrees fits but stays dark.",
         *LD0_NUMBERING.get(mpn["LD0"], []),
-        f"- BTN and RESET ({mpn['BTN']}, top side): same part twice.",
+        f"- BTN and RESET ({mpn['BTN']}, top side): same part twice; pin 1 per the drawing's red dot "
+        "and the silkscreen dot.",
         "- JP3 and JP4 are intentional DNS JTAG test-pad positions (three 1.0 mm SMD",
         "  pads each, bottom side): no part. Please remove their six apertures from",
         "  the bottom stencil (tinned pads are acceptable if you cannot).",
@@ -1109,6 +1118,16 @@ def draw_assembly_page(doc, side, region, title, parts, geometry):
                        dashes="[2 2]" if dnp else None)
         label(page, ((box.x0 + box.x1) / 2, (box.y0 + box.y1) / 2), f"DNP {ref}" if dnp else ref,
               font_size, (0.55, 0.12, 0.10) if dnp else (0.05, 0.07, 0.09))
+        cathode_column = [p for p in item["pads"] if p["pad"] in LED_CATHODE_PADS.get(item["footprint"], ())]
+        if cathode_column and not dnp:
+            # multi-die LED (LD0): a red bar over the cathode column, where the silkscreen dot is (2026-11-20)
+            corners = [board_to_page(p["x"] + sx * p["sx"] / 2, p["y"] + sy * p["sy"] / 2, region, plot, side)
+                       for p in cathode_column for sx in (-1, 1) for sy in (-1, 1)]
+            mid = sum(c[0] for c in corners) / len(corners)
+            half_w = 1.0 if detail else 0.7
+            page.draw_rect(fitz.Rect(mid - half_w, min(c[1] for c in corners), mid + half_w, max(c[1] for c in corners)),
+                           color=(0.78, 0.08, 0.08), fill=(0.92, 0.15, 0.12), width=0.3)
+            continue
         pin_one = next((p for p in item["pads"] if p["pad"] == "1"),
                        next((p for p in item["pads"] if p["pad"] == "A1"), None))
         if pin_one is not None and not dnp:
@@ -1124,7 +1143,7 @@ def draw_assembly_page(doc, side, region, title, parts, geometry):
                            color=(0.78, 0.08, 0.08), fill=(0.92, 0.15, 0.12), width=0.3)
 
     page.insert_text((52, page.rect.height - 28),
-                     "Red dot = pin 1/A1. Red bar = LED cathode (pad K). Dashed red label = DNP. "
+                     "Red dot = pin 1/A1. Red bar = LED cathode (pad K; LD0's cathode column). Dashed red label = DNP. "
                      "Verify every rotation and polarity in PCBWay's engineering review.",
                      fontsize=8, color=(0.24, 0.27, 0.31))
     return set(side_refs)
