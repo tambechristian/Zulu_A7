@@ -1,0 +1,9 @@
+D0   read  max fab    pin    r22   ideal pin -0.169/3.613 die -0.095/3.546 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D10  read  max fab    pin    r22   ideal pin -0.112/3.525 die -0.017/3.472 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D8   read  max fab    pin    r22   ideal pin -0.353/3.685 die -0.034/3.487 ball budget 17.2% die 0.0% t_end 32.00 conn True
+D3   read  max fab    pin    r22   ideal pin -0.245/3.623 die -0.021/3.477 ball budget 1.7% die 0.0% t_end 32.00 conn True
+D0   write max fab    pin    r22   ideal pin -0.307/3.539 die -0.420/3.538 absmax pin True die True t_end 32.00 conn True
+D3   write max fab    pin    r22   ideal pin -0.344/3.539 die -0.435/3.557 absmax pin True die True t_end 32.00 conn True
+D8   write max fab    pin    r22   ideal pin -0.302/3.517 die -0.336/3.523 absmax pin True die True t_end 32.00 conn True
+D10  write max fab    pin    r22   ideal pin -0.278/3.518 die -0.340/3.522 absmax pin True die True t_end 32.00 conn True
+done: 8 cases, 0 errors

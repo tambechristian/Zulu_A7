@@ -1,0 +1,232 @@
+[
+ {
+  "net": "D1",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    36.95,
+    6.05
+   ]
+  },
+  "connected": true,
+  "len_mm": 14.336,
+  "vias": 5,
+  "die_vmin": -0.351068222415457,
+  "die_vmax": 3.5358138820225458,
+  "ball_vmin": -0.30414292262868536,
+  "ball_vmax": 3.535890401160692,
+  "die_budget": 0.09549426666667032,
+  "ball_budget": 0.05169986666666524,
+  "t10_90_ns": 1.1490353206844222
+ },
+ {
+  "net": "D2",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    44.9,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.222,
+  "vias": 2,
+  "die_vmin": -0.19876826318963162,
+  "die_vmax": 3.470668532928573,
+  "ball_vmin": -0.17517969508345546,
+  "ball_vmax": 3.4795464139939636,
+  "die_budget": 0.0,
+  "ball_budget": 0.0,
+  "t10_90_ns": 1.191398540070074
+ },
+ {
+  "net": "D0",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    38.95,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.125,
+  "vias": 8,
+  "die_vmin": -0.44647256185172657,
+  "die_vmax": 3.5392763486760463,
+  "ball_vmin": -0.33365705185897515,
+  "ball_vmax": 3.558273148816043,
+  "die_budget": 0.18604401651000282,
+  "ball_budget": 0.08562306666666827,
+  "t10_90_ns": 1.1063273444117725
+ },
+ {
+  "net": "D5",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    43.65,
+    5.3
+   ]
+  },
+  "connected": true,
+  "len_mm": 19.479,
+  "vias": 2,
+  "die_vmin": -0.22407884151243135,
+  "die_vmax": 3.4828183134663186,
+  "ball_vmin": -0.2150858368855578,
+  "ball_vmax": 3.484766567674061,
+  "die_budget": 0.05619125733332031,
+  "ball_budget": 0.018532000000000517,
+  "t10_90_ns": 1.2059715383358995
+ },
+ {
+  "net": "D3",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    34.9,
+    6.4
+   ]
+  },
+  "connected": true,
+  "len_mm": 17.52,
+  "vias": 6,
+  "die_vmin": -0.4044689045130976,
+  "die_vmax": 3.5444839209829624,
+  "ball_vmin": -0.3310731675324215,
+  "ball_vmax": 3.5331538996090655,
+  "die_budget": 0.17406526202053504,
+  "ball_budget": 0.08176506666667153,
+  "t10_90_ns": 1.1666403916730448
+ },
+ {
+  "net": "D6",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    35.05,
+    5.7
+   ]
+  },
+  "connected": true,
+  "len_mm": 20.617,
+  "vias": 6,
+  "die_vmin": -0.27779769426361944,
+  "die_vmax": 3.516230026782349,
+  "ball_vmin": -0.2624761983312919,
+  "ball_vmax": 3.519900655777701,
+  "die_budget": 0.08059003813063112,
+  "ball_budget": 0.04548538502401717,
+  "t10_90_ns": 1.1926829535760322
+ },
+ {
+  "net": "D8",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    13.6
+   ]
+  },
+  "connected": true,
+  "len_mm": 15.771,
+  "vias": 2,
+  "die_vmin": -0.24365361613807965,
+  "die_vmax": 3.4975471106344758,
+  "ball_vmin": -0.20808286898022352,
+  "ball_vmax": 3.4949358178617307,
+  "die_budget": 0.053910631402190184,
+  "ball_budget": 0.01600000000000226,
+  "t10_90_ns": 1.1889748685408617
+ },
+ {
+  "net": "D12",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    15.8
+   ]
+  },
+  "connected": true,
+  "len_mm": 13.372,
+  "vias": 8,
+  "die_vmin": -0.3107614542668772,
+  "die_vmax": 3.53114924291303,
+  "ball_vmin": -0.2921884794711816,
+  "ball_vmax": 3.533472715062386,
+  "die_budget": 0.0919034202666616,
+  "ball_budget": 0.05257580000000186,
+  "t10_90_ns": 1.1718967077780915
+ },
+ {
+  "net": "D15",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.1,
+    16.75
+   ]
+  },
+  "connected": true,
+  "len_mm": 11.267,
+  "vias": 5,
+  "die_vmin": -0.3546214174248942,
+  "die_vmax": 3.5322414264189597,
+  "ball_vmin": -0.29008226509917234,
+  "ball_vmax": 3.5286522856466687,
+  "die_budget": 0.09266666666667027,
+  "ball_budget": 0.04884266666667119,
+  "t10_90_ns": 1.1493625000000023
+ },
+ {
+  "net": "D11",
+  "corner": "max",
+  "scenario": "write",
+  "pos": "plan",
+  "variant": "0201",
+  "info": {
+   "at": [
+    39.2,
+    14.9
+   ]
+  },
+  "connected": true,
+  "len_mm": 12.001,
+  "vias": 2,
+  "die_vmin": -0.21179393766947896,
+  "die_vmax": 3.479040665378947,
+  "ball_vmin": -0.16561496858326652,
+  "ball_vmax": 3.480427450116147,
+  "die_budget": 0.03060933333333483,
+  "ball_budget": 0.0,
+  "t10_90_ns": 1.157526542727688
+ }
+]

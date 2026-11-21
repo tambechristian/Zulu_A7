@@ -1,0 +1,16 @@
+GND            
+VCC3V3         
+FPGA-TDI       
+LED0_R         
+PROG#          
+TDI            
+VBATT          
+VCC1V0         
+VCC1V8         
+routed 16 connections, failed 4; 33 vias, 20 tracks -> routeA.json
+OPEN VBATT 1
+OPEN VCC1V0 3
+FAIL VBATT (budget)
+FAIL VCC1V0 (budget)
+FAIL VCC1V0 (budget)
+FAIL VCC1V0 (budget)

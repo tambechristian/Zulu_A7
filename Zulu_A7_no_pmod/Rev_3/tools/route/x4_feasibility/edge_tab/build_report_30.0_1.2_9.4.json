@@ -1,0 +1,112 @@
+{
+ "CX": 30.0,
+ "CY": 1.2,
+ "tab_depth": 3.7,
+ "tab_neck_width": 9.4,
+ "tab_outer_width": 8.8,
+ "tab_outline": [
+  [
+   25.3,
+   0.0
+  ],
+  [
+   25.6,
+   -3.7
+  ],
+  [
+   34.4,
+   -3.7
+  ],
+  [
+   34.7,
+   0.0
+  ]
+ ],
+ "ripped_tracks": 7,
+ "ripped_vias": 0,
+ "ripped_len_mm": 5.8,
+ "pruned_tracks": 24,
+ "pruned_vias": 2,
+ "why": {
+  "t:x4-fanout": 7
+ },
+ "open": {
+  "GND": 1,
+  "VBATT": 1
+ },
+ "open_total": 2,
+ "body_check_X4": [],
+ "body_check_all_new": 55,
+ "body_check_all_base": 68,
+ "X4_body": [
+  26.05,
+  -3.2,
+  33.95,
+  4.4
+ ],
+ "pad_pad_nearest": [
+  [
+   "1",
+   "U2-24",
+   1.325
+  ],
+  [
+   "1",
+   "U2-23",
+   1.325
+  ],
+  [
+   "2",
+   "U2-20",
+   1.325
+  ],
+  [
+   "2",
+   "U2-19",
+   1.325
+  ],
+  [
+   "1",
+   "U2-25",
+   1.328
+  ],
+  [
+   "2",
+   "U2-21",
+   1.328
+  ],
+  [
+   "1",
+   "U2-22",
+   1.332
+  ],
+  [
+   "2",
+   "U2-18",
+   1.332
+  ],
+  [
+   "MP2",
+   "X2-31",
+   1.416
+  ],
+  [
+   "1",
+   "U2-26",
+   1.449
+  ],
+  [
+   "2",
+   "U2-22",
+   1.449
+  ],
+  [
+   "1",
+   "U2-21",
+   1.469
+  ]
+ ],
+ "mount_pad_bottom_edge_clearance": 0.3,
+ "mount_pad_side_clearance_near_bottom": 0.324,
+ "u2_south_pad_clearance": 1.325
+}

@@ -1,0 +1,12 @@
+efast finish: pad ban (all vias) + plane-tie columns + numpy via_ok
+seeded 106 vias, 513 tracks; open 7 on 7 nets: CHAN12 CHAN13 CHAN20 CHAN7 SD-DAT1 TDI VU (1 s)
+== CHAN7 (pass 1)
+CHAN7 joined (hard)
+== CHAN7: open 7 -> 6, 1 s
+== CHAN20 (pass 1)
+CHAN20 joined (hard)
+== CHAN20: open 6 -> 5, 1 s
+== TDI (pass 1)
+TDI: no probe path (budget)
+== TDI: not closed, 285 s
+== VU (pass 1)

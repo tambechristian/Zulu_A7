@@ -1,0 +1,5 @@
+TDO            
+routed 0 connections, failed 2; 0 vias, 0 tracks -> tools/route/bodies5/rs_TDO.json
+OPEN TDO 2
+FAIL TDO (nopath)
+FAIL TDO (nopath)

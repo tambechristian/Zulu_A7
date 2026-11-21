@@ -1,0 +1,11 @@
+D8   read  max fab    placed r22   parts pin -0.185/3.596 die -0.064/3.513 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D9   read  max fab    placed r22   parts pin -0.160/3.548 die -0.055/3.502 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D12  read  max fab    placed r22   parts pin -0.157/3.592 die -0.125/3.542 ball budget 0.0% die 0.0% t_end 32.00 conn True
+D0   read  max fab    placed r22   parts pin -0.206/3.613 die -0.114/3.556 ball budget 0.5% die 0.0% t_end 32.00 conn True
+D5   read  max fab    placed r22   parts pin -0.218/3.612 die -0.028/3.486 ball budget 0.8% die 0.0% t_end 32.00 conn True
+D0   write max fab    placed r22   parts pin -0.320/3.548 die -0.441/3.538 absmax pin True die True t_end 32.00 conn True
+D8   write max fab    placed r22   parts pin -0.208/3.495 die -0.244/3.498 absmax pin True die True t_end 32.00 conn True
+D9   write max fab    placed r22   parts pin -0.206/3.497 die -0.228/3.489 absmax pin True die True t_end 32.00 conn True
+D12  write max fab    placed r22   parts pin -0.284/3.534 die -0.304/3.529 absmax pin True die True t_end 32.00 conn True
+D5   write max fab    placed r22   parts pin -0.333/3.530 die -0.393/3.551 absmax pin True die True t_end 32.00 conn True
+done: 10 cases, 0 errors

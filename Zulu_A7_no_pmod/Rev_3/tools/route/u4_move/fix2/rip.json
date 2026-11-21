@@ -1,0 +1,111 @@
+{
+ "remove": [
+  {
+   "net": "CHAN2",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 49.15,
+   "y1": 19.4,
+   "x2": 49.2,
+   "y2": 19.4
+  },
+  {
+   "net": "CHAN2",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 48.7,
+   "y1": 18.95,
+   "x2": 49.15,
+   "y2": 19.4
+  },
+  {
+   "net": "CHAN2",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 48.7,
+   "y1": 18.5,
+   "x2": 48.7,
+   "y2": 18.95
+  },
+  {
+   "net": "CHAN2",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 48.7,
+   "y1": 18.5,
+   "x2": 49.1,
+   "y2": 18.1
+  },
+  {
+   "net": "CHAN2",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 49.1,
+   "y1": 17.1,
+   "x2": 49.1,
+   "y2": 18.1
+  }
+ ],
+ "remove_vias": [
+  {
+   "net": "VCC3V3",
+   "x": 49.65,
+   "y": 20.3,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "VCC3V3",
+   "x": 49.65,
+   "y": 20.3,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "VCC3V3",
+   "x": 49.65,
+   "y": 20.3,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "VCC3V3",
+   "x": 49.65,
+   "y": 20.3,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "CHAN2",
+   "x": 49.15,
+   "y": 19.4,
+   "size": 0.35,
+   "hole": 0.2,
+   "span": [
+    "Top Layer",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  }
+ ],
+ "moves": []
+}

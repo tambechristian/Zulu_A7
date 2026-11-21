@@ -1,0 +1,31 @@
+south violations: 0 | worst margins: {'clearance': 0.0097, 'hole_to_hole': 0.0628, 'mask_sliver': 0.01}
+connectivity ok: True ['D0', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'FT-VCORE', 'GND', 'SDRAM-D0', 'SDRAM-D1', 'SDRAM-D2', 'SDRAM-D3', 'SDRAM-D4', 'SDRAM-D5', 'SDRAM-D6', 'SDRAM-D7', 'TDO', 'TMS', 'VCC3V3']
+ARRAY CTS 742C083 (4 x R, 0.8 mm pitch)                            need 3.11  S 1.47 N 0.47  between True  nets/part 4 []
+ARRAY CTS 742C043 (2 x R, 0.8 mm pitch)                            need 3.01  S 1.47 N 0.47  between True  nets/part 2 []
+ARRAY Panasonic EXB-18V / Yageo YC104 (4 x 0201, 0.4 mm pitch)     need 1.31  S 1.47 N 0.47  between False nets/part 2 []
+ARRAY Panasonic EXB-14V / Bourns CAY06 (2 x 0201, 0.5 mm pitch)    need 1.31  S 1.47 N 0.47  between False nets/part 2 [('D1/D2', ['5|6']), ('D3/D4', []), ('D5/D6', ['11|12']), ('D9/D10', ['43|44']), ('D11/D12', ['46|47', '48|49']), ('D13/D14', ['49|50', '51|52'])]
+ARRAY Yageo RC0201FR-0722RL (discrete 0201)                        need 0.71  S 1.47 N 0.47  between n/a   nets/part 1 []
+D0 0.96 6.1 2.177 0.883 -0.206
+D1 0.96 6.1 1.898 0.944 -0.091
+D2 0.96 6.1 2.844 0.91 -0.14
+D3 0.96 6.1 3.833 2.755 -0.198
+D4 0.96 6.1 3.904 2.785 -0.136
+D5 0.96 6.1 4.546 2.78 -0.218
+D6 0.96 6.1 4.488 2.764 -0.186
+D7 0.96 6.1 3.835 2.785 -0.181
+depth D0 {'toe_y': 5.5701, 'nearest_part_pad': 'C8-2 (VCC3V3)', 'depth_mm': 2.07}
+depth D1 {'toe_y': 5.5701, 'nearest_part_pad': 'C41-2 (FT-VPLL)', 'depth_mm': 1.47}
+depth D2 {'toe_y': 5.5701, 'nearest_part_pad': 'C41-2 (FT-VPLL)', 'depth_mm': 1.47}
+depth D3 {'toe_y': 5.5701, 'nearest_part_pad': 'C40-2 (FT-VPHY)', 'depth_mm': 1.47}
+depth D4 {'toe_y': 5.5701, 'nearest_part_pad': 'C38-2 (VCC3V3)', 'depth_mm': 1.47}
+depth D5 {'toe_y': 5.5701, 'nearest_part_pad': 'C154-2 (FT-VCORE)', 'depth_mm': 1.47}
+depth D6 {'toe_y': 5.5701, 'nearest_part_pad': 'C153-2 (FT-VCORE)', 'depth_mm': 1.47}
+depth D7 {'toe_y': 5.5701, 'nearest_part_pad': 'C152-2 (FT-VCORE)', 'depth_mm': 1.47}
+depth D8 {'toe_y': 18.13, 'nearest_part_pad': 'R80-2 (N$LD0B)', 'depth_mm': 0.47}
+depth D9 {'toe_y': 18.13, 'nearest_part_pad': 'R81-1 (VCC3V3)', 'depth_mm': 0.47}
+depth D10 {'toe_y': 18.13, 'nearest_part_pad': 'R81-2 (N$LD0R)', 'depth_mm': 0.47}
+depth D11 {'toe_y': 18.13, 'nearest_part_pad': 'R82-1 (VCC3V3)', 'depth_mm': 0.47}
+depth D12 {'toe_y': 18.13, 'nearest_part_pad': 'R82-2 (N$LD0G)', 'depth_mm': 0.47}
+depth D13 {'toe_y': 18.13, 'nearest_part_pad': 'R83-1 (LED1)', 'depth_mm': 0.47}
+depth D14 {'toe_y': 18.13, 'nearest_part_pad': 'R83-2 (N$LD1A)', 'depth_mm': 0.47}
+depth D15 {'toe_y': 18.13, 'nearest_part_pad': 'R83-2 (N$LD1A)', 'depth_mm': 0.47}

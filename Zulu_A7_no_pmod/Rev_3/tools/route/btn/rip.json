@@ -1,0 +1,444 @@
+{
+ "remove": [
+  {
+   "net": "N$BTN",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 20.875,
+   "y1": 10.47,
+   "x2": 21.3,
+   "y2": 11.3
+  },
+  {
+   "net": "N$BTN",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 21.3,
+   "y1": 11.3,
+   "x2": 21.3,
+   "y2": 13.4
+  },
+  {
+   "net": "N$BTN",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 20.5,
+   "y1": 15.5,
+   "x2": 21.2,
+   "y2": 15.7
+  },
+  {
+   "net": "SD-CLK",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 14.15,
+   "y1": 11.2751,
+   "x2": 17.45,
+   "y2": 11.3
+  },
+  {
+   "net": "N$BTN",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 20.875,
+   "y1": 10.47,
+   "x2": 20.875,
+   "y2": 10.845
+  },
+  {
+   "net": "N$BTN",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 20.875,
+   "y1": 14.995,
+   "x2": 21.3,
+   "y2": 13.4
+  },
+  {
+   "net": "N$BTN",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 20.5,
+   "y1": 15.5,
+   "x2": 20.875,
+   "y2": 14.995
+  },
+  {
+   "net": "CHAN22",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 17.4,
+   "y1": 10.5,
+   "x2": 19.8,
+   "y2": 8.1
+  },
+  {
+   "net": "CHAN21",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 17.4,
+   "y1": 10.9,
+   "x2": 20.8,
+   "y2": 7.5
+  },
+  {
+   "net": "VCC3V3",
+   "layer": "Top Layer",
+   "w": 0.2,
+   "x1": 18.725,
+   "y1": 14.995,
+   "x2": 19.22,
+   "y2": 13.44
+  },
+  {
+   "net": "VCC3V3",
+   "layer": "Top Layer",
+   "w": 0.3,
+   "x1": 18.47,
+   "y1": 10.45,
+   "x2": 18.725,
+   "y2": 10.845
+  },
+  {
+   "net": "N$BTN",
+   "layer": "L4-SIG",
+   "w": 0.0762,
+   "x1": 20.7,
+   "y1": 16.7,
+   "x2": 21.0,
+   "y2": 17.0
+  },
+  {
+   "net": "N$BTN",
+   "layer": "L4-SIG",
+   "w": 0.0762,
+   "x1": 20.7,
+   "y1": 16.7,
+   "x2": 21.2,
+   "y2": 15.7
+  }
+ ],
+ "remove_vias": [
+  {
+   "net": "VCC3V3",
+   "x": 18.47,
+   "y": 10.45,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "VCC3V3",
+   "x": 18.47,
+   "y": 10.45,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "VCC3V3",
+   "x": 18.47,
+   "y": 10.45,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "VCC3V3",
+   "x": 18.47,
+   "y": 10.45,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "SD-CLK",
+   "x": 17.45,
+   "y": 11.3,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "SD-CLK",
+   "x": 17.45,
+   "y": 11.3,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 21.2,
+   "y": 15.7,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 21.2,
+   "y": 15.7,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.5,
+   "y": 15.5,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.5,
+   "y": 15.5,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.5,
+   "y": 15.5,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.5,
+   "y": 15.5,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.5,
+   "y": 15.5,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 21.3,
+   "y": 13.4,
+   "size": 0.35,
+   "hole": 0.2,
+   "span": [
+    "Top Layer",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.875,
+   "y": 10.47,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.875,
+   "y": 10.47,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.875,
+   "y": 10.47,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.875,
+   "y": 10.47,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "N$BTN",
+   "x": 20.875,
+   "y": 10.47,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "FT-RESETN",
+   "x": 20.15,
+   "y": 10.6,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "FT-RESETN",
+   "x": 20.15,
+   "y": 10.6,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "FT-RESETN",
+   "x": 20.15,
+   "y": 10.6,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "FT-RESETN",
+   "x": 20.15,
+   "y": 10.6,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "FT-RESETN",
+   "x": 20.15,
+   "y": 10.6,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "CHAN22",
+   "x": 17.4,
+   "y": 10.5,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "CHAN22",
+   "x": 17.4,
+   "y": 10.5,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "CHAN21",
+   "x": 17.4,
+   "y": 10.9,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "CHAN21",
+   "x": 17.4,
+   "y": 10.9,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  }
+ ],
+ "moves": [
+  {
+   "ref": "BTN",
+   "dx": -1.25,
+   "dy": 0.0,
+   "x": 18.55,
+   "y": 12.92
+  }
+ ]
+}

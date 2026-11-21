@@ -1,0 +1,57 @@
+PIECE CHAN12       Bottom Layer (29.120,25.020)-(36.760,25.020) of 7.710 mm w0.076
+PIECE TDO          Bottom Layer (38.150,1.350)-(37.570,0.770) of 0.990 mm w0.076
+PIECE TDO          Bottom Layer (32.100,0.650)-(36.180,0.650) of 5.350 mm w0.076
+PIECE SD-DAT0      Bottom Layer (23.950,18.300)-(24.780,18.300) of 5.200 mm w0.076
+PIECE SD-DAT0      Bottom Layer (29.150,18.300)-(27.050,18.300) of 5.200 mm w0.076
+PIECE SD-CMD       Bottom Layer (36.650,3.950)-(36.650,2.150) of 1.900 mm w0.076
+PIECE SD-CMD       Bottom Layer (35.800,1.200)-(35.934,1.334) of 1.202 mm w0.076
+PIECE N$BTN        Bottom Layer (34.100,21.450)-(33.820,21.450) of 0.900 mm w0.076
+PIECE LED2         Bottom Layer (31.900,20.250)-(32.335,20.685) of 0.637 mm w0.076
+PIECE FPGA-TCK     Bottom Layer (36.800,22.900)-(37.231,23.331) of 2.121 mm w0.076
+PIECE FPGA-TCK     Bottom Layer (38.300,24.400)-(37.632,23.732) of 2.121 mm w0.076
+PIECE FPGA-TCK     Bottom Layer (17.200,19.500)-(19.830,22.130) of 4.808 mm w0.076
+PIECE FPGA-TCK     Bottom Layer (20.600,22.900)-(20.547,22.847) of 4.808 mm w0.076
+PIECE EE-DATA-DO   Bottom Layer (18.600,20.550)-(19.814,21.227) of 4.007 mm w0.076
+PIECE EE-DATA-DO   Bottom Layer (22.100,22.500)-(20.436,21.573) of 4.007 mm w0.076
+PIECE EE-DATA      Bottom Layer (25.300,20.400)-(25.395,20.305) of 1.697 mm w0.076
+PIECE EE-DATA      Bottom Layer (26.500,19.200)-(26.175,19.525) of 1.697 mm w0.076
+PIECE EE-CLK       Bottom Layer (21.165,19.965)-(20.235,19.035) of 1.718 mm w0.076
+PIECE CHAN7        Bottom Layer (30.850,22.600)-(31.060,22.600) of 5.050 mm w0.076
+PIECE CHAN7        Bottom Layer (35.900,22.600)-(31.940,22.600) of 5.050 mm w0.076
+PIECE CHAN12       Bottom Layer (16.250,23.150)-(26.285,23.150) of 11.700 mm w0.076
+PIECE CHAN12       Bottom Layer (27.950,23.150)-(27.675,23.150) of 11.700 mm w0.076
+PIECE TDI          Top Layer    (32.200,4.300)-(32.324,4.207) of 0.500 mm w0.076
+PIECE TCK          Top Layer    (26.000,7.100)-(25.940,6.936) of 1.170 mm w0.076
+PIECE EE-CLK       Top Layer    (28.600,19.425)-(28.600,20.660) of 1.425 mm w0.076
+PIECE CHAN19       Top Layer    (35.400,1.300)-(35.930,1.296) of 3.970 mm w0.076
+PIECE CHAN19       Top Layer    (39.370,1.270)-(37.730,1.282) of 3.970 mm w0.076
+PIECE CHAN13       Top Layer    (12.335,23.225)-(26.240,23.225) of 16.265 mm w0.076
+PIECE VU           Top Layer    (34.450,3.366)-(34.450,3.586) of 3.034 mm w0.700
+PIECE VU           Top Layer    (30.350,6.400)-(32.010,6.400) of 4.100 mm w0.700
+PIECE VU           Top Layer    (30.350,6.400)-(30.350,6.250) of 3.100 mm w0.700
+PIECE VU           Top Layer    (27.600,3.300)-(27.910,3.300) of 2.750 mm w0.700
+PIECE VU           Top Layer    (27.600,3.300)-(27.544,3.450) of 0.854 mm w0.700
+PIECE VU           Top Layer    (16.690,4.949)-(24.810,4.949) of 8.910 mm w1.500
+PIECE VBATT        Top Layer    (28.450,1.550)-(29.660,1.550) of 2.500 mm w1.200
+PIECE TDI          L3-SIG       (35.100,4.000)-(36.938,2.162) of 3.677 mm w0.076
+PIECE N$BTN        L3-SIG       (30.300,20.100)-(32.135,21.101) of 2.506 mm w0.076
+PIECE LED0_R       L3-SIG       (36.800,22.900)-(37.231,23.331) of 2.121 mm w0.076
+PIECE LED0_R       L3-SIG       (38.300,24.400)-(37.632,23.732) of 2.121 mm w0.076
+PIECE EE-CLK       L3-SIG       (26.800,20.400)-(27.231,20.831) of 0.636 mm w0.076
+PIECE CLK-12M-FT   L3-SIG       (31.900,20.600)-(32.268,20.768) of 3.848 mm w0.076
+PIECE CLK-12M-FT   L3-SIG       (35.400,22.200)-(33.813,21.474) of 3.848 mm w0.076
+PIECE CHAN25       L3-SIG       (35.300,1.000)-(35.970,1.000) of 2.900 mm w0.076
+PIECE CHAN25       L3-SIG       (38.200,1.000)-(37.690,1.000) of 2.900 mm w0.076
+PIECE CHAN22       L3-SIG       (28.900,22.700)-(28.271,22.071) of 2.121 mm w0.076
+PIECE CHAN22       L3-SIG       (25.000,21.200)-(27.120,21.200) of 2.400 mm w0.076
+PIECE TDI          L4-SIG       (38.800,0.300)-(37.722,1.378) of 1.556 mm w0.076
+PIECE SD-DAT1      L4-SIG       (15.300,21.150)-(27.125,21.150) of 14.100 mm w0.076
+PIECE SD-DAT1      L4-SIG       (29.400,21.150)-(28.835,21.150) of 14.100 mm w0.076
+PIECE CHAN7        L4-SIG       (27.850,22.950)-(27.670,23.130) of 1.669 mm w0.076
+PIECE CHAN13       L4-SIG       (29.300,23.000)-(33.315,22.973) of 11.025 mm w0.076
+PIECE CHAN13       L4-SIG       (40.325,22.925)-(34.635,22.964) of 11.025 mm w0.076
+PIECE CHAN12       L4-SIG       (37.450,23.150)-(37.450,23.480) of 1.250 mm w0.076
+PIECE CHAN11       L4-SIG       (32.000,21.000)-(32.160,21.000) of 2.000 mm w0.076
+PIECE CHAN11       L4-SIG       (34.000,21.000)-(33.805,21.000) of 2.000 mm w0.076
+PIECE CHAN11       L4-SIG       (29.350,22.100)-(28.140,22.100) of 1.500 mm w0.076
+PIECE CHAN11       L4-SIG       (27.700,22.250)-(27.841,22.109) of 0.212 mm w0.076

@@ -1,0 +1,3 @@
+D15 L4-SIG: 77556 sites tested, 533 legal (Top 6 / Bottom 527) [41 s]
+   site failures by first rule: {'mask': 22646, 'cl_L4-SIG': 17135, 'cl_L3-SIG': 6131, 'h2h': 15399, 'silk': 4216, 'cl_Top': 1144, 'cl_pad': 731, 'cl_Bottom': 9621}
+   646 site pairs, 323 candidates pass exact clearance [41 s]

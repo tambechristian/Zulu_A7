@@ -1,0 +1,159 @@
+Net	Status	FallOvershoot	FallUndershoot	RiseOvershoot	RiseUndershoot
+PWR_FB3	Not analyzed	-	-	-	-
+FT-VPLL	Not analyzed	-	-	-	-
+PWR_FB2	Not analyzed	-	-	-	-
+TMS	Not analyzed	-	-	-	-
+PWR_FB1	Not analyzed	-	-	-	-
+PWR_PGOODALL	Not analyzed	-	-	-	-
+FT-VCORE	Not analyzed	-	-	-	-
+PWR_VC3	Not analyzed	-	-	-	-
+PWR_SW1	Not analyzed	-	-	-	-
+FT-VPHY	Not analyzed	-	-	-	-
+PWR_SW	Not analyzed	-	-	-	-
+PWR_CLPROG	Not analyzed	-	-	-	-
+LED0_B	Not analyzed	-	-	-	-
+USB5V0	Not analyzed	-	-	-	-
+VU	Not analyzed	-	-	-	-
+PWR_CHRG	Not analyzed	-	-	-	-
+N$BTN	Not analyzed	-	-	-	-
+CHAN18	Passed	12.78m	18.00m	16.49m	28.50m
+CHAN19	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN20	Passed	17.65m	9.819m	14.28m	9.137m
+CHAN12	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN16	Passed	17.68m	9.782m	14.27m	9.080m
+CHAN17	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN15	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN13	Passed	43.60m	82.41m	55.76m	109.4m
+CHAN14	Passed	7.347m	4.611m	5.860m	4.004m
+D2	Passed	11.87m	16.61m	10.45m	12.42m
+D3	Passed	13.11m	25.33m	24.89m	35.88m
+D1	Passed	13.06m	9.745m	8.697m	10.38m
+CLK-12M-SHARED	Passed	17.10m	9.393m	13.67m	8.628m
+D0	Passed	66.24m	96.79m	75.54m	111.2m
+D4	Passed	13.90m	23.96m	20.45m	38.63m
+D8	Passed	14.05m	23.02m	17.33m	37.24m
+D9	Passed	13.29m	22.76m	17.12m	36.67m
+D7	Passed	15.09m	25.58m	27.26m	40.97m
+D5	Passed	15.98m	23.33m	25.39m	42.48m
+D6	Passed	16.15m	23.27m	28.12m	42.43m
+CLK-12M-FT	Passed	0.000	0.000	0.000	0.000
+CHAN24	Passed	41.67m	79.81m	54.54m	107.3m
+CHAN25	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN23	Passed	35.44m	73.19m	63.16m	129.0m
+CHAN21	Passed	128.3m	102.8m	231.4m	172.7m
+CHAN22	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN26	Passed	29.39m	22.62m	57.60m	126.3m
+CKE	Passed	16.60m	22.97m	28.67m	42.99m
+CLK-12M-FPGA	Passed	13.59m	7.192m	10.42m	6.183m
+CHAN-CLK	Passed	20.54m	25.81m	35.59m	34.13m
+CHAN27	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN28	Passed	51.80m	75.64m	57.18m	108.0m
+CHAN11	Passed	40.72m	72.60m	67.50m	127.6m
+A11	Passed	15.48m	24.80m	28.43m	32.70m
+A12	Passed	17.44m	25.22m	25.93m	34.46m
+A9	Passed	40.72m	72.60m	67.50m	127.6m
+A10	Passed	17.37m	24.90m	25.67m	34.29m
+AIN15_N	Passed	16.33m	18.06m	29.84m	63.37m
+AIN16_P	Passed	23.13m	37.04m	37.99m	68.06m
+ANALOG-IO0	Passed	35.41m	73.57m	59.60m	126.5m
+AIN15_P	Passed	4.653m	5.810m	7.727m	9.726m
+AIN16_N	Passed	15.35m	35.93m	30.30m	53.66m
+A2	Passed	20.25m	22.53m	22.08m	34.56m
+A3	Passed	20.44m	22.58m	21.33m	34.84m
+A0	Passed	17.00m	30.43m	22.26m	28.49m
+A1	Passed	20.92m	22.37m	22.18m	35.24m
+A4	Passed	22.15m	25.35m	29.30m	34.56m
+A7	Passed	19.80m	22.93m	23.00m	34.46m
+A8	Passed	20.70m	22.38m	21.06m	35.31m
+A5	Passed	22.08m	21.74m	21.68m	34.33m
+A6	Passed	21.83m	23.48m	24.78m	35.07m
+ANALOG-IO1	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN4	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN5	Passed	17.45m	25.72m	37.69m	39.55m
+CHAN2	Passed	19.09m	25.86m	29.90m	36.72m
+CHAN3	Passed	9.318m	5.349m	7.265m	4.603m
+CHAN6	Passed	12.17m	17.76m	15.07m	27.57m
+CHAN9	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN10	Passed	34.20m	71.59m	62.93m	129.4m
+CHAN7	Passed	11.93m	17.33m	14.48m	26.51m
+CHAN8	Passed	40.72m	72.60m	67.50m	127.6m
+BTN	Passed	40.72m	72.60m	67.50m	127.6m
+CAS#	Passed	16.13m	22.13m	24.94m	42.52m
+BS0	Passed	14.34m	24.97m	28.96m	39.44m
+BS1	Passed	13.74m	25.15m	28.92m	38.22m
+CFG-M0	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN0	Passed	40.72m	72.60m	67.50m	127.6m
+CHAN1	Passed	40.72m	72.60m	67.50m	127.6m
+CFG-M1	Passed	17.43m	9.639m	13.99m	8.975m
+CFG-M2	Passed	40.72m	72.60m	67.50m	127.6m
+D10	Passed	12.16m	18.51m	15.23m	29.27m
+PWR_VC3_RC	Passed	6.237m	2.577m	4.190m	2.118m
+RAS#	Passed	40.72m	72.60m	67.50m	127.6m
+PWR_SWAB3	Passed	6.188m	2.533m	4.142m	2.219m
+PWR_SWCD3	Passed	6.107m	2.497m	4.090m	2.191m
+SD-CMD	Passed	13.37m	7.060m	10.24m	6.061m
+SD-DAT0	Passed	14.41m	20.46m	19.75m	34.31m
+RST#	Passed	15.52m	9.562m	12.35m	7.569m
+SD-CLK	Passed	30.51m	24.95m	50.82m	42.54m
+PWR_SW2	Passed	6.253m	2.564m	4.193m	2.222m
+NetL3_1	Passed	6.164m	2.534m	4.134m	2.147m
+NODE_P1	Passed	16.11m	8.492m	12.55m	7.562m
+N$LD1A	Passed	15.18m	21.15m	20.97m	35.92m
+N$LD2A	Passed	18.05m	10.03m	14.65m	9.278m
+PWR_FB3_FF	Passed	6.247m	2.580m	4.197m	2.126m
+PWR_PROG	Passed	6.694m	2.947m	4.485m	2.690m
+PROG#	Passed	0.000	0.000	0.000	0.000
+PUDC_B	Passed	40.72m	72.60m	67.50m	127.6m
+SD-DAT1	Passed	36.89m	63.12m	79.68m	104.4m
+UART_FT_TXD	Passed	30.12m	28.28m	41.85m	36.24m
+UDQM	Passed	16.10m	24.67m	27.35m	41.11m
+UART_FT_RTS#	Passed	40.72m	72.60m	67.50m	127.6m
+UART_FT_RXD	Passed	139.9m	81.33m	267.8m	147.4m
+VBATT	Passed	0.000	0.000	0.000	0.000
+WE#	Passed	40.72m	72.60m	67.50m	127.6m
+USB_D_N	Passed	12.72m	9.941m	8.362m	10.60m
+USB_D_P	Passed	12.72m	9.939m	8.377m	10.59m
+UART_FT_DTR#	Passed	40.72m	72.60m	67.50m	127.6m
+SDRAM-CLK	Passed	15.53m	24.32m	26.61m	40.70m
+SDRAM-CS#	Passed	16.00m	23.68m	29.01m	42.01m
+SD-DAT2	Passed	139.9m	81.33m	267.8m	147.4m
+SD-DAT3	Passed	17.97m	9.886m	14.38m	9.026m
+TDO	Passed	6.488m	2.657m	4.352m	2.368m
+UART_FT_CTS#	Passed	20.40m	35.79m	42.70m	58.56m
+TCK	Passed	32.55m	70.48m	68.21m	124.4m
+TDI	Passed	110.4m	93.70m	191.0m	150.8m
+FLASH-CS#	Passed	17.62m	9.586m	13.94m	8.631m
+FLASH-D00	Passed	16.74m	9.028m	13.10m	7.985m
+EE-DATA	Passed	12.67m	11.80m	14.00m	15.95m
+EE-DATA-DO	Passed	7.586m	4.217m	5.824m	3.600m
+FLASH-D03	Passed	14.86m	7.899m	10.88m	8.291m
+FPGA-CCLK	Passed	12.91m	16.39m	9.395m	10.75m
+FLASH-D01	Passed	18.15m	10.02m	14.62m	9.268m
+FLASH-D02	Passed	139.9m	81.33m	267.8m	147.4m
+EE-CS	Passed	0.000	0.000	0.000	0.000
+D13	Passed	17.81m	9.700m	14.23m	8.840m
+D14	Passed	11.86m	17.00m	11.58m	13.16m
+D11	Passed	14.24m	9.110m	10.10m	9.739m
+D12	Passed	13.73m	9.895m	9.545m	10.61m
+DONE-PU	Passed	11.74m	6.351m	9.025m	5.446m
+EE-CLK	Passed	6.530m	2.672m	4.379m	2.420m
+D15	Passed	15.83m	8.430m	12.15m	8.077m
+DONE	Passed	40.72m	72.60m	67.50m	127.6m
+FPGA-DONE	Passed	16.76m	9.036m	13.11m	7.989m
+LED0_R	Passed	40.72m	72.60m	67.50m	127.6m
+LED1	Passed	40.72m	72.60m	67.50m	127.6m
+LDQM	Passed	16.08m	23.12m	27.31m	42.65m
+LED0_G	Passed	25.52m	21.80m	26.42m	35.24m
+N$LD0G	Passed	13.59m	18.41m	18.33m	29.74m
+N$LD0R	Passed	20.31m	22.73m	33.22m	44.66m
+LED2	Passed	40.72m	72.60m	67.50m	127.6m
+N$LD0B	Passed	18.00m	9.930m	14.42m	9.078m
+LD4_A	Passed	17.46m	9.715m	14.05m	9.037m
+FPGA-TDI	Passed	40.72m	72.60m	67.50m	127.6m
+FPGA-TDO	Passed	40.72m	72.60m	67.50m	127.6m
+FPGA-INIT#	Passed	14.51m	20.67m	20.01m	34.86m
+FPGA-TCK	Passed	95.81m	125.8m	213.1m	243.8m
+FT-REF	Passed	16.84m	9.088m	13.18m	8.043m
+FT-RESETN	Passed	16.75m	9.027m	13.09m	7.976m
+FPGA-TMS	Passed	31.69m	26.10m	52.74m	44.46m
+FT-PWREN#	Passed	40.68m	77.47m	56.91m	105.1m

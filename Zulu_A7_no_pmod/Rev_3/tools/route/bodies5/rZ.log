@@ -1,0 +1,53 @@
+CAS#           
+CHAN24         
+CHAN27         
+CHAN28         
+D6             
+D7             
+FT-VCORE       
+FT-VPLL        
+LDQM           
+RAS#           
+SDRAM-CS#      
+TCK            
+TDI            
+TDO            ripped CHAN24 CHAN28 RAS# TCK
+TMS            
+WE#            
+CHAN24         ripped D7 SDRAM-CS# TDO TMS WE#
+CHAN28         
+RAS#           
+TCK            
+D7             
+SDRAM-CS#      ripped CHAN24 CHAN28 D6 D7 RAS# TCK
+TDO            
+TMS            
+WE#            
+CHAN24         
+CHAN28         
+D6             
+D7             ripped CHAN24 SDRAM-CS# TMS WE#
+RAS#           
+TCK            
+CHAN24         ripped D7 RAS# TDO
+SDRAM-CS#      
+TMS            
+WE#            
+D7             
+RAS#           ripped D6 D7 SDRAM-CS# TDI
+TDO            
+D6             
+D7             ripped CHAN24 RAS# TDO
+SDRAM-CS#      
+TDI            
+CHAN24         
+RAS#           
+TDO            ripped CHAN28 SDRAM-CS# WE#
+CHAN28         
+SDRAM-CS#      
+WE#            
+routed 18 connections, failed 2; 24 vias, 268 tracks -> tools/route/bodies5/rZ.json
+OPEN RAS# 1
+OPEN WE# 1
+FAIL RAS# (budget)
+FAIL WE# (budget)

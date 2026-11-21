@@ -1,0 +1,58 @@
+VCC3V3         
+GND            
+EE-CLK         
+EE-CS          
+WE#            
+CAS#           
+FT-VCORE       
+RAS#           
+CHAN19         
+CHAN20         
+N$BTN          
+LED2           
+FT-PWREN#      
+CHAN7          
+TCK            
+VBATT          
+CHAN25         
+FPGA-TCK       
+SD-CMD         
+CLK-12M-FT     
+CHAN10         
+TDO            
+CHAN11         
+TDI            
+CHAN8          ripped CHAN11 FPGA-TCK
+CHAN22         
+LED0_R         
+SD-DAT1        
+CHAN12         
+CHAN13         ripped CHAN12 CHAN22 EE-CLK SD-DAT1
+ANALOG-IO1     
+CHAN11         
+FPGA-TCK       
+CHAN12         ripped CHAN11 CHAN13 CHAN8
+CHAN22         
+EE-CLK         
+SD-DAT1        
+CHAN11         
+CHAN13         
+CHAN8          ripped CHAN11 CHAN12 CHAN22 EE-CLK
+CHAN11         
+CHAN12         
+CHAN22         
+EE-CLK         
+routed 35 connections, failed 7; 84 vias, 351 tracks -> route/rev2/D/r3b.json
+OPEN CHAN20 1
+OPEN CHAN22 1
+OPEN CHAN7 1
+OPEN FPGA-TCK 1
+OPEN N$BTN 2
+OPEN TDI 1
+FAIL CHAN20 (budget)
+FAIL N$BTN (nopath)
+FAIL N$BTN (nopath)
+FAIL CHAN7 (budget)
+FAIL TDI (budget)
+FAIL FPGA-TCK (budget)
+FAIL CHAN22 (budget)

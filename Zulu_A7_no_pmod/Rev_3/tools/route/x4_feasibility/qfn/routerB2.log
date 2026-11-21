@@ -1,0 +1,19 @@
+seeded 155 vias, 505 tracks
+D6             
+FT-VPLL        
+N$LD0G         
+TDI            
+UART_FT_RXD    ripped SDRAM-D10 UART_FT_CTS# UART_FT_DTR# UART_FT_RTS#
+UART_FT_TXD    
+USB5V0         
+USB_D_N        
+USB_D_P        
+VBATT          
+VU             ripped CHAN19 FT-REF FT-VPHY FT-VPLL VBATT
+SDRAM-D10      
+UART_FT_CTS#   
+UART_FT_DTR#   ripped UART_FT_CTS# UART_FT_RXD
+UART_FT_RTS#   
+CHAN19         
+FT-REF         
+exit 124

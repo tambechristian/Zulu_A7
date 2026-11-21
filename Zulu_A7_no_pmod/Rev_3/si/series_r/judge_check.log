@@ -1,0 +1,314 @@
+==== baseline (existing copper x17..50 treated as new) ====
+violations: 0
+  worst clearance Bottom       margin +0.0002 (value 0.0902)  track Bottom AIN15_N (41.203,7.866)-(41.204,7.918)  vs  via VCC3V3 (40.900,7.900) Top>Bottom
+  worst clearance L2-GND       margin +0.0005 (value 0.0905)  via FPGA-CCLK (45.700,17.500) L2-GND>L3-SIG  vs  via DONE (45.450,17.800) L2-GND>L3-SIG
+  worst clearance L3-SIG       margin -0.0000 (value 0.1000)  via A7 (38.500,11.050) Top>Bottom  vs  via A11 (38.500,11.500) Top>Bottom
+  worst clearance L4-SIG       margin -0.0000 (value 0.1000)  via A7 (38.500,11.050) Top>Bottom  vs  via A11 (38.500,11.500) Top>Bottom
+  worst clearance L5-VCC3V3    margin +0.0009 (value 0.0909)  via UART_FT_TXD (34.850,16.450) L5-VCC3V3>Bottom  vs  via VCC3V3 (35.260,16.380) Top>Bottom
+  worst clearance Top          margin +0.0000 (value 0.0900)  pad U2-30  vs  track Top VCC3V3 (34.200,6.963)-(34.725,6.963)
+  worst mask sliver Bottom     margin +0.0103 (value 0.1103)  pad U10-2  vs  pad R96-2
+  worst mask sliver Top        margin +0.0199 (value 0.1199)  pad U2-59  vs  pad U2-58
+existing same-side part pairs closer than 0.254 (same proxy): 60; closest 12:
+   (0.0, 'C155', 'U2', 'Top')
+   (0.0, 'L9', 'R108', 'Bottom')
+   (0.0, 'U1', 'U4', 'Top')
+   (0.0, 'X4', 'U2', 'Top')
+   (0.1335, 'X1', 'C155', 'Top')
+   (0.2, 'C166', 'L9', 'Bottom')
+   (0.2, 'C167', 'C148', 'Bottom')
+   (0.2, 'C168', 'L9', 'Bottom')
+   (0.2, 'L8', 'C147', 'Bottom')
+   (0.2, 'L8', 'C150', 'Bottom')
+   (0.2, 'L9', 'L8', 'Bottom')
+   (0.2, 'R113', 'L2', 'Bottom')
+
+==== bottom (design_bottom.json, 4 nets) ====
+edits: -5 tracks +21 tracks, -0 vias +0 vias, 4 pads renamed, 8 new pads, 0 tracks/0 vias renamed
+other nets whose copper changes: ['CHAN18']
+violations: 2
+  VIOL ('clearance Bottom', 0.0799, 0.09, 'NEW track Bottom D5 (31.150,5.300)-(31.150,8.550) w0.1250', 'track Bottom D6 (30.750,6.170)-(30.975,8.925)')
+  VIOL ('clearance Bottom', 0.0799, 0.09, 'NEW track Bottom D5 (31.150,8.550)-(31.550,8.950) w0.1250', 'track Bottom D6 (30.750,6.170)-(30.975,8.925)')
+  worst clearance Bottom       margin -0.0101 (value 0.0799)  NEW track Bottom D5 (31.150,5.300)-(31.150,8.550) w0.1250  vs  track Bottom D6 (30.750,6.170)-(30.975,8.925)
+  worst mask sliver Bottom     margin +0.1000 (value 0.2000)  NEW pad R119-1  vs  NEW pad R119-2
+connectivity: 9 nets checked, 0 bad
+  component gap R119 (Bottom): 0.3201 mm to U3 
+  component gap R120 (Bottom): 0.3201 mm to U3 
+  component gap R122 (Bottom): 0.3201 mm to U3 
+  component gap R124 (Bottom): 0.3201 mm to U3 
+
+==== top (design_top.json, 10 nets) ====
+edits: -12 tracks +37 tracks, -0 vias +26 vias, 10 pads renamed, 20 new pads, 26 tracks/14 vias renamed
+other nets whose copper changes: []
+violations: 0
+  worst clearance Bottom       margin +0.0045 (value 0.0945)  via SDRAM-D15 (38.350,16.725) Top>Bottom  vs  pad U3-54
+  worst clearance L2-GND       margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L3-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L4-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L5-VCC3V3    margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance Top          margin +0.0003 (value 0.0903)  NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762  vs  track Top UDQM (39.812,11.590)-(39.812,14.050)
+  worst hole to hole           margin +0.0223 (value 0.2623)  via SDRAM-D12 (38.900,15.800) Top>L2-GND  vs  via D12 (39.300,15.900) Top>L2-GND
+  worst mask sliver Bottom     margin +0.1497 (value 0.2497)  pad U3-53  vs  pad U3-52
+  worst mask sliver Top        margin +0.1000 (value 0.2000)  NEW pad R124-2  vs  NEW pad R124-1
+connectivity: 20 nets checked, 0 bad
+  component gap R119 (Top): 0.7958 mm to U2 
+  component gap R120 (Top): 0.9250 mm to U2 
+  component gap R121 (Top): 0.9500 mm to R124 
+  component gap R122 (Top): 0.3900 mm to X4 
+  component gap R124 (Top): 0.9500 mm to R121 
+  component gap R125 (Top): 0.4000 mm to R122 
+  component gap R127 (Top): 0.8001 mm to U2 
+  component gap R130 (Top): 0.6000 mm to R131 
+  component gap R131 (Top): 0.6000 mm to R130 
+  component gap R134 (Top): 0.6500 mm to R131 
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.131}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D6 (30.975,8.925) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.124}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D5 (31.550,8.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.124}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D5 (43.325,4.400) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.225}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D3 (33.975,8.925) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.05}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D2 (35.650,7.075) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.097}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D2 (44.775,4.400) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.225}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.075}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D1 (36.750,7.025) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D0 (38.025,7.050) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.035}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D0 (38.650,6.400) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.027}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D0 (38.650,6.400) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.027}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D0 (39.250,6.400) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.088}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D0 (39.250,6.400) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.088}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D1 (37.500,6.700) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.137}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D1 (37.500,6.700) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.137}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D3 (34.600,6.400) Top>L2-GND', 'opening_d': 0.48, 'min_web': 0.0}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D3 (34.600,6.400) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': 0.0}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D3 (35.200,6.400) Top>L2-GND', 'opening_d': 0.48, 'min_web': 0.0}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D3 (35.200,6.400) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': 0.0}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D6 (34.750,5.700) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.061}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D6 (34.750,5.700) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.061}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.077}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D6 (30.975,8.925) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.124}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D5 (31.550,8.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.124}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D5 (43.325,4.400) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.225}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D3 (33.975,8.925) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.194}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D2 (35.650,7.075) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.05}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D2 (44.775,4.400) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.225}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.115}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D1 (36.750,7.025) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.244}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D0 (38.025,7.050) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.139}
+
+==== arrays (design_arrays.json south, 8 nets) ====
+edits: -33 tracks +52 tracks, -3 vias +4 vias, 8 pads renamed, 16 new pads, 0 tracks/0 vias renamed
+other nets whose copper changes: ['FT-VCORE', 'GND', 'TDO', 'TMS', 'VCC3V3']
+violations: 0
+  worst clearance Bottom       margin +0.0097 (value 0.0997)  pad U3-2  vs  track Bottom CHAN18 (37.550,5.550)-(37.600,7.200)
+  worst clearance L4-SIG       margin +0.0967 (value 0.1867)  NEW via TMS (33.450,8.150) L4-SIG>L5-VCC3V3  vs  via DONE (33.700,8.550) L3-SIG>L4-SIG
+  worst clearance L5-VCC3V3    margin +0.0628 (value 0.1528)  NEW via VCC3V3 (28.800,4.400) L5-VCC3V3>Bottom  vs  via TDO (28.350,4.350) L4-SIG>L5-VCC3V3
+  worst hole to hole           margin +0.0100 (value 0.2500)  via TMS (33.450,8.150) L4-SIG>L5-VCC3V3  vs  via TMS (33.850,8.150) L3-SIG>L4-SIG
+  worst mask sliver Bottom     margin +0.0100 (value 0.1100)  pad U3-2  vs  NEW pad R119-1
+connectivity: 21 nets checked, 0 bad
+  component gap R119 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R120 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R121 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R122 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R123 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R124 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R125 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R126 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+
+==== HYBRID arrays D0-D7 + top D8/D11/D12/D15 ====
+edits: -37 tracks +66 tracks, -3 vias +13 vias, 12 pads renamed, 24 new pads, 10 tracks/6 vias renamed
+other nets whose copper changes: ['FT-VCORE', 'GND', 'TDO', 'TMS', 'VCC3V3']
+violations: 0
+  worst clearance Bottom       margin +0.0045 (value 0.0945)  via SDRAM-D15 (38.350,16.725) Top>Bottom  vs  pad U3-54
+  worst clearance L2-GND       margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L3-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L4-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L5-VCC3V3    margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance Top          margin +0.0003 (value 0.0903)  NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762  vs  track Top UDQM (39.812,11.590)-(39.812,14.050)
+  worst hole to hole           margin +0.0100 (value 0.2500)  via TMS (33.450,8.150) L4-SIG>L5-VCC3V3  vs  via TMS (33.850,8.150) L3-SIG>L4-SIG
+  worst mask sliver Bottom     margin +0.0100 (value 0.1100)  pad U3-2  vs  NEW pad R119-1
+  worst mask sliver Top        margin +0.1000 (value 0.2000)  NEW pad R127-1  vs  NEW pad R127-2
+connectivity: 29 nets checked, 0 bad
+  component gap R119 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R120 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R121 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R122 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R123 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R124 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R125 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R126 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R127 (Top): 0.8001 mm to U2 
+  component gap R130 (Top): 0.6000 mm to R131 
+  component gap R131 (Top): 0.6000 mm to R130 
+  component gap R134 (Top): 0.6500 mm to R131 
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.131}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.075}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.077}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.115}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+
+==== HYBRID arrays D0-D7 + top D8/D11/D12 ====
+edits: -36 tracks +63 tracks, -3 vias +10 vias, 11 pads renamed, 22 new pads, 9 tracks/5 vias renamed
+other nets whose copper changes: ['FT-VCORE', 'GND', 'TDO', 'TMS', 'VCC3V3']
+violations: 0
+  worst clearance Bottom       margin +0.0097 (value 0.0997)  pad U3-2  vs  track Bottom CHAN18 (37.550,5.550)-(37.600,7.200)
+  worst clearance L2-GND       margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L3-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L4-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L5-VCC3V3    margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance Top          margin +0.0003 (value 0.0903)  NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762  vs  track Top UDQM (39.812,11.590)-(39.812,14.050)
+  worst hole to hole           margin +0.0100 (value 0.2500)  via TMS (33.450,8.150) L4-SIG>L5-VCC3V3  vs  via TMS (33.850,8.150) L3-SIG>L4-SIG
+  worst mask sliver Bottom     margin +0.0100 (value 0.1100)  pad U3-2  vs  NEW pad R119-1
+  worst mask sliver Top        margin +0.1000 (value 0.2000)  NEW pad R127-1  vs  NEW pad R127-2
+connectivity: 27 nets checked, 0 bad
+  component gap R119 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R120 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R121 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R122 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R123 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R124 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R125 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R126 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R127 (Top): 0.8001 mm to U2 
+  component gap R130 (Top): 0.6000 mm to R131 
+  component gap R131 (Top): 0.6000 mm to R130 
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.131}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.075}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.077}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.115}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+
+==== JUDGE D9 alone (Bottom, under the L4 route near U1) ====
+edits: -1 tracks +2 tracks, -0 vias +4 vias, 1 pads renamed, 2 new pads, 8 tracks/1 vias renamed
+other nets whose copper changes: []
+violations: 0
+  worst clearance Bottom       margin +0.0300 (value 0.1200)  pad U3-44  vs  track Bottom VCC3V3 (29.950,18.365)-(31.200,18.365)
+  worst clearance L2-GND       margin +0.1356 (value 0.2256)  via SDRAM-D9 (30.825,16.650) Top>Bottom  vs  via N$LD0G (30.850,16.100) L2-GND>L3-SIG
+  worst clearance L3-SIG       margin +0.1256 (value 0.2256)  via SDRAM-D9 (30.825,16.650) Top>Bottom  vs  via N$LD0G (30.850,16.100) L2-GND>L3-SIG
+  worst clearance L4-SIG       margin +0.0025 (value 0.1025)  NEW track L4-SIG SDRAM-D9 (41.750,13.275)-(41.750,12.950) w0.1250  vs  via DONE (41.450,13.250) L3-SIG>L4-SIG
+  worst clearance L5-VCC3V3    margin +0.1177 (value 0.2077)  NEW via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom  vs  via AIN16_N (41.300,12.665) Top>Bottom
+  worst clearance Top          margin +0.0475 (value 0.1375)  via SDRAM-D9 (30.825,16.650) Top>Bottom  vs  track Top FT-VCORE (31.238,10.000)-(31.238,17.400)
+  worst hole to hole           margin +0.0343 (value 0.2743)  via SDRAM-D9 (41.750,12.950) L4-SIG>L5-VCC3V3  vs  via DONE (41.450,13.250) L3-SIG>L4-SIG
+  worst mask sliver Bottom     margin +0.1000 (value 0.2000)  NEW pad R128-1  vs  NEW pad R128-2
+connectivity: 2 nets checked, 0 bad
+  component gap R128 (Bottom): 1.1521 mm to C112 
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D9 (30.825,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.119}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D9 (30.825,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.039}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'NEW via SDRAM-D9 (41.750,12.950) L4-SIG>L5-VCC3V3', 'opening_d': 0.48, 'min_web': -0.057}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'NEW via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom', 'opening_d': 0.48, 'min_web': -0.057}
+
+==== FINAL = arrays D0-D7 + top D8/D11/D12 + judge D9 ====
+edits: -37 tracks +65 tracks, -3 vias +14 vias, 12 pads renamed, 24 new pads, 17 tracks/6 vias renamed
+other nets whose copper changes: ['FT-VCORE', 'GND', 'TDO', 'TMS', 'VCC3V3']
+violations: 0
+  worst clearance Bottom       margin +0.0097 (value 0.0997)  pad U3-2  vs  track Bottom CHAN18 (37.550,5.550)-(37.600,7.200)
+  worst clearance L2-GND       margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L3-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L4-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L5-VCC3V3    margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance Top          margin +0.0003 (value 0.0903)  NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762  vs  track Top UDQM (39.812,11.590)-(39.812,14.050)
+  worst hole to hole           margin +0.0100 (value 0.2500)  via TMS (33.450,8.150) L4-SIG>L5-VCC3V3  vs  via TMS (33.850,8.150) L3-SIG>L4-SIG
+  worst mask sliver Bottom     margin +0.0100 (value 0.1100)  pad U3-2  vs  NEW pad R119-1
+  worst mask sliver Top        margin +0.1000 (value 0.2000)  NEW pad R127-1  vs  NEW pad R127-2
+connectivity: 29 nets checked, 0 bad
+  component gap R119 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R120 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R121 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R122 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R123 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R124 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R125 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R126 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R127 (Top): 0.8001 mm to U2 
+  component gap R130 (Top): 0.6000 mm to R131 
+  component gap R131 (Top): 0.6000 mm to R130 
+  component gap R128 (Bottom): 1.1521 mm to C112 
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D9 (30.825,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.119}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.131}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.075}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D9 (30.825,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.039}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.077}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.115}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'NEW via SDRAM-D9 (41.750,12.950) L4-SIG>L5-VCC3V3', 'opening_d': 0.48, 'min_web': -0.057}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'NEW via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom', 'opening_d': 0.48, 'min_web': -0.057}
+
+==== FINAL + top D15 (optional) ====
+edits: -38 tracks +68 tracks, -3 vias +17 vias, 13 pads renamed, 26 new pads, 18 tracks/7 vias renamed
+other nets whose copper changes: ['FT-VCORE', 'GND', 'TDO', 'TMS', 'VCC3V3']
+violations: 0
+  worst clearance Bottom       margin +0.0045 (value 0.0945)  via SDRAM-D15 (38.350,16.725) Top>Bottom  vs  pad U3-54
+  worst clearance L2-GND       margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L3-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L4-SIG       margin -0.0000 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance L5-VCC3V3    margin +0.0100 (value 0.1000)  via SDRAM-D11 (38.500,14.950) Top>Bottom  vs  via D10 (38.500,14.500) Top>Bottom
+  worst clearance Top          margin +0.0003 (value 0.0903)  NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762  vs  track Top UDQM (39.812,11.590)-(39.812,14.050)
+  worst hole to hole           margin +0.0100 (value 0.2500)  via TMS (33.450,8.150) L4-SIG>L5-VCC3V3  vs  via TMS (33.850,8.150) L3-SIG>L4-SIG
+  worst mask sliver Bottom     margin +0.0100 (value 0.1100)  pad U3-2  vs  NEW pad R119-1
+  worst mask sliver Top        margin +0.1000 (value 0.2000)  NEW pad R127-1  vs  NEW pad R127-2
+connectivity: 31 nets checked, 0 bad
+  component gap R119 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R120 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R121 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R122 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R123 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R124 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R125 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R126 (Bottom): 0.2100 mm to U3 (< 0.254 advisory)
+  component gap R127 (Top): 0.8001 mm to U2 
+  component gap R130 (Top): 0.6000 mm to R131 
+  component gap R131 (Top): 0.6000 mm to R130 
+  component gap R134 (Top): 0.6500 mm to R131 
+  component gap R128 (Bottom): 1.1521 mm to C112 
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D9 (30.825,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.119}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.131}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.075}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L2-GND', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via SDRAM-D12 (38.900,15.800) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) Top>L2-GND', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L2-GND', 'at': 'NEW via D12 (39.300,15.900) L2-GND>L3-SIG', 'opening_d': 0.48, 'min_web': -0.068}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D9 (30.825,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.039}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (29.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': 0.077}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D8 (38.500,13.600) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D12 (34.025,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.115}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (33.250,16.650) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.205}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'via SDRAM-D11 (38.500,14.950) Top>Bottom', 'opening_d': 0.7, 'min_web': -0.25}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'NEW via SDRAM-D9 (41.750,12.950) L4-SIG>L5-VCC3V3', 'opening_d': 0.48, 'min_web': -0.057}
+  plane web {'layer': 'L5-VCC3V3', 'at': 'NEW via SDRAM-D9 (41.750,12.950) L5-VCC3V3>Bottom', 'opening_d': 0.48, 'min_web': -0.057}

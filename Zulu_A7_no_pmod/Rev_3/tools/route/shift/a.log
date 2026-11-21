@@ -1,0 +1,37 @@
+GND            
+VCC3V3         
+A11            
+A12            
+A7             
+A8             
+CHAN19         
+CHAN21         
+CHAN22         
+FT-RESETN      
+LD5_K          
+LED0_B         
+LED0_G         ripped FT-RESETN LED0_B
+LED0_R         
+N$BTN          
+N$LD0B         
+N$LD0G         
+N$LD0R         
+N$LD1A         
+N$LD2A         
+NetLD3_A       
+NetLD3_K       
+NetLD4_A       
+NetLD4_K       
+SD-DAT0        
+FT-RESETN      
+LED0_B         ripped LED0_G LED0_R N$LD0B N$LD0G N$LD0R N$LD1A
+LED0_G         
+LED0_R         
+N$LD0B         
+N$LD0G         
+N$LD0R         ripped LED0_B N$LD0B N$LD0G
+N$LD1A         
+LED0_B         
+N$LD0B         
+N$LD0G         
+routed 29 connections, failed 0; 76 vias, 164 tracks -> route/shift/a.json

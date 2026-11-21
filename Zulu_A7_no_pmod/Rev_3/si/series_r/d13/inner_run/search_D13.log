@@ -1,0 +1,3 @@
+D13 L3-SIG: 52900 sites tested, 1118 legal (Top 209 / Bottom 909) [27 s]
+   site failures by first rule: {'cl_Top': 2143, 'cl_L3-SIG': 7933, 'cl_pad': 852, 'h2h': 15401, 'mask': 15302, 'silk': 4, 'cl_L4-SIG': 8912, 'cl_Bottom': 1235}
+   1070 site pairs, 504 candidates pass exact clearance [29 s]

@@ -1,0 +1,921 @@
+{
+"u2": [
+{
+"ref": "U2",
+"pad": "1",
+"net": "EE-CS",
+"x": 27.5375,
+"y": 17.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "2",
+"net": "FT-VCORE",
+"x": 27.5375,
+"y": 16.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "3",
+"net": "CLK-12M-FT",
+"x": 27.5375,
+"y": 16.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "4",
+"net": "",
+"x": 27.5375,
+"y": 15.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "5",
+"net": "FT-VPHY",
+"x": 27.5375,
+"y": 15.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "6",
+"net": "FT-REF",
+"x": 27.5375,
+"y": 14.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "7",
+"net": "USB_D_N",
+"x": 27.5375,
+"y": 14.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "8",
+"net": "USB_D_P",
+"x": 27.5375,
+"y": 13.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "9",
+"net": "FT-VPLL",
+"x": 27.5375,
+"y": 13.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "10",
+"net": "GND",
+"x": 27.5375,
+"y": 12.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "11",
+"net": "FT-RESETN",
+"x": 27.5375,
+"y": 12.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "12",
+"net": "TCK",
+"x": 27.5375,
+"y": 11.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "13",
+"net": "TDI",
+"x": 27.5375,
+"y": 11.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "14",
+"net": "TDO",
+"x": 27.5375,
+"y": 10.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "15",
+"net": "TMS",
+"x": 28.225,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "16",
+"net": "VCC3V3",
+"x": 28.725,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "17",
+"net": "PROG#",
+"x": 29.225,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "18",
+"net": "DONE",
+"x": 29.725,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "19",
+"net": "",
+"x": 30.225,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "20",
+"net": "",
+"x": 30.725,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "21",
+"net": "GND",
+"x": 31.225,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "22",
+"net": "",
+"x": 31.725,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "23",
+"net": "",
+"x": 32.225,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "24",
+"net": "",
+"x": 32.725,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "25",
+"net": "",
+"x": 33.225,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "26",
+"net": "",
+"x": 33.725,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "27",
+"net": "",
+"x": 34.225,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "28",
+"net": "",
+"x": 34.725,
+"y": 10.0625,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "29",
+"net": "",
+"x": 35.4125,
+"y": 10.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "30",
+"net": "",
+"x": 35.4125,
+"y": 11.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "31",
+"net": "FT-VCORE",
+"x": 35.4125,
+"y": 11.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "32",
+"net": "UART_FT_TXD",
+"x": 35.4125,
+"y": 12.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "33",
+"net": "UART_FT_RXD",
+"x": 35.4125,
+"y": 12.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "34",
+"net": "UART_FT_RTS#",
+"x": 35.4125,
+"y": 13.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "35",
+"net": "UART_FT_CTS#",
+"x": 35.4125,
+"y": 13.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "36",
+"net": "VCC3V3",
+"x": 35.4125,
+"y": 14.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "37",
+"net": "UART_FT_DTR#",
+"x": 35.4125,
+"y": 14.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "38",
+"net": "",
+"x": 35.4125,
+"y": 15.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "39",
+"net": "",
+"x": 35.4125,
+"y": 15.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "40",
+"net": "",
+"x": 35.4125,
+"y": 16.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "41",
+"net": "GND",
+"x": 35.4125,
+"y": 16.75,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "42",
+"net": "",
+"x": 35.4125,
+"y": 17.25,
+"shape": "rect",
+"w": 0.875,
+"h": 0.25,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "43",
+"net": "FT-VCORE",
+"x": 34.725,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "44",
+"net": "VCC3V3",
+"x": 34.225,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "45",
+"net": "GND",
+"x": 33.725,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "46",
+"net": "",
+"x": 33.225,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "47",
+"net": "",
+"x": 32.725,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "48",
+"net": "",
+"x": 32.225,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "49",
+"net": "",
+"x": 31.725,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "50",
+"net": "VCC3V3",
+"x": 31.225,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "51",
+"net": "",
+"x": 30.725,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "52",
+"net": "",
+"x": 30.225,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "53",
+"net": "",
+"x": 29.725,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "54",
+"net": "FT-PWREN#",
+"x": 29.225,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "55",
+"net": "EE-DATA",
+"x": 28.725,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "56",
+"net": "EE-CLK",
+"x": 28.225,
+"y": 17.9375,
+"shape": "rect",
+"w": 0.25,
+"h": 0.875,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "U2",
+"pad": "57",
+"net": "GND",
+"x": 31.475,
+"y": 14.0,
+"shape": "rect",
+"w": 5.9,
+"h": 5.9,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+}
+],
+"x4": [
+{
+"ref": "X4",
+"pad": "1",
+"net": "VBATT",
+"x": 31.48,
+"y": 7.75,
+"shape": "rect",
+"w": 1.0,
+"h": 3.5,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "X4",
+"pad": "2",
+"net": "GND",
+"x": 29.48,
+"y": 7.75,
+"shape": "rect",
+"w": 1.0,
+"h": 3.5,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "X4",
+"pad": "MP1",
+"net": "",
+"x": 33.83,
+"y": 2.0,
+"shape": "rect",
+"w": 1.5,
+"h": 3.4,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+},
+{
+"ref": "X4",
+"pad": "MP2",
+"net": "",
+"x": 27.13,
+"y": 2.0,
+"shape": "rect",
+"w": 1.5,
+"h": 3.4,
+"layers": [
+"Top Layer"
+],
+"drill": 0.0,
+"plated": false
+}
+]
+}

@@ -1,0 +1,680 @@
+{
+ "remove": [
+  {
+   "net": "GND",
+   "layer": "Top Layer",
+   "w": 0.5,
+   "x1": 54.8002,
+   "y1": 10.8495,
+   "x2": 56.6003,
+   "y2": 10.8495
+  },
+  {
+   "net": "GND",
+   "layer": "Top Layer",
+   "w": 0.5,
+   "x1": 56.6003,
+   "y1": 10.8495,
+   "x2": 57.65,
+   "y2": 10.6
+  },
+  {
+   "net": "VCC3V3",
+   "layer": "Top Layer",
+   "w": 0.2,
+   "x1": 56.6003,
+   "y1": 9.1497,
+   "x2": 57.62,
+   "y2": 9.14
+  },
+  {
+   "net": "GND",
+   "layer": "Top Layer",
+   "w": 0.5,
+   "x1": 53.0001,
+   "y1": 10.8495,
+   "x2": 54.8002,
+   "y2": 10.8495
+  },
+  {
+   "net": "VCC1V8",
+   "layer": "Top Layer",
+   "w": 0.15,
+   "x1": 54.8002,
+   "y1": 9.1497,
+   "x2": 54.8002,
+   "y2": 10.0
+  },
+  {
+   "net": "GND",
+   "layer": "Top Layer",
+   "w": 0.5,
+   "x1": 54.8002,
+   "y1": 7.5498,
+   "x2": 56.6003,
+   "y2": 7.5498
+  },
+  {
+   "net": "VCC1V0",
+   "layer": "Top Layer",
+   "w": 0.5,
+   "x1": 54.8002,
+   "y1": 5.85,
+   "x2": 56.6003,
+   "y2": 5.85
+  },
+  {
+   "net": "GND",
+   "layer": "Top Layer",
+   "w": 0.5,
+   "x1": 53.0001,
+   "y1": 7.5498,
+   "x2": 54.8002,
+   "y2": 7.5498
+  },
+  {
+   "net": "VCC1V0",
+   "layer": "Top Layer",
+   "w": 0.5,
+   "x1": 53.0001,
+   "y1": 5.85,
+   "x2": 54.8002,
+   "y2": 5.85
+  },
+  {
+   "net": "VCC1V8",
+   "layer": "Top Layer",
+   "w": 0.15,
+   "x1": 54.8002,
+   "y1": 10.0,
+   "x2": 58.3,
+   "y2": 10.0
+  },
+  {
+   "net": "TDI",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 60.25,
+   "y1": 3.4,
+   "x2": 60.25,
+   "y2": 7.65
+  },
+  {
+   "net": "PROG#",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 58.7,
+   "y1": 11.55,
+   "x2": 59.025,
+   "y2": 11.875
+  },
+  {
+   "net": "LED0_R",
+   "layer": "Top Layer",
+   "w": 0.0762,
+   "x1": 60.4,
+   "y1": 10.2,
+   "x2": 60.4,
+   "y2": 13.1
+  },
+  {
+   "net": "PROG#",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 55.425,
+   "y1": 10.275,
+   "x2": 57.8,
+   "y2": 10.275
+  },
+  {
+   "net": "FPGA-TMS",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 53.6,
+   "y1": 10.65,
+   "x2": 56.15,
+   "y2": 10.65
+  },
+  {
+   "net": "FPGA-DONE",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 56.35,
+   "y1": 11.45,
+   "x2": 58.45,
+   "y2": 13.55
+  },
+  {
+   "net": "FPGA-DONE",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 55.2,
+   "y1": 11.45,
+   "x2": 56.35,
+   "y2": 11.45
+  },
+  {
+   "net": "PROG#",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.9,
+   "y1": 9.75,
+   "x2": 55.425,
+   "y2": 10.275
+  },
+  {
+   "net": "PUDC_B",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.1,
+   "y1": 10.2,
+   "x2": 54.45,
+   "y2": 9.85
+  },
+  {
+   "net": "PROG#",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.6,
+   "y1": 8.725,
+   "x2": 54.6,
+   "y2": 8.85
+  },
+  {
+   "net": "FLASH-D02",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 51.675,
+   "y1": 8.925,
+   "x2": 53.925,
+   "y2": 8.925
+  },
+  {
+   "net": "FLASH-D02",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 53.925,
+   "y1": 8.925,
+   "x2": 54.175,
+   "y2": 8.675
+  },
+  {
+   "net": "FLASH-D02",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.175,
+   "y1": 8.675,
+   "x2": 54.2,
+   "y2": 8.675
+  },
+  {
+   "net": "FLASH-D02",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.2,
+   "y1": 8.675,
+   "x2": 54.45,
+   "y2": 8.425
+  },
+  {
+   "net": "FLASH-D02",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.45,
+   "y1": 8.425,
+   "x2": 54.75,
+   "y2": 8.425
+  },
+  {
+   "net": "FLASH-D02",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.75,
+   "y1": 8.425,
+   "x2": 54.9,
+   "y2": 8.575
+  },
+  {
+   "net": "FLASH-D02",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.9,
+   "y1": 8.575,
+   "x2": 55.225,
+   "y2": 9.05
+  },
+  {
+   "net": "PROG#",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.9,
+   "y1": 9.15,
+   "x2": 54.9,
+   "y2": 9.75
+  },
+  {
+   "net": "PROG#",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.6,
+   "y1": 8.85,
+   "x2": 54.9,
+   "y2": 9.15
+  },
+  {
+   "net": "PUDC_B",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.45,
+   "y1": 9.15,
+   "x2": 54.45,
+   "y2": 9.85
+  },
+  {
+   "net": "CHAN22",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.075,
+   "y1": 6.95,
+   "x2": 57.75,
+   "y2": 6.95
+  },
+  {
+   "net": "FPGA-TDO",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 53.7,
+   "y1": 7.25,
+   "x2": 57.6,
+   "y2": 7.25
+  },
+  {
+   "net": "FPGA-INIT#",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.1,
+   "y1": 6.0,
+   "x2": 57.8,
+   "y2": 4.5499
+  },
+  {
+   "net": "CHAN22",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 53.1,
+   "y1": 6.5,
+   "x2": 54.075,
+   "y2": 6.95
+  },
+  {
+   "net": "PUDC_B",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 55.3497,
+   "y1": 3.9499,
+   "x2": 55.3497,
+   "y2": 5.1003
+  },
+  {
+   "net": "PUDC_B",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 55.2,
+   "y1": 5.25,
+   "x2": 55.3497,
+   "y2": 5.1003
+  },
+  {
+   "net": "FPGA-TDI",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 55.05,
+   "y1": 6.3,
+   "x2": 55.15,
+   "y2": 6.2
+  },
+  {
+   "net": "FPGA-TDI",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 53.3,
+   "y1": 6.3,
+   "x2": 55.05,
+   "y2": 6.3
+  },
+  {
+   "net": "CHAN17",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 54.5,
+   "y1": 5.3,
+   "x2": 55.05,
+   "y2": 4.75
+  },
+  {
+   "net": "CHAN17",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 53.1,
+   "y1": 5.3,
+   "x2": 54.5,
+   "y2": 5.3
+  }
+ ],
+ "remove_vias": [
+  {
+   "net": "PROG#",
+   "x": 58.7,
+   "y": 11.35,
+   "size": 0.35,
+   "hole": 0.2,
+   "span": [
+    "Top Layer",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "LED0_R",
+   "x": 60.4,
+   "y": 10.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "Top Layer",
+    "L2-GND"
+   ]
+  },
+  {
+   "net": "FPGA-TMS",
+   "x": 56.15,
+   "y": 10.65,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 54.1,
+   "y": 10.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "FPGA-DONE",
+   "x": 55.2,
+   "y": 11.45,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "PROG#",
+   "x": 54.6,
+   "y": 8.725,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "FLASH-D02",
+   "x": 55.225,
+   "y": 9.05,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 54.45,
+   "y": 9.15,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 55.2,
+   "y": 5.25,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "FPGA-TDI",
+   "x": 55.15,
+   "y": 6.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "FPGA-INIT#",
+   "x": 54.1,
+   "y": 6.0,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  },
+  {
+   "net": "LED0_R",
+   "x": 60.4,
+   "y": 10.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L2-GND",
+    "L3-SIG"
+   ]
+  },
+  {
+   "net": "FPGA-TMS",
+   "x": 56.15,
+   "y": 10.65,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 54.1,
+   "y": 10.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 54.1,
+   "y": 10.2,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "FPGA-DONE",
+   "x": 55.2,
+   "y": 11.45,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "PROG#",
+   "x": 54.6,
+   "y": 8.725,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "FLASH-D02",
+   "x": 55.225,
+   "y": 9.05,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "FLASH-D02",
+   "x": 55.225,
+   "y": 9.05,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 54.45,
+   "y": 9.15,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 54.45,
+   "y": 9.15,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "PUDC_B",
+   "x": 55.2,
+   "y": 5.25,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "FPGA-TDI",
+   "x": 55.15,
+   "y": 6.2,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  },
+  {
+   "net": "FPGA-TDI",
+   "x": 55.15,
+   "y": 6.2,
+   "size": 0.27,
+   "hole": 0.15,
+   "span": [
+    "L3-SIG",
+    "L4-SIG"
+   ]
+  },
+  {
+   "net": "FPGA-INIT#",
+   "x": 54.1,
+   "y": 6.0,
+   "size": 0.3,
+   "hole": 0.15,
+   "span": [
+    "L4-SIG",
+    "L5-VCC3V3"
+   ]
+  }
+ ],
+ "moves": [
+  {
+   "ref": "C141",
+   "x": 54.8002,
+   "y": 6.6999,
+   "dx": 0.0,
+   "dy": 0.0,
+   "layer": "Bottom Layer"
+  },
+  {
+   "ref": "C142",
+   "x": 56.6003,
+   "y": 6.6999,
+   "dx": 0.0,
+   "dy": 0.0,
+   "layer": "Bottom Layer"
+  },
+  {
+   "ref": "C144",
+   "x": 54.8002,
+   "y": 9.9996,
+   "dx": 0.0,
+   "dy": 0.0,
+   "layer": "Bottom Layer"
+  },
+  {
+   "ref": "C145",
+   "x": 56.6003,
+   "y": 9.9996,
+   "dx": 0.0,
+   "dy": 0.0,
+   "layer": "Bottom Layer"
+  }
+ ],
+ "jogs": []
+}

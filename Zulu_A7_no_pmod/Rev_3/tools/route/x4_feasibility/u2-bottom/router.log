@@ -1,0 +1,30 @@
+GND            
+VCC3V3         
+DONE           
+CHAN1          
+FT-PWREN#      
+UART_FT_DTR#   
+PROG#          
+D5             
+UART_FT_RTS#   ripped FT-PWREN#
+CHAN4          
+D6             
+CFG-M2         
+D7             
+FLASH-CS#      
+UART_FT_TXD    
+FPGA-INIT#     
+GNDADC         
+FLASH-D02      
+VCCADC         ripped GNDADC
+CLK-12M-FT     
+CLK-12M-FPGA   
+LED1           
+CLK-12M-SHARED ripped CLK-12M-FPGA CLK-12M-FT FLASH-D02
+CHAN21         
+FPGA-TDO       
+UART_FT_CTS#   
+FPGA-TDI       
+LED2           
+UART_FT_RXD    ripped CFG-M2 FPGA-TDO UART_FT_TXD
+EXIT 124

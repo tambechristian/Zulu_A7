@@ -1,0 +1,3634 @@
+{
+ "plan": "C:/Users/tambe/Documents/Electronics/Zulu_A7/Zulu_A7_no_pmod/Rev_2/si/series_r/d10/final_plan.json",
+ "tag": "final",
+ "apply_errors": [],
+ "calibration": {
+  "clearance vias OnLayer=TRUE": [
+   0,
+   0
+  ],
+  "clearance vias OnLayer=FALSE": [
+   0,
+   0
+  ],
+  "width A(L3=MID1,L4=MID2,L2=MID3,L5=MID4)": 0,
+  "width B(stack order L2..L5=MID1..4)": 0,
+  "hole2hole any-span / shared-layer / shared-dielectric": [
+   465,
+   0,
+   0
+  ],
+  "mask slivers": 0,
+  "foreign copper exposed": 0,
+  "holesize": 0
+ },
+ "any_angle_tracks": [
+  {
+   "net": "SDRAM-D9",
+   "layer": "Bottom Layer",
+   "w": 0.125,
+   "x1": 30.75,
+   "y1": 17.53,
+   "x2": 30.825,
+   "y2": 16.65,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D8",
+   "layer": "Bottom Layer",
+   "w": 0.125,
+   "x1": 29.1501,
+   "y1": 17.53,
+   "x2": 29.25,
+   "y2": 16.65,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D12",
+   "layer": "Bottom Layer",
+   "w": 0.125,
+   "x1": 33.9499,
+   "y1": 17.53,
+   "x2": 34.025,
+   "y2": 16.65,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D11",
+   "layer": "Bottom Layer",
+   "w": 0.125,
+   "x1": 33.1501,
+   "y1": 17.53,
+   "x2": 33.25,
+   "y2": 16.65,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D9",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 31.45,
+   "y1": 16.025,
+   "x2": 31.875,
+   "y2": 15.775,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D9",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 31.875,
+   "y1": 15.775,
+   "x2": 38.6,
+   "y2": 15.3,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D9",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 38.6,
+   "y1": 15.3,
+   "x2": 41.5,
+   "y2": 14.75,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D9",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 41.5,
+   "y1": 14.75,
+   "x2": 41.6,
+   "y2": 14.7,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D9",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 41.6,
+   "y1": 14.7,
+   "x2": 41.75,
+   "y2": 14.5,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D8",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 29.875,
+   "y1": 16.025,
+   "x2": 38.5,
+   "y2": 13.6,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D11",
+   "layer": "L3-SIG",
+   "w": 0.125,
+   "x1": 33.875,
+   "y1": 16.025,
+   "x2": 38.5,
+   "y2": 14.95,
+   "why": "rename"
+  },
+  {
+   "net": "GND",
+   "layer": "Bottom Layer",
+   "w": 0.25,
+   "x1": 34.75,
+   "y1": 8.6,
+   "x2": 34.475,
+   "y2": 9.0
+  },
+  {
+   "net": "FT-VCORE",
+   "layer": "Bottom Layer",
+   "w": 0.2,
+   "x1": 32.349,
+   "y1": 4.28,
+   "x2": 32.55,
+   "y2": 4.45
+  },
+  {
+   "net": "VCC3V3",
+   "layer": "Bottom Layer",
+   "w": 0.2,
+   "x1": 28.75,
+   "y1": 3.95,
+   "x2": 28.8,
+   "y2": 4.4
+  },
+  {
+   "net": "TDO",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 28.75,
+   "y1": 4.95,
+   "x2": 29.15,
+   "y2": 4.8
+  },
+  {
+   "net": "D0",
+   "layer": "Bottom Layer",
+   "w": 0.1,
+   "x1": 38.3499,
+   "y1": 6.97005,
+   "x2": 38.025,
+   "y2": 7.05
+  },
+  {
+   "net": "D2",
+   "layer": "Bottom Layer",
+   "w": 0.1,
+   "x1": 35.9501,
+   "y1": 6.97005,
+   "x2": 35.65,
+   "y2": 7.075
+  },
+  {
+   "net": "D3",
+   "layer": "Bottom Layer",
+   "w": 0.1,
+   "x1": 34.3499,
+   "y1": 6.97005,
+   "x2": 33.975,
+   "y2": 8.925
+  },
+  {
+   "net": "D4",
+   "layer": "Bottom Layer",
+   "w": 0.1,
+   "x1": 32.7501,
+   "y1": 6.97005,
+   "x2": 33.325,
+   "y2": 8.95
+  },
+  {
+   "net": "D5",
+   "layer": "Bottom Layer",
+   "w": 0.1,
+   "x1": 31.9501,
+   "y1": 6.97005,
+   "x2": 31.55,
+   "y2": 8.95
+  },
+  {
+   "net": "D6",
+   "layer": "Bottom Layer",
+   "w": 0.1,
+   "x1": 31.15,
+   "y1": 6.97005,
+   "x2": 30.975,
+   "y2": 8.925
+  },
+  {
+   "net": "D7",
+   "layer": "Bottom Layer",
+   "w": 0.1,
+   "x1": 29.550099999999997,
+   "y1": 6.97005,
+   "x2": 29.325,
+   "y2": 8.95
+  },
+  {
+   "net": "SDRAM-D12",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 38.9,
+   "y1": 15.8,
+   "x2": 38.854,
+   "y2": 15.6185
+  },
+  {
+   "net": "SDRAM-D12",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 37.25,
+   "y1": 16.025,
+   "x2": 38.854,
+   "y2": 15.6185
+  },
+  {
+   "net": "D9",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 42.35,
+   "y1": 12.95,
+   "x2": 42.425,
+   "y2": 12.6
+  },
+  {
+   "net": "D12",
+   "layer": "L4-SIG",
+   "w": 0.125,
+   "x1": 39.49,
+   "y1": 15.81,
+   "x2": 40.9,
+   "y2": 15.1
+  },
+  {
+   "net": "SDRAM-D10",
+   "layer": "Bottom Layer",
+   "w": 0.125,
+   "x1": 31.5501,
+   "y1": 17.53,
+   "x2": 31.65,
+   "y2": 16.65,
+   "why": "rename"
+  },
+  {
+   "net": "SDRAM-D10",
+   "layer": "L3-SIG",
+   "w": 0.125,
+   "x1": 32.275,
+   "y1": 16.025,
+   "x2": 38.5,
+   "y2": 14.5,
+   "why": "rename"
+  }
+ ],
+ "bookkeeping": [],
+ "clearance": {
+  "classes updated, via OnLayer=TRUE": {
+   "violations": [],
+   "shorts": []
+  },
+  "classes updated, via OnLayer=FALSE": {
+   "violations": [],
+   "shorts": []
+  },
+  "class add FORGOTTEN, via OnLayer=TRUE": {
+   "violations": [],
+   "shorts": []
+  }
+ },
+ "margins": [
+  {
+   "layer": "L4-SIG",
+   "a": "via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track D11 Top (40.1450,12.3800)-(40.1450,14.9500) w0.0762",
+   "b": "track D10 Top (39.6500,14.5000)-(39.9785,14.5000) w0.0762",
+   "gap": 0.0903,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0003,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track UDQM Top (39.8120,11.5900)-(39.8120,14.0500) w0.0762",
+   "b": "track D8 Top (39.5000,13.6000)-(39.6455,13.6000) w0.0762",
+   "gap": 0.0903,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0003,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_RXD (33.1000,15.5000) L2-GND>L3-SIG 0.30/0.15",
+   "b": "track SDRAM-D10 L3-SIG (32.2750,16.0250)-(38.5000,14.5000) w0.1250",
+   "gap": 0.10112,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00112,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via N$LD0G (31.8000,16.2500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "b": "via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1022,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0022,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via DONE (41.4500,13.2500) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "track SDRAM-D9 L4-SIG (41.7500,13.2750)-(41.7500,12.9500) w0.1250",
+   "gap": 0.1025,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0025,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via GND (41.4000,14.4000) Top>Bottom 0.35/0.20",
+   "b": "track SDRAM-D9 L4-SIG (41.6000,14.7000)-(41.7500,14.5000) w0.1250",
+   "gap": 0.1025,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0025,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track N$LD1A L4-SIG (33.3000,16.1000)-(33.7000,16.8000) w0.0762",
+   "b": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.10319,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00319,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via DONE (41.4500,13.2500) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "track SDRAM-D9 L4-SIG (41.7500,13.2750)-(41.7500,14.5000) w0.1250",
+   "gap": 0.10354,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00354,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via N$LD1A (33.3000,16.1000) L2-GND>L3-SIG 0.30/0.15",
+   "b": "track SDRAM-D10 L3-SIG (32.2750,16.0250)-(38.5000,14.5000) w0.1250",
+   "gap": 0.10424,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00424,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_TXD (39.6000,16.2000) L2-GND>L3-SIG 0.30/0.15",
+   "b": "via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15",
+   "gap": 0.10522,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00522,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via PROG# (40.4500,14.6000) Top>Bottom 0.35/0.20",
+   "b": "track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250",
+   "gap": 0.10552,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00552,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250",
+   "b": "track D12 L4-SIG (39.4900,15.8100)-(40.9000,15.1000) w0.1250",
+   "gap": 0.10707,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00707,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track D12 L4-SIG (40.9000,15.1000)-(42.5750,14.9500) w0.1250",
+   "b": "track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250",
+   "gap": 0.10707,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00707,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track UART_FT_CTS# L3-SIG (39.4000,15.3000)-(40.0000,15.9000) w0.0762",
+   "b": "via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15",
+   "gap": 0.10888,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.00889,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track CHAN18 Bottom (37.5500,5.5500)-(37.8500,4.1000) w0.0762",
+   "b": "pad R119-1 [SDRAM-D0]",
+   "gap": 0.09927,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.00927,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-2 [SDRAM-D0]",
+   "b": "track CHAN18 Bottom (37.5500,5.5500)-(37.6000,7.2000) w0.0762",
+   "gap": 0.09972,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.00972,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track GND Bottom (30.0500,6.0000)-(30.0500,4.9000) w0.1000",
+   "b": "pad R126-2 [D7]",
+   "gap": 0.0999,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0099,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-11 [SDRAM-D6]",
+   "b": "track FT-VCORE Bottom (30.3500,5.3000)-(30.3500,7.0500) w0.1500",
+   "gap": 0.09995,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.00995,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via UART_FT_TXD (39.6000,16.2000) Top>L2-GND 0.30/0.15",
+   "b": "pad R131-2 [D12]",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L5-VCC3V3",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L5-VCC3V3",
+   "a": "via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L5-VCC3V3",
+   "a": "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "L5-VCC3V3",
+   "a": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-5 [SDRAM-D2]",
+   "b": "track FT-VPHY Bottom (35.1500,5.3000)-(35.1500,7.0500) w0.1500",
+   "gap": 0.10005,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01005,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track FT-VPHY Bottom (34.7490,4.2500)-(35.1500,4.5500) w0.3000",
+   "b": "pad R121-2 [D2]",
+   "gap": 0.1001,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0101,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track FT-VPHY Bottom (35.1500,4.5500)-(35.1500,5.3000) w0.3000",
+   "b": "pad R121-1 [SDRAM-D2]",
+   "gap": 0.1001,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0101,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track FT-VPHY Bottom (35.1500,4.5500)-(35.1500,5.3000) w0.3000",
+   "b": "pad R121-2 [D2]",
+   "gap": 0.1001,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0101,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad C154-1 [GND]",
+   "b": "track FT-VCORE Bottom (29.9490,4.2800)-(32.3490,4.2800) w0.1600",
+   "gap": 0.1001,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0101,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad C153-1 [GND]",
+   "b": "track FT-VCORE Bottom (29.9490,4.2800)-(32.3490,4.2800) w0.1600",
+   "gap": 0.1001,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0101,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track GND Bottom (30.5000,3.6500)-(30.5494,3.9499) w0.3000",
+   "b": "track FT-VCORE Bottom (29.9490,4.2800)-(32.3490,4.2800) w0.1600",
+   "gap": 0.1001,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0101,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track FT-VCORE Bottom (29.9490,4.2800)-(32.3490,4.2800) w0.1600",
+   "b": "pad R124-2 [D5]",
+   "gap": 0.10015,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01015,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track FT-VCORE Bottom (29.9490,4.2800)-(32.3490,4.2800) w0.1600",
+   "b": "pad R125-2 [D6]",
+   "gap": 0.10015,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01015,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "via N$LD0G (31.8000,16.2500) L5-VCC3V3>Bottom 0.30/0.15",
+   "b": "via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1022,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0122,
+   "new": true
+  },
+  {
+   "layer": "L5-VCC3V3",
+   "a": "via N$LD0G (31.8000,16.2500) L5-VCC3V3>Bottom 0.30/0.15",
+   "b": "via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1022,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0122,
+   "new": true
+  },
+  {
+   "layer": "L5-VCC3V3",
+   "a": "via N$LD0G (31.8000,16.2500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "b": "via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1022,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0122,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via UART_FT_TXD (36.8000,16.3500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "b": "track SDRAM-D12 L4-SIG (34.6500,16.0250)-(37.2500,16.0250) w0.1250",
+   "gap": 0.1125,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0125,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via GND (41.4000,14.4000) Top>Bottom 0.35/0.20",
+   "b": "track SDRAM-D9 L4-SIG (41.7500,13.2750)-(41.7500,14.5000) w0.1250",
+   "gap": 0.1125,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0125,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track D13 L3-SIG (38.8500,14.5000)-(38.8500,15.0500) w0.1250",
+   "b": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "gap": 0.1125,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0125,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track D13 L3-SIG (38.8500,14.5000)-(38.8500,15.0500) w0.1250",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1125,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0125,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track D13 L3-SIG (38.8500,14.5000)-(40.6000,12.7500) w0.1250",
+   "b": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "gap": 0.1125,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0125,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track UART_FT_TXD Top (39.6000,16.2000)-(40.6000,15.2000) w0.0762",
+   "b": "pad R131-2 [D12]",
+   "gap": 0.10332,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01332,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track N$LD0R L4-SIG (28.9000,16.8000)-(31.8000,18.9000) w0.0762",
+   "b": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.11367,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.01367,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-2 [SDRAM-D0]",
+   "b": "via D0 (38.0250,7.0500) Top>Bottom 0.35/0.20",
+   "gap": 0.10495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01495,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track UART_FT_CTS# Top (38.1500,15.0500)-(38.4000,15.3000) w0.0762",
+   "b": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "gap": 0.1051,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0151,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via UART_FT_TXD (39.6000,16.2000) Top>L2-GND 0.30/0.15",
+   "b": "via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15",
+   "gap": 0.10522,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01522,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UART_FT_TXD (39.6000,16.2000) L2-GND>L3-SIG 0.30/0.15",
+   "b": "via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15",
+   "gap": 0.10522,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01522,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UART_FT_TXD (39.6000,16.2000) L2-GND>L3-SIG 0.30/0.15",
+   "b": "via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15",
+   "gap": 0.10522,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01522,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UART_FT_TXD (39.6000,16.2000) Top>L2-GND 0.30/0.15",
+   "b": "via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15",
+   "gap": 0.10522,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01522,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UART_FT_TXD (39.6000,16.2000) Top>L2-GND 0.30/0.15",
+   "b": "via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15",
+   "gap": 0.10522,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.01522,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track D13 L3-SIG (38.6500,15.3000)-(38.8000,15.1500) w0.1250",
+   "b": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "gap": 0.11605,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.01605,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via VCC3V3 (35.2600,16.3800) Top>Bottom 0.35/0.20",
+   "b": "track SDRAM-D12 L4-SIG (34.6500,16.0250)-(37.2500,16.0250) w0.1250",
+   "gap": 0.1175,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0175,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track SDRAM-D9 L4-SIG (31.8750,15.7750)-(38.6000,15.3000) w0.1250",
+   "b": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "gap": 0.11868,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.01868,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via N$LD1A (33.3000,16.1000) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "track SDRAM-D10 L3-SIG (32.2750,16.0250)-(38.5000,14.5000) w0.1250",
+   "gap": 0.11924,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.01924,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_TXD (35.4500,16.0000) L2-GND>L3-SIG 0.30/0.15",
+   "b": "track SDRAM-D11 L3-SIG (33.8750,16.0250)-(38.5000,14.9500) w0.1250",
+   "gap": 0.11972,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.01973,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track GND Bottom (30.0500,4.9000)-(29.5400,4.9000) w0.1000",
+   "b": "pad R126-2 [D7]",
+   "gap": 0.11015,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.02015,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "via TDO (29.1500,4.8000) L5-VCC3V3>Bottom 0.30/0.15",
+   "b": "pad R126-1 [SDRAM-D7]",
+   "gap": 0.11015,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.02015,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_TXD (39.6000,16.2000) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15",
+   "gap": 0.12022,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02022,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_TXD (39.6000,16.2000) L2-GND>L3-SIG 0.30/0.15",
+   "b": "via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15",
+   "gap": 0.12022,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02022,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via GND (41.4000,14.4000) Top>Bottom 0.35/0.20",
+   "b": "track SDRAM-D9 L4-SIG (41.5000,14.7500)-(41.6000,14.7000) w0.1250",
+   "gap": 0.12027,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02027,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track D13 L3-SIG (38.8000,15.1500)-(38.8500,15.0500) w0.1250",
+   "b": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "gap": 0.12027,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02027,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad C153-1 [GND]",
+   "b": "track FT-VCORE Bottom (30.3500,4.2800)-(30.3500,5.3000) w0.1500",
+   "gap": 0.11175,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.02175,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track N$LD0B Bottom (29.5750,15.8750)-(29.5750,18.3500) w0.0762",
+   "b": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1119,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0219,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track N$LD0G Top (29.5750,16.5000)-(29.5750,16.8000) w0.0762",
+   "b": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1119,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0219,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-42 [SDRAM-D8]",
+   "b": "track SD-DAT0 Bottom (28.7750,16.8500)-(28.7750,18.3000) w0.0762",
+   "gap": 0.11195,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.02195,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_RXD (32.4000,15.6500) L2-GND>L3-SIG 0.30/0.15",
+   "b": "track SDRAM-D10 L3-SIG (32.2750,16.0250)-(38.5000,14.5000) w0.1250",
+   "gap": 0.12199,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02199,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_RTS# (32.8500,16.8500) L2-GND>L3-SIG 0.30/0.15",
+   "b": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12221,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02221,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track N$LD1A L4-SIG (33.7000,16.8000)-(35.3000,18.4000) w0.0762",
+   "b": "via SDRAM-D12 (34.0250,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12278,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02278,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via UART_FT_RXD (34.5000,16.6500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "b": "track SDRAM-D12 L4-SIG (34.0250,16.6500)-(34.6500,16.0250) w0.1250",
+   "gap": 0.12338,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02338,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track GND Bottom (29.5400,4.9000)-(29.5400,4.3000) w0.1150",
+   "b": "pad R126-2 [D7]",
+   "gap": 0.11356,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.02356,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via N$LD0G (30.8500,16.1000) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "b": "track SDRAM-D8 L4-SIG (29.8750,16.0250)-(38.5000,13.6000) w0.1250",
+   "gap": 0.1236,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0236,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track UART_FT_CTS# L3-SIG (39.4000,15.3000)-(40.0000,15.9000) w0.0762",
+   "b": "via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15",
+   "gap": 0.12388,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02389,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track UART_FT_TXD L4-SIG (36.9000,16.2500)-(39.5500,16.2500) w0.0762",
+   "b": "track SDRAM-D12 L4-SIG (37.2500,16.0250)-(38.8540,15.6185) w0.1250",
+   "gap": 0.1244,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0244,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track UART_FT_TXD L4-SIG (36.9000,16.2500)-(39.5500,16.2500) w0.0762",
+   "b": "track SDRAM-D12 L4-SIG (34.6500,16.0250)-(37.2500,16.0250) w0.1250",
+   "gap": 0.1244,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0244,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track UART_FT_TXD L4-SIG (36.8000,16.3500)-(36.9000,16.2500) w0.0762",
+   "b": "track SDRAM-D12 L4-SIG (34.6500,16.0250)-(37.2500,16.0250) w0.1250",
+   "gap": 0.1244,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0244,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via GND (41.4000,14.4000) Top>Bottom 0.35/0.20",
+   "b": "track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250",
+   "gap": 0.125,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.025,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track SDRAM-D9 L4-SIG (38.6000,15.3000)-(41.5000,14.7500) w0.1250",
+   "b": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "gap": 0.12651,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.02651,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-44 [SDRAM-D9]",
+   "b": "track VCC3V3 Bottom (29.9500,18.3650)-(31.2000,18.3650) w0.2300",
+   "gap": 0.12005,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03005,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-48 [SDRAM-D12]",
+   "b": "track VCC3V3 Bottom (33.5000,18.3650)-(34.7500,18.3650) w0.2300",
+   "gap": 0.12005,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03005,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "track SD-DAT2 L3-SIG (37.7000,16.5500)-(39.6000,14.6500) w0.0762",
+   "b": "via SDRAM-D12 (38.9000,15.8000) L2-GND>L3-SIG 0.30/0.15",
+   "gap": 0.1301,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0301,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-47 [SDRAM-D11]",
+   "b": "track VCC3V3 Bottom (33.5000,18.3650)-(33.5000,19.0500) w0.2900",
+   "gap": 0.12115,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03115,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-45 [SDRAM-D10]",
+   "b": "track VCC3V3 Bottom (31.2000,18.3650)-(31.2000,19.0500) w0.2900",
+   "gap": 0.12124,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03124,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track UDQM Top (38.5000,14.0500)-(39.8120,14.0500) w0.0762",
+   "b": "pad R129-1 [SDRAM-D10]",
+   "gap": 0.1219,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0319,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track UDQM Top (38.5000,14.0500)-(39.8120,14.0500) w0.0762",
+   "b": "pad R129-2 [D10]",
+   "gap": 0.1219,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0319,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via UART_FT_RTS# (32.8500,16.8500) Top>L2-GND 0.30/0.15",
+   "b": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12221,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03221,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UART_FT_RTS# (32.8500,16.8500) L2-GND>L3-SIG 0.30/0.15",
+   "b": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12221,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03221,
+   "new": true
+  },
+  {
+   "layer": "L2-GND",
+   "a": "via UART_FT_RTS# (32.8500,16.8500) Top>L2-GND 0.30/0.15",
+   "b": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12221,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03221,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track UART_FT_RXD Bottom (34.1500,16.3000)-(34.5000,16.6500) w0.0762",
+   "b": "via SDRAM-D12 (34.0250,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12278,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03278,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track N$LD0G Top (29.4750,16.4000)-(29.5750,16.5000) w0.0762",
+   "b": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12278,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03278,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track N$LD0G Top (29.4750,16.2500)-(29.4750,16.4000) w0.0762",
+   "b": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.12324,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03324,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "track UDQM Top (39.8120,11.5900)-(39.8120,14.0500) w0.0762",
+   "b": "pad R127-2 [D8]",
+   "gap": 0.1239,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.0339,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via N$LD0G (29.4750,16.2500) L2-GND>L3-SIG 0.30/0.15",
+   "b": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.13394,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.03394,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via UART_FT_CTS# (39.4000,15.3000) Top>L2-GND 0.30/0.15",
+   "b": "pad R130-1 [SDRAM-D11]",
+   "gap": 0.12459,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03459,
+   "new": true
+  },
+  {
+   "layer": "Top",
+   "a": "via UART_FT_CTS# (39.4000,15.3000) Top>L2-GND 0.30/0.15",
+   "b": "pad R130-2 [D11]",
+   "gap": 0.12459,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03459,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-42 [SDRAM-D8]",
+   "b": "track SD-DAT0 Bottom (28.7750,16.8500)-(28.9000,16.7250) w0.0762",
+   "gap": 0.12461,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03461,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-12 [GND]",
+   "b": "track D7 Bottom (29.5501,5.4101)-(29.5501,6.9700) w0.1000",
+   "gap": 0.12475,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03475,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-4 [SDRAM-D1]",
+   "b": "track D2 Bottom (35.9501,5.0102)-(35.9501,6.9700) w0.1000",
+   "gap": 0.12485,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03485,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-9 [VCC3V3]",
+   "b": "track D5 Bottom (31.9501,5.0102)-(31.9501,6.9700) w0.1000",
+   "gap": 0.12485,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03485,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-2 [SDRAM-D0]",
+   "b": "track D0 Bottom (38.3499,5.3701)-(38.3499,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-4 [SDRAM-D1]",
+   "b": "track D1 Bottom (36.7500,5.3701)-(36.7500,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-5 [SDRAM-D2]",
+   "b": "track D2 Bottom (35.9501,5.0102)-(35.9501,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-7 [SDRAM-D3]",
+   "b": "track D3 Bottom (34.3499,5.3701)-(34.3499,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-8 [SDRAM-D4]",
+   "b": "track D4 Bottom (32.7501,5.3701)-(32.7501,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-10 [SDRAM-D5]",
+   "b": "track D5 Bottom (31.9501,5.0102)-(31.9501,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-11 [SDRAM-D6]",
+   "b": "track D6 Bottom (31.1500,5.0102)-(31.1500,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-13 [SDRAM-D7]",
+   "b": "track D7 Bottom (29.5501,5.4101)-(29.5501,6.9700) w0.1000",
+   "gap": 0.12495,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03495,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track FT-VPHY Bottom (35.1500,7.0500)-(35.1500,9.5500) w0.3000",
+   "b": "track GND Bottom (34.7500,6.1700)-(34.7500,8.6000) w0.2500",
+   "gap": 0.125,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.035,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "track FT-VPHY Bottom (35.1500,7.0500)-(35.1500,9.5500) w0.3000",
+   "b": "track GND Bottom (34.7500,8.6000)-(34.4750,9.0000) w0.2500",
+   "gap": 0.125,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.035,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-1 [VCC3V3]",
+   "b": "track D0 Bottom (38.3499,5.3701)-(38.3499,6.9700) w0.1000",
+   "gap": 0.12505,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03505,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-3 [VCC3V3]",
+   "b": "track D1 Bottom (36.7500,5.3701)-(36.7500,6.9700) w0.1000",
+   "gap": 0.12505,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03505,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-6 [GND]",
+   "b": "track D3 Bottom (34.3499,5.3701)-(34.3499,6.9700) w0.1000",
+   "gap": 0.12505,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03505,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-9 [VCC3V3]",
+   "b": "track D4 Bottom (32.7501,5.3701)-(32.7501,6.9700) w0.1000",
+   "gap": 0.12505,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03505,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-10 [SDRAM-D5]",
+   "b": "track D6 Bottom (31.1500,5.0102)-(31.1500,6.9700) w0.1000",
+   "gap": 0.12505,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03505,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via UART_FT_TXD (39.6000,16.2000) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15",
+   "gap": 0.13522,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.03522,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_TXD (39.6000,16.2000) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15",
+   "gap": 0.13522,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.03522,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track N$LD0R L4-SIG (28.9000,16.5000)-(28.9000,16.8000) w0.0762",
+   "b": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1369,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0369,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "track N$LD0G L4-SIG (32.0000,16.4500)-(32.0000,16.7000) w0.0762",
+   "b": "via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.1369,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0369,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via UART_FT_RTS# (32.8500,16.8500) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.13721,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.03721,
+   "new": true
+  },
+  {
+   "layer": "L3-SIG",
+   "a": "via UART_FT_RTS# (32.8500,16.8500) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "gap": 0.13721,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.03721,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via N$LD0G (30.8500,16.1000) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "track SDRAM-D8 L4-SIG (29.8750,16.0250)-(38.5000,13.6000) w0.1250",
+   "gap": 0.1386,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.0386,
+   "new": true
+  },
+  {
+   "layer": "L4-SIG",
+   "a": "via DONE (41.4500,13.2500) L3-SIG>L4-SIG 0.27/0.15",
+   "b": "via SDRAM-D9 (41.7500,12.9500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "gap": 0.13926,
+   "rule": "Clearance_SDRAM_INNER",
+   "need": 0.1,
+   "margin": 0.03926,
+   "new": true
+  },
+  {
+   "layer": "Bottom",
+   "a": "pad U3-5 [SDRAM-D2]",
+   "b": "via D2 (35.6500,7.0750) Top>Bottom 0.35/0.20",
+   "gap": 0.12995,
+   "rule": "Clearance",
+   "need": 0.09,
+   "margin": 0.03995,
+   "new": true
+  }
+ ],
+ "hole_to_hole": {
+  "any": [
+   {
+    "a": "via TMS (28.7500,4.2000) L3-SIG>L4-SIG 0.27/0.15",
+    "b": "via VCC3V3 (28.8000,4.4000) L5-VCC3V3>Bottom 0.30/0.15",
+    "gap": 0.05616,
+    "stacked": false,
+    "shared_dielectric": false,
+    "shared_layer": false,
+    "new": true
+   },
+   {
+    "a": "via SDRAM-D12 (38.9000,15.8000) Top>L2-GND 0.30/0.15",
+    "b": "via SDRAM-D12 (38.9000,15.8000) L3-SIG>L4-SIG 0.27/0.15",
+    "gap": -0.15,
+    "stacked": false,
+    "shared_dielectric": false,
+    "shared_layer": false,
+    "new": true
+   },
+   {
+    "a": "via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15",
+    "b": "via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15",
+    "gap": -0.15,
+    "stacked": false,
+    "shared_dielectric": false,
+    "shared_layer": false,
+    "new": true
+   }
+  ],
+  "shared": [],
+  "closest": [
+   [
+    0.0562,
+    "via VCC3V3 (28.8000,4.4000) L5-VCC3V3>Bottom 0.30/0.15",
+    "via TMS (28.7500,4.2000) L3-SIG>L4-SIG 0.27/0.15",
+    false
+   ],
+   [
+    0.25,
+    "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+    "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+    true
+   ],
+   [
+    0.25,
+    "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+    "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+    true
+   ],
+   [
+    0.25,
+    "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+    "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+    true
+   ],
+   [
+    0.25,
+    "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+    "via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20",
+    true
+   ],
+   [
+    0.25,
+    "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+    "via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20",
+    true
+   ],
+   [
+    0.25,
+    "via TMS (33.4500,8.1500) L4-SIG>L5-VCC3V3 0.30/0.15",
+    "via TMS (33.8500,8.1500) L3-SIG>L4-SIG 0.27/0.15",
+    false
+   ],
+   [
+    0.25,
+    "via TMS (33.4500,8.1500) L5-VCC3V3>Bottom 0.30/0.15",
+    "via TMS (33.8500,8.1500) L3-SIG>L4-SIG 0.27/0.15",
+    false
+   ]
+  ]
+ },
+ "via_typing": [
+  {
+   "via": "via SDRAM-D9 (30.8250,16.6500) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  },
+  {
+   "via": "via SDRAM-D8 (29.2500,16.6500) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  },
+  {
+   "via": "via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  },
+  {
+   "via": "via SDRAM-D12 (34.0250,16.6500) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  },
+  {
+   "via": "via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  },
+  {
+   "via": "via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  },
+  {
+   "via": "via VCC3V3 (32.3500,7.0000) L5-VCC3V3>Bottom 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via TMS (33.4500,8.1500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via TMS (33.4500,8.1500) L5-VCC3V3>Bottom 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via VCC3V3 (28.8000,4.4000) L5-VCC3V3>Bottom 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via SDRAM-D12 (38.9000,15.8000) Top>L2-GND 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via SDRAM-D12 (38.9000,15.8000) L2-GND>L3-SIG 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via SDRAM-D12 (38.9000,15.8000) L3-SIG>L4-SIG 0.27/0.15",
+   "type": "buried",
+   "holesize_rule": "HoleSize_Buried",
+   "ok": true,
+   "viastyle": "RoutingVias_Buried",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15",
+   "type": "buried",
+   "holesize_rule": "HoleSize_Buried",
+   "ok": true,
+   "viastyle": "RoutingVias_Buried",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via SDRAM-D9 (41.7500,12.9500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via SDRAM-D9 (41.7500,12.9500) L5-VCC3V3>Bottom 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via D9 (42.3500,12.9500) L4-SIG>L5-VCC3V3 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via D9 (42.3500,12.9500) L5-VCC3V3>Bottom 0.30/0.15",
+   "type": "micro",
+   "holesize_rule": "HoleSize_uVia",
+   "ok": true,
+   "viastyle": "RoutingVias_uVia",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": false
+  },
+  {
+   "via": "via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  },
+  {
+   "via": "via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20",
+   "type": "thru",
+   "holesize_rule": "HoleSize",
+   "ok": true,
+   "viastyle": "RoutingVias",
+   "viastyle_ok": true,
+   "passes_if_left_untyped": true
+  }
+ ],
+ "width": {
+  "updated": [],
+  "forgotten": []
+ },
+ "mask": {
+  "slivers": [],
+  "foreign": [
+   {
+    "side": "Bottom",
+    "opening": "pad U3-2 [SDRAM-D0]",
+    "copper": "track CHAN18 Bottom (37.5500,5.5500)-(37.6000,7.2000) w0.0762",
+    "cover": 0.04822,
+    "exposed": false,
+    "new": true
+   },
+   {
+    "side": "Bottom",
+    "opening": "pad U3-11 [SDRAM-D6]",
+    "copper": "track FT-VCORE Bottom (30.3500,5.3000)-(30.3500,7.0500) w0.1500",
+    "cover": 0.04995,
+    "exposed": false,
+    "new": true
+   },
+   {
+    "side": "Bottom",
+    "opening": "pad R119-1 [SDRAM-D0]",
+    "copper": "track CHAN18 Bottom (37.5500,5.5500)-(37.8500,4.1000) w0.0762",
+    "cover": 0.04017,
+    "exposed": false,
+    "new": true
+   },
+   {
+    "side": "Bottom",
+    "opening": "pad R126-2 [D7]",
+    "copper": "track GND Bottom (30.0500,6.0000)-(30.0500,4.9000) w0.1000",
+    "cover": 0.0499,
+    "exposed": false,
+    "new": true
+   },
+   {
+    "side": "Top",
+    "opening": "pad R131-2 [D12]",
+    "copper": "track UART_FT_TXD Top (39.6000,16.2000)-(40.6000,15.2000) w0.0762",
+    "cover": 0.03261,
+    "exposed": false,
+    "new": true
+   }
+  ],
+  "webs": [
+   [
+    "pad U3-2 [SDRAM-D0]",
+    [
+     0.1952,
+     "pad R119-2 [D0]"
+    ]
+   ],
+   [
+    "pad U3-4 [SDRAM-D1]",
+    [
+     0.1952,
+     "pad R120-2 [D1]"
+    ]
+   ],
+   [
+    "pad U3-5 [SDRAM-D2]",
+    [
+     0.2498,
+     "pad U3-4 [SDRAM-D1]"
+    ]
+   ],
+   [
+    "pad U3-7 [SDRAM-D3]",
+    [
+     0.1952,
+     "pad R122-2 [D3]"
+    ]
+   ],
+   [
+    "pad U3-8 [SDRAM-D4]",
+    [
+     0.1952,
+     "pad R123-2 [D4]"
+    ]
+   ],
+   [
+    "pad U3-10 [SDRAM-D5]",
+    [
+     0.2498,
+     "pad U3-9 [VCC3V3]"
+    ]
+   ],
+   [
+    "pad U3-11 [SDRAM-D6]",
+    [
+     0.25,
+     "pad U3-10 [SDRAM-D5]"
+    ]
+   ],
+   [
+    "pad U3-13 [SDRAM-D7]",
+    [
+     0.1665,
+     "pad R126-2 [D7]"
+    ]
+   ],
+   [
+    "pad U3-42 [SDRAM-D8]",
+    [
+     0.2497,
+     "pad U3-43 [VCC3V3]"
+    ]
+   ],
+   [
+    "pad U3-44 [SDRAM-D9]",
+    [
+     0.25,
+     "pad U3-43 [VCC3V3]"
+    ]
+   ],
+   [
+    "pad U3-45 [SDRAM-D10]",
+    [
+     0.2498,
+     "pad U3-46 [GND]"
+    ]
+   ],
+   [
+    "pad U3-47 [SDRAM-D11]",
+    [
+     0.2497,
+     "pad U3-48 [SDRAM-D12]"
+    ]
+   ],
+   [
+    "pad U3-48 [SDRAM-D12]",
+    [
+     0.2497,
+     "pad U3-47 [SDRAM-D11]"
+    ]
+   ],
+   [
+    "pad R119-1 [SDRAM-D0]",
+    [
+     0.2,
+     "pad R119-2 [D0]"
+    ]
+   ],
+   [
+    "pad R119-2 [D0]",
+    [
+     0.15,
+     "pad U3-1 [VCC3V3]"
+    ]
+   ],
+   [
+    "pad R120-1 [SDRAM-D1]",
+    [
+     0.2,
+     "pad R120-2 [D1]"
+    ]
+   ],
+   [
+    "pad R120-2 [D1]",
+    [
+     0.15,
+     "pad U3-3 [VCC3V3]"
+    ]
+   ],
+   [
+    "pad R121-1 [SDRAM-D2]",
+    [
+     0.2,
+     "pad R121-2 [D2]"
+    ]
+   ],
+   [
+    "pad R121-2 [D2]",
+    [
+     0.2,
+     "pad R121-1 [SDRAM-D2]"
+    ]
+   ],
+   [
+    "pad R122-1 [SDRAM-D3]",
+    [
+     0.2,
+     "pad R122-2 [D3]"
+    ]
+   ],
+   [
+    "pad R122-2 [D3]",
+    [
+     0.15,
+     "pad U3-6 [GND]"
+    ]
+   ],
+   [
+    "pad R123-1 [SDRAM-D4]",
+    [
+     0.2,
+     "pad R123-2 [D4]"
+    ]
+   ],
+   [
+    "pad R123-2 [D4]",
+    [
+     0.15,
+     "pad U3-9 [VCC3V3]"
+    ]
+   ],
+   [
+    "pad R124-1 [SDRAM-D5]",
+    [
+     0.2,
+     "pad R124-2 [D5]"
+    ]
+   ],
+   [
+    "pad R124-2 [D5]",
+    [
+     0.2,
+     "pad R124-1 [SDRAM-D5]"
+    ]
+   ],
+   [
+    "pad R125-1 [SDRAM-D6]",
+    [
+     0.2,
+     "pad R125-2 [D6]"
+    ]
+   ],
+   [
+    "pad R125-2 [D6]",
+    [
+     0.2,
+     "pad R125-1 [SDRAM-D6]"
+    ]
+   ],
+   [
+    "pad R126-1 [SDRAM-D7]",
+    [
+     0.2,
+     "pad R126-2 [D7]"
+    ]
+   ],
+   [
+    "pad R126-2 [D7]",
+    [
+     0.11,
+     "pad U3-12 [GND]"
+    ]
+   ],
+   [
+    "pad R127-1 [SDRAM-D8]",
+    [
+     0.2,
+     "pad R127-2 [D8]"
+    ]
+   ],
+   [
+    "pad R127-2 [D8]",
+    [
+     0.2,
+     "pad R127-1 [SDRAM-D8]"
+    ]
+   ],
+   [
+    "pad R128-1 [SDRAM-D9]",
+    [
+     0.2,
+     "pad R128-2 [D9]"
+    ]
+   ],
+   [
+    "pad R128-2 [D9]",
+    [
+     0.2,
+     "pad R128-1 [SDRAM-D9]"
+    ]
+   ],
+   [
+    "pad R129-1 [SDRAM-D10]",
+    [
+     0.16,
+     "pad R130-1 [SDRAM-D11]"
+    ]
+   ],
+   [
+    "pad R129-2 [D10]",
+    [
+     0.16,
+     "pad R130-2 [D11]"
+    ]
+   ],
+   [
+    "pad R130-1 [SDRAM-D11]",
+    [
+     0.16,
+     "pad R129-1 [SDRAM-D10]"
+    ]
+   ],
+   [
+    "pad R130-2 [D11]",
+    [
+     0.16,
+     "pad R129-2 [D10]"
+    ]
+   ],
+   [
+    "pad R131-1 [SDRAM-D12]",
+    [
+     0.2,
+     "pad R131-2 [D12]"
+    ]
+   ],
+   [
+    "pad R131-2 [D12]",
+    [
+     0.2,
+     "pad R131-1 [SDRAM-D12]"
+    ]
+   ]
+  ]
+ },
+ "silk": [],
+ "components": [
+  {
+   "part": "R119",
+   "other": "U3",
+   "pad_box_gap": 0.25,
+   "full_box_gap": 0.25,
+   "body_gap_max": 0.235,
+   "courtyard_overlap": 0.165,
+   "body": [
+    37.9349,
+    5.0051,
+    38.5649,
+    5.3351
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R120",
+   "other": "U3",
+   "pad_box_gap": 0.25,
+   "full_box_gap": 0.25,
+   "body_gap_max": 0.235,
+   "courtyard_overlap": 0.165,
+   "body": [
+    36.335,
+    5.0051,
+    36.965,
+    5.3351
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R121",
+   "other": "U3",
+   "pad_box_gap": 0.21,
+   "full_box_gap": 0.21,
+   "body_gap_max": 0.3449,
+   "courtyard_overlap": 0.1901,
+   "body": [
+    35.3851,
+    4.5951,
+    35.7151,
+    5.2252
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R122",
+   "other": "U3",
+   "pad_box_gap": 0.25,
+   "full_box_gap": 0.25,
+   "body_gap_max": 0.235,
+   "courtyard_overlap": 0.165,
+   "body": [
+    33.9349,
+    5.0051,
+    34.5649,
+    5.3351
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R123",
+   "other": "U3",
+   "pad_box_gap": 0.25,
+   "full_box_gap": 0.25,
+   "body_gap_max": 0.235,
+   "courtyard_overlap": 0.165,
+   "body": [
+    32.5351,
+    5.0051,
+    33.1651,
+    5.3351
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R124",
+   "other": "U3",
+   "pad_box_gap": 0.21,
+   "full_box_gap": 0.21,
+   "body_gap_max": 0.3449,
+   "courtyard_overlap": 0.1901,
+   "body": [
+    31.3851,
+    4.5951,
+    31.7151,
+    5.2252
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R125",
+   "other": "U3",
+   "pad_box_gap": 0.21,
+   "full_box_gap": 0.21,
+   "body_gap_max": 0.3449,
+   "courtyard_overlap": 0.1901,
+   "body": [
+    30.585,
+    4.5951,
+    30.915,
+    5.2252
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R126",
+   "other": "U3",
+   "pad_box_gap": 0.21,
+   "full_box_gap": 0.21,
+   "body_gap_max": 0.195,
+   "courtyard_overlap": 0.205,
+   "body": [
+    29.1351,
+    5.0451,
+    29.7651,
+    5.3751
+   ],
+   "other_box": [
+    17.0226,
+    5.5701,
+    39.6774,
+    18.1302
+   ]
+  },
+  {
+   "part": "R129",
+   "other": "R130",
+   "pad_box_gap": 0.26,
+   "full_box_gap": 0.26,
+   "body_gap_max": 0.23,
+   "courtyard_overlap": 0.07,
+   "body": [
+    38.895,
+    14.195,
+    39.525,
+    14.525
+   ],
+   "other_box": [
+    38.95,
+    14.77,
+    39.85,
+    15.07
+   ]
+  },
+  {
+   "part": "R130",
+   "other": "R129",
+   "pad_box_gap": 0.26,
+   "full_box_gap": 0.26,
+   "body_gap_max": 0.23,
+   "courtyard_overlap": 0.07,
+   "body": [
+    39.085,
+    14.755,
+    39.715,
+    15.085
+   ],
+   "other_box": [
+    38.76,
+    14.21,
+    39.66,
+    14.51
+   ]
+  }
+ ],
+ "tombstone": [
+  {
+   "part": "R119",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D0",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D0",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R120",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D1",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D1",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R121",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D2",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D2",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R122",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D3",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D3",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R123",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D4",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D4",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R124",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D5",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D5",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R125",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D6",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D6",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R126",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D7",
+     "area": 0.0962,
+     "tracks": [
+      0.125
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D7",
+     "area": 0.0971,
+     "tracks": [
+      0.1
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0093,
+   "attached_width": [
+    0.125,
+    0.1
+   ],
+   "flag": false
+  },
+  {
+   "part": "R127",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D8",
+     "area": 0.0938,
+     "tracks": [
+      0.0762
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D8",
+     "area": 0.09987,
+     "tracks": [
+      0.0762,
+      0.0762
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0608,
+   "attached_width": [
+    0.0762,
+    0.1524
+   ],
+   "flag": false
+  },
+  {
+   "part": "R128",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D9",
+     "area": 0.09,
+     "tracks": [],
+     "vip": [
+      "L5-VCC3V3>Bottom"
+     ],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D9",
+     "area": 0.09,
+     "tracks": [],
+     "vip": [
+      "L5-VCC3V3>Bottom"
+     ],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0,
+   "attached_width": [
+    0,
+    0
+   ],
+   "flag": false
+  },
+  {
+   "part": "R129",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D10",
+     "area": 0.09489,
+     "tracks": [
+      0.0762,
+      0.0762
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D10",
+     "area": 0.09489,
+     "tracks": [
+      0.0762,
+      0.0762
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0,
+   "attached_width": [
+    0.1524,
+    0.1524
+   ],
+   "flag": false
+  },
+  {
+   "part": "R130",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D11",
+     "area": 0.0938,
+     "tracks": [
+      0.0762,
+      0.0762
+     ],
+     "vip": [],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D11",
+     "area": 0.0938,
+     "tracks": [
+      0.0762,
+      0.0762
+     ],
+     "vip": [],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0,
+   "attached_width": [
+    0.1524,
+    0.1524
+   ],
+   "flag": false
+  },
+  {
+   "part": "R131",
+   "rows": [
+    {
+     "pad": "1",
+     "net": "SDRAM-D12",
+     "area": 0.09,
+     "tracks": [],
+     "vip": [
+      "Top>L2-GND"
+     ],
+     "plane": false
+    },
+    {
+     "pad": "2",
+     "net": "D12",
+     "area": 0.09147,
+     "tracks": [],
+     "vip": [
+      "Top>L2-GND"
+     ],
+     "plane": false
+    }
+   ],
+   "area_asym": 0.0161,
+   "attached_width": [
+    0,
+    0
+   ],
+   "flag": false
+  }
+ ],
+ "pours": {
+  "L2-GND": {
+   "live": [
+    1,
+    1
+   ],
+   "dead": [
+    36,
+    36
+   ],
+   "off_main": [
+    0,
+    0
+   ],
+   "area": [
+    1271.108,
+    1270.7601
+   ]
+  },
+  "L5-VCC3V3": {
+   "live": [
+    1,
+    1
+   ],
+   "dead": [
+    42,
+    42
+   ],
+   "off_main": [
+    0,
+    0
+   ],
+   "area": [
+    1247.7407,
+    1247.3895
+   ]
+  },
+  "windows": [
+   {
+    "layer": "L2-GND",
+    "at": [
+     29.25,
+     16.65
+    ],
+    "net": "D8",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     30.825,
+     16.65
+    ],
+    "net": "D9",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     31.65,
+     16.65
+    ],
+    "net": "D10",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     33.25,
+     16.65
+    ],
+    "net": "D11",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     34.025,
+     16.65
+    ],
+    "net": "D12",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     38.5,
+     13.6
+    ],
+    "net": "D8",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     38.5,
+     14.5
+    ],
+    "net": "D10",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     38.5,
+     14.95
+    ],
+    "net": "D11",
+    "how": "removed",
+    "new_narrow": [
+     {
+      "area_mm2": 0.00032,
+      "at": [
+       38.656,
+       15.743
+      ]
+     },
+     {
+      "area_mm2": 0.00032,
+      "at": [
+       39.144,
+       15.743
+      ]
+     }
+    ],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     38.9,
+     15.8
+    ],
+    "net": "SDRAM-D12",
+    "how": "added",
+    "new_narrow": [
+     {
+      "area_mm2": 0.00866,
+      "at": [
+       39.445,
+       15.555
+      ]
+     },
+     {
+      "area_mm2": 0.00288,
+      "at": [
+       39.681,
+       15.632
+      ]
+     },
+     {
+      "area_mm2": 0.00076,
+      "at": [
+       39.4,
+       16.047
+      ]
+     }
+    ],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L2-GND",
+    "at": [
+     39.49,
+     15.81
+    ],
+    "net": "D12",
+    "how": "added",
+    "new_narrow": [
+     {
+      "area_mm2": 0.00866,
+      "at": [
+       39.445,
+       15.555
+      ]
+     },
+     {
+      "area_mm2": 0.00288,
+      "at": [
+       38.709,
+       15.622
+      ]
+     },
+     {
+      "area_mm2": 0.00288,
+      "at": [
+       38.709,
+       15.978
+      ]
+     },
+     {
+      "area_mm2": 0.00076,
+      "at": [
+       39.69,
+       15.963
+      ]
+     },
+     {
+      "area_mm2": 0.00076,
+      "at": [
+       39.4,
+       16.047
+      ]
+     }
+    ],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     28.8,
+     4.4
+    ],
+    "net": "VCC3V3",
+    "how": "added",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     29.25,
+     16.65
+    ],
+    "net": "D8",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     30.825,
+     16.65
+    ],
+    "net": "D9",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     31.65,
+     16.65
+    ],
+    "net": "D10",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     32.15,
+     8.125
+    ],
+    "net": "TMS",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     32.35,
+     7.0
+    ],
+    "net": "VCC3V3",
+    "how": "added",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     33.25,
+     16.65
+    ],
+    "net": "D11",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     33.45,
+     8.15
+    ],
+    "net": "TMS",
+    "how": "added",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     34.025,
+     16.65
+    ],
+    "net": "D12",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     38.5,
+     13.6
+    ],
+    "net": "D8",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     38.5,
+     14.5
+    ],
+    "net": "D10",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     38.5,
+     14.95
+    ],
+    "net": "D11",
+    "how": "removed",
+    "new_narrow": [],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     41.75,
+     12.95
+    ],
+    "net": "SDRAM-D9",
+    "how": "added",
+    "new_narrow": [
+     {
+      "area_mm2": 0.00119,
+      "at": [
+       41.662,
+       12.71
+      ]
+     },
+     {
+      "area_mm2": 0.00249,
+      "at": [
+       42.532,
+       12.764
+      ]
+     },
+     {
+      "area_mm2": 0.00122,
+      "at": [
+       41.495,
+       12.973
+      ]
+     },
+     {
+      "area_mm2": 0.00249,
+      "at": [
+       42.532,
+       13.136
+      ]
+     }
+    ],
+    "dead_islands_after": 0
+   },
+   {
+    "layer": "L5-VCC3V3",
+    "at": [
+     42.35,
+     12.95
+    ],
+    "net": "D9",
+    "how": "added",
+    "new_narrow": [
+     {
+      "area_mm2": 0.00119,
+      "at": [
+       41.662,
+       12.71
+      ]
+     },
+     {
+      "area_mm2": 0.00249,
+      "at": [
+       41.568,
+       13.136
+      ]
+     }
+    ],
+    "dead_islands_after": 0
+   }
+  ],
+  "ref_plane": [
+   {
+    "track": "track TMS L4-SIG (33.4500,8.1500)-(33.8500,8.1500) w0.0762",
+    "ref": "L5-VCC3V3",
+    "over_void_after": 0.24,
+    "newly_voided": 0.24
+   },
+   {
+    "track": "track TMS Bottom (33.4500,8.1500)-(33.5500,8.0500) w0.0762",
+    "ref": "L5-VCC3V3",
+    "over_void_after": 0.141,
+    "newly_voided": 0.141
+   },
+   {
+    "track": "track TMS Bottom (33.5500,8.0500)-(33.5500,4.8500) w0.0762",
+    "ref": "L5-VCC3V3",
+    "over_void_after": 0.125,
+    "newly_voided": 0.125
+   },
+   {
+    "track": "track SDRAM-D9 L4-SIG (41.7500,13.2750)-(41.7500,12.9500) w0.1250",
+    "ref": "L5-VCC3V3",
+    "over_void_after": 0.236,
+    "newly_voided": 0.236
+   },
+   {
+    "track": "track D9 L4-SIG (42.3500,12.9500)-(42.4250,12.6000) w0.1250",
+    "ref": "L5-VCC3V3",
+    "over_void_after": 0.239,
+    "newly_voided": 0.239
+   }
+  ]
+ },
+ "connectivity": {
+  "worse": [],
+  "baseline_multi": [],
+  "split": [
+   {
+    "bit": 0,
+    "part": "R119",
+    "n1": "SDRAM-D0",
+    "islands1": 1,
+    "pads1": [
+     "R119-1",
+     "U3-2"
+    ],
+    "n2": "D0",
+    "islands2": 1,
+    "pads2": [
+     "R119-2",
+     "U1-V8"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 1.0
+   },
+   {
+    "bit": 1,
+    "part": "R120",
+    "n1": "SDRAM-D1",
+    "islands1": 1,
+    "pads1": [
+     "R120-1",
+     "U3-4"
+    ],
+    "n2": "D1",
+    "islands2": 1,
+    "pads2": [
+     "R120-2",
+     "U1-V7"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 1.0
+   },
+   {
+    "bit": 2,
+    "part": "R121",
+    "n1": "SDRAM-D2",
+    "islands1": 1,
+    "pads1": [
+     "R121-1",
+     "U3-5"
+    ],
+    "n2": "D2",
+    "islands2": 1,
+    "pads2": [
+     "R121-2",
+     "U1-W7"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 0.96
+   },
+   {
+    "bit": 3,
+    "part": "R122",
+    "n1": "SDRAM-D3",
+    "islands1": 1,
+    "pads1": [
+     "R122-1",
+     "U3-7"
+    ],
+    "n2": "D3",
+    "islands2": 1,
+    "pads2": [
+     "R122-2",
+     "U1-W6"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 1.0
+   },
+   {
+    "bit": 4,
+    "part": "R123",
+    "n1": "SDRAM-D4",
+    "islands1": 1,
+    "pads1": [
+     "R123-1",
+     "U3-8"
+    ],
+    "n2": "D4",
+    "islands2": 1,
+    "pads2": [
+     "R123-2",
+     "U1-U5"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 1.0
+   },
+   {
+    "bit": 5,
+    "part": "R124",
+    "n1": "SDRAM-D5",
+    "islands1": 1,
+    "pads1": [
+     "R124-1",
+     "U3-10"
+    ],
+    "n2": "D5",
+    "islands2": 1,
+    "pads2": [
+     "R124-2",
+     "U1-W5"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 0.96
+   },
+   {
+    "bit": 6,
+    "part": "R125",
+    "n1": "SDRAM-D6",
+    "islands1": 1,
+    "pads1": [
+     "R125-1",
+     "U3-11"
+    ],
+    "n2": "D6",
+    "islands2": 1,
+    "pads2": [
+     "R125-2",
+     "U1-V5"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 0.96
+   },
+   {
+    "bit": 7,
+    "part": "R126",
+    "n1": "SDRAM-D7",
+    "islands1": 1,
+    "pads1": [
+     "R126-1",
+     "U3-13"
+    ],
+    "n2": "D7",
+    "islands2": 1,
+    "pads2": [
+     "R126-2",
+     "U1-U4"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 0.96
+   },
+   {
+    "bit": 8,
+    "part": "R127",
+    "n1": "SDRAM-D8",
+    "islands1": 1,
+    "pads1": [
+     "R127-1",
+     "U3-42"
+    ],
+    "n2": "D8",
+    "islands2": 1,
+    "pads2": [
+     "R127-2",
+     "U1-L1"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 11.129
+   },
+   {
+    "bit": 9,
+    "part": "R128",
+    "n1": "SDRAM-D9",
+    "islands1": 1,
+    "pads1": [
+     "R128-1",
+     "U3-44"
+    ],
+    "n2": "D9",
+    "islands2": 1,
+    "pads2": [
+     "R128-2",
+     "U1-K3"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 13.865
+   },
+   {
+    "bit": 10,
+    "part": "R129",
+    "n1": "SDRAM-D10",
+    "islands1": 1,
+    "pads1": [
+     "R129-1",
+     "U3-45"
+    ],
+    "n2": "D10",
+    "islands2": 1,
+    "pads2": [
+     "R129-2",
+     "U1-K2"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 8.647
+   },
+   {
+    "bit": 11,
+    "part": "R130",
+    "n1": "SDRAM-D11",
+    "islands1": 1,
+    "pads1": [
+     "R130-1",
+     "U3-47"
+    ],
+    "n2": "D11",
+    "islands2": 1,
+    "pads2": [
+     "R130-2",
+     "U1-J1"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 7.148
+   },
+   {
+    "bit": 12,
+    "part": "R131",
+    "n1": "SDRAM-D12",
+    "islands1": 1,
+    "pads1": [
+     "R131-1",
+     "U3-48"
+    ],
+    "n2": "D12",
+    "islands2": 1,
+    "pads2": [
+     "R131-2",
+     "U1-J3"
+    ],
+    "bypass_contacts": 0,
+    "n1_track_mm": 6.209
+   }
+  ],
+  "antennae": []
+ },
+ "acid_traps": [],
+ "hard_failures": []
+}

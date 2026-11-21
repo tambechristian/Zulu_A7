@@ -1,0 +1,142 @@
+
+
+Falling Edge Overshoot
+
+The following nets have values outside defined tolerance levels :
+UART_FT_TXD     (Actual Value =  1.614  , Tolerance =  1.000  )
+UART_FT_RTS#    (Actual Value =  1.843  , Tolerance =  659.9m )
+UART_FT_DTR#    (Actual Value =  2.532  , Tolerance =  662.6m )
+FPGA-TDO        (Actual Value =  962.8m , Tolerance =  659.9m )
+TDO             (Actual Value =  962.8m , Tolerance =  659.9m )
+PWR_SWAB3       (Actual Value =  3.971  , Tolerance =  1.197  )
+PWR_SWCD3       (Actual Value =  3.971  , Tolerance =  1.197  )
+FT-PWREN#       (Actual Value =  1.987  , Tolerance =  659.3m )
+D0              (Actual Value =  1.091  , Tolerance =  1.000  )
+
+
+Falling Edge Undershoot
+
+The following nets have values outside defined tolerance levels :
+UART_FT_TXD     (Actual Value =  1.295  , Tolerance =  1.000  )
+UART_FT_RTS#    (Actual Value =  1.521  , Tolerance =  659.9m )
+UART_FT_DTR#    (Actual Value =  2.182  , Tolerance =  662.6m )
+PWR_SWAB3       (Actual Value =  3.865  , Tolerance =  1.197  )
+PWR_SWCD3       (Actual Value =  3.865  , Tolerance =  1.197  )
+FT-PWREN#       (Actual Value =  1.625  , Tolerance =  659.3m )
+
+
+Rising Edge Overshoot
+
+The following nets have values outside defined tolerance levels :
+UART_FT_TXD     (Actual Value =  2.059  , Tolerance =  1.000  )
+UART_FT_RTS#    (Actual Value =  2.216  , Tolerance =  659.9m )
+UART_FT_DTR#    (Actual Value =  2.691  , Tolerance =  662.6m )
+FPGA-TDO        (Actual Value =  1.014  , Tolerance =  659.9m )
+TDO             (Actual Value =  1.014  , Tolerance =  659.9m )
+PWR_SWAB3       (Actual Value =  4.253  , Tolerance =  1.197  )
+PWR_SWCD3       (Actual Value =  4.253  , Tolerance =  1.197  )
+FT-PWREN#       (Actual Value =  2.336  , Tolerance =  659.3m )
+FLASH-D01       (Actual Value =  1.173  , Tolerance =  660.0m )
+EE-CLK          (Actual Value =  1.397  , Tolerance =  998.9m )
+D0              (Actual Value =  1.013  , Tolerance =  1.000  )
+
+
+Rising Edge Undershoot
+
+The following nets have values outside defined tolerance levels :
+UART_FT_TXD     (Actual Value =  1.651  , Tolerance =  1.000  )
+UART_FT_RTS#    (Actual Value =  1.802  , Tolerance =  659.9m )
+UART_FT_DTR#    (Actual Value =  2.311  , Tolerance =  662.6m )
+PWR_SWAB3       (Actual Value =  5.846  , Tolerance =  1.197  )
+PWR_SWCD3       (Actual Value =  5.846  , Tolerance =  1.197  )
+FT-PWREN#       (Actual Value =  1.904  , Tolerance =  659.3m )
+FLASH-D01       (Actual Value =  876.8m , Tolerance =  660.0m )
+EE-CLK          (Actual Value =  1.022  , Tolerance =  998.9m )
+
+
+The following nets were not able to be analysed :
+
+VU
+VBATT
+USB_D_P
+USB_D_N
+USB5V0
+TMS
+TDI
+TCK
+PROG#
+RST#
+PWR_FB3
+PWR_FB3_FF
+PWR_VC3
+PWR_VC3_RC
+PWR_SW1
+PWR_SW
+PWR_PGOODALL
+PWR_FB2
+PWR_FB1
+PWR_CLPROG
+PWR_CHRG
+PUDC_B
+AIN16_N
+AIN16_P
+ANALOG-IO1
+NODE_P1
+LED2
+N$LD2A
+LED1
+N$LD1A
+N$LD0B
+N$LD0R
+N$LD0G
+BTN
+N$BTN
+LED0_G
+LED0_R
+LED0_B
+LD4_A
+FT-VPLL
+FT-VPHY
+FT-VCORE
+FPGA-TMS
+FPGA-TDI
+FPGA-TCK
+FPGA-INIT#
+CLK-12M-FPGA
+CLK-12M-SHARED
+CHAN-CLK
+CHAN28
+CHAN27
+CHAN26
+CHAN25
+CHAN24
+CHAN23
+CHAN22
+CHAN21
+CHAN20
+CHAN19
+CHAN18
+CHAN17
+CHAN16
+CHAN15
+CHAN14
+CHAN13
+CHAN12
+CHAN11
+CHAN10
+CHAN9
+CHAN8
+CHAN7
+CHAN6
+CHAN5
+CHAN4
+CHAN3
+CHAN2
+CHAN1
+CHAN0
+CFG-M2
+CFG-M1
+CFG-M0
+ANALOG-IO0
+AIN15_N
+AIN15_P

@@ -1,0 +1,150 @@
+{
+ "R126": {
+  "rot": 270,
+  "dx": -1.05,
+  "dy": -0.25,
+  "pads": [
+   {
+    "ref": "R126",
+    "pad": "1",
+    "net": "SDRAM-D7",
+    "x": 28.4001,
+    "y": 5.2601,
+    "shape": "rect",
+    "w": 0.3,
+    "h": 0.3,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   },
+   {
+    "ref": "R126",
+    "pad": "2",
+    "net": "D7",
+    "x": 28.4001,
+    "y": 4.6601,
+    "shape": "rect",
+    "w": 0.3,
+    "h": 0.3,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   }
+  ]
+ },
+ "C137": {
+  "rot": 90,
+  "dx": -0.8500000000000001,
+  "dy": 0.8,
+  "pads": [
+   {
+    "ref": "C137",
+    "pad": "2",
+    "net": "VCC3V3",
+    "x": 26.3997,
+    "y": 5.0498,
+    "shape": "rect",
+    "w": 0.3,
+    "h": 0.2999,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   },
+   {
+    "ref": "C137",
+    "pad": "1",
+    "net": "GND",
+    "x": 26.3997,
+    "y": 4.4499,
+    "shape": "rect",
+    "w": 0.3,
+    "h": 0.3,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   }
+  ]
+ },
+ "C138": {
+  "rot": 0,
+  "dx": 0.0,
+  "dy": -1.6500000000000001,
+  "pads": [
+   {
+    "ref": "C138",
+    "pad": "2",
+    "net": "VCC3V3",
+    "x": 28.7495,
+    "y": 2.2999,
+    "shape": "rect",
+    "w": 0.2999,
+    "h": 0.3,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   },
+   {
+    "ref": "C138",
+    "pad": "1",
+    "net": "GND",
+    "x": 28.1496,
+    "y": 2.2999,
+    "shape": "rect",
+    "w": 0.3,
+    "h": 0.3,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   }
+  ]
+ },
+ "C152": {
+  "rot": 0,
+  "dx": 0.0,
+  "dy": -1.6500000000000001,
+  "pads": [
+   {
+    "ref": "C152",
+    "pad": "2",
+    "net": "FT-VCORE",
+    "x": 29.9494,
+    "y": 2.2999,
+    "shape": "rect",
+    "w": 0.2999,
+    "h": 0.3,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   },
+   {
+    "ref": "C152",
+    "pad": "1",
+    "net": "GND",
+    "x": 29.3495,
+    "y": 2.2999,
+    "shape": "rect",
+    "w": 0.3,
+    "h": 0.3,
+    "layers": [
+     "Bottom Layer"
+    ],
+    "drill": 0.0,
+    "plated": false
+   }
+  ]
+ }
+}

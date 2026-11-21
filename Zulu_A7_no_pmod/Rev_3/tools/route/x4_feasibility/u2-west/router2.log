@@ -1,0 +1,12 @@
+seeded 132 vias, 241 tracks
+N$LD0B         
+N$LD1A         
+CHAN19         ripped N$LD1A PWR_PGOODALL
+FT-VPLL        
+FT-VCORE       
+LED0_B         
+LED0_R         
+LED0_G         
+SD-CMD         
+FT-PWREN#      
+EXIT 124

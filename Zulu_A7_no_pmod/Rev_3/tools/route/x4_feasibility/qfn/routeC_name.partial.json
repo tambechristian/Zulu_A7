@@ -1,0 +1,649 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 26.2,
+"y": 20.15,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 34.45,
+"y": 4.35,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 33.175,
+"y": 18.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 34.625,
+"y": 17.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 34.625,
+"y": 11.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 30.675,
+"y": 9.825,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 11.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 12.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 13.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 13.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 16.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 25.775,
+"y": 18.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 25.6,
+"y": 20.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 29.775,
+"y": 17.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 34.575,
+"y": 17.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 28.625,
+"y": 18.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 30.825,
+"y": 18.675,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 30.825,
+"y": 18.675,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 30.825,
+"y": 18.675,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 30.825,
+"y": 18.675,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 19.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 19.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 19.525,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 19.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 34.625,
+"y": 15.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 34.625,
+"y": 15.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 34.625,
+"y": 15.225,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 34.625,
+"y": 15.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 8.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 8.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 8.6,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 33.65,
+"y": 8.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 28.15,
+"y": 10.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 28.15,
+"y": 10.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.15,
+"y": 10.65,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 28.15,
+"y": 10.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CLK-12M-FT",
+"x": 26.95,
+"y": 18.175,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CLK-12M-FT",
+"x": 26.95,
+"y": 18.175,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 34.25,
+"y1": 4.05,
+"x2": 34.45,
+"y2": 4.35
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 30.825,
+"y1": 18.7,
+"x2": 30.825,
+"y2": 18.675
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 33.65,
+"y1": 19.25,
+"x2": 33.65,
+"y2": 19.525
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 33.65,
+"y1": 9.825,
+"x2": 33.65,
+"y2": 8.6
+},
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 28.15,
+"y1": 10.4,
+"x2": 28.15,
+"y2": 10.65
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 39.95,
+"y1": 1.45,
+"x2": 40.3,
+"y2": 1.8
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 40.3,
+"y1": 1.8,
+"x2": 40.55,
+"y2": 1.875
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 40.55,
+"y1": 1.875,
+"x2": 41.2,
+"y2": 1.875
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.2,
+"y1": 1.875,
+"x2": 41.35,
+"y2": 2.025
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.35,
+"y1": 2.025,
+"x2": 41.375,
+"y2": 2.025
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.375,
+"y1": 2.025,
+"x2": 41.425,
+"y2": 2.075
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.425,
+"y1": 2.075,
+"x2": 41.45,
+"y2": 2.075
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.45,
+"y1": 2.075,
+"x2": 41.475,
+"y2": 2.1
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.475,
+"y1": 2.1,
+"x2": 41.5,
+"y2": 2.1
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.5,
+"y1": 2.1,
+"x2": 41.525,
+"y2": 2.125
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.525,
+"y1": 2.125,
+"x2": 41.55,
+"y2": 2.125
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.55,
+"y1": 2.125,
+"x2": 41.575,
+"y2": 2.15
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.575,
+"y1": 2.15,
+"x2": 41.625,
+"y2": 2.15
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.625,
+"y1": 2.15,
+"x2": 41.65,
+"y2": 2.175
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.65,
+"y1": 2.175,
+"x2": 43.2,
+"y2": 2.175
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 43.2,
+"y1": 2.175,
+"x2": 43.225,
+"y2": 2.2
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 43.225,
+"y1": 2.2,
+"x2": 43.25,
+"y2": 2.2
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 43.25,
+"y1": 2.2,
+"x2": 43.275,
+"y2": 2.225
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 43.275,
+"y1": 2.225,
+"x2": 44.1,
+"y2": 2.225
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 44.1,
+"y1": 2.225,
+"x2": 45.55,
+"y2": 2.9
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 45.55,
+"y1": 2.9,
+"x2": 46.725,
+"y2": 2.9
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 46.725,
+"y1": 2.9,
+"x2": 47.7,
+"y2": 3.875
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 47.7,
+"y1": 3.875,
+"x2": 49.3,
+"y2": 4.6
+},
+{
+"net": "CLK-12M-FT",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 32.125,
+"y1": 20.675,
+"x2": 26.95,
+"y2": 18.175
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 26.95,
+"y1": 18.175,
+"x2": 26.35,
+"y2": 17.9
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 34 queued nets remain"
+]
+}

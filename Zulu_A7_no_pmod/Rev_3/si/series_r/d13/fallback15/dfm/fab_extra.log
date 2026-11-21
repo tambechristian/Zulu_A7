@@ -1,0 +1,22 @@
+stacked microvia sites (>= 2 co-located non-thru vias): PcbDoc 531, plan15 537, new 7, removed 1
+   new stack (33.45, 8.15) TMS: L4-SIG>L5-VCC3V3 + L5-VCC3V3>Bottom
+   new stack (38.9, 15.8) SDRAM-D12: Top>L2-GND + L2-GND>L3-SIG + L3-SIG>L4-SIG
+   new stack (39.49, 15.81) D12: Top>L2-GND + L2-GND>L3-SIG + L3-SIG>L4-SIG
+   new stack (41.75, 12.95) SDRAM-D9: L4-SIG>L5-VCC3V3 + L5-VCC3V3>Bottom
+   new stack (42.35, 12.95) D9: L4-SIG>L5-VCC3V3 + L5-VCC3V3>Bottom
+   new stack (45.3, 17.15) SDRAM-D14: L4-SIG>L5-VCC3V3 + L5-VCC3V3>Bottom
+   new stack (46.5, 16.8) SDRAM-D15: L4-SIG>L5-VCC3V3 + L5-VCC3V3>Bottom
+   removed stack (32.15, 8.125) TMS
+new/renamed vias: hole-edge to foreign copper (drill-to-copper), tightest 10 (gap, via, layer, other, annular ring):
+   0.1695  via SDRAM-D15 (38.3500,16.7250) Top>Bottom 0.35/0.20  on Bottom  vs pad U3-54[GND]  ring 0.0750
+   0.1750  via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  on Top  vs via UDQM (38.5000,14.0500) Top>Bottom 0.35/0.20  ring 0.0750
+   0.1750  via SDRAM-D11 (38.5000,14.9500) Top>Bottom 0.35/0.20  on Top  vs via SDRAM-D10 (38.5000,14.5000) Top>Bottom 0.35/0.20  ring 0.0750
+   0.1750  via SDRAM-D8 (38.5000,13.6000) Top>Bottom 0.35/0.20  on Top  vs via CKE (38.5000,13.1500) Top>Bottom 0.35/0.20  ring 0.0750
+   0.1772  via SDRAM-D10 (31.6500,16.6500) Top>Bottom 0.35/0.20  on L4-SIG  vs via N$LD0G (31.8000,16.2500) L4-SIG>L5-VCC3V3 0.30/0.15  ring 0.0750
+   0.1782  via SDRAM-D11 (33.2500,16.6500) Top>Bottom 0.35/0.20  on L4-SIG  vs track L4-SIG N$LD1A (33.3000,16.1000)-(33.7000,16.8000) w0.0762  ring 0.0750
+   0.1802  via D12 (39.4900,15.8100) L2-GND>L3-SIG 0.30/0.15  on L2-GND  vs via UART_FT_TXD (39.6000,16.2000) L2-GND>L3-SIG 0.30/0.15  ring 0.0750
+   0.1802  via D12 (39.4900,15.8100) L3-SIG>L4-SIG 0.27/0.15  on L3-SIG  vs via UART_FT_TXD (39.6000,16.2000) L2-GND>L3-SIG 0.30/0.15  ring 0.0600
+   0.1802  via D12 (39.4900,15.8100) Top>L2-GND 0.30/0.15  on Top  vs via UART_FT_TXD (39.6000,16.2000) Top>L2-GND 0.30/0.15  ring 0.0750
+   0.1815  via SDRAM-D14 (36.1250,16.6500) Top>Bottom 0.35/0.20  on Top  vs pad U2-47[GND]  ring 0.0750
+min annular ring of new vias 0.0600 mm
+VIPPO sites in plan15: 6 (R128-1, R128-2, R131-1, R131-2, R133-1, R134-1)
