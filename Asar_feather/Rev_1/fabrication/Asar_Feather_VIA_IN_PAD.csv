@@ -149,9 +149,6 @@ C164,1,PWR_FB3,Bottom,L5-Bot,0.15,0.30,5.4500,19.1500,hole on pad edge,0.1500,re
 C164,2,PWR_VC3,Bottom,L5-Bot,0.15,0.30,5.4500,19.7500,hole on pad edge,0.1500,rect,0.300x0.300,copper fill + cap flat
 C167,1,GND,Bottom,Top-Bot,0.20,0.35,9.4000,11.2500,hole on pad edge,0.1250,rect,0.700x0.900,resin plug + plate over (VIPPO)
 C168,1,GND,Bottom,Top-Bot,0.20,0.35,2.8500,17.9500,hole in pad,0.1750,rect,1.100x1.000,resin plug + plate over (VIPPO)
-JP3,1,TCK,Bottom,L5-Bot,0.15,0.30,17.3750,5.1750,hole in pad,0.1500,round,1.000x1.000,copper fill + cap flat
-JP3,3,GND,Bottom,Top-Bot,0.20,0.35,17.4750,7.2750,hole on pad edge,0.1750,round,1.000x1.000,resin plug + plate over (VIPPO)
-JP4,3,VCC3V3,Bottom,L5-Bot,0.15,0.30,7.2750,2.7750,hole in pad,0.1500,round,1.000x1.000,copper fill + cap flat
 L2,2,VCC1V8,Bottom,L5-Bot,0.15,0.30,15.3750,18.6000,land only,0.0750,rect,1.050x2.300,copper fill + cap flat
 L4,1,FT-VPHY,Bottom,L5-Bot,0.15,0.30,13.6750,3.2750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat
 L4,2,VCC3V3,Bottom,L5-Bot,0.15,0.30,15.2750,3.2750,hole in pad,0.1500,rect,0.900x0.900,copper fill + cap flat

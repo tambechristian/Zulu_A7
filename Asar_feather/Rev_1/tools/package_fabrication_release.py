@@ -41,8 +41,9 @@ PCB = os.path.join(PROJECT, "asar_feather.PcbDoc")
 DRC = os.path.join(OUTPUTS, "Design Rule Check - asar_feather.drc")
 DEFAULT_NOTE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_FAB_NOTES.txt")
 DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
-# asar_feather.PcbDoc with the pin-1 / LED-cathode silkscreen dots, U7's under its body, and the stale ratsnest line
-# cleared (docs/pin1_silk_dots.md), saved 2026-11-21 08:38:08, 1168 microvias verified (top-side dots only, 2026-11-20
+# asar_feather.PcbDoc with the six JTAG test pads in one 2x3 block (docs/jtag_block.md), saved 2026-11-21 16:21:41
+# after the clean DRC (the 15:54:49 save, MD5 7490c9ef, still held the first DRC's JP3/JP4 marker), 1174 microvias verified (pin-1 / LED-cathode silkscreen dots, U7's under its body, stale ratsnest line cleared
+# (docs/pin1_silk_dots.md) 2026-11-21 08:38:08: SHA-256 C7A5AB32...B5CC698, MD5 9be75ad9; top-side dots only, 2026-11-20
 # 21:15:10: SHA-256 64C179D1...7F40BDA0, MD5 35871b35; U2's pin-1 silk mark restored (docs/u2_pin1_mark.md) 2026-11-20 07:07:20: SHA-256
 # 11C361CC...0E91E, MD5 c304041a; body-collision fixes, 3D bodies and Component Clearance rules (docs/body_fixes.md) 2026-11-19
 # 21:51:49: SHA-256 EF32A488...E802BD, MD5 091a3b6e;
@@ -51,8 +52,8 @@ DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
 #  X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
 #  NPTH clearance fix 2026-11-16 09:32:36: SHA-256 0B547312...98D3, MD5 f8dba4ec;
 #  2026-11-11 release: SHA-256 4A9A9714...BBA1D, MD5 d22906e1; 2026-11-11 15:16 save: MD5 e214e57b)
-EXPECTED_PCB_SHA256 = "C7A5AB3213AE8FC813D055715B2E759654DC4A2305A4A9A3AAD04D0C6B5CC698"
-EXPECTED_PCB_MD5 = "9be75ad9896cf164cd04443e79d76f32"
+EXPECTED_PCB_SHA256 = "7EEBABAA7236535C1DACBC19DF7D9543F6001FB4EC90B76A22612A4067080EF1"
+EXPECTED_PCB_MD5 = "682cd9d3980d61aafd53e95f735ce5bd"
 REVISION = "Asar A7 Feather"
 RELEASE_DATE = "2026-11-21"
 DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_%s_PROVISIONAL.zip" % RELEASE_DATE)
@@ -79,22 +80,22 @@ BASE = "asar_feather"
 OUTLINE = (0.0, 0.0, 50.80, 22.86)  # GM profile, mm
 CORNER_R = 2.54
 GERBER_EXTENSIONS = ["GTL", "G1", "G2", "G3", "G4", "GBL", "GTS", "GBS", "GTO", "GBO", "GTP", "GBP", "GM"]
-# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-19 22:02:59 (body-fix board; unchanged since
-# the 2026-11-17 C11 move: every removed via was replaced by one of the same span and hole; the 2026-11-20 07:16:27
-# export for the U2 pin-1 mark and the 2026-11-20 21:16 / 2026-11-21 08:40 exports for the pin-1 dots are identical)
+# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-21 15:56:06 (JTAG 2x3 block, docs/jtag_block.md:
+# through 155 -> 153, buried L3-L4 252 -> 254, Top-L2 0.15 209 -> 210, L2-L3 0.15 173 -> 174, L4-L5 0.15 197 -> 199,
+# L5-Bot 0.15 241 -> 243; before that unchanged from the 2026-11-19 body-fix board through the pin-1 dot releases)
 EXPECTED_DRILLS = {
-    "RoundHoles-Plated.TXT": {"03": (0.20, 155), "05": (1.00, 28)},
+    "RoundHoles-Plated.TXT": {"03": (0.20, 153), "05": (1.00, 28)},
     "RoundHoles-NonPlated.TXT": {"06": (2.50, 4)},
     "SlotHoles-Plated.TXT": {"04": (0.50, 2)},
-    "RoundHoles-Plated.TX3": {"02": (0.15, 252)},
-    "RoundHoles-Plated.TX6": {"01": (0.10, 173), "02": (0.15, 209)},
-    "RoundHoles-Plated.TX7": {"01": (0.10, 105), "02": (0.15, 173)},
-    "RoundHoles-Plated.TX9": {"01": (0.10, 47), "02": (0.15, 197)},
-    "RoundHoles-Plated.TX10": {"01": (0.10, 23), "02": (0.15, 241)},
+    "RoundHoles-Plated.TX3": {"02": (0.15, 254)},
+    "RoundHoles-Plated.TX6": {"01": (0.10, 173), "02": (0.15, 210)},
+    "RoundHoles-Plated.TX7": {"01": (0.10, 105), "02": (0.15, 174)},
+    "RoundHoles-Plated.TX9": {"01": (0.10, 47), "02": (0.15, 199)},
+    "RoundHoles-Plated.TX10": {"01": (0.10, 23), "02": (0.15, 243)},
 }
 FILE_TYPE = {"RoundHoles-NonPlated.TXT": "NON_PLATED"}
 MICROVIA_FILES = ("RoundHoles-Plated.TX6", "RoundHoles-Plated.TX7", "RoundHoles-Plated.TX9", "RoundHoles-Plated.TX10")
-EXPECTED_MICROVIA_TOTAL = 1168  # 1187 before the X1 micro-B conversion, 1176 before the X4 side-entry conversion
+EXPECTED_MICROVIA_TOTAL = 1174  # 1168 before the 2026-11-21 JTAG block, 1187 before the X1 micro-B conversion, 1176 before the X4 side-entry conversion
 EXPECTED_LAYER_MAP = {
     "RoundHoles-Plated.TXT": "gtl,g1,g2,g3,g4,gbl",
     "SlotHoles-Plated.TXT": "gtl,g1,g2,g3,g4,gbl",

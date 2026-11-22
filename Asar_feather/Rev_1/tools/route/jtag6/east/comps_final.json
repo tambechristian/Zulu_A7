@@ -1,0 +1,1268 @@
+{
+ "comps": [
+  {
+   "ref": "X1",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "AMPHENOL-10118193-0001LF"
+  },
+  {
+   "ref": "U7",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "SOT23-5"
+  },
+  {
+   "ref": "L9",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "IND2520"
+  },
+  {
+   "ref": "C168",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C167",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "R118",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R117",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R116",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R115",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R114",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R113",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "L8",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "IND2520"
+  },
+  {
+   "ref": "C166",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C165",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C164",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C163",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C161",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C160",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "X5",
+   "layer": "TOP",
+   "rot": 90.0,
+   "pattern": "JST-SM04B-SRSS-TB"
+  },
+  {
+   "ref": "RESET",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "PTS810"
+  },
+  {
+   "ref": "U10",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "TDFN-8-2X3-P0.5"
+  },
+  {
+   "ref": "R98",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R96",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "X2",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "FEATHER-28"
+  },
+  {
+   "ref": "U3",
+   "layer": "TOP",
+   "rot": 90.0,
+   "pattern": "FBGA-54-8X8-P0.8"
+  },
+  {
+   "ref": "C159",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C158",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C157",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C156",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C155",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "X4",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "JST-S2B-PH-SM4-TB"
+  },
+  {
+   "ref": "X3",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "DM3D-SF"
+  },
+  {
+   "ref": "U$5",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "CC_COPYRIGHT"
+  },
+  {
+   "ref": "U$4",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "CC_SA"
+  },
+  {
+   "ref": "U$3",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "CC_BY"
+  },
+  {
+   "ref": "U$2",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "CC_CC"
+  },
+  {
+   "ref": "U8",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "QFN28-UFD-4X5"
+  },
+  {
+   "ref": "U4",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "WSON-8-6X5-P1.27"
+  },
+  {
+   "ref": "U2",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "QFN-64-9X9-P0.5-EP4.35"
+  },
+  {
+   "ref": "U1",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "XC7A35T-CPG236"
+  },
+  {
+   "ref": "R108",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R107",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R103",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R102",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R101",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R99",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R97",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R94",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R93",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R92",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R91",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R90",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R86",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R85",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R84",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R83",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R82",
+   "layer": "TOP",
+   "rot": 90.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R81",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R80",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R35",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R34",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "742C083"
+  },
+  {
+   "ref": "R26",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R25",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R24",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R23",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R22",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R21",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R20",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R19",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R18",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "R0402"
+  },
+  {
+   "ref": "R17",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R16",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R15",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R14",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R13",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R12",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R11",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R10",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R7",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R6",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R5",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R4",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "742C163"
+  },
+  {
+   "ref": "R2",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "R0201"
+  },
+  {
+   "ref": "R1",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "742C043"
+  },
+  {
+   "ref": "Q1",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "32X25"
+  },
+  {
+   "ref": "LD4",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "LED0603"
+  },
+  {
+   "ref": "LD3",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "LED0603"
+  },
+  {
+   "ref": "LD2",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "LED0603"
+  },
+  {
+   "ref": "LD1",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "LED0603"
+  },
+  {
+   "ref": "LD0",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "EVERLIGHT-19-337"
+  },
+  {
+   "ref": "L7",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "IND0603"
+  },
+  {
+   "ref": "L6",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "IND0603"
+  },
+  {
+   "ref": "L5",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "IND0603"
+  },
+  {
+   "ref": "L4",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "IND0603"
+  },
+  {
+   "ref": "L3",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "IND2520"
+  },
+  {
+   "ref": "L2",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "IND2520"
+  },
+  {
+   "ref": "L1",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "IND2520"
+  },
+  {
+   "ref": "JP4",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "TP-1X03-SMD"
+  },
+  {
+   "ref": "JP3",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "TP-1X03-SMD"
+  },
+  {
+   "ref": "C154",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C153",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C152",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C151",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C150",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C149",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C148",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C147",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C146",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C145",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C144",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C143",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C142",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C141",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C140",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C139",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C138",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C137",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C136",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C135",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C134",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C133",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C124",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C123",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C122",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C121",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C120",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C119",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C118",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C117",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C116",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C115",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C114",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C113",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C112",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C111",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C110",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C109",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C108",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C107",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C106",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C105",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C104",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C103",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C102",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C101",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C100",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C99",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C98",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C97",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C96",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C95",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C94",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C93",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C92",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C91",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C90",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C89",
+   "layer": "BOTTOM",
+   "rot": 180.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C88",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C87",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C86",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C85",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C84",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C82",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C80",
+   "layer": "BOTTOM",
+   "rot": 270.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C78",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0805"
+  },
+  {
+   "ref": "C41",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C40",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C38",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0201"
+  },
+  {
+   "ref": "C37",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C36",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C13",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0603"
+  },
+  {
+   "ref": "C12",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C11",
+   "layer": "TOP",
+   "rot": 180.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C9",
+   "layer": "BOTTOM",
+   "rot": 0.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C8",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C7",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C6",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C5",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C4",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "C3",
+   "layer": "BOTTOM",
+   "rot": 90.0,
+   "pattern": "C0402"
+  },
+  {
+   "ref": "BTN",
+   "layer": "TOP",
+   "rot": 0.0,
+   "pattern": "PTS810"
+  }
+ ],
+ "mech": {
+  "X1": {
+   "side": "Top",
+   "pad_ext": [
+    0.5,
+    7.43,
+    4.8,
+    15.43
+   ],
+   "bodies": [
+    [
+     -0.7,
+     7.68,
+     4.35,
+     15.18
+    ]
+   ],
+   "offs": [
+    [
+     -1.2,
+     0.25,
+     -0.45,
+     -0.25
+    ]
+   ],
+   "off": [
+    -1.2,
+    0.25,
+    -0.45,
+    -0.25
+   ],
+   "bodies_max": [
+    [
+     -0.7,
+     7.58,
+     4.65,
+     15.28
+    ]
+   ],
+   "offs_max": [
+    [
+     -1.2,
+     0.15,
+     -0.15,
+     -0.15
+    ]
+   ],
+   "layer": "TOP",
+   "rot": 0,
+   "pattern": "AMPHENOL-10118193-0001LF"
+  },
+  "X3": {
+   "side": "Bottom",
+   "pad_ext": [
+    37.575,
+    5.0549,
+    50.0249,
+    17.8051
+   ],
+   "bodies": [
+    [
+     38.075,
+     5.43,
+     49.525,
+     17.38
+    ]
+   ],
+   "offs": [
+    [
+     0.5001,
+     0.3751,
+     -0.4999,
+     -0.4251
+    ]
+   ],
+   "off": [
+    0.5001,
+    0.3751,
+    -0.4999,
+    -0.4251
+   ],
+   "layer": "BOTTOM",
+   "rot": 90,
+   "pattern": "DM3D-SF"
+  },
+  "X4": {
+   "side": "Top",
+   "pad_ext": [
+    6.7,
+    13.3,
+    14.9,
+    22.5
+   ],
+   "bodies": [
+    [
+     6.85,
+     16.3,
+     14.75,
+     22.3
+    ],
+    [
+     6.85,
+     14.7,
+     7.65,
+     16.3
+    ],
+    [
+     13.95,
+     14.7,
+     14.75,
+     16.3
+    ]
+   ],
+   "offs": [
+    [
+     0.15,
+     3.0,
+     -0.15,
+     -0.2
+    ],
+    [
+     0.15,
+     1.4,
+     -7.25,
+     -6.2
+    ],
+    [
+     7.25,
+     1.4,
+     -0.15,
+     -6.2
+    ]
+   ],
+   "off": [
+    0.15,
+    3.0,
+    -0.15,
+    -0.2
+   ],
+   "layer": "TOP",
+   "rot": 0,
+   "pattern": "JST-S2B-PH-SM4-TB"
+  },
+  "X5": {
+   "side": "Top",
+   "pad_ext": [
+    44.95,
+    6.3,
+    50.5,
+    13.1
+   ],
+   "bodies": [
+    [
+     46.05,
+     6.7,
+     50.3,
+     12.7
+    ]
+   ],
+   "offs": [
+    [
+     1.1,
+     0.4,
+     -0.2,
+     -0.4
+    ]
+   ],
+   "off": [
+    1.1,
+    0.4,
+    -0.2,
+    -0.4
+   ],
+   "layer": "TOP",
+   "rot": 90,
+   "pattern": "JST-SM04B-SRSS-TB"
+  }
+ }
+}

@@ -585,7 +585,7 @@
 {
 "ref": "JP4",
 "layer": "BOTTOM",
-"rot": 0.0,
+"rot": 90.0,
 "pattern": "TP-1X03-SMD"
 },
 {

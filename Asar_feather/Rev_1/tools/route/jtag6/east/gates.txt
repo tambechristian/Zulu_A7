@@ -1,0 +1,81 @@
+plan: 2 moves (JP3 d(-0.550,+0.770) rot 90 JP4 d(+12.350,+3.940) rot 90), remove 32 tracks + 4 vias, add 34 tracks + 10 vias
+
+== 1 route_check plan.json model_moved.json
+   plan: 34 tracks, 10 vias, 32 removed; board then: 4807 tracks, 1581 vias
+   violations: 0
+   open connections after the plan: 0 on 0 nets
+   PASS
+
+== 2 hole_gate on the whole final board
+   0 pairs under 0.240 mm edge to edge in the same dielectric, 0 of them overlapping
+   PASS
+   (base board: 0 pairs under 0.240 mm edge to edge in the same dielectric, 0 of them overlapping)
+
+== 3 pad_gate model_final.json JP3 JP4
+   gap 0.2401 web 0.1401  JP3-3 [GND]  C85-1 [VCC1V0]
+     gap 0.2401 web 0.1401  JP4-3 [VCC3V3]  C86-1 [VCC1V0]
+     gap 0.2401 web 0.1401  JP3-3 [GND]  C86-1 [VCC1V0]
+     gap 0.2700 web 0.1700  JP3-1 [TCK]  JP3-2 [TMS]
+     gap 0.2700 web 0.1700  JP3-1 [TCK]  JP4-1 [TDI]
+     gap 0.2700 web 0.1700  JP3-2 [TMS]  JP3-3 [GND]
+     gap 0.2700 web 0.1700  JP3-2 [TMS]  JP4-2 [TDO]
+     gap 0.2700 web 0.1700  JP3-3 [GND]  JP4-3 [VCC3V3]
+   22 pairs within 1 mm, 0 under clearance 0.0762 or web 0.10
+   PASS
+
+== 4 moved pads vs other-net tracks and vias on their layers (rule 0.09)
+   min 0.1030 (JP3-1 via FPGA-TCK), 0 under 0.09
+     0.1030 JP3-1 via FPGA-TCK
+     0.1190 JP4-1 track VCC1V0
+     0.1456 JP3-3 track VCC1V0
+     0.1492 JP3-2 via TDO
+     0.1771 JP4-2 via VCC3V3
+
+== 5 route_conn on the final model
+   open connections: 0 {}
+
+== 6 dangling ends / weak vias on TCK TMS TDI TDO GND VCC3V3 FT-VCORE VCC1V0
+   base 2, final 2, new 0, gone 0
+     base: ('via', 'GND', 'Top Layer', 'L2-GND', 9.025, 19.425)
+     base: ('via', 'GND', 'Top Layer', 'L2-GND', 10.575, 16.5)
+
+== 7 narrowest piece per touched power net and layer (base -> final)
+   VCC1V0    Bottom Layer  0.15 -> 0.15
+   VCC1V0    L3-SIG        0.5 -> 0.5
+   VCC1V0    L4-SIG        0.3 -> 0.3
+   VCC1V0    Top Layer     0.15 -> 0.15
+   VCC1V0 C86 -> C87 feed piece widths: base [0.15, 0.15, 0.2, 0.3, 0.5], final [0.15, 0.15, 0.2, 0.3, 0.5, 0.5]
+   0 net/layer pairs got narrower
+
+== 8 body_check (full board, gap 0.10): final vs base
+   base 8 findings, final 8 findings, new or worse 0, overlaps in final 1 (base 1)
+   JP3 / JP4 within 1.0 mm (body_check --refs JP3,JP4 --gap 1.0):
+     Bottom body_pad      C100       JP3        2      0.420
+     Bottom body_pad      C100       JP3        1      0.420
+     Bottom body_pad      R97        JP3        1      0.601
+     Bottom body_pad      C100       JP3        3      0.716
+     Bottom body_pad      C85        JP3        3      0.740
+     Bottom body_pad      C86        JP4        3      0.740
+     Bottom body_pad      C86        JP3        3      0.751
+     Bottom body_pad      C85        JP4        3      0.978
+   mech_mismatch: none
+
+== 9 probe access of the six pads (Bottom; pad copper is a 1.0 mm circle)
+   JP3-3 GND    (17.200, 8.360): body 0.716 (C100), other pad 0.240 (C85-1), other-net Cu 0.146 (track VCC1V0), X2 housing 5.320
+   JP4-3 VCC3V3 (18.470, 8.360): body 0.740 (C86), other pad 0.240 (C86-1), other-net Cu 0.230 (track VCC1V0), X2 housing 5.320
+   JP3-2 TMS    (17.200, 7.090): body 0.420 (C100), other pad 0.320 (C100-2), other-net Cu 0.149 (via TDO), X2 housing 4.050
+   JP4-2 TDO    (18.470, 7.090): body 1.501 (C94), other pad 1.263 (C94-1), other-net Cu 0.177 (via VCC3V3), X2 housing 4.050
+   JP3-1 TCK    (17.200, 5.820): body 0.420 (C100), other pad 0.320 (C100-1), other-net Cu 0.103 (via FPGA-TCK), X2 housing 2.780
+   JP4-1 TDI    (18.470, 5.820): body 1.010 (C94), other pad 0.441 (C94-1), other-net Cu 0.119 (track VCC1V0), X2 housing 2.780
+   nearest other part body to any of the six: 0.420 mm (target >= 0.30)
+
+== 10 test-point branch lengths (mm)
+   TDI  before 4.96 (U2-17 Top run + through via + Bottom run to JP4-1 at (4.85, 3.15))
+        after  6.28 (L4 from the R90/R4-3 stack at (12.35, 4.1), 2 new lasers, Bottom into JP4-1)
+   TDO  before 2.84 (Bottom from R91-1 to JP4-2 at (6.12, 3.15))
+        after  6.22 (L3 from the TDO run at (13.95, 5.275), 3 new vias, Bottom into JP4-2)
+   TCK  before 4.52 (R4-6 -> L4 -> JP3-1)   after 5.19 (+ 0.67 Bottom link)
+   TMS  before 5.11 (Bottom from R4-5)       after 5.35
+   GND tie: 0.77 mm of 0.25 track to its own through via; VCC3V3 tie: 0.98 mm of 0.2 track to its own L5 laser
+
+GATES PASS
