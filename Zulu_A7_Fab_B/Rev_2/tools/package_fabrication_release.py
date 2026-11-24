@@ -30,6 +30,16 @@ tools/fab_notes.py and tools/generate_jlcpcb_assembly.py). The script refuses if
 The 2026-11-11 Fab B Rev 2 release (board saved 2026-11-12 00:16:55, MD5 33023787, SHA-256
 D77DE904...B472): TXT T02 354 / T04 2 / T05 58, TX3 403, TX6 321, TX7 307, TX9 281, TX10 295,
 1,204 microvias.
+
+SILKSCREEN RE-ISSUE (2026-11-24), final board saved 12:49:45 (MD5 0fafba3d, SHA-256 11307755...; R4's label moved off
+the X2 pin-name row to a free 'R4' under the R4 array, DRC 12:50:00 0/0, Gerbers 12:50:43, NC drill 12:51:15). First
+save of the day: the board saved 2026-11-24 09:52:51 (MD5 d75b482a, SHA-256
+20FD16DA...C04F; the 2026-11-20 pin-1-dot board was 14a06f6d / FBD5FD5B...889B) changed on the
+Top Overlay only: the X2 header pin names moved into the pin-number row and the pin numbers were
+removed, the title moved 1.23 mm down, and free 'U1' / 'U4' labels were added. RELEASE_DATE and
+EXPECTED_PCB_SHA256 / EXPECTED_PCB_MD5 were updated; the drill expectations did not change (the
+export's drill files are byte-identical to the 2026-11-20 package's). The note
+(tools/fab_notes.py) says this package supersedes the 2026-11-20 one and that only the GTO changed.
 """
 
 import argparse
@@ -48,7 +58,7 @@ FABRICATION = os.path.join(ROOT, "fabrication")
 PCB = os.path.join(PROJECT, "zulu_a7_fab_b.PcbDoc")
 RELEASE_PREFIX = "Zulu_A7_Fab_B_Rev_2"
 RELEASE_NAME = "Zulu A7 Fab B Rev 2"
-RELEASE_DATE = "2026-11-20"   # as in tools/fab_notes.py and tools/generate_jlcpcb_assembly.py
+RELEASE_DATE = "2026-11-24"   # as in tools/fab_notes.py and tools/generate_jlcpcb_assembly.py
 DEFAULT_NOTE = os.path.join(FABRICATION, f"{RELEASE_PREFIX}_PCBWay_FAB_NOTES.txt")
 DEFAULT_ARCHIVE = os.path.join(
     FABRICATION, f"{RELEASE_PREFIX}_PCBWay_Fabrication_{RELEASE_DATE}.zip"
@@ -73,12 +83,14 @@ def names_order(data):
     return False
 
 
-# the 2026-11-20 synced zulu_a7_fab_b.PcbDoc with the pin-1 silkscreen dots, saved 20:44:07 (before the dots, the
-# earlier 2026-11-20 release: SHA-256 0E5D64CE9B6596E442BBEAF72FC2C6AA30F55D9187B764ED43418729873FA074, MD5
+# the 2026-11-24 zulu_a7_fab_b.PcbDoc with the X2 label / title / U1-U4 label silkscreen change, saved 09:52:51
+# (the 2026-11-20 pin-1-dot board, saved 20:44:07: SHA-256
+# FBD5FD5BE5FCCFDF17762FFB5037AD68CCE59EF0300E740EB6C8AAAFA938889B, MD5 14a06f6db345784fc7db393c3387d243; before the
+# dots, the earlier 2026-11-20 release: SHA-256 0E5D64CE9B6596E442BBEAF72FC2C6AA30F55D9187B764ED43418729873FA074, MD5
 # 5fea13046ef71090519f5d357c1d96e5; 2026-11-11 release board: SHA-256
 # D77DE904DF044841C4E7B6727630BF219601B3013EDB0ED3DE31465C5D03B472, MD5 330237878e325c882fca3f689b55ec0c)
-EXPECTED_PCB_SHA256 = "FBD5FD5BE5FCCFDF17762FFB5037AD68CCE59EF0300E740EB6C8AAAFA938889B"
-EXPECTED_PCB_MD5 = "14a06f6db345784fc7db393c3387d243"
+EXPECTED_PCB_SHA256 = "11307755F97F39CF0C515A6175C3C7C8E8D37C20208012E520262488EDF748CE"
+EXPECTED_PCB_MD5 = "0fafba3da9367369355fca145d839a51"
 BASE = "zulu_a7_fab_b"
 OUTLINE = (0.0, 0.0, 69.85, 25.40)  # GM profile, mm
 GERBER_EXTENSIONS = [

@@ -22,8 +22,23 @@ Fab B rules that the no-PMOD copy did not have (all REFUSE, nothing is written):
     exactly once;
   * tools/body_heights.json must hold no 'provisional' height (the note says every body is at its datasheet height,
     J1's from DigiKey's parametric data);
-  * RELEASE_DATE must be set (2026-11-20 below; None refuses) and the note must not name an order number.
+  * RELEASE_DATE must be set (2026-11-24 below; None refuses) and the note must not name an order number.
 The DRC must be 0 and must have run Component Clearance, as on the no-PMOD board.
+
+SILKSCREEN RE-ISSUE (2026-11-24): the board (md5 d75b482a, was 14a06f6d) changed on the Top Overlay only. The X2
+header labels print each pin's signal name in the row next to the pins where the pin number was, and no pin number
+('2 CLK', '21 GND', '30 C20' became 'CLK', 'GND', 'C20'); the title moved 1.23 mm down (y 5.00 -> 3.77) into the freed
+row; free texts 'U1' (centred under the FPGA, whose own designator is hidden) and 'U4' (right of U4) were added; later the
+same day R4's label left the pin-name row (it read as pin 1's name) for a free 'R4' under the R4 array, R4's designator
+hidden (board 0fafba3d). The
+note gains a THIS ISSUE paragraph saying it supersedes the 2026-11-20 package and that only the GTO changed, the
+ORDER AND CAM GATE supersede sentence now names both 2026-11-20 packages, and CHANGES gets a 2026-11-24 silkscreen
+line. New refusals: a free Top Overlay text that is or starts with a whole number ('21', '21 GND': a printed X2 pin
+number; '1V0' is a name), a missing 'U1', 'U4' or 'R4'
+label, or the title away from y 3.77 means the board is not the one that paragraph describes; and any exported Gerber
+or drill file other than the GTO whose data differ from the superseded 2026-11-20 package's copy (G04 comments and
+the DRR's date/run-time lines ignored; the package is looked for in fabrication/, then in backups/ under its
+_silk-swap_superseded name).
 """
 import collections
 import datetime
@@ -49,8 +64,18 @@ BASE = 'zulu_a7_fab_b'
 RELEASE_NAME = 'Zulu A7 Fab B Rev 2'
 # the release day, YYYY-MM-DD, the same in tools/fab_notes.py, tools/package_fabrication_release.py
 # and tools/generate_jlcpcb_assembly.py. None makes every release tool refuse.
-RELEASE_DATE = '2026-11-20'
+RELEASE_DATE = '2026-11-24'
 TITLE = 'ZULU A7 2.2'
+# the 2026-11-24 silkscreen issue: the title's y (mm) and the free labels it added (main() checks them on the board)
+TITLE_Y = 3.77
+SILK_LABELS = ('U1', 'U4', 'R4')
+# the package this issue supersedes (the 2026-11-20 one with the pin-1 dots): in fabrication/ until the release
+# moves it to backups/ under the _silk-swap_superseded name (backups/ is not in git: restore it from git history)
+SUPERSEDED_PACKAGE = '2026-11-20'
+SUPERSEDED_ZIPS = [os.path.join(ROOT, 'fabrication', 'Zulu_A7_Fab_B_Rev_2_PCBWay_Fabrication_%s.zip'
+                                % SUPERSEDED_PACKAGE),
+                   os.path.join(ROOT, 'backups', 'Zulu_A7_Fab_B_Rev_2_PCBWay_Fabrication_%s_silk-swap_superseded.zip'
+                                % SUPERSEDED_PACKAGE)]
 BOARD_W, BOARD_H = 69.85, 25.40
 PREV_RELEASE = '2026-11-11'
 SPAN_SHORT = {'Top-L2-GND': 'T-2', 'L2-GND-L3-SIG': '2-3', 'L3-SIG-L4-SIG': '3-4b', 'L4-SIG-L5-VCC3V3': '4-5',
@@ -122,6 +147,47 @@ def natkey(ref):
     return (re.sub(r'\d+', '', ref), int(re.sub(r'\D', '', ref) or 0))
 
 
+def changed_since_superseded():
+    """The exported Gerber/drill files whose data differ from the superseded package's copies (Gerber G04 comments
+    and the DRR's date and run-time lines ignored), for the THIS ISSUE paragraph, which says only the GTO changed."""
+    import io
+    import subprocess
+    import zipfile
+    path = next((p for p in SUPERSEDED_ZIPS if os.path.isfile(p)), None)
+    if path is None:
+        # backups/ is not in git: on a clean checkout the superseded ZIP is only in history (2026-11-24 review).
+        # The newest commit naming it may be the one that deleted it, so walk back to a commit that has a copy.
+        rel = os.path.relpath(SUPERSEDED_ZIPS[0], ROOT).replace(os.sep, '/')
+        try:
+            shas = subprocess.run(['git', '-C', ROOT, 'log', '--all', '--format=%H', '--', rel],
+                                  capture_output=True, text=True, check=True).stdout.split()
+        except (OSError, subprocess.CalledProcessError):
+            shas = []
+        for sha in shas:
+            got = subprocess.run(['git', '-C', ROOT, 'show', '%s:./%s' % (sha, rel)], capture_output=True)
+            if got.returncode == 0:
+                path = io.BytesIO(got.stdout)
+                break
+    if path is None:
+        raise SystemExit('the superseded %s fabrication package is in neither fabrication/, backups/ nor git '
+                         'history: the THIS ISSUE paragraph cannot be checked' % SUPERSEDED_PACKAGE)
+
+    def data(name, raw):
+        lines = raw.decode('latin-1').splitlines()
+        if name.endswith('.DRR'):
+            lines = [x for x in lines if not x.startswith(('NCDrill File Report For:', 'Total Processing Time'))]
+        return [x for x in lines if not x.startswith('G04 ')]
+    changed = []
+    with zipfile.ZipFile(path) as archive:
+        for name in archive.namelist():
+            if name.endswith('_FAB_NOTES.txt'):
+                continue
+            current = os.path.join(OUT, name)
+            if not os.path.isfile(current) or data(name, archive.read(name)) != data(name, open(current, 'rb').read()):
+                changed.append(name)
+    return changed
+
+
 def relocated_parts(B):
     """Parts of the 2026-11-11 release whose footprint, side, centre or rotation differs now, and parts added."""
     prev = json.load(open(PREV_COMPONENTS))['parts']
@@ -157,6 +223,20 @@ def main():
     titles = [t for t in B['texts'] if t['comp'] is None and t['layer'] == 'TopOverlay' and t['text'] == TITLE]
     if len(titles) != 1:
         raise SystemExit('%d free %r texts on Top Overlay, expected 1' % (len(titles), TITLE))
+    # the THIS ISSUE paragraph describes the 2026-11-24 silkscreen: refuse a board that does not match it
+    free_top = [t for t in B['texts'] if t['comp'] is None and t['layer'] == 'TopOverlay']
+    numbered = sorted(t['text'] for t in free_top if re.match(r'\d+(\s|$)', t['text']))   # '21', '21 GND'; not '1V0'
+    if numbered:
+        raise SystemExit('free Top Overlay texts start with a pin number %s; the note says none is printed' % numbered)
+    missing = [s for s in SILK_LABELS if sum(1 for t in free_top if t['text'] == s) != 1]
+    if missing:
+        raise SystemExit('free Top Overlay labels %s are not on the board exactly once' % missing)
+    if abs(titles[0]['y'] - TITLE_Y) > 0.001:
+        raise SystemExit('the title is at y %.3f mm, the note says %.2f' % (titles[0]['y'], TITLE_Y))
+    changed = changed_since_superseded()
+    if changed != [BASE + '.GTO']:
+        raise SystemExit('against the %s package the changed exports are %s; the note says only %s.GTO'
+                         % (SUPERSEDED_PACKAGE, changed, BASE))
     dvb = F['drill_vs_board']
     if any(v.get('board_not_in_file') or v.get('file_not_on_board') for v in dvb.values()):
         raise SystemExit('drill files and board disagree: %s' % dvb)
@@ -240,13 +320,21 @@ def main():
               '%.2f x %.2f mm: same outline, stack, layer use and via types and sizes as the %s Fab B Rev 2 data, and '
               'the same fabrication design rules except one new solder-mask rule (U2\'s pads use a 0.035 mm mask '
               'expansion instead of the board\'s 0.05 mm, see ENGINEERING QUESTIONS); two new component-clearance '
-              'rules (R131/R132 and X2) concern assembly only. It SUPERSEDES the %s Fab B Rev 2 data package and the earlier 2026-11-20 one (this one adds only the '
-              'silkscreen pin-1 dots); do not mix files of different packages. What changed '
+              'rules (R131/R132 and X2) concern assembly only. It SUPERSEDES the %s Fab B Rev 2 data package and both '
+              '2026-11-20 packages (see THIS ISSUE below); do not mix files of different packages. What changed '
               '(see CHANGES FROM THE %s RELEASE): U2 is now an FT2232HQ in a QFN-64 package with a grounded exposed '
               'pad, X4 is now a side-entry SMT header at the south edge, U10 is now an MSOP-8, %d SDRAM series '
               'resistors were added, %d parts were placed differently, and the area around them was re-routed. The '
               'drill and via counts below are new. Microvias sit in SMD pads; NO through via sits in any SMD pad '
               '(see VIA-IN-PAD).' % (w, h, PREV_RELEASE, PREV_RELEASE, PREV_RELEASE, len(added), len(moved)))
+    L += wrap('THIS ISSUE (%s) SUPERSEDES the %s package of this same revision (the one that added the pin-1 dots). '
+              'Only the top silkscreen (GTO) changed: every other Gerber, the drill files and the drill report carry '
+              'the same data as in that package (only header comments and the drill report\'s date and run-time '
+              'lines differ). The X2 header labels no longer print pin numbers: each signal name (GND, 3V3, C14, RST '
+              'and so on) now sits in the row next to the pins where its number was, and the board title moved '
+              '1.23 mm down into the freed row; a new "U1" label sits centred under the FPGA and a new "U4" label '
+              'to the right of U4; the "R4" label moved from the pin-name row to just below the R4 resistor array.'
+              % (date, SUPERSEDED_PACKAGE))
     L += wrap('Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as a standard six-layer '
               'prototype without confirming every blind/buried drill pair, the via-in-pad list and the '
               'ENGINEERING QUESTIONS below.')
@@ -278,6 +366,9 @@ def main():
     L += wrap('Silkscreen (2026-11-20): a 0.40 mm dot beside pin 1 (A1 on U1) of U1, U2, U3, U4, U8, Q1, BTN and X4 '
               'and beside each LED cathode (LD0-LD4), 0.30 mm beside U7 pin 1. Copper, solder mask, paste and drills '
               'are unchanged from the earlier 2026-11-20 package.')
+    L += wrap('Silkscreen (%s): the X2 header labels, the title position and new U1/U4 labels on the top silkscreen '
+              '(see THIS ISSUE above). Copper, solder mask, paste and drills are unchanged from the %s packages.'
+              % (date, SUPERSEDED_PACKAGE))
     if removed:
         raise SystemExit('parts of the %s release are gone from the board: %s' % (PREV_RELEASE, removed))
     A('')
