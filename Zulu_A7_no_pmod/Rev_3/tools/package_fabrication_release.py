@@ -28,6 +28,18 @@ Every expected number below was re-read from the Rev 3 DRR and equals tools/fab_
 0 missing / 0 extra). Rev 2 (2026-11-20, MD5 87414427): TXT T02 318, TX3 398, TX6 337, TX7 302, TX9 300,
 TX10 321, 1,260 microvias.
 
+NO-PMOD REV 3 SILKSCREEN RE-ISSUE (2026-11-24): supersedes the 2026-11-21 package of the same revision. Top
+Overlay only: the X2 pin numbers are gone and the X2 pin names sit in their row ('2 CLK' -> 'CLK', '30 C20' -> 'C20',
+pin 21 now prints 'GND'), the title moved 1.23 mm south, and free 'U1' / 'U4' labels were added (U1's designator is
+hidden). Board saved 2026-11-24 09:47:44 (MD5 2b655383, SHA-256 746DDC71...), DRC 09:48 0/0 with Component Clearance,
+then R4's label moved off the X2 pin-name row to a free 'R4' under the R4 array (designator hidden): board saved
+12:47:45 (MD5 66148256, SHA-256 511482C3...), DRC 12:47:58 0/0, Gerbers 12:51:44, NC drill 12:52:17;
+the earlier figures:
+Gerbers 09:49:35, NC drill 09:51:22 (G85 slots). Against the 2026-11-21 package every Gerber and drill file is
+identical apart from comment lines, except the GTO (tools/fab_notes.py checks this before writing the note); the
+DRR differs only in its date line. RELEASE_DATE, the expected PCB hashes and this paragraph changed; every drill
+expectation below is unchanged and still equals tools/fab_facts.json (re-measured on the new board).
+
 Earlier no-PMOD Rev 2 release (2026-11-13): board 24de4472, LQFP U2, top-entry X4, TXT T02 339, TX6 319,
 TX7 304, TX3 403, TX9 282, TX10 301, 1,206 microvias.
 """
@@ -48,7 +60,7 @@ FABRICATION = os.path.join(ROOT, "fabrication")
 PCB = os.path.join(PROJECT, "Zulu_a7_no_pmod.PcbDoc")
 RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_3"
 RELEASE_NAME = "Zulu A7 no-PMOD Rev 3"
-RELEASE_DATE = "2026-11-21"
+RELEASE_DATE = "2026-11-24"
 DEFAULT_NOTE = os.path.join(FABRICATION, f"{RELEASE_PREFIX}_PCBWay_FAB_NOTES.txt")
 DEFAULT_ARCHIVE = os.path.join(
     FABRICATION, f"{RELEASE_PREFIX}_PCBWay_Fabrication_{RELEASE_DATE}.zip"
@@ -64,6 +76,8 @@ def names_order(data):
     if isinstance(data, str):
         data = data.encode("latin-1", "replace")
     return any(hashlib.sha256(t.upper()).hexdigest() in ORDER_SHA256 for t in ORDER_TOKEN.findall(data))
+# no-PMOD Rev 3 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-24 09:47:44 after the X2 / U1 / U4 silkscreen change, DRC 0 with
+# Component Clearance (2026-11-21 13:55:37 board: SHA-256 346D121C..., MD5 8ba56533).
 # no-PMOD Rev 3 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-21 13:55:37 (STEMMA QT X5, title ZULU A7 2.4), DRC 0 with
 # Component Clearance. Rev 2: SHA-256 B2E9716F..., MD5 87414427.
 # no-PMOD Rev 2 Zulu_a7_no_pmod.PcbDoc, saved 2026-11-20 20:16:22 with the pin-1 silkscreen dots, DRC 0 with
@@ -72,9 +86,9 @@ def names_order(data):
 # CD502C40..., MD5 24de4472; Fab B Rev 2: 2026-11-12 00:16:55, title ZULU A7 2.2)
 # (Rev 1: SHA-256 C439E0F5...0382, MD5 830b1744)
 EXPECTED_PCB_SHA256 = (
-    "346D121CA6DBEFCBA5C26F334C4E9CEE3264245D96BC2736391C304199D7AF3F"
+    "511482C364416DC0C1E819D11C09D4A56D0ED8A34367C5BF557A8F98034E6A1F"
 )
-EXPECTED_PCB_MD5 = "8ba5653344f3ae7673e169964a5182c5"
+EXPECTED_PCB_MD5 = "661482566444257d69feddf68a83f94e"
 BASE = "Zulu_a7_no_pmod"
 OUTLINE = (0.0, 0.0, 60.96, 25.40)  # GM profile, mm
 GERBER_EXTENSIONS = [

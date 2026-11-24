@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Stylized top-view illustration of the Zulu_a7_no_pmod Rev 3 board (2026-11-14, redrawn 2026-11-19, Rev 3 2026-11-21).  READ-ONLY on every input.
+"""Stylized top-view illustration of the Zulu_a7_no_pmod Rev 3 board (2026-11-14, redrawn 2026-11-19, Rev 3 2026-11-21, silkscreen 2026-11-24).  READ-ONLY on every input.
 
     python tools/board_illustration.py [--pcb PCBDOC] [--out PNG]
 
@@ -13,13 +13,18 @@ Inputs
                                  route_model.py (FABB_MODEL=...) on the 2026-11-21 Rev 3 PcbDoc (md5 8ba56533, title ZULU A7 2.4:
                                  U2 = FT2232HQ QFN-64, X4 = side-entry S2B-PH-SM4-TB, U10 = MSOP-8,
                                  X5 = STEMMA QT SM04B-SRSS-TB on the Top at the east edge; C141/C142/C144/C145 on
-                                 the Bottom beside and under it)
+                                 the Bottom beside and under it). The 2026-11-24 boards (md5 2b655383, then 66148256) changed only
+                                 its Top Overlay: route_model.py on it gives the same board/planes/pads/tracks/vias
   tools/route/illustration/comps.json
                                  side / pattern / rotation per part, fed to body_check.build() for the body boxes,
-                                 from tools/route/illustration/comps_from_board.py on the same PcbDoc
+                                 from tools/route/illustration/comps_from_board.py on the same PcbDoc (identical
+                                 output on the 2026-11-24 board)
   Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc
-                                 the board (md5 8ba56533); its Texts6 stream gives the Top Overlay
-                                 free texts (pin labels, pin numbers, board title) and the visible designators.
+                                 the board (md5 66148256, saved 2026-11-24 12:47:45); its Texts6 stream gives the
+                                 Top Overlay free texts (X2 pin names in the row next to the pins, no pin numbers;
+                                 pin 21 'GND'; the board title at y 3.77; the 'U1' label under the FPGA and the
+                                 'U4' label beside U4, U1's own designator hidden; the 'R4' label under the R4 array, R4's designator hidden)
+                                 and the visible designators.
                                  Without olefile or the PcbDoc the labels fall back to short names derived from
                                  the X2 nets and the title 'ZULU A7 2.4'.
 Output
@@ -33,7 +38,8 @@ Output
 What is drawn: Top-side parts and the through-hole parts only (U3, U8, U10, the inductors and most passives are on
 the Bottom).  Stroke-font silk is drawn in DejaVu Sans Bold stretched into the stroke text's box (Altium's stroke
 font: advance = height, last glyph about 2/3 of the height wide).  X2 pins that carry no silk label get a red ring
-and a small red note outside the board (a note, not silk).  The board outline is a plain rectangle; the corners are
+and a small red note outside the board (a note, not silk); on the 2026-11-24 board these are pins 1 and 4-9 (pin 21
+now prints 'GND').  The board outline is a plain rectangle; the corners are
 rounded for the picture only.
 """
 import argparse
@@ -61,7 +67,7 @@ COMPS = os.path.join(HERE, 'route', 'illustration', 'comps.json')
 PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
 OUT = os.path.join(ROOT, 'docs', 'board_illustration_top.png')
 OUT_BOTTOM = os.path.join(ROOT, 'docs', 'board_illustration_bottom.png')
-RELEASED_MD5 = '8ba5653344f3ae7673e169964a5182c5'
+RELEASED_MD5 = '661482566444257d69feddf68a83f94e'    # 2026-11-24 silkscreen re-issue (2026-11-21: 8ba56533)
 
 # colours as the Asar picture
 BOARD, COPPER, PAD, SILK, DRILL = '#14361f', '#2c6b3e', '#c9a94a', '#ffffff', '#0a0a0a'
@@ -317,12 +323,14 @@ def draw(ax, M, D, silk, pts_per_mm):
             c, half = (y0 + y1) / 2, (y1 - y0) * TIGHT / 2
             y0, y1 = c - half, c + half
         text_in_box(ax, t['text'], (x0, x1, y0, y1), t['rot'])
-    # an X2 pin counts as labelled when a silk text box sits within 1.3 mm of its column and row edge
+    # an X2 pin counts as labelled when a free silk text with a letter spans its column (+-0.6 mm) and the text box's
+    # nearer edge is within 3.0 mm of the pin centre. 2026-11-24: was 4.5 mm, which counted the new 'U4' label
+    # (3.86 mm from pin 4) as pin 4's name; the X2 name rows are 1.07 mm (2026-11-24) / 2.32 mm (2026-11-21) away
     for p in refs.get('X2', []):
         for t in silk:
             x0, x1, y0, y1 = silk_box(t)
             if t['kind'] == 'free' and any(c.isalpha() for c in t['text']) and x0 - 0.6 <= p['x'] <= x1 + 0.6 and \
-                    min(abs(y0 - p['y']), abs(y1 - p['y'])) < 4.5:
+                    min(abs(y0 - p['y']), abs(y1 - p['y'])) < 3.0:
                 labelled.add(p['pad'])
     notes = []
     for p in sorted(refs.get('X2', []), key=lambda q: q['x']):

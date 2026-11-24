@@ -1,8 +1,22 @@
 ZULU A7 NO-PMOD REV 3 - PCBWAY FABRICATION NOTES
 Revision: Zulu A7 no-PMOD Rev 3  (silkscreen title "ZULU A7 2.4"; no-PMOD Rev 2 reads "ZULU A7 2.3")
-Release date: 2026-11-21
-PCB SHA-256: 346D121CA6DBEFCBA5C26F334C4E9CEE3264245D96BC2736391C304199D7AF3F
-Source: Zulu_a7_no_pmod.PcbDoc (MD5 8ba5653344f3ae7673e169964a5182c5)
+Release date: 2026-11-24
+PCB SHA-256: 511482C364416DC0C1E819D11C09D4A56D0ED8A34367C5BF557A8F98034E6A1F
+Source: Zulu_a7_no_pmod.PcbDoc (MD5 661482566444257d69feddf68a83f94e)
+
+SUPERSEDES THE 2026-11-21 PACKAGE OF THIS REVISION (SILKSCREEN ONLY)
+This package supersedes the Zulu A7 no-PMOD Rev 3 fabrication package dated
+2026-11-21; please use these files in its place and do not mix files of the
+two packages. Only the top silkscreen (Zulu_a7_no_pmod.GTO) changed: the X2
+pin numbers are no longer printed and the X2 pin names now sit in the row
+next to the pins where the numbers were ("2 CLK" and "30 C20" now read "CLK"
+and "C20", and pin 21 reads "GND" instead of "21"); the board title moved
+1.23 mm south into the freed row, and new "U1" and "U4" labels sit under the
+FPGA and beside U4; the "R4" label moved from the pin-name row to just below
+the R4 resistor array. Every other Gerber and every drill file is identical
+to the 2026-11-21 package apart from export comment lines, so copper, solder
+mask, paste, bottom silkscreen, outline, drills, via counts and stack are
+unchanged.
 
 ORDER AND CAM GATE
 This is a bare-board, six-layer, two-step sequential HDI release. It is a
@@ -14,10 +28,11 @@ FT2232HQ in a QFN-64 package, X4 is now a side-entry SMT header at the south
 edge (see CHANGES FROM FAB B REV 2). Rev 3 adds a STEMMA QT I2C connector on
 Top at the east edge, moves four capacitors to the Bottom, and the title is
 ZULU A7 2.4 (see CHANGES FROM NO-PMOD REV 2). The drill and via counts below
-are new. This is a NEW REVISION, not a replacement file set for the no-PMOD
-Rev 2 package (title ZULU A7 2.3); do not mix files of different packages.
-Microvias sit in SMD pads, and TWO through vias also sit in SMD pads (GND,
-in the U2 exposed pad and in X4 pad 2): both must be filled and capped (see
+are new against Rev 2 and unchanged from the 2026-11-21 Rev 3 package. This
+is a NEW REVISION, not a replacement file set for the no-PMOD Rev 2 package
+(title ZULU A7 2.3); do not mix files of different packages. Microvias sit
+in SMD pads, and TWO through vias also sit in SMD pads (GND, in the U2
+exposed pad and in X4 pad 2): both must be filled and capped (see
 VIA-IN-PAD).
 Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as
 a standard six-layer prototype without confirming every blind/buried drill
@@ -78,11 +93,11 @@ near the east edge were re-routed (the new I2C-SDA / I2C-SCL nets from U1 to
 X5, and the traces and cap feeds X5 displaced). Via objects 1,976 -> 1,992:
 through vias 318 -> 315, Top-L2 337 -> 351, L2-L3 302 -> 311, L3-L4 buried
 398 -> 402, L4-L5 300 -> 296, L5-Bottom 321 -> 317; via-in-pad sites 143 ->
-151. Silkscreen: the board title reads ZULU A7 2.4 (was 2.3), the X2 pin-21
-label reads "21" (its "GND" sat under an X5 tab), and X5 brings its outline
-and a pin-1 dot (its designator is not printed). Stack, finish, layer use,
-via and hole sizes, outline, X1 and its slots, and every design rule are
-unchanged.
+151. Silkscreen: the board title reads ZULU A7 2.4 (was 2.3), X5 brings its
+outline and a pin-1 dot (its designator is not printed), and the X2 pin
+labels and the U1 / U4 labels changed on 2026-11-24 (see SUPERSEDES above).
+Stack, finish, layer use, via and hole sizes, outline, X1 and its slots, and
+every design rule are unchanged.
 
 BOARD
 Finished outline: 60.96 mm x 25.40 mm (rectangle, from the GM profile)
@@ -563,14 +578,14 @@ FILE MAP
   Zulu_a7_no_pmod.DRR                Drill sizes and counts
 
 FINAL VERIFICATION
-Altium DRC 2026-11-21 13:55:47: 0 warnings, 0 rule violations. Un-routed
+Altium DRC 2026-11-24 12:47:58: 0 warnings, 0 rule violations. Un-routed
 nets, short circuits, every clearance rule, silkscreen, solder-mask sliver,
 net-antenna and component-body clearance checks report 0 (every part carries
 a 3D body at its datasheet maximum height). The board was saved at
-2026-11-21 13:55:37 with no edit between the DRC run and the save.
-Source MD5 8ba56533.
-Gerbers (exported 2026-11-21 13:57:11): metric RS-274X, 0.0001 mm coordinate resolution
-NC Drill (exported 2026-11-21 14:00:11): metric Excellon 4:4, separate round/slot files,
+2026-11-24 12:47:45 with no edit between the DRC run and the save.
+Source MD5 66148256.
+Gerbers (exported 2026-11-24 12:51:44): metric RS-274X, 0.0001 mm coordinate resolution
+NC Drill (exported 2026-11-24 12:52:17): metric Excellon 4:4, separate round/slot files,
 G85 plated slots
 Every drill hit was matched one-to-one against the PcbDoc via and pad
 positions (0 missing, 0 extra in every drill file).

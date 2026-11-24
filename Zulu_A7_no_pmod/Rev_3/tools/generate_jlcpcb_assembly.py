@@ -11,7 +11,7 @@ rotations, layers, and pad geometry are read from the current PcbDoc.
         --release-name <drawing-title> --assembler-neutral
 
 PCBWay mode writes <RELEASE_PREFIX>_PCBWay_BOM.csv in PCBWay's BOM template columns (MPN identities, DNS
-rows, X2 as its header-strip part number(s) from X2_STRIPS, per-line instructions),
+rows, X2 as its header-strip part number(s) from X2_STRIPS on a "Ship loose" line, per-line instructions),
 <RELEASE_PREFIX>_PCBWay_CPL.csv with the SMT parts only (PCBWay's centroid rule), and PCBWay-specific
 assembly notes.
 
@@ -74,6 +74,52 @@ Changed from the 2026-11-13 release:
   B2B/S2B-PH-K-S, so X2 is the only through-hole part and the notes no longer ask for X4 to be hand-soldered;
 - U10 sits 2.50 mm east and 1.60 mm north of its 2026-11-13 position (the CPL is read from the board);
 - the release date, FAB_ARCHIVE and ASSEMBLY_ARCHIVE are dated 2026-11-19.
+
+HEADERS SHIPPED LOOSE (2026-11-21, the board owner: "let's also have the headers be shipped loose on all boards"; the
+Asar Feather's pattern, Asar_feather/Rev_1/tools/generate_pcbway_assembly.py LOOSE_PARTS, as ported to
+Zulu_A7_Fab_B/Rev_2/tools the same day): in PCBWay mode the board's only through-hole part, X2 (4 x Sullins
+PRPC010SAAN-RC; this board has no J1), is still BOUGHT by PCBWay, same MPN and quantity per board, but NOT soldered:
+the four strips are packed loose with each board.
+- LOOSE_PARTS / LOOSE_TYPE / loose_note(): the BOM keeps X2's line in place (same Item #, MPN, maker, Qty,
+  description) with Type "Ship loose", the package marked "(not placed: shipped loose)" and the instruction "SHIP
+  LOOSE - do not solder, pack with each board ..." in place of the old underside-THT hand-solder note (X2_NOTE is
+  gone). check_loose() holds LOOSE_PARTS to the schematic MANF#/MANF and to X2_STRIPS, and requires every fitted
+  part without SMD pads to be loose (so the through-hole count stays 0).
+- fitted_refs() / loose_refs() / dns_refs(): "fitted" (placed by PCBWay) no longer includes X2. The CPL never held
+  it (no SMD pads) and is unchanged; the notes' counts and the scope lines now exclude it; Number of Through-Hole
+  Parts = 0; the only hand soldering left is X1's shell stakes; the X2 housing fit check left the notes
+  (x2_housing_neighbours() is gone; the release body gate still checks the housings for us). X2's bare plated holes
+  stay on the board, so the short-edge list still names X2, marked LOOSE_EDGE_MARK.
+- Drawings: X2's labels (bottom) read "X2 holes left empty - ... strips shipped loose" in red text in a white box (no
+  outline), X2 gets no pin-1 dot, and the footer (LOOSE_LEGEND) says the dots mark PLACED parts, that a dashed grey
+  outline with a red "DNP" label is not placed and that a red "holes left empty" label is a header shipped loose.
+- validate(): the loose line must be exactly LOOSE_PARTS (designator, MPN, maker, Qty) with the instruction, absent
+  from the CPL, and no placed line may be through-hole; the X2 checks now expect Type "Ship loose"; the notes must
+  name the loose line and say Number of Through-Hole Parts = 0 without any selective soldering; the bottom drawing
+  must label X2's holes as left empty; the fabrication ZIP the notes name must exist in fabrication/, carry the
+  current FAB_NOTES, and that FAB_NOTES must describe this PcbDoc (SHA-256).
+- RELEASE_DATE stays 2026-11-21 (this re-issue is the same day as the first Rev 3 release, so ASSEMBLY_ARCHIVE keeps
+  its name; the superseded ZIP went to backups/). FAB_ARCHIVE keeps naming the unchanged 2026-11-21 fabrication ZIP.
+The JLCPCB and neutral modes are unchanged (loose_refs() is empty there): they still list X2 as fitted THT.
+
+REVIEW FIXES (2026-11-21, same release day):
+- validate() reads the notes through loose_notes_problems(): no item (bullet or paragraph) outside the X2 SHIPPED
+  LOOSE paragraph and the "Loose parts" form line may name X2 and contain solder / fit / mount / populate / depanel
+  wording (FIT_WORDS), and inside those controlled items such wording may only be LOOSE_NOTE_PHRASES ("do NOT solder
+  them", "we fit the strips on the underside and solder them ourselves", ...). So the old "Then hand-solder X2 and
+  ...", "Depanel before fitting X2", "leave it unpopulated" and order-review lines cannot come back. The scope,
+  reflow, panel ("V-cut separating tool" for "depanelizer"), legend ("not placed (DNS)") and order-review lines were
+  reworded so that no other item pairs X2 with such a word.
+- The short-edge list names X2 again (its plated holes are 0.51 mm from both V-cut edges), marked LOOSE_EDGE_MARK;
+  validate() requires every such entry.
+- Drawing footer and notes legend now say what is drawn (LOOSE_LEGEND); validate() requires it on both drawings and
+  refuses the old "dashed red label" wording in the drawings and the notes.
+
+SILKSCREEN RE-ISSUE (2026-11-24): the board changed on the Top Overlay only (X2 pin numbers removed, X2 pin names in
+their row, title 1.23 mm south, free "U1" / "U4" labels; saved 09:47:44, MD5 2b655383), so the fabrication package was
+re-issued as Zulu_A7_no_pmod_Rev_3_PCBWay_Fabrication_2026-11-24.zip. RELEASE_DATE, FAB_ARCHIVE and ASSEMBLY_ARCHIVE
+are dated 2026-11-24; nothing else changed here (parts, placement, BOM and CPL come from the unchanged schematics and
+copper, and the drawings draw no silkscreen text).
 """
 
 import argparse
@@ -96,12 +142,14 @@ import pymupdf as fitz
 # writes into Rev_2/fabrication/; these notes point PCBWay at them.
 RELEASE_PREFIX = "Zulu_A7_no_pmod_Rev_3"
 RELEASE_NAME = "Zulu A7 no-PMOD Rev 3"
-RELEASE_DATE = "2026-11-21"
+# 2026-11-21: also the date of the headers-shipped-loose re-issue (same day). 2026-11-24: the silkscreen re-issue; the
+# fabrication package was re-issued too, so FAB_ARCHIVE names the 2026-11-24 ZIP tools/package_fabrication_release.py wrote
+RELEASE_DATE = "2026-11-24"
 BOARD_WIDTH = 60.96            # Board6 VX/VY outline 2400 x 1000 mil (2.4 x 1.0 in); check_outline() holds it to the PcbDoc
 BOARD_HEIGHT = 25.40
-FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_3_PCBWay_Fabrication_2026-11-21.zip"
+FAB_ARCHIVE = "Zulu_A7_no_pmod_Rev_3_PCBWay_Fabrication_2026-11-24.zip"
 FAB_NOTES = "Zulu_A7_no_pmod_Rev_3_PCBWay_FAB_NOTES.txt"
-ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_3_PCBWay_Assembly_2026-11-21.zip"
+ASSEMBLY_ARCHIVE = "Zulu_A7_no_pmod_Rev_3_PCBWay_Assembly_2026-11-24.zip"
 FINISHED_THICKNESS = "1.60 +/- 0.16 mm"   # PCBWay's agreed stack (Shengyi S1000-2M), see FAB_NOTES
 PANEL = "1x4"                              # PROPOSAL only, to confirm with PCBWay: Fab B's basis, 5 mm V-cut rails at the two short ends
 RAIL_MM = 5.0
@@ -128,6 +176,7 @@ import bom_audit
 from route_inputs import LAYER, U, kvs
 ARTWORK_REFS = {"U$2", "U$3", "U$4", "U$5"}
 NON_PART_LIBS = {"DOCFIELD", "CC_BY", "CC_CC", "CC_SA", "CC_COPYRIGHT"}
+# X2's housings sit on the bottom: its drawing labels go on the bottom drawing (since 2026-11-21 we fit the strips)
 ASSEMBLY_LAYER_OVERRIDES = {"X2": "Bottom"}
 
 # Exact MPN-to-LCSC identities recorded in the project's September 2026
@@ -620,12 +669,90 @@ X2_STRIPS = [
      "1x10 male breakaway header strip, 2.54 mm pitch, 0.64 mm square pins, gold flash",
      "1x10 through-hole strip", [(1, 10), (11, 20), (21, 30), (31, 40)]),
 ]
-X2_NOTE = (
-    "Underside THT: housing on the BOTTOM side, the short post end (about 3 mm) up "
-    "through the board, the long mating end pointing down. Hand-solder on top after "
-    "both reflows and after depanel. {qty} per board."
-)
 NUMBER_WORDS = {1: "one", 2: "two", 3: "three", 4: "four"}
+
+# Parts PCBWay buys but does NOT solder: packed loose with each board (board owner, 2026-11-21: "let's also have the
+# headers be shipped loose on all boards"; the Asar Feather's LOOSE_PARTS pattern). Each entry is one BOM purchase
+# line: (MPN, maker, qty per board). The designator is not placed, not in the CPL and not DNS; its plated holes stay
+# empty. check_loose() holds this table to the schematic MANF#/MANF and X2's line to X2_STRIPS; validate() holds the
+# written BOM, CPL, notes and drawings to it. PCBWay mode only (loose_refs() is empty in the JLCPCB/neutral modes).
+# No-PMOD: X2 is the board's only through-hole part (no J1).
+LOOSE_PARTS = {
+    "X2": [("PRPC010SAAN-RC", "Sullins", 4)],     # four 1x10 strips, housings on the bottom side
+}
+LOOSE_TYPE = "Ship loose"          # BOM Type of a loose line: bought, not placed
+LOOSE_INSTRUCTION = "SHIP LOOSE - do not solder, pack with each board."   # validate() requires it on every loose line
+LOOSE_WHAT = {"X2": "strips"}
+# 2026-11-21 review: the notes must never ask PCBWay to solder (by hand or selectively), fit, mount, populate (or leave
+# unpopulated), or depanel before fitting, a loose designator. FIT_WORDS is that wording; LOOSE_NOTE_PHRASES are the
+# only places it may appear inside the SHIPPED LOOSE paragraph and the "Loose parts" form line (loose_notes_problems).
+FIT_WORDS = re.compile(r"solder|\bfit|\bmount|populat|depanel|\binstall|\binsert", re.I)
+LOOSE_NOTE_PHRASES = ("do NOT solder them", "do not solder", "NOT soldered", "no solder",
+                      "we fit the strips on the underside and solder them ourselves")
+# a loose part's plated holes stay on the board: the short-edge list names them with this mark (like JP3/JP4's DNS)
+LOOSE_EDGE_MARK = "(bare plated holes, header shipped loose)"
+# what the drawings draw: DNP = dashed grey outline + red "DNP <ref>" label; X2 (loose) = red "holes left empty" label
+# in a white box, no outline. The PCBWay footer says so, word for word.
+LOOSE_LEGEND = ('Dashed grey outline + red "DNP" label = not placed (DNS); red "holes left empty" label = header '
+                'shipped loose.')
+
+
+def loose_note(ref, qty, holes, extra=""):
+    """The BOM instruction of a ship-loose line (Asar's LOOSE_NOTE, with the designator's own hole count)."""
+    return (f"{LOOSE_INSTRUCTION} Buy {qty} per board and pack {qty} with each finished board{extra}; "
+            f"{ref}'s {holes} plated holes stay EMPTY at assembly (no paste, no solder; we fit the "
+            f"{LOOSE_WHAT[ref]} ourselves). Not in the CPL.")
+
+
+def loose_refs(parts):
+    """PCBWay mode: the designators PCBWay buys and ships loose (LOOSE_PARTS, not DNS). None in the other modes."""
+    if ASSEMBLER != "pcbway":
+        return set()
+    return {ref for ref in LOOSE_PARTS if ref in parts and parts[ref]["params"].get("DNS") != "Yes"}
+
+
+def dns_refs(parts):
+    return {ref for ref, component in parts.items() if component["params"].get("DNS") == "Yes"}
+
+
+def fitted_refs(parts):
+    """Placed (soldered) by the assembler: not DNS and not shipped loose."""
+    return set(parts) - dns_refs(parts) - loose_refs(parts)
+
+
+def loose_notes_problems(notes, loose):
+    """2026-11-21 review: the items of the PCBWay notes that ask for a loose designator to be soldered, fitted,
+    mounted, populated or depanelled first ([] when there are none). The notes are read as items: a line at column 0
+    (a "- " bullet or a paragraph line) with its indented continuation lines; an unindented line that starts in lower
+    case or with a digit continues the item above. The SHIPPED LOOSE paragraph of each loose designator and the
+    "Loose parts" form line are ours: in them FIT_WORDS may appear only inside LOOSE_NOTE_PHRASES. No other item may
+    name a loose designator and contain FIT_WORDS anywhere (a whole bullet, not a sentence, so "- X2 ... Solder
+    after reflow." with an implied subject is caught too)."""
+    if not loose:
+        return []
+    alternation = "|".join(re.escape(ref) for ref in sorted(loose))
+    names_loose = re.compile(rf"(?<![A-Za-z0-9$])(?:{alternation})(?![A-Za-z0-9])")
+    items = []
+    for line in notes.splitlines():
+        if not line.strip():
+            items.append([])
+        elif items and items[-1] and (line[0] == " " or (not line.startswith("- ") and re.match(r"[a-z0-9(]", line))):
+            items[-1].append(line)
+        else:
+            items.append([line])
+    problems = []
+    for item in filter(None, items):
+        text = " ".join(line.strip() for line in item)
+        if re.match(rf"- (?:{alternation})\b[^.]*SHIPPED LOOSE", text) or text.startswith("- Loose parts ("):
+            rest = text
+            for phrase in LOOSE_NOTE_PHRASES:
+                rest = rest.replace(phrase, " ")
+            if FIT_WORDS.search(rest):
+                problems.append(text)
+            continue
+        if names_loose.search(text) and FIT_WORDS.search(text):
+            problems.append(text)
+    return problems
 
 
 def x2_strip_count():
@@ -700,6 +827,34 @@ def check_x2(parts, geometry):
     pins = sum(b - a + 1 for a, b in board)
     if pins != len(geometry["X2"]["pads"]) or pins != 40:
         raise ValueError(f"X2 strips cover {pins} pins, board X2 has {len(geometry['X2']['pads'])} pads")
+
+
+def check_loose(parts, geometry):
+    """PCBWay mode (2026-11-21): LOOSE_PARTS must be what the schematic buys (MANF# 'MPN' or 'Nx MPN [+ Nx MPN]',
+    MANF the maker), X2's line must be X2_STRIPS, every loose part must be through-hole only and not DNS, and every
+    fitted part without SMD pads must be loose, so nothing is left for through-hole assembly."""
+    for ref, lines in LOOSE_PARTS.items():
+        if ref not in parts or parts[ref]["params"].get("DNS") == "Yes":
+            raise ValueError(f"loose part {ref} is not a populated schematic part")
+        params = parts[ref]["params"]
+        manf = clean(params.get("MANF#"))
+        if len(lines) == 1 and lines[0][2] == 1:
+            want = lines[0][0]
+        else:
+            want = " + ".join(f"{qty}x {mpn}" for mpn, _, qty in lines)
+        if manf != want:
+            raise ValueError(f"{ref} schematic MANF# {manf!r} != loose lines {want!r}")
+        makers = {maker for _, maker, _ in lines}
+        if makers != {clean(params.get("MANF"))}:
+            raise ValueError(f"{ref} schematic MANF {params.get('MANF')!r} != loose makers {sorted(makers)}")
+        if geometry[ref]["has_smd"] or not geometry[ref]["has_th"]:
+            raise ValueError(f"loose part {ref} is not a through-hole-only part")
+    x2_table = sorted((mpn, X2_MAKER, len(runs)) for mpn, _, _, _, runs in X2_STRIPS)
+    if sorted(LOOSE_PARTS.get("X2", [])) != x2_table:
+        raise ValueError(f"LOOSE_PARTS X2 {sorted(LOOSE_PARTS.get('X2', []))} != X2_STRIPS {x2_table}")
+    tht_placed = sorted(ref for ref in fitted_refs(parts) if not geometry[ref]["has_smd"])
+    if tht_placed:
+        raise ValueError(f"through-hole parts {tht_placed} would be placed: ship them loose (LOOSE_PARTS) or DNS them")
 
 
 def check_outline():
@@ -817,6 +972,7 @@ def buyer_spec(spec):
 
 def pcbway_rows(rows, parts, geometry):
     leds = led_polarity_notes(geometry)
+    loose = loose_refs(parts)
     out = []
     for row in rows:
         refs = row["_refs"]
@@ -828,15 +984,23 @@ def pcbway_rows(rows, parts, geometry):
         package = PACKAGE_NAMES.get(row["Footprint"], row["Footprint"])
         kind = {"SMT": "SMD", "THT": "thru-hole", "Mixed": "SMD"}[row["Assembly Type"]]
         if refs == ["X2"]:
+            # 2026-11-21: shipped loose (check_loose holds X2 in LOOSE_PARTS), the line keeps its MPN, Qty and text
+            if "X2" not in loose:
+                raise ValueError("X2 is not shipped loose: the PCBWay X2 line is written for a ship-loose X2")
             for strip, _, desc, pkg, runs in X2_STRIPS:
                 qty = len(runs)
-                pins = f"X2 pins {x2_runs_text(runs)}" + (", one strip each." if qty > 1 else ".")
+                pins = f" (one strip each for X2 pins {x2_runs_text(runs)})" if qty > 1 else \
+                    f" (X2 pins {x2_runs_text(runs)})"
                 out.append({
                     "Designator": "X2", "Qty": str(qty), "Manufacturer": X2_MAKER, "Mfg Part #": strip,
-                    "Description / Value": desc, "Package/Footprint": pkg, "Type": "thru-hole",
-                    "Your Instructions / Notes": f"{pins} {X2_NOTE.format(qty=qty)}", "_refs": refs, "_qty": qty,
+                    "Description / Value": desc, "Package/Footprint": f"{pkg} (not placed: shipped loose)",
+                    "Type": LOOSE_TYPE, "Your Instructions / Notes":
+                        loose_note("X2", qty, len(geometry["X2"]["pads"]), pins),
+                    "_refs": refs, "_qty": qty,
                 })
             continue
+        if set(refs) & loose:
+            raise ValueError(f"a BOM group holds a ship-loose designator other than X2: {refs}")
         note = PCBWAY_LINE_NOTES.get(mpn, "")
         led = [leds[ref] for ref in refs if ref in leds]
         if led:
@@ -896,10 +1060,11 @@ def write_bom(rows, parts=None, geometry=None):
 def write_cpl(parts, geometry):
     path = os.path.join(ASSEMBLY, CPL_FILENAME)
     columns = ["Designator", "Mid X", "Mid Y", "Layer", "Rotation"]
+    placed = fitted_refs(parts)                                   # 2026-11-21: never a ship-loose part
     fitted = [
         ref
-        for ref, component in parts.items()
-        if component["params"].get("DNS") != "Yes"
+        for ref in parts
+        if ref in placed
         and (ASSEMBLER != "pcbway" or geometry[ref]["has_smd"])   # PCBWay: SMT parts only
     ]
     with open(path, "w", newline="", encoding="utf-8-sig") as handle:
@@ -920,11 +1085,7 @@ def write_cpl(parts, geometry):
 
 
 def assembly_counts(parts, geometry):
-    fitted = {
-        ref
-        for ref, component in parts.items()
-        if component["params"].get("DNS") != "Yes"
-    }
+    fitted = fitted_refs(parts)
     return {
         side: sum(geometry[ref]["layer"] == side for ref in fitted)
         for side in ("Top", "Bottom")
@@ -983,31 +1144,15 @@ def via_phrase(census, kind, noun):
     return f"{total} {noun} (" + ", ".join(f"{n} {label}" for n, label in parts) + ")"
 
 
-def x2_housing_neighbours(geometry):
-    """Bottom-side SMD pads under or within 0.1 mm of X2's 2.54 mm housings, as (ref, overlap mm).
-    Rev 2: the strips are the board's own X2 pad runs (x2_pin_runs), not a split at x 33.0."""
-    bands = [(min(xs) - 1.27, y - 1.27, max(xs) + 1.27, y + 1.27) for _, _, y, xs in x2_pin_runs(geometry)]
-    near = {}
-    for ref, item in geometry.items():
-        if item["layer"] != "Bottom" or ref == "X2":
-            continue
-        for pad in item["pads"]:
-            if pad["hole"] > 1e-6 or pad["layer"] != "Bottom":
-                continue
-            px0, py0 = pad["x"] - pad["sx"] / 2, pad["y"] - pad["sy"] / 2
-            px1, py1 = pad["x"] + pad["sx"] / 2, pad["y"] + pad["sy"] / 2
-            for bx0, by0, bx1, by1 in bands:
-                if px1 < bx0 or px0 > bx1:
-                    continue
-                gap = max(by0 - py1, py0 - by1)
-                if gap < 0.1:
-                    near[ref] = min(near.get(ref, 9.0), gap)
-    return near
+# x2_housing_neighbours() (the X2 housing fit check written into the notes) was removed on 2026-11-21: PCBWay no
+# longer fits X2. The release body gate (tools/release_body_gate.py) still checks the four housings against the
+# bottom-side parts for us.
 
 
 def short_edge_parts(geometry, fitted, limit=1.5):
-    """Fab B: fitted parts whose pad copper comes within `limit` mm of the short (V-cut) edges x=0 / x=W,
-    as (ref, edge, distance mm), nearest first."""
+    """Fab B: the given parts (the notes pass the fitted ones plus the loose header X2, whose bare plated holes stay on
+    the board) whose pad copper comes within `limit` mm of the short (V-cut) edges x=0 / x=W, as (ref, edge,
+    distance mm), nearest first."""
     best = {}
     for ref in fitted:
         for pad in geometry[ref]["pads"]:
@@ -1054,25 +1199,29 @@ def board_vippo():
 
 
 def write_notes_pcbway(parts, geometry, bom_rows):
-    fitted = {ref for ref, component in parts.items() if component["params"].get("DNS") != "Yes"}
-    dnp = sorted(set(parts) - fitted, key=bom_audit.natkey)
+    fitted = fitted_refs(parts)
+    dnp = sorted(dns_refs(parts), key=bom_audit.natkey)
     counts = assembly_counts(parts, geometry)
     rows = pcbway_rows(bom_rows, parts, geometry)
     buy_rows = [row for row in rows if row["Type"] != "DNS"]
+    placed_rows = [row for row in buy_rows if row["Type"] != LOOSE_TYPE]
+    loose_rows = [row for row in buy_rows if row["Type"] == LOOSE_TYPE]
+    loose_text = ", ".join(f"{row['Designator']} = {row['Mfg Part #']} x{row['Qty']}" for row in loose_rows)
     smd = sorted((ref for ref in fitted if geometry[ref]["has_smd"]), key=bom_audit.natkey)
-    tht_parts = sum(row["_qty"] for row in buy_rows if row["Type"] == "thru-hole")
+    tht_parts = sum(row["_qty"] for row in placed_rows if row["Type"] == "thru-hole")
     # No-PMOD: J1 is gone; X2's strips are the only through-hole parts (X4 is the SMD S2B-PH-SM4-TB again, 2026-11-19).
-    tht_refs = {ref for row in buy_rows if row["Type"] == "thru-hole" for ref in row["_refs"]}
-    if tht_refs != {"X2"}:
-        raise ValueError(f"through-hole parts {sorted(tht_refs)}: the notes are written for X2 alone")
-    tht_text = f"{NUMBER_WORDS[x2_strip_count()]} X2 strips"
+    # 2026-11-21: they are shipped loose, so nothing is through-hole assembled; the notes below are written for that
+    loose_refs_seen = {ref for row in loose_rows for ref in row["_refs"]}
+    if tht_parts or loose_refs_seen != {"X2"}:
+        raise ValueError(f"{tht_parts} through-hole parts placed, loose {sorted(loose_refs_seen)}: "
+                         "the notes are written for 0 placed and X2 shipped loose")
+    tht_text = f"the {NUMBER_WORDS[x2_strip_count()]} X2 strips"
     series_refs = next(row["_refs"] for row in bom_rows if row["Manufacturer Part Number"] == SERIES_R_MPN)
     series_top = [ref for ref in series_refs if geometry[ref]["layer"] == "Top"]
     series_bottom = [ref for ref in series_refs if geometry[ref]["layer"] == "Bottom"]
     vippo = series_r_vippo()
     vip_sites, vip_pads, vip_parts, vip_thru, vip_multi = board_vippo()
     jtag_text = jtag_edge_text(geometry)
-    tht_joints = sum(len(geometry[ref]["pads"]) for ref in fitted if not geometry[ref]["has_smd"])
     n0201 = sum(len(row["_refs"]) for row in bom_rows if row["Footprint"] in ("C0201", "R0201"))
     top0201 = sum(1 for row in bom_rows if row["Footprint"] in ("C0201", "R0201")
                   for ref in row["_refs"] if geometry[ref]["layer"] == "Top")
@@ -1087,12 +1236,11 @@ def write_notes_pcbway(parts, geometry, bom_rows):
     led_side = {side for side, _, _ in leds.values()}
     assert len(led_side) == 1
     led_side = led_side.pop()
-    near = x2_housing_neighbours(geometry)
-    overlapping = sorted((ref for ref, gap in near.items() if gap < 0), key=bom_audit.natkey)
-    close = sorted((ref for ref, gap in near.items() if gap >= 0), key=bom_audit.natkey)
-    worst = min(near.values()) if near else 0.0
-    edge_parts = short_edge_parts(geometry, fitted)
-    edge_text = "; ".join(f"{ref} {dist:.2f} mm from the {edge} edge" for ref, edge, dist in edge_parts) or "none"
+    # 2026-11-21 review: X2's plated holes stay on the board, so X2 stays in the short-edge list, marked
+    loose = loose_refs(parts)
+    edge_parts = short_edge_parts(geometry, fitted | loose)
+    edge_text = "; ".join(f"{ref} {dist:.2f} mm from the {edge} edge" + (f" {LOOSE_EDGE_MARK}" if ref in loose else "")
+                          for ref, edge, dist in edge_parts) or "none"
     pin1 = pin_one_parts(parts, geometry, fitted)
     pin1_text = ", ".join(pin1[:-1]) + " and " + pin1[-1]
     led_x = led_k_text(leds, sorted(leds, key=bom_audit.natkey))
@@ -1126,7 +1274,12 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"- Number of Unique Parts = {len({row['Mfg Part #'] for row in buy_rows})}; "
         f"Number of SMD Parts = {len(smd)};",
         f"  Number of BGA/QFP Parts = 2 (U1 BGA, U2 QFN-64); Number of Through-Hole",
-        f"  Parts = {tht_parts} ({tht_text}, {tht_joints} joints).",
+        f"  Parts = {tht_parts} (no through-hole part is placed: the header strips are shipped loose, see",
+        "  the next line; X1's two shell stakes in plated slots are hand-soldered, see below).",
+        f"- Loose parts (bought, NOT soldered, packed with each board): {len(loose_rows)} BOM "
+        f"line{'s' if len(loose_rows) != 1 else ''}, {loose_text}. Put \"X2 header strips ({loose_text}): buy, "
+        "do not solder, pack one set with each board\" in \"Detailed information of assembly\"; "
+        "they are counted in Number of Unique Parts above.",
         "- Contains sensitive components/parts = Yes. Paste into its box:",
         f"  \"{u1_mpn}, FT2232HQ-REEL, AS4C32M16SB-7TCN, W25Q128JVSIQ,",
         f"  {u8_mpn}: moisture sensitive, follow the MSL label, bake if floor life",
@@ -1148,11 +1301,11 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         f"Fitted PCB designators: {len(fitted)}",
         f"Top-side fitted designators: {counts['Top']}",
         f"Bottom-side fitted designators: {counts['Bottom']}",
-        f"Physical parts per board: {sum(row['_qty'] for row in buy_rows)} "
-        f"(X2 is four strips under one designator)",
-        f"BOM purchase lines: {len(buy_rows)}; DNS lines: {len(rows) - len(buy_rows)} "
-        f"({', '.join(dnp)})",
-        "Assembly is required on both sides: SMT bottom, SMT top, then hand soldering.",
+        f"Physical parts placed per board: {sum(row['_qty'] for row in placed_rows)}; plus "
+        f"{sum(row['_qty'] for row in loose_rows)} shipped loose ({tht_text})",
+        f"BOM purchase lines: {len(buy_rows)} ({len(placed_rows)} placed + {len(loose_rows)} ship-loose); "
+        f"DNS lines: {len(rows) - len(buy_rows)} ({', '.join(dnp)})",
+        "Assembly is required on both sides: SMT bottom, SMT top, then hand soldering of X1's shell stakes.",
         f"BGA: U1 only, {u1_mpn}, 0.5 mm pitch, {len(u1)} round lands of",
         f"{u1_land:.3f} mm. Other 0.5 mm pitch: U2 QFN-64 (top, 4.20 mm exposed pad), U8 {u8_mpn}",
         "QFN-28 4 x 5 mm with exposed pad (bottom).",
@@ -1181,20 +1334,19 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  right). Please confirm or propose a panel for this board size.",
         f"  Parts nearest the short edges (pad copper): {edge_text}.",
         f"  JTAG: {jtag_text}.",
-        "  Confirm the depanelizer and support fixture cannot touch them.",
+        "  Confirm the V-cut separating tool and support fixture cannot touch them.",
         f"- X1 sits at the top long edge (X {x1[0]:.1f}-{x1[2]:.1f} mm) and X4 near the bottom",
         f"  long edge (X {x4[0]:.1f}-{x4[2]:.1f} mm; its pad copper is {x4[1]:.2f} mm from the edge and its plug",
-        "  opening faces it, so the battery cable leaves the board there). X2's housings seat along both long",
-        "  edges: no separation residue where a housing seats.",
-        "- Depanel with a supported cutter, not by hand-snapping. Depanel before",
-        "  fitting X2.",
+        "  opening faces it, so the battery cable leaves the board there). X2's holes run along both long "
+        "edges and we seat its housings there later: no separation residue where a housing seats.",
+        "- Depanel with a supported cutter, not by hand-snapping.",
         "- The board has no fiducials. Please put global fiducials on the rails",
         "  (top and bottom) and confirm that they suffice for U1 and the 0201s,",
         "  or propose another alignment method.",
         "",
         "CPL AND ORIENTATION",
         f"{CPL_FILENAME}: Designator, Mid X, Mid Y, Layer (Top/Bottom), Rotation.",
-        "It lists the SMT parts only (X4 included); X2 is hand-soldered and is not in it.",
+        "It lists the SMT parts only (X4 included); X2 is shipped loose, not placed, and is not in it.",
         "If your line needs one file per side, please split it by the Layer column.",
         "- Units are millimetres (\"mm\" suffix). Origin: the board's lower-left",
         f"  corner; the outline runs from 0,0 to {BOARD_WIDTH:.2f},{BOARD_HEIGHT:.2f}.",
@@ -1206,39 +1358,29 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  (0/90/180/270), not converted for bottom-side parts. Please confirm your",
         "  bottom-side convention against the bottom drawing before programming.",
         "- The top drawing is viewed from the top; the bottom drawing is mirrored,",
-        "  viewed from the bottom. Red dot = pin 1/A1; red bar = LED cathode (K);",
-        "  dashed red label = DNP. The silkscreen also marks polarity: a dot beside",
-        "  pin 1 (A1 on U1) of U1, U2, U3, U4, U7, U8, Q1, BTN, X4 and X5, a dot beside",
-        "  each LED's cathode, and U10's tick beside pin 1 (X1 and X3 are keyed).",
-        "  The drawings and this file remain the orientation reference.",
+        "  viewed from the bottom. Red dot = pin 1/A1 of a placed part; red bar = LED",
+        "  cathode (K); dashed grey outline + red \"DNP\" label = not placed (DNS); red",
+        "  \"holes left empty\" label (in a white box, no outline) = header shipped",
+        "  loose. The silkscreen also marks polarity: a dot beside pin 1 (A1 on U1) of",
+        "  U1, U2, U3, U4, U7, U8, Q1, BTN, X4 and X5, a dot beside each LED's cathode,",
+        "  and U10's tick beside pin 1 (X1 and X3 are keyed; X2 is shipped loose). The",
+        "  drawings and this file remain the orientation reference.",
         "If the CPL and a drawing disagree, please send an engineering query.",
         "",
         "SPECIAL COMPONENT INSTRUCTIONS",
         "- Reflow order: bottom side FIRST, top side LAST. X1 is rated for one",
-        "  reflow cycle and U1 should see only one. Then hand-solder X2 and",
-        "  X1's shell stakes.",
+        "  reflow cycle and U1 should see only one. Then hand-solder X1's shell",
+        "  stakes; nothing else is soldered by hand.",
         *wrap_x2(
-            f"- X2 is not one 40-pin part: {NUMBER_WORDS[x2_strip_count()]} single-row 2.54 mm THT strips "
-            f"mounted on the underside, {x2_strip_text()}. "
-            + ("The BOM has one line for them: designator X2, Qty "
-               f"{x2_strip_count()}. " if len(X2_STRIPS) == 1 else
-               "The BOM has one line per strip part number with designator X2 on each. ")
-            + "Housings on the BOTTOM side; insert the SHORT post end (about 3 mm) up through the "
-            "board so about 1.4 mm stands on top for soldering; the LONG mating end points down. "
-            "Solder on top by hand or selectively, after both reflows and depanel.",
+            f"- X2 is SHIPPED LOOSE: {NUMBER_WORDS[x2_strip_count()]} single-row 2.54 mm header strips, "
+            f"{x2_strip_text()}. "
+            + ("The BOM has one line for them (designator X2, Qty "
+               f"{x2_strip_count()}, Type {LOOSE_TYPE}): " if len(X2_STRIPS) == 1 else
+               f"The BOM has one {LOOSE_TYPE} line per strip part number with designator X2 on each: ")
+            + f"buy them, do NOT solder them, and pack one set of {NUMBER_WORDS[x2_strip_count()]} with each "
+            f"finished board. Leave X2's {len(geometry['X2']['pads'])} plated holes empty (no paste, no solder, "
+            "no masking residue in the holes): we fit the strips on the underside and solder them ourselves.",
             78),
-    ]
-    if overlapping or close:
-        lines += textwrap.wrap(
-            f"Fit check: in plan view the housings overlap the pads of "
-            f"{', '.join(overlapping) or 'none'} (worst {abs(min(worst, 0.0)):.2f} mm) and come "
-            f"within 0.1 mm of {', '.join(close) or 'none'}. Seat each strip without force, "
-            "check that it sits flush on the first article, and report any interference "
-            "rather than forcing it.",
-            78, initial_indent="  ", subsequent_indent="  ")
-    lines += [
-        "  If you cannot quote X2, leave it unpopulated, do not buy the strips,",
-        "  and say so in the quotation.",
         "- JP3 and JP4 are intentional DNS flying-lead/pogo positions (DNS rows in",
         "  the BOM): bare plated holes, no paste, leave empty. They form the JTAG",
         "  column along the left (west) board edge.",
@@ -1336,8 +1478,9 @@ def write_notes_pcbway(parts, geometry, bom_rows):
         "  agreed) with its drawing, and rail fiducials (and that they alone suffice);",
         "- your bottom-side CPL rotation convention;",
         "- authorized sourcing for U1 and U2, and any lines with no stock;",
-        "- hand soldering of X2's four strips and X1's stakes, or X2 left",
-        "  unpopulated;",
+        "- hand soldering of X1's stakes;",
+        "- X2's four strips bought, not placed, packed loose with each board, their",
+        "  holes left empty;",
         f"- placement of {series_refs[0]}-{series_refs[-1]} exactly per the CPL, and that all {vip_sites}",
         "  via-in-pad sites (FAB NOTES table) arrive filled and capped;",
         "- the stencil apertures for U1, U2 and U8, and X-ray of U1 (and what the",
@@ -1633,6 +1776,7 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
 
     detail = (x1 - x0) < BOARD_WIDTH - 1
     font_size = 7.0 if detail else 4.6
+    loose = loose_refs(parts)
     for ref in sorted(side_refs, key=bom_audit.natkey):
         item = geometry[ref]
         bx0, by0, bx1, by1 = item["bbox"]
@@ -1643,9 +1787,12 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
         )
         dnp = parts[ref]["params"].get("DNS") == "Yes"
         if ref == "X2":
+            x2_loose = ref in loose     # PCBWay mode since 2026-11-21: the strips are shipped loose
             for label_text, label_y in (
-                ("X2 - two upper-row header strips", 23.1),
-                ("X2 - two lower-row header strips", 2.3),
+                ("X2 holes left empty - upper strips shipped loose" if x2_loose
+                 else "X2 - two upper-row header strips", 23.1),
+                ("X2 holes left empty - lower strips shipped loose" if x2_loose
+                 else "X2 - two lower-row header strips", 2.3),
             ):
                 label = board_to_page(item["x"], label_y, region, plot, side)
                 text_width = fitz.get_text_length(
@@ -1668,8 +1815,10 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
                     label_text,
                     fontsize=font_size,
                     fontname="helv",
-                    color=(0.05, 0.07, 0.09),
+                    color=(0.55, 0.12, 0.10) if x2_loose else (0.05, 0.07, 0.09),
                 )
+            if x2_loose:
+                continue          # not placed: no pin-1 dot on its holes
         else:
             page.draw_rect(
                 box,
@@ -1750,8 +1899,9 @@ def draw_assembly_page(doc, side, region, label, parts, geometry):
     }.get(ASSEMBLER, "JLCPCB's placement preview")
     page.insert_text(
         (52, page.rect.height - 28),
-        "Red dot = pin 1/A1. Red bar = LED cathode (pad K). Dashed red label = DNP. "
-        f"Verify every rotation and polarity in {preview_text}.",
+        (f"Red dot = pin 1/A1 of a placed part. Red bar = LED cathode (pad K). {LOOSE_LEGEND} "
+         if loose else "Red dot = pin 1/A1. Red bar = LED cathode (pad K). Dashed red label = DNP. ")
+        + f"Verify every rotation and polarity in {preview_text}.",
         fontsize=8,
         color=(0.24, 0.27, 0.31),
     )
@@ -1801,34 +1951,52 @@ def read_csv(path):
 
 
 def validate(outputs, parts, geometry, bom_rows, drawing_refs):
-    fitted = {
-        ref
-        for ref, component in parts.items()
-        if component["params"].get("DNS") != "Yes"
-    }
-    dnp = set(parts) - fitted
+    fitted = fitted_refs(parts)        # placed by the assembler: 2026-11-21, ship-loose parts are not fitted
+    loose = loose_refs(parts)          # empty outside PCBWay mode
+    dnp = dns_refs(parts)
+    if fitted & loose or dnp & loose or fitted & dnp or fitted | loose | dnp != set(parts):
+        raise ValueError("fitted / loose / DNS sets overlap or miss a part")
     bom_csv = read_csv(outputs["bom"])
     if ASSEMBLER == "pcbway":
         if list(bom_csv[0].keys()) != PCBWAY_COLUMNS:
             raise ValueError(f"PCBWay BOM columns changed: {list(bom_csv[0].keys())}")
-        buy = [row for row in bom_csv if row["Type"] != "DNS"]
-        dns_refs = {row["Designator"] for row in bom_csv if row["Type"] == "DNS"}
-        if dns_refs != dnp:
-            raise ValueError(f"BOM DNS rows {sorted(dns_refs)} != DNP parts {sorted(dnp)}")
+        buy = [row for row in bom_csv if row["Type"] not in ("DNS", LOOSE_TYPE)]   # placed purchase lines
+        loose_rows = [row for row in bom_csv if row["Type"] == LOOSE_TYPE]
+        dns_refs_seen = {row["Designator"] for row in bom_csv if row["Type"] == "DNS"}
+        if dns_refs_seen != dnp:
+            raise ValueError(f"BOM DNS rows {sorted(dns_refs_seen)} != DNP parts {sorted(dnp)}")
+        # 2026-11-21: the ship-loose lines are exactly LOOSE_PARTS (designator, MPN, maker, Qty), bought with the
+        # instruction, and cover exactly the loose designators
+        want_loose = sorted((ref, mpn, maker, str(qty)) for ref, lines in LOOSE_PARTS.items() if ref in loose
+                            for mpn, maker, qty in lines)
+        got_loose = sorted((row["Designator"], row["Mfg Part #"], row["Manufacturer"], row["Qty"])
+                           for row in loose_rows)
+        if got_loose != want_loose or {row["Designator"] for row in loose_rows} != loose or not loose:
+            raise ValueError(f"ship-loose BOM lines {got_loose} != LOOSE_PARTS {want_loose}")
+        for row in loose_rows:
+            note = row["Your Instructions / Notes"]
+            if int(row["Qty"]) < 1 or not note.startswith(LOOSE_INSTRUCTION) or "Not in the CPL." not in note \
+                    or "holes stay EMPTY" not in note or "shipped loose" not in row["Package/Footprint"]:
+                raise ValueError(f"ship-loose line without quantity or instruction: {row}")
         for row in buy:
             refs = row["Designator"].split(",")
             if not row["Mfg Part #"] or not row["Manufacturer"]:
                 raise ValueError(f"PCBWay BOM line without manufacturer or MPN: {row}")
             if row["Type"] not in ("SMD", "thru-hole"):
                 raise ValueError(f"invalid PCBWay Type: {row}")
+            if row["Type"] == "thru-hole":   # 2026-11-21: Number of Through-Hole Parts = 0 in the notes
+                raise ValueError(f"a through-hole part is placed (the notes say none is): {row}")
             if refs != ["X2"] and int(row["Qty"]) != len(refs):
                 raise ValueError(f"PCBWay BOM quantity != designator count: {row}")
-        if sum(int(row["Qty"]) for row in buy if row["Designator"] == "X2") != 4:
+            if set(refs) & loose:
+                raise ValueError(f"a ship-loose designator is on a placed line: {row}")
+        if sum(int(row["Qty"]) for row in bom_csv if row["Designator"] == "X2") != 4:
             raise ValueError("X2 must be four strips in the PCBWay BOM")
-        # Rev 2: the X2 lines must be exactly X2_STRIPS (held to the schematic and board by check_x2).
+        # Rev 2: the X2 lines must be exactly X2_STRIPS (held to the schematic and board by check_x2); since
+        # 2026-11-21 bought as Ship loose lines, not placed
         x2_lines = sorted((row["Mfg Part #"], int(row["Qty"]), row["Manufacturer"], row["Type"])
-                          for row in buy if row["Designator"] == "X2")
-        x2_table = sorted((mpn, len(runs), X2_MAKER, "thru-hole") for mpn, _, _, _, runs in X2_STRIPS)
+                          for row in bom_csv if row["Designator"] == "X2")
+        x2_table = sorted((mpn, len(runs), X2_MAKER, LOOSE_TYPE) for mpn, _, _, _, runs in X2_STRIPS)
         if x2_lines != x2_table:
             raise ValueError(f"PCBWay BOM X2 lines {x2_lines} != X2_STRIPS {x2_table}")
         bom_csv = buy
@@ -1855,6 +2023,8 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
         )
     if dnp & bom_refs or dnp & cpl_refs:
         raise ValueError("DNP designators leaked into BOM or CPL")
+    if loose & bom_refs or loose & cpl_refs:
+        raise ValueError("ship-loose designators leaked into a placed BOM line or the CPL")
     if len(cpl_rows) != len(cpl_refs):
         raise ValueError("duplicate CPL designators")
     for row in cpl_rows:
@@ -1885,6 +2055,14 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
         for ref in expected_by_side[side]:
             if re.search(rf"(?<![A-Za-z0-9$]){re.escape(ref)}(?![A-Za-z0-9])", text) is None:
                 raise ValueError(f"{ref} is missing from {side} drawing text")
+        # 2026-11-21: every ship-loose designator on this side is labelled as holes left empty, and the footer says
+        # what is drawn (LOOSE_LEGEND, on all three pages; not the old "dashed red label")
+        for ref in loose & expected_by_side[side]:
+            if f"{ref} holes left empty" not in text or "shipped loose" not in text:
+                raise ValueError(f"{side} drawing does not label {ref}'s holes as left empty / shipped loose")
+        flat_text = " ".join(text.split())
+        if loose and (flat_text.count(LOOSE_LEGEND) != 3 or "dashed red label" in flat_text.lower()):
+            raise ValueError(f"{side} drawing footer does not explain the DNP and ship-loose labels as drawn")
 
     # Fab B: no removed part may come back, and BOM line quantities must equal their CPL rows.
     stale = {row["Mfg Part #"] if ASSEMBLER == "pcbway" else row["Manufacturer Part Number"]
@@ -1924,6 +2102,51 @@ def validate(outputs, parts, geometry, bom_rows, drawing_refs):
         notes = handle.read()
     if ASSEMBLER == "pcbway" and ("JLCPCB" in notes or "LCSC" in notes or max(map(len, notes.splitlines())) > 88):
         raise ValueError("PCBWay notes mention JLCPCB/LCSC or have a line over 88 characters")
+    if ASSEMBLER == "pcbway":
+        # 2026-11-21: the notes ask for no through-hole assembly, name every ship-loose line, say each loose
+        # designator is SHIPPED LOOSE, and no longer ask for selective soldering
+        flat = " ".join(notes.split())
+        if "Number of Through-Hole Parts = 0 (" not in flat:
+            raise ValueError("the PCBWay notes do not say Number of Through-Hole Parts = 0")
+        for ref, lines in LOOSE_PARTS.items():
+            for mpn, _, qty in lines:
+                if f"{ref} = {mpn} x{qty}" not in flat:
+                    raise ValueError(f"the PCBWay notes do not name the ship-loose line {ref} = {mpn} x{qty}")
+            if not re.search(rf"- {re.escape(ref)}\b[^.]*SHIPPED LOOSE", flat):
+                raise ValueError(f"the PCBWay notes have no SHIPPED LOOSE paragraph for {ref}")
+        if re.search(r"selective", flat, re.I):
+            raise ValueError("the PCBWay notes still ask for selective soldering")
+        # 2026-11-21 review: nothing asks PCBWay to solder, fit, mount, populate or depanel-before-fitting X2 (outside
+        # the controlled SHIPPED LOOSE / Loose parts wording), the Loose parts line is there, X2's plated holes are in
+        # the short-edge list, and the legend says what the drawings draw
+        problems = loose_notes_problems(notes, loose)
+        if problems:
+            raise ValueError(f"the PCBWay notes ask for a ship-loose part to be fitted: {problems[0][:160]!r}")
+        if "- Loose parts (" not in notes:
+            raise ValueError("the PCBWay notes have no Loose parts line")
+        for ref, edge, dist in short_edge_parts(geometry, loose):
+            if f"{ref} {dist:.2f} mm from the {edge} edge {LOOSE_EDGE_MARK}" not in flat:
+                raise ValueError(f"the short-edge list does not name {ref} {dist:.2f} mm from the {edge} edge "
+                                 f"{LOOSE_EDGE_MARK}")
+        if 'dashed grey outline + red "DNP" label = not placed (DNS)' not in flat \
+                or "dashed red label" in flat.lower():
+            raise ValueError("the PCBWay notes' drawing legend does not say what the drawings draw")
+        # the fabrication ZIP the notes name: it must exist, carry the current FAB_NOTES, and FAB_NOTES must describe
+        # this PcbDoc (the assembly release was re-issued, the fabrication release was not)
+        import zipfile
+        fab_dir = os.path.join(ROOT, "fabrication")
+        fab_zip, fab_txt = os.path.join(fab_dir, FAB_ARCHIVE), os.path.join(fab_dir, FAB_NOTES)
+        if f"- PCB: {FAB_ARCHIVE}" not in notes:
+            raise ValueError(f"the notes do not name {FAB_ARCHIVE}")
+        if not os.path.isfile(fab_zip) or not os.path.isfile(fab_txt):
+            raise ValueError(f"the notes name {FAB_ARCHIVE} / {FAB_NOTES}, which are not in {fab_dir}")
+        with zipfile.ZipFile(fab_zip) as archive, open(fab_txt, "rb") as handle:
+            if archive.read(FAB_NOTES) != handle.read():
+                raise ValueError(f"{FAB_ARCHIVE} does not carry the current {FAB_NOTES}")
+        with open(fab_txt, encoding="ascii") as handle:
+            m = re.search(r"PCB SHA-256: ([0-9A-F]{64})", handle.read())
+        if not m or m.group(1) != sha256(PCB):
+            raise ValueError(f"{FAB_NOTES} describes a different PcbDoc")
     for path in outputs.values():
         if not os.path.isfile(path) or os.path.getsize(path) == 0:
             raise ValueError(f"missing or empty output: {path}")
@@ -1968,6 +2191,8 @@ def main():
     check_footprints(parts, geometry)
     check_x2(parts, geometry)
     check_series_r(parts, geometry)
+    if ASSEMBLER == "pcbway":
+        check_loose(parts, geometry)     # 2026-11-21: X2's four strips are bought and shipped loose
     bom_rows = make_bom(parts, geometry)
 
     outputs = {
@@ -1982,18 +2207,25 @@ def main():
     if ASSEMBLER == "pcbway":
         outputs["zip"] = write_zip(outputs)
 
-    fitted = sum(
-        component["params"].get("DNS") != "Yes" for component in parts.values()
-    )
+    fitted = len(fitted_refs(parts))
     counts = assembly_counts(parts, geometry)
     unresolved = sum(not row["LCSC Part #"] for row in bom_rows)
     print("ASSEMBLY_RELEASE PASS")
-    print(
-        f"{len(bom_rows)} BOM lines, {fitted} fitted designators "
-        f"({counts['Top']} top / {counts['Bottom']} bottom), "
-        + ("PCBWay buys by MPN" if ASSEMBLER == "pcbway"
-           else f"{unresolved} BOM lines need sourcing resolution")
-    )
+    if ASSEMBLER == "pcbway":
+        written = read_csv(outputs["bom"])
+        loose = [r for r in written if r["Type"] == LOOSE_TYPE]
+        buy = [r for r in written if r["Type"] != "DNS"]
+        print(f"{len(buy)} BOM purchase lines ({len(buy) - len(loose)} placed + {len(loose)} ship-loose: "
+              f"{', '.join(r['Designator'] + ' ' + r['Mfg Part #'] + ' x' + r['Qty'] for r in loose)}), "
+              f"{len(written) - len(buy)} DNS, {fitted} fitted designators "
+              f"({counts['Top']} top / {counts['Bottom']} bottom), {len(read_csv(outputs['cpl']))} CPL rows, "
+              "PCBWay buys by MPN")
+    else:
+        print(
+            f"{len(bom_rows)} BOM lines, {fitted} fitted designators "
+            f"({counts['Top']} top / {counts['Bottom']} bottom), "
+            + f"{unresolved} BOM lines need sourcing resolution"
+        )
     for refs, was, mpn, maker in sorted(MANUFACTURER_FIXES, key=lambda t: bom_audit.natkey(t[0])):
         print(f"MANF corrected from the MPN: {refs} {mpn}: schematic '{was}' -> '{maker}'")
     for key in ("bom", "cpl", "notes", "top", "bottom", "zip"):

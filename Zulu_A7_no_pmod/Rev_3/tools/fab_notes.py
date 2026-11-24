@@ -10,6 +10,15 @@ fab_facts.json, whose 'source' must match the PcbDoc on disk. The prose that is 
 engineering questions) is the Fab B Rev 2 note's, edited for this board; the engineering questions come from
 docs/dq_series_resistors.md (decisions 9, 12, 14, 15 and the CHAN7 / SDRAM-D14 advisory).
 The export times of the Gerbers, drills and DRC are read from the files in Project Outputs.
+
+SILKSCREEN RE-ISSUE (2026-11-24): the board (saved 2026-11-24 09:47:44, MD5 2b655383) changed on the Top Overlay
+only: the X2 pin numbers are gone and the X2 pin names sit in the row where the numbers were ('2 CLK' -> 'CLK',
+'30 C20' -> 'C20', pin 21 now prints 'GND'), the title moved 1.23 mm south into the freed row, and free 'U1' / 'U4'
+labels were added (U1's designator is hidden); later the same day R4's label left the pin-name row (it read as pin
+1's name) for a free 'R4' under the R4 array, R4's designator hidden (board 66148256). RELEASE_DATE is 2026-11-24; the note gains a SUPERSEDES section, and
+changed_from_previous() holds it to the files: against the superseded 2026-11-21 package (PREV_PACKAGES) only the
+GTO may differ once comment lines are ignored, or the note is not written. The Rev 2 changes paragraph no longer says
+the pin-21 label reads "21".
 """
 import collections
 import datetime
@@ -32,7 +41,17 @@ MOVES = os.path.join(HERE, 'route', 'vip2', 'plan1b.json')
 FABB_FACTS = os.path.join(HERE, 'fab_facts_fabb_rev2.json')
 BASE = 'Zulu_a7_no_pmod'
 RELEASE_NAME = 'Zulu A7 no-PMOD Rev 3'
-RELEASE_DATE = '2026-11-21'
+RELEASE_DATE = '2026-11-24'
+# 2026-11-24: this package supersedes the 2026-11-21 package of the same revision (silkscreen change only). The old ZIP
+# is in fabrication/ until the new package passes, then in backups/ under its _silk-swap_superseded name.
+PREV_DATE = '2026-11-21'
+PREV_PACKAGES = [os.path.join(ROOT, 'fabrication', 'Zulu_A7_no_pmod_Rev_3_PCBWay_Fabrication_%s.zip' % PREV_DATE),
+                 os.path.join(ROOT, 'backups', 'Zulu_A7_no_pmod_Rev_3_PCBWay_Fabrication_%s_silk-swap_superseded.zip'
+                              % PREV_DATE)]
+CAM_FILES = (['%s.%s' % (BASE, e) for e in ('GTL', 'G1', 'G2', 'G3', 'G4', 'GBL', 'GTS', 'GBS', 'GTO', 'GBO', 'GTP',
+                                            'GBP', 'GM')]
+             + ['%s-RoundHoles.%s' % (BASE, e) for e in ('TXT', 'TX3', 'TX6', 'TX7', 'TX9', 'TX10')]
+             + ['%s-SlotHoles.TXT' % BASE, '%s.LDP' % BASE, '%s.DRR' % BASE])
 # no-PMOD Rev 2 as released 2026-11-20 (title ZULU A7 2.3): its via counts per span, for CHANGES FROM REV 2
 REV2_VIAS = {'Top-Bottom': 318, 'Top-L2-GND': 337, 'L2-GND-L3-SIG': 302, 'L3-SIG-L4-SIG': 398,
              'L4-SIG-L5-VCC3V3': 300, 'L5-VCC3V3-Bottom': 321}
@@ -56,6 +75,47 @@ def through_in_pad_problem(facts):
 
 def is_accepted(pad, x, y):
     return (pad, round(x, 3), round(y, 3)) in ACCEPTED_THROUGH_IN_PAD
+
+
+def cam_lines(data):
+    """A CAM file's lines without the export stamps: Gerber G04 / %TF comments, Excellon ';' comments and the DRR's
+    'NCDrill File Report For:' date line. CR is dropped."""
+    return [line for line in data.decode('latin-1').replace('\r', '').split('\n')
+            if not line.startswith(('G04', '%TF', ';')) and 'NCDrill File Report For:' not in line]
+
+
+def from_git_history(path):
+    """The newest committed copy of a file that is no longer on disk, as a file object, or None. backups/ is not in
+    git, so on a clean checkout the superseded ZIP exists only in history (2026-11-24 review)."""
+    import io
+    import subprocess
+    rel = os.path.relpath(path, ROOT).replace(os.sep, '/')
+    try:
+        shas = subprocess.run(['git', '-C', ROOT, 'log', '--all', '--format=%H', '--', rel],
+                              capture_output=True, text=True, check=True).stdout.split()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    for sha in shas:                      # the newest commit may be the one that deleted it: walk back to a copy
+        got = subprocess.run(['git', '-C', ROOT, 'show', '%s:./%s' % (sha, rel)], capture_output=True)
+        if got.returncode == 0:
+            return io.BytesIO(got.stdout)
+    return None
+
+
+def changed_from_previous():
+    """(the superseded package's path, the CAM files whose content differs from that package's)."""
+    import zipfile
+    prev = next((p for p in PREV_PACKAGES if os.path.isfile(p)), None)
+    source = prev
+    if prev is None:
+        source, prev = from_git_history(PREV_PACKAGES[0]), PREV_PACKAGES[0] + ' (git history)'
+    if source is None:
+        raise SystemExit('the superseded %s package is in neither %s nor git history'
+                         % (PREV_DATE, ' nor '.join(PREV_PACKAGES)))
+    with zipfile.ZipFile(source) as archive:
+        changed = [name for name in CAM_FILES
+                   if cam_lines(archive.read(name)) != cam_lines(open(os.path.join(OUT, name), 'rb').read())]
+    return prev, changed
 
 
 def mtime(path):
@@ -176,6 +236,10 @@ def main():
         raise SystemExit('the DRC did not run Component Clearance (tick it under Rules To Check > Placement > Batch)')
     gerb_t, drill_t = mtime(os.path.join(OUT, BASE + '.GTL')), mtime(os.path.join(OUT, BASE + '-RoundHoles.TXT'))
     pcb_t = mtime(PCB)
+    # 2026-11-24: the SUPERSEDES section says only the top silkscreen changed; hold that to the files
+    prev_zip, changed = changed_from_previous()
+    if changed != [BASE + '.GTO']:
+        raise SystemExit('against %s the changed CAM files are %s, not only the GTO' % (os.path.basename(prev_zip), changed))
 
     L = []
     A = L.append
@@ -185,6 +249,17 @@ def main():
     A('PCB SHA-256: %s' % sha)
     A('Source: %s.PcbDoc (MD5 %s)' % (BASE, md5))
     A('')
+    A('SUPERSEDES THE %s PACKAGE OF THIS REVISION (SILKSCREEN ONLY)' % PREV_DATE)
+    L += wrap('This package supersedes the Zulu A7 no-PMOD Rev 3 fabrication package dated %s; please use these '
+              'files in its place and do not mix files of the two packages. Only the top silkscreen (%s.GTO) '
+              'changed: the X2 pin numbers are no longer printed and the X2 pin names now sit in the row next to '
+              'the pins where the numbers were ("2 CLK" and "30 C20" now read "CLK" and "C20", and pin 21 reads '
+              '"GND" instead of "21"); the board title moved 1.23 mm south into the freed row, and new "U1" and "U4" '
+              'labels sit under the FPGA and beside U4; the "R4" label moved from the pin-name row to just below the R4 '
+              'resistor array. Every other Gerber and every drill file is identical to the '
+              '%s package apart from export comment lines, so copper, solder mask, paste, bottom silkscreen, '
+              'outline, drills, via counts and stack are unchanged.' % (PREV_DATE, BASE, PREV_DATE))
+    A('')
     A('ORDER AND CAM GATE')
     L += wrap('This is a bare-board, six-layer, two-step sequential HDI release. It is a smaller derivative of '
               'the Zulu A7 Fab B Rev 2 board: same stack, same layer use, same via types and sizes, same design '
@@ -192,10 +267,11 @@ def main():
               'mm, the JTAG holes moved, 16 SDRAM series resistors were added, U2 is now an FT2232HQ in a QFN-64 '
               'package, X4 is now a side-entry SMT header at the south edge (see CHANGES FROM FAB B REV 2). Rev 3 '
               'adds a STEMMA QT I2C connector on Top at the east edge, moves four capacitors to the Bottom, and '
-              'the title is ZULU A7 2.4 (see CHANGES FROM NO-PMOD REV 2). The drill and via counts below are new. '
+              'the title is ZULU A7 2.4 (see CHANGES FROM NO-PMOD REV 2). The drill and via counts below are new '
+              'against Rev 2 and unchanged from the %s Rev 3 package. '
               'This is a NEW REVISION, not a replacement file set for the no-PMOD Rev 2 package (title ZULU A7 2.3); '
               'do not mix files of different packages. Microvias sit in SMD pads, and TWO through vias also sit in SMD pads (GND, in '
-              'the U2 exposed pad and in X4 pad 2): both must be filled and capped (see VIA-IN-PAD).' % (w, h))
+              'the U2 exposed pad and in X4 pad 2): both must be filled and capped (see VIA-IN-PAD).' % (w, h, PREV_DATE))
     L += wrap('Route it to PCBWay HDI engineering/CAM review. Do not release fabrication as a standard six-layer '
               'prototype without confirming every blind/buried drill pair, the via-in-pad list and the '
               'ENGINEERING QUESTIONS below.')
@@ -237,14 +313,14 @@ def main():
               're-routed (the new I2C-SDA / I2C-SCL nets from U1 to X5, and the traces and cap feeds X5 displaced). '
               'Via objects %s -> %s: through vias %d -> %d, Top-L2 %d -> %d, L2-L3 %d -> %d, L3-L4 buried %d -> %d, '
               'L4-L5 %d -> %d, L5-Bottom %d -> %d; via-in-pad sites %d -> %d. Silkscreen: the board title reads '
-              'ZULU A7 2.4 (was 2.3), the X2 pin-21 label reads "21" (its "GND" sat under an X5 tab), and X5 '
-              'brings its outline and a pin-1 dot (its designator is not printed). Stack, '
+              'ZULU A7 2.4 (was 2.3), X5 brings its outline and a pin-1 dot (its designator is not printed), and '
+              'the X2 pin labels and the U1 / U4 labels changed on %s (see SUPERSEDES above). Stack, '
               'finish, layer use, via and hole sizes, outline, X1 and its slots, and every design rule are unchanged.'
               % (format(REV2_VIA_TOTAL, ','), format(F['via_total'], ','),
                  REV2_VIAS['Top-Bottom'], n['Top-Bottom'], REV2_VIAS['Top-L2-GND'], n['Top-L2-GND'],
                  REV2_VIAS['L2-GND-L3-SIG'], n['L2-GND-L3-SIG'], REV2_VIAS['L3-SIG-L4-SIG'], n['L3-SIG-L4-SIG'],
                  REV2_VIAS['L4-SIG-L5-VCC3V3'], n['L4-SIG-L5-VCC3V3'], REV2_VIAS['L5-VCC3V3-Bottom'], n['L5-VCC3V3-Bottom'],
-                 REV2_VIP_SITES, vs['via_sites']))
+                 REV2_VIP_SITES, vs['via_sites'], RELEASE_DATE))
     A('')
     A('BOARD')
     A('Finished outline: %.2f mm x %.2f mm (rectangle, from the GM profile)' % (w, h))

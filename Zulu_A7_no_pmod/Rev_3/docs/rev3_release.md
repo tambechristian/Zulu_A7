@@ -1,5 +1,10 @@
 # Zulu_a7_no_pmod Rev 3: STEMMA QT and the PCBWay release (2026-11-21)
 
+> **Re-issued 2026-11-24 (silkscreen only): see `docs/x2_label_swap.md`.** The X2 names now sit in the pin-number
+> row and the numbers are gone. Pin 21 prints a horizontal 'GND'. The title, U1 and U4 labels moved. The current
+> board is MD5 `66148256` (R4's label also moved below the array); the current packages are the `*_2026-11-24.zip` files. The 2026-11-21 ZIPs below are in
+> `backups/*_silk-swap_superseded.zip`.
+
 Rev 3 is no-PMOD Rev 2 (as committed on 2026-11-20) plus a STEMMA QT / Qwiic I2C connector.
 
 ## Design change

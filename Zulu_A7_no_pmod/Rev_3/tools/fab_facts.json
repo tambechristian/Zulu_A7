@@ -1,9 +1,9 @@
 {
  "source": {
   "pcb": "Zulu_a7_no_pmod.PcbDoc",
-  "md5": "8ba5653344f3ae7673e169964a5182c5",
-  "sha256": "346D121CA6DBEFCBA5C26F334C4E9CEE3264245D96BC2736391C304199D7AF3F",
-  "size": 4990976
+  "md5": "661482566444257d69feddf68a83f94e",
+  "sha256": "511482C364416DC0C1E819D11C09D4A56D0ED8A34367C5BF557A8F98034E6A1F",
+  "size": 4983296
  },
  "board_outline": {
   "vertices_mm": [
@@ -290,13 +290,13 @@
   ]
  ],
  "usb_coupled_length_by_gap": {
-  "Top 0.2623": 0.763,
-  "Top 0.2255": 0.424,
-  "Top 0.3500": 1.325,
+  "Top 0.1500": 8.004,
   "Top 0.4111": 0.424,
+  "Top 0.2255": 0.424,
+  "Top 0.2623": 0.763,
+  "Top 0.3500": 1.325,
   "Top 0.2742": 0.35,
-  "Top 0.4752": 0.35,
-  "Top 0.1500": 8.004
+  "Top 0.4752": 0.35
  },
  "usb_track_length": {
   "USB_D_P": 12.186,
