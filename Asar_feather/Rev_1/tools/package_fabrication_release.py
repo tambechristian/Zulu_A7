@@ -5,12 +5,12 @@ Asar A7 Feather PCBWay fabrication ZIP.
     python tools/package_fabrication_release.py
 
 Adapted from Zulu_A7_Fab_B/tools/package_fabrication_release.py.  The expected
-drill counts below are the Altium export of 2026-11-17 19:15:12
-(asar_feather.DRR / .LDP, after C11 moved beside U4 pin 8: one through via and
-one L5-Bottom laser fewer, one Top-L2 laser more than the 13:56:32 export after
-the X1 USB-C -> micro-B conversion);
+drill counts below are the Altium export of 2026-11-23 21:33:53
+(asar_feather.DRR / .LDP, after the no-plug via plan, docs/thru_via_noplug.md);
 every other figure in the notes is measured from the
-PcbDoc, the drill files and the mask Gerbers by tools/fab_facts.py at run time.
+PcbDoc, the drill files and the mask Gerbers by tools/fab_facts.py at run time,
+except the release-history sentences (the "replaces" paragraph and Q8's "earlier
+releases" figure), which describe the pinned board and are updated by hand.
 The script never regenerates CAM outputs and never touches Altium; it fails if
 any input is missing, empty, older than the PcbDoc, or does not match.
 
@@ -41,7 +41,9 @@ PCB = os.path.join(PROJECT, "asar_feather.PcbDoc")
 DRC = os.path.join(OUTPUTS, "Design Rule Check - asar_feather.drc")
 DEFAULT_NOTE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_FAB_NOTES.txt")
 DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
-# asar_feather.PcbDoc with the six JTAG test pads in one 2x3 block (docs/jtag_block.md), saved 2026-11-21 16:21:41
+# asar_feather.PcbDoc with no through via in or near an SMD pad (docs/thru_via_noplug.md; plan final5c), saved
+# 2026-11-23 21:32:21 after the clean DRC, 1359 microvias verified. Before it: the six JTAG test pads in one 2x3 block
+# (docs/jtag_block.md), saved 2026-11-21 16:21:41 (SHA-256 7EEBABAA...67080EF1, MD5 682cd9d3)
 # after the clean DRC (the 15:54:49 save, MD5 7490c9ef, still held the first DRC's JP3/JP4 marker), 1174 microvias verified (pin-1 / LED-cathode silkscreen dots, U7's under its body, stale ratsnest line cleared
 # (docs/pin1_silk_dots.md) 2026-11-21 08:38:08: SHA-256 C7A5AB32...B5CC698, MD5 9be75ad9; top-side dots only, 2026-11-20
 # 21:15:10: SHA-256 64C179D1...7F40BDA0, MD5 35871b35; U2's pin-1 silk mark restored (docs/u2_pin1_mark.md) 2026-11-20 07:07:20: SHA-256
@@ -52,10 +54,10 @@ DEFAULT_CSV = os.path.join(FABRICATION, "Asar_Feather_VIA_IN_PAD.csv")
 #  X4 side-entry conversion 2026-11-16 15:31:03: SHA-256 2029B59E...6BA, MD5 5a39625c;
 #  NPTH clearance fix 2026-11-16 09:32:36: SHA-256 0B547312...98D3, MD5 f8dba4ec;
 #  2026-11-11 release: SHA-256 4A9A9714...BBA1D, MD5 d22906e1; 2026-11-11 15:16 save: MD5 e214e57b)
-EXPECTED_PCB_SHA256 = "7EEBABAA7236535C1DACBC19DF7D9543F6001FB4EC90B76A22612A4067080EF1"
-EXPECTED_PCB_MD5 = "682cd9d3980d61aafd53e95f735ce5bd"
+EXPECTED_PCB_SHA256 = "CD3E56C794CC895E2B418B49D47C5F2D73A9778383D7B2AA9BE2F1D4CBBCD983"
+EXPECTED_PCB_MD5 = "2d0736f200d2ee47d43653ea173fddb0"
 REVISION = "Asar A7 Feather"
-RELEASE_DATE = "2026-11-21"
+RELEASE_DATE = "2026-11-23"
 DEFAULT_ARCHIVE = os.path.join(FABRICATION, "Asar_Feather_PCBWay_Fabrication_%s_PROVISIONAL.zip" % RELEASE_DATE)
 # order/quote numbers never go into a packaged file name or the note (public repo). The number itself stays out of
 # this file: SHA-256 of each order number, matched against every token that looks like a PCBWay order number
@@ -80,22 +82,24 @@ BASE = "asar_feather"
 OUTLINE = (0.0, 0.0, 50.80, 22.86)  # GM profile, mm
 CORNER_R = 2.54
 GERBER_EXTENSIONS = ["GTL", "G1", "G2", "G3", "G4", "GBL", "GTS", "GBS", "GTO", "GBO", "GTP", "GBP", "GM"]
-# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-21 15:56:06 (JTAG 2x3 block, docs/jtag_block.md:
-# through 155 -> 153, buried L3-L4 252 -> 254, Top-L2 0.15 209 -> 210, L2-L3 0.15 173 -> 174, L4-L5 0.15 197 -> 199,
-# L5-Bot 0.15 241 -> 243; before that unchanged from the 2026-11-19 body-fix board through the pin-1 dot releases)
+# file suffix -> {tool: (diameter mm, hits)}, from asar_feather.DRR 2026-11-23 21:33:53 (no through via in a pad,
+# docs/thru_via_noplug.md: through 153 -> 109, buried L3-L4 254 -> 311, Top-L2 173/210 -> 177/219, L2-L3 105/174 ->
+# 125/201, L4-L5 47/199 -> 64/241, L5-Bot 23/243 -> 46/286). Before: asar_feather.DRR 2026-11-21 15:56:06 (JTAG 2x3
+# block, docs/jtag_block.md: through 155 -> 153, buried L3-L4 252 -> 254, Top-L2 0.15 209 -> 210, L2-L3 0.15
+# 173 -> 174, L4-L5 0.15 197 -> 199, L5-Bot 0.15 241 -> 243)
 EXPECTED_DRILLS = {
-    "RoundHoles-Plated.TXT": {"03": (0.20, 153), "05": (1.00, 28)},
+    "RoundHoles-Plated.TXT": {"03": (0.20, 109), "05": (1.00, 28)},
     "RoundHoles-NonPlated.TXT": {"06": (2.50, 4)},
     "SlotHoles-Plated.TXT": {"04": (0.50, 2)},
-    "RoundHoles-Plated.TX3": {"02": (0.15, 254)},
-    "RoundHoles-Plated.TX6": {"01": (0.10, 173), "02": (0.15, 210)},
-    "RoundHoles-Plated.TX7": {"01": (0.10, 105), "02": (0.15, 174)},
-    "RoundHoles-Plated.TX9": {"01": (0.10, 47), "02": (0.15, 199)},
-    "RoundHoles-Plated.TX10": {"01": (0.10, 23), "02": (0.15, 243)},
+    "RoundHoles-Plated.TX3": {"02": (0.15, 311)},
+    "RoundHoles-Plated.TX6": {"01": (0.10, 177), "02": (0.15, 219)},
+    "RoundHoles-Plated.TX7": {"01": (0.10, 125), "02": (0.15, 201)},
+    "RoundHoles-Plated.TX9": {"01": (0.10, 64), "02": (0.15, 241)},
+    "RoundHoles-Plated.TX10": {"01": (0.10, 46), "02": (0.15, 286)},
 }
 FILE_TYPE = {"RoundHoles-NonPlated.TXT": "NON_PLATED"}
 MICROVIA_FILES = ("RoundHoles-Plated.TX6", "RoundHoles-Plated.TX7", "RoundHoles-Plated.TX9", "RoundHoles-Plated.TX10")
-EXPECTED_MICROVIA_TOTAL = 1174  # 1168 before the 2026-11-21 JTAG block, 1187 before the X1 micro-B conversion, 1176 before the X4 side-entry conversion
+EXPECTED_MICROVIA_TOTAL = 1359  # 1174 before the 2026-11-23 no-plug via plan, 1168 before the 2026-11-21 JTAG block, 1187 before the X1 micro-B conversion, 1176 before the X4 side-entry conversion
 EXPECTED_LAYER_MAP = {
     "RoundHoles-Plated.TXT": "gtl,g1,g2,g3,g4,gbl",
     "SlotHoles-Plated.TXT": "gtl,g1,g2,g3,g4,gbl",
@@ -383,6 +387,8 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     dv = F["drill_vs_board"]
     thru_sites = sorted({(e["via_x"], e["via_y"]) for e in tv})
     n_thru_vip = len(thru_sites)
+    l5_tracks = F.get("track_count_by_layer", {}).get("L5-VCC3V3", 0)
+    thru_land_exposed = sum(tent[s]["exposed_by_span"].get("Top-Bot", {}).get("vias", 0) for s in ("Top", "Bottom"))
     lasers_np = F["lasers_in_non_u1_smd_pads"]
     u1_lasers = F["u1_centred_lasers"]
     pos_tv = tvc["by_position"]
@@ -397,7 +403,8 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     para("This data set is released for quotation and CAM/engineering review only. It "
          "depends on PCBWay's answers to our engineering enquiry about 0.10 mm laser "
          "via-in-pad on the 0.5 mm-pitch BGA lands, 3/3 mil, resin-plugged through vias "
-         "in SMD pads, stacking and hole spacing. PCBWay answered it on 2026-11-16; "
+         "in SMD pads" + ("" if n_thru_vip else " (none left now, see Q8)") + ", stacking and hole spacing. "
+         "PCBWay answered it on 2026-11-16; "
          "the points that answer left open are in our follow-up of the same date and "
          "are still outstanding. Every "
          "assumption that enquiry asks about is restated in the next section with the "
@@ -407,13 +414,17 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
          "Please answer each numbered item, or confirm it, before fabrication is "
          "released.")
     P("")
-    para("This data set replaces the 2026-11-20 Asar packages; do not mix files of "
-         "different packages. It adds only silkscreen polarity dots: on the top side 0.40 mm beside pin 1 "
-         "(ball A1 on U1 and U3) of U1, U2, U3, U4, Q1, BTN, RESET, X4 and X5 and beside the "
-         "cathodes of LD0, LD3 and LD4, 0.25 mm beside the cathodes of LD1 and LD2; on the bottom "
-         "side 0.40 mm under U7's body, between its pad rows at the pin-1 end (there is no room "
-         "outside it). U8 keeps its pin-1 tick west of pad 1. Copper, solder mask, paste and "
-         "drills are unchanged.")
+    para("This data set replaces the 2026-11-21 Asar packages; do not mix files of "
+         "different packages. It takes every through via out of the SMD pads, so no "
+         "through via needs resin plugging (Q8): the 102 through vias that sat in or on "
+         "a pad were moved out to a dog-bone (land at least 0.076 mm from pad copper, "
+         "hole at least 0.10 mm from the mask opening) or replaced by filled laser vias "
+         "in the pad. Through vias 153 -> 109, laser microvias 1174 -> 1359, buried "
+         "L3-L4 vias 254 -> 311; six small parts moved by 0.17 mm or less (C78, C121, "
+         "C124, L1, L2, L9; all on the bottom side). Copper on all six layers, the bottom "
+         "solder mask and bottom paste (the 12 pads of the moved parts) and the plated drill "
+         "files TXT, TX3, TX6, TX7, TX9 and TX10 change; the top mask and paste, the "
+         "non-plated and slot drill files, the board outline, stack-up and silkscreen do not.")
     P("")
     P("ASSUMPTIONS PENDING PCBWAY CONFIRMATION (one per enquiry question)")
     P("")
@@ -520,8 +531,12 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
          "strip below its minimum.", "    ")
     P("")
     P("Q7  3/3 mil on all six layers at the stack's copper weights.")
-    para("Minimum track width 0.0762 mm on Top, L3, L4 and Bottom (L2 and L5 carry "
-         "only plane pours). Global clearance rule 0.0762 mm (3 mil). Measured "
+    para(("Minimum track width 0.0762 mm on Top, L3, L4 and Bottom (L2 and L5 carry "
+          "only plane pours). " if not l5_tracks else
+          "Minimum track width 0.0762 mm on Top, L3, L4 and Bottom. L2 carries only the GND "
+          "pour; L5 carries the VCC3V3 pour plus %d short tracks (minimum width %.2f mm). "
+          % (l5_tracks, F["track_min_width_by_layer"]["L5-VCC3V3"]))
+         + "Global clearance rule 0.0762 mm (3 mil). Measured "
          "minimum track to other-net copper: %s. (a) One 3 mil track between two "
          "0.25 mm U1 lands on Top: track-to-land minimum %.4f mm [enquiry: "
          "0.082-0.087]; the U1 mask openings are drawn 1:1 (%d openings of 0.25 mm in "
@@ -532,15 +547,28 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
             F["track_to_u1_land_min"], sum(tent["Top"]["u1_openings"].values()),
             F["track_to_laser_land_min"]["L3-SIG"], F["track_to_laser_land_min"]["L4-SIG"]), "    ")
     P("")
-    P("Q8  Through vias in SMD pads: resin-plugged and plated over.")
-    para("%d through vias (0.20/0.35) touch an SMD pad (%d pad contacts: hole inside "
-         "the pad %d, hole on the pad edge %d, land only %d) [enquiry: 114], "
-         "including U1 balls W8 and A13 and SDRAM U3 balls G9, H2 and H8. They stay in "
-         "the pads by design. Please resin-plug them and plate over flat (IPC-4761 "
-         "type VII, VIPPO), and say whether this changes your minimum hole or land. "
-         "Full list under THROUGH VIAS IN SMD PADS below."
-         % (n_thru_vip, tvc["entries"], pos_tv.get("hole in pad", 0), pos_tv.get("hole on pad edge", 0),
-            pos_tv.get("land only", 0)), "    ")
+    if n_thru_vip:
+        P("Q8  Through vias in SMD pads: resin-plugged and plated over.")
+        para("%d through vias (0.20/0.35) touch an SMD pad (%d pad contacts: hole inside "
+             "the pad %d, hole on the pad edge %d, land only %d) [enquiry: 114], "
+             "including U1 balls W8 and A13 and SDRAM U3 balls G9, H2 and H8. They stay in "
+             "the pads by design. Please resin-plug them and plate over flat (IPC-4761 "
+             "type VII, VIPPO), and say whether this changes your minimum hole or land. "
+             "Full list under THROUGH VIAS IN SMD PADS below."
+             % (n_thru_vip, tvc["entries"], pos_tv.get("hole in pad", 0), pos_tv.get("hole on pad edge", 0),
+                pos_tv.get("land only", 0)), "    ")
+    else:
+        if thru_land_exposed:
+            raise ValueError("no through via is in a pad, but %d through-via lands reach a mask opening; "
+                             "the 'tent, do not plug' text would be wrong" % thru_land_exposed)
+        P("Q8  Through vias in SMD pads: NONE - please tent, do not plug.")
+        para("No through via (0.20/0.35) touches an SMD pad any more [enquiry: 114; "
+             "earlier releases: 102]: every one was moved out of its pad or replaced by "
+             "a laser via in the pad. No through-via land reaches a solder-mask opening "
+             "on either side (hole edge at least 0.075 mm from every opening), so all %d through vias can be "
+             "tented with solder mask (IPC-4761 type I/II). Please do NOT resin-plug or "
+             "plate over any through via, and confirm that the resin-plugging step "
+             "drops out of the quote." % F["through_total"], "    ")
     P("")
     P("Q9  Planarity of the filled lasers in the U1 field.")
     bx = F["u1_box"]
@@ -554,8 +582,12 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
          % (combos.get("Top-L2", 0) + combos.get("Top-L2 + L2-L3", 0) + combos.get("Top-L2 + L2-L3 + L3-L4", 0)
             + combos.get("Top-L2 + L2-L3 + L3-L4 + L4-L5", 0), off["vias"], l10["not_on_ball_under_u1"], off10_in), "    ")
     P("")
-    P("Q10 Price for 5 and 10 pieces, with and without the plugged through vias, and")
-    P("    lead time: pending.")
+    if n_thru_vip:
+        P("Q10 Price for 5 and 10 pieces, with and without the plugged through vias, and")
+        P("    lead time: pending.")
+    else:
+        P("Q10 Price for 5 and 10 pieces with the through vias tented (no resin plug)")
+        P("    and lead time: pending.")
     P("")
     P("Other laser via-in-pad (not U1), also copper-filled and capped flat:")
     para("%d laser vias touch non-U1 SMD pads (%d of 0.15/0.30, %d of 0.10/0.25) "
@@ -580,7 +612,8 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
     P("Surface finish: ENIG")
     P("Solder mask: green;  Silkscreen: white")
     P("Layer order (PcbDoc layer names):")
-    use = ["signal/components", "GND plane polygon", "signal", "signal", "VCC3V3 plane polygon", "signal/components"]
+    use = ["signal/components", "GND plane polygon", "signal", "signal",
+           "VCC3V3 plane polygon" + (" + %d short tracks" % l5_tracks if l5_tracks else ""), "signal/components"]
     for i, (name, u) in enumerate(zip(F["layer_order"], use), 1):
         P("  L%d  %-13s %s" % (i, name, u))
     para("The L2 and L5 Gerbers are positive signal-layer polygon plots, not negative "
@@ -674,13 +707,14 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
             ", ".join("%d x %s" % (v, k.split(" r")[0]) for k, v in tent["Top"]["u1_openings"].items())))
     P("")
     P("VIA-IN-PAD (FILL AND CAP REQUIRED)")
-    para("%d vias have a land that overlaps an SMD pad (%d pad contacts; %d vias touch "
-         "two pads of the same net). By via type: %s. Position of the hole: centred in "
-         "the pad %d (%s), inside the pad %d, on the pad edge %d, land only %d (counted per "
-         "pad contact). Every microvia in a pad is copper-filled and capped flat; every "
-         "through via in a pad is resin-plugged and plated over (Q8). The complete "
-         "table (ref, pad, net, side, via type, hole, land, XY, position) is in %s, "
-         "which is part of this package."
+    para(("%d vias have a land that overlaps an SMD pad (%d pad contacts; %d vias touch "
+          "two pads of the same net). By via type: %s. Position of the hole: centred in "
+          "the pad %d (%s), inside the pad %d, on the pad edge %d, land only %d (counted per "
+          "pad contact). Every microvia in a pad is copper-filled and capped flat"
+          + ("; every through via in a pad is resin-plugged and plated over (Q8)" if n_thru_vip
+             else "; no through via is in a pad (Q8)") + ". The complete "
+          "table (ref, pad, net, side, via type, hole, land, XY, position) is in %s, "
+          "which is part of this package.")
          % (vs["vias"], vs["entries"], vs["vias_touching_two_pads"],
             ", ".join("%s %d" % (k, v) for k, v in vs["by_type"].items()),
             vs["by_position"].get("centred", 0), centred_where(F), vs["by_position"].get("hole in pad", 0),
@@ -698,11 +732,14 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
         line += "  " + it + ";"
     P(line)
     P("")
-    P("THROUGH VIAS IN SMD PADS (resin plug + plate over; %d vias, %d pad contacts)" % (n_thru_vip, len(tv)))
-    P("  Ref-pad     Side    Net             Hole vs pad       Via centre (mm)")
-    for e in sorted(tv, key=lambda e: (natural(e["ref"]), natural(e["pad"]), e["via_x"])):
-        P("  %-11s %-7s %-15s %-17s (%7.3f, %7.3f)" % ("%s-%s" % (e["ref"], e["pad"]), e["side"], e["via_net"],
-                                                       e["position"], e["via_x"], e["via_y"]))
+    if n_thru_vip:
+        P("THROUGH VIAS IN SMD PADS (resin plug + plate over; %d vias, %d pad contacts)" % (n_thru_vip, len(tv)))
+        P("  Ref-pad     Side    Net             Hole vs pad       Via centre (mm)")
+        for e in sorted(tv, key=lambda e: (natural(e["ref"]), natural(e["pad"]), e["via_x"])):
+            P("  %-11s %-7s %-15s %-17s (%7.3f, %7.3f)" % ("%s-%s" % (e["ref"], e["pad"]), e["side"], e["via_net"],
+                                                           e["position"], e["via_x"], e["via_y"]))
+    else:
+        P("THROUGH VIAS IN SMD PADS: none (0 of %d through vias touch an SMD pad)." % F["through_total"])
     P("")
     P("SOLDER MASK AND VIA TENTING (checked against GTS/GBS)")
     t_open, b_open = tent["Top"], tent["Bottom"]
@@ -722,12 +759,22 @@ def build_notes(F, drc, sha, pcb_md5, csv_name):
               % (s, e["span"], e["net"], e["x"], e["y"], e["land_overlap"], e["opening"]))
             P("                  (same net), hole not exposed (hole edge %.3f mm from the opening)" % e["hole_margin"])
     exposed_thru = sum(tent[s]["exposed_by_span"].get("Top-Bot", {}).get("vias", 0) for s in ("Top", "Bottom"))
-    para("The %d through vias that are not in pads are tented. PLEASE PLUG ALL %d "
-         "THROUGH VIAS (the %d in pads resin-plugged and plated over, the rest at "
-         "least resin-plugged, IPC-4761 type VI or VII) so that mask registration "
-         "cannot leave an open hole beside a pad, and state the method in the CAM "
-         "response. All microvias and buried vias are filled anyway for the stacking."
-         % (F["through_total"] - n_thru_vip, F["through_total"], n_thru_vip))
+    exposed_thru_holes = sum(tent[s]["exposed_by_span"].get("Top-Bot", {}).get("hole_reached", 0) for s in ("Top", "Bottom"))
+    if n_thru_vip:
+        para("The %d through vias that are not in pads are tented. PLEASE PLUG ALL %d "
+             "THROUGH VIAS (the %d in pads resin-plugged and plated over, the rest at "
+             "least resin-plugged, IPC-4761 type VI or VII) so that mask registration "
+             "cannot leave an open hole beside a pad, and state the method in the CAM "
+             "response. All microvias and buried vias are filled anyway for the stacking."
+             % (F["through_total"] - n_thru_vip, F["through_total"], n_thru_vip))
+    else:
+        if exposed_thru or exposed_thru_holes:
+            raise ValueError("no through via is in a pad, but %d through-via lands (%d holes) reach a mask "
+                             "opening; tenting would leave them open" % (exposed_thru, exposed_thru_holes))
+        para("All %d through vias are tented on both sides (IPC-4761 type I/II): none is in "
+             "or touches an SMD pad and no through-via hole is exposed by a mask opening. "
+             "Please do NOT plug them. All microvias and buried vias are filled anyway "
+             "for the stacking." % F["through_total"])
     P("")
     P("CONTROLLED IMPEDANCE")
     para("None requested. The only high-speed pair, USB 2.0 D+/D- between the "

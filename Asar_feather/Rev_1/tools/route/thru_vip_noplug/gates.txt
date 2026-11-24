@@ -1,0 +1,1206 @@
+FINAL-5c plan (FINAL-5b = FINAL-4b + phase 5 U8 / W13 / W4 + stage M1 + stage R, then stage S = the final5b review clean-up; build.py) on the ORIGINAL board ../model.json (md5 70bf823b); columns ORIGINAL / final5b (../final5b, the reviewed plan) / final5c (this plan)
+board copy ../board.PcbDoc md5 682cd9d3; live Rev_1 asar_feather.PcbDoc md5 682cd9d3 (read only)
+plan.json md5 748190c0: 6 moves (C121 (-0.050, +0.000) rot 0, C124 (+0.130, +0.000) rot 0, C78 (+0.000, +0.050) rot 90, L1 (+0.130, +0.000) rot 0, L2 (+0.170, +0.000) rot 0, L9 (+0.000, -0.020) rot 90), remove 197 tracks + 122 vias, add 283 tracks + 320 vias; 41 nets touched
+model_final.json md5 6e483ca6; model_moved.json md5 9505343e; final5b ../final5b/model_final.json md5 6556a03f
+board: tracks 4807 -> 4886 -> 4893, vias 1581 -> 1779 -> 1779, through vias 153 -> 109 -> 109 (original -> final5b -> final5c)
+
+== 1 route_check plan.json model_moved.json (whole plan, whole board, all six layers)
+   plain (router.width table):
+   plan: 283 tracks, 320 vias, 197 removed; board then: 4893 tracks, 1779 vias
+   violations: 3
+     width USB5V0 L4-SIG 0.2500
+     width VU L3-SIG 0.2500
+     width VU L4-SIG 0.4000
+   open connections after the plan: 0 on 0 nets
+   FAIL
+   plain findings: 3, of them "width VU/USB5V0 on L3/L4" (router table 1.1 mm inner): 3
+   Altium rule in ../board.PcbDoc: Width_PWR_U8 scope InNet('VU') Or InNet('USB5V0') Or InNet('VBATT'), min 0.2000 mm, per-layer overrides none
+   with router.WIDTH_OVERRIDE {'VU': [0.2, 0.2], 'USB5V0': [0.2, 0.2]} (router.py --widths) = the Altium rule:
+   plan: 283 tracks, 320 vias, 197 removed; board then: 4893 tracks, 1779 vias
+   violations: 0
+   open connections after the plan: 0 on 0 nets
+   PASS
+   flagged piece: USB5V0 L4-SIG w 0.250 (11.500, 13.900)-(13.650, 13.900) length 2.150
+   flagged piece: USB5V0 L4-SIG w 0.250 (13.650, 13.900)-(13.650, 15.900) length 2.000
+   flagged piece: USB5V0 L4-SIG w 0.250 (13.650, 15.900)-(14.450, 16.700) length 1.131
+   flagged piece: USB5V0 L4-SIG w 0.250 (14.450, 16.700)-(15.200, 16.700) length 0.750
+   flagged piece: VU L3-SIG w 0.250 (7.490, 4.150)-(7.650, 4.825) length 0.694
+   flagged piece: VU L4-SIG w 0.400 (8.375, 17.550)-(7.922, 17.932) length 0.593
+
+== 2 hole_gate on the whole final board (vias given from/to), original board for comparison
+   0 pairs under 0.240 mm edge to edge in the same dielectric, 0 of them overlapping
+   PASS
+   (original board: 0 pairs under 0.240 mm edge to edge in the same dielectric, 0 of them overlapping)
+   (plan vias given as the plan, kept original vias as the model: 0 pairs under 0.240 mm edge to edge in the same dielectric, 0 of them overlapping; PASS)
+   new via holes vs every drilled pad hole (any net, X1 slots as slots): nearest 0.485 (GND via (1.800, 8.965) to X1-MH2 GND), rule 0.24
+   new copper vs the NPTH mounting holes: nearest 0.896 (via GND), rule 0.127
+
+== 3 vip_check and vip_tight on the WHOLE board (pad truth ../pad_truth.json) -- THE GOAL
+   vip_check model_final.json:
+   vip_check C:\Users\tambe\AppData\Local\Temp\claude\74c8e1fc98776908\ac1fa567-8c06-4af0-9b2d-65df9ede410f\scratchpad\vip\final5c\model_final.json
+     109 through vias, 806 SMD pads (Bottom 326, Top 480); pad shape/mask from truth: 806, unmatched 0
+     (a) land touches pad copper:          0 vias,   0 contacts {} {}
+     (b) hole edge < 0.05 from mask:       0 vias,   0 contacts (0 vias / 0 contacts beyond (a))
+     (c) land in other-net mask opening:   0 vias,   0 contacts
+     by net: 
+   VIP_CHECK: 0 violating through vias, 0 contacts -> PASS
+   vip_check model_moved.json --plan plan.json: VIP_CHECK: 0 violating through vias, 0 contacts -> PASS (exit 0)
+   vip_tight model_final.json:
+   vip_check C:\Users\tambe\AppData\Local\Temp\claude\74c8e1fc98776908\ac1fa567-8c06-4af0-9b2d-65df9ede410f\scratchpad\vip\final5c\model_final.json
+     109 through vias, 806 SMD pads (Bottom 326, Top 480); pad shape/mask from truth: 806, unmatched 0
+     (a) land touches pad copper:          0 vias,   0 contacts {} {}
+     (b) hole edge < 0.10 from mask:       0 vias,   0 contacts (0 vias / 0 contacts beyond (a))
+     (c) land in other-net mask opening:   0 vias,   0 contacts
+     by net: 
+   VIP_CHECK: 0 violating through vias, 0 contacts -> PASS
+   vip_tight model_moved.json --plan plan.json: VIP_CHECK: 0 violating through vias, 0 contacts -> PASS (exit 0)
+   (final5b ../final5b/model_final.json: VIP_CHECK: 0 violating through vias, 0 contacts -> PASS)
+   vip_check: original 102 violating through vias (110 contacts) -> final 0 (0 contacts); original set == vip102.json: True
+   through vias in the final board: 109 (plan-added 64). Within 0.6 of an SMD pad: 88. Tightest five (land gap / hole-to-mask):
+     CLK-12M-FT   ( 10.975,   6.300) land 0.0845 (R4-14), hole-mask 0.1009 (R4-14)  [original via]
+     VU           ( 13.002,  17.500) land 0.0775 (U8-18), hole-mask 0.1025 (U8-18)  [plan via]
+     GND          ( 13.002,  18.440) land 0.0775 (U8-16), hole-mask 0.1025 (U8-16)  [plan via]
+     GND          ( 21.945,   2.393) land 0.0775 (C157-1), hole-mask 0.1025 (C157-1)  [plan via]
+     FLASH-D02    ( 17.370,  16.495) land 0.0954 (R2-1), hole-mask 0.1016 (R2-1)  [plan via]
+   plan-added through vias near an SMD pad: 63; min land gap 0.0775, min hole-to-mask 0.1016
+
+== 4 connectivity on ALL nets: open connections, dead copper, dangling ends, weak vias (original -> final)
+   route_conn open connections: original 0, final 0 {}
+   (route_conn.py model_final.json: open connections 0 on 0 nets)
+   dead copper: tracks original 0 final 0 new 0; vias original 0 final 0 new 0
+   dangling track ends / weak vias (cap-only joints included), all nets: original 3, final 3, new 0, gone 0
+     original: ('end', 'D6', 'Top Layer', 29.45, 17.012) 
+     original: ('via', 'GND', 'Top Layer', 'L2-GND', 9.025, 19.425) 
+     original: ('via', 'GND', 'Top Layer', 'L2-GND', 10.575, 16.5) 
+
+== 5 widths: narrowest piece per net and layer (original -> final)
+   GND      Bottom Layer  0.0762 -> 0.0762
+   GND      L3-SIG        0.0762 -> 0.0762
+   GND      L4-SIG        0.0762 -> 0.0762
+   GND      L5-VCC3V3     None -> 0.2
+   GND      Top Layer     0.3 -> 0.3
+   GNDADC   Bottom Layer  0.15 -> 0.15
+   GNDADC   L4-SIG        0.15 -> 0.15
+   USB5V0   L4-SIG        0.25 -> 0.25
+   VBATT    Top Layer     0.4 -> 0.4
+   VCC1V0   Bottom Layer  0.15 -> 0.15
+   VCC1V0   L3-SIG        0.5 -> 0.5
+   VCC1V0   L4-SIG        0.3 -> 0.3
+   VCC1V8   Bottom Layer  0.15 -> 0.15
+   VCC1V8   Top Layer     0.15 -> 0.15
+   VCCADC   Bottom Layer  0.15 -> 0.15
+   VCCADC   L5-VCC3V3     None -> 0.2
+   VCCADC   Top Layer     0.15 -> 0.15
+   VU       Bottom Layer  0.25 -> 0.25
+   VU       L3-SIG        None -> 0.25
+   VU       L4-SIG        0.2 -> 0.2
+   VU       L5-VCC3V3     None -> 0.25
+   VU       Top Layer     0.4 -> 0.4
+   net/layer pairs narrower: 0 (power 0) []
+   new tracks under the per-layer width rule (router.width, VU/USB5V0 at the Altium 0.2): 0
+   new power tracks by net / width: GND 0.2: 52, GND 0.25: 49, GND 0.3: 25, GND 0.4: 1, GNDADC 0.15: 2, USB5V0 0.25: 4, VBATT 0.4: 3, VCC1V0 0.4: 2, VCC1V0 0.5: 5, VCC1V8 0.2: 2, VCC1V8 0.3: 3, VCCADC 0.15: 2, VCCADC 0.2: 1, VU 0.25: 2, VU 0.4: 23
+
+== 6 vias: kept vias unchanged; joints of removed vias stay together
+   original vias not removed: 1459, all in the final model unchanged (net, centre, size, hole, span): True
+   final vias beyond them == the plan's 320 new vias: True
+   removed vias: 122; the same-net objects each one joined that survive are in one live island of their net: 122 of 122
+
+== 7 planes: L2 / L5 pour raster (plane.py, 0.01 mm, necks < 3 mil removed), original -> final
+   L2-GND (GND pour): live islands 1 -> 1; plane-net objects 211 -> 228, unconnected 0 -> 0; lost connection 0, new object unconnected 0; pour area 955.580 -> 960.621 mm2
+   L5-VCC3V3 (VCC3V3 pour): live islands 1 -> 1; plane-net objects 131 -> 131, unconnected 0 -> 0; lost connection 0, new object unconnected 0; pour area 926.391 -> 933.835 mm2
+   new other-net through-via anti-pads: 79; narrowest web under 3 mil (merges with a neighbouring void): 33
+   final5b -> final5c: L2-GND (GND pour): live islands 1 -> 1; plane-net objects 228 -> 228, unconnected 0 -> 0; lost connection 0, new object unconnected 0; pour area 960.621 -> 960.621 mm2 | L5-VCC3V3 (VCC3V3 pour): live islands 1 -> 1; plane-net objects 131 -> 131, unconnected 0 -> 0; lost connection 0, new object unconnected 0; pour area 933.835 -> 933.835 mm2
+   PLANES PASS
+
+== 8 stacks: drill chains (vias within 0.05 mm that land on each other), WHOLE board
+   sites by chain depth, original: {2: 332, 3: 65, 4: 59, 5: 5}; final: {2: 396, 3: 94, 4: 59, 5: 5}
+   3-drill sites: original 65 -> final 94 (new plan sites at depth 3: 31)
+   4- and 5-drill sites: original 59 / 5 -> final 59 / 5; created or deepened by the plan: 0 []; plan via sites deeper than 3: 0 []
+   note: new via sites (9.8375, 14.45) and (9.85, 14.425) are 0.028 apart; chain depth over both 3
+   note: plan site (9.8375, 14.45) has 4 drills within 0.05 (T-2 + 3-4 + 4-5 + 5-B) but they chain only 3 deep (no via in the gap)
+   note: plan site (9.85, 14.425) has 4 drills within 0.05 (T-2 + 3-4 + 4-5 + 5-B) but they chain only 3 deep (no via in the gap)
+
+== 9 pad_gate model_final.json C121 C124 C78 L1 L2 L9
+   gap 0.2000 web 0.1000  L1-1 [PWR_SWAB3]  U8-10 [GND]
+     gap 0.2000 web 0.1000  L1-2 [PWR_SWCD3]  U8-13 [GND]
+     gap 0.2000 web 0.1000  L9-2 [PWR_FB1]  C164-1 [PWR_FB3]
+     gap 0.2000 web 0.1000  L9-2 [PWR_FB1]  C164-2 [PWR_VC3]
+     gap 0.2000 web 0.1000  L2-1 [PWR_SW2]  C82-1 [GND]
+     gap 0.2100 web 0.1100  C124-2 [GNDADC]  C122-1 [VCC3V3]
+     gap 0.2100 web 0.1100  C124-2 [GNDADC]  C134-1 [GND]
+     gap 0.2250 web 0.1250  L9-1 [PWR_SW1]  U8-3 [GND]
+   90 pairs within 1 mm, 4 under clearance 0.0762 or web 0.10
+   FAIL
+   (before the move: gap 0.2000 web 0.1000  L1-1 [PWR_SWAB3]  U8-10 [GND]; FAIL)
+
+== 9b pad_gate flagged pairs vs the same tool on the ORIGINAL board (pad_gate.py logic, in process)
+   flagged in final5c: C164-1             L9-2               gap 0.2000 web 0.1000; ORIGINAL gap 0.2000 web 0.1000 (flagged too)
+   flagged in final5c: C164-2             L9-2               gap 0.2000 web 0.1000; ORIGINAL gap 0.2000 web 0.1000 (flagged too)
+   flagged in final5c: L1-1               U8-10              gap 0.2000 web 0.1000; ORIGINAL gap 0.2000 web 0.1000 (flagged too)
+   flagged in final5c: L1-2               U8-13              gap 0.2000 web 0.1000; ORIGINAL gap 0.2000 web 0.1000 (flagged too)
+   pairs flagged in final5c that the ORIGINAL does not flag, or with a smaller gap / web: 0 []
+
+== 10 moved pads vs other-net tracks and vias on their layers (rule 0.09), before -> after
+   after  0.0925 L2-1 via GND (13.002, 18.440)
+   after  0.0925 L2-1 via VU (13.002, 17.500)
+   after  0.0950 L2-2 via GND (16.940, 16.365)
+   after  0.1000 L2-1 track VU
+   before: min 0.1057 (C121-2 via VCCADC (26.100, 18.300))
+
+== 11 bodies: body_check whole board (gap 0.10), original -> final; Component Clearance of the moved parts
+   original 8 findings, final 8, new or worse 0; overlaps original 1 final 1
+     final finding Bottom body_pad_max  U7         L3         1     -0.075
+     final finding Bottom body_pad      U7         L3         1     -0.000
+     final finding Bottom body_pad      X2[1-16]   C101       2      0.040
+     final finding Bottom body_pad      X2[1-16]   C101       1      0.040
+   mech_mismatch: none
+   C121 (Bottom body) to C117       body gap 0.300 (before 0.300), Component Clearance rule 0.254: ok
+   C121 (Bottom body) to C133       body gap 0.300 (before 0.300), Component Clearance rule 0.254: ok
+   C121 (Bottom body) to R34        body gap 0.420 (before 0.470), Component Clearance rule 0.254: ok
+   C121 (Bottom body) to C118       body gap 0.716 (before 0.671), Component Clearance rule 0.254: ok
+   C121 (Bottom body) to C111       body gap 0.900 (before 0.900), Component Clearance rule 0.254: ok
+   C124 (Bottom body) to C137       body gap 0.540 (before 0.540), Component Clearance rule 0.254: ok
+   C124 (Bottom body) to C138       body gap 0.540 (before 0.540), Component Clearance rule 0.254: ok
+   C124 (Bottom body) to C118       body gap 0.560 (before 0.560), Component Clearance rule 0.254: ok
+   C124 (Bottom body) to C119       body gap 0.560 (before 0.560), Component Clearance rule 0.254: ok
+   C124 (Bottom body) to C122       body gap 0.860 (before 0.990), Component Clearance rule 0.254: ok
+   C78 (Bottom body) to L3         body gap 0.525 (before 0.525), Component Clearance rule 0.254: ok
+   C78 (Bottom body) to C149       body gap 0.900 (before 0.950), Component Clearance rule 0.254: ok
+   C78 (Bottom body) to U7         body gap 2.329 (before 2.341), Component Clearance rule 0.254: ok
+   C78 (Bottom body) to C84        body gap 3.250 (before 3.250), Component Clearance rule 0.254: ok
+   C78 (Bottom body) to C166       body gap 4.500 (before 4.500), Component Clearance rule 0.254: ok
+   L1 (Bottom body) to U8         body gap 0.600 (before 0.600), Component Clearance rule 0.254: ok
+   L1 (Bottom body) to R117       body gap 1.130 (before 1.000), Component Clearance rule 0.254: ok
+   L1 (Bottom body) to C165       body gap 1.130 (before 1.000), Component Clearance rule 0.254: ok
+   L1 (Bottom body) to C80        body gap 1.205 (before 1.335), Component Clearance rule 0.254: ok
+   L1 (Bottom body) to C148       body gap 1.655 (before 1.525), Component Clearance rule 0.254: ok
+   L2 (Bottom body) to C82        body gap 0.450 (before 0.450), Component Clearance rule 0.254: ok
+   L2 (Bottom body) to C160       body gap 0.575 (before 0.575), Component Clearance rule 0.254: ok
+   L2 (Bottom body) to C93        body gap 0.900 (before 0.900), Component Clearance rule 0.254: ok
+   L2 (Bottom body) to C80        body gap 1.200 (before 1.200), Component Clearance rule 0.254: ok
+   L2 (Bottom body) to U8         body gap 1.220 (before 1.050), Component Clearance rule 0.254: ok
+   L9 (Bottom body) to C164       body gap 0.350 (before 0.350), Component Clearance rule 0.254: ok
+   L9 (Bottom body) to U8         body gap 0.625 (before 0.625), Component Clearance rule 0.254: ok
+   L9 (Bottom body) to R103       body gap 0.627 (before 0.629), Component Clearance rule 0.254: ok
+   L9 (Bottom body) to C148       body gap 0.870 (before 0.850), Component Clearance rule 0.254: ok
+   L9 (Bottom body) to C168       body gap 0.950 (before 0.950), Component Clearance rule 0.254: ok
+
+== 12 silk (../p2_R2_west_mid/silk/silk_dump.json, KiCad read of ../board.PcbDoc): overlay owned by the moved parts, other overlay vs their pads' mask openings (rule 0.254)
+   silk dump of board md5 682cd9d3 (board copy 682cd9d3): 39 overlay shapes; owned by ['C121', 'C124', 'C78', 'L1', 'L2', 'L9']: 0
+   nearest other overlay to the moved pads' mask openings: (0.73, 'L9-1', 'U8', 'seg')
+
+== 13 sensitive nets and decoupling
+   nets touched by the plan (41): A1 A7 CHAN1 CHAN2 CHAN21 CHAN7 CHAN8 DONE EE-CLK EE-DATA EE-DATA-DO FLASH-D01 FLASH-D02 FPGA-DONE FPGA-TDO FT-REF GND GNDADC LD4_A N$BTN PROG# PWR_CLPROG PWR_FB2 PWR_FB3 PWR_PGOODALL PWR_PROG PWR_SW2 RST# SD-CMD SD-DAT0 SD-DAT1 SDRAM-CS# TDI TMS UART_FT_CTS# USB5V0 VBATT VCC1V0 VCC1V8 VCCADC VU
+   of them changed by stage S (final5c vs ../final5b/model_final.json) (2): GND SD-DAT0
+   AIN nets touched: none; USB_D touched: none; SDRAM nets touched: ['A1', 'A7', 'SDRAM-CS#'] (stage S: none); switching nodes touched: ['PWR_SW2'] (stage S: none); clocks touched: ['EE-CLK'] (stage S: none)
+     SDRAM A1        length 9.515 / 9.515 / 9.515 (original / final5b / final5c); vs address/control average -2.357 / -2.356 / -2.356: ok
+     SDRAM A7        length 10.594 / 10.594 / 10.594 (original / final5b / final5c); vs address/control average -1.279 / -1.278 / -1.278: ok
+     SDRAM SDRAM-CS# length 11.373 / 11.350 / 11.350 (original / final5b / final5c); vs address/control average -0.500 / -0.522 / -0.522: ok
+   AIN15_P nearest switching node / clock copper on a shared layer: original 0.0869 (CLK-12M-FPGA T) -> final 0.0869 (CLK-12M-FPGA T)
+   AIN15_N nearest switching node / clock copper on a shared layer: original 0.0869 (SD-CLK B) -> final 0.0869 (SD-CLK B)
+   AIN16_P nearest switching node / clock copper on a shared layer: original 0.1274 (CLK-12M-FPGA 4) -> final 0.1274 (CLK-12M-FPGA 4)
+   AIN16_N nearest switching node / clock copper on a shared layer: original 0.1021 (CLK-12M-FPGA 4) -> final 0.1021 (CLK-12M-FPGA 4)
+   AIN15 P/N length 22.611 / 31.961 (original 22.611 / 31.961)
+   AIN16 P/N length 19.991 / 20.311 (original 19.991 / 20.311)
+   nearest new copper to an AIN track (same layer): [(0.0915, 'GND', 'AIN15_P', '3'), (0.0915, 'GND', 'AIN15_P', '3'), (0.0919, 'GND', 'AIN15_P', '3')]
+   SD-DAT0   length 33.083 / 33.017 / 33.241 (original / final5b / final5c)
+   SD-DAT1   length 34.536 / 34.612 / 34.612 (original / final5b / final5c)
+   SD-CMD    length 22.665 / 22.594 / 22.594 (original / final5b / final5c)
+   FLASH-D01 length 28.863 / 28.863 / 28.863 (original / final5b / final5c)
+   FLASH-D02 length 32.321 / 32.186 / 32.186 (original / final5b / final5c)
+   decoupling caps moved: ['C121', 'C124', 'C78'] (moved parts: ['C121', 'C124', 'C78', 'L1', 'L2', 'L9'])
+     C121-1 -> U1-V9 pad-centre distance 3.045 -> 3.042: no farther
+     C121-1 -> U1-V11 pad-centre distance 3.257 -> 3.240: no farther
+     C124-1 -> U1-C13 pad-centre distance 11.489 -> 11.530: FARTHER
+     C124-2 -> U1-C12 pad-centre distance 11.766 -> 11.815: FARTHER
+     C124-1 -> L7-2 pad-centre distance 5.771 -> 5.899: FARTHER
+     C78-1 -> U7-2 pad-centre distance 4.585 -> 4.542: no farther
+     C78-2 -> U7-1 pad-centre distance 2.739 -> 2.717: no farther
+   clock-named nets changed vs final5b: none (EE-CLK = the slow EEPROM SPI clock, re-routed by W2 by assignment)
+   moved caps farther from an IC pin they serve: ['C124', 'C124'] (C124 is the VCCADC / GNDADC filter cap at L7, 11.5 mm from U1; W4 moved it 0.13 E for VCCADC's through-via site: +0.041 / +0.049 mm straight to U1-C13 / C12, copper path C124-1>U1-C13 17.678 -> 17.828 (+0.150, rule +0.30), C124-1>L7-2 5.355 / 1 -> 5.504 / 1)
+
+== 14 emit_copper smoke test (main() with HERE -> emit/; nothing written under Rev_1)
+   emit_copper: emit\FeatherCopper_VipFinal5c.pas: 320 vias, 283 tracks, 41 nets
+   release order (final5b fab review, item 5): header rewritten 1, final message rewritten 1; the script says, in order: (1) Tools > Polygon Pours > Repour All (L2_GND_FEATHER, L5_VCC3V3_FEATHER); (2) save; (3) close the PcbDoc; (4) python tools/mark_microvias.py <PcbDoc> --expect 1359; (5) reopen the PcbDoc; (6) Repour All again; (7) full DRC, every rule incl. Hole Size, Hole To Hole and Component Clearance with 3D bodies, expect 0; (8) save after the clean DRC; (9) python tools/mark_microvias.py <PcbDoc> --expect 1359 --verify; fill / cap note in both: True: OK
+   literal / line length (final5c review P1): the final message is 5 literals of 130/104/135/68/121 characters on 5 source lines (text read back = header text: True); longest literal in the script 135 (limit 160), longest line 364 (limit 397; the emit_copper guard lines)
+   move guard C121: script expects origin (25.3700, 18.4700); board origin (25.3700, 18.4700) rot 0: match; moves by (-0.0500, 0.0000); pad-1 check expects ('25.020', '18.470'), final model pad 1 (25.020, 18.470)
+   move guard C124: script expects origin (27.1800, 18.8300); board origin (27.1800, 18.8300) rot 0: match; moves by (0.1300, 0.0000); pad-1 check expects ('26.660', '18.830'), final model pad 1 (26.660, 18.830)
+   move guard C78: script expects origin (2.4000, 10.6749); board origin (2.4000, 10.6749) rot 90: match; moves by (0.0000, 0.0500); pad-1 check expects ('2.400', '9.875'), final model pad 1 (2.400, 9.875)
+   move guard L1: script expects origin (10.5000, 21.4000); board origin (10.5000, 21.4000) rot 0: match; moves by (0.1300, 0.0000); pad-1 check expects ('9.455', '21.400'), final model pad 1 (9.455, 21.400)
+   move guard L2: script expects origin (14.8000, 17.5000); board origin (14.8000, 17.5000) rot 0: match; moves by (0.1700, 0.0000); pad-1 check expects ('13.795', '17.500'), final model pad 1 (13.795, 17.500)
+   move guard L9: script expects origin (6.8750, 18.2750); board origin (6.8750, 18.2750) rot 90: match; moves by (0.0000, -0.0200); pad-1 check expects ('6.875', '17.080'), final model pad 1 (6.875, 17.080)
+   V lines 320 (plan 320) read back == plan: True; T lines 283 (plan 283) read back == plan: True
+   remove guard: 197 track lines "Kill.Count <> ['197']", 122 via lines "KillV.Count <> ['122']"; each guard line matches exactly one object of the ORIGINAL board: tracks True, vias True; nothing is removed unless both lists are complete
+   placement guard via (9.4000, 11.1500): nearest original via 0.100 mm (first run not refused, second run is)
+   nets named 41, all on the board: True; refuses unless Rev_1\...\asar_feather.PcbDoc is focused: True
+   Rev_1/tools listing unchanged by the smoke test: True; FeatherCopper_VipFinal5c.* under Rev_1/tools: none; Rev_1/Asar_feather.PrjPcb unchanged: True; live PcbDoc md5 682cd9d3
+
+== 15 TIE RULES (elec/ties.py = verify2_electrical paths3.metric): every power / ground pad whose metric differs between ORIGINAL, final5b and final5c
+g objs 7228 time 4.0s
+g objs 7505 time 4.1s
+g objs 7512 time 4.1s
+   plane nets (GND -> L2, VCC3V3 -> L5): copper OUTSIDE the pad to the plane / min track width / vias
+   pad      net    original               final5b                final5c                verdict
+   C100-2   GND    0.000 / None / 1       0.267 / 0.25 / 1       0.267 / 0.25 / 1       ok (target 0.40 met)
+   C101-2   GND    0.000 / None / 1       0.254 / 0.2 / 1        0.254 / 0.2 / 1        ok (target 0.40 met)
+   C102-2   GND    0.000 / None / 1       0.254 / 0.2 / 1        0.254 / 0.2 / 1        ok (target 0.40 met)
+   C103-2   GND    0.000 / None / 1       0.005 / 0.25 / 4       0.005 / 0.25 / 4       ok (target 0.40 met)
+   C104-2   GND    0.000 / None / 1       0.269 / 0.2 / 1        0.269 / 0.2 / 1        ok (target 0.40 met)
+   C105-2   GND    0.000 / None / 1       0.254 / 0.2 / 1        0.254 / 0.2 / 1        ok (target 0.40 met)
+   C106-2   GND    0.000 / None / 1       0.254 / 0.2 / 1        0.254 / 0.2 / 1        ok (target 0.40 met)
+   C111-2   GND    0.126 / None / 1       0.477 / 0.25 / 4       0.477 / 0.25 / 4       ok (over the 0.40 target)
+   C115-2   GND    0.332 / 0.0762 / 1     0.316 / 0.25 / 4       0.316 / 0.25 / 4       ok (target 0.40 met)
+   C116-2   GND    0.332 / 0.0762 / 1     0.380 / 0.2 / 4        0.380 / 0.2 / 4        ok (target 0.40 met)
+   C117-2   GND    0.101 / None / 1       0.432 / 0.25 / 4       0.432 / 0.25 / 4       ok (over the 0.40 target)
+   C119-2   GND    0.000 / None / 1       0.161 / 0.25 / 4       0.161 / 0.25 / 4       ok (target 0.40 met)
+   C12-1    GND    0.630 / 0.0762 / 3     0.329 / 0.25 / 4       0.329 / 0.25 / 4       ok (target 0.40 met)
+   C120-2   GND    0.000 / None / 1       0.300 / 0.25 / 4       0.300 / 0.25 / 4       ok (target 0.40 met)
+   C121-1   VCC3V3 0.000 / None / 1       0.000 / None / 1       0.000 / None / 1       tie unchanged vs original
+   C121-2   GND    0.000 / None / 1       1.042 / 0.2 / 4        1.042 / 0.2 / 4        FAIL: OVER 0.60
+   C122-2   GND    0.000 / None / 1       0.100 / 0.2 / 4        0.100 / 0.2 / 4        ok (target 0.40 met)
+   C13-1    GND    0.000 / None / 1       0.000 / 0.25 / 4       0.000 / 0.25 / 4       ok (target 0.40 met)
+   C133-1   GND    0.000 / None / 1       0.221 / 0.25 / 4       0.221 / 0.25 / 4       ok (target 0.40 met)
+   C134-1   GND    0.000 / None / 1       0.182 / 0.25 / 4       0.182 / 0.25 / 4       ok (target 0.40 met)
+   C135-1   GND    0.000 / None / 1       0.151 / 0.2 / 4        0.151 / 0.2 / 4        ok (target 0.40 met)
+   C136-1   GND    0.000 / None / 1       0.075 / 0.25 / 4       0.075 / 0.25 / 4       ok (target 0.40 met)
+   C137-1   GND    0.000 / None / 1       0.075 / 0.25 / 4       0.075 / 0.25 / 4       ok (target 0.40 met)
+   C138-1   GND    0.000 / None / 1       0.187 / 0.2 / 4        0.187 / 0.2 / 4        ok (target 0.40 met)
+   C140-2   GND    0.000 / None / 1       0.231 / 0.25 / 4       0.231 / 0.25 / 4       ok (target 0.40 met)
+   C141-2   GND    0.000 / None / 1       0.000 / 0.25 / 4       0.000 / 0.25 / 4       ok (target 0.40 met)
+   C142-2   GND    0.881 / 0.0762 / 4     0.000 / 0.25 / 4       0.000 / 0.25 / 4       ok (target 0.40 met)
+   C143-2   GND    0.000 / None / 1       0.248 / 0.25 / 4       0.248 / 0.25 / 4       ok (target 0.40 met)
+   C144-2   GND    0.080 / None / 1       0.255 / 0.25 / 1       0.255 / 0.25 / 1       ok (target 0.40 met)
+   C145-2   GND    0.000 / None / 1       0.000 / 0.25 / 4       0.000 / 0.25 / 4       ok (target 0.40 met)
+   C146-2   GND    0.000 / None / 1       0.060 / 0.25 / 4       0.060 / 0.25 / 4       ok (target 0.40 met)
+   C148-1   GND    0.000 / None / 1       0.260 / 0.3 / 1        0.260 / 0.3 / 1        ok (target 0.40 met)
+   C149-1   GND    0.000 / None / 1       0.260 / 0.3 / 1        0.260 / 0.3 / 1        ok (target 0.40 met)
+   C150-1   GND    0.474 / 0.25 / 1       0.000 / 0.25 / 4       0.000 / 0.25 / 4       ok (target 0.40 met)
+   C155-1   GND    0.130 / None / 1       0.322 / 0.2 / 1        0.322 / 0.2 / 1        ok (target 0.40 met)
+   C157-1   GND    0.126 / None / 1       0.266 / 0.2 / 1        0.266 / 0.2 / 1        ok (target 0.40 met)
+   C158-1   GND    0.130 / None / 1       0.258 / 0.2 / 1        0.258 / 0.2 / 1        ok (target 0.40 met)
+   C159-1   GND    0.130 / None / 1       0.346 / 0.2 / 1        0.346 / 0.2 / 1        ok (target 0.40 met)
+   C160-1   GND    0.000 / None / 1       0.255 / 0.3 / 1        0.255 / 0.3 / 1        ok (target 0.40 met)
+   C161-1   GND    0.000 / None / 1       0.343 / 0.2 / 2        0.343 / 0.2 / 2        ok (target 0.40 met)
+   C167-1   GND    0.065 / None / 1       0.298 / 0.3 / 1        0.298 / 0.3 / 1        ok (target 0.40 met)
+   C168-1   GND    0.000 / None / 1       0.259 / 0.3 / 1        0.259 / 0.3 / 1        ok (target 0.40 met)
+   C3-1     GND    0.000 / None / 1       0.261 / 0.2 / 2        0.261 / 0.2 / 2        ok (target 0.40 met)
+   C38-1    GND    0.130 / None / 1       0.258 / 0.2 / 1        0.258 / 0.2 / 1        ok (target 0.40 met)
+   C4-1     GND    0.000 / None / 1       0.352 / 0.2 / 1        0.352 / 0.2 / 1        ok (target 0.40 met)
+   C40-1    GND    0.130 / None / 1       0.267 / 0.2 / 1        0.267 / 0.2 / 1        ok (target 0.40 met)
+   C5-1     GND    0.000 / None / 1       0.040 / 0.25 / 4       0.040 / 0.25 / 4       ok (target 0.40 met)
+   C6-1     GND    0.000 / None / 1       0.286 / 0.25 / 4       0.286 / 0.25 / 4       ok (target 0.40 met)
+   C7-1     GND    0.000 / None / 1       0.135 / 0.25 / 4       0.135 / 0.25 / 4       ok (target 0.40 met)
+   C78-1    GND    0.000 / None / 1       0.257 / 0.3 / 1        0.257 / 0.3 / 1        ok (target 0.40 met)
+   C8-1     GND    0.350 / 0.0762 / 1     0.000 / 0.25 / 4       0.000 / 0.25 / 4       ok (target 0.40 met)
+   C80-1    GND    0.000 / None / 1       0.277 / 0.3 / 1        0.277 / 0.3 / 1        ok (target 0.40 met)
+   C82-1    GND    0.000 / None / 1       0.259 / 0.3 / 1        0.259 / 0.3 / 1        ok (target 0.40 met)
+   C84-1    GND    0.000 / None / 1       0.259 / 0.3 / 1        0.259 / 0.3 / 1        ok (target 0.40 met)
+   C85-2    GND    0.000 / None / 1       0.260 / 0.3 / 1        0.260 / 0.3 / 1        ok (target 0.40 met)
+   C86-2    GND    0.000 / None / 1       0.095 / 0.25 / 4       0.095 / 0.25 / 4       ok (target 0.40 met)
+   C87-2    GND    0.000 / None / 1       0.276 / 0.2 / 1        0.276 / 0.2 / 1        ok (target 0.40 met)
+   C88-2    GND    0.000 / None / 1       0.256 / 0.2 / 1        0.256 / 0.2 / 1        ok (target 0.40 met)
+   C9-1     GND    0.492 / 0.0762 / 1     0.231 / 0.25 / 4       0.231 / 0.25 / 4       ok (target 0.40 met)
+   C91-2    GND    0.000 / None / 1       0.325 / 0.25 / 4       0.325 / 0.25 / 4       ok (target 0.40 met)
+   C92-2    GND    0.000 / None / 1       0.230 / 0.25 / 4       0.230 / 0.25 / 4       ok (target 0.40 met)
+   C93-2    GND    0.300 / 0.0762 / 1     0.265 / 0.25 / 1       0.265 / 0.25 / 1       ok (target 0.40 met)
+   C94-2    GND    0.000 / None / 1       0.284 / 0.2 / 1        0.284 / 0.2 / 1        ok (target 0.40 met)
+   C95-2    GND    0.000 / None / 1       0.348 / 0.2 / 1        0.348 / 0.2 / 1        ok (target 0.40 met)
+   C96-2    GND    0.000 / None / 1       0.266 / 0.25 / 4       0.266 / 0.25 / 4       ok (target 0.40 met)
+   C97-2    GND    0.000 / None / 1       0.282 / 0.2 / 1        0.282 / 0.2 / 1        ok (target 0.40 met)
+   C98-2    GND    0.000 / None / 1       0.000 / 0.25 / 4       0.000 / 0.25 / 4       ok (target 0.40 met)
+   C99-2    GND    0.000 / None / 1       0.259 / 0.2 / 1        0.259 / 0.2 / 1        ok (target 0.40 met)
+   JP3-3    GND    0.265 / 0.25 / 1       0.257 / 0.25 / 1       0.257 / 0.25 / 1       info (not a cap / IC)
+   R102-2   GND    0.000 / None / 1       0.300 / 0.3 / 1        0.300 / 0.3 / 1        info (not a cap / IC)
+   R103-2   GND    0.000 / None / 1       0.880 / 0.2 / 2        0.880 / 0.2 / 2        info (not a cap / IC): OVER 0.60
+   R114-2   GND    0.000 / None / 1       0.250 / 0.25 / 4       0.250 / 0.25 / 4       info (not a cap / IC)
+   R18-1    GND    0.005 / None / 1       0.279 / 0.2 / 1        0.279 / 0.2 / 1        info (not a cap / IC)
+   R21-1    GND    0.070 / None / 1       0.000 / None / 1       0.000 / None / 1       info (not a cap / IC)
+   RESET-3  GND    0.000 / None / 1       0.000 / None / 1       0.000 / None / 1       info (not a cap / IC)
+   U2-1     GND    0.000 / None / 1       0.000 / None / 1       0.000 / None / 1       tie unchanged vs original
+   U7-2     GND    0.000 / None / 1       0.260 / 0.3 / 1        0.260 / 0.3 / 1        ok (target 0.40 met)
+   U8-10    GND    0.600 / 0.25 / 4       0.221 / 0.25 / 4       0.221 / 0.25 / 4       ok (target 0.40 met)
+   U8-13    GND    0.000 / None / 1       0.375 / 0.2 / 1        0.375 / 0.2 / 1        ok (target 0.40 met)
+   U8-16    GND    0.000 / None / 1       0.273 / 0.25 / 1       0.273 / 0.25 / 1       ok (target 0.40 met)
+   U8-27    GND    0.130 / None / 1       0.448 / 0.2 / 4        0.448 / 0.2 / 4        ok (over the 0.40 target)
+   U8-3     GND    0.000 / None / 1       0.322 / 0.2 / 1        0.322 / 0.2 / 1        ok (target 0.40 met)
+   X1-5     GND    3.006 / 0.3 / 1        0.000 / None / 1       0.000 / None / 1       info (not a cap / IC)
+   X1-MP1   GND    1.849 / 0.4 / 0        1.030 / 0.4 / 1        1.030 / 0.4 / 1        info (not a cap / IC): OVER 0.60
+   X1-MP3   GND    0.000 / None / 1       0.260 / 0.3 / 1        0.260 / 0.3 / 1        info (not a cap / IC)
+   X1-MP4   GND    0.000 / None / 1       0.315 / 0.3 / 1        0.315 / 0.3 / 1        info (not a cap / IC)
+   X3-6     GND    0.000 / None / 1       0.254 / 0.2 / 1        0.254 / 0.2 / 1        info (not a cap / IC)
+   X3-G1    GND    0.000 / None / 1       0.255 / 0.2 / 1        0.255 / 0.2 / 1        info (not a cap / IC)
+   X3-G2    GND    0.000 / None / 1       0.254 / 0.2 / 1        0.254 / 0.2 / 1        info (not a cap / IC)
+   X3-G3    GND    0.000 / None / 1       0.254 / 0.2 / 1        0.254 / 0.2 / 1        info (not a cap / IC)
+   X3-G4    GND    0.000 / None / 1       0.256 / 0.2 / 1        0.256 / 0.2 / 1        info (not a cap / IC)
+   caps / ICs whose plane tie changed vs ORIGINAL: 73; mean / max outside the pad: original 0.078 / 0.881, final5b 0.241 / 1.042, final5c 0.241 / 1.042
+   every changed tie over the 0.40 target (6): C111-2 0.477, C117-2 0.432, C121-2 1.042, R103-2 0.880, U8-27 0.448, X1-MP1 1.030
+   FAILING (over 0.60, or worse than final5b / under 0.20 wide without a stated reason): 1 C121-2
+     reason C121-2: W4: C124-1 is reachable on Bottom from one pocket (C117-2 / C118-1 / C121-2 / C124-1, 0.30 gaps); its L3 band (AIN15_P..AIN15_N) and L4 band (CFG-M1..CHAN19) hold either C121-2's chain or VCCADC's Top->Bottom transition, not both; CHAN18's (25.275, 18.025) stack closes the band W.  W4 chose VCCADC 1 via (was 5). Both fit only with C118 0.06 N, which puts C118 0.043 from AIN16_N's laser and the C118/C114 bodies at 0.240 (< CC 0.254).  FINAL-4b E5: C121-2 has its own in-pad L5-B laser (one-sided land fixed), joined on L5 to the C117-2 chain; that path is no shorter, so the tie stays the Bottom route
+     reason R103-2: stage R5 (final5b): R103-2 has an in-pad L5-B laser and a 0.20 L5 jog to its GND through via (5.95, 16.05), which a 0.20 Bottom track (0.40 below L9-1) joins to U8-3's via V2 (7.97, 16.27); phase 5's Bottom dog-bone beside L9-1 is gone.  Before stage R: phase 5 U8 (judged C, S2): R103-2 keeps its own GND through via, moved (6.125, 16.125) -> (5.95, 16.05), with the 0.20 dog-bone re-run (5.42, 16.78)-(5.40, 16.42)-(5.95, 16.05) so the strip to the moved L9-1 opening is >= 0.06 (was 0.022); its PWR_CLPROG partner laser moved inside R103-1; not a cap / IC
+   other power nets (path to the nearest pad of another part, not a plane tie; judged only "no narrower and at most 0.10 mm longer than final5b", INFORMATION ONLY here: section 18c (iii) judges them against the ORIGINAL, the acceptance rule):
+   C124-1   VCCADC   5.841 / 0.15 / 1       5.969 / 0.15 / 1       5.969 / 0.15 / 1       
+   C124-2   GNDADC   11.694 / 0.15 / 9      11.563 / 0.15 / 9      11.563 / 0.15 / 9      
+   C147-2   VU       1.349 / 0.8 / 0        1.350 / 0.8 / 0        1.350 / 0.8 / 0        
+   C148-2   VU       3.205 / 0.4 / 2        3.393 / 0.4 / 2        3.393 / 0.4 / 2        
+   C149-2   VU       0.760 / 0.4 / 0        0.760 / 0.4 / 0        0.760 / 0.4 / 0        
+   C160-2   VU       3.542 / 0.4 / 2        3.574 / 0.4 / 2        3.574 / 0.4 / 2        
+   C163-1   VCC1V8   3.540 / 0.25 / 4       3.635 / 0.25 / 4       3.635 / 0.25 / 4       
+   C78-2    VU       1.196 / None / 0       1.141 / None / 0       1.141 / None / 0       
+   C82-2    VCC1V8   1.427 / 0.3 / 0        1.484 / 0.3 / 0        1.484 / 0.3 / 0        
+   C92-1    VCC1V0   0.931 / 0.5 / 3        0.919 / 0.5 / 5        0.919 / 0.5 / 5        
+   L1-1     PWR_SWAB3 0.565 / 0.4 / 0        0.565 / 0.4 / 0        0.565 / 0.4 / 0        
+   L1-2     PWR_SWCD3 0.553 / 0.4 / 0        0.553 / 0.4 / 0        0.553 / 0.4 / 0        
+   L2-1     PWR_SW2  0.711 / 0.3 / 0        0.894 / 0.3 / 0        0.894 / 0.3 / 0        
+   L2-2     VCC1V8   0.836 / 0.3 / 0        0.938 / 0.3 / 0        0.938 / 0.3 / 0        
+   L6-2     GNDADC   11.532 / 0.15 / 9      11.433 / 0.15 / 9      11.433 / 0.15 / 9      
+   L7-1     VCC1V8   4.136 / 0.15 / 1       4.647 / 0.15 / 1       4.647 / 0.15 / 1       
+   L7-2     VCCADC   5.816 / 0.15 / 1       5.927 / 0.15 / 1       5.927 / 0.15 / 1       
+   L8-2     VU       0.698 / 0.8 / 0        0.700 / 0.8 / 0        0.700 / 0.8 / 0        
+   L9-1     PWR_SW1  0.583 / 0.4 / 0        0.583 / 0.4 / 0        0.583 / 0.4 / 0        
+   R26-1    VU       9.912 / 0.2 / 6        9.955 / 0.2 / 8        9.955 / 0.2 / 8        
+   U1-A13   GNDADC   2.462 / 0.15 / 5       2.462 / 0.15 / 5       2.462 / 0.15 / 5       
+   U1-G10   VCC1V0   0.986 / 0.5 / 3        0.944 / 0.5 / 5        0.944 / 0.5 / 5        
+   U1-H10   VCC1V0   1.494 / 0.25 / 3       1.452 / 0.25 / 5       1.452 / 0.25 / 5       
+   U1-J10   VCC1V0   1.994 / 0.25 / 3       1.952 / 0.25 / 5       1.952 / 0.25 / 5       
+   U8-1     VU       5.550 / 0.4 / 2        6.059 / 0.4 / 2        6.059 / 0.4 / 2        
+   U8-11    VU       3.744 / 0.4 / 2        3.764 / 0.4 / 2        3.764 / 0.4 / 2        
+   U8-14    PWR_SWCD3 1.353 / 0.4 / 0        1.358 / 0.4 / 0        1.358 / 0.4 / 0        
+   U8-18    VU       3.735 / 0.4 / 2        3.765 / 0.4 / 2        3.765 / 0.4 / 2        
+   U8-19    PWR_SW2  1.114 / 0.3 / 0        1.252 / 0.3 / 0        1.252 / 0.3 / 0        
+   U8-4     PWR_SW1  1.385 / 0.4 / 0        1.383 / 0.4 / 0        1.383 / 0.4 / 0        
+   U8-5     VU       3.550 / 0.4 / 2        3.811 / 0.4 / 4        3.811 / 0.4 / 4        
+   U8-9     PWR_SWAB3 1.367 / 0.4 / 0        1.397 / 0.4 / 0        1.397 / 0.4 / 0        
+   X2-17    VBATT    10.657 / 0.3 / 4       10.616 / 0.3 / 4       10.616 / 0.3 / 4       
+   X2-19    USB5V0   14.334 / 0.25 / 5      14.393 / 0.25 / 5      14.393 / 0.25 / 5      
+   other power pads more than 0.10 longer than final5b or narrower (information): none
+
+== 16 U8 (LTC3556, Bottom) GND pins: own tie and tie sites (ugnd3 metric, LIM 1.5 mm, not through the plane)
+   original tie sites within 1.5 mm of any U8 GND pin: 7 (through 4, chain 3); at <= 0.6: through 4 [0.309, 0.309, 0.309, 0.485], microvia chain 0 []
+   final5b  tie sites within 1.5 mm of any U8 GND pin: 8 (through 3, chain 5); at <= 0.6: through 0 [], microvia chain 1 [0.507]
+   final5c  tie sites within 1.5 mm of any U8 GND pin: 8 (through 3, chain 5); at <= 0.6: through 0 [], microvia chain 1 [0.507]
+   U8-3   tie outside the pad 0.000 / None / 1 | 0.322 / 0.2 / 1 | 0.322 / 0.2 / 1; nearest site (0.309, 'through') | (0.692, 'through') | (0.692, 'through')  own tie <= 0.50: MET
+   U8-10  tie outside the pad 0.600 / 0.25 / 4 | 0.221 / 0.25 / 4 | 0.221 / 0.25 / 4; nearest site (0.918, 'chain') | (0.507, 'chain') | (0.507, 'chain')
+   U8-13  tie outside the pad 0.000 / None / 1 | 0.375 / 0.2 / 1 | 0.375 / 0.2 / 1; nearest site (0.309, 'through') | (0.743, 'through') | (0.743, 'through')  own tie <= 0.50: MET
+   U8-16  tie outside the pad 0.000 / None / 1 | 0.273 / 0.25 / 1 | 0.273 / 0.25 / 1; nearest site (0.309, 'through') | (0.623, 'through') | (0.623, 'through')  own tie <= 0.50: MET
+   U8-27  tie outside the pad 0.130 / None / 1 | 0.448 / 0.2 / 4 | 0.448 / 0.2 / 4; nearest site (0.485, 'through') | (0.831, 'chain') | (0.831, 'chain')  own tie <= 0.50: MET
+   U8-29  tie outside the pad 0.000 / None / 4 | 0.000 / None / 4 | 0.000 / None / 4; nearest site (0.804, 'chain') | (0.804, 'chain') | (0.804, 'chain')
+   U8 summary: own tie <= 0.50 missing for none; tie sites at <= 0.6: 1 (through 0), rule >= 4 NOT MET
+
+== 17 information: improvement items and review items (original | final5b | final5c)
+   PWR_FB2      track length 19.106 | 19.172 | 19.172 mm; vias 7 | 11 | 11
+   TMS          track length 9.961 | 9.995 | 9.995 mm; vias 4 | 9 | 9
+   TDI          track length 12.807 | 12.804 | 12.804 mm; vias 7 | 9 | 9
+   EE-CLK       track length 8.977 | 9.130 | 9.130 mm; vias 5 | 9 | 9
+   FT-REF       track length 4.872 | 5.615 | 5.615 mm; vias 1 | 1 | 1
+   PROG#        track length 7.087 | 7.350 | 7.350 mm; vias 7 | 9 | 9
+   DONE         track length 4.438 | 4.630 | 4.630 mm; vias 1 | 1 | 1
+   PWR_FB3      track length 15.484 | 15.727 | 15.727 mm; vias 10 | 10 | 10
+   PWR_CLPROG   track length 5.594 | 5.551 | 5.551 mm; vias 8 | 8 | 8
+   PWR_PGOODALL track length 18.633 | 18.691 | 18.691 mm; vias 11 | 11 | 11
+   SD-DAT0      track length 33.083 | 33.017 | 33.241 mm; vias 20 | 22 | 22
+   SDRAM-CS#    track length 11.373 | 11.350 | 11.350 mm; vias 10 | 12 | 12
+   FLASH-D02    track length 32.321 | 32.186 | 32.186 mm; vias 14 | 14 | 14
+   VU           track length 54.024 | 64.081 | 64.081 mm; vias 19 | 23 | 23
+   path C148-2 -> U8-5: 3.931 mm, 2 vias, min w 0.4 | 4.202 mm, 4 vias, min w 0.4 | 4.202 mm, 4 vias, min w 0.4
+   path C160-2 -> U8-18: 4.088 mm, 2 vias, min w 0.4 | 4.119 mm, 2 vias, min w 0.4 | 4.119 mm, 2 vias, min w 0.4
+   path C150-1 -> U8-27: 1.445 mm, 0 vias, min w 0.25 | 1.445 mm, 0 vias, min w 0.25 | 1.445 mm, 0 vias, min w 0.25
+   path C92-1 -> U1-G10: 1.111 mm, 3 vias, min w 0.5 | 1.069 mm, 5 vias, min w 0.5 | 1.069 mm, 5 vias, min w 0.5
+
+== 18a G-LOOP: regulator loops, s5 metric (copper path, plane hops at straight distance; length / vias in series). Rule: <= ORIGINAL + 0.30 (hard + 0.50 with a reason), vias <= ORIGINAL + 2
+   pair             ORIGINAL         final5b          final5c          verdict
+   C149-1>U7-2      2.092 / 2        2.222 / 4        2.222 / 4        MET (+0.130, vias +2)
+   C78-1>U7-2       3.520 / 2        3.744 / 4        3.744 / 4        MET (+0.224, vias +2)
+   C84-1>U7-2       2.600 / 3        2.342 / 2        2.342 / 2        MET (-0.258, vias -1)
+   C160-1>U8-16     4.151 / 2        4.310 / 2        4.310 / 2        MET (+0.159, vias +0)
+   C148-1>U8-3      4.257 / 2        5.156 / 2        5.156 / 2        NOT MET: +0.899
+        reason: phase 5 U8 (judged C, S3): U8-3's 4-laser chain is retired for its own GND through via V2 (7.99, 16.2525) 0.679 from the pin (stage R3: (7.97, 16.27), 0.689; floor 0.601); this metric takes the 2-via path round V2 (+0.996), the reviewer s4 metric the 5-via path (4.862 / 5: length -0.353, vias +3).  C148-1's IC side is still blocked by L9-2 (W2)
+   C82-1>U8-16      2.946 / 2        3.520 / 2        3.520 / 2        NOT MET: +0.574
+        reason: phase 5 U8 (judged C, S5): C82-1 has its own GND through via (14.31, 15.775) (tie 0.396 / 4 vias -> 0.259 / 1); this metric's 2-via path is +0.574; on the reviewer s4 metric C82-1>U8-16 is MET
+   C147-1>U8-27     6.314 / 6        7.050 / 9        7.050 / 9        NOT MET: +0.736, vias +3
+        reason: W2: X4-2's Top pad excludes through vias at U8-27; chain plane-ends east are blocked by PWR_CHRG (L3) and PWR_PGOODALL (L4)
+   C80-1>U8-13      2.336 / 2        2.597 / 2        2.597 / 2        MET (+0.261, vias +0)
+   C144-2>U8-16     6.631 / 3        6.149 / 2        6.149 / 2        MET (-0.482, vias -1)
+   C148-2>U8-5      2.999 / 2        3.250 / 4        3.250 / 4        MET (+0.251, vias +2)
+   C160-2>U8-18     3.172 / 2        3.223 / 2        3.223 / 2        MET (+0.051, vias +0)
+   other reviewer s5 / s5b pairs (information; worse than final5b by > 0.02 mm or +1 via is flagged):
+     C167-1>U8-27     2.921 / 3        3.389 / 6        3.389 / 6        NOT MET: +0.468 (inside the hard +0.50), vias +3  (final5b = final5c class)
+     C148-2>U8-1      4.899 / 2        5.711 / 2        5.711 / 2        NOT MET: +0.812  (final5b = final5c class)
+     C151-1>U8-27     4.678 / 5        5.159 / 8        5.159 / 8        NOT MET: +0.481 (inside the hard +0.50), vias +3  (final5b = final5c class)
+   listed pairs not met: 3 ['C148-1>U8-3', 'C82-1>U8-16', 'C147-1>U8-27']; other pairs worse than final5b: 0 []
+   EVERY regulator-loop pair not meeting the rule (6 of 55 measured):
+     C148-1>U8-3      4.257 / 2        5.156 / 2        5.156 / 2        NOT MET: +0.899
+          reason: phase 5 U8 (judged C, S3): U8-3's 4-laser chain is retired for its own GND through via V2 (7.99, 16.2525) 0.679 from the pin (stage R3: (7.97, 16.27), 0.689; floor 0.601); this metric takes the 2-via path round V2 (+0.996), the reviewer s4 metric the 5-via path (4.862 / 5: length -0.353, vias +3).  C148-1's IC side is still blocked by L9-2 (W2)
+     C82-1>U8-16      2.946 / 2        3.520 / 2        3.520 / 2        NOT MET: +0.574
+          reason: phase 5 U8 (judged C, S5): C82-1 has its own GND through via (14.31, 15.775) (tie 0.396 / 4 vias -> 0.259 / 1); this metric's 2-via path is +0.574; on the reviewer s4 metric C82-1>U8-16 is MET
+     C147-1>U8-27     6.314 / 6        7.050 / 9        7.050 / 9        NOT MET: +0.736, vias +3
+          reason: W2: X4-2's Top pad excludes through vias at U8-27; chain plane-ends east are blocked by PWR_CHRG (L3) and PWR_PGOODALL (L4)
+     C167-1>U8-27     2.921 / 3        3.389 / 6        3.389 / 6        NOT MET: +0.468 (inside the hard +0.50), vias +3
+          reason: C167-1 (power-path VU output cap) has ONE vip_tight-clean dog-bone through-via site, (9.155, 11.965), 0.298 outside the pad (fix/sites2.py, R 0.8, with it removed: 0 sites; the U8 side is R96-1 / R96-2 at 0.37 and U2 Top pads); the +3 vias are the 4-laser tie of U8-27 (W2: the Top pad of X4-2 excludes through vias).  Reference: C167-1>U8-29 (the exposed pad) 4.839 / 5 -> 4.302 / 5 is MET
+     C148-2>U8-1      4.899 / 2        5.711 / 2        5.711 / 2        NOT MET: +0.812
+          reason: as VU:C148-2>U8-1 (W2: the U8-1 vias sit 0.255 below the pin)
+     C151-1>U8-27     4.678 / 5        5.159 / 8        5.159 / 8        NOT MET: +0.481 (inside the hard +0.50), vias +3
+          reason: C151-1 (VBATT cap GND) keeps its ORIGINAL in-pad 4-laser stack; the +0.480 / +4 is the U8-27 tie (as C147-1>U8-27: the Top pad of X4-2, W2); C151-1>U8-29 is unchanged at 4.202 / 8
+   note (review 1): C149-1>U7-2 and C78-1>U7-2 are MET on this metric only because it credits the W1 L3 GND strap (0.30 wide, 1.95 / 4.96 mm) into the in-pad [L3-L4 + L4-L5 + L5-B] stack of U7-2, which has no L2 laser; the only direct L2 tie of U7-2 is the 0.26 dog-bone to (5.66, 13.73), on the side away from the caps.  A cap-side plane tie needs a site that makes no 4-drill stack (none found by W1)
+
+== 18b G-TIE: every cap / IC plane tie that changed vs ORIGINAL (paths3.metric: copper outside the pad / min w / vias), rule <= 0.60 (target 0.40), >= 0.20 wide; joints: every plan track end lies inside same-net pad copper (>= 0.005), inside a same-net via land (>= 0.005) or on a same-net track centre-line
+   C121-2   0.000 / None / 1       1.042 / 0.2 / 4        1.042 / 0.2 / 4        OVER 0.60
+   C111-2   0.126 / None / 1       0.477 / 0.25 / 4       0.477 / 0.25 / 4       ok (over the 0.40 target)
+   U8-27    0.130 / None / 1       0.448 / 0.2 / 4        0.448 / 0.2 / 4        ok (over the 0.40 target)
+   C117-2   0.101 / None / 1       0.432 / 0.25 / 4       0.432 / 0.25 / 4       ok (over the 0.40 target)
+   C116-2   0.332 / 0.0762 / 1     0.380 / 0.2 / 4        0.380 / 0.2 / 4        ok
+   U8-13    0.000 / None / 1       0.375 / 0.2 / 1        0.375 / 0.2 / 1        ok
+   C4-1     0.000 / None / 1       0.352 / 0.2 / 1        0.352 / 0.2 / 1        ok
+   C95-2    0.000 / None / 1       0.348 / 0.2 / 1        0.348 / 0.2 / 1        ok
+   C159-1   0.130 / None / 1       0.346 / 0.2 / 1        0.346 / 0.2 / 1        ok
+   C161-1   0.000 / None / 1       0.343 / 0.2 / 2        0.343 / 0.2 / 2        ok
+   C12-1    0.630 / 0.0762 / 3     0.329 / 0.25 / 4       0.329 / 0.25 / 4       ok
+   C91-2    0.000 / None / 1       0.325 / 0.25 / 4       0.325 / 0.25 / 4       ok
+   C155-1   0.130 / None / 1       0.322 / 0.2 / 1        0.322 / 0.2 / 1        ok
+   U8-3     0.000 / None / 1       0.322 / 0.2 / 1        0.322 / 0.2 / 1        ok
+   C115-2   0.332 / 0.0762 / 1     0.316 / 0.25 / 4       0.316 / 0.25 / 4       ok
+   C120-2   0.000 / None / 1       0.300 / 0.25 / 4       0.300 / 0.25 / 4       ok
+   C167-1   0.065 / None / 1       0.298 / 0.3 / 1        0.298 / 0.3 / 1        ok
+   C6-1     0.000 / None / 1       0.286 / 0.25 / 4       0.286 / 0.25 / 4       ok
+   C94-2    0.000 / None / 1       0.284 / 0.2 / 1        0.284 / 0.2 / 1        ok
+   C97-2    0.000 / None / 1       0.282 / 0.2 / 1        0.282 / 0.2 / 1        ok
+   changed cap / IC ties: 73 (20 longest shown); mean / max outside the pad: ORIGINAL 0.078 / 0.881, final5b 0.241 / 1.042, final5c 0.241 / 1.042
+   over the 0.40 target (4): C111-2 0.477, C117-2 0.432, C121-2 1.042, U8-27 0.448
+   FAILING (> 0.60 or < 0.20 wide): 1 ['C121-2']
+   joints: 566 ends of the 283 plan tracks; ends NOT inside pad / via copper or on a same-net centre-line: 0 []
+
+== 18c G-POWER: non-plane power paths vs ORIGINAL (rule <= ORIGINAL + 0.30, vias <= ORIGINAL + 2, never narrower).  (i) the listed copper-only pad pairs (planes cut)
+   pair                   ORIGINAL                 final5b                  final5c                  verdict
+   VU:C148-2>U8-1         4.899 / 2 / w 0.4        5.711 / 2 / w 0.4        5.711 / 2 / w 0.4        NOT MET: +0.812
+        reason: W2: U8-2 sits 0.25 above U8-1, so U8-1's vias must sit 0.255 below the pin while the VU bus comes from the north (0.76 floor); west sites blocked by EE-CLK L3 at x 8.0
+   VU:C147-2>U8-18        5.480 / 2 / w 0.4        5.171 / 2 / w 0.4        5.171 / 2 / w 0.4        MET (-0.309, vias +0)
+   VU:C147-2>C148-2       12.499 / 2 / w 0.4       12.167 / 2 / w 0.4       12.167 / 2 / w 0.4       MET (-0.332, vias +0)
+   VU:C147-2>C160-2       5.202 / 2 / w 0.4        6.355 / 2 / w 0.4        6.355 / 2 / w 0.4        NOT MET: +1.153
+        reason: W2: C147-2 has no through-via site (U2 Top pads, Q1-2, 0.20 gaps, Top VU bus over the C82 gap)
+   VU:C147-2>L8-2         0.500 / 0 / w 0.8        0.500 / 0 / w 0.8        0.500 / 0 / w 0.8        MET (+0.000, vias +0)
+   VU:C147-2>U8-1         11.330 / 2 / w 0.4       11.816 / 2 / w 0.4       11.816 / 2 / w 0.4       NOT MET: +0.486 (inside the hard +0.50)
+        reason: W2: as VU:C148-2>U8-1 (U8-1's vias 0.255 below the pin) plus C147-2 without a through-via site
+   VU:C148-2>U8-18        6.999 / 2 / w 0.4        7.471 / 2 / w 0.4        7.471 / 2 / w 0.4        NOT MET: +0.472 (inside the hard +0.50)
+        reason: W2: U8-18 (buck-2 VIN) now has a dog-boned VU through via at (13.0025, 17.5), the vip_tight minimum beside the pin (land 0.0775) after L2 +0.045 (total +0.170); the floor is about +0.48. final3 was +3.72 (C147-2's in-pad VU via removed, 4 vias)
+   VU:C149-2>U8-18        11.600 / 2 / w 0.4       12.010 / 2 / w 0.4       12.010 / 2 / w 0.4       NOT MET: +0.410 (inside the hard +0.50)
+        reason: W2: as VU:C148-2>U8-18 (final3 +3.73)
+   VU:C78-2>U8-18         13.651 / 2 / w 0.4       14.011 / 2 / w 0.4       14.011 / 2 / w 0.4       NOT MET: +0.360 (inside the hard +0.50)
+        reason: W2: as VU:C148-2>U8-18 (final3 +3.73); C78 0.05 N (W1) gives -0.05 back
+   VU:R26-1>U8-18         23.844 / 8 / w 0.2       24.267 / 8 / w 0.2       24.267 / 8 / w 0.2       NOT MET: +0.423 (inside the hard +0.50)
+        reason: W1 + W2: R26-1 (EN pull-up, microamps) now reaches VU through its in-pad stack and a 0.25 L3 strap (W1, R26-1 tie +0.043); the rest is the U8-18 corridor via (W2, +0.47 floor)
+   VCC1V8:L2-2>L7-1       9.408 / 5 / w 0.15       11.117 / 5 / w 0.15      11.117 / 5 / w 0.15      NOT MET: +1.709
+        reason: W2: the VCC1V8 via is pinned at x 19.48 by the 0.55 Bottom gap (C97-1 / R1-4); Top south is blocked by R15-2 NODE_P1 and CLK-12M-SHARED at y 17.25; (19.475, 18.635) is already the vip_tight minimum north
+   VCC1V8:C144-1>L7-1     3.299 / 1 / w 0.15       5.014 / 1 / w 0.15       5.014 / 1 / w 0.15       NOT MET: +1.715
+        reason: W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1)
+   VCC1V8:C93-1>L7-1      5.467 / 1 / w 0.15       7.182 / 1 / w 0.15       7.182 / 1 / w 0.15       NOT MET: +1.715
+        reason: W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1)
+   VCC1V0:C92-1>U1-G10    0.908 / 3 / w 0.5        0.917 / 5 / w 0.5        0.917 / 5 / w 0.5        MET (+0.009, vias +2)
+   VCC1V0:C92-1>U1-H10    1.332 / 3 / w 0.25       1.340 / 5 / w 0.25       1.340 / 5 / w 0.25       MET (+0.008, vias +2)
+   VCC1V0:C92-1>U1-J10    1.832 / 3 / w 0.25       1.840 / 5 / w 0.25       1.840 / 5 / w 0.25       MET (+0.008, vias +2)
+   VCCADC:C124-1>L7-2     5.355 / 1 / w 0.15       5.496 / 1 / w 0.15       5.496 / 1 / w 0.15       MET (+0.141, vias +0)
+   (ii) every other power pad pair not meeting the rule (24; "WORSE THAN final5b" flagged):
+     VU:C147-2>U8-5               9.430 / 2 / w 0.4      10.672 / 4 / w 0.4     10.672 / 4 / w 0.4     NOT MET: +1.242
+     VU:C149-2>U8-1               8.250 / 2 / w 0.4      9.065 / 2 / w 0.4      9.065 / 2 / w 0.4      NOT MET: +0.815
+     VU:C160-2>U8-1               9.022 / 2 / w 0.4      9.868 / 2 / w 0.4      9.868 / 2 / w 0.4      NOT MET: +0.846
+     VU:C160-2>U8-5               7.122 / 2 / w 0.4      8.724 / 4 / w 0.4      8.724 / 4 / w 0.4      NOT MET: +1.602
+     VU:C78-2>U8-1                10.301 / 2 / w 0.4     11.066 / 2 / w 0.4     11.066 / 2 / w 0.4     NOT MET: +0.765
+     VU:R26-1>U8-1                20.494 / 8 / w 0.2     21.322 / 8 / w 0.2     21.322 / 8 / w 0.2     NOT MET: +0.828
+     VCC1V8:C163-1>L7-1           14.012 / 9 / w 0.15    15.771 / 9 / w 0.15    15.771 / 9 / w 0.15    NOT MET: +1.759
+     VCC1V8:C82-2>L7-1            8.192 / 5 / w 0.15     9.907 / 5 / w 0.15     9.907 / 5 / w 0.15     NOT MET: +1.715
+     VCC1V8:C94-1>L7-1            18.552 / 19 / w 0.15   20.267 / 19 / w 0.15   20.267 / 19 / w 0.15   NOT MET: +1.715
+     VCC1V8:C95-1>L7-1            14.685 / 19 / w 0.15   16.400 / 19 / w 0.15   16.400 / 19 / w 0.15   NOT MET: +1.715
+     VCC1V8:C96-1>L7-1            18.136 / 15 / w 0.15   19.851 / 15 / w 0.15   19.851 / 15 / w 0.15   NOT MET: +1.715
+     VCC1V8:L7-1>R113-1           6.652 / 1 / w 0.15     7.162 / 1 / w 0.15     7.162 / 1 / w 0.15     NOT MET: +0.510
+     GNDADC:C123-2>C124-2         28.317 / 16 / w 0.15   28.188 / 20 / w 0.15   28.188 / 20 / w 0.15   NOT MET: vias +4
+     GNDADC:C123-2>L6-2           39.826 / 25 / w 0.15   39.697 / 29 / w 0.15   39.697 / 29 / w 0.15   NOT MET: vias +4
+     GNDADC:C124-2>U1-A12         26.762 / 11 / w 0.15   26.766 / 15 / w 0.15   26.766 / 15 / w 0.15   NOT MET: vias +4
+     GNDADC:C124-2>U1-A13         25.610 / 11 / w 0.15   25.516 / 15 / w 0.15   25.516 / 15 / w 0.15   NOT MET: vias +4
+     GNDADC:C124-2>U1-B12         26.381 / 11 / w 0.15   26.385 / 15 / w 0.15   26.385 / 15 / w 0.15   NOT MET: vias +4
+     GNDADC:C124-2>U1-B13         25.928 / 11 / w 0.15   25.932 / 15 / w 0.15   25.932 / 15 / w 0.15   NOT MET: vias +4
+     GNDADC:C124-2>U1-C12         26.864 / 11 / w 0.15   26.868 / 15 / w 0.15   26.868 / 15 / w 0.15   NOT MET: vias +4
+     GNDADC:L6-2>U1-A12           38.723 / 20 / w 0.15   38.595 / 24 / w 0.15   38.595 / 24 / w 0.15   NOT MET: vias +4
+     GNDADC:L6-2>U1-A13           37.572 / 20 / w 0.15   37.345 / 24 / w 0.15   37.345 / 24 / w 0.15   NOT MET: vias +4
+     GNDADC:L6-2>U1-B12           38.343 / 20 / w 0.15   38.214 / 24 / w 0.15   38.214 / 24 / w 0.15   NOT MET: vias +4
+     GNDADC:L6-2>U1-B13           37.889 / 20 / w 0.15   37.761 / 24 / w 0.15   37.761 / 24 / w 0.15   NOT MET: vias +4
+     GNDADC:L6-2>U1-C12           38.826 / 20 / w 0.15   38.697 / 24 / w 0.15   38.697 / 24 / w 0.15   NOT MET: vias +4
+   (iii) paths3.metric rows (each power pad to the nearest pad of another part) that changed vs ORIGINAL and miss the rule:
+     L7-1     VCC1V8   4.136 / 0.15 / 1       4.647 / 0.15 / 1       4.647 / 0.15 / 1       +0.511, vias +0
+     U8-1     VU       5.550 / 0.4 / 2        6.059 / 0.4 / 2        6.059 / 0.4 / 2        +0.509, vias +0
+   listed pairs not met: 10 ['VU:C148-2>U8-1', 'VU:C147-2>C160-2', 'VU:C147-2>U8-1', 'VU:C148-2>U8-18', 'VU:C149-2>U8-18', 'VU:C78-2>U8-18', 'VU:R26-1>U8-18', 'VCC1V8:L2-2>L7-1', 'VCC1V8:C144-1>L7-1', 'VCC1V8:C93-1>L7-1']
+   reasons for the (ii) pairs (review 1: they were not in the merge report):
+     VU:C147-2>U8-5               stage R1 (final5b): U8-5's VU feed is an in-pad [L5-B + L4-L5] 0.25/0.10 stack at the pin's west end (8.375, 17.55) and a 0.40 L4 strap to V1 (7.922, 17.932), which sits >= 0.15 from U8-6 (PWR_FB1) and L9-1 (PWR_SW1) and links to the Top VU bus; nothing is narrower than the ORIGINAL, but V1 is 0.98 from the bus point above U8-5 and the strap 0.59 long, so east-side paths (C160-2) and pin-to-pin paths go round (vias +2).  Before stage R: phase 5 U8 (judged C, S2): U8-5 has a 2-via VU feed again, through V1 (7.99, 17.8633) 0.686 from the pin, but its Bottom dog-bone is 0.20: it must pass between the L9-1 and U8-6 corners (L9 moved 0.04 S), where a wider track breaks the 0.09 rule.  So every VU > U8-5 path is NARROWER (0.40 -> 0.20 over 0.43 mm); paths from the east side (C160-2, C147-2) also go round to the west via.  Needs owner acceptance (judge report)
+     VU:C149-2>U8-1               W2: the U8-1 VU vias must sit 0.255 below the pin (U8-2 is 0.25 above it) while the VU bus comes from the north; west sites blocked by EE-CLK L3 at x 8.0
+     VU:C160-2>U8-1               W2: the U8-1 VU vias must sit 0.255 below the pin (U8-2 is 0.25 above it) while the VU bus comes from the north; west sites blocked by EE-CLK L3 at x 8.0
+     VU:C160-2>U8-5               stage R1 (final5b): U8-5's VU feed is an in-pad [L5-B + L4-L5] 0.25/0.10 stack at the pin's west end (8.375, 17.55) and a 0.40 L4 strap to V1 (7.922, 17.932), which sits >= 0.15 from U8-6 (PWR_FB1) and L9-1 (PWR_SW1) and links to the Top VU bus; nothing is narrower than the ORIGINAL, but V1 is 0.98 from the bus point above U8-5 and the strap 0.59 long, so east-side paths (C160-2) and pin-to-pin paths go round (vias +2).  Before stage R: phase 5 U8 (judged C, S2): U8-5 has a 2-via VU feed again, through V1 (7.99, 17.8633) 0.686 from the pin, but its Bottom dog-bone is 0.20: it must pass between the L9-1 and U8-6 corners (L9 moved 0.04 S), where a wider track breaks the 0.09 rule.  So every VU > U8-5 path is NARROWER (0.40 -> 0.20 over 0.43 mm); paths from the east side (C160-2, C147-2) also go round to the west via.  Needs owner acceptance (judge report)
+     VU:C78-2>U8-1                W2: the U8-1 VU vias must sit 0.255 below the pin (U8-2 is 0.25 above it) while the VU bus comes from the north; west sites blocked by EE-CLK L3 at x 8.0
+     VU:R26-1>U8-1                W1 + W2: R26-1 (EN pull-up, microamps) reaches VU by its in-pad stack and a 0.25 L3 strap, then the U8-1 / U8-5 / U8-18 feeds above
+     VCC1V8:C163-1>L7-1           W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1, pinned at x 19.48)
+     VCC1V8:C82-2>L7-1            W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1, pinned at x 19.48)
+     VCC1V8:C94-1>L7-1            W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1, pinned at x 19.48)
+     VCC1V8:C95-1>L7-1            W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1, pinned at x 19.48)
+     VCC1V8:C96-1>L7-1            W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1, pinned at x 19.48)
+     VCC1V8:L7-1>R113-1           W2: as VCC1V8:L2-2>L7-1 (the one VCC1V8 through via near L7-1, pinned at x 19.48)
+     GNDADC:C123-2>C124-2         W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:C123-2>L6-2           W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:C124-2>U1-A12         W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:C124-2>U1-A13         W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:C124-2>U1-B12         W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:C124-2>U1-B13         W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:C124-2>U1-C12         W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:L6-2>U1-A12           W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:L6-2>U1-A13           W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:L6-2>U1-B12           W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:L6-2>U1-B13           W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+     GNDADC:L6-2>U1-C12           W4: as GNDADC (the GNDADC balls are enclosed; the crossing goes via Bottom, +4 vias)
+
+== 18d G-0201 (tombstoning): imbalance = (extra same-net via / track copper in pad 1's mask opening - pad 2's) / pad area; every 0201 whose own pads' copper differs from the ORIGINAL: |imb| <= max(|ORIGINAL| + 0.03, 0.10); never one-sided land where the ORIGINAL had land at both ends; no extra land on the inner end only
+   board |imb| > 0.2: ORIGINAL 6, final5b 6, final5c 6 (rule <= 6); > 0.1: 31 / 28 / 28 (rule <= 31)
+   C111   +0.023 / +0.068 / +0.068  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 direct (1 drill at the pad); 2 chain 0.372 mm (L3 0.372) / 4 drills / min w 0.25  (ends now differ in class; the ORIGINAL ends matched)
+   C115   +0.096 / -0.047 / -0.047  limit 0.126 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 dog-bone 0.375 mm (Bottom 0.375) / 1 drills / min w 0.08 | final5c: 1 direct (1 drill at the pad); 2 chain 0.372 mm (L4 0.372) / 4 drills / min w 0.25
+   C116   +0.178 / +0.050 / +0.049  limit 0.208 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 dog-bone 0.375 mm (Bottom 0.375) / 1 drills / min w 0.08 | final5c: 1 direct (1 drill at the pad); 2 chain 0.380 mm (L4 0.380) / 4 drills / min w 0.20
+   C117   +0.037 / -0.068 / -0.070  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 direct (1 drill at the pad); 2 chain 0.376 mm (L4 0.376) / 4 drills / min w 0.25  (ends now differ in class; the ORIGINAL ends matched)
+   C119   -0.024 / +0.095 / +0.076  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 direct (1 drill at the pad); 2 chain 0.375 mm (L4 0.375) / 4 drills / min w 0.25  (ends now differ in class; the ORIGINAL ends matched)
+   C120   -0.017 / +0.062 / +0.062  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 direct (1 drill at the pad); 2 chain 0.380 mm (L4 0.380) / 4 drills / min w 0.25  (ends now differ in class; the ORIGINAL ends matched)
+   C121   -0.028 / +0.064 / +0.064  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 direct (1 drill at the pad); 2 chain 0.846 mm (Bottom 0.470, L4 0.376) / 4 drills / min w 0.25  (ends now differ in class; the ORIGINAL ends matched)
+   C122   -0.013 / +0.010 / +0.010  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 direct (1 drill at the pad); 2 chain 0.376 mm (L3 0.376) / 4 drills / min w 0.20  (ends now differ in class; the ORIGINAL ends matched)
+   C133   +0.018 / -0.002 / -0.002  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 chain 0.372 mm (L3 0.372) / 4 drills / min w 0.25; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C134   +0.032 / -0.017 / -0.017  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 chain 0.380 mm (L3 0.380) / 4 drills / min w 0.25; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C135   +0.017 / -0.007 / -0.007  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 chain 0.372 mm (L3 0.372) / 4 drills / min w 0.20; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C136   +0.032 / -0.031 / -0.031  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 chain 0.375 mm (L3 0.375) / 4 drills / min w 0.25; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C137   +0.013 / -0.031 / -0.031  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 chain 0.375 mm (L3 0.375) / 4 drills / min w 0.25; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C138   +0.020 / -0.003 / -0.003  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 chain 0.378 mm (L3 0.378) / 4 drills / min w 0.20; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C155   +0.005 / -0.031 / -0.031  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 chain 0.430 mm (L4 0.430) / 3 drills / min w 0.25; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C157   +0.008 / +0.013 / +0.013  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 dog-bone 0.374 mm (Bottom 0.374) / 1 drills / min w 0.20; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C158   +0.005 / +0.007 / +0.007  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 dog-bone 0.358 mm (Bottom 0.358) / 1 drills / min w 0.20; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C159   +0.005 / +0.032 / +0.032  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 dog-bone 0.418 mm (Bottom 0.418) / 1 drills / min w 0.20; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C38    +0.005 / +0.006 / +0.006  limit 0.100 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 direct (1 drill at the pad) | final5c: 1 dog-bone 0.358 mm (Bottom 0.358) / 1 drills / min w 0.20; 2 direct (1 drill at the pad)  (ends now differ in class; the ORIGINAL ends matched)
+   C40    -0.128 / +0.013 / +0.013  limit 0.158 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 not a plane net | final5c: 1 dog-bone 0.273 mm (Bottom 0.433) / 1 drills / min w 0.20; 2 not a plane net
+   C91    +0.301 / +0.319 / +0.319  limit 0.331 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 chain 0.380 mm (L3 0.380) / 4 drills / min w 0.25
+   C92    -0.029 / +0.000 / +0.000  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 chain 0.380 mm (L3 0.380) / 4 drills / min w 0.25
+   C95    +0.068 / +0.016 / +0.016  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 chain 0.407 mm (L4 0.407) / 4 drills / min w 0.25
+   C96    -0.025 / +0.019 / +0.019  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 chain 0.372 mm (L3 0.372) / 4 drills / min w 0.25
+   R101   +0.010 / +0.074 / +0.074  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 not a plane net | final5c: 1 not a plane net; 2 not a plane net
+   R114   -0.191 / +0.058 / +0.058  limit 0.221 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 chain 0.400 mm (L4 0.400) / 4 drills / min w 0.25
+   R115   +0.119 / +0.112 / +0.112  limit 0.149 ok
+          plane path ORIGINAL: 1 direct (1 drill at the pad); 2 not a plane net | final5c: 1 direct (1 drill at the pad); 2 not a plane net
+   R2     -0.165 / -0.166 / -0.166  limit 0.195 ok  (info: via land in the mask opening at one end only; the ORIGINAL had it at both)
+          plane path ORIGINAL: 1 not a plane net; 2 direct (4 drills at the pad) | final5c: 1 not a plane net; 2 direct (4 drills at the pad)
+   R26    +0.098 / -0.010 / -0.010  limit 0.128 ok
+          plane path ORIGINAL: 1 not a plane net; 2 not a plane net | final5c: 1 not a plane net; 2 not a plane net
+   R90    +0.050 / -0.001 / -0.001  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 direct (1 drill at the pad)
+   R92    +0.046 / -0.018 / -0.018  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 direct (1 drill at the pad)
+   R93    +0.048 / +0.007 / +0.007  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 direct (1 drill at the pad)
+   R96    +0.066 / +0.000 / +0.000  limit 0.100 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 direct (1 drill at the pad)
+   R99    +0.094 / +0.061 / +0.061  limit 0.124 ok
+          plane path ORIGINAL: 1 not a plane net; 2 direct (1 drill at the pad) | final5c: 1 not a plane net; 2 direct (1 drill at the pad)
+   changed 0201s: 34; failing (over the limit, one-sided or inner-end-only): 0 []; ends of a different thermal class (information): 17 ['C111', 'C117', 'C119', 'C120', 'C121', 'C122', 'C133', 'C134', 'C135', 'C136', 'C137', 'C138', 'C155', 'C157', 'C158', 'C159', 'C38']
+   plane-path classes (review 3 P2; check/chain4b.py = the path() of the reviewer chain4.py): direct = a via at the pad whose stack reaches the plane; dog-bone = an outer-layer track to such a stack; chain = an in-pad microvia stack, an inner-layer jog, then the stack to the plane (GND: [L5-B + L4-L5] + L4 jog + [L3-L4 + L2-L3]).  A direct Bottom-to-L2 tie at a GND 0201 end needs a through via in the pad (vip) or a 4-drill stack (not allowed)
+   board |imb| > 0.3 (information): ORIGINAL 4, final5b 4, final5c 4 ['C152', 'C89', 'C90', 'C91']
+   0402s with via land on both pads in the ORIGINAL and on one now (information, outside the 0201 rule): 0
+
+== 18e G-SIG: slow signals (net track length / vias; pairs: copper-only pad-to-pad), ORIGINAL / final5b / final5c; target <= ORIGINAL + 0.5 mm and vias <= ORIGINAL + 2
+   TMS           9.961 /  4 |    9.995 /  9 |    9.995 /  9   +0.034, vias +5: length MET, vias NOT MET
+   TDI          12.807 /  7 |   12.804 /  9 |   12.804 /  9   -0.003, vias +2: length MET, vias MET
+   EE-CLK        8.977 /  5 |    9.130 /  9 |    9.130 /  9   +0.153, vias +4: length MET, vias NOT MET
+   PWR_FB2      19.106 /  7 |   19.172 / 11 |   19.172 / 11   +0.066, vias +4: length MET, vias NOT MET
+   FT-REF        4.872 /  1 |    5.615 /  1 |    5.615 /  1   +0.743, vias +0: length NOT MET, vias MET
+   DONE          4.438 /  1 |    4.630 /  1 |    4.630 /  1   +0.192, vias +0: length MET, vias MET
+   FPGA-TDO     19.540 /  5 |   19.992 /  9 |   19.992 /  9   +0.452, vias +4: length MET, vias NOT MET
+   SD-CMD       22.665 /  7 |   22.594 /  9 |   22.594 /  9   -0.071, vias +2: length MET, vias MET
+   SD-DAT0      33.083 / 20 |   33.017 / 22 |   33.241 / 22   +0.158, vias +2: length MET, vias MET
+   SD-DAT1      34.536 / 10 |   34.612 / 10 |   34.612 / 10   +0.076, vias +0: length MET, vias MET
+   FLASH-D02    32.321 / 14 |   32.186 / 14 |   32.186 / 14   -0.135, vias +0: length MET, vias MET
+   GNDADC       39.637 / 25 |   39.602 / 29 |   39.602 / 29   -0.035, vias +4: length MET, vias NOT MET
+   CHAN7        20.924 /  2 |   20.935 /  2 |   20.935 /  2   +0.011, vias +0: length MET, vias MET
+   pair DONE:R4-2>U2-22          4.329 / 1 / w 0.0762 4.530 / 1 / w 0.0762 4.530 / 1 / w 0.0762 +0.201, vias +0
+   pair FPGA-TDO:R4-13>U1-W8     19.340 / 5 / w 0.0762 19.839 / 9 / w 0.0762 19.839 / 9 / w 0.0762 +0.499, vias +4
+   pair SD-CMD:R35-1>X3-3        6.761 / 3 / w 0.0762 6.658 / 5 / w 0.0762 6.658 / 5 / w 0.0762 -0.103, vias +2
+   pair SD-DAT0:R34-1>X3-7       32.977 / 20 / w 0.0762 33.072 / 22 / w 0.0762 33.072 / 22 / w 0.0762 +0.095, vias +2
+   pair SD-DAT0:R34-1>U1-W18     4.903 / 3 / w 0.0762 4.956 / 5 / w 0.0762 4.956 / 5 / w 0.0762 +0.053, vias +2
+   pair FT-REF:R18-2>U2-6        4.733 / 1 / w 0.0762 5.501 / 1 / w 0.0762 5.501 / 1 / w 0.0762 +0.768, vias +0
+   pair TDI:R90-1>U2-17          2.980 / 1 / w 0.0762 2.935 / 5 / w 0.0762 2.935 / 5 / w 0.0762 -0.045, vias +4
+   pair TMS:R92-1>U2-19          1.375 / 1 / w 0.0762 1.402 / 5 / w 0.0762 1.402 / 5 / w 0.0762 +0.027, vias +4
+   pair EE-CLK:R96-1>U2-62       1.367 / 1 / w 0.0762 1.827 / 5 / w 0.0762 1.827 / 5 / w 0.0762 +0.460, vias +4
+   pair PWR_FB2:C163-2>U8-17     3.562 / 0 / w 0.0762 3.471 / 4 / w 0.0762 3.471 / 4 / w 0.0762 -0.091, vias +4
+   pair GNDADC:C124-2>U1-A13     25.610 / 11 / w 0.15 25.516 / 15 / w 0.15 25.516 / 15 / w 0.15 -0.094, vias +4
+   reason TMS: W3: a Top->Bottom link from U2-19 to R92-1 needs 5 laser drills without a through via; no vip_tight-clean through-via site in x 8.6-12.6, y 2.4-7.0 (TMS/TDI/FT-REF/DONE freed); L3 / L4 / Bottom fenced; minimum 9
+   reason EE-CLK: W2: no through-via site within 2 mm of R96-1, so Bottom->Top takes 5 microvias
+   reason PWR_FB2: W2: with the U8-16 GND via in the corridor, the C163-2 branch needs 2 more lasers
+   reason FT-REF: W3: U2-6 boxed in on Top by USB_D_N/P (untouchable) and CLK-12M-FT; the only vip_tight-clean through-via sites are west of the pad; the Bottom must go round VCC1V0's 0.4 Bottom track and its stack
+   reason FPGA-TDO: W4: 0 vip_tight-legal through-via sites south of U1 row W (4251 points blocked); an in-ball [T-L2+L2-L3+L3-L4] at W8 is blocked by BS1 (SDRAM, L3); Bottom->Top at W8 needs 5 microvias
+   reason GNDADC: W4: the GNDADC balls are enclosed (Top: U1 balls and D14/D15 escapes; L3: CHAN3, UART_FT_CTS#; L4: CHAN2); 0 legal through-via sites in x 22.0-23.6, y 6.0-6.8; the crossing must go via Bottom (+4 vias)
+   every net with changed copper (39): over +0.5 mm or +2 vias: 10
+     EE-CLK          8.977 /  5 |    9.130 /  9 |    9.130 /  9   +0.153, vias +4
+     FPGA-TDO       19.540 /  5 |   19.992 /  9 |   19.992 /  9   +0.452, vias +4
+     FT-REF          4.872 /  1 |    5.615 /  1 |    5.615 /  1   +0.743, vias +0
+     GNDADC         39.637 / 25 |   39.602 / 29 |   39.602 / 29   -0.035, vias +4
+     PWR_FB2        19.106 /  7 |   19.172 / 11 |   19.172 / 11   +0.066, vias +4
+     TMS             9.961 /  4 |    9.995 /  9 |    9.995 /  9   +0.034, vias +5
+     VCC1V0         56.835 / 43 |   57.851 / 45 |   57.851 / 45   +1.016, vias +2
+     VCC1V8         27.753 / 32 |   30.243 / 32 |   30.243 / 32   +2.490, vias +0
+     VCCADC         16.658 / 17 |   17.199 / 18 |   17.199 / 18   +0.541, vias +1
+     VU             54.024 / 19 |   64.081 / 23 |   64.081 / 23   +10.057, vias +4
+   G-SIG targets not met (reported, not a hard gate): ['TMS', 'EE-CLK', 'PWR_FB2', 'FT-REF', 'FPGA-TDO', 'GNDADC']
+
+== 18f G-HOLE: every hole pair with a non-original via (any shared copper layer; a stack at one point excepted; drilled pads and the X1 slots too) >= 0.245; the VCC1V8 L5-B laser (15.375, 18.6) to L2-2 copper
+   0.2451  GND (36.49, 11.385)  vs  FLASH-D02 (36.075, 11.45)
+   0.2456  GND (9.5075, 14.6225)  vs  PWR_FB2 (9.8, 14.85)
+   0.2460  GND (9.7625, 19.81)  vs  GND (9.4533, 20.0574)
+   0.2460  GND (9.75, 15.575)  vs  GND (10.1293, 15.6888)
+   0.2460  GNDADC (22.5447, 6.9911)  vs  GNDADC (22.9125, 6.9425)
+   0.2460  GND (35.1275, 10.5475)  vs  GND (34.85, 10.83)
+   pairs under 0.245: final5b 0, final5c 0 []
+   VCC1V8 L5-B laser (15.375, 18.600) land to L2-2 copper: final5b 0.0950, final5c 0.0950 (3 mil 0.0762)
+
+== 18g G-U8GND: GND through vias by distance from each U8 GND pin CENTRE (own ties: gate 16)
+   ORIGINAL through vias <= 0.60: 4, <= 0.65: 4;  U8-3 0.309 (8.3, 16.475); U8-13 0.309 (11.175, 19.4); U8-16 0.309 (12.1, 18.475); U8-27 0.485 (9.85, 14.425)
+   final5b  through vias <= 0.60: 0, <= 0.65: 1;  U8-3 0.689 (7.97, 16.27); U8-13 0.741 (10.955, 20.38); U8-16 0.612 (13.0025, 18.44); U8-27 -
+   final5c  through vias <= 0.60: 0, <= 0.65: 1;  U8-3 0.689 (7.97, 16.27); U8-13 0.741 (10.955, 20.38); U8-16 0.612 (13.0025, 18.44); U8-27 -
+   geometric floor: a vip_tight-clean 0.35 through via is >= 0.35 / 2 + 0.0762 + 0.35 (half the 0.70 pin) = 0.6012 from the pin centre on the pin axis (more off-axis), so ">= 2 within 0.6" is impossible; the originals (0.31-0.49) touched the pins.  Best: 0.612 (U8-16).  U8-27: X4-2's Top pad blocks through vias
+
+== 19 review items (phase-4 reviews) not measured above
+   19a coupling of sensitive nets to signal / power copper (not GND / VCC3V3), shared layer: min gap / coupled length within 0.2 mm, ORIGINAL | final5b | final5c; listed when final5b or final5c is worse than the ORIGINAL
+     AIN15_P        vs FPGA-TDO       L4-SIG       gap 0.280 | 0.247 | 0.247   coupled 0.000 | 0.000 | 0.000  WORSE THAN ORIGINAL in final5c
+     CLK-12M-FPGA   vs FPGA-TDO       L4-SIG       gap 0.441 | 0.211 | 0.211   coupled 0.000 | 0.000 | 0.000  WORSE THAN ORIGINAL in final5c
+     FT-REF         vs FT-VPHY        L3-SIG       gap 0.252 | 0.202 | 0.202   coupled 0.000 | 0.000 | 0.000  WORSE THAN ORIGINAL in final5c
+     FT-REF         vs PWR_CHRG       L3-SIG       gap 9.000 | 1.919 | 1.919   coupled 0.000 | 0.000 | 0.000  WORSE THAN ORIGINAL in final5c
+     GNDADC         vs ANALOG-IO0     L4-SIG       gap 0.641 | 0.523 | 0.523   coupled 0.000 | 0.000 | 0.000  WORSE THAN ORIGINAL in final5c
+     GNDADC         vs CHAN3          L3-SIG       gap 0.408 | 0.237 | 0.237   coupled 0.000 | 0.000 | 0.000  WORSE THAN ORIGINAL in final5c
+   final5c pairs worse than the ORIGINAL: 6 [('AIN15_P', 'FPGA-TDO', 'L4-SIG'), ('CLK-12M-FPGA', 'FPGA-TDO', 'L4-SIG'), ('FT-REF', 'FT-VPHY', 'L3-SIG'), ('FT-REF', 'PWR_CHRG', 'L3-SIG'), ('GNDADC', 'ANALOG-IO0', 'L4-SIG'), ('GNDADC', 'CHAN3', 'L3-SIG')]
+   of them made worse by stage S (final5c vs final5b): 0 []; the rest are unchanged from final5b (information)
+   FT-REF >= 0.20 from VCC1V0 / FT-VPHY (or no worse than the ORIGINAL at the VCC1V0 crossing): [(('FT-REF', 'FT-VPHY', 'L3-SIG'), 0.2024, 0.0, True), (('FT-REF', 'FT-VPHY', 'Top Layer'), 0.72, 0.0, True), (('FT-REF', 'VCC1V0', 'Bottom Layer'), 0.231, 0.0, True), (('FT-REF', 'VCC1V0', 'L4-SIG'), 0.1336, 0.604, True)]
+     FT-REF vs DONE         Bottom Layer gap 0.092 | 0.092 | 0.092   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs FPGA-DONE    Bottom Layer gap 0.089 | 0.089 | 0.089   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs FT-VCORE     L3-SIG       gap 0.100 | 9.000 | 9.000   coupled 0.560 | 0.000 | 0.000
+     FT-REF vs FT-VPHY      L3-SIG       gap 0.252 | 0.202 | 0.202   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs FT-VPHY      Top Layer    gap 0.720 | 0.720 | 0.720   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs FT-VPLL      Bottom Layer gap 0.285 | 0.285 | 0.285   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs PROG#        Bottom Layer gap 0.112 | 0.112 | 0.112   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs PWR_CHRG     L3-SIG       gap 9.000 | 1.919 | 1.919   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs RST#         Bottom Layer gap 0.112 | 0.112 | 0.112   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs TDI          Bottom Layer gap 0.102 | 9.000 | 9.000   coupled 1.262 | 0.000 | 0.000
+     FT-REF vs TDO          Bottom Layer gap 0.284 | 0.284 | 0.284   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs TMS          Bottom Layer gap 0.079 | 0.079 | 0.079   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs UART_FT_CTS# Bottom Layer gap 0.432 | 0.432 | 0.432   coupled 0.000 | 0.000 | 0.000
+     FT-REF vs VCC1V0       Bottom Layer gap 0.132 | 0.231 | 0.231   coupled 0.141 | 0.000 | 0.000
+     FT-REF vs VCC1V0       L4-SIG       gap 0.125 | 0.134 | 0.134   coupled 0.547 | 0.604 | 0.604
+     FT-REF vs VCC1V0       L5-VCC3V3    gap 0.245 | 9.000 | 9.000   coupled 0.000 | 0.000 | 0.000
+   19b plan track joints (ends that land only on a narrower same-net track, or on nothing)
+     ('neck', 'VCC1V8', 'Bottom Layer', 0.2, 0.15, 19.475, 17.625)
+     ('neck', 'VCC1V0', 'L4-SIG', 0.5, 0.3, 9.175, 8.125)
+   566 ends checked: no joint 0, necks 2 (a neck onto an ORIGINAL track as wide as the original route is information)
+   19c microvia land exposed in a mask opening vs other-net pad copper (gap, via, mask of, copper of)
+     plan microvias, final5c: (0.1623, ('SD-CMD', 37.645, 12.62), 'X3-3', 'C3-2'); ORIGINAL board, all microvias: (0.155, ('PWR_FB3', 5.45, 19.15), 'C164-1', 'L9-2')
+     OK: not below the ORIGINAL board minimum
+
+   19d information (electrical review P10; final5b review item 3 adds PROG# and EN per layer): trace length over a reference-plane void (void on L2 / L5 = other-net via land + 0.175 through / + 0.0762 other, other-net L2 / L5 track or pad + 0.0762; Top, L3 -> L2; L4, Bottom -> L5) and broadside L3 / L4 overlap, ORIGINAL | final5b | final5c (the electrical reviewer's b2_ref.py).  Note: the void list is not per victim, so VCCADC's own L5 jog (C124-1, stage R10) counts as a void under VCCADC's Bottom dog-bone (+0.035)
+     sensitive trace length over a reference-plane void  ORIG | F5B | F5C (changed vs the ORIGINAL or final5b only)
+       AIN15_N          3.162 | 1.977 | 1.977  
+       AIN16_N          3.374 | 2.756 | 2.756  
+       AIN16_P          3.861 | 3.355 | 3.355  
+       CHAN-CLK         3.075 | 2.664 | 2.664  
+       CHAN16           1.519 | 0.527 | 0.527  
+       CHAN17           1.069 | 0.457 | 0.457  
+       CHAN19           1.896 | 0.716 | 0.716  
+       CHAN2            0.265 | 0.255 | 0.255  
+       CHAN20           1.057 | 0.663 | 0.663  
+       CHAN22           1.344 | 0.735 | 0.735  
+       CHAN5            0.260 | 0.600 | 0.600  WORSE
+       CHAN8            0.263 | 0.800 | 0.800  WORSE
+       CLK-12M-FT       1.207 | 0.701 | 0.701  
+       CLK-12M-SHARED   2.949 | 2.689 | 2.689  
+       EE-CLK           1.748 | 1.721 | 1.721  
+       FT-REF           0.913 | 0.655 | 0.655  
+       GNDADC           5.118 | 4.157 | 4.157  
+       PWR_FB2          2.533 | 1.742 | 1.742  
+       PWR_FB3          1.823 | 1.455 | 1.455  
+       SD-CLK           3.725 | 3.366 | 3.366  
+       TCK              2.055 | 1.650 | 1.650  
+       VCCADC           2.274 | 2.410 | 2.410  WORSE
+     PROG# / EN per layer (final5b review item 3), length over a reference-plane void  ORIG | F5B | F5C
+       EN     Bottom Layer 0.025 | 0.025 | 0.025  
+       EN     L4-SIG       3.131 | 3.358 | 3.358  WORSE
+       PROG#  Bottom Layer 0.412 | 0.264 | 0.264  
+       PROG#  L3-SIG       0.574 | 0.225 | 0.225  
+       PROG#  L4-SIG       0.449 | 0.743 | 0.743  WORSE
+     broadside L3/L4 overlap (sensitive victim, plan gap < 0, other net not GND/VCC3V3)  ORIG | F5B | F5C (changed only)
+       AIN15_N        x CHAN21         0.618 | 0.579 | 0.579  
+       CHAN21         x AIN15_N        0.619 | 0.438 | 0.438  
+       CHAN6          x SD-DAT0        0.475 | 0.730 | 0.730  WORSE
+       CHAN7          x CHAN8          8.630 | 9.169 | 9.169  WORSE
+       CHAN7          x SD-DAT0        0.215 | 0.190 | 0.190  
+       CHAN8          x CHAN7          8.948 | 9.316 | 9.316  WORSE
+       EE-CLK         x PWR_CLPROG     1.220 | 0.640 | 0.640  
+       NODE_P0        x SDRAM-CS#      0.517 | 0.433 | 0.433  
+       PWR_FB2        x PWR_FB3        0.150 | 0.290 | 0.290  WORSE
+       PWR_FB3        x EN             0.180 | 0.234 | 0.234  WORSE
+
+   19e information (assembly review P2): U8 / L1 / L9 / R103 pin openings, min mask strip / min copper gap to other-net Bottom copper
+     pin opening (net): min mask strip / min copper gap to other-net Bottom copper, ORIGINAL | final5b | final5c
+       L1-1    PWR_SWAB3  0.0462 / 0.1132 | 0.0700 / 0.1200 | 0.0700 / 0.1200  ('T', 'VU', 10.3, 19.95, 10.3, 20.31, 0.4)
+       L1-2    PWR_SWCD3  0.5920 / 0.6612 | 0.0630 / 0.1303 | 0.0630 / 0.1303  ('T', 'GND', 11.19, 19.92, 10.955, 20.38, 0.2)
+       L9-1    PWR_SW1    0.0555 / 0.1176 | 0.0553 / 0.1100 | 0.0553 / 0.1100  ('T', 'GND', 8.27, 16.435, 7.97, 16.27, 0.2)
+       L9-2    PWR_FB1    0.0750 / 0.1250 | 0.0750 / 0.1250 | 0.0750 / 0.1250  ('V', 'PWR_VC3', 5.45, 19.75, 0.3)
+       R103-1  PWR_CLPROG 0.0550 / 0.1162 | 0.0550 / 0.1162 | 0.0550 / 0.1162  ('T', 'VU', 4.25, 16.25, 4.25, 16.275, 0.4)
+       R103-2  GND        0.2931 / 0.3618 | 0.2931 / 0.3618 | 0.2931 / 0.3618  ('T', 'VU', 4.25, 16.25, 4.25, 16.275, 0.4)
+       U8-1    VU         0.2500 / 0.3000 | 0.2500 / 0.3000 | 0.2500 / 0.3000  ('V', 'PWR_CLPROG', 8.625, 16.125, 0.3)
+       U8-2    PWR_CLPROG 0.0750 / 0.1250 | 0.0503 / 0.1182 | 0.0503 / 0.1182  ('T', 'GND', 8.27, 16.435, 7.97, 16.27, 0.2)
+       U8-3    GND        0.0500 / 0.1000 | 0.0500 / 0.1000 | 0.0500 / 0.1000  ('T', 'PWR_SW1', 7.775, 16.975, 8.325, 16.975, 0.4)
+       U8-4    PWR_SW1    0.1000 / 0.1500 | 0.2000 / 0.2500 | 0.2000 / 0.2500  ('T', 'GND', 8.85, 16.55, 9.3, 16.55, 0.25)
+       U8-5    VU         0.2000 / 0.2500 | 0.2000 / 0.2500 | 0.2000 / 0.2500  ('T', 'PWR_SW1', 7.775, 16.975, 8.325, 16.975, 0.4)
+       U8-6    PWR_FB1    0.0750 / 0.1250 | 0.0750 / 0.1250 | 0.0750 / 0.1250  ('V', 'PWR_FB3', 8.875, 18.45, 0.3)
+       U8-7    PWR_FB3    0.0503 / 0.1119 | 0.0503 / 0.1119 | 0.0503 / 0.1119  ('T', 'PWR_FB1', 8.1, 18.35, 8.325, 18.125, 0.0762)
+       U8-8    PWR_VC3    0.1000 / 0.1500 | 0.1000 / 0.1500 | 0.1000 / 0.1500  ('V', 'PWR_FB3', 8.425, 18.625, 0.3)
+       U8-9    PWR_SWAB3  0.0750 / 0.1250 | 0.0750 / 0.1250 | 0.0750 / 0.1250  ('V', 'GND', 9.65, 19.425, 0.3)
+       U8-10   GND        0.0712 / 0.1227 | 0.1750 / 0.2250 | 0.1750 / 0.2250  ('T', 'VU', 10.3, 19.95, 10.3, 20.31, 0.4)
+       U8-11   VU         0.1250 / 0.1750 | 0.1250 / 0.1750 | 0.1250 / 0.1750  ('V', 'VCC3V3', 10.7, 19.575, 0.3)
+       U8-12   VCC3V3     0.0750 / 0.1250 | 0.0541 / 0.1214 | 0.0541 / 0.1214  ('T', 'GND', 11.19, 19.92, 10.955, 20.38, 0.2)
+       U8-13   GND        0.0750 / 0.1250 | 0.0750 / 0.1250 | 0.0750 / 0.1250  ('T', 'PWR_SWCD3', 11.7, 19.975, 11.7, 20.5, 0.4)
+       U8-14   PWR_SWCD3  0.2250 / 0.2750 | 0.2000 / 0.2500 | 0.2000 / 0.2500  ('T', 'GND', 11.25, 19.45, 11.25, 19.0, 0.25)
+       U8-15   PWR_PGOODALL 0.1740 / 0.2413 | 0.1750 / 0.2413 | 0.1750 / 0.2413  ('V', 'VCC3V3', 13.1, 19.35, 0.3)
+       U8-16   GND        0.0503 / 0.1119 | 0.1000 / 0.1500 | 0.1000 / 0.1500  ('V', 'PWR_PGOODALL', 12.125, 18.975, 0.3)
+       U8-17   PWR_FB2    0.0750 / 0.1250 | 0.1203 / 0.1910 | 0.1203 / 0.1910  ('V', 'GND', 13.0025, 18.44, 0.35)
+       U8-18   VU         0.1000 / 0.1500 | 0.1750 / 0.2250 | 0.1750 / 0.2250  ('V', 'PWR_FB2', 12.55, 18.05, 0.3)
+       U8-19   PWR_SW2    0.0750 / 0.1250 | 0.0750 / 0.1250 | 0.0750 / 0.1250  ('T', 'VU', 12.675, 17.5, 12.775, 17.5, 0.4)
+       U8-20   PWR_PROG   0.1000 / 0.1500 | 0.1000 / 0.1500 | 0.1000 / 0.1500  ('T', 'PWR_SW2', 12.675, 16.975, 13.225, 16.975, 0.3)
+       U8-21   PWR_CHRG   0.0750 / 0.1250 | 0.1000 / 0.1500 | 0.1000 / 0.1500  ('V', 'PWR_PROG', 12.675, 16.475, 0.3)
+       U8-22              0.0750 / 0.1250 | 0.0750 / 0.1250 | 0.0750 / 0.1250  ('V', 'PWR_CHRG', 12.125, 15.95, 0.3)
+       U8-23   VBATT      0.0516 / 0.1110 | 0.0516 / 0.1110 | 0.0516 / 0.1110  ('T', 'VU', 11.95, 13.5, 11.95, 14.3, 0.3)
+       U8-24   VU         0.1250 / 0.1750 | 0.1250 / 0.1750 | 0.1250 / 0.1750  ('T', 'VBATT', 11.75, 14.9, 12.75, 14.9, 0.4)
+       U8-25   USB5V0     0.1250 / 0.1750 | 0.1250 / 0.1750 | 0.1250 / 0.1750  ('T', 'PWR_SW', 10.3, 13.0, 10.3, 14.55, 0.3)
+       U8-26   PWR_SW     0.0622 / 0.1271 | 0.1177 / 0.1794 | 0.1177 / 0.1794  ('T', 'GND', 9.75, 14.65, 9.8375, 14.45, 0.25)
+       U8-27   GND        0.0750 / 0.1250 | 0.0750 / 0.1250 | 0.0750 / 0.1250  ('V', 'EN', 9.35, 15.175, 0.3)
+       U8-28   EN         0.2000 / 0.2500 | 0.0650 / 0.1150 | 0.0650 / 0.1150  ('T', 'VU', 8.8, 15.6, 8.81, 15.17, 0.4)
+       U8-29   GND        0.1000 / 0.1500 | 0.1000 / 0.1500 | 0.1000 / 0.1500  ('V', 'PWR_PGOODALL', 12.125, 18.975, 0.3)
+     U8 pins: min strip ORIGINAL 0.0500 final5b 0.0500 final5c 0.0500; min other-net copper gap ORIGINAL 0.1000 final5b 0.1000 final5c 0.1000
+
+   19f information (assembly review P2): mask strip per (other-net outer copper, SMD opening) pair, switch-node openings and every new pair < 0.04 (the assembly reviewer's gmask5.py; columns ORIGINAL / final5b / final5c)
+     switch-node openings: min strip (pairs < 0.10) ORIGINAL / final5b / final5c
+        L1-1    0.0462 0.0700 0.0700 
+        L1-2    9.0000 0.0630 0.0630 
+        L2-1    0.0503 0.0425 0.0425 
+        L9-1    0.0555 0.0553 0.0553 
+        U8-19   0.0750 0.0750 0.0750 
+        U8-26   0.0622 9.0000 9.0000 
+        U8-4    0.1000 9.0000 9.0000 
+        U8-9    0.0750 0.0750 0.0750 
+     
+     final5c pairs < 0.04 that are NEW vs the ORIGINAL (object new, or tighter):
+        0.0197  RESET-3  (GND       ) ('T', 'Top Layer', 'CHAN1', 22.3625, 4.0475, 22.525, 3.85, 0.0762)  [also in final5b]
+        0.0369  C149-2   (VU        ) ('V', 'GND', 2.6, 14.2, 0.35, 'Top Layer', 'Bottom Layer', 'B')  [also in final5b]
+        0.0373  C88-1    (VCC1V0    ) ('V', 'GND', 22.375, 4.375, 0.35, 'Top Layer', 'Bottom Layer', 'B')  [also in final5b]
+        0.0399  Q1-4     (VCC3V3    ) ('V', 'GND', 16.94, 16.365, 0.35, 'Top Layer', 'Bottom Layer', 'T')  [also in final5b]
+     ORIGINAL pairs < 0: 0, < 0.02: 69, < 0.03: 119, < 0.04: 273
+     final5b  pairs < 0: 0, < 0.02: 67, < 0.03: 115, < 0.04: 265
+     final5c  pairs < 0: 0, < 0.02: 67, < 0.03: 115, < 0.04: 265
+
+   19g information (final5b electrical review, item 1; final5c review P2): pad joints of every pad the plan touches (a via centre >= 0.005 inside the pad copper, or a track centre-line inside it) and the layer-aware plane ties, the electrical reviewer's own engine (verify5b_electrical/geo5.py), ORIGINAL | final5b | final5c
+     plans applied with geo5.apply_plan: final5b bad removals 0 / 0, final5c 0 / 0
+     pads the plans touch: 141; flagged (no good joint, or fewer than the ORIGINAL): final5b 47, final5c 44
+       no centre joint at all: final5b ['C111-2', 'C116-2', 'C119-2', 'C136-1', 'C137-1', 'R34-1']; final5c none
+       final5c pads with fewer good joints than final5b: none; flagged in final5c, not in final5b: none
+     via-centre tolerance 0.005 (final5c review P2): pads with a via classified differently from the reviewer rule sd <= 0: ORIGINAL none; final5b ['C116-2', 'C137-1']; final5c ['C116-2', 'C137-1']
+     information, the same 0.005 applied to track centre-lines too: pads with no via centre or track centre-line >= 0.005 inside the pad copper: ORIGINAL ['C167-1', 'R21-1']; final5b ['C111-2', 'C116-2', 'C119-2', 'C136-1', 'C137-1', 'R34-1', 'U1-W8']; final5c ['U1-W8']
+        C111-2  ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.12, 0.055, 0), ('trk', 'Bot', 0.03, 0.0381, 0)]
+        C111-2  final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.1, 0.05, 1)]
+        C111-2  final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Bot', 0.125, 0.1, 1), ('via', 'Bot', -0.1, 0.05, 1)]
+        C116-2  ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Bot', 0.03, 0.0381, 0)]
+        C116-2  final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', 0.0, 0.125, 1)]
+        C116-2  final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', 0.0, 0.125, 1), ('trk', 'Bot', 0.15, 0.1, 1)]
+        C119-2  ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', 0.03, 0.175, 0), ('trk', 'Bot', 0.03, 0.0381, 0), ('trk', 'Bot', 0.03, 0.0381, 0)]
+        C119-2  final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.075, 0.05, 1)]
+        C119-2  final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.075, 0.05, 1), ('trk', 'Bot', 0.15, 0.1, 1)]
+        C136-1  ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', 0.03, 0.175, 0), ('trk', 'Bot', 0.055, 0.0381, 0)]
+        C136-1  final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.0, 0.15, 1)]
+        C136-1  final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Bot', 0.15, 0.1, 1), ('via', 'Bot', -0.0, 0.15, 1)]
+        C137-1  ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', 0.005, 0.175, 0), ('trk', 'Bot', 0.03, 0.0381, 0)]
+        C137-1  final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', 0.0, 0.15, 1)]
+        C137-1  final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', 0.0, 0.15, 1), ('trk', 'Bot', 0.15, 0.1, 1)]
+        C167-1  ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Bot', -0.05, 0.1, 0), ('via', 'Bot', -0.05, 0.125, 0)]
+        C167-1  final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Bot', 0.15, 0.15, 1)]
+        C167-1  final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Bot', 0.15, 0.15, 1)]
+        R21-1   ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Top', -0.07, 0.105, 0), ('via', 'Top', -0.0832, 0.0918, 0)]
+        R21-1   final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Top', 0.2, 0.15, 1)]
+        R21-1   final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Top', 0.2, 0.15, 1)]
+        R34-1   ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.0706, 0.1044, 0), ('trk', 'Bot', 0.0501, 0.0381, 0)]
+        R34-1   final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.05, 0.075, 1)]
+        R34-1   final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Bot', -0.05, 0.075, 1), ('trk', 'Bot', 0.15, 0.1, 1)]
+        U1-W8   ORIGINAL (kind, layer, depth of centre / centre-line, copper overlap, new): [('via', 'Top', -0.086, 0.089, 0), ('trk', 'Top', 0.039, 0.0771, 0)]
+        U1-W8   final5b  (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Top', 0.003, 0.0411, 1), ('via', 'Top', -0.0552, 0.0698, 1)]
+        U1-W8   final5c  (kind, layer, depth of centre / centre-line, copper overlap, new): [('trk', 'Top', 0.003, 0.0411, 1), ('via', 'Top', -0.0552, 0.0698, 1)]
+     item-1 pads (the tie-carrying laser, its centre outside the pad copper, or on its edge / corner, in final5b):
+        C111-2  ORIGINAL [('via', 'Bot', (25.75, 17.0), 0.35, 'EDGE 0.1200', 0), ('trk', 'Bot', 0.0762, 'CL in pad', 0)]
+        C111-2  final5b  [('via', 'Bot', (25.745, 17.02), 0.3, 'EDGE 0.1000', 1)]
+        C111-2  final5c  [('trk', 'Bot', 0.2, 'CL in pad', 1), ('via', 'Bot', (25.745, 17.02), 0.3, 'EDGE 0.1000', 1)]
+        C111-2  stub from the laser (25.7450, 17.0200): [('GND', 0.2, 25.745, 17.02, 25.695, 17.27)] -> GOOD
+        C119-2  ORIGINAL [('via', 'Bot', (27.95, 17.75), 0.35, 'centre in pad', 0), ('trk', 'Bot', 0.0762, 'CL in pad', 0), ('trk', 'Bot', 0.0762, 'CL in pad', 0)]
+        C119-2  final5b  [('via', 'Bot', (27.945, 17.645), 0.25, 'EDGE 0.0750', 1)]
+        C119-2  final5c  [('via', 'Bot', (27.945, 17.645), 0.25, 'EDGE 0.0750', 1), ('trk', 'Bot', 0.2, 'CL in pad', 1)]
+        C119-2  stub from the laser (27.9450, 17.6450): [('GND', 0.2, 27.945, 17.645, 28.07, 17.87)] -> GOOD
+        C117-2  ORIGINAL [('via', 'Bot', (25.75, 17.625), 0.35, 'EDGE 0.0950', 0), ('trk', 'Bot', 0.0762, 'CL in pad', 0)]
+        C117-2  final5b  [('trk', 'Bot', 0.25, 'CL in pad', 1), ('via', 'Bot', (25.77, 17.67), 0.25, 'EDGE 0.0500', 1)]
+        C117-2  final5c  [('trk', 'Bot', 0.25, 'CL in pad', 1), ('trk', 'Bot', 0.2, 'CL in pad', 1), ('via', 'Bot', (25.77, 17.67), 0.25, 'EDGE 0.0500', 1)]
+        C117-2  stub from the laser (25.7700, 17.6700): [('GND', 0.2, 25.77, 17.67, 25.645, 17.95)] -> GOOD
+        R34-1   ORIGINAL [('via', 'Bot', (21.5, 19.0), 0.35, 'EDGE 0.0706', 0), ('trk', 'Bot', 0.0762, 'CL in pad', 0)]
+        R34-1   final5b  [('via', 'Bot', (21.6, 19.0), 0.25, 'EDGE 0.0500', 1)]
+        R34-1   final5c  [('via', 'Bot', (21.6, 19.0), 0.25, 'EDGE 0.0500', 1), ('trk', 'Bot', 0.2, 'CL in pad', 1)]
+        R34-1   stub from the laser (21.6000, 18.9999): [('SD-DAT0', 0.2, 21.6, 18.9999, 21.7, 19.2)] -> GOOD
+        C136-1  ORIGINAL [('via', 'Bot', (28.575, 19.55), 0.35, 'centre in pad', 0), ('trk', 'Bot', 0.0762, 'CL in pad', 0)]
+        C136-1  final5b  [('via', 'Bot', (28.52, 19.52), 0.3, 'EDGE 0.0000', 1)]
+        C136-1  final5c  [('trk', 'Bot', 0.2, 'CL in pad', 1), ('via', 'Bot', (28.52, 19.52), 0.3, 'EDGE 0.0000', 1)]
+        C136-1  stub from the laser (28.5200, 19.5200): [('GND', 0.2, 28.52, 19.52, 28.67, 19.67)] -> GOOD
+        C137-1  ORIGINAL [('via', 'Bot', (26.15, 19.625), 0.35, 'centre in pad', 0), ('trk', 'Bot', 0.0762, 'CL in pad', 0)]
+        C137-1  final5b  [('via', 'Bot', (26.12, 19.62), 0.3, 'EDGE -0.0000', 1)]
+        C137-1  final5c  [('via', 'Bot', (26.12, 19.62), 0.3, 'EDGE -0.0000', 1), ('trk', 'Bot', 0.2, 'CL in pad', 1)]
+        C137-1  stub from the laser (26.1200, 19.6200): [('GND', 0.2, 26.12, 19.62, 26.27, 19.77)] -> GOOD
+        C116-2  ORIGINAL [('trk', 'Bot', 0.0762, 'CL in pad', 0)]
+        C116-2  final5b  [('via', 'Bot', (29.12, 17.145), 0.25, 'EDGE -0.0000', 1)]
+        C116-2  final5c  [('via', 'Bot', (29.12, 17.145), 0.25, 'EDGE -0.0000', 1), ('trk', 'Bot', 0.2, 'CL in pad', 1)]
+        C116-2  stub from the laser (29.1200, 17.1450): [('GND', 0.2, 29.12, 17.145, 29.27, 17.27)] -> GOOD
+     plane ties (a4_ties engine) that differ between final5b and final5c: 0
+        longer / more vias / narrower / newly weak in final5c: 0 []
+        C121-2    ORIGINAL 0.000/1v w- via (25.575, 18.325)   final5b 0.726/4v w0.25 via (26.145, 17.645) final5c 0.726/4v w0.25 via (26.145, 17.645)
+        C111-2    ORIGINAL 0.120/1v w- via (25.75, 17.0)      final5b 0.472/4v w0.25 via (25.47, 16.77)  final5c 0.472/4v w0.25 via (25.47, 16.77)
+        C119-2    ORIGINAL 0.000/1v w- via (27.95, 17.75)     final5b 0.450/4v w0.25 via (27.945, 18.02) final5c 0.450/4v w0.25 via (27.945, 18.02)
+        C117-2    ORIGINAL 0.095/1v w- via (25.75, 17.625)    final5b 0.426/4v w0.25 via (26.145, 17.645) final5c 0.426/4v w0.25 via (26.145, 17.645)
+        C136-1    ORIGINAL 0.000/1v w- via (28.575, 19.55)    final5b 0.375/4v w0.25 via (28.895, 19.52) final5c 0.375/4v w0.25 via (28.895, 19.52)
+        C137-1    ORIGINAL 0.000/1v w- via (26.15, 19.625)    final5b 0.375/4v w0.25 via (26.495, 19.62) final5c 0.375/4v w0.25 via (26.495, 19.62)
+        C116-2    ORIGINAL 0.300/1v w0.08 via (29.15, 17.75)  final5b 0.380/4v w0.20 via (28.7756, 17.3056) final5c 0.380/4v w0.20 via (28.7756, 17.3056)
+     weak joints (verify5b_electrical/a2d_weak.py logic, whole board): ORIGINAL 1409, final5b 1424, final5c 1424; new in final5c vs final5b: 0 []
+     JOINTS5C PASS
+
+   19h information (final5b electrical review, item 3): the reviewer's own coupling engine (verify5b_electrical/a6_couple.py, with its a6b / a6c extra sensitive sets): the per-direction growths that sec20's max(lenS, lenX) does not show, the regulator-control / FT-supply information pairs, and every entry stage S changes, ORIGINAL | final5b | final5c
+     (a) per-direction growths (G-COUPLE set; sec20 judges max(lenS, lenX)), ORIGINAL | final5b | final5c:
+        AIN15_N       | GND  L4-SIG       gap 0.0869 lenS 1.565 lenX 0.000 | gap 0.0982 lenS 1.618 lenX 0.678 | gap 0.0982 lenS 1.618 lenX 0.678
+        CHAN21        | GND  L3-SIG       gap 0.0869 lenS 4.009 lenX 0.000 | gap 0.0921 lenS 3.543 lenX 0.372 | gap 0.0921 lenS 3.543 lenX 0.372
+        CLK-12M-FPGA  | GND  L4-SIG       gap 0.1150 lenS 0.225 lenX 0.000 | gap 0.1600 lenS 0.225 lenX 0.295 | gap 0.1600 lenS 0.225 lenX 0.295
+        PWR_SW1       | GND  Bottom Layer gap 0.1000 lenS 0.340 lenX 0.025 | gap 0.1000 lenS 0.340 lenX 0.387 | gap 0.1000 lenS 0.340 lenX 0.387
+        PWR_SWCD3     | GND  Bottom Layer gap 0.1250 lenS 0.310 lenX 0.000 | gap 0.1250 lenS 0.310 lenX 0.402 | gap 0.1250 lenS 0.310 lenX 0.402
+     (b) information pairs (a6c_extra set, every layer they share), ORIGINAL | final5b | final5c:
+        PWR_CLPROG  | VU   Bottom Layer gap 0.1162 lenS 0.000 lenX 0.313 | gap 0.1162 lenS 0.000 lenX 0.462 | gap 0.1162 lenS 0.000 lenX 0.462
+        PWR_CLPROG  | VU   L4-SIG       gap 0.1119 lenS 1.060 lenX 0.000 | gap 0.1119 lenS 1.060 lenX 0.000 | gap 0.1119 lenS 1.060 lenX 0.000
+        PWR_CLPROG  | VU   L5-VCC3V3    gap 0.1904 lenS 0.000 lenX 0.000 | gap 0.1904 lenS 0.000 lenX 0.000 | gap 0.1904 lenS 0.000 lenX 0.000
+        PWR_CLPROG  | GND  Bottom Layer gap 0.1250 lenS 0.000 lenX 0.050 | gap 0.1100 lenS 0.000 lenX 0.622 | gap 0.1100 lenS 0.000 lenX 0.622
+        PWR_CLPROG  | GND  L4-SIG       gap 0.1119 lenS 1.317 lenX 0.000 | gap 0.1869 lenS 0.210 lenX 0.000 | gap 0.1869 lenS 0.210 lenX 0.000
+        PWR_CLPROG  | GND  L5-VCC3V3    gap 0.1526 lenS 0.000 lenX 0.000 | gap 0.2797 lenS 0.000 lenX 0.000 | gap 0.2797 lenS 0.000 lenX 0.000
+        PWR_PROG    | GND  Bottom Layer gap 0.2250 lenS 0.000 lenX 0.000 | gap 0.0965 lenS 0.000 lenX 0.085 | gap 0.0965 lenS 0.000 lenX 0.085
+        PWR_PROG    | GND  L3-SIG       gap 0.1619 lenS 0.505 lenX 0.000 | gap 9.0000 lenS 0.000 lenX 0.000 | gap 9.0000 lenS 0.000 lenX 0.000
+        PWR_PROG    | GND  L4-SIG       gap 0.4341 lenS 0.000 lenX 0.000 | gap 0.0965 lenS 0.000 lenX 0.000 | gap 0.0965 lenS 0.000 lenX 0.000
+        PWR_PROG    | GND  L5-VCC3V3    gap 0.4341 lenS 0.000 lenX 0.000 | gap 0.0965 lenS 0.000 lenX 0.030 | gap 0.0965 lenS 0.000 lenX 0.030
+        FT-VCORE    | TDI  Bottom Layer gap 0.1655 lenS 0.000 lenX 0.338 | gap 0.1950 lenS 0.000 lenX 0.000 | gap 0.1950 lenS 0.000 lenX 0.000
+        FT-VCORE    | TDI  L3-SIG       gap 9.0000 lenS 0.000 lenX 0.000 | gap 0.0962 lenS 0.000 lenX 0.613 | gap 0.0962 lenS 0.000 lenX 0.613
+        FT-VCORE    | TDI  L4-SIG       gap 0.3250 lenS 0.000 lenX 0.000 | gap 0.3250 lenS 0.000 lenX 0.000 | gap 0.3250 lenS 0.000 lenX 0.000
+        FT-VCORE    | TDI  L5-VCC3V3    gap 0.3250 lenS 0.000 lenX 0.000 | gap 0.3250 lenS 0.000 lenX 0.000 | gap 0.3250 lenS 0.000 lenX 0.000
+        FT-VPLL     | TDI  Bottom Layer gap 0.1044 lenS 0.045 lenX 0.632 | gap 0.3450 lenS 0.000 lenX 0.000 | gap 0.3450 lenS 0.000 lenX 0.000
+        FT-VPLL     | TDI  L3-SIG       gap 0.1000 lenS 0.753 lenX 0.000 | gap 0.1319 lenS 0.624 lenX 0.684 | gap 0.1319 lenS 0.624 lenX 0.684
+     (c) (S, X, layer) entries that differ between final5b and final5c (stage S), every set:
+        0 entries changed
+
+== 20 acceptance tables, REVIEWER engines (check/rev/: s3_ties, s4_loops, s6_couple sampling + exact all-object gaps, tomb4b, sliver), WHOLE board; columns ORIGINAL / final5 / final5b / final5c; every rule against the ORIGINAL
+
+== 20a G-VIP: vip_check violating through vias / vip_tight, whole board
+   ORIGINAL  vip_check 102; vip_tight: VIP_CHECK: 105 violating through vias, 116 contacts -> FAIL (exit 1)
+   final5    vip_check 0; vip_tight: VIP_CHECK: 0 violating through vias, 0 contacts -> PASS (exit 0)
+   final5b   vip_check 0; vip_tight: VIP_CHECK: 0 violating through vias, 0 contacts -> PASS (exit 0)
+   final5c   vip_check 0; vip_tight: VIP_CHECK: 0 violating through vias, 0 contacts -> PASS (exit 0)
+
+== 20b G-TIE (s3_ties.ties, layer-aware: all tie copper off the pad's own layer counts): every cap / IC GND or VCC3V3 pad whose tie changed vs the ORIGINAL: <= 0.60 (target 0.40), min width >= 0.20, no weak joint
+   final5   changed vs ORIGINAL 89 (cap/IC 74), cap/IC mean / max 0.326 / 0.726; FAILING cap / IC ties 2 ['C121-2', 'C155-1']; over 0.40: 6
+   final5b  changed vs ORIGINAL 89 (cap/IC 74), cap/IC mean / max 0.327 / 0.726; FAILING cap / IC ties 1 ['C121-2']; over 0.40: 6
+   final5c  changed vs ORIGINAL 89 (cap/IC 74), cap/IC mean / max 0.327 / 0.726; FAILING cap / IC ties 1 ['C121-2']; over 0.40: 6
+   final5c cap / IC ties over the 0.40 target: C121-2 0.726, C111-2 0.472, C119-2 0.450, C86-2 0.450, C117-2 0.426, C13-1 0.405
+   rows (cap/IC failing or over 0.40, or changed vs final5b), ORIGINAL | final5 | final5b | final5c:
+     CAP  C111-2    0.120/1v w-            0.472/4v w0.25         0.472/4v w0.25         0.472/4v w0.25         via [25.47, 16.77] >0.40
+     CAP  C117-2    0.095/1v w-            0.426/4v w0.25         0.426/4v w0.25         0.426/4v w0.25         via [26.145, 17.645] >0.40
+     CAP  C119-2    0.000/1v w-            0.450/4v w0.25         0.450/4v w0.25         0.450/4v w0.25         via [27.945, 18.02] >0.40
+     CAP  C121-2    0.000/1v w-            0.726/4v w0.25         0.726/4v w0.25         0.726/4v w0.25         via [26.145, 17.645] >0.60
+     CAP  C13-1     0.000/1v w-            0.405/4v w0.25         0.405/4v w0.25         0.405/4v w0.25         via [30.225, 8.175] >0.40
+     CAP  C86-2     0.000/1v w-            0.450/4v w0.25         0.450/4v w0.25         0.450/4v w0.25         via [18.7368, 10.7317] >0.40
+     oth  JP3-3     0.765/1v w0.25         0.754/1v w0.25         0.754/1v w0.25         0.754/1v w0.25         via [16.635, 7.86] >0.60
+     oth  R103-2    0.000/1v w-            0.993/1v w0.20         1.035/2v w0.20         1.035/2v w0.20         via [5.95, 16.05] >0.60
+
+== 20c s4_loops pairs (every pair the ORIGINAL has).  G-LOOP = PL pairs: len <= O+0.30, vias <= O+2.  G-POWER = CU pairs of ['VU', 'USB5V0', 'VBATT', 'VCC1V8', 'VCC1V0', 'VCCADC', 'NetL3_1', 'FT-VCORE', 'FT-VPHY', 'FT-VPLL'] (PWR_SW2 judged as G-SW): len <= O+0.30, vias <= O+2, never narrower.  G-SW = CU pairs of ['PWR_SW', 'PWR_SW1', 'PWR_SW2', 'PWR_SWAB3', 'PWR_SWCD3']: len <= O+0.20, vias <= O, never narrower.  CU-other (feedback / control / GNDADC / FT supplies...) as signals: len <= O+0.50, vias <= O+2
+   class           final5                                       final5b                                      final5c
+   G-LOOP          met 135/158  excess 1.977 mm / 24 vias  narrower 0  met 135/158  excess 1.977 mm / 24 vias  narrower 0  met 135/158  excess 1.977 mm / 24 vias  narrower 0
+   G-POWER         met 410/442  excess 15.694 mm / 0 vias  narrower 9  met 418/442  excess 15.773 mm / 0 vias  narrower 0  met 418/442  excess 15.773 mm / 0 vias  narrower 0
+   listed G-POWER  met 143/175  excess 15.694 mm / 0 vias  narrower 9  met 151/175  excess 15.773 mm / 0 vias  narrower 0  met 151/175  excess 15.773 mm / 0 vias  narrower 0
+   G-SW            met 5/5  excess 0.000 mm / 0 vias  narrower 0  met 5/5  excess 0.000 mm / 0 vias  narrower 0  met 5/5  excess 0.000 mm / 0 vias  narrower 0
+   CU-other        met 48/61  excess 0.000 mm / 26 vias  narrower 0  met 48/61  excess 0.000 mm / 26 vias  narrower 0  met 48/61  excess 0.000 mm / 26 vias  narrower 0
+   final5c vs final5b: newly met 0, newly NOT met 0, still not met and worse 0, still not met but better / same 0
+   every pair NOT met in final5c (G-LOOP, G-POWER, G-SW, CU-other), ORIGINAL | final5 | final5b | final5c:
+     CU-other CU GNDADC:C124-2>C123-2                        27.729/16 w0.15    | 27.503/20 w0.15    | 27.503/20 w0.15    | 27.503/20 w0.15    -0.227 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:L6-2>C123-2                          38.828/25 w0.15    | 38.601/29 w0.15    | 38.601/29 w0.15    | 38.601/29 w0.15    -0.227 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-A12>C124-2                        26.813/11 w0.15    | 26.587/15 w0.15    | 26.587/15 w0.15    | 26.587/15 w0.15    -0.226 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-A12>L6-2                          37.912/20 w0.15    | 37.685/24 w0.15    | 37.685/24 w0.15    | 37.685/24 w0.15    -0.227 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-A13>C124-2                        26.063/11 w0.15    | 25.836/15 w0.15    | 25.836/15 w0.15    | 25.836/15 w0.15    -0.226 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-A13>L6-2                          37.162/20 w0.15    | 36.935/24 w0.15    | 36.935/24 w0.15    | 36.935/24 w0.15    -0.227 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-B12>C124-2                        26.563/11 w0.15    | 26.336/15 w0.15    | 26.336/15 w0.15    | 26.336/15 w0.15    -0.226 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-B12>L6-2                          37.662/20 w0.15    | 37.435/24 w0.15    | 37.435/24 w0.15    | 37.435/24 w0.15    -0.227 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-B13>C124-2                        26.313/11 w0.15    | 26.087/15 w0.15    | 26.087/15 w0.15    | 26.087/15 w0.15    -0.226 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-B13>L6-2                          37.412/20 w0.15    | 37.185/24 w0.15    | 37.185/24 w0.15    | 37.185/24 w0.15    -0.227 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-C12>C124-2                        26.813/11 w0.15    | 26.586/15 w0.15    | 26.586/15 w0.15    | 26.586/15 w0.15    -0.226 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU GNDADC:U1-C12>L6-2                          37.911/20 w0.15    | 37.685/24 w0.15    | 37.685/24 w0.15    | 37.685/24 w0.15    -0.226 mm, +4 vias vs ORIGINAL, +2 vias over
+     CU-other CU PWR_FB2:C163-2>U8-17                        3.492/0 w0.08      | 3.471/4 w0.08      | 3.471/4 w0.08      | 3.471/4 w0.08      -0.021 mm, +4 vias vs ORIGINAL, +2 vias over
+     G-LOOP   PL C147-1>U8-13                                9.070/6 w-         | 7.604/9 w0.25      | 7.604/9 w0.25      | 7.604/9 w0.25      -1.466 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL C147-1>U8-16                                7.875/6 w-         | 7.302/10 w0.25     | 7.302/10 w0.25     | 7.302/10 w0.25     -0.574 mm, +4 vias vs ORIGINAL, +2 vias over
+     G-LOOP   PL C147-1>U8-27                                7.043/7 w-         | 7.604/9 w0.20      | 7.604/9 w0.20      | 7.604/9 w0.20      +0.562 mm, +2 vias vs ORIGINAL, +0.262 over
+     G-LOOP   PL C148-1>U7-2                                 7.878/3 w-         | 8.343/3 w0.30      | 8.343/3 w0.30      | 8.343/3 w0.30      +0.465 mm, +0 vias vs ORIGINAL, +0.165 over
+     G-LOOP   PL C148-1>U8-13                                5.504/2 w-         | 4.862/5 w0.25      | 4.862/5 w0.25      | 4.862/5 w0.25      -0.642 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL C148-1>U8-3                                 5.215/2 w-         | 4.862/5 w0.25      | 4.862/5 w0.25      | 4.862/5 w0.25      -0.352 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL C161-1>U7-2                                 3.795/2 w-         | 3.800/5 w0.30      | 3.800/5 w0.30      | 3.800/5 w0.30      +0.005 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL C82-1>U8-27                                 3.406/3 w-         | 3.948/2 w0.20      | 3.948/2 w0.20      | 3.948/2 w0.20      +0.542 mm, -1 vias vs ORIGINAL, +0.242 over
+     G-LOOP   PL C82-1>U8-29                                 2.795/5 w-         | 3.723/2 w0.20      | 3.723/2 w0.20      | 3.723/2 w0.20      +0.928 mm, -3 vias vs ORIGINAL, +0.628 over
+     G-LOOP   PL C84-1>U8-3                                  5.846/2 w-         | 4.575/5 w0.20      | 4.575/5 w0.20      | 4.575/5 w0.20      -1.271 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL C85-2>U8-13                                 9.857/3 w-         | 8.203/6 w0.25      | 8.203/6 w0.25      | 8.203/6 w0.25      -1.654 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL C85-2>U8-16                                 8.618/3 w-         | 7.910/7 w0.25      | 7.910/7 w0.25      | 7.910/7 w0.25      -0.708 mm, +4 vias vs ORIGINAL, +2 vias over
+     G-LOOP   PL C85-2>U8-27                                 7.624/4 w-         | 8.203/6 w0.20      | 8.203/6 w0.20      | 8.203/6 w0.20      +0.578 mm, +2 vias vs ORIGINAL, +0.278 over
+     G-LOOP   PL R102-2>U8-13                                8.901/4 w-         | 6.387/7 w0.25      | 6.387/7 w0.25      | 6.387/7 w0.25      -2.514 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL R102-2>U8-16                                8.632/4 w-         | 6.387/7 w0.20      | 6.387/7 w0.20      | 6.387/7 w0.20      -2.245 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL R102-2>U8-27                                5.451/3 w-         | 6.153/5 w0.25      | 6.153/5 w0.25      | 6.153/5 w0.25      +0.702 mm, +2 vias vs ORIGINAL, +0.402 over
+     G-LOOP   PL R102-2>U8-3                                 6.872/4 w-         | 6.387/7 w0.25      | 6.387/7 w0.25      | 6.387/7 w0.25      -0.485 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL R114-2>U7-2                                 4.662/2 w-         | 4.119/5 w0.25      | 4.119/5 w0.25      | 4.119/5 w0.25      -0.542 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-LOOP   PL R114-2>U8-13                                6.159/4 w-         | 2.978/8 w0.20      | 2.978/8 w0.20      | 2.978/8 w0.20      -3.181 mm, +4 vias vs ORIGINAL, +2 vias over
+     G-LOOP   PL R114-2>U8-16                                5.890/4 w-         | 2.978/8 w0.20      | 2.978/8 w0.20      | 2.978/8 w0.20      -2.912 mm, +4 vias vs ORIGINAL, +2 vias over
+     G-LOOP   PL R114-2>U8-27                                2.709/3 w-         | 2.528/8 w0.25      | 2.528/8 w0.25      | 2.528/8 w0.25      -0.181 mm, +5 vias vs ORIGINAL, +3 vias over
+     G-LOOP   PL R114-2>U8-3                                 4.130/4 w-         | 2.978/8 w0.20      | 2.978/8 w0.20      | 2.978/8 w0.20      -1.152 mm, +4 vias vs ORIGINAL, +2 vias over
+     G-LOOP   PL R116-2>U8-3                                 5.726/2 w0.30      | 5.391/5 w0.20      | 5.391/5 w0.20      | 5.391/5 w0.20      -0.335 mm, +3 vias vs ORIGINAL, +1 vias over
+     G-POWER  CU VCC1V8:C163-1>L7-1                          6.950/9 w0.15      | 8.468/9 w0.15      | 8.468/9 w0.15      | 8.468/9 w0.15      +1.518 mm, +0 vias vs ORIGINAL, +1.218 over  [listed]
+     G-POWER  CU VCC1V8:L7-1>C144-1                          3.299/1 w0.15      | 4.564/1 w0.15      | 4.564/1 w0.15      | 4.564/1 w0.15      +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:L7-1>C82-2                           4.400/5 w0.15      | 5.665/5 w0.15      | 5.665/5 w0.15      | 5.665/5 w0.15      +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:L7-1>C93-1                           3.549/1 w0.15      | 4.814/1 w0.15      | 4.814/1 w0.15      | 4.814/1 w0.15      +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:L7-1>C94-1                           16.496/19 w0.15    | 17.761/19 w0.15    | 17.761/19 w0.15    | 17.761/19 w0.15    +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:L7-1>C95-1                           13.026/19 w0.15    | 14.291/19 w0.15    | 14.291/19 w0.15    | 14.291/19 w0.15    +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:L7-1>C96-1                           16.497/15 w0.15    | 17.762/15 w0.15    | 17.762/15 w0.15    | 17.762/15 w0.15    +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:L7-1>L2-2                            4.600/5 w0.15      | 5.865/5 w0.15      | 5.865/5 w0.15      | 5.865/5 w0.15      +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:R113-1>L7-1                          3.799/1 w0.15      | 5.064/1 w0.15      | 5.064/1 w0.15      | 5.064/1 w0.15      +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:U1-C9>L7-1                           14.768/14 w0.15    | 16.034/14 w0.15    | 16.034/14 w0.15    | 16.034/14 w0.15    +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:U1-H13>L7-1                          11.268/10 w0.15    | 12.533/10 w0.15    | 12.533/10 w0.15    | 12.533/10 w0.15    +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VCC1V8:U1-J13>L7-1                          11.018/10 w0.15    | 12.283/10 w0.15    | 12.283/10 w0.15    | 12.283/10 w0.15    +1.265 mm, +0 vias vs ORIGINAL, +0.965 over  [listed]
+     G-POWER  CU VU:C160-2>U8-1                              9.022/2 w0.40      | 9.738/2 w0.40      | 9.738/2 w0.40      | 9.738/2 w0.40      +0.716 mm, +0 vias vs ORIGINAL, +0.416 over  [listed]
+     G-POWER  CU VU:C160-2>U8-5                              7.122/2 w0.40      | 8.385/2 w0.20      | 8.724/4 w0.40      | 8.724/4 w0.40      +1.602 mm, +2 vias vs ORIGINAL, +1.302 over  [listed]
+     G-POWER  CU VU:U7-1>U8-1                                8.451/2 w0.40      | 9.136/2 w0.40      | 9.136/2 w0.40      | 9.136/2 w0.40      +0.685 mm, +0 vias vs ORIGINAL, +0.385 over  [listed]
+     G-POWER  CU VU:U7-1>U8-18                               11.801/2 w0.40     | 12.256/2 w0.40     | 12.191/2 w0.40     | 12.191/2 w0.40     +0.390 mm, +0 vias vs ORIGINAL, +0.090 over  [listed]
+     G-POWER  CU VU:U8-18>C148-2                             6.999/2 w0.40      | 7.451/2 w0.40      | 7.451/2 w0.40      | 7.451/2 w0.40      +0.452 mm, +0 vias vs ORIGINAL, +0.152 over  [listed]
+     G-POWER  CU VU:U8-18>C149-2                             11.601/2 w0.40     | 12.056/2 w0.40     | 11.991/2 w0.40     | 11.991/2 w0.40     +0.390 mm, +0 vias vs ORIGINAL, +0.090 over  [listed]
+     G-POWER  CU VU:U8-18>C78-2                              11.926/2 w0.40     | 12.331/2 w0.40     | 12.266/2 w0.40     | 12.266/2 w0.40     +0.340 mm, +0 vias vs ORIGINAL, +0.040 over  [listed]
+     G-POWER  CU VU:U8-18>R26-1                              21.103/8 w0.20     | 21.501/10 w0.20    | 21.436/8 w0.20     | 21.436/8 w0.20     +0.333 mm, +0 vias vs ORIGINAL, +0.033 over  [listed]
+     G-POWER  CU VU:U8-1>C148-2                              4.899/2 w0.40      | 5.581/2 w0.40      | 5.581/2 w0.40      | 5.581/2 w0.40      +0.682 mm, +0 vias vs ORIGINAL, +0.382 over  [listed]
+     G-POWER  CU VU:U8-1>C149-2                              8.250/2 w0.40      | 8.936/2 w0.40      | 8.936/2 w0.40      | 8.936/2 w0.40      +0.685 mm, +0 vias vs ORIGINAL, +0.385 over  [listed]
+     G-POWER  CU VU:U8-1>C78-2                               8.575/2 w0.40      | 9.211/2 w0.40      | 9.211/2 w0.40      | 9.211/2 w0.40      +0.635 mm, +0 vias vs ORIGINAL, +0.335 over  [listed]
+     G-POWER  CU VU:U8-1>R26-1                               17.753/8 w0.20     | 18.381/10 w0.20    | 18.381/8 w0.20     | 18.381/8 w0.20     +0.628 mm, +0 vias vs ORIGINAL, +0.328 over  [listed]
+
+== 20d G-SW copper area per switch node (5 um raster union, all layers), with pads / tracks + vias only; rule <= ORIGINAL + 10 %
+   PWR_SW     ORIGINAL 4.4511 / 2.0976   final5 4.4511 / 2.0976 (+0.0 %)   final5b 4.4511 / 2.0976 (+0.0 %)   final5c 4.4511 / 2.0976 (+0.0 %)
+   PWR_SW1    ORIGINAL 2.7127 / 0.3456   final5 2.7127 / 0.3456 (+0.0 %)   final5b 2.7127 / 0.3456 (+0.0 %)   final5c 2.7127 / 0.3456 (+0.0 %)
+   PWR_SW2    ORIGINAL 2.7128 / 0.2357   final5 2.7638 / 0.2732 (+1.9 %)   final5b 2.7638 / 0.2732 (+1.9 %)   final5c 2.7638 / 0.2732 (+1.9 %)
+   PWR_SWAB3  ORIGINAL 2.7095 / 0.3356   final5 2.7095 / 0.3356 (+0.0 %)   final5b 2.7095 / 0.3356 (+0.0 %)   final5c 2.7095 / 0.3356 (+0.0 %)
+   PWR_SWCD3  ORIGINAL 2.6996 / 0.3356   final5 2.6996 / 0.3356 (+0.0 %)   final5b 2.6996 / 0.3356 (+0.0 %)   final5c 2.6996 / 0.3356 (+0.0 %)
+
+== 20e G-COUPLE (s6_couple sampling, symmetric, whole board, pads count; min gap = EXACT edge gap over ALL pad / via / track pairs): every net pair whose (gap, length) differs from the ORIGINAL at all, where a net is a clock / XADC analog / FT-REF / PWR_FB / switch node; rule gap >= min(O gap, 0.15) and length within 0.20 <= O + 0.10.  No tolerance (final5 treated |gap - O| <= 0.005 and |len - O| <= 0.05 as unchanged)
+   (net pair, layer) entries not met: final5 48, final5b 23, final5c 23; unique net pairs: 30 / 20 / 20; final5c with a GND / VCC3V3 net (shield / plane proximity): 22 entries, 19 net pairs; signal-only: 1 entries [('PWR_SW2', 'VU')]
+   final5c vs final5b by class: {'unchanged, failing': 23}
+     unchanged, failing       SIGNAL PWR_SW2        vs VU             Bot gap/len O 0.1250/0.436  F5 0.0925/0.856  F5B 0.0925/0.856  F5C 0.0925/0.856  at pad L2-1 <-> via (13.0025,17.5000) 0.35
+     unchanged, failing       shield AIN15_N        vs GND            L3- gap/len O 0.1935/0.146  F5 0.1097/0.387  F5B 0.1097/0.387  F5C 0.1097/0.387  at trk (24.9701,18.3951)-(25.3500,18.7750) w0.076 <-> via (25.1450,18.9700) 0.27
+     unchanged, failing       shield AIN15_P        vs GND            L3- gap/len O 0.0869/2.408  F5 0.0869/3.185  F5B 0.0869/3.185  F5C 0.0869/3.185  at trk (26.5500,12.5250)-(26.5500,12.8250) w0.076 <-> via (26.2500,12.7000) 0.35
+     unchanged, failing       shield CHAN-CLK       vs GND            L4- gap/len O 0.0869/1.195  F5 0.0874/2.020  F5B 0.0874/2.020  F5C 0.0874/2.020  at trk (27.1750,8.6750)-(27.4500,8.4000) w0.076 <-> via (27.5750,8.7000) 0.35
+     unchanged, failing       shield CHAN1          vs GND            Top gap/len O 0.0855/1.017  F5 0.0901/1.852  F5B 0.0901/1.852  F5C 0.0901/1.852  at trk (22.3625,4.0475)-(22.5250,3.8500) w0.076 <-> pad RESET-3
+     unchanged, failing       shield CHAN17         vs GND            L3- gap/len O 0.1143/0.000  F5 0.1077/0.372  F5B 0.1077/0.372  F5C 0.1077/0.372  at via (25.2500,19.8500) 0.27 <-> trk (24.9950,19.5450)-(24.8700,19.8950) w0.200
+     unchanged, failing       shield CHAN2          vs GND            L4- gap/len O 0.1568/0.675  F5 0.0918/0.621  F5B 0.0918/0.621  F5C 0.0918/0.621  at trk (25.5800,3.0582)-(26.4250,1.9000) w0.076 <-> trk (25.4200,2.8450)-(25.4000,2.3875) w0.250
+     unchanged, failing       shield CHAN22         vs GND            L4- gap/len O 0.0869/0.958  F5 0.0919/1.194  F5B 0.0919/1.194  F5C 0.0919/1.194  at trk (27.2250,19.9250)-(27.9000,19.9250) w0.076 <-> via (27.3450,19.6450) 0.30
+     unchanged, failing       shield CHAN5          vs GND            L4- gap/len O 0.1670/0.325  F5 0.0932/0.555  F5B 0.0932/0.555  F5C 0.0932/0.555  at trk (28.0000,7.1750)-(33.6750,1.5500) w0.076 <-> via (31.5500,3.2250) 0.35
+     unchanged, failing       shield CHAN6          vs GND            L2- gap/len O 0.1929/0.000  F5 0.1078/0.000  F5B 0.1078/0.000  F5C 0.1078/0.000  at via (20.9000,8.4301) 0.25 <-> via (21.1900,8.6800) 0.30
+     unchanged, failing       shield CHAN6          vs GND            L3- gap/len O 0.1929/0.000  F5 0.0945/2.101  F5B 0.0945/2.101  F5C 0.0945/2.101  at trk (30.2750,6.5500)-(34.6250,2.2000) w0.076 <-> via (31.6250,5.6350) 0.35
+     unchanged, failing       shield CHAN7          vs GND            L3- gap/len O 0.1463/0.410  F5 0.0919/1.100  F5B 0.0919/1.100  F5C 0.0919/1.100  at trk (33.0500,7.1000)-(34.6250,5.2750) w0.076 <-> via (34.8250,5.5100) 0.35
+     unchanged, failing       shield CHAN8          vs GND            L4- gap/len O 0.1119/0.500  F5 0.0905/2.517  F5B 0.0905/2.517  F5C 0.0905/2.517  at trk (21.5750,9.6000)-(21.7500,9.0550) w0.076 <-> via (21.4900,8.9550) 0.30
+     unchanged, failing       shield CLK-12M-SHARED vs GND            L3- gap/len O 0.0869/2.867  F5 0.0919/3.804  F5B 0.0919/3.804  F5C 0.0919/3.804  at trk (27.5500,19.8500)-(28.7000,19.8500) w0.076 <-> via (27.7200,19.5950) 0.25
+     unchanged, failing       shield GND            vs GNDADC         L3- gap/len O 0.1283/0.303  F5 0.1250/0.439  F5B 0.1250/0.439  F5C 0.1250/0.439  at via (18.2000,16.3550) 0.35 <-> trk (17.8250,16.2250)-(17.8250,16.8750) w0.150
+     unchanged, failing       shield GND            vs NODE_P1        L3- gap/len O 0.0869/0.580  F5 0.0969/1.056  F5B 0.0969/1.056  F5C 0.0969/1.056  at via (28.5200,19.5200) 0.27 <-> trk (28.4500,19.2500)-(32.8750,19.2500) w0.076
+     unchanged, failing       shield GND            vs PWR_FB2        L3- gap/len O 0.1179/0.000  F5 0.1021/0.430  F5B 0.1021/0.430  F5C 0.1021/0.430  at trk (9.8375,14.4500)-(9.5075,14.6225) w0.200 <-> via (9.8000,14.8500) 0.27
+     unchanged, failing       shield GND            vs PWR_FB2        L4- gap/len O 0.1157/0.549  F5 0.1318/0.778  F5B 0.1318/0.778  F5C 0.1318/0.778  at via (9.8375,14.4500) 0.27 <-> via (9.8000,14.8500) 0.27
+     unchanged, failing       shield GND            vs PWR_FB3        L4- gap/len O 0.3551/0.000  F5 0.1407/0.335  F5B 0.1407/0.335  F5C 0.1407/0.335  at via (8.7500,12.1750) 0.27 <-> via (8.3250,12.2000) 0.30
+     unchanged, failing       shield GND            vs PWR_SW2        Bot gap/len O 0.2000/0.000  F5 0.0925/0.061  F5B 0.0925/0.061  F5C 0.0925/0.061  at via (13.0025,18.4400) 0.35 <-> pad L2-1
+     unchanged, failing       shield GND            vs VCCADC         Bot gap/len O 0.1057/0.000  F5 0.1075/0.410  F5B 0.1075/0.410  F5C 0.1075/0.410  at trk (25.6450,18.4200)-(25.6450,17.9500) w0.250 <-> via (26.0525,18.3000) 0.35
+     unchanged, failing       shield GND            vs VCCADC         L5- gap/len O 0.1756/0.000  F5 0.1104/0.381  F5B 0.1104/0.381  F5C 0.1104/0.381  at via (25.6200,18.3500) 0.30 <-> via (26.0525,18.3000) 0.35
+     unchanged, failing       shield PWR_FB3        vs VCC3V3         Bot gap/len O 0.1119/0.996  F5 0.1119/1.320  F5B 0.1119/1.320  F5C 0.1119/1.320  at trk (7.3500,22.3500)-(7.4250,22.4250) w0.076 <-> pad R115-1
+
+== 20f G-0201 (tomb4b): every 0201 / 0402 whose pads changed vs the ORIGINAL (or moved): |imb| <= max(|O| + 0.03, 0.10); no one-sided via land where the ORIGINAL had land on both pads; board totals |imb| > 0.2 / > 0.1 <= ORIGINAL
+   ORIGINAL  |imb| > 0.2 / > 0.1: 0201 5 / 32; 0201 + 0402 5 / 32
+   final5    |imb| > 0.2 / > 0.1: 0201 5 / 28; 0201 + 0402 5 / 28
+   final5b   |imb| > 0.2 / > 0.1: 0201 5 / 28; 0201 + 0402 5 / 28
+   final5c   |imb| > 0.2 / > 0.1: 0201 5 / 28; 0201 + 0402 5 / 28
+   changed 0201 / 0402 parts failing: final5 6 ['C124', 'C161', 'C3', 'C4', 'R102', 'R103']; final5b 0 []; final5c 0 []
+     C111  C0201  imb O +0.0262  F5B +0.0684  F5C +0.0680    (changed vs final5b)
+     C116  C0201  imb O +0.1746  F5B +0.0494  F5C +0.0492    (changed vs final5b)
+     C117  C0201  imb O +0.0377  F5B -0.0672  F5C -0.0698    (changed vs final5b)
+     C119  C0201  imb O -0.0233  F5B +0.0952  F5C +0.0751    (changed vs final5b)
+     C91   C0201  imb O +0.2960  F5B +0.3133  F5C +0.3133  
+     R115  R0201  imb O +0.1198  F5B +0.1123  F5C +0.1123  
+     R15   R0201  imb O +0.1622  F5B +0.1622  F5C +0.1622  
+     R2    R0201  imb O -0.1628  F5B -0.1649  F5C -0.1649  
+   information, larger two-terminal parts with land on both pads in the ORIGINAL and on one now: C100 C0603 imb -0.009, C101 C0603 imb -0.005, C102 C0603 imb -0.003, C104 C0603 imb -0.005, C105 C0603 imb -0.003, C106 C0603 imb -0.014, C147 C0603 imb -0.013, C80 C0805 imb +0.010, C82 C0603 imb -0.007, C87 C0603 imb +0.021, C88 C0603 imb +0.017, C97 C0805 imb -0.007, C99 C0603 imb -0.004, L7 IND0603 imb -0.017
+
+== 20g G-MASK (sliver5c.run, openings by pad extent): copper NOT in the ORIGINAL whose mask strip to an other-net SWITCH-NODE pad opening is < 0.04 (rule: none); any opening listed for information
+   final5   new strips < 0.04 at switch-node openings: 0 []; at any opening: 12 (min 0.0198 RESET-3); copper in an opening: 0
+   final5b  new strips < 0.04 at switch-node openings: 0 []; at any opening: 5 (min 0.0198 RESET-3); copper in an opening: 0
+   final5c  new strips < 0.04 at switch-node openings: 0 []; at any opening: 5 (min 0.0198 RESET-3); copper in an opening: 0
+       final5c any: 0.0198 next to RESET-3 (GND): ('T', 'Top Layer', 'CHAN1', 22.3625, 4.0475, 22.525, 3.85, 0.0762)
+       final5c any: 0.0292 next to X4-MP2 (): ('T', 'Top Layer', 'VBATT', 13.55, 18.662, 13.15, 18.903, 0.4)
+       final5c any: 0.0369 next to C149-2 (VU): ('V', 'GND', 2.6, 14.2, 0.35, 'Top Layer', 'Bottom Layer', 'B')
+       final5c any: 0.0373 next to C88-1 (VCC1V0): ('V', 'GND', 22.375, 4.375, 0.35, 'Top Layer', 'Bottom Layer', 'B')
+       final5c any: 0.0399 next to Q1-4 (VCC3V3): ('V', 'GND', 16.94, 16.365, 0.35, 'Top Layer', 'Bottom Layer', 'T')
+
+== 20h G-SIG: every signal net final5b or final5c changes (not GND / VCC3V3 / power / switch nodes): net track length / vias, and every pad pair (copper only); pair rule len <= O + 0.5, vias <= O + 2
+   nets (34): A1 A7 CHAN1 CHAN2 CHAN21 CHAN7 CHAN8 DONE EE-CLK EE-DATA EE-DATA-DO FLASH-D01 FLASH-D02 FPGA-DONE FPGA-TDO FT-REF GNDADC LD4_A N$BTN PROG# PWR_CLPROG PWR_FB1 PWR_FB2 PWR_FB3 PWR_PGOODALL PWR_PROG RST# SD-CMD SD-DAT0 SD-DAT1 SDRAM-CS# TDI TMS UART_FT_CTS#
+   pairs over the rule: final5 21, final5b 21, final5c 21
+     EE-CLK:R96-1>U10-2                           O 7.523/5 w0.08      F5 7.165/9 w0.08      F5B 7.165/9 w0.08      F5C 7.165/9 w0.08      -0.357 mm +4 vias
+     EE-CLK:R96-1>U2-62                           O 1.392/1 w0.08      F5 2.377/5 w0.08      F5B 2.377/5 w0.08      F5C 2.377/5 w0.08      +0.986 mm +4 vias
+     FPGA-TDO:R4-13>U1-W8                         O 19.340/5 w0.08     F5 19.839/9 w0.08     F5B 19.839/9 w0.08     F5C 19.839/9 w0.08     +0.499 mm +4 vias
+     FT-REF:R18-2>U2-6                            O 4.732/1 w0.08      F5 5.476/1 w0.08      F5B 5.476/1 w0.08      F5C 5.476/1 w0.08      +0.743 mm +0 vias
+     GNDADC:C123-2>C124-2                         O 27.729/16 w0.15    F5 27.503/20 w0.15    F5B 27.503/20 w0.15    F5C 27.503/20 w0.15    -0.227 mm +4 vias
+     GNDADC:C123-2>L6-2                           O 38.828/25 w0.15    F5 38.601/29 w0.15    F5B 38.601/29 w0.15    F5C 38.601/29 w0.15    -0.227 mm +4 vias
+     GNDADC:C124-2>U1-A12                         O 26.813/11 w0.15    F5 26.587/15 w0.15    F5B 26.587/15 w0.15    F5C 26.587/15 w0.15    -0.226 mm +4 vias
+     GNDADC:C124-2>U1-A13                         O 26.063/11 w0.15    F5 25.836/15 w0.15    F5B 25.836/15 w0.15    F5C 25.836/15 w0.15    -0.226 mm +4 vias
+     GNDADC:C124-2>U1-B12                         O 26.563/11 w0.15    F5 26.336/15 w0.15    F5B 26.336/15 w0.15    F5C 26.336/15 w0.15    -0.226 mm +4 vias
+     GNDADC:C124-2>U1-B13                         O 26.313/11 w0.15    F5 26.087/15 w0.15    F5B 26.087/15 w0.15    F5C 26.087/15 w0.15    -0.226 mm +4 vias
+     GNDADC:C124-2>U1-C12                         O 26.813/11 w0.15    F5 26.586/15 w0.15    F5B 26.586/15 w0.15    F5C 26.586/15 w0.15    -0.226 mm +4 vias
+     GNDADC:L6-2>U1-A12                           O 37.912/20 w0.15    F5 37.685/24 w0.15    F5B 37.685/24 w0.15    F5C 37.685/24 w0.15    -0.227 mm +4 vias
+     GNDADC:L6-2>U1-A13                           O 37.162/20 w0.15    F5 36.935/24 w0.15    F5B 36.935/24 w0.15    F5C 36.935/24 w0.15    -0.227 mm +4 vias
+     GNDADC:L6-2>U1-B12                           O 37.662/20 w0.15    F5 37.435/24 w0.15    F5B 37.435/24 w0.15    F5C 37.435/24 w0.15    -0.227 mm +4 vias
+     GNDADC:L6-2>U1-B13                           O 37.412/20 w0.15    F5 37.185/24 w0.15    F5B 37.185/24 w0.15    F5C 37.185/24 w0.15    -0.227 mm +4 vias
+     GNDADC:L6-2>U1-C12                           O 37.911/20 w0.15    F5 37.685/24 w0.15    F5B 37.685/24 w0.15    F5C 37.685/24 w0.15    -0.226 mm +4 vias
+     PWR_FB2:C163-2>U8-17                         O 3.492/0 w0.08      F5 3.471/4 w0.08      F5B 3.471/4 w0.08      F5C 3.471/4 w0.08      -0.021 mm +4 vias
+     TDI:R90-1>U2-17                              O 2.980/1 w0.08      F5 3.009/5 w0.08      F5B 3.009/5 w0.08      F5C 3.009/5 w0.08      +0.029 mm +4 vias
+     TMS:JP3-2>U2-19                              O 9.343/4 w0.08      F5 9.320/7 w0.08      F5B 9.320/7 w0.08      F5C 9.320/7 w0.08      -0.023 mm +3 vias
+     TMS:R4-5>U2-19                               O 4.547/4 w0.08      F5 4.524/7 w0.08      F5B 4.524/7 w0.08      F5C 4.524/7 w0.08      -0.023 mm +3 vias
+     TMS:R92-1>U2-19                              O 1.401/1 w0.08      F5 1.377/5 w0.08      F5B 1.377/5 w0.08      F5C 1.377/5 w0.08      -0.023 mm +4 vias
+   pairs longer (> +0.05) or with more vias than final5b (information): 0
+   information (review P9): pairs final5b made longer (> +0.05) or with more vias than final5, within the rule: 0
+   net totals changed vs final5b (length / vias), ORIGINAL | final5 | final5b | final5c:
+     SD-DAT0          33.083/20 | 33.017/22 | 33.017/22 | 33.241/22
+
+== 20i G-HOLE: every drilled pair involving a non-ORIGINAL via, sharing a copper layer (build.new_hole_pairs); rule >= 0.245; whole-board hole_gate is gate 2
+   final5: min 0.24506; final5b: min 0.24506; final5c: min 0.24506 (0 under 0.245); pairs with a via new since final5b: min -
+   lowest final5c pairs: [(0.24506, (36.49, 11.385), (36.075, 11.45), 'GND', 'FLASH-D02'), (0.24556, (9.5075, 14.6225), (9.8, 14.85), 'GND', 'PWR_FB2'), (0.24599, (9.7625, 19.81), (9.4533, 20.0574), 'GND', 'GND')]
+
+== 20j G-U8GND (information): GND THROUGH vias within 0.70 of each U8 GND pin centre, tied by copper (<= 1.0)
+   ORIGINAL  4   U8-3 0.309 (cu 0.000/1v wNone); U8-10 none; U8-13 0.309 (cu 0.000/1v wNone); U8-16 0.309 (cu 0.000/1v wNone); U8-27 0.485 (cu 0.125/1v wNone)
+   final5    3   U8-3 0.679 (cu 0.331/1v w0.2); U8-10 none; U8-13 0.666 (cu 0.342/1v w0.2); U8-16 0.613 (cu 0.272/1v w0.25); U8-27 none
+   final5b   2   U8-3 0.689 (cu 0.322/1v w0.2); U8-10 none; U8-13 none (nearest 0.741); U8-16 0.613 (cu 0.272/1v w0.25); U8-27 none
+   final5c   2   U8-3 0.689 (cu 0.322/1v w0.2); U8-10 none; U8-13 none (nearest 0.741); U8-16 0.613 (cu 0.272/1v w0.25); U8-27 none
+
+== 20k compact G-* table: ORIGINAL | final5 | final5b | final5c | verdict for final5c
+   G-VIP vip_check / vip_tight                                    102 / 105      | 0 / 0                      | 0 / 0                      | 0 / 0                      | MET
+   G-TIE changed cap/IC ties failing (>0.60 / w<0.20 / weak)      -              | 2 C121-2 C155-1            | 1 C121-2                   | 1 C121-2                   | NOT MET
+   G-TIE cap/IC ties over the 0.40 target                         -              | 6                          | 6                          | 6                          | target
+   G-LOOP pairs met (excess mm / vias, narrower)                  -              | 135/158 (1.977 / 24, 0)    | 135/158 (1.977 / 24, 0)    | 135/158 (1.977 / 24, 0)    | NOT MET (23)
+   G-POWER pairs met (excess mm / vias, narrower)                 -              | 410/442 (15.694 / 0, 9)    | 418/442 (15.773 / 0, 0)    | 418/442 (15.773 / 0, 0)    | NOT MET (24)
+   listed G-POWER pairs met (excess mm / vias, narrower)          -              | 143/175 (15.694 / 0, 9)    | 151/175 (15.773 / 0, 0)    | 151/175 (15.773 / 0, 0)    | NOT MET (24)
+   G-SW pairs met (excess mm / vias, narrower)                    -              | 5/5 (0.000 / 0, 0)         | 5/5 (0.000 / 0, 0)         | 5/5 (0.000 / 0, 0)         | MET
+   G-SW area max vs ORIGINAL: with pads (tracks + vias only)      0 %            | +1.9 % PWR_SW2 (+15.9 % PWR_SW2) | +1.9 % PWR_SW2 (+15.9 % PWR_SW2) | +1.9 % PWR_SW2 (+15.9 % PWR_SW2) | MET (node incl. pads)
+   G-COUPLE (net pair, layer) entries not met; unique net pairs   0              | 48; 30                     | 23; 20                     | 23; 20                     | NOT MET (1 signal-only, 22 with GND / VCC3V3)
+   G-0201 changed parts failing; 0201 |imb| >0.2 / >0.1           - ; 5 / 32     | 6 ; 5 / 28                 | 0 ; 5 / 28                 | 0 ; 5 / 28                 | MET
+   G-MASK new strips < 0.04 at switch-node openings (any opening) -              | 0 (12)                     | 0 (5)                      | 0 (5)                      | MET
+   G-SIG signal pad pairs over the rule                           0              | 21                         | 21                         | 21                         | NOT MET
+   G-HOLE min new drilled pair                                    -              | 0.2451                     | 0.2451                     | 0.2451                     | MET
+   G-U8GND pins with a GND through via <= 0.70 (info)             4              | 3                          | 2                          | 2                          | info
+
+== 21 planes, 5 um repour simulation (check/fab/s3_plane.py, the fab reviewer's engine; plan = plan.json)
+   ORIGINAL L2-GND: pour 954.474 mm^2, islands 1, main 954.474, LIVE islands 1 (others []), dead 0 / 0.0000 mm^2 [], same-net seeds 211, seeds NOT on main island 0, neck-removed 0.1628 mm^2
+   FINAL4 L2-GND: pour 959.514 mm^2, islands 1, main 959.514, LIVE islands 1 (others []), dead 0 / 0.0000 mm^2 [], same-net seeds 228, seeds NOT on main island 0, neck-removed 0.1578 mm^2
+      FINAL dead (cut-off) islands that were live copper in ORIGINAL: 0 blobs, 0.0000 mm^2
+   ORIGINAL L5-VCC3V3: pour 926.968 mm^2, islands 2, main 926.958, LIVE islands 1 (others []), dead 1 / 0.0094 mm^2 [(2, 0.009425000000000001)], same-net seeds 131, seeds NOT on main island 0, neck-removed 0.3166 mm^2
+   FINAL4 L5-VCC3V3: pour 933.810 mm^2, islands 1, main 933.810, LIVE islands 1 (others []), dead 0 / 0.0000 mm^2 [], same-net seeds 131, seeds NOT on main island 0, neck-removed 0.2784 mm^2
+      FINAL dead (cut-off) islands that were live copper in ORIGINAL: 0 blobs, 0.0000 mm^2
+   exit 0; L2 / L5 one live island each: True; every same-net seed on the main island: True; cut-off copper: [('0', '0.0000', ''), ('0', '0.0000', '')]
+   21b information (electrical review P2, CHAN6 | GND on L2): the real plane-layer gap from the 5 um pour rasters above (check/rev5c/plane_gap5c.py)
+     ORIGINAL L2-GND CHAN6 land (20.9000, 8.4301) 0.25: nearest GND OBJECT 0.1929 (via (21.2750, 8.7500) 0.35); nearest POURED GND copper 0.0765 (void rule 0.0762 + 5 um raster)
+     final5c  L2-GND CHAN6 land (20.9000, 8.4301) 0.25: nearest GND OBJECT 0.1078 (via (21.1900, 8.6800) 0.30); nearest POURED GND copper 0.0765 (void rule 0.0762 + 5 um raster)
+
+== summary
+   via kind                       orig  removed  added  final5b final5c
+   buried L3-L4 0.27/0.15          250        1     58      307    307
+   buried L3-L4 0.30/0.15            4        0      0        4      4
+   laser L2-L3 0.25/0.10           105        0     20      125    125
+   laser L2-L3 0.30/0.15           174        2     29      201    201
+   laser L4-L5 0.25/0.10            47        0     17       64     64
+   laser L4-L5 0.30/0.15           199        4     46      241    241
+   laser L5-Bot 0.25/0.10           23        0     23       46     46
+   laser L5-Bot 0.30/0.15          243        4     47      286    286
+   laser Top-L2 0.25/0.10          173        0      4      177    177
+   laser Top-L2 0.30/0.15          210        3     12      219    219
+   through Top-Bot 0.35/0.20       153      108     64      109    109
+   all vias                       1581      122    320     1779   1779
+   tracks                         4807      197    283     4886   4893
+   microvias: board copy Vias6 has 1174 mark_microvias candidates (0 still regular); model lasers 1174 -> 1359; plan removes 13 lasers, adds 198 -> mark_microvias --expect 1359 after the plan is placed and saved
+   new buried L3-L4 0.27/0.15 (stay regular): 58
+   through vias: 153 -> 109 -> 109; vip_check 102 -> 0; vip_tight -> 0
+   1 route_check: 0 violations / 0 open at the Altium width rule (plain: 3 width-table flags)                             PASS
+   2 hole_gate whole board                                                                                                PASS
+   3 vip_check 0 and vip_tight 0 on the whole board (goal)                                                                PASS
+   4 connectivity (0 open, 0 new dead, 0 new dangling)                                                                    PASS
+   5 widths (no power path narrowed)                                                                                      PASS
+   6 vias (kept unchanged, joints kept)                                                                                   PASS
+   7 planes (L2 / L5 one live island, nothing lost)                                                                       PASS
+   8 stacks (no 4- or 5-drill stack created or deepened)                                                                  PASS
+   9 pad_gate (moved parts: C121 C124 C78 L1 L2 L9)                                                                       FAIL
+   9b pad_gate: no flagged pair beyond the ORIGINAL's own (raw line above; 4 pairs flagged, all identical on the ORIGINAL) PASS
+   10 moved pads vs other-net copper                                                                                      PASS
+   11 bodies + Component Clearance                                                                                        PASS
+   12 silk                                                                                                                PASS
+   13 AIN / USB_D untouched; SDRAM within +-1 mm or no worse; phase 4 leaves clocks (EE-CLK assigned) / switch nodes; a moved cap no farther from its IC pins FAIL
+   14 emit (guards, read-back, release order: repour, save, close, mark, reopen, repour, DRC, save, verify; nothing under Rev_1) PASS
+   15 TIE RULES (caps / ICs: <= 0.60, >= 0.20 wide; worse than final5b only with a reason): 1 failing (C121-2)            FAIL
+   16 U8 GND (own tie <= 0.50 for pins 3/13/16/27; >= 4 full-depth sites <= 0.6): missing none                            FAIL
+   18a G-LOOP: every loop pair <= ORIGINAL + 0.30 (hard 0.50 w/ reason), vias <= +2: 6 not met beyond the hard limit (C148-1>U8-3, C82-1>U8-16, C147-1>U8-27, C167-1>U8-27, C148-2>U8-1, C151-1>U8-27); 0 between +0.30 and +0.50 with a reason (none) FAIL
+   18b G-TIE: changed cap / IC ties <= 0.60 and >= 0.20 wide (1 failing: C121-2); plane-net joints inside copper          FAIL
+   18c G-POWER: every power path <= ORIGINAL + 0.30, vias <= +2, never narrower: 10 listed + 24 other pairs not met (listed: VU:C148-2>U8-1, VU:C147-2>C160-2, VU:C147-2>U8-1, VU:C148-2>U8-18, VU:C149-2>U8-18, VU:C78-2>U8-18, VU:R26-1>U8-18, VCC1V8:L2-2>L7-1, VCC1V8:C144-1>L7-1, VCC1V8:C93-1>L7-1) FAIL
+   18d G-0201: changed 0201s within limits, none one-sided / inner-only (0: none); totals >0.2 6 (<= 6), >0.1 28 (<= 31)  PASS
+   18f G-HOLE: every new drilled pair >= 0.245 (min 0.2451); VCC1V8 laser to L2-2 0.0950                                  PASS
+   19a FT-REF >= 0.20 from VCC1V0 / FT-VPHY (the VCC1V0 crossing no worse than the ORIGINAL)                              PASS
+   19b every plan track end joins copper (necks listed)                                                                   PASS
+   19c microvia land exposed in a mask opening >= the ORIGINAL board minimum from other-net pad copper                    PASS
+   19g pad joints / ties (reviewer geo5): no changed pad without a centre joint, no tie longer than final5b               PASS
+   20a G-VIP: vip_check 0 and vip_tight 0 on the whole board                                                              PASS
+   20b G-TIE (s3 layer-aware): changed cap / IC ties <= 0.60, >= 0.20 wide, no weak joint: 1 failing (C121-2)             FAIL
+   20c G-LOOP (s4, every pair vs the ORIGINAL): 23 of 158 not met (final5 23, final5b 23)                                 FAIL
+   20c G-POWER (s4, every pair vs the ORIGINAL): 24 of 442 not met (final5 32, final5b 24)                                FAIL
+   20c G-SW (s4, every pair vs the ORIGINAL): 0 of 5 not met (final5 0, final5b 0)                                        PASS
+   20d G-SW copper area <= ORIGINAL + 10 % (over: none)                                                                   PASS
+   20e G-COUPLE (exact all-object gaps, no tolerance): 23 entries / 20 net pairs not met (final5b 23 / 20); signal-only 1 FAIL
+   20f G-0201 (tomb4b): 0 changed 0201 / 0402 failing; totals 0201 >0.2 5 (<= 5), >0.1 28 (<= 32)                         PASS
+   20g G-MASK: no new strip < 0.04 to a switch-node opening (0), no copper in an opening (0)                              PASS
+   20h G-SIG: 21 signal pad pairs over ORIGINAL + 0.5 / +2 vias (final5b 21)                                              FAIL
+   20i G-HOLE: every new drilled pair >= 0.245 (min 0.2451)                                                               PASS
+   21 5 um repour: L2 / L5 one live island, seeds on it, cut-off copper no more than final4b's two slivers                PASS
+   NOTE: plain route_check (router.width table) reports 3 width flags (width USB5V0 L4-SIG 0.2500; width VU L3-SIG 0.2500; width VU L4-SIG 0.4000); they pass only at the board's Altium rule Width_PWR_U8 (0.2 mm), which the owner accepted for phases 1 + 2 (phase 4: R26-1's 0.25 VU strap on L3, W1, the EN pull-up, microamps; W2's VU L3 0.40 corridor)
+GATES FAIL (gate 1 at the Altium width rule; see NOTE)
+FAILING GATES (12): 9 pad_gate (moved parts: C121 C124 C78 L1 L2 L9) || 13 AIN / USB_D untouched; SDRAM within +-1 mm or no worse; phase 4 leaves clocks (EE-CLK assigned) / switch nodes; a moved cap no farther from its IC pins || 15 TIE RULES (caps / ICs: <= 0.60, >= 0.20 wide; worse than final5b only with a reason): 1 failing (C121-2) || 16 U8 GND (own tie <= 0.50 for pins 3/13/16/27; >= 4 full-depth sites <= 0.6): missing none || 18a G-LOOP: every loop pair <= ORIGINAL + 0.30 (hard 0.50 w/ reason), vias <= +2: 6 not met beyond the hard limit (C148-1>U8-3, C82-1>U8-16, C147-1>U8-27, C167-1>U8-27, C148-2>U8-1, C151-1>U8-27); 0 between +0.30 and +0.50 with a reason (none) || 18b G-TIE: changed cap / IC ties <= 0.60 and >= 0.20 wide (1 failing: C121-2); plane-net joints inside copper || 18c G-POWER: every power path <= ORIGINAL + 0.30, vias <= +2, never narrower: 10 listed + 24 other pairs not met (listed: VU:C148-2>U8-1, VU:C147-2>C160-2, VU:C147-2>U8-1, VU:C148-2>U8-18, VU:C149-2>U8-18, VU:C78-2>U8-18, VU:R26-1>U8-18, VCC1V8:L2-2>L7-1, VCC1V8:C144-1>L7-1, VCC1V8:C93-1>L7-1) || 20b G-TIE (s3 layer-aware): changed cap / IC ties <= 0.60, >= 0.20 wide, no weak joint: 1 failing (C121-2) || 20c G-LOOP (s4, every pair vs the ORIGINAL): 23 of 158 not met (final5 23, final5b 23) || 20c G-POWER (s4, every pair vs the ORIGINAL): 24 of 442 not met (final5 32, final5b 24) || 20e G-COUPLE (exact all-object gaps, no tolerance): 23 entries / 20 net pairs not met (final5b 23 / 20); signal-only 1 || 20h G-SIG: 21 signal pad pairs over ORIGINAL + 0.5 / +2 vias (final5b 21)

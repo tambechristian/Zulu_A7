@@ -54,7 +54,7 @@ from pcbway_inputs import LAYER, U, kvs
 # ---- Asar Feather board-specific constants (2026-11-11) ----
 RELEASE_PREFIX = "Asar_Feather"
 RELEASE_NAME = "Asar Feather"
-RELEASE_DATE = "2026-11-21"
+RELEASE_DATE = "2026-11-23"
 BOARD_WIDTH = 50.80            # Feather outline 2000 x 900 mil, 2.54 mm corner radius
 BOARD_HEIGHT = 22.86
 CORNER_RADIUS = 2.54
@@ -777,12 +777,15 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         f"one 0.0762 mm track passes between two U1 lands on Top, with the mask opening 1:1 on the lands.",
         f"D. Via-in-pad on other parts: {lasers_non_u1['total']} laser via-to-pad contacts on SMD pads of "
         f"other parts ({counts_line({k + ' mm': v for k, v in lasers_non_u1['by_hole'].items()})} hole), "
-        f"filled and capped; {thr['vias']} through vias (0.20 / 0.35 mm) in or on the edge of SMD pads, "
-        f"{thr['entries']} via-to-pad contacts ({thr['by_position']['hole in pad']} with the hole inside "
-        f"the pad, {thr['by_position']['hole on pad edge']} with the hole on the pad edge, "
-        f"{thr['by_position']['land only']} touching with the land only; {thr['by_side']['Top']} on the "
-        f"top side, {thr['by_side']['Bottom']} on the bottom), to be resin-plugged and plated over (POFV). "
-        f"This includes U1-W8 and U3 balls G9 and H2.",
+        + (f"filled and capped; {thr['vias']} through vias (0.20 / 0.35 mm) in or on the edge of SMD pads, "
+         f"{thr['entries']} via-to-pad contacts ({thr['by_position'].get('hole in pad', 0)} with the hole inside "
+         f"the pad, {thr['by_position'].get('hole on pad edge', 0)} with the hole on the pad edge, "
+         f"{thr['by_position'].get('land only', 0)} touching with the land only; {thr['by_side'].get('Top', 0)} on the "
+         f"top side, {thr['by_side'].get('Bottom', 0)} on the bottom), to be resin-plugged and plated over (POFV). "
+         f"This includes U1-W8 and U3 balls G9 and H2."
+         if thr['vias'] else
+         "filled and capped. No through via (0.20 / 0.35 mm) is in or touches an SMD pad: all through "
+         "vias are tented, not plugged (fabrication notes Q8)."),
         f"E. Stacking: {stacked['top_l2_on_l2_l3']} Top-L2 lasers stacked on L2-L3, "
         f"{stacked['l2_l3_on_buried']} L2-L3 and {stacked['l4_l5_on_buried']} L4-L5 lasers on buried "
         f"vias, {stacked['L2_L5_sites']} L2-to-L5 columns ({stacked['L2_L5_full_top_bottom']} running "
@@ -857,11 +860,15 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "VIA-IN-PAD AND ASSEMBLY",
         "Via-in-pad is used throughout this board, by design (see PROVISIONAL STATUS A and D):",
         f"- Mask openings on pads expose {exposed_top} via lands on the top side and {exposed_bot} on the "
-        f"bottom (fabrication census). Every laser microvia in a pad must be copper-filled and capped flat, "
-        "and every through via in a pad resin-plugged and plated over, so that no via wicks solder or traps "
-        "flux. Please confirm the dimple/planarity you guarantee on the capped lands.",
-        f"- {len(set(vip['by_ref']))} parts carry a via in or on a pad; through vias in pads touch "
-        f"{len(thr_refs)} parts, among them {', '.join(sorted(set(thr_ic), key=bom_audit.natkey))}.",
+        f"bottom (fabrication census). Every laser microvia in a pad must be copper-filled and capped flat"
+        + (", and every through via in a pad resin-plugged and plated over, " if thr['vias'] else
+           " (no through via is in a pad; through vias are tented), ")
+        + "so that no via wicks solder or traps flux. Please confirm the dimple/planarity you guarantee on "
+        "the capped lands.",
+        (f"- {len(set(vip['by_ref']))} parts carry a via in or on a pad; through vias in pads touch "
+         f"{len(thr_refs)} parts, among them {', '.join(sorted(set(thr_ic), key=bom_audit.natkey))}."
+         if thr['vias'] else
+         f"- {len(set(vip['by_ref']))} parts carry a laser via in or on a pad; no through via touches a pad."),
         "- If you cannot plug and cap a via in a pad, send an engineering query before",
         "  building; do not tent, mask or leave it open.",
         "",
@@ -914,6 +921,18 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "  see one reflow. The bottom side then rides the second reflow upside down:",
         f"  its heaviest parts are X3 (microSD socket), U8 and the 2520 inductors; support",
         "  or glue them if your process needs it.",
+        # 2026-11-23 no-plug via plan (docs/thru_via_noplug.md): on these parts the GND pad reaches L2 through a
+        # filled laser chain or a dog-bone while the VCC3V3 pad has a direct laser into the L5 plane. The list is
+        # that board's (tools/route/thru_vip_noplug/README.md); it does not apply to a board with through vias
+        # in pads, where those GND pads had direct in-pad vias.
+        *([] if thr['vias'] else [
+            "- Reflow profile, bottom side: please use a ramp-soak-spike profile with a soak",
+            "  of 60-120 s below liquidus. On 22 small decoupling capacitors the GND pad",
+            "  reaches its plane through a filled laser-via chain or a short dog-bone while",
+            "  the other pad has a direct laser via into a plane, so the two ends heat at",
+            "  different rates; the soak evens them out against tombstoning. 0201: C38,",
+            "  C111, C117, C119, C120, C121, C122, C133-C138, C155, C157, C158, C159;",
+            "  0402: C3-C7."]),
         f"- X1 ({parts['X1']['params'].get('MANF')} {mpn['X1']}, micro-USB B receptacle, top side): the",
         "  mouth overhangs the left (USB) board edge by 0.70 mm and the",
         "  flange by 1.30 mm; the maker's PCB-end line is on the board edge. Please",
@@ -994,8 +1013,9 @@ def write_notes(parts, geometry, bom_rows, facts, totals):
         "Before releasing the order, please confirm in writing:",
         "- the answers to the PROVISIONAL STATUS points A-G;",
         "- the HDI fabrication quote, with turnkey assembly on the same order;",
-        "- filling/capping of every via in a pad (lasers) and plugging/plating over of",
-        "  the through vias in pads;",
+        *(["- filling/capping of every via in a pad (lasers) and plugging/plating over of",
+           "  the through vias in pads;"] if thr['vias'] else
+          ["- filling/capping of every laser via in a pad (no through via is in a pad);"]),
         "- the panel drawing and rail fiducials;",
         "- your bottom-side CPL rotation convention;",
         "- authorized sourcing for U1 and U2, and any lines with no stock;",

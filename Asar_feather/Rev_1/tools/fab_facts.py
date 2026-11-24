@@ -464,6 +464,7 @@ def measure(pcb=PCB):
     rep["track_min_width_routed"] = round(min(t["width"] for t in routed), 4)
     rep["track_width_hist"] = {str(round(k, 4)): c for k, c in sorted(Counter(round(t["width"], 4) for t in routed).items())[:8]}
     rep["track_min_width_by_layer"] = {L: round(min((t["width"] for t in routed if t["layer"] == L), default=0), 4) for L in STACK}
+    rep["track_count_by_layer"] = {L: sum(1 for t in routed if t["layer"] == L) for L in STACK}
     rep["polygon_tracks"] = sum(1 for t in tracks if t["poly"] != -1)
     rep["arcs_on_copper"] = len(arcs)
 

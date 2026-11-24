@@ -1,8 +1,8 @@
 ASAR FEATHER - PCBWAY ASSEMBLY NOTES
 *** PROVISIONAL RELEASE - NOT FOR PRODUCTION UNTIL CONFIRMED ***
-Release date: 2026-11-21
+Release date: 2026-11-23
 Source: untracked working copy (the PCB SHA-256 below identifies it)
-PCB SHA-256: 7EEBABAA7236535C1DACBC19DF7D9543F6001FB4EC90B76A22612A4067080EF1
+PCB SHA-256: CD3E56C794CC895E2B418B49D47C5F2D73A9778383D7B2AA9BE2F1D4CBBCD983
 
 PROVISIONAL STATUS
 This release is provisional. You answered our enquiry about laser via-in-pad
@@ -17,27 +17,24 @@ A. Via-in-pad on U1 (0.5 mm BGA, 238 round lands of 0.25 mm): 258 laser microvia
    0.10/0.25, 28 L4-L5 0.10/0.25), 54 buried L3-L4 vias stacked under them; 68 balls
    Top-L2 only, 27 Top-L2 + L2-L3, 26 also on a buried via, 28 full columns to L5; 89
    balls have no centred via, and on 11 of them a via overlaps the land off-centre (7
-   Top-L2 0.15/0.30, 2 Top-Bot 0.20/0.35, 2 Top-L2 0.10/0.25). All filled with copper
-   and capped flat.
+   Top-L2 0.15/0.30, 4 Top-L2 0.10/0.25). All filled with copper and capped flat.
 B. 0.10 mm laser microvias (0.25 mm land), lasered at 0.10 mm through the 0.1016 mm
-   outer and 0.071 mm inner prepregs: 348 in all, 90 not on a U1 ball (37 of them
-   under U1). Other lasers 0.15 / 0.30 mm: 826. Totals: 1174 lasers, 254 buried L3-L4,
-   153 through vias (0.20 / 0.35 mm).
+   outer and 0.071 mm inner prepregs: 412 in all, 154 not on a U1 ball (52 of them
+   under U1). Other lasers 0.15 / 0.30 mm: 947. Totals: 1359 lasers, 311 buried L3-L4,
+   109 through vias (0.20 / 0.35 mm).
 C. 3/3 mil on all six layers: 0.0762 mm tracks; smallest track-to-copper gap 0.0784
    mm; one 0.0762 mm track passes between two U1 lands on Top, with the mask opening
    1:1 on the lands.
-D. Via-in-pad on other parts: 270 laser via-to-pad contacts on SMD pads of other parts
-   (256 0.15 mm, 14 0.1 mm hole), filled and capped; 102 through vias (0.20 / 0.35 mm)
-   in or on the edge of SMD pads, 110 via-to-pad contacts (23 with the hole inside the
-   pad, 75 with the hole on the pad edge, 12 touching with the land only; 17 on the
-   top side, 93 on the bottom), to be resin-plugged and plated over (POFV). This
-   includes U1-W8 and U3 balls G9 and H2.
-E. Stacking: 274 Top-L2 lasers stacked on L2-L3, 109 L2-L3 and 85 L4-L5 lasers on
+D. Via-in-pad on other parts: 342 laser via-to-pad contacts on SMD pads of other parts
+   (305 0.15 mm, 37 0.1 mm hole), filled and capped. No through via (0.20 / 0.35 mm)
+   is in or touches an SMD pad: all through vias are tented, not plugged (fabrication
+   notes Q8).
+E. Stacking: 282 Top-L2 lasers stacked on L2-L3, 141 L2-L3 and 108 L4-L5 lasers on
    buried vias, 64 L2-to-L5 columns (5 running Top to Bottom); no mechanical L2-L5
    drill.
 F. Mechanical vias as drawn (buried 0.15 / 0.27 mm, through 0.20 / 0.35 mm), not
    enlarged; smallest hole-to-hole edge gap 0.241 mm; hole wall to other-net copper
-   0.157 mm (laser), 0.142 mm (buried), 0.157 mm (through); non-plated hole to track
+   0.157 mm (laser), 0.142 mm (buried), 0.161 mm (through); non-plated hole to track
    0.240 mm.
 G. Plane webs: the L2 ground plane keeps copper strips of about 0.09 mm between
    adjacent via-in-pad balls under U1 (measured for the enquiry, none under 0.0762 mm;
@@ -47,7 +44,7 @@ If any of A-G changes, this assembly release is re-issued.
 
 UPLOAD SET
 PCBWay fabricates the HDI board and assembles it, Turnkey: PCBWay buys every part.
-- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-21_PROVISIONAL.zip
+- PCB: Asar_Feather_PCBWay_Fabrication_2026-11-23_PROVISIONAL.zip
   (Gerbers incl. the GTP/GBP paste layers, drill files and
   Asar_Feather_PCBWay_FAB_NOTES.txt),
   ordered as "HDI (Buried/blind vias)" per Asar_Feather_PCBWay_FAB_NOTES.txt.
@@ -103,15 +100,12 @@ finished 1.60 +/- 0.16 mm on the stack you agreed for the earlier Zulu A7 HDI or
 
 VIA-IN-PAD AND ASSEMBLY
 Via-in-pad is used throughout this board, by design (see PROVISIONAL STATUS A and D):
-- Mask openings on pads expose 295 via lands on the top side and 251 on the bottom
+- Mask openings on pads expose 289 via lands on the top side and 219 on the bottom
   (fabrication census). Every laser microvia in a pad must be copper-filled and capped
-  flat, and every through via in a pad resin-plugged and plated over, so that no via
-  wicks solder or traps flux. Please confirm the dimple/planarity you guarantee on the
+  flat (no through via is in a pad; through vias are tented), so that no via wicks
+  solder or traps flux. Please confirm the dimple/planarity you guarantee on the
   capped lands.
-- 160 parts carry a via in or on a pad; through vias in pads touch 86 parts, among
-  them U1-A13, U1-W8, U2-1, U2-17, U2-6, U3-G9, U3-H2, U3-H8, U4-3, U7-2, U8-1, U8-13,
-  U8-16, U8-17, U8-18, U8-20, U8-27, U8-3, U8-5, X1-MP3, X1-MP4, X3-3, X3-6, X3-G1,
-  X3-G2, X3-G3, X3-G4, X4-2.
+- 148 parts carry a laser via in or on a pad; no through via touches a pad.
 - If you cannot plug and cap a via in a pad, send an engineering query before
   building; do not tent, mask or leave it open.
 
@@ -168,6 +162,13 @@ SPECIAL COMPONENT INSTRUCTIONS
   see one reflow. The bottom side then rides the second reflow upside down:
   its heaviest parts are X3 (microSD socket), U8 and the 2520 inductors; support
   or glue them if your process needs it.
+- Reflow profile, bottom side: please use a ramp-soak-spike profile with a soak
+  of 60-120 s below liquidus. On 22 small decoupling capacitors the GND pad
+  reaches its plane through a filled laser-via chain or a short dog-bone while
+  the other pad has a direct laser via into a plane, so the two ends heat at
+  different rates; the soak evens them out against tombstoning. 0201: C38,
+  C111, C117, C119, C120, C121, C122, C133-C138, C155, C157, C158, C159;
+  0402: C3-C7.
 - X1 (Amphenol ICC 10118193-0001LF, micro-USB B receptacle, top side): the
   mouth overhangs the left (USB) board edge by 0.70 mm and the
   flange by 1.30 mm; the maker's PCB-end line is on the board edge. Please
@@ -252,8 +253,7 @@ REQUIRED ORDER REVIEW
 Before releasing the order, please confirm in writing:
 - the answers to the PROVISIONAL STATUS points A-G;
 - the HDI fabrication quote, with turnkey assembly on the same order;
-- filling/capping of every via in a pad (lasers) and plugging/plating over of
-  the through vias in pads;
+- filling/capping of every laser via in a pad (no through via is in a pad);
 - the panel drawing and rail fiducials;
 - your bottom-side CPL rotation convention;
 - authorized sourcing for U1 and U2, and any lines with no stock;
