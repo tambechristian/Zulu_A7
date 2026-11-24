@@ -41,6 +41,12 @@ font: advance = height, last glyph about 2/3 of the height wide).  X2 pins that 
 and a small red note outside the board (a note, not silk); on the 2026-11-24 board these are pins 1 and 4-9 (pin 21
 now prints 'GND').  The board outline is a plain rectangle; the corners are
 rounded for the picture only.
+
+Reference-designator notes (2026-11-24, board owner: "add refdes on components on top, like you did on the bottom
+with U3, U7, U8 and U10"): every Top-side part with a body carries its designator in grey, inside the body and as
+large as fits (up to the back side's 12 pt), or, for parts too small for that (the 0201s), in a small light-grey
+note right beside the part where it covers no other body, pad, silk text or note. Chip capacitors on the Top are
+drawn with a ceramic body, as on the back. The notes are not silk.
 """
 import argparse
 import hashlib
@@ -140,7 +146,7 @@ def fallback_silk(pads):
         w = (len(s) - 1) * h + 0.667 * h
         out.append(dict(text=s, kind='free', x=p['x'] - w / 2, y=p['y'] - 3.19 if top else p['y'] + 2.39, h=h, rot=0,
                         stroke=0.15))
-    out.append(dict(text='ZULU A7 2.4', kind='free', x=37.7, y=5.0, h=1.3, rot=0, stroke=0.18))
+    out.append(dict(text='ZULU A7 2.4', kind='free', x=37.7, y=3.77, h=1.3, rot=0, stroke=0.18))
     return out
 
 
@@ -172,6 +178,53 @@ def text_in_box(ax, s, box, rot=0, color=SILK, z=8):
     else:
         tr = tr.scale(h / e.width, w / e.height).rotate_deg(90).translate(x1, y0)
     ax.add_patch(PathPatch(tp.transformed(tr), fc=color, lw=0, zorder=z))
+
+
+# ----------------------------------------------------------------------------------------------- ref notes
+NOTE_ON_DARK, NOTE_ON_LIGHT = '#9a9a9a', '#4a4a4a'
+NOTE_EM_MAX_PT = 12.0          # the back side's IC notes are 12 pt
+NOTE_EM_MIN, NOTE_EM_SMALL = 0.25, 0.30   # mm: smallest em inside a body; em of a note set beside a tiny part
+GLYPH_W, GLYPH_H = 0.62, 0.75  # DejaVu Sans: mean advance and cap height per em (letters and digits)
+
+
+def ref_notes(ax, parts, pts_per_mm, obstacles, light, where=None):
+    """Grey reference-designator notes on the drawn parts (2026-11-24, board owner: "add refdes on components on
+    top, like you did on the bottom with U3, U7, U8 and U10"). parts: [(ref, body box (x0, y0, x1, y1))].
+    A note goes inside its body, centred, along the body's long axis and as large as fits (up to NOTE_EM_MAX_PT);
+    a body too small for a NOTE_EM_MIN em gets a NOTE_EM_SMALL note beside it, left / right / above / below,
+    wherever it overlaps no other body, pad, silk text or note (stepping out to 0.9 mm). where: {ref: box} puts a
+    note in that part of its body instead (BTN: the band above the actuator). Returns the refs with no place."""
+    placed, missed = [], []
+    where = where or {}
+
+    def hits(b, own):
+        return any(not (b[2] <= o[0] or o[2] <= b[0] or b[3] <= o[1] or o[3] <= b[1])
+                   for o in obstacles + placed if o is not own)
+    for ref, own in sorted(parts, key=lambda rb: (rb[1][2] - rb[1][0]) * (rb[1][3] - rb[1][1])):
+        b = where.get(ref, own)
+        w, h = b[2] - b[0], b[3] - b[1]
+        rot = 90 if h > 1.4 * w else 0
+        L, S = (h, w) if rot else (w, h)
+        em = min(NOTE_EM_MAX_PT / pts_per_mm, 0.9 * L / (GLYPH_W * len(ref)), 0.8 * S / GLYPH_H)
+        col = NOTE_ON_LIGHT if light(ref) else NOTE_ON_DARK
+        if em >= NOTE_EM_MIN:
+            ax.text((b[0] + b[2]) / 2, (b[1] + b[3]) / 2, ref, ha='center', va='center', fontsize=em * pts_per_mm,
+                    color=col, rotation=rot, zorder=6.5)
+            continue
+        em = NOTE_EM_SMALL
+        tw, th, g = GLYPH_W * len(ref) * em, GLYPH_H * em + 0.06, 0.08
+        cx, cy = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2
+        spots = [s for d in (g, g + 0.4, g + 0.8) for s in
+                 ((b[0] - d - tw / 2, cy), (b[2] + d + tw / 2, cy), (cx, b[3] + d + th / 2), (cx, b[1] - d - th / 2))]
+        for x, y in spots:
+            box = (x - tw / 2, y - th / 2, x + tw / 2, y + th / 2)
+            if not hits(box, own):
+                ax.text(x, y, ref, ha='center', va='center', fontsize=em * pts_per_mm, color='#bdbdbd', zorder=6.5)
+                placed.append(box)
+                break
+        else:
+            missed.append(ref)
+    return missed
 
 
 # ----------------------------------------------------------------------------------------------- drawing
@@ -231,6 +284,13 @@ def draw(ax, M, D, silk, pts_per_mm):
     for ref in refs:
         if ref.startswith('R') and side.get(ref) == 'TOP' and box(ref):
             rect(box(ref), fc='#111111', ec='#555555', lw=0.3)
+    # chip capacitors and inductors, drawn as on the back (2026-11-24: their ref notes need a body to sit on)
+    for ref in refs:
+        if side.get(ref) == 'TOP' and box(ref) and ref[0] in 'CL' and not ref.startswith('LD'):
+            if ref.startswith('C'):
+                rect(box(ref), fc=CERAMIC, ec='#6d5636', lw=0.3)
+            else:
+                rect(box(ref), fc=INDUCTOR, ec='#111111', lw=0.4)
     # LEDs (colours from the silk comments: LD1/LD2 red, LD3/LD4 green, LD0 RGB)
     for ref, c in (('LD1', RED_LED), ('LD2', RED_LED), ('LD3', GREEN_LED), ('LD4', GREEN_LED)):
         if box(ref):
@@ -307,6 +367,26 @@ def draw(ax, M, D, silk, pts_per_mm):
         else:
             ax.add_patch(Circle((p['x'], p['y']), r, fc=PAD, lw=0, zorder=z))
         ax.add_patch(Circle((p['x'], p['y']), p['drill'] / 2, fc=DRILL, lw=0, zorder=z + 0.1))
+
+    # grey reference-designator notes on every Top-side part with a body (not silk)
+    obstacles = [v['body'][0] for r, v in bodies.items() if v['body'] and not r.startswith('X2[')]
+    obstacles += [(p['x'] - p['w'] / 2, p['y'] - p['h'] / 2, p['x'] + p['w'] / 2, p['y'] + p['h'] / 2)
+                  for p in M['pads'] if on_top(p)]
+    for t in silk:
+        if t['text'].strip():
+            x0, x1, y0, y1 = silk_box(t)
+            obstacles.append((x0, y0, x1, y1))
+    obstacles.append((W - 0.05, -9, W + 9, H + 9))                          # keep notes on the board
+    obstacles.append((-9, -9, 0.05, H + 9))
+    parts = [(r, v['body'][0]) for r, v in bodies.items()
+             if v['body'] and not r.startswith('X2[') and side.get(r) == 'TOP']
+    light = lambda r: r in ('X1', 'X3', 'X4', 'X5', 'Q1', 'BTN') or r.startswith(('LD', 'C'))   # noqa: E731
+    where = {}
+    if box('BTN'):                                                          # above the round actuator (r 0.9)
+        b = box('BTN')
+        where['BTN'] = (b[0] + 0.2, (b[1] + b[3]) / 2 + 0.95, b[2] - 0.2, b[3] - 0.1)
+    missed = ref_notes(ax, parts, pts_per_mm, obstacles, light, where)
+    print('top ref notes: %d parts%s' % (len(parts), ', no room for ' + ', '.join(missed) if missed else ''))
 
     # silk
     labelled = set()
@@ -473,9 +553,9 @@ def main():
     ax = fig.add_axes([0, 0, 1, 1])
     pts_per_mm = fig_w * 72.0 / (xr[1] - xr[0])
     notes = draw(ax, M, D, silk, pts_per_mm)
-    if notes:
-        ax.text(xr[0] + 0.3, yr[0] + 0.45, 'Red rings: X2 pins with no silk label (red names are notes, not silk).',
-                ha='left', va='center', fontsize=10, color='#555555')
+    ax.text(xr[0] + 0.3, yr[0] + 0.45, ('Red rings: X2 pins with no silk label (red names are notes, not silk). '
+            if notes else '') + 'Grey names on and beside the parts are reference designators (notes, not silk).',
+            ha='left', va='center', fontsize=10, color='#555555')
     ax.set_xlim(*xr)
     ax.set_ylim(*yr)
     ax.set_aspect('equal')
