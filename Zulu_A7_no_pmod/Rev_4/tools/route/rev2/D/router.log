@@ -1,0 +1,64 @@
+GND            
+VCC3V3         
+ANALOG-IO1     
+CAS#           
+CHAN10         
+CHAN11         
+CHAN12         
+CHAN13         ripped CHAN12
+CHAN19         
+CHAN20         
+CHAN22         
+CHAN25         
+CHAN7          
+CHAN8          
+CLK-12M-FT     
+EE-CLK         
+EE-CS          
+FPGA-TCK       
+FT-PWREN#      
+FT-VCORE       
+LED0_R         
+LED2           ripped CLK-12M-FT FT-PWREN#
+N$BTN          
+RAS#           
+SD-CMD         
+SD-DAT1        
+TCK            
+TDI            
+TDO            
+USB5V0         ripped CHAN8 FPGA-TCK LED0_R
+VBATT          
+VU             
+WE#            
+CHAN12         ripped CHAN13 CHAN22
+CLK-12M-FT     
+FT-PWREN#      
+CHAN8          
+FPGA-TCK       ripped CHAN8 USB5V0
+LED0_R         
+CHAN13         ripped CHAN12
+CHAN22         
+CHAN8          
+USB5V0         
+CHAN12         ripped CHAN13 CHAN22
+CHAN13         
+CHAN22         
+routed 34 connections, failed 9; 70 vias, 329 tracks -> route/rev2/D/route_plan.json
+OPEN ANALOG-IO1 1
+OPEN CHAN13 1
+OPEN CHAN20 1
+OPEN CHAN7 1
+OPEN N$BTN 2
+OPEN TDI 1
+OPEN USB5V0 1
+OPEN VU 1
+FAIL ANALOG-IO1 (budget)
+FAIL CHAN20 (budget)
+FAIL CHAN7 (budget)
+FAIL N$BTN (nopath)
+FAIL N$BTN (nopath)
+FAIL TDI (budget)
+FAIL VU (budget)
+FAIL USB5V0 (nopath)
+FAIL CHAN13 (budget)

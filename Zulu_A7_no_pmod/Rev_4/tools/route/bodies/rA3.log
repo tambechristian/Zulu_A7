@@ -1,0 +1,33 @@
+BTN            
+CHAN2          
+CHAN5          
+CHAN7          
+CHAN8          
+CLK-12M-SHARED ripped BTN
+FLASH-D01      
+FLASH-D03      
+FT-PWREN#      
+SD-DAT3        ripped CLK-12M-SHARED
+VCC1V8         
+BTN            ripped SD-DAT3
+CLK-12M-SHARED ripped BTN
+SD-DAT3        ripped CLK-12M-SHARED
+BTN            ripped SD-DAT3
+CLK-12M-SHARED ripped BTN
+SD-DAT3        ripped CLK-12M-SHARED
+BTN            ripped SD-DAT3
+CLK-12M-SHARED ripped BTN
+SD-DAT3        ripped CLK-12M-SHARED
+BTN            ripped SD-DAT3
+CLK-12M-SHARED 
+SD-DAT3        
+routed 7 connections, failed 4; 7 vias, 28 tracks -> tools/route/bodies/rA3.json
+OPEN CHAN5 1
+OPEN CHAN8 1
+OPEN CLK-12M-SHARED 1
+OPEN SD-DAT3 1
+FAIL CHAN5 (nopath)
+FAIL CHAN8 (budget)
+FAIL CLK-12M-SHARED (nopath)
+FAIL SD-DAT3 (budget)
+exit 0

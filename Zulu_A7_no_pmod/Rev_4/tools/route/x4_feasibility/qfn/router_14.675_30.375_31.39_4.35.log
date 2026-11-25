@@ -1,0 +1,32 @@
+GND            
+VCC3V3         
+CHAN19         
+CLK-12M-FT     
+D6             
+DONE           
+EE-CLK         
+EE-CS          
+EE-DATA        
+FT-PWREN#      
+FT-REF         
+FT-RESETN      
+FT-VCORE       
+FT-VPHY        
+FT-VPLL        
+N$LD0B         
+N$LD0G         
+N$LD0R         ripped FT-VPLL N$LD0G
+N$LD1A         
+N$LD2A         
+PROG#          
+SDRAM-D10      
+SDRAM-D8       
+SDRAM-D9       
+TCK            
+TDI            
+TDO            
+TMS            
+UART_FT_CTS#   
+UART_FT_DTR#   
+UART_FT_RTS#   
+exit 124

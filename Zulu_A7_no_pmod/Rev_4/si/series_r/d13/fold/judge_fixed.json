@@ -1,0 +1,168 @@
+{
+ "errors": [],
+ "violations": [],
+ "worst": {
+  "clearance Bottom": [
+   0.004,
+   0.094,
+   "pad U3-51",
+   "via SD-DAT2 (36.750,18.300) L5-VCC3V3>Bottom"
+  ],
+  "clearance Top": [
+   0.0003,
+   0.0903,
+   "NEW track Top D8 (39.500,13.600)-(39.645,13.600) w0.0762",
+   "track Top UDQM (39.812,11.590)-(39.812,14.050)"
+  ],
+  "clearance L4-SIG": [
+   -0.0,
+   0.1,
+   "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+   "via UDQM (38.500,14.050) Top>Bottom"
+  ],
+  "clearance L3-SIG": [
+   -0.0,
+   0.1,
+   "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+   "via UDQM (38.500,14.050) Top>Bottom"
+  ],
+  "clearance L2-GND": [
+   0.01,
+   0.1,
+   "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+   "via UDQM (38.500,14.050) Top>Bottom"
+  ],
+  "clearance L5-VCC3V3": [
+   0.01,
+   0.1,
+   "NEW via SDRAM-D10 (38.500,14.500) Top>Bottom",
+   "via UDQM (38.500,14.050) Top>Bottom"
+  ],
+  "mask sliver Bottom": [
+   0.01,
+   0.11,
+   "pad U3-5",
+   "NEW pad R121-1"
+  ],
+  "mask sliver Top": [
+   0.0035,
+   0.1035,
+   "NEW pad R131-1",
+   "NEW pad R132-1"
+  ],
+  "hole to hole": [
+   0.01,
+   0.25,
+   "via SDRAM-D10 (38.500,14.500) Top>Bottom",
+   "via UDQM (38.500,14.050) Top>Bottom"
+  ]
+ },
+ "bad_connectivity": {},
+ "n_nets": 37,
+ "component": [
+  [
+   "R119",
+   "Bottom",
+   0.25,
+   "U3"
+  ],
+  [
+   "R120",
+   "Bottom",
+   0.25,
+   "U3"
+  ],
+  [
+   "R121",
+   "Bottom",
+   0.21,
+   "U3"
+  ],
+  [
+   "R122",
+   "Bottom",
+   0.25,
+   "U3"
+  ],
+  [
+   "R123",
+   "Bottom",
+   0.25,
+   "U3"
+  ],
+  [
+   "R124",
+   "Bottom",
+   0.21,
+   "U3"
+  ],
+  [
+   "R125",
+   "Bottom",
+   0.21,
+   "U3"
+  ],
+  [
+   "R126",
+   "Bottom",
+   0.21,
+   "U3"
+  ],
+  [
+   "R127",
+   "Top",
+   0.46,
+   "R129"
+  ],
+  [
+   "R128",
+   "Bottom",
+   1.1521,
+   "C112"
+  ],
+  [
+   "R129",
+   "Top",
+   0.26,
+   "R130"
+  ],
+  [
+   "R130",
+   "Top",
+   0.26,
+   "R129"
+  ],
+  [
+   "R131",
+   "Top",
+   0.2035,
+   "R132"
+  ],
+  [
+   "R132",
+   "Top",
+   0.2035,
+   "R131"
+  ],
+  [
+   "R133",
+   "Bottom",
+   0.3041,
+   "R134"
+  ],
+  [
+   "R134",
+   "Bottom",
+   0.3041,
+   "R133"
+  ]
+ ],
+ "counts": {
+  "rm_tracks": 69,
+  "add_tracks": 107,
+  "rm_vias": 14,
+  "add_vias": 32,
+  "renamed_pads": 16,
+  "new_pads": 32
+ }
+}

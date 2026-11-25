@@ -1,0 +1,44 @@
+== L3/L4 stripline w=0.125 (fieldsolve 49.08 ohm, 7.133 ps/mm)
+  FV L3 0.125                    h0=4e-03 N=   7375  Z0= 49.6033 td= 7.1326 eeff=4.5723 (0.1s)
+  FV L3 0.125                    h0=2e-03 N=  24648  Z0= 49.3212 td= 7.1326 eeff=4.5724 (0.4s)
+  FV L3 0.125                    h0=1e-03 N=  85746  Z0= 49.2014 td= 7.1327 eeff=4.5724 (1.9s)
+  FV L3 0.125                    h0=5e-04 N= 289085  Z0= 49.1597 td= 7.1327 eeff=4.5724 (10.8s)
+  FV L3 0.125                    last-step change -0.085 %, Richardson(p=1) 49.118
+  Wheeler offset (er=4.6): 55.174 ohm, td 7.154 ps/mm ; IPC-2141: 46.38
+  Wheeler offset (er=4.523): 55.642 ohm, td 7.094 ps/mm ; IPC-2141: 46.77
+  Wheeler offset (er=avg): 55.406 ohm, td 7.124 ps/mm ; IPC-2141: 46.57
+== Microstrip, mask variants
+-- w=0.0762 (fieldsolve 63.61 / 6.210)
+  FV mask=none                   h0=4e-03 N=   9728  Z0= 73.3269 td= 5.4379 eeff=2.6577 (0.2s)
+  FV mask=none                   h0=2e-03 N=  34404  Z0= 72.7925 td= 5.4476 eeff=2.6672 (0.7s)
+  FV mask=none                   h0=1e-03 N= 124188  Z0= 72.5869 td= 5.4523 eeff=2.6718 (3.8s)
+  FV mask=none                   h0=5e-04 N= 440640  Z0= 72.5106 td= 5.4544 eeff=2.6739 (21.4s)
+  FV mask=none                   last-step change -0.105 %, Richardson(p=1) 72.434
+  FV mask=planar                 h0=4e-03 N=   9728  Z0= 64.2152 td= 6.2096 eeff=3.4655 (0.2s)
+  FV mask=planar                 h0=2e-03 N=  34404  Z0= 63.8626 td= 6.2093 eeff=3.4652 (0.7s)
+  FV mask=planar                 h0=1e-03 N= 124188  Z0= 63.7365 td= 6.2094 eeff=3.4653 (3.9s)
+  FV mask=planar                 h0=5e-04 N= 440640  Z0= 63.6937 td= 6.2094 eeff=3.4654 (22.2s)
+  FV mask=planar                 last-step change -0.067 %, Richardson(p=1) 63.651
+  FV mask=conformal              h0=4e-03 N=   9728  Z0= 65.9469 td= 6.0465 eeff=3.2859 (0.2s)
+  FV mask=conformal              h0=2e-03 N=  34404  Z0= 65.5809 td= 6.0466 eeff=3.2860 (0.9s)
+  FV mask=conformal              h0=1e-03 N= 124188  Z0= 65.4497 td= 6.0469 eeff=3.2863 (4.1s)
+  FV mask=conformal              h0=5e-04 N= 440640  Z0= 65.4052 td= 6.0470 eeff=3.2864 (21.0s)
+  FV mask=conformal              last-step change -0.068 %, Richardson(p=1) 65.361
+  HJ thick uncoated: Z0 72.538 eeff 2.6756 td 5.4562
+-- w=0.1250 (fieldsolve 53.18 / 6.214)
+  FV mask=none                   h0=4e-03 N=   9880  Z0= 59.6448 td= 5.5843 eeff=2.8027 (0.2s)
+  FV mask=none                   h0=2e-03 N=  34968  Z0= 59.3025 td= 5.5914 eeff=2.8098 (0.8s)
+  FV mask=none                   h0=1e-03 N= 125498  Z0= 59.1725 td= 5.5948 eeff=2.8133 (3.9s)
+  FV mask=none                   h0=5e-04 N= 444000  Z0= 59.1235 td= 5.5964 eeff=2.8149 (22.6s)
+  FV mask=none                   last-step change -0.083 %, Richardson(p=1) 59.074
+  FV mask=planar                 h0=4e-03 N=   9880  Z0= 53.6013 td= 6.2139 eeff=3.4704 (0.2s)
+  FV mask=planar                 h0=2e-03 N=  34968  Z0= 53.3613 td= 6.2139 eeff=3.4703 (0.9s)
+  FV mask=planar                 h0=1e-03 N= 125498  Z0= 53.2762 td= 6.2140 eeff=3.4704 (3.9s)
+  FV mask=planar                 h0=5e-04 N= 444000  Z0= 53.2468 td= 6.2141 eeff=3.4705 (23.2s)
+  FV mask=planar                 last-step change -0.055 %, Richardson(p=1) 53.217
+  FV mask=conformal              h0=4e-03 N=   9880  Z0= 54.8166 td= 6.0762 eeff=3.3182 (0.2s)
+  FV mask=conformal              h0=2e-03 N=  34968  Z0= 54.5695 td= 6.0763 eeff=3.3184 (0.8s)
+  FV mask=conformal              h0=1e-03 N= 125498  Z0= 54.4817 td= 6.0765 eeff=3.3186 (4.8s)
+  FV mask=conformal              h0=5e-04 N= 444000  Z0= 54.4514 td= 6.0766 eeff=3.3186 (27.6s)
+  FV mask=conformal              last-step change -0.056 %, Richardson(p=1) 54.421
+  HJ thick uncoated: Z0 59.097 eeff 2.8172 td 5.5987

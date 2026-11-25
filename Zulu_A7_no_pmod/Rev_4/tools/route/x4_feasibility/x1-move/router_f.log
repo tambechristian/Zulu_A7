@@ -1,0 +1,6 @@
+seeded 171 vias, 578 tracks
+USB5V0         
+routed 0 connections, failed 2; 171 vias, 578 tracks -> plan_f.json
+OPEN USB5V0 2
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)

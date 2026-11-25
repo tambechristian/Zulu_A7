@@ -1,0 +1,53 @@
+{
+ "moves": [],
+ "remove": [
+  {
+   "net": "GND",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 4.275,
+   "y1": 5.475,
+   "x2": 4.275,
+   "y2": 5.775
+  }
+ ],
+ "remove_vias": [
+  {
+   "net": "GND",
+   "x": 4.275,
+   "y": 5.475,
+   "size": 0.35,
+   "hole": 0.2,
+   "span": [
+    "Top Layer",
+    "L2-GND",
+    "L3-SIG",
+    "L4-SIG",
+    "L5-VCC3V3",
+    "Bottom Layer"
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "GND",
+   "layer": "Bottom Layer",
+   "w": 0.0762,
+   "x1": 4.575,
+   "y1": 6.125,
+   "x2": 4.9,
+   "y2": 6.125
+  }
+ ],
+ "vias": [
+  {
+   "net": "GND",
+   "x": 4.9,
+   "y": 6.125,
+   "size": 0.35,
+   "hole": 0.2,
+   "from": "Top Layer",
+   "to": "Bottom Layer"
+  }
+ ]
+}

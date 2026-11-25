@@ -1,0 +1,6 @@
+f2_router: 23 orphan keys
+VU             
+routed 0 connections, failed 1; 0 vias, 0 tracks -> s/vu07.json
+OPEN VU 1
+FAIL VU (nopath)
+done07

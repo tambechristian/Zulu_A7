@@ -1,0 +1,31 @@
+  GND plane groups tied 2/10
+  GND plane groups tied 3/10
+  GND plane groups tied 4/10
+  GND plane groups tied 5/10
+  GND plane groups tied 6/10
+  GND plane groups tied 7/10
+  GND plane groups tied 8/10
+  GND plane groups tied 9/10
+  GND plane groups tied 10/10
+GND            
+  VCC3V3 plane groups tied 2/5
+  VCC3V3 plane groups tied 3/5
+  VCC3V3 plane groups tied 4/5
+  VCC3V3 plane groups tied 5/5
+VCC3V3         
+A4             
+CHAN19         
+CHAN21         
+CHAN28         
+EE-CS          
+N$BTN          
+SD-CLK         
+SD-CMD         
+SD-DAT0        
+SD-DAT1        
+SD-DAT2        
+SD-DAT3        
+TDI            
+USB5V0         
+VU             
+routed 34 connections, failed 0; 95 vias, 219 tracks -> tools/route/x3_3m/routeB.json

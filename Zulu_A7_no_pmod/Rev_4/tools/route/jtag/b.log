@@ -1,0 +1,10 @@
+TDI: routed 1 connections, failed 0; 6 vias, 51 tracks -> route/jtag/b_1.json
+TDO: routed 1 connections, failed 0; 13 vias, 71 tracks -> route/jtag/b_2.json
+TMS: routed 0 connections, failed 1; 13 vias, 71 tracks -> route/jtag/b_3.json
+TMS: FAIL TMS (budget)
+TCK: routed 1 connections, failed 0; 20 vias, 107 tracks -> route/jtag/b_4.json
+DONE b
+TMS: routed 0 connections, failed 1; 13 vias, 71 tracks -> route/jtag/b_3.json
+TMS: FAIL TMS (budget)
+TCK: routed 1 connections, failed 0; 20 vias, 107 tracks -> route/jtag/b_4.json
+DONE b

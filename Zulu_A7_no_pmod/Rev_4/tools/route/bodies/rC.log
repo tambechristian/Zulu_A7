@@ -1,0 +1,7 @@
+CHAN10         
+EE-CLK         
+EE-CS          
+EE-DATA        
+EE-DATA-DO     
+routed 6 connections, failed 0; 7 vias, 14 tracks -> tools/route/bodies/rC.json
+C exit 0

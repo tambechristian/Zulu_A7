@@ -1,0 +1,4 @@
+  GND plane groups tied 2/2
+GND            
+VCC3V3         
+routed 1 connections, failed 0; 1 vias, 1 tracks -> tools/route/x3_3m/pass3/route.json

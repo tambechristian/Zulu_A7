@@ -1,0 +1,17 @@
+seeded 24 vias, 268 tracks
+RAS#           ripped CAS# CHAN28 D6 D7 SDRAM-CS# TDI
+WE#            
+CAS#           
+CHAN28         
+D6             
+D7             
+SDRAM-CS#      ripped CHAN28 RAS# TDO TMS
+TDI            
+CHAN28         
+RAS#           
+TDO            ripped CHAN28 D7 TDI
+TMS            
+CHAN28         ripped CHAN24 TDO TMS
+D7             
+TDI            
+CHAN24         

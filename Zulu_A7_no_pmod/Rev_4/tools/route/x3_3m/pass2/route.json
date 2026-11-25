@@ -1,0 +1,53 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 3.125,
+"y": 7.6,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "USB5V0",
+"x": 14.5,
+"y": 19.05,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 3.425,
+"y1": 7.6,
+"x2": 3.125,
+"y2": 7.6
+},
+{
+"net": "USB5V0",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 21.225,
+"y1": 19.1,
+"x2": 14.5,
+"y2": 19.05
+},
+{
+"net": "USB5V0",
+"layer": "Bottom Layer",
+"w": 0.2,
+"x1": 14.5,
+"y1": 19.05,
+"x2": 14.55,
+"y2": 19.05
+}
+],
+"remove": [],
+"log": []
+}

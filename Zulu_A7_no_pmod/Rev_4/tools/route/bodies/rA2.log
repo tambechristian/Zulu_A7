@@ -1,0 +1,99 @@
+BTN            
+CHAN1          
+CHAN12         
+CHAN2          
+CHAN3          
+CHAN4          
+CHAN5          
+CHAN7          
+CHAN8          
+CLK-12M-FT     
+CLK-12M-SHARED 
+D14            
+DONE           ripped CHAN2 CHAN3 CHAN5 CHAN7
+FLASH-CS#      
+FLASH-D00      
+FLASH-D01      
+FLASH-D02      ripped BTN CHAN12 CHAN8 CLK-12M-SHARED FLASH-CS# FLASH-D01
+FLASH-D03      
+FPGA-CCLK      
+FT-PWREN#      
+LED0_R         
+SD-DAT1        
+SD-DAT3        
+UART_FT_CTS#   
+UART_FT_RTS#   
+VCC1V8         
+CHAN2          ripped DONE FLASH-D02 FT-PWREN# SD-DAT3
+CHAN3          
+CHAN5          ripped CHAN1 CHAN3 FPGA-CCLK LED0_R UART_FT_CTS#
+CHAN7          
+BTN            
+CHAN12         
+CHAN8          
+CLK-12M-SHARED 
+FLASH-CS#      
+FLASH-D01      
+DONE           ripped CHAN2 CHAN5 CHAN7 CHAN8 FLASH-D01 SD-DAT1 VCC1V8
+FLASH-D02      
+FT-PWREN#      
+SD-DAT3        
+CHAN1          
+CHAN3          ripped CHAN1 DONE FLASH-CS# FLASH-D02 FT-PWREN# SD-DAT3
+FPGA-CCLK      
+LED0_R         
+UART_FT_CTS#   
+CHAN2          
+CHAN5          
+CHAN7          
+CHAN8          
+FLASH-D01      ripped BTN CHAN3 CHAN5 UART_FT_CTS#
+SD-DAT1        
+VCC1V8         
+CHAN1          
+DONE           ripped CHAN2 CHAN7 FLASH-D01 SD-DAT1 VCC1V8
+FLASH-CS#      
+FLASH-D02      ripped CHAN12 CHAN8 CLK-12M-SHARED FLASH-CS#
+FT-PWREN#      
+SD-DAT3        
+BTN            
+CHAN3          
+CHAN5          ripped BTN CHAN1 CHAN3 DONE FLASH-D02 FT-PWREN# LED0_R SD-DAT3
+UART_FT_CTS#   
+CHAN2          
+CHAN7          
+FLASH-D01      
+SD-DAT1        
+VCC1V8         
+CHAN12         
+CHAN8          
+CLK-12M-SHARED 
+FLASH-CS#      
+BTN            ripped CHAN5 CHAN8 FLASH-D01
+CHAN1          
+CHAN3          
+DONE           
+FLASH-D02      
+FT-PWREN#      
+LED0_R         ripped CHAN4 FLASH-CS# FT-PWREN#
+SD-DAT3        
+CHAN5          
+CHAN8          
+FLASH-D01      
+CHAN4          
+FLASH-CS#      
+FT-PWREN#      
+routed 23 connections, failed 6; 76 vias, 198 tracks -> tools/route/bodies/rA2.json
+OPEN CHAN8 1
+OPEN FLASH-D00 1
+OPEN FLASH-D01 1
+OPEN FLASH-D02 1
+OPEN FT-PWREN# 1
+OPEN SD-DAT3 1
+FAIL FLASH-D00 (nopath)
+FAIL FLASH-D02 (nopath)
+FAIL SD-DAT3 (budget)
+FAIL CHAN8 (budget)
+FAIL FLASH-D01 (nopath)
+FAIL FT-PWREN# (nopath)
+exit 0

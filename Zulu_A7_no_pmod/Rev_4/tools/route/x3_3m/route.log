@@ -1,0 +1,35 @@
+  GND plane groups tied 2/5
+  GND plane groups tied 3/5
+  GND plane groups tied 4/5
+  GND plane groups tied 5/5
+GND            
+  VCC3V3 plane groups tied 2/5
+  VCC3V3 plane groups tied 3/5
+  VCC3V3 plane groups tied 4/5
+  VCC3V3 plane groups tied 5/5
+VCC3V3         
+A4             
+CHAN19         
+CHAN21         
+CHAN27         
+CHAN28         
+EE-CS          
+LD4_A          
+N$BTN          ripped CHAN19
+SD-CLK         
+SD-CMD         
+SD-DAT0        
+SD-DAT1        
+SD-DAT2        
+SD-DAT3        
+TDI            
+TDO            
+USB5V0         
+VBATT          
+VU             
+CHAN19         
+routed 31 connections, failed 2; 67 vias, 158 tracks -> tools/route/x3_3m/route.json
+OPEN LD4_A 1
+OPEN VBATT 1
+FAIL LD4_A (budget)
+FAIL VBATT (nopath)

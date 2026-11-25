@@ -1,0 +1,71 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 43.85,
+"y": 17.5,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 43.175,
+"y": 18.125,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 43.175,
+"y": 18.125,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 43.175,
+"y": 18.125,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 43.175,
+"y": 18.125,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 43.175,
+"y": 18.125,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 42.85,
+"y1": 17.95,
+"x2": 43.175,
+"y2": 18.125
+}
+],
+"remove": [],
+"log": []
+}

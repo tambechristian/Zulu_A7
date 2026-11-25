@@ -1,0 +1,6 @@
+GND            
+VCC3V3         
+SD-DAT0        
+SD-DAT2        
+routed 10 connections, failed 0; 18 vias, 17 tracks -> tools/route/bodies/rD.json
+D exit 0

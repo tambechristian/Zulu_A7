@@ -1,0 +1,26 @@
+seeded 161 vias, 278 tracks
+VCC3V3         
+GND            
+FT-PWREN#      
+UART_FT_DTR#   
+UART_FT_RTS#   ripped FT-PWREN# UART_FT_RXD
+CFG-M2         
+UART_FT_TXD    
+GNDADC         ripped VCCADC
+FLASH-D02      
+CLK-12M-FT     ripped CHAN1 CLK-12M-SHARED FLASH-CS#
+CLK-12M-FPGA   
+CHAN21         
+FPGA-TDO       
+UART_FT_CTS#   
+CHAN22         
+FPGA-DONE      
+CHAN9          
+VBATT          
+VCC1V8         
+SD-DAT0        
+CHAN11         
+CHAN27         ripped FPGA-TDO
+CHAN19         
+USB_D_N        
+EXIT 124

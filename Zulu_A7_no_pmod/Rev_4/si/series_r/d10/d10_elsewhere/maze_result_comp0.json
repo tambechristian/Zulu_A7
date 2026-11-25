@@ -1,0 +1,17 @@
+{
+ "window": [
+  36.5,
+  44.75,
+  10.0,
+  17.5
+ ],
+ "grid": 0.025,
+ "eps": 0.006,
+ "via_cost": 0.7,
+ "n_sites": 2549,
+ "sites_by_side": {
+  "Bottom": 1412,
+  "Top": 1137
+ },
+ "results": []
+}

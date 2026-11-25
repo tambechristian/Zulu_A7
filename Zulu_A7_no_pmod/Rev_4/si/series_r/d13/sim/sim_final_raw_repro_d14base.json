@@ -1,0 +1,105 @@
+[
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "mode": "base",
+  "r": 0.0,
+  "pkg": "parts",
+  "src": "extract",
+  "t_end_ns": 32.0,
+  "reached_t_end": true,
+  "die": {
+   "vmin": -0.4501944446086738,
+   "vmax": 3.886048493762577,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.32765687622252926,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.1801320502304091,
+     "last": 1.1801320502304091,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 1.101215636159314,
+     "last": 1.101215636159314,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.1799845038007837,
+     "last": 1.1799845038007837,
+     "n": 1
+    }
+   },
+   "budget": 0.42552756135925485,
+   "budget_detail": {
+    "kind": "under",
+    "peak_v": 0.4502,
+    "dur_ns": 0.8234,
+    "used_pct_ui": 10.979,
+    "allowed_pct_ui": 25.8
+   }
+  },
+  "pin": {
+   "vmin": -0.835564343201557,
+   "vmax": 4.142732044632508,
+   "ringback_into_band": 0.0,
+   "t10_90_ns": 0.6292807237131907,
+   "cross_1v4": {
+    "fall@8.5": {
+     "first": 1.215567193563936,
+     "last": 1.215567193563936,
+     "n": 1
+    },
+    "rise@16.0": {
+     "first": 0.9270697491807939,
+     "last": 0.9270697491807939,
+     "n": 1
+    },
+    "fall@23.5": {
+     "first": 1.2056540533464657,
+     "last": 1.2056540533464657,
+     "n": 1
+    }
+   },
+   "budget": 312.387452323663,
+   "budget_detail": {
+    "kind": "under",
+    "peak_v": 0.8356,
+    "dur_ns": 2.1086,
+    "used_pct_ui": 28.115,
+    "allowed_pct_ui": 0.09
+   }
+  },
+  "tx_die_cross_1v4": {
+   "fall@8.5": {
+    "first": 0.7272598715090797,
+    "last": 1.6064514072974068,
+    "n": 3
+   },
+   "rise@16.0": {
+    "first": 0.6768179729182572,
+    "last": 0.6768179729182572,
+    "n": 1
+   },
+   "fall@23.5": {
+    "first": 0.7275497389618997,
+    "last": 1.6054190348086614,
+    "n": 3
+   }
+  },
+  "rail": 3.465,
+  "driver_model": "DQ_100%",
+  "receiver_model": "LVCMOS33_S_8_HR",
+  "u1_pin": "A14",
+  "u3_pin": "51",
+  "len_mm": 13.867,
+  "flight_ps": 97.2,
+  "vias": 2,
+  "tlines": 1,
+  "lumped": 5,
+  "connected": true,
+  "wave": "wave_final/D14_read_max_pcbdoc_base_r0_parts_extract.npz"
+ }
+]

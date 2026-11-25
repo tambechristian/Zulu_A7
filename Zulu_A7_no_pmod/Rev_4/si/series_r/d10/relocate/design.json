@@ -1,0 +1,515 @@
+{
+ "source": {
+  "pcbdoc_md5": "2a616c1c74f8788a4a1c837c7d76c3b0",
+  "base_plan": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\si\\series_r\\dq_series_r_plan.json",
+  "script": "C:\\Users\\tambe\\Documents\\Electronics\\Zulu_A7\\Zulu_A7_no_pmod\\Rev_2\\si\\series_r\\d10\\relocate\\design.py"
+ },
+ "A_top_designer_sites_vs_12_plan": [
+  {
+   "cx": 38.8,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.0,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-2",
+    "mask": "pad R130-1 vs pad R129-2",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 38.9,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.0,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 38.95,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.0,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 39.1,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.0,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 39.05,
+   "cy": 14.45,
+   "cu": 0.0043,
+   "mask": -0.05,
+   "land": 0.0,
+   "worst": -0.05,
+   "why": {
+    "cu": "via UDQM (38.500,14.050) Top>Bottom d0.35 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.454,
+    "R130": 0.054
+   }
+  },
+  {
+   "cx": 39.05,
+   "cy": 14.55,
+   "cu": -0.04,
+   "mask": -0.1,
+   "land": 0.0,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.554,
+    "R130": 0.0
+   }
+  },
+  {
+   "cx": 39.1,
+   "cy": 14.45,
+   "cu": 0.0265,
+   "mask": -0.05,
+   "land": 0.0,
+   "worst": -0.05,
+   "why": {
+    "cu": "via UDQM (38.500,14.050) Top>Bottom d0.35 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.454,
+    "R130": 0.054
+   }
+  },
+  {
+   "cx": 39.1,
+   "cy": 14.55,
+   "cu": -0.04,
+   "mask": -0.1,
+   "land": 0.0,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.554,
+    "R130": 0.0
+   }
+  },
+  {
+   "cx": 39.2,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.025,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 39.2,
+   "cy": 14.45,
+   "cu": 0.06,
+   "mask": -0.05,
+   "land": 0.025,
+   "worst": -0.05,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.454,
+    "R130": 0.054
+   }
+  },
+  {
+   "cx": 39.2,
+   "cy": 14.55,
+   "cu": -0.04,
+   "mask": -0.1,
+   "land": 0.025,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.554,
+    "R130": 0.0
+   }
+  },
+  {
+   "cx": 39.3,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.125,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 39.35,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.175,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 39.3,
+   "cy": 14.45,
+   "cu": 0.06,
+   "mask": -0.05,
+   "land": 0.125,
+   "worst": -0.05,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.454,
+    "R130": 0.054
+   }
+  },
+  {
+   "cx": 39.3,
+   "cy": 14.55,
+   "cu": -0.04,
+   "mask": -0.1,
+   "land": 0.125,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.554,
+    "R130": 0.0
+   }
+  },
+  {
+   "cx": 39.35,
+   "cy": 14.45,
+   "cu": 0.06,
+   "mask": -0.05,
+   "land": 0.175,
+   "worst": -0.05,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.454,
+    "R130": 0.054
+   }
+  },
+  {
+   "cx": 39.35,
+   "cy": 14.55,
+   "cu": -0.04,
+   "mask": -0.1,
+   "land": 0.175,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.554,
+    "R130": 0.0
+   }
+  },
+  {
+   "cx": 39.5,
+   "cy": 14.5,
+   "cu": 0.01,
+   "mask": -0.1,
+   "land": 0.275,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1",
+    "land": "via PROG# (40.450,14.600) Top>Bottom d0.35 vs pad R129-2"
+   },
+   "body_gap": {
+    "R127": 0.504,
+    "R130": 0.004
+   }
+  },
+  {
+   "cx": 39.5,
+   "cy": 14.45,
+   "cu": 0.06,
+   "mask": -0.05,
+   "land": 0.275,
+   "worst": -0.05,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "mask": "pad R130-1 vs pad R129-1",
+    "land": "via PROG# (40.450,14.600) Top>Bottom d0.35 vs pad R129-2"
+   },
+   "body_gap": {
+    "R127": 0.454,
+    "R130": 0.054
+   }
+  },
+  {
+   "cx": 39.5,
+   "cy": 14.55,
+   "cu": -0.04,
+   "mask": -0.1,
+   "land": 0.275,
+   "worst": -0.1,
+   "why": {
+    "cu": "pad R130-1 vs pad R129-1",
+    "land": "via PROG# (40.450,14.600) Top>Bottom d0.35 vs pad R129-2",
+    "mask": "pad R130-1 vs pad R129-1"
+   },
+   "body_gap": {
+    "R127": 0.554,
+    "R130": 0.0
+   }
+  }
+ ],
+ "B": {
+  "no_move": {
+   "legal": 306,
+   "best": {
+    "xy": [
+     39.21,
+     14.36
+    ],
+    "m": {
+     "cu": 0.0319,
+     "mask": 0.04,
+     "land": 0.035,
+     "worst": 0.0319,
+     "why": {
+      "cu": "track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1",
+      "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+      "mask": "pad R130-1 vs pad R129-1"
+     }
+    }
+   },
+   "strict": 0,
+   "rows": [
+    14.33,
+    14.34,
+    14.35,
+    14.36,
+    14.37,
+    14.38,
+    14.39,
+    14.4
+   ]
+  },
+  "move_D8": {
+   "legal": 306,
+   "best": {
+    "xy": [
+     39.21,
+     14.36
+    ],
+    "m": {
+     "cu": 0.0319,
+     "mask": 0.04,
+     "land": 0.035,
+     "worst": 0.0319,
+     "why": {
+      "cu": "track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1",
+      "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+      "mask": "pad R130-1 vs pad R129-1"
+     }
+    }
+   },
+   "strict": 0,
+   "rows": [
+    14.33,
+    14.34,
+    14.35,
+    14.36,
+    14.37,
+    14.38,
+    14.39,
+    14.4
+   ]
+  }
+ },
+ "C": {
+  "r130_legal_alone": 808,
+  "d10_legal_with_r130_out": 1487,
+  "strict_component_clearance_pair": -0.0081,
+  "best_with_r130_unmoved": {
+   "worst": 0.01,
+   "d10": [
+    39.24,
+    14.39
+   ],
+   "d10_m": {
+    "cu": 0.0619,
+    "mask": 0.29,
+    "land": 0.065,
+    "worst": 0.0619,
+    "why": {
+     "cu": "track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1",
+     "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+     "mask": "pad R127-1 vs pad R129-1"
+    }
+   },
+   "pair": {
+    "pair_cu": 0.12,
+    "pair_mask": 0.01,
+    "body_gap": 0.114,
+    "why": [
+     [
+      "pad R129-1",
+      "pad R130-1"
+     ],
+     [
+      "pad R129-1",
+      "pad R130-1"
+     ]
+    ]
+   },
+   "body_gap": 0.114
+  }
+ },
+ "chosen": {
+  "R129": {
+   "net": "D10",
+   "x": 39.21,
+   "y": 14.36,
+   "m": {
+    "cu": 0.0319,
+    "mask": 0.26,
+    "land": 0.035,
+    "worst": 0.0319,
+    "why": {
+     "cu": "track Top UDQM (38.500,14.050)-(39.812,14.050) w0.0762 vs pad R129-1",
+     "land": "via D10 (38.500,14.500) Top>Bottom d0.35 vs pad R129-1",
+     "mask": "pad R127-1 vs pad R129-1"
+    }
+   }
+  },
+  "R130": {
+   "net": "D11",
+   "x": 39.4,
+   "y": 14.92,
+   "m": {
+    "cu": 0.0346,
+    "mask": 9.0,
+    "land": 0.225,
+    "worst": 0.0346,
+    "why": {
+     "cu": "via UART_FT_CTS# (39.400,15.300) Top>L2-GND d0.30 vs pad R130-1",
+     "land": "via SDRAM-D11 (38.500,14.950) Top>Bottom d0.35 vs pad R130-1"
+    }
+   },
+   "moved_from": [
+    39.2,
+    14.9
+   ]
+  },
+  "worst": 0.0319,
+  "pair": {
+   "pair_cu": 0.1419,
+   "pair_mask": 0.06,
+   "why": [
+    [
+     "track Top D10 (39.510,14.360)-(39.650,14.500)",
+     "pad R130-2"
+    ],
+    [
+     "pad R129-1",
+     "pad R130-1"
+    ]
+   ]
+  },
+  "body_gap_R129_R130": 0.164,
+  "body_gap_R129_R127": 0.364
+ },
+ "plan_counts": {
+  "remove": 58,
+  "remove_vias": 11,
+  "tracks": 87,
+  "vias": 22,
+  "parts": 13,
+  "d10_renamed_tracks": 3,
+  "d10_renamed_vias": 2
+ }
+}

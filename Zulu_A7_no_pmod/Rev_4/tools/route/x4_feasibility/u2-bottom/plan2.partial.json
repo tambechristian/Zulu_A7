@@ -1,0 +1,5860 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 50.875,
+"y": 11.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 50.975,
+"y": 13.925,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 49.825,
+"y": 14.425,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 52.425,
+"y": 10.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 54.225,
+"y": 7.05,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 52.425,
+"y": 7.05,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 56.025,
+"y": 16.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 54.225,
+"y": 16.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 52.425,
+"y": 16.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 47.275,
+"y": 11.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 47.275,
+"y": 11.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 47.275,
+"y": 11.0,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 47.775,
+"y": 11.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 47.775,
+"y": 11.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 34.875,
+"y": 2.675,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 49.0,
+"y": 8.1,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 49.0,
+"y": 8.1,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 49.0,
+"y": 8.55,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 49.225,
+"y": 8.75,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 49.225,
+"y": 8.75,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 54.3,
+"y": 4.8,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 48.0,
+"y": 17.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 48.0,
+"y": 17.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 48.65,
+"y": 17.5,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 47.5,
+"y": 18.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 47.5,
+"y": 18.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 56.6,
+"y": 4.9,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 55.15,
+"y": 19.0,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 53.7,
+"y": 3.375,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 53.7,
+"y": 3.375,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 52.975,
+"y": 3.35,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 52.95,
+"y": 2.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 52.95,
+"y": 2.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 45.4,
+"y": 12.775,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 45.55,
+"y": 16.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 45.55,
+"y": 16.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 45.55,
+"y": 16.225,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 45.8,
+"y": 15.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 45.8,
+"y": 15.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 51.375,
+"y": 7.75,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 56.725,
+"y": 7.2,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 60.25,
+"y": 11.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 60.25,
+"y": 11.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 60.25,
+"y": 11.95,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 60.075,
+"y": 11.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 60.075,
+"y": 11.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 56.775,
+"y": 19.325,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 55.95,
+"y": 19.05,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 55.25,
+"y": 17.35,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 54.9,
+"y": 18.45,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 53.0,
+"y": 19.55,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 50.225,
+"y": 17.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "GND",
+"x": 50.225,
+"y": 17.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GND",
+"x": 50.225,
+"y": 17.35,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "GND",
+"x": 50.125,
+"y": 17.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GND",
+"x": 50.125,
+"y": 17.225,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GND",
+"x": 29.1,
+"y": 6.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 8.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 8.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 8.525,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 8.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 48.9,
+"y": 10.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 48.9,
+"y": 10.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 48.9,
+"y": 10.4,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 48.9,
+"y": 10.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 47.325,
+"y": 11.425,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 47.325,
+"y": 11.425,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.325,
+"y": 11.425,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.325,
+"y": 11.425,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 13.8,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 13.8,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 13.8,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 13.8,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 47.375,
+"y": 13.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 47.375,
+"y": 13.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.375,
+"y": 13.325,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.375,
+"y": 13.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 14.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 14.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 14.9,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 47.9,
+"y": 14.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "VCC3V3",
+"x": 47.65,
+"y": 7.6,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 51.725,
+"y": 5.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 47.65,
+"y": 18.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 48.225,
+"y": 5.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 56.5,
+"y": 5.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 53.8,
+"y": 19.4,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 53.2,
+"y": 3.0,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 60.0,
+"y": 19.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 60.4,
+"y": 20.3,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 47.725,
+"y": 11.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 47.725,
+"y": 8.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 53.2,
+"y": 5.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 59.125,
+"y": 8.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "VCC3V3",
+"x": 59.125,
+"y": 14.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "DONE",
+"x": 59.95,
+"y": 13.575,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "PROG#",
+"x": 59.875,
+"y": 19.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "PROG#",
+"x": 59.875,
+"y": 19.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "PROG#",
+"x": 59.875,
+"y": 15.55,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "PROG#",
+"x": 59.875,
+"y": 15.55,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "PROG#",
+"x": 59.875,
+"y": 15.55,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "PROG#",
+"x": 59.95,
+"y": 14.075,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "D5",
+"x": 31.6,
+"y": 8.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "D5",
+"x": 31.6,
+"y": 8.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CHAN4",
+"x": 48.9,
+"y": 14.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN4",
+"x": 48.9,
+"y": 14.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "D6",
+"x": 31.0,
+"y": 8.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "D6",
+"x": 31.0,
+"y": 8.725,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "D6",
+"x": 31.0,
+"y": 8.725,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "D7",
+"x": 29.325,
+"y": 8.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "D7",
+"x": 29.325,
+"y": 8.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "FPGA-INIT#",
+"x": 54.1,
+"y": 5.6,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "FPGA-INIT#",
+"x": 54.875,
+"y": 5.525,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "FPGA-INIT#",
+"x": 54.875,
+"y": 5.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "FPGA-INIT#",
+"x": 54.875,
+"y": 5.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "LED1",
+"x": 52.425,
+"y": 14.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "LED1",
+"x": 52.425,
+"y": 14.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "LED1",
+"x": 48.575,
+"y": 16.475,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "LED1",
+"x": 48.575,
+"y": 16.475,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "FPGA-TDI",
+"x": 52.725,
+"y": 5.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "FPGA-TDI",
+"x": 52.725,
+"y": 5.525,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "FPGA-TDI",
+"x": 54.1,
+"y": 5.2,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "FPGA-TDI",
+"x": 56.325,
+"y": 6.975,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "LED2",
+"x": 55.1,
+"y": 19.425,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "LED2",
+"x": 53.875,
+"y": 20.275,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "LED2",
+"x": 53.875,
+"y": 20.275,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED2",
+"x": 52.475,
+"y": 20.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "LED2",
+"x": 52.475,
+"y": 20.65,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "LED2",
+"x": 52.025,
+"y": 20.725,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CFG-M2",
+"x": 45.825,
+"y": 10.85,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CFG-M2",
+"x": 45.825,
+"y": 10.85,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CFG-M2",
+"x": 45.825,
+"y": 10.85,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CFG-M2",
+"x": 48.4,
+"y": 12.6,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CFG-M2",
+"x": 49.375,
+"y": 11.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CFG-M2",
+"x": 49.375,
+"y": 11.35,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "UART_FT_TXD",
+"x": 49.875,
+"y": 11.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "UART_FT_TXD",
+"x": 49.875,
+"y": 11.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "UART_FT_TXD",
+"x": 50.675,
+"y": 11.15,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "UART_FT_TXD",
+"x": 51.15,
+"y": 11.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "UART_FT_TXD",
+"x": 51.15,
+"y": 11.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "UART_FT_TXD",
+"x": 52.425,
+"y": 11.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "UART_FT_TXD",
+"x": 52.425,
+"y": 11.075,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "UART_FT_TXD",
+"x": 52.775,
+"y": 10.55,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "UART_FT_TXD",
+"x": 53.1,
+"y": 10.025,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "UART_FT_TXD",
+"x": 53.675,
+"y": 9.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "UART_FT_TXD",
+"x": 53.675,
+"y": 9.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "GNDADC",
+"x": 47.025,
+"y": 14.9,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "GNDADC",
+"x": 47.375,
+"y": 14.3,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "GNDADC",
+"x": 47.375,
+"y": 14.3,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "GNDADC",
+"x": 47.025,
+"y": 12.475,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "FLASH-D02",
+"x": 45.475,
+"y": 17.9,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "CLK-12M-FT",
+"x": 59.475,
+"y": 21.025,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CLK-12M-FT",
+"x": 59.475,
+"y": 21.025,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CLK-12M-FT",
+"x": 58.075,
+"y": 18.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CLK-12M-FT",
+"x": 58.075,
+"y": 18.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CLK-12M-FPGA",
+"x": 49.4,
+"y": 11.9,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "CLK-12M-FPGA",
+"x": 52.925,
+"y": 13.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CLK-12M-FPGA",
+"x": 52.925,
+"y": 13.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CHAN22",
+"x": 55.175,
+"y": 10.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CHAN22",
+"x": 55.175,
+"y": 10.975,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "FPGA-DONE",
+"x": 47.45,
+"y": 8.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-DONE",
+"x": 47.45,
+"y": 8.95,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "FPGA-DONE",
+"x": 51.3,
+"y": 9.825,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "FPGA-DONE",
+"x": 51.3,
+"y": 9.825,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN9",
+"x": 41.05,
+"y": 21.175,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "CHAN9",
+"x": 41.3,
+"y": 17.875,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN9",
+"x": 41.3,
+"y": 17.875,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN9",
+"x": 45.85,
+"y": 16.8,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "CHAN9",
+"x": 45.85,
+"y": 16.8,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC1V8",
+"x": 47.5,
+"y": 13.725,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC1V8",
+"x": 48.275,
+"y": 13.275,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC1V8",
+"x": 48.275,
+"y": 13.275,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "SD-DAT0",
+"x": 48.875,
+"y": 15.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "SD-DAT0",
+"x": 48.875,
+"y": 15.325,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "CHAN27",
+"x": 50.675,
+"y": 8.125,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CHAN27",
+"x": 50.675,
+"y": 8.125,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CHAN19",
+"x": 46.45,
+"y": 4.35,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+},
+{
+"net": "CHAN19",
+"x": 48.925,
+"y": 2.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "CHAN19",
+"x": 48.925,
+"y": 2.9,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "CHAN19",
+"x": 49.7,
+"y": 4.475,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "USB_D_N",
+"x": 33.475,
+"y": 18.85,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "USB_D_N",
+"x": 33.475,
+"y": 18.85,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "USB_D_N",
+"x": 35.975,
+"y": 18.15,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "USB_D_N",
+"x": 43.95,
+"y": 17.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "USB_D_N",
+"x": 43.95,
+"y": 17.7,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "USB_D_N",
+"x": 47.825,
+"y": 16.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "USB_D_N",
+"x": 47.825,
+"y": 16.45,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "USB_D_N",
+"x": 48.225,
+"y": 16.25,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "USB_D_N",
+"x": 49.575,
+"y": 17.175,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "USB_D_N",
+"x": 49.575,
+"y": 17.175,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "USB_D_N",
+"x": 49.575,
+"y": 17.175,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "USB_D_N",
+"x": 50.9,
+"y": 16.775,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "USB_D_N",
+"x": 50.9,
+"y": 16.775,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "USB_D_N",
+"x": 53.2,
+"y": 17.375,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "USB_D_N",
+"x": 53.2,
+"y": 17.375,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.275,
+"y1": 11.0,
+"x2": 47.775,
+"y2": 11.0
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 34.875,
+"y1": 2.7,
+"x2": 34.875,
+"y2": 2.675
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.4,
+"y1": 7.8,
+"x2": 49.0,
+"y2": 8.1
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.0,
+"y1": 8.1,
+"x2": 49.0,
+"y2": 8.55
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 49.0,
+"y1": 8.55,
+"x2": 49.225,
+"y2": 8.75
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.4,
+"y1": 5.0,
+"x2": 52.725,
+"y2": 5.0
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.725,
+"y1": 5.0,
+"x2": 53.05,
+"y2": 4.875
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.05,
+"y1": 4.875,
+"x2": 53.45,
+"y2": 4.475
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.45,
+"y1": 4.475,
+"x2": 53.975,
+"y2": 4.475
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.975,
+"y1": 4.475,
+"x2": 54.3,
+"y2": 4.8
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.2,
+"y1": 18.2,
+"x2": 48.2,
+"y2": 18.15
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.2,
+"y1": 18.15,
+"x2": 48.075,
+"y2": 18.025
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.075,
+"y1": 18.025,
+"x2": 48.05,
+"y2": 17.975
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.05,
+"y1": 17.975,
+"x2": 48.05,
+"y2": 17.65
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.05,
+"y1": 17.65,
+"x2": 48.0,
+"y2": 17.6
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.0,
+"y1": 17.6,
+"x2": 48.175,
+"y2": 17.55
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.175,
+"y1": 17.55,
+"x2": 48.2,
+"y2": 17.55
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.2,
+"y1": 17.55,
+"x2": 48.225,
+"y2": 17.525
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.225,
+"y1": 17.525,
+"x2": 48.25,
+"y2": 17.525
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.25,
+"y1": 17.525,
+"x2": 48.275,
+"y2": 17.5
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.275,
+"y1": 17.5,
+"x2": 48.65,
+"y2": 17.5
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.65,
+"y1": 17.5,
+"x2": 48.225,
+"y2": 17.5
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.225,
+"y1": 17.5,
+"x2": 48.1,
+"y2": 17.625
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.1,
+"y1": 17.625,
+"x2": 48.1,
+"y2": 17.65
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.1,
+"y1": 17.65,
+"x2": 47.85,
+"y2": 17.9
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.85,
+"y1": 17.9,
+"x2": 47.75,
+"y2": 17.9
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.75,
+"y1": 17.9,
+"x2": 47.5,
+"y2": 18.15
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.5,
+"y1": 18.15,
+"x2": 47.5,
+"y2": 18.6
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 57.1,
+"y1": 5.3,
+"x2": 56.75,
+"y2": 4.95
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.75,
+"y1": 4.95,
+"x2": 56.6,
+"y2": 4.9
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.6,
+"y1": 19.4,
+"x2": 54.95,
+"y2": 19.05
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.95,
+"y1": 19.05,
+"x2": 55.15,
+"y2": 19.0
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.8,
+"y1": 3.2,
+"x2": 53.7,
+"y2": 3.375
+},
+{
+"net": "GND",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 53.7,
+"y1": 3.375,
+"x2": 52.975,
+"y2": 3.35
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 52.975,
+"y1": 3.35,
+"x2": 52.95,
+"y2": 2.575
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 45.4,
+"y1": 12.8,
+"x2": 45.4,
+"y2": 12.775
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 45.6,
+"y1": 16.3,
+"x2": 45.55,
+"y2": 16.225
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 45.55,
+"y1": 16.225,
+"x2": 45.8,
+"y2": 15.95
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 47.725,
+"y1": 9.625,
+"x2": 47.575,
+"y2": 9.625
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 47.575,
+"y1": 9.625,
+"x2": 47.4,
+"y2": 9.8
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 47.4,
+"y1": 9.8,
+"x2": 47.4,
+"y2": 10.875
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 47.4,
+"y1": 10.875,
+"x2": 47.275,
+"y2": 11.0
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.275,
+"y1": 11.0,
+"x2": 47.775,
+"y2": 11.0
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.875,
+"y1": 7.175,
+"x2": 50.875,
+"y2": 7.325
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.875,
+"y1": 7.325,
+"x2": 51.05,
+"y2": 7.5
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 51.05,
+"y1": 7.5,
+"x2": 51.375,
+"y2": 7.75
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.725,
+"y1": 7.175,
+"x2": 56.725,
+"y2": 7.2
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 60.25,
+"y1": 11.95,
+"x2": 60.075,
+"y2": 11.95
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 57.175,
+"y1": 18.575,
+"x2": 57.05,
+"y2": 19.05
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 57.05,
+"y1": 19.05,
+"x2": 56.775,
+"y2": 19.325
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.175,
+"y1": 18.575,
+"x2": 56.175,
+"y2": 18.825
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.175,
+"y1": 18.825,
+"x2": 55.95,
+"y2": 19.05
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.25,
+"y1": 17.375,
+"x2": 55.25,
+"y2": 17.35
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.875,
+"y1": 18.45,
+"x2": 54.9,
+"y2": 18.45
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.375,
+"y1": 18.575,
+"x2": 52.375,
+"y2": 18.725
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.375,
+"y1": 18.725,
+"x2": 52.55,
+"y2": 18.9
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.55,
+"y1": 18.9,
+"x2": 52.85,
+"y2": 18.9
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.85,
+"y1": 18.9,
+"x2": 53.0,
+"y2": 19.05
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.0,
+"y1": 19.05,
+"x2": 53.0,
+"y2": 19.55
+},
+{
+"net": "GND",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.225,
+"y1": 17.375,
+"x2": 50.225,
+"y2": 17.35
+},
+{
+"net": "GND",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 50.225,
+"y1": 17.35,
+"x2": 50.125,
+"y2": 17.225
+},
+{
+"net": "DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 59.8,
+"y1": 16.0,
+"x2": 59.775,
+"y2": 15.9
+},
+{
+"net": "DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 59.775,
+"y1": 15.9,
+"x2": 59.55,
+"y2": 15.675
+},
+{
+"net": "DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 59.55,
+"y1": 15.675,
+"x2": 59.55,
+"y2": 13.975
+},
+{
+"net": "DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 59.55,
+"y1": 13.975,
+"x2": 59.95,
+"y2": 13.575
+},
+{
+"net": "PROG#",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 59.875,
+"y1": 19.75,
+"x2": 59.875,
+"y2": 19.725
+},
+{
+"net": "PROG#",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 59.875,
+"y1": 19.725,
+"x2": 59.875,
+"y2": 15.55
+},
+{
+"net": "PROG#",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 59.95,
+"y1": 15.2,
+"x2": 59.95,
+"y2": 14.075
+},
+{
+"net": "FPGA-INIT#",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 54.1,
+"y1": 6.0,
+"x2": 54.1,
+"y2": 5.6
+},
+{
+"net": "FPGA-INIT#",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 54.1,
+"y1": 5.6,
+"x2": 54.875,
+"y2": 5.525
+},
+{
+"net": "FPGA-INIT#",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.875,
+"y1": 5.525,
+"x2": 55.05,
+"y2": 5.55
+},
+{
+"net": "FPGA-INIT#",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.05,
+"y1": 5.55,
+"x2": 55.475,
+"y2": 5.55
+},
+{
+"net": "FPGA-INIT#",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.475,
+"y1": 5.55,
+"x2": 56.45,
+"y2": 4.575
+},
+{
+"net": "FPGA-INIT#",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.45,
+"y1": 4.575,
+"x2": 57.625,
+"y2": 4.575
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 53.5,
+"y1": 13.85,
+"x2": 52.425,
+"y2": 14.075
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.425,
+"y1": 14.075,
+"x2": 52.425,
+"y2": 14.1
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.425,
+"y1": 14.1,
+"x2": 50.325,
+"y2": 16.2
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.325,
+"y1": 16.2,
+"x2": 49.975,
+"y2": 16.2
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.975,
+"y1": 16.2,
+"x2": 49.95,
+"y2": 16.225
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.95,
+"y1": 16.225,
+"x2": 49.925,
+"y2": 16.225
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.925,
+"y1": 16.225,
+"x2": 49.7,
+"y2": 16.45
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.7,
+"y1": 16.45,
+"x2": 49.2,
+"y2": 16.45
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.2,
+"y1": 16.45,
+"x2": 49.175,
+"y2": 16.475
+},
+{
+"net": "LED1",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.175,
+"y1": 16.475,
+"x2": 48.575,
+"y2": 16.475
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.575,
+"y1": 16.475,
+"x2": 47.8,
+"y2": 16.8
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 47.8,
+"y1": 16.8,
+"x2": 47.775,
+"y2": 16.825
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 47.775,
+"y1": 16.825,
+"x2": 47.75,
+"y2": 16.825
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 47.75,
+"y1": 16.825,
+"x2": 47.575,
+"y2": 17.0
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 47.575,
+"y1": 17.0,
+"x2": 47.575,
+"y2": 17.025
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 47.575,
+"y1": 17.025,
+"x2": 47.55,
+"y2": 17.05
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 47.55,
+"y1": 17.05,
+"x2": 47.55,
+"y2": 17.075
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 47.55,
+"y1": 17.075,
+"x2": 46.475,
+"y2": 18.15
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 46.475,
+"y1": 18.15,
+"x2": 46.475,
+"y2": 18.175
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 46.475,
+"y1": 18.175,
+"x2": 46.45,
+"y2": 18.2
+},
+{
+"net": "LED1",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 46.45,
+"y1": 18.2,
+"x2": 46.45,
+"y2": 18.65
+},
+{
+"net": "FPGA-TDI",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.65,
+"y1": 5.65,
+"x2": 52.7,
+"y2": 5.6
+},
+{
+"net": "FPGA-TDI",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.7,
+"y1": 5.6,
+"x2": 52.725,
+"y2": 5.525
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.725,
+"y1": 5.525,
+"x2": 52.8,
+"y2": 5.6
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.8,
+"y1": 5.6,
+"x2": 53.675,
+"y2": 5.6
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 53.675,
+"y1": 5.6,
+"x2": 53.95,
+"y2": 5.325
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 53.95,
+"y1": 5.325,
+"x2": 54.1,
+"y2": 5.2
+},
+{
+"net": "FPGA-TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 54.1,
+"y1": 5.2,
+"x2": 54.125,
+"y2": 5.225
+},
+{
+"net": "FPGA-TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 54.125,
+"y1": 5.225,
+"x2": 54.975,
+"y2": 5.225
+},
+{
+"net": "FPGA-TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 54.975,
+"y1": 5.225,
+"x2": 55.0,
+"y2": 5.25
+},
+{
+"net": "FPGA-TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 55.0,
+"y1": 5.25,
+"x2": 55.025,
+"y2": 5.25
+},
+{
+"net": "FPGA-TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 55.025,
+"y1": 5.25,
+"x2": 56.0,
+"y2": 6.225
+},
+{
+"net": "FPGA-TDI",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 56.0,
+"y1": 6.225,
+"x2": 56.325,
+"y2": 6.975
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 56.325,
+"y1": 6.975,
+"x2": 56.375,
+"y2": 7.075
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 56.375,
+"y1": 7.075,
+"x2": 56.4,
+"y2": 7.1
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 56.4,
+"y1": 7.1,
+"x2": 56.4,
+"y2": 7.35
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 56.4,
+"y1": 7.35,
+"x2": 56.6,
+"y2": 7.55
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 56.6,
+"y1": 7.55,
+"x2": 56.65,
+"y2": 7.675
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 56.65,
+"y1": 7.675,
+"x2": 57.9,
+"y2": 8.925
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 57.9,
+"y1": 8.925,
+"x2": 57.9,
+"y2": 8.95
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 57.9,
+"y1": 8.95,
+"x2": 57.95,
+"y2": 9.0
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 57.95,
+"y1": 9.0,
+"x2": 57.95,
+"y2": 9.125
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 57.95,
+"y1": 9.125,
+"x2": 58.625,
+"y2": 9.8
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 58.625,
+"y1": 9.8,
+"x2": 58.65,
+"y2": 9.85
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 58.65,
+"y1": 9.85,
+"x2": 58.65,
+"y2": 12.075
+},
+{
+"net": "FPGA-TDI",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 58.65,
+"y1": 12.075,
+"x2": 58.85,
+"y2": 12.5
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 55.0,
+"y1": 18.0,
+"x2": 55.35,
+"y2": 18.35
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 55.35,
+"y1": 18.35,
+"x2": 55.475,
+"y2": 18.85
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 55.475,
+"y1": 18.85,
+"x2": 55.475,
+"y2": 19.15
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 55.475,
+"y1": 19.15,
+"x2": 55.3,
+"y2": 19.325
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 55.3,
+"y1": 19.325,
+"x2": 55.2,
+"y2": 19.325
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 55.2,
+"y1": 19.325,
+"x2": 55.1,
+"y2": 19.425
+},
+{
+"net": "LED2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 55.1,
+"y1": 19.425,
+"x2": 54.725,
+"y2": 19.425
+},
+{
+"net": "LED2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 54.725,
+"y1": 19.425,
+"x2": 53.875,
+"y2": 20.275
+},
+{
+"net": "LED2",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 53.875,
+"y1": 20.275,
+"x2": 52.475,
+"y2": 20.65
+},
+{
+"net": "LED2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 52.475,
+"y1": 20.65,
+"x2": 52.025,
+"y2": 20.725
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.025,
+"y1": 20.725,
+"x2": 51.9,
+"y2": 20.725
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.9,
+"y1": 20.725,
+"x2": 51.75,
+"y2": 20.875
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.75,
+"y1": 20.875,
+"x2": 51.725,
+"y2": 20.875
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.725,
+"y1": 20.875,
+"x2": 51.7,
+"y2": 20.9
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.7,
+"y1": 20.9,
+"x2": 51.0,
+"y2": 20.9
+},
+{
+"net": "LED2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.0,
+"y1": 20.9,
+"x2": 50.95,
+"y2": 20.95
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.675,
+"y1": 9.175,
+"x2": 46.3,
+"y2": 9.525
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.3,
+"y1": 9.525,
+"x2": 46.075,
+"y2": 9.75
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.075,
+"y1": 9.75,
+"x2": 46.075,
+"y2": 9.875
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.075,
+"y1": 9.875,
+"x2": 46.05,
+"y2": 9.9
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.05,
+"y1": 9.9,
+"x2": 46.05,
+"y2": 9.925
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.05,
+"y1": 9.925,
+"x2": 46.025,
+"y2": 9.95
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.025,
+"y1": 9.95,
+"x2": 46.025,
+"y2": 10.0
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.025,
+"y1": 10.0,
+"x2": 46.0,
+"y2": 10.025
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.0,
+"y1": 10.025,
+"x2": 46.0,
+"y2": 10.075
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.0,
+"y1": 10.075,
+"x2": 45.975,
+"y2": 10.1
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 45.975,
+"y1": 10.1,
+"x2": 45.975,
+"y2": 10.125
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 45.975,
+"y1": 10.125,
+"x2": 45.95,
+"y2": 10.15
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 45.95,
+"y1": 10.15,
+"x2": 45.95,
+"y2": 10.725
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 45.95,
+"y1": 10.725,
+"x2": 45.825,
+"y2": 10.85
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 45.825,
+"y1": 10.85,
+"x2": 47.85,
+"y2": 12.875
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.85,
+"y1": 12.875,
+"x2": 47.875,
+"y2": 12.875
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.875,
+"y1": 12.875,
+"x2": 47.9,
+"y2": 12.9
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.9,
+"y1": 12.9,
+"x2": 48.1,
+"y2": 12.9
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.1,
+"y1": 12.9,
+"x2": 48.125,
+"y2": 12.875
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.125,
+"y1": 12.875,
+"x2": 48.15,
+"y2": 12.875
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.15,
+"y1": 12.875,
+"x2": 48.275,
+"y2": 12.75
+},
+{
+"net": "CFG-M2",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.275,
+"y1": 12.75,
+"x2": 48.4,
+"y2": 12.6
+},
+{
+"net": "CFG-M2",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.4,
+"y1": 12.6,
+"x2": 49.375,
+"y2": 11.35
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.375,
+"y1": 11.35,
+"x2": 49.375,
+"y2": 9.9
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.375,
+"y1": 9.9,
+"x2": 49.725,
+"y2": 9.55
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.725,
+"y1": 9.55,
+"x2": 49.725,
+"y2": 8.65
+},
+{
+"net": "CFG-M2",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.725,
+"y1": 8.65,
+"x2": 49.8,
+"y2": 8.5
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 49.875,
+"y1": 11.975,
+"x2": 49.9,
+"y2": 11.95
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 49.9,
+"y1": 11.95,
+"x2": 50.3,
+"y2": 11.95
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 50.3,
+"y1": 11.95,
+"x2": 50.625,
+"y2": 11.625
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 50.625,
+"y1": 11.625,
+"x2": 50.625,
+"y2": 11.325
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 50.625,
+"y1": 11.325,
+"x2": 50.675,
+"y2": 11.15
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 50.675,
+"y1": 11.15,
+"x2": 51.15,
+"y2": 11.075
+},
+{
+"net": "UART_FT_TXD",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 51.15,
+"y1": 11.075,
+"x2": 52.425,
+"y2": 11.075
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.425,
+"y1": 11.075,
+"x2": 52.775,
+"y2": 10.55
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 52.775,
+"y1": 10.55,
+"x2": 53.1,
+"y2": 10.025
+},
+{
+"net": "UART_FT_TXD",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 53.1,
+"y1": 10.025,
+"x2": 53.675,
+"y2": 9.45
+},
+{
+"net": "UART_FT_TXD",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.675,
+"y1": 9.45,
+"x2": 55.05,
+"y2": 7.475
+},
+{
+"net": "UART_FT_TXD",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.05,
+"y1": 7.475,
+"x2": 55.05,
+"y2": 7.45
+},
+{
+"net": "UART_FT_TXD",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.05,
+"y1": 7.45,
+"x2": 55.075,
+"y2": 7.425
+},
+{
+"net": "UART_FT_TXD",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.075,
+"y1": 7.425,
+"x2": 55.075,
+"y2": 7.375
+},
+{
+"net": "UART_FT_TXD",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.075,
+"y1": 7.375,
+"x2": 55.1,
+"y2": 7.35
+},
+{
+"net": "UART_FT_TXD",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.1,
+"y1": 7.35,
+"x2": 55.175,
+"y2": 7.175
+},
+{
+"net": "GNDADC",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 47.375,
+"y1": 15.325,
+"x2": 47.025,
+"y2": 14.9
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 47.025,
+"y1": 14.9,
+"x2": 46.45,
+"y2": 15.6
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 46.45,
+"y1": 15.6,
+"x2": 46.425,
+"y2": 15.65
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 46.425,
+"y1": 15.65,
+"x2": 46.35,
+"y2": 15.725
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 46.35,
+"y1": 15.725,
+"x2": 46.3,
+"y2": 15.75
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 46.3,
+"y1": 15.75,
+"x2": 45.9,
+"y2": 15.75
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.9,
+"y1": 15.75,
+"x2": 45.85,
+"y2": 15.725
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.85,
+"y1": 15.725,
+"x2": 45.625,
+"y2": 15.5
+},
+{
+"net": "GNDADC",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.625,
+"y1": 15.5,
+"x2": 45.6,
+"y2": 15.5
+},
+{
+"net": "GNDADC",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 47.375,
+"y1": 15.325,
+"x2": 47.375,
+"y2": 14.3
+},
+{
+"net": "GNDADC",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 47.375,
+"y1": 14.3,
+"x2": 47.025,
+"y2": 13.5
+},
+{
+"net": "GNDADC",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 47.025,
+"y1": 13.5,
+"x2": 47.025,
+"y2": 12.475
+},
+{
+"net": "GNDADC",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 47.025,
+"y1": 12.475,
+"x2": 47.7,
+"y2": 11.8
+},
+{
+"net": "GNDADC",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 47.7,
+"y1": 11.8,
+"x2": 47.7,
+"y2": 11.025
+},
+{
+"net": "GNDADC",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 47.7,
+"y1": 11.025,
+"x2": 47.725,
+"y2": 11.0
+},
+{
+"net": "FLASH-D02",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 45.475,
+"y1": 18.75,
+"x2": 45.475,
+"y2": 17.9
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 45.475,
+"y1": 17.9,
+"x2": 46.65,
+"y2": 17.1
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 46.65,
+"y1": 17.1,
+"x2": 48.1,
+"y2": 15.65
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.1,
+"y1": 15.65,
+"x2": 49.175,
+"y2": 15.65
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.175,
+"y1": 15.65,
+"x2": 49.2,
+"y2": 15.625
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.2,
+"y1": 15.625,
+"x2": 49.225,
+"y2": 15.625
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.225,
+"y1": 15.625,
+"x2": 49.25,
+"y2": 15.6
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.25,
+"y1": 15.6,
+"x2": 49.275,
+"y2": 15.6
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.275,
+"y1": 15.6,
+"x2": 49.3,
+"y2": 15.575
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.3,
+"y1": 15.575,
+"x2": 49.325,
+"y2": 15.575
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.325,
+"y1": 15.575,
+"x2": 50.65,
+"y2": 14.25
+},
+{
+"net": "FLASH-D02",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 50.65,
+"y1": 14.25,
+"x2": 50.9,
+"y2": 14.25
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 59.55,
+"y1": 21.1,
+"x2": 59.475,
+"y2": 21.025
+},
+{
+"net": "CLK-12M-FT",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 59.475,
+"y1": 21.025,
+"x2": 59.075,
+"y2": 20.625
+},
+{
+"net": "CLK-12M-FT",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 59.075,
+"y1": 20.625,
+"x2": 58.075,
+"y2": 18.975
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.075,
+"y1": 18.975,
+"x2": 58.075,
+"y2": 17.125
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.075,
+"y1": 17.125,
+"x2": 58.0,
+"y2": 17.05
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.0,
+"y1": 17.05,
+"x2": 56.325,
+"y2": 17.05
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.325,
+"y1": 17.05,
+"x2": 56.3,
+"y2": 17.025
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.3,
+"y1": 17.025,
+"x2": 51.625,
+"y2": 17.025
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 51.625,
+"y1": 17.025,
+"x2": 51.6,
+"y2": 17.05
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 51.6,
+"y1": 17.05,
+"x2": 51.05,
+"y2": 17.05
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 51.05,
+"y1": 17.05,
+"x2": 50.975,
+"y2": 17.125
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.975,
+"y1": 17.125,
+"x2": 50.975,
+"y2": 17.175
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.975,
+"y1": 17.175,
+"x2": 50.95,
+"y2": 17.2
+},
+{
+"net": "CLK-12M-FT",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.95,
+"y1": 17.2,
+"x2": 50.875,
+"y2": 17.375
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 49.15,
+"y1": 11.65,
+"x2": 49.4,
+"y2": 11.9
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.4,
+"y1": 11.9,
+"x2": 51.2,
+"y2": 13.25
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.2,
+"y1": 13.25,
+"x2": 52.925,
+"y2": 13.45
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 52.925,
+"y1": 13.45,
+"x2": 53.45,
+"y2": 13.45
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.45,
+"y1": 13.45,
+"x2": 53.65,
+"y2": 13.25
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.65,
+"y1": 13.25,
+"x2": 53.95,
+"y2": 13.25
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 53.95,
+"y1": 13.25,
+"x2": 54.325,
+"y2": 13.625
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.325,
+"y1": 13.625,
+"x2": 54.425,
+"y2": 13.625
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.425,
+"y1": 13.625,
+"x2": 54.575,
+"y2": 13.775
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.575,
+"y1": 13.775,
+"x2": 54.575,
+"y2": 14.2
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.575,
+"y1": 14.2,
+"x2": 57.225,
+"y2": 16.85
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 57.225,
+"y1": 16.85,
+"x2": 58.075,
+"y2": 16.85
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.075,
+"y1": 16.85,
+"x2": 58.1,
+"y2": 16.875
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.1,
+"y1": 16.875,
+"x2": 58.125,
+"y2": 16.875
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.125,
+"y1": 16.875,
+"x2": 58.25,
+"y2": 17.0
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.25,
+"y1": 17.0,
+"x2": 58.25,
+"y2": 17.025
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.25,
+"y1": 17.025,
+"x2": 58.275,
+"y2": 17.05
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.275,
+"y1": 17.05,
+"x2": 58.275,
+"y2": 18.725
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.275,
+"y1": 18.725,
+"x2": 58.375,
+"y2": 18.825
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.375,
+"y1": 18.825,
+"x2": 58.375,
+"y2": 19.125
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.375,
+"y1": 19.125,
+"x2": 58.225,
+"y2": 19.275
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 58.225,
+"y1": 19.275,
+"x2": 57.3,
+"y2": 19.275
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 57.3,
+"y1": 19.275,
+"x2": 56.925,
+"y2": 19.65
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.925,
+"y1": 19.65,
+"x2": 56.1,
+"y2": 19.65
+},
+{
+"net": "CLK-12M-FPGA",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 56.1,
+"y1": 19.65,
+"x2": 56.0,
+"y2": 19.6
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 60.2,
+"y1": 18.025,
+"x2": 60.2,
+"y2": 17.575
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 60.2,
+"y1": 17.575,
+"x2": 59.95,
+"y2": 17.325
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 59.95,
+"y1": 17.325,
+"x2": 59.675,
+"y2": 17.325
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 59.675,
+"y1": 17.325,
+"x2": 59.1,
+"y2": 16.75
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 59.1,
+"y1": 16.75,
+"x2": 57.975,
+"y2": 15.525
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 57.975,
+"y1": 15.525,
+"x2": 57.975,
+"y2": 14.0
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 57.975,
+"y1": 14.0,
+"x2": 55.725,
+"y2": 11.75
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.725,
+"y1": 11.75,
+"x2": 55.05,
+"y2": 11.75
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 55.05,
+"y1": 11.75,
+"x2": 54.9,
+"y2": 11.6
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.9,
+"y1": 11.6,
+"x2": 54.9,
+"y2": 11.25
+},
+{
+"net": "CHAN22",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 54.9,
+"y1": 11.25,
+"x2": 55.175,
+"y2": 10.975
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 55.175,
+"y1": 10.975,
+"x2": 54.75,
+"y2": 10.15
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 54.75,
+"y1": 10.15,
+"x2": 54.75,
+"y2": 9.0
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 54.75,
+"y1": 9.0,
+"x2": 53.15,
+"y2": 7.4
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 53.15,
+"y1": 7.4,
+"x2": 53.0,
+"y2": 7.4
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 53.0,
+"y1": 7.4,
+"x2": 52.95,
+"y2": 7.375
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.95,
+"y1": 7.375,
+"x2": 52.825,
+"y2": 7.25
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.825,
+"y1": 7.25,
+"x2": 52.8,
+"y2": 7.2
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.8,
+"y1": 7.2,
+"x2": 52.8,
+"y2": 6.975
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.8,
+"y1": 6.975,
+"x2": 52.925,
+"y2": 6.85
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.925,
+"y1": 6.85,
+"x2": 52.925,
+"y2": 6.825
+},
+{
+"net": "CHAN22",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.925,
+"y1": 6.825,
+"x2": 53.1,
+"y2": 6.5
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 47.4,
+"y1": 8.9,
+"x2": 47.45,
+"y2": 8.95
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.45,
+"y1": 8.95,
+"x2": 47.5,
+"y2": 9.0
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.5,
+"y1": 9.0,
+"x2": 47.85,
+"y2": 9.0
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.85,
+"y1": 9.0,
+"x2": 48.6,
+"y2": 9.75
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.6,
+"y1": 9.75,
+"x2": 48.6,
+"y2": 9.85
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.6,
+"y1": 9.85,
+"x2": 48.625,
+"y2": 9.9
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.625,
+"y1": 9.9,
+"x2": 48.825,
+"y2": 10.1
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.825,
+"y1": 10.1,
+"x2": 49.05,
+"y2": 10.1
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 49.05,
+"y1": 10.1,
+"x2": 49.2,
+"y2": 10.25
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 49.2,
+"y1": 10.25,
+"x2": 50.875,
+"y2": 10.25
+},
+{
+"net": "FPGA-DONE",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 50.875,
+"y1": 10.25,
+"x2": 51.3,
+"y2": 9.825
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 51.3,
+"y1": 9.825,
+"x2": 51.425,
+"y2": 9.95
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 51.425,
+"y1": 9.95,
+"x2": 51.825,
+"y2": 9.95
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 51.825,
+"y1": 9.95,
+"x2": 51.85,
+"y2": 9.975
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 51.85,
+"y1": 9.975,
+"x2": 51.875,
+"y2": 9.975
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 51.875,
+"y1": 9.975,
+"x2": 51.9,
+"y2": 10.0
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 51.9,
+"y1": 10.0,
+"x2": 52.1,
+"y2": 10.0
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 52.1,
+"y1": 10.0,
+"x2": 52.15,
+"y2": 10.05
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 52.15,
+"y1": 10.05,
+"x2": 53.825,
+"y2": 10.05
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 53.825,
+"y1": 10.05,
+"x2": 53.9,
+"y2": 10.125
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 53.9,
+"y1": 10.125,
+"x2": 53.9,
+"y2": 11.575
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 53.9,
+"y1": 11.575,
+"x2": 53.975,
+"y2": 11.65
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 53.975,
+"y1": 11.65,
+"x2": 57.425,
+"y2": 11.65
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 57.425,
+"y1": 11.65,
+"x2": 57.825,
+"y2": 12.05
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 57.825,
+"y1": 12.05,
+"x2": 57.95,
+"y2": 12.05
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 57.95,
+"y1": 12.05,
+"x2": 57.975,
+"y2": 12.075
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 57.975,
+"y1": 12.075,
+"x2": 58.0,
+"y2": 12.075
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.0,
+"y1": 12.075,
+"x2": 58.025,
+"y2": 12.1
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.025,
+"y1": 12.1,
+"x2": 58.05,
+"y2": 12.1
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.05,
+"y1": 12.1,
+"x2": 58.15,
+"y2": 12.2
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.15,
+"y1": 12.2,
+"x2": 58.15,
+"y2": 12.225
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.15,
+"y1": 12.225,
+"x2": 58.175,
+"y2": 12.25
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.175,
+"y1": 12.25,
+"x2": 58.2,
+"y2": 12.3
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.2,
+"y1": 12.3,
+"x2": 58.2,
+"y2": 13.35
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.2,
+"y1": 13.35,
+"x2": 58.65,
+"y2": 13.8
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.65,
+"y1": 13.8,
+"x2": 58.65,
+"y2": 14.65
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.65,
+"y1": 14.65,
+"x2": 58.675,
+"y2": 14.675
+},
+{
+"net": "FPGA-DONE",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 58.675,
+"y1": 14.675,
+"x2": 58.75,
+"y2": 14.85
+},
+{
+"net": "CHAN9",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 41.05,
+"y1": 21.2,
+"x2": 41.05,
+"y2": 21.175
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 41.05,
+"y1": 21.175,
+"x2": 40.975,
+"y2": 20.225
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 40.975,
+"y1": 20.225,
+"x2": 40.975,
+"y2": 20.2
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 40.975,
+"y1": 20.2,
+"x2": 40.95,
+"y2": 20.175
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 40.95,
+"y1": 20.175,
+"x2": 40.95,
+"y2": 18.4
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 40.95,
+"y1": 18.4,
+"x2": 40.975,
+"y2": 18.375
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 40.975,
+"y1": 18.375,
+"x2": 40.975,
+"y2": 18.35
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 40.975,
+"y1": 18.35,
+"x2": 41.3,
+"y2": 18.025
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 41.3,
+"y1": 18.025,
+"x2": 41.3,
+"y2": 17.875
+},
+{
+"net": "CHAN9",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.3,
+"y1": 17.875,
+"x2": 42.375,
+"y2": 16.8
+},
+{
+"net": "CHAN9",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 42.375,
+"y1": 16.8,
+"x2": 45.85,
+"y2": 16.8
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 45.85,
+"y1": 16.8,
+"x2": 46.85,
+"y2": 15.8
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 46.85,
+"y1": 15.8,
+"x2": 46.85,
+"y2": 15.45
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 46.85,
+"y1": 15.45,
+"x2": 46.875,
+"y2": 15.4
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 46.875,
+"y1": 15.4,
+"x2": 47.05,
+"y2": 15.225
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.05,
+"y1": 15.225,
+"x2": 47.175,
+"y2": 15.225
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.175,
+"y1": 15.225,
+"x2": 47.6,
+"y2": 14.8
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.6,
+"y1": 14.8,
+"x2": 47.6,
+"y2": 14.75
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 47.6,
+"y1": 14.75,
+"x2": 48.95,
+"y2": 13.4
+},
+{
+"net": "CHAN9",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.95,
+"y1": 13.4,
+"x2": 49.4,
+"y2": 12.4
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 24.5,
+"y1": 2.8,
+"x2": 25.25,
+"y2": 2.875
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 25.25,
+"y1": 2.875,
+"x2": 25.275,
+"y2": 2.9
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 25.275,
+"y1": 2.9,
+"x2": 25.3,
+"y2": 2.9
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 25.3,
+"y1": 2.9,
+"x2": 25.325,
+"y2": 2.925
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 25.325,
+"y1": 2.925,
+"x2": 25.35,
+"y2": 2.925
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 25.35,
+"y1": 2.925,
+"x2": 25.375,
+"y2": 2.95
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 25.375,
+"y1": 2.95,
+"x2": 25.4,
+"y2": 2.95
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 25.4,
+"y1": 2.95,
+"x2": 26.075,
+"y2": 3.625
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 26.075,
+"y1": 3.625,
+"x2": 26.075,
+"y2": 3.7
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 26.075,
+"y1": 3.7,
+"x2": 26.75,
+"y2": 4.375
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 26.75,
+"y1": 4.375,
+"x2": 30.025,
+"y2": 5.775
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 30.025,
+"y1": 5.775,
+"x2": 30.05,
+"y2": 5.8
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 30.05,
+"y1": 5.8,
+"x2": 30.075,
+"y2": 5.8
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 30.075,
+"y1": 5.8,
+"x2": 30.25,
+"y2": 5.975
+},
+{
+"net": "VBATT",
+"layer": "Top Layer",
+"w": 0.2,
+"x1": 30.25,
+"y1": 5.975,
+"x2": 31.1,
+"y2": 6.35
+},
+{
+"net": "VCC1V8",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.4,
+"y1": 14.9,
+"x2": 45.4,
+"y2": 14.925
+},
+{
+"net": "VCC1V8",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.4,
+"y1": 14.925,
+"x2": 45.175,
+"y2": 15.15
+},
+{
+"net": "VCC1V8",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.175,
+"y1": 15.15,
+"x2": 45.175,
+"y2": 15.175
+},
+{
+"net": "VCC1V8",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.175,
+"y1": 15.175,
+"x2": 45.15,
+"y2": 15.2
+},
+{
+"net": "VCC1V8",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.15,
+"y1": 15.2,
+"x2": 45.15,
+"y2": 16.3
+},
+{
+"net": "VCC1V8",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 45.4,
+"y1": 14.9,
+"x2": 45.55,
+"y2": 14.725
+},
+{
+"net": "VCC1V8",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 45.55,
+"y1": 14.725,
+"x2": 46.0,
+"y2": 14.275
+},
+{
+"net": "VCC1V8",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 46.0,
+"y1": 14.275,
+"x2": 46.525,
+"y2": 14.275
+},
+{
+"net": "VCC1V8",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 46.525,
+"y1": 14.275,
+"x2": 46.55,
+"y2": 14.25
+},
+{
+"net": "VCC1V8",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 46.55,
+"y1": 14.25,
+"x2": 46.575,
+"y2": 14.25
+},
+{
+"net": "VCC1V8",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 46.575,
+"y1": 14.25,
+"x2": 47.05,
+"y2": 14.1
+},
+{
+"net": "VCC1V8",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 47.05,
+"y1": 14.1,
+"x2": 47.5,
+"y2": 13.725
+},
+{
+"net": "VCC1V8",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 47.5,
+"y1": 13.725,
+"x2": 47.575,
+"y2": 13.65
+},
+{
+"net": "VCC1V8",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 47.575,
+"y1": 13.65,
+"x2": 47.575,
+"y2": 13.625
+},
+{
+"net": "VCC1V8",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 47.575,
+"y1": 13.625,
+"x2": 47.925,
+"y2": 13.275
+},
+{
+"net": "VCC1V8",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 47.925,
+"y1": 13.275,
+"x2": 48.275,
+"y2": 13.275
+},
+{
+"net": "SD-DAT0",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 48.875,
+"y1": 15.3,
+"x2": 48.875,
+"y2": 15.325
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 51.85,
+"y1": 18.95,
+"x2": 52.0,
+"y2": 18.95
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.0,
+"y1": 18.95,
+"x2": 52.15,
+"y2": 18.8
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.15,
+"y1": 18.8,
+"x2": 52.45,
+"y2": 18.8
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.45,
+"y1": 18.8,
+"x2": 52.6,
+"y2": 18.95
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.6,
+"y1": 18.95,
+"x2": 52.6,
+"y2": 19.0
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.6,
+"y1": 19.0,
+"x2": 52.625,
+"y2": 19.025
+},
+{
+"net": "CHAN11",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 52.625,
+"y1": 19.025,
+"x2": 52.7,
+"y2": 19.2
+},
+{
+"net": "CHAN27",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.3,
+"y1": 5.475,
+"x2": 50.1,
+"y2": 5.6
+},
+{
+"net": "CHAN27",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 50.1,
+"y1": 5.6,
+"x2": 49.975,
+"y2": 5.725
+},
+{
+"net": "CHAN27",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.975,
+"y1": 5.725,
+"x2": 49.975,
+"y2": 7.425
+},
+{
+"net": "CHAN27",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 49.975,
+"y1": 7.425,
+"x2": 50.675,
+"y2": 8.125
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 39.95,
+"y1": 1.45,
+"x2": 40.3,
+"y2": 1.8
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 40.3,
+"y1": 1.8,
+"x2": 40.55,
+"y2": 1.875
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 40.55,
+"y1": 1.875,
+"x2": 40.575,
+"y2": 1.875
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 40.575,
+"y1": 1.875,
+"x2": 41.975,
+"y2": 3.275
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 41.975,
+"y1": 3.275,
+"x2": 42.0,
+"y2": 3.275
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 42.0,
+"y1": 3.275,
+"x2": 42.025,
+"y2": 3.3
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 42.025,
+"y1": 3.3,
+"x2": 44.05,
+"y2": 3.3
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 44.05,
+"y1": 3.3,
+"x2": 44.5,
+"y2": 3.75
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 44.5,
+"y1": 3.75,
+"x2": 44.525,
+"y2": 3.75
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 44.525,
+"y1": 3.75,
+"x2": 44.55,
+"y2": 3.775
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 44.55,
+"y1": 3.775,
+"x2": 45.875,
+"y2": 3.775
+},
+{
+"net": "CHAN19",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 45.875,
+"y1": 3.775,
+"x2": 46.45,
+"y2": 4.35
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.45,
+"y1": 4.35,
+"x2": 46.875,
+"y2": 4.35
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 46.875,
+"y1": 4.35,
+"x2": 47.05,
+"y2": 4.175
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 47.05,
+"y1": 4.175,
+"x2": 47.05,
+"y2": 3.8
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 47.05,
+"y1": 3.8,
+"x2": 47.2,
+"y2": 3.65
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 47.2,
+"y1": 3.65,
+"x2": 48.575,
+"y2": 3.65
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.575,
+"y1": 3.65,
+"x2": 48.65,
+"y2": 3.575
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.65,
+"y1": 3.575,
+"x2": 48.65,
+"y2": 3.175
+},
+{
+"net": "CHAN19",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 48.65,
+"y1": 3.175,
+"x2": 48.925,
+"y2": 2.9
+},
+{
+"net": "CHAN19",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.925,
+"y1": 2.9,
+"x2": 48.925,
+"y2": 3.175
+},
+{
+"net": "CHAN19",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 48.925,
+"y1": 3.175,
+"x2": 49.575,
+"y2": 3.825
+},
+{
+"net": "CHAN19",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.575,
+"y1": 3.825,
+"x2": 49.575,
+"y2": 3.85
+},
+{
+"net": "CHAN19",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.575,
+"y1": 3.85,
+"x2": 49.6,
+"y2": 3.875
+},
+{
+"net": "CHAN19",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.6,
+"y1": 3.875,
+"x2": 49.6,
+"y2": 4.375
+},
+{
+"net": "CHAN19",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 49.6,
+"y1": 4.375,
+"x2": 49.7,
+"y2": 4.475
+},
+{
+"net": "CHAN19",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 49.7,
+"y1": 4.475,
+"x2": 49.7,
+"y2": 4.575
+},
+{
+"net": "CHAN19",
+"layer": "L3-SIG",
+"w": 0.0762,
+"x1": 49.7,
+"y1": 4.575,
+"x2": 49.675,
+"y2": 4.6
+},
+{
+"net": "USB_D_N",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 31.275,
+"y1": 20.725,
+"x2": 31.375,
+"y2": 20.525
+},
+{
+"net": "USB_D_N",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 31.375,
+"y1": 20.525,
+"x2": 31.4,
+"y2": 20.5
+},
+{
+"net": "USB_D_N",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 31.4,
+"y1": 20.5,
+"x2": 31.4,
+"y2": 20.475
+},
+{
+"net": "USB_D_N",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 31.4,
+"y1": 20.475,
+"x2": 31.525,
+"y2": 20.35
+},
+{
+"net": "USB_D_N",
+"layer": "Top Layer",
+"w": 0.15,
+"x1": 31.525,
+"y1": 20.35,
+"x2": 33.475,
+"y2": 18.85
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 33.475,
+"y1": 18.85,
+"x2": 33.775,
+"y2": 18.825
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 33.775,
+"y1": 18.825,
+"x2": 33.875,
+"y2": 18.8
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 33.875,
+"y1": 18.8,
+"x2": 33.975,
+"y2": 18.775
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 33.975,
+"y1": 18.775,
+"x2": 34.05,
+"y2": 18.75
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.05,
+"y1": 18.75,
+"x2": 34.15,
+"y2": 18.725
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.15,
+"y1": 18.725,
+"x2": 34.25,
+"y2": 18.7
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.25,
+"y1": 18.7,
+"x2": 34.35,
+"y2": 18.675
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.35,
+"y1": 18.675,
+"x2": 34.425,
+"y2": 18.65
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.425,
+"y1": 18.65,
+"x2": 34.525,
+"y2": 18.625
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.525,
+"y1": 18.625,
+"x2": 34.625,
+"y2": 18.6
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.625,
+"y1": 18.6,
+"x2": 34.725,
+"y2": 18.575
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.725,
+"y1": 18.575,
+"x2": 34.8,
+"y2": 18.55
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.8,
+"y1": 18.55,
+"x2": 34.9,
+"y2": 18.525
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 34.9,
+"y1": 18.525,
+"x2": 35.0,
+"y2": 18.5
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.0,
+"y1": 18.5,
+"x2": 35.1,
+"y2": 18.475
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.1,
+"y1": 18.475,
+"x2": 35.175,
+"y2": 18.45
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.175,
+"y1": 18.45,
+"x2": 35.275,
+"y2": 18.425
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.275,
+"y1": 18.425,
+"x2": 35.375,
+"y2": 18.4
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.375,
+"y1": 18.4,
+"x2": 35.475,
+"y2": 18.375
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.475,
+"y1": 18.375,
+"x2": 35.55,
+"y2": 18.35
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.55,
+"y1": 18.35,
+"x2": 35.65,
+"y2": 18.325
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.65,
+"y1": 18.325,
+"x2": 35.75,
+"y2": 18.3
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 35.75,
+"y1": 18.3,
+"x2": 35.975,
+"y2": 18.15
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 35.975,
+"y1": 18.15,
+"x2": 36.375,
+"y2": 17.75
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 36.375,
+"y1": 17.75,
+"x2": 43.95,
+"y2": 17.7
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 43.95,
+"y1": 17.7,
+"x2": 44.125,
+"y2": 17.525
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 44.125,
+"y1": 17.525,
+"x2": 44.15,
+"y2": 17.525
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 44.15,
+"y1": 17.525,
+"x2": 44.175,
+"y2": 17.5
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 44.175,
+"y1": 17.5,
+"x2": 44.375,
+"y2": 17.5
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 44.375,
+"y1": 17.5,
+"x2": 45.05,
+"y2": 16.825
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.05,
+"y1": 16.825,
+"x2": 45.1,
+"y2": 16.8
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.1,
+"y1": 16.8,
+"x2": 45.925,
+"y2": 16.8
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 45.925,
+"y1": 16.8,
+"x2": 46.25,
+"y2": 16.475
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 46.25,
+"y1": 16.475,
+"x2": 46.3,
+"y2": 16.45
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 46.3,
+"y1": 16.45,
+"x2": 47.825,
+"y2": 16.45
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 47.825,
+"y1": 16.45,
+"x2": 48.225,
+"y2": 16.25
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 48.225,
+"y1": 16.25,
+"x2": 48.525,
+"y2": 16.55
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 48.525,
+"y1": 16.55,
+"x2": 48.525,
+"y2": 16.95
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 48.525,
+"y1": 16.95,
+"x2": 48.75,
+"y2": 17.175
+},
+{
+"net": "USB_D_N",
+"layer": "L3-SIG",
+"w": 0.15,
+"x1": 48.75,
+"y1": 17.175,
+"x2": 49.575,
+"y2": 17.175
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 49.575,
+"y1": 17.175,
+"x2": 50.025,
+"y2": 17.025
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 50.025,
+"y1": 17.025,
+"x2": 50.05,
+"y2": 17.025
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 50.05,
+"y1": 17.025,
+"x2": 50.075,
+"y2": 17.0
+},
+{
+"net": "USB_D_N",
+"layer": "Bottom Layer",
+"w": 0.15,
+"x1": 50.075,
+"y1": 17.0,
+"x2": 50.9,
+"y2": 16.775
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 50.9,
+"y1": 16.775,
+"x2": 52.025,
+"y2": 16.925
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.025,
+"y1": 16.925,
+"x2": 52.05,
+"y2": 16.925
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.05,
+"y1": 16.925,
+"x2": 52.075,
+"y2": 16.95
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.075,
+"y1": 16.95,
+"x2": 52.4,
+"y2": 16.95
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.4,
+"y1": 16.95,
+"x2": 52.45,
+"y2": 16.975
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.45,
+"y1": 16.975,
+"x2": 52.475,
+"y2": 17.0
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.475,
+"y1": 17.0,
+"x2": 52.5,
+"y2": 17.0
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.5,
+"y1": 17.0,
+"x2": 52.625,
+"y2": 17.125
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.625,
+"y1": 17.125,
+"x2": 52.65,
+"y2": 17.125
+},
+{
+"net": "USB_D_N",
+"layer": "L4-SIG",
+"w": 0.15,
+"x1": 52.65,
+"y1": 17.125,
+"x2": 53.2,
+"y2": 17.375
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 22 queued nets remain"
+]
+}

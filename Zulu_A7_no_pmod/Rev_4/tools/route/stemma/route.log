@@ -1,0 +1,25 @@
+  GND plane groups tied 2/5
+  GND plane groups tied 3/5
+  GND plane groups tied 4/5
+  GND plane groups tied 5/5
+GND            
+  VCC3V3 plane groups tied 2/3
+  VCC3V3 plane groups tied 3/3
+VCC3V3         
+CHAN17         
+CHAN22         
+FLASH-D02      
+FPGA-DONE      
+FPGA-INIT#     
+FPGA-TDI       
+FPGA-TDO       
+FPGA-TMS       
+I2C-SCL        
+I2C-SDA        
+LED0_R         
+PROG#          
+PUDC_B         
+TDI            
+VCC1V0         
+VCC1V8         
+routed 23 connections, failed 0; 54 vias, 106 tracks -> tools/route/stemma/route.json

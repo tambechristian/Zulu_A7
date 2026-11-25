@@ -1,0 +1,24 @@
+Reference-load delay (U3 DQ_100% into 50 ohm/1.4 V + 30 pF, at pin, 1.4 V), ns after the stimulus edge:
+  typ rise 1.317..1.441  fall 1.509..1.642
+  max rise 1.006..1.131  fall 1.157..1.302
+
+Flight-time-compensated delay at U1 die (1.65 V) minus reference-load delay (1.4 V), ns, fab stack, D0-D15:
+R    corner | rise first min..max | fall first min..max | latest (last crossing) | spread all | multi-crossings
+0    typ    | -0.033.. 0.084 | -0.158..-0.040 |  0.084 | 0.242 | 0
+0    max    | -0.024.. 0.093 | -0.162..-0.040 |  0.093 | 0.255 | 0
+15   typ    | -0.005.. 0.114 | -0.132..-0.012 |  0.114 | 0.246 | 0
+       vs R0: earliest +0.026 ns, latest +0.030 ns, window loss +0.004 ns
+15   max    |  0.004.. 0.121 | -0.134..-0.011 |  0.121 | 0.255 | 0
+       vs R0: earliest +0.029 ns, latest +0.028 ns, window loss -0.000 ns
+22   typ    |  0.010.. 0.129 | -0.119.. 0.002 |  0.129 | 0.248 | 0
+       vs R0: earliest +0.039 ns, latest +0.045 ns, window loss +0.006 ns
+22   max    |  0.017.. 0.135 | -0.120.. 0.004 |  0.135 | 0.255 | 0
+       vs R0: earliest +0.043 ns, latest +0.042 ns, window loss -0.000 ns
+33   typ    |  0.034.. 0.154 | -0.099.. 0.025 |  0.154 | 0.252 | 0
+       vs R0: earliest +0.060 ns, latest +0.070 ns, window loss +0.010 ns
+33   max    |  0.039.. 0.158 | -0.097.. 0.029 |  0.158 | 0.255 | 0
+       vs R0: earliest +0.066 ns, latest +0.065 ns, window loss -0.001 ns
+
+Sanity: 22 ohm in series with the reference load, D0 pin->load 1.4 V:
+  typ {'fall@8.5': np.float64(0.156), 'rise@16.0': np.float64(0.077), 'fall@23.5': np.float64(0.156)}
+  max {'fall@8.5': np.float64(0.171), 'rise@16.0': np.float64(0.068), 'fall@23.5': np.float64(0.171)}

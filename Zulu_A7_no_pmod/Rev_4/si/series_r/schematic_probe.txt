@@ -1,0 +1,86 @@
+== integrity (all sheets)
+sheet 0: 407 records, Weight=406, records without NUL 0, binary records 0, duplicate UniqueIDs 0
+sheet 1: 1386 records, Weight=1385, records without NUL 0, binary records 0, duplicate UniqueIDs 1
+sheet 2: 12922 records, Weight=12921, records without NUL 0, binary records 0, duplicate UniqueIDs 0
+sheet 3: 17450 records, Weight=17449, records without NUL 0, binary records 0, duplicate UniqueIDs 0
+sheet 4: 2361 records, Weight=2360, records without NUL 0, binary records 0, duplicate UniqueIDs 0
+sheet 5: 160006 records, Weight=160005, records without NUL 0, binary records 0, duplicate UniqueIDs 0
+sheet 6: 4991 records, Weight=4990, records without NUL 0, binary records 0, duplicate UniqueIDs 0
+
+== sheet 3: U3 DQ pins and the labels on them
+D0 [('2', (755, 1057))]
+D1 [('4', (755, 1037))]
+D2 [('5', (755, 1027))]
+D3 [('7', (755, 1007))]
+D4 [('8', (755, 997))]
+D5 [('10', (755, 977))]
+D6 [('11', (755, 967))]
+D7 [('13', (755, 947))]
+D8 [('42', (915, 947))]
+D9 [('44', (915, 967))]
+D10 [('45', (915, 977))]
+D11 [('47', (915, 997))]
+D12 [('48', (915, 1007))]
+D13 [('50', (915, 1027))]
+D14 [('51', (915, 1037))]
+D15 [('53', (915, 1057))]
+  label record 17156 D0 at (745, 1057) Justification=2 FontID=3
+  label record 17158 D1 at (745, 1037) Justification=2 FontID=3
+  label record 17160 D10 at (925, 977) Justification=None FontID=3
+  label record 17162 D11 at (925, 997) Justification=None FontID=3
+  label record 17164 D12 at (925, 1007) Justification=None FontID=3
+  label record 17166 D13 at (925, 1027) Justification=None FontID=3
+  label record 17168 D14 at (925, 1037) Justification=None FontID=3
+  label record 17170 D15 at (925, 1057) Justification=None FontID=3
+  label record 17172 D2 at (745, 1027) Justification=2 FontID=3
+  label record 17174 D3 at (745, 1007) Justification=2 FontID=3
+  label record 17176 D4 at (745, 997) Justification=2 FontID=3
+  label record 17178 D5 at (745, 977) Justification=2 FontID=3
+  label record 17180 D6 at (745, 967) Justification=2 FontID=3
+  label record 17182 D7 at (745, 947) Justification=2 FontID=3
+  label record 17184 D8 at (925, 947) Justification=None FontID=3
+  label record 17186 D9 at (925, 967) Justification=None FontID=3
+
+== sheet 5: U1 balls on D0-D15, against the XDC
+D0 ball ['V8']  XDC V8  OK
+D1 ball ['V7']  XDC V7  OK
+D2 ball ['W7']  XDC W7  OK
+D3 ball ['W6']  XDC W6  OK
+D4 ball ['U5']  XDC U5  OK
+D5 ball ['W5']  XDC W5  OK
+D6 ball ['V5']  XDC V5  OK
+D7 ball ['U4']  XDC U4  OK
+D8 ball ['L1']  XDC L1  OK
+D9 ball ['K3']  XDC K3  OK
+D10 ball ['K2']  XDC K2  OK
+D11 ball ['J1']  XDC J1  OK
+D12 ball ['J3']  XDC J3  OK
+D13 ball ['H1']  XDC H1  OK
+D14 ball ['A14']  XDC A14  OK
+D15 ball ['A15']  XDC A15  OK
+D-labels on other sheets: none
+
+== net names: every net label / power port text, all sheets; collisions with the proposal
+schematic names 164, PCB nets 165; proposed names already used: none
+SDRAM-prefixed names now: ['SDRAM-CLK', 'SDRAM-CS#']
+
+== R designators
+schematic R: 51 ['R1', 'R2', 'R4', 'R5', 'R6', 'R7', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20', 'R21', 'R22', 'R23', 'R24', 'R25', 'R34', 'R35', 'R80', 'R81', 'R82', 'R83', 'R84', 'R85', 'R86', 'R90', 'R91', 'R92', 'R93', 'R94', 'R96', 'R97', 'R98', 'R99', 'R101', 'R102', 'R103', 'R107', 'R108', 'R113', 'R114', 'R115', 'R116', 'R117', 'R118']
+PCB R: 51 same set
+highest R: 118; R119-R134 used anywhere: none
+
+== PCB classes and rules that name the data bus
+class SDRAM_DATA ['D0', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12', 'D13', 'D14', 'D15']
+rule Width Width_SDRAM InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL') | All
+rule Clearance Clearance_SDRAM_CLK InNet('SDRAM-CLK') And (OnLayer('L3-SIG') Or OnLayer('L4-SIG')) | All
+rule Clearance Clearance_SDRAM_INNER (InNetClass('SDRAM_DATA') Or InNetClass('SDRAM_ADDR') Or InNetClass('SDRAM_CTRL')) And (OnLayer('L3-SIG') Or OnLayer('L4-SIG')) | All
+
+== sheet-3 block window (45, 540, 340, 698): objects inside (frame excluded)
+objects in the window: 0
+
+== template R24 (sheet 4) and the font tables
+R24 subtree records 26 FontIDs used [1, 3] HiddenNetName children 2
+  font 1 sheet3 ['10', 'Times New Roman', None] / sheet4 ['10', 'Times New Roman', None] -> same
+  font 3 sheet3 ['8', 'Courier New', None] / sheet4 ['8', 'Courier New', None] -> same
+R24 params: {'DeviceName': 'R0201', 'LibraryName': 'rcl', 'MANF': 'Yageo', 'MANF#': 'RC0201FR-0733RL', 'SPEC': 'thick film +-1%, 1/20W, 0201', 'Comment': '33'}
+R24 pins (designator, hot end): [('2', (437, 272)), ('1', (417, 272))] body at ('427', '272')

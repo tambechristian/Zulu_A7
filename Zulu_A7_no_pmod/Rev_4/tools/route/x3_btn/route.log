@@ -1,0 +1,8 @@
+GND            
+VCC3V3         
+CHAN28         
+N$BTN          
+TDI            
+TDO            
+VBATT          
+routed 5 connections, failed 0; 5 vias, 16 tracks -> tools/route/x3_btn/route.json

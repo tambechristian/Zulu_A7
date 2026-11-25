@@ -1,0 +1,192 @@
+{
+ "plan": "tools/route/stemma/plan.json",
+ "emit_problems": [],
+ "open_exact": 0,
+ "open_nets_exact": [],
+ "dup_tracks_result": 26,
+ "dup_vias_result": 0,
+ "zero_len_tracks_plan": 0,
+ "short_tracks_plan_lt_0.01": 0,
+ "drc_counts": {
+  "unmoved_base": 34,
+  "base_moved": 86,
+  "result": 34,
+  "new_vs_unmoved": 0,
+  "fixed_vs_unmoved": 0
+ },
+ "drc_new": [],
+ "through_via_in_smd_pad_result": [
+  [
+   "GND 32.350,16.575 Top>Bot 0.35/0.20",
+   [
+    [
+     "U2-EP(GND)",
+     0.175
+    ]
+   ]
+  ],
+  [
+   "GND 32.475,9.025 Top>Bot 0.35/0.20",
+   [
+    [
+     "X4-2(GND)",
+     0.175
+    ]
+   ]
+  ]
+ ],
+ "uvia_in_smd_pad_result_total": 149,
+ "uvia_in_smd_pad_unmoved_base": 141,
+ "uvia_in_smd_pad_new": [
+  [
+   "GND 52.425,10.350 Top>L2- 0.30/0.15",
+   [
+    [
+     "C143-2(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "GND 55.275,6.425 Top>L2- 0.30/0.15",
+   [
+    [
+     "X5-1(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "GND 59.050,4.875 Top>L2- 0.30/0.15",
+   [
+    [
+     "X5-MP1(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "GND 59.050,10.475 Top>L2- 0.30/0.15",
+   [
+    [
+     "X5-MP2(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "VCC3V3 56.025,8.650 L5->Bot 0.30/0.15",
+   [
+    [
+     "C145-1(VCC3V3)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "VCC3V3 56.175,7.675 Top>L2- 0.30/0.15",
+   [
+    [
+     "X5-2(VCC3V3)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "I2C-SDA 50.850,8.500 Top>L2- 0.30/0.15",
+   [
+    [
+     "U1-U19(I2C-SDA)",
+     0.1507
+    ]
+   ]
+  ],
+  [
+   "VCC1V8 55.575,8.650 L5->Bot 0.30/0.15",
+   [
+    [
+     "C144-1(VCC1V8)",
+     0.1253
+    ]
+   ]
+  ]
+ ],
+ "new_through_vias": [
+  "FPGA-INIT# 57.400,4.700 Top>Bot 0.35/0.20"
+ ],
+ "counts": {
+  "tracks_added": 110,
+  "tracks_removed": 59,
+  "vias_added": 54,
+  "vias_removed": 38,
+  "tracks_readded_identical": 0,
+  "vias_readded_identical": 0,
+  "vias_added_by_type": {
+   "laser Top-L2": 16,
+   "laser L5-Bottom": 7,
+   "laser L2-L3": 12,
+   "buried L3-L4": 11,
+   "laser L4-L5": 7,
+   "through": 1
+  },
+  "vias_removed_by_type": {
+   "through": 4,
+   "laser Top-L2": 2,
+   "laser L5-Bottom": 11,
+   "laser L2-L3": 3,
+   "laser L4-L5": 11,
+   "buried L3-L4": 7
+  },
+  "net_via_change_by_type": {
+   "buried L3-L4": 4,
+   "laser L2-L3": 9,
+   "laser L4-L5": -4,
+   "laser L5-Bottom": -4,
+   "laser Top-L2": 14,
+   "through": -3
+  },
+  "added_track_mm": 71.53,
+  "removed_track_mm": 77.86,
+  "added_track_mm_excl_readded": 71.53,
+  "board_tracks": 5982,
+  "board_vias": 1992,
+  "board_vias_unmoved": 1976,
+  "board_tracks_unmoved": 5931,
+  "board_via_types": {
+   "laser L2-L3": 311,
+   "laser Top-L2": 351,
+   "buried L3-L4": 402,
+   "laser L5-Bottom": 317,
+   "laser L4-L5": 296,
+   "through": 315
+  },
+  "unmoved_via_types": {
+   "laser L2-L3": 302,
+   "laser Top-L2": 337,
+   "buried L3-L4": 398,
+   "laser L5-Bottom": 321,
+   "laser L4-L5": 300,
+   "through": 318
+  }
+ },
+ "usb": {
+  "P_mm": 12.1863,
+  "N_mm": 12.1863,
+  "mismatch_mm": 0.0,
+  "layers": [
+   "Top Layer"
+  ],
+  "widths": [
+   0.15
+  ],
+  "vias": 0,
+  "segments": [
+   11,
+   23
+  ],
+  "coupled_mm_tol0.005": 9.151,
+  "coupled_mm_tol0.010": 9.552,
+  "coupled_mm_tol0.030": 10.389,
+  "min_gap_mm": 0.15
+ }
+}

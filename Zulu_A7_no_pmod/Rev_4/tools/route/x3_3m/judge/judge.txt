@@ -1,0 +1,221 @@
+{
+ "plan": "tools/route/x3_3m/plan.json",
+ "emit_problems": [],
+ "open_exact": 0,
+ "open_nets_exact": [],
+ "dup_tracks_result": 38,
+ "dup_vias_result": 0,
+ "zero_len_tracks_plan": 0,
+ "short_tracks_plan_lt_0.01": 0,
+ "drc_counts": {
+  "unmoved_base": 59,
+  "base_moved": 82,
+  "result": 34,
+  "new_vs_unmoved": 0,
+  "fixed_vs_unmoved": 25
+ },
+ "drc_new": [],
+ "through_via_in_smd_pad_result": [
+  [
+   "GND 32.350,16.575 Top>Bot 0.35/0.20",
+   [
+    [
+     "U2-EP(GND)",
+     0.175
+    ]
+   ]
+  ],
+  [
+   "GND 32.475,9.025 Top>Bot 0.35/0.20",
+   [
+    [
+     "X4-2(GND)",
+     0.175
+    ]
+   ]
+  ]
+ ],
+ "uvia_in_smd_pad_result_total": 151,
+ "uvia_in_smd_pad_unmoved_base": 146,
+ "uvia_in_smd_pad_new": [
+  [
+   "GND 18.600,16.850 Top>L2- 0.30/0.15",
+   [
+    [
+     "C158-1(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "GND 6.200,15.950 Top>L2- 0.30/0.15",
+   [
+    [
+     "X3-6(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "GND 2.400,5.550 Top>L2- 0.30/0.15",
+   [
+    [
+     "X3-G1(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "GND 3.400,18.700 Top>L2- 0.30/0.15",
+   [
+    [
+     "X3-G2(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "GND 16.750,11.250 Top>L2- 0.30/0.15",
+   [
+    [
+     "X3-G3(GND)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "VCC3V3 18.550,16.250 Top>L2- 0.30/0.15",
+   [
+    [
+     "C158-2(VCC3V3)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "VCC3V3 6.250,13.750 Top>L2- 0.30/0.15",
+   [
+    [
+     "X3-4(VCC3V3)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "VCC3V3 18.425,6.025 Top>L2- 0.30/0.15",
+   [
+    [
+     "BTN-1(VCC3V3)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "N$BTN 22.825,3.900 Top>L2- 0.30/0.15",
+   [
+    [
+     "BTN-4(N$BTN)",
+     0.15
+    ]
+   ]
+  ],
+  [
+   "SD-CMD 7.650,13.350 Top>L2- 0.30/0.15",
+   [
+    [
+     "X3-3(SD-CMD)",
+     0.15
+    ]
+   ]
+  ]
+ ],
+ "new_through_vias": [
+  "LD4_A 8.725,18.200 Top>Bot 0.35/0.20",
+  "GND 5.975,16.875 Top>Bot 0.35/0.20",
+  "GND 4.275,5.475 Top>Bot 0.35/0.20",
+  "GND 3.125,7.050 Top>Bot 0.35/0.20",
+  "GND 5.225,18.425 Top>Bot 0.35/0.20",
+  "N$BTN 25.025,10.175 Top>Bot 0.35/0.20",
+  "N$BTN 27.925,8.225 Top>Bot 0.35/0.20",
+  "SD-DAT0 10.125,17.900 Top>Bot 0.35/0.20",
+  "SD-DAT1 7.950,18.500 Top>Bot 0.35/0.20",
+  "USB5V0 14.625,19.650 Top>Bot 0.35/0.20",
+  "USB5V0 14.275,18.100 Top>Bot 0.35/0.20",
+  "USB5V0 15.950,14.900 Top>Bot 0.35/0.20",
+  "VU 5.950,10.550 Top>Bot 0.35/0.20"
+ ],
+ "counts": {
+  "tracks_added": 238,
+  "tracks_removed": 117,
+  "vias_added": 96,
+  "vias_removed": 48,
+  "tracks_readded_identical": 0,
+  "vias_readded_identical": 0,
+  "vias_added_by_type": {
+   "through": 13,
+   "laser Top-L2": 26,
+   "laser L2-L3": 21,
+   "buried L3-L4": 12,
+   "laser L4-L5": 14,
+   "laser L5-Bottom": 10
+  },
+  "vias_removed_by_type": {
+   "laser Top-L2": 16,
+   "through": 16,
+   "laser L4-L5": 3,
+   "buried L3-L4": 4,
+   "laser L2-L3": 9
+  },
+  "net_via_change_by_type": {
+   "buried L3-L4": 8,
+   "laser L2-L3": 12,
+   "laser L4-L5": 11,
+   "laser L5-Bottom": 10,
+   "laser Top-L2": 10,
+   "through": -3
+  },
+  "added_track_mm": 177.71,
+  "removed_track_mm": 125.72,
+  "added_track_mm_excl_readded": 177.71,
+  "board_tracks": 6103,
+  "board_vias": 2040,
+  "board_vias_unmoved": 1992,
+  "board_tracks_unmoved": 5982,
+  "board_via_types": {
+   "laser L4-L5": 307,
+   "buried L3-L4": 410,
+   "laser L2-L3": 323,
+   "laser Top-L2": 361,
+   "laser L5-Bottom": 327,
+   "through": 312
+  },
+  "unmoved_via_types": {
+   "laser L4-L5": 296,
+   "buried L3-L4": 402,
+   "laser L2-L3": 311,
+   "laser Top-L2": 351,
+   "laser L5-Bottom": 317,
+   "through": 315
+  }
+ },
+ "usb": {
+  "P_mm": 12.1863,
+  "N_mm": 12.1863,
+  "mismatch_mm": 0.0,
+  "layers": [
+   "Top Layer"
+  ],
+  "widths": [
+   0.15
+  ],
+  "vias": 0,
+  "segments": [
+   11,
+   23
+  ],
+  "coupled_mm_tol0.005": 9.151,
+  "coupled_mm_tol0.010": 9.552,
+  "coupled_mm_tol0.030": 10.389,
+  "min_gap_mm": 0.15
+ }
+}

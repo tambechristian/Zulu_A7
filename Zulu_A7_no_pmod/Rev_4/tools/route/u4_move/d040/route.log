@@ -1,0 +1,16 @@
+  GND plane groups tied 2/2
+GND            
+  VCC3V3 plane groups tied 2/2
+VCC3V3         
+BTN            
+CHAN2          
+CHAN5          
+CHAN7          
+CHAN8          ripped CHAN2
+CLK-12M-SHARED ripped CHAN7
+FLASH-D01      
+FLASH-D03      
+VCC1V8         
+CHAN2          
+CHAN7          
+routed 11 connections, failed 0; 35 vias, 99 tracks -> tools/route/u4_move/d040/route.json

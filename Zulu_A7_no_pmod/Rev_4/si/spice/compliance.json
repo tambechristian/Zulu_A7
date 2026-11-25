@@ -1,0 +1,7218 @@
+[
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4498382954896942,
+  "vmin": -0.4143998392730326,
+  "pass": true
+ },
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.4244031567194115,
+  "vmin": -0.32442254611762783,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4436275241629386,
+  "vmin": -0.4123178914453824,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.418395799828406,
+  "vmin": -0.3066730476846262,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4425848520965814,
+  "vmin": -0.3974626351061869,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.405283944265106,
+  "vmin": -0.32315352401710307,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4369704996423045,
+  "vmin": -0.39305642554224196,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3882021120616037,
+  "vmin": -0.30470584426131164,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.443145463225771,
+  "vmin": -0.3984818998419549,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3933369649933454,
+  "vmin": -0.3156148148723236,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.455253949291268,
+  "vmin": -0.40991054462159765,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.4089000255261404,
+  "vmin": -0.3198740358755033,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4573387940386837,
+  "vmin": -0.42128890527354157,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.393851572523769,
+  "vmin": -0.34896385158915183,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.453058533015339,
+  "vmin": -0.3996588786156118,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3759227196414625,
+  "vmin": -0.33662296425027616,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4440513329705724,
+  "vmin": -0.3945502106500939,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.392800047553879,
+  "vmin": -0.3299582952091555,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4323136550439344,
+  "vmin": -0.3819377738308726,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.363846314196165,
+  "vmin": -0.3233577988147765,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.432624976676259,
+  "vmin": -0.39374196757368296,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.369704866751642,
+  "vmin": -0.3133569756797492,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4422562884904617,
+  "vmin": -0.3914075396545876,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3807728446069754,
+  "vmin": -0.3157805427631634,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.448278106974481,
+  "vmin": -0.42259282615897825,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3890205896973318,
+  "vmin": -0.3110842579179211,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4345887915312883,
+  "vmin": -0.3911027599877942,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.362009894825837,
+  "vmin": -0.3278333740056303,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.432415591033701,
+  "vmin": -0.39117717886760095,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3644925842043083,
+  "vmin": -0.3272573449313563,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.37336492179139524,
+  "detail": [
+   "under",
+   0.454378720686355,
+   0.7224611236663498,
+   9.632814982217997,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2800236913435465,
+  "detail": [
+   "under",
+   0.454378720686355,
+   0.7224611236663498,
+   7.224611236663499,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 8.432636137100607,
+  "detail": [
+   "under",
+   0.6150571194239987,
+   1.3281401915933457,
+   17.708535887911275,
+   2.1
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 6.324477102825456,
+  "detail": [
+   "under",
+   0.6150571194239987,
+   1.3281401915933457,
+   13.281401915933458,
+   2.1
+  ]
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4358123484923873,
+  "vmin": -0.39363781076325977,
+  "pass": true
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.358030831335345,
+  "vmin": -0.3184390178441655,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.384682243549733,
+  "vmin": -0.36753688154299236,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3255535923189896,
+  "vmin": -0.25471866356996786,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.08900602917342347,
+  "detail": [
+   "under",
+   0.4281014928682707,
+   0.41187540000001716,
+   5.491672000000229,
+   61.7
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.0667545218800676,
+  "detail": [
+   "under",
+   0.4281014928682707,
+   0.41187540000001716,
+   4.1187540000001714,
+   61.7
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.04686148028092819,
+  "detail": [
+   "under",
+   0.4199085965813988,
+   0.21685149999999523,
+   2.8913533333332695,
+   61.7
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.03514611021069614,
+  "detail": [
+   "under",
+   0.4199085965813988,
+   0.21685149999999523,
+   2.1685149999999522,
+   61.7
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.18802883465156908,
+  "detail": [
+   "under",
+   0.47033240218893324,
+   0.3638357950507862,
+   4.851143934010483,
+   25.8
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.14102162598867682,
+  "detail": [
+   "under",
+   0.47033240218893324,
+   0.3638357950507862,
+   3.6383579505078623,
+   25.8
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 3.128878388419034,
+  "detail": [
+   "under",
+   0.6210689841770506,
+   0.4927983461759979,
+   6.570644615679972,
+   2.1
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 2.3466587913142756,
+  "detail": [
+   "under",
+   0.6210689841770506,
+   0.4927983461759979,
+   4.927983461759979,
+   2.1
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.395606331741253,
+  "vmin": -0.3730909166119764,
+  "pass": true
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3308078827063627,
+  "vmin": -0.26075883502189273,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.35412869420174364,
+  "detail": [
+   "under",
+   0.45766626775723507,
+   0.6852390232803739,
+   9.136520310404986,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2655965206513077,
+  "detail": [
+   "under",
+   0.45766626775723507,
+   0.6852390232803739,
+   6.852390232803739,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 289.34339880304026,
+  "detail": [
+   "under",
+   0.8983518922290558,
+   0.8680301964091208,
+   11.573735952121611,
+   0.04
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 217.00754910228022,
+  "detail": [
+   "under",
+   0.8983518922290558,
+   0.8680301964091208,
+   8.680301964091209,
+   0.04
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.462945530958105,
+  "vmin": -0.41684789024844965,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.387326365089606,
+  "vmin": -0.33568767354582285,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4401491569965064,
+  "vmin": -0.40456547085046224,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.369599256963513,
+  "vmin": -0.32779801674879183,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.2935740339756712,
+  "detail": [
+   "under",
+   0.4781742330762191,
+   0.5680657557429238,
+   7.574210076572317,
+   25.8
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2201805254817534,
+  "detail": [
+   "under",
+   0.4781742330762191,
+   0.5680657557429238,
+   5.680657557429238,
+   25.8
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 376.41337419933126,
+  "detail": [
+   "under",
+   0.8525978911309082,
+   1.1292401225979938,
+   15.056534967973251,
+   0.04
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 282.31003064949846,
+  "detail": [
+   "under",
+   0.8525978911309082,
+   1.1292401225979938,
+   11.292401225979939,
+   0.04
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.14321755830343327,
+  "detail": [
+   "under",
+   0.4481466313978375,
+   0.6627392510491374,
+   8.836523347321833,
+   61.7
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.10741316872757493,
+  "detail": [
+   "under",
+   0.4481466313978375,
+   0.6627392510491374,
+   6.627392510491374,
+   61.7
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 13.959794240111743,
+  "detail": [
+   "under",
+   0.6893030776968836,
+   0.9841654939278778,
+   13.122206585705037,
+   0.94
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 10.469845680083807,
+  "detail": [
+   "under",
+   0.6893030776968836,
+   0.9841654939278778,
+   9.841654939278778,
+   0.94
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4177066913583767,
+  "vmin": -0.3869162857413834,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.36098446888228,
+  "vmin": -0.3170546017006084,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.21602863119362054,
+  "detail": [
+   "under",
+   0.49333109777837936,
+   0.41801540135965576,
+   5.57353868479541,
+   25.8
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.16202147339521542,
+  "detail": [
+   "under",
+   0.49333109777837936,
+   0.41801540135965576,
+   4.180154013596558,
+   25.8
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 7.458217750991581,
+  "detail": [
+   "under",
+   0.6612974052416647,
+   0.5258043514449064,
+   7.010724685932086,
+   0.94
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 5.593663313243686,
+  "detail": [
+   "under",
+   0.6612974052416647,
+   0.5258043514449064,
+   5.2580435144490645,
+   0.94
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.405565707776654,
+  "vmin": -0.37755472348467095,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3546492309543,
+  "vmin": -0.3067512199656714,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.361722747321942,
+  "vmin": -0.3504863924985995,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3251384473132433,
+  "vmin": -0.28553358030793036,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.3901105346748164,
+  "vmin": -0.3757558113892323,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3531837531288193,
+  "vmin": -0.3140435127355,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4727980387718965,
+  "detail": [
+   "under",
+   0.5031560769864115,
+   0.39005838198681464,
+   5.200778426490862,
+   11.0
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.35459852907892236,
+  "detail": [
+   "under",
+   0.5031560769864115,
+   0.39005838198681464,
+   3.900583819868146,
+   11.0
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 2.68067233525944,
+  "detail": [
+   "under",
+   0.5557530818079048,
+   0.9590105279390647,
+   12.786807039187527,
+   4.77
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 2.0105042514445803,
+  "detail": [
+   "under",
+   0.5557530818079048,
+   0.9590105279390647,
+   9.590105279390647,
+   4.77
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.19944265697754907,
+  "detail": [
+   "under",
+   0.4572418008266316,
+   0.3859215412515574,
+   5.145620550020766,
+   25.8
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.1495819927331618,
+  "detail": [
+   "under",
+   0.4572418008266316,
+   0.3859215412515574,
+   3.8592154125155744,
+   25.8
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.7928555938049227,
+  "detail": [
+   "under",
+   0.5555176970188711,
+   0.2836440886837111,
+   3.781921182449481,
+   4.77
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5946416953536922,
+  "detail": [
+   "under",
+   0.5555176970188711,
+   0.2836440886837111,
+   2.8364408868371114,
+   4.77
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.2311025943152425,
+  "detail": [
+   "under",
+   0.45602039942046946,
+   0.4471835199999943,
+   5.962446933333257,
+   25.8
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.17332694573643187,
+  "detail": [
+   "under",
+   0.45602039942046946,
+   0.4471835199999943,
+   4.471835199999942,
+   25.8
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4967760807994679,
+  "detail": [
+   "under",
+   0.5263662199448829,
+   0.409840266659561,
+   5.464536888794147,
+   11.0
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.3725820605996009,
+  "detail": [
+   "under",
+   0.5263662199448829,
+   0.409840266659561,
+   4.09840266659561,
+   11.0
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.388320838440066,
+  "vmin": -0.3777056505954559,
+  "pass": true
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.34498357371114,
+  "vmin": -0.2990121567012123,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4109583295746697,
+  "vmin": -0.39792503481863517,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3643126389116134,
+  "vmin": -0.3235853082917698,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.1822682575951626,
+  "detail": [
+   "under",
+   0.47872945832354413,
+   0.3526890784466396,
+   4.702521045955195,
+   25.8
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.13670119319637192,
+  "detail": [
+   "under",
+   0.47872945832354413,
+   0.3526890784466396,
+   3.5268907844663957,
+   25.8
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.28098826333081106,
+  "detail": [
+   "under",
+   0.45597157277734807,
+   0.5437122895451194,
+   7.249497193934926,
+   25.8
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2107411974981083,
+  "detail": [
+   "under",
+   0.45597157277734807,
+   0.5437122895451194,
+   5.4371228954511945,
+   25.8
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.3896965198069737,
+  "vmin": -0.3784938174406348,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3347722377460887,
+  "vmin": -0.2871944795946054,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.5322448484848316,
+  "detail": [
+   "under",
+   0.5049474740351553,
+   0.439101999999986,
+   5.854693333333147,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.39918363636362364,
+  "detail": [
+   "under",
+   0.5049474740351553,
+   0.439101999999986,
+   4.39101999999986,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 26.088188671276658,
+  "detail": [
+   "under",
+   0.7037868922598679,
+   0.8413440846486722,
+   11.217921128648962,
+   0.43
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 19.566141503457494,
+  "detail": [
+   "under",
+   0.7037868922598679,
+   0.8413440846486722,
+   8.413440846486722,
+   0.43
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.372259464732984,
+  "vmin": -0.3715956572464833,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3187188123418445,
+  "vmin": -0.2723957476840755,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.12914445054274099,
+  "detail": [
+   "under",
+   0.40078685008803455,
+   0.5976159448865339,
+   7.968212598487119,
+   61.7
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.09685833790705572,
+  "detail": [
+   "under",
+   0.40078685008803455,
+   0.5976159448865339,
+   5.976159448865339,
+   61.7
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 2.187354378847219,
+  "detail": [
+   "under",
+   0.5928892548287247,
+   0.7825260290325925,
+   10.433680387101234,
+   4.77
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 1.6405157841354143,
+  "detail": [
+   "under",
+   0.5928892548287247,
+   0.7825260290325925,
+   7.825260290325925,
+   4.77
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.374960972973861,
+  "vmin": -0.37496557980353457,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.320889332298133,
+  "vmin": -0.24750963972176218,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4208370563434705,
+  "vmin": -0.3931904462816463,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.342618941601231,
+  "vmin": -0.280762442373069,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.21362922663117348,
+  "detail": [
+   "under",
+   0.45236910884344966,
+   0.4133725535313207,
+   5.511634047084276,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.16022191997338012,
+  "detail": [
+   "under",
+   0.45236910884344966,
+   0.4133725535313207,
+   4.133725535313207,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.08556183589565149,
+  "detail": [
+   "under",
+   0.4153645999417566,
+   0.39593739560712726,
+   5.279165274761697,
+   61.7
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.06417137692173862,
+  "detail": [
+   "under",
+   0.4153645999417566,
+   0.39593739560712726,
+   3.959373956071273,
+   61.7
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.08309179978290729,
+  "detail": [
+   "under",
+   0.37363752003,
+   0.6231884983718047,
+   8.309179978290729,
+   100.0
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.062318849837180466,
+  "detail": [
+   "under",
+   0.37363752003,
+   0.6231884983718047,
+   6.2318849837180466,
+   100.0
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.18064031007752285,
+  "detail": [
+   "under",
+   0.47224650199250107,
+   0.3495390000000067,
+   4.66052000000009,
+   25.8
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.13548023255814212,
+  "detail": [
+   "under",
+   0.47224650199250107,
+   0.3495390000000067,
+   3.495390000000067,
+   25.8
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.3949002154692285,
+  "vmin": -0.37697017046290426,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.328085371569124,
+  "vmin": -0.2539310968245786,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.08233479999999765,
+  "detail": [
+   "under",
+   0.39899413477178447,
+   0.6175109999999824,
+   8.233479999999766,
+   100.0
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.06175109999999824,
+  "detail": [
+   "under",
+   0.39899413477178447,
+   0.6175109999999824,
+   6.175109999999824,
+   100.0
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.0628271253869306,
+  "detail": [
+   "under",
+   0.4167118604710339,
+   0.29073252272802136,
+   3.8764336363736183,
+   61.7
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.04712034404019795,
+  "detail": [
+   "under",
+   0.4167118604710339,
+   0.29073252272802136,
+   2.9073252272802135,
+   61.7
+  ]
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.438875188095375,
+  "vmin": -0.4087294408441702,
+  "pass": true
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.387606151942639,
+  "vmin": -0.3382421324208748,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4637881120936527,
+  "vmin": -0.4272284001952771,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.393456651650075,
+  "vmin": -0.34685497715599534,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4194854969044317,
+  "vmin": -0.3944136840729521,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.364828634083586,
+  "vmin": -0.3127485648105369,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.397339556816889,
+  "vmin": -0.37872004500328715,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.349322594921272,
+  "vmin": -0.31931869054824147,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4218853132900007,
+  "vmin": -0.391041041855641,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3696991601428765,
+  "vmin": -0.32631895091449686,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4189135430315742,
+  "vmin": -0.39562911551731894,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.376161501077431,
+  "vmin": -0.32617086303699105,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.4522918123318465,
+  "vmin": -0.4216645040674213,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.390890434884158,
+  "vmin": -0.3563984365133885,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.401895638719032,
+  "vmin": -0.26568649030497227,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.3791834017781834,
+  "vmin": -0.23752709019157967,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6659393360544463,
+  "vmin": -0.5751403813071023,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6261232351348376,
+  "vmin": -0.3788836191190957,
+  "pass": true
+ },
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.648010251276804,
+  "vmin": -0.6144615353949942,
+  "pass": true
+ },
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6665758009662985,
+  "vmin": -0.4015033146793785,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6669316064622297,
+  "vmin": -0.5621413845388005,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6543564227853436,
+  "vmin": -0.35480009973110055,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6444132153261566,
+  "vmin": -0.6049098630088883,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.636416452866876,
+  "vmin": -0.37941926220983563,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6748924593905747,
+  "vmin": -0.583517655719034,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.681272833830765,
+  "vmin": -0.4000324932287851,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6652361829262188,
+  "vmin": -0.6039765667995087,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6413603154118,
+  "vmin": -0.40388435322606486,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.694329374724962,
+  "vmin": -0.5355987701362266,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.626225207260267,
+  "vmin": -0.404821381599032,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6827534839795124,
+  "vmin": -0.5769530058309649,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6649606231653937,
+  "vmin": -0.3999754644082697,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.68313202384152,
+  "vmin": -0.5570671592850522,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.62801131571627,
+  "vmin": -0.39848986336831643,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6882342657554,
+  "vmin": -0.5700537257590728,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6337876413997443,
+  "vmin": -0.43668246935211397,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.681050305460558,
+  "vmin": -0.5546550707175514,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6521941491696834,
+  "vmin": -0.38706484495282856,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6781298730490914,
+  "vmin": -0.5963365159100156,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.601848961065352,
+  "vmin": -0.45841358048867953,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6941065553884487,
+  "vmin": -0.5363086854967531,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.617675657925964,
+  "vmin": -0.42275093173279205,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6861543582912857,
+  "vmin": -0.5434061246895,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6237687963117726,
+  "vmin": -0.3988213521934836,
+  "pass": true
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6868003135686456,
+  "vmin": -0.5475906375846069,
+  "pass": true
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6378115303118834,
+  "vmin": -0.3941943247617501,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6309521743509734,
+  "vmin": -0.547129224663135,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.610314519203273,
+  "vmin": -0.3655817942109577,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4571086267087967,
+  "detail": [
+   "under",
+   0.46919185608189967,
+   0.8845051926815216,
+   11.793402569086956,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.34283147003159753,
+  "detail": [
+   "under",
+   0.46919185608189967,
+   0.8845051926815216,
+   8.845051926815216,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 337.60250841156625,
+  "detail": [
+   "under",
+   0.8206783136085591,
+   2.278816931778072,
+   30.384225757040962,
+   0.09
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 253.20188130867467,
+  "detail": [
+   "under",
+   0.8206783136085591,
+   2.278816931778072,
+   22.78816931778072,
+   0.09
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6769314531509316,
+  "vmin": -0.44467738759198117,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.607172736447845,
+  "vmin": -0.3054879036861438,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.13361052686211713,
+  "detail": [
+   "under",
+   0.4456374922552662,
+   0.618282713054447,
+   8.243769507392628,
+   61.7
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.10020789514658784,
+  "detail": [
+   "under",
+   0.4456374922552662,
+   0.618282713054447,
+   6.18282713054447,
+   61.7
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.14972730864116732,
+  "detail": [
+   "under",
+   0.46008884591616034,
+   0.2897223422206588,
+   3.862964562942117,
+   25.8
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.1122954814808755,
+  "detail": [
+   "under",
+   0.46008884591616034,
+   0.2897223422206588,
+   2.897223422206588,
+   25.8
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6757473262180493,
+  "vmin": -0.4538804104093007,
+  "pass": true
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6164444416580697,
+  "vmin": -0.3266738789425691,
+  "pass": true
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.32408482599079014,
+  "detail": [
+   "under",
+   0.48068741022322065,
+   0.6271041382921788,
+   8.361388510562385,
+   25.8
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.24306361949309255,
+  "detail": [
+   "under",
+   0.48068741022322065,
+   0.6271041382921788,
+   6.271041382921788,
+   25.8
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 172.95738644363067,
+  "detail": [
+   "under",
+   0.8185987585379312,
+   1.167462358494507,
+   15.566164779926758,
+   0.09
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 129.71803983272298,
+  "detail": [
+   "under",
+   0.8185987585379312,
+   1.167462358494507,
+   11.674623584945069,
+   0.09
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6602469217839286,
+  "vmin": -0.5452329023796214,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.625919360944722,
+  "vmin": -0.3848901834277053,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.44031145510053527,
+  "detail": [
+   "under",
+   0.4651036801929629,
+   0.8520026656195356,
+   11.36003554159381,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.33023359132540137,
+  "detail": [
+   "under",
+   0.4651036801929629,
+   0.8520026656195356,
+   8.520026656195355,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9810856024466186,
+   1.3184352311355436,
+   17.57913641514058,
+   0.0
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9810856024466186,
+   1.3184352311355436,
+   13.184352311355434,
+   0.0
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6766275992124253,
+  "vmin": -0.508147503364075,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6107032389353217,
+  "vmin": -0.3761520894551696,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6872293772667675,
+  "vmin": -0.47802439475748515,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6194113065897247,
+  "vmin": -0.38014933822829444,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4148006877750061,
+  "detail": [
+   "under",
+   0.45097224268642044,
+   0.8026393308446368,
+   10.701857744595157,
+   25.8
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.31110051583125453,
+  "detail": [
+   "under",
+   0.45097224268642044,
+   0.8026393308446368,
+   8.026393308446368,
+   25.8
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9590418707877446,
+   2.1576804505992824,
+   28.7690726746571,
+   0.0
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9590418707877446,
+   2.1576804505992824,
+   21.576804505992826,
+   0.0
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.36943220185192016,
+  "detail": [
+   "under",
+   0.48318992110372627,
+   0.7148513105834656,
+   9.53135080777954,
+   25.8
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.27707415138894015,
+  "detail": [
+   "under",
+   0.48318992110372627,
+   0.7148513105834656,
+   7.148513105834656,
+   25.8
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 655.1322111154839,
+  "detail": [
+   "under",
+   0.913686253788807,
+   0.9826983166732258,
+   13.102644222309678,
+   0.02
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 491.3491583366129,
+  "detail": [
+   "under",
+   0.913686253788807,
+   0.9826983166732258,
+   9.826983166732258,
+   0.02
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6807656248734126,
+  "vmin": -0.4613514575016645,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6179335435599413,
+  "vmin": -0.37619062589993196,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.32704086772668806,
+  "detail": [
+   "under",
+   0.496831085383851,
+   0.6328240790511414,
+   8.437654387348552,
+   25.8
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.24528065079501604,
+  "detail": [
+   "under",
+   0.496831085383851,
+   0.6328240790511414,
+   6.328240790511414,
+   25.8
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 112.7143122477735,
+  "detail": [
+   "under",
+   0.8116366253941979,
+   0.7608216076724711,
+   10.144288102299615,
+   0.09
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 84.53573418583012,
+  "detail": [
+   "under",
+   0.8116366253941979,
+   0.7608216076724711,
+   7.608216076724711,
+   0.09
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6851404833639396,
+  "vmin": -0.43009832947179427,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6252078641605734,
+  "vmin": -0.37454180320362623,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6613491197359007,
+  "vmin": -0.4524730352273077,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6416308603143404,
+  "vmin": -0.3726547716287104,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.26725922964449644,
+  "detail": [
+   "under",
+   0.4768441037588622,
+   0.5171466093621007,
+   6.895288124828008,
+   25.8
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.20044442223337233,
+  "detail": [
+   "under",
+   0.4768441037588622,
+   0.5171466093621007,
+   5.171466093621007,
+   25.8
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 3.3892209433712863,
+  "detail": [
+   "under",
+   0.6561876039653946,
+   0.23894007650767565,
+   3.1858676867690088,
+   0.94
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 2.5419157075284646,
+  "detail": [
+   "under",
+   0.6561876039653946,
+   0.23894007650767565,
+   2.389400765076757,
+   0.94
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.24907914899763106,
+  "detail": [
+   "under",
+   0.49780161879566415,
+   0.4819681533104161,
+   6.426242044138881,
+   25.8
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.1868093617482233,
+  "detail": [
+   "under",
+   0.49780161879566415,
+   0.4819681533104161,
+   4.819681533104161,
+   25.8
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 49.49923883401019,
+  "detail": [
+   "under",
+   0.7108221687262029,
+   1.5963504523968286,
+   21.284672698624384,
+   0.43
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 37.12442912550764,
+  "detail": [
+   "under",
+   0.7108221687262029,
+   1.5963504523968286,
+   15.963504523968286,
+   0.43
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6794759879863914,
+  "vmin": -0.45195542638774533,
+  "pass": true
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6340093731214007,
+  "vmin": -0.37658226229350683,
+  "pass": true
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.35749160744722164,
+  "detail": [
+   "under",
+   0.4714294185012947,
+   0.6917462604103739,
+   9.223283472138318,
+   25.8
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2681187055854162,
+  "detail": [
+   "under",
+   0.4714294185012947,
+   0.6917462604103739,
+   6.917462604103738,
+   25.8
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 76.1832117144748,
+  "detail": [
+   "under",
+   0.7837310935131041,
+   1.142748175717122,
+   15.23664234289496,
+   0.2
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 57.137408785856096,
+  "detail": [
+   "under",
+   0.7837310935131041,
+   1.142748175717122,
+   11.42748175717122,
+   0.2
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.653250608782824,
+  "vmin": -0.47013702580624456,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.626901184300696,
+  "vmin": -0.3658653702884511,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.6871975665235144,
+  "detail": [
+   "under",
+   0.5017706397824025,
+   0.5669379923818993,
+   7.559173231758658,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5153981748926358,
+  "detail": [
+   "under",
+   0.5017706397824025,
+   0.5669379923818993,
+   5.669379923818994,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 30.591891434669364,
+  "detail": [
+   "under",
+   0.7161200364515079,
+   0.9865884987680869,
+   13.154513316907826,
+   0.43
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 22.94391857600202,
+  "detail": [
+   "under",
+   0.7161200364515079,
+   0.9865884987680869,
+   9.865884987680868,
+   0.43
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.659796568287435,
+  "vmin": -0.43883530860204845,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6190355507337926,
+  "vmin": -0.32911706953809433,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.5269969716267396,
+  "detail": [
+   "under",
+   0.5003080888412746,
+   0.43477250159206016,
+   5.796966687894136,
+   11.0
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.39524772872005476,
+  "detail": [
+   "under",
+   0.5003080888412746,
+   0.43477250159206016,
+   4.347725015920602,
+   11.0
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 4.990696189405781,
+  "detail": [
+   "under",
+   0.6045160267327623,
+   0.7860346498314105,
+   10.48046199775214,
+   2.1
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 3.7430221420543357,
+  "detail": [
+   "under",
+   0.6045160267327623,
+   0.7860346498314105,
+   7.860346498314105,
+   2.1
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6800961173131386,
+  "vmin": -0.45520709203839926,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.61299245001523,
+  "vmin": -0.3314800083612387,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.15296933208618718,
+  "detail": [
+   "under",
+   0.4229989226843083,
+   0.7078655842288312,
+   9.43820778971775,
+   61.7
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.11472699906464037,
+  "detail": [
+   "under",
+   0.4229989226843083,
+   0.7078655842288312,
+   7.0786558422883115,
+   61.7
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 1.5511687365416071,
+  "detail": [
+   "under",
+   0.5880967228492963,
+   0.5549306154977599,
+   7.399074873303466,
+   4.77
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 1.1633765524062054,
+  "detail": [
+   "under",
+   0.5880967228492963,
+   0.5549306154977599,
+   5.549306154977599,
+   4.77
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6688588779708193,
+  "vmin": -0.4437493691991826,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6165559600359436,
+  "vmin": -0.29945246215782917,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.29123052288374374,
+  "detail": [
+   "under",
+   0.46169818647167893,
+   0.5635310617800441,
+   7.513747490400588,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.21842289216280777,
+  "detail": [
+   "under",
+   0.46169818647167893,
+   0.5635310617800441,
+   5.635310617800441,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.9375592808411757,
+  "detail": [
+   "under",
+   0.5288260058746258,
+   0.77348640669397,
+   10.313152089252933,
+   11.0
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.7031694606308817,
+  "detail": [
+   "under",
+   0.5288260058746258,
+   0.77348640669397,
+   7.734864066939699,
+   11.0
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.665234220724199,
+  "vmin": -0.4947437061216557,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.619930432440641,
+  "vmin": -0.29836836031803055,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.17991856764110636,
+  "detail": [
+   "under",
+   0.4036348215840682,
+   0.8325731717592196,
+   11.100975623456263,
+   61.7
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.13493892573082977,
+  "detail": [
+   "under",
+   0.4036348215840682,
+   0.8325731717592196,
+   8.325731717592197,
+   61.7
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.6294238522219611,
+  "detail": [
+   "under",
+   0.5285228708486144,
+   0.5192746780831179,
+   6.923662374441572,
+   11.0
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.4720678891664708,
+  "detail": [
+   "under",
+   0.5285228708486144,
+   0.5192746780831179,
+   5.192746780831179,
+   11.0
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6632774551971936,
+  "vmin": -0.46599363668920635,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.593210811405576,
+  "vmin": -0.292306581491149,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.16376423899170903,
+  "detail": [
+   "under",
+   0.41509193268909794,
+   0.7578190159341335,
+   10.104253545788447,
+   61.7
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.12282317924378175,
+  "detail": [
+   "under",
+   0.41509193268909794,
+   0.7578190159341335,
+   7.578190159341334,
+   61.7
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.42880946839274453,
+  "detail": [
+   "under",
+   0.5442346151577182,
+   0.35376781142401426,
+   4.71690415232019,
+   11.0
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.32160710129455844,
+  "detail": [
+   "under",
+   0.5442346151577182,
+   0.35376781142401426,
+   3.537678114240143,
+   11.0
+  ]
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6818101829598913,
+  "vmin": -0.5527142149136424,
+  "pass": true
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6217321168676446,
+  "vmin": -0.43274307164067227,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6882224145993954,
+  "vmin": -0.517945089081383,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6014484365160455,
+  "vmin": -0.4071968865886734,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.679724376393074,
+  "vmin": -0.4859718945066306,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.615425115864158,
+  "vmin": -0.4151667587407145,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6722127442675254,
+  "vmin": -0.6178000707233346,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6025711216682286,
+  "vmin": -0.45805976918005653,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6858084576889576,
+  "vmin": -0.483768757704822,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6212970163374973,
+  "vmin": -0.38799563142068616,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.67741047928992,
+  "vmin": -0.5900490690624423,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.600271296174816,
+  "vmin": -0.4636549537158605,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.6693351079954093,
+  "vmin": -0.4781037602532778,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.6339914195424243,
+  "vmin": -0.39632513918255297,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_die",
+  "vmax": 3.5864700906674614,
+  "vmin": -0.6195772334222082,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "fab",
+  "node": "rx_pin",
+  "vmax": 3.578854719502832,
+  "vmin": -0.5915691747301115,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4711723741621414,
+  "vmin": -0.4161354133981351,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3984453622888005,
+  "vmin": -0.3314050330496194,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4769172763074794,
+  "vmin": -0.4094237413858113,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.4006518789359537,
+  "vmin": -0.32318944740770694,
+  "pass": true
+ },
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4785063079570033,
+  "vmin": -0.4306279576126572,
+  "pass": true
+ },
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.430182730498942,
+  "vmin": -0.33126187323274603,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4722228148898644,
+  "vmin": -0.42751763690304256,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.421250467142304,
+  "vmin": -0.32695005056198345,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.489697720842601,
+  "vmin": -0.4149379448132895,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.418767972963712,
+  "vmin": -0.3348158714749343,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4817249626984417,
+  "vmin": -0.42331154803283244,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.412063588530908,
+  "vmin": -0.338855795321776,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4864989429334883,
+  "vmin": -0.4123324788929874,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.407063981723971,
+  "vmin": -0.349804736809155,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.470479584959425,
+  "vmin": -0.4038910235992877,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3956736760460253,
+  "vmin": -0.34108933242408807,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4756189553598738,
+  "vmin": -0.41455842694889267,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.400317512633097,
+  "vmin": -0.36025626748785416,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.471501429871994,
+  "vmin": -0.4077840523788815,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.395776386530291,
+  "vmin": -0.33268416506117493,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4689932929170855,
+  "vmin": -0.41447539236579933,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.393297764928694,
+  "vmin": -0.34283132322157955,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.470686984594351,
+  "vmin": -0.4330241683788236,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.4149999486124916,
+  "vmin": -0.3707982624261435,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.46463529612915,
+  "vmin": -0.4107080960083018,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3962548467409226,
+  "vmin": -0.35350503347830187,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.462952594308743,
+  "vmin": -0.40977015996907407,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.389252201834184,
+  "vmin": -0.34291913085646786,
+  "pass": true
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4667887742523935,
+  "vmin": -0.4120475326784203,
+  "pass": true
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3898279926972883,
+  "vmin": -0.34160260311587887,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.456106136603184,
+  "vmin": -0.42953357873456444,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3844033970576795,
+  "vmin": -0.3060936973475435,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.3754699483204067,
+  "detail": [
+   "under",
+   0.4507159255968314,
+   0.7265343499999869,
+   9.687124666666493,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.28160246124030497,
+  "detail": [
+   "under",
+   0.4507159255968314,
+   0.7265343499999869,
+   7.265343499999869,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 10.553237381764992,
+  "detail": [
+   "under",
+   0.6780787352767018,
+   0.7440032354144319,
+   9.920043138859093,
+   0.94
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 7.914928036323744,
+  "detail": [
+   "under",
+   0.6780787352767018,
+   0.7440032354144319,
+   7.440032354144319,
+   0.94
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4042975636615904,
+  "vmin": -0.37887638999267503,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3387892850357517,
+  "vmin": -0.25707617716175785,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.2164121554924969,
+  "detail": [
+   "under",
+   0.4714834977660294,
+   0.4187575208779815,
+   5.58343361170642,
+   25.8
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.1623091166193727,
+  "detail": [
+   "under",
+   0.4714834977660294,
+   0.4187575208779815,
+   4.1875752087798155,
+   25.8
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.11108217054263614,
+  "detail": [
+   "under",
+   0.47256477791627166,
+   0.21494400000000094,
+   2.8659200000000125,
+   25.8
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.08331162790697712,
+  "detail": [
+   "under",
+   0.47256477791627166,
+   0.21494400000000094,
+   2.1494400000000096,
+   25.8
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4147800573493265,
+  "vmin": -0.38579889452319877,
+  "pass": true
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3458983238383033,
+  "vmin": -0.27675851455855666,
+  "pass": true
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4712569696969849,
+  "detail": [
+   "under",
+   0.5114891773136123,
+   0.38878700000001254,
+   5.183826666666834,
+   11.0
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.3534427272727387,
+  "detail": [
+   "under",
+   0.5114891773136123,
+   0.38878700000001254,
+   3.887870000000125,
+   11.0
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 6.93064843265558,
+  "detail": [
+   "under",
+   0.660679482015384,
+   0.48861071450221844,
+   6.514809526696245,
+   0.94
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 5.197986324491686,
+  "detail": [
+   "under",
+   0.660679482015384,
+   0.48861071450221844,
+   4.8861071450221845,
+   0.94
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.474301592587507,
+  "vmin": -0.42526226556756835,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3963726622650636,
+  "vmin": -0.34655496728917645,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.38637105961161566,
+  "detail": [
+   "under",
+   0.49582853462494103,
+   0.7476280003484763,
+   9.968373337979685,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.28977829470871175,
+  "detail": [
+   "under",
+   0.49582853462494103,
+   0.7476280003484763,
+   7.476280003484763,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 537.6070965133565,
+  "detail": [
+   "under",
+   0.9193814850799702,
+   0.8064106447700349,
+   10.75214193026713,
+   0.02
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 403.20532238501744,
+  "detail": [
+   "under",
+   0.9193814850799702,
+   0.8064106447700349,
+   8.064106447700349,
+   0.02
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4561693445723622,
+  "vmin": -0.4170827258714104,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.385997697311703,
+  "vmin": -0.33965505087695386,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.7236144317790337,
+  "detail": [
+   "under",
+   0.5002884427409949,
+   0.5969819062177028,
+   7.959758749569371,
+   11.0
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5427108238342752,
+  "detail": [
+   "under",
+   0.5002884427409949,
+   0.5969819062177028,
+   5.969819062177027,
+   11.0
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 330.3665952661096,
+  "detail": [
+   "under",
+   0.8693419398874246,
+   0.9910997857983288,
+   13.214663810644383,
+   0.04
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 247.7749464495822,
+  "detail": [
+   "under",
+   0.8693419398874246,
+   0.9910997857983288,
+   9.910997857983288,
+   0.04
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.438203947135273,
+  "vmin": -0.4004072074919123,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.388303098035446,
+  "vmin": -0.3260380723381099,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.6094147591627865,
+  "detail": [
+   "under",
+   0.5211932591553103,
+   0.5027671763092989,
+   6.703562350790652,
+   11.0
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.45706106937208996,
+  "detail": [
+   "under",
+   0.5211932591553103,
+   0.5027671763092989,
+   5.0276717630929895,
+   11.0
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 312.6927032222065,
+  "detail": [
+   "under",
+   0.8505794921279966,
+   0.9380781096666195,
+   12.50770812888826,
+   0.04
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 234.51952741665488,
+  "detail": [
+   "under",
+   0.8505794921279966,
+   0.9380781096666195,
+   9.380781096666196,
+   0.04
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4273533904891913,
+  "vmin": -0.3920280816738133,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3771294822059312,
+  "vmin": -0.32078935809420417,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.520390211013268,
+  "detail": [
+   "under",
+   0.5372947927458861,
+   0.4293219240859461,
+   5.724292321145948,
+   11.0
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.390292658259951,
+  "detail": [
+   "under",
+   0.5372947927458861,
+   0.4293219240859461,
+   4.293219240859461,
+   11.0
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 16.123830769423105,
+  "detail": [
+   "under",
+   0.724020493757284,
+   0.5199935423138952,
+   6.9332472308519355,
+   0.43
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 12.09287307706733,
+  "detail": [
+   "under",
+   0.724020493757284,
+   0.5199935423138952,
+   5.199935423138951,
+   0.43
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.3980186203982994,
+  "vmin": -0.37340127904064613,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3559602369057178,
+  "vmin": -0.3144827846023309,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4599154912796996,
+  "detail": [
+   "under",
+   0.5150161072114403,
+   0.3794302803057522,
+   5.059070404076696,
+   11.0
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.3449366184597747,
+  "detail": [
+   "under",
+   0.5150161072114403,
+   0.3794302803057522,
+   3.794302803057522,
+   11.0
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 4.322313611719902,
+  "detail": [
+   "under",
+   0.6216961433893717,
+   0.6807643938458844,
+   9.076858584611793,
+   2.1
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 3.2417352087899256,
+  "detail": [
+   "under",
+   0.6216961433893717,
+   0.6807643938458844,
+   6.807643938458844,
+   2.1
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.410860414054537,
+  "vmin": -0.38670077670244407,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.371058980738661,
+  "vmin": -0.32304714039102095,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.47862207229030335,
+  "detail": [
+   "under",
+   0.5123827111334972,
+   0.3948632096395003,
+   5.264842795193337,
+   11.0
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.35896655421772755,
+  "detail": [
+   "under",
+   0.5123827111334972,
+   0.3948632096395003,
+   3.948632096395003,
+   11.0
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.3982423627292577,
+  "detail": [
+   "under",
+   0.4961619670919439,
+   0.7705989718811137,
+   10.27465295841485,
+   25.8
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2986817720469433,
+  "detail": [
+   "under",
+   0.4961619670919439,
+   0.7705989718811137,
+   7.7059897188111375,
+   25.8
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.415383859539769,
+  "vmin": -0.3929490533644232,
+  "pass": true
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3713189300686315,
+  "vmin": -0.33022628697010376,
+  "pass": true
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.5374753099994356,
+  "detail": [
+   "under",
+   0.5153114422579734,
+   0.44341713074953437,
+   5.912228409993792,
+   11.0
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.4031064824995767,
+  "detail": [
+   "under",
+   0.5153114422579734,
+   0.44341713074953437,
+   4.434171307495344,
+   11.0
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 21.28818559523672,
+  "detail": [
+   "under",
+   0.7190874111863854,
+   0.6865439854463842,
+   9.153919805951789,
+   0.43
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 15.966139196427541,
+  "detail": [
+   "under",
+   0.7190874111863854,
+   0.6865439854463842,
+   6.865439854463842,
+   0.43
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4228982546671745,
+  "vmin": -0.40473167675830213,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3770703411157603,
+  "vmin": -0.31583657101456086,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.5229127808707245,
+  "detail": [
+   "under",
+   0.5338613290346277,
+   0.43140304421834763,
+   5.752040589577969,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.3921845856530433,
+  "detail": [
+   "under",
+   0.5338613290346277,
+   0.43140304421834763,
+   4.314030442183476,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 46.05298810592189,
+  "detail": [
+   "under",
+   0.7746180729245682,
+   0.6907948215888284,
+   9.210597621184379,
+   0.2
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 34.53974107944143,
+  "detail": [
+   "under",
+   0.7746180729245682,
+   0.6907948215888284,
+   6.907948215888285,
+   0.2
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.3875477083929435,
+  "vmin": -0.3807461718375628,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3345347845647613,
+  "vmin": -0.2781380742025826,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.43187435145089753,
+  "detail": [
+   "under",
+   0.5071990866136693,
+   0.35629633994699045,
+   4.750617865959873,
+   11.0
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.32390576358817313,
+  "detail": [
+   "under",
+   0.5071990866136693,
+   0.35629633994699045,
+   3.5629633994699046,
+   11.0
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.39024806291724834,
+  "detail": [
+   "under",
+   0.5285425576681976,
+   0.32195465190672984,
+   4.292728692089732,
+   11.0
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2926860471879362,
+  "detail": [
+   "under",
+   0.5285425576681976,
+   0.32195465190672984,
+   3.2195465190672983,
+   11.0
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4121703001339556,
+  "vmin": -0.3931280935625735,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3533274581083874,
+  "vmin": -0.28712447490319487,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.2581483344234068,
+  "detail": [
+   "under",
+   0.46509938477410706,
+   0.4995170271092922,
+   6.660227028123895,
+   25.8
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.19361125081755512,
+  "detail": [
+   "under",
+   0.46509938477410706,
+   0.4995170271092922,
+   4.995170271092922,
+   25.8
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4470946774817907,
+  "detail": [
+   "under",
+   0.535823772660902,
+   0.36885310892247736,
+   4.918041452299698,
+   11.0
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.3353210081113431,
+  "detail": [
+   "under",
+   0.535823772660902,
+   0.36885310892247736,
+   3.688531089224774,
+   11.0
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.391863197752675,
+  "vmin": -0.3858455462055261,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3262122118211033,
+  "vmin": -0.25661602734494343,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.2071236098191821,
+  "detail": [
+   "under",
+   0.48068931686159627,
+   0.4007841850001173,
+   5.343789133334898,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.15534270736438657,
+  "detail": [
+   "under",
+   0.48068931686159627,
+   0.4007841850001173,
+   4.007841850001173,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.7615247704787854,
+  "detail": [
+   "under",
+   0.5155831750474928,
+   0.6282579356449979,
+   8.37677247526664,
+   11.0
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5711435778590889,
+  "detail": [
+   "under",
+   0.5155831750474928,
+   0.6282579356449979,
+   6.282579356449978,
+   11.0
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.442320493749752,
+  "vmin": -0.4067018096175252,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3599915025725045,
+  "vmin": -0.30141771375639864,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.14882330568242644,
+  "detail": [
+   "under",
+   0.43730916563984124,
+   0.6886798470454284,
+   9.182397960605712,
+   61.7
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.11161747926181982,
+  "detail": [
+   "under",
+   0.43730916563984124,
+   0.6886798470454284,
+   6.886798470454283,
+   61.7
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 1.689188250097071,
+  "detail": [
+   "under",
+   0.5715614815428666,
+   0.6043070964722271,
+   8.057427952963028,
+   4.77
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 1.2668911875728033,
+  "detail": [
+   "under",
+   0.5715614815428666,
+   0.6043070964722271,
+   6.043070964722271,
+   4.77
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4180267952428913,
+  "vmin": -0.3904049348997024,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.341412294724286,
+  "vmin": -0.2588778093851318,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.12807105348461248,
+  "detail": [
+   "under",
+   0.4451571971432048,
+   0.5926488000000443,
+   7.90198400000059,
+   61.7
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.09605329011345935,
+  "detail": [
+   "under",
+   0.4451571971432048,
+   0.5926488000000443,
+   5.926488000000442,
+   61.7
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.21514977126273532,
+  "detail": [
+   "under",
+   0.46913584954801557,
+   0.4163148073933929,
+   5.550864098578572,
+   25.8
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.1613623284470515,
+  "detail": [
+   "under",
+   0.46913584954801557,
+   0.4163148073933929,
+   4.163148073933929,
+   25.8
+  ]
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4550907390498073,
+  "vmin": -0.4197067454965888,
+  "pass": true
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.4054052592881896,
+  "vmin": -0.36027300178940597,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4398145932172772,
+  "vmin": -0.40745620274958994,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.388056447005871,
+  "vmin": -0.33076699410949534,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.419933722200315,
+  "vmin": -0.3935842876306682,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3697157866055596,
+  "vmin": -0.3284923237794585,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4738408285137186,
+  "vmin": -0.4370220573248089,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.414640196063076,
+  "vmin": -0.372852550000858,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.4668830002748554,
+  "vmin": -0.43441936303400397,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.4084045590240017,
+  "vmin": -0.36370863506327566,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.443352034695462,
+  "vmin": -0.40589711026284525,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.392648832830423,
+  "vmin": -0.33662546489578604,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.435239091273173,
+  "vmin": -0.40391212264219467,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.389180458599039,
+  "vmin": -0.34520994924828224,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.386339082962416,
+  "vmin": -0.29516524557561685,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "typ",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.3734247573159353,
+  "vmin": -0.24047332214189718,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.654904095151375,
+  "vmin": -0.6360532339371316,
+  "pass": true
+ },
+ {
+  "net": "A0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6234009660093727,
+  "vmin": -0.421625446281492,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.672664270832588,
+  "vmin": -0.6323590164379178,
+  "pass": true
+ },
+ {
+  "net": "A1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6693295466299714,
+  "vmin": -0.42516899517135415,
+  "pass": true
+ },
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6510704481479985,
+  "vmin": -0.6787828123117081,
+  "pass": true
+ },
+ {
+  "net": "A2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6341014680646624,
+  "vmin": -0.47133068564134706,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6448948493709175,
+  "vmin": -0.6713407714790953,
+  "pass": true
+ },
+ {
+  "net": "A3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.665239076246202,
+  "vmin": -0.45562325767523437,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.684136333956369,
+  "vmin": -0.657201534540491,
+  "pass": true
+ },
+ {
+  "net": "A4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.692943986701939,
+  "vmin": -0.4787979856253371,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6640171466311595,
+  "vmin": -0.6632861323360055,
+  "pass": true
+ },
+ {
+  "net": "A5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6446762249202846,
+  "vmin": -0.46372318346808966,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6911450417201164,
+  "vmin": -0.6476735630606438,
+  "pass": true
+ },
+ {
+  "net": "A6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6640518654270697,
+  "vmin": -0.453845176571341,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.671871175797646,
+  "vmin": -0.608164920628429,
+  "pass": true
+ },
+ {
+  "net": "A7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.614435778091945,
+  "vmin": -0.4240987653258109,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6810643556564977,
+  "vmin": -0.5999581547854393,
+  "pass": true
+ },
+ {
+  "net": "A8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.600040676032603,
+  "vmin": -0.4520513592641926,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6688517312435756,
+  "vmin": -0.6217586457650239,
+  "pass": true
+ },
+ {
+  "net": "A9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.59797011199518,
+  "vmin": -0.4665729871486327,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6703297687756233,
+  "vmin": -0.6127594452228541,
+  "pass": true
+ },
+ {
+  "net": "A10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6218417200853152,
+  "vmin": -0.4280044515260559,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6449377620221552,
+  "vmin": -0.6513812706458699,
+  "pass": true
+ },
+ {
+  "net": "A11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.601177348996174,
+  "vmin": -0.509906346101412,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6721480596847904,
+  "vmin": -0.5939345823621133,
+  "pass": true
+ },
+ {
+  "net": "A12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.601871909607409,
+  "vmin": -0.4655198219231252,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.670075286485031,
+  "vmin": -0.5946215259222929,
+  "pass": true
+ },
+ {
+  "net": "BS0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.5990311550193534,
+  "vmin": -0.44038935154073394,
+  "pass": true
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6727621271862825,
+  "vmin": -0.6006752333553752,
+  "pass": true
+ },
+ {
+  "net": "BS1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.605339847524452,
+  "vmin": -0.43264198691789985,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6212589966232906,
+  "vmin": -0.561929878225859,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6114419842045313,
+  "vmin": -0.382051120949745,
+  "pass": true
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.4618550124324914,
+  "detail": [
+   "under",
+   0.46434683005306765,
+   0.8936894490568709,
+   11.915859320758278,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.34639125932436854,
+  "detail": [
+   "under",
+   0.46434683005306765,
+   0.8936894490568709,
+   8.936894490568708,
+   25.8
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 735.3426865458347,
+  "detail": [
+   "under",
+   0.8886975082106955,
+   2.206028059637504,
+   29.41370746183339,
+   0.04
+  ]
+ },
+ {
+  "net": "D0",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 551.507014909376,
+  "detail": [
+   "under",
+   0.8886975082106955,
+   2.206028059637504,
+   22.060280596375044,
+   0.04
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6724237320155737,
+  "vmin": -0.4561198059390993,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.607510776706273,
+  "vmin": -0.30169983931992617,
+  "pass": true
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.3108122542614142,
+  "detail": [
+   "under",
+   0.46999307435053356,
+   0.6014217119958364,
+   8.018956159944485,
+   25.8
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2331091906960606,
+  "detail": [
+   "under",
+   0.46999307435053356,
+   0.6014217119958364,
+   6.014217119958364,
+   25.8
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.34720701151086625,
+  "detail": [
+   "under",
+   0.5046093186281777,
+   0.2864457844964647,
+   3.8192771266195287,
+   11.0
+  ]
+ },
+ {
+  "net": "D1",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.2604052586331497,
+  "detail": [
+   "under",
+   0.5046093186281777,
+   0.2864457844964647,
+   2.864457844964647,
+   11.0
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.666522313025752,
+  "vmin": -0.46765167977096744,
+  "pass": true
+ },
+ {
+  "net": "D2",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.610162328908203,
+  "vmin": -0.33408004184692697,
+  "pass": true
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.715721676969679,
+  "detail": [
+   "under",
+   0.5105370143412701,
+   0.5904703834999852,
+   7.87293844666647,
+   11.0
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5367912577272592,
+  "detail": [
+   "under",
+   0.5105370143412701,
+   0.5904703834999852,
+   5.904703834999851,
+   11.0
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 447.32062973899394,
+  "detail": [
+   "under",
+   0.8814368312945471,
+   1.3419618892169818,
+   17.89282518955976,
+   0.04
+  ]
+ },
+ {
+  "net": "D2",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 335.4904723042455,
+  "detail": [
+   "under",
+   0.8814368312945471,
+   1.3419618892169818,
+   13.419618892169819,
+   0.04
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6510196284991334,
+  "vmin": -0.5678576088976426,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6045554732446385,
+  "vmin": -0.4213631152438795,
+  "pass": true
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.43633480848966133,
+  "detail": [
+   "under",
+   0.4928780506129807,
+   0.8443078544274947,
+   11.257438059033262,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.32725110636724597,
+  "detail": [
+   "under",
+   0.4928780506129807,
+   0.8443078544274947,
+   8.443078544274947,
+   25.8
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   1.0490754006303435,
+   1.3256434777638733,
+   17.675246370184976,
+   0.0
+  ]
+ },
+ {
+  "net": "D3",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   1.0490754006303435,
+   1.3256434777638733,
+   13.25643477763873,
+   0.0
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6568279514489133,
+  "vmin": -0.5288354291153192,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.605195659153266,
+  "vmin": -0.38248775969689736,
+  "pass": true
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.38444574058864484,
+  "detail": [
+   "under",
+   0.49271274633306406,
+   0.7439025080390278,
+   9.918700107187037,
+   25.8
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.28833430544148364,
+  "detail": [
+   "under",
+   0.49271274633306406,
+   0.7439025080390278,
+   7.439025080390278,
+   25.8
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9919486653229991,
+   1.4670160041380067,
+   19.560213388506757,
+   0.0
+  ]
+ },
+ {
+  "net": "D4",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9919486653229991,
+   1.4670160041380067,
+   14.670160041380068,
+   0.0
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6680027699968965,
+  "vmin": -0.49806803691806545,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6231980143246436,
+  "vmin": -0.37579651120034413,
+  "pass": true
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.7871294591109309,
+  "detail": [
+   "under",
+   0.5150429480587964,
+   0.649381803766518,
+   8.65842405022024,
+   11.0
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5903470943331982,
+  "detail": [
+   "under",
+   0.5150429480587964,
+   0.649381803766518,
+   6.49381803766518,
+   11.0
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9560129289927621,
+   0.9405292619825396,
+   12.540390159767195,
+   0.0
+  ]
+ },
+ {
+  "net": "D5",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.9560129289927621,
+   0.9405292619825396,
+   9.405292619825396,
+   0.0
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6589466556998813,
+  "vmin": -0.4811197828093915,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6207388661180646,
+  "vmin": -0.3699117588379245,
+  "pass": true
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.6704829922639128,
+  "detail": [
+   "under",
+   0.5275031544096227,
+   0.5531484686177282,
+   7.375312914903041,
+   11.0
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5028622441979347,
+  "detail": [
+   "under",
+   0.5275031544096227,
+   0.5531484686177282,
+   5.531484686177281,
+   11.0
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 87.17816600900771,
+  "detail": [
+   "under",
+   0.8100208497186274,
+   0.588452620560802,
+   7.846034940810694,
+   0.09
+  ]
+ },
+ {
+  "net": "D6",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 65.38362450675578,
+  "detail": [
+   "under",
+   0.8100208497186274,
+   0.588452620560802,
+   5.8845262056080205,
+   0.09
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.664870583256742,
+  "vmin": -0.45173897715077654,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.634368003777849,
+  "vmin": -0.3801229978930111,
+  "pass": true
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.5945573066847224,
+  "detail": [
+   "under",
+   0.516406349684289,
+   0.49050977801489604,
+   6.540130373531946,
+   11.0
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.44591798001354194,
+  "detail": [
+   "under",
+   0.516406349684289,
+   0.49050977801489604,
+   4.905097780148961,
+   11.0
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 18.60809333269588,
+  "detail": [
+   "under",
+   0.7317874368824863,
+   0.6001110099794421,
+   8.001480133059228,
+   0.43
+  ]
+ },
+ {
+  "net": "D7",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 13.95606999952191,
+  "detail": [
+   "under",
+   0.7317874368824863,
+   0.6001110099794421,
+   6.001110099794421,
+   0.43
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.643525932643823,
+  "vmin": -0.4647533428764014,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.634332417948612,
+  "vmin": -0.37388382952949756,
+  "pass": true
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.49214441575880064,
+  "detail": [
+   "under",
+   0.5168472453568694,
+   0.40601914300101055,
+   5.413588573346807,
+   11.0
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.3691083118191005,
+  "detail": [
+   "under",
+   0.5168472453568694,
+   0.40601914300101055,
+   4.060191430010105,
+   11.0
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 14.980692429633253,
+  "detail": [
+   "under",
+   0.6654800974674238,
+   1.0561388162891443,
+   14.081850883855257,
+   0.94
+  ]
+ },
+ {
+  "net": "D8",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 11.23551932222494,
+  "detail": [
+   "under",
+   0.6654800974674238,
+   1.0561388162891443,
+   10.561388162891443,
+   0.94
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.655914517170074,
+  "vmin": -0.4751998006204874,
+  "pass": true
+ },
+ {
+  "net": "D9",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6335083637429864,
+  "vmin": -0.40133634774141574,
+  "pass": true
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.6975086467023413,
+  "detail": [
+   "under",
+   0.5186421904918367,
+   0.5754446335294315,
+   7.6725951137257535,
+   11.0
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.5231314850267559,
+  "detail": [
+   "under",
+   0.5186421904918367,
+   0.5754446335294315,
+   5.754446335294315,
+   11.0
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.953101981728053,
+   1.8081619259281672,
+   24.10882567904223,
+   0.0
+  ]
+ },
+ {
+  "net": "D9",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": Infinity,
+  "detail": [
+   "under",
+   0.953101981728053,
+   1.8081619259281672,
+   18.081619259281673,
+   0.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6372062881422416,
+  "vmin": -0.48456398721578875,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6253617993895944,
+  "vmin": -0.39311270947619203,
+  "pass": true
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.5463041818181478,
+  "detail": [
+   "under",
+   0.5174062808120963,
+   0.4507009499999719,
+   6.009345999999625,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.40972813636361083,
+  "detail": [
+   "under",
+   0.5174062808120963,
+   0.4507009499999719,
+   4.507009499999719,
+   11.0
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 128.44470999033763,
+  "detail": [
+   "under",
+   0.8089116511731989,
+   0.8670017924347792,
+   11.560023899130387,
+   0.09
+  ]
+ },
+ {
+  "net": "D10",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 96.33353249275325,
+  "detail": [
+   "under",
+   0.8089116511731989,
+   0.8670017924347792,
+   8.670017924347793,
+   0.09
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6478064040689153,
+  "vmin": -0.4461582647049802,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.625263559141856,
+  "vmin": -0.33061732892969936,
+  "pass": true
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.43917218101614286,
+  "detail": [
+   "under",
+   0.5194563671947608,
+   0.3623170493383179,
+   4.830893991177572,
+   11.0
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.32937913576210714,
+  "detail": [
+   "under",
+   0.5194563671947608,
+   0.3623170493383179,
+   3.6231704933831788,
+   11.0
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 2.5697819333331333,
+  "detail": [
+   "under",
+   0.6366831905086097,
+   0.4047406544999686,
+   5.396542059999581,
+   2.1
+  ]
+ },
+ {
+  "net": "D11",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 1.9273364499998504,
+  "detail": [
+   "under",
+   0.6366831905086097,
+   0.4047406544999686,
+   4.047406544999686,
+   2.1
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.670592999994489,
+  "vmin": -0.4728555052708112,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.623575875097316,
+  "vmin": -0.3533887520232571,
+  "pass": true
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.3593389507197639,
+  "detail": [
+   "under",
+   0.46658576707716326,
+   0.6953208696427432,
+   9.270944928569909,
+   25.8
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.26950421303982297,
+  "detail": [
+   "under",
+   0.46658576707716326,
+   0.6953208696427432,
+   6.953208696427432,
+   25.8
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 10.320566302530272,
+  "detail": [
+   "under",
+   0.6836476501576537,
+   0.7275999243283842,
+   9.701332324378455,
+   0.94
+  ]
+ },
+ {
+  "net": "D12",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 7.740424726897705,
+  "detail": [
+   "under",
+   0.6836476501576537,
+   0.7275999243283842,
+   7.275999243283842,
+   0.94
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6600845088376857,
+  "vmin": -0.45393525489639275,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6198708314861983,
+  "vmin": -0.30211116894467344,
+  "pass": true
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.27573108925416795,
+  "detail": [
+   "under",
+   0.4819883955915928,
+   0.533539657706815,
+   7.113862102757533,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.20679831694062595,
+  "detail": [
+   "under",
+   0.4819883955915928,
+   0.533539657706815,
+   5.33539657706815,
+   25.8
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 5.0753207983523705,
+  "detail": [
+   "under",
+   0.61759213631437,
+   0.7993630257404984,
+   10.65817367653998,
+   2.1
+  ]
+ },
+ {
+  "net": "D13",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 3.8064905987642783,
+  "detail": [
+   "under",
+   0.61759213631437,
+   0.7993630257404984,
+   7.993630257404985,
+   2.1
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6594365559343327,
+  "vmin": -0.5170558898663166,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.5988625350358103,
+  "vmin": -0.32267286326681727,
+  "pass": true
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.42552756135925485,
+  "detail": [
+   "under",
+   0.4501944446086738,
+   0.8233958312301582,
+   10.978611083068776,
+   25.8
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.3191456710194412,
+  "detail": [
+   "under",
+   0.4501944446086738,
+   0.8233958312301582,
+   8.233958312301583,
+   25.8
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 312.387452323663,
+  "detail": [
+   "under",
+   0.835564343201557,
+   2.1086153031847252,
+   28.11487070912967,
+   0.09
+  ]
+ },
+ {
+  "net": "D14",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 234.29058924274727,
+  "detail": [
+   "under",
+   0.835564343201557,
+   2.1086153031847252,
+   21.086153031847253,
+   0.09
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6629823868325135,
+  "vmin": -0.4823286779829087,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.5992128127562633,
+  "vmin": -0.282509811122344,
+  "pass": true
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 7.5,
+  "usage_ratio": 0.1696099798241158,
+  "detail": [
+   "under",
+   0.4389773690353827,
+   0.7848701816360958,
+   10.464935755147945,
+   61.7
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "ui_ns": 10.0,
+  "usage_ratio": 0.12720748486808683,
+  "detail": [
+   "under",
+   0.4389773690353827,
+   0.7848701816360958,
+   7.848701816360958,
+   61.7
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 7.5,
+  "usage_ratio": 3.6798311395407866,
+  "detail": [
+   "under",
+   0.5603138696437562,
+   1.3164595901707163,
+   17.55279453560955,
+   4.77
+  ]
+ },
+ {
+  "net": "D15",
+  "scenario": "read",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "ui_ns": 10.0,
+  "usage_ratio": 2.75987335465559,
+  "detail": [
+   "under",
+   0.5603138696437562,
+   1.3164595901707163,
+   13.164595901707163,
+   4.77
+  ]
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.654232970279881,
+  "vmin": -0.5961301905254602,
+  "pass": true
+ },
+ {
+  "net": "CAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6153593162518454,
+  "vmin": -0.47353911867966225,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.669238649367948,
+  "vmin": -0.5495156782257347,
+  "pass": true
+ },
+ {
+  "net": "RAS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6202127489502365,
+  "vmin": -0.42156697391510295,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6599443868099586,
+  "vmin": -0.5095337145887707,
+  "pass": true
+ },
+ {
+  "net": "CKE",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6303730717714666,
+  "vmin": -0.42031753588972426,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.643935742115416,
+  "vmin": -0.6674148660277155,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CS#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.604756305963102,
+  "vmin": -0.5097779829000252,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6612727941748955,
+  "vmin": -0.508467524689987,
+  "pass": true
+ },
+ {
+  "net": "LDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6216526038491432,
+  "vmin": -0.38418354403878324,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6457127484911673,
+  "vmin": -0.5019050643516403,
+  "pass": true
+ },
+ {
+  "net": "UDQM",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6235862004740804,
+  "vmin": -0.410978013609185,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6519589610317746,
+  "vmin": -0.6343877543252101,
+  "pass": true
+ },
+ {
+  "net": "WE#",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.5908430217496203,
+  "vmin": -0.5043331245710286,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_die",
+  "vmax": 3.6583222398529958,
+  "vmin": -0.7042622699127175,
+  "pass": true
+ },
+ {
+  "net": "SDRAM-CLK",
+  "scenario": "write",
+  "corner": "max",
+  "stack": "pcbdoc",
+  "node": "rx_pin",
+  "vmax": 3.6406819199842726,
+  "vmin": -0.6713701410653014,
+  "pass": true
+ }
+]

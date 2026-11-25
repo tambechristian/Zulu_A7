@@ -1,0 +1,9 @@
+{
+"vias": [],
+"tracks": [],
+"remove": [],
+"log": [
+"OPEN PWR_CHRG 1",
+"FAIL PWR_CHRG (budget)"
+]
+}

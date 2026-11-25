@@ -1,0 +1,19 @@
+seeded 159 vias, 504 tracks
+USB5V0         
+USB_D_N        
+USB_D_P        
+VBATT          
+VU             ripped CHAN19 FT-VPHY FT-VPLL
+CHAN19         
+FT-VPHY        
+FT-VPLL        ripped FT-VPHY VU
+FT-VPHY        
+VU             
+routed 3 connections, failed 4; 171 vias, 578 tracks -> plan_c.json
+OPEN USB5V0 2
+OPEN USB_D_N 1
+OPEN USB_D_P 1
+FAIL USB5V0 (nopath)
+FAIL USB5V0 (nopath)
+FAIL USB_D_N (budget)
+FAIL USB_D_P (budget)

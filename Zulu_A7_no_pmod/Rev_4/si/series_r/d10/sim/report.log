@@ -1,0 +1,161 @@
+{
+ "fab|typ": {
+  "n_nets": 16,
+  "nets": [
+   "D0",
+   "D1",
+   "D2",
+   "D3",
+   "D4",
+   "D5",
+   "D6",
+   "D7",
+   "D8",
+   "D9",
+   "D10",
+   "D11",
+   "D12",
+   "D13",
+   "D14",
+   "D15"
+  ],
+  "ball_worst_pct": 18.06,
+  "ball_worst_net": "D14",
+  "die_worst_pct": 21.36,
+  "die_worst_net": "D13",
+  "ball_fails": [],
+  "die_fails": [],
+  "ringback_ball_worst_v": 0.0,
+  "ringback_die_worst_v": 0.0,
+  "write_u3pin_vmin": -0.2808,
+  "write_u3pin_vmax": 3.3426,
+  "write_absmax_all_pass": true,
+  "write_ringback_worst_v": 0.0,
+  "withR_ball_worst_pct": 0.55,
+  "withR_ball_worst_net": "D10",
+  "read_delay_die_ns_withR": [
+   0.0353,
+   0.0858
+  ],
+  "write_delay_die_ns_withR": [
+   0.1007,
+   0.1766
+  ]
+ },
+ "fab|max": {
+  "n_nets": 16,
+  "nets": [
+   "D0",
+   "D1",
+   "D2",
+   "D3",
+   "D4",
+   "D5",
+   "D6",
+   "D7",
+   "D8",
+   "D9",
+   "D10",
+   "D11",
+   "D12",
+   "D13",
+   "D14",
+   "D15"
+  ],
+  "ball_worst_pct": 93.76,
+  "ball_worst_net": "D13",
+  "die_worst_pct": 29.12,
+  "die_worst_net": "D13",
+  "ball_fails": [],
+  "die_fails": [],
+  "ringback_ball_worst_v": 0.0,
+  "ringback_die_worst_v": 0.0,
+  "write_u3pin_vmin": -0.3588,
+  "write_u3pin_vmax": 3.6199,
+  "write_absmax_all_pass": true,
+  "write_ringback_worst_v": 0.0,
+  "withR_ball_worst_pct": 1.18,
+  "withR_ball_worst_net": "D10",
+  "read_delay_die_ns_withR": [
+   0.0322,
+   0.0885
+  ],
+  "write_delay_die_ns_withR": [
+   0.0974,
+   0.1563
+  ]
+ },
+ "pcbdoc|typ": {
+  "n_nets": 6,
+  "nets": [
+   "D0",
+   "D5",
+   "D10",
+   "D13",
+   "D14",
+   "D15"
+  ],
+  "ball_worst_pct": 168.92,
+  "ball_worst_net": "D14",
+  "die_worst_pct": 20.71,
+  "die_worst_net": "D13",
+  "ball_fails": [
+   "D14"
+  ],
+  "die_fails": [],
+  "ringback_ball_worst_v": 0.0,
+  "ringback_die_worst_v": 0.0,
+  "write_u3pin_vmin": -0.3014,
+  "write_u3pin_vmax": 3.36,
+  "write_absmax_all_pass": true,
+  "write_ringback_worst_v": 0.0,
+  "withR_ball_worst_pct": 0.74,
+  "withR_ball_worst_net": "D10",
+  "read_delay_die_ns_withR": [
+   0.0374,
+   0.0822
+  ],
+  "write_delay_die_ns_withR": [
+   0.116,
+   0.1448
+  ]
+ },
+ "pcbdoc|max": {
+  "n_nets": 6,
+  "nets": [
+   "D0",
+   "D5",
+   "D10",
+   "D13",
+   "D14",
+   "D15"
+  ],
+  "ball_worst_pct": 31238.75,
+  "ball_worst_net": "D14",
+  "die_worst_pct": 42.55,
+  "die_worst_net": "D14",
+  "ball_fails": [
+   "D13",
+   "D14",
+   "D15"
+  ],
+  "die_fails": [],
+  "ringback_ball_worst_v": 0.0,
+  "ringback_die_worst_v": 0.0,
+  "write_u3pin_vmin": -0.3563,
+  "write_u3pin_vmax": 3.6199,
+  "write_absmax_all_pass": true,
+  "write_ringback_worst_v": 0.0,
+  "withR_ball_worst_pct": 1.33,
+  "withR_ball_worst_net": "D0",
+  "read_delay_die_ns_withR": [
+   0.0344,
+   0.0879
+  ],
+  "write_delay_die_ns_withR": [
+   0.0958,
+   0.1356
+  ]
+ }
+}
+worst4 ['D13', 'D14', 'D15', 'D10'] noR identity [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
