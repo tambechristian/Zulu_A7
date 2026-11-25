@@ -85,6 +85,8 @@ module zulu_a7_top (
   inout  wire D7,
   inout  wire D8,
   inout  wire D9,
+  inout  wire I2C_SCL,
+  inout  wire I2C_SDA,
   inout  wire FLASH_D00,
   inout  wire FLASH_D01,
   inout  wire FLASH_D02,
@@ -168,6 +170,9 @@ module zulu_a7_top (
   assign SD_DAT1 = oeb ? qb[28] : 1'bz;
   assign SD_DAT2 = oeb ? qb[29] : 1'bz;
   assign SD_DAT3 = oeb ? qb[30] : 1'bz;
+  // STEMMA QT I2C (Rev 3): open-drain, drive 0 or Z only
+  assign I2C_SCL = oeb ? 1'b0 : 1'bz;
+  assign I2C_SDA = oeb ? 1'b0 : 1'bz;
   assign CKE = qb[31];
   assign FLASH_CS_N = qb[32];
   assign LDQM = qb[33];
@@ -186,5 +191,5 @@ module zulu_a7_top (
   assign UDQM = qb[46];
   assign WE_N = qb[47];
   always @(posedge sysclk)  begin oea <= BTN ^ FT_PWREN_N ^ UART_FT_DTR_N ^ UART_FT_RTS_N ^ UART_FT_TXD ^ CHAN0 ^ CHAN1 ^ CHAN10 ^ CHAN11 ^ CHAN12 ^ CHAN13 ^ CHAN14 ^ CHAN15 ^ CHAN16 ^ CHAN17 ^ CHAN18 ^ CHAN19 ^ CHAN2 ^ CHAN20 ^ CHAN21 ^ CHAN22 ^ CHAN23 ^ CHAN24 ^ CHAN25 ^ CHAN26 ^ CHAN27 ^ CHAN28 ^ CHAN3 ^ CHAN4 ^ CHAN5 ^ CHAN6 ^ CHAN7 ^ CHAN8 ^ CHAN9 ^ D0; qa <= {qa[44:0], oea}; end
-  always @(posedge chanclk) begin oeb <= D1 ^ D10 ^ D11 ^ D12 ^ D13 ^ D14 ^ D15 ^ D2 ^ D3 ^ D4 ^ D5 ^ D6 ^ D7 ^ D8 ^ D9 ^ FLASH_D00 ^ FLASH_D01 ^ FLASH_D02 ^ FLASH_D03 ^ SD_DAT0 ^ SD_DAT1 ^ SD_DAT2 ^ SD_DAT3; qb <= {qb[46:0], oeb}; end
+  always @(posedge chanclk) begin oeb <= I2C_SCL ^ I2C_SDA ^ D1 ^ D10 ^ D11 ^ D12 ^ D13 ^ D14 ^ D15 ^ D2 ^ D3 ^ D4 ^ D5 ^ D6 ^ D7 ^ D8 ^ D9 ^ FLASH_D00 ^ FLASH_D01 ^ FLASH_D02 ^ FLASH_D03 ^ SD_DAT0 ^ SD_DAT1 ^ SD_DAT2 ^ SD_DAT3; qb <= {qb[46:0], oeb}; end
 endmodule

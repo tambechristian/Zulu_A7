@@ -1,4 +1,5 @@
-# Zulu_a7_no_pmod Rev 2: vivado/zulu_a7_pins.xdc without the 8 Pmod JA ports (U1 user-I/O balls match the Rev 2 board)
+# Zulu_a7_no_pmod Rev 3 (2026-11-21): the Rev 2 XDC plus the STEMMA QT I2C pair (X5: U19 = I2C-SDA, R19 = I2C-SCL)
+# Rev 2: vivado/zulu_a7_pins.xdc without the 8 Pmod JA ports (U1 user-I/O balls match the Rev 2 board)
 # generated from zulu_a7.sch -- ball assignments exactly as drawn
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
@@ -75,6 +76,12 @@ set_property -dict {PACKAGE_PIN D19  IOSTANDARD LVCMOS33} [get_ports {FLASH_D01}
 set_property -dict {PACKAGE_PIN G18  IOSTANDARD LVCMOS33} [get_ports {FLASH_D02}]  ;# FLASH-D02  bank 14  IO_L2P_T0_D02_14
 set_property -dict {PACKAGE_PIN F18  IOSTANDARD LVCMOS33} [get_ports {FLASH_D03}]  ;# FLASH-D03  bank 14  IO_L2N_T0_D03_14
 set_property -dict {PACKAGE_PIN P19  IOSTANDARD LVCMOS33} [get_ports {FT_PWREN_N}]  ;# FT-PWREN#  bank 14  IO_L10P_T1_D14_14
+# STEMMA QT / Qwiic (X5). Open-drain: drive only 0 or Z from the fabric. The board has NO external pull-ups;
+# PULLUP enables the weak internal pull-up (tens of kohm, too weak for 400 kHz or long cables) so the lines idle
+# high without a module. Normal STEMMA QT modules carry 4.7-10 kohm pull-ups. Bank 14 VCCO = 3.3 V.
+# U19 = IO_L15P_T2_DQS_RDWR_B_14, R19 = IO_L10N_T1_D15_14: SelectMAP/BPI-only functions, plain user I/O in SPIx4.
+set_property -dict {PACKAGE_PIN R19  IOSTANDARD LVCMOS33 PULLUP TRUE SLEW SLOW DRIVE 8} [get_ports {I2C_SCL}]  ;# I2C-SCL  bank 14  IO_L10N_T1_D15_14
+set_property -dict {PACKAGE_PIN U19  IOSTANDARD LVCMOS33 PULLUP TRUE SLEW SLOW DRIVE 8} [get_ports {I2C_SDA}]  ;# I2C-SDA  bank 14  IO_L15P_T2_DQS_RDWR_B_14
 set_property -dict {PACKAGE_PIN W4   IOSTANDARD LVCMOS33} [get_ports {LDQM}]  ;# LDQM  bank 34  IO_L12N_T1_MRCC_34
 set_property -dict {PACKAGE_PIN N17  IOSTANDARD LVCMOS33} [get_ports {LED0_B}]  ;# LED0_B  bank 14  IO_L13P_T2_MRCC_14
 set_property -dict {PACKAGE_PIN R18  IOSTANDARD LVCMOS33} [get_ports {LED0_G}]  ;# LED0_G  bank 14  IO_L14N_T2_SRCC_14
