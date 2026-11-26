@@ -84,7 +84,7 @@ COMPS = os.path.join(HERE, 'route', 'illustration', 'comps.json')
 PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
 OUT = os.path.join(ROOT, 'docs', 'board_illustration_top.png')
 OUT_BOTTOM = os.path.join(ROOT, 'docs', 'board_illustration_bottom.png')
-RELEASED_MD5 = '658cf76c8430978ae7ab389f1ce3bc35'    # Rev 4, + LD6 UART activity LED (2026-11-25); DONE LED 94a95d15
+RELEASED_MD5 = '5349dc06835f32c7d8233800ee5c15d6'    # Rev 4, + LED labels LD0/CHRG/RXTX (2026-11-26); colour swap ec5c0379, LD6 658cf76c
 
 # colours as the Asar picture
 BOARD, COPPER, PAD, SILK, DRILL = '#14361f', '#2c6b3e', '#c9a94a', '#ffffff', '#0a0a0a'
@@ -304,8 +304,8 @@ def draw(ax, M, D, silk, pts_per_mm):
                 rect(box(ref), fc=CERAMIC, ec='#6d5636', lw=0.3)
             else:
                 rect(box(ref), fc=INDUCTOR, ec='#111111', lw=0.4)
-    # LEDs (colours from the silk comments: LD1/LD2 red, LD3/LD4 green, LD5 orange (DONE), LD0 RGB)
-    for ref, c in (('LD1', RED_LED), ('LD2', RED_LED), ('LD3', GREEN_LED), ('LD4', GREEN_LED), ('LD5', ORANGE_LED), ('LD6', YELLOW_LED)):
+    # LEDs (colours from the comments: LD1/LD2 green, LD3/LD4 red since 2026-11-26, LD5 orange (DONE), LD6 yellow, LD0 RGB)
+    for ref, c in (('LD1', GREEN_LED), ('LD2', GREEN_LED), ('LD3', RED_LED), ('LD4', RED_LED), ('LD5', ORANGE_LED), ('LD6', YELLOW_LED)):
         if box(ref):
             rect(box(ref), fc=c, ec='k', lw=0.4)
     if box('LD0'):
