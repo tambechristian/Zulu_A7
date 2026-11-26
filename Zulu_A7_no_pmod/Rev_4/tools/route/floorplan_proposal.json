@@ -1,0 +1,410 @@
+{
+ "placements": [
+  {
+   "ref": "U1",
+   "side": "TOP",
+   "cx": 11.8,
+   "cy": 11.6,
+   "w": 9.22,
+   "h": 9.22,
+   "rot": 90,
+   "note": "FPGA in the west third (7.19-16.41 x 6.99-16.21). Orient it so bank 35 (the VAUX pairs) faces SOUTH toward header pins 31-40 and the XADC pins 39/40, and bank 34 faces EAST toward U3. If A1 is at the north-west at rot 0 (bank 35 west, 34 south, 14 east, 16 north-east), that is rot 90 CCW. Check this against the AMD CPG236 package file before placing. Keep all 39 SDRAM nets on bank 34 (move D14/D15 off bank 16). SD goes on bank 14 and the north-header channels on bank 16."
+  },
+  {
+   "ref": "U7",
+   "side": "TOP",
+   "cx": 8.6,
+   "cy": 18.6,
+   "w": 3.6,
+   "h": 2.5,
+   "rot": 90,
+   "note": "SC189A VCC1V0 core buck (1.5 A; ltc3556.md 2026-11-10 overrides the facts file's 'aux regulator'). It sits inside the 1V0 block on U1's north edge, so C84 is 3-6 mm from the VCCINT/VCCBRAM balls. The hot loop closes on L1 over L2 GND. It is about 17 mm from pins 39/40, with the BGA in between."
+  },
+  {
+   "ref": "U4",
+   "side": "TOP",
+   "cx": 19.235,
+   "cy": 16.005,
+   "w": 4.37,
+   "h": 8.81,
+   "rot": 90,
+   "note": "SPI flash on U1's east-north side. After the rotation, CCLK/D0-D3/FCS run about 8-13 mm (about 85 ps at a 50 MHz CCLK). It stays on top so it can be probed in circuit."
+  },
+  {
+   "ref": "R4",
+   "side": "TOP",
+   "cx": 23.15,
+   "cy": 14.625,
+   "w": 2.6,
+   "h": 6.05,
+   "rot": 90,
+   "note": "DONE/PROG/INIT pull-ups, between U1 and U2's channel-A (west) face, where those nets meet."
+  },
+  {
+   "ref": "U2",
+   "side": "TOP",
+   "cx": 30.1,
+   "cy": 15.2,
+   "w": 9.6,
+   "h": 9.6,
+   "rot": 270,
+   "note": "FT2232HQ under X1 (25.3-34.9 x 10.4-20.0, 0.38 mm west of X1's centre). At rot 270 (90 CW), pins 1-16 face north: DM/DP (7/8) sit under X1, so the 90-ohm pair is under 6 mm on L1 with no via. OSCI (pin 2) is at the NE corner. Channel A (ADBUS, JTAG) faces west toward U1/R4. VREG and EE (pins 49-64) face east toward U10 and the PMIC. Channel B (UART) faces south."
+  },
+  {
+   "ref": "Q1",
+   "side": "TOP",
+   "cx": 36.9,
+   "cy": 19.6,
+   "w": 2.9,
+   "h": 3.6,
+   "rot": 0,
+   "note": "12 MHz oscillator moved to U2's north-east corner, next to OSCI (about 2-3 mm), between U2 and the LED row. Each load gets its own 33 ohm series R at the Q1 pin (point-to-point star). The FPGA branch, about 25 mm on L3 under L2, goes to an MRCC P pin on bank 34. It stays clear of X1's DM/DP, which are on the west half of X1."
+  },
+  {
+   "ref": "X1",
+   "side": "TOP",
+   "cx": 30.48,
+   "cy": 22.72,
+   "w": 8.2,
+   "h": 4.38,
+   "rot": 0,
+   "note": "Fixed: unchanged Molex 105017 datum (26.38-34.58 x 20.53-24.91). Its plated shell holes MH1/MH2 at y 21.26 and MS1/MS2 at y 23.96 block the bottom too, so every bottom part keeps 0.4 mm or more from them. VBUS (pin 1) is at the east end and leaves east, away from the pair."
+  },
+  {
+   "ref": "X4",
+   "side": "TOP",
+   "cx": 31.39,
+   "cy": 4.9,
+   "w": 8.2,
+   "h": 9.2,
+   "rot": 0,
+   "note": "Battery JST-PH kept exactly where it is today (27.29-35.49 x 0.3-9.5), with the cable leaving through the bottom header gap. With U8 now on top just east of it, BAT to U8 is about 8 mm instead of about 40 mm. No move is needed."
+  },
+  {
+   "ref": "U8",
+   "side": "TOP",
+   "cx": 40.45,
+   "cy": 9.8,
+   "w": 4.5,
+   "h": 5.5,
+   "rot": 90,
+   "note": "LTC3556 on the TOP inside the PMIC strip, so every hot loop closes over the L2 GND plane one prepreg below. On the bottom, loops return through the L5 3V3 plane. Distances: about 8 mm to X4 BAT, about 14 mm to X1 VBUS, about 19 mm to X2-22 VU, and about 37 mm to pins 39/40, with U2, U3 and U1 in between. BAT/VBUS/VOUT face west, SW nodes and inductors face north-east/south-east, and FB/compensation goes in the quiet west corner."
+  },
+  {
+   "ref": "U10",
+   "side": "BOTTOM",
+   "cx": 38.925,
+   "cy": 17.175,
+   "w": 5.85,
+   "h": 2.35,
+   "rot": 0,
+   "note": "93LC56 under the PMIC strip's north end, about 3-5 mm from U2's east-face EECS/EECLK/EEDATA. It clears U3 by 0.54 mm and the X1 shell holes by more than 3 mm."
+  },
+  {
+   "ref": "U3",
+   "side": "BOTTOM",
+   "cx": 29.475,
+   "cy": 9.18,
+   "w": 21.25,
+   "h": 12.56,
+   "rot": 90,
+   "note": "SDRAM on the bottom, end-on to U1's shadow (18.85-40.1 x 2.9-15.46). Use 90 or 270, whichever puts the pin-1/pin-54 DQ end WEST, facing U1 through the DQR column. DQ runs under 6 mm and address/control up to about 24 mm, length-grouped to +/-5 mm on L3/L4. It is raised to y 2.9 to stay 0.36 mm clear of the X2 header plastic. Place a 3V3-GND 0402 at each end of the bus via field to carry the L2-to-L5 return transition."
+  },
+  {
+   "ref": "X3",
+   "side": "TOP",
+   "cx": 52.76,
+   "cy": 9.9,
+   "w": 15.8,
+   "h": 14.6,
+   "rot": 270,
+   "note": "microSD at the EAST short edge, with the slot opening at x=60.96. The pads sit 0.3 mm inside the edge, like today's 0.5 mm inset; the edge-flush placement in the DFM proposal was not fab-legal. All 12 of its pads are top-side SMD (checked in the board dump), so the bottom under it is free for passives. SD runs about 35 mm to U1 bank 14, with a 33 ohm SD_CLK series R at U1. That is fine at 25/50 MHz."
+  },
+  {
+   "ref": "X5",
+   "side": "TOP",
+   "cx": 3.075,
+   "cy": 16.4,
+   "w": 5.55,
+   "h": 6.8,
+   "rot": 270,
+   "note": "STEMMA QT at the WEST short edge, plug facing x=0 (0.3 mm inset), in the upper half so the plug stays out of the XADC corner. I2C is about 6-8 mm to U1. It sits 1.03 mm below the JTAG row."
+  },
+  {
+   "ref": "JP4",
+   "side": "TOP",
+   "cx": 3.81,
+   "cy": 21.59,
+   "w": 6.6,
+   "h": 1.52,
+   "rot": 0,
+   "note": "JTAG pins 1-3, through-hole, on the X2 0.1 in grid one pitch below the header row. Nothing on either side under it."
+  },
+  {
+   "ref": "JP3",
+   "side": "TOP",
+   "cx": 11.43,
+   "cy": 21.59,
+   "w": 6.6,
+   "h": 1.52,
+   "rot": 0,
+   "note": "JTAG pins 4-6, completing the 1x6 row. About 6-10 mm to U1; the 33 ohm TCK series R goes at U2."
+  },
+  {
+   "ref": "LD4",
+   "side": "TOP",
+   "cx": 39.4,
+   "cy": 19.25,
+   "w": 0.9,
+   "h": 2.5,
+   "rot": 90,
+   "note": "CHRG (red), directly above the PMIC strip. LED row on a 2.2 mm pitch, label 'CH' in the silk band."
+  },
+  {
+   "ref": "LD3",
+   "side": "TOP",
+   "cx": 41.6,
+   "cy": 19.25,
+   "w": 0.9,
+   "h": 2.5,
+   "rot": 90,
+   "note": "PGOODALL (red), above the PMIC. Label 'PG'."
+  },
+  {
+   "ref": "LD5",
+   "side": "TOP",
+   "cx": 43.8,
+   "cy": 19.25,
+   "w": 0.9,
+   "h": 2.5,
+   "rot": 90,
+   "note": "DONE (orange). A DC net from U1 of about 35 mm on L4, harmless. Label 'DN'."
+  },
+  {
+   "ref": "LD6",
+   "side": "TOP",
+   "cx": 46,
+   "cy": 19.25,
+   "w": 0.9,
+   "h": 2.5,
+   "rot": 90,
+   "note": "UART RX/TX (yellow), about 12 mm from U2's east face (pins 54/55). Label 'RX'."
+  },
+  {
+   "ref": "LD1",
+   "side": "TOP",
+   "cx": 48.2,
+   "cy": 19.25,
+   "w": 0.9,
+   "h": 2.5,
+   "rot": 90,
+   "note": "User LED (green). Label '1'."
+  },
+  {
+   "ref": "LD2",
+   "side": "TOP",
+   "cx": 50.4,
+   "cy": 19.25,
+   "w": 0.9,
+   "h": 2.5,
+   "rot": 90,
+   "note": "User LED (green). Label '2'."
+  },
+  {
+   "ref": "LD0",
+   "side": "TOP",
+   "cx": 52.9,
+   "cy": 19.25,
+   "w": 2.2,
+   "h": 1.85,
+   "rot": 0,
+   "note": "RGB user LED at the end of the row. Label 'RGB'."
+  },
+  {
+   "ref": "BTN",
+   "side": "TOP",
+   "cx": 57.6,
+   "cy": 19.4,
+   "w": 5.2,
+   "h": 2.8,
+   "rot": 0,
+   "note": "Top-right corner, clear of every cable exit (USB up at the centre, battery down at the centre, STEMMA west, card east) and 0.8 mm above X3. Header pins 1-3 sit right behind it and carry the press force into the breadboard."
+  }
+ ],
+ "blocks": [
+  {
+   "name": "VCC1V0 point-of-load (U7 SC189A + L3 + C149 + C84)",
+   "side": "TOP",
+   "x0": 6.6,
+   "y0": 16.75,
+   "x1": 16.6,
+   "y1": 20.4,
+   "contents": "U7, L3 (2520), C149 VIN at U7's pin with its GND on L2 via microvias, and C84 22 uF at the U1 edge. A VCCINT/VCCBRAM island drops straight into the ball field (3-6 mm). The VU feed from U8 (at most about 0.35 A) runs about 30 mm on an L3/L4 pour, and that is the cheap direction to carry current. The switch node stays on L1 only."
+  },
+  {
+   "name": "XADC front end (quiet corner)",
+   "side": "TOP",
+   "x0": 0.4,
+   "y0": 2.6,
+   "x1": 6.4,
+   "y1": 8.4,
+   "contents": "UG480 anti-alias RC (for example 2x 100 ohm + 1 nF differential) and ESD for pins 39/40, the VCCADC ferrite and caps, and the GNDADC point. The pair runs 8-10 mm into the bank-35 VAUX balls on the south face, guarded by GND on L1/L3 with L2 above."
+  },
+  {
+   "name": "XADC bottom shadow keep-free",
+   "side": "BOTTOM",
+   "x0": 0.4,
+   "y0": 2.6,
+   "x1": 6.4,
+   "y1": 8.4,
+   "contents": "No parts and no switching copper on L6. Only GND pour."
+  },
+  {
+   "name": "U1 0805 bulk caps (3x3)",
+   "side": "TOP",
+   "x0": 17,
+   "y0": 2.6,
+   "x1": 22.4,
+   "y1": 11.2,
+   "contents": "Nine 0805 bulk caps. The VCCINT pair sits in the north column nearest U7's output, VCCAUX/VCCO south. They sit over U3 on the bottom. Bulk caps only work below a few MHz, so a 1-5 mm offset costs nothing."
+  },
+  {
+   "name": "U1 BGA decoupling",
+   "side": "BOTTOM",
+   "x0": 7.19,
+   "y0": 6.99,
+   "x1": 16.41,
+   "y1": 16.21,
+   "contents": "0201/0402 VCCINT/VCCBRAM/VCCAUX/VCCO caps on via-in-pad microvias in the ball-field shadow (as today). Nothing else goes under the BGA, so X-ray and rework stay possible."
+  },
+  {
+   "name": "SDRAM DQ series R column (R119-R134)",
+   "side": "BOTTOM",
+   "x0": 16.85,
+   "y0": 3,
+   "x1": 18.45,
+   "y1": 14.8,
+   "contents": "Sixteen 0201 resistors in the slot between U1's decap shadow and U3's DQ end. Each lane runs ball -> microvia -> R -> U3 pin in under 6 mm."
+  },
+  {
+   "name": "U2 south-west caps + VPLL/VPHY filter",
+   "side": "TOP",
+   "x0": 22.8,
+   "y0": 6.4,
+   "x1": 24.9,
+   "y1": 10,
+   "contents": "VPLL/VPHY ferrite filters and south-west-corner caps. The 12k REF resistor goes at pin 6 on the north face, under X1's rear edge."
+  },
+  {
+   "name": "U2 east cap strip",
+   "side": "TOP",
+   "x0": 35.3,
+   "y0": 10.4,
+   "x1": 36.05,
+   "y1": 17.4,
+   "contents": "0201/0402 caps for VREGIN/VREGOUT (pins 49/50, now on the south end of the east face) and VCCIO."
+  },
+  {
+   "name": "U2 bottom decoupling (north half)",
+   "side": "BOTTOM",
+   "x0": 25.3,
+   "y0": 15.86,
+   "x1": 34.9,
+   "y1": 20,
+   "contents": "VCORE/VCCIO/VPHY/VPLL 0402s and the EP via field. It ends 0.53 mm short of the X1 MH1/MH2 rings. U3 holds the south half of U2's shadow (tented vias under the TSOP body are acceptable)."
+  },
+  {
+   "name": "TCK/TDI series R + bring-up pads",
+   "side": "TOP",
+   "x0": 21.85,
+   "y0": 18.1,
+   "x1": 24.75,
+   "y1": 20.5,
+   "contents": "33 ohm series R on TCK (and TMS/TDI if wanted) at U2's channel-A corner. Small probe pads for GND, VCC1V0 sense and UART TX/RX. This is the space freed by moving Q1."
+  },
+  {
+   "name": "PMIC strip (LTC3556 U8 + L8/L1/L2 + caps + FB networks)",
+   "side": "TOP",
+   "x0": 36.45,
+   "y0": 2.6,
+   "x1": 44.46,
+   "y1": 17.4,
+   "contents": "About 119 mm2. U8 is at the centre with the EP via array to L2. L8 PowerPath 3.3 uH goes north toward VBUS. L1 buck-boost goes south, with SWAB3/SWCD3 short on the same QFN edge. L2 (1V8) goes on the east flank. C150 at VBUS, C147 VOUT, C148 VIN3, C167/C160 VIN1/2 within 1 mm, C151 BAT on the west side toward X4. C80 VCC3V3 goes into L5 with 4 or more vias. The 0201 FB/Type III, PROG and CLPROG parts go in the quiet north-west corner. Every switch node stays on L1: no L4 underpasses (today's board needed four)."
+  },
+  {
+   "name": "PMIC overflow (unloaded Buck1 slot)",
+   "side": "BOTTOM",
+   "x0": 40.5,
+   "y0": 2.9,
+   "x1": 44.46,
+   "y1": 9,
+   "contents": "L9 2.2 uH + C168 (Buck1 runs unloaded as a sequencing slot) and C78, moved under the strip if the top does not fit. It carries almost no current, so a bottom loop over L5 is harmless."
+  },
+  {
+   "name": "Misc bottom passives under X3",
+   "side": "BOTTOM",
+   "x0": 44.9,
+   "y0": 2.9,
+   "x1": 60.5,
+   "y1": 17,
+   "contents": "SD pull-ups and card-detect pull-up, LED series resistors (R107/R108 and the user LEDs), and X5 I2C pull-ups if they are not done in the FPGA. Only 0201/0402 parts. X3 has no through-hole pegs."
+  },
+  {
+   "name": "LED/BTN silk label band",
+   "side": "TOP",
+   "x0": 38.9,
+   "y0": 21.2,
+   "x1": 60,
+   "y1": 22.9,
+   "contents": "Silk only: CH / PG / DN / RX / 1 / 2 / RGB / BTN, 0.8 mm text centred on each LED. The X2 pin names stay in the number row."
+  }
+ ],
+ "rationale": [
+  {
+   "topic": "Verdict",
+   "text": "Base: the DFM floorplan, because it is the only one that fixes all five pain points by placement alone. The FPGA and its own 1V0 buck go at the west end beside the XADC pins. The LTC3556 goes on the top, between its two sources (X1 VBUS, X4 BAT). The card goes at the east edge. The LEDs and button get a labelled row in the top-right. The centre column (X1 / U2 / X4) is forced by the 10.2 mm header gaps, so the real decision is which end gets the FPGA. Physics picks the west: the analog pins and the 1 A core current both want the FPGA there."
+  },
+  {
+   "topic": "Grafts from the signal lens",
+   "text": "Bank-aware rotation of U1, so bank 34 (all 39 SDRAM nets, after moving D14/D15 off bank 16) faces U3 and bank 35 (VAUX) faces pins 39/40. SD goes onto one bank. A point-to-point star clock with one series R per load. A 33 ohm TCK series R at the FT2232H. 3V3-GND stitching caps where the SDRAM bus changes reference from L2 to L5."
+  },
+  {
+   "topic": "Grafts from the power lens",
+   "text": "Every switch node stays on the outer layer (no L4 underpasses). C80 goes into L5 with several vias. The core current is converted at the load: VU (3.7 V, about 0.35 A) travels, VCC1V0 (1 A) does not. Bring-up probe pads. It also confirmed the facts-file error: U7 is the 1.5 A VCC1V0 buck."
+  },
+  {
+   "topic": "Corrections to the DFM base",
+   "text": "(1) Q1 moves to U2's north-east, because at rot 270 OSCI (pin 2) lands at the NE corner, not the NW. (2) X3 is inset 0.3 mm, because edge-flush copper fails the fab's edge clearance. (3) X4 stays at today's position: U8 is about 8 mm away anyway, so the move bought nothing. (4) U3 is raised to y0 2.9, clear of the X2 header plastic. (5) U2 shifts 0.4 mm west and the PMIC strip goes to x 36.45-44.46 to win back width after the X3 inset. L9/C168 can drop to the bottom."
+  },
+  {
+   "topic": "PMIC on top",
+   "text": "On this stack L1 sits over L2 GND while L6 sits over L5 3V3. A buck's di/dt loop on top has its return image in solid GND about 0.1 mm below. On the bottom the image runs in a power plane and has to cross to GND through plane capacitance and decaps. That raises loop inductance and radiates into whatever shares L5. All three proposals cleared the XADC corner, but only the top-side PMIC also fixes the return path."
+  },
+  {
+   "topic": "Two-sided assembly",
+   "text": "The bottom (first reflow, then inverted) carries only the TSOP-54 (about 0.5 g on 54 leads), the MSOP U10, 0201/0402 passives and an optional unloaded 2520 inductor. Every QFN, the BGA, all inductors that carry current, and all connectors are on top and see one reflow. All bottom parts are under about 1.3 mm, inside the X2 spacer height. The JTAG and X2 through-hole pins have nothing under them on either side."
+  },
+  {
+   "topic": "Rejected ideas",
+   "text": "The TSOP on top (signal lens) is not worth its cost. It pushes U2 and the PMIC to the bottom, puts a via and an L5 reference on the USB pair, and makes U8 rework reflow U3. The gain is an SDR bus with no reference change, which a few stitching caps already give. Moving X4 to the right edge (power lens) pairs both cables at one end and adds 30-35 mm of VBUS for no gain over this layout. The only real fix for the SDRAM is a BGA package, which is listed as a part change."
+  }
+ ],
+ "tradeoffs": [
+  "About 20 header channels on the east end (pins 1-10, 21-30) plus SD (6), the LEDs (4) and DONE/UART cross 30-50 mm to the FPGA on L3/L4, past U2, U3 and the PMIC. This mirrors today's crossing count, but from the other side.",
+  "The SD bus is about 35 mm (X3 has to be at the east edge). That is fine at 25/50 MHz with a 33 ohm SD_CLK source R.",
+  "The SDRAM is still a TSOP on the bottom, so all 39 nets change reference from L2 to L5. Address/control reach about 24 mm. That is acceptable for SDR; only a BGA SDRAM removes it.",
+  "The PMIC strip is about 8.0 x 14.8 mm against today's about 12 x 12 mm. It fits only with tight packing, with the unloaded Buck1 parts allowed on the bottom.",
+  "The FPGA branch of the 12 MHz clock is about 25 mm (Q1 sits next to U2's OSCI, which has the tighter jitter need).",
+  "U2 decoupling is split: east and south-west strips on top, north half on the bottom (U3 holds the south half of its shadow).",
+  "VU from U8 to U7 is about 30 mm, and VCC1V8/VCC3V3 to X2 pins 18/19 are about 35 mm. These are low-current tap points; VU is the cheap rail to carry far.",
+  "The X5 cable exits the west edge near X2 pins 17-20, so it bends up when a breadboard neighbour is on that side."
+ ],
+ "part_change_suggestions": [
+  "U3: a 54-ball 8x8 mm VFBGA x16 SDR SDRAM of the same density. It removes the 21 mm address floor, the L2-to-L5 bus transition and about 170 mm2 of bottom area.",
+  "JP3/JP4: a Tag-Connect TC2030-NL land in place of the through-hole 1x6. JTAG already runs over the FT2232H, so this frees the strip on both sides and removes a hand-solder step.",
+  "U4: the same flash in WSON-8 6x5 frees about 20 mm2 east of U1.",
+  "X1: a USB-C receptacle in the next revision (already planned), with a USBLC6-2-class ESD array and 1 uF at the VBUS entry.",
+  "Long term: a PMIC with a 1.2 A or larger core buck would merge U7 and drop the unloaded Buck1 slot. Only do this if that buck can still sit within about 6 mm of U1."
+ ],
+ "self_check": "Checked with C:/Users/tambe/AppData/Local/Temp/claude/604b57bd2ceda17d/52f614a9-b2f5-42ff-ae9c-6f659acff616/scratchpad/judge/geo.py. It uses axis-aligned as-placed rectangles, every same-side pair, and through-hole JTAG against both sides. It treats X2 pad rings (1.7 mm) on both sides, and X1's plated shell holes MH1/MH2 (1.45 mm, y 21.26) and MS1/MS2 (y 23.96, taken from the board dump post.json), as bottom obstacles. Result for the final plan: 0 violations at the 0.4 mm minimum. Pairs at exactly 0.40: U2 to its east cap strip, the bulk block to U4, the PMIC strip to X3, U3 to the U2 bottom decaps, and U3 to the PMIC overflow. Pairs at 0.43-0.55: R4/U4, the TCK block/R4, and U10/U3 0.54. Outline: everything is inside 0-60.96 x 0-25.4. The X3 and X5 pads are 0.3 mm from their edges and X4 is at y 0.3 (today's). Header band: nothing outside the gaps goes below y 2.4 or above y 23.0. The nearest band edges are the PMIC strip, X3, the bulk block and the XADC block at y 2.6 (0.48 to the pad rings), and JTAG at 22.35 (0.93 to the ring). X1 and X4 are inside x 24.13-36.83 and 0.49 or more from the pin rings. Bottom parts are never under through-hole pins: the U2 decaps end 0.53 mm from the MH1/MH2 rings. Containment: U8 is inside the PMIC strip and U7 inside the 1V0 block. The silk band is excluded from copper checks and sits 0.4 mm from BTN. Not verified: the CPG236 bank-to-face map behind U1 rot 90 (inferred from Basys3/XDC ball names), the FT2232HQ rot-270 pin geography (it assumes pin 1 at the footprint's top-left at rot 0), courtyards and 3D bodies (the body gate must be rerun), and whether the PMIC parts actually fit the 8 mm strip. The same script found Power's U10 overlapping X1 MH2 by 0.63 mm, the Signal USB via block 0.135 mm from X1, and DFM clean."
+}
