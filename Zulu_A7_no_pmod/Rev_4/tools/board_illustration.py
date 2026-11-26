@@ -14,13 +14,24 @@ Inputs
                                  U2 = FT2232HQ QFN-64, X4 = side-entry S2B-PH-SM4-TB, U10 = MSOP-8,
                                  X5 = STEMMA QT SM04B-SRSS-TB on the Top at the east edge; C141/C142/C144/C145 on
                                  the Bottom beside and under it). The 2026-11-24 boards (md5 2b655383, then 66148256) changed only
-                                 its Top Overlay: route_model.py on it gives the same board/planes/pads/tracks/vias
+                                 its Top Overlay: route_model.py on it gives the same board/planes/pads/tracks/vias.
+                                 Rev 4 (2026-11-24, md5 ab1a0f97): X3 = 3M 2908-05WB-MG push-push microSD (with its
+                                 lock-pin housing as a second body box), BTN turned to rotation 0 below the LED
+                                 column, C158 0.6 mm east; inputs re-read from that board.
+                                 Rev 4 JTAG move (2026-11-25, md5 904c5244): JP4+JP3 one 1x6 through-hole row above
+                                 X3 (y 21.00, holes under X2 pins 20-15), X3 1.70 mm west, BTN back to its Rev 3
+                                 centre (rotation 90), C158 back to x 18.10; C11-C13/R34/R35 re-sited on the bottom.
+                                 BTN centred (2026-11-25, md5 a2653692): +0.475 mm east to (18.475, 12.92), 0.875 mm
+                                 to the X3 shell and to the LED pads.
+                                 DONE LED (2026-11-25, md5 94a95d15): LD5 orange 0603 in the LED column at y 14.185,
+                                 R135 1K 0201 beside it, fed from the FT-side DONE net. LD6 yellow UART activity LED
+                                 (U2 pins 54/55) between U2 and X1 at (35.50, 20.00), R136 1K beside it (md5 658cf76c).
   tools/route/illustration/comps.json
                                  side / pattern / rotation per part, fed to body_check.build() for the body boxes,
                                  from tools/route/illustration/comps_from_board.py on the same PcbDoc (identical
                                  output on the 2026-11-24 board)
   Imported zulu_a7.PrjPcb/Zulu_a7_no_pmod.PcbDoc
-                                 the board (md5 66148256, saved 2026-11-24 12:47:45); its Texts6 stream gives the
+                                 the board (Rev 4: md5 658cf76c, saved 2026-11-25 22:47; BTN centred a2653692; JTAG move 904c5244; 3M X3 ab1a0f97; Rev 3 66148256); its Texts6 stream gives the
                                  Top Overlay free texts (X2 pin names in the row next to the pins, no pin numbers;
                                  pin 21 'GND'; the board title at y 3.77; the 'U1' label under the FPGA and the
                                  'U4' label beside U4, U1's own designator hidden; the 'R4' label under the R4 array, R4's designator hidden)
@@ -73,12 +84,14 @@ COMPS = os.path.join(HERE, 'route', 'illustration', 'comps.json')
 PCB = os.path.join(ROOT, 'Imported zulu_a7.PrjPcb', 'Zulu_a7_no_pmod.PcbDoc')
 OUT = os.path.join(ROOT, 'docs', 'board_illustration_top.png')
 OUT_BOTTOM = os.path.join(ROOT, 'docs', 'board_illustration_bottom.png')
-RELEASED_MD5 = '661482566444257d69feddf68a83f94e'    # 2026-11-24 silkscreen re-issue (2026-11-21: 8ba56533)
+RELEASED_MD5 = '658cf76c8430978ae7ab389f1ce3bc35'    # Rev 4, + LD6 UART activity LED (2026-11-25); DONE LED 94a95d15
 
 # colours as the Asar picture
 BOARD, COPPER, PAD, SILK, DRILL = '#14361f', '#2c6b3e', '#c9a94a', '#ffffff', '#0a0a0a'
 IC, IC_EDGE, METAL, METAL_EDGE, CREAM = '#1c1c1c', '#555555', '#c3c7cb', '#6d7378', '#efe9d4'
 RED_LED, GREEN_LED, NOTE = '#ff4040', '#37e05a', '#c02020'
+ORANGE_LED = '#ff9a1f'                         # LD5, the DONE LED (LTST-C191KFKT, 605 nm), 2026-11-25
+YELLOW_LED = '#ffe23a'                         # LD6, the UART activity LED (LTST-C191KSKT, 591 nm), 2026-11-25
 FP = FontProperties(family='DejaVu Sans', weight='bold')
 U = 2.54e-6                       # Altium internal unit (1/10000 mil) in mm
 CORNER = 1.5                      # cosmetic corner radius (the real outline is square)
@@ -291,8 +304,8 @@ def draw(ax, M, D, silk, pts_per_mm):
                 rect(box(ref), fc=CERAMIC, ec='#6d5636', lw=0.3)
             else:
                 rect(box(ref), fc=INDUCTOR, ec='#111111', lw=0.4)
-    # LEDs (colours from the silk comments: LD1/LD2 red, LD3/LD4 green, LD0 RGB)
-    for ref, c in (('LD1', RED_LED), ('LD2', RED_LED), ('LD3', GREEN_LED), ('LD4', GREEN_LED)):
+    # LEDs (colours from the silk comments: LD1/LD2 red, LD3/LD4 green, LD5 orange (DONE), LD0 RGB)
+    for ref, c in (('LD1', RED_LED), ('LD2', RED_LED), ('LD3', GREEN_LED), ('LD4', GREEN_LED), ('LD5', ORANGE_LED), ('LD6', YELLOW_LED)):
         if box(ref):
             rect(box(ref), fc=c, ec='k', lw=0.4)
     if box('LD0'):
@@ -312,19 +325,19 @@ def draw(ax, M, D, silk, pts_per_mm):
         for k in range(1, 4):
             xx = b[0] + (b[2] - b[0]) * k / 4
             ax.plot([xx, xx], [b[1] + 0.9, b[3] - 0.9], color='#a9aeb3', lw=0.8, zorder=4.6)
-    # microSD socket shell
+    # microSD socket: 3M 2908-05WB-MG push-push (Rev 4). Stainless cover over the whole body, the card slot opens to
+    # the west (board edge); the lock-pin housing stands 1.0 mm proud at the G1 corner (second body box). The 8
+    # contact tails are under the cover; only the G1-G4 lock/shell pads show where they overhang the body.
     if box('X3'):
         b = box('X3')
         rect(b, fc=METAL, ec=METAL_EDGE, lw=0.6)
-        rect((b[0] + 0.5, b[1] + 0.5, b[2] - 0.5, b[3] - 0.5), z=4.5, fc='none', ec='#9aa0a5', lw=0.6)
-        for k in range(1, 6):
-            yy = b[1] + (b[3] - b[1]) * k / 6
-            ax.plot([b[0] + 1.2, b[2] - 1.2], [yy, yy], color='#b0b5ba', lw=0.6, zorder=4.6)
-        # the signal pins exit at the back of the shell: keep them visible
-        for p in refs['X3']:
-            if p['pad'].isdigit():
-                ax.add_patch(Rectangle((p['x'] - p['w'] / 2, p['y'] - p['h'] / 2), p['w'], p['h'], fc=PAD, lw=0,
-                                       zorder=5))
+        rect((b[0] + 0.45, b[1] + 0.45, b[2] - 0.45, b[3] - 0.45), z=4.5, fc='none', ec='#9aa0a5', lw=0.6)
+        for k in range(1, 5):                                   # pressed ribs along the insertion axis
+            yy = b[1] + (b[3] - b[1]) * k / 5
+            ax.plot([b[0] + 3.0, b[2] - 1.2], [yy, yy], color='#b0b5ba', lw=0.6, zorder=4.6)
+        ax.add_patch(Rectangle((b[0], b[1] + 2.75), 0.35, 11.0, fc='#3a3a3a', lw=0, zorder=4.7))   # card slot (mouth)
+        for t in bodies['X3']['body'][1:]:                      # lock-pin housing
+            rect(t, z=4.4, fc='#2a2a2a', ec='#111111', lw=0.4)
     # battery JST PH S2B-PH-SM4-TB: flat side-entry housing, the cable opening faces the south board edge; the two
     # metal hold-down tabs (MP1/MP2) show at the housing's sides and the signal pads' tails behind it
     if box('X4'):

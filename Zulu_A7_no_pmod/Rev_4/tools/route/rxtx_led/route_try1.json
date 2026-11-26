@@ -1,0 +1,66 @@
+{
+"vias": [
+{
+"net": "VCC3V3",
+"x": 33.75,
+"y": 20.625,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 33.75,
+"y": 20.625,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 33.75,
+"y": 20.625,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 33.75,
+"y": 20.625,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+}
+],
+"tracks": [
+{
+"net": "VCC3V3",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 33.15,
+"y1": 20.1,
+"x2": 33.75,
+"y2": 20.625
+},
+{
+"net": "NetLD6_A",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 33.75,
+"y1": 20.0,
+"x2": 34.35,
+"y2": 20.0
+}
+],
+"remove": [],
+"log": [
+"OPEN FT-RXTX-LED 2",
+"FAIL FT-RXTX-LED (nopath)",
+"FAIL FT-RXTX-LED (nopath)"
+]
+}

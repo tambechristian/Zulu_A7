@@ -1,0 +1,82 @@
+{
+"vias": [
+{
+"net": "GND",
+"x": 22.65,
+"y": 13.825,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "N$LD2A",
+"x": 23.15,
+"y": 14.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+},
+{
+"net": "N$LD2A",
+"x": 23.15,
+"y": 14.2,
+"size": 0.3,
+"hole": 0.15,
+"from": "L5-VCC3V3",
+"to": "Bottom Layer"
+},
+{
+"net": "N$LD2A",
+"x": 22.025,
+"y": 13.025,
+"size": 0.35,
+"hole": 0.2,
+"from": "Top Layer",
+"to": "Bottom Layer"
+}
+],
+"tracks": [
+{
+"net": "N$LD2A",
+"layer": "L4-SIG",
+"w": 0.0762,
+"x1": 23.6,
+"y1": 15.1,
+"x2": 23.15,
+"y2": 14.2
+},
+{
+"net": "N$LD2A",
+"layer": "Bottom Layer",
+"w": 0.0762,
+"x1": 23.15,
+"y1": 14.2,
+"x2": 22.025,
+"y2": 13.025
+},
+{
+"net": "N$LD2A",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 22.025,
+"y1": 13.025,
+"x2": 21.75,
+"y2": 12.925
+},
+{
+"net": "NetLD5_A",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 20.55,
+"y1": 14.375,
+"x2": 21.05,
+"y2": 14.375
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 0 queued nets remain"
+]
+}

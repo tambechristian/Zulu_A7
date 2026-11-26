@@ -1,0 +1,7 @@
+  GND plane groups tied 2/2
+GND            
+VCC3V3         
+DONE           
+N$LD2A         
+NetLD5_A       
+routed 4 connections, failed 0; 16 vias, 87 tracks -> tools/route/done_led/trial_done/route.json

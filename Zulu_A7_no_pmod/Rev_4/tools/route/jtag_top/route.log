@@ -1,0 +1,44 @@
+  GND plane groups tied 2/14
+  GND plane groups tied 3/14
+  GND plane groups tied 4/14
+  GND plane groups tied 5/14
+  GND plane groups tied 6/14
+  GND plane groups tied 7/14
+  GND plane groups tied 8/14
+  GND plane groups tied 9/14
+  GND plane groups tied 10/14
+  GND plane groups tied 11/14
+  GND plane groups tied 12/14
+  GND plane groups tied 13/14
+  GND plane groups tied 14/14
+GND            
+  VCC3V3 plane groups tied 2/13
+  VCC3V3 plane groups tied 3/13
+  VCC3V3 plane groups tied 4/13
+  VCC3V3 plane groups tied 5/13
+  VCC3V3 plane groups tied 6/13
+  VCC3V3 plane groups tied 7/13
+  VCC3V3 plane groups tied 8/13
+  VCC3V3 plane groups tied 9/13
+  VCC3V3 plane groups tied 10/13
+  VCC3V3 plane groups tied 11/13
+  VCC3V3 plane groups tied 12/13
+  VCC3V3 plane groups tied 13/13
+VCC3V3         
+CHAN21         
+LD4_A          
+N$BTN          
+SD-CLK         
+SD-CMD         
+SD-DAT0        
+SD-DAT1        
+SD-DAT2        
+SD-DAT3        
+TCK            
+TDI            
+TDO            
+TMS            
+USB5V0         
+VCC1V0         
+VU             
+routed 49 connections, failed 0; 69 vias, 207 tracks -> tools/route/jtag_top/route.json

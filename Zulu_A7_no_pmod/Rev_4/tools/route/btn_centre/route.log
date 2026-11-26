@@ -1,0 +1,6 @@
+GND            
+  VCC3V3 plane groups tied 2/2
+VCC3V3         
+N$BTN          
+PWR_PGOODALL   
+routed 4 connections, failed 0; 4 vias, 11 tracks -> tools/route/btn_centre/route.json

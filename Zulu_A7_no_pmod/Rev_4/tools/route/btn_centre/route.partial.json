@@ -1,0 +1,145 @@
+{
+"vias": [
+{
+"net": "VCC3V3",
+"x": 17.15,
+"y": 14.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "Top Layer",
+"to": "L2-GND"
+},
+{
+"net": "VCC3V3",
+"x": 17.15,
+"y": 14.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "L2-GND",
+"to": "L3-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 17.15,
+"y": 14.575,
+"size": 0.27,
+"hole": 0.15,
+"from": "L3-SIG",
+"to": "L4-SIG"
+},
+{
+"net": "VCC3V3",
+"x": 17.15,
+"y": 14.575,
+"size": 0.3,
+"hole": 0.15,
+"from": "L4-SIG",
+"to": "L5-VCC3V3"
+}
+],
+"tracks": [
+{
+"net": "N$BTN",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 20.525,
+"y1": 11.8,
+"x2": 19.8,
+"y2": 14.575
+},
+{
+"net": "N$BTN",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 20.525,
+"y1": 11.8,
+"x2": 19.8,
+"y2": 11.25
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 16.65,
+"y1": 13.65,
+"x2": 16.85,
+"y2": 13.925
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 16.85,
+"y1": 13.925,
+"x2": 16.85,
+"y2": 14.725
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 16.85,
+"y1": 14.725,
+"x2": 16.925,
+"y2": 14.8
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 16.925,
+"y1": 14.8,
+"x2": 16.925,
+"y2": 15.6
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 16.925,
+"y1": 15.6,
+"x2": 17.0,
+"y2": 15.675
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 17.0,
+"y1": 15.675,
+"x2": 17.75,
+"y2": 15.675
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 17.75,
+"y1": 15.675,
+"x2": 17.775,
+"y2": 15.7
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 17.775,
+"y1": 15.7,
+"x2": 17.975,
+"y2": 15.8
+},
+{
+"net": "PWR_PGOODALL",
+"layer": "Top Layer",
+"w": 0.0762,
+"x1": 17.975,
+"y1": 15.8,
+"x2": 18.0,
+"y2": 15.8
+}
+],
+"remove": [],
+"log": [
+"CHECKPOINT: 0 queued nets remain"
+]
+}

@@ -1,0 +1,6 @@
+seeded 0 vias, 9 tracks
+  VCC3V3 plane groups tied 1/2
+VCC3V3         
+NetLD6_A       
+routed 2 connections, failed 0; 0 vias, 13 tracks -> tools/route/rxtx_led/route.json
+plane join VCC3V3 at 33.05,20.00

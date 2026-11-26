@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_4\tools\route\rev2\judge\judge.py", line 397, in <module>
+    main()
+  File "C:\Users\tambe\Documents\Electronics\Zulu_A7\Zulu_A7_no_pmod\Rev_4\tools\route\rev2\judge\judge.py", line 313, in main
+    P = json.load(open(sys.argv[3]))
+                  ^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'tools/route/done_led/plan.json'

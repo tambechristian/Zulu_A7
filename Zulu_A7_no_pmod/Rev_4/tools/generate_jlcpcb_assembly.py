@@ -203,6 +203,8 @@ LCSC_CODES = {
     "BLM18KG601SN1D": "C85833",
     "LTST-C191KRKT": "C125099",
     "LTST-C191KGKT": "C125098",
+    "LTST-C191KFKT": "C160478",   # LD5 DONE LED, orange 605 nm (LCSC product page, 2026-11-25)
+    "LTST-C191KSKT": "C125100",   # LD6 UART activity LED, yellow 591 nm (LCSC product page, 2026-11-25)
     "ECS-3225SMV-120-FP-TR": "C17218076",
     "RC0201FR-075K1L": "C274341",
     "RC0201FR-071KL": "C138165",
@@ -253,7 +255,8 @@ MPN_MANUFACTURER = {
 MANUFACTURER_FIXES = []        # (refs, schematic MANF, MPN, maker used), filled by make_bom
 
 # Parts removed from the design (bq24232, TPS63802, the three SC189 bucks but U7, their inductors and
-# programming resistors, LD5/R78): validate() fails if any of these MPNs reaches the BOM.
+# programming resistors, the old charger-status LED and its R78): validate() fails if any of these MPNs reaches the BOM.
+# The designator LD5 was reused on 2026-11-25 for the DONE LED (LTST-C191KFKT, docs/done_led.md), so it left STALE_REFS.
 STALE_MPNS = {
     "BQ24232RGTR", "TPS63802DLAR", "SC189ZSKTRT", "SC189LSKTRT", "DFE252010F-R47M=P2",
     "DFE201610E-2R2M=P2", "RC0201FR-07511KL", "RC0201FR-0791KL", "RC0402FR-0756K2L",
@@ -263,7 +266,7 @@ STALE_MPNS = {
     # Notchless board (2026-11-19): U2 is the FT2232HQ-REEL, X4 the side-entry SMD S2B-PH-SM4-TB.
     "FT2232HL-REEL", "B2B-PH-SM4-TB(LF)(SN)", "B2B-PH-K-S(LF)(SN)", "S2B-PH-K-S(LF)(SN)",
 }
-STALE_REFS = {"U5", "U6", "LD5", "R78", "R104", "R105", "R106", "R109", "R110", "R111", "R112", "C162",
+STALE_REFS = {"U5", "U6", "R78", "R104", "R105", "R106", "R109", "R110", "R111", "R112", "C162",
               "J1", "R26", "R27", "R28", "R29", "R30", "R31", "R32", "R33"}
 
 # LD0 parts whose datasheet numbers the pins differently from the footprint
@@ -624,7 +627,7 @@ PCBWAY_LINE_NOTES = {
         "Water-clear lens. Polarity: cathodes on the WEST side, the cathode-mark column (board footprint "
         "pads 2, 4, 6; datasheet Rev.4 numbers them 1, 2, 3, Rev.6 like the footprint); anodes on the east "
         "side (opposite to "
-        "LD1-LD4). The drawing's red bar and the silkscreen dot mark the cathode column."
+        "LD1-LD6). The drawing's red bar and the silkscreen dot mark the cathode column."
     ),
     "105017-0001": (
         "Rated for ONE reflow: place in the last (top) reflow. Shell stakes in plated "
@@ -658,6 +661,8 @@ DESCRIPTION_OVERRIDES = {
                         "regulators and a 1 A buck-boost, QFN-28 4 x 5 mm (UFD), exposed pad"),
     "SC189ASKTRT": "1.5 A synchronous buck regulator, fixed 1.0 V output, SOT-23-5",
     "LTST-C191KGKT": "green 0603 SMD indicator LED",
+    "LTST-C191KFKT": "orange 0603 SMD indicator LED",
+    "LTST-C191KSKT": "yellow 0603 SMD indicator LED",
     "LTST-C191KRKT": "red 0603 SMD indicator LED",
     "742C163101JP": "8 x 100 ohm +-5% isolated concave resistor array, 6.4 x 1.6 mm, 0.8 mm pitch",
     "MSASJ105BB5475MFNA01": "4.7uF X5R 6.3V +-20% 0402 MLCC, 0.65 mm max",

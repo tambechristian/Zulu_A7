@@ -1,0 +1,9 @@
+  GND plane groups tied 2/2
+GND            
+VCC3V3         
+FPGA-DONE      
+N$LD2A         
+NetLD5_A       
+routed 3 connections, failed 1; 4 vias, 4 tracks -> tools/route/done_led/route.json
+OPEN FPGA-DONE 1
+FAIL FPGA-DONE (nopath)

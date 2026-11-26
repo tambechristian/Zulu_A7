@@ -445,7 +445,7 @@ def main():
         ('U4 W25Q128JVSIQ', '2.7-3.6 V, 133 MHz', '3.3 V, CCLK a few tens of MHz', 'OK'),
         ('X1 105017-0001', '1 A per contact, 30 V', '0.66 A worst on VBUS', 'OK, 66 % of the contact rating'),
         ('X2 header / J1 Pmod', '0.1 in pins ~1-3 A', 'VU pass-through and 3.3 V outputs', 'OK'),
-        ('LEDs', 'IF 25 mA (Everlight 19-337, the same table as the VS NRD8), 20-30 mA (LTST)', '3.9 mA red, <10 mA blue/green, 1.8 mA LD5, 4 mA LD1/LD2, 1.5 mA LD3/LD4 from the 4.4 V charger output', 'OK'),
+        ('LEDs', 'IF 25 mA (Everlight 19-337, the same table as the VS NRD8), 20-30 mA (LTST)', '3.9 mA red, <10 mA blue/green (LD0), 4 mA LD1/LD2, 1.5 mA LD3/LD4, ~1.2 mA LD5 (DONE LED: VCC3V3 - R4 G+H - R4-B - R135 1K), ~1.3 mA LD6 (UART activity, R136 1K, pulsed by RXLED#/TXLED#)', 'OK'),
         ('FPGA I/O driving LEDs', '12 mA default LVCMOS33 drive', '4-10 mA sinks', 'OK'),
     ]:
         w(f'| {row[0]} | {row[1]} | {row[2]} | {row[3]} |')
